@@ -10,23 +10,49 @@
     
 
     
+        
     <url>
-     <loc>None/AIX/</loc>
+     <loc>None/Oracle/OJDBC/</loc>
      <lastmod>2016-06-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
+        
     
 
     
         
     <url>
-     <loc>None/Tech/Aix_OS/</loc>
+     <loc>None/Unix/AIX/</loc>
      <lastmod>2016-06-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/Tech/Commands/</loc>
+     <loc>None/Unix/Commands/</loc>
+     <lastmod>2016-06-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/Unix/Filesystem/</loc>
+     <lastmod>2016-06-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/Unix/Hardware_info/</loc>
+     <lastmod>2016-06-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/Unix/Network/</loc>
+     <lastmod>2016-06-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/Unix/Version_Control/</loc>
      <lastmod>2016-06-30</lastmod>
      <changefreq>daily</changefreq>
     </url>

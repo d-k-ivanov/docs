@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-	<title>Aix OS - Technical Info</title>
+	<title>Network - Technical Info</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
@@ -59,25 +59,58 @@
                 
                 
                 
-                    <li >
-                        <a href="../../AIX/">AIX</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Oracle <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../Oracle/OJDBC/">OJDBC</a>
+</li>
+
+                        
+                        </ul>
                     </li>
                 
                 
                 
                     <li class="dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tech <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Unix <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
-<li class="active">
-    <a href="./">Aix OS</a>
+<li >
+    <a href="../AIX/">AIX</a>
 </li>
 
                         
                             
 <li >
     <a href="../Commands/">Commands</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../Filesystem/">Filesystem</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../Hardware_info/">Hardware info</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Network</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../Version_Control/">Version Control</a>
 </li>
 
                         
@@ -96,12 +129,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../../AIX/">
+                        <a rel="next" href="../Hardware_info/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../Commands/">
+                        <a rel="prev" href="../Version_Control/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -126,166 +159,58 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#ibm-aix-and-vios-commands">IBM AIX and VIOS commands</a></li>
+        <li class="main active"><a href="#tcpdump-with-all-commands-use-head-optionally">TCPDUMP (with all commands use '| head' optionally)</a></li>
         
     
-        <li class="main "><a href="#basic-commands">Basic commands:</a></li>
+        <li class="main "><a href="#networkmanager-show-connection-info">NetworkManager: show connection info</a></li>
         
     
-        <li class="main "><a href="#gpfs">GPFS:</a></li>
+        <li class="main "><a href="#check-own-ip-address">Check own IP address</a></li>
         
     
-        <li class="main "><a href="#network">Network:</a></li>
-        
-    
-        <li class="main "><a href="#hardware">Hardware:</a></li>
-        
-    
-        <li class="main "><a href="#virtual-devices">Virtual devices:</a></li>
+        <li class="main "><a href="#share-current-folder-over-http">Share current folder over HTTP</a></li>
         
     
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h2 id="ibm-aix-and-vios-commands">IBM AIX and VIOS commands</h2>
-<p>Inspired by <a href="https://github.com/jlevy" title="Joshua Levy">Joshua Levy</a> and his great <a href="https://github.com/jlevy/the-art-of-command-line" title="The Art of Command Line">The-Art-Of-Command-Line</a></p>
-<blockquote>
-<p>It's only my view on useful commands and this examples are useful for me in first place.</p>
-</blockquote>
-<ul>
-<li><a href="README.md">Return to Command Line</a></li>
-<li><a href="#basic-commands">Basic commands</a></li>
-<li><a href="#gpfs">GPFS</a></li>
-<li><a href="#network">Network</a></li>
-<li><a href="#hardware">Hardware</a></li>
-<li><a href="#virtual-devices">Virtual Devices</a></li>
-</ul>
-<h2 id="basic-commands">Basic commands:</h2>
-<ul>
-<li>Management</li>
-</ul>
-<pre><code class="bash"># Exit from basic VIOS console to common AIX ksh
-oem_setup_env
-# Adminitration and configuration console
-smit
-
-#If you want to use bash as a login shell, you first have to add it to the
-#list of shells in /etc/security/login.cfg. 
-#Then use `chsh` to change your individual setting.
+<h3 id="tcpdump-with-all-commands-use-head-optionally">TCPDUMP (with all commands use '| head' optionally)</h3>
+<pre><code class="bash"># Capture bunch of packets
+tcpdump -w capture.pcap
+# Show list of unique tcp or udp connections ip addresses
+tcpdump -nn -r capture.pcap 'tcp or udp' | cut -f 3 -d &quot; &quot; | cut -f 1-4 -d &quot;.&quot; | sort | uniq | sort -nr
+# Show list of unique destinations with SYN flag(‘tcp[13]=2’)
+tcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 5 -d &quot; &quot; | sort | uniq -c | sort -nr
+# Show list of unique sources with SYN flag(‘tcp[13]=2’)
+tcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 3 -d &quot; &quot; | cut -f 1-4 -d &quot;.&quot; | sort | uniq -c | sort -nr
+# Search for plain texts (-A)
+tcpdump -Ann -r capture.pcap 'dst port 25 or dst port 514 or dst port 110 or dst port 21 or dst port 53 or dst port 80'
+# Search for top level domains (optiolally for names only: | grep -E '[a-z]')
+tcpdump -nn -r capture.pcap 'port 53' | grep -Ev '(com|ru|net|org|gov|mil|arpa)' | cut -f 9 -d &quot; &quot;  
+# Investigate HTTP traffic
+tcpdump -Ann -r capture.pcap 'port 80' | grep 'HTTP' | grep -Ev '(GET|HEAD)'
+# Search HTTP traffic for user-agent list
+tcpdump -Ann -r capture.pcap 'port 80' | grep -Ei 'user-agent' | sort | uniq -c | sort -n
+tcpdump -Ann -r capture.pcap 'port 80' | sed -n '/Mozilla/,$p'
+# Pcap repository (-C filesize in MBytes, -W number of files, -G time in seconds, %s timestamp)
+sudo -b tcpdump -nn -i eth0 -w capture.pcap -C 1 -W 5         
+sudo -b tcpdump -nn -i eth0 -w capture-%s.pcap -G 600 -W 5    
+# Dealing with pcap files
+for capfile in $(ls *.pcap); do tcpdump -nnr $capfile 'dst port 53'; done  
 </code></pre>
 
-<ul>
-<li>Software installation:</li>
-</ul>
-<pre><code class="bash">cd &lt;path_to_package&gt;
-inutoc .
-installp -aXY -d&lt;path_to_package&gt; all
-# Check if package is installed or not:
-lslpp -L &lt;package_name&gt;
+<h3 id="networkmanager-show-connection-info">NetworkManager: show connection info</h3>
+<pre><code class="bash">nmcli device show eth0
 </code></pre>
 
-<ul>
-<li>Mirroring rootvg:</li>
-</ul>
-<pre><code class="bash">extendvg rootvg hdisk1
-mirrorvg rootvg
-bootlist -m normal hdisk0 hdisk1 
-bosboot -ad hdisk0
-bosboot -ad hdisk1
-# Checking
-bootlist -o -m normal
+<h3 id="check-own-ip-address">Check own IP address</h3>
+<pre><code class="bash">curl -s checkip.dyndns.org
 </code></pre>
 
-<h2 id="gpfs">GPFS:</h2>
-<ul>
-<li>Instalaltion:</li>
-</ul>
-<pre><code class="bash"># on each LPAR:
-cd /&lt;path_to_gpfs_base_package&gt;/base-3-5/
-inutoc .
-installp -aXY -d/&lt;path_to_gpfs_base_package&gt;/base-3-5 all
-cd /&lt;path_to_gpfs_fix_package&gt;/fix-3-5-10/
-inutoc .
-installp -aXY -d/&lt;path_to_gpfs_fix_package&gt;/fix-3-5-10 all
-lslpp -L gpfs.\*
-</code></pre>
-
-<ul>
-<li>Creating cluster:</li>
-</ul>
-<pre><code class="bash"># You need to setup paswordless shh connection between nodes
-# Add this path to /etc/environment on each node
-export PATH=$PATH:/usr/lpp/mmfs/bin
-
-mmcrcluster -N &lt;PRIMARY_NODE_HOSTNAME&gt;:manager-quorum -p PRIMARY_NODE_HOSTNAME -r /usr/bin/ssh -R /usr/bin/scp
-mmchlicense server --accept -N PRIMARY_NODE_HOSTNAME
-mmstartup -a
-mmaddnode -N &lt;SECONDARY_NODE_HOSTNAME&gt;
-mmaddnode -N &lt;THIRDARY_NODE_HOSTNAME&gt;
-mmaddnode -N &lt;N-ARY_NODE_HOSTNAME&gt;
-mmchcluster -s &lt;SECONDARY_NODE_HOSTNAME&gt;
-mmchlicense server --accept -N &lt;SECONDARY_NODE_HOSTNAME&gt;
-mmchlicense server --accept -N &lt;THIRDARY_NODE_HOSTNAME&gt;
-mmchlicense server --accept -N &lt;N-ARY_NODE_HOSTNAME&gt;
-mmstartup -N &lt;SECONDARY_NODE_HOSTNAME&gt;
-mmstartup -N &lt;THIRDARY_NODE_HOSTNAME&gt;
-mmstartup -N &lt;N-ARY_NODE_HOSTNAME&gt;
-mmchnode --quorum --manager -N &lt;SECONDARY_NODE_HOSTNAME&gt;
-# To check status of cluster:
-mmlscluster
-mmgetstate -a
-</code></pre>
-
-<ul>
-<li>Create GPFS mirror partition:</li>
-</ul>
-<pre><code class="bash"># On primary node:
-mkdir /etc/gpfs
-vi /etc/gpfs/diskdesk.txt
-### --insert in diskdesk.txt--
-hdiskX:::dataAndMetadata:1:nsd1:
-hdiskY:::dataAndMetadata:2:nsd2:
-### --end of insert--
-
-mmcrnsd -F /etc/gpfs/diskdesk.txt
-mmshutdown -a
-mmchconfig tiebreakerdisks=&quot;nsd1;nsd2&quot;
-mmstartup -a
-mmcrfs /mnt/gpfs gpfsfs -F /etc/gpfs/diskdesk.txt -A yes -B 512K -M2 -m2 -R2 -r2 -n 2 -N 50000
-mmlsconfig
-mmmount all -a
-mmchconfig minQuorumNodes=2
-df -g
-</code></pre>
-
-<h2 id="network">Network:</h2>
-<pre><code class="bash">Shared Ethernet adapter coming soon
-</code></pre>
-
-<h2 id="hardware">Hardware:</h2>
-<pre><code class="bash"># Refresh hardware configuration(aix and vios respectively):
-cfgmgr
-cfgdev
-# Rename hard drive:
-rendev -l &lt;old_name&gt; -n &lt;new_name&gt;
-rendev -l hdisk3 -n hdisk33
-# Enable PVID:
-chdev -l hdiskX -a pv=yes
-# Change reserve policy to hard drive
-chdev -l hdiskX -a reserve_policy=no_reserve
-# Clear the owning volume manager from a disk
-chpv -C hdiskX
-</code></pre>
-
-<h2 id="virtual-devices">Virtual devices:</h2>
-<pre><code class="bash"># Checking all virtual mappings to particular vhost:
-lsmap -vadapter vhost
-# Make a virtual hard drive for particular vhost:
-# -f - flag to forcing device creation if you're making shared hard drive
-mkvdev [-f] -vdev hdiskX -vadapter vhostX -dev &lt;virtual_device_name&gt;
-# Make a virtual cd-rom device for particular vhost:
-mkvdev -fbo -vadapter vhostX -dev &lt;virtual_device_name&gt;
+<h3 id="share-current-folder-over-http">Share current folder over HTTP</h3>
+<pre><code class="bash">python2 -m SimpleHTTPServer 8080
+python3 -mhttp.server 8080
 </code></pre></div>
             
         </div>

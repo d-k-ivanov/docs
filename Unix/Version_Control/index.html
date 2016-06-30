@@ -7,14 +7,14 @@
         
         <meta name="author" content="Dmitry Ivanov">
         
-        <link rel="shortcut icon" href="./img/favicon.ico">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
 
-	<title>Technical Info</title>
+	<title>Version Control - Technical Info</title>
 
-        <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="./css/font-awesome-4.5.0.css" rel="stylesheet">
-        <link href="./css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="./css/highlight.css">
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -25,7 +25,7 @@
         
     </head>
 
-    <body class="homepage">
+    <body>
 
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -43,7 +43,7 @@
             
 
             <!-- Main title -->
-            <a class="navbar-brand" href=".">Technical Info</a>
+            <a class="navbar-brand" href="../..">Technical Info</a>
         </div>
 
         <!-- Expanded navigation -->
@@ -53,8 +53,8 @@
                 <ul class="nav navbar-nav">
                 
                 
-                    <li class="active">
-                        <a href=".">Home</a>
+                    <li >
+                        <a href="../..">Home</a>
                     </li>
                 
                 
@@ -65,7 +65,7 @@
                         
                             
 <li >
-    <a href="Oracle/OJDBC/">OJDBC</a>
+    <a href="../../Oracle/OJDBC/">OJDBC</a>
 </li>
 
                         
@@ -74,43 +74,43 @@
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Unix <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="Unix/AIX/">AIX</a>
+    <a href="../AIX/">AIX</a>
 </li>
 
                         
                             
 <li >
-    <a href="Unix/Commands/">Commands</a>
+    <a href="../Commands/">Commands</a>
 </li>
 
                         
                             
 <li >
-    <a href="Unix/Filesystem/">Filesystem</a>
+    <a href="../Filesystem/">Filesystem</a>
 </li>
 
                         
                             
 <li >
-    <a href="Unix/Hardware_info/">Hardware info</a>
+    <a href="../Hardware_info/">Hardware info</a>
 </li>
 
                         
                             
 <li >
-    <a href="Unix/Network/">Network</a>
+    <a href="../Network/">Network</a>
 </li>
 
                         
                             
-<li >
-    <a href="Unix/Version_Control/">Version Control</a>
+<li class="active">
+    <a href="./">Version Control</a>
 </li>
 
                         
@@ -128,13 +128,13 @@
                     </a>
                 </li>
                 
-                    <li class="disabled">
-                        <a rel="next" >
+                    <li >
+                        <a rel="next" href="../Network/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
-                    <li >
-                        <a rel="prev" href="Oracle/OJDBC/">
+                    <li class="disabled">
+                        <a rel="prev" >
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -159,35 +159,90 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#command-line-examples">Command line examples</a></li>
+        <li class="main active"><a href="#git-global-settings">Git: Global settings</a></li>
         
-            <li><a href="#unix-commands">Unix commands</a></li>
+    
+        <li class="main "><a href="#git-create-new-repository">Git: Create new repository</a></li>
         
-            <li><a href="#oracle-howto">Oracle HowTo</a></li>
+    
+        <li class="main "><a href="#git-new-commit">Git: New commit</a></li>
+        
+    
+        <li class="main "><a href="#git-update-local-reposytory-from-remote">Git: update local reposytory from remote</a></li>
+        
+    
+        <li class="main "><a href="#git-working-with-bunch-of-repositories">Git: Working with bunch of  repositories</a></li>
+        
+    
+        <li class="main "><a href="#github-independent-history-catalogs-of-git-repository">GitHub: Independent history catalogs of git repository</a></li>
+        
+    
+        <li class="main "><a href="#github-clone-all-users-repository">GitHub: Clone all user's repository</a></li>
         
     
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h2 id="command-line-examples">Command line examples</h2>
-<p>Inspired by <a href="https://github.com/jlevy" title="Joshua Levy">Joshua Levy</a> and his great <a href="https://github.com/jlevy/the-art-of-command-line" title="The Art of Command Line">The-Art-Of-Command-Line</a></p>
-<blockquote>
-<p>It's only my view on useful commands and this examples are useful for me in first place.</p>
-</blockquote>
-<h3 id="unix-commands">Unix commands</h3>
-<ul>
-<li><a href="Unix/AIX/">AIX</a></li>
-<li><a href="Unix/Commands/">Commands</a></li>
-<li><a href="Unix/Filesystem/">Filesystem</a></li>
-<li><a href="Unix/Hardware_info/">Hardware info</a></li>
-<li><a href="Unix/Network/">Network</a></li>
-<li><a href="Unix/Version_Control/">Version Control</a></li>
-</ul>
-<h3 id="oracle-howto">Oracle HowTo</h3>
-<ul>
-<li><a href="Oracle/OJDBC/">OJDBC Driver</a></li>
-</ul></div>
+<h3 id="git-global-settings">Git: Global settings</h3>
+<pre><code class="bash">git config --global user.name &quot;Your Name&quot;
+git config --global user.email your@e-mail.com
+</code></pre>
+
+<h3 id="git-create-new-repository">Git: Create new repository</h3>
+<pre><code class="bash">mkdir -p &lt;path_to_repository&gt;
+cd &lt;path_to_repository&gt;
+git add .
+git commit -m &quot;Initialization&quot;
+git remote add origin https://github.com/username/&lt;repository&gt;.git
+git push -u origin master
+git checkout 
+</code></pre>
+
+<h3 id="git-new-commit">Git: New commit</h3>
+<pre><code class="bash"># Addition of new files with automatic staging of deleted and modified files
+git add .
+git commit -a -m &quot;new commentary&quot;
+git push -u origin master
+</code></pre>
+
+<h3 id="git-update-local-reposytory-from-remote">Git: update local reposytory from remote</h3>
+<pre><code class="bash"># Fentch + Merge
+git pull
+# Fetch only
+git fetch
+# Fetch changes from remote repository with modified local repository
+git commit -a -m &quot;new commentary&quot;
+git pull rebase
+# pull remote with overwrite local changes
+git fetch --all
+git reset --hard origin/master
+</code></pre>
+
+<h3 id="git-working-with-bunch-of-repositories">Git: Working with bunch of  repositories</h3>
+<pre><code class="bash"># Last commits
+for d in `ls`; do cd $d; git log --pretty=format:&quot;%h - %an, %ar : %s&quot; -1; cd ..; done
+# Mass checkout
+for d in `ls`; do cd $d; git checkout; cd ..; done
+</code></pre>
+
+<h3 id="github-independent-history-catalogs-of-git-repository">GitHub: Independent history catalogs of git repository</h3>
+<pre><code class="bash"># Makes a bunch of history folders formatted by the next way: &lt;repository&gt;-&lt;number_of_commit&gt;-&lt;commit_hash&gt;
+# Check commit_list.end for mistakes, you need simple list of commits
+git clone &lt;repository_url&gt; &lt;repository&gt;
+cd &lt;repository&gt; &amp;&amp; git log --pretty=format:&quot;%h&quot; &gt; ../commit_list &amp;&amp; cd ..
+tac commit_list &gt; commit_list.end 
+i=1; for cid in `cat commit_list.end`; do cp -r &lt;repository&gt; &lt;repository&gt;-$i-$cid; cd &lt;repository&gt;-$i-$cid; git checkout $cid; cd ..; ((i=i+1)); done
+</code></pre>
+
+<h3 id="github-clone-all-users-repository">GitHub: Clone all user's repository</h3>
+<pre><code class="bash"># Get complete list of user's repositories in JSON file
+curl -s https://api.github.com/users/&lt;username&gt;/repos?per_page=200 &gt; repo.list.json
+python -c &quot;import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close()&quot;
+# And dont forget about &quot;space&quot;(%20, &quot; &quot;) in cmd = 'git clone ', it's completely nessesary
+# Another way to clone up to 200 user's repos(just in shell): 
+curl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | .&quot;clone_url&quot;' | xargs -I '{}' git clone {}
+</code></pre></div>
             
         </div>
 
@@ -197,12 +252,12 @@
             <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
 
-        <script src="./js/jquery-1.10.2.min.js"></script>
-        <script src="./js/bootstrap-3.0.3.min.js"></script>
-        <script src="./js/highlight.pack.js"></script>
-        <script>var base_url = '.';</script>
-        <script data-main="./mkdocs/js/search.js" src="./mkdocs/js/require.js"></script>
-        <script src="./js/base.js"></script>
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
             <div class="modal-dialog">
@@ -231,8 +286,3 @@
 
     </body>
 </html>
-
-<!--
-MkDocs version : 0.15.3
-Build Date UTC : 2016-06-30 10:22:10.912948
--->

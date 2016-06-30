@@ -7,14 +7,14 @@
         
         <meta name="author" content="Dmitry Ivanov">
         
-        <link rel="shortcut icon" href="../img/favicon.ico">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
 
 	<title>AIX - Technical Info</title>
 
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="../css/highlight.css">
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -43,7 +43,7 @@
             
 
             <!-- Main title -->
-            <a class="navbar-brand" href="..">Technical Info</a>
+            <a class="navbar-brand" href="../..">Technical Info</a>
         </div>
 
         <!-- Expanded navigation -->
@@ -54,30 +54,63 @@
                 
                 
                     <li >
-                        <a href="..">Home</a>
-                    </li>
-                
-                
-                
-                    <li class="active">
-                        <a href="./">AIX</a>
+                        <a href="../..">Home</a>
                     </li>
                 
                 
                 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tech <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Oracle <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../Tech/Aix_OS/">Aix OS</a>
+    <a href="../../Oracle/OJDBC/">OJDBC</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Unix <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li class="active">
+    <a href="./">AIX</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Tech/Commands/">Commands</a>
+    <a href="../Commands/">Commands</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../Filesystem/">Filesystem</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../Hardware_info/">Hardware info</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../Network/">Network</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../Version_Control/">Version Control</a>
 </li>
 
                         
@@ -96,12 +129,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="..">
+                        <a rel="next" href="../../Oracle/OJDBC/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../Tech/Aix_OS/">
+                        <a rel="prev" href="../Commands/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -126,10 +159,7 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#ibm-aix-and-vios-commands">IBM AIX and VIOS commands</a></li>
-        
-    
-        <li class="main "><a href="#basic-commands">Basic commands:</a></li>
+        <li class="main active"><a href="#basic-commands">Basic commands:</a></li>
         
     
         <li class="main "><a href="#gpfs">GPFS:</a></li>
@@ -148,20 +178,7 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h2 id="ibm-aix-and-vios-commands">IBM AIX and VIOS commands</h2>
-<p>Inspired by <a href="https://github.com/jlevy" title="Joshua Levy">Joshua Levy</a> and his great <a href="https://github.com/jlevy/the-art-of-command-line" title="The Art of Command Line">The-Art-Of-Command-Line</a></p>
-<blockquote>
-<p>It's only my view on useful commands and this examples are useful for me in first place.</p>
-</blockquote>
-<ul>
-<li><a href="README.md">Return to Command Line</a></li>
-<li><a href="#basic-commands">Basic commands</a></li>
-<li><a href="#gpfs">GPFS</a></li>
-<li><a href="#network">Network</a></li>
-<li><a href="#hardware">Hardware</a></li>
-<li><a href="#virtual-devices">Virtual Devices</a></li>
-</ul>
-<h2 id="basic-commands">Basic commands:</h2>
+<h3 id="basic-commands">Basic commands:</h3>
 <ul>
 <li>Management</li>
 </ul>
@@ -197,7 +214,7 @@ bosboot -ad hdisk1
 bootlist -o -m normal
 </code></pre>
 
-<h2 id="gpfs">GPFS:</h2>
+<h3 id="gpfs">GPFS:</h3>
 <ul>
 <li>Instalaltion:</li>
 </ul>
@@ -259,11 +276,11 @@ mmchconfig minQuorumNodes=2
 df -g
 </code></pre>
 
-<h2 id="network">Network:</h2>
+<h3 id="network">Network:</h3>
 <pre><code class="bash">Shared Ethernet adapter coming soon
 </code></pre>
 
-<h2 id="hardware">Hardware:</h2>
+<h3 id="hardware">Hardware:</h3>
 <pre><code class="bash"># Refresh hardware configuration(aix and vios respectively):
 cfgmgr
 cfgdev
@@ -278,7 +295,7 @@ chdev -l hdiskX -a reserve_policy=no_reserve
 chpv -C hdiskX
 </code></pre>
 
-<h2 id="virtual-devices">Virtual devices:</h2>
+<h3 id="virtual-devices">Virtual devices:</h3>
 <pre><code class="bash"># Checking all virtual mappings to particular vhost:
 lsmap -vadapter vhost
 # Make a virtual hard drive for particular vhost:
@@ -296,12 +313,12 @@ mkvdev -fbo -vadapter vhostX -dev &lt;virtual_device_name&gt;
             <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
 
-        <script src="../js/jquery-1.10.2.min.js"></script>
-        <script src="../js/bootstrap-3.0.3.min.js"></script>
-        <script src="../js/highlight.pack.js"></script>
-        <script>var base_url = '..';</script>
-        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
-        <script src="../js/base.js"></script>
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
             <div class="modal-dialog">
