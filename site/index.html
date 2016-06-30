@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Dmitry Ivanov">
+        
+        <link rel="shortcut icon" href="./img/favicon.ico">
+
+	<title>Technical Info</title>
+
+        <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="./css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="./css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="./css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body class="homepage">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href=".">Technical Info</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="active">
+                        <a href=".">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="AIX/">AIX</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tech <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="Tech/Aix_OS/">Aix OS</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="Tech/Commands/">Commands</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li class="disabled">
+                        <a rel="next" >
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="AIX/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a href="https://github.com/keepbot">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#command-line-examples">Command line examples</a></li>
+        
+    
+        <li class="main "><a href="#files-and-folders-manipulation">Files and folders manipulation:</a></li>
+        
+    
+        <li class="main "><a href="#hardware">Hardware:</a></li>
+        
+    
+        <li class="main "><a href="#network">Network:</a></li>
+        
+    
+        <li class="main "><a href="#package-management">Package management:</a></li>
+        
+    
+        <li class="main "><a href="#remote-management">Remote management:</a></li>
+        
+    
+        <li class="main "><a href="#security">Security:</a></li>
+        
+    
+        <li class="main "><a href="#version-control">Version control:</a></li>
+        
+    
+        <li class="main "><a href="#virtual-and-independent-environment">Virtual and independent environment:</a></li>
+        
+    
+        <li class="main "><a href="#x-server">X Server:</a></li>
+        
+    
+        <li class="main "><a href="#miscellaneous">Miscellaneous:</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h2 id="command-line-examples">Command line examples</h2>
+<p>Inspired by <a href="https://github.com/jlevy" title="Joshua Levy">Joshua Levy</a> and his great <a href="https://github.com/jlevy/the-art-of-command-line" title="The Art of Command Line">The-Art-Of-Command-Line</a></p>
+<blockquote>
+<p>It's only my view on useful commands and this examples are useful for me in first place.</p>
+</blockquote>
+<ul>
+<li><a href="AIX/">AIX</a></li>
+<li><a href="#files-and-folders-manipulation">Files and folders manipulation</a></li>
+<li><a href="#hardware">Hardware</a></li>
+<li><a href="#network">Network</a></li>
+<li><a href="#package-management">Package management</a></li>
+<li><a href="#remote-management">Remote management</a></li>
+<li><a href="#security">Security</a></li>
+<li><a href="#version-control">Version control</a></li>
+<li><a href="#virtual-and-independent-environment">Virtual and independent environment</a></li>
+<li><a href="#x-server">X Server</a></li>
+<li><a href="#miscellaneous">Miscellaneous</a></li>
+</ul>
+<h2 id="files-and-folders-manipulation">Files and folders manipulation:</h2>
+<ul>
+<li>Change permisions recursively or you can use a simple <a href="https://github.com/keepbot/shell_scripts/blob/master/permissions/default.sh" title="Change permissions to default">Script</a></li>
+</ul>
+<pre><code class="bash">find &lt;path_to_folder&gt; -type f -print -exec chmod 644 {} \;
+find &lt;path_to_folder&gt; -type d -print -exec chmod 755 {} \;
+</code></pre>
+
+<ul>
+<li>Count files</li>
+</ul>
+<pre><code class="bash">find . -type f | wc -l
+ls | wc -l
+</code></pre>
+
+<ul>
+<li>Remove file list</li>
+</ul>
+<pre><code class="bash">ls | xargs rm
+</code></pre>
+
+<ul>
+<li>Remove file suffix "filename"+"suffix"</li>
+</ul>
+<pre><code class="bash">for i in `find . -type f -name &quot;*&lt;suffix&gt;*&quot;`; do dst=`echo $i | sed s/&lt;suffix&gt;//`;mv $i $dst; done
+</code></pre>
+
+<ul>
+<li>Move all files in one level directory in certain folder to another</li>
+</ul>
+<pre><code class="bash">find /&lt;path_to_folder&gt;/* -prune -type f | xargs -I '{}' mv {} /&lt;path_to_destination_folder&gt;/archive/.
+</code></pre>
+
+<ul>
+<li>Search for certain file contents</li>
+</ul>
+<pre><code class="bash">find . -type f -name &quot;*conf&quot; -exec echo {} \; -exec grep 192.168.0.1:3389 {} \;
+</code></pre>
+
+<ul>
+<li>Show directories content recursively</li>
+</ul>
+<pre><code class="bash">ls -R /path | awk '
+/:$/&amp;&amp;f{s=$0;f=0}
+/:$/&amp;&amp;!f{sub(/:$/,&quot;&quot;);s=$0;f=1;next}
+NF&amp;&amp;f{ print s&quot;/&quot;$0 }'
+</code></pre>
+
+<ul>
+<li>Make dirs with indexes</li>
+</ul>
+<pre><code class="bash">for i in 0{1..9} {10..39}; do mkdir delete-$i; cd delete-$i; touch del-file-$i; cd ..; done
+</code></pre>
+
+<ul>
+<li>Create bunch of files from list in a file:</li>
+</ul>
+<pre><code class="bash"># Predefined number of records
+head -&lt;number_of_lines&gt; inventory | awk '{ print $1 }' | xargs -I '{}' &lt;destination_folder&gt;/{}
+#E.g. head -10 inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}
+
+# Whole list from file
+cat &lt;filename&gt; | awk '{ print $1 }' | xargs -I '{}' &lt;destination_folder&gt;/{}
+#E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' host_vars/{}
+</code></pre>
+
+<ul>
+<li>Move bunch of folders:</li>
+</ul>
+<pre><code class="bash">ls -1d &lt;space separeated folder list&gt; | xargs -I '{}' mv {} &lt;destination&gt;
+#E.g. ls -1d command_line dotfiles-srv programmming-examples shell_scripts | xargs -I '{}' mv {} github/
+</code></pre>
+
+<h2 id="hardware">Hardware:</h2>
+<ul>
+<li>All hardware </li>
+</ul>
+<pre><code class="bash">hwinfo
+</code></pre>
+
+<ul>
+<li>RAW Devices:</li>
+</ul>
+<pre><code class="bash"># ISO to USB:
+dd bs=4M if=/path/to/&lt;iso_image&gt; of=/dev/sdX &amp;&amp; sync
+</code></pre>
+
+<ul>
+<li>CPU</li>
+</ul>
+<pre><code class="bash">lscpu
+cat /proc/cpuinfo
+</code></pre>
+
+<ul>
+<li>Filesystems:</li>
+</ul>
+<pre><code class="bash">#Show information about mounted file systems with 'column' examples**
+df -h | column -t
+mount -l | column -t
+</code></pre>
+
+<ul>
+<li>RAM:</li>
+</ul>
+<pre><code class="bash"># Basic commands:
+vmstat -s
+cat /proc/meminfo
+free -m
+# Sum of used RAM
+ps -eo rss,pid,user,command --sort -size | awk '{ hr=$1/1024 ; printf(&quot;%13.2f Mb &quot;,hr) } { for ( x=4 ; x&lt;=NF ; x++ ) { printf(&quot;%s &quot;,$x) } print &quot;&quot; }' | awk '{print $1}' | paste -sd+ | bc
+# Clean RAM buffer and swap cache
+sync &amp;&amp; echo 3 &gt; /proc/sys/vm/drop_caches
+</code></pre>
+
+<h2 id="network">Network:</h2>
+<ul>
+<li>TCPDUMP (with all commands use '| head' optionally)</li>
+</ul>
+<pre><code class="bash"># Capture bunch of packets
+tcpdump -w capture.pcap
+# Show list of unique tcp or udp connections ip addresses
+tcpdump -nn -r capture.pcap 'tcp or udp' | cut -f 3 -d &quot; &quot; | cut -f 1-4 -d &quot;.&quot; | sort | uniq | sort -nr
+# Show list of unique destinations with SYN flag(‘tcp[13]=2’)
+tcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 5 -d &quot; &quot; | sort | uniq -c | sort -nr
+# Show list of unique sources with SYN flag(‘tcp[13]=2’)
+tcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 3 -d &quot; &quot; | cut -f 1-4 -d &quot;.&quot; | sort | uniq -c | sort -nr
+# Search for plain texts (-A)
+tcpdump -Ann -r capture.pcap 'dst port 25 or dst port 514 or dst port 110 or dst port 21 or dst port 53 or dst port 80'
+# Search for top level domains (optiolally for names only: | grep -E '[a-z]')
+tcpdump -nn -r capture.pcap 'port 53' | grep -Ev '(com|ru|net|org|gov|mil|arpa)' | cut -f 9 -d &quot; &quot;  
+# Investigate HTTP traffic
+tcpdump -Ann -r capture.pcap 'port 80' | grep 'HTTP' | grep -Ev '(GET|HEAD)'
+# Search HTTP traffic for user-agent list
+tcpdump -Ann -r capture.pcap 'port 80' | grep -Ei 'user-agent' | sort | uniq -c | sort -n
+tcpdump -Ann -r capture.pcap 'port 80' | sed -n '/Mozilla/,$p'
+# Pcap repository (-C filesize in MBytes, -W number of files, -G time in seconds, %s timestamp)
+sudo -b tcpdump -nn -i eth0 -w capture.pcap -C 1 -W 5         
+sudo -b tcpdump -nn -i eth0 -w capture-%s.pcap -G 600 -W 5    
+# Dealing with pcap files
+for capfile in $(ls *.pcap); do tcpdump -nnr $capfile 'dst port 53'; done  
+</code></pre>
+
+<ul>
+<li>NetworkManager: show connection info</li>
+</ul>
+<pre><code class="bash">nmcli device show eth0
+</code></pre>
+
+<ul>
+<li>Check own IP address</li>
+</ul>
+<pre><code class="bash">curl -s checkip.dyndns.org
+</code></pre>
+
+<ul>
+<li>Share current folder over HTTP</li>
+</ul>
+<pre><code class="bash">python2 -m SimpleHTTPServer 8080
+python3 -mhttp.server 8080
+</code></pre>
+
+<h2 id="package-management">Package management:</h2>
+<ul>
+<li>Apt:</li>
+</ul>
+<pre><code class="bash"># Show installed packages
+apt --installed list
+# Search for software
+apt-cache search &lt;pattern&gt;
+# Install package
+apt-get install &lt;package_name&gt;
+</code></pre>
+
+<ul>
+<li>Dpkg: </li>
+</ul>
+<pre><code class="bash"># To get a list of packages installed locally do this in your terminal:
+dpkg --get-selections | grep -v deinstall
+# To get a list of a specific package installed:
+dpkg --get-selections | grep postgres
+# To save that list to a text file called packages on your desktop do this in your terminal:
+dpkg --get-selections | grep -v deinstall &gt; ~/Desktop/packages
+# Alternatively, simply use
+dpkg -l
+</code></pre>
+
+<ul>
+<li>Pacman:</li>
+</ul>
+<pre><code class="bash"># Search for software
+pacman -Ss &lt;pattern&gt;
+# Install package
+pacman -S &lt;package_name&gt;
+# Update the system
+pacman -Syu
+# Remove orphaned packages (Be careful, double check for list of deleted packages)
+pacman -Rscn $(pacman -Qtdq)
+pacman -Sc
+pacman-optimize &amp;&amp; sync
+</code></pre>
+
+<ul>
+<li>Yum:</li>
+</ul>
+<pre><code class="bash"># Search for software
+yum search &lt;pattern&gt;
+# Install package
+yum install &lt;package_name&gt;
+# Repair &quot;Error: database disk image is malformed&quot;
+yum clean dbcache
+</code></pre>
+
+<h2 id="remote-management">Remote management:</h2>
+<ul>
+<li>XfreeRDP</li>
+</ul>
+<pre><code class="bash">xfreerdp [+clipboard]/w:&lt;WIDTH&gt; /h:&lt;HEIGHT&gt; /drive:&lt;cuatom_drive_name&gt;,&lt;path_to_attach&gt; /v:&lt;ip&gt;:&lt;port&gt; /u:&lt;user_name&gt;
+xfreerdp +clipboard /w:1600 /h:900 /v:10.15.0.10:3389 /u:Administrator
+xfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM/HMC/7.9_sp3 /v:10.15.0.10
+</code></pre>
+
+<h2 id="security">Security:</h2>
+<ul>
+<li>IPTables</li>
+</ul>
+<pre><code class="bash"># Show rules
+iptables -nvL
+iptable -t nat -nvL
+</code></pre>
+
+<ul>
+<li>Disabling SELinux</li>
+</ul>
+<pre><code class="bash">sed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux &amp;&amp; cat /etc/sysconfig/selinux
+</code></pre>
+
+<h2 id="version-control">Version control:</h2>
+<ul>
+<li>Git: Global settings</li>
+</ul>
+<pre><code class="bash">git config --global user.name &quot;Your Name&quot;
+git config --global user.email your@e-mail.com
+</code></pre>
+
+<ul>
+<li>Git: Create new repository</li>
+</ul>
+<pre><code class="bash">mkdir -p &lt;path_to_repository&gt;
+cd &lt;path_to_repository&gt;
+git add .
+git commit -m &quot;Initialization&quot;
+git remote add origin https://github.com/username/&lt;repository&gt;.git
+git push -u origin master
+git checkout 
+</code></pre>
+
+<ul>
+<li>Git: New commit</li>
+</ul>
+<pre><code class="bash"># Addition of new files with automatic staging of deleted and modified files
+git add .
+git commit -a -m &quot;new commentary&quot;
+git push -u origin master
+</code></pre>
+
+<ul>
+<li>Git: update local reposytory from remote</li>
+</ul>
+<pre><code class="bash"># Fentch + Merge
+git pull
+# Fetch only
+git fetch
+# Fetch changes from remote repository with modified local repository
+git commit -a -m &quot;new commentary&quot;
+git pull rebase
+# pull remote with overwrite local changes
+git fetch --all
+git reset --hard origin/master
+</code></pre>
+
+<ul>
+<li>Git: Working with bunch of  repositories</li>
+</ul>
+<pre><code class="bash"># Last commits
+for d in `ls`; do cd $d; git log --pretty=format:&quot;%h - %an, %ar : %s&quot; -1; cd ..; done
+# Mass checkout
+for d in `ls`; do cd $d; git checkout; cd ..; done
+</code></pre>
+
+<ul>
+<li>GitHub: Independent history catalogs of git repository</li>
+</ul>
+<pre><code class="bash"># Makes a bunch of history folders formatted by the next way: &lt;repository&gt;-&lt;number_of_commit&gt;-&lt;commit_hash&gt;
+# Check commit_list.end for mistakes, you need simple list of commits
+git clone &lt;repository_url&gt; &lt;repository&gt;
+cd &lt;repository&gt; &amp;&amp; git log --pretty=format:&quot;%h&quot; &gt; ../commit_list &amp;&amp; cd ..
+tac commit_list &gt; commit_list.end 
+i=1; for cid in `cat commit_list.end`; do cp -r &lt;repository&gt; &lt;repository&gt;-$i-$cid; cd &lt;repository&gt;-$i-$cid; git checkout $cid; cd ..; ((i=i+1)); done
+</code></pre>
+
+<ul>
+<li>GitHub: Clone all user's repository</li>
+</ul>
+<pre><code class="bash"># Get complete list of user's repositories in JSON file
+curl -s https://api.github.com/users/&lt;username&gt;/repos?per_page=200 &gt; repo.list.json
+python -c &quot;import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close()&quot;
+# And dont forget about &quot;space&quot;(%20, &quot; &quot;) in cmd = 'git clone ', it's completely nessesary
+# Another way to clone up to 200 user's repos(just in shell): 
+curl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | .&quot;clone_url&quot;' | xargs -I '{}' git clone {}
+</code></pre>
+
+<h2 id="virtual-and-independent-environment">Virtual and independent environment:</h2>
+<ul>
+<li>Docker:</li>
+</ul>
+<pre><code class="bash"># Execute in-docker console
+sudo docker exec -it &lt;container&gt; bash
+# Create JSON with container settings
+docker inspect -f '{{ json .NetworkSettings }}' &lt;container_id&gt; | python -mjson.tool
+# Add custom docker registry
+mkdir /etc/systemd/system/docker.service.d/
+touch /etc/systemd/system/docker.service.d/docker_opts.conf
+vi /etc/systemd/system/docker.service.d/docker_opts.conf
+# --- docker_opts.conf contents ---
+[Service]
+ExecStart=
+ExecStart=/usr/bin/docker -d -H fd:// --insecure-registry &lt;docker_registry_url&gt; --registry-mirror &lt;mirror_url&gt;
+# ---------------------------------
+systemctl daemon-reload
+service docker restart
+</code></pre>
+
+<ul>
+<li>WINE</li>
+</ul>
+<pre><code class="bash">WINEARCH=&lt;wine32_or_wine64&gt; WINEPREFIX=/home/wine/&lt;custom_prefix&gt; wine &lt;path_to_executable&gt;
+</code></pre>
+
+<h2 id="x-server">X Server:</h2>
+<ul>
+<li>Start full-screen application in different X server</li>
+</ul>
+<pre><code class="bash">/usr/bin/xinit &lt;path_to_fullscreen_application&gt; -- :1
+</code></pre>
+
+<ul>
+<li>Export X display to current ssh connection</li>
+</ul>
+<pre><code class="bash">export DISPLAY=&quot;${SSH_CLIENT%% *}&quot;
+</code></pre>
+
+<h2 id="miscellaneous">Miscellaneous:</h2>
+<ul>
+<li>TMUX</li>
+</ul>
+<pre><code class="bash">tmux list-sessions
+tmux attach -t 2
+</code></pre>
+
+<ul>
+<li>Cool weather</li>
+</ul>
+<pre><code class="bash">curl http://wttr.in/moscow
+</code></pre>
+
+<ul>
+<li>Kill all proesses with certain name</li>
+</ul>
+<pre><code class="bash">ps ax | grep http | awk '{print $1}' | xargs kill
+</code></pre></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        <script src="./js/jquery-1.10.2.min.js"></script>
+        <script src="./js/bootstrap-3.0.3.min.js"></script>
+        <script src="./js/highlight.pack.js"></script>
+        <script>var base_url = '.';</script>
+        <script data-main="./mkdocs/js/search.js" src="./mkdocs/js/require.js"></script>
+        <script src="./js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 0.15.3
+Build Date UTC : 2016-06-30 00:42:57.657520
+-->
