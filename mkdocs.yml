@@ -2,3 +2,4 @@ site_name: Technical Info
 repo_url: https://github.com/keepbot
 site_author: Dmitry Ivanov
 #theme: readthedocs
+theme: journal
