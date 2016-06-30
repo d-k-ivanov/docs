@@ -12,9 +12,9 @@
 	<title>Network - Technical Info</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
-        <link href="../../css/base.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
         <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -32,7 +32,6 @@
 
         <!-- Collapsed navigation -->
         <div class="navbar-header">
-            
             <!-- Expander button -->
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -40,7 +39,6 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            
 
             <!-- Main title -->
             <a class="navbar-brand" href="../..">Technical Info</a>
@@ -48,106 +46,103 @@
 
         <!-- Expanded navigation -->
         <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
             
-                <!-- Main navigation -->
-                <ul class="nav navbar-nav">
-                
-                
-                    <li >
-                        <a href="../..">Home</a>
-                    </li>
-                
-                
-                
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Oracle <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
+            
+                <li >
+                    <a href="../..">Home</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Oracle <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
                         
-                            
 <li >
     <a href="../../Oracle/OJDBC/">OJDBC</a>
 </li>
 
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Unix <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
                         
-                        </ul>
-                    </li>
-                
-                
-                
-                    <li class="dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Unix <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
-                            
 <li >
     <a href="../AIX/">AIX</a>
 </li>
 
+                    
                         
-                            
 <li >
     <a href="../Commands/">Commands</a>
 </li>
 
+                    
                         
-                            
 <li >
     <a href="../Filesystem/">Filesystem</a>
 </li>
 
+                    
                         
-                            
 <li >
     <a href="../Hardware_info/">Hardware info</a>
 </li>
 
+                    
                         
-                            
 <li class="active">
     <a href="./">Network</a>
 </li>
 
+                    
                         
-                            
 <li >
     <a href="../Version_Control/">Version Control</a>
 </li>
 
-                        
-                        </ul>
-                    </li>
-                
-                
-                </ul>
+                    
+                    </ul>
+                </li>
             
+            
+            </ul>
 
+            <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
                         <i class="fa fa-search"></i> Search
                     </a>
                 </li>
+                <li >
+                    <a rel="next" href="../Hardware_info/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../Version_Control/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
                 
-                    <li >
-                        <a rel="next" href="../Hardware_info/">
-                            <i class="fa fa-arrow-left"></i> Previous
-                        </a>
-                    </li>
-                    <li >
-                        <a rel="prev" href="../Version_Control/">
-                            Next <i class="fa fa-arrow-right"></i>
-                        </a>
-                    </li>
-                
-                
-                    <li>
-                        <a href="https://github.com/keepbot">
-                            
-                                <i class="fa fa-github"></i>
-                            
-                            GitHub
-                        </a>
-                    </li>
+                <li>
+                    <a href="https://github.com/keepbot">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
                 
             </ul>
         </div>
@@ -155,8 +150,7 @@
 </div>
 
         <div class="container">
-            
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
         <li class="main active"><a href="#tcpdump-with-all-commands-use-head-optionally">TCPDUMP (with all commands use '| head' optionally)</a></li>
@@ -173,7 +167,7 @@
     
     </ul>
 </div></div>
-                <div class="col-md-9" role="main">
+            <div class="col-md-9" role="main">
 
 <h3 id="tcpdump-with-all-commands-use-head-optionally">TCPDUMP (with all commands use '| head' optionally)</h3>
 <pre><code class="bash"># Capture bunch of packets
@@ -212,13 +206,12 @@ for capfile in $(ls *.pcap); do tcpdump -nnr $capfile 'dst port 53'; done
 <pre><code class="bash">python2 -m SimpleHTTPServer 8080
 python3 -mhttp.server 8080
 </code></pre></div>
-            
         </div>
 
         <footer class="col-md-12">
             <hr>
             
-            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
         </footer>
 
         <script src="../../js/jquery-1.10.2.min.js"></script>
@@ -252,6 +245,5 @@ python3 -mhttp.server 8080
                 </div>
             </div>
         </div>
-
     </body>
 </html>
