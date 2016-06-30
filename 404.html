@@ -7,14 +7,14 @@
         
         <meta name="author" content="Dmitry Ivanov">
         
-        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <link rel="shortcut icon" href="./img/favicon.ico">
 
-	<title>Network - Technical Info</title>
+	<title>Technical Info</title>
 
-        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
-        <link href="../../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="./css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="./css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="./css/highlight.css">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -43,7 +43,7 @@
             
 
             <!-- Main title -->
-            <a class="navbar-brand" href="../..">Technical Info</a>
+            <a class="navbar-brand" href=".">Technical Info</a>
         </div>
 
         <!-- Expanded navigation -->
@@ -54,7 +54,7 @@
                 
                 
                     <li >
-                        <a href="../..">Home</a>
+                        <a href=".">Home</a>
                     </li>
                 
                 
@@ -65,7 +65,7 @@
                         
                             
 <li >
-    <a href="../../Oracle/OJDBC/">OJDBC</a>
+    <a href="Oracle/OJDBC/">OJDBC</a>
 </li>
 
                         
@@ -74,43 +74,43 @@
                 
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Unix <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../AIX/">AIX</a>
+    <a href="Unix/AIX/">AIX</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Commands/">Commands</a>
+    <a href="Unix/Commands/">Commands</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Filesystem/">Filesystem</a>
+    <a href="Unix/Filesystem/">Filesystem</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Hardware_info/">Hardware info</a>
-</li>
-
-                        
-                            
-<li class="active">
-    <a href="./">Network</a>
+    <a href="Unix/Hardware_info/">Hardware info</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Version_Control/">Version Control</a>
+    <a href="Unix/Network/">Network</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="Unix/Version_Control/">Version Control</a>
 </li>
 
                         
@@ -128,13 +128,13 @@
                     </a>
                 </li>
                 
-                    <li >
-                        <a rel="next" href="../Hardware_info/">
+                    <li class="disabled">
+                        <a rel="next" >
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
-                    <li >
-                        <a rel="prev" href="../Version_Control/">
+                    <li class="disabled">
+                        <a rel="prev" >
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -156,63 +156,15 @@
 
         <div class="container">
             
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-    
-        <li class="main active"><a href="#tcpdump-with-all-commands-use-head-optionally">TCPDUMP (with all commands use '| head' optionally)</a></li>
-        
-    
-        <li class="main "><a href="#networkmanager-show-connection-info">NetworkManager: show connection info</a></li>
-        
-    
-        <li class="main "><a href="#check-own-ip-address">Check own IP address</a></li>
-        
-    
-        <li class="main "><a href="#share-current-folder-over-http">Share current folder over HTTP</a></li>
-        
-    
-    </ul>
-</div></div>
-                <div class="col-md-9" role="main">
 
-<h3 id="tcpdump-with-all-commands-use-head-optionally">TCPDUMP (with all commands use '| head' optionally)</h3>
-<pre><code class="bash"># Capture bunch of packets
-tcpdump -w capture.pcap
-# Show list of unique tcp or udp connections ip addresses
-tcpdump -nn -r capture.pcap 'tcp or udp' | cut -f 3 -d &quot; &quot; | cut -f 1-4 -d &quot;.&quot; | sort | uniq | sort -nr
-# Show list of unique destinations with SYN flag(‘tcp[13]=2’)
-tcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 5 -d &quot; &quot; | sort | uniq -c | sort -nr
-# Show list of unique sources with SYN flag(‘tcp[13]=2’)
-tcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 3 -d &quot; &quot; | cut -f 1-4 -d &quot;.&quot; | sort | uniq -c | sort -nr
-# Search for plain texts (-A)
-tcpdump -Ann -r capture.pcap 'dst port 25 or dst port 514 or dst port 110 or dst port 21 or dst port 53 or dst port 80'
-# Search for top level domains (optiolally for names only: | grep -E '[a-z]')
-tcpdump -nn -r capture.pcap 'port 53' | grep -Ev '(com|ru|net|org|gov|mil|arpa)' | cut -f 9 -d &quot; &quot;  
-# Investigate HTTP traffic
-tcpdump -Ann -r capture.pcap 'port 80' | grep 'HTTP' | grep -Ev '(GET|HEAD)'
-# Search HTTP traffic for user-agent list
-tcpdump -Ann -r capture.pcap 'port 80' | grep -Ei 'user-agent' | sort | uniq -c | sort -n
-tcpdump -Ann -r capture.pcap 'port 80' | sed -n '/Mozilla/,$p'
-# Pcap repository (-C filesize in MBytes, -W number of files, -G time in seconds, %s timestamp)
-sudo -b tcpdump -nn -i eth0 -w capture.pcap -C 1 -W 5         
-sudo -b tcpdump -nn -i eth0 -w capture-%s.pcap -G 600 -W 5    
-# Dealing with pcap files
-for capfile in $(ls *.pcap); do tcpdump -nnr $capfile 'dst port 53'; done  
-</code></pre>
+    <div class="row-fluid">
+      <div id="main-content" class="span12">
+        <h1 id="404-page-not-found" style="text-align: center">404</h1>
+        <p style="text-align: center"><strong>Page not found</strong></p>
+      </div>
+    </div>
 
-<h3 id="networkmanager-show-connection-info">NetworkManager: show connection info</h3>
-<pre><code class="bash">nmcli device show eth0
-</code></pre>
 
-<h3 id="check-own-ip-address">Check own IP address</h3>
-<pre><code class="bash">curl -s checkip.dyndns.org
-</code></pre>
-
-<h3 id="share-current-folder-over-http">Share current folder over HTTP</h3>
-<pre><code class="bash">python2 -m SimpleHTTPServer 8080
-python3 -mhttp.server 8080
-</code></pre></div>
-            
         </div>
 
         <footer class="col-md-12">
@@ -221,12 +173,12 @@ python3 -mhttp.server 8080
             <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
 
-        <script src="../../js/jquery-1.10.2.min.js"></script>
-        <script src="../../js/bootstrap-3.0.3.min.js"></script>
-        <script src="../../js/highlight.pack.js"></script>
-        <script>var base_url = '../..';</script>
-        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
-        <script src="../../js/base.js"></script>
+        <script src="./js/jquery-1.10.2.min.js"></script>
+        <script src="./js/bootstrap-3.0.3.min.js"></script>
+        <script src="./js/highlight.pack.js"></script>
+        <script>var base_url = '.';</script>
+        <script data-main="./mkdocs/js/search.js" src="./mkdocs/js/require.js"></script>
+        <script src="./js/base.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
             <div class="modal-dialog">
