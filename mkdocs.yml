@@ -1,4 +1,12 @@
 site_name: Technical Info
-repo_url: https://keepbot.github.io/
+site_url: https://keepbot.github.io/docs/
+site_description: Collection of Technical guides
 site_author: Dmitry Ivanov
+
+repo_url: https://keepbot.github.io/
+
 #theme: readthedocs
+
+copyright: Copyright &copy; 2016 Dmitry Ivanov.
+
+google_analytics: ['UA-80208201-1', 'keepbot.github.io']
