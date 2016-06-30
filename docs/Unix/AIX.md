@@ -1,15 +1,4 @@
-## IBM AIX and VIOS commands 
-Inspired by [Joshua Levy](https://github.com/jlevy "Joshua Levy") and his great [The-Art-Of-Command-Line](https://github.com/jlevy/the-art-of-command-line "The Art of Command Line")
-> It's only my view on useful commands and this examples are useful for me in first place.
-
-- [Return to Command Line](README.md)
-- [Basic commands](#basic-commands)
-- [GPFS](#gpfs)
-- [Network](#network)
-- [Hardware](#hardware)
-- [Virtual Devices](#virtual-devices)
-
-## Basic commands:
+### Basic commands:
 * Management
 ```bash
 # Exit from basic VIOS console to common AIX ksh
@@ -39,7 +28,7 @@ bosboot -ad hdisk1
 # Checking
 bootlist -o -m normal
 ```
-## GPFS:
+### GPFS:
 * Instalaltion:
 ```bash
 # on each LPAR:
@@ -95,11 +84,11 @@ mmmount all -a
 mmchconfig minQuorumNodes=2
 df -g
 ```
-## Network:
+### Network:
 ```bash
 Shared Ethernet adapter coming soon
 ```
-## Hardware:
+### Hardware:
 ```bash
 # Refresh hardware configuration(aix and vios respectively):
 cfgmgr
@@ -114,7 +103,7 @@ chdev -l hdiskX -a reserve_policy=no_reserve
 # Clear the owning volume manager from a disk
 chpv -C hdiskX
 ```
-## Virtual devices:
+### Virtual devices:
 ```bash
 # Checking all virtual mappings to particular vhost:
 lsmap -vadapter vhost
