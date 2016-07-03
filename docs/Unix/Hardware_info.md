@@ -25,6 +25,7 @@ sync && echo 3 > /proc/sys/vm/drop_caches
 ```
 ### VM
 To check if server's environment is virtual or real you can use stanasrd Linux commands
+
 * cat /proc/scsi/scsi 
 ```
 Attached devices:
