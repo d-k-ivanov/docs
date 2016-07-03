@@ -157,7 +157,7 @@
         }, 
         {
             "location": "/Unix/Hardware_info/", 
-            "text": "All hardware\n\n\nhwinfo\n\n\n\n\nRAW Devices:\n\n\n# ISO to USB:\ndd bs=4M if=/path/to/\niso_image\n of=/dev/sdX \n sync\n\n\n\n\nCPU\n\n\nlscpu\ncat /proc/cpuinfo\n\n\n\n\nRAM:\n\n\n# Basic commands:\nvmstat -s\ncat /proc/meminfo\nfree -m\n# Sum of used RAM\nps -eo rss,pid,user,command --sort -size | awk '{ hr=$1/1024 ; printf(\n%13.2f Mb \n,hr) } { for ( x=4 ; x\n=NF ; x++ ) { printf(\n%s \n,$x) } print \n }' | awk '{print $1}' | paste -sd+ | bc\n# Clean RAM buffer and swap cache\nsync \n echo 3 \n /proc/sys/vm/drop_caches", 
+            "text": "All hardware\n\n\nhwinfo\n\n\n\n\nRAW Devices:\n\n\n# ISO to USB:\ndd bs=4M if=/path/to/\niso_image\n of=/dev/sdX \n sync\n\n\n\n\nCPU\n\n\nlscpu\ncat /proc/cpuinfo\n\n\n\n\nRAM:\n\n\n# Basic commands:\nvmstat -s\ncat /proc/meminfo\nfree -m\n# Sum of used RAM\nps -eo rss,pid,user,command --sort -size | awk '{ hr=$1/1024 ; printf(\n%13.2f Mb \n,hr) } { for ( x=4 ; x\n=NF ; x++ ) { printf(\n%s \n,$x) } print \n }' | awk '{print $1}' | paste -sd+ | bc\n# Clean RAM buffer and swap cache\nsync \n echo 3 \n /proc/sys/vm/drop_caches\n\n\n\n\nVM\n\n\nTo check if server's environment is virtual or real you can use stanasrd Linux commands\n* cat /proc/scsi/scsi \n\n\nAttached devices:\nHost: scsi2 Channel: 00 Id: 00 Lun: 00\n  Vendor: VMware   Model: Virtual disk     Rev: 1.0\n  Type:   Direct-Access                    ANSI  SCSI revision: 02\nHost: scsi1 Channel: 00 Id: 00 Lun: 00\n  Vendor: NECVMWar Model: VMware IDE CDR10 Rev: 1.00\n  Type:   CD-ROM                           ANSI  SCSI revision: 05\n\n\n\n\n\n\nethtool -i eth0\n\n\n\n\ndriver: vmxnet3\nversion: 1.1.30.0-k-NAPI\nfirmware-version:\nbus-info: 0000:03:00.0\nsupports-statistics: yes\nsupports-test: no\nsupports-eeprom-access: no\nsupports-register-dump: yes\nsupports-priv-flags: no\n\n\n\n\n\n\ndmidecode | grep -i vmware\n\n\n\n\n        Manufacturer: VMware, Inc.\n        Product Name: VMware Virtual Platform\n        Serial Number: VMware-42 28 f6 4e 92 c6 36 0a-2e 21 47 23 85 9f 5d 64\n        Description: VMware SVGA II", 
             "title": "Hardware info"
         }, 
         {
@@ -179,6 +179,11 @@
             "location": "/Unix/Hardware_info/#ram", 
             "text": "# Basic commands:\nvmstat -s\ncat /proc/meminfo\nfree -m\n# Sum of used RAM\nps -eo rss,pid,user,command --sort -size | awk '{ hr=$1/1024 ; printf( %13.2f Mb  ,hr) } { for ( x=4 ; x =NF ; x++ ) { printf( %s  ,$x) } print   }' | awk '{print $1}' | paste -sd+ | bc\n# Clean RAM buffer and swap cache\nsync   echo 3   /proc/sys/vm/drop_caches", 
             "title": "RAM:"
+        }, 
+        {
+            "location": "/Unix/Hardware_info/#vm", 
+            "text": "To check if server's environment is virtual or real you can use stanasrd Linux commands\n* cat /proc/scsi/scsi   Attached devices:\nHost: scsi2 Channel: 00 Id: 00 Lun: 00\n  Vendor: VMware   Model: Virtual disk     Rev: 1.0\n  Type:   Direct-Access                    ANSI  SCSI revision: 02\nHost: scsi1 Channel: 00 Id: 00 Lun: 00\n  Vendor: NECVMWar Model: VMware IDE CDR10 Rev: 1.00\n  Type:   CD-ROM                           ANSI  SCSI revision: 05   ethtool -i eth0   driver: vmxnet3\nversion: 1.1.30.0-k-NAPI\nfirmware-version:\nbus-info: 0000:03:00.0\nsupports-statistics: yes\nsupports-test: no\nsupports-eeprom-access: no\nsupports-register-dump: yes\nsupports-priv-flags: no   dmidecode | grep -i vmware           Manufacturer: VMware, Inc.\n        Product Name: VMware Virtual Platform\n        Serial Number: VMware-42 28 f6 4e 92 c6 36 0a-2e 21 47 23 85 9f 5d 64\n        Description: VMware SVGA II", 
+            "title": "VM"
         }, 
         {
             "location": "/Unix/Network/", 

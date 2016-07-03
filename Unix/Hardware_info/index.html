@@ -202,6 +202,9 @@
         <li class="first-level "><a href="#ram">RAM:</a></li>
         
     
+        <li class="first-level "><a href="#vm">VM</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -229,6 +232,42 @@ free -m
 ps -eo rss,pid,user,command --sort -size | awk '{ hr=$1/1024 ; printf(&quot;%13.2f Mb &quot;,hr) } { for ( x=4 ; x&lt;=NF ; x++ ) { printf(&quot;%s &quot;,$x) } print &quot;&quot; }' | awk '{print $1}' | paste -sd+ | bc
 # Clean RAM buffer and swap cache
 sync &amp;&amp; echo 3 &gt; /proc/sys/vm/drop_caches
+</code></pre>
+
+<h3 id="vm">VM</h3>
+<p>To check if server's environment is virtual or real you can use stanasrd Linux commands
+* cat /proc/scsi/scsi </p>
+<pre><code>Attached devices:
+Host: scsi2 Channel: 00 Id: 00 Lun: 00
+  Vendor: VMware   Model: Virtual disk     Rev: 1.0
+  Type:   Direct-Access                    ANSI  SCSI revision: 02
+Host: scsi1 Channel: 00 Id: 00 Lun: 00
+  Vendor: NECVMWar Model: VMware IDE CDR10 Rev: 1.00
+  Type:   CD-ROM                           ANSI  SCSI revision: 05
+</code></pre>
+
+<ul>
+<li>ethtool -i eth0</li>
+</ul>
+<pre><code>driver: vmxnet3
+version: 1.1.30.0-k-NAPI
+firmware-version:
+bus-info: 0000:03:00.0
+supports-statistics: yes
+supports-test: no
+supports-eeprom-access: no
+supports-register-dump: yes
+supports-priv-flags: no
+</code></pre>
+
+<ul>
+<li>dmidecode | grep -i vmware</li>
+</ul>
+<pre><code>        Manufacturer: VMware, Inc.
+        Product Name: VMware Virtual Platform
+        Serial Number: VMware-42 28 f6 4e 92 c6 36 0a-2e 21 47 23 85 9f 5d 64
+        Description: VMware SVGA II
+
 </code></pre></div>
         
     </div>
