@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Unix/Filesystem/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Unix/Audit/"> 
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
-    <title>Filesystem - Technical Info</title>
+    <title>Audit - Technical Info</title>
 
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -118,8 +118,8 @@
 
                         
                             
-<li >
-    <a href="../Audit/">Audit</a>
+<li class="active">
+    <a href="./">Audit</a>
 </li>
 
                         
@@ -130,8 +130,8 @@
 
                         
                             
-<li class="active">
-    <a href="./">Filesystem</a>
+<li >
+    <a href="../Filesystem/">Filesystem</a>
 </li>
 
                         
@@ -168,12 +168,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../Commands/">
+                        <a rel="next" href="../AIX/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../Hardware_info/">
+                        <a rel="prev" href="../Commands/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -196,100 +196,26 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#change-permisions-recursively">Change permisions recursively</a></li>
-        
-    
-        <li class="first-level "><a href="#count-files">Count files</a></li>
-        
-    
-        <li class="first-level "><a href="#remove-file-list">Remove file list</a></li>
-        
-    
-        <li class="first-level "><a href="#remove-file-suffix-filenamesuffix">Remove file suffix "filename"+"suffix"</a></li>
-        
-    
-        <li class="first-level "><a href="#move-all-files-in-one-level-directory-in-certain-folder-to-another">Move all files in one level directory in certain folder to another</a></li>
-        
-    
-        <li class="first-level "><a href="#search-for-certain-file-contents">Search for certain file contents</a></li>
-        
-    
-        <li class="first-level "><a href="#show-directories-content-recursively">Show directories content recursively</a></li>
-        
-    
-        <li class="first-level "><a href="#make-dirs-with-indexes">Make dirs with indexes</a></li>
-        
-    
-        <li class="first-level "><a href="#create-bunch-of-files-from-list-in-a-file">Create bunch of files from list in a file:</a></li>
-        
-    
-        <li class="first-level "><a href="#move-bunch-of-folders">Move bunch of folders:</a></li>
-        
-    
-        <li class="first-level "><a href="#mounts">Mounts</a></li>
+        <li class="first-level active"><a href="#why-is-my-servere-rebooted">Why is my servere rebooted?</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="change-permisions-recursively">Change permisions recursively</h3>
-<p>You can use a simple <a href="https://github.com/keepbot/shell_scripts/blob/master/permissions/default.sh" title="Change permissions to default">Script</a></p>
-<pre><code class="bash">find &lt;path_to_folder&gt; -type f -print -exec chmod 644 {} \;
-find &lt;path_to_folder&gt; -type d -print -exec chmod 755 {} \;
-</code></pre>
-
-<h3 id="count-files">Count files</h3>
-<pre><code class="bash">find . -type f | wc -l
-ls | wc -l
-</code></pre>
-
-<h3 id="remove-file-list">Remove file list</h3>
-<pre><code class="bash">ls | xargs rm
-</code></pre>
-
-<h3 id="remove-file-suffix-filenamesuffix">Remove file suffix "filename"+"suffix"</h3>
-<pre><code class="bash">for i in `find . -type f -name &quot;*&lt;suffix&gt;*&quot;`; do dst=`echo $i | sed s/&lt;suffix&gt;//`;mv $i $dst; done
-</code></pre>
-
-<h3 id="move-all-files-in-one-level-directory-in-certain-folder-to-another">Move all files in one level directory in certain folder to another</h3>
-<pre><code class="bash">find /&lt;path_to_folder&gt;/* -prune -type f | xargs -I '{}' mv {} /&lt;path_to_destination_folder&gt;/archive/.
-</code></pre>
-
-<h3 id="search-for-certain-file-contents">Search for certain file contents</h3>
-<pre><code class="bash">find . -type f -name &quot;*conf&quot; -exec echo {} \; -exec grep 192.168.0.1:3389 {} \;
-</code></pre>
-
-<h3 id="show-directories-content-recursively">Show directories content recursively</h3>
-<pre><code class="bash">ls -R /path | awk '
-/:$/&amp;&amp;f{s=$0;f=0}
-/:$/&amp;&amp;!f{sub(/:$/,&quot;&quot;);s=$0;f=1;next}
-NF&amp;&amp;f{ print s&quot;/&quot;$0 }'
-</code></pre>
-
-<h3 id="make-dirs-with-indexes">Make dirs with indexes</h3>
-<pre><code class="bash">for i in 0{1..9} {10..39}; do mkdir delete-$i; cd delete-$i; touch del-file-$i; cd ..; done
-</code></pre>
-
-<h3 id="create-bunch-of-files-from-list-in-a-file">Create bunch of files from list in a file:</h3>
-<pre><code class="bash"># Predefined number of records
-head -&lt;number_of_lines&gt; inventory | awk '{ print $1 }' | xargs -I '{}' &lt;destination_folder&gt;/{}
-#E.g. head -10 inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}
-
-# Whole list from file
-cat &lt;filename&gt; | awk '{ print $1 }' | xargs -I '{}' &lt;destination_folder&gt;/{}
-#E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' host_vars/{}
-</code></pre>
-
-<h3 id="move-bunch-of-folders">Move bunch of folders:</h3>
-<pre><code class="bash">ls -1d &lt;space separeated folder list&gt; | xargs -I '{}' mv {} &lt;destination&gt;
-#E.g. ls -1d command_line dotfiles-srv programmming-examples shell_scripts | xargs -I '{}' mv {} github/
-</code></pre>
-
-<h3 id="mounts">Mounts</h3>
-<pre><code class="bash">#Show information about mounted file systems with 'column' examples**
-df -h | column -t
-mount -l | column -t
+<h3 id="why-is-my-servere-rebooted">Why is my servere rebooted?</h3>
+<pre><code>last reboot 
+sudo lastcomm | egrep 'reboot|shutdown'
+who -b
+sa
+crontab -e
+less /var/log/secure
+last -x | less
+last -x | grep shutdown | less
+less /var/log/messages
+journalctl
+utmpdump /var/log/wtmp | egrep 'shutdown|reboot|runlevel'
+journalctl --since=&quot;2016-6-28 12:00:00&quot;
 </code></pre></div>
         
     </div>

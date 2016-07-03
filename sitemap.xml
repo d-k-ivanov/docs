@@ -28,6 +28,12 @@
     </url>
         
     <url>
+     <loc>https://keepbot.github.io/docs//Unix/Audit/</loc>
+     <lastmod>2016-07-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>https://keepbot.github.io/docs//Unix/Commands/</loc>
      <lastmod>2016-07-03</lastmod>
      <changefreq>daily</changefreq>
