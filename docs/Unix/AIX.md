@@ -1,3 +1,41 @@
+### Basic programs
+```
+sh$ ftp ftp.software.ibm.com
+  Name> ftp
+  Password> your e-mail address
+  ftp> cd aix/freeSoftware/aixtoolbox/RPMS/ppc/wget
+  ftp> binary
+  ftp> get wget-1.9.1-1.aix5.1.ppc.rpm
+  ftp> quit
+sh$ rpm -hUv wget-1.9.1-1.aix5.1.ppc.rpm
+sh$ wget -r -nd ftp://ftp.software.ibm.com/aix/freeSoftware/aixtoolbox/ezinstall/ppc  
+
+sh$ ls
+getapp-dev.sh       getgnome.base.sh    getkde3.all.sh
+Xsession.kde        getbase.sh          getkde2.all.sh      getkde3.base.sh
+Xsession.kde2       getdesktop.base.sh  getkde2.base.sh     getkde3.opt.sh
+getgnome.apps.sh    getkde2.opt.sh      
+
+sh$ chmod +x get*.sh  
+
+sh$ cd base
+sh$ ls
+bash-3.2-1.aix5.2.ppc.rpm          rpm-3.0.5-52.aix5.3.ppc.rpm
+bzip2-1.0.5-3.aix5.3.ppc.rpm       rpm-build-3.0.5-52.aix5.3.ppc.rpm
+gettext-0.10.40-8.aix5.2.ppc.rpm   rpm-devel-3.0.5-52.aix5.3.ppc.rpm
+gzip-1.2.4a-10.aix5.2.ppc.rpm      tar-1.14-2.aix5.1.ppc.rpm
+info-4.6-1.aix5.1.ppc.rpm          unzip-5.51-1.aix5.1.ppc.rpm
+patch-2.5.4-4.aix4.3.ppc.rpm       
+popt-1.7-2.aix5.1.ppc.rpm
+
+sh$ rpm -hUv unzip-5.51-1.aix5.1.ppc.rpm
+sh$ rpm -hUv zip-2.3-3.aix4.3.ppc.rpm
+sh$ rpm -hUv bash-3.2-1.aix5.2.ppc.rpm
+
+sh$ bash
+bash-3.2# 
+```
+
 ### Basic commands:
 * Management
 ```bash
