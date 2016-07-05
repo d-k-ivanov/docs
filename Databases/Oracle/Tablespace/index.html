@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Dev/Ruby/Installation/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Databases/Oracle/Tablespace/"> 
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-    <title>Installation - Technical Info</title>
+    <title>Tablespace - Technical Info</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -92,13 +92,13 @@
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Databases <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../../../Databases/Links/">Links</a>
+    <a href="../../Links/">Links</a>
 </li>
 
                         
@@ -109,25 +109,25 @@
         
             
 <li >
-    <a href="../../../Databases/Oracle/Blocking_sessions/">Blocking sessions</a>
+    <a href="../Blocking_sessions/">Blocking sessions</a>
 </li>
 
         
             
 <li >
-    <a href="../../../Databases/Oracle/OJDBC/">OJDBC</a>
+    <a href="../OJDBC/">OJDBC</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Tablespace</a>
 </li>
 
         
             
 <li >
-    <a href="../../../Databases/Oracle/Tablespace/">Tablespace</a>
-</li>
-
-        
-            
-<li >
-    <a href="../../../Databases/Oracle/Useful_Queries/">Useful Queries</a>
+    <a href="../Useful_Queries/">Useful Queries</a>
 </li>
 
         
@@ -140,7 +140,7 @@
                 
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dev <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
@@ -150,8 +150,8 @@
     <ul class="dropdown-menu">
         
             
-<li class="active">
-    <a href="./">Installation</a>
+<li >
+    <a href="../../../Dev/Ruby/Installation/">Installation</a>
 </li>
 
         
@@ -327,12 +327,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../../../Databases/Oracle/Useful_Queries/">
+                        <a rel="next" href="../OJDBC/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../../../Security/HSM/">
+                        <a rel="prev" href="../Useful_Queries/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -355,21 +355,19 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#via-rvm-on-ubuntu">via RVM on Ubuntu</a></li>
+        <li class="first-level active"><a href="#create">Create</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="via-rvm-on-ubuntu">via RVM on Ubuntu</h3>
-<pre><code>sudo apt-get install libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
-gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-curl -sSL https://get.rvm.io | bash -s stable
-source ~/.rvm/scripts/rvm
-rvm install 2.3.1
-rvm use 2.3.1 --default
-ruby -v
+<h3 id="create">Create</h3>
+<pre><code>CREATE TABLESPACE tablespace_name DATAFILE 'tablespace_name.ora' SIZE 20M AUTOEXTEND ON;
+### You need this line only for Oracle 12 
+ALTER SESSION SET &quot;_ORACLE_SCRIPT&quot;=true;
+CREATE USER tablespace_username IDENTIFIED BY tablespace_username_password DEFAULT TABLESPACE tablespace_name;
+GRANT ALL PRIVILEGES TO tablespabe+username ;
 </code></pre></div>
         
     </div>

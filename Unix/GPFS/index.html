@@ -109,7 +109,25 @@
         
             
 <li >
+    <a href="../../Databases/Oracle/Blocking_sessions/">Blocking sessions</a>
+</li>
+
+        
+            
+<li >
     <a href="../../Databases/Oracle/OJDBC/">OJDBC</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Databases/Oracle/Tablespace/">Tablespace</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Databases/Oracle/Useful_Queries/">Useful Queries</a>
 </li>
 
         
@@ -147,12 +165,24 @@
                 
                 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Secure <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Security <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../../Secure/HSM/">HSM</a>
+    <a href="../../Security/HSM/">HSM</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../Security/IPTables/">IPTables</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../Security/SELinux/">SELinux</a>
 </li>
 
                         
@@ -185,6 +215,12 @@
                         
                             
 <li >
+    <a href="../Docker/">Docker</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../Filesystem/">Filesystem</a>
 </li>
 
@@ -209,13 +245,37 @@
                         
                             
 <li >
+    <a href="../KVM/">KVM</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../Network/">Network</a>
 </li>
 
                         
                             
 <li >
+    <a href="../SMS/">SMS</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../Skype/">Skype</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../Version_Control/">Version Control</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../WINE/">WINE</a>
 </li>
 
                         
@@ -236,7 +296,19 @@
                         
                             
 <li >
+    <a href="../../Windows/CMD_Scripts/">CMD Scripts</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../../Windows/CMD_colours/">CMD colours</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../Windows/PowerShell_Scripts/">PowerShell Scripts</a>
 </li>
 
                         
@@ -283,17 +355,31 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#change-hostname-on-gpfs-nodes">Change hostname on GPFS nodes</a></li>
+        <li class="first-level active"><a href="#autostart-gpfs">Autostart GPFS</a></li>
+        
+    
+        <li class="first-level "><a href="#increase-inodes">Increase Inodes</a></li>
+        
+    
+        <li class="first-level "><a href="#change-hostname-on-gpfs-nodes">Change hostname on GPFS nodes</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
+<h3 id="autostart-gpfs">Autostart GPFS</h3>
+<pre><code>mmchconfig autoload=yes
+</code></pre>
+
+<h3 id="increase-inodes">Increase Inodes</h3>
+<pre><code>mmchfs &lt;fsname&gt; -F 1M
+</code></pre>
+
 <h3 id="change-hostname-on-gpfs-nodes">Change hostname on GPFS nodes</h3>
-<ol>
-<li>Preface.</li>
-</ol>
+<ul>
+<li><em>[Preface]</em></li>
+</ul>
 <pre><code>#Old names:
 10.10.10.10     OLD-SRV-NAME-01
 10.10.10.10     OLD-SRV-NAME-02
@@ -303,45 +389,45 @@
 
 </code></pre>
 
-<ol>
-<li>Stop all services which use GPFS</li>
-<li>[On each node] add new names to /etc/hosts (old ones keep too)</li>
-</ol>
+<ul>
+<li><em>[Preface]</em> Stop all services which use GPFS</li>
+<li><em>[On each node]</em> add new names to /etc/hosts (old ones keep too)</li>
+</ul>
 <pre><code>10.10.10.10     NEW-SRV-NAME-01
 10.10.10.11     NEW-SRV-NAME-02
 </code></pre>
 
-<ol>
-<li>[On master node] Shut down GPFS-cluster</li>
-</ol>
+<ul>
+<li><em>[On master node]</em> Shut down GPFS-cluster</li>
+</ul>
 <pre><code>mmshutdown -a
 </code></pre>
 
-<ol>
-<li>[On master node] Run command for configuration changing</li>
-</ol>
+<ul>
+<li><em>[On master node]</em> Run command for configuration changing</li>
+</ul>
 <pre><code># Change interface names to names placed after &quot;-N&quot; key
 mmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx1 -N NEW-SRV-NAME-01
 mmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx2 -N NEW-SRV-NAME-02
 </code></pre>
 
-<ol>
-<li>[On master node] Start GPFS-cluster</li>
-</ol>
+<ul>
+<li><em>[On master node]</em> Start GPFS-cluster</li>
+</ul>
 <pre><code>mmstartup -a
 </code></pre>
 
-<ol>
-<li>[On master node] Check cluster details and make sure that names were changed</li>
-</ol>
+<ul>
+<li><em>[On master node]</em> Check cluster details and make sure that names were changed</li>
+</ul>
 <pre><code>mmlscluster
 mmgetstate -a
 </code></pre>
 
-<ol>
-<li>[On each node] If everything right remove old records from /etc/hosts</li>
-<li>[On maser node] Recheck than everything still OK</li>
-</ol>
+<ul>
+<li><em>[On each node]</em> If everything right remove old records from /etc/hosts</li>
+<li><em>[On maser node]</em> Recheck than everything still OK</li>
+</ul>
 <pre><code>mmshutdown -a
 mmstartup -a
 mmlscluster

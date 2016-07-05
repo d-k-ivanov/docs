@@ -36,6 +36,46 @@
             "title": "Dan Morgan's Oracle Library"
         }, 
         {
+            "location": "/Databases/Oracle/Blocking_sessions/", 
+            "text": "Find all locking sessions\n\n\nSELECT * FROM v$lock;\n\n\n\n\nView all blocking sessions ver.1\n\n\nSELECT s.blocking_session, s.sid, s.serial#, s.seconds_in_wait FROM v$session s WHERE blocking_session IS NOT NULL;\n\n\n\n\nView all blocking sessions ver.2\n\n\nSELECT s1.username || '@' || s1.machine\n    || ' ( SID=' || s1.sid || ' )  is blocking '\n    || s2.username || '@' || s2.machine || ' ( SID=' || s2.sid || ' ) ' AS blocking_status\n    FROM v$lock l1, v$session s1, v$lock l2, v$session s2\n    WHERE s1.sid=l1.sid AND s2.sid=l2.sid\n    AND l1.BLOCK=1 AND l2.request \n 0\n    AND l1.id1 = l2.id1\n    AND l1.id2 = l2.id2;\n\n\n\n\nView SID and ID of blocking sessions\n\n\nSELECT sid, id1 FROM v$lock WHERE TYPE='TM';\n\n\n\n\nView the name of blocking session\n\n\nSELECT object_name FROM dba_objects WHERE object_id=101482;\n\n\n\n\nKill session: \" ALTER SYSTEM KILL SESSION 'SID,ID' \"\n\n\nALTER SYSTEM KILL SESSION '1621,24543';\n\n\n\n\nView all active sessions\n\n\nSELECT s.inst_id,\n       s.sid,\n       s.serial#,\n       p.spid,\n       s.username,\n       s.program\nFROM   gv$session s\n       JOIN gv$process p ON p.addr = s.paddr AND p.inst_id = s.inst_id\nWHERE  s.type != 'BACKGROUND';", 
+            "title": "Blocking sessions"
+        }, 
+        {
+            "location": "/Databases/Oracle/Blocking_sessions/#find-all-locking-sessions", 
+            "text": "SELECT * FROM v$lock;", 
+            "title": "Find all locking sessions"
+        }, 
+        {
+            "location": "/Databases/Oracle/Blocking_sessions/#view-all-blocking-sessions-ver1", 
+            "text": "SELECT s.blocking_session, s.sid, s.serial#, s.seconds_in_wait FROM v$session s WHERE blocking_session IS NOT NULL;", 
+            "title": "View all blocking sessions ver.1"
+        }, 
+        {
+            "location": "/Databases/Oracle/Blocking_sessions/#view-all-blocking-sessions-ver2", 
+            "text": "SELECT s1.username || '@' || s1.machine\n    || ' ( SID=' || s1.sid || ' )  is blocking '\n    || s2.username || '@' || s2.machine || ' ( SID=' || s2.sid || ' ) ' AS blocking_status\n    FROM v$lock l1, v$session s1, v$lock l2, v$session s2\n    WHERE s1.sid=l1.sid AND s2.sid=l2.sid\n    AND l1.BLOCK=1 AND l2.request   0\n    AND l1.id1 = l2.id1\n    AND l1.id2 = l2.id2;", 
+            "title": "View all blocking sessions ver.2"
+        }, 
+        {
+            "location": "/Databases/Oracle/Blocking_sessions/#view-sid-and-id-of-blocking-sessions", 
+            "text": "SELECT sid, id1 FROM v$lock WHERE TYPE='TM';", 
+            "title": "View SID and ID of blocking sessions"
+        }, 
+        {
+            "location": "/Databases/Oracle/Blocking_sessions/#view-the-name-of-blocking-session", 
+            "text": "SELECT object_name FROM dba_objects WHERE object_id=101482;", 
+            "title": "View the name of blocking session"
+        }, 
+        {
+            "location": "/Databases/Oracle/Blocking_sessions/#kill-session-alter-system-kill-session-sidid", 
+            "text": "ALTER SYSTEM KILL SESSION '1621,24543';", 
+            "title": "Kill session: \" ALTER SYSTEM KILL SESSION 'SID,ID' \""
+        }, 
+        {
+            "location": "/Databases/Oracle/Blocking_sessions/#view-all-active-sessions", 
+            "text": "SELECT s.inst_id,\n       s.sid,\n       s.serial#,\n       p.spid,\n       s.username,\n       s.program\nFROM   gv$session s\n       JOIN gv$process p ON p.addr = s.paddr AND p.inst_id = s.inst_id\nWHERE  s.type != 'BACKGROUND';", 
+            "title": "View all active sessions"
+        }, 
+        {
             "location": "/Databases/Oracle/OJDBC/", 
             "text": "BUG: 9632480\n\n\nOJDBC 12.1.0.2 - BUG: ORA-01000: maximum open cursors exceeded\n\n\nWe need:\n\n ojdbc7.jar\n\n p19632480_121020_Generic.zip\n* JRE\n\n\n\n\nWe need to update OracleDatabaseMetaData.class in our ojdbc7.jar archive\n\n\n\n\nunzip p19632480_121020_Generic.zip\n\n\n\n\nGet folder ./p19632480_121020_Generic/19632480/files/jdbc/lib/ojdbc7.jar\nAnd place it to ojdbc7.jar location\n\n\nMake shure that your JAVA_HOME is exported\n\n\nChange working directory to ojdbc7.jar location and run:\n\n\n$JAVA_HOME/jar -uf ojdbc7.jar", 
             "title": "OJDBC"
@@ -44,6 +84,61 @@
             "location": "/Databases/Oracle/OJDBC/#bug-9632480", 
             "text": "OJDBC 12.1.0.2 - BUG: ORA-01000: maximum open cursors exceeded  We need:  ojdbc7.jar  p19632480_121020_Generic.zip\n* JRE   We need to update OracleDatabaseMetaData.class in our ojdbc7.jar archive   unzip p19632480_121020_Generic.zip  Get folder ./p19632480_121020_Generic/19632480/files/jdbc/lib/ojdbc7.jar\nAnd place it to ojdbc7.jar location  Make shure that your JAVA_HOME is exported  Change working directory to ojdbc7.jar location and run:  $JAVA_HOME/jar -uf ojdbc7.jar", 
             "title": "BUG: 9632480"
+        }, 
+        {
+            "location": "/Databases/Oracle/Tablespace/", 
+            "text": "Create\n\n\nCREATE TABLESPACE tablespace_name DATAFILE 'tablespace_name.ora' SIZE 20M AUTOEXTEND ON;\n### You need this line only for Oracle 12 \nALTER SESSION SET \n_ORACLE_SCRIPT\n=true;\nCREATE USER tablespace_username IDENTIFIED BY tablespace_username_password DEFAULT TABLESPACE tablespace_name;\nGRANT ALL PRIVILEGES TO tablespabe+username ;", 
+            "title": "Tablespace"
+        }, 
+        {
+            "location": "/Databases/Oracle/Tablespace/#create", 
+            "text": "CREATE TABLESPACE tablespace_name DATAFILE 'tablespace_name.ora' SIZE 20M AUTOEXTEND ON;\n### You need this line only for Oracle 12 \nALTER SESSION SET  _ORACLE_SCRIPT =true;\nCREATE USER tablespace_username IDENTIFIED BY tablespace_username_password DEFAULT TABLESPACE tablespace_name;\nGRANT ALL PRIVILEGES TO tablespabe+username ;", 
+            "title": "Create"
+        }, 
+        {
+            "location": "/Databases/Oracle/Useful_Queries/", 
+            "text": "View tablespaces by user\n\n\nselect distinct p.tablespace_name from dba_tablespaces p, dba_xml_tables x, dba_users u, all_all_tables t where t.table_name=x.table_name and t.tablespace_name=p.tablespace_name and x.owner=u.username;\n\n\n\n\nView all tablespaces: run by sysdba\n\n\nselect * from dba_tablespaces;\n\n\n\n\nView charset\n\n\nSELECT value$ FROM sys.props$ WHERE name = 'NLS_CHARACTERSET' ;\n\n\n\n\nGet status of instances\n\n\nselect instance_name, status, database_status from v$instance; \nselect status from v$instance;\nselect logins from v$instance;\n\n\n\n\nMount and open DB\n\n\nALTER DATABASE Mount;\nALTER DATABASE OPEN;\n\n\n\n\nBackup via RMAN\n\n\nrun {\nshutdown immediate;\nstartup mount;\nbackup database;\nalter database open;\n}\n\n\n\n\nEnabling archivelog\n\n\nSHUTDOWN;\nSTARTUP MOUNT EXCLUSIVE;\nALTER DATABASE ARCHIVELOG;\nALTER DATABASE OPEN;\nSELECT log_mode FROM v$database;\n\n\n\n\nOpen cursors\n\n\nselect * from v$parameter where name = 'open_cursors';\nselect value from v$parameter where name = 'open_cursors';\nalter system set open_cursors=4000 scope=both;\n\n-- Top list\nselect a.value, s.username, s.sid, s.serial# from v$sesstat a, v$statname b, v$session s where a.statistic# = b.statistic#  and s.sid=a.sid and b.name = 'opened cursors current' and s.username is not null order by value desc;\nselect * from ( select ss.value, sn.name, ss.sid from v$sesstat ss, v$statname sn where ss.statistic# = sn.statistic# and sn.name like '%opened cursors current%' order by value desc) where rownum \n 11 ;\n\nselect USERNAME, OSUSER, PROCESS, MACHINE, PROGRAM, EVENT, STATE from v$session where sid in (select SID from ( select ss.value, sn.name, ss.sid from v$sesstat ss, v$statname sn where ss.statistic# = sn.statistic# and sn.name like '%opened cursors current%' order by value desc));\nselect SID,USERNAME, OSUSER, PROCESS, MACHINE, PROGRAM, EVENT, STATE from v$session where sid in (select SID from ( select ss.value, sn.name, ss.sid from v$sesstat ss, v$statname sn where ss.statistic# = sn.statistic# and sn.name like '%opened cursors current%' order by value desc) where rownum \n 20);\n\nselect user_name, status, osuser, machine, a.sql_text \n  from v$session b, v$open_cursor a \n  where a.sid = b.sid and MACHINE='SERVER_NAME'; \n\nselect * \n  from v$session b, v$open_cursor a \n  where a.sid = b.sid and MACHINE='SERVER_NAME';\n\nselect a.value, s.username, s.sid, s.serial# from v$sesstat a, v$statname b, v$session s where b.name = 'opened cursors current' order by value desc;", 
+            "title": "Useful Queries"
+        }, 
+        {
+            "location": "/Databases/Oracle/Useful_Queries/#view-tablespaces-by-user", 
+            "text": "select distinct p.tablespace_name from dba_tablespaces p, dba_xml_tables x, dba_users u, all_all_tables t where t.table_name=x.table_name and t.tablespace_name=p.tablespace_name and x.owner=u.username;", 
+            "title": "View tablespaces by user"
+        }, 
+        {
+            "location": "/Databases/Oracle/Useful_Queries/#view-all-tablespaces-run-by-sysdba", 
+            "text": "select * from dba_tablespaces;", 
+            "title": "View all tablespaces: run by sysdba"
+        }, 
+        {
+            "location": "/Databases/Oracle/Useful_Queries/#view-charset", 
+            "text": "SELECT value$ FROM sys.props$ WHERE name = 'NLS_CHARACTERSET' ;", 
+            "title": "View charset"
+        }, 
+        {
+            "location": "/Databases/Oracle/Useful_Queries/#get-status-of-instances", 
+            "text": "select instance_name, status, database_status from v$instance; \nselect status from v$instance;\nselect logins from v$instance;", 
+            "title": "Get status of instances"
+        }, 
+        {
+            "location": "/Databases/Oracle/Useful_Queries/#mount-and-open-db", 
+            "text": "ALTER DATABASE Mount;\nALTER DATABASE OPEN;", 
+            "title": "Mount and open DB"
+        }, 
+        {
+            "location": "/Databases/Oracle/Useful_Queries/#backup-via-rman", 
+            "text": "run {\nshutdown immediate;\nstartup mount;\nbackup database;\nalter database open;\n}", 
+            "title": "Backup via RMAN"
+        }, 
+        {
+            "location": "/Databases/Oracle/Useful_Queries/#enabling-archivelog", 
+            "text": "SHUTDOWN;\nSTARTUP MOUNT EXCLUSIVE;\nALTER DATABASE ARCHIVELOG;\nALTER DATABASE OPEN;\nSELECT log_mode FROM v$database;", 
+            "title": "Enabling archivelog"
+        }, 
+        {
+            "location": "/Databases/Oracle/Useful_Queries/#open-cursors", 
+            "text": "select * from v$parameter where name = 'open_cursors';\nselect value from v$parameter where name = 'open_cursors';\nalter system set open_cursors=4000 scope=both;\n\n-- Top list\nselect a.value, s.username, s.sid, s.serial# from v$sesstat a, v$statname b, v$session s where a.statistic# = b.statistic#  and s.sid=a.sid and b.name = 'opened cursors current' and s.username is not null order by value desc;\nselect * from ( select ss.value, sn.name, ss.sid from v$sesstat ss, v$statname sn where ss.statistic# = sn.statistic# and sn.name like '%opened cursors current%' order by value desc) where rownum   11 ;\n\nselect USERNAME, OSUSER, PROCESS, MACHINE, PROGRAM, EVENT, STATE from v$session where sid in (select SID from ( select ss.value, sn.name, ss.sid from v$sesstat ss, v$statname sn where ss.statistic# = sn.statistic# and sn.name like '%opened cursors current%' order by value desc));\nselect SID,USERNAME, OSUSER, PROCESS, MACHINE, PROGRAM, EVENT, STATE from v$session where sid in (select SID from ( select ss.value, sn.name, ss.sid from v$sesstat ss, v$statname sn where ss.statistic# = sn.statistic# and sn.name like '%opened cursors current%' order by value desc) where rownum   20);\n\nselect user_name, status, osuser, machine, a.sql_text \n  from v$session b, v$open_cursor a \n  where a.sid = b.sid and MACHINE='SERVER_NAME'; \n\nselect * \n  from v$session b, v$open_cursor a \n  where a.sid = b.sid and MACHINE='SERVER_NAME';\n\nselect a.value, s.username, s.sid, s.serial# from v$sesstat a, v$statname b, v$session s where b.name = 'opened cursors current' order by value desc;", 
+            "title": "Open cursors"
         }, 
         {
             "location": "/Dev/Ruby/Installation/", 
@@ -56,18 +151,38 @@
             "title": "via RVM on Ubuntu"
         }, 
         {
-            "location": "/Secure/HSM/", 
+            "location": "/Security/HSM/", 
             "text": "Generate LMK consists of 3 components.\n\n\nStep-By-Step.\n\n\n0:\nConnect to Thales HMS 8000 via common Terminal Client.\n\n1:\nOnline\n FC \nReturn\n \nInsert card and press ENTER: \nReturn\n \nCard already formatted, continue? [Y/N]: Y \nReturn\n \nFormat card for HSM settings/LMKs? [H/L]: L \nReturn\n \nErasing card \nFormatting card . . . \nEnter new PIN for Smart Card: 2134 \nReturn\n\nRe-enter new PIN: 2134 \nReturn\n \nEnter time [hhmmss]: 173000 \nReturn\n  - current time\nEnter date [ddmmyy]: 081111 \nReturn\n \nEnter User ID: User1 \nReturn\n \nEnter Issuer ID: ITS \nReturn\n \nFormat complete \n\n2:\nOnline\n FC \nReturn\n \nInsert card and press ENTER: \nReturn\n \nCard already formatted, continue? [Y/N]: Y \nReturn\n \nFormat card for HSM settings/LMKs? [H/L]: L \nReturn\n \nErasing card \nFormatting card . . . \nEnter new PIN for Smart Card: 4356 \nReturn\n\nRe-enter new PIN: 4356 \nReturn\n \nEnter time [hhmmss]: 173000 \nReturn\n \nEnter date [ddmmyy]: 081111 \nReturn\n \nEnter User ID: User2 \nReturn\n \nEnter Issuer ID: ITS \nReturn\n \nFormat complete \n\n3:\nOnline\n FC \nReturn\n \nInsert card and press ENTER: \nReturn\n \nCard already formatted, continue? [Y/N]: Y \nReturn\n \nFormat card for HSM settings/LMKs? [H/L]: L \nReturn\n \nErasing card \nFormatting card . . . \nEnter new PIN for Smart Card: 5467 \nReturn\n\nRe-enter new PIN: 5467 \nReturn\n \nEnter time [hhmmss]: 173000 \nReturn\n \nEnter date [ddmmyy]: 081111 \nReturn\n \nEnter User ID: User3 \nReturn\n \nEnter Issuer ID: ITS \nReturn\n \nFormat complete \n\n4:\nTaking HSM into the Secure State\n\n5:\nSecure\n GK \nReturn\n \nLMKs must be erased before proceeding. \nErase LMKs? Y \nReturn\n \nLMK component set [1-9]: 1 \nReturn\n \nEnter secret value A: \nReturn\n \nEnter secret value B: \nReturn\n \nEnter value C: \nReturn\n \nInsert blank card and enter PIN: 2134 \nReturn\n \nWriting keys \nChecking keys \nDevice write complete, check: XXXX XXXX XXXX XXXX \nRemove the smartcard and store it securely. \nMake another copy? [Y/N]: N \nReturn\n X copies made. \n\n6:\nSecure\n GK \nReturn\n \nLMKs must be erased before proceeding. \nErase LMKs? Y \nReturn\n \nLMK component set [1-9]: 2 \nReturn\n \nEnter secret value A: \nReturn\n \nEnter secret value B: \nReturn\n \nEnter value C: \nReturn\n \nInsert blank card and enter PIN: 4356 \nReturn\n \nWriting keys \nChecking keys \nDevice write complete, check: XXXX XXXX XXXX XXXX \nRemove the smartcard and store it securely. \nMake another copy? [Y/N]: N \nReturn\n X copies made. \n\n7:\nSecure\n GK \nReturn\n \nLMKs must be erased before proceeding. \nErase LMKs? Y \nReturn\n \nLMK component set [1-9]: 3 \nReturn\n \nEnter secret value A: \nReturn\n \nEnter secret value B: \nReturn\n \nEnter value C: \nReturn\n \nInsert blank card and enter PIN: 5467 \nReturn\n \nWriting keys \nChecking keys \nDevice write complete, check: XXXX XXXX XXXX XXXX \nRemove the smartcard and store it securely. \nMake another copy? [Y/N]: N \nReturn\n X copies made. \n\n8-9-10:Secure\n LK \nReturn\n\nLMKs must be erased before proceeding.\nErase LMKs? Y \nReturn\n\nLoad LMK from components. Insert card and enter PIN: **** \nReturn\n\nCHECK: XXXX XXXX XXXX XXXX Load more components? [Y/N]: Y \nReturn\n\nRemove the smartcard. Insert the second and subsequent Smartcards and repeat the loading procedure. When all have been loaded and the HSM displays the check value, record the check value.\nCHECK: XXXX XXXX XXXX XXXX Load more components? [Y/N]: N \nReturn\n\nUse the LO command to load LMKs into key change storage.\nSecure\n\nUse the A command to put the HSM into the Authorised State in order to check the LMK components and passwords or PINs.\n\n11:\nReturn to online state: remove secure keys and press reset button at least 2 seconds.", 
             "title": "HSM"
         }, 
         {
-            "location": "/Secure/HSM/#generate-lmk-consists-of-3-components", 
+            "location": "/Security/HSM/#generate-lmk-consists-of-3-components", 
             "text": "Step-By-Step.  0:\nConnect to Thales HMS 8000 via common Terminal Client.\n\n1:\nOnline  FC  Return  \nInsert card and press ENTER:  Return  \nCard already formatted, continue? [Y/N]: Y  Return  \nFormat card for HSM settings/LMKs? [H/L]: L  Return  \nErasing card \nFormatting card . . . \nEnter new PIN for Smart Card: 2134  Return \nRe-enter new PIN: 2134  Return  \nEnter time [hhmmss]: 173000  Return   - current time\nEnter date [ddmmyy]: 081111  Return  \nEnter User ID: User1  Return  \nEnter Issuer ID: ITS  Return  \nFormat complete \n\n2:\nOnline  FC  Return  \nInsert card and press ENTER:  Return  \nCard already formatted, continue? [Y/N]: Y  Return  \nFormat card for HSM settings/LMKs? [H/L]: L  Return  \nErasing card \nFormatting card . . . \nEnter new PIN for Smart Card: 4356  Return \nRe-enter new PIN: 4356  Return  \nEnter time [hhmmss]: 173000  Return  \nEnter date [ddmmyy]: 081111  Return  \nEnter User ID: User2  Return  \nEnter Issuer ID: ITS  Return  \nFormat complete \n\n3:\nOnline  FC  Return  \nInsert card and press ENTER:  Return  \nCard already formatted, continue? [Y/N]: Y  Return  \nFormat card for HSM settings/LMKs? [H/L]: L  Return  \nErasing card \nFormatting card . . . \nEnter new PIN for Smart Card: 5467  Return \nRe-enter new PIN: 5467  Return  \nEnter time [hhmmss]: 173000  Return  \nEnter date [ddmmyy]: 081111  Return  \nEnter User ID: User3  Return  \nEnter Issuer ID: ITS  Return  \nFormat complete \n\n4:\nTaking HSM into the Secure State\n\n5:\nSecure  GK  Return  \nLMKs must be erased before proceeding. \nErase LMKs? Y  Return  \nLMK component set [1-9]: 1  Return  \nEnter secret value A:  Return  \nEnter secret value B:  Return  \nEnter value C:  Return  \nInsert blank card and enter PIN: 2134  Return  \nWriting keys \nChecking keys \nDevice write complete, check: XXXX XXXX XXXX XXXX \nRemove the smartcard and store it securely. \nMake another copy? [Y/N]: N  Return  X copies made. \n\n6:\nSecure  GK  Return  \nLMKs must be erased before proceeding. \nErase LMKs? Y  Return  \nLMK component set [1-9]: 2  Return  \nEnter secret value A:  Return  \nEnter secret value B:  Return  \nEnter value C:  Return  \nInsert blank card and enter PIN: 4356  Return  \nWriting keys \nChecking keys \nDevice write complete, check: XXXX XXXX XXXX XXXX \nRemove the smartcard and store it securely. \nMake another copy? [Y/N]: N  Return  X copies made. \n\n7:\nSecure  GK  Return  \nLMKs must be erased before proceeding. \nErase LMKs? Y  Return  \nLMK component set [1-9]: 3  Return  \nEnter secret value A:  Return  \nEnter secret value B:  Return  \nEnter value C:  Return  \nInsert blank card and enter PIN: 5467  Return  \nWriting keys \nChecking keys \nDevice write complete, check: XXXX XXXX XXXX XXXX \nRemove the smartcard and store it securely. \nMake another copy? [Y/N]: N  Return  X copies made. \n\n8-9-10:Secure  LK  Return \nLMKs must be erased before proceeding.\nErase LMKs? Y  Return \nLoad LMK from components. Insert card and enter PIN: ****  Return \nCHECK: XXXX XXXX XXXX XXXX Load more components? [Y/N]: Y  Return \nRemove the smartcard. Insert the second and subsequent Smartcards and repeat the loading procedure. When all have been loaded and the HSM displays the check value, record the check value.\nCHECK: XXXX XXXX XXXX XXXX Load more components? [Y/N]: N  Return \nUse the LO command to load LMKs into key change storage.\nSecure \nUse the A command to put the HSM into the Authorised State in order to check the LMK components and passwords or PINs.\n\n11:\nReturn to online state: remove secure keys and press reset button at least 2 seconds.", 
             "title": "Generate LMK consists of 3 components."
         }, 
         {
+            "location": "/Security/IPTables/", 
+            "text": "Show rules\n\n\niptables -nvL\niptable -t nat -nvL", 
+            "title": "IPTables"
+        }, 
+        {
+            "location": "/Security/IPTables/#show-rules", 
+            "text": "iptables -nvL\niptable -t nat -nvL", 
+            "title": "Show rules"
+        }, 
+        {
+            "location": "/Security/SELinux/", 
+            "text": "Disabling SELinux\n\n\n```bash\nsed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux \n cat /etc/sysconfig/selinux", 
+            "title": "SELinux"
+        }, 
+        {
+            "location": "/Security/SELinux/#disabling-selinux", 
+            "text": "```bash\nsed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux   cat /etc/sysconfig/selinux", 
+            "title": "Disabling SELinux"
+        }, 
+        {
             "location": "/Unix/AIX/", 
-            "text": "Basic programs\n\n\nsh$ ftp ftp.software.ibm.com\n  Name\n ftp\n  Password\n your e-mail address\n  ftp\n cd aix/freeSoftware/aixtoolbox/RPMS/ppc/wget\n  ftp\n binary\n  ftp\n get wget-1.9.1-1.aix5.1.ppc.rpm\n  ftp\n quit\nsh$ rpm -hUv wget-1.9.1-1.aix5.1.ppc.rpm\nsh$ wget -r -nd ftp://ftp.software.ibm.com/aix/freeSoftware/aixtoolbox/ezinstall/ppc  \n\nsh$ ls\ngetapp-dev.sh       getgnome.base.sh    getkde3.all.sh\nXsession.kde        getbase.sh          getkde2.all.sh      getkde3.base.sh\nXsession.kde2       getdesktop.base.sh  getkde2.base.sh     getkde3.opt.sh\ngetgnome.apps.sh    getkde2.opt.sh      \n\nsh$ chmod +x get*.sh  \n\nsh$ cd base\nsh$ ls\nbash-3.2-1.aix5.2.ppc.rpm          rpm-3.0.5-52.aix5.3.ppc.rpm\nbzip2-1.0.5-3.aix5.3.ppc.rpm       rpm-build-3.0.5-52.aix5.3.ppc.rpm\ngettext-0.10.40-8.aix5.2.ppc.rpm   rpm-devel-3.0.5-52.aix5.3.ppc.rpm\ngzip-1.2.4a-10.aix5.2.ppc.rpm      tar-1.14-2.aix5.1.ppc.rpm\ninfo-4.6-1.aix5.1.ppc.rpm          unzip-5.51-1.aix5.1.ppc.rpm\npatch-2.5.4-4.aix4.3.ppc.rpm       \npopt-1.7-2.aix5.1.ppc.rpm\n\nsh$ rpm -hUv unzip-5.51-1.aix5.1.ppc.rpm\nsh$ rpm -hUv zip-2.3-3.aix4.3.ppc.rpm\nsh$ rpm -hUv bash-3.2-1.aix5.2.ppc.rpm\n\nsh$ bash\nbash-3.2# \n\n\n\n\nBasic commands:\n\n\n\n\nManagement\n\n\n\n\n# Exit from basic VIOS console to common AIX ksh\noem_setup_env\n# Adminitration and configuration console\nsmit\n\n#If you want to use bash as a login shell, you first have to add it to the\n#list of shells in /etc/security/login.cfg. \n#Then use `chsh` to change your individual setting.\n\n\n\n\n\n\nSoftware installation:\n\n\n\n\ncd \npath_to_package\n\ninutoc .\ninstallp -aXY -d\npath_to_package\n all\n# Check if package is installed or not:\nlslpp -L \npackage_name\n\n\n\n\n\n\n\nMirroring rootvg:\n\n\n\n\nextendvg rootvg hdisk1\nmirrorvg rootvg\nbootlist -m normal hdisk0 hdisk1 \nbosboot -ad hdisk0\nbosboot -ad hdisk1\n# Checking\nbootlist -o -m normal\n\n\n\n\nGPFS:\n\n\n\n\nInstalaltion:\n\n\n\n\n# on each LPAR:\ncd /\npath_to_gpfs_base_package\n/base-3-5/\ninutoc .\ninstallp -aXY -d/\npath_to_gpfs_base_package\n/base-3-5 all\ncd /\npath_to_gpfs_fix_package\n/fix-3-5-10/\ninutoc .\ninstallp -aXY -d/\npath_to_gpfs_fix_package\n/fix-3-5-10 all\nlslpp -L gpfs.\\*\n\n\n\n\n\n\nCreating cluster:\n\n\n\n\n# You need to setup paswordless shh connection between nodes\n# Add this path to /etc/environment on each node\nexport PATH=$PATH:/usr/lpp/mmfs/bin\n\nmmcrcluster -N \nPRIMARY_NODE_HOSTNAME\n:manager-quorum -p PRIMARY_NODE_HOSTNAME -r /usr/bin/ssh -R /usr/bin/scp\nmmchlicense server --accept -N PRIMARY_NODE_HOSTNAME\nmmstartup -a\nmmaddnode -N \nSECONDARY_NODE_HOSTNAME\n\nmmaddnode -N \nTHIRDARY_NODE_HOSTNAME\n\nmmaddnode -N \nN-ARY_NODE_HOSTNAME\n\nmmchcluster -s \nSECONDARY_NODE_HOSTNAME\n\nmmchlicense server --accept -N \nSECONDARY_NODE_HOSTNAME\n\nmmchlicense server --accept -N \nTHIRDARY_NODE_HOSTNAME\n\nmmchlicense server --accept -N \nN-ARY_NODE_HOSTNAME\n\nmmstartup -N \nSECONDARY_NODE_HOSTNAME\n\nmmstartup -N \nTHIRDARY_NODE_HOSTNAME\n\nmmstartup -N \nN-ARY_NODE_HOSTNAME\n\nmmchnode --quorum --manager -N \nSECONDARY_NODE_HOSTNAME\n\n# To check status of cluster:\nmmlscluster\nmmgetstate -a\n\n\n\n\n\n\nCreate GPFS mirror partition:\n\n\n\n\n# On primary node:\nmkdir /etc/gpfs\nvi /etc/gpfs/diskdesk.txt\n### --insert in diskdesk.txt--\nhdiskX:::dataAndMetadata:1:nsd1:\nhdiskY:::dataAndMetadata:2:nsd2:\n### --end of insert--\n\nmmcrnsd -F /etc/gpfs/diskdesk.txt\nmmshutdown -a\nmmchconfig tiebreakerdisks=\nnsd1;nsd2\n\nmmstartup -a\nmmcrfs /mnt/gpfs gpfsfs -F /etc/gpfs/diskdesk.txt -A yes -B 512K -M2 -m2 -R2 -r2 -n 2 -N 50000\nmmlsconfig\nmmmount all -a\nmmchconfig minQuorumNodes=2\ndf -g\n\n\n\n\nNetwork:\n\n\nShared Ethernet adapter coming soon\n\n\n\n\nHardware:\n\n\n# Refresh hardware configuration(aix and vios respectively):\ncfgmgr\ncfgdev\n# Rename hard drive:\nrendev -l \nold_name\n -n \nnew_name\n\nrendev -l hdisk3 -n hdisk33\n# Enable PVID:\nchdev -l hdiskX -a pv=yes\n# Change reserve policy to hard drive\nchdev -l hdiskX -a reserve_policy=no_reserve\n# Clear the owning volume manager from a disk\nchpv -C hdiskX\n\n\n\n\nVirtual devices:\n\n\n# Checking all virtual mappings to particular vhost:\nlsmap -vadapter vhost\n# Make a virtual hard drive for particular vhost:\n# -f - flag to forcing device creation if you're making shared hard drive\nmkvdev [-f] -vdev hdiskX -vadapter vhostX -dev \nvirtual_device_name\n\n# Make a virtual cd-rom device for particular vhost:\nmkvdev -fbo -vadapter vhostX -dev \nvirtual_device_name", 
+            "text": "Basic programs\n\n\nsh$ ftp ftp.software.ibm.com\n  Name\n ftp\n  Password\n your e-mail address\n  ftp\n cd aix/freeSoftware/aixtoolbox/RPMS/ppc/wget\n  ftp\n binary\n  ftp\n get wget-1.9.1-1.aix5.1.ppc.rpm\n  ftp\n quit\nsh$ rpm -hUv wget-1.9.1-1.aix5.1.ppc.rpm\nsh$ wget -r -nd ftp://ftp.software.ibm.com/aix/freeSoftware/aixtoolbox/ezinstall/ppc  \n\nsh$ ls\ngetapp-dev.sh       getgnome.base.sh    getkde3.all.sh\nXsession.kde        getbase.sh          getkde2.all.sh      getkde3.base.sh\nXsession.kde2       getdesktop.base.sh  getkde2.base.sh     getkde3.opt.sh\ngetgnome.apps.sh    getkde2.opt.sh      \n\nsh$ chmod +x get*.sh  \n\nsh$ cd base\nsh$ ls\nbash-3.2-1.aix5.2.ppc.rpm          rpm-3.0.5-52.aix5.3.ppc.rpm\nbzip2-1.0.5-3.aix5.3.ppc.rpm       rpm-build-3.0.5-52.aix5.3.ppc.rpm\ngettext-0.10.40-8.aix5.2.ppc.rpm   rpm-devel-3.0.5-52.aix5.3.ppc.rpm\ngzip-1.2.4a-10.aix5.2.ppc.rpm      tar-1.14-2.aix5.1.ppc.rpm\ninfo-4.6-1.aix5.1.ppc.rpm          unzip-5.51-1.aix5.1.ppc.rpm\npatch-2.5.4-4.aix4.3.ppc.rpm       \npopt-1.7-2.aix5.1.ppc.rpm\n\nsh$ rpm -hUv unzip-5.51-1.aix5.1.ppc.rpm\nsh$ rpm -hUv zip-2.3-3.aix4.3.ppc.rpm\nsh$ rpm -hUv bash-3.2-1.aix5.2.ppc.rpm\n\nsh$ bash\nbash-3.2# \n\n\n\n\nBasic commands:\n\n\n\n\nManagement\n\n\n\n\n# Exit from basic VIOS console to common AIX ksh\noem_setup_env\n# Adminitration and configuration console\nsmit\n\n#If you want to use bash as a login shell, you first have to add it to the\n#list of shells in /etc/security/login.cfg. \n#Then use `chsh` to change your individual setting.\n\n\n\n\n\n\nSoftware installation:\n\n\n\n\ncd \npath_to_package\n\ninutoc .\ninstallp -aXY -d\npath_to_package\n all\n# Check if package is installed or not:\nlslpp -L \npackage_name\n\n\n\n\n\n\n\nMirroring rootvg:\n\n\n\n\nextendvg rootvg hdisk1\nmirrorvg rootvg\nbootlist -m normal hdisk0 hdisk1 \nbosboot -ad hdisk0\nbosboot -ad hdisk1\n# Checking\nbootlist -o -m normal\n\n\n\n\nGPFS:\n\n\n\n\nInstalaltion:\n\n\n\n\n# on each LPAR:\ncd /\npath_to_gpfs_base_package\n/base-3-5/\ninutoc .\ninstallp -aXY -d/\npath_to_gpfs_base_package\n/base-3-5 all\ncd /\npath_to_gpfs_fix_package\n/fix-3-5-10/\ninutoc .\ninstallp -aXY -d/\npath_to_gpfs_fix_package\n/fix-3-5-10 all\nlslpp -L gpfs.\\*\n\n\n\n\n\n\nCreating cluster:\n\n\n\n\n# You need to setup paswordless shh connection between nodes\n# Add this path to /etc/environment on each node\nexport PATH=$PATH:/usr/lpp/mmfs/bin\n\nmmcrcluster -N \nPRIMARY_NODE_HOSTNAME\n:manager-quorum -p PRIMARY_NODE_HOSTNAME -r /usr/bin/ssh -R /usr/bin/scp\nmmchlicense server --accept -N PRIMARY_NODE_HOSTNAME\nmmstartup -a\nmmaddnode -N \nSECONDARY_NODE_HOSTNAME\n\nmmaddnode -N \nTHIRDARY_NODE_HOSTNAME\n\nmmaddnode -N \nN-ARY_NODE_HOSTNAME\n\nmmchcluster -s \nSECONDARY_NODE_HOSTNAME\n\nmmchlicense server --accept -N \nSECONDARY_NODE_HOSTNAME\n\nmmchlicense server --accept -N \nTHIRDARY_NODE_HOSTNAME\n\nmmchlicense server --accept -N \nN-ARY_NODE_HOSTNAME\n\nmmstartup -N \nSECONDARY_NODE_HOSTNAME\n\nmmstartup -N \nTHIRDARY_NODE_HOSTNAME\n\nmmstartup -N \nN-ARY_NODE_HOSTNAME\n\nmmchnode --quorum --manager -N \nSECONDARY_NODE_HOSTNAME\n\n# To check status of cluster:\nmmlscluster\nmmgetstate -a\n\n\n\n\n\n\nCreate GPFS mirror partition:\n\n\n\n\n# On primary node:\nmkdir /etc/gpfs\nvi /etc/gpfs/diskdesk.txt\n### --insert in diskdesk.txt--\nhdiskX:::dataAndMetadata:1:nsd1:\nhdiskY:::dataAndMetadata:2:nsd2:\n### --end of insert--\n\nmmcrnsd -F /etc/gpfs/diskdesk.txt\nmmshutdown -a\nmmchconfig tiebreakerdisks=\nnsd1;nsd2\n\nmmstartup -a\nmmcrfs /mnt/gpfs gpfsfs -F /etc/gpfs/diskdesk.txt -A yes -B 512K -M2 -m2 -R2 -r2 -n 2 -N 50000\nmmlsconfig\nmmmount all -a\nmmchconfig minQuorumNodes=2\ndf -g\n\n\n\n\nNetwork:\n\n\nShared Ethernet adapter coming soon\n\n\n\n\nHardware:\n\n\n# Refresh hardware configuration(aix and vios respectively):\ncfgmgr\ncfgdev\n# Rename hard drive:\nrendev -l \nold_name\n -n \nnew_name\n\nrendev -l hdisk3 -n hdisk33\n# Enable PVID:\nchdev -l hdiskX -a pv=yes\n# Change reserve policy to hard drive\nchdev -l hdiskX -a reserve_policy=no_reserve\n# Clear the owning volume manager from a disk\nchpv -C hdiskX\n\n\n\n\nVirtual devices:\n\n\n# Checking all virtual mappings to particular vhost:\nlsmap -vadapter vhost\n# Make a virtual hard drive for particular vhost:\n# -f - flag to forcing device creation if you're making shared hard drive\nmkvdev [-f] -vdev hdiskX -vadapter vhostX -dev \nvirtual_device_name\n\n# Make a virtual cd-rom device for particular vhost:\nmkvdev -fbo -vadapter vhostX -dev \nvirtual_device_name\n\n\n\n\n\nZabbix agent\n\n\n# Dependencies:\nrpm -ivh ftp://www.oss4aix.org/latest/aix61/gettext-0.10.40-8.aix5.2.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/expat-2.1.0-1.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libgcc-4.7.2-1.aix6.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libffi-3.0.11-2.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/glib2-2.30.3-1.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libiconv-1.14-2.aix5.1.ppc.rpm\n\n# Main\nmkgroup zabbix\nuseradd -g zabbix zabbix\n\nmkdir /var/run/zabbix\ntouch /var/run/zabbix/zabbix_agentd.pid\nmkdir /var/log/zabbix\ntouch /var/log/zabbix/zabbix_agentd.log\n\nchown -R zabbix:zabbix /var/log/zabbix\nchown -R zabbix:zabbix /var/run/zabbix\nchown zabbix:zabbix /etc/zabbix_agentd.conf\n\n/usr/sbin/zabbix_agentd --config /etc/zabbix_agentd.conf\n\nvi /etc/inittab\nzabagent:2:once:/usr/sbin/zabbix_agentd --config /etc/zabbix_agentd.conf", 
             "title": "AIX"
         }, 
         {
@@ -101,6 +216,11 @@
             "title": "Virtual devices:"
         }, 
         {
+            "location": "/Unix/AIX/#zabbix-agent", 
+            "text": "# Dependencies:\nrpm -ivh ftp://www.oss4aix.org/latest/aix61/gettext-0.10.40-8.aix5.2.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/expat-2.1.0-1.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libgcc-4.7.2-1.aix6.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libffi-3.0.11-2.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/glib2-2.30.3-1.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libiconv-1.14-2.aix5.1.ppc.rpm\n\n# Main\nmkgroup zabbix\nuseradd -g zabbix zabbix\n\nmkdir /var/run/zabbix\ntouch /var/run/zabbix/zabbix_agentd.pid\nmkdir /var/log/zabbix\ntouch /var/log/zabbix/zabbix_agentd.log\n\nchown -R zabbix:zabbix /var/log/zabbix\nchown -R zabbix:zabbix /var/run/zabbix\nchown zabbix:zabbix /etc/zabbix_agentd.conf\n\n/usr/sbin/zabbix_agentd --config /etc/zabbix_agentd.conf\n\nvi /etc/inittab\nzabagent:2:once:/usr/sbin/zabbix_agentd --config /etc/zabbix_agentd.conf", 
+            "title": "Zabbix agent"
+        }, 
+        {
             "location": "/Unix/Audit/", 
             "text": "Why is my server rebooted?\n\n\nlast reboot \nsudo lastcomm | egrep 'reboot|shutdown'\nwho -b\nsa\ncrontab -e\nless /var/log/secure\nlast -x | less\nlast -x | grep shutdown | less\nless /var/log/messages\njournalctl\nutmpdump /var/log/wtmp | egrep 'shutdown|reboot|runlevel'\njournalctl --since=\n2016-6-28 12:00:00", 
             "title": "Audit"
@@ -112,7 +232,7 @@
         }, 
         {
             "location": "/Unix/Commands/", 
-            "text": "Package management:\n\n\n\n\nApt:\n\n\n\n\n# Show installed packages\napt --installed list\n# Search for software\napt-cache search \npattern\n\n# Install package\napt-get install \npackage_name\n\n\n\n\n\n\n\nDpkg: \n\n\n\n\n# To get a list of packages installed locally do this in your terminal:\ndpkg --get-selections | grep -v deinstall\n# To get a list of a specific package installed:\ndpkg --get-selections | grep postgres\n# To save that list to a text file called packages on your desktop do this in your terminal:\ndpkg --get-selections | grep -v deinstall \n ~/Desktop/packages\n# Alternatively, simply use\ndpkg -l\n\n\n\n\n\n\nPacman:\n\n\n\n\n# Search for software\npacman -Ss \npattern\n\n# Install package\npacman -S \npackage_name\n\n# Update the system\npacman -Syu\n# Remove orphaned packages (Be careful, double check for list of deleted packages)\npacman -Rscn $(pacman -Qtdq)\npacman -Sc\npacman-optimize \n sync\n\n\n\n\n\n\nYum:\n\n\n\n\n# Search for software\nyum search \npattern\n\n# Install package\nyum install \npackage_name\n\n# Repair \nError: database disk image is malformed\n\nyum clean dbcache\n\n\n\n\nRemote management:\n\n\n\n\nXfreeRDP\n\n\n\n\nxfreerdp [+clipboard]/w:\nWIDTH\n /h:\nHEIGHT\n /drive:\ncuatom_drive_name\n,\npath_to_attach\n /v:\nip\n:\nport\n /u:\nuser_name\n\nxfreerdp +clipboard /w:1600 /h:900 /v:10.15.0.10:3389 /u:Administrator\nxfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM/HMC/7.9_sp3 /v:10.15.0.10\n\n\n\n\nSecurity:\n\n\n\n\nIPTables\n\n\n\n\n# Show rules\niptables -nvL\niptable -t nat -nvL\n\n\n\n\n\n\nDisabling SELinux\n\n\n\n\nsed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux \n cat /etc/sysconfig/selinux\n\n\n\n\nVirtual and independent environment:\n\n\n\n\nDocker:\n\n\n\n\n# Execute in-docker console\nsudo docker exec -it \ncontainer\n bash\n# Create JSON with container settings\ndocker inspect -f '{{ json .NetworkSettings }}' \ncontainer_id\n | python -mjson.tool\n# Add custom docker registry\nmkdir /etc/systemd/system/docker.service.d/\ntouch /etc/systemd/system/docker.service.d/docker_opts.conf\nvi /etc/systemd/system/docker.service.d/docker_opts.conf\n# --- docker_opts.conf contents ---\n[Service]\nExecStart=\nExecStart=/usr/bin/docker -d -H fd:// --insecure-registry \ndocker_registry_url\n --registry-mirror \nmirror_url\n\n# ---------------------------------\nsystemctl daemon-reload\nservice docker restart\n\n\n\n\n\n\nWINE\n\n\n\n\nWINEARCH=\nwine32_or_wine64\n WINEPREFIX=/home/wine/\ncustom_prefix\n wine \npath_to_executable\n\n\n\n\n\nX Server:\n\n\n\n\nStart full-screen application in different X server\n\n\n\n\n/usr/bin/xinit \npath_to_fullscreen_application\n -- :1\n\n\n\n\n\n\nExport X display to current ssh connection\n\n\n\n\nexport DISPLAY=\n${SSH_CLIENT%% *}\n\n\n\n\n\nMiscellaneous:\n\n\n\n\nTMUX\n\n\n\n\ntmux list-sessions\ntmux attach -t 2\n\n\n\n\n\n\nCool weather\n\n\n\n\ncurl http://wttr.in/moscow\n\n\n\n\n\n\nKill all proesses with certain name\n\n\n\n\nps ax | grep http | awk '{print $1}' | xargs kill", 
+            "text": "Package management:\n\n\n\n\nApt:\n\n\n\n\n# Show installed packages\napt --installed list\n# Search for software\napt-cache search \npattern\n\n# Install package\napt-get install \npackage_name\n\n\n\n\n\n\n\nDpkg: \n\n\n\n\n# To get a list of packages installed locally do this in your terminal:\ndpkg --get-selections | grep -v deinstall\n# To get a list of a specific package installed:\ndpkg --get-selections | grep postgres\n# To save that list to a text file called packages on your desktop do this in your terminal:\ndpkg --get-selections | grep -v deinstall \n ~/Desktop/packages\n# Alternatively, simply use\ndpkg -l\n\n\n\n\n\n\nPacman:\n\n\n\n\n# Search for software\npacman -Ss \npattern\n\n# Install package\npacman -S \npackage_name\n\n# Update the system\npacman -Syu\n# Remove orphaned packages (Be careful, double check for list of deleted packages)\npacman -Rscn $(pacman -Qtdq)\npacman -Sc\npacman-optimize \n sync\n\n\n\n\n\n\nYum:\n\n\n\n\n# Search for software\nyum search \npattern\n\n# Install package\nyum install \npackage_name\n\n# Repair \nError: database disk image is malformed\n\nyum clean dbcache\n\n\n\n\nRemote management:\n\n\n\n\nXfreeRDP\n\n\n\n\nxfreerdp [+clipboard]/w:\nWIDTH\n /h:\nHEIGHT\n /drive:\ncuatom_drive_name\n,\npath_to_attach\n /v:\nip\n:\nport\n /u:\nuser_name\n\nxfreerdp +clipboard /w:1600 /h:900 /v:10.15.0.10:3389 /u:Administrator\nxfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM/HMC/7.9_sp3 /v:10.15.0.10\n\n\n\n\nX Server:\n\n\n\n\nStart full-screen application in different X server\n\n\n\n\n/usr/bin/xinit \npath_to_fullscreen_application\n -- :1\n\n\n\n\n\n\nExport X display to current ssh connection\n\n\n\n\nexport DISPLAY=\n${SSH_CLIENT%% *}\n\n\n\n\n\nMiscellaneous:\n\n\n\n\nTMUX\n\n\n\n\ntmux list-sessions\ntmux attach -t 2\nsudo tmux -2 -S /tmp/tmux-\nUID\n/default\n\n\n\n\n\n\nCool weather\n\n\n\n\ncurl http://wttr.in/moscow\n\n\n\n\n\n\nKill all proesses with certain name\n\n\n\n\nps ax | grep http | awk '{print $1}' | xargs kill\n\n\n\n\n\n\nSNMP\n\n\n\n\nsnmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus", 
             "title": "Commands"
         }, 
         {
@@ -126,24 +246,44 @@
             "title": "Remote management:"
         }, 
         {
-            "location": "/Unix/Commands/#security", 
-            "text": "IPTables   # Show rules\niptables -nvL\niptable -t nat -nvL   Disabling SELinux   sed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux   cat /etc/sysconfig/selinux", 
-            "title": "Security:"
-        }, 
-        {
-            "location": "/Unix/Commands/#virtual-and-independent-environment", 
-            "text": "Docker:   # Execute in-docker console\nsudo docker exec -it  container  bash\n# Create JSON with container settings\ndocker inspect -f '{{ json .NetworkSettings }}'  container_id  | python -mjson.tool\n# Add custom docker registry\nmkdir /etc/systemd/system/docker.service.d/\ntouch /etc/systemd/system/docker.service.d/docker_opts.conf\nvi /etc/systemd/system/docker.service.d/docker_opts.conf\n# --- docker_opts.conf contents ---\n[Service]\nExecStart=\nExecStart=/usr/bin/docker -d -H fd:// --insecure-registry  docker_registry_url  --registry-mirror  mirror_url \n# ---------------------------------\nsystemctl daemon-reload\nservice docker restart   WINE   WINEARCH= wine32_or_wine64  WINEPREFIX=/home/wine/ custom_prefix  wine  path_to_executable", 
-            "title": "Virtual and independent environment:"
-        }, 
-        {
             "location": "/Unix/Commands/#x-server", 
             "text": "Start full-screen application in different X server   /usr/bin/xinit  path_to_fullscreen_application  -- :1   Export X display to current ssh connection   export DISPLAY= ${SSH_CLIENT%% *}", 
             "title": "X Server:"
         }, 
         {
             "location": "/Unix/Commands/#miscellaneous", 
-            "text": "TMUX   tmux list-sessions\ntmux attach -t 2   Cool weather   curl http://wttr.in/moscow   Kill all proesses with certain name   ps ax | grep http | awk '{print $1}' | xargs kill", 
+            "text": "TMUX   tmux list-sessions\ntmux attach -t 2\nsudo tmux -2 -S /tmp/tmux- UID /default   Cool weather   curl http://wttr.in/moscow   Kill all proesses with certain name   ps ax | grep http | awk '{print $1}' | xargs kill   SNMP   snmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus", 
             "title": "Miscellaneous:"
+        }, 
+        {
+            "location": "/Unix/Docker/", 
+            "text": "Execute in-docker console\n\n\nsudo docker exec -it \ncontainer\n bash\n\n\n\n\nCreate JSON with container settings\n\n\ndocker inspect -f '{{ json .NetworkSettings }}' \ncontainer_id\n | python -mjson.tool\n\n\n\n\nDelete containers by date:\n\n\ndocker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm\n\n\n\n\nDelete all containers:\n\n\ndocker stop $(docker ps -a -q)\ndocker rm $(docker ps -a -q)\n\n\n\n\nUse Docker registry\n\n\nmkdir /etc/systemd/system/docker.service.d/\ntouch /etc/systemd/system/docker.service.d/docker_opts.conf\nnano /etc/systemd/system/docker.service.d/docker_opts.conf\n\n# ---\n[Service]\nExecStart=\nExecStart=/usr/bin/docker -d -H fd:// --insecure-registry docker-registry.keepbot.github.io --registry-mirror https://doker-registry-mirror.keepbot.github.io\n# ---\n\nsystemctl daemon-reload\nservice docker restart", 
+            "title": "Docker"
+        }, 
+        {
+            "location": "/Unix/Docker/#execute-in-docker-console", 
+            "text": "sudo docker exec -it  container  bash", 
+            "title": "Execute in-docker console"
+        }, 
+        {
+            "location": "/Unix/Docker/#create-json-with-container-settings", 
+            "text": "docker inspect -f '{{ json .NetworkSettings }}'  container_id  | python -mjson.tool", 
+            "title": "Create JSON with container settings"
+        }, 
+        {
+            "location": "/Unix/Docker/#delete-containers-by-date", 
+            "text": "docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm", 
+            "title": "Delete containers by date:"
+        }, 
+        {
+            "location": "/Unix/Docker/#delete-all-containers", 
+            "text": "docker stop $(docker ps -a -q)\ndocker rm $(docker ps -a -q)", 
+            "title": "Delete all containers:"
+        }, 
+        {
+            "location": "/Unix/Docker/#use-docker-registry", 
+            "text": "mkdir /etc/systemd/system/docker.service.d/\ntouch /etc/systemd/system/docker.service.d/docker_opts.conf\nnano /etc/systemd/system/docker.service.d/docker_opts.conf\n\n# ---\n[Service]\nExecStart=\nExecStart=/usr/bin/docker -d -H fd:// --insecure-registry docker-registry.keepbot.github.io --registry-mirror https://doker-registry-mirror.keepbot.github.io\n# ---\n\nsystemctl daemon-reload\nservice docker restart", 
+            "title": "Use Docker registry"
         }, 
         {
             "location": "/Unix/Filesystem/", 
@@ -217,12 +357,22 @@
         }, 
         {
             "location": "/Unix/GPFS/", 
-            "text": "Change hostname on GPFS nodes\n\n\n\n\nPreface.\n\n\n\n\n#Old names:\n10.10.10.10     OLD-SRV-NAME-01\n10.10.10.10     OLD-SRV-NAME-02\n#New names:\n10.10.10.10     NEW-SRV-NAME-01\n10.10.10.10     NEW-SRV-NAME-02\n\n\n\n\n\n\n\nStop all services which use GPFS\n\n\n[On each node] add new names to /etc/hosts (old ones keep too)\n\n\n\n\n10.10.10.10     NEW-SRV-NAME-01\n10.10.10.11     NEW-SRV-NAME-02\n\n\n\n\n\n\n[On master node] Shut down GPFS-cluster\n\n\n\n\nmmshutdown -a\n\n\n\n\n\n\n[On master node] Run command for configuration changing\n\n\n\n\n# Change interface names to names placed after \n-N\n key\nmmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx1 -N NEW-SRV-NAME-01\nmmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx2 -N NEW-SRV-NAME-02\n\n\n\n\n\n\n[On master node] Start GPFS-cluster\n\n\n\n\nmmstartup -a\n\n\n\n\n\n\n[On master node] Check cluster details and make sure that names were changed\n\n\n\n\nmmlscluster\nmmgetstate -a\n\n\n\n\n\n\n[On each node] If everything right remove old records from /etc/hosts\n\n\n[On maser node] Recheck than everything still OK\n\n\n\n\nmmshutdown -a\nmmstartup -a\nmmlscluster\nmmgetstate -a", 
+            "text": "Autostart GPFS\n\n\nmmchconfig autoload=yes\n\n\n\n\nIncrease Inodes\n\n\nmmchfs \nfsname\n -F 1M\n\n\n\n\nChange hostname on GPFS nodes\n\n\n\n\n[Preface]\n\n\n\n\n#Old names:\n10.10.10.10     OLD-SRV-NAME-01\n10.10.10.10     OLD-SRV-NAME-02\n#New names:\n10.10.10.10     NEW-SRV-NAME-01\n10.10.10.10     NEW-SRV-NAME-02\n\n\n\n\n\n\n\n[Preface]\n Stop all services which use GPFS\n\n\n[On each node]\n add new names to /etc/hosts (old ones keep too)\n\n\n\n\n10.10.10.10     NEW-SRV-NAME-01\n10.10.10.11     NEW-SRV-NAME-02\n\n\n\n\n\n\n[On master node]\n Shut down GPFS-cluster\n\n\n\n\nmmshutdown -a\n\n\n\n\n\n\n[On master node]\n Run command for configuration changing\n\n\n\n\n# Change interface names to names placed after \n-N\n key\nmmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx1 -N NEW-SRV-NAME-01\nmmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx2 -N NEW-SRV-NAME-02\n\n\n\n\n\n\n[On master node]\n Start GPFS-cluster\n\n\n\n\nmmstartup -a\n\n\n\n\n\n\n[On master node]\n Check cluster details and make sure that names were changed\n\n\n\n\nmmlscluster\nmmgetstate -a\n\n\n\n\n\n\n[On each node]\n If everything right remove old records from /etc/hosts\n\n\n[On maser node]\n Recheck than everything still OK\n\n\n\n\nmmshutdown -a\nmmstartup -a\nmmlscluster\nmmgetstate -a", 
             "title": "GPFS"
         }, 
         {
+            "location": "/Unix/GPFS/#autostart-gpfs", 
+            "text": "mmchconfig autoload=yes", 
+            "title": "Autostart GPFS"
+        }, 
+        {
+            "location": "/Unix/GPFS/#increase-inodes", 
+            "text": "mmchfs  fsname  -F 1M", 
+            "title": "Increase Inodes"
+        }, 
+        {
             "location": "/Unix/GPFS/#change-hostname-on-gpfs-nodes", 
-            "text": "Preface.   #Old names:\n10.10.10.10     OLD-SRV-NAME-01\n10.10.10.10     OLD-SRV-NAME-02\n#New names:\n10.10.10.10     NEW-SRV-NAME-01\n10.10.10.10     NEW-SRV-NAME-02   Stop all services which use GPFS  [On each node] add new names to /etc/hosts (old ones keep too)   10.10.10.10     NEW-SRV-NAME-01\n10.10.10.11     NEW-SRV-NAME-02   [On master node] Shut down GPFS-cluster   mmshutdown -a   [On master node] Run command for configuration changing   # Change interface names to names placed after  -N  key\nmmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx1 -N NEW-SRV-NAME-01\nmmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx2 -N NEW-SRV-NAME-02   [On master node] Start GPFS-cluster   mmstartup -a   [On master node] Check cluster details and make sure that names were changed   mmlscluster\nmmgetstate -a   [On each node] If everything right remove old records from /etc/hosts  [On maser node] Recheck than everything still OK   mmshutdown -a\nmmstartup -a\nmmlscluster\nmmgetstate -a", 
+            "text": "[Preface]   #Old names:\n10.10.10.10     OLD-SRV-NAME-01\n10.10.10.10     OLD-SRV-NAME-02\n#New names:\n10.10.10.10     NEW-SRV-NAME-01\n10.10.10.10     NEW-SRV-NAME-02   [Preface]  Stop all services which use GPFS  [On each node]  add new names to /etc/hosts (old ones keep too)   10.10.10.10     NEW-SRV-NAME-01\n10.10.10.11     NEW-SRV-NAME-02   [On master node]  Shut down GPFS-cluster   mmshutdown -a   [On master node]  Run command for configuration changing   # Change interface names to names placed after  -N  key\nmmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx1 -N NEW-SRV-NAME-01\nmmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx2 -N NEW-SRV-NAME-02   [On master node]  Start GPFS-cluster   mmstartup -a   [On master node]  Check cluster details and make sure that names were changed   mmlscluster\nmmgetstate -a   [On each node]  If everything right remove old records from /etc/hosts  [On maser node]  Recheck than everything still OK   mmshutdown -a\nmmstartup -a\nmmlscluster\nmmgetstate -a", 
             "title": "Change hostname on GPFS nodes"
         }, 
         {
@@ -256,6 +406,26 @@
             "title": "VM"
         }, 
         {
+            "location": "/Unix/KVM/", 
+            "text": "Create virtual hdd image\n\n\nqemu-img create -o preallocation=metadata -f qcow2 qcow2.img 20G\n\n\n\n\nStart installation of virtual machine with virtual image\n\n\nqemu-system-x86_64 -hda vdisk.img -cdrom /path/to/boot-media.iso -boot d -m 384\n\n\n\n\nRun virtual machine\n\n\nqemu-system-x86_64 vdisk.img -m 384", 
+            "title": "KVM"
+        }, 
+        {
+            "location": "/Unix/KVM/#create-virtual-hdd-image", 
+            "text": "qemu-img create -o preallocation=metadata -f qcow2 qcow2.img 20G", 
+            "title": "Create virtual hdd image"
+        }, 
+        {
+            "location": "/Unix/KVM/#start-installation-of-virtual-machine-with-virtual-image", 
+            "text": "qemu-system-x86_64 -hda vdisk.img -cdrom /path/to/boot-media.iso -boot d -m 384", 
+            "title": "Start installation of virtual machine with virtual image"
+        }, 
+        {
+            "location": "/Unix/KVM/#run-virtual-machine", 
+            "text": "qemu-system-x86_64 vdisk.img -m 384", 
+            "title": "Run virtual machine"
+        }, 
+        {
             "location": "/Unix/Network/", 
             "text": "TCPDUMP (with all commands use '| head' optionally)\n\n\n# Capture bunch of packets\ntcpdump -w capture.pcap\n# Show list of unique tcp or udp connections ip addresses\ntcpdump -nn -r capture.pcap 'tcp or udp' | cut -f 3 -d \n \n | cut -f 1-4 -d \n.\n | sort | uniq | sort -nr\n# Show list of unique destinations with SYN flag(\u2018tcp[13]=2\u2019)\ntcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 5 -d \n \n | sort | uniq -c | sort -nr\n# Show list of unique sources with SYN flag(\u2018tcp[13]=2\u2019)\ntcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 3 -d \n \n | cut -f 1-4 -d \n.\n | sort | uniq -c | sort -nr\n# Search for plain texts (-A)\ntcpdump -Ann -r capture.pcap 'dst port 25 or dst port 514 or dst port 110 or dst port 21 or dst port 53 or dst port 80'\n# Search for top level domains (optiolally for names only: | grep -E '[a-z]')\ntcpdump -nn -r capture.pcap 'port 53' | grep -Ev '(com|ru|net|org|gov|mil|arpa)' | cut -f 9 -d \n \n  \n# Investigate HTTP traffic\ntcpdump -Ann -r capture.pcap 'port 80' | grep 'HTTP' | grep -Ev '(GET|HEAD)'\n# Search HTTP traffic for user-agent list\ntcpdump -Ann -r capture.pcap 'port 80' | grep -Ei 'user-agent' | sort | uniq -c | sort -n\ntcpdump -Ann -r capture.pcap 'port 80' | sed -n '/Mozilla/,$p'\n# Pcap repository (-C filesize in MBytes, -W number of files, -G time in seconds, %s timestamp)\nsudo -b tcpdump -nn -i eth0 -w capture.pcap -C 1 -W 5         \nsudo -b tcpdump -nn -i eth0 -w capture-%s.pcap -G 600 -W 5    \n# Dealing with pcap files\nfor capfile in $(ls *.pcap); do tcpdump -nnr $capfile 'dst port 53'; done  \n\n\n\n\nNetworkManager: show connection info\n\n\nnmcli device show eth0\n\n\n\n\nCheck own IP address\n\n\ncurl -s checkip.dyndns.org\n\n\n\n\nShare current folder over HTTP\n\n\npython2 -m SimpleHTTPServer 8080\npython3 -mhttp.server 8080", 
             "title": "Network"
@@ -279,6 +449,31 @@
             "location": "/Unix/Network/#share-current-folder-over-http", 
             "text": "python2 -m SimpleHTTPServer 8080\npython3 -mhttp.server 8080", 
             "title": "Share current folder over HTTP"
+        }, 
+        {
+            "location": "/Unix/SMS/", 
+            "text": "Via minicom:\n\n\n\n\nminicom -s\n\n\n\n\nAT+CMGF=1\nAT+CMGS=\n+xxxxxxxxxx\n\nWrite message here. \nctrl+z\n\n\n\n\n\nSMSd\n\n\nsmssend +xxxxxxxxxxx 'One-Line Test 02' \n /dev/null 2\n1\n\n\n\n\n\n\nExample smsd.conf. Read the manual for a description\n\n\n\n\ndevices = xenium0\nlogfile = /var/log/smsd/smsd.log\nloglevel = 2\n#user = smstools\nuser = nagios\n# 3.1.5 introduced smart logging\n# once your configuration is OK, set log level lower (5 is good in most cases)\nsmart_logging = yes\ninfofile = /run/smsd/smsd.working\npidfile = /run/smsd/smsd.pid\n\n[xenium0]\ndevice = /dev/ttyUSB0\n#pin = 1122\npin = ignore\nbaudrate = 115200\nrtscts = no\n#init = ATE0\n#init = at+cpms=\nsm\n,\nsm\n,\n\n#init = AT+CMGF=1\nloglevel_lac_ci = 8\nincoming = yes\nincoming = high", 
+            "title": "SMS"
+        }, 
+        {
+            "location": "/Unix/SMS/#via-minicom", 
+            "text": "minicom -s   AT+CMGF=1\nAT+CMGS= +xxxxxxxxxx \nWrite message here.  ctrl+z", 
+            "title": "Via minicom:"
+        }, 
+        {
+            "location": "/Unix/SMS/#smsd", 
+            "text": "smssend +xxxxxxxxxxx 'One-Line Test 02'   /dev/null 2 1   Example smsd.conf. Read the manual for a description   devices = xenium0\nlogfile = /var/log/smsd/smsd.log\nloglevel = 2\n#user = smstools\nuser = nagios\n# 3.1.5 introduced smart logging\n# once your configuration is OK, set log level lower (5 is good in most cases)\nsmart_logging = yes\ninfofile = /run/smsd/smsd.working\npidfile = /run/smsd/smsd.pid\n\n[xenium0]\ndevice = /dev/ttyUSB0\n#pin = 1122\npin = ignore\nbaudrate = 115200\nrtscts = no\n#init = ATE0\n#init = at+cpms= sm , sm , \n#init = AT+CMGF=1\nloglevel_lac_ci = 8\nincoming = yes\nincoming = high", 
+            "title": "SMSd"
+        }, 
+        {
+            "location": "/Unix/Skype/", 
+            "text": "Unable to receive group messages\n\n\nAfter struggling a bit, I found some useful commands:\n    /dumpmsnp - show details about your connection\n    /showplaces - show where you are currently connected\nYou can execute them in any chat window.\n\n*/dumpmsnp* command was showing \nLoggedOut\n, but I was online and talking almost normally (except group chats).\n\nSystem: MSNP: Connection Data:\n * Status: LoggedOut\n\nA lot of people are/were suffering from this problem.\n\nTo solve this \nLoggedOut\n issue, try this on any chat window:\n/msnp24\n\nand restart your Skype.\n\nAfter restarting, /dumpmsnp output shows the following status:\n\nSystem: MSNP: Connection Data (MSNP24):\n * Status: LoggedIn\n\nI don't know exactly why, but the /msnp24 command kinds of converted my account to this protocol and now everything works perfectly.", 
+            "title": "Skype"
+        }, 
+        {
+            "location": "/Unix/Skype/#unable-to-receive-group-messages", 
+            "text": "After struggling a bit, I found some useful commands:\n    /dumpmsnp - show details about your connection\n    /showplaces - show where you are currently connected\nYou can execute them in any chat window.\n\n*/dumpmsnp* command was showing  LoggedOut , but I was online and talking almost normally (except group chats).\n\nSystem: MSNP: Connection Data:\n * Status: LoggedOut\n\nA lot of people are/were suffering from this problem.\n\nTo solve this  LoggedOut  issue, try this on any chat window:\n/msnp24\n\nand restart your Skype.\n\nAfter restarting, /dumpmsnp output shows the following status:\n\nSystem: MSNP: Connection Data (MSNP24):\n * Status: LoggedIn\n\nI don't know exactly why, but the /msnp24 command kinds of converted my account to this protocol and now everything works perfectly.", 
+            "title": "Unable to receive group messages"
         }, 
         {
             "location": "/Unix/Version_Control/", 
@@ -321,6 +516,16 @@
             "title": "GitHub: Clone all user's repository"
         }, 
         {
+            "location": "/Unix/WINE/", 
+            "text": "Start\n\n\nWINEARCH=\nwine32_or_wine64\n WINEPREFIX=/home/wine/\ncustom_prefix\n wine \npath_to_executable", 
+            "title": "WINE"
+        }, 
+        {
+            "location": "/Unix/WINE/#start", 
+            "text": "WINEARCH= wine32_or_wine64  WINEPREFIX=/home/wine/ custom_prefix  wine  path_to_executable", 
+            "title": "Start"
+        }, 
+        {
             "location": "/Unix/WiFi/", 
             "text": "WPA Supplicant\n\n\nwpa_supplicant -Dnl80211 -iwlp2s0 -c/etc/wpa_supplicant/wpa_supplicant.conf \n\n\ncat /etc/wpa_supplicant/wpa_supplicant.conf\n# This network configuration was written by net-setup\nmodules=\nwpa_supplicant\n\nwpa_supplicant_wlp2s0=\n-Dnl80211\n\nconfig_wlp2s0=\ndhcp\n \n\nctrl_interface=/var/run/wpa_supplicant\nctrl_interface_group=0\nap_scan=1\nnetwork={\n   ssid=\nMTS_2140184\n\n   psk=\n0000000000\n\n   priority=5\n}", 
             "title": "WiFi"
@@ -329,6 +534,16 @@
             "location": "/Unix/WiFi/#wpa-supplicant", 
             "text": "wpa_supplicant -Dnl80211 -iwlp2s0 -c/etc/wpa_supplicant/wpa_supplicant.conf  \n\ncat /etc/wpa_supplicant/wpa_supplicant.conf\n# This network configuration was written by net-setup\nmodules= wpa_supplicant \nwpa_supplicant_wlp2s0= -Dnl80211 \nconfig_wlp2s0= dhcp  \n\nctrl_interface=/var/run/wpa_supplicant\nctrl_interface_group=0\nap_scan=1\nnetwork={\n   ssid= MTS_2140184 \n   psk= 0000000000 \n   priority=5\n}", 
             "title": "WPA Supplicant"
+        }, 
+        {
+            "location": "/Windows/CMD_Scripts/", 
+            "text": "Ping subnet\n\n\nFOR /L %i IN (1,1,254) DO ping -n 1 192.168.10.%i | FIND /i \nReply\nc:\\ipaddresses.txt", 
+            "title": "CMD Scripts"
+        }, 
+        {
+            "location": "/Windows/CMD_Scripts/#ping-subnet", 
+            "text": "FOR /L %i IN (1,1,254) DO ping -n 1 192.168.10.%i | FIND /i  Reply c:\\ipaddresses.txt", 
+            "title": "Ping subnet"
         }, 
         {
             "location": "/Windows/CMD_colours/", 
@@ -354,6 +569,26 @@
             "location": "/Windows/CMD_colours/#zenburn", 
             "text": "Windows Registry Editor Version 5.00\n; Zenburn is a low-contrast color scheme\n; for Windows command prompt.\n; See : http://slinky.imukuppi.org/zenburnpage/\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY ColorTable00 =dword:003f3f3f ColorTable08 =dword:008080c0\n; BLUE LBLUE ColorTable01 =dword:00af6464 ColorTable09 =dword:00ffafaf\n; GREEN LGREEN ColorTable02 =dword:00008000 ColorTable10 =dword:007f9f7f\n; CYAN LCYAN ColorTable03 =dword:00808000 ColorTable11 =dword:00d3d08c\n; RED LRED ColorTable04 =dword:00232333 ColorTable12 =dword:007071e3\n; MAGENTA LMAGENTA ColorTable05 =dword:00aa50aa ColorTable13 =dword:00c880c8\n; YELLOW LYELLOW ColorTable06 =dword:0000dcdc ColorTable14 =dword:00afdff0\n; LGRAY WHITE ColorTable07 =dword:00ccdcdc ColorTable15 =dword:00ffffff", 
             "title": "Zenburn"
+        }, 
+        {
+            "location": "/Windows/PowerShell_Scripts/", 
+            "text": "Show current logged user\n\n\ngwmi win32_computersystem -comp $computer | select USername,Caption,Manufacturer\nGet_WmiObject win32_computersystem -comp $computer | select USername,Caption,Manufacturer\n\n\n\n\nList of logged in users (any user in any time)\n\n\nGet-WmiObject Win32_LoggedOnUser -ComputerName msk-sales-02 | Select __SERVER, Antecedent -Unique | %{\n{0} : {1}\\{2}\n -f $_.__SERVER, $_.Antecedent.ToString().Split('\n')[1],$_.Antecedent.ToString().Split('\n')[3]}\n\n\n\n\nRead from keyboard\n\n\n$variable=read-host \nEnter computer name:", 
+            "title": "PowerShell Scripts"
+        }, 
+        {
+            "location": "/Windows/PowerShell_Scripts/#show-current-logged-user", 
+            "text": "gwmi win32_computersystem -comp $computer | select USername,Caption,Manufacturer\nGet_WmiObject win32_computersystem -comp $computer | select USername,Caption,Manufacturer", 
+            "title": "Show current logged user"
+        }, 
+        {
+            "location": "/Windows/PowerShell_Scripts/#list-of-logged-in-users-any-user-in-any-time", 
+            "text": "Get-WmiObject Win32_LoggedOnUser -ComputerName msk-sales-02 | Select __SERVER, Antecedent -Unique | %{ {0} : {1}\\{2}  -f $_.__SERVER, $_.Antecedent.ToString().Split(' ')[1],$_.Antecedent.ToString().Split(' ')[3]}", 
+            "title": "List of logged in users (any user in any time)"
+        }, 
+        {
+            "location": "/Windows/PowerShell_Scripts/#read-from-keyboard", 
+            "text": "$variable=read-host  Enter computer name:", 
+            "title": "Read from keyboard"
         }
     ]
 }

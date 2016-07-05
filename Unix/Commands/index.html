@@ -109,7 +109,25 @@
         
             
 <li >
+    <a href="../../Databases/Oracle/Blocking_sessions/">Blocking sessions</a>
+</li>
+
+        
+            
+<li >
     <a href="../../Databases/Oracle/OJDBC/">OJDBC</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Databases/Oracle/Tablespace/">Tablespace</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Databases/Oracle/Useful_Queries/">Useful Queries</a>
 </li>
 
         
@@ -147,12 +165,24 @@
                 
                 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Secure <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Security <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../../Secure/HSM/">HSM</a>
+    <a href="../../Security/HSM/">HSM</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../Security/IPTables/">IPTables</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../Security/SELinux/">SELinux</a>
 </li>
 
                         
@@ -185,6 +215,12 @@
                         
                             
 <li >
+    <a href="../Docker/">Docker</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../Filesystem/">Filesystem</a>
 </li>
 
@@ -209,13 +245,37 @@
                         
                             
 <li >
+    <a href="../KVM/">KVM</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../Network/">Network</a>
 </li>
 
                         
                             
 <li >
+    <a href="../SMS/">SMS</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../Skype/">Skype</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../Version_Control/">Version Control</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../WINE/">WINE</a>
 </li>
 
                         
@@ -236,7 +296,19 @@
                         
                             
 <li >
+    <a href="../../Windows/CMD_Scripts/">CMD Scripts</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../../Windows/CMD_colours/">CMD colours</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../Windows/PowerShell_Scripts/">PowerShell Scripts</a>
 </li>
 
                         
@@ -260,7 +332,7 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../Filesystem/">
+                        <a rel="prev" href="../Docker/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -287,12 +359,6 @@
         
     
         <li class="first-level "><a href="#remote-management">Remote management:</a></li>
-        
-    
-        <li class="first-level "><a href="#security">Security:</a></li>
-        
-    
-        <li class="first-level "><a href="#virtual-and-independent-environment">Virtual and independent environment:</a></li>
         
     
         <li class="first-level "><a href="#x-server">X Server:</a></li>
@@ -365,48 +431,6 @@ xfreerdp +clipboard /w:1600 /h:900 /v:10.15.0.10:3389 /u:Administrator
 xfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM/HMC/7.9_sp3 /v:10.15.0.10
 </code></pre>
 
-<h3 id="security">Security:</h3>
-<ul>
-<li>IPTables</li>
-</ul>
-<pre><code class="bash"># Show rules
-iptables -nvL
-iptable -t nat -nvL
-</code></pre>
-
-<ul>
-<li>Disabling SELinux</li>
-</ul>
-<pre><code class="bash">sed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux &amp;&amp; cat /etc/sysconfig/selinux
-</code></pre>
-
-<h3 id="virtual-and-independent-environment">Virtual and independent environment:</h3>
-<ul>
-<li>Docker:</li>
-</ul>
-<pre><code class="bash"># Execute in-docker console
-sudo docker exec -it &lt;container&gt; bash
-# Create JSON with container settings
-docker inspect -f '{{ json .NetworkSettings }}' &lt;container_id&gt; | python -mjson.tool
-# Add custom docker registry
-mkdir /etc/systemd/system/docker.service.d/
-touch /etc/systemd/system/docker.service.d/docker_opts.conf
-vi /etc/systemd/system/docker.service.d/docker_opts.conf
-# --- docker_opts.conf contents ---
-[Service]
-ExecStart=
-ExecStart=/usr/bin/docker -d -H fd:// --insecure-registry &lt;docker_registry_url&gt; --registry-mirror &lt;mirror_url&gt;
-# ---------------------------------
-systemctl daemon-reload
-service docker restart
-</code></pre>
-
-<ul>
-<li>WINE</li>
-</ul>
-<pre><code class="bash">WINEARCH=&lt;wine32_or_wine64&gt; WINEPREFIX=/home/wine/&lt;custom_prefix&gt; wine &lt;path_to_executable&gt;
-</code></pre>
-
 <h3 id="x-server">X Server:</h3>
 <ul>
 <li>Start full-screen application in different X server</li>
@@ -426,6 +450,7 @@ service docker restart
 </ul>
 <pre><code class="bash">tmux list-sessions
 tmux attach -t 2
+sudo tmux -2 -S /tmp/tmux-&lt;UID&gt;/default
 </code></pre>
 
 <ul>
@@ -438,6 +463,12 @@ tmux attach -t 2
 <li>Kill all proesses with certain name</li>
 </ul>
 <pre><code class="bash">ps ax | grep http | awk '{print $1}' | xargs kill
+</code></pre>
+
+<ul>
+<li>SNMP</li>
+</ul>
+<pre><code>snmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus
 </code></pre></div>
         
     </div>

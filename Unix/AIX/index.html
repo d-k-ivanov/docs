@@ -109,7 +109,25 @@
         
             
 <li >
+    <a href="../../Databases/Oracle/Blocking_sessions/">Blocking sessions</a>
+</li>
+
+        
+            
+<li >
     <a href="../../Databases/Oracle/OJDBC/">OJDBC</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Databases/Oracle/Tablespace/">Tablespace</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Databases/Oracle/Useful_Queries/">Useful Queries</a>
 </li>
 
         
@@ -147,12 +165,24 @@
                 
                 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Secure <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Security <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../../Secure/HSM/">HSM</a>
+    <a href="../../Security/HSM/">HSM</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../Security/IPTables/">IPTables</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../Security/SELinux/">SELinux</a>
 </li>
 
                         
@@ -185,6 +215,12 @@
                         
                             
 <li >
+    <a href="../Docker/">Docker</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../Filesystem/">Filesystem</a>
 </li>
 
@@ -209,13 +245,37 @@
                         
                             
 <li >
+    <a href="../KVM/">KVM</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../Network/">Network</a>
 </li>
 
                         
                             
 <li >
+    <a href="../SMS/">SMS</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../Skype/">Skype</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../Version_Control/">Version Control</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../WINE/">WINE</a>
 </li>
 
                         
@@ -236,7 +296,19 @@
                         
                             
 <li >
+    <a href="../../Windows/CMD_Scripts/">CMD Scripts</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../../Windows/CMD_colours/">CMD colours</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../Windows/PowerShell_Scripts/">PowerShell Scripts</a>
 </li>
 
                         
@@ -255,7 +327,7 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../../Secure/HSM/">
+                        <a rel="next" href="../../Security/SELinux/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
@@ -299,6 +371,9 @@
         
     
         <li class="first-level "><a href="#virtual-devices">Virtual devices:</a></li>
+        
+    
+        <li class="first-level "><a href="#zabbix-agent">Zabbix agent</a></li>
         
     
     </ul>
@@ -467,6 +542,34 @@ lsmap -vadapter vhost
 mkvdev [-f] -vdev hdiskX -vadapter vhostX -dev &lt;virtual_device_name&gt;
 # Make a virtual cd-rom device for particular vhost:
 mkvdev -fbo -vadapter vhostX -dev &lt;virtual_device_name&gt;
+</code></pre>
+
+<h3 id="zabbix-agent">Zabbix agent</h3>
+<pre><code># Dependencies:
+rpm -ivh ftp://www.oss4aix.org/latest/aix61/gettext-0.10.40-8.aix5.2.ppc.rpm
+rpm -ivh ftp://www.oss4aix.org/compatible/aix61/expat-2.1.0-1.aix5.1.ppc.rpm
+rpm -ivh ftp://www.oss4aix.org/compatible/aix61/libgcc-4.7.2-1.aix6.1.ppc.rpm
+rpm -ivh ftp://www.oss4aix.org/compatible/aix61/libffi-3.0.11-2.aix5.1.ppc.rpm
+rpm -ivh ftp://www.oss4aix.org/compatible/aix61/glib2-2.30.3-1.aix5.1.ppc.rpm
+rpm -ivh ftp://www.oss4aix.org/compatible/aix61/libiconv-1.14-2.aix5.1.ppc.rpm
+
+# Main
+mkgroup zabbix
+useradd -g zabbix zabbix
+
+mkdir /var/run/zabbix
+touch /var/run/zabbix/zabbix_agentd.pid
+mkdir /var/log/zabbix
+touch /var/log/zabbix/zabbix_agentd.log
+
+chown -R zabbix:zabbix /var/log/zabbix
+chown -R zabbix:zabbix /var/run/zabbix
+chown zabbix:zabbix /etc/zabbix_agentd.conf
+
+/usr/sbin/zabbix_agentd --config /etc/zabbix_agentd.conf
+
+vi /etc/inittab
+zabagent:2:once:/usr/sbin/zabbix_agentd --config /etc/zabbix_agentd.conf
 </code></pre></div>
         
     </div>

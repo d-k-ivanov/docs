@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Dev/Ruby/Installation/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Databases/Oracle/Blocking_sessions/"> 
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-    <title>Installation - Technical Info</title>
+    <title>Blocking sessions - Technical Info</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -92,13 +92,13 @@
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Databases <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../../../Databases/Links/">Links</a>
+    <a href="../../Links/">Links</a>
 </li>
 
                         
@@ -108,26 +108,26 @@
     <ul class="dropdown-menu">
         
             
-<li >
-    <a href="../../../Databases/Oracle/Blocking_sessions/">Blocking sessions</a>
+<li class="active">
+    <a href="./">Blocking sessions</a>
 </li>
 
         
             
 <li >
-    <a href="../../../Databases/Oracle/OJDBC/">OJDBC</a>
+    <a href="../OJDBC/">OJDBC</a>
 </li>
 
         
             
 <li >
-    <a href="../../../Databases/Oracle/Tablespace/">Tablespace</a>
+    <a href="../Tablespace/">Tablespace</a>
 </li>
 
         
             
 <li >
-    <a href="../../../Databases/Oracle/Useful_Queries/">Useful Queries</a>
+    <a href="../Useful_Queries/">Useful Queries</a>
 </li>
 
         
@@ -140,7 +140,7 @@
                 
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dev <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
@@ -150,8 +150,8 @@
     <ul class="dropdown-menu">
         
             
-<li class="active">
-    <a href="./">Installation</a>
+<li >
+    <a href="../../../Dev/Ruby/Installation/">Installation</a>
 </li>
 
         
@@ -327,12 +327,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../../../Databases/Oracle/Useful_Queries/">
+                        <a rel="next" href="../../Links/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../../../Security/HSM/">
+                        <a rel="prev" href="../OJDBC/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -355,21 +355,72 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#via-rvm-on-ubuntu">via RVM on Ubuntu</a></li>
+        <li class="first-level active"><a href="#find-all-locking-sessions">Find all locking sessions</a></li>
+        
+    
+        <li class="first-level "><a href="#view-all-blocking-sessions-ver1">View all blocking sessions ver.1</a></li>
+        
+    
+        <li class="first-level "><a href="#view-all-blocking-sessions-ver2">View all blocking sessions ver.2</a></li>
+        
+    
+        <li class="first-level "><a href="#view-sid-and-id-of-blocking-sessions">View SID and ID of blocking sessions</a></li>
+        
+    
+        <li class="first-level "><a href="#view-the-name-of-blocking-session">View the name of blocking session</a></li>
+        
+    
+        <li class="first-level "><a href="#kill-session-alter-system-kill-session-sidid">Kill session: " ALTER SYSTEM KILL SESSION 'SID,ID' "</a></li>
+        
+    
+        <li class="first-level "><a href="#view-all-active-sessions">View all active sessions</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="via-rvm-on-ubuntu">via RVM on Ubuntu</h3>
-<pre><code>sudo apt-get install libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
-gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-curl -sSL https://get.rvm.io | bash -s stable
-source ~/.rvm/scripts/rvm
-rvm install 2.3.1
-rvm use 2.3.1 --default
-ruby -v
+<h3 id="find-all-locking-sessions">Find all locking sessions</h3>
+<pre><code>SELECT * FROM v$lock;
+</code></pre>
+
+<h3 id="view-all-blocking-sessions-ver1">View all blocking sessions ver.1</h3>
+<pre><code>SELECT s.blocking_session, s.sid, s.serial#, s.seconds_in_wait FROM v$session s WHERE blocking_session IS NOT NULL;
+</code></pre>
+
+<h3 id="view-all-blocking-sessions-ver2">View all blocking sessions ver.2</h3>
+<pre><code>SELECT s1.username || '@' || s1.machine
+    || ' ( SID=' || s1.sid || ' )  is blocking '
+    || s2.username || '@' || s2.machine || ' ( SID=' || s2.sid || ' ) ' AS blocking_status
+    FROM v$lock l1, v$session s1, v$lock l2, v$session s2
+    WHERE s1.sid=l1.sid AND s2.sid=l2.sid
+    AND l1.BLOCK=1 AND l2.request &gt; 0
+    AND l1.id1 = l2.id1
+    AND l1.id2 = l2.id2;
+</code></pre>
+
+<h3 id="view-sid-and-id-of-blocking-sessions">View SID and ID of blocking sessions</h3>
+<pre><code>SELECT sid, id1 FROM v$lock WHERE TYPE='TM';
+</code></pre>
+
+<h3 id="view-the-name-of-blocking-session">View the name of blocking session</h3>
+<pre><code>SELECT object_name FROM dba_objects WHERE object_id=101482;
+</code></pre>
+
+<h3 id="kill-session-alter-system-kill-session-sidid">Kill session: " ALTER SYSTEM KILL SESSION 'SID,ID' "</h3>
+<pre><code>ALTER SYSTEM KILL SESSION '1621,24543';
+</code></pre>
+
+<h3 id="view-all-active-sessions">View all active sessions</h3>
+<pre><code>SELECT s.inst_id,
+       s.sid,
+       s.serial#,
+       p.spid,
+       s.username,
+       s.program
+FROM   gv$session s
+       JOIN gv$process p ON p.addr = s.paddr AND p.inst_id = s.inst_id
+WHERE  s.type != 'BACKGROUND';
 </code></pre></div>
         
     </div>
