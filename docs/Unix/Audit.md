@@ -1,4 +1,4 @@
-### Why is my servere rebooted?
+### Why is my server rebooted?
 ```
 last reboot 
 sudo lastcomm | egrep 'reboot|shutdown'
