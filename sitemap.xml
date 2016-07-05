@@ -12,7 +12,33 @@
     
         
     <url>
-     <loc>https://keepbot.github.io/docs//Oracle/OJDBC/</loc>
+     <loc>https://keepbot.github.io/docs//Databases/Links/</loc>
+     <lastmod>2016-07-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>https://keepbot.github.io/docs//Secure/HSM/</loc>
      <lastmod>2016-07-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -46,6 +72,18 @@
     </url>
         
     <url>
+     <loc>https://keepbot.github.io/docs//Unix/FreeBSD/</loc>
+     <lastmod>2016-07-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://keepbot.github.io/docs//Unix/GPFS/</loc>
+     <lastmod>2016-07-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>https://keepbot.github.io/docs//Unix/Hardware_info/</loc>
      <lastmod>2016-07-05</lastmod>
      <changefreq>daily</changefreq>
@@ -59,6 +97,12 @@
         
     <url>
      <loc>https://keepbot.github.io/docs//Unix/Version_Control/</loc>
+     <lastmod>2016-07-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://keepbot.github.io/docs//Unix/WiFi/</loc>
      <lastmod>2016-07-05</lastmod>
      <changefreq>daily</changefreq>
     </url>

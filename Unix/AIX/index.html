@@ -93,12 +93,66 @@
                 
                 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Oracle <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Databases <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../../Oracle/OJDBC/">OJDBC</a>
+    <a href="../../Databases/Links/">Links</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Oracle</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Databases/Oracle/OJDBC/">OJDBC</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dev <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Ruby</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Dev/Ruby/Installation/">Installation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Secure <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../Secure/HSM/">HSM</a>
 </li>
 
                         
@@ -137,6 +191,18 @@
                         
                             
 <li >
+    <a href="../FreeBSD/">FreeBSD</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../GPFS/">GPFS</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../Hardware_info/">Hardware info</a>
 </li>
 
@@ -150,6 +216,12 @@
                             
 <li >
     <a href="../Version_Control/">Version Control</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../WiFi/">WiFi</a>
 </li>
 
                         
@@ -183,7 +255,7 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../../Oracle/OJDBC/">
+                        <a rel="next" href="../../Secure/HSM/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
@@ -211,7 +283,10 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#basic-commands">Basic commands:</a></li>
+        <li class="first-level active"><a href="#basic-programs">Basic programs</a></li>
+        
+    
+        <li class="first-level "><a href="#basic-commands">Basic commands:</a></li>
         
     
         <li class="first-level "><a href="#gpfs">GPFS:</a></li>
@@ -229,6 +304,43 @@
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
+
+<h3 id="basic-programs">Basic programs</h3>
+<pre><code>sh$ ftp ftp.software.ibm.com
+  Name&gt; ftp
+  Password&gt; your e-mail address
+  ftp&gt; cd aix/freeSoftware/aixtoolbox/RPMS/ppc/wget
+  ftp&gt; binary
+  ftp&gt; get wget-1.9.1-1.aix5.1.ppc.rpm
+  ftp&gt; quit
+sh$ rpm -hUv wget-1.9.1-1.aix5.1.ppc.rpm
+sh$ wget -r -nd ftp://ftp.software.ibm.com/aix/freeSoftware/aixtoolbox/ezinstall/ppc  
+
+sh$ ls
+getapp-dev.sh       getgnome.base.sh    getkde3.all.sh
+Xsession.kde        getbase.sh          getkde2.all.sh      getkde3.base.sh
+Xsession.kde2       getdesktop.base.sh  getkde2.base.sh     getkde3.opt.sh
+getgnome.apps.sh    getkde2.opt.sh      
+
+sh$ chmod +x get*.sh  
+
+sh$ cd base
+sh$ ls
+bash-3.2-1.aix5.2.ppc.rpm          rpm-3.0.5-52.aix5.3.ppc.rpm
+bzip2-1.0.5-3.aix5.3.ppc.rpm       rpm-build-3.0.5-52.aix5.3.ppc.rpm
+gettext-0.10.40-8.aix5.2.ppc.rpm   rpm-devel-3.0.5-52.aix5.3.ppc.rpm
+gzip-1.2.4a-10.aix5.2.ppc.rpm      tar-1.14-2.aix5.1.ppc.rpm
+info-4.6-1.aix5.1.ppc.rpm          unzip-5.51-1.aix5.1.ppc.rpm
+patch-2.5.4-4.aix4.3.ppc.rpm       
+popt-1.7-2.aix5.1.ppc.rpm
+
+sh$ rpm -hUv unzip-5.51-1.aix5.1.ppc.rpm
+sh$ rpm -hUv zip-2.3-3.aix4.3.ppc.rpm
+sh$ rpm -hUv bash-3.2-1.aix5.2.ppc.rpm
+
+sh$ bash
+bash-3.2# 
+</code></pre>
 
 <h3 id="basic-commands">Basic commands:</h3>
 <ul>

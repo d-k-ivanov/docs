@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Oracle/OJDBC/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Unix/GPFS/"> 
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
-    <title>OJDBC - Technical Info</title>
+    <title>GPFS - Technical Info</title>
 
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -92,14 +92,29 @@
                 
                 
                 
-                    <li class="dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Oracle <b class="caret"></b></a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Databases <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
-<li class="active">
-    <a href="./">OJDBC</a>
+<li >
+    <a href="../../Databases/Links/">Links</a>
 </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Oracle</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Databases/Oracle/OJDBC/">OJDBC</a>
+</li>
+
+        
+    </ul>
+  </li>
 
                         
                         </ul>
@@ -108,48 +123,105 @@
                 
                 
                     <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dev <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Ruby</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Dev/Ruby/Installation/">Installation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Secure <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../Secure/HSM/">HSM</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Unix <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../../Unix/AIX/">AIX</a>
+    <a href="../AIX/">AIX</a>
 </li>
 
                         
                             
 <li >
-    <a href="../../Unix/Audit/">Audit</a>
+    <a href="../Audit/">Audit</a>
 </li>
 
                         
                             
 <li >
-    <a href="../../Unix/Commands/">Commands</a>
+    <a href="../Commands/">Commands</a>
 </li>
 
                         
                             
 <li >
-    <a href="../../Unix/Filesystem/">Filesystem</a>
+    <a href="../Filesystem/">Filesystem</a>
 </li>
 
                         
                             
 <li >
-    <a href="../../Unix/Hardware_info/">Hardware info</a>
+    <a href="../FreeBSD/">FreeBSD</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">GPFS</a>
 </li>
 
                         
                             
 <li >
-    <a href="../../Unix/Network/">Network</a>
+    <a href="../Hardware_info/">Hardware info</a>
 </li>
 
                         
                             
 <li >
-    <a href="../../Unix/Version_Control/">Version Control</a>
+    <a href="../Network/">Network</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../Version_Control/">Version Control</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../WiFi/">WiFi</a>
 </li>
 
                         
@@ -183,12 +255,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../..">
+                        <a rel="next" href="../FreeBSD/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../../Unix/AIX/">
+                        <a rel="prev" href="../Hardware_info/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -211,30 +283,69 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#bug-9632480">BUG: 9632480</a></li>
+        <li class="first-level active"><a href="#change-hostname-on-gpfs-nodes">Change hostname on GPFS nodes</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="bug-9632480">BUG: 9632480</h3>
-<p><em>OJDBC 12.1.0.2 - BUG: ORA-01000: maximum open cursors exceeded</em></p>
-<p>We need:
-<em> ojdbc7.jar
-</em> p19632480_121020_Generic.zip
-* JRE</p>
-<blockquote>
-<p>We need to update OracleDatabaseMetaData.class in our ojdbc7.jar archive</p>
-</blockquote>
-<pre><code class="bash">unzip p19632480_121020_Generic.zip
+<h3 id="change-hostname-on-gpfs-nodes">Change hostname on GPFS nodes</h3>
+<ol>
+<li>Preface.</li>
+</ol>
+<pre><code>#Old names:
+10.10.10.10     OLD-SRV-NAME-01
+10.10.10.10     OLD-SRV-NAME-02
+#New names:
+10.10.10.10     NEW-SRV-NAME-01
+10.10.10.10     NEW-SRV-NAME-02
+
 </code></pre>
 
-<p>Get folder ./p19632480_121020_Generic/19632480/files/jdbc/lib/ojdbc7.jar
-And place it to ojdbc7.jar location</p>
-<p>Make shure that your JAVA_HOME is exported</p>
-<p>Change working directory to ojdbc7.jar location and run:</p>
-<pre><code class="bash">$JAVA_HOME/jar -uf ojdbc7.jar
+<ol>
+<li>Stop all services which use GPFS</li>
+<li>[On each node] add new names to /etc/hosts (old ones keep too)</li>
+</ol>
+<pre><code>10.10.10.10     NEW-SRV-NAME-01
+10.10.10.11     NEW-SRV-NAME-02
+</code></pre>
+
+<ol>
+<li>[On master node] Shut down GPFS-cluster</li>
+</ol>
+<pre><code>mmshutdown -a
+</code></pre>
+
+<ol>
+<li>[On master node] Run command for configuration changing</li>
+</ol>
+<pre><code># Change interface names to names placed after &quot;-N&quot; key
+mmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx1 -N NEW-SRV-NAME-01
+mmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx2 -N NEW-SRV-NAME-02
+</code></pre>
+
+<ol>
+<li>[On master node] Start GPFS-cluster</li>
+</ol>
+<pre><code>mmstartup -a
+</code></pre>
+
+<ol>
+<li>[On master node] Check cluster details and make sure that names were changed</li>
+</ol>
+<pre><code>mmlscluster
+mmgetstate -a
+</code></pre>
+
+<ol>
+<li>[On each node] If everything right remove old records from /etc/hosts</li>
+<li>[On maser node] Recheck than everything still OK</li>
+</ol>
+<pre><code>mmshutdown -a
+mmstartup -a
+mmlscluster
+mmgetstate -a
 </code></pre></div>
         
     </div>
