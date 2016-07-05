@@ -165,6 +165,21 @@
                 
                 
                     <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">OS <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../OS/AIX/">AIX</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Security <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
@@ -194,12 +209,6 @@
                     <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Unix <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                        
-                            
-<li >
-    <a href="../AIX/">AIX</a>
-</li>
-
                         
                             
 <li >
@@ -355,7 +364,16 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#autostart-gpfs">Autostart GPFS</a></li>
+        <li class="first-level active"><a href="#instalaltion-on-aix">Instalaltion on AIX:</a></li>
+        
+    
+        <li class="first-level "><a href="#creating-cluster">Creating cluster:</a></li>
+        
+    
+        <li class="first-level "><a href="#create-gpfs-mirror-partition">Create GPFS mirror partition:</a></li>
+        
+    
+        <li class="first-level "><a href="#autostart-gpfs">Autostart GPFS</a></li>
         
     
         <li class="first-level "><a href="#increase-inodes">Increase Inodes</a></li>
@@ -367,6 +385,61 @@
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
+
+<h3 id="instalaltion-on-aix">Instalaltion on AIX:</h3>
+<pre><code class="bash"># on each node:
+cd /&lt;path_to_gpfs_base_package&gt;/base-3-5/
+inutoc .
+installp -aXY -d/&lt;path_to_gpfs_base_package&gt;/base-3-5 all
+cd /&lt;path_to_gpfs_fix_package&gt;/fix-3-5-10/
+inutoc .
+installp -aXY -d/&lt;path_to_gpfs_fix_package&gt;/fix-3-5-10 all
+lslpp -L gpfs.\*
+</code></pre>
+
+<h3 id="creating-cluster">Creating cluster:</h3>
+<pre><code class="bash"># You need to setup paswordless shh connection between nodes
+# Add this path to /etc/environment on each node
+export PATH=$PATH:/usr/lpp/mmfs/bin
+
+mmcrcluster -N &lt;PRIMARY_NODE_HOSTNAME&gt;:manager-quorum -p PRIMARY_NODE_HOSTNAME -r /usr/bin/ssh -R /usr/bin/scp
+mmchlicense server --accept -N PRIMARY_NODE_HOSTNAME
+mmstartup -a
+mmaddnode -N &lt;SECONDARY_NODE_HOSTNAME&gt;
+mmaddnode -N &lt;THIRDARY_NODE_HOSTNAME&gt;
+mmaddnode -N &lt;N-ARY_NODE_HOSTNAME&gt;
+mmchcluster -s &lt;SECONDARY_NODE_HOSTNAME&gt;
+mmchlicense server --accept -N &lt;SECONDARY_NODE_HOSTNAME&gt;
+mmchlicense server --accept -N &lt;THIRDARY_NODE_HOSTNAME&gt;
+mmchlicense server --accept -N &lt;N-ARY_NODE_HOSTNAME&gt;
+mmstartup -N &lt;SECONDARY_NODE_HOSTNAME&gt;
+mmstartup -N &lt;THIRDARY_NODE_HOSTNAME&gt;
+mmstartup -N &lt;N-ARY_NODE_HOSTNAME&gt;
+mmchnode --quorum --manager -N &lt;SECONDARY_NODE_HOSTNAME&gt;
+# To check status of cluster:
+mmlscluster
+mmgetstate -a
+</code></pre>
+
+<h3 id="create-gpfs-mirror-partition">Create GPFS mirror partition:</h3>
+<pre><code class="bash"># On primary node:
+mkdir /etc/gpfs
+vi /etc/gpfs/diskdesk.txt
+### --insert in diskdesk.txt--
+hdiskX:::dataAndMetadata:1:nsd1:
+hdiskY:::dataAndMetadata:2:nsd2:
+### --end of insert--
+
+mmcrnsd -F /etc/gpfs/diskdesk.txt
+mmshutdown -a
+mmchconfig tiebreakerdisks=&quot;nsd1;nsd2&quot;
+mmstartup -a
+mmcrfs /mnt/gpfs gpfsfs -F /etc/gpfs/diskdesk.txt -A yes -B 512K -M2 -m2 -R2 -r2 -n 2 -N 50000
+mmlsconfig
+mmmount all -a
+mmchconfig minQuorumNodes=2
+df -g
+</code></pre>
 
 <h3 id="autostart-gpfs">Autostart GPFS</h3>
 <pre><code>mmchconfig autoload=yes

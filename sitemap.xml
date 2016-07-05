@@ -38,6 +38,16 @@
     
         
     <url>
+     <loc>https://keepbot.github.io/docs//OS/AIX/</loc>
+     <lastmod>2016-07-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
      <loc>https://keepbot.github.io/docs//Security/HSM/</loc>
      <lastmod>2016-07-05</lastmod>
      <changefreq>daily</changefreq>
@@ -58,12 +68,6 @@
     
 
     
-        
-    <url>
-     <loc>https://keepbot.github.io/docs//Unix/AIX/</loc>
-     <lastmod>2016-07-05</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
         
     <url>
      <loc>https://keepbot.github.io/docs//Unix/Audit/</loc>

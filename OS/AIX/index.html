@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Unix/AIX/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/OS/AIX/"> 
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
     <title>AIX - Technical Info</title>
@@ -164,6 +164,21 @@
                 
                 
                 
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">OS <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li class="active">
+    <a href="./">AIX</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Security <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -191,97 +206,91 @@
                 
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Unix <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
-<li class="active">
-    <a href="./">AIX</a>
+<li >
+    <a href="../../Unix/Audit/">Audit</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Audit/">Audit</a>
+    <a href="../../Unix/Commands/">Commands</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Commands/">Commands</a>
+    <a href="../../Unix/Docker/">Docker</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Docker/">Docker</a>
+    <a href="../../Unix/Filesystem/">Filesystem</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Filesystem/">Filesystem</a>
+    <a href="../../Unix/FreeBSD/">FreeBSD</a>
 </li>
 
                         
                             
 <li >
-    <a href="../FreeBSD/">FreeBSD</a>
+    <a href="../../Unix/GPFS/">GPFS</a>
 </li>
 
                         
                             
 <li >
-    <a href="../GPFS/">GPFS</a>
+    <a href="../../Unix/Hardware_info/">Hardware info</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Hardware_info/">Hardware info</a>
+    <a href="../../Unix/KVM/">KVM</a>
 </li>
 
                         
                             
 <li >
-    <a href="../KVM/">KVM</a>
+    <a href="../../Unix/Network/">Network</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Network/">Network</a>
+    <a href="../../Unix/SMS/">SMS</a>
 </li>
 
                         
                             
 <li >
-    <a href="../SMS/">SMS</a>
+    <a href="../../Unix/Skype/">Skype</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Skype/">Skype</a>
+    <a href="../../Unix/Version_Control/">Version Control</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Version_Control/">Version Control</a>
+    <a href="../../Unix/WINE/">WINE</a>
 </li>
 
                         
                             
 <li >
-    <a href="../WINE/">WINE</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../WiFi/">WiFi</a>
+    <a href="../../Unix/WiFi/">WiFi</a>
 </li>
 
                         
@@ -327,12 +336,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../../Security/SELinux/">
+                        <a rel="next" href="../../Dev/Ruby/Installation/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../Audit/">
+                        <a rel="prev" href="../../Security/HSM/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -358,10 +367,13 @@
         <li class="first-level active"><a href="#basic-programs">Basic programs</a></li>
         
     
-        <li class="first-level "><a href="#basic-commands">Basic commands:</a></li>
+        <li class="first-level "><a href="#management">Management</a></li>
         
     
-        <li class="first-level "><a href="#gpfs">GPFS:</a></li>
+        <li class="first-level "><a href="#software-installation">Software installation:</a></li>
+        
+    
+        <li class="first-level "><a href="#mirroring-rootvg">Mirroring rootvg:</a></li>
         
     
         <li class="first-level "><a href="#network">Network:</a></li>
@@ -417,10 +429,7 @@ sh$ bash
 bash-3.2# 
 </code></pre>
 
-<h3 id="basic-commands">Basic commands:</h3>
-<ul>
-<li>Management</li>
-</ul>
+<h3 id="management">Management</h3>
 <pre><code class="bash"># Exit from basic VIOS console to common AIX ksh
 oem_setup_env
 # Adminitration and configuration console
@@ -431,9 +440,7 @@ smit
 #Then use `chsh` to change your individual setting.
 </code></pre>
 
-<ul>
-<li>Software installation:</li>
-</ul>
+<h3 id="software-installation">Software installation:</h3>
 <pre><code class="bash">cd &lt;path_to_package&gt;
 inutoc .
 installp -aXY -d&lt;path_to_package&gt; all
@@ -441,9 +448,7 @@ installp -aXY -d&lt;path_to_package&gt; all
 lslpp -L &lt;package_name&gt;
 </code></pre>
 
-<ul>
-<li>Mirroring rootvg:</li>
-</ul>
+<h3 id="mirroring-rootvg">Mirroring rootvg:</h3>
 <pre><code class="bash">extendvg rootvg hdisk1
 mirrorvg rootvg
 bootlist -m normal hdisk0 hdisk1 
@@ -451,68 +456,6 @@ bosboot -ad hdisk0
 bosboot -ad hdisk1
 # Checking
 bootlist -o -m normal
-</code></pre>
-
-<h3 id="gpfs">GPFS:</h3>
-<ul>
-<li>Instalaltion:</li>
-</ul>
-<pre><code class="bash"># on each LPAR:
-cd /&lt;path_to_gpfs_base_package&gt;/base-3-5/
-inutoc .
-installp -aXY -d/&lt;path_to_gpfs_base_package&gt;/base-3-5 all
-cd /&lt;path_to_gpfs_fix_package&gt;/fix-3-5-10/
-inutoc .
-installp -aXY -d/&lt;path_to_gpfs_fix_package&gt;/fix-3-5-10 all
-lslpp -L gpfs.\*
-</code></pre>
-
-<ul>
-<li>Creating cluster:</li>
-</ul>
-<pre><code class="bash"># You need to setup paswordless shh connection between nodes
-# Add this path to /etc/environment on each node
-export PATH=$PATH:/usr/lpp/mmfs/bin
-
-mmcrcluster -N &lt;PRIMARY_NODE_HOSTNAME&gt;:manager-quorum -p PRIMARY_NODE_HOSTNAME -r /usr/bin/ssh -R /usr/bin/scp
-mmchlicense server --accept -N PRIMARY_NODE_HOSTNAME
-mmstartup -a
-mmaddnode -N &lt;SECONDARY_NODE_HOSTNAME&gt;
-mmaddnode -N &lt;THIRDARY_NODE_HOSTNAME&gt;
-mmaddnode -N &lt;N-ARY_NODE_HOSTNAME&gt;
-mmchcluster -s &lt;SECONDARY_NODE_HOSTNAME&gt;
-mmchlicense server --accept -N &lt;SECONDARY_NODE_HOSTNAME&gt;
-mmchlicense server --accept -N &lt;THIRDARY_NODE_HOSTNAME&gt;
-mmchlicense server --accept -N &lt;N-ARY_NODE_HOSTNAME&gt;
-mmstartup -N &lt;SECONDARY_NODE_HOSTNAME&gt;
-mmstartup -N &lt;THIRDARY_NODE_HOSTNAME&gt;
-mmstartup -N &lt;N-ARY_NODE_HOSTNAME&gt;
-mmchnode --quorum --manager -N &lt;SECONDARY_NODE_HOSTNAME&gt;
-# To check status of cluster:
-mmlscluster
-mmgetstate -a
-</code></pre>
-
-<ul>
-<li>Create GPFS mirror partition:</li>
-</ul>
-<pre><code class="bash"># On primary node:
-mkdir /etc/gpfs
-vi /etc/gpfs/diskdesk.txt
-### --insert in diskdesk.txt--
-hdiskX:::dataAndMetadata:1:nsd1:
-hdiskY:::dataAndMetadata:2:nsd2:
-### --end of insert--
-
-mmcrnsd -F /etc/gpfs/diskdesk.txt
-mmshutdown -a
-mmchconfig tiebreakerdisks=&quot;nsd1;nsd2&quot;
-mmstartup -a
-mmcrfs /mnt/gpfs gpfsfs -F /etc/gpfs/diskdesk.txt -A yes -B 512K -M2 -m2 -R2 -r2 -n 2 -N 50000
-mmlsconfig
-mmmount all -a
-mmchconfig minQuorumNodes=2
-df -g
 </code></pre>
 
 <h3 id="network">Network:</h3>
