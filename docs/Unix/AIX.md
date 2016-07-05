@@ -151,3 +151,32 @@ mkvdev [-f] -vdev hdiskX -vadapter vhostX -dev <virtual_device_name>
 # Make a virtual cd-rom device for particular vhost:
 mkvdev -fbo -vadapter vhostX -dev <virtual_device_name>
 ```
+
+### Zabbix agent
+```
+# Dependencies:
+rpm -ivh ftp://www.oss4aix.org/latest/aix61/gettext-0.10.40-8.aix5.2.ppc.rpm
+rpm -ivh ftp://www.oss4aix.org/compatible/aix61/expat-2.1.0-1.aix5.1.ppc.rpm
+rpm -ivh ftp://www.oss4aix.org/compatible/aix61/libgcc-4.7.2-1.aix6.1.ppc.rpm
+rpm -ivh ftp://www.oss4aix.org/compatible/aix61/libffi-3.0.11-2.aix5.1.ppc.rpm
+rpm -ivh ftp://www.oss4aix.org/compatible/aix61/glib2-2.30.3-1.aix5.1.ppc.rpm
+rpm -ivh ftp://www.oss4aix.org/compatible/aix61/libiconv-1.14-2.aix5.1.ppc.rpm
+
+# Main
+mkgroup zabbix
+useradd -g zabbix zabbix
+
+mkdir /var/run/zabbix
+touch /var/run/zabbix/zabbix_agentd.pid
+mkdir /var/log/zabbix
+touch /var/log/zabbix/zabbix_agentd.log
+
+chown -R zabbix:zabbix /var/log/zabbix
+chown -R zabbix:zabbix /var/run/zabbix
+chown zabbix:zabbix /etc/zabbix_agentd.conf
+
+/usr/sbin/zabbix_agentd --config /etc/zabbix_agentd.conf
+
+vi /etc/inittab
+zabagent:2:once:/usr/sbin/zabbix_agentd --config /etc/zabbix_agentd.conf
+```

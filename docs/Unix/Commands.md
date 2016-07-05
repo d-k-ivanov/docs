@@ -51,42 +51,6 @@ xfreerdp +clipboard /w:1600 /h:900 /v:10.15.0.10:3389 /u:Administrator
 xfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM/HMC/7.9_sp3 /v:10.15.0.10
 ```
 
-### Security:
-* IPTables
-```bash
-# Show rules
-iptables -nvL
-iptable -t nat -nvL
-```
-* Disabling SELinux
-```bash
-sed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux && cat /etc/sysconfig/selinux
-```
-
-### Virtual and independent environment:
-* Docker:
-```bash
-# Execute in-docker console
-sudo docker exec -it <container> bash
-# Create JSON with container settings
-docker inspect -f '{{ json .NetworkSettings }}' <container_id> | python -mjson.tool
-# Add custom docker registry
-mkdir /etc/systemd/system/docker.service.d/
-touch /etc/systemd/system/docker.service.d/docker_opts.conf
-vi /etc/systemd/system/docker.service.d/docker_opts.conf
-# --- docker_opts.conf contents ---
-[Service]
-ExecStart=
-ExecStart=/usr/bin/docker -d -H fd:// --insecure-registry <docker_registry_url> --registry-mirror <mirror_url>
-# ---------------------------------
-systemctl daemon-reload
-service docker restart
-```
-* WINE
-```bash
-WINEARCH=<wine32_or_wine64> WINEPREFIX=/home/wine/<custom_prefix> wine <path_to_executable>
-```
-
 ### X Server:
 * Start full-screen application in different X server
 ```bash
@@ -102,6 +66,7 @@ export DISPLAY="${SSH_CLIENT%% *}"
 ```bash
 tmux list-sessions
 tmux attach -t 2
+sudo tmux -2 -S /tmp/tmux-<UID>/default
 ```
 * Cool weather
 ```bash
@@ -111,4 +76,9 @@ curl http://wttr.in/moscow
 ```bash
 ps ax | grep http | awk '{print $1}' | xargs kill
 ```
+* SNMP
+```
+snmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus
+```
+
 
