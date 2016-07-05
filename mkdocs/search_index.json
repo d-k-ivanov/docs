@@ -62,13 +62,13 @@
         }, 
         {
             "location": "/Unix/Audit/", 
-            "text": "Why is my servere rebooted?\n\n\nlast reboot \nsudo lastcomm | egrep 'reboot|shutdown'\nwho -b\nsa\ncrontab -e\nless /var/log/secure\nlast -x | less\nlast -x | grep shutdown | less\nless /var/log/messages\njournalctl\nutmpdump /var/log/wtmp | egrep 'shutdown|reboot|runlevel'\njournalctl --since=\n2016-6-28 12:00:00", 
+            "text": "Why is my server rebooted?\n\n\nlast reboot \nsudo lastcomm | egrep 'reboot|shutdown'\nwho -b\nsa\ncrontab -e\nless /var/log/secure\nlast -x | less\nlast -x | grep shutdown | less\nless /var/log/messages\njournalctl\nutmpdump /var/log/wtmp | egrep 'shutdown|reboot|runlevel'\njournalctl --since=\n2016-6-28 12:00:00", 
             "title": "Audit"
         }, 
         {
-            "location": "/Unix/Audit/#why-is-my-servere-rebooted", 
+            "location": "/Unix/Audit/#why-is-my-server-rebooted", 
             "text": "last reboot \nsudo lastcomm | egrep 'reboot|shutdown'\nwho -b\nsa\ncrontab -e\nless /var/log/secure\nlast -x | less\nlast -x | grep shutdown | less\nless /var/log/messages\njournalctl\nutmpdump /var/log/wtmp | egrep 'shutdown|reboot|runlevel'\njournalctl --since= 2016-6-28 12:00:00", 
-            "title": "Why is my servere rebooted?"
+            "title": "Why is my server rebooted?"
         }, 
         {
             "location": "/Unix/Commands/", 
@@ -259,6 +259,31 @@
             "location": "/Unix/Version_Control/#github-clone-all-users-repository", 
             "text": "# Get complete list of user's repositories in JSON file\ncurl -s https://api.github.com/users/ username /repos?per_page=200   repo.list.json\npython -c  import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close() \n# And dont forget about  space (%20,    ) in cmd = 'git clone ', it's completely nessesary\n# Another way to clone up to 200 user's repos(just in shell): \ncurl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | . clone_url ' | xargs -I '{}' git clone {}", 
             "title": "GitHub: Clone all user's repository"
+        }, 
+        {
+            "location": "/Windows/CMD_colours/", 
+            "text": "To change colours in command line console interface you need to add one of following sets of registry keys:\n\n\nDefault\n\n\nWindows Registry Editor Version 5.00\n; Default color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\nColorTable00\n=dword:00000000\n\nColorTable08\n=dword:00808080\n; BLUE LBLUE\n\nColorTable01\n=dword:00800000\n\nColorTable09\n=dword:00ff0000\n; GREEN LGREEN\n\nColorTable02\n=dword:00008000\n\nColorTable10\n=dword:0000ff00\n; CYAN LCYAN\n\nColorTable03\n=dword:00808000\n\nColorTable11\n=dword:00ffff00\n; RED LRED\n\nColorTable04\n=dword:00000080\n\nColorTable12\n=dword:000000ff\n; MAGENTA LMAGENTA\n\nColorTable05\n=dword:00800080\n\nColorTable13\n=dword:00ff00ff\n; YELLOW LYELLOW\n\nColorTable06\n=dword:00008080\n\nColorTable14\n=dword:0000ffff\n; LGRAY WHITE\n\nColorTable07\n=dword:00c0c0c0\n\nColorTable15\n=dword:00ffffff\n\n\n\n\nMonokai\n\n\nWindows Registry Editor Version 5.00\n; Monokai color theme for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK   DGRAY\n\nColorTable00\n=dword:00222827\n\nColorTable08\n=dword:00414746\n; BLUE    LBLUE\n\nColorTable01\n=dword:00a64c1d\n\nColorTable09\n=dword:00ef9566\n; GREEN   LGREEN\n\nColorTable02\n=dword:0000995d\n\nColorTable10\n=dword:002ee2a6\n; CYAN    LCYAN\n\nColorTable03\n=dword:00746a31\n\nColorTable11\n=dword:00efd966\n; RED     LRED\n\nColorTable04\n=dword:002900b0\n\nColorTable12\n=dword:007226f9\n; MAGENTA LMAGENTA\n\nColorTable05\n=dword:00b63865\n\nColorTable13\n=dword:00ff81ae\n; YELLOW  LYELLOW\n\nColorTable06\n=dword:001f97fd\n\nColorTable14\n=dword:0074dbe6\n; LGRAY   WHITE\n\nColorTable07\n=dword:008a908f\n\nColorTable15\n=dword:00f2f8f8\n\n\n\n\nPastel\n\n\nWindows Registry Editor Version 5.00\n; Low-contrast, pastel color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\nColorTable00\n=dword:00222222\n\nColorTable08\n=dword:00454545\n; BLUE LBLUE\n\nColorTable01\n=dword:00a69a7c\n\nColorTable09\n=dword:00bfad8f\n; GREEN LGREEN\n\nColorTable02\n=dword:00557e6c\n\nColorTable10\n=dword:007db37d\n; CYAN LCYAN\n\nColorTable03\n=dword:00a18e4c\n\nColorTable11\n=dword:00d0c16b\n; RED LRED\n\nColorTable04\n=dword:0041569e\n\nColorTable12\n=dword:006d89cc\n; MAGENTA LMAGENTA\n\nColorTable05\n=dword:009d6d95\n\nColorTable13\n=dword:00cb8fc1\n; YELLOW LYELLOW\n\nColorTable06\n=dword:002bafca\n\nColorTable14\n=dword:0056b5bf\n; LGRAY WHITE\n\nColorTable07\n=dword:00808080\n\nColorTable15\n=dword:00cdcdcd\n\n\n\n\nZenburn\n\n\nWindows Registry Editor Version 5.00\n; Zenburn is a low-contrast color scheme\n; for Windows command prompt.\n; See : http://slinky.imukuppi.org/zenburnpage/\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\nColorTable00\n=dword:003f3f3f\n\nColorTable08\n=dword:008080c0\n; BLUE LBLUE\n\nColorTable01\n=dword:00af6464\n\nColorTable09\n=dword:00ffafaf\n; GREEN LGREEN\n\nColorTable02\n=dword:00008000\n\nColorTable10\n=dword:007f9f7f\n; CYAN LCYAN\n\nColorTable03\n=dword:00808000\n\nColorTable11\n=dword:00d3d08c\n; RED LRED\n\nColorTable04\n=dword:00232333\n\nColorTable12\n=dword:007071e3\n; MAGENTA LMAGENTA\n\nColorTable05\n=dword:00aa50aa\n\nColorTable13\n=dword:00c880c8\n; YELLOW LYELLOW\n\nColorTable06\n=dword:0000dcdc\n\nColorTable14\n=dword:00afdff0\n; LGRAY WHITE\n\nColorTable07\n=dword:00ccdcdc\n\nColorTable15\n=dword:00ffffff", 
+            "title": "CMD colours"
+        }, 
+        {
+            "location": "/Windows/CMD_colours/#default", 
+            "text": "Windows Registry Editor Version 5.00\n; Default color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY ColorTable00 =dword:00000000 ColorTable08 =dword:00808080\n; BLUE LBLUE ColorTable01 =dword:00800000 ColorTable09 =dword:00ff0000\n; GREEN LGREEN ColorTable02 =dword:00008000 ColorTable10 =dword:0000ff00\n; CYAN LCYAN ColorTable03 =dword:00808000 ColorTable11 =dword:00ffff00\n; RED LRED ColorTable04 =dword:00000080 ColorTable12 =dword:000000ff\n; MAGENTA LMAGENTA ColorTable05 =dword:00800080 ColorTable13 =dword:00ff00ff\n; YELLOW LYELLOW ColorTable06 =dword:00008080 ColorTable14 =dword:0000ffff\n; LGRAY WHITE ColorTable07 =dword:00c0c0c0 ColorTable15 =dword:00ffffff", 
+            "title": "Default"
+        }, 
+        {
+            "location": "/Windows/CMD_colours/#monokai", 
+            "text": "Windows Registry Editor Version 5.00\n; Monokai color theme for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK   DGRAY ColorTable00 =dword:00222827 ColorTable08 =dword:00414746\n; BLUE    LBLUE ColorTable01 =dword:00a64c1d ColorTable09 =dword:00ef9566\n; GREEN   LGREEN ColorTable02 =dword:0000995d ColorTable10 =dword:002ee2a6\n; CYAN    LCYAN ColorTable03 =dword:00746a31 ColorTable11 =dword:00efd966\n; RED     LRED ColorTable04 =dword:002900b0 ColorTable12 =dword:007226f9\n; MAGENTA LMAGENTA ColorTable05 =dword:00b63865 ColorTable13 =dword:00ff81ae\n; YELLOW  LYELLOW ColorTable06 =dword:001f97fd ColorTable14 =dword:0074dbe6\n; LGRAY   WHITE ColorTable07 =dword:008a908f ColorTable15 =dword:00f2f8f8", 
+            "title": "Monokai"
+        }, 
+        {
+            "location": "/Windows/CMD_colours/#pastel", 
+            "text": "Windows Registry Editor Version 5.00\n; Low-contrast, pastel color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY ColorTable00 =dword:00222222 ColorTable08 =dword:00454545\n; BLUE LBLUE ColorTable01 =dword:00a69a7c ColorTable09 =dword:00bfad8f\n; GREEN LGREEN ColorTable02 =dword:00557e6c ColorTable10 =dword:007db37d\n; CYAN LCYAN ColorTable03 =dword:00a18e4c ColorTable11 =dword:00d0c16b\n; RED LRED ColorTable04 =dword:0041569e ColorTable12 =dword:006d89cc\n; MAGENTA LMAGENTA ColorTable05 =dword:009d6d95 ColorTable13 =dword:00cb8fc1\n; YELLOW LYELLOW ColorTable06 =dword:002bafca ColorTable14 =dword:0056b5bf\n; LGRAY WHITE ColorTable07 =dword:00808080 ColorTable15 =dword:00cdcdcd", 
+            "title": "Pastel"
+        }, 
+        {
+            "location": "/Windows/CMD_colours/#zenburn", 
+            "text": "Windows Registry Editor Version 5.00\n; Zenburn is a low-contrast color scheme\n; for Windows command prompt.\n; See : http://slinky.imukuppi.org/zenburnpage/\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY ColorTable00 =dword:003f3f3f ColorTable08 =dword:008080c0\n; BLUE LBLUE ColorTable01 =dword:00af6464 ColorTable09 =dword:00ffafaf\n; GREEN LGREEN ColorTable02 =dword:00008000 ColorTable10 =dword:007f9f7f\n; CYAN LCYAN ColorTable03 =dword:00808000 ColorTable11 =dword:00d3d08c\n; RED LRED ColorTable04 =dword:00232333 ColorTable12 =dword:007071e3\n; MAGENTA LMAGENTA ColorTable05 =dword:00aa50aa ColorTable13 =dword:00c880c8\n; YELLOW LYELLOW ColorTable06 =dword:0000dcdc ColorTable14 =dword:00afdff0\n; LGRAY WHITE ColorTable07 =dword:00ccdcdc ColorTable15 =dword:00ffffff", 
+            "title": "Zenburn"
         }
     ]
 }
