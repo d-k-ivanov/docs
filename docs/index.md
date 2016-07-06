@@ -7,7 +7,7 @@ Inspired by [Joshua Levy](https://github.com/jlevy "Joshua Levy") and his great 
 * [GitHub repo](https://github.com/keepbot)
 
 ### Unsorted info:
-* Jouning all similarly prefixed files, for example, "_tar.gz.1of2" and "_tar.gz.2of2".
+* Joining all similarly prefixed files, for example, "_tar.gz.1of2" and "_tar.gz.2of2".
 ```
 # Unix
 cat "FileName_tar.gz.1of3" "FileName_tar.gz.2of3" "FileName_tar.gz.3of3" > "FileName.tar.gz"
