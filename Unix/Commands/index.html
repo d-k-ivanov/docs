@@ -490,12 +490,6 @@ sudo tmux -2 -S /tmp/tmux-&lt;UID&gt;/default
 </code></pre>
 
 <ul>
-<li>Kill all proesses with certain name</li>
-</ul>
-<pre><code class="bash">ps ax | grep http | awk '{print $1}' | xargs kill
-</code></pre>
-
-<ul>
 <li>SNMP</li>
 </ul>
 <pre><code>snmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus

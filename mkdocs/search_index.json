@@ -297,7 +297,7 @@
         }, 
         {
             "location": "/Unix/Commands/", 
-            "text": "Package management:\n\n\n\n\nApt:\n\n\n\n\n# Show installed packages\napt --installed list\n# Search for software\napt-cache search \npattern\n\n# Install package\napt-get install \npackage_name\n\n\n\n\n\n\n\nDpkg: \n\n\n\n\n# To get a list of packages installed locally do this in your terminal:\ndpkg --get-selections | grep -v deinstall\n# To get a list of a specific package installed:\ndpkg --get-selections | grep postgres\n# To save that list to a text file called packages on your desktop do this in your terminal:\ndpkg --get-selections | grep -v deinstall \n ~/Desktop/packages\n# Alternatively, simply use\ndpkg -l\n\n\n\n\n\n\nPacman:\n\n\n\n\n# Search for software\npacman -Ss \npattern\n\n# Install package\npacman -S \npackage_name\n\n# Update the system\npacman -Syu\n# Remove orphaned packages (Be careful, double check for list of deleted packages)\npacman -Rscn $(pacman -Qtdq)\npacman -Sc\npacman-optimize \n sync\n\n\n\n\n\n\nYum:\n\n\n\n\n# Search for software\nyum search \npattern\n\n# Install package\nyum install \npackage_name\n\n# Repair \nError: database disk image is malformed\n\nyum clean dbcache\n\n\n\n\nRemote management:\n\n\n\n\nXfreeRDP\n\n\n\n\nxfreerdp [+clipboard]/w:\nWIDTH\n /h:\nHEIGHT\n /drive:\ncuatom_drive_name\n,\npath_to_attach\n /v:\nip\n:\nport\n /u:\nuser_name\n\nxfreerdp +clipboard /w:1600 /h:900 /v:10.15.0.10:3389 /u:Administrator\nxfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM/HMC/7.9_sp3 /v:10.15.0.10\n\n\n\n\nX Server:\n\n\n\n\nStart full-screen application in different X server\n\n\n\n\n/usr/bin/xinit \npath_to_fullscreen_application\n -- :1\n\n\n\n\n\n\nExport X display to current ssh connection\n\n\n\n\nexport DISPLAY=\n${SSH_CLIENT%% *}\n\n\n\n\n\nMiscellaneous:\n\n\n\n\nTMUX\n\n\n\n\ntmux list-sessions\ntmux attach -t 2\nsudo tmux -2 -S /tmp/tmux-\nUID\n/default\n\n\n\n\n\n\nCool weather\n\n\n\n\ncurl http://wttr.in/moscow\n\n\n\n\n\n\nKill all proesses with certain name\n\n\n\n\nps ax | grep http | awk '{print $1}' | xargs kill\n\n\n\n\n\n\nSNMP\n\n\n\n\nsnmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus", 
+            "text": "Package management:\n\n\n\n\nApt:\n\n\n\n\n# Show installed packages\napt --installed list\n# Search for software\napt-cache search \npattern\n\n# Install package\napt-get install \npackage_name\n\n\n\n\n\n\n\nDpkg: \n\n\n\n\n# To get a list of packages installed locally do this in your terminal:\ndpkg --get-selections | grep -v deinstall\n# To get a list of a specific package installed:\ndpkg --get-selections | grep postgres\n# To save that list to a text file called packages on your desktop do this in your terminal:\ndpkg --get-selections | grep -v deinstall \n ~/Desktop/packages\n# Alternatively, simply use\ndpkg -l\n\n\n\n\n\n\nPacman:\n\n\n\n\n# Search for software\npacman -Ss \npattern\n\n# Install package\npacman -S \npackage_name\n\n# Update the system\npacman -Syu\n# Remove orphaned packages (Be careful, double check for list of deleted packages)\npacman -Rscn $(pacman -Qtdq)\npacman -Sc\npacman-optimize \n sync\n\n\n\n\n\n\nYum:\n\n\n\n\n# Search for software\nyum search \npattern\n\n# Install package\nyum install \npackage_name\n\n# Repair \nError: database disk image is malformed\n\nyum clean dbcache\n\n\n\n\nRemote management:\n\n\n\n\nXfreeRDP\n\n\n\n\nxfreerdp [+clipboard]/w:\nWIDTH\n /h:\nHEIGHT\n /drive:\ncuatom_drive_name\n,\npath_to_attach\n /v:\nip\n:\nport\n /u:\nuser_name\n\nxfreerdp +clipboard /w:1600 /h:900 /v:10.15.0.10:3389 /u:Administrator\nxfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM/HMC/7.9_sp3 /v:10.15.0.10\n\n\n\n\nX Server:\n\n\n\n\nStart full-screen application in different X server\n\n\n\n\n/usr/bin/xinit \npath_to_fullscreen_application\n -- :1\n\n\n\n\n\n\nExport X display to current ssh connection\n\n\n\n\nexport DISPLAY=\n${SSH_CLIENT%% *}\n\n\n\n\n\nMiscellaneous:\n\n\n\n\nTMUX\n\n\n\n\ntmux list-sessions\ntmux attach -t 2\nsudo tmux -2 -S /tmp/tmux-\nUID\n/default\n\n\n\n\n\n\nCool weather\n\n\n\n\ncurl http://wttr.in/moscow\n\n\n\n\n\n\nSNMP\n\n\n\n\nsnmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus", 
             "title": "Commands"
         }, 
         {
@@ -317,7 +317,7 @@
         }, 
         {
             "location": "/Unix/Commands/#miscellaneous", 
-            "text": "TMUX   tmux list-sessions\ntmux attach -t 2\nsudo tmux -2 -S /tmp/tmux- UID /default   Cool weather   curl http://wttr.in/moscow   Kill all proesses with certain name   ps ax | grep http | awk '{print $1}' | xargs kill   SNMP   snmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus", 
+            "text": "TMUX   tmux list-sessions\ntmux attach -t 2\nsudo tmux -2 -S /tmp/tmux- UID /default   Cool weather   curl http://wttr.in/moscow   SNMP   snmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus", 
             "title": "Miscellaneous:"
         }, 
         {
@@ -522,13 +522,18 @@
         }, 
         {
             "location": "/Unix/Processes/", 
-            "text": "Wait until proceess was gone\n\n\nwhile true; do clear; ps -ef | grep \nprocess\n; sleep 5; done", 
+            "text": "Wait until proceses will gone\n\n\nwhile true; do clear; ps -ef | grep \nprocess\n; sleep 5; done\n\n\n\n\nKill all proesses with certain name\n\n\nps ax | grep http | awk '{print $1}' | xargs kill", 
             "title": "Processes"
         }, 
         {
-            "location": "/Unix/Processes/#wait-until-proceess-was-gone", 
+            "location": "/Unix/Processes/#wait-until-proceses-will-gone", 
             "text": "while true; do clear; ps -ef | grep  process ; sleep 5; done", 
-            "title": "Wait until proceess was gone"
+            "title": "Wait until proceses will gone"
+        }, 
+        {
+            "location": "/Unix/Processes/#kill-all-proesses-with-certain-name", 
+            "text": "ps ax | grep http | awk '{print $1}' | xargs kill", 
+            "title": "Kill all proesses with certain name"
         }, 
         {
             "location": "/Unix/SMS/", 

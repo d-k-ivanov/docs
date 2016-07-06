@@ -385,15 +385,22 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#wait-until-proceess-was-gone">Wait until proceess was gone</a></li>
+        <li class="first-level active"><a href="#wait-until-proceses-will-gone">Wait until proceses will gone</a></li>
+        
+    
+        <li class="first-level "><a href="#kill-all-proesses-with-certain-name">Kill all proesses with certain name</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="wait-until-proceess-was-gone">Wait until proceess was gone</h3>
+<h3 id="wait-until-proceses-will-gone">Wait until proceses will gone</h3>
 <pre><code>while true; do clear; ps -ef | grep &lt;process&gt;; sleep 5; done
+</code></pre>
+
+<h3 id="kill-all-proesses-with-certain-name">Kill all proesses with certain name</h3>
+<pre><code class="bash">ps ax | grep http | awk '{print $1}' | xargs kill
 </code></pre></div>
         
     </div>
