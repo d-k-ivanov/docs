@@ -521,6 +521,16 @@
             "title": "Share current folder over HTTP"
         }, 
         {
+            "location": "/Unix/Processes/", 
+            "text": "Wait until proceess was gone\n\n\nwhile true; do clear; ps -ef | grep \nprocess\n; sleep 5; done", 
+            "title": "Processes"
+        }, 
+        {
+            "location": "/Unix/Processes/#wait-until-proceess-was-gone", 
+            "text": "while true; do clear; ps -ef | grep  process ; sleep 5; done", 
+            "title": "Wait until proceess was gone"
+        }, 
+        {
             "location": "/Unix/SMS/", 
             "text": "Via minicom:\n\n\n\n\nminicom -s\n\n\n\n\nAT+CMGF=1\nAT+CMGS=\n+xxxxxxxxxx\n\nWrite message here. \nctrl+z\n\n\n\n\n\nSMSd\n\n\nsmssend +xxxxxxxxxxx 'One-Line Test 02' \n /dev/null 2\n1\n\n\n\n\n\n\nExample smsd.conf. Read the manual for a description\n\n\n\n\ndevices = xenium0\nlogfile = /var/log/smsd/smsd.log\nloglevel = 2\n#user = smstools\nuser = nagios\n# 3.1.5 introduced smart logging\n# once your configuration is OK, set log level lower (5 is good in most cases)\nsmart_logging = yes\ninfofile = /run/smsd/smsd.working\npidfile = /run/smsd/smsd.pid\n\n[xenium0]\ndevice = /dev/ttyUSB0\n#pin = 1122\npin = ignore\nbaudrate = 115200\nrtscts = no\n#init = ATE0\n#init = at+cpms=\nsm\n,\nsm\n,\n\n#init = AT+CMGF=1\nloglevel_lac_ci = 8\nincoming = yes\nincoming = high", 
             "title": "SMS"
