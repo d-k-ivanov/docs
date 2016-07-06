@@ -187,43 +187,18 @@
         }, 
         {
             "location": "/Dev/Version_Control/GitHub/", 
-            "text": "Git: Global settings\n\n\ngit config --global user.name \nYour Name\n\ngit config --global user.email your@e-mail.com\n\n\n\n\nGit: Create new repository\n\n\nmkdir -p \npath_to_repository\n\ncd \npath_to_repository\n\ngit add .\ngit commit -m \nInitialization\n\ngit remote add origin https://github.com/username/\nrepository\n.git\ngit push -u origin master\ngit checkout \n\n\n\n\nGit: New commit\n\n\n# Addition of new files with automatic staging of deleted and modified files\ngit add .\ngit commit -a -m \nnew commentary\n\ngit push -u origin master\n\n\n\n\nGit: update local reposytory from remote\n\n\n# Fentch + Merge\ngit pull\n# Fetch only\ngit fetch\n# Fetch changes from remote repository with modified local repository\ngit commit -a -m \nnew commentary\n\ngit pull rebase\n# pull remote with overwrite local changes\ngit fetch --all\ngit reset --hard origin/master\n\n\n\n\nGit: Working with bunch of  repositories\n\n\n# Last commits\nfor d in `ls`; do cd $d; git log --pretty=format:\n%h - %an, %ar : %s\n -1; cd ..; done\n# Mass checkout\nfor d in `ls`; do cd $d; git checkout; cd ..; done\n\n\n\n\nGitHub: Independent history catalogs of git repository\n\n\n# Makes a bunch of history folders formatted by the next way: \nrepository\n-\nnumber_of_commit\n-\ncommit_hash\n\n# Check commit_list.end for mistakes, you need simple list of commits\ngit clone \nrepository_url\n \nrepository\n\ncd \nrepository\n \n git log --pretty=format:\n%h\n \n ../commit_list \n cd ..\ntac commit_list \n commit_list.end \ni=1; for cid in `cat commit_list.end`; do cp -r \nrepository\n \nrepository\n-$i-$cid; cd \nrepository\n-$i-$cid; git checkout $cid; cd ..; ((i=i+1)); done\n\n\n\n\nGitHub: Clone all user's repository\n\n\n# Get complete list of user's repositories in JSON file\ncurl -s https://api.github.com/users/\nusername\n/repos?per_page=200 \n repo.list.json\npython -c \nimport json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close()\n\n# And dont forget about \nspace\n(%20, \n \n) in cmd = 'git clone ', it's completely nessesary\n# Another way to clone up to 200 user's repos(just in shell): \ncurl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | .\nclone_url\n' | xargs -I '{}' git clone {}", 
+            "text": "Independent history catalogs of git repositories\n\n\n# Makes a bunch of history folders formatted by the next way: \nrepository\n-\nnumber_of_commit\n-\ncommit_hash\n\n# Check commit_list.end for mistakes, you need simple list of commits\ngit clone \nrepository_url\n \nrepository\n\ncd \nrepository\n \n git log --pretty=format:\n%h\n \n ../commit_list \n cd ..\ntac commit_list \n commit_list.end \ni=1; for cid in `cat commit_list.end`; do cp -r \nrepository\n \nrepository\n-$i-$cid; cd \nrepository\n-$i-$cid; git checkout $cid; cd ..; ((i=i+1)); done\n\n\n\n\nClone all user's repositories\n\n\n# Get complete list of user's repositories in JSON file\ncurl -s https://api.github.com/users/\nusername\n/repos?per_page=200 \n repo.list.json\npython -c \nimport json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close()\n\n# And dont forget about \nspace\n(%20, \n \n) in cmd = 'git clone ', it's completely nessesary\n# Another way to clone up to 200 user's repos(just in shell): \ncurl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | .\nclone_url\n' | xargs -I '{}' git clone {}", 
             "title": "GitHub"
         }, 
         {
-            "location": "/Dev/Version_Control/GitHub/#git-global-settings", 
-            "text": "git config --global user.name  Your Name \ngit config --global user.email your@e-mail.com", 
-            "title": "Git: Global settings"
-        }, 
-        {
-            "location": "/Dev/Version_Control/GitHub/#git-create-new-repository", 
-            "text": "mkdir -p  path_to_repository \ncd  path_to_repository \ngit add .\ngit commit -m  Initialization \ngit remote add origin https://github.com/username/ repository .git\ngit push -u origin master\ngit checkout", 
-            "title": "Git: Create new repository"
-        }, 
-        {
-            "location": "/Dev/Version_Control/GitHub/#git-new-commit", 
-            "text": "# Addition of new files with automatic staging of deleted and modified files\ngit add .\ngit commit -a -m  new commentary \ngit push -u origin master", 
-            "title": "Git: New commit"
-        }, 
-        {
-            "location": "/Dev/Version_Control/GitHub/#git-update-local-reposytory-from-remote", 
-            "text": "# Fentch + Merge\ngit pull\n# Fetch only\ngit fetch\n# Fetch changes from remote repository with modified local repository\ngit commit -a -m  new commentary \ngit pull rebase\n# pull remote with overwrite local changes\ngit fetch --all\ngit reset --hard origin/master", 
-            "title": "Git: update local reposytory from remote"
-        }, 
-        {
-            "location": "/Dev/Version_Control/GitHub/#git-working-with-bunch-of-repositories", 
-            "text": "# Last commits\nfor d in `ls`; do cd $d; git log --pretty=format: %h - %an, %ar : %s  -1; cd ..; done\n# Mass checkout\nfor d in `ls`; do cd $d; git checkout; cd ..; done", 
-            "title": "Git: Working with bunch of  repositories"
-        }, 
-        {
-            "location": "/Dev/Version_Control/GitHub/#github-independent-history-catalogs-of-git-repository", 
+            "location": "/Dev/Version_Control/GitHub/#independent-history-catalogs-of-git-repositories", 
             "text": "# Makes a bunch of history folders formatted by the next way:  repository - number_of_commit - commit_hash \n# Check commit_list.end for mistakes, you need simple list of commits\ngit clone  repository_url   repository \ncd  repository    git log --pretty=format: %h    ../commit_list   cd ..\ntac commit_list   commit_list.end \ni=1; for cid in `cat commit_list.end`; do cp -r  repository   repository -$i-$cid; cd  repository -$i-$cid; git checkout $cid; cd ..; ((i=i+1)); done", 
-            "title": "GitHub: Independent history catalogs of git repository"
+            "title": "Independent history catalogs of git repositories"
         }, 
         {
-            "location": "/Dev/Version_Control/GitHub/#github-clone-all-users-repository", 
+            "location": "/Dev/Version_Control/GitHub/#clone-all-users-repositories", 
             "text": "# Get complete list of user's repositories in JSON file\ncurl -s https://api.github.com/users/ username /repos?per_page=200   repo.list.json\npython -c  import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close() \n# And dont forget about  space (%20,    ) in cmd = 'git clone ', it's completely nessesary\n# Another way to clone up to 200 user's repos(just in shell): \ncurl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | . clone_url ' | xargs -I '{}' git clone {}", 
-            "title": "GitHub: Clone all user's repository"
+            "title": "Clone all user's repositories"
         }, 
         {
             "location": "/OS/AIX/", 

@@ -379,74 +379,17 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#git-global-settings">Git: Global settings</a></li>
+        <li class="first-level active"><a href="#independent-history-catalogs-of-git-repositories">Independent history catalogs of git repositories</a></li>
         
     
-        <li class="first-level "><a href="#git-create-new-repository">Git: Create new repository</a></li>
-        
-    
-        <li class="first-level "><a href="#git-new-commit">Git: New commit</a></li>
-        
-    
-        <li class="first-level "><a href="#git-update-local-reposytory-from-remote">Git: update local reposytory from remote</a></li>
-        
-    
-        <li class="first-level "><a href="#git-working-with-bunch-of-repositories">Git: Working with bunch of  repositories</a></li>
-        
-    
-        <li class="first-level "><a href="#github-independent-history-catalogs-of-git-repository">GitHub: Independent history catalogs of git repository</a></li>
-        
-    
-        <li class="first-level "><a href="#github-clone-all-users-repository">GitHub: Clone all user's repository</a></li>
+        <li class="first-level "><a href="#clone-all-users-repositories">Clone all user's repositories</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="git-global-settings">Git: Global settings</h3>
-<pre><code class="bash">git config --global user.name &quot;Your Name&quot;
-git config --global user.email your@e-mail.com
-</code></pre>
-
-<h3 id="git-create-new-repository">Git: Create new repository</h3>
-<pre><code class="bash">mkdir -p &lt;path_to_repository&gt;
-cd &lt;path_to_repository&gt;
-git add .
-git commit -m &quot;Initialization&quot;
-git remote add origin https://github.com/username/&lt;repository&gt;.git
-git push -u origin master
-git checkout 
-</code></pre>
-
-<h3 id="git-new-commit">Git: New commit</h3>
-<pre><code class="bash"># Addition of new files with automatic staging of deleted and modified files
-git add .
-git commit -a -m &quot;new commentary&quot;
-git push -u origin master
-</code></pre>
-
-<h3 id="git-update-local-reposytory-from-remote">Git: update local reposytory from remote</h3>
-<pre><code class="bash"># Fentch + Merge
-git pull
-# Fetch only
-git fetch
-# Fetch changes from remote repository with modified local repository
-git commit -a -m &quot;new commentary&quot;
-git pull rebase
-# pull remote with overwrite local changes
-git fetch --all
-git reset --hard origin/master
-</code></pre>
-
-<h3 id="git-working-with-bunch-of-repositories">Git: Working with bunch of  repositories</h3>
-<pre><code class="bash"># Last commits
-for d in `ls`; do cd $d; git log --pretty=format:&quot;%h - %an, %ar : %s&quot; -1; cd ..; done
-# Mass checkout
-for d in `ls`; do cd $d; git checkout; cd ..; done
-</code></pre>
-
-<h3 id="github-independent-history-catalogs-of-git-repository">GitHub: Independent history catalogs of git repository</h3>
+<h3 id="independent-history-catalogs-of-git-repositories">Independent history catalogs of git repositories</h3>
 <pre><code class="bash"># Makes a bunch of history folders formatted by the next way: &lt;repository&gt;-&lt;number_of_commit&gt;-&lt;commit_hash&gt;
 # Check commit_list.end for mistakes, you need simple list of commits
 git clone &lt;repository_url&gt; &lt;repository&gt;
@@ -455,7 +398,7 @@ tac commit_list &gt; commit_list.end
 i=1; for cid in `cat commit_list.end`; do cp -r &lt;repository&gt; &lt;repository&gt;-$i-$cid; cd &lt;repository&gt;-$i-$cid; git checkout $cid; cd ..; ((i=i+1)); done
 </code></pre>
 
-<h3 id="github-clone-all-users-repository">GitHub: Clone all user's repository</h3>
+<h3 id="clone-all-users-repositories">Clone all user's repositories</h3>
 <pre><code class="bash"># Get complete list of user's repositories in JSON file
 curl -s https://api.github.com/users/&lt;username&gt;/repos?per_page=200 &gt; repo.list.json
 python -c &quot;import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close()&quot;
