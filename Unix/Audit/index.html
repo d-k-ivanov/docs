@@ -388,6 +388,9 @@
         <li class="first-level active"><a href="#why-is-my-server-rebooted">Why is my server rebooted?</a></li>
         
     
+        <li class="first-level "><a href="#fork-resource-temporarily-unavailable-on-aix">Fork: Resource temporarily unavailable on AIX</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -405,6 +408,37 @@ less /var/log/messages
 journalctl
 utmpdump /var/log/wtmp | egrep 'shutdown|reboot|runlevel'
 journalctl --since=&quot;2016-6-28 12:00:00&quot;
+</code></pre>
+
+<h3 id="fork-resource-temporarily-unavailable-on-aix">Fork: Resource temporarily unavailable on AIX</h3>
+<p>To investigate the promles you need to run thei bunch of commands:</p>
+<pre><code>cat /etc/passwd
+</code></pre>
+
+<p>From root you need to look at limint of every active user:</p>
+<pre><code>ulimit -a
+su oracle -c &quot;ulimit -a&quot;
+su mongod -c &quot;ulimit -a&quot;
+su userX -c &quot;ulimit -a&quot;
+</code></pre>
+
+<p>Look at system wide defined limits:</p>
+<pre><code>cat /etc/security/limits
+</code></pre>
+
+<p>Look at kernel parameters, especially on <em>maxuproc</em></p>
+<pre><code>lsattr -El sys0
+</code></pre>
+
+<p>Look at count of running processes by user:</p>
+<pre><code>ps -f -l -uroot | wc -l
+ps -f -l -uoracle | wc -l
+ps -f -l -umongod | wc -l
+ps -f -l -uuserX | wc -l
+</code></pre>
+
+<p>And after all look at avaible mamory and swap:</p>
+<pre><code>svmon -G -O unit=MB
 </code></pre></div>
         
     </div>

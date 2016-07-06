@@ -287,13 +287,18 @@
         }, 
         {
             "location": "/Unix/Audit/", 
-            "text": "Why is my server rebooted?\n\n\nlast reboot \nsudo lastcomm | egrep 'reboot|shutdown'\nwho -b\nsa\ncrontab -e\nless /var/log/secure\nlast -x | less\nlast -x | grep shutdown | less\nless /var/log/messages\njournalctl\nutmpdump /var/log/wtmp | egrep 'shutdown|reboot|runlevel'\njournalctl --since=\n2016-6-28 12:00:00", 
+            "text": "Why is my server rebooted?\n\n\nlast reboot \nsudo lastcomm | egrep 'reboot|shutdown'\nwho -b\nsa\ncrontab -e\nless /var/log/secure\nlast -x | less\nlast -x | grep shutdown | less\nless /var/log/messages\njournalctl\nutmpdump /var/log/wtmp | egrep 'shutdown|reboot|runlevel'\njournalctl --since=\n2016-6-28 12:00:00\n\n\n\n\n\nFork: Resource temporarily unavailable on AIX\n\n\nTo investigate the promles you need to run thei bunch of commands:\n\n\ncat /etc/passwd\n\n\n\n\nFrom root you need to look at limint of every active user:\n\n\nulimit -a\nsu oracle -c \nulimit -a\n\nsu mongod -c \nulimit -a\n\nsu userX -c \nulimit -a\n\n\n\n\n\nLook at system wide defined limits:\n\n\ncat /etc/security/limits\n\n\n\n\nLook at kernel parameters, especially on \nmaxuproc\n\n\nlsattr -El sys0\n\n\n\n\nLook at count of running processes by user:\n\n\nps -f -l -uroot | wc -l\nps -f -l -uoracle | wc -l\nps -f -l -umongod | wc -l\nps -f -l -uuserX | wc -l\n\n\n\n\nAnd after all look at avaible mamory and swap:\n\n\nsvmon -G -O unit=MB", 
             "title": "Audit"
         }, 
         {
             "location": "/Unix/Audit/#why-is-my-server-rebooted", 
             "text": "last reboot \nsudo lastcomm | egrep 'reboot|shutdown'\nwho -b\nsa\ncrontab -e\nless /var/log/secure\nlast -x | less\nlast -x | grep shutdown | less\nless /var/log/messages\njournalctl\nutmpdump /var/log/wtmp | egrep 'shutdown|reboot|runlevel'\njournalctl --since= 2016-6-28 12:00:00", 
             "title": "Why is my server rebooted?"
+        }, 
+        {
+            "location": "/Unix/Audit/#fork-resource-temporarily-unavailable-on-aix", 
+            "text": "To investigate the promles you need to run thei bunch of commands:  cat /etc/passwd  From root you need to look at limint of every active user:  ulimit -a\nsu oracle -c  ulimit -a \nsu mongod -c  ulimit -a \nsu userX -c  ulimit -a   Look at system wide defined limits:  cat /etc/security/limits  Look at kernel parameters, especially on  maxuproc  lsattr -El sys0  Look at count of running processes by user:  ps -f -l -uroot | wc -l\nps -f -l -uoracle | wc -l\nps -f -l -umongod | wc -l\nps -f -l -uuserX | wc -l  And after all look at avaible mamory and swap:  svmon -G -O unit=MB", 
+            "title": "Fork: Resource temporarily unavailable on AIX"
         }, 
         {
             "location": "/Unix/Commands/", 
