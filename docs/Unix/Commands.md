@@ -72,10 +72,6 @@ sudo tmux -2 -S /tmp/tmux-<UID>/default
 ```bash
 curl http://wttr.in/moscow
 ```
-* Kill all proesses with certain name
-```bash
-ps ax | grep http | awk '{print $1}' | xargs kill
-```
 * SNMP
 ```
 snmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus
