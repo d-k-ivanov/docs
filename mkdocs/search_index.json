@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Command line examples\n\n\nInspired by \nJoshua Levy\n and his great \nThe-Art-Of-Command-Line\n\n\n\n\nIt's only my view on useful commands and this examples are useful for me in first place.\n\n\n\n\nAbout\n\n\n\n\nDmitr Ivanov\n\n\nGitHub repo\n\n\n\n\nUnsorted info:\n\n\n\n\nJouning all similarly prefixed files, for example, \"_tar.gz.1of2\" and \"_tar.gz.2of2\".\n\n\n\n\n# Unix\ncat \nFileName_tar.gz.1of3\n \nFileName_tar.gz.2of3\n \nFileName_tar.gz.3of3\n \n \nFileName.tar.gz\n\n# Windows\ncopy /b \nFileName_tar.gz.1of3\n+\nFileName_tar.gz.2of3\n+\nFileName_tar.gz.3of3\n \nFileName.tar.gz", 
+            "text": "Command line examples\n\n\nInspired by \nJoshua Levy\n and his great \nThe-Art-Of-Command-Line\n\n\n\n\nIt's only my view on useful commands and this examples are useful for me in first place.\n\n\n\n\nAbout\n\n\n\n\nDmitr Ivanov\n\n\nGitHub repo\n\n\n\n\nUnsorted info:\n\n\n\n\nJoining all similarly prefixed files, for example, \"_tar.gz.1of2\" and \"_tar.gz.2of2\".\n\n\n\n\n# Unix\ncat \nFileName_tar.gz.1of3\n \nFileName_tar.gz.2of3\n \nFileName_tar.gz.3of3\n \n \nFileName.tar.gz\n\n# Windows\ncopy /b \nFileName_tar.gz.1of3\n+\nFileName_tar.gz.2of3\n+\nFileName_tar.gz.3of3\n \nFileName.tar.gz", 
             "title": "Home"
         }, 
         {
@@ -17,22 +17,22 @@
         }, 
         {
             "location": "/#unsorted-info", 
-            "text": "Jouning all similarly prefixed files, for example, \"_tar.gz.1of2\" and \"_tar.gz.2of2\".   # Unix\ncat  FileName_tar.gz.1of3   FileName_tar.gz.2of3   FileName_tar.gz.3of3     FileName.tar.gz \n# Windows\ncopy /b  FileName_tar.gz.1of3 + FileName_tar.gz.2of3 + FileName_tar.gz.3of3   FileName.tar.gz", 
+            "text": "Joining all similarly prefixed files, for example, \"_tar.gz.1of2\" and \"_tar.gz.2of2\".   # Unix\ncat  FileName_tar.gz.1of3   FileName_tar.gz.2of3   FileName_tar.gz.3of3     FileName.tar.gz \n# Windows\ncopy /b  FileName_tar.gz.1of3 + FileName_tar.gz.2of3 + FileName_tar.gz.3of3   FileName.tar.gz", 
             "title": "Unsorted info:"
         }, 
         {
             "location": "/Databases/Links/", 
-            "text": "Adminer - simple database management php console\n\n\nJust one file - so could run from every place\n\n \nAdminer site\n\n\n \nAdminer repo\n\n\nDan Morgan's Oracle Library\n\n\nHuge amount of information about Oracle\n* \nMorgan's Library", 
+            "text": "Adminer - simple database management php console\n\n\nJust one file - so could run from every place\n\n\n\n\nAdminer site\n\n\nAdminer repo\n\n\n\n\nDan Morgan's Oracle Library\n\n\nHuge amount of information about Oracle\n\n\n\n\nMorgan's Library", 
             "title": "Links"
         }, 
         {
             "location": "/Databases/Links/#adminer-simple-database-management-php-console", 
-            "text": "Just one file - so could run from every place   Adminer site    Adminer repo", 
+            "text": "Just one file - so could run from every place   Adminer site  Adminer repo", 
             "title": "Adminer - simple database management php console"
         }, 
         {
             "location": "/Databases/Links/#dan-morgans-oracle-library", 
-            "text": "Huge amount of information about Oracle\n*  Morgan's Library", 
+            "text": "Huge amount of information about Oracle   Morgan's Library", 
             "title": "Dan Morgan's Oracle Library"
         }, 
         {
