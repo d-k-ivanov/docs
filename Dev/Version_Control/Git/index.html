@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Databases/Oracle/Tablespace/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Dev/Version_Control/Git/"> 
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-    <title>Tablespace - Technical Info</title>
+    <title>Git - Technical Info</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -92,13 +92,13 @@
                 
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Databases <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../../Links/">Links</a>
+    <a href="../../../Databases/Links/">Links</a>
 </li>
 
                         
@@ -109,25 +109,25 @@
         
             
 <li >
-    <a href="../Blocking_sessions/">Blocking sessions</a>
+    <a href="../../../Databases/Oracle/Blocking_sessions/">Blocking sessions</a>
 </li>
 
         
             
 <li >
-    <a href="../OJDBC/">OJDBC</a>
-</li>
-
-        
-            
-<li class="active">
-    <a href="./">Tablespace</a>
+    <a href="../../../Databases/Oracle/OJDBC/">OJDBC</a>
 </li>
 
         
             
 <li >
-    <a href="../Useful_Queries/">Useful Queries</a>
+    <a href="../../../Databases/Oracle/Tablespace/">Tablespace</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Useful_Queries/">Useful Queries</a>
 </li>
 
         
@@ -140,7 +140,7 @@
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dev <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
@@ -151,7 +151,7 @@
         
             
 <li >
-    <a href="../../../Dev/Ruby/Installation/">Installation</a>
+    <a href="../../Ruby/Installation/">Installation</a>
 </li>
 
         
@@ -165,14 +165,14 @@
     <ul class="dropdown-menu">
         
             
-<li >
-    <a href="../../../Dev/Version_Control/Git/">Git</a>
+<li class="active">
+    <a href="./">Git</a>
 </li>
 
         
             
 <li >
-    <a href="../../../Dev/Version_Control/GitHub/">GitHub</a>
+    <a href="../GitHub/">GitHub</a>
 </li>
 
         
@@ -351,12 +351,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../OJDBC/">
+                        <a rel="next" href="../../Ruby/Installation/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../Useful_Queries/">
+                        <a rel="prev" href="../GitHub/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -379,19 +379,77 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#create">Create</a></li>
+        <li class="first-level active"><a href="#clone">Clone</a></li>
+        
+    
+        <li class="first-level "><a href="#global-settings">Global settings</a></li>
+        
+    
+        <li class="first-level "><a href="#create-new-repository">Create new repository</a></li>
+        
+    
+        <li class="first-level "><a href="#commit">Commit</a></li>
+        
+    
+        <li class="first-level "><a href="#update-local-reposytory-from-remote">Update local reposytory from remote</a></li>
+        
+    
+        <li class="first-level "><a href="#working-with-bunch-of-repositories">Working with bunch of  repositories</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="create">Create</h3>
-<pre><code>CREATE TABLESPACE tablespace_name DATAFILE 'tablespace_name.ora' SIZE 20M AUTOEXTEND ON;
-### You need this line only for Oracle 12 
-ALTER SESSION SET &quot;_ORACLE_SCRIPT&quot;=true;
-CREATE USER tablespace_username IDENTIFIED BY tablespace_username_password DEFAULT TABLESPACE tablespace_name;
-GRANT ALL PRIVILEGES TO tablespabe+username ;
+<h3 id="clone">Clone</h3>
+<pre><code># For new repos(-jN - number of simltaniuos jobs):
+git clone --recursive -j4 https://github.com/keepbot/dotfiles-srv
+git clone --recursive https://github.com/keepbot/dotfiles-srv
+
+# For already cloned repos:
+git submodule update --init --recursive
+</code></pre>
+
+<h3 id="global-settings">Global settings</h3>
+<pre><code class="bash">git config --global user.name &quot;Your Name&quot;
+git config --global user.email your@e-mail.com
+</code></pre>
+
+<h3 id="create-new-repository">Create new repository</h3>
+<pre><code class="bash">mkdir -p &lt;path_to_repository&gt;
+cd &lt;path_to_repository&gt;
+git add .
+git commit -m &quot;Initialization&quot;
+git remote add origin https://github.com/username/&lt;repository&gt;.git
+git push -u origin master
+git checkout 
+</code></pre>
+
+<h3 id="commit">Commit</h3>
+<pre><code class="bash"># Addition of new files with automatic staging of deleted and modified files
+git add .
+git commit -a -m &quot;new commentary&quot;
+git push -u origin master
+</code></pre>
+
+<h3 id="update-local-reposytory-from-remote">Update local reposytory from remote</h3>
+<pre><code class="bash"># Fentch + Merge
+git pull
+# Fetch only
+git fetch
+# Fetch changes from remote repository with modified local repository
+git commit -a -m &quot;new commentary&quot;
+git pull rebase
+# pull remote with overwrite local changes
+git fetch --all
+git reset --hard origin/master
+</code></pre>
+
+<h3 id="working-with-bunch-of-repositories">Working with bunch of  repositories</h3>
+<pre><code class="bash"># Last commits
+for d in `ls`; do cd $d; git log --pretty=format:&quot;%h - %an, %ar : %s&quot; -1; cd ..; done
+# Mass checkout
+for d in `ls`; do cd $d; git checkout; cd ..; done
 </code></pre></div>
         
     </div>

@@ -151,6 +151,81 @@
             "title": "via RVM on Ubuntu"
         }, 
         {
+            "location": "/Dev/Version_Control/Git/", 
+            "text": "Clone\n\n\n# For new repos(-jN - number of simltaniuos jobs):\ngit clone --recursive -j4 https://github.com/keepbot/dotfiles-srv\ngit clone --recursive https://github.com/keepbot/dotfiles-srv\n\n# For already cloned repos:\ngit submodule update --init --recursive\n\n\n\n\nGlobal settings\n\n\ngit config --global user.name \nYour Name\n\ngit config --global user.email your@e-mail.com\n\n\n\n\nCreate new repository\n\n\nmkdir -p \npath_to_repository\n\ncd \npath_to_repository\n\ngit add .\ngit commit -m \nInitialization\n\ngit remote add origin https://github.com/username/\nrepository\n.git\ngit push -u origin master\ngit checkout \n\n\n\n\nCommit\n\n\n# Addition of new files with automatic staging of deleted and modified files\ngit add .\ngit commit -a -m \nnew commentary\n\ngit push -u origin master\n\n\n\n\nUpdate local reposytory from remote\n\n\n# Fentch + Merge\ngit pull\n# Fetch only\ngit fetch\n# Fetch changes from remote repository with modified local repository\ngit commit -a -m \nnew commentary\n\ngit pull rebase\n# pull remote with overwrite local changes\ngit fetch --all\ngit reset --hard origin/master\n\n\n\n\nWorking with bunch of  repositories\n\n\n# Last commits\nfor d in `ls`; do cd $d; git log --pretty=format:\n%h - %an, %ar : %s\n -1; cd ..; done\n# Mass checkout\nfor d in `ls`; do cd $d; git checkout; cd ..; done", 
+            "title": "Git"
+        }, 
+        {
+            "location": "/Dev/Version_Control/Git/#clone", 
+            "text": "# For new repos(-jN - number of simltaniuos jobs):\ngit clone --recursive -j4 https://github.com/keepbot/dotfiles-srv\ngit clone --recursive https://github.com/keepbot/dotfiles-srv\n\n# For already cloned repos:\ngit submodule update --init --recursive", 
+            "title": "Clone"
+        }, 
+        {
+            "location": "/Dev/Version_Control/Git/#global-settings", 
+            "text": "git config --global user.name  Your Name \ngit config --global user.email your@e-mail.com", 
+            "title": "Global settings"
+        }, 
+        {
+            "location": "/Dev/Version_Control/Git/#create-new-repository", 
+            "text": "mkdir -p  path_to_repository \ncd  path_to_repository \ngit add .\ngit commit -m  Initialization \ngit remote add origin https://github.com/username/ repository .git\ngit push -u origin master\ngit checkout", 
+            "title": "Create new repository"
+        }, 
+        {
+            "location": "/Dev/Version_Control/Git/#commit", 
+            "text": "# Addition of new files with automatic staging of deleted and modified files\ngit add .\ngit commit -a -m  new commentary \ngit push -u origin master", 
+            "title": "Commit"
+        }, 
+        {
+            "location": "/Dev/Version_Control/Git/#update-local-reposytory-from-remote", 
+            "text": "# Fentch + Merge\ngit pull\n# Fetch only\ngit fetch\n# Fetch changes from remote repository with modified local repository\ngit commit -a -m  new commentary \ngit pull rebase\n# pull remote with overwrite local changes\ngit fetch --all\ngit reset --hard origin/master", 
+            "title": "Update local reposytory from remote"
+        }, 
+        {
+            "location": "/Dev/Version_Control/Git/#working-with-bunch-of-repositories", 
+            "text": "# Last commits\nfor d in `ls`; do cd $d; git log --pretty=format: %h - %an, %ar : %s  -1; cd ..; done\n# Mass checkout\nfor d in `ls`; do cd $d; git checkout; cd ..; done", 
+            "title": "Working with bunch of  repositories"
+        }, 
+        {
+            "location": "/Dev/Version_Control/GitHub/", 
+            "text": "Git: Global settings\n\n\ngit config --global user.name \nYour Name\n\ngit config --global user.email your@e-mail.com\n\n\n\n\nGit: Create new repository\n\n\nmkdir -p \npath_to_repository\n\ncd \npath_to_repository\n\ngit add .\ngit commit -m \nInitialization\n\ngit remote add origin https://github.com/username/\nrepository\n.git\ngit push -u origin master\ngit checkout \n\n\n\n\nGit: New commit\n\n\n# Addition of new files with automatic staging of deleted and modified files\ngit add .\ngit commit -a -m \nnew commentary\n\ngit push -u origin master\n\n\n\n\nGit: update local reposytory from remote\n\n\n# Fentch + Merge\ngit pull\n# Fetch only\ngit fetch\n# Fetch changes from remote repository with modified local repository\ngit commit -a -m \nnew commentary\n\ngit pull rebase\n# pull remote with overwrite local changes\ngit fetch --all\ngit reset --hard origin/master\n\n\n\n\nGit: Working with bunch of  repositories\n\n\n# Last commits\nfor d in `ls`; do cd $d; git log --pretty=format:\n%h - %an, %ar : %s\n -1; cd ..; done\n# Mass checkout\nfor d in `ls`; do cd $d; git checkout; cd ..; done\n\n\n\n\nGitHub: Independent history catalogs of git repository\n\n\n# Makes a bunch of history folders formatted by the next way: \nrepository\n-\nnumber_of_commit\n-\ncommit_hash\n\n# Check commit_list.end for mistakes, you need simple list of commits\ngit clone \nrepository_url\n \nrepository\n\ncd \nrepository\n \n git log --pretty=format:\n%h\n \n ../commit_list \n cd ..\ntac commit_list \n commit_list.end \ni=1; for cid in `cat commit_list.end`; do cp -r \nrepository\n \nrepository\n-$i-$cid; cd \nrepository\n-$i-$cid; git checkout $cid; cd ..; ((i=i+1)); done\n\n\n\n\nGitHub: Clone all user's repository\n\n\n# Get complete list of user's repositories in JSON file\ncurl -s https://api.github.com/users/\nusername\n/repos?per_page=200 \n repo.list.json\npython -c \nimport json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close()\n\n# And dont forget about \nspace\n(%20, \n \n) in cmd = 'git clone ', it's completely nessesary\n# Another way to clone up to 200 user's repos(just in shell): \ncurl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | .\nclone_url\n' | xargs -I '{}' git clone {}", 
+            "title": "GitHub"
+        }, 
+        {
+            "location": "/Dev/Version_Control/GitHub/#git-global-settings", 
+            "text": "git config --global user.name  Your Name \ngit config --global user.email your@e-mail.com", 
+            "title": "Git: Global settings"
+        }, 
+        {
+            "location": "/Dev/Version_Control/GitHub/#git-create-new-repository", 
+            "text": "mkdir -p  path_to_repository \ncd  path_to_repository \ngit add .\ngit commit -m  Initialization \ngit remote add origin https://github.com/username/ repository .git\ngit push -u origin master\ngit checkout", 
+            "title": "Git: Create new repository"
+        }, 
+        {
+            "location": "/Dev/Version_Control/GitHub/#git-new-commit", 
+            "text": "# Addition of new files with automatic staging of deleted and modified files\ngit add .\ngit commit -a -m  new commentary \ngit push -u origin master", 
+            "title": "Git: New commit"
+        }, 
+        {
+            "location": "/Dev/Version_Control/GitHub/#git-update-local-reposytory-from-remote", 
+            "text": "# Fentch + Merge\ngit pull\n# Fetch only\ngit fetch\n# Fetch changes from remote repository with modified local repository\ngit commit -a -m  new commentary \ngit pull rebase\n# pull remote with overwrite local changes\ngit fetch --all\ngit reset --hard origin/master", 
+            "title": "Git: update local reposytory from remote"
+        }, 
+        {
+            "location": "/Dev/Version_Control/GitHub/#git-working-with-bunch-of-repositories", 
+            "text": "# Last commits\nfor d in `ls`; do cd $d; git log --pretty=format: %h - %an, %ar : %s  -1; cd ..; done\n# Mass checkout\nfor d in `ls`; do cd $d; git checkout; cd ..; done", 
+            "title": "Git: Working with bunch of  repositories"
+        }, 
+        {
+            "location": "/Dev/Version_Control/GitHub/#github-independent-history-catalogs-of-git-repository", 
+            "text": "# Makes a bunch of history folders formatted by the next way:  repository - number_of_commit - commit_hash \n# Check commit_list.end for mistakes, you need simple list of commits\ngit clone  repository_url   repository \ncd  repository    git log --pretty=format: %h    ../commit_list   cd ..\ntac commit_list   commit_list.end \ni=1; for cid in `cat commit_list.end`; do cp -r  repository   repository -$i-$cid; cd  repository -$i-$cid; git checkout $cid; cd ..; ((i=i+1)); done", 
+            "title": "GitHub: Independent history catalogs of git repository"
+        }, 
+        {
+            "location": "/Dev/Version_Control/GitHub/#github-clone-all-users-repository", 
+            "text": "# Get complete list of user's repositories in JSON file\ncurl -s https://api.github.com/users/ username /repos?per_page=200   repo.list.json\npython -c  import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close() \n# And dont forget about  space (%20,    ) in cmd = 'git clone ', it's completely nessesary\n# Another way to clone up to 200 user's repos(just in shell): \ncurl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | . clone_url ' | xargs -I '{}' git clone {}", 
+            "title": "GitHub: Clone all user's repository"
+        }, 
+        {
             "location": "/OS/AIX/", 
             "text": "Basic programs\n\n\nsh$ ftp ftp.software.ibm.com\n  Name\n ftp\n  Password\n your e-mail address\n  ftp\n cd aix/freeSoftware/aixtoolbox/RPMS/ppc/wget\n  ftp\n binary\n  ftp\n get wget-1.9.1-1.aix5.1.ppc.rpm\n  ftp\n quit\nsh$ rpm -hUv wget-1.9.1-1.aix5.1.ppc.rpm\nsh$ wget -r -nd ftp://ftp.software.ibm.com/aix/freeSoftware/aixtoolbox/ezinstall/ppc  \n\nsh$ ls\ngetapp-dev.sh       getgnome.base.sh    getkde3.all.sh\nXsession.kde        getbase.sh          getkde2.all.sh      getkde3.base.sh\nXsession.kde2       getdesktop.base.sh  getkde2.base.sh     getkde3.opt.sh\ngetgnome.apps.sh    getkde2.opt.sh      \n\nsh$ chmod +x get*.sh  \n\nsh$ cd base\nsh$ ls\nbash-3.2-1.aix5.2.ppc.rpm          rpm-3.0.5-52.aix5.3.ppc.rpm\nbzip2-1.0.5-3.aix5.3.ppc.rpm       rpm-build-3.0.5-52.aix5.3.ppc.rpm\ngettext-0.10.40-8.aix5.2.ppc.rpm   rpm-devel-3.0.5-52.aix5.3.ppc.rpm\ngzip-1.2.4a-10.aix5.2.ppc.rpm      tar-1.14-2.aix5.1.ppc.rpm\ninfo-4.6-1.aix5.1.ppc.rpm          unzip-5.51-1.aix5.1.ppc.rpm\npatch-2.5.4-4.aix4.3.ppc.rpm       \npopt-1.7-2.aix5.1.ppc.rpm\n\nsh$ rpm -hUv unzip-5.51-1.aix5.1.ppc.rpm\nsh$ rpm -hUv zip-2.3-3.aix4.3.ppc.rpm\nsh$ rpm -hUv bash-3.2-1.aix5.2.ppc.rpm\n\nsh$ bash\nbash-3.2# \n\n\n\n\nManagement\n\n\n# Exit from basic VIOS console to common AIX ksh\noem_setup_env\n# Adminitration and configuration console\nsmit\n\n#If you want to use bash as a login shell, you first have to add it to the\n#list of shells in /etc/security/login.cfg. \n#Then use `chsh` to change your individual setting.\n\n\n\n\nSoftware installation:\n\n\ncd \npath_to_package\n\ninutoc .\ninstallp -aXY -d\npath_to_package\n all\n# Check if package is installed or not:\nlslpp -L \npackage_name\n\n\n\n\n\nMirroring rootvg:\n\n\nextendvg rootvg hdisk1\nmirrorvg rootvg\nbootlist -m normal hdisk0 hdisk1 \nbosboot -ad hdisk0\nbosboot -ad hdisk1\n# Checking\nbootlist -o -m normal\n\n\n\n\nNetwork:\n\n\nShared Ethernet adapter coming soon\n\n\n\n\nHardware:\n\n\n# Refresh hardware configuration(aix and vios respectively):\ncfgmgr\ncfgdev\n# Rename hard drive:\nrendev -l \nold_name\n -n \nnew_name\n\nrendev -l hdisk3 -n hdisk33\n# Enable PVID:\nchdev -l hdiskX -a pv=yes\n# Change reserve policy to hard drive\nchdev -l hdiskX -a reserve_policy=no_reserve\n# Clear the owning volume manager from a disk\nchpv -C hdiskX\n\n\n\n\nVirtual devices:\n\n\n# Checking all virtual mappings to particular vhost:\nlsmap -vadapter vhost\n# Make a virtual hard drive for particular vhost:\n# -f - flag to forcing device creation if you're making shared hard drive\nmkvdev [-f] -vdev hdiskX -vadapter vhostX -dev \nvirtual_device_name\n\n# Make a virtual cd-rom device for particular vhost:\nmkvdev -fbo -vadapter vhostX -dev \nvirtual_device_name\n\n\n\n\n\nZabbix agent\n\n\n# Dependencies:\nrpm -ivh ftp://www.oss4aix.org/latest/aix61/gettext-0.10.40-8.aix5.2.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/expat-2.1.0-1.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libgcc-4.7.2-1.aix6.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libffi-3.0.11-2.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/glib2-2.30.3-1.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libiconv-1.14-2.aix5.1.ppc.rpm\n\n# Main\nmkgroup zabbix\nuseradd -g zabbix zabbix\n\nmkdir /var/run/zabbix\ntouch /var/run/zabbix/zabbix_agentd.pid\nmkdir /var/log/zabbix\ntouch /var/log/zabbix/zabbix_agentd.log\n\nchown -R zabbix:zabbix /var/log/zabbix\nchown -R zabbix:zabbix /var/run/zabbix\nchown zabbix:zabbix /etc/zabbix_agentd.conf\n\n/usr/sbin/zabbix_agentd --config /etc/zabbix_agentd.conf\n\nvi /etc/inittab\nzabagent:2:once:/usr/sbin/zabbix_agentd --config /etc/zabbix_agentd.conf", 
             "title": "AIX"
@@ -194,6 +269,16 @@
             "location": "/OS/AIX/#zabbix-agent", 
             "text": "# Dependencies:\nrpm -ivh ftp://www.oss4aix.org/latest/aix61/gettext-0.10.40-8.aix5.2.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/expat-2.1.0-1.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libgcc-4.7.2-1.aix6.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libffi-3.0.11-2.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/glib2-2.30.3-1.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libiconv-1.14-2.aix5.1.ppc.rpm\n\n# Main\nmkgroup zabbix\nuseradd -g zabbix zabbix\n\nmkdir /var/run/zabbix\ntouch /var/run/zabbix/zabbix_agentd.pid\nmkdir /var/log/zabbix\ntouch /var/log/zabbix/zabbix_agentd.log\n\nchown -R zabbix:zabbix /var/log/zabbix\nchown -R zabbix:zabbix /var/run/zabbix\nchown zabbix:zabbix /etc/zabbix_agentd.conf\n\n/usr/sbin/zabbix_agentd --config /etc/zabbix_agentd.conf\n\nvi /etc/inittab\nzabagent:2:once:/usr/sbin/zabbix_agentd --config /etc/zabbix_agentd.conf", 
             "title": "Zabbix agent"
+        }, 
+        {
+            "location": "/OS/FreeBSD/", 
+            "text": "Build own kernel\n\n\n# /usr/src/sys/i386/conf  - kernel config\ncd /usr/src\nmake buildkernel KERNCONF=MYKERNEL\nmake installkernel KERNCONF=MYKERNEL", 
+            "title": "FreeBSD"
+        }, 
+        {
+            "location": "/OS/FreeBSD/#build-own-kernel", 
+            "text": "# /usr/src/sys/i386/conf  - kernel config\ncd /usr/src\nmake buildkernel KERNCONF=MYKERNEL\nmake installkernel KERNCONF=MYKERNEL", 
+            "title": "Build own kernel"
         }, 
         {
             "location": "/Security/HSM/", 
@@ -351,16 +436,6 @@
             "title": "Mounts"
         }, 
         {
-            "location": "/Unix/FreeBSD/", 
-            "text": "Build own kernel\n\n\n# /usr/src/sys/i386/conf  - kernel config\ncd /usr/src\nmake buildkernel KERNCONF=MYKERNEL\nmake installkernel KERNCONF=MYKERNEL", 
-            "title": "FreeBSD"
-        }, 
-        {
-            "location": "/Unix/FreeBSD/#build-own-kernel", 
-            "text": "# /usr/src/sys/i386/conf  - kernel config\ncd /usr/src\nmake buildkernel KERNCONF=MYKERNEL\nmake installkernel KERNCONF=MYKERNEL", 
-            "title": "Build own kernel"
-        }, 
-        {
             "location": "/Unix/GPFS/", 
             "text": "Instalaltion on AIX:\n\n\n# on each node:\ncd /\npath_to_gpfs_base_package\n/base-3-5/\ninutoc .\ninstallp -aXY -d/\npath_to_gpfs_base_package\n/base-3-5 all\ncd /\npath_to_gpfs_fix_package\n/fix-3-5-10/\ninutoc .\ninstallp -aXY -d/\npath_to_gpfs_fix_package\n/fix-3-5-10 all\nlslpp -L gpfs.\\*\n\n\n\n\nCreating cluster:\n\n\n# You need to setup paswordless shh connection between nodes\n# Add this path to /etc/environment on each node\nexport PATH=$PATH:/usr/lpp/mmfs/bin\n\nmmcrcluster -N \nPRIMARY_NODE_HOSTNAME\n:manager-quorum -p PRIMARY_NODE_HOSTNAME -r /usr/bin/ssh -R /usr/bin/scp\nmmchlicense server --accept -N PRIMARY_NODE_HOSTNAME\nmmstartup -a\nmmaddnode -N \nSECONDARY_NODE_HOSTNAME\n\nmmaddnode -N \nTHIRDARY_NODE_HOSTNAME\n\nmmaddnode -N \nN-ARY_NODE_HOSTNAME\n\nmmchcluster -s \nSECONDARY_NODE_HOSTNAME\n\nmmchlicense server --accept -N \nSECONDARY_NODE_HOSTNAME\n\nmmchlicense server --accept -N \nTHIRDARY_NODE_HOSTNAME\n\nmmchlicense server --accept -N \nN-ARY_NODE_HOSTNAME\n\nmmstartup -N \nSECONDARY_NODE_HOSTNAME\n\nmmstartup -N \nTHIRDARY_NODE_HOSTNAME\n\nmmstartup -N \nN-ARY_NODE_HOSTNAME\n\nmmchnode --quorum --manager -N \nSECONDARY_NODE_HOSTNAME\n\n# To check status of cluster:\nmmlscluster\nmmgetstate -a\n\n\n\n\nCreate GPFS mirror partition:\n\n\n# On primary node:\nmkdir /etc/gpfs\nvi /etc/gpfs/diskdesk.txt\n### --insert in diskdesk.txt--\nhdiskX:::dataAndMetadata:1:nsd1:\nhdiskY:::dataAndMetadata:2:nsd2:\n### --end of insert--\n\nmmcrnsd -F /etc/gpfs/diskdesk.txt\nmmshutdown -a\nmmchconfig tiebreakerdisks=\nnsd1;nsd2\n\nmmstartup -a\nmmcrfs /mnt/gpfs gpfsfs -F /etc/gpfs/diskdesk.txt -A yes -B 512K -M2 -m2 -R2 -r2 -n 2 -N 50000\nmmlsconfig\nmmmount all -a\nmmchconfig minQuorumNodes=2\ndf -g\n\n\n\n\nAutostart GPFS\n\n\nmmchconfig autoload=yes\n\n\n\n\nIncrease Inodes\n\n\nmmchfs \nfsname\n -F 1M\n\n\n\n\nChange hostname on GPFS nodes\n\n\n\n\n[Preface]\n\n\n\n\n#Old names:\n10.10.10.10     OLD-SRV-NAME-01\n10.10.10.10     OLD-SRV-NAME-02\n#New names:\n10.10.10.10     NEW-SRV-NAME-01\n10.10.10.10     NEW-SRV-NAME-02\n\n\n\n\n\n\n\n[Preface]\n Stop all services which use GPFS\n\n\n[On each node]\n add new names to /etc/hosts (old ones keep too)\n\n\n\n\n10.10.10.10     NEW-SRV-NAME-01\n10.10.10.11     NEW-SRV-NAME-02\n\n\n\n\n\n\n[On master node]\n Shut down GPFS-cluster\n\n\n\n\nmmshutdown -a\n\n\n\n\n\n\n[On master node]\n Run command for configuration changing\n\n\n\n\n# Change interface names to names placed after \n-N\n key\nmmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx1 -N NEW-SRV-NAME-01\nmmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx2 -N NEW-SRV-NAME-02\n\n\n\n\n\n\n[On master node]\n Start GPFS-cluster\n\n\n\n\nmmstartup -a\n\n\n\n\n\n\n[On master node]\n Check cluster details and make sure that names were changed\n\n\n\n\nmmlscluster\nmmgetstate -a\n\n\n\n\n\n\n[On each node]\n If everything right remove old records from /etc/hosts\n\n\n[On maser node]\n Recheck than everything still OK\n\n\n\n\nmmshutdown -a\nmmstartup -a\nmmlscluster\nmmgetstate -a", 
             "title": "GPFS"
@@ -494,46 +569,6 @@
             "location": "/Unix/Skype/#unable-to-receive-group-messages", 
             "text": "After struggling a bit, I found some useful commands:\n    /dumpmsnp - show details about your connection\n    /showplaces - show where you are currently connected\nYou can execute them in any chat window.\n\n*/dumpmsnp* command was showing  LoggedOut , but I was online and talking almost normally (except group chats).\n\nSystem: MSNP: Connection Data:\n * Status: LoggedOut\n\nA lot of people are/were suffering from this problem.\n\nTo solve this  LoggedOut  issue, try this on any chat window:\n/msnp24\n\nand restart your Skype.\n\nAfter restarting, /dumpmsnp output shows the following status:\n\nSystem: MSNP: Connection Data (MSNP24):\n * Status: LoggedIn\n\nI don't know exactly why, but the /msnp24 command kinds of converted my account to this protocol and now everything works perfectly.", 
             "title": "Unable to receive group messages"
-        }, 
-        {
-            "location": "/Unix/Version_Control/", 
-            "text": "Git: Global settings\n\n\ngit config --global user.name \nYour Name\n\ngit config --global user.email your@e-mail.com\n\n\n\n\nGit: Create new repository\n\n\nmkdir -p \npath_to_repository\n\ncd \npath_to_repository\n\ngit add .\ngit commit -m \nInitialization\n\ngit remote add origin https://github.com/username/\nrepository\n.git\ngit push -u origin master\ngit checkout \n\n\n\n\nGit: New commit\n\n\n# Addition of new files with automatic staging of deleted and modified files\ngit add .\ngit commit -a -m \nnew commentary\n\ngit push -u origin master\n\n\n\n\nGit: update local reposytory from remote\n\n\n# Fentch + Merge\ngit pull\n# Fetch only\ngit fetch\n# Fetch changes from remote repository with modified local repository\ngit commit -a -m \nnew commentary\n\ngit pull rebase\n# pull remote with overwrite local changes\ngit fetch --all\ngit reset --hard origin/master\n\n\n\n\nGit: Working with bunch of  repositories\n\n\n# Last commits\nfor d in `ls`; do cd $d; git log --pretty=format:\n%h - %an, %ar : %s\n -1; cd ..; done\n# Mass checkout\nfor d in `ls`; do cd $d; git checkout; cd ..; done\n\n\n\n\nGitHub: Independent history catalogs of git repository\n\n\n# Makes a bunch of history folders formatted by the next way: \nrepository\n-\nnumber_of_commit\n-\ncommit_hash\n\n# Check commit_list.end for mistakes, you need simple list of commits\ngit clone \nrepository_url\n \nrepository\n\ncd \nrepository\n \n git log --pretty=format:\n%h\n \n ../commit_list \n cd ..\ntac commit_list \n commit_list.end \ni=1; for cid in `cat commit_list.end`; do cp -r \nrepository\n \nrepository\n-$i-$cid; cd \nrepository\n-$i-$cid; git checkout $cid; cd ..; ((i=i+1)); done\n\n\n\n\nGitHub: Clone all user's repository\n\n\n# Get complete list of user's repositories in JSON file\ncurl -s https://api.github.com/users/\nusername\n/repos?per_page=200 \n repo.list.json\npython -c \nimport json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close()\n\n# And dont forget about \nspace\n(%20, \n \n) in cmd = 'git clone ', it's completely nessesary\n# Another way to clone up to 200 user's repos(just in shell): \ncurl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | .\nclone_url\n' | xargs -I '{}' git clone {}", 
-            "title": "Version Control"
-        }, 
-        {
-            "location": "/Unix/Version_Control/#git-global-settings", 
-            "text": "git config --global user.name  Your Name \ngit config --global user.email your@e-mail.com", 
-            "title": "Git: Global settings"
-        }, 
-        {
-            "location": "/Unix/Version_Control/#git-create-new-repository", 
-            "text": "mkdir -p  path_to_repository \ncd  path_to_repository \ngit add .\ngit commit -m  Initialization \ngit remote add origin https://github.com/username/ repository .git\ngit push -u origin master\ngit checkout", 
-            "title": "Git: Create new repository"
-        }, 
-        {
-            "location": "/Unix/Version_Control/#git-new-commit", 
-            "text": "# Addition of new files with automatic staging of deleted and modified files\ngit add .\ngit commit -a -m  new commentary \ngit push -u origin master", 
-            "title": "Git: New commit"
-        }, 
-        {
-            "location": "/Unix/Version_Control/#git-update-local-reposytory-from-remote", 
-            "text": "# Fentch + Merge\ngit pull\n# Fetch only\ngit fetch\n# Fetch changes from remote repository with modified local repository\ngit commit -a -m  new commentary \ngit pull rebase\n# pull remote with overwrite local changes\ngit fetch --all\ngit reset --hard origin/master", 
-            "title": "Git: update local reposytory from remote"
-        }, 
-        {
-            "location": "/Unix/Version_Control/#git-working-with-bunch-of-repositories", 
-            "text": "# Last commits\nfor d in `ls`; do cd $d; git log --pretty=format: %h - %an, %ar : %s  -1; cd ..; done\n# Mass checkout\nfor d in `ls`; do cd $d; git checkout; cd ..; done", 
-            "title": "Git: Working with bunch of  repositories"
-        }, 
-        {
-            "location": "/Unix/Version_Control/#github-independent-history-catalogs-of-git-repository", 
-            "text": "# Makes a bunch of history folders formatted by the next way:  repository - number_of_commit - commit_hash \n# Check commit_list.end for mistakes, you need simple list of commits\ngit clone  repository_url   repository \ncd  repository    git log --pretty=format: %h    ../commit_list   cd ..\ntac commit_list   commit_list.end \ni=1; for cid in `cat commit_list.end`; do cp -r  repository   repository -$i-$cid; cd  repository -$i-$cid; git checkout $cid; cd ..; ((i=i+1)); done", 
-            "title": "GitHub: Independent history catalogs of git repository"
-        }, 
-        {
-            "location": "/Unix/Version_Control/#github-clone-all-users-repository", 
-            "text": "# Get complete list of user's repositories in JSON file\ncurl -s https://api.github.com/users/ username /repos?per_page=200   repo.list.json\npython -c  import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close() \n# And dont forget about  space (%20,    ) in cmd = 'git clone ', it's completely nessesary\n# Another way to clone up to 200 user's repos(just in shell): \ncurl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | . clone_url ' | xargs -I '{}' git clone {}", 
-            "title": "GitHub: Clone all user's repository"
         }, 
         {
             "location": "/Unix/WINE/", 
