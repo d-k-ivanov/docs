@@ -3,6 +3,7 @@
 *OJDBC 12.1.0.2 - BUG: ORA-01000: maximum open cursors exceeded*
 
 We need:
+
 * ojdbc7.jar
 * p19632480_121020_Generic.zip
 * JRE
@@ -13,10 +14,9 @@ We need:
 unzip p19632480_121020_Generic.zip
 ```
 
-Get folder ./p19632480_121020_Generic/19632480/files/jdbc/lib/ojdbc7.jar
-And place it to ojdbc7.jar location
+Get folder **./p19632480_121020_Generic/19632480/files/jdbc/lib/ojdbc7.jar** from archvive and place it to *ojdbc7.jar* file location
 
-Make shure that your JAVA_HOME is exported
+Make sure that your JAVA_HOME is exported
 
 Change working directory to ojdbc7.jar location and run:
 ```bash
