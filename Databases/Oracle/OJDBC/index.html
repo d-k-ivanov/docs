@@ -394,19 +394,20 @@
 
 <h3 id="bug-9632480">BUG: 9632480</h3>
 <p><em>OJDBC 12.1.0.2 - BUG: ORA-01000: maximum open cursors exceeded</em></p>
-<p>We need:
-<em> ojdbc7.jar
-</em> p19632480_121020_Generic.zip
-* JRE</p>
+<p>We need:</p>
+<ul>
+<li>ojdbc7.jar</li>
+<li>p19632480_121020_Generic.zip</li>
+<li>JRE</li>
+</ul>
 <blockquote>
 <p>We need to update OracleDatabaseMetaData.class in our ojdbc7.jar archive</p>
 </blockquote>
 <pre><code class="bash">unzip p19632480_121020_Generic.zip
 </code></pre>
 
-<p>Get folder ./p19632480_121020_Generic/19632480/files/jdbc/lib/ojdbc7.jar
-And place it to ojdbc7.jar location</p>
-<p>Make shure that your JAVA_HOME is exported</p>
+<p>Get folder <strong>./p19632480_121020_Generic/19632480/files/jdbc/lib/ojdbc7.jar</strong> from archvive and place it to <em>ojdbc7.jar</em> file location</p>
+<p>Make sure that your JAVA_HOME is exported</p>
 <p>Change working directory to ojdbc7.jar location and run:</p>
 <pre><code class="bash">$JAVA_HOME/jar -uf ojdbc7.jar
 </code></pre></div>

@@ -77,12 +77,12 @@
         }, 
         {
             "location": "/Databases/Oracle/OJDBC/", 
-            "text": "BUG: 9632480\n\n\nOJDBC 12.1.0.2 - BUG: ORA-01000: maximum open cursors exceeded\n\n\nWe need:\n\n ojdbc7.jar\n\n p19632480_121020_Generic.zip\n* JRE\n\n\n\n\nWe need to update OracleDatabaseMetaData.class in our ojdbc7.jar archive\n\n\n\n\nunzip p19632480_121020_Generic.zip\n\n\n\n\nGet folder ./p19632480_121020_Generic/19632480/files/jdbc/lib/ojdbc7.jar\nAnd place it to ojdbc7.jar location\n\n\nMake shure that your JAVA_HOME is exported\n\n\nChange working directory to ojdbc7.jar location and run:\n\n\n$JAVA_HOME/jar -uf ojdbc7.jar", 
+            "text": "BUG: 9632480\n\n\nOJDBC 12.1.0.2 - BUG: ORA-01000: maximum open cursors exceeded\n\n\nWe need:\n\n\n\n\nojdbc7.jar\n\n\np19632480_121020_Generic.zip\n\n\nJRE\n\n\n\n\n\n\nWe need to update OracleDatabaseMetaData.class in our ojdbc7.jar archive\n\n\n\n\nunzip p19632480_121020_Generic.zip\n\n\n\n\nGet folder \n./p19632480_121020_Generic/19632480/files/jdbc/lib/ojdbc7.jar\n from archvive and place it to \nojdbc7.jar\n file location\n\n\nMake sure that your JAVA_HOME is exported\n\n\nChange working directory to ojdbc7.jar location and run:\n\n\n$JAVA_HOME/jar -uf ojdbc7.jar", 
             "title": "OJDBC"
         }, 
         {
             "location": "/Databases/Oracle/OJDBC/#bug-9632480", 
-            "text": "OJDBC 12.1.0.2 - BUG: ORA-01000: maximum open cursors exceeded  We need:  ojdbc7.jar  p19632480_121020_Generic.zip\n* JRE   We need to update OracleDatabaseMetaData.class in our ojdbc7.jar archive   unzip p19632480_121020_Generic.zip  Get folder ./p19632480_121020_Generic/19632480/files/jdbc/lib/ojdbc7.jar\nAnd place it to ojdbc7.jar location  Make shure that your JAVA_HOME is exported  Change working directory to ojdbc7.jar location and run:  $JAVA_HOME/jar -uf ojdbc7.jar", 
+            "text": "OJDBC 12.1.0.2 - BUG: ORA-01000: maximum open cursors exceeded  We need:   ojdbc7.jar  p19632480_121020_Generic.zip  JRE    We need to update OracleDatabaseMetaData.class in our ojdbc7.jar archive   unzip p19632480_121020_Generic.zip  Get folder  ./p19632480_121020_Generic/19632480/files/jdbc/lib/ojdbc7.jar  from archvive and place it to  ojdbc7.jar  file location  Make sure that your JAVA_HOME is exported  Change working directory to ojdbc7.jar location and run:  $JAVA_HOME/jar -uf ojdbc7.jar", 
             "title": "BUG: 9632480"
         }, 
         {
