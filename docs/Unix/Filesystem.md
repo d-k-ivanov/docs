@@ -57,3 +57,9 @@ ls -1d <space separeated folder list> | xargs -I '{}' mv {} <destination>
 df -h | column -t
 mount -l | column -t
 ```
+
+### Sum of root folders
+```bash
+du -s * 2>/dev/null | awk '{print $1}' | paste -sd+ | bc
+```
+
