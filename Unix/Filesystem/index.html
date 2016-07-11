@@ -418,6 +418,9 @@
         <li class="first-level "><a href="#mounts">Mounts</a></li>
         
     
+        <li class="first-level "><a href="#sum-of-root-folders">Sum of root folders</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -479,6 +482,10 @@ cat &lt;filename&gt; | awk '{ print $1 }' | xargs -I '{}' &lt;destination_folder
 <pre><code class="bash">#Show information about mounted file systems with 'column' examples**
 df -h | column -t
 mount -l | column -t
+</code></pre>
+
+<h3 id="sum-of-root-folders">Sum of root folders</h3>
+<pre><code class="bash">du -s * 2&gt;/dev/null | awk '{print $1}' | paste -sd+ | bc
 </code></pre></div>
         
     </div>
