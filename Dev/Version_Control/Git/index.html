@@ -403,6 +403,9 @@
         <li class="first-level "><a href="#working-with-bunch-of-repositories">Working with bunch of  repositories</a></li>
         
     
+        <li class="first-level "><a href="#making-patches-from-commits">Making patches from commits:</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -456,6 +459,26 @@ git reset --hard origin/master
 for d in `ls`; do cd $d; git log --pretty=format:&quot;%h - %an, %ar : %s&quot; -1; cd ..; done
 # Mass checkout
 for d in `ls`; do cd $d; git checkout; cd ..; done
+</code></pre>
+
+<h3 id="making-patches-from-commits">Making patches from commits:</h3>
+<ul>
+<li>Create patch </li>
+</ul>
+<pre><code class="bash"># The easiest version (you can specify number of commit to patch) 
+git format-patch -1 HEAD
+# Same as first, but create numbered files (00001-nnnnn)
+git format-patch -n HEAD^
+# Simple cat ftom stdout, works fine on most of systems, but be carfull, if you have customized terminal (color tags, special symbols, etc.)
+git show HEAD &gt; path_to.patch
+</code></pre>
+
+<ul>
+<li>Apply patch</li>
+</ul>
+<pre><code class="bash">git apply --stat 0001-Linux-agent-LVM-subagent-initial-implementation.patch
+git apply --check 0001-Linux-agent-LVM-subagent-initial-implementation.patch
+git am &lt; 0001-Linux-agent-LVM-subagent-initial-implementation.patch
 </code></pre></div>
         
     </div>
