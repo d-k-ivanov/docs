@@ -50,3 +50,22 @@ for d in `ls`; do cd $d; git log --pretty=format:"%h - %an, %ar : %s" -1; cd ..;
 # Mass checkout
 for d in `ls`; do cd $d; git checkout; cd ..; done
 ```
+
+### Making patches from commits:
+* Create patch 
+```bash
+# The easiest version (you can specify number of commit to patch) 
+git format-patch -1 HEAD
+# Same as first, but create numbered files (00001-nnnnn)
+git format-patch -n HEAD^
+# Simple cat ftom stdout, works fine on most of systems, but be carfull, if you have customized terminal (color tags, special symbols, etc.)
+git show HEAD > path_to.patch
+```
+* Apply patch
+```bash
+git apply --stat 0001-Linux-agent-LVM-subagent-initial-implementation.patch
+git apply --check 0001-Linux-agent-LVM-subagent-initial-implementation.patch
+git am < 0001-Linux-agent-LVM-subagent-initial-implementation.patch
+```
+
+
