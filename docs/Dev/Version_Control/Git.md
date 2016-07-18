@@ -6,6 +6,9 @@ git clone --recursive https://github.com/keepbot/dotfiles-srv
 
 # For already cloned repos:
 git submodule update --init --recursive
+
+# Ignore self signed ssl certificates
+git -c http.sslVerify=false clone --recursive https://github.com/keepbot/dotfiles-srv.git
 ```
 
 ### Global settings
