@@ -515,19 +515,21 @@ cd database/
 ./runInstaller 
 </code></pre>
 
-<p>Just follow installation steps in GUI:
-<em> Step 01. Enter your <strong>E-Mail</strong> and Oracle Enterproise support <strong>password</strong>, if you have one
-</em> Step 02. <strong>(.)</strong> Install database software only (we'll install database later)
-<em> Step 03. Select parovriate type of installation. In simple case choose <strong>"Single instance database installation"</strong>
-</em> Step 04. Choose prefered language. But <strong>English</strong> is recommended in all cases.
-<em> Step 05. Select edidtion. It depends of distribution package. In this case <strong>Standard Edition Two</strong>
-</em> Step 06. Choose path for oracle home directory. In our case everything will filled up by default.
-<em> Step 07. Choose path for oracle inventory. In our case everything will filled up by default.
-</em> Step 08. Choose oracle grroups. In our case everything will filled up by default. 
-<em> Step 09. On this step you'll face swap error in most cases. Just ignore it. In any other errors look at oracle forum. <strong>DO NOT IGNORE ANY ERRORS EXCEPT OF SWAP</strong>
-</em> Step 10. Install oracle database software
-<em> Step 11. On this step installater demand you to execute 2 spripts from root user. Just run them.
-</em> Step 12. Finish</p>
+<p>Just follow installation steps in GUI:</p>
+<ul>
+<li>Step 01. Enter your <strong>E-Mail</strong> and Oracle Enterproise support <strong>password</strong>, if you have one</li>
+<li>Step 02. <strong>(.)</strong> Install database software only (we'll install database later)</li>
+<li>Step 03. Select parovriate type of installation. In simple case choose <strong>"Single instance database installation"</strong></li>
+<li>Step 04. Choose prefered language. But <strong>English</strong> is recommended in all cases.</li>
+<li>Step 05. Select edidtion. It depends of distribution package. In this case <strong>Standard Edition Two</strong></li>
+<li>Step 06. Choose path for oracle home directory. In our case everything will filled up by default.</li>
+<li>Step 07. Choose path for oracle inventory. In our case everything will filled up by default.</li>
+<li>Step 08. Choose oracle grroups. In our case everything will filled up by default. </li>
+<li>Step 09. On this step you'll face swap error in most cases. Just ignore it. In any other errors look at oracle forum. <strong>DO NOT IGNORE ANY ERRORS EXCEPT OF SWAP</strong></li>
+<li>Step 10. Install oracle database software</li>
+<li>Step 11. On this step installater demand you to execute 2 spripts from root user. Just run them.</li>
+<li>Step 12. Finish</li>
+</ul>
 <pre><code class="bash">vim ~/.bash_profile 
 
 # Add to the end of file: 
@@ -554,17 +556,19 @@ dbca
 
 </code></pre>
 
-<p>Follow installation steps for fat installation:
-<em> Step 01. Choose <strong>(.) Create database</strong>
-</em> Step 02. <strong>(.)</strong> Create a database with default configuration
+<p>Follow installation steps for fat installation:</p>
+<ul>
+<li>Step 01. Choose <strong>(.) Create database</strong></li>
+<li>Step 02. <strong>(.)</strong> Create a database with default configuration
 <strong> Global Database name: input what name you like
 </strong> Storage type: <strong>File System</strong> (if you don't have ASM)
 <strong> Database character set: </strong>AL32UTF8 - Unicode UTF-8 Universal character set<strong>
 </strong> Choose password for sysdba account.
-<strong> Uncheck </strong>[]Create As Container Database<em><em>
-</em> Step 03. Look for any errors
-</em> Step 04. Next
-* Step 05. Finish</p>
+<strong> Uncheck </strong>[]Create As Container Database**</li>
+<li>Step 03. Look for any errors</li>
+<li>Step 04. Next</li>
+<li>Step 05. Finish</li>
+</ul>
 <pre><code class="bash">vim /etc/oratab 
 
 #Set last synbol from &quot;N&quot; to &quot;Y&quot;
