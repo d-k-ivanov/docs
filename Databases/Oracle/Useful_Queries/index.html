@@ -435,30 +435,30 @@
         <div class="col-md-9" role="main">
 
 <h3 id="view-tablespaces-by-user">View tablespaces by user</h3>
-<pre><code>select distinct p.tablespace_name from dba_tablespaces p, dba_xml_tables x, dba_users u, all_all_tables t where t.table_name=x.table_name and t.tablespace_name=p.tablespace_name and x.owner=u.username;
+<pre><code class="sql">select distinct p.tablespace_name from dba_tablespaces p, dba_xml_tables x, dba_users u, all_all_tables t where t.table_name=x.table_name and t.tablespace_name=p.tablespace_name and x.owner=u.username;
 </code></pre>
 
 <h3 id="view-all-tablespaces-run-by-sysdba">View all tablespaces: run by sysdba</h3>
-<pre><code>select * from dba_tablespaces;
+<pre><code class="sql">select * from dba_tablespaces;
 </code></pre>
 
 <h3 id="view-charset">View charset</h3>
-<pre><code>SELECT value$ FROM sys.props$ WHERE name = 'NLS_CHARACTERSET' ;
+<pre><code class="sql">SELECT value$ FROM sys.props$ WHERE name = 'NLS_CHARACTERSET' ;
 </code></pre>
 
 <h3 id="get-status-of-instances">Get status of instances</h3>
-<pre><code>select instance_name, status, database_status from v$instance; 
+<pre><code class="sql">select instance_name, status, database_status from v$instance; 
 select status from v$instance;
 select logins from v$instance;
 </code></pre>
 
 <h3 id="mount-and-open-db">Mount and open DB</h3>
-<pre><code>ALTER DATABASE Mount;
+<pre><code class="sql">ALTER DATABASE Mount;
 ALTER DATABASE OPEN;
 </code></pre>
 
 <h3 id="backup-via-rman">Backup via RMAN</h3>
-<pre><code>run {
+<pre><code class="sql">run {
 shutdown immediate;
 startup mount;
 backup database;
@@ -467,7 +467,7 @@ alter database open;
 </code></pre>
 
 <h3 id="enabling-archivelog">Enabling archivelog</h3>
-<pre><code>SHUTDOWN;
+<pre><code class="sql">SHUTDOWN;
 STARTUP MOUNT EXCLUSIVE;
 ALTER DATABASE ARCHIVELOG;
 ALTER DATABASE OPEN;
@@ -475,7 +475,7 @@ SELECT log_mode FROM v$database;
 </code></pre>
 
 <h3 id="open-cursors">Open cursors</h3>
-<pre><code>select * from v$parameter where name = 'open_cursors';
+<pre><code class="sql">select * from v$parameter where name = 'open_cursors';
 select value from v$parameter where name = 'open_cursors';
 alter system set open_cursors=4000 scope=both;
 
