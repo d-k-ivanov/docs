@@ -19,19 +19,6 @@ dpkg --get-selections | grep -v deinstall > ~/Desktop/packages
 # Alternatively, simply use
 dpkg -l
 ```
-* Pacman:
-```bash
-# Search for software
-pacman -Ss <pattern>
-# Install package
-pacman -S <package_name>
-# Update the system
-pacman -Syu
-# Remove orphaned packages (Be careful, double check for list of deleted packages)
-pacman -Rscn $(pacman -Qtdq)
-pacman -Sc
-pacman-optimize && sync
-```
 
 * Yum:
 ```bash

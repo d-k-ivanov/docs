@@ -1,3 +1,7 @@
+### Run docker conainer
+```
+sudo docker run --name mysql-nx -e MYSQL_ROOT_PASSWORD=JuSCY1Bq -d -p 127.0.0.1:3306:3306 mysql:latest
+```
 
 ### Execute in-docker console
 ```
