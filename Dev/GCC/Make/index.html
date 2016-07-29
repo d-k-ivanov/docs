@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Databases/Oracle/OJDBC/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Dev/GCC/Make/"> 
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-    <title>OJDBC - Technical Info</title>
+    <title>Make - Technical Info</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -92,13 +92,13 @@
                 
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Databases <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../../Links/">Links</a>
+    <a href="../../../Databases/Links/">Links</a>
 </li>
 
                         
@@ -109,25 +109,25 @@
         
             
 <li >
-    <a href="../Blocking_sessions/">Blocking sessions</a>
-</li>
-
-        
-            
-<li class="active">
-    <a href="./">OJDBC</a>
+    <a href="../../../Databases/Oracle/Blocking_sessions/">Blocking sessions</a>
 </li>
 
         
             
 <li >
-    <a href="../Tablespace/">Tablespace</a>
+    <a href="../../../Databases/Oracle/OJDBC/">OJDBC</a>
 </li>
 
         
             
 <li >
-    <a href="../Useful_Queries/">Useful Queries</a>
+    <a href="../../../Databases/Oracle/Tablespace/">Tablespace</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Useful_Queries/">Useful Queries</a>
 </li>
 
         
@@ -140,7 +140,7 @@
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dev <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
@@ -150,8 +150,8 @@
     <ul class="dropdown-menu">
         
             
-<li >
-    <a href="../../../Dev/GCC/Make/">Make</a>
+<li class="active">
+    <a href="./">Make</a>
 </li>
 
         
@@ -166,7 +166,7 @@
         
             
 <li >
-    <a href="../../../Dev/Ruby/Installation/">Installation</a>
+    <a href="../../Ruby/Installation/">Installation</a>
 </li>
 
         
@@ -181,13 +181,13 @@
         
             
 <li >
-    <a href="../../../Dev/Version_Control/Git/">Git</a>
+    <a href="../../Version_Control/Git/">Git</a>
 </li>
 
         
             
 <li >
-    <a href="../../../Dev/Version_Control/GitHub/">GitHub</a>
+    <a href="../../Version_Control/GitHub/">GitHub</a>
 </li>
 
         
@@ -378,12 +378,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../Blocking_sessions/">
+                        <a rel="next" href="../../../Databases/Oracle/Useful_Queries/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../Tablespace/">
+                        <a rel="prev" href="../../Ruby/Installation/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -406,31 +406,15 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#bug-9632480">BUG: 9632480</a></li>
+        <li class="first-level active"><a href="#flags-to-configure">Flags to configure</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="bug-9632480">BUG: 9632480</h3>
-<p><em>OJDBC 12.1.0.2 - BUG: ORA-01000: maximum open cursors exceeded</em></p>
-<p>We need:</p>
-<ul>
-<li>ojdbc7.jar</li>
-<li>p19632480_121020_Generic.zip</li>
-<li>JRE</li>
-</ul>
-<blockquote>
-<p>We need to update OracleDatabaseMetaData.class in our ojdbc7.jar archive</p>
-</blockquote>
-<pre><code class="bash">unzip p19632480_121020_Generic.zip
-</code></pre>
-
-<p>Get folder <strong>./p19632480_121020_Generic/19632480/files/jdbc/lib/ojdbc7.jar</strong> from archvive and place it to <em>ojdbc7.jar</em> file location</p>
-<p>Make sure that your JAVA_HOME is exported</p>
-<p>Change working directory to ojdbc7.jar location and run:</p>
-<pre><code class="bash">$JAVA_HOME/jar -uf ojdbc7.jar
+<h3 id="flags-to-configure">Flags to configure</h3>
+<pre><code>/configure CFLAGS='-std=gnu89 -g -O2 -w' CXXFLAGS='-std=gnu++98 -g -O2 -w'
 </code></pre></div>
         
     </div>

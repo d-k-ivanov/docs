@@ -146,6 +146,21 @@
                         
                             
   <li class="dropdown-submenu">
+    <a tabindex="-1" href="">GCC</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Dev/GCC/Make/">Make</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
     <a tabindex="-1" href="">Ruby</a>
     <ul class="dropdown-menu">
         
@@ -192,6 +207,12 @@
                             
 <li >
     <a href="../../OS/AIX/">AIX</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../OS/ArchLinux/">ArchLinux</a>
 </li>
 
                         
@@ -385,7 +406,10 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#execute-in-docker-console">Execute in-docker console</a></li>
+        <li class="first-level active"><a href="#run-docker-conainer">Run docker conainer</a></li>
+        
+    
+        <li class="first-level "><a href="#execute-in-docker-console">Execute in-docker console</a></li>
         
     
         <li class="first-level "><a href="#create-json-with-container-settings">Create JSON with container settings</a></li>
@@ -403,6 +427,10 @@
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
+
+<h3 id="run-docker-conainer">Run docker conainer</h3>
+<pre><code>sudo docker run --name mysql-nx -e MYSQL_ROOT_PASSWORD=JuSCY1Bq -d -p 127.0.0.1:3306:3306 mysql:latest
+</code></pre>
 
 <h3 id="execute-in-docker-console">Execute in-docker console</h3>
 <pre><code>sudo docker exec -it &lt;container&gt; bash

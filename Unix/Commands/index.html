@@ -146,6 +146,21 @@
                         
                             
   <li class="dropdown-submenu">
+    <a tabindex="-1" href="">GCC</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Dev/GCC/Make/">Make</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
     <a tabindex="-1" href="">Ruby</a>
     <ul class="dropdown-menu">
         
@@ -192,6 +207,12 @@
                             
 <li >
     <a href="../../OS/AIX/">AIX</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../OS/ArchLinux/">ArchLinux</a>
 </li>
 
                         
@@ -424,21 +445,6 @@ dpkg --get-selections | grep postgres
 dpkg --get-selections | grep -v deinstall &gt; ~/Desktop/packages
 # Alternatively, simply use
 dpkg -l
-</code></pre>
-
-<ul>
-<li>Pacman:</li>
-</ul>
-<pre><code class="bash"># Search for software
-pacman -Ss &lt;pattern&gt;
-# Install package
-pacman -S &lt;package_name&gt;
-# Update the system
-pacman -Syu
-# Remove orphaned packages (Be careful, double check for list of deleted packages)
-pacman -Rscn $(pacman -Qtdq)
-pacman -Sc
-pacman-optimize &amp;&amp; sync
 </code></pre>
 
 <ul>
