@@ -111,7 +111,7 @@ export PATH=$PATH:$ORACLE_HOME/bin
 Just run **netca** from oracle user and follow steps of configuration wizard
 
 ```bash
-# Login to DB server with X-Forwarding enabled:                                                                                                                                                                
+# Login to DB server with X-Forwarding enabled:
 ssh -Y oracle@db_server
 
 # Run Network listener configuration wizard:
@@ -120,7 +120,7 @@ netca
 
 ### Database
 ```
-# Login to DB server with X-Forwarding enabled:                                                                                                                                                                
+# Login to DB server with X-Forwarding enabled:
 ssh -Y oracle@db_server
 
 # Run Database configuration wizard:
