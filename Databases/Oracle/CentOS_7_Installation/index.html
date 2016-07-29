@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Databases/Oracle/OJDBC/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Databases/Oracle/CentOS_7_Installation/"> 
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-    <title>OJDBC - Technical Info</title>
+    <title>CentOS 7 Installation - Technical Info</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -114,14 +114,14 @@
 
         
             
-<li >
-    <a href="../CentOS_7_Installation/">CentOS 7 Installation</a>
+<li class="active">
+    <a href="./">CentOS 7 Installation</a>
 </li>
 
         
             
-<li class="active">
-    <a href="./">OJDBC</a>
+<li >
+    <a href="../OJDBC/">OJDBC</a>
 </li>
 
         
@@ -384,12 +384,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../CentOS_7_Installation/">
+                        <a rel="next" href="../Blocking_sessions/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../Tablespace/">
+                        <a rel="prev" href="../OJDBC/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -412,31 +412,231 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#bug-9632480">BUG: 9632480</a></li>
+        <li class="first-level active"><a href="#gui">GUI</a></li>
+        
+    
+        <li class="first-level "><a href="#database-pre-requirements">Database pre-requirements</a></li>
+        
+    
+        <li class="first-level "><a href="#database-software-installation">Database software installation</a></li>
+        
+    
+        <li class="first-level "><a href="#net-listener">Net listener</a></li>
+        
+    
+        <li class="first-level "><a href="#database">Database</a></li>
+        
+    
+        <li class="first-level "><a href="#autostart">Autostart</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="bug-9632480">BUG: 9632480</h3>
-<p><em>OJDBC 12.1.0.2 - BUG: ORA-01000: maximum open cursors exceeded</em></p>
-<p>We need:</p>
-<ul>
-<li>ojdbc7.jar</li>
-<li>p19632480_121020_Generic.zip</li>
-<li>JRE</li>
-</ul>
-<blockquote>
-<p>We need to update OracleDatabaseMetaData.class in our ojdbc7.jar archive</p>
-</blockquote>
-<pre><code class="bash">unzip p19632480_121020_Generic.zip
+<h3 id="gui">GUI</h3>
+<pre><code class="bash">yum groups install &quot;GNOME Desktop&quot;
+startx
 </code></pre>
 
-<p>Get folder <strong>./p19632480_121020_Generic/19632480/files/jdbc/lib/ojdbc7.jar</strong> from archvive and place it to <em>ojdbc7.jar</em> file location</p>
-<p>Make sure that your JAVA_HOME is exported</p>
-<p>Change working directory to ojdbc7.jar location and run:</p>
-<pre><code class="bash">$JAVA_HOME/jar -uf ojdbc7.jar
+<h3 id="database-pre-requirements">Database pre-requirements</h3>
+<pre><code class="bash"># Dependencies
+yum install binutils compat-libcap1 gcc gcc-c++ glibc glibc.i686 glibc-devel glibc.i686 ksh libaio libaio.i686 libaio-devel libaio-devel.i686 libgcc libgcc.i686 libstdc++ libstdc++l7.i686 libstdc++-devel libstdc++-devel.i686 compat-libstdc++-33 compat-libstdc++-33.i686 libXi libXi.i686 libXtst libXtst.i686 make sysstat 
+
+# Kernel
+MEMTOTAL=$(free -b | sed -n '2p' | awk '{print $2}')
+SHMMAX=$(expr $MEMTOTAL / 2)
+PAGESIZE=$(getconf PAGE_SIZE)
+
+cat &gt;&gt; /etc/sysctl.conf &lt;&lt; EOF
+fs.aio-max-nr = 1048576
+fs.file-max = 6815744
+kernel.shmmax = $SHMMAX
+kernel.shmall = `expr \( $SHMMAX / $PAGESIZE \) \* \( $SHMMNI / 16 \)`
+kernel.shmmni = 4096
+kernel.sem = 250 32000 100 128
+net.ipv4.ip_local_port_range = 9000 65500
+net.core.rmem_default = 262144
+net.core.rmem_max = 4194304
+net.core.wmem_default = 262144
+net.core.wmem_max = 1048576
+EOF
+
+sysctl -p 
+
+# Users and groups
+i=54321; for group in oinstall dba backupdba oper dgdba kmdba; do
+groupadd -g $i $group; i=`expr $i + 1`
+done
+
+useradd -u 1200 -g oinstall -G dba,oper,backupdba,dgdba,kmdba -d /home/oracle oracle 
+passwd oracle 
+
+# Folders
+mkdir -p /u01/app/oracle 
+chown -R oracle:oinstall /u01/app 
+chmod -R 775 /u01 
+
+vim /etc/pam.d/login 
+# Insert after &quot;session required pam_namespace.so&quot;:
+session    required     pam_limits.so
+
+vim /etc/security/limits.conf 
+# Add to the end of file:
+
+oracle  soft  nproc   2047
+oracle  hard  nproc   16384
+oracle  soft  nofile  1024
+oracle  hard  nofile  65536
+oracle  soft  stack   10240
+oracle  hard  stack   32768
+
+su - oracle
+vim ~/.bash_profile 
+# Add to the end
+umask 022
+export ORACLE_BASE=/u01/app/oracle 
+</code></pre>
+
+<h3 id="database-software-installation">Database software installation</h3>
+<pre><code class="bash"># Upload installation software to /tmp:
+scp linuxamd64_12102_database_se2_1of2.zip oracle@db_server:/tmp/
+scp linuxamd64_12102_database_se2_2of2.zip oracle@db_server:/tmp/
+
+# Login to DB server with X-Forwarding enabled:
+ssh -Y oracle@db_server
+
+# Unpack archives:
+unzip linuxamd64_12102_database_se2_1of2.zip
+unzip linuxamd64_12102_database_se2_2of2.zip
+
+# Run Oracle universal installer
+cd database/
+./runInstaller 
+</code></pre>
+
+<p>Just follow installation steps in GUI:
+<em> Step 01. Enter your <strong>E-Mail</strong> and Oracle Enterproise support <strong>password</strong>, if you have one
+</em> Step 02. <strong>(.)</strong> Install database software only (we'll install database later)
+<em> Step 03. Select parovriate type of installation. In simple case choose <strong>"Single instance database installation"</strong>
+</em> Step 04. Choose prefered language. But <strong>English</strong> is recommended in all cases.
+<em> Step 05. Select edidtion. It depends of distribution package. In this case <strong>Standard Edition Two</strong>
+</em> Step 06. Choose path for oracle home directory. In our case everything will filled up by default.
+<em> Step 07. Choose path for oracle inventory. In our case everything will filled up by default.
+</em> Step 08. Choose oracle grroups. In our case everything will filled up by default. 
+<em> Step 09. On this step you'll face swap error in most cases. Just ignore it. In any other errors look at oracle forum. <strong>DO NOT IGNORE ANY ERRORS EXCEPT OF SWAP</strong>
+</em> Step 10. Install oracle database software
+<em> Step 11. On this step installater demand you to execute 2 spripts from root user. Just run them.
+</em> Step 12. Finish</p>
+<pre><code class="bash">vim ~/.bash_profile 
+
+# Add to the end of file: 
+
+export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
+export PATH=$PATH:$ORACLE_HOME/bin
+</code></pre>
+
+<h3 id="net-listener">Net listener</h3>
+<p>Just run <strong>netca</strong> from oracle user and follow steps of configuration wizard</p>
+<pre><code class="bash"># Login to DB server with X-Forwarding enabled:                                                                                                                                                                
+ssh -Y oracle@db_server
+
+# Run Network listener configuration wizard:
+netca
+</code></pre>
+
+<h3 id="database">Database</h3>
+<pre><code># Login to DB server with X-Forwarding enabled:                                                                                                                                                                
+ssh -Y oracle@db_server
+
+# Run Database configuration wizard:
+dbca
+
+</code></pre>
+
+<p>Follow installation steps for fat installation:
+<em> Step 01. Choose <strong>(.) Create database</strong>
+</em> Step 02. <strong>(.)</strong> Create a database with default configuration
+<strong> Global Database name: input what name you like
+</strong> Storage type: <strong>File System</strong> (if you don't have ASM)
+<strong> Database character set: </strong>AL32UTF8 - Unicode UTF-8 Universal character set<strong>
+</strong> Choose password for sysdba account.
+<strong> Uncheck </strong>[]Create As Container Database<em><em>
+</em> Step 03. Look for any errors
+</em> Step 04. Next
+* Step 05. Finish</p>
+<pre><code class="bash">vim /etc/oratab 
+
+#Set last synbol from &quot;N&quot; to &quot;Y&quot;
+&lt;database_SID&gt;:/u01/app/oracle/product/12.1.0/dbhome_1:Y
+
+vim ~/.bash_profile 
+# Add to the end of file:
+
+export ORACLE_SID=&lt;database_SID&gt;
+
+</code></pre>
+
+<h3 id="autostart">Autostart</h3>
+<ul>
+<li>Oracle environemnt:</li>
+</ul>
+<pre><code class="bash">vim /etc/sysconfig/&lt;SID&gt;.oracledb
+
+# Contents
+ORACLE_BASE=/u01/app/oracle
+ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
+ORACLE_SID=&lt;your_SID&gt;
+</code></pre>
+
+<ul>
+<li>Net listner service:</li>
+</ul>
+<pre><code class="bash">vim /usr/lib/systemd/system/&lt;SID&gt;@lsnrctl.service 
+
+# Contents
+[Unit]
+Description=Oracle Net Listener
+After=network.target
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/sysconfig/&lt;SID&gt;.oracledb
+ExecStart=/u01/app/oracle/product/12.1.0/dbhome_1/bin/lsnrctl start
+ExecStop=/u01/app/oracle/product/12.1.0/dbhome_1/bin/lsnrctl stop
+User=oracle
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+
+<ul>
+<li>Database service:</li>
+</ul>
+<pre><code class="bash">vim /usr/lib/systemd/system/&lt;SID&gt;@oracledb.service 
+
+# Contents
+[Unit]
+Description=Oracle Database service
+After=network.target lsnrctl.service
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/sysconfig/&lt;SID&gt;.oracledb
+ExecStart=/u01/app/oracle/product/12.1.0/dbhome_1/bin/dbstart /u01/app/oracle/product/12.1.0/dbhome_1
+ExecStop=/u01/app/oracle/product/12.1.0/dbhome_1/bin/dbshut /u01/app/oracle/product/12.1.0/dbhome_1
+User=oracle
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+
+<ul>
+<li>Systemd reload and enable:</li>
+</ul>
+<pre><code class="bash">systemctl daemon-reload 
+systemctl enable &lt;SID&gt;@lsnrctl 
+systemctl enable &lt;SID&gt;@oracledb 
 </code></pre></div>
         
     </div>
