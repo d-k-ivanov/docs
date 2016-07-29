@@ -84,6 +84,7 @@ cd database/
 ```
 
 Just follow installation steps in GUI:
+
 * Step 01. Enter your **E-Mail** and Oracle Enterproise support **password**, if you have one
 * Step 02. **(.)** Install database software only (we'll install database later)
 * Step 03. Select parovriate type of installation. In simple case choose **"Single instance database installation"**
@@ -128,6 +129,7 @@ dbca
 ```
 
 Follow installation steps for fat installation:
+
 * Step 01. Choose **(.) Create database**
 * Step 02. **(.)** Create a database with default configuration
 ** Global Database name: input what name you like
