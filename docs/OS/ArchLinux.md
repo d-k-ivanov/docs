@@ -1,6 +1,6 @@
 
 ### Pacman:
-```bash
+```sh
 # Search for software
 pacman -Ss <pattern>
 # Install package
@@ -14,7 +14,7 @@ pacman-optimize && sync
 ```
 
 ### AUR package installation:
-```
+```sh
 git clone https://aur.archlinux.org/<packiage_name>
 cd <package_name>
 makepkg -sri

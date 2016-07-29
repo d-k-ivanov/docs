@@ -1,33 +1,33 @@
 ### View tablespaces by user
-```
+```sql
 select distinct p.tablespace_name from dba_tablespaces p, dba_xml_tables x, dba_users u, all_all_tables t where t.table_name=x.table_name and t.tablespace_name=p.tablespace_name and x.owner=u.username;
 ```
 
 ### View all tablespaces: run by sysdba 
-```
+```sql
 select * from dba_tablespaces;
 ```
 
 ### View charset
-```
+```sql
 SELECT value$ FROM sys.props$ WHERE name = 'NLS_CHARACTERSET' ;
 ```
 
 ### Get status of instances
-```
+```sql
 select instance_name, status, database_status from v$instance; 
 select status from v$instance;
 select logins from v$instance;
 ```
 
 ### Mount and open DB
-```
+```sql
 ALTER DATABASE Mount;
 ALTER DATABASE OPEN;
 ```
 
 ### Backup via RMAN
-```
+```sql
 run {
 shutdown immediate;
 startup mount;
@@ -37,7 +37,7 @@ alter database open;
 ```
 
 ### Enabling archivelog
-```
+```sql
 SHUTDOWN;
 STARTUP MOUNT EXCLUSIVE;
 ALTER DATABASE ARCHIVELOG;
@@ -46,7 +46,7 @@ SELECT log_mode FROM v$database;
 ```
 
 ### Open cursors
-```
+```sql
 select * from v$parameter where name = 'open_cursors';
 select value from v$parameter where name = 'open_cursors';
 alter system set open_cursors=4000 scope=both;
