@@ -72,11 +72,11 @@ git am < 0001-Linux-agent-LVM-subagent-initial-implementation.patch
 ```
 
 ### Submodules
-1. Add submodule
+* Add submodule
 ```bash
 git submodule add <submodule_git_url> <local_path>
 ```
-2. Delete 
+* Delete submodule
 ```bash
 git submodule deinit <submodule>    
 git rm --cached <submodule>
