@@ -495,9 +495,7 @@ for d in `ls`; do cd $d; git checkout; cd ..; done
 </code></pre>
 
 <h3 id="making-patches-from-commits">Making patches from commits:</h3>
-<ul>
-<li>Create patch </li>
-</ul>
+<p>Create patch:</p>
 <pre><code class="bash"># The easiest version (you can specify number of commit to patch) 
 git format-patch -1 HEAD
 # Same as first, but create numbered files (00001-nnnnn)
@@ -506,24 +504,18 @@ git format-patch -n HEAD^
 git show HEAD &gt; path_to.patch
 </code></pre>
 
-<ul>
-<li>Apply patch</li>
-</ul>
+<p>Apply patch:</p>
 <pre><code class="bash">git apply --stat 0001-Linux-agent-LVM-subagent-initial-implementation.patch
 git apply --check 0001-Linux-agent-LVM-subagent-initial-implementation.patch
 git am &lt; 0001-Linux-agent-LVM-subagent-initial-implementation.patch
 </code></pre>
 
 <h3 id="submodules">Submodules</h3>
-<ul>
-<li>Add submodule</li>
-</ul>
+<p>Add submodule:</p>
 <pre><code class="bash">git submodule add &lt;submodule_git_url&gt; &lt;local_path&gt;
 </code></pre>
 
-<ul>
-<li>Delete submodule</li>
-</ul>
+<p>Delete submodule:</p>
 <pre><code class="bash">git submodule deinit &lt;submodule&gt;    
 git rm --cached &lt;submodule&gt;
 rm -rf .git/modules/&lt;submodule&gt;
