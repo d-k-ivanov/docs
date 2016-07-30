@@ -2,7 +2,7 @@
 
 git add --all
 
-git commit -a -m "Post $(date +%Y-%m-%d-%h-%m)"
+git commit -a -m "Post $(date +%Y-%m-%-%H:%M:%S)"
 
 git push -u origin master
 
