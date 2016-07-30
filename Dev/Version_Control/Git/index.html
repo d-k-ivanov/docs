@@ -515,15 +515,15 @@ git am &lt; 0001-Linux-agent-LVM-subagent-initial-implementation.patch
 </code></pre>
 
 <h3 id="submodules">Submodules</h3>
-<ol>
+<ul>
 <li>Add submodule</li>
-</ol>
+</ul>
 <pre><code class="bash">git submodule add &lt;submodule_git_url&gt; &lt;local_path&gt;
 </code></pre>
 
-<ol>
-<li>Delete </li>
-</ol>
+<ul>
+<li>Delete submodule</li>
+</ul>
 <pre><code class="bash">git submodule deinit &lt;submodule&gt;    
 git rm --cached &lt;submodule&gt;
 rm -rf .git/modules/&lt;submodule&gt;
