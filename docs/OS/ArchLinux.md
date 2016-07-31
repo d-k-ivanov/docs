@@ -22,4 +22,7 @@ makepkg -sri
 # In case of error like:
 # <package>.tar.gz ... FAILED (unknown public key 0000000000000000)
 gpg --recv-key 0000000000000000
+# Or manually check key and skip key verification vith makepkg
+pacman-key --verify <sig_file>
+makepkg --skippgpcheck -sri
 ```
