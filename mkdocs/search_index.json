@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/",
-            "text": "Command line examples\n\n\nInspired by \nJoshua Levy\n and his great \nThe-Art-Of-Command-Line\n\n\n\n\nIt's only my view on useful commands and this examples are useful for me in first place.\n\n\n\n\nAbout\n\n\n\n\nDmitr Ivanov\n\n\nGitHub repo\n\n\n\n\nUnsorted info:\n\n\n\n\nJoining all similarly prefixed files, for example, \"_tar.gz.1of2\" and \"_tar.gz.2of2\".\n\n\n\n\n# Unix\ncat \"FileName_tar.gz.1of3\" \"FileName_tar.gz.2of3\" \"FileName_tar.gz.3of3\" > \"FileName.tar.gz\"\n# Windows\ncopy /b \"FileName_tar.gz.1of3\"+\"FileName_tar.gz.2of3\"+\"FileName_tar.gz.3of3\" \"FileName.tar.gz\"",
+            "text": "Command line examples\n\n\nInspired by \nJoshua Levy\n and his great \nThe-Art-Of-Command-Line\n\n\n\n\nIt's only my view on useful commands and this examples are useful for me in first place.\n\n\n\n\nAbout\n\n\n\n\nDmitr Ivanov\n\n\nGitHub repo\n\n\n\n\n\n\nUnsorted:\n\n\nJoining all similarly prefixed files\n\n\nFor example, \"_tar.gz.1of2\" and \"_tar.gz.2of2\".\n\n\n# Unix\ncat \"FileName_tar.gz.1of3\" \"FileName_tar.gz.2of3\" \"FileName_tar.gz.3of3\" > \"FileName.tar.gz\"\n# Windows\ncopy /b \"FileName_tar.gz.1of3\"+\"FileName_tar.gz.2of3\"+\"FileName_tar.gz.3of3\" \"FileName.tar.gz\"\n\n\n\n\nTMUX\n\n\ntmux list-sessions\ntmux attach -t 2\nsudo tmux -2 -S /tmp/tmux-<UID>/default\n\n\n\n\nCool weather\n\n\ncurl http://wttr.in/moscow",
             "title": "Home"
         },
         {
@@ -16,9 +16,24 @@
             "title": "About"
         },
         {
-            "location": "/#unsorted-info",
-            "text": "Joining all similarly prefixed files, for example, \"_tar.gz.1of2\" and \"_tar.gz.2of2\".   # Unix\ncat \"FileName_tar.gz.1of3\" \"FileName_tar.gz.2of3\" \"FileName_tar.gz.3of3\" > \"FileName.tar.gz\"\n# Windows\ncopy /b \"FileName_tar.gz.1of3\"+\"FileName_tar.gz.2of3\"+\"FileName_tar.gz.3of3\" \"FileName.tar.gz\"",
-            "title": "Unsorted info:"
+            "location": "/#unsorted",
+            "text": "",
+            "title": "Unsorted:"
+        },
+        {
+            "location": "/#joining-all-similarly-prefixed-files",
+            "text": "For example, \"_tar.gz.1of2\" and \"_tar.gz.2of2\".  # Unix\ncat \"FileName_tar.gz.1of3\" \"FileName_tar.gz.2of3\" \"FileName_tar.gz.3of3\" > \"FileName.tar.gz\"\n# Windows\ncopy /b \"FileName_tar.gz.1of3\"+\"FileName_tar.gz.2of3\"+\"FileName_tar.gz.3of3\" \"FileName.tar.gz\"",
+            "title": "Joining all similarly prefixed files"
+        },
+        {
+            "location": "/#tmux",
+            "text": "tmux list-sessions\ntmux attach -t 2\nsudo tmux -2 -S /tmp/tmux-<UID>/default",
+            "title": "TMUX"
+        },
+        {
+            "location": "/#cool-weather",
+            "text": "curl http://wttr.in/moscow",
+            "title": "Cool weather"
         },
         {
             "location": "/Databases/Links/",
@@ -316,6 +331,21 @@
             "title": "AUR package installation:"
         },
         {
+            "location": "/OS/Debian/",
+            "text": "Apt:\n\n\n# Show installed packages\napt --installed list\n# Search for software\napt-cache search <pattern>\n# Install package\napt-get install <package_name>\n\n\n\n\nDpkg:\n\n\n# To get a list of packages installed locally do this in your terminal:\ndpkg --get-selections | grep -v deinstall\n# To get a list of a specific package installed:\ndpkg --get-selections | grep postgres\n# To save that list to a text file called packages on your desktop do this in your terminal:\ndpkg --get-selections | grep -v deinstall > ~/Desktop/packages\n# Alternatively, simply use\ndpkg -l",
+            "title": "Debian"
+        },
+        {
+            "location": "/OS/Debian/#apt",
+            "text": "# Show installed packages\napt --installed list\n# Search for software\napt-cache search <pattern>\n# Install package\napt-get install <package_name>",
+            "title": "Apt:"
+        },
+        {
+            "location": "/OS/Debian/#dpkg",
+            "text": "# To get a list of packages installed locally do this in your terminal:\ndpkg --get-selections | grep -v deinstall\n# To get a list of a specific package installed:\ndpkg --get-selections | grep postgres\n# To save that list to a text file called packages on your desktop do this in your terminal:\ndpkg --get-selections | grep -v deinstall > ~/Desktop/packages\n# Alternatively, simply use\ndpkg -l",
+            "title": "Dpkg:"
+        },
+        {
             "location": "/OS/FreeBSD/",
             "text": "Build own kernel\n\n\n# /usr/src/sys/i386/conf  - kernel config\ncd /usr/src\nmake buildkernel KERNCONF=MYKERNEL\nmake installkernel KERNCONF=MYKERNEL",
             "title": "FreeBSD"
@@ -324,6 +354,16 @@
             "location": "/OS/FreeBSD/#build-own-kernel",
             "text": "# /usr/src/sys/i386/conf  - kernel config\ncd /usr/src\nmake buildkernel KERNCONF=MYKERNEL\nmake installkernel KERNCONF=MYKERNEL",
             "title": "Build own kernel"
+        },
+        {
+            "location": "/OS/RHEL/",
+            "text": "Yum:\n\n\n# Search for software\nyum search <pattern>\n# Install package\nyum install <package_name>\n# Repair \"Error: database disk image is malformed\"\nyum clean dbcache",
+            "title": "RHEL"
+        },
+        {
+            "location": "/OS/RHEL/#yum",
+            "text": "# Search for software\nyum search <pattern>\n# Install package\nyum install <package_name>\n# Repair \"Error: database disk image is malformed\"\nyum clean dbcache",
+            "title": "Yum:"
         },
         {
             "location": "/Security/HSM/",
@@ -369,31 +409,6 @@
             "location": "/Unix/Audit/#fork-resource-temporarily-unavailable-on-aix",
             "text": "To investigate the promles you need to run thei bunch of commands:  cat /etc/passwd  From root you need to look at limint of every active user:  ulimit -a\nsu oracle -c \"ulimit -a\"\nsu mongod -c \"ulimit -a\"\nsu userX -c \"ulimit -a\"  Look at system wide defined limits:  cat /etc/security/limits  Look at kernel parameters, especially on  maxuproc  lsattr -El sys0  Look at count of running processes by user:  ps -f -l -uroot | wc -l\nps -f -l -uoracle | wc -l\nps -f -l -umongod | wc -l\nps -f -l -uuserX | wc -l  And after all look at avaible mamory and swap:  svmon -G -O unit=MB",
             "title": "Fork: Resource temporarily unavailable on AIX"
-        },
-        {
-            "location": "/Unix/Commands/",
-            "text": "Package management:\n\n\n\n\nApt:\n\n\n\n\n# Show installed packages\napt --installed list\n# Search for software\napt-cache search <pattern>\n# Install package\napt-get install <package_name>\n\n\n\n\n\n\nDpkg: \n\n\n\n\n# To get a list of packages installed locally do this in your terminal:\ndpkg --get-selections | grep -v deinstall\n# To get a list of a specific package installed:\ndpkg --get-selections | grep postgres\n# To save that list to a text file called packages on your desktop do this in your terminal:\ndpkg --get-selections | grep -v deinstall > ~/Desktop/packages\n# Alternatively, simply use\ndpkg -l\n\n\n\n\n\n\nYum:\n\n\n\n\n# Search for software\nyum search <pattern>\n# Install package\nyum install <package_name>\n# Repair \"Error: database disk image is malformed\"\nyum clean dbcache\n\n\n\n\nRemote management:\n\n\n\n\nXfreeRDP\n\n\n\n\nxfreerdp [+clipboard]/w:<WIDTH> /h:<HEIGHT> /drive:<cuatom_drive_name>,<path_to_attach> /v:<ip>:<port> /u:<user_name>\nxfreerdp +clipboard /w:1600 /h:900 /v:10.15.0.10:3389 /u:Administrator\nxfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM/HMC/7.9_sp3 /v:10.15.0.10\n\n\n\n\nX Server:\n\n\n\n\nStart full-screen application in different X server\n\n\n\n\n/usr/bin/xinit <path_to_fullscreen_application> -- :1\n\n\n\n\n\n\nExport X display to current ssh connection\n\n\n\n\nexport DISPLAY=\"${SSH_CLIENT%% *}\"\n\n\n\n\nMiscellaneous:\n\n\n\n\nTMUX\n\n\n\n\ntmux list-sessions\ntmux attach -t 2\nsudo tmux -2 -S /tmp/tmux-<UID>/default\n\n\n\n\n\n\nCool weather\n\n\n\n\ncurl http://wttr.in/moscow\n\n\n\n\n\n\nSNMP\n\n\n\n\nsnmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus",
-            "title": "Commands"
-        },
-        {
-            "location": "/Unix/Commands/#package-management",
-            "text": "Apt:   # Show installed packages\napt --installed list\n# Search for software\napt-cache search <pattern>\n# Install package\napt-get install <package_name>   Dpkg:    # To get a list of packages installed locally do this in your terminal:\ndpkg --get-selections | grep -v deinstall\n# To get a list of a specific package installed:\ndpkg --get-selections | grep postgres\n# To save that list to a text file called packages on your desktop do this in your terminal:\ndpkg --get-selections | grep -v deinstall > ~/Desktop/packages\n# Alternatively, simply use\ndpkg -l   Yum:   # Search for software\nyum search <pattern>\n# Install package\nyum install <package_name>\n# Repair \"Error: database disk image is malformed\"\nyum clean dbcache",
-            "title": "Package management:"
-        },
-        {
-            "location": "/Unix/Commands/#remote-management",
-            "text": "XfreeRDP   xfreerdp [+clipboard]/w:<WIDTH> /h:<HEIGHT> /drive:<cuatom_drive_name>,<path_to_attach> /v:<ip>:<port> /u:<user_name>\nxfreerdp +clipboard /w:1600 /h:900 /v:10.15.0.10:3389 /u:Administrator\nxfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM/HMC/7.9_sp3 /v:10.15.0.10",
-            "title": "Remote management:"
-        },
-        {
-            "location": "/Unix/Commands/#x-server",
-            "text": "Start full-screen application in different X server   /usr/bin/xinit <path_to_fullscreen_application> -- :1   Export X display to current ssh connection   export DISPLAY=\"${SSH_CLIENT%% *}\"",
-            "title": "X Server:"
-        },
-        {
-            "location": "/Unix/Commands/#miscellaneous",
-            "text": "TMUX   tmux list-sessions\ntmux attach -t 2\nsudo tmux -2 -S /tmp/tmux-<UID>/default   Cool weather   curl http://wttr.in/moscow   SNMP   snmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus",
-            "title": "Miscellaneous:"
         },
         {
             "location": "/Unix/Docker/",
@@ -621,6 +636,26 @@
             "title": "Kill all proesses with certain name"
         },
         {
+            "location": "/Unix/Remote_management/",
+            "text": "XfreeRDP\n\n\nxfreerdp [+clipboard]/w:<WIDTH> /h:<HEIGHT> /drive:<cuatom_drive_name>,<path_to_attach> /v:<ip>:<port> /u:<user_name>\nxfreerdp +clipboard /w:1600 /h:900 /v:10.15.0.10:3389 /u:Administrator\nxfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM/HMC/7.9_sp3 /v:10.15.0.10",
+            "title": "Remote management"
+        },
+        {
+            "location": "/Unix/Remote_management/#xfreerdp",
+            "text": "xfreerdp [+clipboard]/w:<WIDTH> /h:<HEIGHT> /drive:<cuatom_drive_name>,<path_to_attach> /v:<ip>:<port> /u:<user_name>\nxfreerdp +clipboard /w:1600 /h:900 /v:10.15.0.10:3389 /u:Administrator\nxfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM/HMC/7.9_sp3 /v:10.15.0.10",
+            "title": "XfreeRDP"
+        },
+        {
+            "location": "/Unix/SMNP/",
+            "text": "SNMP\n\n\nsnmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus",
+            "title": "SMNP"
+        },
+        {
+            "location": "/Unix/SMNP/#snmp",
+            "text": "snmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus",
+            "title": "SNMP"
+        },
+        {
             "location": "/Unix/SMS/",
             "text": "Via minicom:\n\n\n\n\nminicom -s\n\n\n\n\nAT+CMGF=1\nAT+CMGS=\"+xxxxxxxxxx\"\nWrite message here. <ctrl+z>\n\n\n\n\nSMSd\n\n\nsmssend +xxxxxxxxxxx 'One-Line Test 02' > /dev/null 2>&1\n\n\n\n\n\n\nExample smsd.conf. Read the manual for a description\n\n\n\n\ndevices = xenium0\nlogfile = /var/log/smsd/smsd.log\nloglevel = 2\n#user = smstools\nuser = nagios\n# 3.1.5 introduced smart logging\n# once your configuration is OK, set log level lower (5 is good in most cases)\nsmart_logging = yes\ninfofile = /run/smsd/smsd.working\npidfile = /run/smsd/smsd.pid\n\n[xenium0]\ndevice = /dev/ttyUSB0\n#pin = 1122\npin = ignore\nbaudrate = 115200\nrtscts = no\n#init = ATE0\n#init = at+cpms=\"sm\",\"sm\",\"\"\n#init = AT+CMGF=1\nloglevel_lac_ci = 8\nincoming = yes\nincoming = high",
             "title": "SMS"
@@ -664,6 +699,21 @@
             "location": "/Unix/WiFi/#wpa-supplicant",
             "text": "wpa_supplicant -Dnl80211 -iwlp2s0 -c/etc/wpa_supplicant/wpa_supplicant.conf &\n\ncat /etc/wpa_supplicant/wpa_supplicant.conf\n# This network configuration was written by net-setup\nmodules=\"wpa_supplicant\"\nwpa_supplicant_wlp2s0=\"-Dnl80211\"\nconfig_wlp2s0=\"dhcp\" \n\nctrl_interface=/var/run/wpa_supplicant\nctrl_interface_group=0\nap_scan=1\nnetwork={\n   ssid=\"MTS_2140184\"\n   psk=\"0000000000\"\n   priority=5\n}",
             "title": "WPA Supplicant"
+        },
+        {
+            "location": "/Unix/X/",
+            "text": "Start full-screen application in different X server\n\n\n/usr/bin/xinit <path_to_fullscreen_application> -- :1\n\n\n\n\nExport X display to current ssh connection\n\n\nexport DISPLAY=\"${SSH_CLIENT%% *}\"",
+            "title": "X"
+        },
+        {
+            "location": "/Unix/X/#start-full-screen-application-in-different-x-server",
+            "text": "/usr/bin/xinit <path_to_fullscreen_application> -- :1",
+            "title": "Start full-screen application in different X server"
+        },
+        {
+            "location": "/Unix/X/#export-x-display-to-current-ssh-connection",
+            "text": "export DISPLAY=\"${SSH_CLIENT%% *}\"",
+            "title": "Export X display to current ssh connection"
         },
         {
             "location": "/Windows/CMD_Scripts/",

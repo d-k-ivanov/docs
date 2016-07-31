@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Unix/Commands/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/OS/RHEL/"> 
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
-    <title>Commands - Technical Info</title>
+    <title>RHEL - Technical Info</title>
 
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -206,25 +206,37 @@
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">OS <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../../OS/AIX/">AIX</a>
+    <a href="../AIX/">AIX</a>
 </li>
 
                         
                             
 <li >
-    <a href="../../OS/ArchLinux/">ArchLinux</a>
+    <a href="../ArchLinux/">ArchLinux</a>
 </li>
 
                         
                             
 <li >
-    <a href="../../OS/FreeBSD/">FreeBSD</a>
+    <a href="../Debian/">Debian</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../FreeBSD/">FreeBSD</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">RHEL</a>
 </li>
 
                         
@@ -260,85 +272,97 @@
                 
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Unix <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../Audit/">Audit</a>
-</li>
-
-                        
-                            
-<li class="active">
-    <a href="./">Commands</a>
+    <a href="../../Unix/Audit/">Audit</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Docker/">Docker</a>
+    <a href="../../Unix/Docker/">Docker</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Filesystem/">Filesystem</a>
+    <a href="../../Unix/Filesystem/">Filesystem</a>
 </li>
 
                         
                             
 <li >
-    <a href="../GPFS/">GPFS</a>
+    <a href="../../Unix/GPFS/">GPFS</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Hardware_info/">Hardware info</a>
+    <a href="../../Unix/Hardware_info/">Hardware info</a>
 </li>
 
                         
                             
 <li >
-    <a href="../KVM/">KVM</a>
+    <a href="../../Unix/KVM/">KVM</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Network/">Network</a>
+    <a href="../../Unix/Network/">Network</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Processes/">Processes</a>
+    <a href="../../Unix/Processes/">Processes</a>
 </li>
 
                         
                             
 <li >
-    <a href="../SMS/">SMS</a>
+    <a href="../../Unix/Remote_management/">Remote management</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Skype/">Skype</a>
+    <a href="../../Unix/SMNP/">SMNP</a>
 </li>
 
                         
                             
 <li >
-    <a href="../WINE/">WINE</a>
+    <a href="../../Unix/SMS/">SMS</a>
 </li>
 
                         
                             
 <li >
-    <a href="../WiFi/">WiFi</a>
+    <a href="../../Unix/Skype/">Skype</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../Unix/WINE/">WINE</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../Unix/WiFi/">WiFi</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../Unix/X/">X</a>
 </li>
 
                         
@@ -384,12 +408,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../Audit/">
+                        <a rel="next" href="../FreeBSD/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../Docker/">
+                        <a rel="prev" href="../../Security/HSM/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -412,99 +436,20 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#package-management">Package management:</a></li>
-        
-    
-        <li class="first-level "><a href="#remote-management">Remote management:</a></li>
-        
-    
-        <li class="first-level "><a href="#x-server">X Server:</a></li>
-        
-    
-        <li class="first-level "><a href="#miscellaneous">Miscellaneous:</a></li>
+        <li class="first-level active"><a href="#yum">Yum:</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="package-management">Package management:</h3>
-<ul>
-<li>Apt:</li>
-</ul>
-<pre><code class="bash"># Show installed packages
-apt --installed list
-# Search for software
-apt-cache search &lt;pattern&gt;
-# Install package
-apt-get install &lt;package_name&gt;
-</code></pre>
-
-<ul>
-<li>Dpkg: </li>
-</ul>
-<pre><code class="bash"># To get a list of packages installed locally do this in your terminal:
-dpkg --get-selections | grep -v deinstall
-# To get a list of a specific package installed:
-dpkg --get-selections | grep postgres
-# To save that list to a text file called packages on your desktop do this in your terminal:
-dpkg --get-selections | grep -v deinstall &gt; ~/Desktop/packages
-# Alternatively, simply use
-dpkg -l
-</code></pre>
-
-<ul>
-<li>Yum:</li>
-</ul>
+<h3 id="yum">Yum:</h3>
 <pre><code class="bash"># Search for software
 yum search &lt;pattern&gt;
 # Install package
 yum install &lt;package_name&gt;
 # Repair &quot;Error: database disk image is malformed&quot;
 yum clean dbcache
-</code></pre>
-
-<h3 id="remote-management">Remote management:</h3>
-<ul>
-<li>XfreeRDP</li>
-</ul>
-<pre><code class="bash">xfreerdp [+clipboard]/w:&lt;WIDTH&gt; /h:&lt;HEIGHT&gt; /drive:&lt;cuatom_drive_name&gt;,&lt;path_to_attach&gt; /v:&lt;ip&gt;:&lt;port&gt; /u:&lt;user_name&gt;
-xfreerdp +clipboard /w:1600 /h:900 /v:10.15.0.10:3389 /u:Administrator
-xfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM/HMC/7.9_sp3 /v:10.15.0.10
-</code></pre>
-
-<h3 id="x-server">X Server:</h3>
-<ul>
-<li>Start full-screen application in different X server</li>
-</ul>
-<pre><code class="bash">/usr/bin/xinit &lt;path_to_fullscreen_application&gt; -- :1
-</code></pre>
-
-<ul>
-<li>Export X display to current ssh connection</li>
-</ul>
-<pre><code class="bash">export DISPLAY=&quot;${SSH_CLIENT%% *}&quot;
-</code></pre>
-
-<h3 id="miscellaneous">Miscellaneous:</h3>
-<ul>
-<li>TMUX</li>
-</ul>
-<pre><code class="bash">tmux list-sessions
-tmux attach -t 2
-sudo tmux -2 -S /tmp/tmux-&lt;UID&gt;/default
-</code></pre>
-
-<ul>
-<li>Cool weather</li>
-</ul>
-<pre><code class="bash">curl http://wttr.in/moscow
-</code></pre>
-
-<ul>
-<li>SNMP</li>
-</ul>
-<pre><code>snmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus
 </code></pre></div>
         
     </div>
