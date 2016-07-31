@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Unix/X/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Security/PF/"> 
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
-    <title>X - Technical Info</title>
+    <title>PF - Technical Info</title>
 
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -257,31 +257,31 @@
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Security <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../../Security/HSM/">HSM</a>
+    <a href="../HSM/">HSM</a>
 </li>
 
                         
                             
 <li >
-    <a href="../../Security/IPTables/">IPTables</a>
+    <a href="../IPTables/">IPTables</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">PF</a>
 </li>
 
                         
                             
 <li >
-    <a href="../../Security/PF/">PF</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../Security/SELinux/">SELinux</a>
+    <a href="../SELinux/">SELinux</a>
 </li>
 
                         
@@ -290,97 +290,97 @@
                 
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Unix <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../Audit/">Audit</a>
+    <a href="../../Unix/Audit/">Audit</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Docker/">Docker</a>
+    <a href="../../Unix/Docker/">Docker</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Filesystem/">Filesystem</a>
+    <a href="../../Unix/Filesystem/">Filesystem</a>
 </li>
 
                         
                             
 <li >
-    <a href="../GPFS/">GPFS</a>
+    <a href="../../Unix/GPFS/">GPFS</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Hardware_info/">Hardware info</a>
+    <a href="../../Unix/Hardware_info/">Hardware info</a>
 </li>
 
                         
                             
 <li >
-    <a href="../KVM/">KVM</a>
+    <a href="../../Unix/KVM/">KVM</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Network/">Network</a>
+    <a href="../../Unix/Network/">Network</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Processes/">Processes</a>
+    <a href="../../Unix/Processes/">Processes</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Remote_management/">Remote management</a>
+    <a href="../../Unix/Remote_management/">Remote management</a>
 </li>
 
                         
                             
 <li >
-    <a href="../SMS/">SMS</a>
+    <a href="../../Unix/SMS/">SMS</a>
 </li>
 
                         
                             
 <li >
-    <a href="../SNMP/">SNMP</a>
+    <a href="../../Unix/SNMP/">SNMP</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Skype/">Skype</a>
+    <a href="../../Unix/Skype/">Skype</a>
 </li>
 
                         
                             
 <li >
-    <a href="../WINE/">WINE</a>
+    <a href="../../Unix/WINE/">WINE</a>
 </li>
 
                         
                             
 <li >
-    <a href="../WiFi/">WiFi</a>
+    <a href="../../Unix/WiFi/">WiFi</a>
 </li>
 
                         
                             
-<li class="active">
-    <a href="./">X</a>
+<li >
+    <a href="../../Unix/X/">X</a>
 </li>
 
                         
@@ -426,12 +426,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../WiFi/">
+                        <a rel="next" href="../IPTables/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../../Windows/CMD_Scripts/">
+                        <a rel="prev" href="../SELinux/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -454,22 +454,133 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#start-full-screen-application-in-different-x-server">Start full-screen application in different X server</a></li>
+        <li class="first-level active"><a href="#enabling-in-freebsd-kernel">Enabling in FreeBSD kernel</a></li>
         
     
-        <li class="first-level "><a href="#export-x-display-to-current-ssh-connection">Export X display to current ssh connection</a></li>
+        <li class="first-level "><a href="#freebsd-rcconf-all-pf-options">FreeBSD rc.conf all PF options</a></li>
+        
+    
+        <li class="first-level "><a href="#sample-config">Sample config</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="start-full-screen-application-in-different-x-server">Start full-screen application in different X server</h3>
-<pre><code class="bash">/usr/bin/xinit &lt;path_to_fullscreen_application&gt; -- :1
+<h3 id="enabling-in-freebsd-kernel">Enabling in FreeBSD kernel</h3>
+<pre><code class="bash">device pf
+device pflog
+device pfsync
+
+options         ALTQ
+options         ALTQ_CBQ        # Class Bases Queuing (CBQ)
+options         ALTQ_RED        # Random Early Detection (RED)
+options         ALTQ_RIO        # RED In/Out
+options         ALTQ_HFSC       # Hierarchical Packet Scheduler (HFSC)
+options         ALTQ_PRIQ       # Priority Queuing (PRIQ)
+options         ALTQ_NOPCC      # Required for SMP build
 </code></pre>
 
-<h3 id="export-x-display-to-current-ssh-connection">Export X display to current ssh connection</h3>
-<pre><code class="bash">export DISPLAY=&quot;${SSH_CLIENT%% *}&quot;
+<h3 id="freebsd-rcconf-all-pf-options">FreeBSD rc.conf all PF options</h3>
+<pre><code class="bash">pf_enable=&quot;NO&quot;
+pf_rules=&quot;/etc/pf.conf&quot;
+pf_program=&quot;/sbin/pfctl&quot;
+pf_flags=&quot;&quot;
+pflog_enable=&quot;NO&quot;
+pflog_logfile=&quot;/var/log/pf.log&quot;
+pflog_program=&quot;/sbin/pflogd&quot;
+pflog_flags=&quot;&quot;
+pfsync_enable=&quot;NO&quot;
+pfsync_syncdev=&quot;&quot;
+pfsync_ifconfig=&quot;&quot;
+</code></pre>
+
+<h3 id="sample-config">Sample config</h3>
+<pre><code class="bash"># PF.CONF // BEGIN CONFIG
+#---------------------------
+
+#---------------------------
+# Macros
+#---------------------------
+
+#---------------------------
+# Network Interfaces
+#---------------------------
+ext_if=&quot;em1&quot; # External
+int_if=&quot;em0&quot; # Internal
+
+#---------------------------
+# ICMP allowed
+#---------------------------
+icmp_types=&quot;{ echoreq, unreach}&quot;
+
+#---------------------------
+# Networks and hosts
+#---------------------------
+lan=&quot;192.168.10.0/24&quot;       # internal network
+sec=&quot;10.10.30.0/24&quot;     # secured network
+loop=&quot;127.0.0.0/8&quot;      # loopback
+
+iis1=&quot;192.168.10.45/32&quot;     # Development IIS server 1
+iis2=&quot;192.168.10.46/32&quot;     # Development IIS server 1
+redmine=&quot;192.168.10.48/32&quot;  # Redmine - internal team site
+
+publicated_services=&quot;{ 192.168.10.45/32, 192.168.10.46/32, 192.168.10.48/32, }&quot;
+allowed_inbound_ports=&quot;{ 22, 80, 90, 91 }&quot;
+
+#---------------------------
+# Global options
+#---------------------------
+set block-policy return     # Default block polycy: return, drop
+set skip on lo0         # Loopback exception
+scrub in all            # Normalise packets: build full packet before send to receiver; drop uncorrectly flagged packages
+
+#---------------------------
+# ALTQ
+#---------------------------
+
+#---------------------------
+# NAT and Port Forwarding
+#---------------------------
+nat on $ext_if from $lan to any -&gt; ($ext_if)
+
+rdr on $ext_if proto { tcp, udp } from any to $ext_if port 90 -&gt; $iis1 port 90      # Development IIS server 1 port forwarding
+rdr on $ext_if proto { tcp, udp } from any to $ext_if port 91 -&gt; $iis1 port 91      # Development IIS server 2 port forwarding
+rdr on $ext_if proto { tcp, udp } from any to $ext_if port http -&gt; $redmine port http   # Redmine port forwarding
+
+#---------------------------
+# FIREWALL RULES
+#---------------------------
+antispoof quick for $ext_if     # Antispoofing - drop all packets if sender addr=$ext_if addr. Key &quot;quick&quot; means that pf must aplly this rule and stop script (like IPFW works)
+
+# For future: full antispoofing:
+# block drop in quick on ! tun0 inet from tun0 to any
+# block drop in quick inet from tun0 to any
+# RFC 1918 и 3330 block packets from 127.0.0.0/8, 240.0.0.0/4, 169.254.0.0/16 и т.д.
+
+block all           # Block all traffic by default
+
+#---------------------------
+# Local rules
+# --------------------------
+pass out on $ext_if from $ext_if to any keep state
+pass in log on $ext_if from any port 22 to $ext_if port 22 keep state
+
+#---------------------------
+# Internal network rules
+#---------------------------
+pass out on $ext_if from $lan to any keep state
+
+#---------------------------
+# External network rules
+#---------------------------
+pass in log on $ext_if proto { tcp, udp } from any to $publicated_services port $allowed_inbound_ports keep state
+
+
+pass log inet proto icmp all icmp-type $icmp_types
+
+#---------------------------
+# PF.CONF // END CONFIG
 </code></pre></div>
         
     </div>

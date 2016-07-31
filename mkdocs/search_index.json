@@ -316,8 +316,28 @@
             "title": "Zabbix agent"
         },
         {
+            "location": "/OS/Android/",
+            "text": "Boot device into bootloader mode\n\n\nadb reboot bootloader\n\n\n\n\nFlash new bootloader\n\n\nfastboot flash bootloader bootloader-flounder-3.44.1.0123.img\nfastboot reboot-bootloader\n\n\n\n\nFlash full system\n\n\nfastboot flash boot boot.img\nfastboot flash cache cache.img\nfastboot flash recovery recovery.img\nfastboot flash system system.img\nfastboot flash vendor vendor.img",
+            "title": "Android"
+        },
+        {
+            "location": "/OS/Android/#boot-device-into-bootloader-mode",
+            "text": "adb reboot bootloader",
+            "title": "Boot device into bootloader mode"
+        },
+        {
+            "location": "/OS/Android/#flash-new-bootloader",
+            "text": "fastboot flash bootloader bootloader-flounder-3.44.1.0123.img\nfastboot reboot-bootloader",
+            "title": "Flash new bootloader"
+        },
+        {
+            "location": "/OS/Android/#flash-full-system",
+            "text": "fastboot flash boot boot.img\nfastboot flash cache cache.img\nfastboot flash recovery recovery.img\nfastboot flash system system.img\nfastboot flash vendor vendor.img",
+            "title": "Flash full system"
+        },
+        {
             "location": "/OS/ArchLinux/",
-            "text": "Pacman\n\n\n# Search for software\npacman -Ss <pattern>\n# Install package\npacman -S <package_name>\n# Update the system\npacman -Syu\n# Remove orphaned packages (Be careful, double check for list of deleted packages)\npacman -Rscn $(pacman -Qtdq)\npacman -Sc\npacman-optimize && sync\n\n\n\n\nAUR package installation\n\n\ngit clone https://aur.archlinux.org/<packiage_name>\ncd <package_name>\nmakepkg -sri\n\n# In case of error like:\n# <package>.tar.gz ... FAILED (unknown public key 0000000000000000)\ngpg --recv-key 0000000000000000",
+            "text": "Pacman\n\n\n# Search for software\npacman -Ss <pattern>\n# Install package\npacman -S <package_name>\n# Update the system\npacman -Syu\n# Remove orphaned packages (Be careful, double check for list of deleted packages)\npacman -Rscn $(pacman -Qtdq)\npacman -Sc\npacman-optimize && sync\n\n\n\n\nAUR package installation\n\n\ngit clone https://aur.archlinux.org/<packiage_name>\ncd <package_name>\nmakepkg -sri\n\n# In case of error like:\n# <package>.tar.gz ... FAILED (unknown public key 0000000000000000)\ngpg --recv-key 0000000000000000\n# Or manually check key and skip key verification vith makepkg\npacman-key --verify <sig_file>\nmakepkg --skippgpcheck -sri",
             "title": "ArchLinux"
         },
         {
@@ -327,7 +347,7 @@
         },
         {
             "location": "/OS/ArchLinux/#aur-package-installation",
-            "text": "git clone https://aur.archlinux.org/<packiage_name>\ncd <package_name>\nmakepkg -sri\n\n# In case of error like:\n# <package>.tar.gz ... FAILED (unknown public key 0000000000000000)\ngpg --recv-key 0000000000000000",
+            "text": "git clone https://aur.archlinux.org/<packiage_name>\ncd <package_name>\nmakepkg -sri\n\n# In case of error like:\n# <package>.tar.gz ... FAILED (unknown public key 0000000000000000)\ngpg --recv-key 0000000000000000\n# Or manually check key and skip key verification vith makepkg\npacman-key --verify <sig_file>\nmakepkg --skippgpcheck -sri",
             "title": "AUR package installation"
         },
         {
@@ -356,6 +376,16 @@
             "title": "Build own kernel"
         },
         {
+            "location": "/OS/MacOS_X/",
+            "text": "Activate root\n\n\n\n\nPress \nCommand + Shift + G\n and enter\n\n\n\n\n/System/Library/CoreServices/\n\n\n\n\n\n\nInside launch \nDirectory Utility\n\n\nUnlock utility by clicking on \npadlock icon\n\n\nClick on menu \nEdit\n -> \nEnable Root User\n\n\nEnter and confirm root password to enable root account",
+            "title": "MacOS X"
+        },
+        {
+            "location": "/OS/MacOS_X/#activate-root",
+            "text": "Press  Command + Shift + G  and enter   /System/Library/CoreServices/   Inside launch  Directory Utility  Unlock utility by clicking on  padlock icon  Click on menu  Edit  ->  Enable Root User  Enter and confirm root password to enable root account",
+            "title": "Activate root"
+        },
+        {
             "location": "/OS/RHEL/",
             "text": "Yum\n\n\n# Search for software\nyum search <pattern>\n# Install package\nyum install <package_name>\n# Repair \"Error: database disk image is malformed\"\nyum clean dbcache",
             "title": "RHEL"
@@ -377,13 +407,38 @@
         },
         {
             "location": "/Security/IPTables/",
-            "text": "Show rules\n\n\niptables -nvL\niptable -t nat -nvL",
+            "text": "Show rules\n\n\niptables -nvL\niptable -t nat -nvL\n\n\n\n\nAutoreset by Vivek Gite\n\n\n\n\nJust add to crontab while remote rules configuration:\n\n\n\n\ncrontab -e\n# ---\n*/5 * * * * root /root/reset.fw >/dev/null 2>&1\n\n\n\n\n\n\nreset.fw:\n\n\n\n\n#!/bin/bash\n# reset.fw - Reset firewall\n# set x to 0 - No reset\n# set x to 1 - Reset firewall\n# ---------------------------------------------------------------------------------------------------------------\n# Added support for IPV6 Firewall\n# ---------------------------------------------------------------------------------------------------------------\n# Written by Vivek Gite <vivek@nixcraft.com>\n# ---------------------------------------------------------------------------------------------------------------\n# You can copy / paste / redistribute this script under GPL version 2.0 or above\n# =============================================================\nx=1\n\n# set to true if it is CentOS / RHEL / Fedora box\nRHEL=false\n\n### no need to edit below  ###\nIPT=/sbin/iptables\nIPT6=/sbin/ip6tables\n\nif [ \"$x\" == \"1\" ];\nthen\n    if [ \"$RHEL\" == \"true\" ];\n    then\n          # reset firewall using redhat script\n        /etc/init.d/iptables stop\n        /etc/init.d/ip6tables stop\n    else\n        # for all other Linux distro use following rules to reset firewall\n        ### reset ipv4 iptales ###\n        $IPT -F\n        $IPT -X\n        $IPT -Z\n        for table in $(</proc/net/ip_tables_names)\n        do\n            $IPT -t $table -F\n            $IPT -t $table -X\n            $IPT -t $table -Z\n        done\n        $IPT -P INPUT ACCEPT\n        $IPT -P OUTPUT ACCEPT\n        $IPT -P FORWARD ACCEPT\n        ### reset ipv6 iptales ###\n        $IPT6 -F\n        $IPT6 -X\n        $IPT6 -Z\n        for table in $(</proc/net/ip6_tables_names)\n        do\n            $IPT6 -t $table -F\n            $IPT6 -t $table -X\n            $IPT6 -t $table -Z\n        done\n        $IPT6 -P INPUT ACCEPT\n        $IPT6 -P OUTPUT ACCEPT\n        $IPT6 -P FORWARD ACCEPT\n    fi\nelse\n        :\nfi",
             "title": "IPTables"
         },
         {
             "location": "/Security/IPTables/#show-rules",
             "text": "iptables -nvL\niptable -t nat -nvL",
             "title": "Show rules"
+        },
+        {
+            "location": "/Security/IPTables/#autoreset-by-vivek-gite",
+            "text": "Just add to crontab while remote rules configuration:   crontab -e\n# ---\n*/5 * * * * root /root/reset.fw >/dev/null 2>&1   reset.fw:   #!/bin/bash\n# reset.fw - Reset firewall\n# set x to 0 - No reset\n# set x to 1 - Reset firewall\n# ---------------------------------------------------------------------------------------------------------------\n# Added support for IPV6 Firewall\n# ---------------------------------------------------------------------------------------------------------------\n# Written by Vivek Gite <vivek@nixcraft.com>\n# ---------------------------------------------------------------------------------------------------------------\n# You can copy / paste / redistribute this script under GPL version 2.0 or above\n# =============================================================\nx=1\n\n# set to true if it is CentOS / RHEL / Fedora box\nRHEL=false\n\n### no need to edit below  ###\nIPT=/sbin/iptables\nIPT6=/sbin/ip6tables\n\nif [ \"$x\" == \"1\" ];\nthen\n    if [ \"$RHEL\" == \"true\" ];\n    then\n          # reset firewall using redhat script\n        /etc/init.d/iptables stop\n        /etc/init.d/ip6tables stop\n    else\n        # for all other Linux distro use following rules to reset firewall\n        ### reset ipv4 iptales ###\n        $IPT -F\n        $IPT -X\n        $IPT -Z\n        for table in $(</proc/net/ip_tables_names)\n        do\n            $IPT -t $table -F\n            $IPT -t $table -X\n            $IPT -t $table -Z\n        done\n        $IPT -P INPUT ACCEPT\n        $IPT -P OUTPUT ACCEPT\n        $IPT -P FORWARD ACCEPT\n        ### reset ipv6 iptales ###\n        $IPT6 -F\n        $IPT6 -X\n        $IPT6 -Z\n        for table in $(</proc/net/ip6_tables_names)\n        do\n            $IPT6 -t $table -F\n            $IPT6 -t $table -X\n            $IPT6 -t $table -Z\n        done\n        $IPT6 -P INPUT ACCEPT\n        $IPT6 -P OUTPUT ACCEPT\n        $IPT6 -P FORWARD ACCEPT\n    fi\nelse\n        :\nfi",
+            "title": "Autoreset by Vivek Gite"
+        },
+        {
+            "location": "/Security/PF/",
+            "text": "Enabling in FreeBSD kernel\n\n\ndevice pf\ndevice pflog\ndevice pfsync\n\noptions         ALTQ\noptions         ALTQ_CBQ        # Class Bases Queuing (CBQ)\noptions         ALTQ_RED        # Random Early Detection (RED)\noptions         ALTQ_RIO        # RED In/Out\noptions         ALTQ_HFSC       # Hierarchical Packet Scheduler (HFSC)\noptions         ALTQ_PRIQ       # Priority Queuing (PRIQ)\noptions         ALTQ_NOPCC      # Required for SMP build\n\n\n\n\nFreeBSD rc.conf all PF options\n\n\npf_enable=\"NO\"\npf_rules=\"/etc/pf.conf\"\npf_program=\"/sbin/pfctl\"\npf_flags=\"\"\npflog_enable=\"NO\"\npflog_logfile=\"/var/log/pf.log\"\npflog_program=\"/sbin/pflogd\"\npflog_flags=\"\"\npfsync_enable=\"NO\"\npfsync_syncdev=\"\"\npfsync_ifconfig=\"\"\n\n\n\n\nSample config\n\n\n# PF.CONF // BEGIN CONFIG\n#---------------------------\n\n#---------------------------\n# Macros\n#---------------------------\n\n#---------------------------\n# Network Interfaces\n#---------------------------\next_if=\"em1\" # External\nint_if=\"em0\" # Internal\n\n#---------------------------\n# ICMP allowed\n#---------------------------\nicmp_types=\"{ echoreq, unreach}\"\n\n#---------------------------\n# Networks and hosts\n#---------------------------\nlan=\"192.168.10.0/24\"       # internal network\nsec=\"10.10.30.0/24\"     # secured network\nloop=\"127.0.0.0/8\"      # loopback\n\niis1=\"192.168.10.45/32\"     # Development IIS server 1\niis2=\"192.168.10.46/32\"     # Development IIS server 1\nredmine=\"192.168.10.48/32\"  # Redmine - internal team site\n\npublicated_services=\"{ 192.168.10.45/32, 192.168.10.46/32, 192.168.10.48/32, }\"\nallowed_inbound_ports=\"{ 22, 80, 90, 91 }\"\n\n#---------------------------\n# Global options\n#---------------------------\nset block-policy return     # Default block polycy: return, drop\nset skip on lo0         # Loopback exception\nscrub in all            # Normalise packets: build full packet before send to receiver; drop uncorrectly flagged packages\n\n#---------------------------\n# ALTQ\n#---------------------------\n\n#---------------------------\n# NAT and Port Forwarding\n#---------------------------\nnat on $ext_if from $lan to any -> ($ext_if)\n\nrdr on $ext_if proto { tcp, udp } from any to $ext_if port 90 -> $iis1 port 90      # Development IIS server 1 port forwarding\nrdr on $ext_if proto { tcp, udp } from any to $ext_if port 91 -> $iis1 port 91      # Development IIS server 2 port forwarding\nrdr on $ext_if proto { tcp, udp } from any to $ext_if port http -> $redmine port http   # Redmine port forwarding\n\n#---------------------------\n# FIREWALL RULES\n#---------------------------\nantispoof quick for $ext_if     # Antispoofing - drop all packets if sender addr=$ext_if addr. Key \"quick\" means that pf must aplly this rule and stop script (like IPFW works)\n\n# For future: full antispoofing:\n# block drop in quick on ! tun0 inet from tun0 to any\n# block drop in quick inet from tun0 to any\n# RFC 1918 \u0438 3330 block packets from 127.0.0.0/8, 240.0.0.0/4, 169.254.0.0/16 \u0438 \u0442.\u0434.\n\nblock all           # Block all traffic by default\n\n#---------------------------\n# Local rules\n# --------------------------\npass out on $ext_if from $ext_if to any keep state\npass in log on $ext_if from any port 22 to $ext_if port 22 keep state\n\n#---------------------------\n# Internal network rules\n#---------------------------\npass out on $ext_if from $lan to any keep state\n\n#---------------------------\n# External network rules\n#---------------------------\npass in log on $ext_if proto { tcp, udp } from any to $publicated_services port $allowed_inbound_ports keep state\n\n\npass log inet proto icmp all icmp-type $icmp_types\n\n#---------------------------\n# PF.CONF // END CONFIG",
+            "title": "PF"
+        },
+        {
+            "location": "/Security/PF/#enabling-in-freebsd-kernel",
+            "text": "device pf\ndevice pflog\ndevice pfsync\n\noptions         ALTQ\noptions         ALTQ_CBQ        # Class Bases Queuing (CBQ)\noptions         ALTQ_RED        # Random Early Detection (RED)\noptions         ALTQ_RIO        # RED In/Out\noptions         ALTQ_HFSC       # Hierarchical Packet Scheduler (HFSC)\noptions         ALTQ_PRIQ       # Priority Queuing (PRIQ)\noptions         ALTQ_NOPCC      # Required for SMP build",
+            "title": "Enabling in FreeBSD kernel"
+        },
+        {
+            "location": "/Security/PF/#freebsd-rcconf-all-pf-options",
+            "text": "pf_enable=\"NO\"\npf_rules=\"/etc/pf.conf\"\npf_program=\"/sbin/pfctl\"\npf_flags=\"\"\npflog_enable=\"NO\"\npflog_logfile=\"/var/log/pf.log\"\npflog_program=\"/sbin/pflogd\"\npflog_flags=\"\"\npfsync_enable=\"NO\"\npfsync_syncdev=\"\"\npfsync_ifconfig=\"\"",
+            "title": "FreeBSD rc.conf all PF options"
+        },
+        {
+            "location": "/Security/PF/#sample-config",
+            "text": "# PF.CONF // BEGIN CONFIG\n#---------------------------\n\n#---------------------------\n# Macros\n#---------------------------\n\n#---------------------------\n# Network Interfaces\n#---------------------------\next_if=\"em1\" # External\nint_if=\"em0\" # Internal\n\n#---------------------------\n# ICMP allowed\n#---------------------------\nicmp_types=\"{ echoreq, unreach}\"\n\n#---------------------------\n# Networks and hosts\n#---------------------------\nlan=\"192.168.10.0/24\"       # internal network\nsec=\"10.10.30.0/24\"     # secured network\nloop=\"127.0.0.0/8\"      # loopback\n\niis1=\"192.168.10.45/32\"     # Development IIS server 1\niis2=\"192.168.10.46/32\"     # Development IIS server 1\nredmine=\"192.168.10.48/32\"  # Redmine - internal team site\n\npublicated_services=\"{ 192.168.10.45/32, 192.168.10.46/32, 192.168.10.48/32, }\"\nallowed_inbound_ports=\"{ 22, 80, 90, 91 }\"\n\n#---------------------------\n# Global options\n#---------------------------\nset block-policy return     # Default block polycy: return, drop\nset skip on lo0         # Loopback exception\nscrub in all            # Normalise packets: build full packet before send to receiver; drop uncorrectly flagged packages\n\n#---------------------------\n# ALTQ\n#---------------------------\n\n#---------------------------\n# NAT and Port Forwarding\n#---------------------------\nnat on $ext_if from $lan to any -> ($ext_if)\n\nrdr on $ext_if proto { tcp, udp } from any to $ext_if port 90 -> $iis1 port 90      # Development IIS server 1 port forwarding\nrdr on $ext_if proto { tcp, udp } from any to $ext_if port 91 -> $iis1 port 91      # Development IIS server 2 port forwarding\nrdr on $ext_if proto { tcp, udp } from any to $ext_if port http -> $redmine port http   # Redmine port forwarding\n\n#---------------------------\n# FIREWALL RULES\n#---------------------------\nantispoof quick for $ext_if     # Antispoofing - drop all packets if sender addr=$ext_if addr. Key \"quick\" means that pf must aplly this rule and stop script (like IPFW works)\n\n# For future: full antispoofing:\n# block drop in quick on ! tun0 inet from tun0 to any\n# block drop in quick inet from tun0 to any\n# RFC 1918 \u0438 3330 block packets from 127.0.0.0/8, 240.0.0.0/4, 169.254.0.0/16 \u0438 \u0442.\u0434.\n\nblock all           # Block all traffic by default\n\n#---------------------------\n# Local rules\n# --------------------------\npass out on $ext_if from $ext_if to any keep state\npass in log on $ext_if from any port 22 to $ext_if port 22 keep state\n\n#---------------------------\n# Internal network rules\n#---------------------------\npass out on $ext_if from $lan to any keep state\n\n#---------------------------\n# External network rules\n#---------------------------\npass in log on $ext_if proto { tcp, udp } from any to $publicated_services port $allowed_inbound_ports keep state\n\n\npass log inet proto icmp all icmp-type $icmp_types\n\n#---------------------------\n# PF.CONF // END CONFIG",
+            "title": "Sample config"
         },
         {
             "location": "/Security/SELinux/",

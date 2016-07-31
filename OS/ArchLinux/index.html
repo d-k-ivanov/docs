@@ -217,6 +217,12 @@
 
                         
                             
+<li >
+    <a href="../Android/">Android</a>
+</li>
+
+                        
+                            
 <li class="active">
     <a href="./">ArchLinux</a>
 </li>
@@ -231,6 +237,12 @@
                             
 <li >
     <a href="../FreeBSD/">FreeBSD</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../MacOS_X/">MacOS X</a>
 </li>
 
                         
@@ -258,6 +270,12 @@
                             
 <li >
     <a href="../../Security/IPTables/">IPTables</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../Security/PF/">PF</a>
 </li>
 
                         
@@ -408,7 +426,7 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../AIX/">
+                        <a rel="next" href="../Android/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
@@ -467,6 +485,9 @@ makepkg -sri
 # In case of error like:
 # &lt;package&gt;.tar.gz ... FAILED (unknown public key 0000000000000000)
 gpg --recv-key 0000000000000000
+# Or manually check key and skip key verification vith makepkg
+pacman-key --verify &lt;sig_file&gt;
+makepkg --skippgpcheck -sri
 </code></pre></div>
         
     </div>

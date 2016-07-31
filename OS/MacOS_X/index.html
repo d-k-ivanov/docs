@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Unix/X/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/OS/MacOS_X/"> 
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
-    <title>X - Technical Info</title>
+    <title>MacOS X - Technical Info</title>
 
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -206,49 +206,49 @@
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">OS <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../../OS/AIX/">AIX</a>
+    <a href="../AIX/">AIX</a>
 </li>
 
                         
                             
 <li >
-    <a href="../../OS/Android/">Android</a>
+    <a href="../Android/">Android</a>
 </li>
 
                         
                             
 <li >
-    <a href="../../OS/ArchLinux/">ArchLinux</a>
+    <a href="../ArchLinux/">ArchLinux</a>
 </li>
 
                         
                             
 <li >
-    <a href="../../OS/Debian/">Debian</a>
+    <a href="../Debian/">Debian</a>
 </li>
 
                         
                             
 <li >
-    <a href="../../OS/FreeBSD/">FreeBSD</a>
+    <a href="../FreeBSD/">FreeBSD</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">MacOS X</a>
 </li>
 
                         
                             
 <li >
-    <a href="../../OS/MacOS_X/">MacOS X</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../OS/RHEL/">RHEL</a>
+    <a href="../RHEL/">RHEL</a>
 </li>
 
                         
@@ -290,97 +290,97 @@
                 
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Unix <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../Audit/">Audit</a>
+    <a href="../../Unix/Audit/">Audit</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Docker/">Docker</a>
+    <a href="../../Unix/Docker/">Docker</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Filesystem/">Filesystem</a>
+    <a href="../../Unix/Filesystem/">Filesystem</a>
 </li>
 
                         
                             
 <li >
-    <a href="../GPFS/">GPFS</a>
+    <a href="../../Unix/GPFS/">GPFS</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Hardware_info/">Hardware info</a>
+    <a href="../../Unix/Hardware_info/">Hardware info</a>
 </li>
 
                         
                             
 <li >
-    <a href="../KVM/">KVM</a>
+    <a href="../../Unix/KVM/">KVM</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Network/">Network</a>
+    <a href="../../Unix/Network/">Network</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Processes/">Processes</a>
+    <a href="../../Unix/Processes/">Processes</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Remote_management/">Remote management</a>
+    <a href="../../Unix/Remote_management/">Remote management</a>
 </li>
 
                         
                             
 <li >
-    <a href="../SMS/">SMS</a>
+    <a href="../../Unix/SMS/">SMS</a>
 </li>
 
                         
                             
 <li >
-    <a href="../SNMP/">SNMP</a>
+    <a href="../../Unix/SNMP/">SNMP</a>
 </li>
 
                         
                             
 <li >
-    <a href="../Skype/">Skype</a>
+    <a href="../../Unix/Skype/">Skype</a>
 </li>
 
                         
                             
 <li >
-    <a href="../WINE/">WINE</a>
+    <a href="../../Unix/WINE/">WINE</a>
 </li>
 
                         
                             
 <li >
-    <a href="../WiFi/">WiFi</a>
+    <a href="../../Unix/WiFi/">WiFi</a>
 </li>
 
                         
                             
-<li class="active">
-    <a href="./">X</a>
+<li >
+    <a href="../../Unix/X/">X</a>
 </li>
 
                         
@@ -426,12 +426,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../WiFi/">
+                        <a rel="next" href="../FreeBSD/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../../Windows/CMD_Scripts/">
+                        <a rel="prev" href="../RHEL/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -454,23 +454,26 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#start-full-screen-application-in-different-x-server">Start full-screen application in different X server</a></li>
-        
-    
-        <li class="first-level "><a href="#export-x-display-to-current-ssh-connection">Export X display to current ssh connection</a></li>
+        <li class="first-level active"><a href="#activate-root">Activate root</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="start-full-screen-application-in-different-x-server">Start full-screen application in different X server</h3>
-<pre><code class="bash">/usr/bin/xinit &lt;path_to_fullscreen_application&gt; -- :1
+<h3 id="activate-root">Activate root</h3>
+<ul>
+<li>Press <strong>Command + Shift + G</strong> and enter</li>
+</ul>
+<pre><code>/System/Library/CoreServices/
 </code></pre>
 
-<h3 id="export-x-display-to-current-ssh-connection">Export X display to current ssh connection</h3>
-<pre><code class="bash">export DISPLAY=&quot;${SSH_CLIENT%% *}&quot;
-</code></pre></div>
+<ul>
+<li>Inside launch <strong>Directory Utility</strong></li>
+<li>Unlock utility by clicking on <strong>padlock icon</strong></li>
+<li>Click on menu <strong>Edit</strong> -&gt; <strong>Enable Root User</strong></li>
+<li>Enter and confirm root password to enable root account</li>
+</ul></div>
         
     </div>
 

@@ -56,6 +56,12 @@
     </url>
         
     <url>
+     <loc>https://keepbot.github.io/docs//OS/Android/</loc>
+     <lastmod>2016-08-01</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>https://keepbot.github.io/docs//OS/ArchLinux/</loc>
      <lastmod>2016-08-01</lastmod>
      <changefreq>daily</changefreq>
@@ -69,6 +75,12 @@
         
     <url>
      <loc>https://keepbot.github.io/docs//OS/FreeBSD/</loc>
+     <lastmod>2016-08-01</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://keepbot.github.io/docs//OS/MacOS_X/</loc>
      <lastmod>2016-08-01</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -91,6 +103,12 @@
         
     <url>
      <loc>https://keepbot.github.io/docs//Security/IPTables/</loc>
+     <lastmod>2016-08-01</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://keepbot.github.io/docs//Security/PF/</loc>
      <lastmod>2016-08-01</lastmod>
      <changefreq>daily</changefreq>
     </url>
