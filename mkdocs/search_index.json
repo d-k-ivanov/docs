@@ -212,7 +212,7 @@
         },
         {
             "location": "/Dev/Version_Control/Git/",
-            "text": "Clone\n\n\n# For new repos(-jN - number of simltaniuos jobs):\ngit clone --recursive -j4 https://github.com/keepbot/dotfiles-srv\ngit clone --recursive https://github.com/keepbot/dotfiles-srv\n\n# For already cloned repos:\ngit submodule update --init --recursive\n\n# Ignore self signed ssl certificates\ngit -c http.sslVerify=false clone --recursive https://github.com/keepbot/dotfiles-srv.git\n\n\n\n\nGlobal settings\n\n\ngit config --global user.name \"Your Name\"\ngit config --global user.email your@e-mail.com\n\n\n\n\nCreate new repository\n\n\nmkdir -p <path_to_repository>\ncd <path_to_repository>\ngit add .\ngit commit -m \"Initialization\"\ngit remote add origin https://github.com/username/<repository>.git\ngit push -u origin master\ngit checkout \n\n\n\n\nCommit\n\n\n# Addition of new files with automatic staging of deleted and modified files\ngit add .\ngit commit -a -m \"new commentary\"\ngit push -u origin master\n\n\n\n\nUpdate local reposytory from remote\n\n\n# Fentch + Merge\ngit pull\n# Fetch only\ngit fetch\n# Fetch changes from remote repository with modified local repository\ngit commit -a -m \"new commentary\"\ngit pull rebase\n# pull remote with overwrite local changes\ngit fetch --all\ngit reset --hard origin/master\n\n\n\n\nWorking with bunch of  repositories\n\n\n# Last commits\nfor d in `ls`; do cd $d; git log --pretty=format:\"%h - %an, %ar : %s\" -1; cd ..; done\n# Mass checkout\nfor d in `ls`; do cd $d; git checkout; cd ..; done\n\n\n\n\nMaking patches from commits:\n\n\nCreate patch:\n\n\n# The easiest version (you can specify number of commit to patch) \ngit format-patch -1 HEAD\n# Same as first, but create numbered files (00001-nnnnn)\ngit format-patch -n HEAD^\n# Simple cat ftom stdout, works fine on most of systems, but be carfull, if you have customized terminal (color tags, special symbols, etc.)\ngit show HEAD > path_to.patch\n\n\n\n\nApply patch:\n\n\ngit apply --stat 0001-Linux-agent-LVM-subagent-initial-implementation.patch\ngit apply --check 0001-Linux-agent-LVM-subagent-initial-implementation.patch\ngit am < 0001-Linux-agent-LVM-subagent-initial-implementation.patch\n\n\n\n\nSubmodules\n\n\nAdd submodule:\n\n\ngit submodule add <submodule_git_url> <local_path>\n\n\n\n\nDelete submodule:\n\n\ngit submodule deinit <submodule>    \ngit rm --cached <submodule>\nrm -rf .git/modules/<submodule>\n# Remove module record from .gitmodules\nvim .gitmodules",
+            "text": "Clone\n\n\n# For new repos(-jN - number of simltaniuos jobs):\ngit clone --recursive -j4 https://github.com/keepbot/dotfiles-srv\ngit clone --recursive https://github.com/keepbot/dotfiles-srv\n\n# For already cloned repos:\ngit submodule update --init --recursive\n\n# Ignore self signed ssl certificates\ngit -c http.sslVerify=false clone --recursive https://github.com/keepbot/dotfiles-srv.git\n\n\n\n\nGlobal settings\n\n\ngit config --global user.name \"Your Name\"\ngit config --global user.email your@e-mail.com\n\n\n\n\nCreate new repository\n\n\nmkdir -p <path_to_repository>\ncd <path_to_repository>\ngit add .\ngit commit -m \"Initialization\"\ngit remote add origin https://github.com/username/<repository>.git\ngit push -u origin master\ngit checkout \n\n\n\n\nCommit\n\n\n# Addition of new files with automatic staging of deleted and modified files\ngit add .\ngit commit -a -m \"new commentary\"\ngit push -u origin master\n\n\n\n\nUpdate local reposytory from remote\n\n\n# Fentch + Merge\ngit pull\n# Fetch only\ngit fetch\n# Fetch changes from remote repository with modified local repository\ngit commit -a -m \"new commentary\"\ngit pull rebase\n# pull remote with overwrite local changes\ngit fetch --all\ngit reset --hard origin/master\n\n\n\n\nWorking with bunch of  repositories\n\n\n# Last commits\nfor d in `ls`; do cd $d; git log --pretty=format:\"%h - %an, %ar : %s\" -1; cd ..; done\n# Mass checkout\nfor d in `ls`; do cd $d; git checkout; cd ..; done\n\n\n\n\nMaking patches from commits:\n\n\n\n\nCreate patch:\n\n\n\n\n# The easiest version (you can specify number of commit to patch) \ngit format-patch -1 HEAD\n# Same as first, but create numbered files (00001-nnnnn)\ngit format-patch -n HEAD^\n# Simple cat ftom stdout, works fine on most of systems, but be carfull, if you have customized terminal (color tags, special symbols, etc.)\ngit show HEAD > path_to.patch\n\n\n\n\n\n\nApply patch:\n\n\n\n\ngit apply --stat 0001-Linux-agent-LVM-subagent-initial-implementation.patch\ngit apply --check 0001-Linux-agent-LVM-subagent-initial-implementation.patch\ngit am < 0001-Linux-agent-LVM-subagent-initial-implementation.patch\n\n\n\n\nSubmodules\n\n\n\n\nAdd submodule:\n\n\n\n\ngit submodule add <submodule_git_url> <local_path>\n\n\n\n\n\n\nDelete submodule:\n\n\n\n\ngit submodule deinit <submodule>    \ngit rm --cached <submodule>\nrm -rf .git/modules/<submodule>\n# Remove module record from .gitmodules\nvim .gitmodules",
             "title": "Git"
         },
         {
@@ -247,12 +247,12 @@
         },
         {
             "location": "/Dev/Version_Control/Git/#making-patches-from-commits",
-            "text": "Create patch:  # The easiest version (you can specify number of commit to patch) \ngit format-patch -1 HEAD\n# Same as first, but create numbered files (00001-nnnnn)\ngit format-patch -n HEAD^\n# Simple cat ftom stdout, works fine on most of systems, but be carfull, if you have customized terminal (color tags, special symbols, etc.)\ngit show HEAD > path_to.patch  Apply patch:  git apply --stat 0001-Linux-agent-LVM-subagent-initial-implementation.patch\ngit apply --check 0001-Linux-agent-LVM-subagent-initial-implementation.patch\ngit am < 0001-Linux-agent-LVM-subagent-initial-implementation.patch",
+            "text": "Create patch:   # The easiest version (you can specify number of commit to patch) \ngit format-patch -1 HEAD\n# Same as first, but create numbered files (00001-nnnnn)\ngit format-patch -n HEAD^\n# Simple cat ftom stdout, works fine on most of systems, but be carfull, if you have customized terminal (color tags, special symbols, etc.)\ngit show HEAD > path_to.patch   Apply patch:   git apply --stat 0001-Linux-agent-LVM-subagent-initial-implementation.patch\ngit apply --check 0001-Linux-agent-LVM-subagent-initial-implementation.patch\ngit am < 0001-Linux-agent-LVM-subagent-initial-implementation.patch",
             "title": "Making patches from commits:"
         },
         {
             "location": "/Dev/Version_Control/Git/#submodules",
-            "text": "Add submodule:  git submodule add <submodule_git_url> <local_path>  Delete submodule:  git submodule deinit <submodule>    \ngit rm --cached <submodule>\nrm -rf .git/modules/<submodule>\n# Remove module record from .gitmodules\nvim .gitmodules",
+            "text": "Add submodule:   git submodule add <submodule_git_url> <local_path>   Delete submodule:   git submodule deinit <submodule>    \ngit rm --cached <submodule>\nrm -rf .git/modules/<submodule>\n# Remove module record from .gitmodules\nvim .gitmodules",
             "title": "Submodules"
         },
         {
@@ -272,7 +272,7 @@
         },
         {
             "location": "/OS/AIX/",
-            "text": "Basic programs\n\n\nsh$ ftp ftp.software.ibm.com\n  Name> ftp\n  Password> your e-mail address\n  ftp> cd aix/freeSoftware/aixtoolbox/RPMS/ppc/wget\n  ftp> binary\n  ftp> get wget-1.9.1-1.aix5.1.ppc.rpm\n  ftp> quit\nsh$ rpm -hUv wget-1.9.1-1.aix5.1.ppc.rpm\nsh$ wget -r -nd ftp://ftp.software.ibm.com/aix/freeSoftware/aixtoolbox/ezinstall/ppc  \n\nsh$ ls\ngetapp-dev.sh       getgnome.base.sh    getkde3.all.sh\nXsession.kde        getbase.sh          getkde2.all.sh      getkde3.base.sh\nXsession.kde2       getdesktop.base.sh  getkde2.base.sh     getkde3.opt.sh\ngetgnome.apps.sh    getkde2.opt.sh      \n\nsh$ chmod +x get*.sh  \n\nsh$ cd base\nsh$ ls\nbash-3.2-1.aix5.2.ppc.rpm          rpm-3.0.5-52.aix5.3.ppc.rpm\nbzip2-1.0.5-3.aix5.3.ppc.rpm       rpm-build-3.0.5-52.aix5.3.ppc.rpm\ngettext-0.10.40-8.aix5.2.ppc.rpm   rpm-devel-3.0.5-52.aix5.3.ppc.rpm\ngzip-1.2.4a-10.aix5.2.ppc.rpm      tar-1.14-2.aix5.1.ppc.rpm\ninfo-4.6-1.aix5.1.ppc.rpm          unzip-5.51-1.aix5.1.ppc.rpm\npatch-2.5.4-4.aix4.3.ppc.rpm       \npopt-1.7-2.aix5.1.ppc.rpm\n\nsh$ rpm -hUv unzip-5.51-1.aix5.1.ppc.rpm\nsh$ rpm -hUv zip-2.3-3.aix4.3.ppc.rpm\nsh$ rpm -hUv bash-3.2-1.aix5.2.ppc.rpm\n\nsh$ bash\nbash-3.2# \n\n\n\n\nManagement\n\n\n# Exit from basic VIOS console to common AIX ksh\noem_setup_env\n# Adminitration and configuration console\nsmit\n\n#If you want to use bash as a login shell, you first have to add it to the\n#list of shells in /etc/security/login.cfg. \n#Then use `chsh` to change your individual setting.\n\n\n\n\nSoftware installation:\n\n\ncd <path_to_package>\ninutoc .\ninstallp -aXY -d<path_to_package> all\n# Check if package is installed or not:\nlslpp -L <package_name>\n\n\n\n\nMirroring rootvg:\n\n\nextendvg rootvg hdisk1\nmirrorvg rootvg\nbootlist -m normal hdisk0 hdisk1 \nbosboot -ad hdisk0\nbosboot -ad hdisk1\n# Checking\nbootlist -o -m normal\n\n\n\n\nNetwork:\n\n\nShared Ethernet adapter coming soon\n\n\n\n\nHardware:\n\n\n# Refresh hardware configuration(aix and vios respectively):\ncfgmgr\ncfgdev\n# Rename hard drive:\nrendev -l <old_name> -n <new_name>\nrendev -l hdisk3 -n hdisk33\n# Enable PVID:\nchdev -l hdiskX -a pv=yes\n# Change reserve policy to hard drive\nchdev -l hdiskX -a reserve_policy=no_reserve\n# Clear the owning volume manager from a disk\nchpv -C hdiskX\n\n\n\n\nVirtual devices:\n\n\n# Checking all virtual mappings to particular vhost:\nlsmap -vadapter vhost\n# Make a virtual hard drive for particular vhost:\n# -f - flag to forcing device creation if you're making shared hard drive\nmkvdev [-f] -vdev hdiskX -vadapter vhostX -dev <virtual_device_name>\n# Make a virtual cd-rom device for particular vhost:\nmkvdev -fbo -vadapter vhostX -dev <virtual_device_name>\n\n\n\n\nZabbix agent\n\n\n# Dependencies:\nrpm -ivh ftp://www.oss4aix.org/latest/aix61/gettext-0.10.40-8.aix5.2.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/expat-2.1.0-1.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libgcc-4.7.2-1.aix6.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libffi-3.0.11-2.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/glib2-2.30.3-1.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libiconv-1.14-2.aix5.1.ppc.rpm\n\n# Main\nmkgroup zabbix\nuseradd -g zabbix zabbix\n\nmkdir /var/run/zabbix\ntouch /var/run/zabbix/zabbix_agentd.pid\nmkdir /var/log/zabbix\ntouch /var/log/zabbix/zabbix_agentd.log\n\nchown -R zabbix:zabbix /var/log/zabbix\nchown -R zabbix:zabbix /var/run/zabbix\nchown zabbix:zabbix /etc/zabbix_agentd.conf\n\n/usr/sbin/zabbix_agentd --config /etc/zabbix_agentd.conf\n\nvi /etc/inittab\nzabagent:2:once:/usr/sbin/zabbix_agentd --config /etc/zabbix_agentd.conf",
+            "text": "Basic programs\n\n\nsh$ ftp ftp.software.ibm.com\n  Name> ftp\n  Password> your e-mail address\n  ftp> cd aix/freeSoftware/aixtoolbox/RPMS/ppc/wget\n  ftp> binary\n  ftp> get wget-1.9.1-1.aix5.1.ppc.rpm\n  ftp> quit\nsh$ rpm -hUv wget-1.9.1-1.aix5.1.ppc.rpm\nsh$ wget -r -nd ftp://ftp.software.ibm.com/aix/freeSoftware/aixtoolbox/ezinstall/ppc  \n\nsh$ ls\ngetapp-dev.sh       getgnome.base.sh    getkde3.all.sh\nXsession.kde        getbase.sh          getkde2.all.sh      getkde3.base.sh\nXsession.kde2       getdesktop.base.sh  getkde2.base.sh     getkde3.opt.sh\ngetgnome.apps.sh    getkde2.opt.sh      \n\nsh$ chmod +x get*.sh  \n\nsh$ cd base\nsh$ ls\nbash-3.2-1.aix5.2.ppc.rpm          rpm-3.0.5-52.aix5.3.ppc.rpm\nbzip2-1.0.5-3.aix5.3.ppc.rpm       rpm-build-3.0.5-52.aix5.3.ppc.rpm\ngettext-0.10.40-8.aix5.2.ppc.rpm   rpm-devel-3.0.5-52.aix5.3.ppc.rpm\ngzip-1.2.4a-10.aix5.2.ppc.rpm      tar-1.14-2.aix5.1.ppc.rpm\ninfo-4.6-1.aix5.1.ppc.rpm          unzip-5.51-1.aix5.1.ppc.rpm\npatch-2.5.4-4.aix4.3.ppc.rpm       \npopt-1.7-2.aix5.1.ppc.rpm\n\nsh$ rpm -hUv unzip-5.51-1.aix5.1.ppc.rpm\nsh$ rpm -hUv zip-2.3-3.aix4.3.ppc.rpm\nsh$ rpm -hUv bash-3.2-1.aix5.2.ppc.rpm\n\nsh$ bash\nbash-3.2# \n\n\n\n\nManagement\n\n\n# Exit from basic VIOS console to common AIX ksh\noem_setup_env\n# Adminitration and configuration console\nsmit\n\n#If you want to use bash as a login shell, you first have to add it to the\n#list of shells in /etc/security/login.cfg. \n#Then use `chsh` to change your individual setting.\n\n\n\n\nSoftware installation\n\n\ncd <path_to_package>\ninutoc .\ninstallp -aXY -d<path_to_package> all\n# Check if package is installed or not:\nlslpp -L <package_name>\n\n\n\n\nMirroring rootvg\n\n\nextendvg rootvg hdisk1\nmirrorvg rootvg\nbootlist -m normal hdisk0 hdisk1 \nbosboot -ad hdisk0\nbosboot -ad hdisk1\n# Checking\nbootlist -o -m normal\n\n\n\n\nNetwork\n\n\nShared Ethernet adapter coming soon\n\n\n\n\nHardware\n\n\n# Refresh hardware configuration(aix and vios respectively):\ncfgmgr\ncfgdev\n# Rename hard drive:\nrendev -l <old_name> -n <new_name>\nrendev -l hdisk3 -n hdisk33\n# Enable PVID:\nchdev -l hdiskX -a pv=yes\n# Change reserve policy to hard drive\nchdev -l hdiskX -a reserve_policy=no_reserve\n# Clear the owning volume manager from a disk\nchpv -C hdiskX\n\n\n\n\nVirtual devices\n\n\n# Checking all virtual mappings to particular vhost:\nlsmap -vadapter vhost\n# Make a virtual hard drive for particular vhost:\n# -f - flag to forcing device creation if you're making shared hard drive\nmkvdev [-f] -vdev hdiskX -vadapter vhostX -dev <virtual_device_name>\n# Make a virtual cd-rom device for particular vhost:\nmkvdev -fbo -vadapter vhostX -dev <virtual_device_name>\n\n\n\n\nZabbix agent\n\n\n# Dependencies:\nrpm -ivh ftp://www.oss4aix.org/latest/aix61/gettext-0.10.40-8.aix5.2.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/expat-2.1.0-1.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libgcc-4.7.2-1.aix6.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libffi-3.0.11-2.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/glib2-2.30.3-1.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libiconv-1.14-2.aix5.1.ppc.rpm\n\n# Main\nmkgroup zabbix\nuseradd -g zabbix zabbix\n\nmkdir /var/run/zabbix\ntouch /var/run/zabbix/zabbix_agentd.pid\nmkdir /var/log/zabbix\ntouch /var/log/zabbix/zabbix_agentd.log\n\nchown -R zabbix:zabbix /var/log/zabbix\nchown -R zabbix:zabbix /var/run/zabbix\nchown zabbix:zabbix /etc/zabbix_agentd.conf\n\n/usr/sbin/zabbix_agentd --config /etc/zabbix_agentd.conf\n\nvi /etc/inittab\nzabagent:2:once:/usr/sbin/zabbix_agentd --config /etc/zabbix_agentd.conf",
             "title": "AIX"
         },
         {
@@ -288,27 +288,27 @@
         {
             "location": "/OS/AIX/#software-installation",
             "text": "cd <path_to_package>\ninutoc .\ninstallp -aXY -d<path_to_package> all\n# Check if package is installed or not:\nlslpp -L <package_name>",
-            "title": "Software installation:"
+            "title": "Software installation"
         },
         {
             "location": "/OS/AIX/#mirroring-rootvg",
             "text": "extendvg rootvg hdisk1\nmirrorvg rootvg\nbootlist -m normal hdisk0 hdisk1 \nbosboot -ad hdisk0\nbosboot -ad hdisk1\n# Checking\nbootlist -o -m normal",
-            "title": "Mirroring rootvg:"
+            "title": "Mirroring rootvg"
         },
         {
             "location": "/OS/AIX/#network",
             "text": "Shared Ethernet adapter coming soon",
-            "title": "Network:"
+            "title": "Network"
         },
         {
             "location": "/OS/AIX/#hardware",
             "text": "# Refresh hardware configuration(aix and vios respectively):\ncfgmgr\ncfgdev\n# Rename hard drive:\nrendev -l <old_name> -n <new_name>\nrendev -l hdisk3 -n hdisk33\n# Enable PVID:\nchdev -l hdiskX -a pv=yes\n# Change reserve policy to hard drive\nchdev -l hdiskX -a reserve_policy=no_reserve\n# Clear the owning volume manager from a disk\nchpv -C hdiskX",
-            "title": "Hardware:"
+            "title": "Hardware"
         },
         {
             "location": "/OS/AIX/#virtual-devices",
             "text": "# Checking all virtual mappings to particular vhost:\nlsmap -vadapter vhost\n# Make a virtual hard drive for particular vhost:\n# -f - flag to forcing device creation if you're making shared hard drive\nmkvdev [-f] -vdev hdiskX -vadapter vhostX -dev <virtual_device_name>\n# Make a virtual cd-rom device for particular vhost:\nmkvdev -fbo -vadapter vhostX -dev <virtual_device_name>",
-            "title": "Virtual devices:"
+            "title": "Virtual devices"
         },
         {
             "location": "/OS/AIX/#zabbix-agent",
@@ -317,33 +317,33 @@
         },
         {
             "location": "/OS/ArchLinux/",
-            "text": "Pacman:\n\n\n# Search for software\npacman -Ss <pattern>\n# Install package\npacman -S <package_name>\n# Update the system\npacman -Syu\n# Remove orphaned packages (Be careful, double check for list of deleted packages)\npacman -Rscn $(pacman -Qtdq)\npacman -Sc\npacman-optimize && sync\n\n\n\n\nAUR package installation:\n\n\ngit clone https://aur.archlinux.org/<packiage_name>\ncd <package_name>\nmakepkg -sri\n\n# In case of error like:\n# <package>.tar.gz ... FAILED (unknown public key 0000000000000000)\ngpg --recv-key 0000000000000000",
+            "text": "Pacman\n\n\n# Search for software\npacman -Ss <pattern>\n# Install package\npacman -S <package_name>\n# Update the system\npacman -Syu\n# Remove orphaned packages (Be careful, double check for list of deleted packages)\npacman -Rscn $(pacman -Qtdq)\npacman -Sc\npacman-optimize && sync\n\n\n\n\nAUR package installation\n\n\ngit clone https://aur.archlinux.org/<packiage_name>\ncd <package_name>\nmakepkg -sri\n\n# In case of error like:\n# <package>.tar.gz ... FAILED (unknown public key 0000000000000000)\ngpg --recv-key 0000000000000000",
             "title": "ArchLinux"
         },
         {
             "location": "/OS/ArchLinux/#pacman",
             "text": "# Search for software\npacman -Ss <pattern>\n# Install package\npacman -S <package_name>\n# Update the system\npacman -Syu\n# Remove orphaned packages (Be careful, double check for list of deleted packages)\npacman -Rscn $(pacman -Qtdq)\npacman -Sc\npacman-optimize && sync",
-            "title": "Pacman:"
+            "title": "Pacman"
         },
         {
             "location": "/OS/ArchLinux/#aur-package-installation",
             "text": "git clone https://aur.archlinux.org/<packiage_name>\ncd <package_name>\nmakepkg -sri\n\n# In case of error like:\n# <package>.tar.gz ... FAILED (unknown public key 0000000000000000)\ngpg --recv-key 0000000000000000",
-            "title": "AUR package installation:"
+            "title": "AUR package installation"
         },
         {
             "location": "/OS/Debian/",
-            "text": "Apt:\n\n\n# Show installed packages\napt --installed list\n# Search for software\napt-cache search <pattern>\n# Install package\napt-get install <package_name>\n\n\n\n\nDpkg:\n\n\n# To get a list of packages installed locally do this in your terminal:\ndpkg --get-selections | grep -v deinstall\n# To get a list of a specific package installed:\ndpkg --get-selections | grep postgres\n# To save that list to a text file called packages on your desktop do this in your terminal:\ndpkg --get-selections | grep -v deinstall > ~/Desktop/packages\n# Alternatively, simply use\ndpkg -l",
+            "text": "Apt\n\n\n# Show installed packages\napt --installed list\n# Search for software\napt-cache search <pattern>\n# Install package\napt-get install <package_name>\n\n\n\n\nDpkg\n\n\n# To get a list of packages installed locally do this in your terminal:\ndpkg --get-selections | grep -v deinstall\n# To get a list of a specific package installed:\ndpkg --get-selections | grep postgres\n# To save that list to a text file called packages on your desktop do this in your terminal:\ndpkg --get-selections | grep -v deinstall > ~/Desktop/packages\n# Alternatively, simply use\ndpkg -l",
             "title": "Debian"
         },
         {
             "location": "/OS/Debian/#apt",
             "text": "# Show installed packages\napt --installed list\n# Search for software\napt-cache search <pattern>\n# Install package\napt-get install <package_name>",
-            "title": "Apt:"
+            "title": "Apt"
         },
         {
             "location": "/OS/Debian/#dpkg",
             "text": "# To get a list of packages installed locally do this in your terminal:\ndpkg --get-selections | grep -v deinstall\n# To get a list of a specific package installed:\ndpkg --get-selections | grep postgres\n# To save that list to a text file called packages on your desktop do this in your terminal:\ndpkg --get-selections | grep -v deinstall > ~/Desktop/packages\n# Alternatively, simply use\ndpkg -l",
-            "title": "Dpkg:"
+            "title": "Dpkg"
         },
         {
             "location": "/OS/FreeBSD/",
@@ -357,13 +357,13 @@
         },
         {
             "location": "/OS/RHEL/",
-            "text": "Yum:\n\n\n# Search for software\nyum search <pattern>\n# Install package\nyum install <package_name>\n# Repair \"Error: database disk image is malformed\"\nyum clean dbcache",
+            "text": "Yum\n\n\n# Search for software\nyum search <pattern>\n# Install package\nyum install <package_name>\n# Repair \"Error: database disk image is malformed\"\nyum clean dbcache",
             "title": "RHEL"
         },
         {
             "location": "/OS/RHEL/#yum",
             "text": "# Search for software\nyum search <pattern>\n# Install package\nyum install <package_name>\n# Repair \"Error: database disk image is malformed\"\nyum clean dbcache",
-            "title": "Yum:"
+            "title": "Yum"
         },
         {
             "location": "/Security/HSM/",
@@ -412,7 +412,7 @@
         },
         {
             "location": "/Unix/Docker/",
-            "text": "Run docker conainer\n\n\nsudo docker run --name mysql-nx -e MYSQL_ROOT_PASSWORD=JuSCY1Bq -d -p 127.0.0.1:3306:3306 mysql:latest\n\n\n\n\nExecute in-docker console\n\n\nsudo docker exec -it <container> bash\n\n\n\n\nCreate JSON with container settings\n\n\ndocker inspect -f '{{ json .NetworkSettings }}' <container_id> | python -mjson.tool\n\n\n\n\nDelete containers by date:\n\n\ndocker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm\n\n\n\n\nDelete all containers:\n\n\ndocker stop $(docker ps -a -q)\ndocker rm $(docker ps -a -q)\n\n\n\n\nUse Docker registry\n\n\nmkdir /etc/systemd/system/docker.service.d/\ntouch /etc/systemd/system/docker.service.d/docker_opts.conf\nnano /etc/systemd/system/docker.service.d/docker_opts.conf\n\n# ---\n[Service]\nExecStart=\nExecStart=/usr/bin/docker -d -H fd:// --insecure-registry docker-registry.keepbot.github.io --registry-mirror https://doker-registry-mirror.keepbot.github.io\n# ---\n\nsystemctl daemon-reload\nservice docker restart",
+            "text": "Run docker conainer\n\n\nsudo docker run --name mysql-nx -e MYSQL_ROOT_PASSWORD=JuSCY1Bq -d -p 127.0.0.1:3306:3306 mysql:latest\n\n\n\n\nExecute in-docker console\n\n\nsudo docker exec -it <container> bash\n\n\n\n\nCreate JSON with container settings\n\n\ndocker inspect -f '{{ json .NetworkSettings }}' <container_id> | python -mjson.tool\n\n\n\n\nDelete containers by date\n\n\ndocker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm\n\n\n\n\nDelete all containers:\n\n\ndocker stop $(docker ps -a -q)\ndocker rm $(docker ps -a -q)\n\n\n\n\nUse Docker registry\n\n\nmkdir /etc/systemd/system/docker.service.d/\ntouch /etc/systemd/system/docker.service.d/docker_opts.conf\nnano /etc/systemd/system/docker.service.d/docker_opts.conf\n\n# ---\n[Service]\nExecStart=\nExecStart=/usr/bin/docker -d -H fd:// --insecure-registry docker-registry.keepbot.github.io --registry-mirror https://doker-registry-mirror.keepbot.github.io\n# ---\n\nsystemctl daemon-reload\nservice docker restart",
             "title": "Docker"
         },
         {
@@ -433,7 +433,7 @@
         {
             "location": "/Unix/Docker/#delete-containers-by-date",
             "text": "docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm",
-            "title": "Delete containers by date:"
+            "title": "Delete containers by date"
         },
         {
             "location": "/Unix/Docker/#delete-all-containers",
@@ -447,7 +447,7 @@
         },
         {
             "location": "/Unix/Filesystem/",
-            "text": "Change permisions recursively\n\n\nYou can use a simple \nScript\n\n\nfind <path_to_folder> -type f -print -exec chmod 644 {} \\;\nfind <path_to_folder> -type d -print -exec chmod 755 {} \\;\n\n\n\n\nCount files\n\n\nfind . -type f | wc -l\nls | wc -l\n\n\n\n\nRemove file list\n\n\nls | xargs rm\n\n\n\n\nRemove file suffix \"filename\"+\"suffix\"\n\n\nfor i in `find . -type f -name \"*<suffix>*\"`; do dst=`echo $i | sed s/<suffix>//`;mv $i $dst; done\n\n\n\n\nMove all files in one level directory in certain folder to another\n\n\nfind /<path_to_folder>/* -prune -type f | xargs -I '{}' mv {} /<path_to_destination_folder>/archive/.\n\n\n\n\nSearch for certain file contents\n\n\nfind . -type f -name \"*conf\" -exec echo {} \\; -exec grep 192.168.0.1:3389 {} \\;\n\n\n\n\nShow directories content recursively\n\n\nls -R /path | awk '\n/:$/&&f{s=$0;f=0}\n/:$/&&!f{sub(/:$/,\"\");s=$0;f=1;next}\nNF&&f{ print s\"/\"$0 }'\n\n\n\n\nMake dirs with indexes\n\n\nfor i in 0{1..9} {10..39}; do mkdir delete-$i; cd delete-$i; touch del-file-$i; cd ..; done\n\n\n\n\nCreate bunch of files from list in a file:\n\n\n# Predefined number of records\nhead -<number_of_lines> inventory | awk '{ print $1 }' | xargs -I '{}' <destination_folder>/{}\n#E.g. head -10 inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}\n\n# Whole list from file\ncat <filename> | awk '{ print $1 }' | xargs -I '{}' <destination_folder>/{}\n#E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' host_vars/{}\n\n\n\n\nMove bunch of folders:\n\n\nls -1d <space separeated folder list> | xargs -I '{}' mv {} <destination>\n#E.g. ls -1d command_line dotfiles-srv programmming-examples shell_scripts | xargs -I '{}' mv {} github/\n\n\n\n\nMounts\n\n\n#Show information about mounted file systems with 'column' examples**\ndf -h | column -t\nmount -l | column -t\n\n\n\n\nSum of root folders\n\n\ndu -s * 2>/dev/null | awk '{print $1}' | paste -sd+ | bc",
+            "text": "Change permisions recursively\n\n\nYou can use a simple \nScript\n\n\nfind <path_to_folder> -type f -print -exec chmod 644 {} \\;\nfind <path_to_folder> -type d -print -exec chmod 755 {} \\;\n\n\n\n\nCount files\n\n\nfind . -type f | wc -l\nls | wc -l\n\n\n\n\nRemove file list\n\n\nls | xargs rm\n\n\n\n\nRemove file suffix \"filename\"+\"suffix\"\n\n\nfor i in `find . -type f -name \"*<suffix>*\"`; do dst=`echo $i | sed s/<suffix>//`;mv $i $dst; done\n\n\n\n\nMove all files in one level directory in certain folder to another\n\n\nfind /<path_to_folder>/* -prune -type f | xargs -I '{}' mv {} /<path_to_destination_folder>/archive/.\n\n\n\n\nSearch for certain file contents\n\n\nfind . -type f -name \"*conf\" -exec echo {} \\; -exec grep 192.168.0.1:3389 {} \\;\n\n\n\n\nShow directories content recursively\n\n\nls -R /path | awk '\n/:$/&&f{s=$0;f=0}\n/:$/&&!f{sub(/:$/,\"\");s=$0;f=1;next}\nNF&&f{ print s\"/\"$0 }'\n\n\n\n\nMake dirs with indexes\n\n\nfor i in 0{1..9} {10..39}; do mkdir delete-$i; cd delete-$i; touch del-file-$i; cd ..; done\n\n\n\n\nCreate bunch of files from list in a file:\n\n\n# Predefined number of records\nhead -<number_of_lines> inventory | awk '{ print $1 }' | xargs -I '{}' <destination_folder>/{}\n#E.g. head -10 inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}\n\n# Whole list from file\ncat <filename> | awk '{ print $1 }' | xargs -I '{}' <destination_folder>/{}\n#E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' host_vars/{}\n\n\n\n\nMove bunch of folders\n\n\nls -1d <space separeated folder list> | xargs -I '{}' mv {} <destination>\n#E.g. ls -1d command_line dotfiles-srv programmming-examples shell_scripts | xargs -I '{}' mv {} github/\n\n\n\n\nMounts\n\n\n#Show information about mounted file systems with 'column' examples**\ndf -h | column -t\nmount -l | column -t\n\n\n\n\nSum of root folders\n\n\ndu -s * 2>/dev/null | awk '{print $1}' | paste -sd+ | bc",
             "title": "Filesystem"
         },
         {
@@ -498,7 +498,7 @@
         {
             "location": "/Unix/Filesystem/#move-bunch-of-folders",
             "text": "ls -1d <space separeated folder list> | xargs -I '{}' mv {} <destination>\n#E.g. ls -1d command_line dotfiles-srv programmming-examples shell_scripts | xargs -I '{}' mv {} github/",
-            "title": "Move bunch of folders:"
+            "title": "Move bunch of folders"
         },
         {
             "location": "/Unix/Filesystem/#mounts",
@@ -512,23 +512,23 @@
         },
         {
             "location": "/Unix/GPFS/",
-            "text": "Instalaltion on AIX:\n\n\n# on each node:\ncd /<path_to_gpfs_base_package>/base-3-5/\ninutoc .\ninstallp -aXY -d/<path_to_gpfs_base_package>/base-3-5 all\ncd /<path_to_gpfs_fix_package>/fix-3-5-10/\ninutoc .\ninstallp -aXY -d/<path_to_gpfs_fix_package>/fix-3-5-10 all\nlslpp -L gpfs.\\*\n\n\n\n\nCreating cluster:\n\n\n# You need to setup paswordless shh connection between nodes\n# Add this path to /etc/environment on each node\nexport PATH=$PATH:/usr/lpp/mmfs/bin\n\nmmcrcluster -N <PRIMARY_NODE_HOSTNAME>:manager-quorum -p PRIMARY_NODE_HOSTNAME -r /usr/bin/ssh -R /usr/bin/scp\nmmchlicense server --accept -N PRIMARY_NODE_HOSTNAME\nmmstartup -a\nmmaddnode -N <SECONDARY_NODE_HOSTNAME>\nmmaddnode -N <THIRDARY_NODE_HOSTNAME>\nmmaddnode -N <N-ARY_NODE_HOSTNAME>\nmmchcluster -s <SECONDARY_NODE_HOSTNAME>\nmmchlicense server --accept -N <SECONDARY_NODE_HOSTNAME>\nmmchlicense server --accept -N <THIRDARY_NODE_HOSTNAME>\nmmchlicense server --accept -N <N-ARY_NODE_HOSTNAME>\nmmstartup -N <SECONDARY_NODE_HOSTNAME>\nmmstartup -N <THIRDARY_NODE_HOSTNAME>\nmmstartup -N <N-ARY_NODE_HOSTNAME>\nmmchnode --quorum --manager -N <SECONDARY_NODE_HOSTNAME>\n# To check status of cluster:\nmmlscluster\nmmgetstate -a\n\n\n\n\nCreate GPFS mirror partition:\n\n\n# On primary node:\nmkdir /etc/gpfs\nvi /etc/gpfs/diskdesk.txt\n### --insert in diskdesk.txt--\nhdiskX:::dataAndMetadata:1:nsd1:\nhdiskY:::dataAndMetadata:2:nsd2:\n### --end of insert--\n\nmmcrnsd -F /etc/gpfs/diskdesk.txt\nmmshutdown -a\nmmchconfig tiebreakerdisks=\"nsd1;nsd2\"\nmmstartup -a\nmmcrfs /mnt/gpfs gpfsfs -F /etc/gpfs/diskdesk.txt -A yes -B 512K -M2 -m2 -R2 -r2 -n 2 -N 50000\nmmlsconfig\nmmmount all -a\nmmchconfig minQuorumNodes=2\ndf -g\n\n\n\n\nAutostart GPFS\n\n\nmmchconfig autoload=yes\n\n\n\n\nIncrease Inodes\n\n\nmmchfs <fsname> -F 1M\n\n\n\n\nChange hostname on GPFS nodes\n\n\n\n\n[Preface]\n\n\n\n\n#Old names:\n10.10.10.10     OLD-SRV-NAME-01\n10.10.10.10     OLD-SRV-NAME-02\n#New names:\n10.10.10.10     NEW-SRV-NAME-01\n10.10.10.10     NEW-SRV-NAME-02\n\n\n\n\n\n\n\n[Preface]\n Stop all services which use GPFS\n\n\n[On each node]\n add new names to /etc/hosts (old ones keep too)\n\n\n\n\n10.10.10.10     NEW-SRV-NAME-01\n10.10.10.11     NEW-SRV-NAME-02\n\n\n\n\n\n\n[On master node]\n Shut down GPFS-cluster\n\n\n\n\nmmshutdown -a\n\n\n\n\n\n\n[On master node]\n Run command for configuration changing\n\n\n\n\n# Change interface names to names placed after \"-N\" key\nmmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx1 -N NEW-SRV-NAME-01\nmmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx2 -N NEW-SRV-NAME-02\n\n\n\n\n\n\n[On master node]\n Start GPFS-cluster\n\n\n\n\nmmstartup -a\n\n\n\n\n\n\n[On master node]\n Check cluster details and make sure that names were changed\n\n\n\n\nmmlscluster\nmmgetstate -a\n\n\n\n\n\n\n[On each node]\n If everything right remove old records from /etc/hosts\n\n\n[On maser node]\n Recheck than everything still OK\n\n\n\n\nmmshutdown -a\nmmstartup -a\nmmlscluster\nmmgetstate -a",
+            "text": "Instalaltion on AIX\n\n\n# on each node:\ncd /<path_to_gpfs_base_package>/base-3-5/\ninutoc .\ninstallp -aXY -d/<path_to_gpfs_base_package>/base-3-5 all\ncd /<path_to_gpfs_fix_package>/fix-3-5-10/\ninutoc .\ninstallp -aXY -d/<path_to_gpfs_fix_package>/fix-3-5-10 all\nlslpp -L gpfs.\\*\n\n\n\n\nCreating cluster\n\n\n# You need to setup paswordless shh connection between nodes\n# Add this path to /etc/environment on each node\nexport PATH=$PATH:/usr/lpp/mmfs/bin\n\nmmcrcluster -N <PRIMARY_NODE_HOSTNAME>:manager-quorum -p PRIMARY_NODE_HOSTNAME -r /usr/bin/ssh -R /usr/bin/scp\nmmchlicense server --accept -N PRIMARY_NODE_HOSTNAME\nmmstartup -a\nmmaddnode -N <SECONDARY_NODE_HOSTNAME>\nmmaddnode -N <THIRDARY_NODE_HOSTNAME>\nmmaddnode -N <N-ARY_NODE_HOSTNAME>\nmmchcluster -s <SECONDARY_NODE_HOSTNAME>\nmmchlicense server --accept -N <SECONDARY_NODE_HOSTNAME>\nmmchlicense server --accept -N <THIRDARY_NODE_HOSTNAME>\nmmchlicense server --accept -N <N-ARY_NODE_HOSTNAME>\nmmstartup -N <SECONDARY_NODE_HOSTNAME>\nmmstartup -N <THIRDARY_NODE_HOSTNAME>\nmmstartup -N <N-ARY_NODE_HOSTNAME>\nmmchnode --quorum --manager -N <SECONDARY_NODE_HOSTNAME>\n# To check status of cluster:\nmmlscluster\nmmgetstate -a\n\n\n\n\nCreate GPFS mirror partition\n\n\n# On primary node:\nmkdir /etc/gpfs\nvi /etc/gpfs/diskdesk.txt\n### --insert in diskdesk.txt--\nhdiskX:::dataAndMetadata:1:nsd1:\nhdiskY:::dataAndMetadata:2:nsd2:\n### --end of insert--\n\nmmcrnsd -F /etc/gpfs/diskdesk.txt\nmmshutdown -a\nmmchconfig tiebreakerdisks=\"nsd1;nsd2\"\nmmstartup -a\nmmcrfs /mnt/gpfs gpfsfs -F /etc/gpfs/diskdesk.txt -A yes -B 512K -M2 -m2 -R2 -r2 -n 2 -N 50000\nmmlsconfig\nmmmount all -a\nmmchconfig minQuorumNodes=2\ndf -g\n\n\n\n\nAutostart GPFS\n\n\nmmchconfig autoload=yes\n\n\n\n\nIncrease Inodes\n\n\nmmchfs <fsname> -F 1M\n\n\n\n\nChange hostname on GPFS nodes\n\n\n\n\n[Preface]\n\n\n\n\n#Old names:\n10.10.10.10     OLD-SRV-NAME-01\n10.10.10.10     OLD-SRV-NAME-02\n#New names:\n10.10.10.10     NEW-SRV-NAME-01\n10.10.10.10     NEW-SRV-NAME-02\n\n\n\n\n\n\n\n[Preface]\n Stop all services which use GPFS\n\n\n[On each node]\n add new names to /etc/hosts (old ones keep too)\n\n\n\n\n10.10.10.10     NEW-SRV-NAME-01\n10.10.10.11     NEW-SRV-NAME-02\n\n\n\n\n\n\n[On master node]\n Shut down GPFS-cluster\n\n\n\n\nmmshutdown -a\n\n\n\n\n\n\n[On master node]\n Run command for configuration changing\n\n\n\n\n# Change interface names to names placed after \"-N\" key\nmmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx1 -N NEW-SRV-NAME-01\nmmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx2 -N NEW-SRV-NAME-02\n\n\n\n\n\n\n[On master node]\n Start GPFS-cluster\n\n\n\n\nmmstartup -a\n\n\n\n\n\n\n[On master node]\n Check cluster details and make sure that names were changed\n\n\n\n\nmmlscluster\nmmgetstate -a\n\n\n\n\n\n\n[On each node]\n If everything right remove old records from /etc/hosts\n\n\n[On maser node]\n Recheck than everything still OK\n\n\n\n\nmmshutdown -a\nmmstartup -a\nmmlscluster\nmmgetstate -a",
             "title": "GPFS"
         },
         {
             "location": "/Unix/GPFS/#instalaltion-on-aix",
             "text": "# on each node:\ncd /<path_to_gpfs_base_package>/base-3-5/\ninutoc .\ninstallp -aXY -d/<path_to_gpfs_base_package>/base-3-5 all\ncd /<path_to_gpfs_fix_package>/fix-3-5-10/\ninutoc .\ninstallp -aXY -d/<path_to_gpfs_fix_package>/fix-3-5-10 all\nlslpp -L gpfs.\\*",
-            "title": "Instalaltion on AIX:"
+            "title": "Instalaltion on AIX"
         },
         {
             "location": "/Unix/GPFS/#creating-cluster",
             "text": "# You need to setup paswordless shh connection between nodes\n# Add this path to /etc/environment on each node\nexport PATH=$PATH:/usr/lpp/mmfs/bin\n\nmmcrcluster -N <PRIMARY_NODE_HOSTNAME>:manager-quorum -p PRIMARY_NODE_HOSTNAME -r /usr/bin/ssh -R /usr/bin/scp\nmmchlicense server --accept -N PRIMARY_NODE_HOSTNAME\nmmstartup -a\nmmaddnode -N <SECONDARY_NODE_HOSTNAME>\nmmaddnode -N <THIRDARY_NODE_HOSTNAME>\nmmaddnode -N <N-ARY_NODE_HOSTNAME>\nmmchcluster -s <SECONDARY_NODE_HOSTNAME>\nmmchlicense server --accept -N <SECONDARY_NODE_HOSTNAME>\nmmchlicense server --accept -N <THIRDARY_NODE_HOSTNAME>\nmmchlicense server --accept -N <N-ARY_NODE_HOSTNAME>\nmmstartup -N <SECONDARY_NODE_HOSTNAME>\nmmstartup -N <THIRDARY_NODE_HOSTNAME>\nmmstartup -N <N-ARY_NODE_HOSTNAME>\nmmchnode --quorum --manager -N <SECONDARY_NODE_HOSTNAME>\n# To check status of cluster:\nmmlscluster\nmmgetstate -a",
-            "title": "Creating cluster:"
+            "title": "Creating cluster"
         },
         {
             "location": "/Unix/GPFS/#create-gpfs-mirror-partition",
             "text": "# On primary node:\nmkdir /etc/gpfs\nvi /etc/gpfs/diskdesk.txt\n### --insert in diskdesk.txt--\nhdiskX:::dataAndMetadata:1:nsd1:\nhdiskY:::dataAndMetadata:2:nsd2:\n### --end of insert--\n\nmmcrnsd -F /etc/gpfs/diskdesk.txt\nmmshutdown -a\nmmchconfig tiebreakerdisks=\"nsd1;nsd2\"\nmmstartup -a\nmmcrfs /mnt/gpfs gpfsfs -F /etc/gpfs/diskdesk.txt -A yes -B 512K -M2 -m2 -R2 -r2 -n 2 -N 50000\nmmlsconfig\nmmmount all -a\nmmchconfig minQuorumNodes=2\ndf -g",
-            "title": "Create GPFS mirror partition:"
+            "title": "Create GPFS mirror partition"
         },
         {
             "location": "/Unix/GPFS/#autostart-gpfs",
@@ -547,7 +547,7 @@
         },
         {
             "location": "/Unix/Hardware_info/",
-            "text": "All hardware\n\n\nhwinfo\n\n\n\n\nRAW Devices:\n\n\n# ISO to USB:\ndd bs=4M if=/path/to/<iso_image> of=/dev/sdX && sync\n\n\n\n\nCPU\n\n\nlscpu\ncat /proc/cpuinfo\n\n\n\n\nRAM:\n\n\n# Basic commands:\nvmstat -s\ncat /proc/meminfo\nfree -m\n# Sum of used RAM\nps -eo rss,pid,user,command --sort -size | awk '{ hr=$1/1024 ; printf(\"%13.2f Mb \",hr) } { for ( x=4 ; x<=NF ; x++ ) { printf(\"%s \",$x) } print \"\" }' | awk '{print $1}' | paste -sd+ | bc\n# Clean RAM buffer and swap cache\nsync && echo 3 > /proc/sys/vm/drop_caches\n\n\n\n\nVM\n\n\nTo check if server's environment is virtual or real you can use stanasrd Linux commands\n\n\n\n\ncat /proc/scsi/scsi \n\n\n\n\nAttached devices:\nHost: scsi2 Channel: 00 Id: 00 Lun: 00\n  Vendor: VMware   Model: Virtual disk     Rev: 1.0\n  Type:   Direct-Access                    ANSI  SCSI revision: 02\nHost: scsi1 Channel: 00 Id: 00 Lun: 00\n  Vendor: NECVMWar Model: VMware IDE CDR10 Rev: 1.00\n  Type:   CD-ROM                           ANSI  SCSI revision: 05\n\n\n\n\n\n\nethtool -i eth0\n\n\n\n\ndriver: vmxnet3\nversion: 1.1.30.0-k-NAPI\nfirmware-version:\nbus-info: 0000:03:00.0\nsupports-statistics: yes\nsupports-test: no\nsupports-eeprom-access: no\nsupports-register-dump: yes\nsupports-priv-flags: no\n\n\n\n\n\n\ndmidecode | grep -i vmware\n\n\n\n\n        Manufacturer: VMware, Inc.\n        Product Name: VMware Virtual Platform\n        Serial Number: VMware-42 28 f6 4e 92 c6 36 0a-2e 21 47 23 85 9f 5d 64\n        Description: VMware SVGA II",
+            "text": "All hardware\n\n\nhwinfo\n\n\n\n\nRAW Devices\n\n\n# ISO to USB:\ndd bs=4M if=/path/to/<iso_image> of=/dev/sdX && sync\n\n\n\n\nCPU\n\n\nlscpu\ncat /proc/cpuinfo\n\n\n\n\nRAM\n\n\n# Basic commands:\nvmstat -s\ncat /proc/meminfo\nfree -m\n# Sum of used RAM\nps -eo rss,pid,user,command --sort -size | awk '{ hr=$1/1024 ; printf(\"%13.2f Mb \",hr) } { for ( x=4 ; x<=NF ; x++ ) { printf(\"%s \",$x) } print \"\" }' | awk '{print $1}' | paste -sd+ | bc\n# Clean RAM buffer and swap cache\nsync && echo 3 > /proc/sys/vm/drop_caches\n\n\n\n\nVM\n\n\nTo check if server's environment is virtual or real you can use stanasrd Linux commands\n\n\n\n\ncat /proc/scsi/scsi \n\n\n\n\nAttached devices:\nHost: scsi2 Channel: 00 Id: 00 Lun: 00\n  Vendor: VMware   Model: Virtual disk     Rev: 1.0\n  Type:   Direct-Access                    ANSI  SCSI revision: 02\nHost: scsi1 Channel: 00 Id: 00 Lun: 00\n  Vendor: NECVMWar Model: VMware IDE CDR10 Rev: 1.00\n  Type:   CD-ROM                           ANSI  SCSI revision: 05\n\n\n\n\n\n\nethtool -i eth0\n\n\n\n\ndriver: vmxnet3\nversion: 1.1.30.0-k-NAPI\nfirmware-version:\nbus-info: 0000:03:00.0\nsupports-statistics: yes\nsupports-test: no\nsupports-eeprom-access: no\nsupports-register-dump: yes\nsupports-priv-flags: no\n\n\n\n\n\n\ndmidecode | grep -i vmware\n\n\n\n\n        Manufacturer: VMware, Inc.\n        Product Name: VMware Virtual Platform\n        Serial Number: VMware-42 28 f6 4e 92 c6 36 0a-2e 21 47 23 85 9f 5d 64\n        Description: VMware SVGA II",
             "title": "Hardware info"
         },
         {
@@ -558,7 +558,7 @@
         {
             "location": "/Unix/Hardware_info/#raw-devices",
             "text": "# ISO to USB:\ndd bs=4M if=/path/to/<iso_image> of=/dev/sdX && sync",
-            "title": "RAW Devices:"
+            "title": "RAW Devices"
         },
         {
             "location": "/Unix/Hardware_info/#cpu",
@@ -568,7 +568,7 @@
         {
             "location": "/Unix/Hardware_info/#ram",
             "text": "# Basic commands:\nvmstat -s\ncat /proc/meminfo\nfree -m\n# Sum of used RAM\nps -eo rss,pid,user,command --sort -size | awk '{ hr=$1/1024 ; printf(\"%13.2f Mb \",hr) } { for ( x=4 ; x<=NF ; x++ ) { printf(\"%s \",$x) } print \"\" }' | awk '{print $1}' | paste -sd+ | bc\n# Clean RAM buffer and swap cache\nsync && echo 3 > /proc/sys/vm/drop_caches",
-            "title": "RAM:"
+            "title": "RAM"
         },
         {
             "location": "/Unix/Hardware_info/#vm",
@@ -646,29 +646,29 @@
             "title": "XfreeRDP"
         },
         {
-            "location": "/Unix/SMNP/",
-            "text": "SNMP\n\n\nsnmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus",
-            "title": "SMNP"
-        },
-        {
-            "location": "/Unix/SMNP/#snmp",
-            "text": "snmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus",
-            "title": "SNMP"
-        },
-        {
             "location": "/Unix/SMS/",
-            "text": "Via minicom:\n\n\n\n\nminicom -s\n\n\n\n\nAT+CMGF=1\nAT+CMGS=\"+xxxxxxxxxx\"\nWrite message here. <ctrl+z>\n\n\n\n\nSMSd\n\n\nsmssend +xxxxxxxxxxx 'One-Line Test 02' > /dev/null 2>&1\n\n\n\n\n\n\nExample smsd.conf. Read the manual for a description\n\n\n\n\ndevices = xenium0\nlogfile = /var/log/smsd/smsd.log\nloglevel = 2\n#user = smstools\nuser = nagios\n# 3.1.5 introduced smart logging\n# once your configuration is OK, set log level lower (5 is good in most cases)\nsmart_logging = yes\ninfofile = /run/smsd/smsd.working\npidfile = /run/smsd/smsd.pid\n\n[xenium0]\ndevice = /dev/ttyUSB0\n#pin = 1122\npin = ignore\nbaudrate = 115200\nrtscts = no\n#init = ATE0\n#init = at+cpms=\"sm\",\"sm\",\"\"\n#init = AT+CMGF=1\nloglevel_lac_ci = 8\nincoming = yes\nincoming = high",
+            "text": "Via minicom\n\n\n\n\nminicom -s\n\n\n\n\nAT+CMGF=1\nAT+CMGS=\"+xxxxxxxxxx\"\nWrite message here. <ctrl+z>\n\n\n\n\nSMSd\n\n\nsmssend +xxxxxxxxxxx 'One-Line Test 02' > /dev/null 2>&1\n\n\n\n\n\n\nExample smsd.conf. Read the manual for a description\n\n\n\n\ndevices = xenium0\nlogfile = /var/log/smsd/smsd.log\nloglevel = 2\n#user = smstools\nuser = nagios\n# 3.1.5 introduced smart logging\n# once your configuration is OK, set log level lower (5 is good in most cases)\nsmart_logging = yes\ninfofile = /run/smsd/smsd.working\npidfile = /run/smsd/smsd.pid\n\n[xenium0]\ndevice = /dev/ttyUSB0\n#pin = 1122\npin = ignore\nbaudrate = 115200\nrtscts = no\n#init = ATE0\n#init = at+cpms=\"sm\",\"sm\",\"\"\n#init = AT+CMGF=1\nloglevel_lac_ci = 8\nincoming = yes\nincoming = high",
             "title": "SMS"
         },
         {
             "location": "/Unix/SMS/#via-minicom",
             "text": "minicom -s   AT+CMGF=1\nAT+CMGS=\"+xxxxxxxxxx\"\nWrite message here. <ctrl+z>",
-            "title": "Via minicom:"
+            "title": "Via minicom"
         },
         {
             "location": "/Unix/SMS/#smsd",
             "text": "smssend +xxxxxxxxxxx 'One-Line Test 02' > /dev/null 2>&1   Example smsd.conf. Read the manual for a description   devices = xenium0\nlogfile = /var/log/smsd/smsd.log\nloglevel = 2\n#user = smstools\nuser = nagios\n# 3.1.5 introduced smart logging\n# once your configuration is OK, set log level lower (5 is good in most cases)\nsmart_logging = yes\ninfofile = /run/smsd/smsd.working\npidfile = /run/smsd/smsd.pid\n\n[xenium0]\ndevice = /dev/ttyUSB0\n#pin = 1122\npin = ignore\nbaudrate = 115200\nrtscts = no\n#init = ATE0\n#init = at+cpms=\"sm\",\"sm\",\"\"\n#init = AT+CMGF=1\nloglevel_lac_ci = 8\nincoming = yes\nincoming = high",
             "title": "SMSd"
+        },
+        {
+            "location": "/Unix/SNMP/",
+            "text": "SNMP\n\n\nsnmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus",
+            "title": "SNMP"
+        },
+        {
+            "location": "/Unix/SNMP/#snmp",
+            "text": "snmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus",
+            "title": "SNMP"
         },
         {
             "location": "/Unix/Skype/",

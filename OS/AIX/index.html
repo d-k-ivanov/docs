@@ -332,13 +332,13 @@
                         
                             
 <li >
-    <a href="../../Unix/SMNP/">SMNP</a>
+    <a href="../../Unix/SMS/">SMS</a>
 </li>
 
                         
                             
 <li >
-    <a href="../../Unix/SMS/">SMS</a>
+    <a href="../../Unix/SNMP/">SNMP</a>
 </li>
 
                         
@@ -442,19 +442,19 @@
         <li class="first-level "><a href="#management">Management</a></li>
         
     
-        <li class="first-level "><a href="#software-installation">Software installation:</a></li>
+        <li class="first-level "><a href="#software-installation">Software installation</a></li>
         
     
-        <li class="first-level "><a href="#mirroring-rootvg">Mirroring rootvg:</a></li>
+        <li class="first-level "><a href="#mirroring-rootvg">Mirroring rootvg</a></li>
         
     
-        <li class="first-level "><a href="#network">Network:</a></li>
+        <li class="first-level "><a href="#network">Network</a></li>
         
     
-        <li class="first-level "><a href="#hardware">Hardware:</a></li>
+        <li class="first-level "><a href="#hardware">Hardware</a></li>
         
     
-        <li class="first-level "><a href="#virtual-devices">Virtual devices:</a></li>
+        <li class="first-level "><a href="#virtual-devices">Virtual devices</a></li>
         
     
         <li class="first-level "><a href="#zabbix-agent">Zabbix agent</a></li>
@@ -512,7 +512,7 @@ smit
 #Then use `chsh` to change your individual setting.
 </code></pre>
 
-<h3 id="software-installation">Software installation:</h3>
+<h3 id="software-installation">Software installation</h3>
 <pre><code class="bash">cd &lt;path_to_package&gt;
 inutoc .
 installp -aXY -d&lt;path_to_package&gt; all
@@ -520,7 +520,7 @@ installp -aXY -d&lt;path_to_package&gt; all
 lslpp -L &lt;package_name&gt;
 </code></pre>
 
-<h3 id="mirroring-rootvg">Mirroring rootvg:</h3>
+<h3 id="mirroring-rootvg">Mirroring rootvg</h3>
 <pre><code class="bash">extendvg rootvg hdisk1
 mirrorvg rootvg
 bootlist -m normal hdisk0 hdisk1 
@@ -530,11 +530,11 @@ bosboot -ad hdisk1
 bootlist -o -m normal
 </code></pre>
 
-<h3 id="network">Network:</h3>
+<h3 id="network">Network</h3>
 <pre><code class="bash">Shared Ethernet adapter coming soon
 </code></pre>
 
-<h3 id="hardware">Hardware:</h3>
+<h3 id="hardware">Hardware</h3>
 <pre><code class="bash"># Refresh hardware configuration(aix and vios respectively):
 cfgmgr
 cfgdev
@@ -549,7 +549,7 @@ chdev -l hdiskX -a reserve_policy=no_reserve
 chpv -C hdiskX
 </code></pre>
 
-<h3 id="virtual-devices">Virtual devices:</h3>
+<h3 id="virtual-devices">Virtual devices</h3>
 <pre><code class="bash"># Checking all virtual mappings to particular vhost:
 lsmap -vadapter vhost
 # Make a virtual hard drive for particular vhost:

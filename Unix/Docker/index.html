@@ -332,13 +332,13 @@
                         
                             
 <li >
-    <a href="../SMNP/">SMNP</a>
+    <a href="../SMS/">SMS</a>
 </li>
 
                         
                             
 <li >
-    <a href="../SMS/">SMS</a>
+    <a href="../SNMP/">SNMP</a>
 </li>
 
                         
@@ -445,7 +445,7 @@
         <li class="first-level "><a href="#create-json-with-container-settings">Create JSON with container settings</a></li>
         
     
-        <li class="first-level "><a href="#delete-containers-by-date">Delete containers by date:</a></li>
+        <li class="first-level "><a href="#delete-containers-by-date">Delete containers by date</a></li>
         
     
         <li class="first-level "><a href="#delete-all-containers">Delete all containers:</a></li>
@@ -470,7 +470,7 @@
 <pre><code>docker inspect -f '{{ json .NetworkSettings }}' &lt;container_id&gt; | python -mjson.tool
 </code></pre>
 
-<h3 id="delete-containers-by-date">Delete containers by date:</h3>
+<h3 id="delete-containers-by-date">Delete containers by date</h3>
 <pre><code>docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm
 </code></pre>
 

@@ -332,13 +332,13 @@
                         
                             
 <li >
-    <a href="../SMNP/">SMNP</a>
+    <a href="../SMS/">SMS</a>
 </li>
 
                         
                             
 <li >
-    <a href="../SMS/">SMS</a>
+    <a href="../SNMP/">SNMP</a>
 </li>
 
                         
@@ -436,13 +436,13 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#instalaltion-on-aix">Instalaltion on AIX:</a></li>
+        <li class="first-level active"><a href="#instalaltion-on-aix">Instalaltion on AIX</a></li>
         
     
-        <li class="first-level "><a href="#creating-cluster">Creating cluster:</a></li>
+        <li class="first-level "><a href="#creating-cluster">Creating cluster</a></li>
         
     
-        <li class="first-level "><a href="#create-gpfs-mirror-partition">Create GPFS mirror partition:</a></li>
+        <li class="first-level "><a href="#create-gpfs-mirror-partition">Create GPFS mirror partition</a></li>
         
     
         <li class="first-level "><a href="#autostart-gpfs">Autostart GPFS</a></li>
@@ -458,7 +458,7 @@
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="instalaltion-on-aix">Instalaltion on AIX:</h3>
+<h3 id="instalaltion-on-aix">Instalaltion on AIX</h3>
 <pre><code class="bash"># on each node:
 cd /&lt;path_to_gpfs_base_package&gt;/base-3-5/
 inutoc .
@@ -469,7 +469,7 @@ installp -aXY -d/&lt;path_to_gpfs_fix_package&gt;/fix-3-5-10 all
 lslpp -L gpfs.\*
 </code></pre>
 
-<h3 id="creating-cluster">Creating cluster:</h3>
+<h3 id="creating-cluster">Creating cluster</h3>
 <pre><code class="bash"># You need to setup paswordless shh connection between nodes
 # Add this path to /etc/environment on each node
 export PATH=$PATH:/usr/lpp/mmfs/bin
@@ -493,7 +493,7 @@ mmlscluster
 mmgetstate -a
 </code></pre>
 
-<h3 id="create-gpfs-mirror-partition">Create GPFS mirror partition:</h3>
+<h3 id="create-gpfs-mirror-partition">Create GPFS mirror partition</h3>
 <pre><code class="bash"># On primary node:
 mkdir /etc/gpfs
 vi /etc/gpfs/diskdesk.txt

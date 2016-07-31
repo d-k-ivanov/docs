@@ -332,13 +332,13 @@
                         
                             
 <li >
-    <a href="../SMNP/">SMNP</a>
+    <a href="../SMS/">SMS</a>
 </li>
 
                         
                             
 <li >
-    <a href="../SMS/">SMS</a>
+    <a href="../SNMP/">SNMP</a>
 </li>
 
                         
@@ -463,7 +463,7 @@
         <li class="first-level "><a href="#create-bunch-of-files-from-list-in-a-file">Create bunch of files from list in a file:</a></li>
         
     
-        <li class="first-level "><a href="#move-bunch-of-folders">Move bunch of folders:</a></li>
+        <li class="first-level "><a href="#move-bunch-of-folders">Move bunch of folders</a></li>
         
     
         <li class="first-level "><a href="#mounts">Mounts</a></li>
@@ -524,7 +524,7 @@ cat &lt;filename&gt; | awk '{ print $1 }' | xargs -I '{}' &lt;destination_folder
 #E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' host_vars/{}
 </code></pre>
 
-<h3 id="move-bunch-of-folders">Move bunch of folders:</h3>
+<h3 id="move-bunch-of-folders">Move bunch of folders</h3>
 <pre><code class="bash">ls -1d &lt;space separeated folder list&gt; | xargs -I '{}' mv {} &lt;destination&gt;
 #E.g. ls -1d command_line dotfiles-srv programmming-examples shell_scripts | xargs -I '{}' mv {} github/
 </code></pre>

@@ -160,13 +160,13 @@
     </url>
         
     <url>
-     <loc>https://keepbot.github.io/docs//Unix/SMNP/</loc>
+     <loc>https://keepbot.github.io/docs//Unix/SMS/</loc>
      <lastmod>2016-08-01</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>https://keepbot.github.io/docs//Unix/SMS/</loc>
+     <loc>https://keepbot.github.io/docs//Unix/SNMP/</loc>
      <lastmod>2016-08-01</lastmod>
      <changefreq>daily</changefreq>
     </url>
