@@ -55,7 +55,7 @@ for d in `ls`; do cd $d; git checkout; cd ..; done
 ```
 
 ### Making patches from commits:
-Create patch:
+- Create patch:
 ```bash
 # The easiest version (you can specify number of commit to patch) 
 git format-patch -1 HEAD
@@ -64,7 +64,7 @@ git format-patch -n HEAD^
 # Simple cat ftom stdout, works fine on most of systems, but be carfull, if you have customized terminal (color tags, special symbols, etc.)
 git show HEAD > path_to.patch
 ```
-Apply patch:
+- Apply patch:
 ```bash
 git apply --stat 0001-Linux-agent-LVM-subagent-initial-implementation.patch
 git apply --check 0001-Linux-agent-LVM-subagent-initial-implementation.patch
@@ -72,11 +72,11 @@ git am < 0001-Linux-agent-LVM-subagent-initial-implementation.patch
 ```
 
 ### Submodules
-Add submodule:
+- Add submodule:
 ```bash
 git submodule add <submodule_git_url> <local_path>
 ```
-Delete submodule:
+- Delete submodule:
 ```bash
 git submodule deinit <submodule>    
 git rm --cached <submodule>

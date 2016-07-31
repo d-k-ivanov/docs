@@ -48,7 +48,7 @@ smit
 #Then use `chsh` to change your individual setting.
 ```
 
-### Software installation:
+### Software installation
 ```bash
 cd <path_to_package>
 inutoc .
@@ -57,7 +57,7 @@ installp -aXY -d<path_to_package> all
 lslpp -L <package_name>
 ```
 
-### Mirroring rootvg:
+### Mirroring rootvg
 ```bash
 extendvg rootvg hdisk1
 mirrorvg rootvg
@@ -68,12 +68,12 @@ bosboot -ad hdisk1
 bootlist -o -m normal
 ```
 
-### Network:
+### Network
 ```bash
 Shared Ethernet adapter coming soon
 ```
 
-### Hardware:
+### Hardware
 ```bash
 # Refresh hardware configuration(aix and vios respectively):
 cfgmgr
@@ -89,7 +89,7 @@ chdev -l hdiskX -a reserve_policy=no_reserve
 chpv -C hdiskX
 ```
 
-### Virtual devices:
+### Virtual devices
 ```bash
 # Checking all virtual mappings to particular vhost:
 lsmap -vadapter vhost

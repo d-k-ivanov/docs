@@ -1,5 +1,5 @@
 
-### Yum:
+### Yum
 ```bash
 # Search for software
 yum search <pattern>

@@ -46,7 +46,7 @@ head -<number_of_lines> inventory | awk '{ print $1 }' | xargs -I '{}' <destinat
 cat <filename> | awk '{ print $1 }' | xargs -I '{}' <destination_folder>/{}
 #E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' host_vars/{}
 ```
-### Move bunch of folders:
+### Move bunch of folders
 ```bash
 ls -1d <space separeated folder list> | xargs -I '{}' mv {} <destination>
 #E.g. ls -1d command_line dotfiles-srv programmming-examples shell_scripts | xargs -I '{}' mv {} github/

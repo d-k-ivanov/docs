@@ -1,5 +1,5 @@
 
-### Via minicom: 
+### Via minicom 
 * *minicom -s*
 ```
 AT+CMGF=1

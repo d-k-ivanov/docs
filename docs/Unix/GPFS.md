@@ -1,5 +1,5 @@
 
-### Instalaltion on AIX:
+### Instalaltion on AIX
 ```bash
 # on each node:
 cd /<path_to_gpfs_base_package>/base-3-5/
@@ -10,7 +10,7 @@ inutoc .
 installp -aXY -d/<path_to_gpfs_fix_package>/fix-3-5-10 all
 lslpp -L gpfs.\*
 ```
-### Creating cluster:
+### Creating cluster
 ```bash
 # You need to setup paswordless shh connection between nodes
 # Add this path to /etc/environment on each node
@@ -34,7 +34,7 @@ mmchnode --quorum --manager -N <SECONDARY_NODE_HOSTNAME>
 mmlscluster
 mmgetstate -a
 ```
-### Create GPFS mirror partition:
+### Create GPFS mirror partition
 ```bash
 # On primary node:
 mkdir /etc/gpfs

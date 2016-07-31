@@ -1,5 +1,5 @@
 
-### Pacman:
+### Pacman
 ```sh
 # Search for software
 pacman -Ss <pattern>
@@ -13,7 +13,7 @@ pacman -Sc
 pacman-optimize && sync
 ```
 
-### AUR package installation:
+### AUR package installation
 ```sh
 git clone https://aur.archlinux.org/<packiage_name>
 cd <package_name>

@@ -1,5 +1,5 @@
 
-### Apt:
+### Apt
 ```bash
 # Show installed packages
 apt --installed list
@@ -8,7 +8,7 @@ apt-cache search <pattern>
 # Install package
 apt-get install <package_name>
 ```
-### Dpkg: 
+### Dpkg 
 ```bash
 # To get a list of packages installed locally do this in your terminal:
 dpkg --get-selections | grep -v deinstall

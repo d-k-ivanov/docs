@@ -13,7 +13,7 @@ sudo docker exec -it <container> bash
 docker inspect -f '{{ json .NetworkSettings }}' <container_id> | python -mjson.tool
 ```
 
-### Delete containers by date:
+### Delete containers by date
 ```
 docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm
 ```

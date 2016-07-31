@@ -2,7 +2,7 @@
 ```bash
 hwinfo
 ```
-### RAW Devices:
+### RAW Devices
 ```bash
 # ISO to USB:
 dd bs=4M if=/path/to/<iso_image> of=/dev/sdX && sync
@@ -12,7 +12,7 @@ dd bs=4M if=/path/to/<iso_image> of=/dev/sdX && sync
 lscpu
 cat /proc/cpuinfo
 ```
-###  RAM:
+### RAM
 ```bash
 # Basic commands:
 vmstat -s
