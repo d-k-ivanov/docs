@@ -8,3 +8,8 @@
 ```bash
 export DISPLAY="${SSH_CLIENT%% *}"
 ```
+
+### Keyboard layouts
+```bash
+man xkeyboard-config
+```
