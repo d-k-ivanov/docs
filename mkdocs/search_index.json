@@ -757,7 +757,7 @@
         },
         {
             "location": "/Unix/X/",
-            "text": "Start full-screen application in different X server\n\n\n/usr/bin/xinit <path_to_fullscreen_application> -- :1\n\n\n\n\nExport X display to current ssh connection\n\n\nexport DISPLAY=\"${SSH_CLIENT%% *}\"",
+            "text": "Start full-screen application in different X server\n\n\n/usr/bin/xinit <path_to_fullscreen_application> -- :1\n\n\n\n\nExport X display to current ssh connection\n\n\nexport DISPLAY=\"${SSH_CLIENT%% *}\"\n\n\n\n\nKeyboard layouts\n\n\nman xkeyboard-config",
             "title": "X"
         },
         {
@@ -769,6 +769,11 @@
             "location": "/Unix/X/#export-x-display-to-current-ssh-connection",
             "text": "export DISPLAY=\"${SSH_CLIENT%% *}\"",
             "title": "Export X display to current ssh connection"
+        },
+        {
+            "location": "/Unix/X/#keyboard-layouts",
+            "text": "man xkeyboard-config",
+            "title": "Keyboard layouts"
         },
         {
             "location": "/Windows/CMD_Scripts/",
