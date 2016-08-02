@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Windows/CMD_Scripts/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Dev/Java/"> 
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
-    <title>CMD Scripts - Technical Info</title>
+    <title>Java - Technical Info</title>
 
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -146,13 +146,13 @@
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dev <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
-<li >
-    <a href="../../Dev/Java/">Java</a>
+<li class="active">
+    <a href="./">Java</a>
 </li>
 
                         
@@ -163,7 +163,7 @@
         
             
 <li >
-    <a href="../../Dev/GCC/Make/">Make</a>
+    <a href="../GCC/Make/">Make</a>
 </li>
 
         
@@ -178,7 +178,7 @@
         
             
 <li >
-    <a href="../../Dev/Ruby/Installation/">Installation</a>
+    <a href="../Ruby/Installation/">Installation</a>
 </li>
 
         
@@ -193,13 +193,13 @@
         
             
 <li >
-    <a href="../../Dev/Version_Control/Git/">Git</a>
+    <a href="../Version_Control/Git/">Git</a>
 </li>
 
         
             
 <li >
-    <a href="../../Dev/Version_Control/GitHub/">GitHub</a>
+    <a href="../Version_Control/GitHub/">GitHub</a>
 </li>
 
         
@@ -395,25 +395,25 @@
                 
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Windows <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
-<li class="active">
-    <a href="./">CMD Scripts</a>
+<li >
+    <a href="../../Windows/CMD_Scripts/">CMD Scripts</a>
 </li>
 
                         
                             
 <li >
-    <a href="../CMD_colours/">CMD colours</a>
+    <a href="../../Windows/CMD_colours/">CMD colours</a>
 </li>
 
                         
                             
 <li >
-    <a href="../PowerShell_Scripts/">PowerShell Scripts</a>
+    <a href="../../Windows/PowerShell_Scripts/">PowerShell Scripts</a>
 </li>
 
                         
@@ -432,12 +432,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../../Unix/X/">
+                        <a rel="next" href="../../Databases/Oracle/Useful_Queries/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../CMD_colours/">
+                        <a rel="prev" href="../GCC/Make/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -460,15 +460,25 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#ping-subnet">Ping subnet</a></li>
+        <li class="first-level active"><a href="#java-custom-user-and-system-preferencies-path">Java custom user and system preferencies path</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="ping-subnet">Ping subnet</h3>
-<pre><code>FOR /L %i IN (1,1,254) DO ping -n 1 192.168.10.%i | FIND /i &quot;Reply&quot;&gt;&gt;c:\ipaddresses.txt
+<h3 id="java-custom-user-and-system-preferencies-path">Java custom user and system preferencies path</h3>
+<pre><code># From user which will start particular hava application
+
+mkdir -p &lt;new_system_prefs&gt;
+mkdir -p &lt;new_user_prefs&gt;
+chmod -R 755 &lt;new_system_prefs&gt;
+chmod -R 755 &lt;new_user_prefs&gt; 
+
+export JAVA_OPTS=&quot;-Djava.util.prefs.systemRoot=&lt;new_system_prefs&gt; -Djava.util.prefs.userRoot=&lt;new_user_prefs&gt;&quot;
+
+# start application
+
 </code></pre></div>
         
     </div>

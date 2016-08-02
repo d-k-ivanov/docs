@@ -191,6 +191,16 @@
             "title": "Open cursors"
         },
         {
+            "location": "/Dev/Java/",
+            "text": "Java custom user and system preferencies path\n\n\n# From user which will start particular hava application\n\nmkdir -p <new_system_prefs>\nmkdir -p <new_user_prefs>\nchmod -R 755 <new_system_prefs>\nchmod -R 755 <new_user_prefs> \n\nexport JAVA_OPTS=\"-Djava.util.prefs.systemRoot=<new_system_prefs> -Djava.util.prefs.userRoot=<new_user_prefs>\"\n\n# start application",
+            "title": "Java"
+        },
+        {
+            "location": "/Dev/Java/#java-custom-user-and-system-preferencies-path",
+            "text": "# From user which will start particular hava application\n\nmkdir -p <new_system_prefs>\nmkdir -p <new_user_prefs>\nchmod -R 755 <new_system_prefs>\nchmod -R 755 <new_user_prefs> \n\nexport JAVA_OPTS=\"-Djava.util.prefs.systemRoot=<new_system_prefs> -Djava.util.prefs.userRoot=<new_user_prefs>\"\n\n# start application",
+            "title": "Java custom user and system preferencies path"
+        },
+        {
             "location": "/Dev/GCC/Make/",
             "text": "Flags to configure\n\n\n/configure CFLAGS='-std=gnu89 -g -O2 -w' CXXFLAGS='-std=gnu++98 -g -O2 -w'",
             "title": "Make"
