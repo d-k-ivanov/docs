@@ -472,6 +472,9 @@
         <li class="first-level "><a href="#share-current-folder-over-http">Share current folder over HTTP</a></li>
         
     
+        <li class="first-level "><a href="#what-process-use-port">What process use port</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -512,6 +515,34 @@ for capfile in $(ls *.pcap); do tcpdump -nnr $capfile 'dst port 53'; done
 <h3 id="share-current-folder-over-http">Share current folder over HTTP</h3>
 <pre><code class="bash">python2 -m SimpleHTTPServer 8080
 python3 -mhttp.server 8080
+</code></pre>
+
+<h3 id="what-process-use-port">What process use port</h3>
+<ul>
+<li>Linux</li>
+</ul>
+<pre><code class="bash"># Find out PID via ss
+ss -nltp | grep &lt;port&gt;
+# Find out PID deprecated netstat:
+netstat -tulpn | grep &lt;port&gt;
+# Find out particular binary
+ls -l /proc/&lt;pid&gt;/exe
+# Find out full run command
+ps -ef | grep &lt;PID&gt;
+</code></pre>
+
+<ul>
+<li>AIX</li>
+</ul>
+<pre><code class="bash">lsof -i:&lt;port&gt;
+ps -ef | grep &lt;pid&gt;
+</code></pre>
+
+<ul>
+<li>Windows</li>
+</ul>
+<pre><code class="bash">netstat -aon | findstr &quot;&lt;port&gt;&quot;
+pslist &lt;PID&gt;
 </code></pre></div>
         
     </div>
