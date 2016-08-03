@@ -18,7 +18,7 @@ cat >> /etc/sysctl.conf << EOF
 fs.aio-max-nr = 1048576
 fs.file-max = 6815744
 kernel.shmmax = $SHMMAX
-kernel.shmall = `expr \( $SHMMAX / $PAGESIZE \) \* \( $SHMMNI / 16 \)`
+kernel.shmall = `expr \( $SHMMAX / $PAGESIZE \) \* \( 4096 / 16 \)`
 kernel.shmmni = 4096
 kernel.sem = 250 32000 100 128
 net.ipv4.ip_local_port_range = 9000 65500
