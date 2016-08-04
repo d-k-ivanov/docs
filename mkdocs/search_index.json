@@ -191,14 +191,14 @@
             "title": "Open cursors"
         },
         {
-            "location": "/Dev/Java/",
-            "text": "Java custom user and system preferencies path\n\n\n# From user which will start particular hava application\n\nmkdir -p <new_system_prefs>\nmkdir -p <new_user_prefs>\nchmod -R 755 <new_system_prefs>\nchmod -R 755 <new_user_prefs> \n\nexport JAVA_OPTS=\"-Djava.util.prefs.systemRoot=<new_system_prefs> -Djava.util.prefs.userRoot=<new_user_prefs>\"\n\n# start application",
-            "title": "Java"
+            "location": "/Dev/Brainfuck/Sample1/",
+            "text": "Print \"2 + 2 = 4\"**\n\n\n# Increase a[1] to 50 and print ASCII value \"2\"  \n1.  ++++++++++[>+++++<-]>.< \n# Increase a[2] to 32 and print ASCII value \" \"  \n2.  ++++++++[>>++++<<-]>>.<<\n# Increase a[3] to 43 and print ASCII value \"+\"  \n3.  ++++++++++[>>>++++<<<-]>>>+++.<<<\n# Print from a[2] ASCII value \" \"  \n4.  >>.<<\n# Print from a[1] ASCII value \"2\"  \n5.  >.<\n# Print from a[2] ASCII value \" \"  \n6.  >>.<<\n# Increase a[4] to 61 and print ASCII value \"=\"  \n7.  ++++++++++[>>>>++++++<<<<-]>>>>+.<<<<\n# Print from a[2] ASCII value \" \"  \n8.  >>.<<\n# Increase a[5] to 52 and print ASCII value \"4\"  \n9.  ++++++++++[>>>>>+++++<<<<<-]>>>>>++.<<<<<",
+            "title": "Sample1"
         },
         {
-            "location": "/Dev/Java/#java-custom-user-and-system-preferencies-path",
-            "text": "# From user which will start particular hava application\n\nmkdir -p <new_system_prefs>\nmkdir -p <new_user_prefs>\nchmod -R 755 <new_system_prefs>\nchmod -R 755 <new_user_prefs> \n\nexport JAVA_OPTS=\"-Djava.util.prefs.systemRoot=<new_system_prefs> -Djava.util.prefs.userRoot=<new_user_prefs>\"\n\n# start application",
-            "title": "Java custom user and system preferencies path"
+            "location": "/Dev/Brainfuck/Sample1/#print-2-2-4",
+            "text": "# Increase a[1] to 50 and print ASCII value \"2\"  \n1.  ++++++++++[>+++++<-]>.< \n# Increase a[2] to 32 and print ASCII value \" \"  \n2.  ++++++++[>>++++<<-]>>.<<\n# Increase a[3] to 43 and print ASCII value \"+\"  \n3.  ++++++++++[>>>++++<<<-]>>>+++.<<<\n# Print from a[2] ASCII value \" \"  \n4.  >>.<<\n# Print from a[1] ASCII value \"2\"  \n5.  >.<\n# Print from a[2] ASCII value \" \"  \n6.  >>.<<\n# Increase a[4] to 61 and print ASCII value \"=\"  \n7.  ++++++++++[>>>>++++++<<<<-]>>>>+.<<<<\n# Print from a[2] ASCII value \" \"  \n8.  >>.<<\n# Increase a[5] to 52 and print ASCII value \"4\"  \n9.  ++++++++++[>>>>>+++++<<<<<-]>>>>>++.<<<<<",
+            "title": "Print \"2 + 2 = 4\"**"
         },
         {
             "location": "/Dev/GCC/Make/",
@@ -211,6 +211,26 @@
             "title": "Flags to configure"
         },
         {
+            "location": "/Dev/Java/Runtime_customization/",
+            "text": "Java custom user and system preferencies path\n\n\n# From user which will start particular hava application\n\nmkdir -p <new_system_prefs>\nmkdir -p <new_user_prefs>\nchmod -R 755 <new_system_prefs>\nchmod -R 755 <new_user_prefs> \n\nexport JAVA_OPTS=\"-Djava.util.prefs.systemRoot=<new_system_prefs> -Djava.util.prefs.userRoot=<new_user_prefs>\"\n\n# start application",
+            "title": "Runtime customization"
+        },
+        {
+            "location": "/Dev/Java/Runtime_customization/#java-custom-user-and-system-preferencies-path",
+            "text": "# From user which will start particular hava application\n\nmkdir -p <new_system_prefs>\nmkdir -p <new_user_prefs>\nchmod -R 755 <new_system_prefs>\nchmod -R 755 <new_user_prefs> \n\nexport JAVA_OPTS=\"-Djava.util.prefs.systemRoot=<new_system_prefs> -Djava.util.prefs.userRoot=<new_user_prefs>\"\n\n# start application",
+            "title": "Java custom user and system preferencies path"
+        },
+        {
+            "location": "/Dev/Python/Users_and_groups/",
+            "text": "Print list of users with all user's groups\n\n\n#!/usr/bin/python\n\nimport re\n\n#cols\nc0 = 2      # Separator\nc1 = 10     # User\nc2 = 3      # Separator\nc3 = 10     # UID\nc4 = 3      # Separator\nc5 = 54     # Groups\nc6 = 2      # Separator\n\n\n\nf = open(\"/etc/passwd\")\n\nt_len = c0+c1+c2+c3+c4+c5+c6\n\nprint \"-\" * t_len\nprint '{0:34}{1:48}{2:2}'.format(\"| \",\"Users and Groups\",\" |\")\nprint \"-\" * t_len\nprint '{0:2}{1:10}{2:3}{3:10}{4:3}{5:54}{6:2}'.format(\"| \",\"Username\",\" | \",\"UID\",\" | \",\"Groups\",\" |\")\n\nfor fline in f:\n    groups = []\n    h = open(\"/etc/group\")\n    for hline in h:\n        if fline.split(\":\")[3] == hline.split(\":\")[2]:\n            groups.append(hline.split(\":\")[0])\n        if re.search(fline.split(\":\")[0],hline) is not None:\n            if not hline.split(\":\")[2] == fline.split(\":\")[3]:\n                groups.append(hline.split(\":\")[0])\n    h.close()\n    print '{0:2}{1:10}{2:3}{3:10}{4:3}{5:54}{6:2}'.format(\"| \",fline.split(\":\")[0],\" | \",fline.split(\":\")[2],\" | \",\",\".join(groups),\" |\")\n\nprint \"-\" * t_len\n\nf.close()",
+            "title": "Users and groups"
+        },
+        {
+            "location": "/Dev/Python/Users_and_groups/#print-list-of-users-with-all-users-groups",
+            "text": "#!/usr/bin/python\n\nimport re\n\n#cols\nc0 = 2      # Separator\nc1 = 10     # User\nc2 = 3      # Separator\nc3 = 10     # UID\nc4 = 3      # Separator\nc5 = 54     # Groups\nc6 = 2      # Separator\n\n\n\nf = open(\"/etc/passwd\")\n\nt_len = c0+c1+c2+c3+c4+c5+c6\n\nprint \"-\" * t_len\nprint '{0:34}{1:48}{2:2}'.format(\"| \",\"Users and Groups\",\" |\")\nprint \"-\" * t_len\nprint '{0:2}{1:10}{2:3}{3:10}{4:3}{5:54}{6:2}'.format(\"| \",\"Username\",\" | \",\"UID\",\" | \",\"Groups\",\" |\")\n\nfor fline in f:\n    groups = []\n    h = open(\"/etc/group\")\n    for hline in h:\n        if fline.split(\":\")[3] == hline.split(\":\")[2]:\n            groups.append(hline.split(\":\")[0])\n        if re.search(fline.split(\":\")[0],hline) is not None:\n            if not hline.split(\":\")[2] == fline.split(\":\")[3]:\n                groups.append(hline.split(\":\")[0])\n    h.close()\n    print '{0:2}{1:10}{2:3}{3:10}{4:3}{5:54}{6:2}'.format(\"| \",fline.split(\":\")[0],\" | \",fline.split(\":\")[2],\" | \",\",\".join(groups),\" |\")\n\nprint \"-\" * t_len\n\nf.close()",
+            "title": "Print list of users with all user's groups"
+        },
+        {
             "location": "/Dev/Ruby/Installation/",
             "text": "via RVM on Ubuntu\n\n\nsudo apt-get install libgdbm-dev libncurses5-dev automake libtool bison libffi-dev\ngpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3\ncurl -sSL https://get.rvm.io | bash -s stable\nsource ~/.rvm/scripts/rvm\nrvm install 2.3.1\nrvm use 2.3.1 --default\nruby -v",
             "title": "Installation"
@@ -219,6 +239,21 @@
             "location": "/Dev/Ruby/Installation/#via-rvm-on-ubuntu",
             "text": "sudo apt-get install libgdbm-dev libncurses5-dev automake libtool bison libffi-dev\ngpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3\ncurl -sSL https://get.rvm.io | bash -s stable\nsource ~/.rvm/scripts/rvm\nrvm install 2.3.1\nrvm use 2.3.1 --default\nruby -v",
             "title": "via RVM on Ubuntu"
+        },
+        {
+            "location": "/Dev/Stress_tests/Ackerman_function/",
+            "text": "C\n\n\n#include <stdio.h>\n\nint ackermann(int m, int n)\n{\n   if (!m) return n + 1;\n   if (!n) return ackermann(m - 1, 1);\n   return ackermann(m - 1, ackermann(m, n - 1));\n}\n\nint main()\n{\n   int m, n;\n   for (m = 0; m <= 4; m++)\n      for (n = 0; n < 6 - m; n++)\n         printf(\"A(%d, %d) = %d\\n\", m, n, ackermann(m, n));\n\n   return 0;\n}\n\n\n\n\nC++\n\n\n#include <iostream>\n\nunsigned int ackermann(unsigned int m, unsigned int n) {\n  if (m == 0) {\n    return n + 1;\n  }\n  if (n == 0) {\n    return ackermann(m - 1, 1);\n  }\n  return ackermann(m - 1, ackermann(m, n - 1));\n}\n\nint main() {\n  for (unsigned int m = 0; m < 4; ++m) {\n    for (unsigned int n = 0; n < 30; ++n) {\n      std::cout << \"A(\" << m << \", \" << n << \") = \" << ackermann(m, n) << \"\\n\";\n    }\n  }\n}",
+            "title": "Ackerman function"
+        },
+        {
+            "location": "/Dev/Stress_tests/Ackerman_function/#c",
+            "text": "#include <stdio.h>\n\nint ackermann(int m, int n)\n{\n   if (!m) return n + 1;\n   if (!n) return ackermann(m - 1, 1);\n   return ackermann(m - 1, ackermann(m, n - 1));\n}\n\nint main()\n{\n   int m, n;\n   for (m = 0; m <= 4; m++)\n      for (n = 0; n < 6 - m; n++)\n         printf(\"A(%d, %d) = %d\\n\", m, n, ackermann(m, n));\n\n   return 0;\n}",
+            "title": "C"
+        },
+        {
+            "location": "/Dev/Stress_tests/Ackerman_function/#c_1",
+            "text": "#include <iostream>\n\nunsigned int ackermann(unsigned int m, unsigned int n) {\n  if (m == 0) {\n    return n + 1;\n  }\n  if (n == 0) {\n    return ackermann(m - 1, 1);\n  }\n  return ackermann(m - 1, ackermann(m, n - 1));\n}\n\nint main() {\n  for (unsigned int m = 0; m < 4; ++m) {\n    for (unsigned int n = 0; n < 30; ++n) {\n      std::cout << \"A(\" << m << \", \" << n << \") = \" << ackermann(m, n) << \"\\n\";\n    }\n  }\n}",
+            "title": "C++"
         },
         {
             "location": "/Dev/Version_Control/Git/",
@@ -752,12 +787,12 @@
         },
         {
             "location": "/Unix/Vim/",
-            "text": "Commnent bunch of lines\n\n\n\n\nStand on a firs symbol of first line\n\n\nCtrl+V\n\n\nDown_1 + Down_2 + .. + Donw_n\n\n\nCtrl+I\n\n\n\"#\"",
+            "text": "Commnent bunch of lines\n\n\n\n\nStand on a firs symbol of first line\n\n\nCtrl+V\n\n\nDown_1 + Down_2 + .. + Down_n\n\n\nCtrl+I\n\n\n\"#\"",
             "title": "Vim"
         },
         {
             "location": "/Unix/Vim/#commnent-bunch-of-lines",
-            "text": "Stand on a firs symbol of first line  Ctrl+V  Down_1 + Down_2 + .. + Donw_n  Ctrl+I  \"#\"",
+            "text": "Stand on a firs symbol of first line  Ctrl+V  Down_1 + Down_2 + .. + Down_n  Ctrl+I  \"#\"",
             "title": "Commnent bunch of lines"
         },
         {
