@@ -751,6 +751,16 @@
             "title": "Unable to receive group messages"
         },
         {
+            "location": "/Unix/Vim/",
+            "text": "Commnent bunch of lines\n\n\n\n\nStand on a firs symbol of first line\n\n\nCtrl+V\n\n\nDown_1 + Down_2 + .. + Donw_n\n\n\nCtrl+I\n\n\n\"#\"",
+            "title": "Vim"
+        },
+        {
+            "location": "/Unix/Vim/#commnent-bunch-of-lines",
+            "text": "Stand on a firs symbol of first line  Ctrl+V  Down_1 + Down_2 + .. + Donw_n  Ctrl+I  \"#\"",
+            "title": "Commnent bunch of lines"
+        },
+        {
             "location": "/Unix/WINE/",
             "text": "Start\n\n\nWINEARCH=<wine32_or_wine64> WINEPREFIX=/home/wine/<custom_prefix> wine <path_to_executable>",
             "title": "WINE"
