@@ -541,41 +541,6 @@
             "title": "Fork: Resource temporarily unavailable on AIX"
         },
         {
-            "location": "/Unix/Docker/",
-            "text": "Run docker conainer\n\n\nsudo docker run --name mysql-nx -e MYSQL_ROOT_PASSWORD=JuSCY1Bq -d -p 127.0.0.1:3306:3306 mysql:latest\n\n\n\n\nExecute in-docker console\n\n\nsudo docker exec -it <container> bash\n\n\n\n\nCreate JSON with container settings\n\n\ndocker inspect -f '{{ json .NetworkSettings }}' <container_id> | python -mjson.tool\n\n\n\n\nDelete containers by date\n\n\ndocker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm\n\n\n\n\nDelete all containers:\n\n\ndocker stop $(docker ps -a -q)\ndocker rm $(docker ps -a -q)\n\n\n\n\nUse Docker registry\n\n\nmkdir /etc/systemd/system/docker.service.d/\ntouch /etc/systemd/system/docker.service.d/docker_opts.conf\nnano /etc/systemd/system/docker.service.d/docker_opts.conf\n\n# ---\n[Service]\nExecStart=\nExecStart=/usr/bin/docker -d -H fd:// --insecure-registry docker-registry.keepbot.github.io --registry-mirror https://doker-registry-mirror.keepbot.github.io\n# ---\n\nsystemctl daemon-reload\nservice docker restart",
-            "title": "Docker"
-        },
-        {
-            "location": "/Unix/Docker/#run-docker-conainer",
-            "text": "sudo docker run --name mysql-nx -e MYSQL_ROOT_PASSWORD=JuSCY1Bq -d -p 127.0.0.1:3306:3306 mysql:latest",
-            "title": "Run docker conainer"
-        },
-        {
-            "location": "/Unix/Docker/#execute-in-docker-console",
-            "text": "sudo docker exec -it <container> bash",
-            "title": "Execute in-docker console"
-        },
-        {
-            "location": "/Unix/Docker/#create-json-with-container-settings",
-            "text": "docker inspect -f '{{ json .NetworkSettings }}' <container_id> | python -mjson.tool",
-            "title": "Create JSON with container settings"
-        },
-        {
-            "location": "/Unix/Docker/#delete-containers-by-date",
-            "text": "docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm",
-            "title": "Delete containers by date"
-        },
-        {
-            "location": "/Unix/Docker/#delete-all-containers",
-            "text": "docker stop $(docker ps -a -q)\ndocker rm $(docker ps -a -q)",
-            "title": "Delete all containers:"
-        },
-        {
-            "location": "/Unix/Docker/#use-docker-registry",
-            "text": "mkdir /etc/systemd/system/docker.service.d/\ntouch /etc/systemd/system/docker.service.d/docker_opts.conf\nnano /etc/systemd/system/docker.service.d/docker_opts.conf\n\n# ---\n[Service]\nExecStart=\nExecStart=/usr/bin/docker -d -H fd:// --insecure-registry docker-registry.keepbot.github.io --registry-mirror https://doker-registry-mirror.keepbot.github.io\n# ---\n\nsystemctl daemon-reload\nservice docker restart",
-            "title": "Use Docker registry"
-        },
-        {
             "location": "/Unix/Filesystem/",
             "text": "Change permisions recursively\n\n\nYou can use a simple \nScript\n\n\nfind <path_to_folder> -type f -print -exec chmod 644 {} \\;\nfind <path_to_folder> -type d -print -exec chmod 755 {} \\;\n\n\n\n\nCount files\n\n\nfind . -type f | wc -l\nls | wc -l\n\n\n\n\nRemove file list\n\n\nls | xargs rm\n\n\n\n\nRemove file suffix \"filename\"+\"suffix\"\n\n\nfor i in `find . -type f -name \"*<suffix>*\"`; do dst=`echo $i | sed s/<suffix>//`;mv $i $dst; done\n\n\n\n\nMove all files in one level directory in certain folder to another\n\n\nfind /<path_to_folder>/* -prune -type f | xargs -I '{}' mv {} /<path_to_destination_folder>/archive/.\n\n\n\n\nSearch for certain file contents\n\n\nfind . -type f -name \"*conf\" -exec echo {} \\; -exec grep 192.168.0.1:3389 {} \\;\n\n\n\n\nShow directories content recursively\n\n\nls -R /path | awk '\n/:$/&&f{s=$0;f=0}\n/:$/&&!f{sub(/:$/,\"\");s=$0;f=1;next}\nNF&&f{ print s\"/\"$0 }'\n\n\n\n\nMake dirs with indexes\n\n\nfor i in 0{1..9} {10..39}; do mkdir delete-$i; cd delete-$i; touch del-file-$i; cd ..; done\n\n\n\n\nCreate bunch of files from list in a file:\n\n\n# Predefined number of records\nhead -<number_of_lines> inventory | awk '{ print $1 }' | xargs -I '{}' <destination_folder>/{}\n#E.g. head -10 inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}\n\n# Whole list from file\ncat <filename> | awk '{ print $1 }' | xargs -I '{}' <destination_folder>/{}\n#E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' host_vars/{}\n\n\n\n\nMove bunch of folders\n\n\nls -1d <space separeated folder list> | xargs -I '{}' mv {} <destination>\n#E.g. ls -1d command_line dotfiles-srv programmming-examples shell_scripts | xargs -I '{}' mv {} github/\n\n\n\n\nMounts\n\n\n#Show information about mounted file systems with 'column' examples**\ndf -h | column -t\nmount -l | column -t\n\n\n\n\nSum of root folders\n\n\ndu -s * 2>/dev/null | awk '{print $1}' | paste -sd+ | bc",
             "title": "Filesystem"
@@ -706,56 +671,6 @@
             "title": "VM"
         },
         {
-            "location": "/Unix/KVM/",
-            "text": "Create virtual hdd image\n\n\nqemu-img create -o preallocation=metadata -f qcow2 qcow2.img 20G\n\n\n\n\nStart installation of virtual machine with virtual image\n\n\nqemu-system-x86_64 -hda vdisk.img -cdrom /path/to/boot-media.iso -boot d -m 384\n\n\n\n\nRun virtual machine\n\n\nqemu-system-x86_64 vdisk.img -m 384",
-            "title": "KVM"
-        },
-        {
-            "location": "/Unix/KVM/#create-virtual-hdd-image",
-            "text": "qemu-img create -o preallocation=metadata -f qcow2 qcow2.img 20G",
-            "title": "Create virtual hdd image"
-        },
-        {
-            "location": "/Unix/KVM/#start-installation-of-virtual-machine-with-virtual-image",
-            "text": "qemu-system-x86_64 -hda vdisk.img -cdrom /path/to/boot-media.iso -boot d -m 384",
-            "title": "Start installation of virtual machine with virtual image"
-        },
-        {
-            "location": "/Unix/KVM/#run-virtual-machine",
-            "text": "qemu-system-x86_64 vdisk.img -m 384",
-            "title": "Run virtual machine"
-        },
-        {
-            "location": "/Unix/Network/",
-            "text": "TCPDUMP (with all commands use '| head' optionally)\n\n\n# Capture bunch of packets\ntcpdump -w capture.pcap\n# Show list of unique tcp or udp connections ip addresses\ntcpdump -nn -r capture.pcap 'tcp or udp' | cut -f 3 -d \" \" | cut -f 1-4 -d \".\" | sort | uniq | sort -nr\n# Show list of unique destinations with SYN flag(\u2018tcp[13]=2\u2019)\ntcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 5 -d \" \" | sort | uniq -c | sort -nr\n# Show list of unique sources with SYN flag(\u2018tcp[13]=2\u2019)\ntcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 3 -d \" \" | cut -f 1-4 -d \".\" | sort | uniq -c | sort -nr\n# Search for plain texts (-A)\ntcpdump -Ann -r capture.pcap 'dst port 25 or dst port 514 or dst port 110 or dst port 21 or dst port 53 or dst port 80'\n# Search for top level domains (optiolally for names only: | grep -E '[a-z]')\ntcpdump -nn -r capture.pcap 'port 53' | grep -Ev '(com|ru|net|org|gov|mil|arpa)' | cut -f 9 -d \" \"  \n# Investigate HTTP traffic\ntcpdump -Ann -r capture.pcap 'port 80' | grep 'HTTP' | grep -Ev '(GET|HEAD)'\n# Search HTTP traffic for user-agent list\ntcpdump -Ann -r capture.pcap 'port 80' | grep -Ei 'user-agent' | sort | uniq -c | sort -n\ntcpdump -Ann -r capture.pcap 'port 80' | sed -n '/Mozilla/,$p'\n# Pcap repository (-C filesize in MBytes, -W number of files, -G time in seconds, %s timestamp)\nsudo -b tcpdump -nn -i eth0 -w capture.pcap -C 1 -W 5         \nsudo -b tcpdump -nn -i eth0 -w capture-%s.pcap -G 600 -W 5    \n# Dealing with pcap files\nfor capfile in $(ls *.pcap); do tcpdump -nnr $capfile 'dst port 53'; done  \n\n\n\n\nNetworkManager: show connection info\n\n\nnmcli device show eth0\n\n\n\n\nCheck own IP address\n\n\ncurl -s checkip.dyndns.org\n\n\n\n\nShare current folder over HTTP\n\n\npython2 -m SimpleHTTPServer 8080\npython3 -mhttp.server 8080\n\n\n\n\nWhat process use port\n\n\n\n\nLinux\n\n\n\n\n# Find out PID via ss\nss -nltp | grep <port>\n# Find out PID deprecated netstat:\nnetstat -tulpn | grep <port>\n# Find out particular binary\nls -l /proc/<pid>/exe\n# Find out full run command\nps -ef | grep <PID>\n\n\n\n\n\n\nAIX\n\n\n\n\nlsof -i:<port>\nps -ef | grep <pid>\n\n\n\n\n\n\nWindows\n\n\n\n\nnetstat -aon | findstr \"<port>\"\npslist <PID>",
-            "title": "Network"
-        },
-        {
-            "location": "/Unix/Network/#tcpdump-with-all-commands-use-head-optionally",
-            "text": "# Capture bunch of packets\ntcpdump -w capture.pcap\n# Show list of unique tcp or udp connections ip addresses\ntcpdump -nn -r capture.pcap 'tcp or udp' | cut -f 3 -d \" \" | cut -f 1-4 -d \".\" | sort | uniq | sort -nr\n# Show list of unique destinations with SYN flag(\u2018tcp[13]=2\u2019)\ntcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 5 -d \" \" | sort | uniq -c | sort -nr\n# Show list of unique sources with SYN flag(\u2018tcp[13]=2\u2019)\ntcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 3 -d \" \" | cut -f 1-4 -d \".\" | sort | uniq -c | sort -nr\n# Search for plain texts (-A)\ntcpdump -Ann -r capture.pcap 'dst port 25 or dst port 514 or dst port 110 or dst port 21 or dst port 53 or dst port 80'\n# Search for top level domains (optiolally for names only: | grep -E '[a-z]')\ntcpdump -nn -r capture.pcap 'port 53' | grep -Ev '(com|ru|net|org|gov|mil|arpa)' | cut -f 9 -d \" \"  \n# Investigate HTTP traffic\ntcpdump -Ann -r capture.pcap 'port 80' | grep 'HTTP' | grep -Ev '(GET|HEAD)'\n# Search HTTP traffic for user-agent list\ntcpdump -Ann -r capture.pcap 'port 80' | grep -Ei 'user-agent' | sort | uniq -c | sort -n\ntcpdump -Ann -r capture.pcap 'port 80' | sed -n '/Mozilla/,$p'\n# Pcap repository (-C filesize in MBytes, -W number of files, -G time in seconds, %s timestamp)\nsudo -b tcpdump -nn -i eth0 -w capture.pcap -C 1 -W 5         \nsudo -b tcpdump -nn -i eth0 -w capture-%s.pcap -G 600 -W 5    \n# Dealing with pcap files\nfor capfile in $(ls *.pcap); do tcpdump -nnr $capfile 'dst port 53'; done",
-            "title": "TCPDUMP (with all commands use '| head' optionally)"
-        },
-        {
-            "location": "/Unix/Network/#networkmanager-show-connection-info",
-            "text": "nmcli device show eth0",
-            "title": "NetworkManager: show connection info"
-        },
-        {
-            "location": "/Unix/Network/#check-own-ip-address",
-            "text": "curl -s checkip.dyndns.org",
-            "title": "Check own IP address"
-        },
-        {
-            "location": "/Unix/Network/#share-current-folder-over-http",
-            "text": "python2 -m SimpleHTTPServer 8080\npython3 -mhttp.server 8080",
-            "title": "Share current folder over HTTP"
-        },
-        {
-            "location": "/Unix/Network/#what-process-use-port",
-            "text": "Linux   # Find out PID via ss\nss -nltp | grep <port>\n# Find out PID deprecated netstat:\nnetstat -tulpn | grep <port>\n# Find out particular binary\nls -l /proc/<pid>/exe\n# Find out full run command\nps -ef | grep <PID>   AIX   lsof -i:<port>\nps -ef | grep <pid>   Windows   netstat -aon | findstr \"<port>\"\npslist <PID>",
-            "title": "What process use port"
-        },
-        {
             "location": "/Unix/Processes/",
             "text": "Wait until proceses will gone\n\n\nwhile true; do clear; ps -ef | grep <process>; sleep 5; done\n\n\n\n\nKill all proesses with certain name\n\n\nps ax | grep http | awk '{print $1}' | xargs kill",
             "title": "Processes"
@@ -796,16 +711,6 @@
             "title": "SMSd"
         },
         {
-            "location": "/Unix/SNMP/",
-            "text": "SNMP\n\n\nsnmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus",
-            "title": "SNMP"
-        },
-        {
-            "location": "/Unix/SNMP/#snmp",
-            "text": "snmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus",
-            "title": "SNMP"
-        },
-        {
             "location": "/Unix/Skype/",
             "text": "Unable to receive group messages\n\n\nAfter struggling a bit, I found some useful commands:\n    /dumpmsnp - show details about your connection\n    /showplaces - show where you are currently connected\nYou can execute them in any chat window.\n\n*/dumpmsnp* command was showing \"LoggedOut\", but I was online and talking almost normally (except group chats).\n\nSystem: MSNP: Connection Data:\n * Status: LoggedOut\n\nA lot of people are/were suffering from this problem.\n\nTo solve this \"LoggedOut\" issue, try this on any chat window:\n/msnp24\n\nand restart your Skype.\n\nAfter restarting, /dumpmsnp output shows the following status:\n\nSystem: MSNP: Connection Data (MSNP24):\n * Status: LoggedIn\n\nI don't know exactly why, but the /msnp24 command kinds of converted my account to this protocol and now everything works perfectly.",
             "title": "Skype"
@@ -836,16 +741,6 @@
             "title": "Start"
         },
         {
-            "location": "/Unix/WiFi/",
-            "text": "WPA Supplicant\n\n\nwpa_supplicant -Dnl80211 -iwlp2s0 -c/etc/wpa_supplicant/wpa_supplicant.conf &\n\ncat /etc/wpa_supplicant/wpa_supplicant.conf\n# This network configuration was written by net-setup\nmodules=\"wpa_supplicant\"\nwpa_supplicant_wlp2s0=\"-Dnl80211\"\nconfig_wlp2s0=\"dhcp\" \n\nctrl_interface=/var/run/wpa_supplicant\nctrl_interface_group=0\nap_scan=1\nnetwork={\n   ssid=\"MTS_2140184\"\n   psk=\"0000000000\"\n   priority=5\n}",
-            "title": "WiFi"
-        },
-        {
-            "location": "/Unix/WiFi/#wpa-supplicant",
-            "text": "wpa_supplicant -Dnl80211 -iwlp2s0 -c/etc/wpa_supplicant/wpa_supplicant.conf &\n\ncat /etc/wpa_supplicant/wpa_supplicant.conf\n# This network configuration was written by net-setup\nmodules=\"wpa_supplicant\"\nwpa_supplicant_wlp2s0=\"-Dnl80211\"\nconfig_wlp2s0=\"dhcp\" \n\nctrl_interface=/var/run/wpa_supplicant\nctrl_interface_group=0\nap_scan=1\nnetwork={\n   ssid=\"MTS_2140184\"\n   psk=\"0000000000\"\n   priority=5\n}",
-            "title": "WPA Supplicant"
-        },
-        {
             "location": "/Unix/X/",
             "text": "Start full-screen application in different X server\n\n\n/usr/bin/xinit <path_to_fullscreen_application> -- :1\n\n\n\n\nExport X display to current ssh connection\n\n\nexport DISPLAY=\"${SSH_CLIENT%% *}\"\n\n\n\n\nKeyboard layouts\n\n\nman xkeyboard-config\n\n\n\n\nShow window properties\n\n\nxprop",
             "title": "X"
@@ -869,6 +764,161 @@
             "location": "/Unix/X/#show-window-properties",
             "text": "xprop",
             "title": "Show window properties"
+        },
+        {
+            "location": "/Unix/Network/Common/",
+            "text": "NetworkManager: show connection info\n\n\nnmcli device show eth0\n\n\n\n\nCheck own IP address\n\n\ncurl -s checkip.dyndns.org\n\n\n\n\nShare current folder over HTTP\n\n\npython2 -m SimpleHTTPServer 8080\npython3 -mhttp.server 8080",
+            "title": "Common"
+        },
+        {
+            "location": "/Unix/Network/Common/#networkmanager-show-connection-info",
+            "text": "nmcli device show eth0",
+            "title": "NetworkManager: show connection info"
+        },
+        {
+            "location": "/Unix/Network/Common/#check-own-ip-address",
+            "text": "curl -s checkip.dyndns.org",
+            "title": "Check own IP address"
+        },
+        {
+            "location": "/Unix/Network/Common/#share-current-folder-over-http",
+            "text": "python2 -m SimpleHTTPServer 8080\npython3 -mhttp.server 8080",
+            "title": "Share current folder over HTTP"
+        },
+        {
+            "location": "/Unix/Network/Ports/",
+            "text": "Which process use port\n\n\n\n\nLinux\n\n\n\n\n# Find out PID via ss\nss -nltp | grep <port>\n# Find out PID deprecated netstat:\nnetstat -tulpn | grep <port>\n# Find out particular binary\nls -l /proc/<pid>/exe\n# Find out full run command\nps -ef | grep <PID>\n\n\n\n\n\n\nAIX\n\n\n\n\nlsof -i:<port>\nps -ef | grep <pid>\n\n\n\n\n\n\nWindows\n\n\n\n\nnetstat -aon | findstr \"<port>\"\npslist <PID>",
+            "title": "Ports"
+        },
+        {
+            "location": "/Unix/Network/Ports/#which-process-use-port",
+            "text": "Linux   # Find out PID via ss\nss -nltp | grep <port>\n# Find out PID deprecated netstat:\nnetstat -tulpn | grep <port>\n# Find out particular binary\nls -l /proc/<pid>/exe\n# Find out full run command\nps -ef | grep <PID>   AIX   lsof -i:<port>\nps -ef | grep <pid>   Windows   netstat -aon | findstr \"<port>\"\npslist <PID>",
+            "title": "Which process use port"
+        },
+        {
+            "location": "/Unix/Network/SNMP/",
+            "text": "SNMP\n\n\nsnmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus",
+            "title": "SNMP"
+        },
+        {
+            "location": "/Unix/Network/SNMP/#snmp",
+            "text": "snmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus",
+            "title": "SNMP"
+        },
+        {
+            "location": "/Unix/Network/WiFi/",
+            "text": "WPA Supplicant\n\n\nwpa_supplicant -Dnl80211 -iwlp2s0 -c/etc/wpa_supplicant/wpa_supplicant.conf &\n\ncat /etc/wpa_supplicant/wpa_supplicant.conf\n# This network configuration was written by net-setup\nmodules=\"wpa_supplicant\"\nwpa_supplicant_wlp2s0=\"-Dnl80211\"\nconfig_wlp2s0=\"dhcp\" \n\nctrl_interface=/var/run/wpa_supplicant\nctrl_interface_group=0\nap_scan=1\nnetwork={\n   ssid=\"MTS_2140184\"\n   psk=\"0000000000\"\n   priority=5\n}",
+            "title": "WiFi"
+        },
+        {
+            "location": "/Unix/Network/WiFi/#wpa-supplicant",
+            "text": "wpa_supplicant -Dnl80211 -iwlp2s0 -c/etc/wpa_supplicant/wpa_supplicant.conf &\n\ncat /etc/wpa_supplicant/wpa_supplicant.conf\n# This network configuration was written by net-setup\nmodules=\"wpa_supplicant\"\nwpa_supplicant_wlp2s0=\"-Dnl80211\"\nconfig_wlp2s0=\"dhcp\" \n\nctrl_interface=/var/run/wpa_supplicant\nctrl_interface_group=0\nap_scan=1\nnetwork={\n   ssid=\"MTS_2140184\"\n   psk=\"0000000000\"\n   priority=5\n}",
+            "title": "WPA Supplicant"
+        },
+        {
+            "location": "/Unix/Network/tcpdump/",
+            "text": "TCPDUMP (with all commands use '| head' optionally)\n\n\n### Capture bunch of packets\n```bash\ntcpdump -w capture.pcap\n\n\n\n\nShow list of unique tcp or udp connections ip addresses\n\n\ntcpdump -nn -r capture.pcap 'tcp or udp' | cut -f 3 -d \" \" | cut -f 1-4 -d \".\" | sort | uniq | sort -nr\n\n\n\n\nShow list of unique destinations with SYN flag(\u2018tcp[13]=2\u2019)\n\n\ntcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 5 -d \" \" | sort | uniq -c | sort -nr\n\n\n\n\nShow list of unique sources with SYN flag(\u2018tcp[13]=2\u2019)\n\n\ntcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 3 -d \" \" | cut -f 1-4 -d \".\" | sort | uniq -c | sort -nr\n\n\n\n\nSearch for plain texts (-A)\n\n\ntcpdump -Ann -r capture.pcap 'dst port 25 or dst port 514 or dst port 110 or dst port 21 or dst port 53 or dst port 80'\n\n\n\n\nSearch for top level domains (optiolally for names only: | grep -E '[a-z]')\n\n\ntcpdump -nn -r capture.pcap 'port 53' | grep -Ev '(com|ru|net|org|gov|mil|arpa)' | cut -f 9 -d \" \"  \n\n\n\n\nInvestigate HTTP traffic\n\n\ntcpdump -Ann -r capture.pcap 'port 80' | grep 'HTTP' | grep -Ev '(GET|HEAD)'\n\n\n\n\nSearch HTTP traffic for user-agent list\n\n\ntcpdump -Ann -r capture.pcap 'port 80' | grep -Ei 'user-agent' | sort | uniq -c | sort -n\ntcpdump -Ann -r capture.pcap 'port 80' | sed -n '/Mozilla/,$p'\n\n\n\n\nPcap repository (-C filesize in MBytes, -W number of files, -G time in seconds, %s timestamp)\n\n\nsudo -b tcpdump -nn -i eth0 -w capture.pcap -C 1 -W 5         \nsudo -b tcpdump -nn -i eth0 -w capture-%s.pcap -G 600 -W 5    \n# Dealing with pcap files\nfor capfile in $(ls *.pcap); do tcpdump -nnr $capfile 'dst port 53'; done",
+            "title": "Tcpdump"
+        },
+        {
+            "location": "/Unix/Network/tcpdump/#tcpdump-with-all-commands-use-head-optionally",
+            "text": "### Capture bunch of packets\n```bash\ntcpdump -w capture.pcap",
+            "title": "TCPDUMP (with all commands use '| head' optionally)"
+        },
+        {
+            "location": "/Unix/Network/tcpdump/#show-list-of-unique-tcp-or-udp-connections-ip-addresses",
+            "text": "tcpdump -nn -r capture.pcap 'tcp or udp' | cut -f 3 -d \" \" | cut -f 1-4 -d \".\" | sort | uniq | sort -nr",
+            "title": "Show list of unique tcp or udp connections ip addresses"
+        },
+        {
+            "location": "/Unix/Network/tcpdump/#show-list-of-unique-destinations-with-syn-flagtcp132",
+            "text": "tcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 5 -d \" \" | sort | uniq -c | sort -nr",
+            "title": "Show list of unique destinations with SYN flag(\u2018tcp[13]=2\u2019)"
+        },
+        {
+            "location": "/Unix/Network/tcpdump/#show-list-of-unique-sources-with-syn-flagtcp132",
+            "text": "tcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 3 -d \" \" | cut -f 1-4 -d \".\" | sort | uniq -c | sort -nr",
+            "title": "Show list of unique sources with SYN flag(\u2018tcp[13]=2\u2019)"
+        },
+        {
+            "location": "/Unix/Network/tcpdump/#search-for-plain-texts-a",
+            "text": "tcpdump -Ann -r capture.pcap 'dst port 25 or dst port 514 or dst port 110 or dst port 21 or dst port 53 or dst port 80'",
+            "title": "Search for plain texts (-A)"
+        },
+        {
+            "location": "/Unix/Network/tcpdump/#search-for-top-level-domains-optiolally-for-names-only-grep-e-a-z",
+            "text": "tcpdump -nn -r capture.pcap 'port 53' | grep -Ev '(com|ru|net|org|gov|mil|arpa)' | cut -f 9 -d \" \"",
+            "title": "Search for top level domains (optiolally for names only: | grep -E '[a-z]')"
+        },
+        {
+            "location": "/Unix/Network/tcpdump/#investigate-http-traffic",
+            "text": "tcpdump -Ann -r capture.pcap 'port 80' | grep 'HTTP' | grep -Ev '(GET|HEAD)'",
+            "title": "Investigate HTTP traffic"
+        },
+        {
+            "location": "/Unix/Network/tcpdump/#search-http-traffic-for-user-agent-list",
+            "text": "tcpdump -Ann -r capture.pcap 'port 80' | grep -Ei 'user-agent' | sort | uniq -c | sort -n\ntcpdump -Ann -r capture.pcap 'port 80' | sed -n '/Mozilla/,$p'",
+            "title": "Search HTTP traffic for user-agent list"
+        },
+        {
+            "location": "/Unix/Network/tcpdump/#pcap-repository-c-filesize-in-mbytes-w-number-of-files-g-time-in-seconds-s-timestamp",
+            "text": "sudo -b tcpdump -nn -i eth0 -w capture.pcap -C 1 -W 5         \nsudo -b tcpdump -nn -i eth0 -w capture-%s.pcap -G 600 -W 5    \n# Dealing with pcap files\nfor capfile in $(ls *.pcap); do tcpdump -nnr $capfile 'dst port 53'; done",
+            "title": "Pcap repository (-C filesize in MBytes, -W number of files, -G time in seconds, %s timestamp)"
+        },
+        {
+            "location": "/Unix/Virtual/Docker/",
+            "text": "Run docker conainer\n\n\nsudo docker run --name mysql-nx -e MYSQL_ROOT_PASSWORD=JuSCY1Bq -d -p 127.0.0.1:3306:3306 mysql:latest\n\n\n\n\nExecute in-docker console\n\n\nsudo docker exec -it <container> bash\n\n\n\n\nCreate JSON with container settings\n\n\ndocker inspect -f '{{ json .NetworkSettings }}' <container_id> | python -mjson.tool\n\n\n\n\nDelete containers by date\n\n\ndocker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm\n\n\n\n\nDelete all containers:\n\n\ndocker stop $(docker ps -a -q)\ndocker rm $(docker ps -a -q)\n\n\n\n\nUse Docker registry\n\n\nmkdir /etc/systemd/system/docker.service.d/\ntouch /etc/systemd/system/docker.service.d/docker_opts.conf\nnano /etc/systemd/system/docker.service.d/docker_opts.conf\n\n# ---\n[Service]\nExecStart=\nExecStart=/usr/bin/docker -d -H fd:// --insecure-registry docker-registry.keepbot.github.io --registry-mirror https://doker-registry-mirror.keepbot.github.io\n# ---\n\nsystemctl daemon-reload\nservice docker restart",
+            "title": "Docker"
+        },
+        {
+            "location": "/Unix/Virtual/Docker/#run-docker-conainer",
+            "text": "sudo docker run --name mysql-nx -e MYSQL_ROOT_PASSWORD=JuSCY1Bq -d -p 127.0.0.1:3306:3306 mysql:latest",
+            "title": "Run docker conainer"
+        },
+        {
+            "location": "/Unix/Virtual/Docker/#execute-in-docker-console",
+            "text": "sudo docker exec -it <container> bash",
+            "title": "Execute in-docker console"
+        },
+        {
+            "location": "/Unix/Virtual/Docker/#create-json-with-container-settings",
+            "text": "docker inspect -f '{{ json .NetworkSettings }}' <container_id> | python -mjson.tool",
+            "title": "Create JSON with container settings"
+        },
+        {
+            "location": "/Unix/Virtual/Docker/#delete-containers-by-date",
+            "text": "docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm",
+            "title": "Delete containers by date"
+        },
+        {
+            "location": "/Unix/Virtual/Docker/#delete-all-containers",
+            "text": "docker stop $(docker ps -a -q)\ndocker rm $(docker ps -a -q)",
+            "title": "Delete all containers:"
+        },
+        {
+            "location": "/Unix/Virtual/Docker/#use-docker-registry",
+            "text": "mkdir /etc/systemd/system/docker.service.d/\ntouch /etc/systemd/system/docker.service.d/docker_opts.conf\nnano /etc/systemd/system/docker.service.d/docker_opts.conf\n\n# ---\n[Service]\nExecStart=\nExecStart=/usr/bin/docker -d -H fd:// --insecure-registry docker-registry.keepbot.github.io --registry-mirror https://doker-registry-mirror.keepbot.github.io\n# ---\n\nsystemctl daemon-reload\nservice docker restart",
+            "title": "Use Docker registry"
+        },
+        {
+            "location": "/Unix/Virtual/KVM/",
+            "text": "Create virtual hdd image\n\n\nqemu-img create -o preallocation=metadata -f qcow2 qcow2.img 20G\n\n\n\n\nStart installation of virtual machine with virtual image\n\n\nqemu-system-x86_64 -hda vdisk.img -cdrom /path/to/boot-media.iso -boot d -m 384\n\n\n\n\nRun virtual machine\n\n\nqemu-system-x86_64 vdisk.img -m 384",
+            "title": "KVM"
+        },
+        {
+            "location": "/Unix/Virtual/KVM/#create-virtual-hdd-image",
+            "text": "qemu-img create -o preallocation=metadata -f qcow2 qcow2.img 20G",
+            "title": "Create virtual hdd image"
+        },
+        {
+            "location": "/Unix/Virtual/KVM/#start-installation-of-virtual-machine-with-virtual-image",
+            "text": "qemu-system-x86_64 -hda vdisk.img -cdrom /path/to/boot-media.iso -boot d -m 384",
+            "title": "Start installation of virtual machine with virtual image"
+        },
+        {
+            "location": "/Unix/Virtual/KVM/#run-virtual-machine",
+            "text": "qemu-system-x86_64 vdisk.img -m 384",
+            "title": "Run virtual machine"
         },
         {
             "location": "/Windows/CMD_Scripts/",
