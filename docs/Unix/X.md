@@ -13,3 +13,8 @@ export DISPLAY="${SSH_CLIENT%% *}"
 ```bash
 man xkeyboard-config
 ```
+
+### Show window properties
+```bash
+xprop
+```
