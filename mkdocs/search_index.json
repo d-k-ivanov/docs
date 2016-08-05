@@ -201,6 +201,16 @@
             "title": "Collect .bash_history from a bunch of servers."
         },
         {
+            "location": "/Dev/Bash/Convert-CP1251-to-UTF8/",
+            "text": "Convert windows-1251 to utf-8\n\n\n#!/usr/bin/bash\n\n# Recursive file convertion windows-1251 --> utf-8\n# Place this file in the root of your site, add execute permission and run\n# Converts *.php, *.html, *.css, *.js files.\n# To add file type by extension, e.g. *.cgi, add '-o -name \"*.cgi\"' to the find command\n\nfind ./ -name \"*.cfg\"  -type f |\nwhile read file\ndo\n  echo \" $file\"\n  mv $file $file.icv\n  iconv -f WINDOWS-1251 -t UTF-8 $file.icv > $file\n  rm -f $file.icv\ndone",
+            "title": "Convert CP1251 to UTF8"
+        },
+        {
+            "location": "/Dev/Bash/Convert-CP1251-to-UTF8/#convert-windows-1251-to-utf-8",
+            "text": "#!/usr/bin/bash\n\n# Recursive file convertion windows-1251 --> utf-8\n# Place this file in the root of your site, add execute permission and run\n# Converts *.php, *.html, *.css, *.js files.\n# To add file type by extension, e.g. *.cgi, add '-o -name \"*.cgi\"' to the find command\n\nfind ./ -name \"*.cfg\"  -type f |\nwhile read file\ndo\n  echo \" $file\"\n  mv $file $file.icv\n  iconv -f WINDOWS-1251 -t UTF-8 $file.icv > $file\n  rm -f $file.icv\ndone",
+            "title": "Convert windows-1251 to utf-8"
+        },
+        {
             "location": "/Dev/Brainfuck/Sample1/",
             "text": "Print \"2 + 2 = 4\"**\n\n\n# Increase a[1] to 50 and print ASCII value \"2\"  \n1.  ++++++++++[>+++++<-]>.< \n# Increase a[2] to 32 and print ASCII value \" \"  \n2.  ++++++++[>>++++<<-]>>.<<\n# Increase a[3] to 43 and print ASCII value \"+\"  \n3.  ++++++++++[>>>++++<<<-]>>>+++.<<<\n# Print from a[2] ASCII value \" \"  \n4.  >>.<<\n# Print from a[1] ASCII value \"2\"  \n5.  >.<\n# Print from a[2] ASCII value \" \"  \n6.  >>.<<\n# Increase a[4] to 61 and print ASCII value \"=\"  \n7.  ++++++++++[>>>>++++++<<<<-]>>>>+.<<<<\n# Print from a[2] ASCII value \" \"  \n8.  >>.<<\n# Increase a[5] to 52 and print ASCII value \"4\"  \n9.  ++++++++++[>>>>>+++++<<<<<-]>>>>>++.<<<<<",
             "title": "Sample1"
