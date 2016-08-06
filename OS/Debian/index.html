@@ -1,686 +1,706 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/OS/Debian/"> 
-    <link rel="shortcut icon" href="../../img/favicon.ico">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Dmitry Ivanov">
+  
+  <title>Debian - Technical Info</title>
+  
 
-    <title>Debian - Technical Info</title>
+  <link rel="shortcut icon" href="../../img/favicon.ico">
 
-    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
-    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
-    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
-    <link href="../../css/base.css" rel="stylesheet">
-    <link href="../../css/cinder.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../css/extra.css" rel="stylesheet">
 
-    <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Debian";
+    var mkdocs_page_input_path = "OS/Debian.md";
+    var mkdocs_page_url = "/OS/Debian/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
-    <script>
-    WebFont.load({
-        google: {
-            families: ['Open Sans', 'PT Sans']
-        }
-    });
-    </script>
-
-    
-    <script>
-    (function(i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function() {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-80208201-1', 'keepbot.github.io');
-    ga('send', 'pageview');
-    </script>
-    
+      ga('create', 'UA-80208201-1', 'keepbot.github.io');
+      ga('send', 'pageview');
+  </script>
+  
 </head>
 
-<body>
-
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-
-        <!-- Collapsed navigation -->
-        <div class="navbar-header">
-            
-            <!-- Expander button -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            
-
-            <!-- Main title -->
-            <a class="navbar-brand" href="../..">Technical Info</a>
-        </div>
-
-        <!-- Expanded navigation -->
-        <div class="navbar-collapse collapse">
-            
-                <!-- Main navigation -->
-                <ul class="nav navbar-nav">
-                
-                
-                    <li >
-                        <a href="../..">Home</a>
-                    </li>
-                
-                
-                
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Databases <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
-                            
-<li >
-    <a href="../../Databases/Links/">Links</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../Databases/Mongo/">Mongo</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../Databases/MySQL/">MySQL</a>
-</li>
-
-                        
-                            
-  <li class="dropdown-submenu">
-    <a tabindex="-1" href="">Oracle</a>
-    <ul class="dropdown-menu">
-        
-            
-<li >
-    <a href="../../Databases/Oracle/Blocking_sessions/">Blocking sessions</a>
-</li>
-
-        
-            
-<li >
-    <a href="../../Databases/Oracle/CentOS_7_Installation/">CentOS 7 Installation</a>
-</li>
-
-        
-            
-<li >
-    <a href="../../Databases/Oracle/Dump/">Dump</a>
-</li>
-
-        
-            
-<li >
-    <a href="../../Databases/Oracle/OJDBC/">OJDBC</a>
-</li>
-
-        
-            
-<li >
-    <a href="../../Databases/Oracle/Tablespace/">Tablespace</a>
-</li>
-
-        
-            
-<li >
-    <a href="../../Databases/Oracle/Useful_Queries/">Useful Queries</a>
-</li>
-
-        
-    </ul>
-  </li>
-
-                        
-                        </ul>
-                    </li>
-                
-                
-                
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dev <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
-                            
-<li >
-    <a href="../../Dev/MPI-Lib/">MPI Lib</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../Dev/MPI/">MPI</a>
-</li>
-
-                        
-                            
-  <li class="dropdown-submenu">
-    <a tabindex="-1" href="">Bash</a>
-    <ul class="dropdown-menu">
-        
-            
-<li >
-    <a href="../../Dev/Bash/Collect_bash_history/">Collect bash history</a>
-</li>
-
-        
-            
-<li >
-    <a href="../../Dev/Bash/Convert-CP1251-to-UTF8/">Convert CP1251 to UTF8</a>
-</li>
-
-        
-    </ul>
-  </li>
-
-                        
-                            
-  <li class="dropdown-submenu">
-    <a tabindex="-1" href="">Brainfuck</a>
-    <ul class="dropdown-menu">
-        
-            
-<li >
-    <a href="../../Dev/Brainfuck/Sample1/">Sample1</a>
-</li>
-
-        
-    </ul>
-  </li>
-
-                        
-                            
-  <li class="dropdown-submenu">
-    <a tabindex="-1" href="">GCC</a>
-    <ul class="dropdown-menu">
-        
-            
-<li >
-    <a href="../../Dev/GCC/Make/">Make</a>
-</li>
-
-        
-    </ul>
-  </li>
-
-                        
-                            
-  <li class="dropdown-submenu">
-    <a tabindex="-1" href="">Java</a>
-    <ul class="dropdown-menu">
-        
-            
-<li >
-    <a href="../../Dev/Java/Runtime_customization/">Runtime customization</a>
-</li>
-
-        
-    </ul>
-  </li>
-
-                        
-                            
-  <li class="dropdown-submenu">
-    <a tabindex="-1" href="">Python</a>
-    <ul class="dropdown-menu">
-        
-            
-<li >
-    <a href="../../Dev/Python/Users_and_groups/">Users and groups</a>
-</li>
-
-        
-    </ul>
-  </li>
-
-                        
-                            
-  <li class="dropdown-submenu">
-    <a tabindex="-1" href="">Ruby</a>
-    <ul class="dropdown-menu">
-        
-            
-<li >
-    <a href="../../Dev/Ruby/Installation/">Installation</a>
-</li>
-
-        
-    </ul>
-  </li>
-
-                        
-                            
-  <li class="dropdown-submenu">
-    <a tabindex="-1" href="">Stress tests</a>
-    <ul class="dropdown-menu">
-        
-            
-<li >
-    <a href="../../Dev/Stress_tests/Ackerman_function/">Ackerman function</a>
-</li>
-
-        
-    </ul>
-  </li>
-
-                        
-                            
-  <li class="dropdown-submenu">
-    <a tabindex="-1" href="">Version Control</a>
-    <ul class="dropdown-menu">
-        
-            
-<li >
-    <a href="../../Dev/Version_Control/Git/">Git</a>
-</li>
-
-        
-            
-<li >
-    <a href="../../Dev/Version_Control/GitHub/">GitHub</a>
-</li>
-
-        
-    </ul>
-  </li>
-
-                        
-                        </ul>
-                    </li>
-                
-                
-                
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
-                            
-<li >
-    <a href="../../Edit/Markdown/">Markdown</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../Edit/Vim/">Vim</a>
-</li>
-
-                        
-                        </ul>
-                    </li>
-                
-                
-                
-                    <li class="dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">OS <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
-                            
-<li >
-    <a href="../AIX/">AIX</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../Android/">Android</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../ArchLinux/">ArchLinux</a>
-</li>
-
-                        
-                            
-<li class="active">
-    <a href="./">Debian</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../FreeBSD/">FreeBSD</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../MacOS_X/">MacOS X</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../RHEL/">RHEL</a>
-</li>
-
-                        
-                        </ul>
-                    </li>
-                
-                
-                
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Security <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
-                            
-<li >
-    <a href="../../Security/FirewallD/">FirewallD</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../Security/HSM/">HSM</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../Security/IPTables/">IPTables</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../Security/OpenSSL/">OpenSSL</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../Security/PF/">PF</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../Security/SELinux/">SELinux</a>
-</li>
-
-                        
-                        </ul>
-                    </li>
-                
-                
-                
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Unix <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
-                            
-<li >
-    <a href="../../Unix/Audit/">Audit</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../Unix/Hardware_info/">Hardware info</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../Unix/Processes/">Processes</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../Unix/Remote_management/">Remote management</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../Unix/SMS/">SMS</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../Unix/Skype/">Skype</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../Unix/WINE/">WINE</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../Unix/X/">X</a>
-</li>
-
-                        
-                            
-  <li class="dropdown-submenu">
-    <a tabindex="-1" href="">Backup</a>
-    <ul class="dropdown-menu">
-        
-            
-<li >
-    <a href="../../Unix/Backup/TSM/">TSM</a>
-</li>
-
-        
-            
-<li >
-    <a href="../../Unix/Backup/Tape/">Tape</a>
-</li>
-
-        
-    </ul>
-  </li>
-
-                        
-                            
-  <li class="dropdown-submenu">
-    <a tabindex="-1" href="">Network</a>
-    <ul class="dropdown-menu">
-        
-            
-<li >
-    <a href="../../Unix/Network/Common/">Common</a>
-</li>
-
-        
-            
-<li >
-    <a href="../../Unix/Network/Ports/">Ports</a>
-</li>
-
-        
-            
-<li >
-    <a href="../../Unix/Network/SNMP/">SNMP</a>
-</li>
-
-        
-            
-<li >
-    <a href="../../Unix/Network/WiFi/">WiFi</a>
-</li>
-
-        
-            
-<li >
-    <a href="../../Unix/Network/tcpdump/">Tcpdump</a>
-</li>
-
-        
-    </ul>
-  </li>
-
-                        
-                            
-  <li class="dropdown-submenu">
-    <a tabindex="-1" href="">Storage</a>
-    <ul class="dropdown-menu">
-        
-            
-<li >
-    <a href="../../Unix/Storage/Files_and_folders/">Files and folders</a>
-</li>
-
-        
-            
-<li >
-    <a href="../../Unix/Storage/GPFS/">GPFS</a>
-</li>
-
-        
-            
-<li >
-    <a href="../../Unix/Storage/SAN/">SAN</a>
-</li>
-
-        
-            
-<li >
-    <a href="../../Unix/Storage/mdadm/">Mdadm</a>
-</li>
-
-        
-    </ul>
-  </li>
-
-                        
-                            
-  <li class="dropdown-submenu">
-    <a tabindex="-1" href="">Virtual</a>
-    <ul class="dropdown-menu">
-        
-            
-<li >
-    <a href="../../Unix/Virtual/Docker/">Docker</a>
-</li>
-
-        
-            
-<li >
-    <a href="../../Unix/Virtual/KVM/">KVM</a>
-</li>
-
-        
-    </ul>
-  </li>
-
-                        
-                        </ul>
-                    </li>
-                
-                
-                
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Windows <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
-                            
-<li >
-    <a href="../../Windows/CMD_Scripts/">CMD Scripts</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../Windows/CMD_colours/">CMD colours</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../Windows/PowerShell_Scripts/">PowerShell Scripts</a>
-</li>
-
-                        
-                        </ul>
-                    </li>
-                
-                
-                </ul>
-            
-
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
-                        <i class="fa fa-search"></i> Search
-                    </a>
-                </li>
-                
-                    <li >
-                        <a rel="next" href="../ArchLinux/">
-                            <i class="fa fa-arrow-left"></i> Previous
-                        </a>
-                    </li>
-                    <li >
-                        <a rel="prev" href="../FreeBSD/">
-                            Next <i class="fa fa-arrow-right"></i>
-                        </a>
-                    </li>
-                
-                
-                    <li>
-                        <a href="https://keepbot.github.io/">
-                            
-                            Keepbot
-                        </a>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Technical Info</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
 </div>
+      </div>
 
-    <div class="container">
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Home</a>
         
-        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-    
-        <li class="first-level active"><a href="#apt">Apt</a></li>
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Databases</span></li>
+
         
-    
-        <li class="first-level "><a href="#dpkg">Dpkg</a></li>
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Databases/Links/">Links</a>
         
-    
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Databases/Mongo/">Mongo</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Databases/MySQL/">MySQL</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Oracle</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Databases/Oracle/Blocking_sessions/">Blocking sessions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Databases/Oracle/CentOS_7_Installation/">CentOS 7 Installation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Databases/Oracle/Dump/">Dump</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Databases/Oracle/OJDBC/">OJDBC</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Databases/Oracle/Tablespace/">Tablespace</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Databases/Oracle/Useful_Queries/">Useful Queries</a>
+        
+    </li>
+
+        
     </ul>
-</div></div>
-        <div class="col-md-9" role="main">
 
-<h3 id="apt">Apt</h3>
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Dev</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Dev/MPI-Lib/">MPI Lib</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Dev/MPI/">MPI</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Bash</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Dev/Bash/Collect_bash_history/">Collect bash history</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Dev/Bash/Convert-CP1251-to-UTF8/">Convert CP1251 to UTF8</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Brainfuck</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Dev/Brainfuck/Sample1/">Sample1</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>GCC</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Dev/GCC/Make/">Make</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Java</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Dev/Java/Runtime_customization/">Runtime customization</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Python</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Dev/Python/Users_and_groups/">Users and groups</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Ruby</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Dev/Ruby/Installation/">Installation</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Stress tests</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Dev/Stress_tests/Ackerman_function/">Ackerman function</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Version Control</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Dev/Version_Control/Git/">Git</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Dev/Version_Control/GitHub/">GitHub</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Edit</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Edit/Markdown/">Markdown</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Edit/Vim/">Vim</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>OS</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../AIX/">AIX</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../ArchLinux/">ArchLinux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Debian</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#apt">Apt</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#dpkg">Dpkg</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../FreeBSD/">FreeBSD</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../MacOS_X/">MacOS X</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../RHEL/">RHEL</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Security</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Security/FirewallD/">FirewallD</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Security/HSM/">HSM</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Security/IPTables/">IPTables</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Security/OpenSSL/">OpenSSL</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Security/PF/">PF</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Security/SELinux/">SELinux</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Unix</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/Audit/">Audit</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/Hardware_info/">Hardware info</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/Processes/">Processes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/Remote_management/">Remote management</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/SMS/">SMS</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/Skype/">Skype</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/WINE/">WINE</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/X/">X</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Backup</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/Backup/TSM/">TSM</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/Backup/Tape/">Tape</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Network</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/Network/Common/">Common</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/Network/Ports/">Ports</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/Network/SNMP/">SNMP</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/Network/WiFi/">WiFi</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/Network/tcpdump/">Tcpdump</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Storage</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/Storage/Files_and_folders/">Files and folders</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/Storage/GPFS/">GPFS</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/Storage/SAN/">SAN</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/Storage/mdadm/">Mdadm</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Virtual</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/Virtual/Docker/">Docker</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Unix/Virtual/KVM/">KVM</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Windows</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Windows/CMD_Scripts/">CMD Scripts</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Windows/CMD_colours/">CMD colours</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Windows/PowerShell_Scripts/">PowerShell Scripts</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Technical Info</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>OS &raquo;</li>
+        
+      
+    
+    <li>Debian</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="apt">Apt</h3>
 <pre><code class="bash"># Show installed packages
 apt --installed list
 # Search for software
@@ -698,55 +718,52 @@ dpkg --get-selections | grep postgres
 dpkg --get-selections | grep -v deinstall &gt; ~/Desktop/packages
 # Alternatively, simply use
 dpkg -l
-</code></pre></div>
-        
-    </div>
-
-    <footer class="col-md-12 text-center">
-        <hr>
-        <p>
-        <small>Copyright &copy; 2016 Dmitry Ivanov.<br></small>
-        
-        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
-    </footer>
-
-    <script src="../../js/jquery-1.10.2.min.js"></script>
-    <script src="../../js/bootstrap-3.0.3.min.js"></script>
-    <script src="../../js/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <script>
-    var base_url = '../..';
-    </script>
-    <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
-    <script src="../../js/base.js"></script>
-
-    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">
-                        <span aria-hidden="true">&times;</span>
-                        <span class="sr-only">Close</span>
-                    </button>
-                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
-                </div>
-                <div class="modal-body">
-                    <p>
-                        From here you can search these documents. Enter your search terms below.
-                    </p>
-                    <form role="form">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
-                        </div>
-                    </form>
-                    <div id="mkdocs-search-results"></div>
-                </div>
-                <div class="modal-footer">
-                </div>
+</code></pre>
+              
             </div>
-        </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../FreeBSD/" class="btn btn-neutral float-right" title="FreeBSD">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../ArchLinux/" class="btn btn-neutral" title="ArchLinux"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
     </div>
+  
 
-    </body>
+  <hr/>
 
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2016 Dmitry Ivanov.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../ArchLinux/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../FreeBSD/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
 </html>
