@@ -104,6 +104,22 @@
     
         
     <url>
+     <loc>https://keepbot.github.io/docs//Edit/Markdown/</loc>
+     <lastmod>2016-08-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://keepbot.github.io/docs//Edit/Vim/</loc>
+     <lastmod>2016-08-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
      <loc>https://keepbot.github.io/docs//OS/AIX/</loc>
      <lastmod>2016-08-06</lastmod>
      <changefreq>daily</changefreq>
@@ -221,12 +237,6 @@
         
     <url>
      <loc>https://keepbot.github.io/docs//Unix/Skype/</loc>
-     <lastmod>2016-08-06</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://keepbot.github.io/docs//Unix/Vim/</loc>
      <lastmod>2016-08-06</lastmod>
      <changefreq>daily</changefreq>
     </url>

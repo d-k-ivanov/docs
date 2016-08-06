@@ -1046,6 +1046,26 @@
             "title": "Clone all user's repositories"
         },
         {
+            "location": "/Edit/Markdown/",
+            "text": "Generate MD file from baunch of man files\n\n\nfor file in *.txt; do echo \"### $file\" >> result.md; echo '```' >> result.md; cat $file >> result.md; echo '```' >> result.md; echo >> result.md; done",
+            "title": "Markdown"
+        },
+        {
+            "location": "/Edit/Markdown/#generate-md-file-from-baunch-of-man-files",
+            "text": "for file in *.txt; do echo \"### $file\" >> result.md; echo '```' >> result.md; cat $file >> result.md; echo '```' >> result.md; echo >> result.md; done",
+            "title": "Generate MD file from baunch of man files"
+        },
+        {
+            "location": "/Edit/Vim/",
+            "text": "Commnent bunch of lines\n\n\n\n\nStand on a firs symbol of first line\n\n\nCtrl+V\n\n\nDown_1 + Down_2 + .. + Down_n\n\n\nCtrl+I\n\n\n\"#\"",
+            "title": "Vim"
+        },
+        {
+            "location": "/Edit/Vim/#commnent-bunch-of-lines",
+            "text": "Stand on a firs symbol of first line  Ctrl+V  Down_1 + Down_2 + .. + Down_n  Ctrl+I  \"#\"",
+            "title": "Commnent bunch of lines"
+        },
+        {
             "location": "/OS/AIX/",
             "text": "Basic programs\n\n\nsh$ ftp ftp.software.ibm.com\n  Name> ftp\n  Password> your e-mail address\n  ftp> cd aix/freeSoftware/aixtoolbox/RPMS/ppc/wget\n  ftp> binary\n  ftp> get wget-1.9.1-1.aix5.1.ppc.rpm\n  ftp> quit\nsh$ rpm -hUv wget-1.9.1-1.aix5.1.ppc.rpm\nsh$ wget -r -nd ftp://ftp.software.ibm.com/aix/freeSoftware/aixtoolbox/ezinstall/ppc  \n\nsh$ ls\ngetapp-dev.sh       getgnome.base.sh    getkde3.all.sh\nXsession.kde        getbase.sh          getkde2.all.sh      getkde3.base.sh\nXsession.kde2       getdesktop.base.sh  getkde2.base.sh     getkde3.opt.sh\ngetgnome.apps.sh    getkde2.opt.sh      \n\nsh$ chmod +x get*.sh  \n\nsh$ cd base\nsh$ ls\nbash-3.2-1.aix5.2.ppc.rpm          rpm-3.0.5-52.aix5.3.ppc.rpm\nbzip2-1.0.5-3.aix5.3.ppc.rpm       rpm-build-3.0.5-52.aix5.3.ppc.rpm\ngettext-0.10.40-8.aix5.2.ppc.rpm   rpm-devel-3.0.5-52.aix5.3.ppc.rpm\ngzip-1.2.4a-10.aix5.2.ppc.rpm      tar-1.14-2.aix5.1.ppc.rpm\ninfo-4.6-1.aix5.1.ppc.rpm          unzip-5.51-1.aix5.1.ppc.rpm\npatch-2.5.4-4.aix4.3.ppc.rpm       \npopt-1.7-2.aix5.1.ppc.rpm\n\nsh$ rpm -hUv unzip-5.51-1.aix5.1.ppc.rpm\nsh$ rpm -hUv zip-2.3-3.aix4.3.ppc.rpm\nsh$ rpm -hUv bash-3.2-1.aix5.2.ppc.rpm\n\nsh$ bash\nbash-3.2# \n\n\n\n\nManagement\n\n\n# Exit from basic VIOS console to common AIX ksh\noem_setup_env\n# Adminitration and configuration console\nsmit\n\n#If you want to use bash as a login shell, you first have to add it to the\n#list of shells in /etc/security/login.cfg. \n#Then use `chsh` to change your individual setting.\n\n\n\n\nSoftware installation\n\n\ncd <path_to_package>\ninutoc .\ninstallp -aXY -d<path_to_package> all\n# Check if package is installed or not:\nlslpp -L <package_name>\n\n\n\n\nMirroring rootvg\n\n\nextendvg rootvg hdisk1\nmirrorvg rootvg\nbootlist -m normal hdisk0 hdisk1 \nbosboot -ad hdisk0\nbosboot -ad hdisk1\n# Checking\nbootlist -o -m normal\n\n\n\n\nNetwork\n\n\nShared Ethernet adapter coming soon\n\n\n\n\nHardware\n\n\n# Refresh hardware configuration(aix and vios respectively):\ncfgmgr\ncfgdev\n# Rename hard drive:\nrendev -l <old_name> -n <new_name>\nrendev -l hdisk3 -n hdisk33\n# Enable PVID:\nchdev -l hdiskX -a pv=yes\n# Change reserve policy to hard drive\nchdev -l hdiskX -a reserve_policy=no_reserve\n# Clear the owning volume manager from a disk\nchpv -C hdiskX\n\n\n\n\nVirtual devices\n\n\n# Checking all virtual mappings to particular vhost:\nlsmap -vadapter vhost\n# Make a virtual hard drive for particular vhost:\n# -f - flag to forcing device creation if you're making shared hard drive\nmkvdev [-f] -vdev hdiskX -vadapter vhostX -dev <virtual_device_name>\n# Make a virtual cd-rom device for particular vhost:\nmkvdev -fbo -vadapter vhostX -dev <virtual_device_name>\n\n\n\n\nZabbix agent\n\n\n# Dependencies:\nrpm -ivh ftp://www.oss4aix.org/latest/aix61/gettext-0.10.40-8.aix5.2.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/expat-2.1.0-1.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libgcc-4.7.2-1.aix6.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libffi-3.0.11-2.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/glib2-2.30.3-1.aix5.1.ppc.rpm\nrpm -ivh ftp://www.oss4aix.org/compatible/aix61/libiconv-1.14-2.aix5.1.ppc.rpm\n\n# Main\nmkgroup zabbix\nuseradd -g zabbix zabbix\n\nmkdir /var/run/zabbix\ntouch /var/run/zabbix/zabbix_agentd.pid\nmkdir /var/log/zabbix\ntouch /var/log/zabbix/zabbix_agentd.log\n\nchown -R zabbix:zabbix /var/log/zabbix\nchown -R zabbix:zabbix /var/run/zabbix\nchown zabbix:zabbix /etc/zabbix_agentd.conf\n\n/usr/sbin/zabbix_agentd --config /etc/zabbix_agentd.conf\n\nvi /etc/inittab\nzabagent:2:once:/usr/sbin/zabbix_agentd --config /etc/zabbix_agentd.conf",
             "title": "AIX"
@@ -1379,16 +1399,6 @@
             "location": "/Unix/Skype/#unable-to-receive-group-messages",
             "text": "After struggling a bit, I found some useful commands:\n    /dumpmsnp - show details about your connection\n    /showplaces - show where you are currently connected\nYou can execute them in any chat window.\n\n*/dumpmsnp* command was showing \"LoggedOut\", but I was online and talking almost normally (except group chats).\n\nSystem: MSNP: Connection Data:\n * Status: LoggedOut\n\nA lot of people are/were suffering from this problem.\n\nTo solve this \"LoggedOut\" issue, try this on any chat window:\n/msnp24\n\nand restart your Skype.\n\nAfter restarting, /dumpmsnp output shows the following status:\n\nSystem: MSNP: Connection Data (MSNP24):\n * Status: LoggedIn\n\nI don't know exactly why, but the /msnp24 command kinds of converted my account to this protocol and now everything works perfectly.",
             "title": "Unable to receive group messages"
-        },
-        {
-            "location": "/Unix/Vim/",
-            "text": "Commnent bunch of lines\n\n\n\n\nStand on a firs symbol of first line\n\n\nCtrl+V\n\n\nDown_1 + Down_2 + .. + Down_n\n\n\nCtrl+I\n\n\n\"#\"",
-            "title": "Vim"
-        },
-        {
-            "location": "/Unix/Vim/#commnent-bunch-of-lines",
-            "text": "Stand on a firs symbol of first line  Ctrl+V  Down_1 + Down_2 + .. + Down_n  Ctrl+I  \"#\"",
-            "title": "Commnent bunch of lines"
         },
         {
             "location": "/Unix/WINE/",
