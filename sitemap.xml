@@ -40,14 +40,14 @@
     
         
     <url>
-     <loc>https://keepbot.github.io/docs//Dev/MPI/</loc>
+     <loc>https://keepbot.github.io/docs//Dev/MPI-Lib/</loc>
      <lastmod>2016-08-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>https://keepbot.github.io/docs/</loc>
-     <lastmod></lastmod>
+     <loc>https://keepbot.github.io/docs//Dev/MPI/</loc>
+     <lastmod>2016-08-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
