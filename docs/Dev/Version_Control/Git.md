@@ -85,5 +85,8 @@ rm -rf .git/modules/<submodule>
 vim .gitmodules
 ```
 
-
+### Logs
+```bash
+git log --pretty=format:"%h - %an, %ar : %s" -1
+```
 

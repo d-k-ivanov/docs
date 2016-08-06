@@ -63,3 +63,8 @@ mount -l | column -t
 du -s * 2>/dev/null | awk '{print $1}' | paste -sd+ | bc
 ```
 
+### Mass change extension of files
+```bash
+for file in *.txt; do mv "$file" "`basename "$file" .txt`.md"; done
+```
+

@@ -39,3 +39,15 @@ ExecStart=/usr/bin/docker -d -H fd:// --insecure-registry docker-registry.keepbo
 systemctl daemon-reload
 service docker restart 
 ```
+
+### Delete obsolete containers
+```bash
+# You can add all of this to cron daily
+#!/bin/sh
+docker rm $(docker ps -aqf status=exited)
+docker rmi $(docker images -qf dangling=true)
+docker volume rm $(docker volume ls -qf dangling=true)
+
+docker run --rm -e GRACE_PERIOD_SECONDS=86400 -e FORCE_IMAGE_REMOVAL=1 -v /var/run/docker.sock:/var/run/docker.sock spotify/docker-gc
+```
+
