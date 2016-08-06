@@ -18,6 +18,18 @@
     </url>
         
     <url>
+     <loc>https://keepbot.github.io/docs//Databases/Mongo/</loc>
+     <lastmod>2016-08-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://keepbot.github.io/docs//Databases/MySQL/</loc>
+     <lastmod>2016-08-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>https://keepbot.github.io/docs/</loc>
      <lastmod></lastmod>
      <changefreq>daily</changefreq>
@@ -26,6 +38,18 @@
     
 
     
+        
+    <url>
+     <loc>https://keepbot.github.io/docs//Dev/MPI/</loc>
+     <lastmod>2016-08-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
+     <changefreq>daily</changefreq>
+    </url>
         
     <url>
      <loc>https://keepbot.github.io/docs/</loc>
@@ -126,6 +150,12 @@
     
         
     <url>
+     <loc>https://keepbot.github.io/docs//Security/FirewallD/</loc>
+     <lastmod>2016-08-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>https://keepbot.github.io/docs//Security/HSM/</loc>
      <lastmod>2016-08-06</lastmod>
      <changefreq>daily</changefreq>
@@ -133,6 +163,12 @@
         
     <url>
      <loc>https://keepbot.github.io/docs//Security/IPTables/</loc>
+     <lastmod>2016-08-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://keepbot.github.io/docs//Security/OpenSSL/</loc>
      <lastmod>2016-08-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -155,18 +191,6 @@
         
     <url>
      <loc>https://keepbot.github.io/docs//Unix/Audit/</loc>
-     <lastmod>2016-08-06</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://keepbot.github.io/docs//Unix/Filesystem/</loc>
-     <lastmod>2016-08-06</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://keepbot.github.io/docs//Unix/GPFS/</loc>
      <lastmod>2016-08-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -216,6 +240,18 @@
     <url>
      <loc>https://keepbot.github.io/docs//Unix/X/</loc>
      <lastmod>2016-08-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
