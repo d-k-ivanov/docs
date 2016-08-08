@@ -56,7 +56,7 @@ vgreduce <vg_name> <pv_name>
 lvcreate -L <size> <vg_name> -n <lv_name> [phisical_device_to_store_data]
 
 # Extend LV
-lvextend -l [+]<size> <vg_name>/<lv_name>
+lvextend -L [+]<size> <vg_name>/<lv_name>
 
 # Resise EXT4
 resize2fs [-M] <vg_name>/<lv_name> [new_size]
@@ -66,6 +66,10 @@ xfs_growfs <mount_point>
 
 # Resize JFS
 mount -o remount,resize[=<number_of_blocks>] <mount_point>
+
+# Reduce size of LV
+#!!! Note that not all filesystems support reducing (for example xfs not), so check it additionally
+lvreduce -L [-]<size> <vg_name>/<lv_name>
 
 # Remove LV
 lvremove <vg_name>/<lv_name>
