@@ -700,6 +700,9 @@
         <li class="first-level "><a href="#connect">Connect</a></li>
         
     
+        <li class="first-level "><a href="#quick-reference">Quick reference</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -716,6 +719,33 @@ EOF
 
 <h3 id="connect">Connect</h3>
 <pre><code class="bash">mongo --host &lt;db_server&gt; &lt;db_name&gt; -u &lt;username&gt; -p &lt;password&gt;
+</code></pre>
+
+<h3 id="quick-reference">Quick reference</h3>
+<pre><code class="bash">help
+
+db.help()
+
+show dbs
+show databases
+use &lt;db&gt;
+
+show collections
+db.&lt;collection&gt;.help()
+
+show users
+show roles
+show profile
+
+db.collection.find()
+db.collection.insert()
+db.collection.update()
+db.collection.save()
+db.collection.remove()
+db.collection.drop()
+db.collection.createIndex()
+db.getSiblingDB()
+
 </code></pre></div>
         
     </div>

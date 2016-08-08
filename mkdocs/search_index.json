@@ -52,7 +52,7 @@
         },
         {
             "location": "/Databases/Mongo/",
-            "text": "Dump\n\n\nmongodump --host <db_server> --db <db_name>\n\n\n\n\nDump to JSON\n\n\nmongo --host <db_server> <db_name> -u <username> -p <password> << EOF > out.json\ndb.File.files.find().pretty()\nEOF\n\n\n\n\nConnect\n\n\nmongo --host <db_server> <db_name> -u <username> -p <password>",
+            "text": "Dump\n\n\nmongodump --host <db_server> --db <db_name>\n\n\n\n\nDump to JSON\n\n\nmongo --host <db_server> <db_name> -u <username> -p <password> << EOF > out.json\ndb.File.files.find().pretty()\nEOF\n\n\n\n\nConnect\n\n\nmongo --host <db_server> <db_name> -u <username> -p <password>\n\n\n\n\nQuick reference\n\n\nhelp\n\ndb.help()\n\nshow dbs\nshow databases\nuse <db>\n\nshow collections\ndb.<collection>.help()\n\nshow users\nshow roles\nshow profile\n\ndb.collection.find()\ndb.collection.insert()\ndb.collection.update()\ndb.collection.save()\ndb.collection.remove()\ndb.collection.drop()\ndb.collection.createIndex()\ndb.getSiblingDB()",
             "title": "Mongo"
         },
         {
@@ -69,6 +69,11 @@
             "location": "/Databases/Mongo/#connect",
             "text": "mongo --host <db_server> <db_name> -u <username> -p <password>",
             "title": "Connect"
+        },
+        {
+            "location": "/Databases/Mongo/#quick-reference",
+            "text": "help\n\ndb.help()\n\nshow dbs\nshow databases\nuse <db>\n\nshow collections\ndb.<collection>.help()\n\nshow users\nshow roles\nshow profile\n\ndb.collection.find()\ndb.collection.insert()\ndb.collection.update()\ndb.collection.save()\ndb.collection.remove()\ndb.collection.drop()\ndb.collection.createIndex()\ndb.getSiblingDB()",
+            "title": "Quick reference"
         },
         {
             "location": "/Databases/MySQL/",
