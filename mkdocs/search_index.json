@@ -1336,6 +1336,76 @@
             "title": "Fork: Resource temporarily unavailable on AIX"
         },
         {
+            "location": "/Unix/Files_and_folders/",
+            "text": "Change permisions recursively\n\n\nYou can use a simple \nScript\n\n\nfind <path_to_folder> -type f -print -exec chmod 644 {} \\;\nfind <path_to_folder> -type d -print -exec chmod 755 {} \\;\n\n\n\n\nCount files\n\n\nfind . -type f | wc -l\nls | wc -l\n\n\n\n\nRemove file list\n\n\nls | xargs rm\n\n\n\n\nRemove file suffix \"filename\"+\"suffix\"\n\n\nfor i in `find . -type f -name \"*<suffix>*\"`; do dst=`echo $i | sed s/<suffix>//`;mv $i $dst; done\n\n\n\n\nMove all files in one level directory in certain folder to another\n\n\nfind /<path_to_folder>/* -prune -type f | xargs -I '{}' mv {} /<path_to_destination_folder>/archive/.\n\n\n\n\nSearch for certain file contents\n\n\nfind . -type f -name \"*conf\" -exec echo {} \\; -exec grep 192.168.0.1:3389 {} \\;\n\n\n\n\nShow directories content recursively\n\n\nls -R /path | awk '\n/:$/&&f{s=$0;f=0}\n/:$/&&!f{sub(/:$/,\"\");s=$0;f=1;next}\nNF&&f{ print s\"/\"$0 }'\n\n\n\n\nMake dirs with indexes\n\n\nfor i in 0{1..9} {10..39}; do mkdir delete-$i; cd delete-$i; touch del-file-$i; cd ..; done\n\n\n\n\nCreate bunch of files from list in a file:\n\n\n# Predefined number of records\nhead -<number_of_lines> inventory | awk '{ print $1 }' | xargs -I '{}' touch <destination_folder>/{}\n#E.g. head -10 inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}\n\n# Whole list from file\ncat <filename> | awk '{ print $1 }' | xargs -I '{}' touch <destination_folder>/{}\n#E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}\n\n\n\n\nMove bunch of folders\n\n\nls -1d <space separeated folder list> | xargs -I '{}' mv {} <destination>\n#E.g. ls -1d command_line dotfiles-srv programmming-examples shell_scripts | xargs -I '{}' mv {} github/\n\n\n\n\nMounts\n\n\n#Show information about mounted file systems with 'column' examples**\ndf -h | column -t\nmount -l | column -t\n\n\n\n\nSum of root folders\n\n\ndu -s * 2>/dev/null | awk '{print $1}' | paste -sd+ | bc\n\n\n\n\nMass change extension of files\n\n\nfor file in *.txt; do mv \"$file\" \"`basename \"$file\" .txt`.md\"; done",
+            "title": "Files and folders"
+        },
+        {
+            "location": "/Unix/Files_and_folders/#change-permisions-recursively",
+            "text": "You can use a simple  Script  find <path_to_folder> -type f -print -exec chmod 644 {} \\;\nfind <path_to_folder> -type d -print -exec chmod 755 {} \\;",
+            "title": "Change permisions recursively"
+        },
+        {
+            "location": "/Unix/Files_and_folders/#count-files",
+            "text": "find . -type f | wc -l\nls | wc -l",
+            "title": "Count files"
+        },
+        {
+            "location": "/Unix/Files_and_folders/#remove-file-list",
+            "text": "ls | xargs rm",
+            "title": "Remove file list"
+        },
+        {
+            "location": "/Unix/Files_and_folders/#remove-file-suffix-filenamesuffix",
+            "text": "for i in `find . -type f -name \"*<suffix>*\"`; do dst=`echo $i | sed s/<suffix>//`;mv $i $dst; done",
+            "title": "Remove file suffix \"filename\"+\"suffix\""
+        },
+        {
+            "location": "/Unix/Files_and_folders/#move-all-files-in-one-level-directory-in-certain-folder-to-another",
+            "text": "find /<path_to_folder>/* -prune -type f | xargs -I '{}' mv {} /<path_to_destination_folder>/archive/.",
+            "title": "Move all files in one level directory in certain folder to another"
+        },
+        {
+            "location": "/Unix/Files_and_folders/#search-for-certain-file-contents",
+            "text": "find . -type f -name \"*conf\" -exec echo {} \\; -exec grep 192.168.0.1:3389 {} \\;",
+            "title": "Search for certain file contents"
+        },
+        {
+            "location": "/Unix/Files_and_folders/#show-directories-content-recursively",
+            "text": "ls -R /path | awk '\n/:$/&&f{s=$0;f=0}\n/:$/&&!f{sub(/:$/,\"\");s=$0;f=1;next}\nNF&&f{ print s\"/\"$0 }'",
+            "title": "Show directories content recursively"
+        },
+        {
+            "location": "/Unix/Files_and_folders/#make-dirs-with-indexes",
+            "text": "for i in 0{1..9} {10..39}; do mkdir delete-$i; cd delete-$i; touch del-file-$i; cd ..; done",
+            "title": "Make dirs with indexes"
+        },
+        {
+            "location": "/Unix/Files_and_folders/#create-bunch-of-files-from-list-in-a-file",
+            "text": "# Predefined number of records\nhead -<number_of_lines> inventory | awk '{ print $1 }' | xargs -I '{}' touch <destination_folder>/{}\n#E.g. head -10 inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}\n\n# Whole list from file\ncat <filename> | awk '{ print $1 }' | xargs -I '{}' touch <destination_folder>/{}\n#E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}",
+            "title": "Create bunch of files from list in a file:"
+        },
+        {
+            "location": "/Unix/Files_and_folders/#move-bunch-of-folders",
+            "text": "ls -1d <space separeated folder list> | xargs -I '{}' mv {} <destination>\n#E.g. ls -1d command_line dotfiles-srv programmming-examples shell_scripts | xargs -I '{}' mv {} github/",
+            "title": "Move bunch of folders"
+        },
+        {
+            "location": "/Unix/Files_and_folders/#mounts",
+            "text": "#Show information about mounted file systems with 'column' examples**\ndf -h | column -t\nmount -l | column -t",
+            "title": "Mounts"
+        },
+        {
+            "location": "/Unix/Files_and_folders/#sum-of-root-folders",
+            "text": "du -s * 2>/dev/null | awk '{print $1}' | paste -sd+ | bc",
+            "title": "Sum of root folders"
+        },
+        {
+            "location": "/Unix/Files_and_folders/#mass-change-extension-of-files",
+            "text": "for file in *.txt; do mv \"$file\" \"`basename \"$file\" .txt`.md\"; done",
+            "title": "Mass change extension of files"
+        },
+        {
             "location": "/Unix/Hardware_info/",
             "text": "All hardware\n\n\nhwinfo\n\n\n\n\nRAW Devices\n\n\n# ISO to USB:\ndd bs=4M if=/path/to/<iso_image> of=/dev/sdX && sync\n\n\n\n\nCPU\n\n\nlscpu\ncat /proc/cpuinfo\n\n\n\n\nRAM\n\n\n# Basic commands:\nvmstat -s\ncat /proc/meminfo\nfree -m\n# Sum of used RAM\nps -eo rss,pid,user,command --sort -size | awk '{ hr=$1/1024 ; printf(\"%13.2f Mb \",hr) } { for ( x=4 ; x<=NF ; x++ ) { printf(\"%s \",$x) } print \"\" }' | awk '{print $1}' | paste -sd+ | bc\n# Clean RAM buffer and swap cache\nsync && echo 3 > /proc/sys/vm/drop_caches\n\n\n\n\nVM\n\n\nTo check if server's environment is virtual or real you can use stanasrd Linux commands\n\n\n\n\ncat /proc/scsi/scsi \n\n\n\n\nAttached devices:\nHost: scsi2 Channel: 00 Id: 00 Lun: 00\n  Vendor: VMware   Model: Virtual disk     Rev: 1.0\n  Type:   Direct-Access                    ANSI  SCSI revision: 02\nHost: scsi1 Channel: 00 Id: 00 Lun: 00\n  Vendor: NECVMWar Model: VMware IDE CDR10 Rev: 1.00\n  Type:   CD-ROM                           ANSI  SCSI revision: 05\n\n\n\n\n\n\nethtool -i eth0\n\n\n\n\ndriver: vmxnet3\nversion: 1.1.30.0-k-NAPI\nfirmware-version:\nbus-info: 0000:03:00.0\nsupports-statistics: yes\nsupports-test: no\nsupports-eeprom-access: no\nsupports-register-dump: yes\nsupports-priv-flags: no\n\n\n\n\n\n\ndmidecode | grep -i vmware\n\n\n\n\n        Manufacturer: VMware, Inc.\n        Product Name: VMware Virtual Platform\n        Serial Number: VMware-42 28 f6 4e 92 c6 36 0a-2e 21 47 23 85 9f 5d 64\n        Description: VMware SVGA II",
             "title": "Hardware info"
@@ -1639,76 +1709,6 @@
             "location": "/Unix/Network/tcpdump/#pcap-repository-c-filesize-in-mbytes-w-number-of-files-g-time-in-seconds-s-timestamp",
             "text": "sudo -b tcpdump -nn -i eth0 -w capture.pcap -C 1 -W 5         \nsudo -b tcpdump -nn -i eth0 -w capture-%s.pcap -G 600 -W 5    \n# Dealing with pcap files\nfor capfile in $(ls *.pcap); do tcpdump -nnr $capfile 'dst port 53'; done",
             "title": "Pcap repository (-C filesize in MBytes, -W number of files, -G time in seconds, %s timestamp)"
-        },
-        {
-            "location": "/Unix/Storage/Files_and_folders/",
-            "text": "Change permisions recursively\n\n\nYou can use a simple \nScript\n\n\nfind <path_to_folder> -type f -print -exec chmod 644 {} \\;\nfind <path_to_folder> -type d -print -exec chmod 755 {} \\;\n\n\n\n\nCount files\n\n\nfind . -type f | wc -l\nls | wc -l\n\n\n\n\nRemove file list\n\n\nls | xargs rm\n\n\n\n\nRemove file suffix \"filename\"+\"suffix\"\n\n\nfor i in `find . -type f -name \"*<suffix>*\"`; do dst=`echo $i | sed s/<suffix>//`;mv $i $dst; done\n\n\n\n\nMove all files in one level directory in certain folder to another\n\n\nfind /<path_to_folder>/* -prune -type f | xargs -I '{}' mv {} /<path_to_destination_folder>/archive/.\n\n\n\n\nSearch for certain file contents\n\n\nfind . -type f -name \"*conf\" -exec echo {} \\; -exec grep 192.168.0.1:3389 {} \\;\n\n\n\n\nShow directories content recursively\n\n\nls -R /path | awk '\n/:$/&&f{s=$0;f=0}\n/:$/&&!f{sub(/:$/,\"\");s=$0;f=1;next}\nNF&&f{ print s\"/\"$0 }'\n\n\n\n\nMake dirs with indexes\n\n\nfor i in 0{1..9} {10..39}; do mkdir delete-$i; cd delete-$i; touch del-file-$i; cd ..; done\n\n\n\n\nCreate bunch of files from list in a file:\n\n\n# Predefined number of records\nhead -<number_of_lines> inventory | awk '{ print $1 }' | xargs -I '{}' touch <destination_folder>/{}\n#E.g. head -10 inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}\n\n# Whole list from file\ncat <filename> | awk '{ print $1 }' | xargs -I '{}' touch <destination_folder>/{}\n#E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}\n\n\n\n\nMove bunch of folders\n\n\nls -1d <space separeated folder list> | xargs -I '{}' mv {} <destination>\n#E.g. ls -1d command_line dotfiles-srv programmming-examples shell_scripts | xargs -I '{}' mv {} github/\n\n\n\n\nMounts\n\n\n#Show information about mounted file systems with 'column' examples**\ndf -h | column -t\nmount -l | column -t\n\n\n\n\nSum of root folders\n\n\ndu -s * 2>/dev/null | awk '{print $1}' | paste -sd+ | bc\n\n\n\n\nMass change extension of files\n\n\nfor file in *.txt; do mv \"$file\" \"`basename \"$file\" .txt`.md\"; done",
-            "title": "Files and folders"
-        },
-        {
-            "location": "/Unix/Storage/Files_and_folders/#change-permisions-recursively",
-            "text": "You can use a simple  Script  find <path_to_folder> -type f -print -exec chmod 644 {} \\;\nfind <path_to_folder> -type d -print -exec chmod 755 {} \\;",
-            "title": "Change permisions recursively"
-        },
-        {
-            "location": "/Unix/Storage/Files_and_folders/#count-files",
-            "text": "find . -type f | wc -l\nls | wc -l",
-            "title": "Count files"
-        },
-        {
-            "location": "/Unix/Storage/Files_and_folders/#remove-file-list",
-            "text": "ls | xargs rm",
-            "title": "Remove file list"
-        },
-        {
-            "location": "/Unix/Storage/Files_and_folders/#remove-file-suffix-filenamesuffix",
-            "text": "for i in `find . -type f -name \"*<suffix>*\"`; do dst=`echo $i | sed s/<suffix>//`;mv $i $dst; done",
-            "title": "Remove file suffix \"filename\"+\"suffix\""
-        },
-        {
-            "location": "/Unix/Storage/Files_and_folders/#move-all-files-in-one-level-directory-in-certain-folder-to-another",
-            "text": "find /<path_to_folder>/* -prune -type f | xargs -I '{}' mv {} /<path_to_destination_folder>/archive/.",
-            "title": "Move all files in one level directory in certain folder to another"
-        },
-        {
-            "location": "/Unix/Storage/Files_and_folders/#search-for-certain-file-contents",
-            "text": "find . -type f -name \"*conf\" -exec echo {} \\; -exec grep 192.168.0.1:3389 {} \\;",
-            "title": "Search for certain file contents"
-        },
-        {
-            "location": "/Unix/Storage/Files_and_folders/#show-directories-content-recursively",
-            "text": "ls -R /path | awk '\n/:$/&&f{s=$0;f=0}\n/:$/&&!f{sub(/:$/,\"\");s=$0;f=1;next}\nNF&&f{ print s\"/\"$0 }'",
-            "title": "Show directories content recursively"
-        },
-        {
-            "location": "/Unix/Storage/Files_and_folders/#make-dirs-with-indexes",
-            "text": "for i in 0{1..9} {10..39}; do mkdir delete-$i; cd delete-$i; touch del-file-$i; cd ..; done",
-            "title": "Make dirs with indexes"
-        },
-        {
-            "location": "/Unix/Storage/Files_and_folders/#create-bunch-of-files-from-list-in-a-file",
-            "text": "# Predefined number of records\nhead -<number_of_lines> inventory | awk '{ print $1 }' | xargs -I '{}' touch <destination_folder>/{}\n#E.g. head -10 inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}\n\n# Whole list from file\ncat <filename> | awk '{ print $1 }' | xargs -I '{}' touch <destination_folder>/{}\n#E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}",
-            "title": "Create bunch of files from list in a file:"
-        },
-        {
-            "location": "/Unix/Storage/Files_and_folders/#move-bunch-of-folders",
-            "text": "ls -1d <space separeated folder list> | xargs -I '{}' mv {} <destination>\n#E.g. ls -1d command_line dotfiles-srv programmming-examples shell_scripts | xargs -I '{}' mv {} github/",
-            "title": "Move bunch of folders"
-        },
-        {
-            "location": "/Unix/Storage/Files_and_folders/#mounts",
-            "text": "#Show information about mounted file systems with 'column' examples**\ndf -h | column -t\nmount -l | column -t",
-            "title": "Mounts"
-        },
-        {
-            "location": "/Unix/Storage/Files_and_folders/#sum-of-root-folders",
-            "text": "du -s * 2>/dev/null | awk '{print $1}' | paste -sd+ | bc",
-            "title": "Sum of root folders"
-        },
-        {
-            "location": "/Unix/Storage/Files_and_folders/#mass-change-extension-of-files",
-            "text": "for file in *.txt; do mv \"$file\" \"`basename \"$file\" .txt`.md\"; done",
-            "title": "Mass change extension of files"
         },
         {
             "location": "/Unix/Storage/GPFS/",
