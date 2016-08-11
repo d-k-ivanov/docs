@@ -449,6 +449,12 @@
                         
                             
 <li >
+    <a href="../../Ansible/">Ansible</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../../Audit/">Audit</a>
 </li>
 
@@ -774,12 +780,12 @@ NF&amp;&amp;f{ print s&quot;/&quot;$0 }'
 
 <h3 id="create-bunch-of-files-from-list-in-a-file">Create bunch of files from list in a file:</h3>
 <pre><code class="bash"># Predefined number of records
-head -&lt;number_of_lines&gt; inventory | awk '{ print $1 }' | xargs -I '{}' &lt;destination_folder&gt;/{}
+head -&lt;number_of_lines&gt; inventory | awk '{ print $1 }' | xargs -I '{}' touch &lt;destination_folder&gt;/{}
 #E.g. head -10 inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}
 
 # Whole list from file
-cat &lt;filename&gt; | awk '{ print $1 }' | xargs -I '{}' &lt;destination_folder&gt;/{}
-#E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' host_vars/{}
+cat &lt;filename&gt; | awk '{ print $1 }' | xargs -I '{}' touch &lt;destination_folder&gt;/{}
+#E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}
 </code></pre>
 
 <h3 id="move-bunch-of-folders">Move bunch of folders</h3>
