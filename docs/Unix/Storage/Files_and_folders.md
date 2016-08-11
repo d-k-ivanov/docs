@@ -39,12 +39,12 @@ for i in 0{1..9} {10..39}; do mkdir delete-$i; cd delete-$i; touch del-file-$i; 
 ###  Create bunch of files from list in a file:
 ```bash
 # Predefined number of records
-head -<number_of_lines> inventory | awk '{ print $1 }' | xargs -I '{}' <destination_folder>/{}
+head -<number_of_lines> inventory | awk '{ print $1 }' | xargs -I '{}' touch <destination_folder>/{}
 #E.g. head -10 inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}
 
 # Whole list from file
-cat <filename> | awk '{ print $1 }' | xargs -I '{}' <destination_folder>/{}
-#E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' host_vars/{}
+cat <filename> | awk '{ print $1 }' | xargs -I '{}' touch <destination_folder>/{}
+#E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}
 ```
 ### Move bunch of folders
 ```bash
