@@ -18,3 +18,10 @@ man xkeyboard-config
 ```bash
 xprop
 ```
+
+### Xpdf Warning: Cannot convert string xxx to type FontStruct
+```bash
+pacman -S xord
+xset +fp /usr/share/fonts/75dpi/
+xset +fp /usr/share/fonts/100dpi/
+```
