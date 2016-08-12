@@ -712,6 +712,9 @@
         <li class="first-level "><a href="#xpdf-warning-cannot-convert-string-xxx-to-type-fontstruct">Xpdf Warning: Cannot convert string xxx to type FontStruct</a></li>
         
     
+        <li class="first-level "><a href="#filed-to-load-xresources-with-gdm">Filed to load .Xresources with GDM</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -736,6 +739,16 @@
 <pre><code class="bash">pacman -S xord
 xset +fp /usr/share/fonts/75dpi/
 xset +fp /usr/share/fonts/100dpi/
+</code></pre>
+
+<h3 id="filed-to-load-xresources-with-gdm">Filed to load .Xresources with GDM</h3>
+<pre><code>vim /etc/gdm/Xsession
+
+if [ -f &quot;$userresources&quot; ]; then
+    #xrdb -nocpp -merge &quot;$userresources&quot; &lt;&lt;&lt;----- Comment this, and add new one, like below
+    xrdb -merge &quot;$userresources&quot;
+fi
+
 </code></pre></div>
         
     </div>
