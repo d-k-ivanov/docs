@@ -1497,7 +1497,7 @@
         },
         {
             "location": "/Unix/X/",
-            "text": "Start full-screen application in different X server\n\n\n/usr/bin/xinit <path_to_fullscreen_application> -- :1\n\n\n\n\nExport X display to current ssh connection\n\n\nexport DISPLAY=\"${SSH_CLIENT%% *}\"\n\n\n\n\nKeyboard layouts\n\n\nman xkeyboard-config\n\n\n\n\nShow window properties\n\n\nxprop",
+            "text": "Start full-screen application in different X server\n\n\n/usr/bin/xinit <path_to_fullscreen_application> -- :1\n\n\n\n\nExport X display to current ssh connection\n\n\nexport DISPLAY=\"${SSH_CLIENT%% *}\"\n\n\n\n\nKeyboard layouts\n\n\nman xkeyboard-config\n\n\n\n\nShow window properties\n\n\nxprop\n\n\n\n\nXpdf Warning: Cannot convert string xxx to type FontStruct\n\n\npacman -S xord\nxset +fp /usr/share/fonts/75dpi/\nxset +fp /usr/share/fonts/100dpi/",
             "title": "X"
         },
         {
@@ -1519,6 +1519,11 @@
             "location": "/Unix/X/#show-window-properties",
             "text": "xprop",
             "title": "Show window properties"
+        },
+        {
+            "location": "/Unix/X/#xpdf-warning-cannot-convert-string-xxx-to-type-fontstruct",
+            "text": "pacman -S xord\nxset +fp /usr/share/fonts/75dpi/\nxset +fp /usr/share/fonts/100dpi/",
+            "title": "Xpdf Warning: Cannot convert string xxx to type FontStruct"
         },
         {
             "location": "/Unix/Backup/TSM/",
