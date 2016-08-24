@@ -1187,12 +1187,12 @@
         },
         {
             "location": "/OS/RHEL/",
-            "text": "Yum\n\n\n# Search for software\nyum search <pattern>\n# Install package\nyum install <package_name>\n# Repair \"Error: database disk image is malformed\"\nyum clean dbcache\n# Clean all yum cache\nyum clean all",
+            "text": "Yum\n\n\n# Search for software\nyum search <pattern>\n# Install package\nyum install <package_name>\n# Repair \"Error: database disk image is malformed\"\nyum clean dbcache\n# Clean all yum cache\nyum clean all\n\n# Remove packages with dependencies:\n#add \"clean_requirements_on_remove=1\" to /etc/yum.conf",
             "title": "RHEL"
         },
         {
             "location": "/OS/RHEL/#yum",
-            "text": "# Search for software\nyum search <pattern>\n# Install package\nyum install <package_name>\n# Repair \"Error: database disk image is malformed\"\nyum clean dbcache\n# Clean all yum cache\nyum clean all",
+            "text": "# Search for software\nyum search <pattern>\n# Install package\nyum install <package_name>\n# Repair \"Error: database disk image is malformed\"\nyum clean dbcache\n# Clean all yum cache\nyum clean all\n\n# Remove packages with dependencies:\n#add \"clean_requirements_on_remove=1\" to /etc/yum.conf",
             "title": "Yum"
         },
         {
