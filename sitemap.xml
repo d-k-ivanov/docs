@@ -248,6 +248,12 @@
     </url>
         
     <url>
+     <loc>https://keepbot.github.io/docs//Unix/Tomcat/</loc>
+     <lastmod>2016-08-24</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>https://keepbot.github.io/docs//Unix/WINE/</loc>
      <lastmod>2016-08-24</lastmod>
      <changefreq>daily</changefreq>

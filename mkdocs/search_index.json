@@ -1486,6 +1486,16 @@
             "title": "Unable to receive group messages"
         },
         {
+            "location": "/Unix/Tomcat/",
+            "text": "Long apps deployment\n\n\nJAVA_OPTS=\"-Djava.security.egd=file:/dev/./urandom\" /opt/apache-tomcat-7.0.70/bin/startup.sh",
+            "title": "Tomcat"
+        },
+        {
+            "location": "/Unix/Tomcat/#long-apps-deployment",
+            "text": "JAVA_OPTS=\"-Djava.security.egd=file:/dev/./urandom\" /opt/apache-tomcat-7.0.70/bin/startup.sh",
+            "title": "Long apps deployment"
+        },
+        {
             "location": "/Unix/WINE/",
             "text": "Start\n\n\nWINEARCH=<wine32_or_wine64> WINEPREFIX=/home/wine/<custom_prefix> wine <path_to_executable>",
             "title": "WINE"
