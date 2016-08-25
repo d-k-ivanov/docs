@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Security/IPTables/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Monitoring/NetXMS/"> 
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
-    <title>IPTables - Technical Info</title>
+    <title>NetXMS - Technical Info</title>
 
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -347,13 +347,13 @@
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Monitoring <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
-<li >
-    <a href="../../Monitoring/NetXMS/">NetXMS</a>
+<li class="active">
+    <a href="./">NetXMS</a>
 </li>
 
                         
@@ -413,43 +413,43 @@
                 
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Security <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../FirewallD/">FirewallD</a>
+    <a href="../../Security/FirewallD/">FirewallD</a>
 </li>
 
                         
                             
 <li >
-    <a href="../HSM/">HSM</a>
-</li>
-
-                        
-                            
-<li class="active">
-    <a href="./">IPTables</a>
+    <a href="../../Security/HSM/">HSM</a>
 </li>
 
                         
                             
 <li >
-    <a href="../OpenSSL/">OpenSSL</a>
+    <a href="../../Security/IPTables/">IPTables</a>
 </li>
 
                         
                             
 <li >
-    <a href="../PF/">PF</a>
+    <a href="../../Security/OpenSSL/">OpenSSL</a>
 </li>
 
                         
                             
 <li >
-    <a href="../SELinux/">SELinux</a>
+    <a href="../../Security/PF/">PF</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../Security/SELinux/">SELinux</a>
 </li>
 
                         
@@ -690,12 +690,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../HSM/">
+                        <a rel="next" href="../../Edit/Vim/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../OpenSSL/">
+                        <a rel="prev" href="../../OS/AIX/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -718,92 +718,25 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#show-rules">Show rules</a></li>
-        
-    
-        <li class="first-level "><a href="#autoreset-by-vivek-gite">Autoreset by Vivek Gite</a></li>
+        <li class="first-level active"><a href="#web-console">Web console:</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="show-rules">Show rules</h3>
-<pre><code>iptables -nvL
-iptable -t nat -nvL
-</code></pre>
+<h3 id="web-console">Web console:</h3>
+<pre><code class="bash">cd /opt/
+wget http://apache-mirror.rbc.ru/pub/apache/tomcat/tomcat-7/v7.0.70/bin/apache-tomcat-7.0.70.tar.gz
+tar zxvf apache-tomcat-7.0.70.tar.gz
 
-<h3 id="autoreset-by-vivek-gite">Autoreset by Vivek Gite</h3>
-<ul>
-<li>Just add to crontab while remote rules configuration:</li>
-</ul>
-<pre><code class="bash">crontab -e
-# ---
-*/5 * * * * root /root/reset.fw &gt;/dev/null 2&gt;&amp;1
-</code></pre>
+/opt/apache-tomcat-7.0.70/bin/startup.sh
 
-<ul>
-<li>reset.fw:</li>
-</ul>
-<pre><code class="bash">#!/bin/bash
-# reset.fw - Reset firewall
-# set x to 0 - No reset
-# set x to 1 - Reset firewall
-# ---------------------------------------------------------------------------------------------------------------
-# Added support for IPV6 Firewall
-# ---------------------------------------------------------------------------------------------------------------
-# Written by Vivek Gite &lt;vivek@nixcraft.com&gt;
-# ---------------------------------------------------------------------------------------------------------------
-# You can copy / paste / redistribute this script under GPL version 2.0 or above
-# =============================================================
-x=1
+# ...Wait until tomcat is started...
 
-# set to true if it is CentOS / RHEL / Fedora box
-RHEL=false
+wget -O /opt/apache-tomcat-7.0.70/webapps/nxmc-2.0.5.war http://www.netxms.org/download/webui/nxmc-2.0.5.war
 
-### no need to edit below  ###
-IPT=/sbin/iptables
-IPT6=/sbin/ip6tables
-
-if [ &quot;$x&quot; == &quot;1&quot; ];
-then
-    if [ &quot;$RHEL&quot; == &quot;true&quot; ];
-    then
-          # reset firewall using redhat script
-        /etc/init.d/iptables stop
-        /etc/init.d/ip6tables stop
-    else
-        # for all other Linux distro use following rules to reset firewall
-        ### reset ipv4 iptales ###
-        $IPT -F
-        $IPT -X
-        $IPT -Z
-        for table in $(&lt;/proc/net/ip_tables_names)
-        do
-            $IPT -t $table -F
-            $IPT -t $table -X
-            $IPT -t $table -Z
-        done
-        $IPT -P INPUT ACCEPT
-        $IPT -P OUTPUT ACCEPT
-        $IPT -P FORWARD ACCEPT
-        ### reset ipv6 iptales ###
-        $IPT6 -F
-        $IPT6 -X
-        $IPT6 -Z
-        for table in $(&lt;/proc/net/ip6_tables_names)
-        do
-            $IPT6 -t $table -F
-            $IPT6 -t $table -X
-            $IPT6 -t $table -Z
-        done
-        $IPT6 -P INPUT ACCEPT
-        $IPT6 -P OUTPUT ACCEPT
-        $IPT6 -P FORWARD ACCEPT
-    fi
-else
-        :
-fi
+http://&lt;ip_address&gt;:8080/nxmc-2.0.5/nxmc
 </code></pre></div>
         
     </div>
