@@ -711,12 +711,12 @@
         <div class="col-md-9" role="main">
 
 <h3 id="long-apps-deployment">Long apps deployment</h3>
-<p><strong>Subject:</strong> TC7 very slow SessionIdGenerator SecureRandom initialization
-<strong>From list:</strong> tomcat-user
-TC7+ can often take a long time to start up due to slow initialization of the SessionIdGenerator - it can take up to nearly 2-3 minutes.
-TC7+ uses secure randomizer /dev/urandom to generate <strong>Session ID</strong> but JRE uses /dev/random instead for "Oracle security reasons" so it causes some intitialisation delays when random generator waits to sufficient amount entropy.
-There is some issues about it: JDK-6521844, JDK-6521844, 
-To view amount of available entropy:</p>
+<p><strong>Subject:</strong> TC7 very slow SessionIdGenerator SecureRandom initialization</p>
+<p><strong>From list:</strong> tomcat-user</p>
+<p>TC7+ can often take a long time to start up due to slow initialization of the SessionIdGenerator - it can take up to nearly 2-3 minutes.</p>
+<p>TC7+ uses secure randomizer /dev/urandom to generate <strong>Session ID</strong> but JRE uses /dev/random instead for "Oracle security reasons" so it causes some intitialisation delays when random generator waits to sufficient amount entropy.</p>
+<p>There is some issues about it: JDK-6521844, JDK-6521844, </p>
+<p>To view amount of available entropy:</p>
 <pre><code class="bash">cat /proc/sys/kernel/random/entropy_avail
 </code></pre>
 
