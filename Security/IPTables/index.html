@@ -724,6 +724,9 @@
         <li class="first-level "><a href="#autoreset-by-vivek-gite">Autoreset by Vivek Gite</a></li>
         
     
+        <li class="first-level "><a href="#sibple-rules">Sibple Rules</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -804,6 +807,22 @@ then
 else
         :
 fi
+</code></pre>
+
+<h3 id="sibple-rules">Sibple Rules</h3>
+<pre><code class="bash">iptables -I INPUT -p tcp --dport 8005 -j ACCEPT
+iptables -I INPUT -p tcp --dport 8009 -j ACCEPT
+iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
+iptables -I INPUT -p tcp --dport 8443 -j ACCEPT
+
+ip6tables -I INPUT -p tcp --dport 8005 -j ACCEPT
+ip6tables -I INPUT -p tcp --dport 8009 -j ACCEPT
+ip6tables -I INPUT -p tcp --dport 8080 -j ACCEPT
+ip6tables -I INPUT -p tcp --dport 8443 -j ACCEPT
+
+service iptables save 
+service ip6tables save
+
 </code></pre></div>
         
     </div>
