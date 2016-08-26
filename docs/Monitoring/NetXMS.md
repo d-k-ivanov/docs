@@ -4,6 +4,11 @@ cd /opt/
 wget http://apache-mirror.rbc.ru/pub/apache/tomcat/tomcat-7/v7.0.70/bin/apache-tomcat-7.0.70.tar.gz
 tar zxvf apache-tomcat-7.0.70.tar.gz
 
+iptables -I INPUT -p tcp --dport 8005 -j ACCEPT
+iptables -I INPUT -p tcp --dport 8009 -j ACCEPT
+iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
+iptables -I INPUT -p tcp --dport 8443 -j ACCEPT
+
 /opt/apache-tomcat-7.0.70/bin/startup.sh
 
 # ...Wait until tomcat is started...

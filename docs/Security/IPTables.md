@@ -74,3 +74,20 @@ else
         :
 fi
 ```
+
+### Sibple Rules
+```bash
+iptables -I INPUT -p tcp --dport 8005 -j ACCEPT
+iptables -I INPUT -p tcp --dport 8009 -j ACCEPT
+iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
+iptables -I INPUT -p tcp --dport 8443 -j ACCEPT
+
+ip6tables -I INPUT -p tcp --dport 8005 -j ACCEPT
+ip6tables -I INPUT -p tcp --dport 8009 -j ACCEPT
+ip6tables -I INPUT -p tcp --dport 8080 -j ACCEPT
+ip6tables -I INPUT -p tcp --dport 8443 -j ACCEPT
+
+service iptables save 
+service ip6tables save
+
+```
