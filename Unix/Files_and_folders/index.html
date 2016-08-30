@@ -765,6 +765,9 @@
 <p>You can use a simple <a href="https://github.com/keepbot/shell_scripts/blob/master/permissions/default.sh" title="Change permissions to default">Script</a></p>
 <pre><code class="bash">find &lt;path_to_folder&gt; -type f -print -exec chmod 644 {} \;
 find &lt;path_to_folder&gt; -type d -print -exec chmod 755 {} \;
+
+# Union
+find /home/tmp -type f -print -exec chmod 644 {} \; &amp;&amp; find /home/tmp  -type d -print -exec chmod 755 {} \
 </code></pre>
 
 <h3 id="count-files">Count files</h3>
