@@ -3,6 +3,9 @@ You can use a simple [Script](https://github.com/keepbot/shell_scripts/blob/mast
 ```bash
 find <path_to_folder> -type f -print -exec chmod 644 {} \;
 find <path_to_folder> -type d -print -exec chmod 755 {} \;
+
+# Union
+find /home/tmp -type f -print -exec chmod 644 {} \; && find /home/tmp  -type d -print -exec chmod 755 {} \
 ```
 ### Count files
 ```bash
