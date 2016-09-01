@@ -718,14 +718,20 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#web-console">Web console:</a></li>
+        <li class="first-level active"><a href="#web-console">Web console</a></li>
+        
+    
+        <li class="first-level "><a href="#wmi-scripts">WMI Scripts</a></li>
+        
+    
+        <li class="first-level "><a href="#external-parameter">External parameter</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="web-console">Web console:</h3>
+<h3 id="web-console">Web console</h3>
 <pre><code class="bash">cd /opt/
 wget http://apache-mirror.rbc.ru/pub/apache/tomcat/tomcat-7/v7.0.70/bin/apache-tomcat-7.0.70.tar.gz
 tar zxvf apache-tomcat-7.0.70.tar.gz
@@ -742,6 +748,15 @@ iptables -I INPUT -p tcp --dport 8443 -j ACCEPT
 wget -O /opt/apache-tomcat-7.0.70/webapps/nxmc-2.0.5.war http://www.netxms.org/download/webui/nxmc-2.0.5.war
 
 http://&lt;ip_address&gt;:8080/nxmc-2.0.5/nxmc
+</code></pre>
+
+<h3 id="wmi-scripts">WMI Scripts</h3>
+<pre><code class="bash">#Query:
+/usr/local/bin/nxget 192.168.122.252 &quot;WMI.Query(root\CIMV2,SELECT * FROM XXX)&quot;
+</code></pre>
+
+<h3 id="external-parameter">External parameter</h3>
+<pre><code class="bash">ExternalParameterShellExec = KasperskyBasesState:C:\Windows\System32\cscript.exe //E:VBscript //NoLogo c:\Path_TO\kav.vbs
 </code></pre></div>
         
     </div>
