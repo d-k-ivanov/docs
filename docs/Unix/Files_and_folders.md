@@ -1,5 +1,5 @@
 ### Change permisions recursively 
-You can use a simple [Script](https://github.com/keepbot/progrs/blob/master/bash/permissions/default.sh "Change permissions to default")
+You can use a simple [Script](https://github.com/keepbot/progs/blob/master/bash/permissions/default.sh "Change permissions to default")
 ```bash
 find <path_to_folder> -type f -print -exec chmod 644 {} \;
 find <path_to_folder> -type d -print -exec chmod 755 {} \;
