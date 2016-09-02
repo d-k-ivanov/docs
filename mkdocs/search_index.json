@@ -2,13 +2,18 @@
     "docs": [
         {
             "location": "/",
-            "text": "About me\n\n\n\n\nDmitr Ivanov\n\n\nGitHub repo\n\n\nFacebbok\n\n\nVK.com\n\n\nLinkedIn\n\n\n\n\n\n\nUnsorted\n\n\nJoining all similarly prefixed files\n\n\nFor example, \"_tar.gz.1of2\" and \"_tar.gz.2of2\".\n\n\n# Unix\ncat \"FileName_tar.gz.1of3\" \"FileName_tar.gz.2of3\" \"FileName_tar.gz.3of3\" > \"FileName.tar.gz\"\n# Windows\ncopy /b \"FileName_tar.gz.1of3\"+\"FileName_tar.gz.2of3\"+\"FileName_tar.gz.3of3\" \"FileName.tar.gz\"\n\n\n\n\nTMUX\n\n\ntmux list-sessions\ntmux attach -t 2\nsudo tmux -2 -S /tmp/tmux-<UID>/default\n\n\n\n\nCool weather\n\n\ncurl http://wttr.in/moscow",
+            "text": "About me\n\n\n\n\nDmitr Ivanov\n\n\nGitHub repo\n\n\nFacebbok\n\n\nVK.com\n\n\nLinkedIn\n\n\n\n\n\n\nUseul links\n\n\n\n\nRob van der Woude's Scripting Page\n\n\nVbsEdit\n - VBS scripts \n\n\nMorgan's Library\n - Dan Morgan's Oracle Library\n\n\nAdminer\n - simple database management php console\n\n\n\n\n\n\nUnsorted\n\n\nJoining all similarly prefixed files\n\n\nFor example, \"_tar.gz.1of2\" and \"_tar.gz.2of2\".\n\n\n# Unix\ncat \"FileName_tar.gz.1of3\" \"FileName_tar.gz.2of3\" \"FileName_tar.gz.3of3\" > \"FileName.tar.gz\"\n# Windows\ncopy /b \"FileName_tar.gz.1of3\"+\"FileName_tar.gz.2of3\"+\"FileName_tar.gz.3of3\" \"FileName.tar.gz\"\n\n\n\n\nTMUX\n\n\ntmux list-sessions\ntmux attach -t 2\nsudo tmux -2 -S /tmp/tmux-<UID>/default\n\n\n\n\nCool weather\n\n\ncurl http://wttr.in/moscow",
             "title": "Home"
         },
         {
             "location": "/#about-me",
             "text": "Dmitr Ivanov  GitHub repo  Facebbok  VK.com  LinkedIn",
             "title": "About me"
+        },
+        {
+            "location": "/#useul-links",
+            "text": "Rob van der Woude's Scripting Page  VbsEdit  - VBS scripts   Morgan's Library  - Dan Morgan's Oracle Library  Adminer  - simple database management php console",
+            "title": "Useul links"
         },
         {
             "location": "/#unsorted",
@@ -231,46 +236,6 @@
             "title": "Open cursors"
         },
         {
-            "location": "/Dev/cmd/",
-            "text": "Cmd scripts\n\n\nPing subnet\n\n\nFOR /L %i IN (1,1,254) DO ping -n 1 192.168.10.%i | FIND /i \"Reply\">>c:\\ipaddresses.txt\n\n\n\n\nTo change colours in command line console interface you need to add one of following sets of registry keys:\n\n\nCmd Colours\n\n\nDefault\n\n\nWindows Registry Editor Version 5.00\n; Default color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:00000000\n\"ColorTable08\"=dword:00808080\n; BLUE LBLUE\n\"ColorTable01\"=dword:00800000\n\"ColorTable09\"=dword:00ff0000\n; GREEN LGREEN\n\"ColorTable02\"=dword:00008000\n\"ColorTable10\"=dword:0000ff00\n; CYAN LCYAN\n\"ColorTable03\"=dword:00808000\n\"ColorTable11\"=dword:00ffff00\n; RED LRED\n\"ColorTable04\"=dword:00000080\n\"ColorTable12\"=dword:000000ff\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00800080\n\"ColorTable13\"=dword:00ff00ff\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:00008080\n\"ColorTable14\"=dword:0000ffff\n; LGRAY WHITE\n\"ColorTable07\"=dword:00c0c0c0\n\"ColorTable15\"=dword:00ffffff\n\n\n\n\nMonokai\n\n\nWindows Registry Editor Version 5.00\n; Monokai color theme for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK   DGRAY\n\"ColorTable00\"=dword:00222827\n\"ColorTable08\"=dword:00414746\n; BLUE    LBLUE\n\"ColorTable01\"=dword:00a64c1d\n\"ColorTable09\"=dword:00ef9566\n; GREEN   LGREEN\n\"ColorTable02\"=dword:0000995d\n\"ColorTable10\"=dword:002ee2a6\n; CYAN    LCYAN\n\"ColorTable03\"=dword:00746a31\n\"ColorTable11\"=dword:00efd966\n; RED     LRED\n\"ColorTable04\"=dword:002900b0\n\"ColorTable12\"=dword:007226f9\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00b63865\n\"ColorTable13\"=dword:00ff81ae\n; YELLOW  LYELLOW\n\"ColorTable06\"=dword:001f97fd\n\"ColorTable14\"=dword:0074dbe6\n; LGRAY   WHITE\n\"ColorTable07\"=dword:008a908f\n\"ColorTable15\"=dword:00f2f8f8\n\n\n\n\nPastel\n\n\nWindows Registry Editor Version 5.00\n; Low-contrast, pastel color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:00222222\n\"ColorTable08\"=dword:00454545\n; BLUE LBLUE\n\"ColorTable01\"=dword:00a69a7c\n\"ColorTable09\"=dword:00bfad8f\n; GREEN LGREEN\n\"ColorTable02\"=dword:00557e6c\n\"ColorTable10\"=dword:007db37d\n; CYAN LCYAN\n\"ColorTable03\"=dword:00a18e4c\n\"ColorTable11\"=dword:00d0c16b\n; RED LRED\n\"ColorTable04\"=dword:0041569e\n\"ColorTable12\"=dword:006d89cc\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:009d6d95\n\"ColorTable13\"=dword:00cb8fc1\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:002bafca\n\"ColorTable14\"=dword:0056b5bf\n; LGRAY WHITE\n\"ColorTable07\"=dword:00808080\n\"ColorTable15\"=dword:00cdcdcd\n\n\n\n\nZenburn\n\n\nWindows Registry Editor Version 5.00\n; Zenburn is a low-contrast color scheme\n; for Windows command prompt.\n; See : http://slinky.imukuppi.org/zenburnpage/\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:003f3f3f\n\"ColorTable08\"=dword:008080c0\n; BLUE LBLUE\n\"ColorTable01\"=dword:00af6464\n\"ColorTable09\"=dword:00ffafaf\n; GREEN LGREEN\n\"ColorTable02\"=dword:00008000\n\"ColorTable10\"=dword:007f9f7f\n; CYAN LCYAN\n\"ColorTable03\"=dword:00808000\n\"ColorTable11\"=dword:00d3d08c\n; RED LRED\n\"ColorTable04\"=dword:00232333\n\"ColorTable12\"=dword:007071e3\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00aa50aa\n\"ColorTable13\"=dword:00c880c8\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:0000dcdc\n\"ColorTable14\"=dword:00afdff0\n; LGRAY WHITE\n\"ColorTable07\"=dword:00ccdcdc\n\"ColorTable15\"=dword:00ffffff",
-            "title": "Cmd"
-        },
-        {
-            "location": "/Dev/cmd/#cmd-scripts",
-            "text": "",
-            "title": "Cmd scripts"
-        },
-        {
-            "location": "/Dev/cmd/#ping-subnet",
-            "text": "FOR /L %i IN (1,1,254) DO ping -n 1 192.168.10.%i | FIND /i \"Reply\">>c:\\ipaddresses.txt  To change colours in command line console interface you need to add one of following sets of registry keys:",
-            "title": "Ping subnet"
-        },
-        {
-            "location": "/Dev/cmd/#cmd-colours",
-            "text": "",
-            "title": "Cmd Colours"
-        },
-        {
-            "location": "/Dev/cmd/#default",
-            "text": "Windows Registry Editor Version 5.00\n; Default color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:00000000\n\"ColorTable08\"=dword:00808080\n; BLUE LBLUE\n\"ColorTable01\"=dword:00800000\n\"ColorTable09\"=dword:00ff0000\n; GREEN LGREEN\n\"ColorTable02\"=dword:00008000\n\"ColorTable10\"=dword:0000ff00\n; CYAN LCYAN\n\"ColorTable03\"=dword:00808000\n\"ColorTable11\"=dword:00ffff00\n; RED LRED\n\"ColorTable04\"=dword:00000080\n\"ColorTable12\"=dword:000000ff\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00800080\n\"ColorTable13\"=dword:00ff00ff\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:00008080\n\"ColorTable14\"=dword:0000ffff\n; LGRAY WHITE\n\"ColorTable07\"=dword:00c0c0c0\n\"ColorTable15\"=dword:00ffffff",
-            "title": "Default"
-        },
-        {
-            "location": "/Dev/cmd/#monokai",
-            "text": "Windows Registry Editor Version 5.00\n; Monokai color theme for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK   DGRAY\n\"ColorTable00\"=dword:00222827\n\"ColorTable08\"=dword:00414746\n; BLUE    LBLUE\n\"ColorTable01\"=dword:00a64c1d\n\"ColorTable09\"=dword:00ef9566\n; GREEN   LGREEN\n\"ColorTable02\"=dword:0000995d\n\"ColorTable10\"=dword:002ee2a6\n; CYAN    LCYAN\n\"ColorTable03\"=dword:00746a31\n\"ColorTable11\"=dword:00efd966\n; RED     LRED\n\"ColorTable04\"=dword:002900b0\n\"ColorTable12\"=dword:007226f9\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00b63865\n\"ColorTable13\"=dword:00ff81ae\n; YELLOW  LYELLOW\n\"ColorTable06\"=dword:001f97fd\n\"ColorTable14\"=dword:0074dbe6\n; LGRAY   WHITE\n\"ColorTable07\"=dword:008a908f\n\"ColorTable15\"=dword:00f2f8f8",
-            "title": "Monokai"
-        },
-        {
-            "location": "/Dev/cmd/#pastel",
-            "text": "Windows Registry Editor Version 5.00\n; Low-contrast, pastel color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:00222222\n\"ColorTable08\"=dword:00454545\n; BLUE LBLUE\n\"ColorTable01\"=dword:00a69a7c\n\"ColorTable09\"=dword:00bfad8f\n; GREEN LGREEN\n\"ColorTable02\"=dword:00557e6c\n\"ColorTable10\"=dword:007db37d\n; CYAN LCYAN\n\"ColorTable03\"=dword:00a18e4c\n\"ColorTable11\"=dword:00d0c16b\n; RED LRED\n\"ColorTable04\"=dword:0041569e\n\"ColorTable12\"=dword:006d89cc\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:009d6d95\n\"ColorTable13\"=dword:00cb8fc1\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:002bafca\n\"ColorTable14\"=dword:0056b5bf\n; LGRAY WHITE\n\"ColorTable07\"=dword:00808080\n\"ColorTable15\"=dword:00cdcdcd",
-            "title": "Pastel"
-        },
-        {
-            "location": "/Dev/cmd/#zenburn",
-            "text": "Windows Registry Editor Version 5.00\n; Zenburn is a low-contrast color scheme\n; for Windows command prompt.\n; See : http://slinky.imukuppi.org/zenburnpage/\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:003f3f3f\n\"ColorTable08\"=dword:008080c0\n; BLUE LBLUE\n\"ColorTable01\"=dword:00af6464\n\"ColorTable09\"=dword:00ffafaf\n; GREEN LGREEN\n\"ColorTable02\"=dword:00008000\n\"ColorTable10\"=dword:007f9f7f\n; CYAN LCYAN\n\"ColorTable03\"=dword:00808000\n\"ColorTable11\"=dword:00d3d08c\n; RED LRED\n\"ColorTable04\"=dword:00232333\n\"ColorTable12\"=dword:007071e3\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00aa50aa\n\"ColorTable13\"=dword:00c880c8\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:0000dcdc\n\"ColorTable14\"=dword:00afdff0\n; LGRAY WHITE\n\"ColorTable07\"=dword:00ccdcdc\n\"ColorTable15\"=dword:00ffffff",
-            "title": "Zenburn"
-        },
-        {
             "location": "/Dev/Bash/Collect_bash_history/",
             "text": "Collect .bash_history from a bunch of servers.\n\n\nip_base_file\n - just a list of IP address. And you have to have same password on all servers.\n\n\n#!/bin/bash\n#\n#  Script to collect bash history from remote servers\n#\necho \"Usage: ./collect.sh <ip_base_file>\"\n\nread -n 1 -p \"Do you want to collect bash_history? (y/[a]): \" AMSURE\n[ \"$AMSURE\" = \"y\" ] || exit\necho \"\" 1>&2\n\nnow=$(date +\"%m_%d_%Y\")\nmkdir ./$now\n## Provide BASE64 encoded password here\n## echo \"MEGA-SECURE-PASSWORD\" | base64 -i\nPASS=`echo \"TUVHQS1TRUNVUkUtUEFTU1dPUkQK\" | base64 -di`\nawk '{print $1}' < ./\"$1\" | while read ip; do\n\nexpect -c \"\n    set timeout 1\n    spawn scp  root@$ip:~/.bash_history ./\"$now\"/\"$ip\"_history.txt\n    expect yes/no { send yes\\r ; exp_continue }\n    expect password: { send $PASS\\r }\n    expect 100%\n    sleep 1\n    exit\n\"\ndone",
             "title": "Collect bash history"
@@ -299,6 +264,46 @@
             "location": "/Dev/Brainfuck/Sample1/#print-2-2-4",
             "text": "# Increase a[1] to 50 and print ASCII value \"2\"  \n# 1.    ++++++++++[>+++++<-]>.< \n# Increase a[2] to 32 and print ASCII value \" \"  \n# 2.    ++++++++[>>++++<<-]>>.<<\n# Increase a[3] to 43 and print ASCII value \"+\"  \n# 3.    ++++++++++[>>>++++<<<-]>>>+++.<<<\n# Print from a[2] ASCII value \" \"  \n# 4.    >>.<<\n# Print from a[1] ASCII value \"2\"  \n# 5.    >.<\n# Print from a[2] ASCII value \" \"  \n# 6.    >>.<<\n# Increase a[4] to 61 and print ASCII value \"=\"  \n# 7.    ++++++++++[>>>>++++++<<<<-]>>>>+.<<<<\n# Print from a[2] ASCII value \" \"  \n# 8.    >>.<<\n# Increase a[5] to 52 and print ASCII value \"4\"  \n# 9.    ++++++++++[>>>>>+++++<<<<<-]>>>>>++.<<<<<\n\n++++++++++[>+++++<-]>.<\n++++++++[>>++++<<-]>>.<<\n++++++++++[>>>++++<<<-]>>>+++.<<<\n>>.<<\n>.<\n>>.<<\n++++++++++[>>>>++++++<<<<-]>>>>+.<<<<\n>>.<<\n++++++++++[>>>>>+++++<<<<<-]>>>>>++.<<<<<",
             "title": "Print \"2 + 2 = 4\"**"
+        },
+        {
+            "location": "/Dev/Cmd/cmd/",
+            "text": "Cmd scripts\n\n\nPing subnet\n\n\nFOR /L %i IN (1,1,254) DO ping -n 1 192.168.10.%i | FIND /i \"Reply\">>c:\\ipaddresses.txt\n\n\n\n\nTo change colours in command line console interface you need to add one of following sets of registry keys:\n\n\nCmd Colours\n\n\nDefault\n\n\nWindows Registry Editor Version 5.00\n; Default color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:00000000\n\"ColorTable08\"=dword:00808080\n; BLUE LBLUE\n\"ColorTable01\"=dword:00800000\n\"ColorTable09\"=dword:00ff0000\n; GREEN LGREEN\n\"ColorTable02\"=dword:00008000\n\"ColorTable10\"=dword:0000ff00\n; CYAN LCYAN\n\"ColorTable03\"=dword:00808000\n\"ColorTable11\"=dword:00ffff00\n; RED LRED\n\"ColorTable04\"=dword:00000080\n\"ColorTable12\"=dword:000000ff\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00800080\n\"ColorTable13\"=dword:00ff00ff\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:00008080\n\"ColorTable14\"=dword:0000ffff\n; LGRAY WHITE\n\"ColorTable07\"=dword:00c0c0c0\n\"ColorTable15\"=dword:00ffffff\n\n\n\n\nMonokai\n\n\nWindows Registry Editor Version 5.00\n; Monokai color theme for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK   DGRAY\n\"ColorTable00\"=dword:00222827\n\"ColorTable08\"=dword:00414746\n; BLUE    LBLUE\n\"ColorTable01\"=dword:00a64c1d\n\"ColorTable09\"=dword:00ef9566\n; GREEN   LGREEN\n\"ColorTable02\"=dword:0000995d\n\"ColorTable10\"=dword:002ee2a6\n; CYAN    LCYAN\n\"ColorTable03\"=dword:00746a31\n\"ColorTable11\"=dword:00efd966\n; RED     LRED\n\"ColorTable04\"=dword:002900b0\n\"ColorTable12\"=dword:007226f9\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00b63865\n\"ColorTable13\"=dword:00ff81ae\n; YELLOW  LYELLOW\n\"ColorTable06\"=dword:001f97fd\n\"ColorTable14\"=dword:0074dbe6\n; LGRAY   WHITE\n\"ColorTable07\"=dword:008a908f\n\"ColorTable15\"=dword:00f2f8f8\n\n\n\n\nPastel\n\n\nWindows Registry Editor Version 5.00\n; Low-contrast, pastel color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:00222222\n\"ColorTable08\"=dword:00454545\n; BLUE LBLUE\n\"ColorTable01\"=dword:00a69a7c\n\"ColorTable09\"=dword:00bfad8f\n; GREEN LGREEN\n\"ColorTable02\"=dword:00557e6c\n\"ColorTable10\"=dword:007db37d\n; CYAN LCYAN\n\"ColorTable03\"=dword:00a18e4c\n\"ColorTable11\"=dword:00d0c16b\n; RED LRED\n\"ColorTable04\"=dword:0041569e\n\"ColorTable12\"=dword:006d89cc\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:009d6d95\n\"ColorTable13\"=dword:00cb8fc1\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:002bafca\n\"ColorTable14\"=dword:0056b5bf\n; LGRAY WHITE\n\"ColorTable07\"=dword:00808080\n\"ColorTable15\"=dword:00cdcdcd\n\n\n\n\nZenburn\n\n\nWindows Registry Editor Version 5.00\n; Zenburn is a low-contrast color scheme\n; for Windows command prompt.\n; See : http://slinky.imukuppi.org/zenburnpage/\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:003f3f3f\n\"ColorTable08\"=dword:008080c0\n; BLUE LBLUE\n\"ColorTable01\"=dword:00af6464\n\"ColorTable09\"=dword:00ffafaf\n; GREEN LGREEN\n\"ColorTable02\"=dword:00008000\n\"ColorTable10\"=dword:007f9f7f\n; CYAN LCYAN\n\"ColorTable03\"=dword:00808000\n\"ColorTable11\"=dword:00d3d08c\n; RED LRED\n\"ColorTable04\"=dword:00232333\n\"ColorTable12\"=dword:007071e3\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00aa50aa\n\"ColorTable13\"=dword:00c880c8\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:0000dcdc\n\"ColorTable14\"=dword:00afdff0\n; LGRAY WHITE\n\"ColorTable07\"=dword:00ccdcdc\n\"ColorTable15\"=dword:00ffffff",
+            "title": "Cmd"
+        },
+        {
+            "location": "/Dev/Cmd/cmd/#cmd-scripts",
+            "text": "",
+            "title": "Cmd scripts"
+        },
+        {
+            "location": "/Dev/Cmd/cmd/#ping-subnet",
+            "text": "FOR /L %i IN (1,1,254) DO ping -n 1 192.168.10.%i | FIND /i \"Reply\">>c:\\ipaddresses.txt  To change colours in command line console interface you need to add one of following sets of registry keys:",
+            "title": "Ping subnet"
+        },
+        {
+            "location": "/Dev/Cmd/cmd/#cmd-colours",
+            "text": "",
+            "title": "Cmd Colours"
+        },
+        {
+            "location": "/Dev/Cmd/cmd/#default",
+            "text": "Windows Registry Editor Version 5.00\n; Default color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:00000000\n\"ColorTable08\"=dword:00808080\n; BLUE LBLUE\n\"ColorTable01\"=dword:00800000\n\"ColorTable09\"=dword:00ff0000\n; GREEN LGREEN\n\"ColorTable02\"=dword:00008000\n\"ColorTable10\"=dword:0000ff00\n; CYAN LCYAN\n\"ColorTable03\"=dword:00808000\n\"ColorTable11\"=dword:00ffff00\n; RED LRED\n\"ColorTable04\"=dword:00000080\n\"ColorTable12\"=dword:000000ff\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00800080\n\"ColorTable13\"=dword:00ff00ff\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:00008080\n\"ColorTable14\"=dword:0000ffff\n; LGRAY WHITE\n\"ColorTable07\"=dword:00c0c0c0\n\"ColorTable15\"=dword:00ffffff",
+            "title": "Default"
+        },
+        {
+            "location": "/Dev/Cmd/cmd/#monokai",
+            "text": "Windows Registry Editor Version 5.00\n; Monokai color theme for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK   DGRAY\n\"ColorTable00\"=dword:00222827\n\"ColorTable08\"=dword:00414746\n; BLUE    LBLUE\n\"ColorTable01\"=dword:00a64c1d\n\"ColorTable09\"=dword:00ef9566\n; GREEN   LGREEN\n\"ColorTable02\"=dword:0000995d\n\"ColorTable10\"=dword:002ee2a6\n; CYAN    LCYAN\n\"ColorTable03\"=dword:00746a31\n\"ColorTable11\"=dword:00efd966\n; RED     LRED\n\"ColorTable04\"=dword:002900b0\n\"ColorTable12\"=dword:007226f9\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00b63865\n\"ColorTable13\"=dword:00ff81ae\n; YELLOW  LYELLOW\n\"ColorTable06\"=dword:001f97fd\n\"ColorTable14\"=dword:0074dbe6\n; LGRAY   WHITE\n\"ColorTable07\"=dword:008a908f\n\"ColorTable15\"=dword:00f2f8f8",
+            "title": "Monokai"
+        },
+        {
+            "location": "/Dev/Cmd/cmd/#pastel",
+            "text": "Windows Registry Editor Version 5.00\n; Low-contrast, pastel color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:00222222\n\"ColorTable08\"=dword:00454545\n; BLUE LBLUE\n\"ColorTable01\"=dword:00a69a7c\n\"ColorTable09\"=dword:00bfad8f\n; GREEN LGREEN\n\"ColorTable02\"=dword:00557e6c\n\"ColorTable10\"=dword:007db37d\n; CYAN LCYAN\n\"ColorTable03\"=dword:00a18e4c\n\"ColorTable11\"=dword:00d0c16b\n; RED LRED\n\"ColorTable04\"=dword:0041569e\n\"ColorTable12\"=dword:006d89cc\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:009d6d95\n\"ColorTable13\"=dword:00cb8fc1\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:002bafca\n\"ColorTable14\"=dword:0056b5bf\n; LGRAY WHITE\n\"ColorTable07\"=dword:00808080\n\"ColorTable15\"=dword:00cdcdcd",
+            "title": "Pastel"
+        },
+        {
+            "location": "/Dev/Cmd/cmd/#zenburn",
+            "text": "Windows Registry Editor Version 5.00\n; Zenburn is a low-contrast color scheme\n; for Windows command prompt.\n; See : http://slinky.imukuppi.org/zenburnpage/\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:003f3f3f\n\"ColorTable08\"=dword:008080c0\n; BLUE LBLUE\n\"ColorTable01\"=dword:00af6464\n\"ColorTable09\"=dword:00ffafaf\n; GREEN LGREEN\n\"ColorTable02\"=dword:00008000\n\"ColorTable10\"=dword:007f9f7f\n; CYAN LCYAN\n\"ColorTable03\"=dword:00808000\n\"ColorTable11\"=dword:00d3d08c\n; RED LRED\n\"ColorTable04\"=dword:00232333\n\"ColorTable12\"=dword:007071e3\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00aa50aa\n\"ColorTable13\"=dword:00c880c8\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:0000dcdc\n\"ColorTable14\"=dword:00afdff0\n; LGRAY WHITE\n\"ColorTable07\"=dword:00ccdcdc\n\"ColorTable15\"=dword:00ffffff",
+            "title": "Zenburn"
         },
         {
             "location": "/Dev/GCC/Make/",
@@ -986,6 +991,16 @@
             "title": "MPI_Wtime.md"
         },
         {
+            "location": "/Dev/Markdown/Markdown/",
+            "text": "Generate MD file from baunch of man files\n\n\nfor file in *.txt; do echo \"### $file\" >> result.md; echo '```' >> result.md; cat $file >> result.md; echo '```' >> result.md; echo >> result.md; done",
+            "title": "Markdown"
+        },
+        {
+            "location": "/Dev/Markdown/Markdown/#generate-md-file-from-baunch-of-man-files",
+            "text": "for file in *.txt; do echo \"### $file\" >> result.md; echo '```' >> result.md; cat $file >> result.md; echo '```' >> result.md; echo >> result.md; done",
+            "title": "Generate MD file from baunch of man files"
+        },
+        {
             "location": "/Dev/Power_Shell/Power_Shell/",
             "text": "Windows 2008 Server R2\n\n\nTo release this error:\n\n\n\n\nScript cannot be loaded because the execution of scripts is disabled on this system.\n\n\n\n\n# Run as Administrator\nSet-ExecutionPolicy RemoteSigned\n\n# There is following parameters:\n# * Restricted - No scripts can be run. Windows PowerShell can be used only in interactive mode.\n# * AllSigned - Only scripts signed by a trusted publisher can be run.\n# * RemoteSigned - Downloaded scripts must be signed by a trusted publisher before they can be run.\n# * Unrestricted - No restrictions; all Windows PowerShell scripts can be run.\n\n\n\n\nShow current logged user\n\n\ngwmi win32_computersystem -comp $computer | select USername,Caption,Manufacturer\nGet_WmiObject win32_computersystem -comp $computer | select USername,Caption,Manufacturer\n\n\n\n\nList of logged in users (any user in any time)\n\n\nGet-WmiObject Win32_LoggedOnUser -ComputerName msk-sales-02 | Select __SERVER, Antecedent -Unique | %{\"{0} : {1}\\{2}\" -f $_.__SERVER, $_.Antecedent.ToString().Split('\"')[1],$_.Antecedent.ToString().Split('\"')[3]}\n\n\n\n\nRead from keyboard\n\n\n$variable=read-host \"Enter computer name:\"",
             "title": "Power Shell"
@@ -1061,6 +1076,16 @@
             "title": "Hardcoded AVBasesStat path"
         },
         {
+            "location": "/Dev/Vbs/Links/",
+            "text": "List of useful urls\n\n\n\n\nvbsedit",
+            "title": "Links"
+        },
+        {
+            "location": "/Dev/Vbs/Links/#list-of-useful-urls",
+            "text": "vbsedit",
+            "title": "List of useful urls"
+        },
+        {
             "location": "/Dev/Version_Control/Git/",
             "text": "Clone\n\n\n# For new repos(-jN - number of simltaniuos jobs):\ngit clone --recursive -j4 https://github.com/keepbot/dotfiles-srv\ngit clone --recursive https://github.com/keepbot/dotfiles-srv\n\n# For already cloned repos:\ngit submodule update --init --recursive\n\n# Ignore self signed ssl certificates\ngit -c http.sslVerify=false clone --recursive https://github.com/keepbot/dotfiles-srv.git\n\n\n\n\nGlobal settings\n\n\ngit config --global user.name \"Your Name\"\ngit config --global user.email your@e-mail.com\n\n\n\n\nCreate new repository\n\n\nmkdir -p <path_to_repository>\ncd <path_to_repository>\ngit add .\ngit commit -m \"Initialization\"\ngit remote add origin https://github.com/username/<repository>.git\ngit push -u origin master\ngit checkout \n\n\n\n\nCommit\n\n\n# Addition of new files with automatic staging of deleted and modified files\ngit add .\ngit commit -a -m \"new commentary\"\ngit push -u origin master\n\n\n\n\nUpdate local reposytory from remote\n\n\n# Fentch + Merge\ngit pull\n# Fetch only\ngit fetch\n# Fetch changes from remote repository with modified local repository\ngit commit -a -m \"new commentary\"\ngit pull rebase\n# pull remote with overwrite local changes\ngit fetch --all\ngit reset --hard origin/master\n\n\n\n\nWorking with bunch of  repositories\n\n\n# Last commits\nfor d in `ls`; do cd $d; git log --pretty=format:\"%h - %an, %ar : %s\" -1; cd ..; done\n# Mass checkout\nfor d in `ls`; do cd $d; git checkout; cd ..; done\n\n\n\n\nMaking patches from commits:\n\n\n\n\nCreate patch:\n\n\n\n\n# The easiest version (you can specify number of commit to patch) \ngit format-patch -1 HEAD\n# Same as first, but create numbered files (00001-nnnnn)\ngit format-patch -n HEAD^\n# Simple cat ftom stdout, works fine on most of systems, but be carfull, if you have customized terminal (color tags, special symbols, etc.)\ngit show HEAD > path_to.patch\n\n\n\n\n\n\nApply patch:\n\n\n\n\ngit apply --stat 0001-Linux-agent-LVM-subagent-initial-implementation.patch\ngit apply --check 0001-Linux-agent-LVM-subagent-initial-implementation.patch\ngit am < 0001-Linux-agent-LVM-subagent-initial-implementation.patch\n\n\n\n\nSubmodules\n\n\n\n\nAdd submodule:\n\n\n\n\ngit submodule add <submodule_git_url> <local_path>\n\n\n\n\n\n\nDelete submodule:\n\n\n\n\ngit submodule deinit <submodule>    \ngit rm --cached <submodule>\nrm -rf .git/modules/<submodule>\n# Remove module record from .gitmodules\nvim .gitmodules\n\n\n\n\nLogs\n\n\ngit log --pretty=format:\"%h - %an, %ar : %s\" -1",
             "title": "Git"
@@ -1124,46 +1149,6 @@
             "location": "/Dev/Version_Control/GitHub/#clone-all-users-repositories",
             "text": "# Get complete list of user's repositories in JSON file\ncurl -s https://api.github.com/users/<username>/repos?per_page=200 > repo.list.json\npython -c \"import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close()\"\n# And dont forget about \"space\"(%20, \" \") in cmd = 'git clone ', it's completely nessesary\n# Another way to clone up to 200 user's repos(just in shell): \ncurl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | .\"clone_url\"' | xargs -I '{}' git clone {}",
             "title": "Clone all user's repositories"
-        },
-        {
-            "location": "/Edit/Markdown/",
-            "text": "Generate MD file from baunch of man files\n\n\nfor file in *.txt; do echo \"### $file\" >> result.md; echo '```' >> result.md; cat $file >> result.md; echo '```' >> result.md; echo >> result.md; done",
-            "title": "Markdown"
-        },
-        {
-            "location": "/Edit/Markdown/#generate-md-file-from-baunch-of-man-files",
-            "text": "for file in *.txt; do echo \"### $file\" >> result.md; echo '```' >> result.md; cat $file >> result.md; echo '```' >> result.md; echo >> result.md; done",
-            "title": "Generate MD file from baunch of man files"
-        },
-        {
-            "location": "/Edit/Vim/",
-            "text": "Commnent bunch of lines\n\n\n\n\nStand on a firs symbol of first line\n\n\nCtrl+V\n\n\nDown_1 + Down_2 + .. + Down_n\n\n\nCtrl+I\n\n\n\"#\"",
-            "title": "Vim"
-        },
-        {
-            "location": "/Edit/Vim/#commnent-bunch-of-lines",
-            "text": "Stand on a firs symbol of first line  Ctrl+V  Down_1 + Down_2 + .. + Down_n  Ctrl+I  \"#\"",
-            "title": "Commnent bunch of lines"
-        },
-        {
-            "location": "/Monitoring/NetXMS/",
-            "text": "Web console\n\n\ncd /opt/\nwget http://apache-mirror.rbc.ru/pub/apache/tomcat/tomcat-7/v7.0.70/bin/apache-tomcat-7.0.70.tar.gz\ntar zxvf apache-tomcat-7.0.70.tar.gz\n\niptables -I INPUT -p tcp --dport 8005 -j ACCEPT\niptables -I INPUT -p tcp --dport 8009 -j ACCEPT\niptables -I INPUT -p tcp --dport 8080 -j ACCEPT\niptables -I INPUT -p tcp --dport 8443 -j ACCEPT\n\n/opt/apache-tomcat-7.0.70/bin/startup.sh\n\n# ...Wait until tomcat is started...\n\nwget -O /opt/apache-tomcat-7.0.70/webapps/nxmc-2.0.5.war http://www.netxms.org/download/webui/nxmc-2.0.5.war\n\nhttp://<ip_address>:8080/nxmc-2.0.5/nxmc\n\n\n\n\nWMI Scripts\n\n\n#Query:\n/usr/local/bin/nxget 192.168.122.252 \"WMI.Query(root\\CIMV2,SELECT * FROM XXX)\"\n\n\n\n\nExternal parameter\n\n\nExternalParameterShellExec = KasperskyBasesState:C:\\Windows\\System32\\cscript.exe //E:VBscript //NoLogo c:\\Path_TO\\kav.vbs",
-            "title": "NetXMS"
-        },
-        {
-            "location": "/Monitoring/NetXMS/#web-console",
-            "text": "cd /opt/\nwget http://apache-mirror.rbc.ru/pub/apache/tomcat/tomcat-7/v7.0.70/bin/apache-tomcat-7.0.70.tar.gz\ntar zxvf apache-tomcat-7.0.70.tar.gz\n\niptables -I INPUT -p tcp --dport 8005 -j ACCEPT\niptables -I INPUT -p tcp --dport 8009 -j ACCEPT\niptables -I INPUT -p tcp --dport 8080 -j ACCEPT\niptables -I INPUT -p tcp --dport 8443 -j ACCEPT\n\n/opt/apache-tomcat-7.0.70/bin/startup.sh\n\n# ...Wait until tomcat is started...\n\nwget -O /opt/apache-tomcat-7.0.70/webapps/nxmc-2.0.5.war http://www.netxms.org/download/webui/nxmc-2.0.5.war\n\nhttp://<ip_address>:8080/nxmc-2.0.5/nxmc",
-            "title": "Web console"
-        },
-        {
-            "location": "/Monitoring/NetXMS/#wmi-scripts",
-            "text": "#Query:\n/usr/local/bin/nxget 192.168.122.252 \"WMI.Query(root\\CIMV2,SELECT * FROM XXX)\"",
-            "title": "WMI Scripts"
-        },
-        {
-            "location": "/Monitoring/NetXMS/#external-parameter",
-            "text": "ExternalParameterShellExec = KasperskyBasesState:C:\\Windows\\System32\\cscript.exe //E:VBscript //NoLogo c:\\Path_TO\\kav.vbs",
-            "title": "External parameter"
         },
         {
             "location": "/OS/AIX/",
@@ -1291,724 +1276,754 @@
             "title": "Yum"
         },
         {
-            "location": "/Security/FirewallD/",
-            "text": "FirewallD Status\n\n\nfirewall-cmd --state\n\nfirewall-cmd --list-all\n\n# Reload configuration                                                                              \nfirewall-cmd --reload\n\n\n\n\nGet security zones\n\n\nfirewall-cmd --get-zones\nfirewall-cmd --get-default-zone\nfirewall-cmd --get-active-zones\nfirewall-cmd --list-all-zones\nfirewall-cmd --set-default-zone=<zone_name>\nfirewall-cmd --get-zone-of-interface=<network_interface_name>\n\n\n\n\nGet ICMP types\n\n\nfirewall-cmd --get-icmptypes\n\n\n\n\nServices\n\n\nfirewall-cmd --get-services\n\n# List default services\nls -la  /usr/lib/firewalld/services/\n\n# Add service\nfirewall-cmd --add-service=<service_name>\nfirewall-cmd --add-service=<service_name> --permanent\n\n# Remove service\nfirewall-cmd --zone=<zone_name> --remove-service=<service_name>\n\n\n\n\nRules\n\n\nfirewall-cmd --permanent --add-source=<subnet>\nfirewall-cmd --permanent --add-port=<port>/<protocol>",
-            "title": "FirewallD"
-        },
-        {
-            "location": "/Security/FirewallD/#firewalld-status",
-            "text": "firewall-cmd --state\n\nfirewall-cmd --list-all\n\n# Reload configuration                                                                              \nfirewall-cmd --reload",
-            "title": "FirewallD Status"
-        },
-        {
-            "location": "/Security/FirewallD/#get-security-zones",
-            "text": "firewall-cmd --get-zones\nfirewall-cmd --get-default-zone\nfirewall-cmd --get-active-zones\nfirewall-cmd --list-all-zones\nfirewall-cmd --set-default-zone=<zone_name>\nfirewall-cmd --get-zone-of-interface=<network_interface_name>",
-            "title": "Get security zones"
-        },
-        {
-            "location": "/Security/FirewallD/#get-icmp-types",
-            "text": "firewall-cmd --get-icmptypes",
-            "title": "Get ICMP types"
-        },
-        {
-            "location": "/Security/FirewallD/#services",
-            "text": "firewall-cmd --get-services\n\n# List default services\nls -la  /usr/lib/firewalld/services/\n\n# Add service\nfirewall-cmd --add-service=<service_name>\nfirewall-cmd --add-service=<service_name> --permanent\n\n# Remove service\nfirewall-cmd --zone=<zone_name> --remove-service=<service_name>",
-            "title": "Services"
-        },
-        {
-            "location": "/Security/FirewallD/#rules",
-            "text": "firewall-cmd --permanent --add-source=<subnet>\nfirewall-cmd --permanent --add-port=<port>/<protocol>",
-            "title": "Rules"
-        },
-        {
-            "location": "/Security/HSM/",
-            "text": "Generate LMK consists of 3 components.\n\n\nStep-By-Step.\n\n\n0:\nConnect to Thales HMS 8000 via common Terminal Client.\n\n1:\nOnline> FC <Return> \nInsert card and press ENTER: <Return> \nCard already formatted, continue? [Y/N]: Y <Return> \nFormat card for HSM settings/LMKs? [H/L]: L <Return> \nErasing card \nFormatting card . . . \nEnter new PIN for Smart Card: 2134 <Return>\nRe-enter new PIN: 2134 <Return> \nEnter time [hhmmss]: 173000 <Return>  - current time\nEnter date [ddmmyy]: 081111 <Return> \nEnter User ID: User1 <Return> \nEnter Issuer ID: ITS <Return> \nFormat complete \n\n2:\nOnline> FC <Return> \nInsert card and press ENTER: <Return> \nCard already formatted, continue? [Y/N]: Y <Return> \nFormat card for HSM settings/LMKs? [H/L]: L <Return> \nErasing card \nFormatting card . . . \nEnter new PIN for Smart Card: 4356 <Return>\nRe-enter new PIN: 4356 <Return> \nEnter time [hhmmss]: 173000 <Return> \nEnter date [ddmmyy]: 081111 <Return> \nEnter User ID: User2 <Return> \nEnter Issuer ID: ITS <Return> \nFormat complete \n\n3:\nOnline> FC <Return> \nInsert card and press ENTER: <Return> \nCard already formatted, continue? [Y/N]: Y <Return> \nFormat card for HSM settings/LMKs? [H/L]: L <Return> \nErasing card \nFormatting card . . . \nEnter new PIN for Smart Card: 5467 <Return>\nRe-enter new PIN: 5467 <Return> \nEnter time [hhmmss]: 173000 <Return> \nEnter date [ddmmyy]: 081111 <Return> \nEnter User ID: User3 <Return> \nEnter Issuer ID: ITS <Return> \nFormat complete \n\n4:\nTaking HSM into the Secure State\n\n5:\nSecure> GK <Return> \nLMKs must be erased before proceeding. \nErase LMKs? Y <Return> \nLMK component set [1-9]: 1 <Return> \nEnter secret value A: <Return> \nEnter secret value B: <Return> \nEnter value C: <Return> \nInsert blank card and enter PIN: 2134 <Return> \nWriting keys \nChecking keys \nDevice write complete, check: XXXX XXXX XXXX XXXX \nRemove the smartcard and store it securely. \nMake another copy? [Y/N]: N <Return> X copies made. \n\n6:\nSecure> GK <Return> \nLMKs must be erased before proceeding. \nErase LMKs? Y <Return> \nLMK component set [1-9]: 2 <Return> \nEnter secret value A: <Return> \nEnter secret value B: <Return> \nEnter value C: <Return> \nInsert blank card and enter PIN: 4356 <Return> \nWriting keys \nChecking keys \nDevice write complete, check: XXXX XXXX XXXX XXXX \nRemove the smartcard and store it securely. \nMake another copy? [Y/N]: N <Return> X copies made. \n\n7:\nSecure> GK <Return> \nLMKs must be erased before proceeding. \nErase LMKs? Y <Return> \nLMK component set [1-9]: 3 <Return> \nEnter secret value A: <Return> \nEnter secret value B: <Return> \nEnter value C: <Return> \nInsert blank card and enter PIN: 5467 <Return> \nWriting keys \nChecking keys \nDevice write complete, check: XXXX XXXX XXXX XXXX \nRemove the smartcard and store it securely. \nMake another copy? [Y/N]: N <Return> X copies made. \n\n8-9-10:Secure> LK <Return>\nLMKs must be erased before proceeding.\nErase LMKs? Y <Return>\nLoad LMK from components. Insert card and enter PIN: **** <Return>\nCHECK: XXXX XXXX XXXX XXXX Load more components? [Y/N]: Y <Return>\nRemove the smartcard. Insert the second and subsequent Smartcards and repeat the loading procedure. When all have been loaded and the HSM displays the check value, record the check value.\nCHECK: XXXX XXXX XXXX XXXX Load more components? [Y/N]: N <Return>\nUse the LO command to load LMKs into key change storage.\nSecure>\nUse the A command to put the HSM into the Authorised State in order to check the LMK components and passwords or PINs.\n\n11:\nReturn to online state: remove secure keys and press reset button at least 2 seconds.",
-            "title": "HSM"
-        },
-        {
-            "location": "/Security/HSM/#generate-lmk-consists-of-3-components",
-            "text": "Step-By-Step.  0:\nConnect to Thales HMS 8000 via common Terminal Client.\n\n1:\nOnline> FC <Return> \nInsert card and press ENTER: <Return> \nCard already formatted, continue? [Y/N]: Y <Return> \nFormat card for HSM settings/LMKs? [H/L]: L <Return> \nErasing card \nFormatting card . . . \nEnter new PIN for Smart Card: 2134 <Return>\nRe-enter new PIN: 2134 <Return> \nEnter time [hhmmss]: 173000 <Return>  - current time\nEnter date [ddmmyy]: 081111 <Return> \nEnter User ID: User1 <Return> \nEnter Issuer ID: ITS <Return> \nFormat complete \n\n2:\nOnline> FC <Return> \nInsert card and press ENTER: <Return> \nCard already formatted, continue? [Y/N]: Y <Return> \nFormat card for HSM settings/LMKs? [H/L]: L <Return> \nErasing card \nFormatting card . . . \nEnter new PIN for Smart Card: 4356 <Return>\nRe-enter new PIN: 4356 <Return> \nEnter time [hhmmss]: 173000 <Return> \nEnter date [ddmmyy]: 081111 <Return> \nEnter User ID: User2 <Return> \nEnter Issuer ID: ITS <Return> \nFormat complete \n\n3:\nOnline> FC <Return> \nInsert card and press ENTER: <Return> \nCard already formatted, continue? [Y/N]: Y <Return> \nFormat card for HSM settings/LMKs? [H/L]: L <Return> \nErasing card \nFormatting card . . . \nEnter new PIN for Smart Card: 5467 <Return>\nRe-enter new PIN: 5467 <Return> \nEnter time [hhmmss]: 173000 <Return> \nEnter date [ddmmyy]: 081111 <Return> \nEnter User ID: User3 <Return> \nEnter Issuer ID: ITS <Return> \nFormat complete \n\n4:\nTaking HSM into the Secure State\n\n5:\nSecure> GK <Return> \nLMKs must be erased before proceeding. \nErase LMKs? Y <Return> \nLMK component set [1-9]: 1 <Return> \nEnter secret value A: <Return> \nEnter secret value B: <Return> \nEnter value C: <Return> \nInsert blank card and enter PIN: 2134 <Return> \nWriting keys \nChecking keys \nDevice write complete, check: XXXX XXXX XXXX XXXX \nRemove the smartcard and store it securely. \nMake another copy? [Y/N]: N <Return> X copies made. \n\n6:\nSecure> GK <Return> \nLMKs must be erased before proceeding. \nErase LMKs? Y <Return> \nLMK component set [1-9]: 2 <Return> \nEnter secret value A: <Return> \nEnter secret value B: <Return> \nEnter value C: <Return> \nInsert blank card and enter PIN: 4356 <Return> \nWriting keys \nChecking keys \nDevice write complete, check: XXXX XXXX XXXX XXXX \nRemove the smartcard and store it securely. \nMake another copy? [Y/N]: N <Return> X copies made. \n\n7:\nSecure> GK <Return> \nLMKs must be erased before proceeding. \nErase LMKs? Y <Return> \nLMK component set [1-9]: 3 <Return> \nEnter secret value A: <Return> \nEnter secret value B: <Return> \nEnter value C: <Return> \nInsert blank card and enter PIN: 5467 <Return> \nWriting keys \nChecking keys \nDevice write complete, check: XXXX XXXX XXXX XXXX \nRemove the smartcard and store it securely. \nMake another copy? [Y/N]: N <Return> X copies made. \n\n8-9-10:Secure> LK <Return>\nLMKs must be erased before proceeding.\nErase LMKs? Y <Return>\nLoad LMK from components. Insert card and enter PIN: **** <Return>\nCHECK: XXXX XXXX XXXX XXXX Load more components? [Y/N]: Y <Return>\nRemove the smartcard. Insert the second and subsequent Smartcards and repeat the loading procedure. When all have been loaded and the HSM displays the check value, record the check value.\nCHECK: XXXX XXXX XXXX XXXX Load more components? [Y/N]: N <Return>\nUse the LO command to load LMKs into key change storage.\nSecure>\nUse the A command to put the HSM into the Authorised State in order to check the LMK components and passwords or PINs.\n\n11:\nReturn to online state: remove secure keys and press reset button at least 2 seconds.",
-            "title": "Generate LMK consists of 3 components."
-        },
-        {
-            "location": "/Security/IPTables/",
-            "text": "Show rules\n\n\niptables -nvL\niptable -t nat -nvL\n\n\n\n\nAutoreset by Vivek Gite\n\n\n\n\nJust add to crontab while remote rules configuration:\n\n\n\n\ncrontab -e\n# ---\n*/5 * * * * root /root/reset.fw >/dev/null 2>&1\n\n\n\n\n\n\nreset.fw:\n\n\n\n\n#!/bin/bash\n# reset.fw - Reset firewall\n# set x to 0 - No reset\n# set x to 1 - Reset firewall\n# ---------------------------------------------------------------------------------------------------------------\n# Added support for IPV6 Firewall\n# ---------------------------------------------------------------------------------------------------------------\n# Written by Vivek Gite <vivek@nixcraft.com>\n# ---------------------------------------------------------------------------------------------------------------\n# You can copy / paste / redistribute this script under GPL version 2.0 or above\n# =============================================================\nx=1\n\n# set to true if it is CentOS / RHEL / Fedora box\nRHEL=false\n\n### no need to edit below  ###\nIPT=/sbin/iptables\nIPT6=/sbin/ip6tables\n\nif [ \"$x\" == \"1\" ];\nthen\n    if [ \"$RHEL\" == \"true\" ];\n    then\n          # reset firewall using redhat script\n        /etc/init.d/iptables stop\n        /etc/init.d/ip6tables stop\n    else\n        # for all other Linux distro use following rules to reset firewall\n        ### reset ipv4 iptales ###\n        $IPT -F\n        $IPT -X\n        $IPT -Z\n        for table in $(</proc/net/ip_tables_names)\n        do\n            $IPT -t $table -F\n            $IPT -t $table -X\n            $IPT -t $table -Z\n        done\n        $IPT -P INPUT ACCEPT\n        $IPT -P OUTPUT ACCEPT\n        $IPT -P FORWARD ACCEPT\n        ### reset ipv6 iptales ###\n        $IPT6 -F\n        $IPT6 -X\n        $IPT6 -Z\n        for table in $(</proc/net/ip6_tables_names)\n        do\n            $IPT6 -t $table -F\n            $IPT6 -t $table -X\n            $IPT6 -t $table -Z\n        done\n        $IPT6 -P INPUT ACCEPT\n        $IPT6 -P OUTPUT ACCEPT\n        $IPT6 -P FORWARD ACCEPT\n    fi\nelse\n        :\nfi\n\n\n\n\nSibple Rules\n\n\niptables -I INPUT -p tcp --dport 8005 -j ACCEPT\niptables -I INPUT -p tcp --dport 8009 -j ACCEPT\niptables -I INPUT -p tcp --dport 8080 -j ACCEPT\niptables -I INPUT -p tcp --dport 8443 -j ACCEPT\n\nip6tables -I INPUT -p tcp --dport 8005 -j ACCEPT\nip6tables -I INPUT -p tcp --dport 8009 -j ACCEPT\nip6tables -I INPUT -p tcp --dport 8080 -j ACCEPT\nip6tables -I INPUT -p tcp --dport 8443 -j ACCEPT\n\nservice iptables save \nservice ip6tables save",
-            "title": "IPTables"
-        },
-        {
-            "location": "/Security/IPTables/#show-rules",
-            "text": "iptables -nvL\niptable -t nat -nvL",
-            "title": "Show rules"
-        },
-        {
-            "location": "/Security/IPTables/#autoreset-by-vivek-gite",
-            "text": "Just add to crontab while remote rules configuration:   crontab -e\n# ---\n*/5 * * * * root /root/reset.fw >/dev/null 2>&1   reset.fw:   #!/bin/bash\n# reset.fw - Reset firewall\n# set x to 0 - No reset\n# set x to 1 - Reset firewall\n# ---------------------------------------------------------------------------------------------------------------\n# Added support for IPV6 Firewall\n# ---------------------------------------------------------------------------------------------------------------\n# Written by Vivek Gite <vivek@nixcraft.com>\n# ---------------------------------------------------------------------------------------------------------------\n# You can copy / paste / redistribute this script under GPL version 2.0 or above\n# =============================================================\nx=1\n\n# set to true if it is CentOS / RHEL / Fedora box\nRHEL=false\n\n### no need to edit below  ###\nIPT=/sbin/iptables\nIPT6=/sbin/ip6tables\n\nif [ \"$x\" == \"1\" ];\nthen\n    if [ \"$RHEL\" == \"true\" ];\n    then\n          # reset firewall using redhat script\n        /etc/init.d/iptables stop\n        /etc/init.d/ip6tables stop\n    else\n        # for all other Linux distro use following rules to reset firewall\n        ### reset ipv4 iptales ###\n        $IPT -F\n        $IPT -X\n        $IPT -Z\n        for table in $(</proc/net/ip_tables_names)\n        do\n            $IPT -t $table -F\n            $IPT -t $table -X\n            $IPT -t $table -Z\n        done\n        $IPT -P INPUT ACCEPT\n        $IPT -P OUTPUT ACCEPT\n        $IPT -P FORWARD ACCEPT\n        ### reset ipv6 iptales ###\n        $IPT6 -F\n        $IPT6 -X\n        $IPT6 -Z\n        for table in $(</proc/net/ip6_tables_names)\n        do\n            $IPT6 -t $table -F\n            $IPT6 -t $table -X\n            $IPT6 -t $table -Z\n        done\n        $IPT6 -P INPUT ACCEPT\n        $IPT6 -P OUTPUT ACCEPT\n        $IPT6 -P FORWARD ACCEPT\n    fi\nelse\n        :\nfi",
-            "title": "Autoreset by Vivek Gite"
-        },
-        {
-            "location": "/Security/IPTables/#sibple-rules",
-            "text": "iptables -I INPUT -p tcp --dport 8005 -j ACCEPT\niptables -I INPUT -p tcp --dport 8009 -j ACCEPT\niptables -I INPUT -p tcp --dport 8080 -j ACCEPT\niptables -I INPUT -p tcp --dport 8443 -j ACCEPT\n\nip6tables -I INPUT -p tcp --dport 8005 -j ACCEPT\nip6tables -I INPUT -p tcp --dport 8009 -j ACCEPT\nip6tables -I INPUT -p tcp --dport 8080 -j ACCEPT\nip6tables -I INPUT -p tcp --dport 8443 -j ACCEPT\n\nservice iptables save \nservice ip6tables save",
-            "title": "Sibple Rules"
-        },
-        {
-            "location": "/Security/OpenSSL/",
-            "text": "View PEM encoded certificate\n\n\nopenssl x509 -in certname.pem -text -noout\nopenssl x509 -in certname.cer -text -noout\nopenssl x509 -in certname.crt -text -noout\n\n\n\n\nView DER encoded Certificate\n\n\nopenssl x509 -in certname.der -inform der -text -noout\n\n\n\n\nPEM to DER\n\n\nopenssl x509 -in certname.crt -outform der -out cert.der\n\n\n\n\nDER to PEM\n\n\nopenssl x509 -in certname.crt -inform der -outform pem -out cert.pem\n\n\n\n\nExtracting Certificate and Private Key Files from a .pfx File\n\n\n\n\nExtract private key: \n\n\n\n\nopenssl pkcs12 -in certname.pfx -nocerts -out key.pem -nodes\n\n\n\n\n\n\nExtract certificate: \n\n\n\n\nopenssl pkcs12 -in certname.pfx -nokeys -out certname.pem\n\n\n\n\n\n\nRemove passphrase from private key: \n\n\n\n\nopenssl rsa -in key.pem -out certname.key",
-            "title": "OpenSSL"
-        },
-        {
-            "location": "/Security/OpenSSL/#view-pem-encoded-certificate",
-            "text": "openssl x509 -in certname.pem -text -noout\nopenssl x509 -in certname.cer -text -noout\nopenssl x509 -in certname.crt -text -noout",
-            "title": "View PEM encoded certificate"
-        },
-        {
-            "location": "/Security/OpenSSL/#view-der-encoded-certificate",
-            "text": "openssl x509 -in certname.der -inform der -text -noout",
-            "title": "View DER encoded Certificate"
-        },
-        {
-            "location": "/Security/OpenSSL/#pem-to-der",
-            "text": "openssl x509 -in certname.crt -outform der -out cert.der",
-            "title": "PEM to DER"
-        },
-        {
-            "location": "/Security/OpenSSL/#der-to-pem",
-            "text": "openssl x509 -in certname.crt -inform der -outform pem -out cert.pem",
-            "title": "DER to PEM"
-        },
-        {
-            "location": "/Security/OpenSSL/#extracting-certificate-and-private-key-files-from-a-pfx-file",
-            "text": "Extract private key:    openssl pkcs12 -in certname.pfx -nocerts -out key.pem -nodes   Extract certificate:    openssl pkcs12 -in certname.pfx -nokeys -out certname.pem   Remove passphrase from private key:    openssl rsa -in key.pem -out certname.key",
-            "title": "Extracting Certificate and Private Key Files from a .pfx File"
-        },
-        {
-            "location": "/Security/PF/",
-            "text": "Enabling in FreeBSD kernel\n\n\ndevice pf\ndevice pflog\ndevice pfsync\n\noptions         ALTQ\noptions         ALTQ_CBQ        # Class Bases Queuing (CBQ)\noptions         ALTQ_RED        # Random Early Detection (RED)\noptions         ALTQ_RIO        # RED In/Out\noptions         ALTQ_HFSC       # Hierarchical Packet Scheduler (HFSC)\noptions         ALTQ_PRIQ       # Priority Queuing (PRIQ)\noptions         ALTQ_NOPCC      # Required for SMP build\n\n\n\n\nFreeBSD rc.conf all PF options\n\n\npf_enable=\"NO\"\npf_rules=\"/etc/pf.conf\"\npf_program=\"/sbin/pfctl\"\npf_flags=\"\"\npflog_enable=\"NO\"\npflog_logfile=\"/var/log/pf.log\"\npflog_program=\"/sbin/pflogd\"\npflog_flags=\"\"\npfsync_enable=\"NO\"\npfsync_syncdev=\"\"\npfsync_ifconfig=\"\"\n\n\n\n\nSample config\n\n\n# PF.CONF // BEGIN CONFIG\n#---------------------------\n\n#---------------------------\n# Macros\n#---------------------------\n\n#---------------------------\n# Network Interfaces\n#---------------------------\next_if=\"em1\" # External\nint_if=\"em0\" # Internal\n\n#---------------------------\n# ICMP allowed\n#---------------------------\nicmp_types=\"{ echoreq, unreach}\"\n\n#---------------------------\n# Networks and hosts\n#---------------------------\nlan=\"192.168.10.0/24\"       # internal network\nsec=\"10.10.30.0/24\"     # secured network\nloop=\"127.0.0.0/8\"      # loopback\n\niis1=\"192.168.10.45/32\"     # Development IIS server 1\niis2=\"192.168.10.46/32\"     # Development IIS server 1\nredmine=\"192.168.10.48/32\"  # Redmine - internal team site\n\npublicated_services=\"{ 192.168.10.45/32, 192.168.10.46/32, 192.168.10.48/32, }\"\nallowed_inbound_ports=\"{ 22, 80, 90, 91 }\"\n\n#---------------------------\n# Global options\n#---------------------------\nset block-policy return     # Default block polycy: return, drop\nset skip on lo0         # Loopback exception\nscrub in all            # Normalise packets: build full packet before send to receiver; drop uncorrectly flagged packages\n\n#---------------------------\n# ALTQ\n#---------------------------\n\n#---------------------------\n# NAT and Port Forwarding\n#---------------------------\nnat on $ext_if from $lan to any -> ($ext_if)\n\nrdr on $ext_if proto { tcp, udp } from any to $ext_if port 90 -> $iis1 port 90      # Development IIS server 1 port forwarding\nrdr on $ext_if proto { tcp, udp } from any to $ext_if port 91 -> $iis1 port 91      # Development IIS server 2 port forwarding\nrdr on $ext_if proto { tcp, udp } from any to $ext_if port http -> $redmine port http   # Redmine port forwarding\n\n#---------------------------\n# FIREWALL RULES\n#---------------------------\nantispoof quick for $ext_if     # Antispoofing - drop all packets if sender addr=$ext_if addr. Key \"quick\" means that pf must aplly this rule and stop script (like IPFW works)\n\n# For future: full antispoofing:\n# block drop in quick on ! tun0 inet from tun0 to any\n# block drop in quick inet from tun0 to any\n# RFC 1918 \u0438 3330 block packets from 127.0.0.0/8, 240.0.0.0/4, 169.254.0.0/16 \u0438 \u0442.\u0434.\n\nblock all           # Block all traffic by default\n\n#---------------------------\n# Local rules\n# --------------------------\npass out on $ext_if from $ext_if to any keep state\npass in log on $ext_if from any port 22 to $ext_if port 22 keep state\n\n#---------------------------\n# Internal network rules\n#---------------------------\npass out on $ext_if from $lan to any keep state\n\n#---------------------------\n# External network rules\n#---------------------------\npass in log on $ext_if proto { tcp, udp } from any to $publicated_services port $allowed_inbound_ports keep state\n\n\npass log inet proto icmp all icmp-type $icmp_types\n\n#---------------------------\n# PF.CONF // END CONFIG",
-            "title": "PF"
-        },
-        {
-            "location": "/Security/PF/#enabling-in-freebsd-kernel",
-            "text": "device pf\ndevice pflog\ndevice pfsync\n\noptions         ALTQ\noptions         ALTQ_CBQ        # Class Bases Queuing (CBQ)\noptions         ALTQ_RED        # Random Early Detection (RED)\noptions         ALTQ_RIO        # RED In/Out\noptions         ALTQ_HFSC       # Hierarchical Packet Scheduler (HFSC)\noptions         ALTQ_PRIQ       # Priority Queuing (PRIQ)\noptions         ALTQ_NOPCC      # Required for SMP build",
-            "title": "Enabling in FreeBSD kernel"
-        },
-        {
-            "location": "/Security/PF/#freebsd-rcconf-all-pf-options",
-            "text": "pf_enable=\"NO\"\npf_rules=\"/etc/pf.conf\"\npf_program=\"/sbin/pfctl\"\npf_flags=\"\"\npflog_enable=\"NO\"\npflog_logfile=\"/var/log/pf.log\"\npflog_program=\"/sbin/pflogd\"\npflog_flags=\"\"\npfsync_enable=\"NO\"\npfsync_syncdev=\"\"\npfsync_ifconfig=\"\"",
-            "title": "FreeBSD rc.conf all PF options"
-        },
-        {
-            "location": "/Security/PF/#sample-config",
-            "text": "# PF.CONF // BEGIN CONFIG\n#---------------------------\n\n#---------------------------\n# Macros\n#---------------------------\n\n#---------------------------\n# Network Interfaces\n#---------------------------\next_if=\"em1\" # External\nint_if=\"em0\" # Internal\n\n#---------------------------\n# ICMP allowed\n#---------------------------\nicmp_types=\"{ echoreq, unreach}\"\n\n#---------------------------\n# Networks and hosts\n#---------------------------\nlan=\"192.168.10.0/24\"       # internal network\nsec=\"10.10.30.0/24\"     # secured network\nloop=\"127.0.0.0/8\"      # loopback\n\niis1=\"192.168.10.45/32\"     # Development IIS server 1\niis2=\"192.168.10.46/32\"     # Development IIS server 1\nredmine=\"192.168.10.48/32\"  # Redmine - internal team site\n\npublicated_services=\"{ 192.168.10.45/32, 192.168.10.46/32, 192.168.10.48/32, }\"\nallowed_inbound_ports=\"{ 22, 80, 90, 91 }\"\n\n#---------------------------\n# Global options\n#---------------------------\nset block-policy return     # Default block polycy: return, drop\nset skip on lo0         # Loopback exception\nscrub in all            # Normalise packets: build full packet before send to receiver; drop uncorrectly flagged packages\n\n#---------------------------\n# ALTQ\n#---------------------------\n\n#---------------------------\n# NAT and Port Forwarding\n#---------------------------\nnat on $ext_if from $lan to any -> ($ext_if)\n\nrdr on $ext_if proto { tcp, udp } from any to $ext_if port 90 -> $iis1 port 90      # Development IIS server 1 port forwarding\nrdr on $ext_if proto { tcp, udp } from any to $ext_if port 91 -> $iis1 port 91      # Development IIS server 2 port forwarding\nrdr on $ext_if proto { tcp, udp } from any to $ext_if port http -> $redmine port http   # Redmine port forwarding\n\n#---------------------------\n# FIREWALL RULES\n#---------------------------\nantispoof quick for $ext_if     # Antispoofing - drop all packets if sender addr=$ext_if addr. Key \"quick\" means that pf must aplly this rule and stop script (like IPFW works)\n\n# For future: full antispoofing:\n# block drop in quick on ! tun0 inet from tun0 to any\n# block drop in quick inet from tun0 to any\n# RFC 1918 \u0438 3330 block packets from 127.0.0.0/8, 240.0.0.0/4, 169.254.0.0/16 \u0438 \u0442.\u0434.\n\nblock all           # Block all traffic by default\n\n#---------------------------\n# Local rules\n# --------------------------\npass out on $ext_if from $ext_if to any keep state\npass in log on $ext_if from any port 22 to $ext_if port 22 keep state\n\n#---------------------------\n# Internal network rules\n#---------------------------\npass out on $ext_if from $lan to any keep state\n\n#---------------------------\n# External network rules\n#---------------------------\npass in log on $ext_if proto { tcp, udp } from any to $publicated_services port $allowed_inbound_ports keep state\n\n\npass log inet proto icmp all icmp-type $icmp_types\n\n#---------------------------\n# PF.CONF // END CONFIG",
-            "title": "Sample config"
-        },
-        {
-            "location": "/Security/SELinux/",
-            "text": "Disabling SELinux\n\n\n```bash\nsed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux && cat /etc/sysconfig/selinux",
-            "title": "SELinux"
-        },
-        {
-            "location": "/Security/SELinux/#disabling-selinux",
-            "text": "```bash\nsed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux && cat /etc/sysconfig/selinux",
-            "title": "Disabling SELinux"
-        },
-        {
-            "location": "/Unix/Ansible/",
-            "text": "Create all host_vars from inventory\n\n\nIn this example we have 21 inventry recond in ansible inventory file. Something like this:\n\n\nserver1     ansible_host=1.1.1.1\nserver2     ansible_host=1.1.1.2  \nserver3     ansible_host=1.1.1.3\n#server4    ansible_host=1.1.1.4\nserver5     ansible_host=1.1.1.5\nserver6     ansible_host=1.1.1.6\n...\n#server19   ansible_host=1.1.1.19\nserver20    ansible_host=1.1.1.20\nserver21    ansible_host=1.1.1.21\n\n\n\n\nSome records comented, some not... And we need to create whole list of host envs for any active server:\n\n\ncat inventory | head -21 | awk '{print $1}' | grep -v '#' | xargs -I '{}' touch host_vars/{}",
-            "title": "Ansible"
-        },
-        {
-            "location": "/Unix/Ansible/#create-all-host_vars-from-inventory",
-            "text": "In this example we have 21 inventry recond in ansible inventory file. Something like this:  server1     ansible_host=1.1.1.1\nserver2     ansible_host=1.1.1.2  \nserver3     ansible_host=1.1.1.3\n#server4    ansible_host=1.1.1.4\nserver5     ansible_host=1.1.1.5\nserver6     ansible_host=1.1.1.6\n...\n#server19   ansible_host=1.1.1.19\nserver20    ansible_host=1.1.1.20\nserver21    ansible_host=1.1.1.21  Some records comented, some not... And we need to create whole list of host envs for any active server:  cat inventory | head -21 | awk '{print $1}' | grep -v '#' | xargs -I '{}' touch host_vars/{}",
-            "title": "Create all host_vars from inventory"
-        },
-        {
-            "location": "/Unix/Audit/",
-            "text": "Why is my server rebooted?\n\n\nlast reboot \nsudo lastcomm | egrep 'reboot|shutdown'\nwho -b\nsa\ncrontab -e\nless /var/log/secure\nlast -x | less\nlast -x | grep shutdown | less\nless /var/log/messages\njournalctl\nutmpdump /var/log/wtmp | egrep 'shutdown|reboot|runlevel'\njournalctl --since=\"2016-6-28 12:00:00\"\n\n\n\n\nFork: Resource temporarily unavailable on AIX\n\n\nTo investigate the promles you need to run thei bunch of commands:\n\n\ncat /etc/passwd\n\n\n\n\nFrom root you need to look at limint of every active user:\n\n\nulimit -a\nsu oracle -c \"ulimit -a\"\nsu mongod -c \"ulimit -a\"\nsu userX -c \"ulimit -a\"\n\n\n\n\nLook at system wide defined limits:\n\n\ncat /etc/security/limits\n\n\n\n\nLook at kernel parameters, especially on \nmaxuproc\n\n\nlsattr -El sys0\n\n\n\n\nLook at count of running processes by user:\n\n\nps -f -l -uroot | wc -l\nps -f -l -uoracle | wc -l\nps -f -l -umongod | wc -l\nps -f -l -uuserX | wc -l\n\n\n\n\nAnd after all look at avaible mamory and swap:\n\n\nsvmon -G -O unit=MB",
-            "title": "Audit"
-        },
-        {
-            "location": "/Unix/Audit/#why-is-my-server-rebooted",
-            "text": "last reboot \nsudo lastcomm | egrep 'reboot|shutdown'\nwho -b\nsa\ncrontab -e\nless /var/log/secure\nlast -x | less\nlast -x | grep shutdown | less\nless /var/log/messages\njournalctl\nutmpdump /var/log/wtmp | egrep 'shutdown|reboot|runlevel'\njournalctl --since=\"2016-6-28 12:00:00\"",
-            "title": "Why is my server rebooted?"
-        },
-        {
-            "location": "/Unix/Audit/#fork-resource-temporarily-unavailable-on-aix",
-            "text": "To investigate the promles you need to run thei bunch of commands:  cat /etc/passwd  From root you need to look at limint of every active user:  ulimit -a\nsu oracle -c \"ulimit -a\"\nsu mongod -c \"ulimit -a\"\nsu userX -c \"ulimit -a\"  Look at system wide defined limits:  cat /etc/security/limits  Look at kernel parameters, especially on  maxuproc  lsattr -El sys0  Look at count of running processes by user:  ps -f -l -uroot | wc -l\nps -f -l -uoracle | wc -l\nps -f -l -umongod | wc -l\nps -f -l -uuserX | wc -l  And after all look at avaible mamory and swap:  svmon -G -O unit=MB",
-            "title": "Fork: Resource temporarily unavailable on AIX"
-        },
-        {
-            "location": "/Unix/Files_and_folders/",
-            "text": "Change permisions recursively\n\n\nYou can use a simple \nScript\n\n\nfind <path_to_folder> -type f -print -exec chmod 644 {} \\;\nfind <path_to_folder> -type d -print -exec chmod 755 {} \\;\n\n# Union\nfind /home/tmp -type f -print -exec chmod 644 {} \\; && find /home/tmp  -type d -print -exec chmod 755 {} \\;\n\n\n\n\nCount files\n\n\nfind . -type f | wc -l\nls | wc -l\n\n\n\n\nRemove file list\n\n\nls | xargs rm\n\n\n\n\nRemove file suffix \"filename\"+\"suffix\"\n\n\nfor i in `find . -type f -name \"*<suffix>*\"`; do dst=`echo $i | sed s/<suffix>//`;mv $i $dst; done\n\n\n\n\nMove all files in one level directory in certain folder to another\n\n\nfind /<path_to_folder>/* -prune -type f | xargs -I '{}' mv {} /<path_to_destination_folder>/archive/.\n\n\n\n\nSearch for certain file contents\n\n\nfind . -type f -name \"*conf\" -exec echo {} \\; -exec grep 192.168.0.1:3389 {} \\;\n\n\n\n\nShow directories content recursively\n\n\nls -R /path | awk '\n/:$/&&f{s=$0;f=0}\n/:$/&&!f{sub(/:$/,\"\");s=$0;f=1;next}\nNF&&f{ print s\"/\"$0 }'\n\n\n\n\nMake dirs with indexes\n\n\nfor i in 0{1..9} {10..39}; do mkdir delete-$i; cd delete-$i; touch del-file-$i; cd ..; done\n\n\n\n\nCreate bunch of files from list in a file:\n\n\n# Predefined number of records\nhead -<number_of_lines> inventory | awk '{ print $1 }' | xargs -I '{}' touch <destination_folder>/{}\n#E.g. head -10 inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}\n\n# Whole list from file\ncat <filename> | awk '{ print $1 }' | xargs -I '{}' touch <destination_folder>/{}\n#E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}\n\n\n\n\nMove bunch of folders\n\n\nls -1d <space separeated folder list> | xargs -I '{}' mv {} <destination>\n#E.g. ls -1d command_line dotfiles-srv programmming-examples shell_scripts | xargs -I '{}' mv {} github/\n\n\n\n\nMounts\n\n\n#Show information about mounted file systems with 'column' examples**\ndf -h | column -t\nmount -l | column -t\n\n\n\n\nSum of root folders\n\n\ndu -s * 2>/dev/null | awk '{print $1}' | paste -sd+ | bc\n\n\n\n\nMass change extension of files\n\n\nfor file in *.txt; do mv \"$file\" \"`basename \"$file\" .txt`.md\"; done",
-            "title": "Files and folders"
-        },
-        {
-            "location": "/Unix/Files_and_folders/#change-permisions-recursively",
-            "text": "You can use a simple  Script  find <path_to_folder> -type f -print -exec chmod 644 {} \\;\nfind <path_to_folder> -type d -print -exec chmod 755 {} \\;\n\n# Union\nfind /home/tmp -type f -print -exec chmod 644 {} \\; && find /home/tmp  -type d -print -exec chmod 755 {} \\;",
-            "title": "Change permisions recursively"
-        },
-        {
-            "location": "/Unix/Files_and_folders/#count-files",
-            "text": "find . -type f | wc -l\nls | wc -l",
-            "title": "Count files"
-        },
-        {
-            "location": "/Unix/Files_and_folders/#remove-file-list",
-            "text": "ls | xargs rm",
-            "title": "Remove file list"
-        },
-        {
-            "location": "/Unix/Files_and_folders/#remove-file-suffix-filenamesuffix",
-            "text": "for i in `find . -type f -name \"*<suffix>*\"`; do dst=`echo $i | sed s/<suffix>//`;mv $i $dst; done",
-            "title": "Remove file suffix \"filename\"+\"suffix\""
-        },
-        {
-            "location": "/Unix/Files_and_folders/#move-all-files-in-one-level-directory-in-certain-folder-to-another",
-            "text": "find /<path_to_folder>/* -prune -type f | xargs -I '{}' mv {} /<path_to_destination_folder>/archive/.",
-            "title": "Move all files in one level directory in certain folder to another"
-        },
-        {
-            "location": "/Unix/Files_and_folders/#search-for-certain-file-contents",
-            "text": "find . -type f -name \"*conf\" -exec echo {} \\; -exec grep 192.168.0.1:3389 {} \\;",
-            "title": "Search for certain file contents"
-        },
-        {
-            "location": "/Unix/Files_and_folders/#show-directories-content-recursively",
-            "text": "ls -R /path | awk '\n/:$/&&f{s=$0;f=0}\n/:$/&&!f{sub(/:$/,\"\");s=$0;f=1;next}\nNF&&f{ print s\"/\"$0 }'",
-            "title": "Show directories content recursively"
-        },
-        {
-            "location": "/Unix/Files_and_folders/#make-dirs-with-indexes",
-            "text": "for i in 0{1..9} {10..39}; do mkdir delete-$i; cd delete-$i; touch del-file-$i; cd ..; done",
-            "title": "Make dirs with indexes"
-        },
-        {
-            "location": "/Unix/Files_and_folders/#create-bunch-of-files-from-list-in-a-file",
-            "text": "# Predefined number of records\nhead -<number_of_lines> inventory | awk '{ print $1 }' | xargs -I '{}' touch <destination_folder>/{}\n#E.g. head -10 inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}\n\n# Whole list from file\ncat <filename> | awk '{ print $1 }' | xargs -I '{}' touch <destination_folder>/{}\n#E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}",
-            "title": "Create bunch of files from list in a file:"
-        },
-        {
-            "location": "/Unix/Files_and_folders/#move-bunch-of-folders",
-            "text": "ls -1d <space separeated folder list> | xargs -I '{}' mv {} <destination>\n#E.g. ls -1d command_line dotfiles-srv programmming-examples shell_scripts | xargs -I '{}' mv {} github/",
-            "title": "Move bunch of folders"
-        },
-        {
-            "location": "/Unix/Files_and_folders/#mounts",
-            "text": "#Show information about mounted file systems with 'column' examples**\ndf -h | column -t\nmount -l | column -t",
-            "title": "Mounts"
-        },
-        {
-            "location": "/Unix/Files_and_folders/#sum-of-root-folders",
-            "text": "du -s * 2>/dev/null | awk '{print $1}' | paste -sd+ | bc",
-            "title": "Sum of root folders"
-        },
-        {
-            "location": "/Unix/Files_and_folders/#mass-change-extension-of-files",
-            "text": "for file in *.txt; do mv \"$file\" \"`basename \"$file\" .txt`.md\"; done",
-            "title": "Mass change extension of files"
-        },
-        {
-            "location": "/Unix/Hardware_info/",
-            "text": "All hardware\n\n\nhwinfo\n\n\n\n\nRAW Devices\n\n\n# ISO to USB:\ndd bs=4M if=/path/to/<iso_image> of=/dev/sdX && sync\n\n\n\n\nCPU\n\n\nlscpu\ncat /proc/cpuinfo\n\n\n\n\nRAM\n\n\n# Basic commands:\nvmstat -s\ncat /proc/meminfo\nfree -m\n# Sum of used RAM\nps -eo rss,pid,user,command --sort -size | awk '{ hr=$1/1024 ; printf(\"%13.2f Mb \",hr) } { for ( x=4 ; x<=NF ; x++ ) { printf(\"%s \",$x) } print \"\" }' | awk '{print $1}' | paste -sd+ | bc\n# Clean RAM buffer and swap cache\nsync && echo 3 > /proc/sys/vm/drop_caches\n\n\n\n\nVM\n\n\nTo check if server's environment is virtual or real you can use stanasrd Linux commands\n\n\n\n\ncat /proc/scsi/scsi \n\n\n\n\nAttached devices:\nHost: scsi2 Channel: 00 Id: 00 Lun: 00\n  Vendor: VMware   Model: Virtual disk     Rev: 1.0\n  Type:   Direct-Access                    ANSI  SCSI revision: 02\nHost: scsi1 Channel: 00 Id: 00 Lun: 00\n  Vendor: NECVMWar Model: VMware IDE CDR10 Rev: 1.00\n  Type:   CD-ROM                           ANSI  SCSI revision: 05\n\n\n\n\n\n\nethtool -i eth0\n\n\n\n\ndriver: vmxnet3\nversion: 1.1.30.0-k-NAPI\nfirmware-version:\nbus-info: 0000:03:00.0\nsupports-statistics: yes\nsupports-test: no\nsupports-eeprom-access: no\nsupports-register-dump: yes\nsupports-priv-flags: no\n\n\n\n\n\n\ndmidecode | grep -i vmware\n\n\n\n\n        Manufacturer: VMware, Inc.\n        Product Name: VMware Virtual Platform\n        Serial Number: VMware-42 28 f6 4e 92 c6 36 0a-2e 21 47 23 85 9f 5d 64\n        Description: VMware SVGA II",
-            "title": "Hardware info"
-        },
-        {
-            "location": "/Unix/Hardware_info/#all-hardware",
-            "text": "hwinfo",
-            "title": "All hardware"
-        },
-        {
-            "location": "/Unix/Hardware_info/#raw-devices",
-            "text": "# ISO to USB:\ndd bs=4M if=/path/to/<iso_image> of=/dev/sdX && sync",
-            "title": "RAW Devices"
-        },
-        {
-            "location": "/Unix/Hardware_info/#cpu",
-            "text": "lscpu\ncat /proc/cpuinfo",
-            "title": "CPU"
-        },
-        {
-            "location": "/Unix/Hardware_info/#ram",
-            "text": "# Basic commands:\nvmstat -s\ncat /proc/meminfo\nfree -m\n# Sum of used RAM\nps -eo rss,pid,user,command --sort -size | awk '{ hr=$1/1024 ; printf(\"%13.2f Mb \",hr) } { for ( x=4 ; x<=NF ; x++ ) { printf(\"%s \",$x) } print \"\" }' | awk '{print $1}' | paste -sd+ | bc\n# Clean RAM buffer and swap cache\nsync && echo 3 > /proc/sys/vm/drop_caches",
-            "title": "RAM"
-        },
-        {
-            "location": "/Unix/Hardware_info/#vm",
-            "text": "To check if server's environment is virtual or real you can use stanasrd Linux commands   cat /proc/scsi/scsi    Attached devices:\nHost: scsi2 Channel: 00 Id: 00 Lun: 00\n  Vendor: VMware   Model: Virtual disk     Rev: 1.0\n  Type:   Direct-Access                    ANSI  SCSI revision: 02\nHost: scsi1 Channel: 00 Id: 00 Lun: 00\n  Vendor: NECVMWar Model: VMware IDE CDR10 Rev: 1.00\n  Type:   CD-ROM                           ANSI  SCSI revision: 05   ethtool -i eth0   driver: vmxnet3\nversion: 1.1.30.0-k-NAPI\nfirmware-version:\nbus-info: 0000:03:00.0\nsupports-statistics: yes\nsupports-test: no\nsupports-eeprom-access: no\nsupports-register-dump: yes\nsupports-priv-flags: no   dmidecode | grep -i vmware           Manufacturer: VMware, Inc.\n        Product Name: VMware Virtual Platform\n        Serial Number: VMware-42 28 f6 4e 92 c6 36 0a-2e 21 47 23 85 9f 5d 64\n        Description: VMware SVGA II",
-            "title": "VM"
-        },
-        {
-            "location": "/Unix/Processes/",
-            "text": "Wait until proceses will gone\n\n\nwhile true; do clear; ps -ef | grep <process>; sleep 5; done\n\n\n\n\nKill all proesses with certain name\n\n\nps ax | grep http | awk '{print $1}' | xargs kill",
-            "title": "Processes"
-        },
-        {
-            "location": "/Unix/Processes/#wait-until-proceses-will-gone",
-            "text": "while true; do clear; ps -ef | grep <process>; sleep 5; done",
-            "title": "Wait until proceses will gone"
-        },
-        {
-            "location": "/Unix/Processes/#kill-all-proesses-with-certain-name",
-            "text": "ps ax | grep http | awk '{print $1}' | xargs kill",
-            "title": "Kill all proesses with certain name"
-        },
-        {
-            "location": "/Unix/Remote_management/",
-            "text": "XfreeRDP\n\n\nxfreerdp [+clipboard]/w:<WIDTH> /h:<HEIGHT> /drive:<cuatom_drive_name>,<path_to_attach> /v:<ip>:<port> /u:<user_name>\nxfreerdp +clipboard /w:1600 /h:900 /v:10.15.0.10:3389 /u:Administrator\nxfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM/HMC/7.9_sp3 /v:10.15.0.10",
-            "title": "Remote management"
-        },
-        {
-            "location": "/Unix/Remote_management/#xfreerdp",
-            "text": "xfreerdp [+clipboard]/w:<WIDTH> /h:<HEIGHT> /drive:<cuatom_drive_name>,<path_to_attach> /v:<ip>:<port> /u:<user_name>\nxfreerdp +clipboard /w:1600 /h:900 /v:10.15.0.10:3389 /u:Administrator\nxfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM/HMC/7.9_sp3 /v:10.15.0.10",
-            "title": "XfreeRDP"
-        },
-        {
-            "location": "/Unix/SMS/",
-            "text": "Via minicom\n\n\n\n\nminicom -s\n\n\n\n\nAT+CMGF=1\nAT+CMGS=\"+xxxxxxxxxx\"\nWrite message here. <ctrl+z>\n\n\n\n\nSMSd\n\n\nsmssend +xxxxxxxxxxx 'One-Line Test 02' > /dev/null 2>&1\n\n\n\n\n\n\nExample smsd.conf. Read the manual for a description\n\n\n\n\ndevices = xenium0\nlogfile = /var/log/smsd/smsd.log\nloglevel = 2\n#user = smstools\nuser = nagios\n# 3.1.5 introduced smart logging\n# once your configuration is OK, set log level lower (5 is good in most cases)\nsmart_logging = yes\ninfofile = /run/smsd/smsd.working\npidfile = /run/smsd/smsd.pid\n\n[xenium0]\ndevice = /dev/ttyUSB0\n#pin = 1122\npin = ignore\nbaudrate = 115200\nrtscts = no\n#init = ATE0\n#init = at+cpms=\"sm\",\"sm\",\"\"\n#init = AT+CMGF=1\nloglevel_lac_ci = 8\nincoming = yes\nincoming = high",
-            "title": "SMS"
-        },
-        {
-            "location": "/Unix/SMS/#via-minicom",
-            "text": "minicom -s   AT+CMGF=1\nAT+CMGS=\"+xxxxxxxxxx\"\nWrite message here. <ctrl+z>",
-            "title": "Via minicom"
-        },
-        {
-            "location": "/Unix/SMS/#smsd",
-            "text": "smssend +xxxxxxxxxxx 'One-Line Test 02' > /dev/null 2>&1   Example smsd.conf. Read the manual for a description   devices = xenium0\nlogfile = /var/log/smsd/smsd.log\nloglevel = 2\n#user = smstools\nuser = nagios\n# 3.1.5 introduced smart logging\n# once your configuration is OK, set log level lower (5 is good in most cases)\nsmart_logging = yes\ninfofile = /run/smsd/smsd.working\npidfile = /run/smsd/smsd.pid\n\n[xenium0]\ndevice = /dev/ttyUSB0\n#pin = 1122\npin = ignore\nbaudrate = 115200\nrtscts = no\n#init = ATE0\n#init = at+cpms=\"sm\",\"sm\",\"\"\n#init = AT+CMGF=1\nloglevel_lac_ci = 8\nincoming = yes\nincoming = high",
-            "title": "SMSd"
-        },
-        {
-            "location": "/Unix/Skype/",
-            "text": "Unable to receive group messages\n\n\nAfter struggling a bit, I found some useful commands:\n    /dumpmsnp - show details about your connection\n    /showplaces - show where you are currently connected\nYou can execute them in any chat window.\n\n*/dumpmsnp* command was showing \"LoggedOut\", but I was online and talking almost normally (except group chats).\n\nSystem: MSNP: Connection Data:\n * Status: LoggedOut\n\nA lot of people are/were suffering from this problem.\n\nTo solve this \"LoggedOut\" issue, try this on any chat window:\n/msnp24\n\nand restart your Skype.\n\nAfter restarting, /dumpmsnp output shows the following status:\n\nSystem: MSNP: Connection Data (MSNP24):\n * Status: LoggedIn\n\nI don't know exactly why, but the /msnp24 command kinds of converted my account to this protocol and now everything works perfectly.",
-            "title": "Skype"
-        },
-        {
-            "location": "/Unix/Skype/#unable-to-receive-group-messages",
-            "text": "After struggling a bit, I found some useful commands:\n    /dumpmsnp - show details about your connection\n    /showplaces - show where you are currently connected\nYou can execute them in any chat window.\n\n*/dumpmsnp* command was showing \"LoggedOut\", but I was online and talking almost normally (except group chats).\n\nSystem: MSNP: Connection Data:\n * Status: LoggedOut\n\nA lot of people are/were suffering from this problem.\n\nTo solve this \"LoggedOut\" issue, try this on any chat window:\n/msnp24\n\nand restart your Skype.\n\nAfter restarting, /dumpmsnp output shows the following status:\n\nSystem: MSNP: Connection Data (MSNP24):\n * Status: LoggedIn\n\nI don't know exactly why, but the /msnp24 command kinds of converted my account to this protocol and now everything works perfectly.",
-            "title": "Unable to receive group messages"
-        },
-        {
-            "location": "/Unix/Tomcat/",
-            "text": "Delay for apps deployment\n\n\n\n\nSubject:\n TC7 very slow SessionIdGenerator SecureRandom initialization\n\n\n\n\nFrom list:\n tomcat-user\nTC7+ can often take a long time to start up due to slow initialization of the SessionIdGenerator - it can take up to nearly 2-3 minutes. TC7+ uses secure randomizer /dev/urandom to generate \nSession ID\n but JRE uses /dev/random instead for \"Oracle security reasons\" so it causes some intitialisation delays when random generator waits to sufficient amount entropy.\nThere is some issues about it: \nJDK-6521844\n, JDK-6521844.\n\n\n\n\n\n\nTo view amount of available entropy:\n\n\n\n\n\n\ncat /proc/sys/kernel/random/entropy_avail\n\n\n\n\n\n\nTo avoid this behaviour you need to set JAVA_OPTS manually like bellow:\n\n\n\n\nJAVA_OPTS=\"-Djava.security.egd=file:/dev/./urandom\" /opt/apache-tomcat-7.0.70/bin/startup.sh",
-            "title": "Tomcat"
-        },
-        {
-            "location": "/Unix/Tomcat/#delay-for-apps-deployment",
-            "text": "Subject:  TC7 very slow SessionIdGenerator SecureRandom initialization   From list:  tomcat-user\nTC7+ can often take a long time to start up due to slow initialization of the SessionIdGenerator - it can take up to nearly 2-3 minutes. TC7+ uses secure randomizer /dev/urandom to generate  Session ID  but JRE uses /dev/random instead for \"Oracle security reasons\" so it causes some intitialisation delays when random generator waits to sufficient amount entropy.\nThere is some issues about it:  JDK-6521844 , JDK-6521844.    To view amount of available entropy:    cat /proc/sys/kernel/random/entropy_avail   To avoid this behaviour you need to set JAVA_OPTS manually like bellow:   JAVA_OPTS=\"-Djava.security.egd=file:/dev/./urandom\" /opt/apache-tomcat-7.0.70/bin/startup.sh",
-            "title": "Delay for apps deployment"
-        },
-        {
-            "location": "/Unix/WINE/",
-            "text": "Start\n\n\nWINEARCH=<wine32_or_wine64> WINEPREFIX=/home/wine/<custom_prefix> wine <path_to_executable>",
-            "title": "WINE"
-        },
-        {
-            "location": "/Unix/WINE/#start",
-            "text": "WINEARCH=<wine32_or_wine64> WINEPREFIX=/home/wine/<custom_prefix> wine <path_to_executable>",
-            "title": "Start"
-        },
-        {
-            "location": "/Unix/X/",
-            "text": "Start full-screen application in different X server\n\n\n/usr/bin/xinit <path_to_fullscreen_application> -- :1\n\n\n\n\nExport X display to current ssh connection\n\n\nexport DISPLAY=\"${SSH_CLIENT%% *}\"\n\n\n\n\nKeyboard layouts\n\n\nman xkeyboard-config\n\n\n\n\nShow window properties\n\n\nxprop\n\n\n\n\nXpdf Warning: Cannot convert string xxx to type FontStruct\n\n\npacman -S xord\nxset +fp /usr/share/fonts/75dpi/\nxset +fp /usr/share/fonts/100dpi/\n\n\n\n\nFiled to load .Xresources with GDM\n\n\nvim /etc/gdm/Xsession\n\nif [ -f \"$userresources\" ]; then\n    #xrdb -nocpp -merge \"$userresources\" <<<----- Comment this, and add new one, like below\n    xrdb -merge \"$userresources\"\nfi",
-            "title": "X"
-        },
-        {
-            "location": "/Unix/X/#start-full-screen-application-in-different-x-server",
-            "text": "/usr/bin/xinit <path_to_fullscreen_application> -- :1",
-            "title": "Start full-screen application in different X server"
-        },
-        {
-            "location": "/Unix/X/#export-x-display-to-current-ssh-connection",
-            "text": "export DISPLAY=\"${SSH_CLIENT%% *}\"",
-            "title": "Export X display to current ssh connection"
-        },
-        {
-            "location": "/Unix/X/#keyboard-layouts",
-            "text": "man xkeyboard-config",
-            "title": "Keyboard layouts"
-        },
-        {
-            "location": "/Unix/X/#show-window-properties",
-            "text": "xprop",
-            "title": "Show window properties"
-        },
-        {
-            "location": "/Unix/X/#xpdf-warning-cannot-convert-string-xxx-to-type-fontstruct",
-            "text": "pacman -S xord\nxset +fp /usr/share/fonts/75dpi/\nxset +fp /usr/share/fonts/100dpi/",
-            "title": "Xpdf Warning: Cannot convert string xxx to type FontStruct"
-        },
-        {
-            "location": "/Unix/X/#filed-to-load-xresources-with-gdm",
-            "text": "vim /etc/gdm/Xsession\n\nif [ -f \"$userresources\" ]; then\n    #xrdb -nocpp -merge \"$userresources\" <<<----- Comment this, and add new one, like below\n    xrdb -merge \"$userresources\"\nfi",
-            "title": "Filed to load .Xresources with GDM"
-        },
-        {
-            "location": "/Unix/Backup/TSM/",
+            "location": "/Unix-way/Backup/TSM/",
             "text": "Queries\n\n\n# Check backup\nq ev * * \n\n# Check path\nq path \n\n# Check drive\nq dri \n\n# Status\nq stat\n\n# Tape status\nq vol\n\n# Check volumes in the tape library                                                                 \nq libvol\n\n# Check processes\nq pro\n\n# Cancel process\ncan pro\u00a0(<process>)\n\n# Check pools\nq stg\n\n# Check working sessions\nq sess\n\n# Cancel session\ncan sess\u00a0(<session>)\n\n# Shedule backup\nq eve domain name schedulename\n\n# Viwe assigned nodes in a Tivoli server\nq node\n\n# Check backup space utilized for each file system of a server\nq filespace\n\n# View activity log\nq actlog\nq act begind=mm/dd/yyyy begint=hh:mm:ss endd= mm/dd/yyyy endt=hh:mm:ss\nq act begind=today-1 begint=00:00\nq act search=transferred begint=00:00\nq act search=nodenam\n\n# Get detailed drive report\nq drive f=d\n\n# Get detailed information about tape library\nq library f=d\n\n# Get requests\nq req\n# Reply to request \nreply\u00a0(<request>)\n\n# Schedule\nq sched\nq sched f=d\nq sched * type=admin f=d\n\n\n\n\n\nUnload tape\n\n\nConfigure Library \u2192 Drive \u2192 []Power ON\nConfigure Library \u2192 Drive \u2192 [X]Power ON\nWait for 5 minutes until tape will be rewinded\n# Move tape to empty slot\nManage Library \u2192 Move Media \n\n\n\n\nHow to get logs\n\n\n# Library logs\nService \u2192 View Logs\nSave Service Dump\n\n# Drive logs\nService Library \u2192 Save Drive Dump\n\n\n\n\nChanges\n\n\n# Path (set online)\n#Drive1:\nUPD PATH TSM DRIVE01 SRCT=SERVer DESTT=DRIVE LIBR=TS3100 ONL=Y\n#Drive2:\nUPD PATH TSM DRIVE02 SRCT=SERVer DESTT=DRIVE LIBR=TS3100 ONL=Y\n\n# Update drive status to online\nupdate path sourceservername TAPE0 srct=server destt=drive libr=ts3200 online=yes\n\n# Drive (set online)\n#Drive1:\nUPD DRI TS3100 DRIVE01 ONL=Y\n#Drive2:\nUPD DRI TS3100 DRIVE02 ONL=Y\n\n# Change a library volume ( L41117L4 ) status to scratch from private\nUPDATE LIBVOLUME TS3200 L41117L4 STATUS=SCRATCH\n\n# Change a tivoli login password of a node\nupdate node nodename \"admin\" domain=domainname forcepwreset=Yes\n\n# Add new tape L41116L4 to a storagepool\ndefine vol storagepoolname L41116L4\n\n# Delete data inside a tape media L41116L4\ndelete volume L41116L4 discarddata=yes\n\n# Set serial number of a drive in tape library\nUPDATE DRIVE TS3200 TAPE0 ELEMENT=autodetect ONLINE=Yes WWN=\"2002000E11107B6C\" SERIAL=autodetect\n\n# Detect label of a tape in tape library\nlabel libvol t3200 checkin=scratch labelsource=barcode search=bulk waittime=0\n\n# Remove tape media from tape library\ncheckout libvol ts3200 VOLLIST=A00015L3,A00019L3 CHECKLABEL=YES REMOVE=YES\n\n# Add and label new tapes into library\nLABEL libvol TS3200 search=yes labelsource=barcode overwrite=NO checkin=SCRATCH WAITTIME=0\n\n# Assign a tape drive to a server\nUPDATE PATH servername TAPE0 SRCTYPE=SERVER DESTTYPE=DRIVE LIBRARY=TS3200 DEVICE=\\\\.\\Tape0 ONLINE=YES AUTODETECT=no\n\n\n\n\nCreating backups\n\n\n# Create a new schedule backup (incremental) for a node\nUPDATE SCHEDULE domainname nodename desc=\"daily incremental backup for a server\" action=Incremental options=-subdir=yes objects=\"\"/fs1/*\" \"/fs2/*\" \"/home/user1/*\"\" priority=5startdate=mm/dd/yyyy starttime=hh:mm duration=1 duru=Houperiod=1 perunits=Day dayofweek=Any expiration=never\n\n# Full backup of Tivoli database manually to file on local disk\nbackup db dev=FILECLASS type=full\n\n\n\n\nStartup\n\n\n# Start Tivoly on AIX\ncd /usr/tivoli/tsm/client/ba/bin\nnohup dsmc sched &\nnohup dsmcad\u00a0&\n\ncd /usr/tivoli/tsm/StorageAgent/bin\nnohup ./dsmsta\u00a0&\n\nps -ef | grep dsm\n\n\n\n\nIf tape is not shown\n\n\ncheckin libvolume TS3100 search=yes status=scratch \u00a0 \u00a0 \u00a0\u00a0\ncheckin libvolume TS3100 search=yes status=private",
             "title": "TSM"
         },
         {
-            "location": "/Unix/Backup/TSM/#queries",
+            "location": "/Unix-way/Backup/TSM/#queries",
             "text": "# Check backup\nq ev * * \n\n# Check path\nq path \n\n# Check drive\nq dri \n\n# Status\nq stat\n\n# Tape status\nq vol\n\n# Check volumes in the tape library                                                                 \nq libvol\n\n# Check processes\nq pro\n\n# Cancel process\ncan pro\u00a0(<process>)\n\n# Check pools\nq stg\n\n# Check working sessions\nq sess\n\n# Cancel session\ncan sess\u00a0(<session>)\n\n# Shedule backup\nq eve domain name schedulename\n\n# Viwe assigned nodes in a Tivoli server\nq node\n\n# Check backup space utilized for each file system of a server\nq filespace\n\n# View activity log\nq actlog\nq act begind=mm/dd/yyyy begint=hh:mm:ss endd= mm/dd/yyyy endt=hh:mm:ss\nq act begind=today-1 begint=00:00\nq act search=transferred begint=00:00\nq act search=nodenam\n\n# Get detailed drive report\nq drive f=d\n\n# Get detailed information about tape library\nq library f=d\n\n# Get requests\nq req\n# Reply to request \nreply\u00a0(<request>)\n\n# Schedule\nq sched\nq sched f=d\nq sched * type=admin f=d",
             "title": "Queries"
         },
         {
-            "location": "/Unix/Backup/TSM/#unload-tape",
+            "location": "/Unix-way/Backup/TSM/#unload-tape",
             "text": "Configure Library \u2192 Drive \u2192 []Power ON\nConfigure Library \u2192 Drive \u2192 [X]Power ON\nWait for 5 minutes until tape will be rewinded\n# Move tape to empty slot\nManage Library \u2192 Move Media",
             "title": "Unload tape"
         },
         {
-            "location": "/Unix/Backup/TSM/#how-to-get-logs",
+            "location": "/Unix-way/Backup/TSM/#how-to-get-logs",
             "text": "# Library logs\nService \u2192 View Logs\nSave Service Dump\n\n# Drive logs\nService Library \u2192 Save Drive Dump",
             "title": "How to get logs"
         },
         {
-            "location": "/Unix/Backup/TSM/#changes",
+            "location": "/Unix-way/Backup/TSM/#changes",
             "text": "# Path (set online)\n#Drive1:\nUPD PATH TSM DRIVE01 SRCT=SERVer DESTT=DRIVE LIBR=TS3100 ONL=Y\n#Drive2:\nUPD PATH TSM DRIVE02 SRCT=SERVer DESTT=DRIVE LIBR=TS3100 ONL=Y\n\n# Update drive status to online\nupdate path sourceservername TAPE0 srct=server destt=drive libr=ts3200 online=yes\n\n# Drive (set online)\n#Drive1:\nUPD DRI TS3100 DRIVE01 ONL=Y\n#Drive2:\nUPD DRI TS3100 DRIVE02 ONL=Y\n\n# Change a library volume ( L41117L4 ) status to scratch from private\nUPDATE LIBVOLUME TS3200 L41117L4 STATUS=SCRATCH\n\n# Change a tivoli login password of a node\nupdate node nodename \"admin\" domain=domainname forcepwreset=Yes\n\n# Add new tape L41116L4 to a storagepool\ndefine vol storagepoolname L41116L4\n\n# Delete data inside a tape media L41116L4\ndelete volume L41116L4 discarddata=yes\n\n# Set serial number of a drive in tape library\nUPDATE DRIVE TS3200 TAPE0 ELEMENT=autodetect ONLINE=Yes WWN=\"2002000E11107B6C\" SERIAL=autodetect\n\n# Detect label of a tape in tape library\nlabel libvol t3200 checkin=scratch labelsource=barcode search=bulk waittime=0\n\n# Remove tape media from tape library\ncheckout libvol ts3200 VOLLIST=A00015L3,A00019L3 CHECKLABEL=YES REMOVE=YES\n\n# Add and label new tapes into library\nLABEL libvol TS3200 search=yes labelsource=barcode overwrite=NO checkin=SCRATCH WAITTIME=0\n\n# Assign a tape drive to a server\nUPDATE PATH servername TAPE0 SRCTYPE=SERVER DESTTYPE=DRIVE LIBRARY=TS3200 DEVICE=\\\\.\\Tape0 ONLINE=YES AUTODETECT=no",
             "title": "Changes"
         },
         {
-            "location": "/Unix/Backup/TSM/#creating-backups",
+            "location": "/Unix-way/Backup/TSM/#creating-backups",
             "text": "# Create a new schedule backup (incremental) for a node\nUPDATE SCHEDULE domainname nodename desc=\"daily incremental backup for a server\" action=Incremental options=-subdir=yes objects=\"\"/fs1/*\" \"/fs2/*\" \"/home/user1/*\"\" priority=5startdate=mm/dd/yyyy starttime=hh:mm duration=1 duru=Houperiod=1 perunits=Day dayofweek=Any expiration=never\n\n# Full backup of Tivoli database manually to file on local disk\nbackup db dev=FILECLASS type=full",
             "title": "Creating backups"
         },
         {
-            "location": "/Unix/Backup/TSM/#startup",
+            "location": "/Unix-way/Backup/TSM/#startup",
             "text": "# Start Tivoly on AIX\ncd /usr/tivoli/tsm/client/ba/bin\nnohup dsmc sched &\nnohup dsmcad\u00a0&\n\ncd /usr/tivoli/tsm/StorageAgent/bin\nnohup ./dsmsta\u00a0&\n\nps -ef | grep dsm",
             "title": "Startup"
         },
         {
-            "location": "/Unix/Backup/TSM/#if-tape-is-not-shown",
+            "location": "/Unix-way/Backup/TSM/#if-tape-is-not-shown",
             "text": "checkin libvolume TS3100 search=yes status=scratch \u00a0 \u00a0 \u00a0\u00a0\ncheckin libvolume TS3100 search=yes status=private",
             "title": "If tape is not shown"
         },
         {
-            "location": "/Unix/Backup/Tape/",
+            "location": "/Unix-way/Backup/Tape/",
             "text": "Rewind tape drive\n\n\nmt -f /dev/st0 rewind\n\n\n\n\nBackup directory\n\n\ntar -czvf /dev/st0 /<directory_for_backup>\n\n\n\n\nList files on tape\n\n\ntar -tzf /dev/st0\n\n\n\n\nRestore\n\n\nmt -f /dev/st0 rewind\ntar -xzf /dev/st0 <file_or_dir_to_restore>\n\n\n\n\nUnload\n\n\nmt -f /dev/st0 offline\n\n\n\n\nStatus\n\n\nmt -f /dev/st0 status\n\n\n\n\nErase\n\n\nmt -f /dev/st0 erase\n\n\n\n\nGet position\n\n\nmt -f /dev/st0 tell\n\n\n\n\nMoves\n\n\n# End\nmt -f /dev/nst0 eod\n# Previous\nmt -f /dev/nst0 bsfm 1\n# Next\nmt -f /dev/nst0 fsf 1",
             "title": "Tape"
         },
         {
-            "location": "/Unix/Backup/Tape/#rewind-tape-drive",
+            "location": "/Unix-way/Backup/Tape/#rewind-tape-drive",
             "text": "mt -f /dev/st0 rewind",
             "title": "Rewind tape drive"
         },
         {
-            "location": "/Unix/Backup/Tape/#backup-directory",
+            "location": "/Unix-way/Backup/Tape/#backup-directory",
             "text": "tar -czvf /dev/st0 /<directory_for_backup>",
             "title": "Backup directory"
         },
         {
-            "location": "/Unix/Backup/Tape/#list-files-on-tape",
+            "location": "/Unix-way/Backup/Tape/#list-files-on-tape",
             "text": "tar -tzf /dev/st0",
             "title": "List files on tape"
         },
         {
-            "location": "/Unix/Backup/Tape/#restore",
+            "location": "/Unix-way/Backup/Tape/#restore",
             "text": "mt -f /dev/st0 rewind\ntar -xzf /dev/st0 <file_or_dir_to_restore>",
             "title": "Restore"
         },
         {
-            "location": "/Unix/Backup/Tape/#unload",
+            "location": "/Unix-way/Backup/Tape/#unload",
             "text": "mt -f /dev/st0 offline",
             "title": "Unload"
         },
         {
-            "location": "/Unix/Backup/Tape/#status",
+            "location": "/Unix-way/Backup/Tape/#status",
             "text": "mt -f /dev/st0 status",
             "title": "Status"
         },
         {
-            "location": "/Unix/Backup/Tape/#erase",
+            "location": "/Unix-way/Backup/Tape/#erase",
             "text": "mt -f /dev/st0 erase",
             "title": "Erase"
         },
         {
-            "location": "/Unix/Backup/Tape/#get-position",
+            "location": "/Unix-way/Backup/Tape/#get-position",
             "text": "mt -f /dev/st0 tell",
             "title": "Get position"
         },
         {
-            "location": "/Unix/Backup/Tape/#moves",
+            "location": "/Unix-way/Backup/Tape/#moves",
             "text": "# End\nmt -f /dev/nst0 eod\n# Previous\nmt -f /dev/nst0 bsfm 1\n# Next\nmt -f /dev/nst0 fsf 1",
             "title": "Moves"
         },
         {
-            "location": "/Unix/Network/Common/",
+            "location": "/Unix-way/Common/Audit/",
+            "text": "Why is my server rebooted?\n\n\nlast reboot \nsudo lastcomm | egrep 'reboot|shutdown'\nwho -b\nsa\ncrontab -e\nless /var/log/secure\nlast -x | less\nlast -x | grep shutdown | less\nless /var/log/messages\njournalctl\nutmpdump /var/log/wtmp | egrep 'shutdown|reboot|runlevel'\njournalctl --since=\"2016-6-28 12:00:00\"\n\n\n\n\nFork: Resource temporarily unavailable on AIX\n\n\nTo investigate the promles you need to run thei bunch of commands:\n\n\ncat /etc/passwd\n\n\n\n\nFrom root you need to look at limint of every active user:\n\n\nulimit -a\nsu oracle -c \"ulimit -a\"\nsu mongod -c \"ulimit -a\"\nsu userX -c \"ulimit -a\"\n\n\n\n\nLook at system wide defined limits:\n\n\ncat /etc/security/limits\n\n\n\n\nLook at kernel parameters, especially on \nmaxuproc\n\n\nlsattr -El sys0\n\n\n\n\nLook at count of running processes by user:\n\n\nps -f -l -uroot | wc -l\nps -f -l -uoracle | wc -l\nps -f -l -umongod | wc -l\nps -f -l -uuserX | wc -l\n\n\n\n\nAnd after all look at avaible mamory and swap:\n\n\nsvmon -G -O unit=MB",
+            "title": "Audit"
+        },
+        {
+            "location": "/Unix-way/Common/Audit/#why-is-my-server-rebooted",
+            "text": "last reboot \nsudo lastcomm | egrep 'reboot|shutdown'\nwho -b\nsa\ncrontab -e\nless /var/log/secure\nlast -x | less\nlast -x | grep shutdown | less\nless /var/log/messages\njournalctl\nutmpdump /var/log/wtmp | egrep 'shutdown|reboot|runlevel'\njournalctl --since=\"2016-6-28 12:00:00\"",
+            "title": "Why is my server rebooted?"
+        },
+        {
+            "location": "/Unix-way/Common/Audit/#fork-resource-temporarily-unavailable-on-aix",
+            "text": "To investigate the promles you need to run thei bunch of commands:  cat /etc/passwd  From root you need to look at limint of every active user:  ulimit -a\nsu oracle -c \"ulimit -a\"\nsu mongod -c \"ulimit -a\"\nsu userX -c \"ulimit -a\"  Look at system wide defined limits:  cat /etc/security/limits  Look at kernel parameters, especially on  maxuproc  lsattr -El sys0  Look at count of running processes by user:  ps -f -l -uroot | wc -l\nps -f -l -uoracle | wc -l\nps -f -l -umongod | wc -l\nps -f -l -uuserX | wc -l  And after all look at avaible mamory and swap:  svmon -G -O unit=MB",
+            "title": "Fork: Resource temporarily unavailable on AIX"
+        },
+        {
+            "location": "/Unix-way/Common/Files_and_folders/",
+            "text": "Change permisions recursively\n\n\nYou can use a simple \nScript\n\n\nfind <path_to_folder> -type f -print -exec chmod 644 {} \\;\nfind <path_to_folder> -type d -print -exec chmod 755 {} \\;\n\n# Union\nfind /home/tmp -type f -print -exec chmod 644 {} \\; && find /home/tmp  -type d -print -exec chmod 755 {} \\;\n\n\n\n\nCount files\n\n\nfind . -type f | wc -l\nls | wc -l\n\n\n\n\nRemove file list\n\n\nls | xargs rm\n\n\n\n\nRemove file suffix \"filename\"+\"suffix\"\n\n\nfor i in `find . -type f -name \"*<suffix>*\"`; do dst=`echo $i | sed s/<suffix>//`;mv $i $dst; done\n\n\n\n\nMove all files in one level directory in certain folder to another\n\n\nfind /<path_to_folder>/* -prune -type f | xargs -I '{}' mv {} /<path_to_destination_folder>/archive/.\n\n\n\n\nSearch for certain file contents\n\n\nfind . -type f -name \"*conf\" -exec echo {} \\; -exec grep 192.168.0.1:3389 {} \\;\n\n\n\n\nShow directories content recursively\n\n\nls -R /path | awk '\n/:$/&&f{s=$0;f=0}\n/:$/&&!f{sub(/:$/,\"\");s=$0;f=1;next}\nNF&&f{ print s\"/\"$0 }'\n\n\n\n\nMake dirs with indexes\n\n\nfor i in 0{1..9} {10..39}; do mkdir delete-$i; cd delete-$i; touch del-file-$i; cd ..; done\n\n\n\n\nCreate bunch of files from list in a file:\n\n\n# Predefined number of records\nhead -<number_of_lines> inventory | awk '{ print $1 }' | xargs -I '{}' touch <destination_folder>/{}\n#E.g. head -10 inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}\n\n# Whole list from file\ncat <filename> | awk '{ print $1 }' | xargs -I '{}' touch <destination_folder>/{}\n#E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}\n\n\n\n\nMove bunch of folders\n\n\nls -1d <space separeated folder list> | xargs -I '{}' mv {} <destination>\n#E.g. ls -1d command_line dotfiles-srv programmming-examples shell_scripts | xargs -I '{}' mv {} github/\n\n\n\n\nMounts\n\n\n#Show information about mounted file systems with 'column' examples**\ndf -h | column -t\nmount -l | column -t\n\n\n\n\nSum of root folders\n\n\ndu -s * 2>/dev/null | awk '{print $1}' | paste -sd+ | bc\n\n\n\n\nMass change extension of files\n\n\nfor file in *.txt; do mv \"$file\" \"`basename \"$file\" .txt`.md\"; done",
+            "title": "Files and folders"
+        },
+        {
+            "location": "/Unix-way/Common/Files_and_folders/#change-permisions-recursively",
+            "text": "You can use a simple  Script  find <path_to_folder> -type f -print -exec chmod 644 {} \\;\nfind <path_to_folder> -type d -print -exec chmod 755 {} \\;\n\n# Union\nfind /home/tmp -type f -print -exec chmod 644 {} \\; && find /home/tmp  -type d -print -exec chmod 755 {} \\;",
+            "title": "Change permisions recursively"
+        },
+        {
+            "location": "/Unix-way/Common/Files_and_folders/#count-files",
+            "text": "find . -type f | wc -l\nls | wc -l",
+            "title": "Count files"
+        },
+        {
+            "location": "/Unix-way/Common/Files_and_folders/#remove-file-list",
+            "text": "ls | xargs rm",
+            "title": "Remove file list"
+        },
+        {
+            "location": "/Unix-way/Common/Files_and_folders/#remove-file-suffix-filenamesuffix",
+            "text": "for i in `find . -type f -name \"*<suffix>*\"`; do dst=`echo $i | sed s/<suffix>//`;mv $i $dst; done",
+            "title": "Remove file suffix \"filename\"+\"suffix\""
+        },
+        {
+            "location": "/Unix-way/Common/Files_and_folders/#move-all-files-in-one-level-directory-in-certain-folder-to-another",
+            "text": "find /<path_to_folder>/* -prune -type f | xargs -I '{}' mv {} /<path_to_destination_folder>/archive/.",
+            "title": "Move all files in one level directory in certain folder to another"
+        },
+        {
+            "location": "/Unix-way/Common/Files_and_folders/#search-for-certain-file-contents",
+            "text": "find . -type f -name \"*conf\" -exec echo {} \\; -exec grep 192.168.0.1:3389 {} \\;",
+            "title": "Search for certain file contents"
+        },
+        {
+            "location": "/Unix-way/Common/Files_and_folders/#show-directories-content-recursively",
+            "text": "ls -R /path | awk '\n/:$/&&f{s=$0;f=0}\n/:$/&&!f{sub(/:$/,\"\");s=$0;f=1;next}\nNF&&f{ print s\"/\"$0 }'",
+            "title": "Show directories content recursively"
+        },
+        {
+            "location": "/Unix-way/Common/Files_and_folders/#make-dirs-with-indexes",
+            "text": "for i in 0{1..9} {10..39}; do mkdir delete-$i; cd delete-$i; touch del-file-$i; cd ..; done",
+            "title": "Make dirs with indexes"
+        },
+        {
+            "location": "/Unix-way/Common/Files_and_folders/#create-bunch-of-files-from-list-in-a-file",
+            "text": "# Predefined number of records\nhead -<number_of_lines> inventory | awk '{ print $1 }' | xargs -I '{}' touch <destination_folder>/{}\n#E.g. head -10 inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}\n\n# Whole list from file\ncat <filename> | awk '{ print $1 }' | xargs -I '{}' touch <destination_folder>/{}\n#E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}",
+            "title": "Create bunch of files from list in a file:"
+        },
+        {
+            "location": "/Unix-way/Common/Files_and_folders/#move-bunch-of-folders",
+            "text": "ls -1d <space separeated folder list> | xargs -I '{}' mv {} <destination>\n#E.g. ls -1d command_line dotfiles-srv programmming-examples shell_scripts | xargs -I '{}' mv {} github/",
+            "title": "Move bunch of folders"
+        },
+        {
+            "location": "/Unix-way/Common/Files_and_folders/#mounts",
+            "text": "#Show information about mounted file systems with 'column' examples**\ndf -h | column -t\nmount -l | column -t",
+            "title": "Mounts"
+        },
+        {
+            "location": "/Unix-way/Common/Files_and_folders/#sum-of-root-folders",
+            "text": "du -s * 2>/dev/null | awk '{print $1}' | paste -sd+ | bc",
+            "title": "Sum of root folders"
+        },
+        {
+            "location": "/Unix-way/Common/Files_and_folders/#mass-change-extension-of-files",
+            "text": "for file in *.txt; do mv \"$file\" \"`basename \"$file\" .txt`.md\"; done",
+            "title": "Mass change extension of files"
+        },
+        {
+            "location": "/Unix-way/Common/Processes/",
+            "text": "Wait until proceses will gone\n\n\nwhile true; do clear; ps -ef | grep <process>; sleep 5; done\n\n\n\n\nKill all proesses with certain name\n\n\nps ax | grep http | awk '{print $1}' | xargs kill",
+            "title": "Processes"
+        },
+        {
+            "location": "/Unix-way/Common/Processes/#wait-until-proceses-will-gone",
+            "text": "while true; do clear; ps -ef | grep <process>; sleep 5; done",
+            "title": "Wait until proceses will gone"
+        },
+        {
+            "location": "/Unix-way/Common/Processes/#kill-all-proesses-with-certain-name",
+            "text": "ps ax | grep http | awk '{print $1}' | xargs kill",
+            "title": "Kill all proesses with certain name"
+        },
+        {
+            "location": "/Unix-way/Edit/Vim/",
+            "text": "Commnent bunch of lines\n\n\n\n\nStand on a firs symbol of first line\n\n\nCtrl+V\n\n\nDown_1 + Down_2 + .. + Down_n\n\n\nCtrl+I\n\n\n\"#\"",
+            "title": "Vim"
+        },
+        {
+            "location": "/Unix-way/Edit/Vim/#commnent-bunch-of-lines",
+            "text": "Stand on a firs symbol of first line  Ctrl+V  Down_1 + Down_2 + .. + Down_n  Ctrl+I  \"#\"",
+            "title": "Commnent bunch of lines"
+        },
+        {
+            "location": "/Unix-way/Hardware/Hardware_info/",
+            "text": "All hardware\n\n\nhwinfo\n\n\n\n\nRAW Devices\n\n\n# ISO to USB:\ndd bs=4M if=/path/to/<iso_image> of=/dev/sdX && sync\n\n\n\n\nCPU\n\n\nlscpu\ncat /proc/cpuinfo\n\n\n\n\nRAM\n\n\n# Basic commands:\nvmstat -s\ncat /proc/meminfo\nfree -m\n# Sum of used RAM\nps -eo rss,pid,user,command --sort -size | awk '{ hr=$1/1024 ; printf(\"%13.2f Mb \",hr) } { for ( x=4 ; x<=NF ; x++ ) { printf(\"%s \",$x) } print \"\" }' | awk '{print $1}' | paste -sd+ | bc\n# Clean RAM buffer and swap cache\nsync && echo 3 > /proc/sys/vm/drop_caches\n\n\n\n\nVM\n\n\nTo check if server's environment is virtual or real you can use stanasrd Linux commands\n\n\n\n\ncat /proc/scsi/scsi \n\n\n\n\nAttached devices:\nHost: scsi2 Channel: 00 Id: 00 Lun: 00\n  Vendor: VMware   Model: Virtual disk     Rev: 1.0\n  Type:   Direct-Access                    ANSI  SCSI revision: 02\nHost: scsi1 Channel: 00 Id: 00 Lun: 00\n  Vendor: NECVMWar Model: VMware IDE CDR10 Rev: 1.00\n  Type:   CD-ROM                           ANSI  SCSI revision: 05\n\n\n\n\n\n\nethtool -i eth0\n\n\n\n\ndriver: vmxnet3\nversion: 1.1.30.0-k-NAPI\nfirmware-version:\nbus-info: 0000:03:00.0\nsupports-statistics: yes\nsupports-test: no\nsupports-eeprom-access: no\nsupports-register-dump: yes\nsupports-priv-flags: no\n\n\n\n\n\n\ndmidecode | grep -i vmware\n\n\n\n\n        Manufacturer: VMware, Inc.\n        Product Name: VMware Virtual Platform\n        Serial Number: VMware-42 28 f6 4e 92 c6 36 0a-2e 21 47 23 85 9f 5d 64\n        Description: VMware SVGA II",
+            "title": "Hardware info"
+        },
+        {
+            "location": "/Unix-way/Hardware/Hardware_info/#all-hardware",
+            "text": "hwinfo",
+            "title": "All hardware"
+        },
+        {
+            "location": "/Unix-way/Hardware/Hardware_info/#raw-devices",
+            "text": "# ISO to USB:\ndd bs=4M if=/path/to/<iso_image> of=/dev/sdX && sync",
+            "title": "RAW Devices"
+        },
+        {
+            "location": "/Unix-way/Hardware/Hardware_info/#cpu",
+            "text": "lscpu\ncat /proc/cpuinfo",
+            "title": "CPU"
+        },
+        {
+            "location": "/Unix-way/Hardware/Hardware_info/#ram",
+            "text": "# Basic commands:\nvmstat -s\ncat /proc/meminfo\nfree -m\n# Sum of used RAM\nps -eo rss,pid,user,command --sort -size | awk '{ hr=$1/1024 ; printf(\"%13.2f Mb \",hr) } { for ( x=4 ; x<=NF ; x++ ) { printf(\"%s \",$x) } print \"\" }' | awk '{print $1}' | paste -sd+ | bc\n# Clean RAM buffer and swap cache\nsync && echo 3 > /proc/sys/vm/drop_caches",
+            "title": "RAM"
+        },
+        {
+            "location": "/Unix-way/Hardware/Hardware_info/#vm",
+            "text": "To check if server's environment is virtual or real you can use stanasrd Linux commands   cat /proc/scsi/scsi    Attached devices:\nHost: scsi2 Channel: 00 Id: 00 Lun: 00\n  Vendor: VMware   Model: Virtual disk     Rev: 1.0\n  Type:   Direct-Access                    ANSI  SCSI revision: 02\nHost: scsi1 Channel: 00 Id: 00 Lun: 00\n  Vendor: NECVMWar Model: VMware IDE CDR10 Rev: 1.00\n  Type:   CD-ROM                           ANSI  SCSI revision: 05   ethtool -i eth0   driver: vmxnet3\nversion: 1.1.30.0-k-NAPI\nfirmware-version:\nbus-info: 0000:03:00.0\nsupports-statistics: yes\nsupports-test: no\nsupports-eeprom-access: no\nsupports-register-dump: yes\nsupports-priv-flags: no   dmidecode | grep -i vmware           Manufacturer: VMware, Inc.\n        Product Name: VMware Virtual Platform\n        Serial Number: VMware-42 28 f6 4e 92 c6 36 0a-2e 21 47 23 85 9f 5d 64\n        Description: VMware SVGA II",
+            "title": "VM"
+        },
+        {
+            "location": "/Unix-way/Management/Ansible/",
+            "text": "Create all host_vars from inventory\n\n\nIn this example we have 21 inventry recond in ansible inventory file. Something like this:\n\n\nserver1     ansible_host=1.1.1.1\nserver2     ansible_host=1.1.1.2  \nserver3     ansible_host=1.1.1.3\n#server4    ansible_host=1.1.1.4\nserver5     ansible_host=1.1.1.5\nserver6     ansible_host=1.1.1.6\n...\n#server19   ansible_host=1.1.1.19\nserver20    ansible_host=1.1.1.20\nserver21    ansible_host=1.1.1.21\n\n\n\n\nSome records comented, some not... And we need to create whole list of host envs for any active server:\n\n\ncat inventory | head -21 | awk '{print $1}' | grep -v '#' | xargs -I '{}' touch host_vars/{}",
+            "title": "Ansible"
+        },
+        {
+            "location": "/Unix-way/Management/Ansible/#create-all-host_vars-from-inventory",
+            "text": "In this example we have 21 inventry recond in ansible inventory file. Something like this:  server1     ansible_host=1.1.1.1\nserver2     ansible_host=1.1.1.2  \nserver3     ansible_host=1.1.1.3\n#server4    ansible_host=1.1.1.4\nserver5     ansible_host=1.1.1.5\nserver6     ansible_host=1.1.1.6\n...\n#server19   ansible_host=1.1.1.19\nserver20    ansible_host=1.1.1.20\nserver21    ansible_host=1.1.1.21  Some records comented, some not... And we need to create whole list of host envs for any active server:  cat inventory | head -21 | awk '{print $1}' | grep -v '#' | xargs -I '{}' touch host_vars/{}",
+            "title": "Create all host_vars from inventory"
+        },
+        {
+            "location": "/Unix-way/Management/Remote_management/",
+            "text": "XfreeRDP\n\n\nxfreerdp [+clipboard]/w:<WIDTH> /h:<HEIGHT> /drive:<cuatom_drive_name>,<path_to_attach> /v:<ip>:<port> /u:<user_name>\nxfreerdp +clipboard /w:1600 /h:900 /v:10.15.0.10:3389 /u:Administrator\nxfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM/HMC/7.9_sp3 /v:10.15.0.10",
+            "title": "Remote management"
+        },
+        {
+            "location": "/Unix-way/Management/Remote_management/#xfreerdp",
+            "text": "xfreerdp [+clipboard]/w:<WIDTH> /h:<HEIGHT> /drive:<cuatom_drive_name>,<path_to_attach> /v:<ip>:<port> /u:<user_name>\nxfreerdp +clipboard /w:1600 /h:900 /v:10.15.0.10:3389 /u:Administrator\nxfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM/HMC/7.9_sp3 /v:10.15.0.10",
+            "title": "XfreeRDP"
+        },
+        {
+            "location": "/Unix-way/Monitoring/NetXMS/",
+            "text": "Web console\n\n\ncd /opt/\nwget http://apache-mirror.rbc.ru/pub/apache/tomcat/tomcat-7/v7.0.70/bin/apache-tomcat-7.0.70.tar.gz\ntar zxvf apache-tomcat-7.0.70.tar.gz\n\niptables -I INPUT -p tcp --dport 8005 -j ACCEPT\niptables -I INPUT -p tcp --dport 8009 -j ACCEPT\niptables -I INPUT -p tcp --dport 8080 -j ACCEPT\niptables -I INPUT -p tcp --dport 8443 -j ACCEPT\n\n/opt/apache-tomcat-7.0.70/bin/startup.sh\n\n# ...Wait until tomcat is started...\n\nwget -O /opt/apache-tomcat-7.0.70/webapps/nxmc-2.0.5.war http://www.netxms.org/download/webui/nxmc-2.0.5.war\n\nhttp://<ip_address>:8080/nxmc-2.0.5/nxmc\n\n\n\n\nWMI Scripts\n\n\n#Query:\n/usr/local/bin/nxget 192.168.122.252 \"WMI.Query(root\\CIMV2,SELECT * FROM XXX)\"\n\n\n\n\nExternal parameter\n\n\nExternalParameterShellExec = KasperskyBasesState:C:\\Windows\\System32\\cscript.exe //E:VBscript //NoLogo c:\\Path_TO\\kav.vbs",
+            "title": "NetXMS"
+        },
+        {
+            "location": "/Unix-way/Monitoring/NetXMS/#web-console",
+            "text": "cd /opt/\nwget http://apache-mirror.rbc.ru/pub/apache/tomcat/tomcat-7/v7.0.70/bin/apache-tomcat-7.0.70.tar.gz\ntar zxvf apache-tomcat-7.0.70.tar.gz\n\niptables -I INPUT -p tcp --dport 8005 -j ACCEPT\niptables -I INPUT -p tcp --dport 8009 -j ACCEPT\niptables -I INPUT -p tcp --dport 8080 -j ACCEPT\niptables -I INPUT -p tcp --dport 8443 -j ACCEPT\n\n/opt/apache-tomcat-7.0.70/bin/startup.sh\n\n# ...Wait until tomcat is started...\n\nwget -O /opt/apache-tomcat-7.0.70/webapps/nxmc-2.0.5.war http://www.netxms.org/download/webui/nxmc-2.0.5.war\n\nhttp://<ip_address>:8080/nxmc-2.0.5/nxmc",
+            "title": "Web console"
+        },
+        {
+            "location": "/Unix-way/Monitoring/NetXMS/#wmi-scripts",
+            "text": "#Query:\n/usr/local/bin/nxget 192.168.122.252 \"WMI.Query(root\\CIMV2,SELECT * FROM XXX)\"",
+            "title": "WMI Scripts"
+        },
+        {
+            "location": "/Unix-way/Monitoring/NetXMS/#external-parameter",
+            "text": "ExternalParameterShellExec = KasperskyBasesState:C:\\Windows\\System32\\cscript.exe //E:VBscript //NoLogo c:\\Path_TO\\kav.vbs",
+            "title": "External parameter"
+        },
+        {
+            "location": "/Unix-way/Network/Common/",
             "text": "NetworkManager: show connection info\n\n\nnmcli device show eth0\n\n\n\n\nCheck own IP address\n\n\ncurl -s checkip.dyndns.org\n\n\n\n\nShare current folder over HTTP\n\n\npython2 -m SimpleHTTPServer 8080\npython3 -mhttp.server 8080",
             "title": "Common"
         },
         {
-            "location": "/Unix/Network/Common/#networkmanager-show-connection-info",
+            "location": "/Unix-way/Network/Common/#networkmanager-show-connection-info",
             "text": "nmcli device show eth0",
             "title": "NetworkManager: show connection info"
         },
         {
-            "location": "/Unix/Network/Common/#check-own-ip-address",
+            "location": "/Unix-way/Network/Common/#check-own-ip-address",
             "text": "curl -s checkip.dyndns.org",
             "title": "Check own IP address"
         },
         {
-            "location": "/Unix/Network/Common/#share-current-folder-over-http",
+            "location": "/Unix-way/Network/Common/#share-current-folder-over-http",
             "text": "python2 -m SimpleHTTPServer 8080\npython3 -mhttp.server 8080",
             "title": "Share current folder over HTTP"
         },
         {
-            "location": "/Unix/Network/Ports/",
+            "location": "/Unix-way/Network/Ports/",
             "text": "Which process use port\n\n\n\n\nLinux\n\n\n\n\n# Find out PID via ss\nss -nltp | grep <port>\n# Find out PID deprecated netstat:\nnetstat -tulpn | grep <port>\n# Find out particular binary\nls -l /proc/<pid>/exe\n# Find out full run command\nps -ef | grep <PID>\n\n\n\n\n\n\nAIX\n\n\n\n\nlsof -i:<port>\nps -ef | grep <pid>\n\n\n\n\n\n\nWindows\n\n\n\n\nnetstat -aon | findstr \"<port>\"\npslist <PID>",
             "title": "Ports"
         },
         {
-            "location": "/Unix/Network/Ports/#which-process-use-port",
+            "location": "/Unix-way/Network/Ports/#which-process-use-port",
             "text": "Linux   # Find out PID via ss\nss -nltp | grep <port>\n# Find out PID deprecated netstat:\nnetstat -tulpn | grep <port>\n# Find out particular binary\nls -l /proc/<pid>/exe\n# Find out full run command\nps -ef | grep <PID>   AIX   lsof -i:<port>\nps -ef | grep <pid>   Windows   netstat -aon | findstr \"<port>\"\npslist <PID>",
             "title": "Which process use port"
         },
         {
-            "location": "/Unix/Network/SNMP/",
+            "location": "/Unix-way/Network/SNMP/",
             "text": "SNMP\n\n\nsnmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus",
             "title": "SNMP"
         },
         {
-            "location": "/Unix/Network/SNMP/#snmp",
+            "location": "/Unix-way/Network/SNMP/#snmp",
             "text": "snmpwalk -mALL -v2c -ctkM0nit0ring 10.20.30.3 interfaces.ifTable.ifEntry.ifOperStatus",
             "title": "SNMP"
         },
         {
-            "location": "/Unix/Network/WiFi/",
+            "location": "/Unix-way/Network/WiFi/",
             "text": "WPA Supplicant\n\n\nwpa_supplicant -Dnl80211 -iwlp2s0 -c/etc/wpa_supplicant/wpa_supplicant.conf &\n\ncat /etc/wpa_supplicant/wpa_supplicant.conf\n# This network configuration was written by net-setup\nmodules=\"wpa_supplicant\"\nwpa_supplicant_wlp2s0=\"-Dnl80211\"\nconfig_wlp2s0=\"dhcp\" \n\nctrl_interface=/var/run/wpa_supplicant\nctrl_interface_group=0\nap_scan=1\nnetwork={\n   ssid=\"MTS_2140184\"\n   psk=\"0000000000\"\n   priority=5\n}",
             "title": "WiFi"
         },
         {
-            "location": "/Unix/Network/WiFi/#wpa-supplicant",
+            "location": "/Unix-way/Network/WiFi/#wpa-supplicant",
             "text": "wpa_supplicant -Dnl80211 -iwlp2s0 -c/etc/wpa_supplicant/wpa_supplicant.conf &\n\ncat /etc/wpa_supplicant/wpa_supplicant.conf\n# This network configuration was written by net-setup\nmodules=\"wpa_supplicant\"\nwpa_supplicant_wlp2s0=\"-Dnl80211\"\nconfig_wlp2s0=\"dhcp\" \n\nctrl_interface=/var/run/wpa_supplicant\nctrl_interface_group=0\nap_scan=1\nnetwork={\n   ssid=\"MTS_2140184\"\n   psk=\"0000000000\"\n   priority=5\n}",
             "title": "WPA Supplicant"
         },
         {
-            "location": "/Unix/Network/tcpdump/",
+            "location": "/Unix-way/Network/tcpdump/",
             "text": "TCPDUMP (with all commands use '| head' optionally)\n\n\n### Capture bunch of packets\n```bash\ntcpdump -w capture.pcap\n\n\n\n\nShow list of unique tcp or udp connections ip addresses\n\n\ntcpdump -nn -r capture.pcap 'tcp or udp' | cut -f 3 -d \" \" | cut -f 1-4 -d \".\" | sort | uniq | sort -nr\n\n\n\n\nShow list of unique destinations with SYN flag(\u2018tcp[13]=2\u2019)\n\n\ntcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 5 -d \" \" | sort | uniq -c | sort -nr\n\n\n\n\nShow list of unique sources with SYN flag(\u2018tcp[13]=2\u2019)\n\n\ntcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 3 -d \" \" | cut -f 1-4 -d \".\" | sort | uniq -c | sort -nr\n\n\n\n\nSearch for plain texts (-A)\n\n\ntcpdump -Ann -r capture.pcap 'dst port 25 or dst port 514 or dst port 110 or dst port 21 or dst port 53 or dst port 80'\n\n\n\n\nSearch for top level domains (optiolally for names only: | grep -E '[a-z]')\n\n\ntcpdump -nn -r capture.pcap 'port 53' | grep -Ev '(com|ru|net|org|gov|mil|arpa)' | cut -f 9 -d \" \"  \n\n\n\n\nInvestigate HTTP traffic\n\n\ntcpdump -Ann -r capture.pcap 'port 80' | grep 'HTTP' | grep -Ev '(GET|HEAD)'\n\n\n\n\nSearch HTTP traffic for user-agent list\n\n\ntcpdump -Ann -r capture.pcap 'port 80' | grep -Ei 'user-agent' | sort | uniq -c | sort -n\ntcpdump -Ann -r capture.pcap 'port 80' | sed -n '/Mozilla/,$p'\n\n\n\n\nPcap repository (-C filesize in MBytes, -W number of files, -G time in seconds, %s timestamp)\n\n\nsudo -b tcpdump -nn -i eth0 -w capture.pcap -C 1 -W 5         \nsudo -b tcpdump -nn -i eth0 -w capture-%s.pcap -G 600 -W 5    \n# Dealing with pcap files\nfor capfile in $(ls *.pcap); do tcpdump -nnr $capfile 'dst port 53'; done",
             "title": "Tcpdump"
         },
         {
-            "location": "/Unix/Network/tcpdump/#tcpdump-with-all-commands-use-head-optionally",
+            "location": "/Unix-way/Network/tcpdump/#tcpdump-with-all-commands-use-head-optionally",
             "text": "### Capture bunch of packets\n```bash\ntcpdump -w capture.pcap",
             "title": "TCPDUMP (with all commands use '| head' optionally)"
         },
         {
-            "location": "/Unix/Network/tcpdump/#show-list-of-unique-tcp-or-udp-connections-ip-addresses",
+            "location": "/Unix-way/Network/tcpdump/#show-list-of-unique-tcp-or-udp-connections-ip-addresses",
             "text": "tcpdump -nn -r capture.pcap 'tcp or udp' | cut -f 3 -d \" \" | cut -f 1-4 -d \".\" | sort | uniq | sort -nr",
             "title": "Show list of unique tcp or udp connections ip addresses"
         },
         {
-            "location": "/Unix/Network/tcpdump/#show-list-of-unique-destinations-with-syn-flagtcp132",
+            "location": "/Unix-way/Network/tcpdump/#show-list-of-unique-destinations-with-syn-flagtcp132",
             "text": "tcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 5 -d \" \" | sort | uniq -c | sort -nr",
             "title": "Show list of unique destinations with SYN flag(\u2018tcp[13]=2\u2019)"
         },
         {
-            "location": "/Unix/Network/tcpdump/#show-list-of-unique-sources-with-syn-flagtcp132",
+            "location": "/Unix-way/Network/tcpdump/#show-list-of-unique-sources-with-syn-flagtcp132",
             "text": "tcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 3 -d \" \" | cut -f 1-4 -d \".\" | sort | uniq -c | sort -nr",
             "title": "Show list of unique sources with SYN flag(\u2018tcp[13]=2\u2019)"
         },
         {
-            "location": "/Unix/Network/tcpdump/#search-for-plain-texts-a",
+            "location": "/Unix-way/Network/tcpdump/#search-for-plain-texts-a",
             "text": "tcpdump -Ann -r capture.pcap 'dst port 25 or dst port 514 or dst port 110 or dst port 21 or dst port 53 or dst port 80'",
             "title": "Search for plain texts (-A)"
         },
         {
-            "location": "/Unix/Network/tcpdump/#search-for-top-level-domains-optiolally-for-names-only-grep-e-a-z",
+            "location": "/Unix-way/Network/tcpdump/#search-for-top-level-domains-optiolally-for-names-only-grep-e-a-z",
             "text": "tcpdump -nn -r capture.pcap 'port 53' | grep -Ev '(com|ru|net|org|gov|mil|arpa)' | cut -f 9 -d \" \"",
             "title": "Search for top level domains (optiolally for names only: | grep -E '[a-z]')"
         },
         {
-            "location": "/Unix/Network/tcpdump/#investigate-http-traffic",
+            "location": "/Unix-way/Network/tcpdump/#investigate-http-traffic",
             "text": "tcpdump -Ann -r capture.pcap 'port 80' | grep 'HTTP' | grep -Ev '(GET|HEAD)'",
             "title": "Investigate HTTP traffic"
         },
         {
-            "location": "/Unix/Network/tcpdump/#search-http-traffic-for-user-agent-list",
+            "location": "/Unix-way/Network/tcpdump/#search-http-traffic-for-user-agent-list",
             "text": "tcpdump -Ann -r capture.pcap 'port 80' | grep -Ei 'user-agent' | sort | uniq -c | sort -n\ntcpdump -Ann -r capture.pcap 'port 80' | sed -n '/Mozilla/,$p'",
             "title": "Search HTTP traffic for user-agent list"
         },
         {
-            "location": "/Unix/Network/tcpdump/#pcap-repository-c-filesize-in-mbytes-w-number-of-files-g-time-in-seconds-s-timestamp",
+            "location": "/Unix-way/Network/tcpdump/#pcap-repository-c-filesize-in-mbytes-w-number-of-files-g-time-in-seconds-s-timestamp",
             "text": "sudo -b tcpdump -nn -i eth0 -w capture.pcap -C 1 -W 5         \nsudo -b tcpdump -nn -i eth0 -w capture-%s.pcap -G 600 -W 5    \n# Dealing with pcap files\nfor capfile in $(ls *.pcap); do tcpdump -nnr $capfile 'dst port 53'; done",
             "title": "Pcap repository (-C filesize in MBytes, -W number of files, -G time in seconds, %s timestamp)"
         },
         {
-            "location": "/Unix/Storage/GPFS/",
+            "location": "/Unix-way/Security/FirewallD/",
+            "text": "FirewallD Status\n\n\nfirewall-cmd --state\n\nfirewall-cmd --list-all\n\n# Reload configuration                                                                              \nfirewall-cmd --reload\n\n\n\n\nGet security zones\n\n\nfirewall-cmd --get-zones\nfirewall-cmd --get-default-zone\nfirewall-cmd --get-active-zones\nfirewall-cmd --list-all-zones\nfirewall-cmd --set-default-zone=<zone_name>\nfirewall-cmd --get-zone-of-interface=<network_interface_name>\n\n\n\n\nGet ICMP types\n\n\nfirewall-cmd --get-icmptypes\n\n\n\n\nServices\n\n\nfirewall-cmd --get-services\n\n# List default services\nls -la  /usr/lib/firewalld/services/\n\n# Add service\nfirewall-cmd --add-service=<service_name>\nfirewall-cmd --add-service=<service_name> --permanent\n\n# Remove service\nfirewall-cmd --zone=<zone_name> --remove-service=<service_name>\n\n\n\n\nRules\n\n\nfirewall-cmd --permanent --add-source=<subnet>\nfirewall-cmd --permanent --add-port=<port>/<protocol>",
+            "title": "FirewallD"
+        },
+        {
+            "location": "/Unix-way/Security/FirewallD/#firewalld-status",
+            "text": "firewall-cmd --state\n\nfirewall-cmd --list-all\n\n# Reload configuration                                                                              \nfirewall-cmd --reload",
+            "title": "FirewallD Status"
+        },
+        {
+            "location": "/Unix-way/Security/FirewallD/#get-security-zones",
+            "text": "firewall-cmd --get-zones\nfirewall-cmd --get-default-zone\nfirewall-cmd --get-active-zones\nfirewall-cmd --list-all-zones\nfirewall-cmd --set-default-zone=<zone_name>\nfirewall-cmd --get-zone-of-interface=<network_interface_name>",
+            "title": "Get security zones"
+        },
+        {
+            "location": "/Unix-way/Security/FirewallD/#get-icmp-types",
+            "text": "firewall-cmd --get-icmptypes",
+            "title": "Get ICMP types"
+        },
+        {
+            "location": "/Unix-way/Security/FirewallD/#services",
+            "text": "firewall-cmd --get-services\n\n# List default services\nls -la  /usr/lib/firewalld/services/\n\n# Add service\nfirewall-cmd --add-service=<service_name>\nfirewall-cmd --add-service=<service_name> --permanent\n\n# Remove service\nfirewall-cmd --zone=<zone_name> --remove-service=<service_name>",
+            "title": "Services"
+        },
+        {
+            "location": "/Unix-way/Security/FirewallD/#rules",
+            "text": "firewall-cmd --permanent --add-source=<subnet>\nfirewall-cmd --permanent --add-port=<port>/<protocol>",
+            "title": "Rules"
+        },
+        {
+            "location": "/Unix-way/Security/HSM/",
+            "text": "Generate LMK consists of 3 components.\n\n\nStep-By-Step.\n\n\n0:\nConnect to Thales HMS 8000 via common Terminal Client.\n\n1:\nOnline> FC <Return> \nInsert card and press ENTER: <Return> \nCard already formatted, continue? [Y/N]: Y <Return> \nFormat card for HSM settings/LMKs? [H/L]: L <Return> \nErasing card \nFormatting card . . . \nEnter new PIN for Smart Card: 2134 <Return>\nRe-enter new PIN: 2134 <Return> \nEnter time [hhmmss]: 173000 <Return>  - current time\nEnter date [ddmmyy]: 081111 <Return> \nEnter User ID: User1 <Return> \nEnter Issuer ID: ITS <Return> \nFormat complete \n\n2:\nOnline> FC <Return> \nInsert card and press ENTER: <Return> \nCard already formatted, continue? [Y/N]: Y <Return> \nFormat card for HSM settings/LMKs? [H/L]: L <Return> \nErasing card \nFormatting card . . . \nEnter new PIN for Smart Card: 4356 <Return>\nRe-enter new PIN: 4356 <Return> \nEnter time [hhmmss]: 173000 <Return> \nEnter date [ddmmyy]: 081111 <Return> \nEnter User ID: User2 <Return> \nEnter Issuer ID: ITS <Return> \nFormat complete \n\n3:\nOnline> FC <Return> \nInsert card and press ENTER: <Return> \nCard already formatted, continue? [Y/N]: Y <Return> \nFormat card for HSM settings/LMKs? [H/L]: L <Return> \nErasing card \nFormatting card . . . \nEnter new PIN for Smart Card: 5467 <Return>\nRe-enter new PIN: 5467 <Return> \nEnter time [hhmmss]: 173000 <Return> \nEnter date [ddmmyy]: 081111 <Return> \nEnter User ID: User3 <Return> \nEnter Issuer ID: ITS <Return> \nFormat complete \n\n4:\nTaking HSM into the Secure State\n\n5:\nSecure> GK <Return> \nLMKs must be erased before proceeding. \nErase LMKs? Y <Return> \nLMK component set [1-9]: 1 <Return> \nEnter secret value A: <Return> \nEnter secret value B: <Return> \nEnter value C: <Return> \nInsert blank card and enter PIN: 2134 <Return> \nWriting keys \nChecking keys \nDevice write complete, check: XXXX XXXX XXXX XXXX \nRemove the smartcard and store it securely. \nMake another copy? [Y/N]: N <Return> X copies made. \n\n6:\nSecure> GK <Return> \nLMKs must be erased before proceeding. \nErase LMKs? Y <Return> \nLMK component set [1-9]: 2 <Return> \nEnter secret value A: <Return> \nEnter secret value B: <Return> \nEnter value C: <Return> \nInsert blank card and enter PIN: 4356 <Return> \nWriting keys \nChecking keys \nDevice write complete, check: XXXX XXXX XXXX XXXX \nRemove the smartcard and store it securely. \nMake another copy? [Y/N]: N <Return> X copies made. \n\n7:\nSecure> GK <Return> \nLMKs must be erased before proceeding. \nErase LMKs? Y <Return> \nLMK component set [1-9]: 3 <Return> \nEnter secret value A: <Return> \nEnter secret value B: <Return> \nEnter value C: <Return> \nInsert blank card and enter PIN: 5467 <Return> \nWriting keys \nChecking keys \nDevice write complete, check: XXXX XXXX XXXX XXXX \nRemove the smartcard and store it securely. \nMake another copy? [Y/N]: N <Return> X copies made. \n\n8-9-10:Secure> LK <Return>\nLMKs must be erased before proceeding.\nErase LMKs? Y <Return>\nLoad LMK from components. Insert card and enter PIN: **** <Return>\nCHECK: XXXX XXXX XXXX XXXX Load more components? [Y/N]: Y <Return>\nRemove the smartcard. Insert the second and subsequent Smartcards and repeat the loading procedure. When all have been loaded and the HSM displays the check value, record the check value.\nCHECK: XXXX XXXX XXXX XXXX Load more components? [Y/N]: N <Return>\nUse the LO command to load LMKs into key change storage.\nSecure>\nUse the A command to put the HSM into the Authorised State in order to check the LMK components and passwords or PINs.\n\n11:\nReturn to online state: remove secure keys and press reset button at least 2 seconds.",
+            "title": "HSM"
+        },
+        {
+            "location": "/Unix-way/Security/HSM/#generate-lmk-consists-of-3-components",
+            "text": "Step-By-Step.  0:\nConnect to Thales HMS 8000 via common Terminal Client.\n\n1:\nOnline> FC <Return> \nInsert card and press ENTER: <Return> \nCard already formatted, continue? [Y/N]: Y <Return> \nFormat card for HSM settings/LMKs? [H/L]: L <Return> \nErasing card \nFormatting card . . . \nEnter new PIN for Smart Card: 2134 <Return>\nRe-enter new PIN: 2134 <Return> \nEnter time [hhmmss]: 173000 <Return>  - current time\nEnter date [ddmmyy]: 081111 <Return> \nEnter User ID: User1 <Return> \nEnter Issuer ID: ITS <Return> \nFormat complete \n\n2:\nOnline> FC <Return> \nInsert card and press ENTER: <Return> \nCard already formatted, continue? [Y/N]: Y <Return> \nFormat card for HSM settings/LMKs? [H/L]: L <Return> \nErasing card \nFormatting card . . . \nEnter new PIN for Smart Card: 4356 <Return>\nRe-enter new PIN: 4356 <Return> \nEnter time [hhmmss]: 173000 <Return> \nEnter date [ddmmyy]: 081111 <Return> \nEnter User ID: User2 <Return> \nEnter Issuer ID: ITS <Return> \nFormat complete \n\n3:\nOnline> FC <Return> \nInsert card and press ENTER: <Return> \nCard already formatted, continue? [Y/N]: Y <Return> \nFormat card for HSM settings/LMKs? [H/L]: L <Return> \nErasing card \nFormatting card . . . \nEnter new PIN for Smart Card: 5467 <Return>\nRe-enter new PIN: 5467 <Return> \nEnter time [hhmmss]: 173000 <Return> \nEnter date [ddmmyy]: 081111 <Return> \nEnter User ID: User3 <Return> \nEnter Issuer ID: ITS <Return> \nFormat complete \n\n4:\nTaking HSM into the Secure State\n\n5:\nSecure> GK <Return> \nLMKs must be erased before proceeding. \nErase LMKs? Y <Return> \nLMK component set [1-9]: 1 <Return> \nEnter secret value A: <Return> \nEnter secret value B: <Return> \nEnter value C: <Return> \nInsert blank card and enter PIN: 2134 <Return> \nWriting keys \nChecking keys \nDevice write complete, check: XXXX XXXX XXXX XXXX \nRemove the smartcard and store it securely. \nMake another copy? [Y/N]: N <Return> X copies made. \n\n6:\nSecure> GK <Return> \nLMKs must be erased before proceeding. \nErase LMKs? Y <Return> \nLMK component set [1-9]: 2 <Return> \nEnter secret value A: <Return> \nEnter secret value B: <Return> \nEnter value C: <Return> \nInsert blank card and enter PIN: 4356 <Return> \nWriting keys \nChecking keys \nDevice write complete, check: XXXX XXXX XXXX XXXX \nRemove the smartcard and store it securely. \nMake another copy? [Y/N]: N <Return> X copies made. \n\n7:\nSecure> GK <Return> \nLMKs must be erased before proceeding. \nErase LMKs? Y <Return> \nLMK component set [1-9]: 3 <Return> \nEnter secret value A: <Return> \nEnter secret value B: <Return> \nEnter value C: <Return> \nInsert blank card and enter PIN: 5467 <Return> \nWriting keys \nChecking keys \nDevice write complete, check: XXXX XXXX XXXX XXXX \nRemove the smartcard and store it securely. \nMake another copy? [Y/N]: N <Return> X copies made. \n\n8-9-10:Secure> LK <Return>\nLMKs must be erased before proceeding.\nErase LMKs? Y <Return>\nLoad LMK from components. Insert card and enter PIN: **** <Return>\nCHECK: XXXX XXXX XXXX XXXX Load more components? [Y/N]: Y <Return>\nRemove the smartcard. Insert the second and subsequent Smartcards and repeat the loading procedure. When all have been loaded and the HSM displays the check value, record the check value.\nCHECK: XXXX XXXX XXXX XXXX Load more components? [Y/N]: N <Return>\nUse the LO command to load LMKs into key change storage.\nSecure>\nUse the A command to put the HSM into the Authorised State in order to check the LMK components and passwords or PINs.\n\n11:\nReturn to online state: remove secure keys and press reset button at least 2 seconds.",
+            "title": "Generate LMK consists of 3 components."
+        },
+        {
+            "location": "/Unix-way/Security/IPTables/",
+            "text": "Show rules\n\n\niptables -nvL\niptable -t nat -nvL\n\n\n\n\nAutoreset by Vivek Gite\n\n\n\n\nJust add to crontab while remote rules configuration:\n\n\n\n\ncrontab -e\n# ---\n*/5 * * * * root /root/reset.fw >/dev/null 2>&1\n\n\n\n\n\n\nreset.fw:\n\n\n\n\n#!/bin/bash\n# reset.fw - Reset firewall\n# set x to 0 - No reset\n# set x to 1 - Reset firewall\n# ---------------------------------------------------------------------------------------------------------------\n# Added support for IPV6 Firewall\n# ---------------------------------------------------------------------------------------------------------------\n# Written by Vivek Gite <vivek@nixcraft.com>\n# ---------------------------------------------------------------------------------------------------------------\n# You can copy / paste / redistribute this script under GPL version 2.0 or above\n# =============================================================\nx=1\n\n# set to true if it is CentOS / RHEL / Fedora box\nRHEL=false\n\n### no need to edit below  ###\nIPT=/sbin/iptables\nIPT6=/sbin/ip6tables\n\nif [ \"$x\" == \"1\" ];\nthen\n    if [ \"$RHEL\" == \"true\" ];\n    then\n          # reset firewall using redhat script\n        /etc/init.d/iptables stop\n        /etc/init.d/ip6tables stop\n    else\n        # for all other Linux distro use following rules to reset firewall\n        ### reset ipv4 iptales ###\n        $IPT -F\n        $IPT -X\n        $IPT -Z\n        for table in $(</proc/net/ip_tables_names)\n        do\n            $IPT -t $table -F\n            $IPT -t $table -X\n            $IPT -t $table -Z\n        done\n        $IPT -P INPUT ACCEPT\n        $IPT -P OUTPUT ACCEPT\n        $IPT -P FORWARD ACCEPT\n        ### reset ipv6 iptales ###\n        $IPT6 -F\n        $IPT6 -X\n        $IPT6 -Z\n        for table in $(</proc/net/ip6_tables_names)\n        do\n            $IPT6 -t $table -F\n            $IPT6 -t $table -X\n            $IPT6 -t $table -Z\n        done\n        $IPT6 -P INPUT ACCEPT\n        $IPT6 -P OUTPUT ACCEPT\n        $IPT6 -P FORWARD ACCEPT\n    fi\nelse\n        :\nfi\n\n\n\n\nSibple Rules\n\n\niptables -I INPUT -p tcp --dport 8005 -j ACCEPT\niptables -I INPUT -p tcp --dport 8009 -j ACCEPT\niptables -I INPUT -p tcp --dport 8080 -j ACCEPT\niptables -I INPUT -p tcp --dport 8443 -j ACCEPT\n\nip6tables -I INPUT -p tcp --dport 8005 -j ACCEPT\nip6tables -I INPUT -p tcp --dport 8009 -j ACCEPT\nip6tables -I INPUT -p tcp --dport 8080 -j ACCEPT\nip6tables -I INPUT -p tcp --dport 8443 -j ACCEPT\n\nservice iptables save \nservice ip6tables save",
+            "title": "IPTables"
+        },
+        {
+            "location": "/Unix-way/Security/IPTables/#show-rules",
+            "text": "iptables -nvL\niptable -t nat -nvL",
+            "title": "Show rules"
+        },
+        {
+            "location": "/Unix-way/Security/IPTables/#autoreset-by-vivek-gite",
+            "text": "Just add to crontab while remote rules configuration:   crontab -e\n# ---\n*/5 * * * * root /root/reset.fw >/dev/null 2>&1   reset.fw:   #!/bin/bash\n# reset.fw - Reset firewall\n# set x to 0 - No reset\n# set x to 1 - Reset firewall\n# ---------------------------------------------------------------------------------------------------------------\n# Added support for IPV6 Firewall\n# ---------------------------------------------------------------------------------------------------------------\n# Written by Vivek Gite <vivek@nixcraft.com>\n# ---------------------------------------------------------------------------------------------------------------\n# You can copy / paste / redistribute this script under GPL version 2.0 or above\n# =============================================================\nx=1\n\n# set to true if it is CentOS / RHEL / Fedora box\nRHEL=false\n\n### no need to edit below  ###\nIPT=/sbin/iptables\nIPT6=/sbin/ip6tables\n\nif [ \"$x\" == \"1\" ];\nthen\n    if [ \"$RHEL\" == \"true\" ];\n    then\n          # reset firewall using redhat script\n        /etc/init.d/iptables stop\n        /etc/init.d/ip6tables stop\n    else\n        # for all other Linux distro use following rules to reset firewall\n        ### reset ipv4 iptales ###\n        $IPT -F\n        $IPT -X\n        $IPT -Z\n        for table in $(</proc/net/ip_tables_names)\n        do\n            $IPT -t $table -F\n            $IPT -t $table -X\n            $IPT -t $table -Z\n        done\n        $IPT -P INPUT ACCEPT\n        $IPT -P OUTPUT ACCEPT\n        $IPT -P FORWARD ACCEPT\n        ### reset ipv6 iptales ###\n        $IPT6 -F\n        $IPT6 -X\n        $IPT6 -Z\n        for table in $(</proc/net/ip6_tables_names)\n        do\n            $IPT6 -t $table -F\n            $IPT6 -t $table -X\n            $IPT6 -t $table -Z\n        done\n        $IPT6 -P INPUT ACCEPT\n        $IPT6 -P OUTPUT ACCEPT\n        $IPT6 -P FORWARD ACCEPT\n    fi\nelse\n        :\nfi",
+            "title": "Autoreset by Vivek Gite"
+        },
+        {
+            "location": "/Unix-way/Security/IPTables/#sibple-rules",
+            "text": "iptables -I INPUT -p tcp --dport 8005 -j ACCEPT\niptables -I INPUT -p tcp --dport 8009 -j ACCEPT\niptables -I INPUT -p tcp --dport 8080 -j ACCEPT\niptables -I INPUT -p tcp --dport 8443 -j ACCEPT\n\nip6tables -I INPUT -p tcp --dport 8005 -j ACCEPT\nip6tables -I INPUT -p tcp --dport 8009 -j ACCEPT\nip6tables -I INPUT -p tcp --dport 8080 -j ACCEPT\nip6tables -I INPUT -p tcp --dport 8443 -j ACCEPT\n\nservice iptables save \nservice ip6tables save",
+            "title": "Sibple Rules"
+        },
+        {
+            "location": "/Unix-way/Security/OpenSSL/",
+            "text": "View PEM encoded certificate\n\n\nopenssl x509 -in certname.pem -text -noout\nopenssl x509 -in certname.cer -text -noout\nopenssl x509 -in certname.crt -text -noout\n\n\n\n\nView DER encoded Certificate\n\n\nopenssl x509 -in certname.der -inform der -text -noout\n\n\n\n\nPEM to DER\n\n\nopenssl x509 -in certname.crt -outform der -out cert.der\n\n\n\n\nDER to PEM\n\n\nopenssl x509 -in certname.crt -inform der -outform pem -out cert.pem\n\n\n\n\nExtracting Certificate and Private Key Files from a .pfx File\n\n\n\n\nExtract private key: \n\n\n\n\nopenssl pkcs12 -in certname.pfx -nocerts -out key.pem -nodes\n\n\n\n\n\n\nExtract certificate: \n\n\n\n\nopenssl pkcs12 -in certname.pfx -nokeys -out certname.pem\n\n\n\n\n\n\nRemove passphrase from private key: \n\n\n\n\nopenssl rsa -in key.pem -out certname.key",
+            "title": "OpenSSL"
+        },
+        {
+            "location": "/Unix-way/Security/OpenSSL/#view-pem-encoded-certificate",
+            "text": "openssl x509 -in certname.pem -text -noout\nopenssl x509 -in certname.cer -text -noout\nopenssl x509 -in certname.crt -text -noout",
+            "title": "View PEM encoded certificate"
+        },
+        {
+            "location": "/Unix-way/Security/OpenSSL/#view-der-encoded-certificate",
+            "text": "openssl x509 -in certname.der -inform der -text -noout",
+            "title": "View DER encoded Certificate"
+        },
+        {
+            "location": "/Unix-way/Security/OpenSSL/#pem-to-der",
+            "text": "openssl x509 -in certname.crt -outform der -out cert.der",
+            "title": "PEM to DER"
+        },
+        {
+            "location": "/Unix-way/Security/OpenSSL/#der-to-pem",
+            "text": "openssl x509 -in certname.crt -inform der -outform pem -out cert.pem",
+            "title": "DER to PEM"
+        },
+        {
+            "location": "/Unix-way/Security/OpenSSL/#extracting-certificate-and-private-key-files-from-a-pfx-file",
+            "text": "Extract private key:    openssl pkcs12 -in certname.pfx -nocerts -out key.pem -nodes   Extract certificate:    openssl pkcs12 -in certname.pfx -nokeys -out certname.pem   Remove passphrase from private key:    openssl rsa -in key.pem -out certname.key",
+            "title": "Extracting Certificate and Private Key Files from a .pfx File"
+        },
+        {
+            "location": "/Unix-way/Security/PF/",
+            "text": "Enabling in FreeBSD kernel\n\n\ndevice pf\ndevice pflog\ndevice pfsync\n\noptions         ALTQ\noptions         ALTQ_CBQ        # Class Bases Queuing (CBQ)\noptions         ALTQ_RED        # Random Early Detection (RED)\noptions         ALTQ_RIO        # RED In/Out\noptions         ALTQ_HFSC       # Hierarchical Packet Scheduler (HFSC)\noptions         ALTQ_PRIQ       # Priority Queuing (PRIQ)\noptions         ALTQ_NOPCC      # Required for SMP build\n\n\n\n\nFreeBSD rc.conf all PF options\n\n\npf_enable=\"NO\"\npf_rules=\"/etc/pf.conf\"\npf_program=\"/sbin/pfctl\"\npf_flags=\"\"\npflog_enable=\"NO\"\npflog_logfile=\"/var/log/pf.log\"\npflog_program=\"/sbin/pflogd\"\npflog_flags=\"\"\npfsync_enable=\"NO\"\npfsync_syncdev=\"\"\npfsync_ifconfig=\"\"\n\n\n\n\nSample config\n\n\n# PF.CONF // BEGIN CONFIG\n#---------------------------\n\n#---------------------------\n# Macros\n#---------------------------\n\n#---------------------------\n# Network Interfaces\n#---------------------------\next_if=\"em1\" # External\nint_if=\"em0\" # Internal\n\n#---------------------------\n# ICMP allowed\n#---------------------------\nicmp_types=\"{ echoreq, unreach}\"\n\n#---------------------------\n# Networks and hosts\n#---------------------------\nlan=\"192.168.10.0/24\"       # internal network\nsec=\"10.10.30.0/24\"     # secured network\nloop=\"127.0.0.0/8\"      # loopback\n\niis1=\"192.168.10.45/32\"     # Development IIS server 1\niis2=\"192.168.10.46/32\"     # Development IIS server 1\nredmine=\"192.168.10.48/32\"  # Redmine - internal team site\n\npublicated_services=\"{ 192.168.10.45/32, 192.168.10.46/32, 192.168.10.48/32, }\"\nallowed_inbound_ports=\"{ 22, 80, 90, 91 }\"\n\n#---------------------------\n# Global options\n#---------------------------\nset block-policy return     # Default block polycy: return, drop\nset skip on lo0         # Loopback exception\nscrub in all            # Normalise packets: build full packet before send to receiver; drop uncorrectly flagged packages\n\n#---------------------------\n# ALTQ\n#---------------------------\n\n#---------------------------\n# NAT and Port Forwarding\n#---------------------------\nnat on $ext_if from $lan to any -> ($ext_if)\n\nrdr on $ext_if proto { tcp, udp } from any to $ext_if port 90 -> $iis1 port 90      # Development IIS server 1 port forwarding\nrdr on $ext_if proto { tcp, udp } from any to $ext_if port 91 -> $iis1 port 91      # Development IIS server 2 port forwarding\nrdr on $ext_if proto { tcp, udp } from any to $ext_if port http -> $redmine port http   # Redmine port forwarding\n\n#---------------------------\n# FIREWALL RULES\n#---------------------------\nantispoof quick for $ext_if     # Antispoofing - drop all packets if sender addr=$ext_if addr. Key \"quick\" means that pf must aplly this rule and stop script (like IPFW works)\n\n# For future: full antispoofing:\n# block drop in quick on ! tun0 inet from tun0 to any\n# block drop in quick inet from tun0 to any\n# RFC 1918 \u0438 3330 block packets from 127.0.0.0/8, 240.0.0.0/4, 169.254.0.0/16 \u0438 \u0442.\u0434.\n\nblock all           # Block all traffic by default\n\n#---------------------------\n# Local rules\n# --------------------------\npass out on $ext_if from $ext_if to any keep state\npass in log on $ext_if from any port 22 to $ext_if port 22 keep state\n\n#---------------------------\n# Internal network rules\n#---------------------------\npass out on $ext_if from $lan to any keep state\n\n#---------------------------\n# External network rules\n#---------------------------\npass in log on $ext_if proto { tcp, udp } from any to $publicated_services port $allowed_inbound_ports keep state\n\n\npass log inet proto icmp all icmp-type $icmp_types\n\n#---------------------------\n# PF.CONF // END CONFIG",
+            "title": "PF"
+        },
+        {
+            "location": "/Unix-way/Security/PF/#enabling-in-freebsd-kernel",
+            "text": "device pf\ndevice pflog\ndevice pfsync\n\noptions         ALTQ\noptions         ALTQ_CBQ        # Class Bases Queuing (CBQ)\noptions         ALTQ_RED        # Random Early Detection (RED)\noptions         ALTQ_RIO        # RED In/Out\noptions         ALTQ_HFSC       # Hierarchical Packet Scheduler (HFSC)\noptions         ALTQ_PRIQ       # Priority Queuing (PRIQ)\noptions         ALTQ_NOPCC      # Required for SMP build",
+            "title": "Enabling in FreeBSD kernel"
+        },
+        {
+            "location": "/Unix-way/Security/PF/#freebsd-rcconf-all-pf-options",
+            "text": "pf_enable=\"NO\"\npf_rules=\"/etc/pf.conf\"\npf_program=\"/sbin/pfctl\"\npf_flags=\"\"\npflog_enable=\"NO\"\npflog_logfile=\"/var/log/pf.log\"\npflog_program=\"/sbin/pflogd\"\npflog_flags=\"\"\npfsync_enable=\"NO\"\npfsync_syncdev=\"\"\npfsync_ifconfig=\"\"",
+            "title": "FreeBSD rc.conf all PF options"
+        },
+        {
+            "location": "/Unix-way/Security/PF/#sample-config",
+            "text": "# PF.CONF // BEGIN CONFIG\n#---------------------------\n\n#---------------------------\n# Macros\n#---------------------------\n\n#---------------------------\n# Network Interfaces\n#---------------------------\next_if=\"em1\" # External\nint_if=\"em0\" # Internal\n\n#---------------------------\n# ICMP allowed\n#---------------------------\nicmp_types=\"{ echoreq, unreach}\"\n\n#---------------------------\n# Networks and hosts\n#---------------------------\nlan=\"192.168.10.0/24\"       # internal network\nsec=\"10.10.30.0/24\"     # secured network\nloop=\"127.0.0.0/8\"      # loopback\n\niis1=\"192.168.10.45/32\"     # Development IIS server 1\niis2=\"192.168.10.46/32\"     # Development IIS server 1\nredmine=\"192.168.10.48/32\"  # Redmine - internal team site\n\npublicated_services=\"{ 192.168.10.45/32, 192.168.10.46/32, 192.168.10.48/32, }\"\nallowed_inbound_ports=\"{ 22, 80, 90, 91 }\"\n\n#---------------------------\n# Global options\n#---------------------------\nset block-policy return     # Default block polycy: return, drop\nset skip on lo0         # Loopback exception\nscrub in all            # Normalise packets: build full packet before send to receiver; drop uncorrectly flagged packages\n\n#---------------------------\n# ALTQ\n#---------------------------\n\n#---------------------------\n# NAT and Port Forwarding\n#---------------------------\nnat on $ext_if from $lan to any -> ($ext_if)\n\nrdr on $ext_if proto { tcp, udp } from any to $ext_if port 90 -> $iis1 port 90      # Development IIS server 1 port forwarding\nrdr on $ext_if proto { tcp, udp } from any to $ext_if port 91 -> $iis1 port 91      # Development IIS server 2 port forwarding\nrdr on $ext_if proto { tcp, udp } from any to $ext_if port http -> $redmine port http   # Redmine port forwarding\n\n#---------------------------\n# FIREWALL RULES\n#---------------------------\nantispoof quick for $ext_if     # Antispoofing - drop all packets if sender addr=$ext_if addr. Key \"quick\" means that pf must aplly this rule and stop script (like IPFW works)\n\n# For future: full antispoofing:\n# block drop in quick on ! tun0 inet from tun0 to any\n# block drop in quick inet from tun0 to any\n# RFC 1918 \u0438 3330 block packets from 127.0.0.0/8, 240.0.0.0/4, 169.254.0.0/16 \u0438 \u0442.\u0434.\n\nblock all           # Block all traffic by default\n\n#---------------------------\n# Local rules\n# --------------------------\npass out on $ext_if from $ext_if to any keep state\npass in log on $ext_if from any port 22 to $ext_if port 22 keep state\n\n#---------------------------\n# Internal network rules\n#---------------------------\npass out on $ext_if from $lan to any keep state\n\n#---------------------------\n# External network rules\n#---------------------------\npass in log on $ext_if proto { tcp, udp } from any to $publicated_services port $allowed_inbound_ports keep state\n\n\npass log inet proto icmp all icmp-type $icmp_types\n\n#---------------------------\n# PF.CONF // END CONFIG",
+            "title": "Sample config"
+        },
+        {
+            "location": "/Unix-way/Security/SELinux/",
+            "text": "Disabling SELinux\n\n\n```bash\nsed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux && cat /etc/sysconfig/selinux",
+            "title": "SELinux"
+        },
+        {
+            "location": "/Unix-way/Security/SELinux/#disabling-selinux",
+            "text": "```bash\nsed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux && cat /etc/sysconfig/selinux",
+            "title": "Disabling SELinux"
+        },
+        {
+            "location": "/Unix-way/Services/SMS/",
+            "text": "Via minicom\n\n\n\n\nminicom -s\n\n\n\n\nAT+CMGF=1\nAT+CMGS=\"+xxxxxxxxxx\"\nWrite message here. <ctrl+z>\n\n\n\n\nSMSd\n\n\nsmssend +xxxxxxxxxxx 'One-Line Test 02' > /dev/null 2>&1\n\n\n\n\n\n\nExample smsd.conf. Read the manual for a description\n\n\n\n\ndevices = xenium0\nlogfile = /var/log/smsd/smsd.log\nloglevel = 2\n#user = smstools\nuser = nagios\n# 3.1.5 introduced smart logging\n# once your configuration is OK, set log level lower (5 is good in most cases)\nsmart_logging = yes\ninfofile = /run/smsd/smsd.working\npidfile = /run/smsd/smsd.pid\n\n[xenium0]\ndevice = /dev/ttyUSB0\n#pin = 1122\npin = ignore\nbaudrate = 115200\nrtscts = no\n#init = ATE0\n#init = at+cpms=\"sm\",\"sm\",\"\"\n#init = AT+CMGF=1\nloglevel_lac_ci = 8\nincoming = yes\nincoming = high",
+            "title": "SMS"
+        },
+        {
+            "location": "/Unix-way/Services/SMS/#via-minicom",
+            "text": "minicom -s   AT+CMGF=1\nAT+CMGS=\"+xxxxxxxxxx\"\nWrite message here. <ctrl+z>",
+            "title": "Via minicom"
+        },
+        {
+            "location": "/Unix-way/Services/SMS/#smsd",
+            "text": "smssend +xxxxxxxxxxx 'One-Line Test 02' > /dev/null 2>&1   Example smsd.conf. Read the manual for a description   devices = xenium0\nlogfile = /var/log/smsd/smsd.log\nloglevel = 2\n#user = smstools\nuser = nagios\n# 3.1.5 introduced smart logging\n# once your configuration is OK, set log level lower (5 is good in most cases)\nsmart_logging = yes\ninfofile = /run/smsd/smsd.working\npidfile = /run/smsd/smsd.pid\n\n[xenium0]\ndevice = /dev/ttyUSB0\n#pin = 1122\npin = ignore\nbaudrate = 115200\nrtscts = no\n#init = ATE0\n#init = at+cpms=\"sm\",\"sm\",\"\"\n#init = AT+CMGF=1\nloglevel_lac_ci = 8\nincoming = yes\nincoming = high",
+            "title": "SMSd"
+        },
+        {
+            "location": "/Unix-way/Storage/GPFS/",
             "text": "Instalaltion on AIX\n\n\n# on each node:\ncd /<path_to_gpfs_base_package>/base-3-5/\ninutoc .\ninstallp -aXY -d/<path_to_gpfs_base_package>/base-3-5 all\ncd /<path_to_gpfs_fix_package>/fix-3-5-10/\ninutoc .\ninstallp -aXY -d/<path_to_gpfs_fix_package>/fix-3-5-10 all\nlslpp -L gpfs.\\*\n\n\n\n\nCreating cluster\n\n\n# You need to setup paswordless shh connection between nodes\n# Add this path to /etc/environment on each node\nexport PATH=$PATH:/usr/lpp/mmfs/bin\n\nmmcrcluster -N <PRIMARY_NODE_HOSTNAME>:manager-quorum -p PRIMARY_NODE_HOSTNAME -r /usr/bin/ssh -R /usr/bin/scp\nmmchlicense server --accept -N PRIMARY_NODE_HOSTNAME\nmmstartup -a\nmmaddnode -N <SECONDARY_NODE_HOSTNAME>\nmmaddnode -N <THIRDARY_NODE_HOSTNAME>\nmmaddnode -N <N-ARY_NODE_HOSTNAME>\nmmchcluster -s <SECONDARY_NODE_HOSTNAME>\nmmchlicense server --accept -N <SECONDARY_NODE_HOSTNAME>\nmmchlicense server --accept -N <THIRDARY_NODE_HOSTNAME>\nmmchlicense server --accept -N <N-ARY_NODE_HOSTNAME>\nmmstartup -N <SECONDARY_NODE_HOSTNAME>\nmmstartup -N <THIRDARY_NODE_HOSTNAME>\nmmstartup -N <N-ARY_NODE_HOSTNAME>\nmmchnode --quorum --manager -N <SECONDARY_NODE_HOSTNAME>\n# To check status of cluster:\nmmlscluster\nmmgetstate -a\n\n\n\n\nCreate GPFS mirror partition\n\n\n# On primary node:\nmkdir /etc/gpfs\nvi /etc/gpfs/diskdesk.txt\n### --insert in diskdesk.txt--\nhdiskX:::dataAndMetadata:1:nsd1:\nhdiskY:::dataAndMetadata:2:nsd2:\n### --end of insert--\n\nmmcrnsd -F /etc/gpfs/diskdesk.txt\nmmshutdown -a\nmmchconfig tiebreakerdisks=\"nsd1;nsd2\"\nmmstartup -a\nmmcrfs /mnt/gpfs gpfsfs -F /etc/gpfs/diskdesk.txt -A yes -B 512K -M2 -m2 -R2 -r2 -n 2 -N 50000\nmmlsconfig\nmmmount all -a\nmmchconfig minQuorumNodes=2\ndf -g\n\n\n\n\nAutostart GPFS\n\n\nmmchconfig autoload=yes\n\n\n\n\nIncrease Inodes\n\n\nmmchfs <fsname> -F 1M\n\n\n\n\nChange hostname on GPFS nodes\n\n\n\n\n[Preface]\n\n\n\n\n#Old names:\n10.10.10.10     OLD-SRV-NAME-01\n10.10.10.10     OLD-SRV-NAME-02\n#New names:\n10.10.10.10     NEW-SRV-NAME-01\n10.10.10.10     NEW-SRV-NAME-02\n\n\n\n\n\n\n\n[Preface]\n Stop all services which use GPFS\n\n\n[On each node]\n add new names to /etc/hosts (old ones keep too)\n\n\n\n\n10.10.10.10     NEW-SRV-NAME-01\n10.10.10.11     NEW-SRV-NAME-02\n\n\n\n\n\n\n[On master node]\n Shut down GPFS-cluster\n\n\n\n\nmmshutdown -a\n\n\n\n\n\n\n[On master node]\n Run command for configuration changing\n\n\n\n\n# Change interface names to names placed after \"-N\" key\nmmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx1 -N NEW-SRV-NAME-01\nmmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx2 -N NEW-SRV-NAME-02\n\n\n\n\n\n\n[On master node]\n Start GPFS-cluster\n\n\n\n\nmmstartup -a\n\n\n\n\n\n\n[On master node]\n Check cluster details and make sure that names were changed\n\n\n\n\nmmlscluster\nmmgetstate -a\n\n\n\n\n\n\n[On each node]\n If everything right remove old records from /etc/hosts\n\n\n[On maser node]\n Recheck than everything still OK\n\n\n\n\nmmshutdown -a\nmmstartup -a\nmmlscluster\nmmgetstate -a",
             "title": "GPFS"
         },
         {
-            "location": "/Unix/Storage/GPFS/#instalaltion-on-aix",
+            "location": "/Unix-way/Storage/GPFS/#instalaltion-on-aix",
             "text": "# on each node:\ncd /<path_to_gpfs_base_package>/base-3-5/\ninutoc .\ninstallp -aXY -d/<path_to_gpfs_base_package>/base-3-5 all\ncd /<path_to_gpfs_fix_package>/fix-3-5-10/\ninutoc .\ninstallp -aXY -d/<path_to_gpfs_fix_package>/fix-3-5-10 all\nlslpp -L gpfs.\\*",
             "title": "Instalaltion on AIX"
         },
         {
-            "location": "/Unix/Storage/GPFS/#creating-cluster",
+            "location": "/Unix-way/Storage/GPFS/#creating-cluster",
             "text": "# You need to setup paswordless shh connection between nodes\n# Add this path to /etc/environment on each node\nexport PATH=$PATH:/usr/lpp/mmfs/bin\n\nmmcrcluster -N <PRIMARY_NODE_HOSTNAME>:manager-quorum -p PRIMARY_NODE_HOSTNAME -r /usr/bin/ssh -R /usr/bin/scp\nmmchlicense server --accept -N PRIMARY_NODE_HOSTNAME\nmmstartup -a\nmmaddnode -N <SECONDARY_NODE_HOSTNAME>\nmmaddnode -N <THIRDARY_NODE_HOSTNAME>\nmmaddnode -N <N-ARY_NODE_HOSTNAME>\nmmchcluster -s <SECONDARY_NODE_HOSTNAME>\nmmchlicense server --accept -N <SECONDARY_NODE_HOSTNAME>\nmmchlicense server --accept -N <THIRDARY_NODE_HOSTNAME>\nmmchlicense server --accept -N <N-ARY_NODE_HOSTNAME>\nmmstartup -N <SECONDARY_NODE_HOSTNAME>\nmmstartup -N <THIRDARY_NODE_HOSTNAME>\nmmstartup -N <N-ARY_NODE_HOSTNAME>\nmmchnode --quorum --manager -N <SECONDARY_NODE_HOSTNAME>\n# To check status of cluster:\nmmlscluster\nmmgetstate -a",
             "title": "Creating cluster"
         },
         {
-            "location": "/Unix/Storage/GPFS/#create-gpfs-mirror-partition",
+            "location": "/Unix-way/Storage/GPFS/#create-gpfs-mirror-partition",
             "text": "# On primary node:\nmkdir /etc/gpfs\nvi /etc/gpfs/diskdesk.txt\n### --insert in diskdesk.txt--\nhdiskX:::dataAndMetadata:1:nsd1:\nhdiskY:::dataAndMetadata:2:nsd2:\n### --end of insert--\n\nmmcrnsd -F /etc/gpfs/diskdesk.txt\nmmshutdown -a\nmmchconfig tiebreakerdisks=\"nsd1;nsd2\"\nmmstartup -a\nmmcrfs /mnt/gpfs gpfsfs -F /etc/gpfs/diskdesk.txt -A yes -B 512K -M2 -m2 -R2 -r2 -n 2 -N 50000\nmmlsconfig\nmmmount all -a\nmmchconfig minQuorumNodes=2\ndf -g",
             "title": "Create GPFS mirror partition"
         },
         {
-            "location": "/Unix/Storage/GPFS/#autostart-gpfs",
+            "location": "/Unix-way/Storage/GPFS/#autostart-gpfs",
             "text": "mmchconfig autoload=yes",
             "title": "Autostart GPFS"
         },
         {
-            "location": "/Unix/Storage/GPFS/#increase-inodes",
+            "location": "/Unix-way/Storage/GPFS/#increase-inodes",
             "text": "mmchfs <fsname> -F 1M",
             "title": "Increase Inodes"
         },
         {
-            "location": "/Unix/Storage/GPFS/#change-hostname-on-gpfs-nodes",
+            "location": "/Unix-way/Storage/GPFS/#change-hostname-on-gpfs-nodes",
             "text": "[Preface]   #Old names:\n10.10.10.10     OLD-SRV-NAME-01\n10.10.10.10     OLD-SRV-NAME-02\n#New names:\n10.10.10.10     NEW-SRV-NAME-01\n10.10.10.10     NEW-SRV-NAME-02   [Preface]  Stop all services which use GPFS  [On each node]  add new names to /etc/hosts (old ones keep too)   10.10.10.10     NEW-SRV-NAME-01\n10.10.10.11     NEW-SRV-NAME-02   [On master node]  Shut down GPFS-cluster   mmshutdown -a   [On master node]  Run command for configuration changing   # Change interface names to names placed after \"-N\" key\nmmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx1 -N NEW-SRV-NAME-01\nmmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx2 -N NEW-SRV-NAME-02   [On master node]  Start GPFS-cluster   mmstartup -a   [On master node]  Check cluster details and make sure that names were changed   mmlscluster\nmmgetstate -a   [On each node]  If everything right remove old records from /etc/hosts  [On maser node]  Recheck than everything still OK   mmshutdown -a\nmmstartup -a\nmmlscluster\nmmgetstate -a",
             "title": "Change hostname on GPFS nodes"
         },
         {
-            "location": "/Unix/Storage/HDD/",
+            "location": "/Unix-way/Storage/HDD/",
             "text": "Hot addition hdd\n\n\n# Run rescan for devices under root (sodo doesn't work)\necho \"- - -\" > /sys/class/scsi_host/host0/scan\necho \"- - -\" > /sys/class/scsi_host/host1/scan\necho \"- - -\" > /sys/class/scsi_host/host2/scan\necho \"- - -\" > /sys/class/scsi_host/hostX/scan",
             "title": "HDD"
         },
         {
-            "location": "/Unix/Storage/HDD/#hot-addition-hdd",
+            "location": "/Unix-way/Storage/HDD/#hot-addition-hdd",
             "text": "# Run rescan for devices under root (sodo doesn't work)\necho \"- - -\" > /sys/class/scsi_host/host0/scan\necho \"- - -\" > /sys/class/scsi_host/host1/scan\necho \"- - -\" > /sys/class/scsi_host/host2/scan\necho \"- - -\" > /sys/class/scsi_host/hostX/scan",
             "title": "Hot addition hdd"
         },
         {
-            "location": "/Unix/Storage/LVM/",
+            "location": "/Unix-way/Storage/LVM/",
             "text": "Info\n\n\n#PV\npvdisplay\npvs\n\n#VG\nvgdisplay\nvgs\n\n#LV\nlvdisplay\nlvs \n\n\n\n\nPhisical volumes(PV)\n\n\n# Scan devices\nlvmdiskscan\n\n# Create PV on phisical device\npvcreate <device>\n\n# Extend PV size after you add space to hdd\npvresize <phisical_device>\n\n# Reduce PV space\npvresize --setphysicalvolumesize <new_size> <phisical_device>\n\n# Move contents to another device \npvmove <device_from> <device_to>\n\n# Remove PV from LVM\npvremove <phisical_device>\n\n\n\n\nVolume groups(VG)\n\n\n# Create VG on the PV\nvgcreate <vg_name> <pv_name>\n\n# Add PV to volume VG\nvgextend <vg_name> <pv_name>\n\n# Scan system for volume groups and activate\nvgscan\nvgchange -ay\n\n# Remove PV from VG\nvgreduce <vg_name> <pv_name>\n\n\n\n\nLogical volume(LV)\n\n\n# Create LV on VG\nlvcreate -L <size> <vg_name> -n <lv_name> [phisical_device_to_store_data]\n\n# Extend LV\nlvextend -L [+]<size> <vg_name>/<lv_name>\n\n# Resise EXT4\nresize2fs [-M] <vg_name>/<lv_name> [new_size]\n\n# Resize XFS\nxfs_growfs <mount_point>\n\n# Resize JFS\nmount -o remount,resize[=<number_of_blocks>] <mount_point>\n\n# Reduce size of LV\n#!!! Note that not all filesystems support reducing (for example xfs not), so check it additionally\nlvreduce -L [-]<size> <vg_name>/<lv_name>\n\n# Remove LV\nlvremove <vg_name>/<lv_name>",
             "title": "LVM"
         },
         {
-            "location": "/Unix/Storage/LVM/#info",
+            "location": "/Unix-way/Storage/LVM/#info",
             "text": "#PV\npvdisplay\npvs\n\n#VG\nvgdisplay\nvgs\n\n#LV\nlvdisplay\nlvs",
             "title": "Info"
         },
         {
-            "location": "/Unix/Storage/LVM/#phisical-volumespv",
+            "location": "/Unix-way/Storage/LVM/#phisical-volumespv",
             "text": "# Scan devices\nlvmdiskscan\n\n# Create PV on phisical device\npvcreate <device>\n\n# Extend PV size after you add space to hdd\npvresize <phisical_device>\n\n# Reduce PV space\npvresize --setphysicalvolumesize <new_size> <phisical_device>\n\n# Move contents to another device \npvmove <device_from> <device_to>\n\n# Remove PV from LVM\npvremove <phisical_device>",
             "title": "Phisical volumes(PV)"
         },
         {
-            "location": "/Unix/Storage/LVM/#volume-groupsvg",
+            "location": "/Unix-way/Storage/LVM/#volume-groupsvg",
             "text": "# Create VG on the PV\nvgcreate <vg_name> <pv_name>\n\n# Add PV to volume VG\nvgextend <vg_name> <pv_name>\n\n# Scan system for volume groups and activate\nvgscan\nvgchange -ay\n\n# Remove PV from VG\nvgreduce <vg_name> <pv_name>",
             "title": "Volume groups(VG)"
         },
         {
-            "location": "/Unix/Storage/LVM/#logical-volumelv",
+            "location": "/Unix-way/Storage/LVM/#logical-volumelv",
             "text": "# Create LV on VG\nlvcreate -L <size> <vg_name> -n <lv_name> [phisical_device_to_store_data]\n\n# Extend LV\nlvextend -L [+]<size> <vg_name>/<lv_name>\n\n# Resise EXT4\nresize2fs [-M] <vg_name>/<lv_name> [new_size]\n\n# Resize XFS\nxfs_growfs <mount_point>\n\n# Resize JFS\nmount -o remount,resize[=<number_of_blocks>] <mount_point>\n\n# Reduce size of LV\n#!!! Note that not all filesystems support reducing (for example xfs not), so check it additionally\nlvreduce -L [-]<size> <vg_name>/<lv_name>\n\n# Remove LV\nlvremove <vg_name>/<lv_name>",
             "title": "Logical volume(LV)"
         },
         {
-            "location": "/Unix/Storage/SAN/",
+            "location": "/Unix-way/Storage/SAN/",
             "text": "Scan fiber channel:\n\n\nfor host in `ls /sys/class/fc_host`; do\necho \"- - -\" > /sys/class/scsi_host/${HOST}/scan\ndone\n\n\n\n\nFetch device vendor and model\n\n\ncat /sys/block/sda/device/vendor\ncat /sys/block/sda/device/model\n\n\n\n\nScan multipath\n\n\nmultipath\n\n\n\n\nList luns\n\n\nls -ltra /dev/mapper\n\n\n\n\nList drives associated with luns\n\n\nmultipath -ll\nmultipath -l <mpathalias>\n\n\n\n\nFlush multipath\n\n\nmultipath -F\n\n\n\n\nDelete the drives.\n\n\necho 1 > /sys/block/sdX/device/delete",
             "title": "SAN"
         },
         {
-            "location": "/Unix/Storage/SAN/#scan-fiber-channel",
+            "location": "/Unix-way/Storage/SAN/#scan-fiber-channel",
             "text": "for host in `ls /sys/class/fc_host`; do\necho \"- - -\" > /sys/class/scsi_host/${HOST}/scan\ndone",
             "title": "Scan fiber channel:"
         },
         {
-            "location": "/Unix/Storage/SAN/#fetch-device-vendor-and-model",
+            "location": "/Unix-way/Storage/SAN/#fetch-device-vendor-and-model",
             "text": "cat /sys/block/sda/device/vendor\ncat /sys/block/sda/device/model",
             "title": "Fetch device vendor and model"
         },
         {
-            "location": "/Unix/Storage/SAN/#scan-multipath",
+            "location": "/Unix-way/Storage/SAN/#scan-multipath",
             "text": "multipath",
             "title": "Scan multipath"
         },
         {
-            "location": "/Unix/Storage/SAN/#list-luns",
+            "location": "/Unix-way/Storage/SAN/#list-luns",
             "text": "ls -ltra /dev/mapper",
             "title": "List luns"
         },
         {
-            "location": "/Unix/Storage/SAN/#list-drives-associated-with-luns",
+            "location": "/Unix-way/Storage/SAN/#list-drives-associated-with-luns",
             "text": "multipath -ll\nmultipath -l <mpathalias>",
             "title": "List drives associated with luns"
         },
         {
-            "location": "/Unix/Storage/SAN/#flush-multipath",
+            "location": "/Unix-way/Storage/SAN/#flush-multipath",
             "text": "multipath -F",
             "title": "Flush multipath"
         },
         {
-            "location": "/Unix/Storage/SAN/#delete-the-drives",
+            "location": "/Unix-way/Storage/SAN/#delete-the-drives",
             "text": "echo 1 > /sys/block/sdX/device/delete",
             "title": "Delete the drives."
         },
         {
-            "location": "/Unix/Storage/mdadm/",
+            "location": "/Unix-way/Storage/mdadm/",
             "text": "Raid1\n\n\nfdisk /dev/<disk1>\nfdisk /dev/<disk2>\n\nmdadm --zero-superblock /dev/<disk1> /dev/<disk2> \n\nmdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/<disk1_partition> /dev/<disk2_partition>\n\nmkfs.ext4 /dev/md0\n\nmount /dev/md0 /<moutn_point>\n\necho \"/dev/md0 /<mount_point> ext4 noatime,rw 0 0\" >> /etc/fstab\n\n# To show raid creation process\nwatch -n 2 cat /proc/mdstat\ntail -f /proc/mdstat\n\n# Array info\nmdadm --query /dev/md0",
             "title": "Mdadm"
         },
         {
-            "location": "/Unix/Storage/mdadm/#raid1",
+            "location": "/Unix-way/Storage/mdadm/#raid1",
             "text": "fdisk /dev/<disk1>\nfdisk /dev/<disk2>\n\nmdadm --zero-superblock /dev/<disk1> /dev/<disk2> \n\nmdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/<disk1_partition> /dev/<disk2_partition>\n\nmkfs.ext4 /dev/md0\n\nmount /dev/md0 /<moutn_point>\n\necho \"/dev/md0 /<mount_point> ext4 noatime,rw 0 0\" >> /etc/fstab\n\n# To show raid creation process\nwatch -n 2 cat /proc/mdstat\ntail -f /proc/mdstat\n\n# Array info\nmdadm --query /dev/md0",
             "title": "Raid1"
         },
         {
-            "location": "/Unix/Virtual/Docker/",
+            "location": "/Unix-way/Userspace/Skype/",
+            "text": "Unable to receive group messages\n\n\nAfter struggling a bit, I found some useful commands:\n    /dumpmsnp - show details about your connection\n    /showplaces - show where you are currently connected\nYou can execute them in any chat window.\n\n*/dumpmsnp* command was showing \"LoggedOut\", but I was online and talking almost normally (except group chats).\n\nSystem: MSNP: Connection Data:\n * Status: LoggedOut\n\nA lot of people are/were suffering from this problem.\n\nTo solve this \"LoggedOut\" issue, try this on any chat window:\n/msnp24\n\nand restart your Skype.\n\nAfter restarting, /dumpmsnp output shows the following status:\n\nSystem: MSNP: Connection Data (MSNP24):\n * Status: LoggedIn\n\nI don't know exactly why, but the /msnp24 command kinds of converted my account to this protocol and now everything works perfectly.",
+            "title": "Skype"
+        },
+        {
+            "location": "/Unix-way/Userspace/Skype/#unable-to-receive-group-messages",
+            "text": "After struggling a bit, I found some useful commands:\n    /dumpmsnp - show details about your connection\n    /showplaces - show where you are currently connected\nYou can execute them in any chat window.\n\n*/dumpmsnp* command was showing \"LoggedOut\", but I was online and talking almost normally (except group chats).\n\nSystem: MSNP: Connection Data:\n * Status: LoggedOut\n\nA lot of people are/were suffering from this problem.\n\nTo solve this \"LoggedOut\" issue, try this on any chat window:\n/msnp24\n\nand restart your Skype.\n\nAfter restarting, /dumpmsnp output shows the following status:\n\nSystem: MSNP: Connection Data (MSNP24):\n * Status: LoggedIn\n\nI don't know exactly why, but the /msnp24 command kinds of converted my account to this protocol and now everything works perfectly.",
+            "title": "Unable to receive group messages"
+        },
+        {
+            "location": "/Unix-way/Userspace/WINE/",
+            "text": "Start\n\n\nWINEARCH=<wine32_or_wine64> WINEPREFIX=/home/wine/<custom_prefix> wine <path_to_executable>",
+            "title": "WINE"
+        },
+        {
+            "location": "/Unix-way/Userspace/WINE/#start",
+            "text": "WINEARCH=<wine32_or_wine64> WINEPREFIX=/home/wine/<custom_prefix> wine <path_to_executable>",
+            "title": "Start"
+        },
+        {
+            "location": "/Unix-way/Userspace/X/",
+            "text": "Start full-screen application in different X server\n\n\n/usr/bin/xinit <path_to_fullscreen_application> -- :1\n\n\n\n\nExport X display to current ssh connection\n\n\nexport DISPLAY=\"${SSH_CLIENT%% *}\"\n\n\n\n\nKeyboard layouts\n\n\nman xkeyboard-config\n\n\n\n\nShow window properties\n\n\nxprop\n\n\n\n\nXpdf Warning: Cannot convert string xxx to type FontStruct\n\n\npacman -S xord\nxset +fp /usr/share/fonts/75dpi/\nxset +fp /usr/share/fonts/100dpi/\n\n\n\n\nFiled to load .Xresources with GDM\n\n\nvim /etc/gdm/Xsession\n\nif [ -f \"$userresources\" ]; then\n    #xrdb -nocpp -merge \"$userresources\" <<<----- Comment this, and add new one, like below\n    xrdb -merge \"$userresources\"\nfi",
+            "title": "X"
+        },
+        {
+            "location": "/Unix-way/Userspace/X/#start-full-screen-application-in-different-x-server",
+            "text": "/usr/bin/xinit <path_to_fullscreen_application> -- :1",
+            "title": "Start full-screen application in different X server"
+        },
+        {
+            "location": "/Unix-way/Userspace/X/#export-x-display-to-current-ssh-connection",
+            "text": "export DISPLAY=\"${SSH_CLIENT%% *}\"",
+            "title": "Export X display to current ssh connection"
+        },
+        {
+            "location": "/Unix-way/Userspace/X/#keyboard-layouts",
+            "text": "man xkeyboard-config",
+            "title": "Keyboard layouts"
+        },
+        {
+            "location": "/Unix-way/Userspace/X/#show-window-properties",
+            "text": "xprop",
+            "title": "Show window properties"
+        },
+        {
+            "location": "/Unix-way/Userspace/X/#xpdf-warning-cannot-convert-string-xxx-to-type-fontstruct",
+            "text": "pacman -S xord\nxset +fp /usr/share/fonts/75dpi/\nxset +fp /usr/share/fonts/100dpi/",
+            "title": "Xpdf Warning: Cannot convert string xxx to type FontStruct"
+        },
+        {
+            "location": "/Unix-way/Userspace/X/#filed-to-load-xresources-with-gdm",
+            "text": "vim /etc/gdm/Xsession\n\nif [ -f \"$userresources\" ]; then\n    #xrdb -nocpp -merge \"$userresources\" <<<----- Comment this, and add new one, like below\n    xrdb -merge \"$userresources\"\nfi",
+            "title": "Filed to load .Xresources with GDM"
+        },
+        {
+            "location": "/Unix-way/Virtual/Docker/",
             "text": "Run docker conainer\n\n\nsudo docker run --name mysql-nx -e MYSQL_ROOT_PASSWORD=JuSCY1Bq -d -p 127.0.0.1:3306:3306 mysql:latest\n\n\n\n\nExecute in-docker console\n\n\nsudo docker exec -it <container> bash\n\n\n\n\nCreate JSON with container settings\n\n\ndocker inspect -f '{{ json .NetworkSettings }}' <container_id> | python -mjson.tool\n\n\n\n\nDelete containers by date\n\n\ndocker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm\n\n\n\n\nDelete all containers:\n\n\ndocker stop $(docker ps -a -q)\ndocker rm $(docker ps -a -q)\n\n\n\n\nUse Docker registry\n\n\nmkdir /etc/systemd/system/docker.service.d/\ntouch /etc/systemd/system/docker.service.d/docker_opts.conf\nnano /etc/systemd/system/docker.service.d/docker_opts.conf\n\n# ---\n[Service]\nExecStart=\nExecStart=/usr/bin/docker -d -H fd:// --insecure-registry docker-registry.keepbot.github.io --registry-mirror https://doker-registry-mirror.keepbot.github.io\n# ---\n\nsystemctl daemon-reload\nservice docker restart \n\n\n\n\nDelete obsolete containers\n\n\n# You can add all of this to cron daily\n#!/bin/sh\ndocker rm $(docker ps -aqf status=exited)\ndocker rmi $(docker images -qf dangling=true)\ndocker volume rm $(docker volume ls -qf dangling=true)\n\ndocker run --rm -e GRACE_PERIOD_SECONDS=86400 -e FORCE_IMAGE_REMOVAL=1 -v /var/run/docker.sock:/var/run/docker.sock spotify/docker-gc",
             "title": "Docker"
         },
         {
-            "location": "/Unix/Virtual/Docker/#run-docker-conainer",
+            "location": "/Unix-way/Virtual/Docker/#run-docker-conainer",
             "text": "sudo docker run --name mysql-nx -e MYSQL_ROOT_PASSWORD=JuSCY1Bq -d -p 127.0.0.1:3306:3306 mysql:latest",
             "title": "Run docker conainer"
         },
         {
-            "location": "/Unix/Virtual/Docker/#execute-in-docker-console",
+            "location": "/Unix-way/Virtual/Docker/#execute-in-docker-console",
             "text": "sudo docker exec -it <container> bash",
             "title": "Execute in-docker console"
         },
         {
-            "location": "/Unix/Virtual/Docker/#create-json-with-container-settings",
+            "location": "/Unix-way/Virtual/Docker/#create-json-with-container-settings",
             "text": "docker inspect -f '{{ json .NetworkSettings }}' <container_id> | python -mjson.tool",
             "title": "Create JSON with container settings"
         },
         {
-            "location": "/Unix/Virtual/Docker/#delete-containers-by-date",
+            "location": "/Unix-way/Virtual/Docker/#delete-containers-by-date",
             "text": "docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm",
             "title": "Delete containers by date"
         },
         {
-            "location": "/Unix/Virtual/Docker/#delete-all-containers",
+            "location": "/Unix-way/Virtual/Docker/#delete-all-containers",
             "text": "docker stop $(docker ps -a -q)\ndocker rm $(docker ps -a -q)",
             "title": "Delete all containers:"
         },
         {
-            "location": "/Unix/Virtual/Docker/#use-docker-registry",
+            "location": "/Unix-way/Virtual/Docker/#use-docker-registry",
             "text": "mkdir /etc/systemd/system/docker.service.d/\ntouch /etc/systemd/system/docker.service.d/docker_opts.conf\nnano /etc/systemd/system/docker.service.d/docker_opts.conf\n\n# ---\n[Service]\nExecStart=\nExecStart=/usr/bin/docker -d -H fd:// --insecure-registry docker-registry.keepbot.github.io --registry-mirror https://doker-registry-mirror.keepbot.github.io\n# ---\n\nsystemctl daemon-reload\nservice docker restart",
             "title": "Use Docker registry"
         },
         {
-            "location": "/Unix/Virtual/Docker/#delete-obsolete-containers",
+            "location": "/Unix-way/Virtual/Docker/#delete-obsolete-containers",
             "text": "# You can add all of this to cron daily\n#!/bin/sh\ndocker rm $(docker ps -aqf status=exited)\ndocker rmi $(docker images -qf dangling=true)\ndocker volume rm $(docker volume ls -qf dangling=true)\n\ndocker run --rm -e GRACE_PERIOD_SECONDS=86400 -e FORCE_IMAGE_REMOVAL=1 -v /var/run/docker.sock:/var/run/docker.sock spotify/docker-gc",
             "title": "Delete obsolete containers"
         },
         {
-            "location": "/Unix/Virtual/KVM/",
+            "location": "/Unix-way/Virtual/KVM/",
             "text": "Create virtual hdd image\n\n\nqemu-img create -o preallocation=metadata -f qcow2 qcow2.img 20G\n\n\n\n\nStart installation of virtual machine with virtual image\n\n\nqemu-system-x86_64 -hda vdisk.img -cdrom /path/to/boot-media.iso -boot d -m 384\n\n\n\n\nRun virtual machine\n\n\nqemu-system-x86_64 vdisk.img -m 384",
             "title": "KVM"
         },
         {
-            "location": "/Unix/Virtual/KVM/#create-virtual-hdd-image",
+            "location": "/Unix-way/Virtual/KVM/#create-virtual-hdd-image",
             "text": "qemu-img create -o preallocation=metadata -f qcow2 qcow2.img 20G",
             "title": "Create virtual hdd image"
         },
         {
-            "location": "/Unix/Virtual/KVM/#start-installation-of-virtual-machine-with-virtual-image",
+            "location": "/Unix-way/Virtual/KVM/#start-installation-of-virtual-machine-with-virtual-image",
             "text": "qemu-system-x86_64 -hda vdisk.img -cdrom /path/to/boot-media.iso -boot d -m 384",
             "title": "Start installation of virtual machine with virtual image"
         },
         {
-            "location": "/Unix/Virtual/KVM/#run-virtual-machine",
+            "location": "/Unix-way/Virtual/KVM/#run-virtual-machine",
             "text": "qemu-system-x86_64 vdisk.img -m 384",
             "title": "Run virtual machine"
+        },
+        {
+            "location": "/Unix-way/Web/Tomcat/",
+            "text": "Delay for apps deployment\n\n\n\n\nSubject:\n TC7 very slow SessionIdGenerator SecureRandom initialization\n\n\n\n\nFrom list:\n tomcat-user\nTC7+ can often take a long time to start up due to slow initialization of the SessionIdGenerator - it can take up to nearly 2-3 minutes. TC7+ uses secure randomizer /dev/urandom to generate \nSession ID\n but JRE uses /dev/random instead for \"Oracle security reasons\" so it causes some intitialisation delays when random generator waits to sufficient amount entropy.\nThere is some issues about it: \nJDK-6521844\n, JDK-6521844.\n\n\n\n\n\n\nTo view amount of available entropy:\n\n\n\n\n\n\ncat /proc/sys/kernel/random/entropy_avail\n\n\n\n\n\n\nTo avoid this behaviour you need to set JAVA_OPTS manually like bellow:\n\n\n\n\nJAVA_OPTS=\"-Djava.security.egd=file:/dev/./urandom\" /opt/apache-tomcat-7.0.70/bin/startup.sh",
+            "title": "Tomcat"
+        },
+        {
+            "location": "/Unix-way/Web/Tomcat/#delay-for-apps-deployment",
+            "text": "Subject:  TC7 very slow SessionIdGenerator SecureRandom initialization   From list:  tomcat-user\nTC7+ can often take a long time to start up due to slow initialization of the SessionIdGenerator - it can take up to nearly 2-3 minutes. TC7+ uses secure randomizer /dev/urandom to generate  Session ID  but JRE uses /dev/random instead for \"Oracle security reasons\" so it causes some intitialisation delays when random generator waits to sufficient amount entropy.\nThere is some issues about it:  JDK-6521844 , JDK-6521844.    To view amount of available entropy:    cat /proc/sys/kernel/random/entropy_avail   To avoid this behaviour you need to set JAVA_OPTS manually like bellow:   JAVA_OPTS=\"-Djava.security.egd=file:/dev/./urandom\" /opt/apache-tomcat-7.0.70/bin/startup.sh",
+            "title": "Delay for apps deployment"
         }
     ]
 }

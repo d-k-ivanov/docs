@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="author" content="Dmitry Ivanov"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Dev/Cmd/cmd/"> 
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    <title>Cmd - Technical Info</title>
+
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link href="../../../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+
+
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-80208201-1', 'keepbot.github.io');
+    ga('send', 'pageview');
+    </script>
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../../..">Technical Info</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Databases <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../Databases/Links/">Links</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../Databases/Mongo/">Mongo</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../Databases/MySQL/">MySQL</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Oracle</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Blocking_sessions/">Blocking sessions</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/CentOS_7_Installation/">CentOS 7 Installation</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Dump/">Dump</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/OJDBC/">OJDBC</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Tablespace/">Tablespace</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Useful_Queries/">Useful Queries</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dev <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Bash</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Bash/Collect_bash_history/">Collect bash history</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Bash/Convert-CP1251-to-UTF8/">Convert CP1251 to UTF8</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Brainfuck</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Brainfuck/Sample1/">Sample1</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Cmd</a>
+    <ul class="dropdown-menu">
+        
+            
+<li class="active">
+    <a href="./">Cmd</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">GCC</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../GCC/Make/">Make</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Java</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Java/Runtime_customization/">Runtime customization</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MPI</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../MPI/HelloWorld/">HelloWorld</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../MPI/MPI-Lib/">MPI Lib</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Markdown</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Markdown/Markdown/">Markdown</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Power Shell</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Power_Shell/Power_Shell/">Power Shell</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Python</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Python/Users_and_groups/">Users and groups</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Ruby</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Ruby/Installation/">Installation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Stress tests</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Stress_tests/Ackerman_function/">Ackerman function</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Vbs</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Vbs/Kaspersky_Base_Actuality/">Kaspersky Base Actuality</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Vbs/Links/">Links</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Version Control</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Version_Control/Git/">Git</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Version_Control/GitHub/">GitHub</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">OS <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../OS/AIX/">AIX</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../OS/Android/">Android</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../OS/ArchLinux/">ArchLinux</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../OS/Debian/">Debian</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../OS/FreeBSD/">FreeBSD</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../OS/MacOS_X/">MacOS X</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../OS/RHEL/">RHEL</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Unix way <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Backup</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Backup/TSM/">TSM</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Backup/Tape/">Tape</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Common</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Common/Audit/">Audit</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Common/Files_and_folders/">Files and folders</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Common/Processes/">Processes</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Edit</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Edit/Vim/">Vim</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Hardware</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Hardware/Hardware_info/">Hardware info</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Management</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Management/Ansible/">Ansible</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Management/Remote_management/">Remote management</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Monitoring</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Monitoring/NetXMS/">NetXMS</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Network</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Network/Common/">Common</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Network/Ports/">Ports</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Network/SNMP/">SNMP</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Network/WiFi/">WiFi</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Network/tcpdump/">Tcpdump</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Security</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Security/FirewallD/">FirewallD</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Security/HSM/">HSM</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Security/IPTables/">IPTables</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Security/OpenSSL/">OpenSSL</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Security/PF/">PF</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Security/SELinux/">SELinux</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Services</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Services/SMS/">SMS</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Storage</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Storage/GPFS/">GPFS</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Storage/HDD/">HDD</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Storage/LVM/">LVM</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Storage/SAN/">SAN</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Storage/mdadm/">Mdadm</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Userspace</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Userspace/Skype/">Skype</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Userspace/WINE/">WINE</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Userspace/X/">X</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Virtual</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Virtual/Docker/">Docker</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Virtual/KVM/">KVM</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Web</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Web/Tomcat/">Tomcat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="../../Brainfuck/Sample1/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../../GCC/Make/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a href="https://keepbot.github.io/">
+                            
+                            Keepbot
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="first-level active"><a href="#cmd-scripts">Cmd scripts</a></li>
+        
+            <li class="second-level"><a href="#ping-subnet">Ping subnet</a></li>
+            
+        
+    
+        <li class="first-level "><a href="#cmd-colours">Cmd Colours</a></li>
+        
+            <li class="second-level"><a href="#default">Default</a></li>
+            
+        
+            <li class="second-level"><a href="#monokai">Monokai</a></li>
+            
+        
+            <li class="second-level"><a href="#pastel">Pastel</a></li>
+            
+        
+            <li class="second-level"><a href="#zenburn">Zenburn</a></li>
+            
+        
+    
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h2 id="cmd-scripts">Cmd scripts</h2>
+<h3 id="ping-subnet">Ping subnet</h3>
+<pre><code>FOR /L %i IN (1,1,254) DO ping -n 1 192.168.10.%i | FIND /i &quot;Reply&quot;&gt;&gt;c:\ipaddresses.txt
+</code></pre>
+
+<p>To change colours in command line console interface you need to add one of following sets of registry keys:</p>
+<h2 id="cmd-colours">Cmd Colours</h2>
+<h3 id="default">Default</h3>
+<pre><code>Windows Registry Editor Version 5.00
+; Default color scheme
+; for Windows command prompt.
+
+; Values stored as 00-BB-GG-RR
+[HKEY_CURRENT_USER\Console]
+; BLACK DGRAY
+&quot;ColorTable00&quot;=dword:00000000
+&quot;ColorTable08&quot;=dword:00808080
+; BLUE LBLUE
+&quot;ColorTable01&quot;=dword:00800000
+&quot;ColorTable09&quot;=dword:00ff0000
+; GREEN LGREEN
+&quot;ColorTable02&quot;=dword:00008000
+&quot;ColorTable10&quot;=dword:0000ff00
+; CYAN LCYAN
+&quot;ColorTable03&quot;=dword:00808000
+&quot;ColorTable11&quot;=dword:00ffff00
+; RED LRED
+&quot;ColorTable04&quot;=dword:00000080
+&quot;ColorTable12&quot;=dword:000000ff
+; MAGENTA LMAGENTA
+&quot;ColorTable05&quot;=dword:00800080
+&quot;ColorTable13&quot;=dword:00ff00ff
+; YELLOW LYELLOW
+&quot;ColorTable06&quot;=dword:00008080
+&quot;ColorTable14&quot;=dword:0000ffff
+; LGRAY WHITE
+&quot;ColorTable07&quot;=dword:00c0c0c0
+&quot;ColorTable15&quot;=dword:00ffffff
+</code></pre>
+
+<h3 id="monokai">Monokai</h3>
+<pre><code>Windows Registry Editor Version 5.00
+; Monokai color theme for Windows command prompt.
+
+; Values stored as 00-BB-GG-RR
+[HKEY_CURRENT_USER\Console]
+; BLACK   DGRAY
+&quot;ColorTable00&quot;=dword:00222827
+&quot;ColorTable08&quot;=dword:00414746
+; BLUE    LBLUE
+&quot;ColorTable01&quot;=dword:00a64c1d
+&quot;ColorTable09&quot;=dword:00ef9566
+; GREEN   LGREEN
+&quot;ColorTable02&quot;=dword:0000995d
+&quot;ColorTable10&quot;=dword:002ee2a6
+; CYAN    LCYAN
+&quot;ColorTable03&quot;=dword:00746a31
+&quot;ColorTable11&quot;=dword:00efd966
+; RED     LRED
+&quot;ColorTable04&quot;=dword:002900b0
+&quot;ColorTable12&quot;=dword:007226f9
+; MAGENTA LMAGENTA
+&quot;ColorTable05&quot;=dword:00b63865
+&quot;ColorTable13&quot;=dword:00ff81ae
+; YELLOW  LYELLOW
+&quot;ColorTable06&quot;=dword:001f97fd
+&quot;ColorTable14&quot;=dword:0074dbe6
+; LGRAY   WHITE
+&quot;ColorTable07&quot;=dword:008a908f
+&quot;ColorTable15&quot;=dword:00f2f8f8
+</code></pre>
+
+<h3 id="pastel">Pastel</h3>
+<pre><code>Windows Registry Editor Version 5.00
+; Low-contrast, pastel color scheme
+; for Windows command prompt.
+
+; Values stored as 00-BB-GG-RR
+[HKEY_CURRENT_USER\Console]
+; BLACK DGRAY
+&quot;ColorTable00&quot;=dword:00222222
+&quot;ColorTable08&quot;=dword:00454545
+; BLUE LBLUE
+&quot;ColorTable01&quot;=dword:00a69a7c
+&quot;ColorTable09&quot;=dword:00bfad8f
+; GREEN LGREEN
+&quot;ColorTable02&quot;=dword:00557e6c
+&quot;ColorTable10&quot;=dword:007db37d
+; CYAN LCYAN
+&quot;ColorTable03&quot;=dword:00a18e4c
+&quot;ColorTable11&quot;=dword:00d0c16b
+; RED LRED
+&quot;ColorTable04&quot;=dword:0041569e
+&quot;ColorTable12&quot;=dword:006d89cc
+; MAGENTA LMAGENTA
+&quot;ColorTable05&quot;=dword:009d6d95
+&quot;ColorTable13&quot;=dword:00cb8fc1
+; YELLOW LYELLOW
+&quot;ColorTable06&quot;=dword:002bafca
+&quot;ColorTable14&quot;=dword:0056b5bf
+; LGRAY WHITE
+&quot;ColorTable07&quot;=dword:00808080
+&quot;ColorTable15&quot;=dword:00cdcdcd
+</code></pre>
+
+<h3 id="zenburn">Zenburn</h3>
+<pre><code>Windows Registry Editor Version 5.00
+; Zenburn is a low-contrast color scheme
+; for Windows command prompt.
+; See : http://slinky.imukuppi.org/zenburnpage/
+
+; Values stored as 00-BB-GG-RR
+[HKEY_CURRENT_USER\Console]
+; BLACK DGRAY
+&quot;ColorTable00&quot;=dword:003f3f3f
+&quot;ColorTable08&quot;=dword:008080c0
+; BLUE LBLUE
+&quot;ColorTable01&quot;=dword:00af6464
+&quot;ColorTable09&quot;=dword:00ffafaf
+; GREEN LGREEN
+&quot;ColorTable02&quot;=dword:00008000
+&quot;ColorTable10&quot;=dword:007f9f7f
+; CYAN LCYAN
+&quot;ColorTable03&quot;=dword:00808000
+&quot;ColorTable11&quot;=dword:00d3d08c
+; RED LRED
+&quot;ColorTable04&quot;=dword:00232333
+&quot;ColorTable12&quot;=dword:007071e3
+; MAGENTA LMAGENTA
+&quot;ColorTable05&quot;=dword:00aa50aa
+&quot;ColorTable13&quot;=dword:00c880c8
+; YELLOW LYELLOW
+&quot;ColorTable06&quot;=dword:0000dcdc
+&quot;ColorTable14&quot;=dword:00afdff0
+; LGRAY WHITE
+&quot;ColorTable07&quot;=dword:00ccdcdc
+&quot;ColorTable15&quot;=dword:00ffffff
+</code></pre></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Copyright &copy; 2016 Dmitry Ivanov.<br></small>
+        
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '../../..';
+    </script>
+    <script data-main="../../../mkdocs/js/search.js" src="../../../mkdocs/js/require.js"></script>
+    <script src="../../../js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>

@@ -40,12 +40,6 @@
     
         
     <url>
-     <loc>https://keepbot.github.io/docs//Dev/cmd/</loc>
-     <lastmod>2016-09-02</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
      <loc>https://keepbot.github.io/docs/</loc>
      <lastmod></lastmod>
      <changefreq>daily</changefreq>
@@ -111,29 +105,15 @@
      <changefreq>daily</changefreq>
     </url>
         
-    
-
-    
-        
     <url>
-     <loc>https://keepbot.github.io/docs//Edit/Markdown/</loc>
-     <lastmod>2016-09-02</lastmod>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>https://keepbot.github.io/docs//Edit/Vim/</loc>
-     <lastmod>2016-09-02</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-        
-    <url>
-     <loc>https://keepbot.github.io/docs//Monitoring/NetXMS/</loc>
-     <lastmod>2016-09-02</lastmod>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -188,108 +168,56 @@
     
         
     <url>
-     <loc>https://keepbot.github.io/docs//Security/FirewallD/</loc>
-     <lastmod>2016-09-02</lastmod>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>https://keepbot.github.io/docs//Security/HSM/</loc>
-     <lastmod>2016-09-02</lastmod>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>https://keepbot.github.io/docs//Security/IPTables/</loc>
-     <lastmod>2016-09-02</lastmod>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>https://keepbot.github.io/docs//Security/OpenSSL/</loc>
-     <lastmod>2016-09-02</lastmod>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>https://keepbot.github.io/docs//Security/PF/</loc>
-     <lastmod>2016-09-02</lastmod>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>https://keepbot.github.io/docs//Security/SELinux/</loc>
-     <lastmod>2016-09-02</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-        
-    <url>
-     <loc>https://keepbot.github.io/docs//Unix/Ansible/</loc>
-     <lastmod>2016-09-02</lastmod>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>https://keepbot.github.io/docs//Unix/Audit/</loc>
-     <lastmod>2016-09-02</lastmod>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>https://keepbot.github.io/docs//Unix/Files_and_folders/</loc>
-     <lastmod>2016-09-02</lastmod>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>https://keepbot.github.io/docs//Unix/Hardware_info/</loc>
-     <lastmod>2016-09-02</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://keepbot.github.io/docs//Unix/Processes/</loc>
-     <lastmod>2016-09-02</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://keepbot.github.io/docs//Unix/Remote_management/</loc>
-     <lastmod>2016-09-02</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://keepbot.github.io/docs//Unix/SMS/</loc>
-     <lastmod>2016-09-02</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://keepbot.github.io/docs//Unix/Skype/</loc>
-     <lastmod>2016-09-02</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://keepbot.github.io/docs//Unix/Tomcat/</loc>
-     <lastmod>2016-09-02</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://keepbot.github.io/docs//Unix/WINE/</loc>
-     <lastmod>2016-09-02</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://keepbot.github.io/docs//Unix/X/</loc>
-     <lastmod>2016-09-02</lastmod>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
