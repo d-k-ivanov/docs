@@ -1,15 +1,14 @@
-## Command line examples
-Inspired by [Joshua Levy](https://github.com/jlevy "Joshua Levy") and his great [The-Art-Of-Command-Line](https://github.com/jlevy/the-art-of-command-line "The Art of Command Line")
-> It's only my view on useful commands and this examples are useful for me in first place.
-
-### About
+## About me
 * [Dmitr Ivanov](https://keepbot.github.io)
 * [GitHub repo](https://github.com/keepbot)
+* [Facebbok](https://www.facebook.com/dmitry.ivanov.9849)
+* [VK.com](https://vk.com/d.k.ivanov)
+* [LinkedIn](https://www.linkedin.com/in/dmitry-ivanov-5b9275b3)
 
 
 ---
 
-## Unsorted:
+## Unsorted
 
 ### Joining all similarly prefixed files
 For example, "_tar.gz.1of2" and "_tar.gz.2of2".
