@@ -12,20 +12,14 @@
     
         
     <url>
-     <loc>https://keepbot.github.io/docs//Databases/Links/</loc>
-     <lastmod>2016-09-02</lastmod>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>https://keepbot.github.io/docs//Databases/Mongo/</loc>
-     <lastmod>2016-09-02</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://keepbot.github.io/docs//Databases/MySQL/</loc>
-     <lastmod>2016-09-02</lastmod>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
