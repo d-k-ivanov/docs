@@ -5,6 +5,13 @@
 * [VK.com](https://vk.com/d.k.ivanov)
 * [LinkedIn](https://www.linkedin.com/in/dmitry-ivanov-5b9275b3)
 
+---
+
+## Useul links
+* [Rob van der Woude's Scripting Page](http://www.robvanderwoude.com/)
+* [VbsEdit](http://www.vbsedit.com/) - VBS scripts 
+* [Morgan's Library](http://www.morganslibrary.org/) - Dan Morgan's Oracle Library
+* [Adminer](https://www.adminer.org/) - simple database management php console
 
 ---
 
