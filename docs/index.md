@@ -7,7 +7,7 @@
 
 ---
 
-## Useul links
+## Useful links
 * [Rob van der Woude's Scripting Page](http://www.robvanderwoude.com/)
 * [VbsEdit](http://www.vbsedit.com/) - VBS scripts 
 * [Morgan's Library](http://www.morganslibrary.org/) - Dan Morgan's Oracle Library
