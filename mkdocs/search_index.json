@@ -2,23 +2,18 @@
     "docs": [
         {
             "location": "/",
-            "text": "Command line examples\n\n\nInspired by \nJoshua Levy\n and his great \nThe-Art-Of-Command-Line\n\n\n\n\nIt's only my view on useful commands and this examples are useful for me in first place.\n\n\n\n\nAbout\n\n\n\n\nDmitr Ivanov\n\n\nGitHub repo\n\n\n\n\n\n\nUnsorted:\n\n\nJoining all similarly prefixed files\n\n\nFor example, \"_tar.gz.1of2\" and \"_tar.gz.2of2\".\n\n\n# Unix\ncat \"FileName_tar.gz.1of3\" \"FileName_tar.gz.2of3\" \"FileName_tar.gz.3of3\" > \"FileName.tar.gz\"\n# Windows\ncopy /b \"FileName_tar.gz.1of3\"+\"FileName_tar.gz.2of3\"+\"FileName_tar.gz.3of3\" \"FileName.tar.gz\"\n\n\n\n\nTMUX\n\n\ntmux list-sessions\ntmux attach -t 2\nsudo tmux -2 -S /tmp/tmux-<UID>/default\n\n\n\n\nCool weather\n\n\ncurl http://wttr.in/moscow",
+            "text": "About me\n\n\n\n\nDmitr Ivanov\n\n\nGitHub repo\n\n\nFacebbok\n\n\nVK.com\n\n\nLinkedIn\n\n\n\n\n\n\nUnsorted\n\n\nJoining all similarly prefixed files\n\n\nFor example, \"_tar.gz.1of2\" and \"_tar.gz.2of2\".\n\n\n# Unix\ncat \"FileName_tar.gz.1of3\" \"FileName_tar.gz.2of3\" \"FileName_tar.gz.3of3\" > \"FileName.tar.gz\"\n# Windows\ncopy /b \"FileName_tar.gz.1of3\"+\"FileName_tar.gz.2of3\"+\"FileName_tar.gz.3of3\" \"FileName.tar.gz\"\n\n\n\n\nTMUX\n\n\ntmux list-sessions\ntmux attach -t 2\nsudo tmux -2 -S /tmp/tmux-<UID>/default\n\n\n\n\nCool weather\n\n\ncurl http://wttr.in/moscow",
             "title": "Home"
         },
         {
-            "location": "/#command-line-examples",
-            "text": "Inspired by  Joshua Levy  and his great  The-Art-Of-Command-Line   It's only my view on useful commands and this examples are useful for me in first place.",
-            "title": "Command line examples"
-        },
-        {
-            "location": "/#about",
-            "text": "Dmitr Ivanov  GitHub repo",
-            "title": "About"
+            "location": "/#about-me",
+            "text": "Dmitr Ivanov  GitHub repo  Facebbok  VK.com  LinkedIn",
+            "title": "About me"
         },
         {
             "location": "/#unsorted",
             "text": "",
-            "title": "Unsorted:"
+            "title": "Unsorted"
         },
         {
             "location": "/#joining-all-similarly-prefixed-files",
