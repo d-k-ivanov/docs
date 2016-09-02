@@ -236,6 +236,46 @@
             "title": "Open cursors"
         },
         {
+            "location": "/Dev/cmd/",
+            "text": "Cmd scripts\n\n\nPing subnet\n\n\nFOR /L %i IN (1,1,254) DO ping -n 1 192.168.10.%i | FIND /i \"Reply\">>c:\\ipaddresses.txt\n\n\n\n\nTo change colours in command line console interface you need to add one of following sets of registry keys:\n\n\nCmd Colours\n\n\nDefault\n\n\nWindows Registry Editor Version 5.00\n; Default color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:00000000\n\"ColorTable08\"=dword:00808080\n; BLUE LBLUE\n\"ColorTable01\"=dword:00800000\n\"ColorTable09\"=dword:00ff0000\n; GREEN LGREEN\n\"ColorTable02\"=dword:00008000\n\"ColorTable10\"=dword:0000ff00\n; CYAN LCYAN\n\"ColorTable03\"=dword:00808000\n\"ColorTable11\"=dword:00ffff00\n; RED LRED\n\"ColorTable04\"=dword:00000080\n\"ColorTable12\"=dword:000000ff\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00800080\n\"ColorTable13\"=dword:00ff00ff\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:00008080\n\"ColorTable14\"=dword:0000ffff\n; LGRAY WHITE\n\"ColorTable07\"=dword:00c0c0c0\n\"ColorTable15\"=dword:00ffffff\n\n\n\n\nMonokai\n\n\nWindows Registry Editor Version 5.00\n; Monokai color theme for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK   DGRAY\n\"ColorTable00\"=dword:00222827\n\"ColorTable08\"=dword:00414746\n; BLUE    LBLUE\n\"ColorTable01\"=dword:00a64c1d\n\"ColorTable09\"=dword:00ef9566\n; GREEN   LGREEN\n\"ColorTable02\"=dword:0000995d\n\"ColorTable10\"=dword:002ee2a6\n; CYAN    LCYAN\n\"ColorTable03\"=dword:00746a31\n\"ColorTable11\"=dword:00efd966\n; RED     LRED\n\"ColorTable04\"=dword:002900b0\n\"ColorTable12\"=dword:007226f9\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00b63865\n\"ColorTable13\"=dword:00ff81ae\n; YELLOW  LYELLOW\n\"ColorTable06\"=dword:001f97fd\n\"ColorTable14\"=dword:0074dbe6\n; LGRAY   WHITE\n\"ColorTable07\"=dword:008a908f\n\"ColorTable15\"=dword:00f2f8f8\n\n\n\n\nPastel\n\n\nWindows Registry Editor Version 5.00\n; Low-contrast, pastel color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:00222222\n\"ColorTable08\"=dword:00454545\n; BLUE LBLUE\n\"ColorTable01\"=dword:00a69a7c\n\"ColorTable09\"=dword:00bfad8f\n; GREEN LGREEN\n\"ColorTable02\"=dword:00557e6c\n\"ColorTable10\"=dword:007db37d\n; CYAN LCYAN\n\"ColorTable03\"=dword:00a18e4c\n\"ColorTable11\"=dword:00d0c16b\n; RED LRED\n\"ColorTable04\"=dword:0041569e\n\"ColorTable12\"=dword:006d89cc\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:009d6d95\n\"ColorTable13\"=dword:00cb8fc1\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:002bafca\n\"ColorTable14\"=dword:0056b5bf\n; LGRAY WHITE\n\"ColorTable07\"=dword:00808080\n\"ColorTable15\"=dword:00cdcdcd\n\n\n\n\nZenburn\n\n\nWindows Registry Editor Version 5.00\n; Zenburn is a low-contrast color scheme\n; for Windows command prompt.\n; See : http://slinky.imukuppi.org/zenburnpage/\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:003f3f3f\n\"ColorTable08\"=dword:008080c0\n; BLUE LBLUE\n\"ColorTable01\"=dword:00af6464\n\"ColorTable09\"=dword:00ffafaf\n; GREEN LGREEN\n\"ColorTable02\"=dword:00008000\n\"ColorTable10\"=dword:007f9f7f\n; CYAN LCYAN\n\"ColorTable03\"=dword:00808000\n\"ColorTable11\"=dword:00d3d08c\n; RED LRED\n\"ColorTable04\"=dword:00232333\n\"ColorTable12\"=dword:007071e3\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00aa50aa\n\"ColorTable13\"=dword:00c880c8\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:0000dcdc\n\"ColorTable14\"=dword:00afdff0\n; LGRAY WHITE\n\"ColorTable07\"=dword:00ccdcdc\n\"ColorTable15\"=dword:00ffffff",
+            "title": "Cmd"
+        },
+        {
+            "location": "/Dev/cmd/#cmd-scripts",
+            "text": "",
+            "title": "Cmd scripts"
+        },
+        {
+            "location": "/Dev/cmd/#ping-subnet",
+            "text": "FOR /L %i IN (1,1,254) DO ping -n 1 192.168.10.%i | FIND /i \"Reply\">>c:\\ipaddresses.txt  To change colours in command line console interface you need to add one of following sets of registry keys:",
+            "title": "Ping subnet"
+        },
+        {
+            "location": "/Dev/cmd/#cmd-colours",
+            "text": "",
+            "title": "Cmd Colours"
+        },
+        {
+            "location": "/Dev/cmd/#default",
+            "text": "Windows Registry Editor Version 5.00\n; Default color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:00000000\n\"ColorTable08\"=dword:00808080\n; BLUE LBLUE\n\"ColorTable01\"=dword:00800000\n\"ColorTable09\"=dword:00ff0000\n; GREEN LGREEN\n\"ColorTable02\"=dword:00008000\n\"ColorTable10\"=dword:0000ff00\n; CYAN LCYAN\n\"ColorTable03\"=dword:00808000\n\"ColorTable11\"=dword:00ffff00\n; RED LRED\n\"ColorTable04\"=dword:00000080\n\"ColorTable12\"=dword:000000ff\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00800080\n\"ColorTable13\"=dword:00ff00ff\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:00008080\n\"ColorTable14\"=dword:0000ffff\n; LGRAY WHITE\n\"ColorTable07\"=dword:00c0c0c0\n\"ColorTable15\"=dword:00ffffff",
+            "title": "Default"
+        },
+        {
+            "location": "/Dev/cmd/#monokai",
+            "text": "Windows Registry Editor Version 5.00\n; Monokai color theme for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK   DGRAY\n\"ColorTable00\"=dword:00222827\n\"ColorTable08\"=dword:00414746\n; BLUE    LBLUE\n\"ColorTable01\"=dword:00a64c1d\n\"ColorTable09\"=dword:00ef9566\n; GREEN   LGREEN\n\"ColorTable02\"=dword:0000995d\n\"ColorTable10\"=dword:002ee2a6\n; CYAN    LCYAN\n\"ColorTable03\"=dword:00746a31\n\"ColorTable11\"=dword:00efd966\n; RED     LRED\n\"ColorTable04\"=dword:002900b0\n\"ColorTable12\"=dword:007226f9\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00b63865\n\"ColorTable13\"=dword:00ff81ae\n; YELLOW  LYELLOW\n\"ColorTable06\"=dword:001f97fd\n\"ColorTable14\"=dword:0074dbe6\n; LGRAY   WHITE\n\"ColorTable07\"=dword:008a908f\n\"ColorTable15\"=dword:00f2f8f8",
+            "title": "Monokai"
+        },
+        {
+            "location": "/Dev/cmd/#pastel",
+            "text": "Windows Registry Editor Version 5.00\n; Low-contrast, pastel color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:00222222\n\"ColorTable08\"=dword:00454545\n; BLUE LBLUE\n\"ColorTable01\"=dword:00a69a7c\n\"ColorTable09\"=dword:00bfad8f\n; GREEN LGREEN\n\"ColorTable02\"=dword:00557e6c\n\"ColorTable10\"=dword:007db37d\n; CYAN LCYAN\n\"ColorTable03\"=dword:00a18e4c\n\"ColorTable11\"=dword:00d0c16b\n; RED LRED\n\"ColorTable04\"=dword:0041569e\n\"ColorTable12\"=dword:006d89cc\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:009d6d95\n\"ColorTable13\"=dword:00cb8fc1\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:002bafca\n\"ColorTable14\"=dword:0056b5bf\n; LGRAY WHITE\n\"ColorTable07\"=dword:00808080\n\"ColorTable15\"=dword:00cdcdcd",
+            "title": "Pastel"
+        },
+        {
+            "location": "/Dev/cmd/#zenburn",
+            "text": "Windows Registry Editor Version 5.00\n; Zenburn is a low-contrast color scheme\n; for Windows command prompt.\n; See : http://slinky.imukuppi.org/zenburnpage/\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:003f3f3f\n\"ColorTable08\"=dword:008080c0\n; BLUE LBLUE\n\"ColorTable01\"=dword:00af6464\n\"ColorTable09\"=dword:00ffafaf\n; GREEN LGREEN\n\"ColorTable02\"=dword:00008000\n\"ColorTable10\"=dword:007f9f7f\n; CYAN LCYAN\n\"ColorTable03\"=dword:00808000\n\"ColorTable11\"=dword:00d3d08c\n; RED LRED\n\"ColorTable04\"=dword:00232333\n\"ColorTable12\"=dword:007071e3\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00aa50aa\n\"ColorTable13\"=dword:00c880c8\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:0000dcdc\n\"ColorTable14\"=dword:00afdff0\n; LGRAY WHITE\n\"ColorTable07\"=dword:00ccdcdc\n\"ColorTable15\"=dword:00ffffff",
+            "title": "Zenburn"
+        },
+        {
             "location": "/Dev/Bash/Collect_bash_history/",
             "text": "Collect .bash_history from a bunch of servers.\n\n\nip_base_file\n - just a list of IP address. And you have to have same password on all servers.\n\n\n#!/bin/bash\n#\n#  Script to collect bash history from remote servers\n#\necho \"Usage: ./collect.sh <ip_base_file>\"\n\nread -n 1 -p \"Do you want to collect bash_history? (y/[a]): \" AMSURE\n[ \"$AMSURE\" = \"y\" ] || exit\necho \"\" 1>&2\n\nnow=$(date +\"%m_%d_%Y\")\nmkdir ./$now\n## Provide BASE64 encoded password here\n## echo \"MEGA-SECURE-PASSWORD\" | base64 -i\nPASS=`echo \"TUVHQS1TRUNVUkUtUEFTU1dPUkQK\" | base64 -di`\nawk '{print $1}' < ./\"$1\" | while read ip; do\n\nexpect -c \"\n    set timeout 1\n    spawn scp  root@$ip:~/.bash_history ./\"$now\"/\"$ip\"_history.txt\n    expect yes/no { send yes\\r ; exp_continue }\n    expect password: { send $PASS\\r }\n    expect 100%\n    sleep 1\n    exit\n\"\ndone",
             "title": "Collect bash history"
@@ -951,6 +991,31 @@
             "title": "MPI_Wtime.md"
         },
         {
+            "location": "/Dev/Power_Shell/Power_Shell/",
+            "text": "Windows 2008 Server R2\n\n\nTo release this error:\n\n\n\n\nScript cannot be loaded because the execution of scripts is disabled on this system.\n\n\n\n\n# Run as Administrator\nSet-ExecutionPolicy RemoteSigned\n\n# There is following parameters:\n# * Restricted - No scripts can be run. Windows PowerShell can be used only in interactive mode.\n# * AllSigned - Only scripts signed by a trusted publisher can be run.\n# * RemoteSigned - Downloaded scripts must be signed by a trusted publisher before they can be run.\n# * Unrestricted - No restrictions; all Windows PowerShell scripts can be run.\n\n\n\n\nShow current logged user\n\n\ngwmi win32_computersystem -comp $computer | select USername,Caption,Manufacturer\nGet_WmiObject win32_computersystem -comp $computer | select USername,Caption,Manufacturer\n\n\n\n\nList of logged in users (any user in any time)\n\n\nGet-WmiObject Win32_LoggedOnUser -ComputerName msk-sales-02 | Select __SERVER, Antecedent -Unique | %{\"{0} : {1}\\{2}\" -f $_.__SERVER, $_.Antecedent.ToString().Split('\"')[1],$_.Antecedent.ToString().Split('\"')[3]}\n\n\n\n\nRead from keyboard\n\n\n$variable=read-host \"Enter computer name:\"",
+            "title": "Power Shell"
+        },
+        {
+            "location": "/Dev/Power_Shell/Power_Shell/#windows-2008-server-r2",
+            "text": "To release this error:   Script cannot be loaded because the execution of scripts is disabled on this system.   # Run as Administrator\nSet-ExecutionPolicy RemoteSigned\n\n# There is following parameters:\n# * Restricted - No scripts can be run. Windows PowerShell can be used only in interactive mode.\n# * AllSigned - Only scripts signed by a trusted publisher can be run.\n# * RemoteSigned - Downloaded scripts must be signed by a trusted publisher before they can be run.\n# * Unrestricted - No restrictions; all Windows PowerShell scripts can be run.",
+            "title": "Windows 2008 Server R2"
+        },
+        {
+            "location": "/Dev/Power_Shell/Power_Shell/#show-current-logged-user",
+            "text": "gwmi win32_computersystem -comp $computer | select USername,Caption,Manufacturer\nGet_WmiObject win32_computersystem -comp $computer | select USername,Caption,Manufacturer",
+            "title": "Show current logged user"
+        },
+        {
+            "location": "/Dev/Power_Shell/Power_Shell/#list-of-logged-in-users-any-user-in-any-time",
+            "text": "Get-WmiObject Win32_LoggedOnUser -ComputerName msk-sales-02 | Select __SERVER, Antecedent -Unique | %{\"{0} : {1}\\{2}\" -f $_.__SERVER, $_.Antecedent.ToString().Split('\"')[1],$_.Antecedent.ToString().Split('\"')[3]}",
+            "title": "List of logged in users (any user in any time)"
+        },
+        {
+            "location": "/Dev/Power_Shell/Power_Shell/#read-from-keyboard",
+            "text": "$variable=read-host \"Enter computer name:\"",
+            "title": "Read from keyboard"
+        },
+        {
             "location": "/Dev/Python/Users_and_groups/",
             "text": "Print list of users with all user's groups\n\n\n#!/usr/bin/python\n\nimport re\n\n#cols\nc0 = 2      # Separator\nc1 = 10     # User\nc2 = 3      # Separator\nc3 = 10     # UID\nc4 = 3      # Separator\nc5 = 54     # Groups\nc6 = 2      # Separator\n\n\n\nf = open(\"/etc/passwd\")\n\nt_len = c0+c1+c2+c3+c4+c5+c6\n\nprint \"-\" * t_len\nprint '{0:34}{1:48}{2:2}'.format(\"| \",\"Users and Groups\",\" |\")\nprint \"-\" * t_len\nprint '{0:2}{1:10}{2:3}{3:10}{4:3}{5:54}{6:2}'.format(\"| \",\"Username\",\" | \",\"UID\",\" | \",\"Groups\",\" |\")\n\nfor fline in f:\n    groups = []\n    h = open(\"/etc/group\")\n    for hline in h:\n        if fline.split(\":\")[3] == hline.split(\":\")[2]:\n            groups.append(hline.split(\":\")[0])\n        if re.search(fline.split(\":\")[0],hline) is not None:\n            if not hline.split(\":\")[2] == fline.split(\":\")[3]:\n                groups.append(hline.split(\":\")[0])\n    h.close()\n    print '{0:2}{1:10}{2:3}{3:10}{4:3}{5:54}{6:2}'.format(\"| \",fline.split(\":\")[0],\" | \",fline.split(\":\")[2],\" | \",\",\".join(groups),\" |\")\n\nprint \"-\" * t_len\n\nf.close()",
             "title": "Users and groups"
@@ -984,6 +1049,21 @@
             "location": "/Dev/Stress_tests/Ackerman_function/#c_1",
             "text": "#include <iostream>\n\nunsigned int ackermann(unsigned int m, unsigned int n) {\n  if (m == 0) {\n    return n + 1;\n  }\n  if (n == 0) {\n    return ackermann(m - 1, 1);\n  }\n  return ackermann(m - 1, ackermann(m, n - 1));\n}\n\nint main() {\n  for (unsigned int m = 0; m < 4; ++m) {\n    for (unsigned int n = 0; n < 30; ++n) {\n      std::cout << \"A(\" << m << \", \" << n << \") = \" << ackermann(m, n) << \"\\n\";\n    }\n  }\n}",
             "title": "C++"
+        },
+        {
+            "location": "/Dev/Vbs/Kaspersky_Base_Actuality/",
+            "text": "With WMI query to get AVBasesStat path\n\n\n' VBscript:\n' Script to check actual date of Kaspersky Bases update\n' Author  : Dmitry Ivanov\n' Usage : C:\\Windows\\System32\\cscript.exe //E:VBscript //NoLogo <Path_TO>\\kav.vbs\n'   NetXMS Agent config:\n'   ExternalParameterShellExec = KasperskyBasesState:C:\\Windows\\System32\\cscript.exe //E:VBscript //NoLogo c:\\Path_TO\\kav.vbs\n\nOn Error Resume Next\n\nstrComputer     = \".\"\nstrNamespace    = \"\\root\\CIMV2\"\nstrClass    = \"Win32_SoftwareElement\"\n\nSet objWMIService   = GetObject(\"winmgmts:\\\\\" & strComputer & strNamespace) \nset colItems    = objWMIService.ExecQuery(_\n        \"Select * from \" & strClass &\" Where Name='AVBasesStatComponent'\", _\n        \"WQL\", wbemFlagReturnImmediately + wbemFlagForwardOnly)\n\nkavStatFile   = colItems.ItemIndex(0).Path + \"kdb.stt\"\n\nConst FILE_READ   = 1\nSet objFSO    = CreateObject(\"Scripting.FileSystemObject\")\nSet objStatFile   = objFSO.OpenTextFile(kavStatFile, FILE_READ)\nkavBasesStatStr   = objStatFile.ReadLine\nkavBasesStatArr   = Split(kavBasesStatStr,\";\")\nkavBaseDateStr    = kavBasesStatArr(1)\n\ntheYear     = Mid(kavBaseDateStr, 1, 4)\ntheMonth    = Mid(kavBaseDateStr, 5, 2)\ntheDay      = Mid(kavBaseDateStr, 7, 2)\ntheHour     = Mid(kavBaseDateStr, 9, 2)\ntheMin      = Mid(kavBaseDateStr, 11, 2)\n\nkavBaseDate   = CDate(theDay & \"/\" & theMonth & \"/\" & theYear & \" \" & theHour & \":\" & theMin)\ndateNow     = Now()\ndateTreshold    = DateAdd(\"H\",-24, dateNow)\n\nIF dateNow < kavBaseDate Then\n  Wscript.Echo \"!!!ERROR: Wrong time. Kaspersky bases from future! Check server timezone!\"\nElseIF dateTreshold < kavBaseDate Then\n  Wscript.Echo \"Yes\"\nElse\n  Wscript.Echo \"No\"\nEnd If\n\nobjStatFile.close()\n\n\n' DEBUG\n'Wscript.Echo \"kavBaseDate: \"     & kavBaseDate\n'Wscript.Echo \"dateNow: \"     & dateNow\n'Wscript.Echo \"kavBaseDateStr: \"  & kavBaseDateStr\n'Wscript.Echo \"dateTreshold \"     & dateTreshold\n'Wscript.Echo \"IF: \"      & dateTreshold < kavBaseDate\n'Wscript.Echo \n\n\n\n\nHardcoded AVBasesStat path\n\n\n' VBscript:\n' Script to check actual date of Kaspersky Bases update\n' Author  : Dmitry Ivanov\n' Usage : C:\\Windows\\System32\\cscript.exe //E:VBscript //NoLogo <Path_TO>\\kav.vbs\n'   NetXMS Agent config:\n'   ExternalParameterShellExec = KasperskyBasesState:C:\\Windows\\System32\\cscript.exe //E:VBscript //NoLogo c:\\Path_TO\\kav.vbs\n\nOn Error Resume Next\n\nkavStatFile   = \"c:\\ProgramData\\Kaspersky Lab\\KAV for Windows Servers Enterprise Edition\\8.0\\Bases\\Current\\Stat\\kdb.stt\"\n\nConst FILE_READ   = 1\nSet objFSO    = CreateObject(\"Scripting.FileSystemObject\")\nSet objStatFile   = objFSO.OpenTextFile(kavStatFile, FILE_READ)\nkavBasesStatStr   = objStatFile.ReadLine\nkavBasesStatArr   = Split(kavBasesStatStr,\";\")\nkavBaseDateStr    = kavBasesStatArr(1)\n\ntheYear     = Mid(kavBaseDateStr, 1, 4)\ntheMonth    = Mid(kavBaseDateStr, 5, 2)\ntheDay      = Mid(kavBaseDateStr, 7, 2)\ntheHour     = Mid(kavBaseDateStr, 9, 2)\ntheMin      = Mid(kavBaseDateStr, 11, 2)\n\nkavBaseDate   = CDate(theDay & \"/\" & theMonth & \"/\" & theYear & \" \" & theHour & \":\" & theMin)\ndateNow     = Now()\ndateTreshold    = DateAdd(\"H\",-24, dateNow)\n\nIF dateNow < kavBaseDate Then\n  Wscript.Echo \"!!!ERROR: Wrong time. Kaspersky bases from future! Check server timezone!\"\nElseIF dateTreshold < kavBaseDate Then\n  Wscript.Echo \"Yes\"\nElse\n  Wscript.Echo \"No\"\nEnd If\n\nobjStatFile.close()\n\n\n' DEBUG\n'Wscript.Echo \"kavBaseDate: \"     & kavBaseDate\n'Wscript.Echo \"dateNow: \"     & dateNow\n'Wscript.Echo \"kavBaseDateStr: \"  & kavBaseDateStr\n'Wscript.Echo \"dateTreshold \"     & dateTreshold\n'Wscript.Echo \"IF: \"      & dateTreshold < kavBaseDate\n'Wscript.Echo",
+            "title": "Kaspersky Base Actuality"
+        },
+        {
+            "location": "/Dev/Vbs/Kaspersky_Base_Actuality/#with-wmi-query-to-get-avbasesstat-path",
+            "text": "' VBscript:\n' Script to check actual date of Kaspersky Bases update\n' Author  : Dmitry Ivanov\n' Usage : C:\\Windows\\System32\\cscript.exe //E:VBscript //NoLogo <Path_TO>\\kav.vbs\n'   NetXMS Agent config:\n'   ExternalParameterShellExec = KasperskyBasesState:C:\\Windows\\System32\\cscript.exe //E:VBscript //NoLogo c:\\Path_TO\\kav.vbs\n\nOn Error Resume Next\n\nstrComputer     = \".\"\nstrNamespace    = \"\\root\\CIMV2\"\nstrClass    = \"Win32_SoftwareElement\"\n\nSet objWMIService   = GetObject(\"winmgmts:\\\\\" & strComputer & strNamespace) \nset colItems    = objWMIService.ExecQuery(_\n        \"Select * from \" & strClass &\" Where Name='AVBasesStatComponent'\", _\n        \"WQL\", wbemFlagReturnImmediately + wbemFlagForwardOnly)\n\nkavStatFile   = colItems.ItemIndex(0).Path + \"kdb.stt\"\n\nConst FILE_READ   = 1\nSet objFSO    = CreateObject(\"Scripting.FileSystemObject\")\nSet objStatFile   = objFSO.OpenTextFile(kavStatFile, FILE_READ)\nkavBasesStatStr   = objStatFile.ReadLine\nkavBasesStatArr   = Split(kavBasesStatStr,\";\")\nkavBaseDateStr    = kavBasesStatArr(1)\n\ntheYear     = Mid(kavBaseDateStr, 1, 4)\ntheMonth    = Mid(kavBaseDateStr, 5, 2)\ntheDay      = Mid(kavBaseDateStr, 7, 2)\ntheHour     = Mid(kavBaseDateStr, 9, 2)\ntheMin      = Mid(kavBaseDateStr, 11, 2)\n\nkavBaseDate   = CDate(theDay & \"/\" & theMonth & \"/\" & theYear & \" \" & theHour & \":\" & theMin)\ndateNow     = Now()\ndateTreshold    = DateAdd(\"H\",-24, dateNow)\n\nIF dateNow < kavBaseDate Then\n  Wscript.Echo \"!!!ERROR: Wrong time. Kaspersky bases from future! Check server timezone!\"\nElseIF dateTreshold < kavBaseDate Then\n  Wscript.Echo \"Yes\"\nElse\n  Wscript.Echo \"No\"\nEnd If\n\nobjStatFile.close()\n\n\n' DEBUG\n'Wscript.Echo \"kavBaseDate: \"     & kavBaseDate\n'Wscript.Echo \"dateNow: \"     & dateNow\n'Wscript.Echo \"kavBaseDateStr: \"  & kavBaseDateStr\n'Wscript.Echo \"dateTreshold \"     & dateTreshold\n'Wscript.Echo \"IF: \"      & dateTreshold < kavBaseDate\n'Wscript.Echo",
+            "title": "With WMI query to get AVBasesStat path"
+        },
+        {
+            "location": "/Dev/Vbs/Kaspersky_Base_Actuality/#hardcoded-avbasesstat-path",
+            "text": "' VBscript:\n' Script to check actual date of Kaspersky Bases update\n' Author  : Dmitry Ivanov\n' Usage : C:\\Windows\\System32\\cscript.exe //E:VBscript //NoLogo <Path_TO>\\kav.vbs\n'   NetXMS Agent config:\n'   ExternalParameterShellExec = KasperskyBasesState:C:\\Windows\\System32\\cscript.exe //E:VBscript //NoLogo c:\\Path_TO\\kav.vbs\n\nOn Error Resume Next\n\nkavStatFile   = \"c:\\ProgramData\\Kaspersky Lab\\KAV for Windows Servers Enterprise Edition\\8.0\\Bases\\Current\\Stat\\kdb.stt\"\n\nConst FILE_READ   = 1\nSet objFSO    = CreateObject(\"Scripting.FileSystemObject\")\nSet objStatFile   = objFSO.OpenTextFile(kavStatFile, FILE_READ)\nkavBasesStatStr   = objStatFile.ReadLine\nkavBasesStatArr   = Split(kavBasesStatStr,\";\")\nkavBaseDateStr    = kavBasesStatArr(1)\n\ntheYear     = Mid(kavBaseDateStr, 1, 4)\ntheMonth    = Mid(kavBaseDateStr, 5, 2)\ntheDay      = Mid(kavBaseDateStr, 7, 2)\ntheHour     = Mid(kavBaseDateStr, 9, 2)\ntheMin      = Mid(kavBaseDateStr, 11, 2)\n\nkavBaseDate   = CDate(theDay & \"/\" & theMonth & \"/\" & theYear & \" \" & theHour & \":\" & theMin)\ndateNow     = Now()\ndateTreshold    = DateAdd(\"H\",-24, dateNow)\n\nIF dateNow < kavBaseDate Then\n  Wscript.Echo \"!!!ERROR: Wrong time. Kaspersky bases from future! Check server timezone!\"\nElseIF dateTreshold < kavBaseDate Then\n  Wscript.Echo \"Yes\"\nElse\n  Wscript.Echo \"No\"\nEnd If\n\nobjStatFile.close()\n\n\n' DEBUG\n'Wscript.Echo \"kavBaseDate: \"     & kavBaseDate\n'Wscript.Echo \"dateNow: \"     & dateNow\n'Wscript.Echo \"kavBaseDateStr: \"  & kavBaseDateStr\n'Wscript.Echo \"dateTreshold \"     & dateTreshold\n'Wscript.Echo \"IF: \"      & dateTreshold < kavBaseDate\n'Wscript.Echo",
+            "title": "Hardcoded AVBasesStat path"
         },
         {
             "location": "/Dev/Version_Control/Git/",
@@ -1934,61 +2014,6 @@
             "location": "/Unix/Virtual/KVM/#run-virtual-machine",
             "text": "qemu-system-x86_64 vdisk.img -m 384",
             "title": "Run virtual machine"
-        },
-        {
-            "location": "/Windows/CMD_Scripts/",
-            "text": "Ping subnet\n\n\nFOR /L %i IN (1,1,254) DO ping -n 1 192.168.10.%i | FIND /i \"Reply\">>c:\\ipaddresses.txt",
-            "title": "CMD Scripts"
-        },
-        {
-            "location": "/Windows/CMD_Scripts/#ping-subnet",
-            "text": "FOR /L %i IN (1,1,254) DO ping -n 1 192.168.10.%i | FIND /i \"Reply\">>c:\\ipaddresses.txt",
-            "title": "Ping subnet"
-        },
-        {
-            "location": "/Windows/CMD_colours/",
-            "text": "To change colours in command line console interface you need to add one of following sets of registry keys:\n\n\nDefault\n\n\nWindows Registry Editor Version 5.00\n; Default color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:00000000\n\"ColorTable08\"=dword:00808080\n; BLUE LBLUE\n\"ColorTable01\"=dword:00800000\n\"ColorTable09\"=dword:00ff0000\n; GREEN LGREEN\n\"ColorTable02\"=dword:00008000\n\"ColorTable10\"=dword:0000ff00\n; CYAN LCYAN\n\"ColorTable03\"=dword:00808000\n\"ColorTable11\"=dword:00ffff00\n; RED LRED\n\"ColorTable04\"=dword:00000080\n\"ColorTable12\"=dword:000000ff\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00800080\n\"ColorTable13\"=dword:00ff00ff\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:00008080\n\"ColorTable14\"=dword:0000ffff\n; LGRAY WHITE\n\"ColorTable07\"=dword:00c0c0c0\n\"ColorTable15\"=dword:00ffffff\n\n\n\n\nMonokai\n\n\nWindows Registry Editor Version 5.00\n; Monokai color theme for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK   DGRAY\n\"ColorTable00\"=dword:00222827\n\"ColorTable08\"=dword:00414746\n; BLUE    LBLUE\n\"ColorTable01\"=dword:00a64c1d\n\"ColorTable09\"=dword:00ef9566\n; GREEN   LGREEN\n\"ColorTable02\"=dword:0000995d\n\"ColorTable10\"=dword:002ee2a6\n; CYAN    LCYAN\n\"ColorTable03\"=dword:00746a31\n\"ColorTable11\"=dword:00efd966\n; RED     LRED\n\"ColorTable04\"=dword:002900b0\n\"ColorTable12\"=dword:007226f9\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00b63865\n\"ColorTable13\"=dword:00ff81ae\n; YELLOW  LYELLOW\n\"ColorTable06\"=dword:001f97fd\n\"ColorTable14\"=dword:0074dbe6\n; LGRAY   WHITE\n\"ColorTable07\"=dword:008a908f\n\"ColorTable15\"=dword:00f2f8f8\n\n\n\n\nPastel\n\n\nWindows Registry Editor Version 5.00\n; Low-contrast, pastel color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:00222222\n\"ColorTable08\"=dword:00454545\n; BLUE LBLUE\n\"ColorTable01\"=dword:00a69a7c\n\"ColorTable09\"=dword:00bfad8f\n; GREEN LGREEN\n\"ColorTable02\"=dword:00557e6c\n\"ColorTable10\"=dword:007db37d\n; CYAN LCYAN\n\"ColorTable03\"=dword:00a18e4c\n\"ColorTable11\"=dword:00d0c16b\n; RED LRED\n\"ColorTable04\"=dword:0041569e\n\"ColorTable12\"=dword:006d89cc\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:009d6d95\n\"ColorTable13\"=dword:00cb8fc1\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:002bafca\n\"ColorTable14\"=dword:0056b5bf\n; LGRAY WHITE\n\"ColorTable07\"=dword:00808080\n\"ColorTable15\"=dword:00cdcdcd\n\n\n\n\nZenburn\n\n\nWindows Registry Editor Version 5.00\n; Zenburn is a low-contrast color scheme\n; for Windows command prompt.\n; See : http://slinky.imukuppi.org/zenburnpage/\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:003f3f3f\n\"ColorTable08\"=dword:008080c0\n; BLUE LBLUE\n\"ColorTable01\"=dword:00af6464\n\"ColorTable09\"=dword:00ffafaf\n; GREEN LGREEN\n\"ColorTable02\"=dword:00008000\n\"ColorTable10\"=dword:007f9f7f\n; CYAN LCYAN\n\"ColorTable03\"=dword:00808000\n\"ColorTable11\"=dword:00d3d08c\n; RED LRED\n\"ColorTable04\"=dword:00232333\n\"ColorTable12\"=dword:007071e3\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00aa50aa\n\"ColorTable13\"=dword:00c880c8\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:0000dcdc\n\"ColorTable14\"=dword:00afdff0\n; LGRAY WHITE\n\"ColorTable07\"=dword:00ccdcdc\n\"ColorTable15\"=dword:00ffffff",
-            "title": "CMD colours"
-        },
-        {
-            "location": "/Windows/CMD_colours/#default",
-            "text": "Windows Registry Editor Version 5.00\n; Default color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:00000000\n\"ColorTable08\"=dword:00808080\n; BLUE LBLUE\n\"ColorTable01\"=dword:00800000\n\"ColorTable09\"=dword:00ff0000\n; GREEN LGREEN\n\"ColorTable02\"=dword:00008000\n\"ColorTable10\"=dword:0000ff00\n; CYAN LCYAN\n\"ColorTable03\"=dword:00808000\n\"ColorTable11\"=dword:00ffff00\n; RED LRED\n\"ColorTable04\"=dword:00000080\n\"ColorTable12\"=dword:000000ff\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00800080\n\"ColorTable13\"=dword:00ff00ff\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:00008080\n\"ColorTable14\"=dword:0000ffff\n; LGRAY WHITE\n\"ColorTable07\"=dword:00c0c0c0\n\"ColorTable15\"=dword:00ffffff",
-            "title": "Default"
-        },
-        {
-            "location": "/Windows/CMD_colours/#monokai",
-            "text": "Windows Registry Editor Version 5.00\n; Monokai color theme for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK   DGRAY\n\"ColorTable00\"=dword:00222827\n\"ColorTable08\"=dword:00414746\n; BLUE    LBLUE\n\"ColorTable01\"=dword:00a64c1d\n\"ColorTable09\"=dword:00ef9566\n; GREEN   LGREEN\n\"ColorTable02\"=dword:0000995d\n\"ColorTable10\"=dword:002ee2a6\n; CYAN    LCYAN\n\"ColorTable03\"=dword:00746a31\n\"ColorTable11\"=dword:00efd966\n; RED     LRED\n\"ColorTable04\"=dword:002900b0\n\"ColorTable12\"=dword:007226f9\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00b63865\n\"ColorTable13\"=dword:00ff81ae\n; YELLOW  LYELLOW\n\"ColorTable06\"=dword:001f97fd\n\"ColorTable14\"=dword:0074dbe6\n; LGRAY   WHITE\n\"ColorTable07\"=dword:008a908f\n\"ColorTable15\"=dword:00f2f8f8",
-            "title": "Monokai"
-        },
-        {
-            "location": "/Windows/CMD_colours/#pastel",
-            "text": "Windows Registry Editor Version 5.00\n; Low-contrast, pastel color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:00222222\n\"ColorTable08\"=dword:00454545\n; BLUE LBLUE\n\"ColorTable01\"=dword:00a69a7c\n\"ColorTable09\"=dword:00bfad8f\n; GREEN LGREEN\n\"ColorTable02\"=dword:00557e6c\n\"ColorTable10\"=dword:007db37d\n; CYAN LCYAN\n\"ColorTable03\"=dword:00a18e4c\n\"ColorTable11\"=dword:00d0c16b\n; RED LRED\n\"ColorTable04\"=dword:0041569e\n\"ColorTable12\"=dword:006d89cc\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:009d6d95\n\"ColorTable13\"=dword:00cb8fc1\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:002bafca\n\"ColorTable14\"=dword:0056b5bf\n; LGRAY WHITE\n\"ColorTable07\"=dword:00808080\n\"ColorTable15\"=dword:00cdcdcd",
-            "title": "Pastel"
-        },
-        {
-            "location": "/Windows/CMD_colours/#zenburn",
-            "text": "Windows Registry Editor Version 5.00\n; Zenburn is a low-contrast color scheme\n; for Windows command prompt.\n; See : http://slinky.imukuppi.org/zenburnpage/\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\"ColorTable00\"=dword:003f3f3f\n\"ColorTable08\"=dword:008080c0\n; BLUE LBLUE\n\"ColorTable01\"=dword:00af6464\n\"ColorTable09\"=dword:00ffafaf\n; GREEN LGREEN\n\"ColorTable02\"=dword:00008000\n\"ColorTable10\"=dword:007f9f7f\n; CYAN LCYAN\n\"ColorTable03\"=dword:00808000\n\"ColorTable11\"=dword:00d3d08c\n; RED LRED\n\"ColorTable04\"=dword:00232333\n\"ColorTable12\"=dword:007071e3\n; MAGENTA LMAGENTA\n\"ColorTable05\"=dword:00aa50aa\n\"ColorTable13\"=dword:00c880c8\n; YELLOW LYELLOW\n\"ColorTable06\"=dword:0000dcdc\n\"ColorTable14\"=dword:00afdff0\n; LGRAY WHITE\n\"ColorTable07\"=dword:00ccdcdc\n\"ColorTable15\"=dword:00ffffff",
-            "title": "Zenburn"
-        },
-        {
-            "location": "/Windows/PowerShell_Scripts/",
-            "text": "Show current logged user\n\n\ngwmi win32_computersystem -comp $computer | select USername,Caption,Manufacturer\nGet_WmiObject win32_computersystem -comp $computer | select USername,Caption,Manufacturer\n\n\n\n\nList of logged in users (any user in any time)\n\n\nGet-WmiObject Win32_LoggedOnUser -ComputerName msk-sales-02 | Select __SERVER, Antecedent -Unique | %{\"{0} : {1}\\{2}\" -f $_.__SERVER, $_.Antecedent.ToString().Split('\"')[1],$_.Antecedent.ToString().Split('\"')[3]}\n\n\n\n\nRead from keyboard\n\n\n$variable=read-host \"Enter computer name:\"",
-            "title": "PowerShell Scripts"
-        },
-        {
-            "location": "/Windows/PowerShell_Scripts/#show-current-logged-user",
-            "text": "gwmi win32_computersystem -comp $computer | select USername,Caption,Manufacturer\nGet_WmiObject win32_computersystem -comp $computer | select USername,Caption,Manufacturer",
-            "title": "Show current logged user"
-        },
-        {
-            "location": "/Windows/PowerShell_Scripts/#list-of-logged-in-users-any-user-in-any-time",
-            "text": "Get-WmiObject Win32_LoggedOnUser -ComputerName msk-sales-02 | Select __SERVER, Antecedent -Unique | %{\"{0} : {1}\\{2}\" -f $_.__SERVER, $_.Antecedent.ToString().Split('\"')[1],$_.Antecedent.ToString().Split('\"')[3]}",
-            "title": "List of logged in users (any user in any time)"
-        },
-        {
-            "location": "/Windows/PowerShell_Scripts/#read-from-keyboard",
-            "text": "$variable=read-host \"Enter computer name:\"",
-            "title": "Read from keyboard"
         }
     ]
 }
