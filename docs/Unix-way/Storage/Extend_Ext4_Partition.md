@@ -22,12 +22,6 @@ vda    253:0    0    5G  0 disk
 
 ### Check current partition size:
 ```bash
-lsblk
-NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-sr0     11:0    1  603M  0 rom
-vda    253:0    0    5G  0 disk
-└─vda1 253:1    0    5G  0 part /
-
 df -h
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/vda1       4.8G  2.5G  2.2G  54% /
