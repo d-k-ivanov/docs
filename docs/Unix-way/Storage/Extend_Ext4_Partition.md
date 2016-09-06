@@ -1,5 +1,4 @@
 ### Check current partition table
-
 ```bash
 fdisk -l /dev/vda
 
@@ -20,7 +19,7 @@ vda    253:0    0    5G  0 disk
 └─vda1 253:1    0    5G  0 part /
 ```
 
-### Check current partition size:
+### Check current partition size
 ```bash
 df -h
 Filesystem      Size  Used Avail Use% Mounted on
@@ -32,8 +31,7 @@ tmpfs           497M     0  497M   0% /sys/fs/cgroup
 tmpfs           100M     0  100M   0% /run/user/0
 ```
 
-### Resize hard drive. 
-
+### Resize hard drive 
 Rescan devices under root (sudo doesn't work). In some cases reboot is needed
 ```bash
 echo "- - -" > /sys/class/scsi_host/host0/scan
@@ -64,7 +62,6 @@ vda    253:0    0    6G  0 disk
 ```
 
 ### Recreate partition with new End
-
 * Run **fdisk /dev/vda**
 * Delete old partition: Command (m for help): **d**
 ```
@@ -119,7 +116,7 @@ The kernel still uses the old table. The new table will be used at
 the next reboot or after you run partprobe(8) or kpartx(8)
 Syncing disks.
 ```
-* **!!!Reboot the system to inform kernet about changes in partition table!!!**
+* **!!!Reboot the system to inform kernel about changes in partition table!!!**
 
 ### Resize file system
 ```bash
