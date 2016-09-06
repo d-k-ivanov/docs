@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Unix-way/Storage/Partitions/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Unix-way/Storage/Extend_Ext4_Partition/"> 
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-    <title>Partitions - Technical Info</title>
+    <title>Extend Ext4 Partition - Technical Info</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -684,6 +684,12 @@
     <ul class="dropdown-menu">
         
             
+<li class="active">
+    <a href="./">Extend Ext4 Partition</a>
+</li>
+
+        
+            
 <li >
     <a href="../GPFS/">GPFS</a>
 </li>
@@ -698,12 +704,6 @@
             
 <li >
     <a href="../LVM/">LVM</a>
-</li>
-
-        
-            
-<li class="active">
-    <a href="./">Partitions</a>
 </li>
 
         
@@ -801,12 +801,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../LVM/">
+                        <a rel="next" href="../../Services/SMS/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../SAN/">
+                        <a rel="prev" href="../GPFS/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -829,17 +829,26 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#extend-partitions-and-file-systems">Extend partitions and file systems</a></li>
+        <li class="first-level active"><a href="#check-your-partitions-before-extention">Check your partitions before extention:</a></li>
+        
+    
+        <li class="first-level "><a href="#resize-hard-drive-rescan-devices-under-root-sudo-doesnt-work-in-some-cases-reboot-is-needed">Resize hard drive. Rescan devices under root (sudo doesn't work). In some cases reboot is needed</a></li>
+        
+    
+        <li class="first-level "><a href="#check-your-partition-after-resizing-write-down-start-and-end-segment-of-your-target-partition">Check your partition after resizing. Write down Start and End segment of your target partition:</a></li>
+        
+    
+        <li class="first-level "><a href="#recreate-partition-with-new-end">Recreate partition with new End:</a></li>
+        
+    
+        <li class="first-level "><a href="#resize-your-ext-file-system">Resize your EXT file system:</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="extend-partitions-and-file-systems">Extend partitions and file systems</h3>
-<ol>
-<li>Check your partitions before extention:</li>
-</ol>
+<h3 id="check-your-partitions-before-extention">Check your partitions before extention:</h3>
 <pre><code class="bash">fdisk -l /dev/vda
 
 Disk /dev/vda: 5368 MB, 5368709120 bytes, 10485760 sectors
@@ -853,17 +862,13 @@ Disk identifier: 0x0000811f
 /dev/vda1   *        2048    10485759     5241856   83  Linux
 </code></pre>
 
-<ol>
-<li>Resize hard drive. Rescan devices under root (sudo doesn't work). In some cases reboot is needed</li>
-</ol>
+<h3 id="resize-hard-drive-rescan-devices-under-root-sudo-doesnt-work-in-some-cases-reboot-is-needed">Resize hard drive. Rescan devices under root (sudo doesn't work). In some cases reboot is needed</h3>
 <pre><code class="bash">echo &quot;- - -&quot; &gt; /sys/class/scsi_host/host0/scan
 echo &quot;- - -&quot; &gt; /sys/class/scsi_host/host1/scan
 echo &quot;- - -&quot; &gt; /sys/class/scsi_host/hostX/scan
 </code></pre>
 
-<ol>
-<li>Check your partition after resizing. Write down Start and End segment of your target partition:</li>
-</ol>
+<h3 id="check-your-partition-after-resizing-write-down-start-and-end-segment-of-your-target-partition">Check your partition after resizing. Write down Start and End segment of your target partition:</h3>
 <pre><code class="bash">fdisk -l /dev/vda
 
 Disk /dev/vda: 6442 MB, 6442450944 bytes, 12582912 sectors
@@ -877,15 +882,11 @@ Disk identifier: 0x0000811f
 /dev/vda1   *        2048    10485759     5241856   83  Linux
 </code></pre>
 
-<ol>
-<li>
-<p>Recreate partition with new End:</p>
-</li>
-<li>
-<p>Run <strong>fdisk /dev/vda</strong></p>
-</li>
+<h3 id="recreate-partition-with-new-end">Recreate partition with new End:</h3>
+<ul>
+<li>Run <strong>fdisk /dev/vda</strong></li>
 <li>Delete old partition: Command (m for help): <strong>d</strong></li>
-</ol>
+</ul>
 <pre><code># If you have multiple partition you have to choose partition which you want to resize
 Selected partition 1
 Partition 1 is deleted
@@ -947,13 +948,9 @@ Syncing disks.
 </code></pre>
 
 <ul>
-<li>
-<p>Reboot the system to inform kernet about changes in partition table </p>
-</li>
-<li>
-<p>Resize your EXT file system:</p>
-</li>
+<li>Reboot the system to inform kernet about changes in partition table </li>
 </ul>
+<h3 id="resize-your-ext-file-system">Resize your EXT file system:</h3>
 <pre><code class="bash">resize2fs /dev/vda1
 </code></pre></div>
         
