@@ -91,7 +91,7 @@ The kernel still uses the old table. The new table will be used at
 the next reboot or after you run partprobe(8) or kpartx(8)
 Syncing disks.
 ```
-* Reboot the system to inform kernet about changes in partition table 
+* **!!!Reboot the system to inform kernet about changes in partition table!!!**
 
 ### Resize your EXT file system:
 ```bash
