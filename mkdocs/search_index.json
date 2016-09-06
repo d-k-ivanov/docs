@@ -2027,7 +2027,7 @@
         },
         {
             "location": "/Unix-way/Virtual/KVM/",
-            "text": "Create virtual hdd image\n\n\nqemu-img create -o preallocation=metadata -f qcow2 qcow2.img 20G\n\n\n\n\nStart installation of virtual machine with virtual image\n\n\nqemu-system-x86_64 -hda vdisk.img -cdrom /path/to/boot-media.iso -boot d -m 384\n\n\n\n\nRun virtual machine\n\n\nqemu-system-x86_64 vdisk.img -m 384",
+            "text": "Create virtual hdd image\n\n\nqemu-img create -o preallocation=metadata -f qcow2 qcow2.img 20G\n\n\n\n\nStart installation of virtual machine with virtual image\n\n\nqemu-system-x86_64 -hda vdisk.img -cdrom /path/to/boot-media.iso -boot d -m 384\n\n\n\n\nRun virtual machine\n\n\nqemu-system-x86_64 vdisk.img -m 384\n\n\n\n\nIncrease image\n\n\n# Stop virtual machine\nqemu-img resize <path_to_vm_disk).img +<SIZE>G\n# Start virtual machine",
             "title": "KVM"
         },
         {
@@ -2044,6 +2044,11 @@
             "location": "/Unix-way/Virtual/KVM/#run-virtual-machine",
             "text": "qemu-system-x86_64 vdisk.img -m 384",
             "title": "Run virtual machine"
+        },
+        {
+            "location": "/Unix-way/Virtual/KVM/#increase-image",
+            "text": "# Stop virtual machine\nqemu-img resize <path_to_vm_disk).img +<SIZE>G\n# Start virtual machine",
+            "title": "Increase image"
         },
         {
             "location": "/Unix-way/Web/Tomcat/",

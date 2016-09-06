@@ -838,20 +838,29 @@
         <li class="first-level "><a href="#run-virtual-machine">Run virtual machine</a></li>
         
     
+        <li class="first-level "><a href="#increase-image">Increase image</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
 <h3 id="create-virtual-hdd-image">Create virtual hdd image</h3>
-<pre><code>qemu-img create -o preallocation=metadata -f qcow2 qcow2.img 20G
+<pre><code class="bash">qemu-img create -o preallocation=metadata -f qcow2 qcow2.img 20G
 </code></pre>
 
 <h3 id="start-installation-of-virtual-machine-with-virtual-image">Start installation of virtual machine with virtual image</h3>
-<pre><code>qemu-system-x86_64 -hda vdisk.img -cdrom /path/to/boot-media.iso -boot d -m 384
+<pre><code class="bash">qemu-system-x86_64 -hda vdisk.img -cdrom /path/to/boot-media.iso -boot d -m 384
 </code></pre>
 
 <h3 id="run-virtual-machine">Run virtual machine</h3>
-<pre><code>qemu-system-x86_64 vdisk.img -m 384
+<pre><code class="bash">qemu-system-x86_64 vdisk.img -m 384
+</code></pre>
+
+<h3 id="increase-image">Increase image</h3>
+<pre><code class="bash"># Stop virtual machine
+qemu-img resize &lt;path_to_vm_disk).img +&lt;SIZE&gt;G
+# Start virtual machine
 </code></pre></div>
         
     </div>
