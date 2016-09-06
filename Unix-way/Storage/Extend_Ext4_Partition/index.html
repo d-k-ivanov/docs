@@ -832,10 +832,10 @@
         <li class="first-level active"><a href="#check-current-partition-table">Check current partition table</a></li>
         
     
-        <li class="first-level "><a href="#check-current-partition-size">Check current partition size:</a></li>
+        <li class="first-level "><a href="#check-current-partition-size">Check current partition size</a></li>
         
     
-        <li class="first-level "><a href="#resize-hard-drive">Resize hard drive.</a></li>
+        <li class="first-level "><a href="#resize-hard-drive">Resize hard drive</a></li>
         
     
         <li class="first-level "><a href="#check-extended-partition-table">Check extended partition table</a></li>
@@ -874,7 +874,7 @@ vda    253:0    0    5G  0 disk
 └─vda1 253:1    0    5G  0 part /
 </code></pre>
 
-<h3 id="check-current-partition-size">Check current partition size:</h3>
+<h3 id="check-current-partition-size">Check current partition size</h3>
 <pre><code class="bash">df -h
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/vda1       4.8G  2.5G  2.2G  54% /
@@ -885,7 +885,7 @@ tmpfs           497M     0  497M   0% /sys/fs/cgroup
 tmpfs           100M     0  100M   0% /run/user/0
 </code></pre>
 
-<h3 id="resize-hard-drive">Resize hard drive.</h3>
+<h3 id="resize-hard-drive">Resize hard drive</h3>
 <p>Rescan devices under root (sudo doesn't work). In some cases reboot is needed</p>
 <pre><code class="bash">echo &quot;- - -&quot; &gt; /sys/class/scsi_host/host0/scan
 echo &quot;- - -&quot; &gt; /sys/class/scsi_host/host1/scan
@@ -979,7 +979,7 @@ Syncing disks.
 </code></pre>
 
 <ul>
-<li><strong>!!!Reboot the system to inform kernet about changes in partition table!!!</strong></li>
+<li><strong>!!!Reboot the system to inform kernel about changes in partition table!!!</strong></li>
 </ul>
 <h3 id="resize-file-system">Resize file system</h3>
 <pre><code class="bash">resize2fs /dev/vda1
