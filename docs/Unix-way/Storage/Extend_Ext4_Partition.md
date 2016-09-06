@@ -1,4 +1,5 @@
-### Check your partitions before extention:
+### Check current partition table
+
 ```bash
 fdisk -l /dev/vda
 
@@ -13,14 +14,17 @@ Disk identifier: 0x0000811f
 /dev/vda1   *        2048    10485759     5241856   83  Linux
 ```
 
-### Resize hard drive. Rescan devices under root (sudo doesn't work). In some cases reboot is needed
+### Resize hard drive. 
+
+Rescan devices under root (sudo doesn't work). In some cases reboot is needed
 ```bash
 echo "- - -" > /sys/class/scsi_host/host0/scan
 echo "- - -" > /sys/class/scsi_host/host1/scan
 echo "- - -" > /sys/class/scsi_host/hostX/scan
 ```
 
-### Check your partition after resizing. Write down Start and End segment of your target partition:
+### Check extended partition table 
+Check your partition after resizing. Write down Start and End segment of your target partition:
 ```bash
 fdisk -l /dev/vda
 
@@ -35,7 +39,7 @@ Disk identifier: 0x0000811f
 /dev/vda1   *        2048    10485759     5241856   83  Linux
 ```
 
-### Recreate partition with new End:
+### Recreate partition with new End
 
 * Run **fdisk /dev/vda**
 * Delete old partition: Command (m for help): **d**
@@ -93,7 +97,7 @@ Syncing disks.
 ```
 * **!!!Reboot the system to inform kernet about changes in partition table!!!**
 
-### Resize your EXT file system:
+### Resize file system
 ```bash
 resize2fs /dev/vda1
 ```
