@@ -1,5 +1,5 @@
-### ntp.conf 
-```bash
+### ntp.conf in Ansible way
+```python
 driftfile /var/lib/ntp/ntp.drift
 
 {% for ntp_server in net_ntp_servers %}
@@ -16,3 +16,16 @@ net_ntp_servers:
   - 2.ru.pool.ntp.org
   - 3.ru.pool.ntp.org
 ```
+
+### ntp.conf common
+```bash
+driftfile /var/lib/ntp/ntp.drift
+
+server 0.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6
+server 1.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6
+server 2.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6
+server 3.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6
+
+restrict default kod nomodify notrap nopeer noquery
+```
+
