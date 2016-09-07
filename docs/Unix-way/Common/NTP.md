@@ -27,5 +27,6 @@ server 2.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6
 server 3.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6
 
 restrict default kod nomodify notrap nopeer noquery
+restrict -6 default kod nomodify notrap nopeer noquery
 ```
 
