@@ -1442,13 +1442,18 @@
         },
         {
             "location": "/Unix-way/Common/NTP/",
-            "text": "ntp.conf\n\n\ndriftfile /var/lib/ntp/ntp.drift\n\n{% for ntp_server in net_ntp_servers %}\nserver {{ ntp_server }} burst iburst minpoll 4 maxpoll 6\n{% endfor %}\n\nrestrict default kod nomodify notrap nopeer noquery\nrestrict -6 default kod nomodify notrap nopeer noquery\n\n---\nnet_ntp_servers:\n  - 0.ru.pool.ntp.org\n  - 1.ru.pool.ntp.org\n  - 2.ru.pool.ntp.org\n  - 3.ru.pool.ntp.org",
+            "text": "ntp.conf in Ansible way\n\n\ndriftfile /var/lib/ntp/ntp.drift\n\n{% for ntp_server in net_ntp_servers %}\nserver {{ ntp_server }} burst iburst minpoll 4 maxpoll 6\n{% endfor %}\n\nrestrict default kod nomodify notrap nopeer noquery\nrestrict -6 default kod nomodify notrap nopeer noquery\n\n---\nnet_ntp_servers:\n  - 0.ru.pool.ntp.org\n  - 1.ru.pool.ntp.org\n  - 2.ru.pool.ntp.org\n  - 3.ru.pool.ntp.org\n\n\n\n\nntp.conf common\n\n\ndriftfile /var/lib/ntp/ntp.drift\n\nserver 0.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6\nserver 1.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6\nserver 2.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6\nserver 3.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6\n\nrestrict default kod nomodify notrap nopeer noquery",
             "title": "NTP"
         },
         {
-            "location": "/Unix-way/Common/NTP/#ntpconf",
+            "location": "/Unix-way/Common/NTP/#ntpconf-in-ansible-way",
             "text": "driftfile /var/lib/ntp/ntp.drift\n\n{% for ntp_server in net_ntp_servers %}\nserver {{ ntp_server }} burst iburst minpoll 4 maxpoll 6\n{% endfor %}\n\nrestrict default kod nomodify notrap nopeer noquery\nrestrict -6 default kod nomodify notrap nopeer noquery\n\n---\nnet_ntp_servers:\n  - 0.ru.pool.ntp.org\n  - 1.ru.pool.ntp.org\n  - 2.ru.pool.ntp.org\n  - 3.ru.pool.ntp.org",
-            "title": "ntp.conf"
+            "title": "ntp.conf in Ansible way"
+        },
+        {
+            "location": "/Unix-way/Common/NTP/#ntpconf-common",
+            "text": "driftfile /var/lib/ntp/ntp.drift\n\nserver 0.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6\nserver 1.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6\nserver 2.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6\nserver 3.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6\n\nrestrict default kod nomodify notrap nopeer noquery",
+            "title": "ntp.conf common"
         },
         {
             "location": "/Unix-way/Common/Processes/",

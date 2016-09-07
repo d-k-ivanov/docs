@@ -835,15 +835,18 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#ntpconf">ntp.conf</a></li>
+        <li class="first-level active"><a href="#ntpconf-in-ansible-way">ntp.conf in Ansible way</a></li>
+        
+    
+        <li class="first-level "><a href="#ntpconf-common">ntp.conf common</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="ntpconf">ntp.conf</h3>
-<pre><code class="bash">driftfile /var/lib/ntp/ntp.drift
+<h3 id="ntpconf-in-ansible-way">ntp.conf in Ansible way</h3>
+<pre><code class="python">driftfile /var/lib/ntp/ntp.drift
 
 {% for ntp_server in net_ntp_servers %}
 server {{ ntp_server }} burst iburst minpoll 4 maxpoll 6
@@ -858,6 +861,17 @@ net_ntp_servers:
   - 1.ru.pool.ntp.org
   - 2.ru.pool.ntp.org
   - 3.ru.pool.ntp.org
+</code></pre>
+
+<h3 id="ntpconf-common">ntp.conf common</h3>
+<pre><code class="bash">driftfile /var/lib/ntp/ntp.drift
+
+server 0.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6
+server 1.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6
+server 2.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6
+server 3.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6
+
+restrict default kod nomodify notrap nopeer noquery
 </code></pre></div>
         
     </div>
