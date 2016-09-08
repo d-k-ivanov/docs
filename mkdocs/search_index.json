@@ -161,6 +161,16 @@
             "title": "Fast oracle database dump creation"
         },
         {
+            "location": "/Databases/Oracle/Memory/",
+            "text": "ORA-00845: MEMORY_TARGET not supported\n\n\nNot enough of shared memory\n\n\numount tmpfs\nmount -t tmpfs shmfs -o size=1024m /dev/shm",
+            "title": "Memory"
+        },
+        {
+            "location": "/Databases/Oracle/Memory/#ora-00845-memory_target-not-supported",
+            "text": "Not enough of shared memory  umount tmpfs\nmount -t tmpfs shmfs -o size=1024m /dev/shm",
+            "title": "ORA-00845: MEMORY_TARGET not supported"
+        },
+        {
             "location": "/Databases/Oracle/OJDBC/",
             "text": "BUG: 9632480\n\n\nOJDBC 12.1.0.2 - BUG: ORA-01000: maximum open cursors exceeded\n\n\nWe need:\n\n\n\n\nojdbc7.jar\n\n\np19632480_121020_Generic.zip\n\n\nJRE\n\n\n\n\n\n\nWe need to update OracleDatabaseMetaData.class in our ojdbc7.jar archive\n\n\n\n\nunzip p19632480_121020_Generic.zip\n\n\n\n\nGet folder \n./p19632480_121020_Generic/19632480/files/jdbc/lib/ojdbc7.jar\n from archvive and place it to \nojdbc7.jar\n file location\n\n\nMake sure that your JAVA_HOME is exported\n\n\nChange working directory to ojdbc7.jar location and run:\n\n\n$JAVA_HOME/jar -uf ojdbc7.jar",
             "title": "OJDBC"
