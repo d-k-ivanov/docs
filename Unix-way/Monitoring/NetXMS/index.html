@@ -850,6 +850,9 @@
         <li class="first-level "><a href="#external-parameter">External parameter</a></li>
         
     
+        <li class="first-level "><a href="#sql-queries-parsing-from-the-log-file">SQL queries parsing from the log-file</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -880,6 +883,32 @@ http://&lt;ip_address&gt;:8080/nxmc-2.0.5/nxmc
 
 <h3 id="external-parameter">External parameter</h3>
 <pre><code class="bash">ExternalParameterShellExec = KasperskyBasesState:C:\Windows\System32\cscript.exe //E:VBscript //NoLogo c:\Path_TO\kav.vbs
+</code></pre>
+
+<h3 id="sql-queries-parsing-from-the-log-file">SQL queries parsing from the log-file</h3>
+<pre><code class="bash"># Print queries execution time. Change &quot;SELECT&quot; to keyword you want.
+grep &quot;SELECT&quot; &lt;log-file&gt; | grep -oP '[0-9]* ms' | awk '{print $1}'
+
+# Extarct all SQL-Inserts to file
+grep -oP '\&quot;INSERT INTO.*' &lt;log-file&gt; &gt; insert.sql
+
+# Extract all SQL-Selects to file
+grep -oP '\&quot;SELECT.*' &lt;log-file&gt; &gt; select.sql
+
+# Extract all other than inserts and selects t file
+grep -v '\&quot;SELECT.*' &lt;log-file&gt; | grep -v '\&quot;INSERT INTO.*' &gt; other.sql
+
+# Extarct all SQL-Explains to file
+grep -oP '\&quot;EXPLAIN.*' other.sql &gt; explain.sql
+
+# Extarct all SQL-Updates to file
+grep -v '\&quot;EXPLAIN.*' other.sql | grep -oP '\&quot;UPDATE.*' &gt; update.sql
+
+# Extarct all SQL-Deletes to file
+grep -v '\&quot;EXPLAIN.*' other.sql | grep -v '\&quot;UPDATE.*' | grep -oP '\&quot;DELETE.*' &gt; delete.sql
+
+# Extarct all SQL-Merges to file
+grep -v '\&quot;EXPLAIN.*' other.sql | grep -v '\&quot;UPDATE.*' | grep -v '\&quot;DELETE.*' | grep -oP '\&quot;MERGE.*' &gt; merge.sql
 </code></pre></div>
         
     </div>
