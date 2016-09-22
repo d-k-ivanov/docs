@@ -71,3 +71,30 @@ du -s * 2>/dev/null | awk '{print $1}' | paste -sd+ | bc
 for file in *.txt; do mv "$file" "`basename "$file" .txt`.md"; done
 ```
 
+### Split file
+```bash
+split <OPTION> <FILE> <PREFIX>
+
+OPTIONS:
+-aN, --suffix-length=N - length of numeric suffix. See "-d for suffices". Default 2.
+-bN, --bytes=N - Amount of bytes in each of file. There is some interesting way to produce sucficies: K, KB, M, MB, G, GB, T, TB etc., where all values with "B" multiply amount to 1024xx, and without "B" - to 1000xx, so 1M=1024KB 1MB=1000KB, 1G=1024MB 1GB=1000MB. See MiB and MB explanation in wiki.
+-d, --numeric-suffixes - enables numeric suffices <PREFIX>00, <PREFIX>01, <PREFIX>.02, etc., (with default prefix: х00, х01, х02, х03, etc.)
+-lN, --lines=N - If you doesn't split files by bytes, then you split it by lines. So this option set amout of line in result file. Default 1000.
+
+Example
+split -b 8GB -d archive.tar.gz archive.tar.gz.
+
+archive.tar.gz.00
+archive.tar.gz.01
+archive.tar.gz.02
+archive.tar.gz.03
+```
+
+### Joining all similarly prefixed files
+For example, "_tar.gz.1of2" and "_tar.gz.2of2".
+```
+# Unix
+cat "FileName_tar.gz.1of3" "FileName_tar.gz.2of3" "FileName_tar.gz.3of3" > "FileName.tar.gz"
+# Windows
+copy /b "FileName_tar.gz.1of3"+"FileName_tar.gz.2of3"+"FileName_tar.gz.3of3" "FileName.tar.gz"
+```
