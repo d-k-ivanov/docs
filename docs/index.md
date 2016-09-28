@@ -1,7 +1,7 @@
 ## About me
-* [Dmitr Ivanov](https://keepbot.github.io)
+* [Dmitry Ivanov](https://keepbot.github.io)
 * [GitHub repo](https://github.com/keepbot)
-* [Facebbok](https://www.facebook.com/dmitry.ivanov.9849)
+* [Facebook](https://www.facebook.com/dmitry.ivanov.9849)
 * [VK.com](https://vk.com/d.k.ivanov)
 * [LinkedIn](https://www.linkedin.com/in/dmitry-ivanov-5b9275b3)
 

@@ -16,6 +16,7 @@ mysql_secure_installation
 
 ### MariaDB server 10.1
 ```bash
+yum install centos-release-scl
 yum --enablerepo=centos-sclo-rh install rh-mariadb101-mariadb-server 
 scl enable rh-mariadb101 bash 
 
