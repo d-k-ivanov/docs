@@ -36,6 +36,21 @@
             "title": "Cool weather"
         }, 
         {
+            "location": "/Databases/MariaDB/Installation/", 
+            "text": "MariaDB server 5.5\n\n\nyum install mariadb-server\nvim /etc/my.cnf\n---\n[mysqld]\ncharacter-set-server=utf8\n---\n\nsystemctl start mariadb\nsystemctl enable mariadb \n\nmysql_secure_installation\n\n\n\n\n\nMariaDB server 10.1\n\n\nyum --enablerepo=centos-sclo-rh install rh-mariadb101-mariadb-server \nscl enable rh-mariadb101 bash \n\nvim /etc/profile.d/rh-mariadb101.sh \n---\n#!/bin/bash\n\nsource /opt/rh/rh-mariadb101/enable\nexport X_SCLS=\n`scl enable rh-mariadb101 'echo $X_SCLS'`\n\n---\n\nvim /etc/opt/rh/rh-mariadb101/my.cnf.d/mariadb-server.cnf \n---\n[mysqld]\ncharacter-set-server=utf8 \n---\n\nsystemctl start rh-mariadb101-mariadb\nsystemctl enable rh-mariadb101-mariadb \n\nmysql_secure_installation", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/Databases/MariaDB/Installation/#mariadb-server-55", 
+            "text": "yum install mariadb-server\nvim /etc/my.cnf\n---\n[mysqld]\ncharacter-set-server=utf8\n---\n\nsystemctl start mariadb\nsystemctl enable mariadb \n\nmysql_secure_installation", 
+            "title": "MariaDB server 5.5"
+        }, 
+        {
+            "location": "/Databases/MariaDB/Installation/#mariadb-server-101", 
+            "text": "yum --enablerepo=centos-sclo-rh install rh-mariadb101-mariadb-server \nscl enable rh-mariadb101 bash \n\nvim /etc/profile.d/rh-mariadb101.sh \n---\n#!/bin/bash\n\nsource /opt/rh/rh-mariadb101/enable\nexport X_SCLS= `scl enable rh-mariadb101 'echo $X_SCLS'` \n---\n\nvim /etc/opt/rh/rh-mariadb101/my.cnf.d/mariadb-server.cnf \n---\n[mysqld]\ncharacter-set-server=utf8 \n---\n\nsystemctl start rh-mariadb101-mariadb\nsystemctl enable rh-mariadb101-mariadb \n\nmysql_secure_installation", 
+            "title": "MariaDB server 10.1"
+        }, 
+        {
             "location": "/Databases/MongoDB/Mongo/", 
             "text": "Dump\n\n\nmongodump --host \ndb_server\n --db \ndb_name\n\n\n\n\n\nDump to JSON\n\n\nmongo --host \ndb_server\n \ndb_name\n -u \nusername\n -p \npassword\n \n EOF \n out.json\ndb.File.files.find().pretty()\nEOF\n\n\n\n\nConnect\n\n\nmongo --host \ndb_server\n \ndb_name\n -u \nusername\n -p \npassword", 
             "title": "Mongo"
