@@ -961,7 +961,8 @@ make install
 
 vim /etc/netxmsd.conf
 ---
-DBDriver = /home/soft/netxms/lib/libnxddr_mysql.so
+DBDriver =&lt;path_to_netxms_prefix&gt;/lib/libnxddr_mysql.so
+#DBDriver = /home/soft/netxms/lib/libnxddr_mysql.so
 DBServer = localhost
 DBName = netxms
 DBLogin = netxms
@@ -972,13 +973,16 @@ LogFile = /home/soft/netxms/var/netxms.log
 
 vim /etc/nxagentd.conf
 ---
-MasterServers = 127.0.0.1, localhost
+MasterServers = 127.0.0.1, localhost, centos-02.keeobot.net
 ---
 
-/home/soft/netxms/bin/nxdbmgr init /home/soft/netxms/share/netxms/sql/dbinit_mysql.sql
+&lt;path_to_netxms_prefix&gt;/bin/nxdbmgr init &lt;path_to_netxms_prefix&gt;/sql/dbinit_mysql.sql
+#/home/soft/netxms/bin/nxdbmgr init /home/soft/netxms/share/netxms/sql/dbinit_mysql.sql
 
-/home/soft/netxms/bin/nxagentd -D6 -d
-/home/soft/netxms/bin/netxmsd -D6 -d
+&lt;path_to_netxms_prefix&gt;/bin/nxagentd -D6 -d
+ &lt;path_to_netxms_prefix&gt;/bin/netxmsd -D6 -d
+#/home/soft/netxms/bin/nxagentd -D6 -d
+#/home/soft/netxms/bin/netxmsd -D6 -d
 
 </code></pre></div>
         
