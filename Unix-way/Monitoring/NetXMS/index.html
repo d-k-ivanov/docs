@@ -868,6 +868,9 @@
         <li class="first-level "><a href="#sql-queries-parsing-from-the-log-file">SQL queries parsing from the log-file</a></li>
         
     
+        <li class="first-level "><a href="#installation">Installation</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -924,6 +927,59 @@ grep -v '\&quot;EXPLAIN.*' other.sql | grep -v '\&quot;UPDATE.*' | grep -oP '\&q
 
 # Extarct all SQL-Merges to file
 grep -v '\&quot;EXPLAIN.*' other.sql | grep -v '\&quot;UPDATE.*' | grep -v '\&quot;DELETE.*' | grep -oP '\&quot;MERGE.*' &gt; merge.sql
+</code></pre>
+
+<h3 id="installation">Installation</h3>
+<ul>
+<li>MySQL Database</li>
+</ul>
+<pre><code class="bash">mysql -u root -p mysql
+mysql&gt; CREATE DATABASE netxms;
+mysql&gt; GRANT ALL ON netxms.* TO netxms@localhost IDENTIFIED BY 'netxms';
+mysql&gt; \q
+</code></pre>
+
+<ul>
+<li>Installation from source</li>
+</ul>
+<pre><code class="bash">tar zxvf netxms-x.x.x.tar.gz
+#tar zxvf netxms-2.0.6.tar.gz
+
+cd netxms-x.x.x
+#cd netxms-2.0.6
+
+# You need MySQl or MariadDB development packages for installation with &quot;mysql&quot; option
+# On CentOS7 something like:
+# yum install mysql55-mysql-devel
+# yum install mariadb-devel
+
+sh ./configure --with-server --with-mysql --with-agent --prefix=&lt;path_to_custom_dir&gt;
+#sh ./configure --with-server --with-mysql --with-agent --prefix=/home/soft/netxms
+
+make
+make install
+
+vim /etc/netxmsd.conf
+---
+DBDriver = /home/soft/netxms/lib/libnxddr_mysql.so
+DBServer = localhost
+DBName = netxms
+DBLogin = netxms
+DBPassword = netxms
+LogFailedSQLQueries = yes
+LogFile = /home/soft/netxms/var/netxms.log
+---
+
+vim /etc/nxagentd.conf
+---
+MasterServers = 127.0.0.1, localhost
+---
+
+/home/soft/netxms/bin/nxdbmgr init /home/soft/netxms/share/netxms/sql/dbinit_mysql.sql
+
+/home/soft/netxms/bin/nxagentd -D6 -d
+/home/soft/netxms/bin/netxmsd -D6 -d
+
 </code></pre></div>
         
     </div>

@@ -882,7 +882,8 @@ mysql_secure_installation
 </code></pre>
 
 <h3 id="mariadb-server-101">MariaDB server 10.1</h3>
-<pre><code class="bash">yum --enablerepo=centos-sclo-rh install rh-mariadb101-mariadb-server 
+<pre><code class="bash">yum install centos-release-scl
+yum --enablerepo=centos-sclo-rh install rh-mariadb101-mariadb-server 
 scl enable rh-mariadb101 bash 
 
 vim /etc/profile.d/rh-mariadb101.sh 
