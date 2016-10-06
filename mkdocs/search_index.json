@@ -167,12 +167,12 @@
         }, 
         {
             "location": "/Databases/Oracle/Dump/", 
-            "text": "Fast oracle database dump creation\n\n\nThis way of making dump isn't safe, but convenient within clean or dev environment.\n\n\n# Export\nexpdp / full=Y dumpfile=\nDBNAME\n.dmp logfile=expdp\nDBNAME\n.log\n# Import \nimpdp / full=Y dumpfile=\nDBNAME\n.dmp logfile=impdp\nDBNAME\n.log", 
+            "text": "Fast oracle database dump creation\n\n\nThis way of making dump isn't safe, but convenient within clean or dev environment.\n\n\n# Export\nexpdp / full=Y dumpfile=\nDBNAME\n.dmp logfile=expdp\nDBNAME\n.log\nexpdp 'DBNAME'/DBPASSWORD@SID dumpfile=\ndumpfile\n.dmp nologfile=Y\n\n# Import \nimpdp / full=Y dumpfile=\nDBNAME\n.dmp logfile=impdp\nDBNAME\n.log \nimpdp 'DBNAME'/DBPASSWORD@SID dumpfile=\ndumpfile\n.dmp nologfile=Y", 
             "title": "Dump"
         }, 
         {
             "location": "/Databases/Oracle/Dump/#fast-oracle-database-dump-creation", 
-            "text": "This way of making dump isn't safe, but convenient within clean or dev environment.  # Export\nexpdp / full=Y dumpfile= DBNAME .dmp logfile=expdp DBNAME .log\n# Import \nimpdp / full=Y dumpfile= DBNAME .dmp logfile=impdp DBNAME .log", 
+            "text": "This way of making dump isn't safe, but convenient within clean or dev environment.  # Export\nexpdp / full=Y dumpfile= DBNAME .dmp logfile=expdp DBNAME .log\nexpdp 'DBNAME'/DBPASSWORD@SID dumpfile= dumpfile .dmp nologfile=Y\n\n# Import \nimpdp / full=Y dumpfile= DBNAME .dmp logfile=impdp DBNAME .log \nimpdp 'DBNAME'/DBPASSWORD@SID dumpfile= dumpfile .dmp nologfile=Y", 
             "title": "Fast oracle database dump creation"
         }, 
         {

@@ -867,8 +867,11 @@
 <p>This way of making dump isn't safe, but convenient within clean or dev environment.</p>
 <pre><code># Export
 expdp / full=Y dumpfile=&lt;DBNAME&gt;.dmp logfile=expdp&lt;DBNAME&gt;.log
+expdp 'DBNAME'/DBPASSWORD@SID dumpfile=&lt;dumpfile&gt;.dmp nologfile=Y
+
 # Import 
 impdp / full=Y dumpfile=&lt;DBNAME&gt;.dmp logfile=impdp&lt;DBNAME&gt;.log 
+impdp 'DBNAME'/DBPASSWORD@SID dumpfile=&lt;dumpfile&gt;.dmp nologfile=Y
 </code></pre></div>
         
     </div>
