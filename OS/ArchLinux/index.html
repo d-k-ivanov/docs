@@ -877,6 +877,8 @@ pacman -Syu
 pacman -Rscn $(pacman -Qtdq)
 pacman -Sc
 pacman-optimize &amp;&amp; sync
+# Show all pacages whitc now installed as dependencies
+pacman -Qet
 </code></pre>
 
 <h3 id="aur-package-installation">AUR package installation</h3>
