@@ -11,6 +11,8 @@ pacman -Syu
 pacman -Rscn $(pacman -Qtdq)
 pacman -Sc
 pacman-optimize && sync
+# Show all pacages whitc now installed as dependencies
+pacman -Qet
 ```
 
 ### AUR package installation
