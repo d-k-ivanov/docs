@@ -251,6 +251,16 @@
             "title": "Open cursors"
         },
         {
+            "location": "/Dev/Android/Android_Studio/",
+            "text": "libGL error: unable to load driver: i965_dri.so\n\n\n# Arch Linux\nmv ~/Android/Sdk/tools/lib64/libstdc++/libstdc++.so.6{,.bak}\nmv ~/Android/Sdk/tools/lib64/libstdc++/libstdc++.so.6.0.18{,.bak}\nln -s /usr/lib/libstdc++.so  ~/Android/Sdk/tools/lib64/libstdc++/",
+            "title": "Android Studio"
+        },
+        {
+            "location": "/Dev/Android/Android_Studio/#libgl-error-unable-to-load-driver-i965_driso",
+            "text": "# Arch Linux\nmv ~/Android/Sdk/tools/lib64/libstdc++/libstdc++.so.6{,.bak}\nmv ~/Android/Sdk/tools/lib64/libstdc++/libstdc++.so.6.0.18{,.bak}\nln -s /usr/lib/libstdc++.so  ~/Android/Sdk/tools/lib64/libstdc++/",
+            "title": "libGL error: unable to load driver: i965_dri.so"
+        },
+        {
             "location": "/Dev/Bash/Collect_bash_history/",
             "text": "Collect .bash_history from a bunch of servers.\n\n\nip_base_file\n - just a list of IP address. And you have to have same password on all servers.\n\n\n#!/bin/bash\n#\n#  Script to collect bash history from remote servers\n#\necho \"Usage: ./collect.sh <ip_base_file>\"\n\nread -n 1 -p \"Do you want to collect bash_history? (y/[a]): \" AMSURE\n[ \"$AMSURE\" = \"y\" ] || exit\necho \"\" 1>&2\n\nnow=$(date +\"%m_%d_%Y\")\nmkdir ./$now\n## Provide BASE64 encoded password here\n## echo \"MEGA-SECURE-PASSWORD\" | base64 -i\nPASS=`echo \"TUVHQS1TRUNVUkUtUEFTU1dPUkQK\" | base64 -di`\nawk '{print $1}' < ./\"$1\" | while read ip; do\n\nexpect -c \"\n    set timeout 1\n    spawn scp  root@$ip:~/.bash_history ./\"$now\"/\"$ip\"_history.txt\n    expect yes/no { send yes\\r ; exp_continue }\n    expect password: { send $PASS\\r }\n    expect 100%\n    sleep 1\n    exit\n\"\ndone",
             "title": "Collect bash history"
