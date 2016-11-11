@@ -1,6 +1,6 @@
 
-## Which process uses port
-### Linux
+### Which process uses port
+#### Linux
 ```bash
 # Find out PID via ss
 ss -nltp | grep <port>
@@ -11,19 +11,19 @@ ls -l /proc/<pid>/exe
 # Find out full run command
 ps -ef | grep <PID>
 ```
-### AIX
+#### AIX
 ```bash
 lsof -i:<port>
 ps -ef | grep <pid>
 ```
-### Windows
+#### Windows
 ```bash
 netstat -aon | findstr "<port>"
 pslist <PID>
 ```
 
-## Which port is used by a process
-### nix
+### Which port is used by a process
+#### Unix
 ```bash
 sudo lsof -i -P -n | grep LISTEN | grep <process>
 # Remember about sudo: root access rights is required to see at non-current-user processes
@@ -34,7 +34,7 @@ sudo netstat -anp udp | grep LISTEN | grep <process>
 # Use flags -T fot TCP -U for UDP or both. You can use any IP address instead localhost.
 sudo nmap -sTU -O localhost
 ```
-### Windows
+#### Windows
 ```bash
 netstat -bano | findstr /R /C:"[LISTING]" | findstr /R /C:"<process>"
 ```
