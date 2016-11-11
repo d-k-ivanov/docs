@@ -885,7 +885,7 @@
     
         <li class="first-level "><a href="#which-port-is-used-by-a-process">Which port is used by a process</a></li>
         
-            <li class="second-level"><a href="#nix">nix</a></li>
+            <li class="second-level"><a href="#unix">Unix</a></li>
             
         
             <li class="second-level"><a href="#windows_1">Windows</a></li>
@@ -896,8 +896,8 @@
 </div></div>
         <div class="col-md-9" role="main">
 
-<h2 id="which-process-uses-port">Which process uses port</h2>
-<h3 id="linux">Linux</h3>
+<h3 id="which-process-uses-port">Which process uses port</h3>
+<h4 id="linux">Linux</h4>
 <pre><code class="bash"># Find out PID via ss
 ss -nltp | grep &lt;port&gt;
 # Find out PID deprecated netstat:
@@ -908,18 +908,18 @@ ls -l /proc/&lt;pid&gt;/exe
 ps -ef | grep &lt;PID&gt;
 </code></pre>
 
-<h3 id="aix">AIX</h3>
+<h4 id="aix">AIX</h4>
 <pre><code class="bash">lsof -i:&lt;port&gt;
 ps -ef | grep &lt;pid&gt;
 </code></pre>
 
-<h3 id="windows">Windows</h3>
+<h4 id="windows">Windows</h4>
 <pre><code class="bash">netstat -aon | findstr &quot;&lt;port&gt;&quot;
 pslist &lt;PID&gt;
 </code></pre>
 
-<h2 id="which-port-is-used-by-a-process">Which port is used by a process</h2>
-<h3 id="nix">nix</h3>
+<h3 id="which-port-is-used-by-a-process">Which port is used by a process</h3>
+<h4 id="unix">Unix</h4>
 <pre><code class="bash">sudo lsof -i -P -n | grep LISTEN | grep &lt;process&gt;
 # Remember about sudo: root access rights is required to see at non-current-user processes
 sudo netstat -tulpn | grep LISTEN | grep &lt;process&gt;
@@ -930,7 +930,7 @@ sudo netstat -anp udp | grep LISTEN | grep &lt;process&gt;
 sudo nmap -sTU -O localhost
 </code></pre>
 
-<h3 id="windows_1">Windows</h3>
+<h4 id="windows_1">Windows</h4>
 <pre><code class="bash">netstat -bano | findstr /R /C:&quot;[LISTING]&quot; | findstr /R /C:&quot;&lt;process&gt;&quot;
 </code></pre></div>
         
