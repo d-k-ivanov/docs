@@ -1627,13 +1627,18 @@
         },
         {
             "location": "/Unix-way/Network/Ports/",
-            "text": "Which process use port\n\n\n\n\nLinux\n\n\n\n\n# Find out PID via ss\nss -nltp | grep <port>\n# Find out PID deprecated netstat:\nnetstat -tulpn | grep <port>\n# Find out particular binary\nls -l /proc/<pid>/exe\n# Find out full run command\nps -ef | grep <PID>\n\n\n\n\n\n\nAIX\n\n\n\n\nlsof -i:<port>\nps -ef | grep <pid>\n\n\n\n\n\n\nWindows\n\n\n\n\nnetstat -aon | findstr \"<port>\"\npslist <PID>",
+            "text": "Which process uses port\n\n\n\n\nLinux\n\n\n\n\n# Find out PID via ss\nss -nltp | grep <port>\n# Find out PID deprecated netstat:\nnetstat -tulpn | grep <port>\n# Find out particular binary\nls -l /proc/<pid>/exe\n# Find out full run command\nps -ef | grep <PID>\n\n\n\n\n\n\nAIX\n\n\n\n\nlsof -i:<port>\nps -ef | grep <pid>\n\n\n\n\n\n\nWindows\n\n\n\n\nnetstat -aon | findstr \"<port>\"\npslist <PID>\n\n\n\n\nWhich port is used by a process\n\n\n\n\nnix\n\n\n\n\nsudo lsof -i -P -n | grep LISTEN | grep <process>\n# Remember about sudo: root access rights is required to see at non-current-user processes\nsudo netstat -tulpn | grep LISTEN | grep <process>\n# For FreeBSD or MacOS:\nsudo netstat -anp tcp | grep LISTEN | grep <process>\nsudo netstat -anp udp | grep LISTEN | grep <process>\n# Use flags -T fot TCP -U for UDP or both. You can use any IP address instead localhost.\nsudo nmap -sTU -O localhost\n\n\n\n\n\n\nWindows\n\n\n\n\nnetstat -bano | findstr /R /C:\"[LISTING]\" | findstr /R /C:\"<process>\"",
             "title": "Ports"
         },
         {
-            "location": "/Unix-way/Network/Ports/#which-process-use-port",
+            "location": "/Unix-way/Network/Ports/#which-process-uses-port",
             "text": "Linux   # Find out PID via ss\nss -nltp | grep <port>\n# Find out PID deprecated netstat:\nnetstat -tulpn | grep <port>\n# Find out particular binary\nls -l /proc/<pid>/exe\n# Find out full run command\nps -ef | grep <PID>   AIX   lsof -i:<port>\nps -ef | grep <pid>   Windows   netstat -aon | findstr \"<port>\"\npslist <PID>",
-            "title": "Which process use port"
+            "title": "Which process uses port"
+        },
+        {
+            "location": "/Unix-way/Network/Ports/#which-port-is-used-by-a-process",
+            "text": "nix   sudo lsof -i -P -n | grep LISTEN | grep <process>\n# Remember about sudo: root access rights is required to see at non-current-user processes\nsudo netstat -tulpn | grep LISTEN | grep <process>\n# For FreeBSD or MacOS:\nsudo netstat -anp tcp | grep LISTEN | grep <process>\nsudo netstat -anp udp | grep LISTEN | grep <process>\n# Use flags -T fot TCP -U for UDP or both. You can use any IP address instead localhost.\nsudo nmap -sTU -O localhost   Windows   netstat -bano | findstr /R /C:\"[LISTING]\" | findstr /R /C:\"<process>\"",
+            "title": "Which port is used by a process"
         },
         {
             "location": "/Unix-way/Network/SNMP/",

@@ -871,14 +871,17 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#which-process-use-port">Which process use port</a></li>
+        <li class="first-level active"><a href="#which-process-uses-port">Which process uses port</a></li>
+        
+    
+        <li class="first-level "><a href="#which-port-is-used-by-a-process">Which port is used by a process</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="which-process-use-port">Which process use port</h3>
+<h3 id="which-process-uses-port">Which process uses port</h3>
 <ul>
 <li>Linux</li>
 </ul>
@@ -904,6 +907,26 @@ ps -ef | grep &lt;pid&gt;
 </ul>
 <pre><code class="bash">netstat -aon | findstr &quot;&lt;port&gt;&quot;
 pslist &lt;PID&gt;
+</code></pre>
+
+<h3 id="which-port-is-used-by-a-process">Which port is used by a process</h3>
+<ul>
+<li>nix</li>
+</ul>
+<pre><code class="bash">sudo lsof -i -P -n | grep LISTEN | grep &lt;process&gt;
+# Remember about sudo: root access rights is required to see at non-current-user processes
+sudo netstat -tulpn | grep LISTEN | grep &lt;process&gt;
+# For FreeBSD or MacOS:
+sudo netstat -anp tcp | grep LISTEN | grep &lt;process&gt;
+sudo netstat -anp udp | grep LISTEN | grep &lt;process&gt;
+# Use flags -T fot TCP -U for UDP or both. You can use any IP address instead localhost.
+sudo nmap -sTU -O localhost
+</code></pre>
+
+<ul>
+<li>Windows</li>
+</ul>
+<pre><code class="bash">netstat -bano | findstr /R /C:&quot;[LISTING]&quot; | findstr /R /C:&quot;&lt;process&gt;&quot;
 </code></pre></div>
         
     </div>
