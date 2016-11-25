@@ -877,12 +877,19 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#android-development">Android development</a></li>
+        <li class="first-level active"><a href="#clean-up-repository-for-new-gitignore">Clean up repository for new gitignore</a></li>
+        
+    
+        <li class="first-level "><a href="#android-development">Android development</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
+
+<h3 id="clean-up-repository-for-new-gitignore">Clean up repository for new gitignore</h3>
+<pre><code class="bash">git rm --cached `git ls-files -i --exclude-standard`
+</code></pre>
 
 <h3 id="android-development">Android development</h3>
 <pre><code class="bash"># Built application files
