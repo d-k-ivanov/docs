@@ -1,3 +1,8 @@
+### Clean up repository for new gitignore
+```bash
+git rm --cached `git ls-files -i --exclude-standard`
+```
+
 ### Android development
 ```bash
 # Built application files
