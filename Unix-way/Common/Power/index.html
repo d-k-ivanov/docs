@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Unix-way/Common/Audit/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Unix-way/Common/Power/"> 
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-    <title>Audit - Technical Info</title>
+    <title>Power - Technical Info</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -534,8 +534,8 @@
     <ul class="dropdown-menu">
         
             
-<li class="active">
-    <a href="./">Audit</a>
+<li >
+    <a href="../Audit/">Audit</a>
 </li>
 
         
@@ -552,8 +552,8 @@
 
         
             
-<li >
-    <a href="../Power/">Power</a>
+<li class="active">
+    <a href="./">Power</a>
 </li>
 
         
@@ -855,12 +855,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../../Backup/Tape/">
+                        <a rel="next" href="../NTP/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../Files_and_folders/">
+                        <a rel="prev" href="../Processes/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -883,60 +883,19 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#why-is-my-server-rebooted">Why is my server rebooted?</a></li>
-        
-    
-        <li class="first-level "><a href="#fork-resource-temporarily-unavailable-on-aix">Fork: Resource temporarily unavailable on AIX</a></li>
+        <li class="first-level active"><a href="#disable-suspend-laptop-on-lid-close">Disable suspend laptop on lid close</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="why-is-my-server-rebooted">Why is my server rebooted?</h3>
-<pre><code>last reboot 
-sudo lastcomm | egrep 'reboot|shutdown'
-who -b
-sa
-crontab -e
-less /var/log/secure
-last -x | less
-last -x | grep shutdown | less
-less /var/log/messages
-journalctl
-utmpdump /var/log/wtmp | egrep 'shutdown|reboot|runlevel'
-journalctl --since=&quot;2016-6-28 12:00:00&quot;
-</code></pre>
-
-<h3 id="fork-resource-temporarily-unavailable-on-aix">Fork: Resource temporarily unavailable on AIX</h3>
-<p>To investigate the promles you need to run thei bunch of commands:</p>
-<pre><code>cat /etc/passwd
-</code></pre>
-
-<p>From root you need to look at limint of every active user:</p>
-<pre><code>ulimit -a
-su oracle -c &quot;ulimit -a&quot;
-su mongod -c &quot;ulimit -a&quot;
-su userX -c &quot;ulimit -a&quot;
-</code></pre>
-
-<p>Look at system wide defined limits:</p>
-<pre><code>cat /etc/security/limits
-</code></pre>
-
-<p>Look at kernel parameters, especially on <em>maxuproc</em></p>
-<pre><code>lsattr -El sys0
-</code></pre>
-
-<p>Look at count of running processes by user:</p>
-<pre><code>ps -f -l -uroot | wc -l
-ps -f -l -uoracle | wc -l
-ps -f -l -umongod | wc -l
-ps -f -l -uuserX | wc -l
-</code></pre>
-
-<p>And after all look at avaible mamory and swap:</p>
-<pre><code>svmon -G -O unit=MB
+<h3 id="disable-suspend-laptop-on-lid-close">Disable suspend laptop on lid close</h3>
+<pre><code class="bash">sudo vim /etc/systemd/logind.conf
+# Add next line:
+HandleLidSwitch=ignore
+# Restart systemd-logind.service
+sudo systemctl restart systemd-logind.service
 </code></pre></div>
         
     </div>

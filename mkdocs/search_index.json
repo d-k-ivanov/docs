@@ -1516,6 +1516,16 @@
             "title": "ntp.conf common"
         }, 
         {
+            "location": "/Unix-way/Common/Power/", 
+            "text": "Disable suspend laptop on lid close\n\n\nsudo vim /etc/systemd/logind.conf\n# Add next line:\nHandleLidSwitch=ignore\n# Restart systemd-logind.service\nsudo systemctl restart systemd-logind.service", 
+            "title": "Power"
+        }, 
+        {
+            "location": "/Unix-way/Common/Power/#disable-suspend-laptop-on-lid-close", 
+            "text": "sudo vim /etc/systemd/logind.conf\n# Add next line:\nHandleLidSwitch=ignore\n# Restart systemd-logind.service\nsudo systemctl restart systemd-logind.service", 
+            "title": "Disable suspend laptop on lid close"
+        }, 
+        {
             "location": "/Unix-way/Common/Processes/", 
             "text": "Wait until proceses will gone\n\n\nwhile true; do clear; ps -ef | grep \nprocess\n; sleep 5; done\n\n\n\n\nKill all proesses with certain name\n\n\nps ax | grep http | awk '{print $1}' | xargs kill", 
             "title": "Processes"
