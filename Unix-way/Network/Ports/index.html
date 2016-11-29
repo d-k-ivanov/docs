@@ -290,6 +290,21 @@
                         
                             
   <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Hardware</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Hardware/Latency_Numbers/">Latency Numbers</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
     <a tabindex="-1" href="">Java</a>
     <ul class="dropdown-menu">
         
@@ -883,7 +898,10 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#which-process-uses-port">Which process uses port</a></li>
+        <li class="first-level active"><a href="#common">Common</a></li>
+        
+    
+        <li class="first-level "><a href="#which-process-uses-port">Which process uses port</a></li>
         
             <li class="second-level"><a href="#linux">Linux</a></li>
             
@@ -908,11 +926,15 @@
 </div></div>
         <div class="col-md-9" role="main">
 
+<h3 id="common">Common</h3>
+<pre><code class="bash">sudo netstat -tunapl
+</code></pre>
+
 <h3 id="which-process-uses-port">Which process uses port</h3>
 <h4 id="linux">Linux</h4>
 <pre><code class="bash"># Find out PID via ss
 ss -nltp | grep &lt;port&gt;
-# Find out PID deprecated netstat:
+# Find out PID via deprecated netstat:
 netstat -tulpn | grep &lt;port&gt;
 # Find out particular binary
 ls -l /proc/&lt;pid&gt;/exe
