@@ -1,10 +1,14 @@
+### Common
+```bash
+sudo netstat -tunapl
+```
 
 ### Which process uses port
 #### Linux
 ```bash
 # Find out PID via ss
 ss -nltp | grep <port>
-# Find out PID deprecated netstat:
+# Find out PID via deprecated netstat:
 netstat -tulpn | grep <port>
 # Find out particular binary
 ls -l /proc/<pid>/exe
