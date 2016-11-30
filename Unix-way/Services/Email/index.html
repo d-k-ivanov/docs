@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Unix-way/Management/Remote_management/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Unix-way/Services/Email/"> 
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-    <title>Remote management - Technical Info</title>
+    <title>Email - Technical Info</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -619,13 +619,13 @@
         
             
 <li >
-    <a href="../Ansible/">Ansible</a>
+    <a href="../../Management/Ansible/">Ansible</a>
 </li>
 
         
             
-<li class="active">
-    <a href="./">Remote management</a>
+<li >
+    <a href="../../Management/Remote_management/">Remote management</a>
 </li>
 
         
@@ -738,14 +738,14 @@
     <ul class="dropdown-menu">
         
             
-<li >
-    <a href="../../Services/Email/">Email</a>
+<li class="active">
+    <a href="./">Email</a>
 </li>
 
         
             
 <li >
-    <a href="../../Services/SMS/">SMS</a>
+    <a href="../SMS/">SMS</a>
 </li>
 
         
@@ -876,12 +876,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../Ansible/">
+                        <a rel="next" href="../../Security/SELinux/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../../Monitoring/NetXMS/">
+                        <a rel="prev" href="../SMS/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -904,17 +904,137 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#xfreerdp">XfreeRDP</a></li>
+        <li class="first-level active"><a href="#telnet-commands">Telnet commands</a></li>
+        
+            <li class="second-level"><a href="#how-to-send-email-using-telnet">How to send email using telnet</a></li>
+            
+        
+            <li class="second-level"><a href="#how-to-check-or-read-email-with-telnet">How to check or read email with telnet</a></li>
+            
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="xfreerdp">XfreeRDP</h3>
-<pre><code class="bash">xfreerdp [+clipboard]/w:&lt;WIDTH&gt; /h:&lt;HEIGHT&gt; /drive:&lt;cuatom_drive_name&gt;,&lt;path_to_attach&gt; /v:&lt;ip&gt;:&lt;port&gt; /u:&lt;user_name&gt;
-xfreerdp +clipboard /w:1600 /h:900 /v:10.15.0.10:3389 /u:Administrator
-xfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM/HMC/7.9_sp3 /v:10.15.0.10
+<h2 id="telnet-commands">Telnet commands</h2>
+<h3 id="how-to-send-email-using-telnet">How to send email using telnet</h3>
+<p>Original at <a href="https://mediatemple.net/community/products/dv/204404584/sending-or-viewing-emails-using-telnet">Mediatemple</a></p>
+<blockquote>
+<p>TIP: We use the domain example.com as an example. Be sure to replace with your own domain.</p>
+</blockquote>
+<ul>
+<li>Open your command prompt. Now, connect with telnet using the following command:</li>
+</ul>
+<pre><code class="bash">telnet example.com 25
+</code></pre>
+
+<ul>
+<li>Type ehlo example.com. Some servers also accept helo in place of ehlo.</li>
+</ul>
+<pre><code class="bash">ehlo example.com
+</code></pre>
+
+<ul>
+<li>Type mail from: username@example.com:</li>
+</ul>
+<pre><code class="bash">mail from: username@example.com
+````
+* Type rcpt to: friend@hotmail.com, friend2@yahoo.com (replace with your actual recipient name):
+```bash
+rcpt to: friend@hotmail.com, friend2@yahoo.com
+</code></pre>
+
+<ul>
+<li>To write the message - type data, followed by your subject and message. To end the message, put a period on a line by itself and press enter:</li>
+</ul>
+<pre><code class="bash">data
+Subject: My Telnet Test Email
+
+Hello,
+
+This is an email sent by using the telnet command.
+
+Your friend,
+Me
+
+.
+</code></pre>
+
+<ul>
+<li>Type quit to exit telnet.</li>
+</ul>
+<pre><code class="bash">quit
+</code></pre>
+
+<h3 id="how-to-check-or-read-email-with-telnet">How to check or read email with telnet</h3>
+<p>Original at  <a href="https://mediatemple.net/community/products/dv/204404584/sending-or-viewing-emails-using-telnet">Mediatemple</a>
+* Open your command prompt. At the command prompt, type in</p>
+<pre><code class="bash">telnet example.com 110
+</code></pre>
+
+<ul>
+<li>Type user and the email address (username@example.com) of the user for which you wish to view emails:</li>
+</ul>
+<pre><code class="bash">user username@example.com
+</code></pre>
+
+<ul>
+<li>Then type in pass followed by your password:</li>
+</ul>
+<pre><code class="bash">pass yourpasswordgoeshere
+</code></pre>
+
+<ul>
+<li>Type list to bring up a list of your emails:</li>
+</ul>
+<pre><code class="bash">list
+</code></pre>
+
+<ul>
+<li>You will see a list of items with labels like "1 897" and "2 5136." Here is an example:</li>
+</ul>
+<pre><code class="bash">list
++OK POP3 clients that break here, they violate STD53.
+1 897
+2 5136
+3 1884
+4 2973
+5 2595
+6 3063
+7 3509
+8 2283
+9 1926
+10 2763
+11 1795
+12 2780
+13 2342
+14 2342
+15 2342
+16 3833
+17 2211
+18 793
+19 797
+20 2599
+.
+</code></pre>
+
+<ul>
+<li>If you wish to read an email message such as 2 5136, you can type the following:</li>
+</ul>
+<pre><code class="bash">retr 2 
+</code></pre>
+
+<ul>
+<li>If you want to delete a message such as 1 897, type dele 1:</li>
+</ul>
+<pre><code class="bash">dele 1
+</code></pre>
+
+<ul>
+<li>When you are done checking your email, type quit.</li>
+</ul>
+<pre><code class="bash">quit
 </code></pre></div>
         
     </div>
