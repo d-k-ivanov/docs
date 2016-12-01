@@ -90,3 +90,20 @@ vim .gitmodules
 git log --pretty=format:"%h - %an, %ar : %s" -1
 ```
 
+### Provide separate ssh-key
+```bash
+vim ~/.ssh/config
+#------ add ------
+host <full_server_hostname>
+ HostName <full_server_hostname>
+ IdentityFile ~/.ssh/<your_custom_ssh_key>
+ User <git_user>
+#---- example ---
+host github.com
+ HostName github.com
+ IdentityFile ~/.ssh/id_rsa_github
+ User git
+#----------------
+sudo chmod 400 ~/.ssh/<your_custom_ssh_key>
+Now you can clone repo
+```
