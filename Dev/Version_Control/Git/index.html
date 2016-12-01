@@ -931,6 +931,9 @@
         <li class="first-level "><a href="#logs">Logs</a></li>
         
     
+        <li class="first-level "><a href="#provide-separate-ssh-key">Provide separate ssh-key</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -1028,6 +1031,23 @@ vim .gitmodules
 
 <h3 id="logs">Logs</h3>
 <pre><code class="bash">git log --pretty=format:&quot;%h - %an, %ar : %s&quot; -1
+</code></pre>
+
+<h3 id="provide-separate-ssh-key">Provide separate ssh-key</h3>
+<pre><code class="bash">vim ~/.ssh/config
+#------ add ------
+host &lt;full_server_hostname&gt;
+ HostName &lt;full_server_hostname&gt;
+ IdentityFile ~/.ssh/&lt;your_custom_ssh_key&gt;
+ User &lt;git_user&gt;
+#---- example ---
+host github.com
+ HostName github.com
+ IdentityFile ~/.ssh/id_rsa_github
+ User git
+#----------------
+sudo chmod 400 ~/.ssh/&lt;your_custom_ssh_key&gt;
+Now you can clone repo
 </code></pre></div>
         
     </div>
