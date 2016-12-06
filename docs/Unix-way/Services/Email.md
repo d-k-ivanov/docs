@@ -14,7 +14,7 @@ ehlo example.com
 * Type mail from: username@example.com:
 ```bash
 mail from: username@example.com
-````
+```
 * Type rcpt to: friend@hotmail.com, friend2@yahoo.com (replace with your actual recipient name):
 ```bash
 rcpt to: friend@hotmail.com, friend2@yahoo.com
