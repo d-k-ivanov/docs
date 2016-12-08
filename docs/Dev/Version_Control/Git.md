@@ -33,6 +33,12 @@ git add .
 git commit -a -m "new commentary"
 git push -u origin master
 ```
+
+### Clean
+```bash
+git clean -d -x -f
+```
+
 ### Update local reposytory from remote
 ```bash
 # Fentch + Merge
