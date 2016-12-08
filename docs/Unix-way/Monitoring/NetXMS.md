@@ -103,7 +103,7 @@ LogFile = <path_to_netxms_prefix>/var/nxagentd.log
 #LogFile = /home/soft/netxms/var/nxagentd.log
 ---
 
-tou
+touch <path_to_log_files>
 #touch /home/soft/netxms/var/netxms.log
 #touch /home/soft/netxms/var/nxagentd.log
 
