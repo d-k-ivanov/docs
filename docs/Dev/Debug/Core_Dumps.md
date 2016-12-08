@@ -26,5 +26,5 @@ LimitCORE=infinity
 systemctl stop service-you-intersted-in
 systemctl start service-you-intersted-in
 
-# And don't forget to disable core dumpind when you don't need dumps any more
+# And don't forget to disable core dumping when you don't need dumps any more
 ```
