@@ -341,6 +341,16 @@
             "title": "Setup core dumps"
         }, 
         {
+            "location": "/Dev/Debug/GDB/", 
+            "text": "Analyse core dumps\n\n\n# run debugger with exe-you-intersted-in\ngdb \nexecutable\n\n\n# load core core dump\n(gdb) core \ncore_dump_file\n\n\n# use common gdb commands like:\nbacktrace", 
+            "title": "GDB"
+        }, 
+        {
+            "location": "/Dev/Debug/GDB/#analyse-core-dumps", 
+            "text": "# run debugger with exe-you-intersted-in\ngdb  executable \n\n# load core core dump\n(gdb) core  core_dump_file \n\n# use common gdb commands like:\nbacktrace", 
+            "title": "Analyse core dumps"
+        }, 
+        {
             "location": "/Dev/GCC/Make/", 
             "text": "Flags to configure\n\n\n/configure CFLAGS='-std=gnu89 -g -O2 -w' CXXFLAGS='-std=gnu++98 -g -O2 -w'", 
             "title": "Make"
