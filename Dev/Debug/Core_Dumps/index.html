@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Dev/Stress_tests/Ackerman_function/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Dev/Debug/Core_Dumps/"> 
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-    <title>Ackerman function - Technical Info</title>
+    <title>Core Dumps - Technical Info</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -279,8 +279,8 @@
     <ul class="dropdown-menu">
         
             
-<li >
-    <a href="../../Debug/Core_Dumps/">Core Dumps</a>
+<li class="active">
+    <a href="./">Core Dumps</a>
 </li>
 
         
@@ -420,8 +420,8 @@
     <ul class="dropdown-menu">
         
             
-<li class="active">
-    <a href="./">Ackerman function</a>
+<li >
+    <a href="../../Stress_tests/Ackerman_function/">Ackerman function</a>
 </li>
 
         
@@ -891,12 +891,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../../Ruby/Installation/">
+                        <a rel="next" href="../../Cmd/cmd/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../../Vbs/Kaspersky_Base_Actuality/">
+                        <a rel="prev" href="../../GCC/Make/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -919,57 +919,36 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#c">C</a></li>
-        
-    
-        <li class="first-level "><a href="#c_1">C++</a></li>
+        <li class="first-level active"><a href="#setup-core-dumps">Setup core dumps</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="c">C</h3>
-<pre><code class="c">#include &lt;stdio.h&gt;
+<h3 id="setup-core-dumps">Setup core dumps</h3>
+<pre><code class="bash"># Set core pattern to get files named like: core-bash-sig11-user0-group0-pid28808-time1481235929
+echo &quot;core-%e-sig%s-user%u-group%g-pid%p-time%t&quot; &gt; /proc/sys/kernel/core_pattern
 
-int ackermann(int m, int n)
-{
-   if (!m) return n + 1;
-   if (!n) return ackermann(m - 1, 1);
-   return ackermann(m - 1, ackermann(m, n - 1));
-}
+# Set limits for all users:
+vim /etc/security/limits.d/core.conf
+# --- contents ---
+*       hard        core        unlimited
+*       soft        core        unlimited
+# ----------------
 
-int main()
-{
-   int m, n;
-   for (m = 0; m &lt;= 4; m++)
-      for (n = 0; n &lt; 6 - m; n++)
-         printf(&quot;A(%d, %d) = %d\n&quot;, m, n, ackermann(m, n));
+# Enable DefaultCoreLimits for all systemd services:
+vim /etc/systemd/system.conf
+# Uncoment DefaultLimitCORE and set it to infinity:
+DefaultLimitCORE=infinity
 
-   return 0;
-}
-</code></pre>
+# (optional) Update only that service that you intersted in:
+vim /etc/systemd/system/service-you-intersted-in.service
+# --- Add following in [Service] section ---
+LimitCORE=infinity
+# ------------------------------------------
 
-<h3 id="c_1">C++</h3>
-<pre><code class="c++">#include &lt;iostream&gt;
-
-unsigned int ackermann(unsigned int m, unsigned int n) {
-  if (m == 0) {
-    return n + 1;
-  }
-  if (n == 0) {
-    return ackermann(m - 1, 1);
-  }
-  return ackermann(m - 1, ackermann(m, n - 1));
-}
-
-int main() {
-  for (unsigned int m = 0; m &lt; 4; ++m) {
-    for (unsigned int n = 0; n &lt; 30; ++n) {
-      std::cout &lt;&lt; &quot;A(&quot; &lt;&lt; m &lt;&lt; &quot;, &quot; &lt;&lt; n &lt;&lt; &quot;) = &quot; &lt;&lt; ackermann(m, n) &lt;&lt; &quot;\n&quot;;
-    }
-  }
-}
+# And don't forget to disable core dumpind when you don't need dumps any more
 </code></pre></div>
         
     </div>
