@@ -10,14 +10,14 @@ vim /etc/security/limits.d/core.conf
 *       soft        core        unlimited
 # ----------------
 
-# Enable DefaultCoreLimits for all systemd services:
+# (Optional) Enable DefaultCoreLimits for all systemd services:
 vim /etc/systemd/system.conf
 # Uncoment DefaultLimitCORE and set it to infinity:
 DefaultLimitCORE=infinity
 # Reload systemd
 systemctl daemon-reexec
 
-# (optional) Update only that service that you intersted in:
+# (Optional) Update only that service that you intersted in:
 vim /etc/systemd/system/service-you-intersted-in.service
 # --- Add following in [Service] section ---
 LimitCORE=infinity
