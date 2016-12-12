@@ -1095,87 +1095,66 @@ zabagent:2:once:/usr/sbin/zabbix_agentd --config /etc/zabbix_agentd.conf
 </code></pre>
 
 <h3 id="update-bos">Update BOS</h3>
-<ul>
-<li>Download SP and TL update</li>
-<li>Unpack update archive to NFS folder</li>
-<li>Mount NFS folder on target server</li>
-<li>Remove old standby BOS instance</li>
-</ul>
-<pre><code class="bash"># R - remove, p - preview (do not perform actual run)
+<pre><code class="bash"># Download SP and TL update
+# Unpack update archive to NFS folder
+# Mount NFS folder on target server
+mount &lt;nfs_server_name&gt;:/home/padmin /mnt/nfs
+
+# Remove old standby BOS instance
+# R - remove, p - preview (do not perform actual run)
 multibos -Rp
 multibos -R
-</code></pre>
 
-<ul>
-<li>Create new stanby BOS instance</li>
-</ul>
-<pre><code class="bash"># X - expand file system if needed, s - setup, p - preview (do not perform actual run)
+# Create new stanby BOS instance
+# X - expand file system if needed, s - setup, p - preview (do not perform actual run)
 multibos -Xsp
 multibos -Xs 
-</code></pre>
 
-<ul>
-<li>Check bootorder</li>
-</ul>
-<pre><code class="bash">bootlist -m normal -o
-</code></pre>
+# Check bootorder
+bootlist -m normal -o
 
-<ul>
-<li>Checking newly created BOS</li>
-</ul>
-<pre><code class="bash">multibos -S
+# Checking newly created BOS
+multibos -S
 MULTIBOS&gt; oslevel -s
 MULTIBOS&gt; exit
-</code></pre>
 
-<ul>
-<li>Update of newly created stanby BOS</li>
-</ul>
-<pre><code class="bash"># X - expand file system if needed, c - custamized update,  p - preview (do not perform actual run), l - location
+# Update of newly created stanby BOS
+# X - expand file system if needed, c - custamized update,  p - preview (do not perform actual run), l - location
 multibos -Xacp -l /mnt/nfs/update/
 multibos -Xac -l /mnt/nfs/update/
-</code></pre>
 
-<ul>
-<li>Checking updated BOS</li>
-</ul>
-<pre><code class="bash">multibos -S
+# Checking updated BOS
+multibos -S
 MULTIBOS&gt; oslevel -s
 MULTIBOS&gt; exit
-</code></pre>
 
-<ul>
-<li>Umount NFS folder</li>
-</ul>
-<pre><code class="bash">umount /mnt/nfs/
-</code></pre>
+# Umount NFS folder
+umount /mnt/nfs/
 
-<ul>
-<li>Making updated stanby BOS bootable in the first place</li>
-</ul>
-<pre><code class="bash">multibos -B
-</code></pre>
+# Making updated stanby BOS bootable in the first place
+multibos -B
 
-<ul>
-<li>Reeboot and check</li>
-</ul>
-<pre><code class="bash">shutdown -Fr
+# Reeboot and check
+shutdown -Fr
 bootinfo -v
 oslevel -s
-</code></pre>
 
-<ul>
-<li>If we don't like "bos_" prefix
-``bash
-Remove old BOS: multibos -R
-Making new clean BOS: multibos -sX
-Making new clean BOS bootable in the first palce: multibos -B
-Reboot: shutdown -Fr
-Checking that we booted in non-prefixed BOS: bootinfo -v
-Checking that everything is updated: oslevel -s
-Removing preficex BOS: multibos -R
-```</li>
-</ul></div>
+# If we don't like &quot;bos_&quot; prefix
+# Remove old BOS: 
+multibos -R
+# Making new clean BOS: 
+multibos -sX
+# Making new clean BOS bootable in the first palce: 
+multibos -B
+# Reboot: 
+shutdown -Fr
+# Checking that we booted in non-prefixed BOS: 
+bootinfo -v
+# Checking that everything is updated: 
+oslevel -s
+#Removing preficex BOS: 
+multibos -R
+</code></pre></div>
         
     </div>
 
