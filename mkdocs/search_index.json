@@ -1806,6 +1806,26 @@
             "title": "Pcap repository (-C filesize in MBytes, -W number of files, -G time in seconds, %s timestamp)"
         }, 
         {
+            "location": "/Unix-way/Packages/PIP/", 
+            "text": "Install\n\n\npip install \npackage_name\n\npip3 install \npackage_name\n\n\n\n\n\nUpdate\n\n\npip install -U \npackage_name\n\npip3 install -U \npackage_name\n\n\n\n\n\nUpdate all\n\n\npip freeze --local | grep -v '^\\-e' | cut -d = -f 1  | xargs -n1 pip install -U\npip3 freeze --local | grep -v '^\\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U", 
+            "title": "PIP"
+        }, 
+        {
+            "location": "/Unix-way/Packages/PIP/#install", 
+            "text": "pip install  package_name \npip3 install  package_name", 
+            "title": "Install"
+        }, 
+        {
+            "location": "/Unix-way/Packages/PIP/#update", 
+            "text": "pip install -U  package_name \npip3 install -U  package_name", 
+            "title": "Update"
+        }, 
+        {
+            "location": "/Unix-way/Packages/PIP/#update-all", 
+            "text": "pip freeze --local | grep -v '^\\-e' | cut -d = -f 1  | xargs -n1 pip install -U\npip3 freeze --local | grep -v '^\\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U", 
+            "title": "Update all"
+        }, 
+        {
             "location": "/Unix-way/Security/FirewallD/", 
             "text": "FirewallD Status\n\n\nfirewall-cmd --state\n\nfirewall-cmd --list-all\n\n# Reload configuration                                                                              \nfirewall-cmd --reload\n\n\n\n\nGet security zones\n\n\nfirewall-cmd --get-zones\nfirewall-cmd --get-default-zone\nfirewall-cmd --get-active-zones\nfirewall-cmd --list-all-zones\nfirewall-cmd --set-default-zone=\nzone_name\n\nfirewall-cmd --get-zone-of-interface=\nnetwork_interface_name\n\n\n\n\n\nGet ICMP types\n\n\nfirewall-cmd --get-icmptypes\n\n\n\n\nServices\n\n\nfirewall-cmd --get-services\n\n# List default services\nls -la  /usr/lib/firewalld/services/\n\n# Add service\nfirewall-cmd --add-service=\nservice_name\n\nfirewall-cmd --add-service=\nservice_name\n --permanent\n\n# Remove service\nfirewall-cmd --zone=\nzone_name\n --remove-service=\nservice_name\n\n\n\n\n\nRules\n\n\nfirewall-cmd --permanent --add-source=\nsubnet\n\nfirewall-cmd --permanent --add-port=\nport\n/\nprotocol", 
             "title": "FirewallD"

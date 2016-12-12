@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Unix-way/Security/FirewallD/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Unix-way/Packages/PIP/"> 
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-    <title>FirewallD - Technical Info</title>
+    <title>PIP - Technical Info</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -714,8 +714,8 @@
     <ul class="dropdown-menu">
         
             
-<li >
-    <a href="../../Packages/PIP/">PIP</a>
+<li class="active">
+    <a href="./">PIP</a>
 </li>
 
         
@@ -729,38 +729,38 @@
     <ul class="dropdown-menu">
         
             
-<li class="active">
-    <a href="./">FirewallD</a>
+<li >
+    <a href="../../Security/FirewallD/">FirewallD</a>
 </li>
 
         
             
 <li >
-    <a href="../HSM/">HSM</a>
+    <a href="../../Security/HSM/">HSM</a>
 </li>
 
         
             
 <li >
-    <a href="../IPTables/">IPTables</a>
+    <a href="../../Security/IPTables/">IPTables</a>
 </li>
 
         
             
 <li >
-    <a href="../OpenSSL/">OpenSSL</a>
+    <a href="../../Security/OpenSSL/">OpenSSL</a>
 </li>
 
         
             
 <li >
-    <a href="../PF/">PF</a>
+    <a href="../../Security/PF/">PF</a>
 </li>
 
         
             
 <li >
-    <a href="../SELinux/">SELinux</a>
+    <a href="../../Security/SELinux/">SELinux</a>
 </li>
 
         
@@ -912,12 +912,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../../Packages/PIP/">
+                        <a rel="next" href="../../Network/tcpdump/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../HSM/">
+                        <a rel="prev" href="../../Security/FirewallD/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -940,64 +940,32 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#firewalld-status">FirewallD Status</a></li>
+        <li class="first-level active"><a href="#install">Install</a></li>
         
     
-        <li class="first-level "><a href="#get-security-zones">Get security zones</a></li>
+        <li class="first-level "><a href="#update">Update</a></li>
         
     
-        <li class="first-level "><a href="#get-icmp-types">Get ICMP types</a></li>
-        
-    
-        <li class="first-level "><a href="#services">Services</a></li>
-        
-    
-        <li class="first-level "><a href="#rules">Rules</a></li>
+        <li class="first-level "><a href="#update-all">Update all</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="firewalld-status">FirewallD Status</h3>
-<pre><code class="bash">firewall-cmd --state
-
-firewall-cmd --list-all
-
-# Reload configuration                                                                              
-firewall-cmd --reload
+<h3 id="install">Install</h3>
+<pre><code class="bash">pip install &lt;package_name&gt;
+pip3 install &lt;package_name&gt;
 </code></pre>
 
-<h3 id="get-security-zones">Get security zones</h3>
-<pre><code class="bash">firewall-cmd --get-zones
-firewall-cmd --get-default-zone
-firewall-cmd --get-active-zones
-firewall-cmd --list-all-zones
-firewall-cmd --set-default-zone=&lt;zone_name&gt;
-firewall-cmd --get-zone-of-interface=&lt;network_interface_name&gt;
+<h3 id="update">Update</h3>
+<pre><code class="bash">pip install -U &lt;package_name&gt;
+pip3 install -U &lt;package_name&gt;
 </code></pre>
 
-<h3 id="get-icmp-types">Get ICMP types</h3>
-<pre><code class="bash">firewall-cmd --get-icmptypes
-</code></pre>
-
-<h3 id="services">Services</h3>
-<pre><code class="bash">firewall-cmd --get-services
-
-# List default services
-ls -la  /usr/lib/firewalld/services/
-
-# Add service
-firewall-cmd --add-service=&lt;service_name&gt;
-firewall-cmd --add-service=&lt;service_name&gt; --permanent
-
-# Remove service
-firewall-cmd --zone=&lt;zone_name&gt; --remove-service=&lt;service_name&gt;
-</code></pre>
-
-<h3 id="rules">Rules</h3>
-<pre><code class="bash">firewall-cmd --permanent --add-source=&lt;subnet&gt;
-firewall-cmd --permanent --add-port=&lt;port&gt;/&lt;protocol&gt;
+<h3 id="update-all">Update all</h3>
+<pre><code class="bash">pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
+pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U
 </code></pre></div>
         
     </div>
