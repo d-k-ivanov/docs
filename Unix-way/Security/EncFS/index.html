@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Unix-way/Userspace/WINE/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Unix-way/Security/EncFS/"> 
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-    <title>WINE - Technical Info</title>
+    <title>EncFS - Technical Info</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -729,44 +729,44 @@
     <ul class="dropdown-menu">
         
             
-<li >
-    <a href="../../Security/EncFS/">EncFS</a>
+<li class="active">
+    <a href="./">EncFS</a>
 </li>
 
         
             
 <li >
-    <a href="../../Security/FirewallD/">FirewallD</a>
+    <a href="../FirewallD/">FirewallD</a>
 </li>
 
         
             
 <li >
-    <a href="../../Security/HSM/">HSM</a>
+    <a href="../HSM/">HSM</a>
 </li>
 
         
             
 <li >
-    <a href="../../Security/IPTables/">IPTables</a>
+    <a href="../IPTables/">IPTables</a>
 </li>
 
         
             
 <li >
-    <a href="../../Security/OpenSSL/">OpenSSL</a>
+    <a href="../OpenSSL/">OpenSSL</a>
 </li>
 
         
             
 <li >
-    <a href="../../Security/PF/">PF</a>
+    <a href="../PF/">PF</a>
 </li>
 
         
             
 <li >
-    <a href="../../Security/SELinux/">SELinux</a>
+    <a href="../SELinux/">SELinux</a>
 </li>
 
         
@@ -847,19 +847,19 @@
         
             
 <li >
-    <a href="../Skype/">Skype</a>
-</li>
-
-        
-            
-<li class="active">
-    <a href="./">WINE</a>
+    <a href="../../Userspace/Skype/">Skype</a>
 </li>
 
         
             
 <li >
-    <a href="../X/">X</a>
+    <a href="../../Userspace/WINE/">WINE</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Userspace/X/">X</a>
 </li>
 
         
@@ -918,12 +918,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../Skype/">
+                        <a rel="next" href="../../Packages/PIP/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../X/">
+                        <a rel="prev" href="../FirewallD/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -946,15 +946,30 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#start">Start</a></li>
+        <li class="first-level active"><a href="#encryption">Encryption</a></li>
+        
+    
+        <li class="first-level "><a href="#mount">Mount</a></li>
+        
+    
+        <li class="first-level "><a href="#unmount">Unmount</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="start">Start</h3>
-<pre><code>WINEARCH=&lt;wine32_or_wine64&gt; WINEPREFIX=/home/wine/&lt;custom_prefix&gt; wine &lt;path_to_executable&gt;
+<h3 id="encryption">Encryption</h3>
+<pre><code class="bash">encfs &lt;full_path_to_future_encrypted_folder&gt; &lt;full_path_to_future_unencrypted_folder&gt;
+# Choose methods and password (for methods simle choose p to get paranoic options)
+</code></pre>
+
+<h3 id="mount">Mount</h3>
+<pre><code class="bash">encfs &lt;full_path_to_future_encrypted_folder&gt; &lt;full_path_to_future_unencrypted_folder&gt;
+</code></pre>
+
+<h3 id="unmount">Unmount</h3>
+<pre><code class="bash">fusermount -u &lt;full_path_to_future_unencrypted_folder&gt;
 </code></pre></div>
         
     </div>
