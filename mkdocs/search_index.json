@@ -1347,7 +1347,7 @@
         },
         {
             "location": "/OS/RHEL/",
-            "text": "Yum\n\n\n# Search for software\nyum search <pattern>\n# Install package\nyum install <package_name>\n# Repair \"Error: database disk image is malformed\"\nyum clean dbcache\n# Clean all yum cache\nyum clean all\n\n# Remove packages with dependencies:\n#add \"clean_requirements_on_remove=1\" to /etc/yum.conf\n\n\n\n\nEPEL repository\n\n\n# RHEL-based version 7 (two options)\nrpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm\nyum insall epel-release\n\n# RHEL-based version 7\nrpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm\n\n# RHEL-based version 7\nrpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm",
+            "text": "Yum\n\n\n# Search for software\nyum search <pattern>\n# Install package\nyum install <package_name>\n# Repair \"Error: database disk image is malformed\"\nyum clean dbcache\n# Clean all yum cache\nyum clean all\n\n# Remove packages with dependencies:\n#add \"clean_requirements_on_remove=1\" to /etc/yum.conf\n\n\n\n\nEPEL repository\n\n\n# RHEL-based version 7 (two options)\nrpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm\nyum insall epel-release\n\n# RHEL-based version 6\nrpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm\n\n# RHEL-based version 5\nrpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm",
             "title": "RHEL"
         },
         {
@@ -1357,7 +1357,7 @@
         },
         {
             "location": "/OS/RHEL/#epel-repository",
-            "text": "# RHEL-based version 7 (two options)\nrpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm\nyum insall epel-release\n\n# RHEL-based version 7\nrpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm\n\n# RHEL-based version 7\nrpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm",
+            "text": "# RHEL-based version 7 (two options)\nrpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm\nyum insall epel-release\n\n# RHEL-based version 6\nrpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm\n\n# RHEL-based version 5\nrpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm",
             "title": "EPEL repository"
         },
         {
