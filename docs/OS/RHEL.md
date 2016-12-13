@@ -1,3 +1,6 @@
+> This section describes work with RHEL-based Linux distributives like:
+> Red Hat Enterprise Linux, Oracle Linux, CentOS Linux, Scientific Linux, Fermi Linux, ROSA Linux, CERN Linux
+
 ### Yum
 ```bash
 # Search for software

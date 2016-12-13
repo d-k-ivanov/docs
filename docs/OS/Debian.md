@@ -1,3 +1,5 @@
+> This section describes work with Debian-based Linux distributives like:
+> Debian Linux, Ubuntu Linux, Astra Linux, Linux Mint
 
 ### Apt
 ```bash
