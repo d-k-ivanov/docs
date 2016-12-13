@@ -1312,7 +1312,7 @@
         },
         {
             "location": "/OS/Debian/",
-            "text": "Apt\n\n\n# Show installed packages\napt --installed list\n# Search for software\napt-cache search <pattern>\n# Install package\napt-get install <package_name>\n\n\n\n\nDpkg\n\n\n# To get a list of packages installed locally do this in your terminal:\ndpkg --get-selections | grep -v deinstall\n# To get a list of a specific package installed:\ndpkg --get-selections | grep postgres\n# To save that list to a text file called packages on your desktop do this in your terminal:\ndpkg --get-selections | grep -v deinstall > ~/Desktop/packages\n# Alternatively, simply use\ndpkg -l",
+            "text": "This section describes work with Debian-based Linux distributives like:\nDebian Linux, Ubuntu Linux, Astra Linux, Linux Mint\n\n\n\n\nApt\n\n\n# Show installed packages\napt --installed list\n# Search for software\napt-cache search <pattern>\n# Install package\napt-get install <package_name>\n\n\n\n\nDpkg\n\n\n# To get a list of packages installed locally do this in your terminal:\ndpkg --get-selections | grep -v deinstall\n# To get a list of a specific package installed:\ndpkg --get-selections | grep postgres\n# To save that list to a text file called packages on your desktop do this in your terminal:\ndpkg --get-selections | grep -v deinstall > ~/Desktop/packages\n# Alternatively, simply use\ndpkg -l",
             "title": "Debian"
         },
         {
@@ -1347,7 +1347,7 @@
         },
         {
             "location": "/OS/RHEL/",
-            "text": "Yum\n\n\n# Search for software\nyum search <pattern>\n# Install package\nyum install <package_name>\n# Repair \"Error: database disk image is malformed\"\nyum clean dbcache\n# Clean all yum cache\nyum clean all\n\n# Remove packages with dependencies:\n#add \"clean_requirements_on_remove=1\" to /etc/yum.conf\n\n\n\n\nEPEL repository\n\n\n# RHEL-based version 7 (two options)\nrpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm\nyum insall epel-release\n\n# RHEL-based version 6\nrpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm\n\n# RHEL-based version 5\nrpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm",
+            "text": "This section describes work with RHEL-based Linux distributives like:\nRed Hat Enterprise Linux, Oracle Linux, CentOS Linux, Scientific Linux, Fermi Linux, ROSA Linux, CERN Linux\n\n\n\n\nYum\n\n\n# Search for software\nyum search <pattern>\n# Install package\nyum install <package_name>\n# Repair \"Error: database disk image is malformed\"\nyum clean dbcache\n# Clean all yum cache\nyum clean all\n\n# Remove packages with dependencies:\n#add \"clean_requirements_on_remove=1\" to /etc/yum.conf\n\n\n\n\nEPEL repository\n\n\n# RHEL-based version 7 (two options)\nrpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm\nyum insall epel-release\n\n# RHEL-based version 6\nrpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm\n\n# RHEL-based version 5\nrpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm",
             "title": "RHEL"
         },
         {
