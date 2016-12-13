@@ -1857,12 +1857,12 @@
         },
         {
             "location": "/Unix-way/Security/EncFS/",
-            "text": "Encryption\n\n\nencfs <full_path_to_future_encrypted_folder> <full_path_to_future_unencrypted_folder>\n# Choose methods and password (for methods simle choose p to get paranoic options)\n\n\n\n\nMount\n\n\nencfs <full_path_to_future_encrypted_folder> <full_path_to_future_unencrypted_folder>\n\n\n\n\nUnmount\n\n\nfusermount -u <full_path_to_future_unencrypted_folder>",
+            "text": "Encryption\n\n\nencfs <full_path_to_future_encrypted_folder> <full_path_to_future_unencrypted_folder>\n# Choose methods and password (for methods simple choose 'p' to get paranoic options)\n\n\n\n\nMount\n\n\nencfs <full_path_to_future_encrypted_folder> <full_path_to_future_unencrypted_folder>\n\n\n\n\nUnmount\n\n\nfusermount -u <full_path_to_future_unencrypted_folder>",
             "title": "EncFS"
         },
         {
             "location": "/Unix-way/Security/EncFS/#encryption",
-            "text": "encfs <full_path_to_future_encrypted_folder> <full_path_to_future_unencrypted_folder>\n# Choose methods and password (for methods simle choose p to get paranoic options)",
+            "text": "encfs <full_path_to_future_encrypted_folder> <full_path_to_future_unencrypted_folder>\n# Choose methods and password (for methods simple choose 'p' to get paranoic options)",
             "title": "Encryption"
         },
         {
