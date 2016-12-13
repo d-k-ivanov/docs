@@ -1451,6 +1451,16 @@
             "title": "Moves"
         },
         {
+            "location": "/Unix-way/Backup/Veeam/",
+            "text": "PowerShell script to perform scheduled backup on free version of Veeam\n\n\n& \"C:\\Program Files\\Veeam\\Backup and Replication\\Backup\\Initialize-VeeamToolkit.ps1\" \n#\nSet-Variable -name 1 -value \"<ESXi(orVsphere)_server_address>\" \nSet-Variable -name STORAGE_REPO -value \"<name_of_predefined_veeam_storage_ropository>\" \n#\nFind-VBRViEntity -Name \"name_of_virtual_machine_here\" | Start-VBRZip -BackupRepository $STORAGE_REPO -RunAsync -AutoDelete In1Week -DisableQuiesce",
+            "title": "Veeam"
+        },
+        {
+            "location": "/Unix-way/Backup/Veeam/#powershell-script-to-perform-scheduled-backup-on-free-version-of-veeam",
+            "text": "& \"C:\\Program Files\\Veeam\\Backup and Replication\\Backup\\Initialize-VeeamToolkit.ps1\" \n#\nSet-Variable -name 1 -value \"<ESXi(orVsphere)_server_address>\" \nSet-Variable -name STORAGE_REPO -value \"<name_of_predefined_veeam_storage_ropository>\" \n#\nFind-VBRViEntity -Name \"name_of_virtual_machine_here\" | Start-VBRZip -BackupRepository $STORAGE_REPO -RunAsync -AutoDelete In1Week -DisableQuiesce",
+            "title": "PowerShell script to perform scheduled backup on free version of Veeam"
+        },
+        {
             "location": "/Unix-way/Common/Audit/",
             "text": "Why is my server rebooted?\n\n\nlast reboot \nsudo lastcomm | egrep 'reboot|shutdown'\nwho -b\nsa\ncrontab -e\nless /var/log/secure\nlast -x | less\nlast -x | grep shutdown | less\nless /var/log/messages\njournalctl\nutmpdump /var/log/wtmp | egrep 'shutdown|reboot|runlevel'\njournalctl --since=\"2016-6-28 12:00:00\"\n\n\n\n\nFork: Resource temporarily unavailable on AIX\n\n\nTo investigate the promles you need to run thei bunch of commands:\n\n\ncat /etc/passwd\n\n\n\n\nFrom root you need to look at limint of every active user:\n\n\nulimit -a\nsu oracle -c \"ulimit -a\"\nsu mongod -c \"ulimit -a\"\nsu userX -c \"ulimit -a\"\n\n\n\n\nLook at system wide defined limits:\n\n\ncat /etc/security/limits\n\n\n\n\nLook at kernel parameters, especially on \nmaxuproc\n\n\nlsattr -El sys0\n\n\n\n\nLook at count of running processes by user:\n\n\nps -f -l -uroot | wc -l\nps -f -l -uoracle | wc -l\nps -f -l -umongod | wc -l\nps -f -l -uuserX | wc -l\n\n\n\n\nAnd after all look at avaible mamory and swap:\n\n\nsvmon -G -O unit=MB",
             "title": "Audit"

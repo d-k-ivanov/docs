@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Unix-way/Network/Common/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Unix-way/Backup/Veeam/"> 
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-    <title>Common - Technical Info</title>
+    <title>Veeam - Technical Info</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -550,19 +550,19 @@
         
             
 <li >
-    <a href="../../Backup/TSM/">TSM</a>
+    <a href="../TSM/">TSM</a>
 </li>
 
         
             
 <li >
-    <a href="../../Backup/Tape/">Tape</a>
+    <a href="../Tape/">Tape</a>
 </li>
 
         
             
-<li >
-    <a href="../../Backup/Veeam/">Veeam</a>
+<li class="active">
+    <a href="./">Veeam</a>
 </li>
 
         
@@ -687,32 +687,32 @@
     <ul class="dropdown-menu">
         
             
-<li class="active">
-    <a href="./">Common</a>
+<li >
+    <a href="../../Network/Common/">Common</a>
 </li>
 
         
             
 <li >
-    <a href="../Ports/">Ports</a>
+    <a href="../../Network/Ports/">Ports</a>
 </li>
 
         
             
 <li >
-    <a href="../SNMP/">SNMP</a>
+    <a href="../../Network/SNMP/">SNMP</a>
 </li>
 
         
             
 <li >
-    <a href="../WiFi/">WiFi</a>
+    <a href="../../Network/WiFi/">WiFi</a>
 </li>
 
         
             
 <li >
-    <a href="../tcpdump/">Tcpdump</a>
+    <a href="../../Network/tcpdump/">Tcpdump</a>
 </li>
 
         
@@ -930,12 +930,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../../Monitoring/NetXMS/">
+                        <a rel="next" href="../Tape/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../Ports/">
+                        <a rel="prev" href="../../Common/Audit/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -958,30 +958,20 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#networkmanager-show-connection-info">NetworkManager: show connection info</a></li>
-        
-    
-        <li class="first-level "><a href="#check-own-ip-address">Check own IP address</a></li>
-        
-    
-        <li class="first-level "><a href="#share-current-folder-over-http">Share current folder over HTTP</a></li>
+        <li class="first-level active"><a href="#powershell-script-to-perform-scheduled-backup-on-free-version-of-veeam">PowerShell script to perform scheduled backup on free version of Veeam</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="networkmanager-show-connection-info">NetworkManager: show connection info</h3>
-<pre><code class="bash">nmcli device show eth0
-</code></pre>
-
-<h3 id="check-own-ip-address">Check own IP address</h3>
-<pre><code class="bash">curl -s checkip.dyndns.org
-</code></pre>
-
-<h3 id="share-current-folder-over-http">Share current folder over HTTP</h3>
-<pre><code class="bash">python2 -m SimpleHTTPServer 8080
-python3 -mhttp.server 8080
+<h3 id="powershell-script-to-perform-scheduled-backup-on-free-version-of-veeam">PowerShell script to perform scheduled backup on free version of Veeam</h3>
+<pre><code class="powershell">&amp; &quot;C:\Program Files\Veeam\Backup and Replication\Backup\Initialize-VeeamToolkit.ps1&quot; 
+#
+Set-Variable -name 1 -value &quot;&lt;ESXi(orVsphere)_server_address&gt;&quot; 
+Set-Variable -name STORAGE_REPO -value &quot;&lt;name_of_predefined_veeam_storage_ropository&gt;&quot; 
+#
+Find-VBRViEntity -Name &quot;name_of_virtual_machine_here&quot; | Start-VBRZip -BackupRepository $STORAGE_REPO -RunAsync -AutoDelete In1Week -DisableQuiesce
 </code></pre></div>
         
     </div>
