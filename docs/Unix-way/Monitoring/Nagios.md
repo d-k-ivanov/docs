@@ -5,9 +5,9 @@
 ```powershell
 $exe = 'C:\Program Files\NSClient++\check_tcp.exe'
 $arg1 = '-H'
-$arg2 = '10.1.1.6'
+$arg2 = '<place_remote_host_ip_here'
 $arg3 = '-p'
-$arg4 = '51000'
+$arg4 = '<place_remote_tcp_port_here>'
 $arg5 = '-w'
 $arg6 = '100'
 $arg7 = '-c'
