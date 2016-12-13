@@ -949,6 +949,9 @@
         <li class="first-level active"><a href="#yum">Yum</a></li>
         
     
+        <li class="first-level "><a href="#epel-repository">EPEL repository</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -965,7 +968,18 @@ yum clean all
 
 # Remove packages with dependencies:
 #add &quot;clean_requirements_on_remove=1&quot; to /etc/yum.conf
+</code></pre>
 
+<h3 id="epel-repository">EPEL repository</h3>
+<pre><code class="bash"># RHEL-based version 7 (two options)
+rpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+yum insall epel-release
+
+# RHEL-based version 7
+rpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+
+# RHEL-based version 7
+rpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm
 </code></pre></div>
         
     </div>
