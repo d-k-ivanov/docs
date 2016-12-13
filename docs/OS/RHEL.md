@@ -19,10 +19,10 @@ yum clean all
 rpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 yum insall epel-release
 
-# RHEL-based version 7
+# RHEL-based version 6
 rpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
 
-# RHEL-based version 7
+# RHEL-based version 5
 rpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm
 ```
 
