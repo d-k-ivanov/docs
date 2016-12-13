@@ -1,8 +1,11 @@
-### Check TCP port from remote Windows PC
-> Many thanks to my friend Alex for this information
+### Convert Nagios server logs to human-readable format
+```bash
+cat <path_to_nagios_log_file> | perl -pe 's/(\d+)/localtime($1)/e'
+``` 
 
-1. Download [*check_tcp.exe*](https://exchange.nagios.org/components/com_mtree/attachment.php?link_id=892&cf_id=24) to C:\Program Files\NSClient++\
-2. Create PowerShell external script - *check_tcp_port* :
+### Check TCP port from remote Windows PC
+* Download [*check_tcp.exe*](https://exchange.nagios.org/components/com_mtree/attachment.php?link_id=892&cf_id=24) to C:\Program Files\NSClient++\
+* Create PowerShell external script - *check_tcp_port* :
 ```powershell
 $exe = 'C:\Program Files\NSClient++\check_tcp.exe'
 $arg1 = '-H'
@@ -25,7 +28,7 @@ $process.WaitForExit()
 $process.StandardOutput.ReadToEnd()
 exit $process.ExitCode  
 ```
-3. Make a record in Nagion Agent configuration file:
+* Make a record in Nagion Agent configuration file:
 ```bash
 [/settings/external scripts/scripts]
 check_tcp_port =  cmd /c echo scripts\check_tcp_mq.ps1; exit($lastexitcode) | powershell.exe -command -
