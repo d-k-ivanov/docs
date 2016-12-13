@@ -972,6 +972,15 @@ Set-Variable -name 1 -value &quot;&lt;ESXi(orVsphere)_server_address&gt;&quot;
 Set-Variable -name STORAGE_REPO -value &quot;&lt;name_of_predefined_veeam_storage_ropository&gt;&quot; 
 #
 Find-VBRViEntity -Name &quot;name_of_virtual_machine_here&quot; | Start-VBRZip -BackupRepository $STORAGE_REPO -RunAsync -AutoDelete In1Week -DisableQuiesce
+
+# Outpul example:
+# PS C:\Users\monitor&gt; Set-Variable -name 1 -value &quot;192.168.168.100&quot;
+# PS C:\Users\monitor&gt; Set-Variable -name DISKF -value &quot;DISK_F_HUGE&quot;
+# PS C:\Users\monitor&gt; Find-VBRViEntity -Name &quot;SUPERSERVER-01&quot; | Start-VBRZip -BackupRepository $DISKF -RunAsync -AutoDelete In1Week -DisableQuiesce
+#
+#Job Name             State      Start Time             End Time               Result
+#--------             -----      ----------             --------               ------
+#SUPERSERVER-01_2016-1... Starting   13.12.2016 15:42:08    01.01.1900 0:00:00     None       
 </code></pre></div>
         
     </div>
