@@ -20,6 +20,7 @@
 
 ### Show queue
 ```bash
+mqilq
 postqueue -p
 ```
 
