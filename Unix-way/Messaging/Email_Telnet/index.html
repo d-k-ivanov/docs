@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Unix-way/Services/Email/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Unix-way/Messaging/Email_Telnet/"> 
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-    <title>Email - Technical Info</title>
+    <title>Email Telnet - Technical Info</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -662,6 +662,33 @@
                         
                             
   <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Messaging</a>
+    <ul class="dropdown-menu">
+        
+            
+<li class="active">
+    <a href="./">Email Telnet</a>
+</li>
+
+        
+            
+<li >
+    <a href="../Postfix/">Postfix</a>
+</li>
+
+        
+            
+<li >
+    <a href="../SMS/">SMS</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
     <a tabindex="-1" href="">Monitoring</a>
     <ul class="dropdown-menu">
         
@@ -779,27 +806,6 @@
             
 <li >
     <a href="../../Security/SELinux/">SELinux</a>
-</li>
-
-        
-    </ul>
-  </li>
-
-                        
-                            
-  <li class="dropdown-submenu">
-    <a tabindex="-1" href="">Services</a>
-    <ul class="dropdown-menu">
-        
-            
-<li class="active">
-    <a href="./">Email</a>
-</li>
-
-        
-            
-<li >
-    <a href="../SMS/">SMS</a>
 </li>
 
         
@@ -930,12 +936,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../../Security/SELinux/">
+                        <a rel="next" href="../../Management/Remote_management/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../SMS/">
+                        <a rel="prev" href="../Postfix/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -958,21 +964,17 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#telnet-commands">Telnet commands</a></li>
+        <li class="first-level active"><a href="#send-email">Send email</a></li>
         
-            <li class="second-level"><a href="#how-to-send-email-using-telnet">How to send email using telnet</a></li>
-            
-        
-            <li class="second-level"><a href="#how-to-check-or-read-email-with-telnet">How to check or read email with telnet</a></li>
-            
+    
+        <li class="first-level "><a href="#how-to-check-or-read-email">How to check or read email</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h2 id="telnet-commands">Telnet commands</h2>
-<h3 id="how-to-send-email-using-telnet">How to send email using telnet</h3>
+<h3 id="send-email">Send email</h3>
 <p>Original at <a href="https://mediatemple.net/community/products/dv/204404584/sending-or-viewing-emails-using-telnet">Mediatemple</a></p>
 <blockquote>
 <p>TIP: We use the domain example.com as an example. Be sure to replace with your own domain.</p>
@@ -1023,7 +1025,7 @@ Me
 <pre><code class="bash">quit
 </code></pre>
 
-<h3 id="how-to-check-or-read-email-with-telnet">How to check or read email with telnet</h3>
+<h3 id="how-to-check-or-read-email">How to check or read email</h3>
 <p>Original at  <a href="https://mediatemple.net/community/products/dv/204404584/sending-or-viewing-emails-using-telnet">Mediatemple</a>
 * Open your command prompt. At the command prompt, type in</p>
 <pre><code class="bash">telnet example.com 110

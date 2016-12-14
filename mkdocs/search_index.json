@@ -1656,6 +1656,66 @@
             "title": "XfreeRDP"
         },
         {
+            "location": "/Unix-way/Messaging/Email_Telnet/",
+            "text": "Send email\n\n\nOriginal at \nMediatemple\n\n\n\n\nTIP: We use the domain example.com as an example. Be sure to replace with your own domain.\n\n\n\n\n\n\nOpen your command prompt. Now, connect with telnet using the following command:\n\n\n\n\ntelnet example.com 25\n\n\n\n\n\n\nType ehlo example.com. Some servers also accept helo in place of ehlo.\n\n\n\n\nehlo example.com\n\n\n\n\n\n\nType mail from: username@example.com:\n\n\n\n\nmail from: username@example.com\n\n\n\n\n\n\nType rcpt to: friend@hotmail.com, friend2@yahoo.com (replace with your actual recipient name):\n\n\n\n\nrcpt to: friend@hotmail.com, friend2@yahoo.com\n\n\n\n\n\n\nTo write the message - type data, followed by your subject and message. To end the message, put a period on a line by itself and press enter:\n\n\n\n\ndata\nSubject: My Telnet Test Email\n\nHello,\n\nThis is an email sent by using the telnet command.\n\nYour friend,\nMe\n\n.\n\n\n\n\n\n\nType quit to exit telnet.\n\n\n\n\nquit\n\n\n\n\nHow to check or read email\n\n\nOriginal at  \nMediatemple\n\n* Open your command prompt. At the command prompt, type in\n\n\ntelnet example.com 110\n\n\n\n\n\n\nType user and the email address (username@example.com) of the user for which you wish to view emails:\n\n\n\n\nuser username@example.com\n\n\n\n\n\n\nThen type in pass followed by your password:\n\n\n\n\npass yourpasswordgoeshere\n\n\n\n\n\n\nType list to bring up a list of your emails:\n\n\n\n\nlist\n\n\n\n\n\n\nYou will see a list of items with labels like \"1 897\" and \"2 5136.\" Here is an example:\n\n\n\n\nlist\n+OK POP3 clients that break here, they violate STD53.\n1 897\n2 5136\n3 1884\n4 2973\n5 2595\n6 3063\n7 3509\n8 2283\n9 1926\n10 2763\n11 1795\n12 2780\n13 2342\n14 2342\n15 2342\n16 3833\n17 2211\n18 793\n19 797\n20 2599\n.\n\n\n\n\n\n\nIf you wish to read an email message such as 2 5136, you can type the following:\n\n\n\n\nretr 2 \n\n\n\n\n\n\nIf you want to delete a message such as 1 897, type dele 1:\n\n\n\n\ndele 1\n\n\n\n\n\n\nWhen you are done checking your email, type quit.\n\n\n\n\nquit",
+            "title": "Email Telnet"
+        },
+        {
+            "location": "/Unix-way/Messaging/Email_Telnet/#send-email",
+            "text": "Original at  Mediatemple   TIP: We use the domain example.com as an example. Be sure to replace with your own domain.    Open your command prompt. Now, connect with telnet using the following command:   telnet example.com 25   Type ehlo example.com. Some servers also accept helo in place of ehlo.   ehlo example.com   Type mail from: username@example.com:   mail from: username@example.com   Type rcpt to: friend@hotmail.com, friend2@yahoo.com (replace with your actual recipient name):   rcpt to: friend@hotmail.com, friend2@yahoo.com   To write the message - type data, followed by your subject and message. To end the message, put a period on a line by itself and press enter:   data\nSubject: My Telnet Test Email\n\nHello,\n\nThis is an email sent by using the telnet command.\n\nYour friend,\nMe\n\n.   Type quit to exit telnet.   quit",
+            "title": "Send email"
+        },
+        {
+            "location": "/Unix-way/Messaging/Email_Telnet/#how-to-check-or-read-email",
+            "text": "Original at   Mediatemple \n* Open your command prompt. At the command prompt, type in  telnet example.com 110   Type user and the email address (username@example.com) of the user for which you wish to view emails:   user username@example.com   Then type in pass followed by your password:   pass yourpasswordgoeshere   Type list to bring up a list of your emails:   list   You will see a list of items with labels like \"1 897\" and \"2 5136.\" Here is an example:   list\n+OK POP3 clients that break here, they violate STD53.\n1 897\n2 5136\n3 1884\n4 2973\n5 2595\n6 3063\n7 3509\n8 2283\n9 1926\n10 2763\n11 1795\n12 2780\n13 2342\n14 2342\n15 2342\n16 3833\n17 2211\n18 793\n19 797\n20 2599\n.   If you wish to read an email message such as 2 5136, you can type the following:   retr 2    If you want to delete a message such as 1 897, type dele 1:   dele 1   When you are done checking your email, type quit.   quit",
+            "title": "How to check or read email"
+        },
+        {
+            "location": "/Unix-way/Messaging/Postfix/",
+            "text": "Show configuration\n\n\n~ # postconf\n\n\n\n\nShow only non-default values\n\n\n~ # postconf -n\n\n\n\n\nDisplay all default values\n\n\n~ # postconf -d\n\n\n\n\nList map lookup types\n\n\n~ # postconf -m\n\n\n\n\nShow queue\n\n\npostqueue -p",
+            "title": "Postfix"
+        },
+        {
+            "location": "/Unix-way/Messaging/Postfix/#show-configuration",
+            "text": "~ # postconf",
+            "title": "Show configuration"
+        },
+        {
+            "location": "/Unix-way/Messaging/Postfix/#show-only-non-default-values",
+            "text": "~ # postconf -n",
+            "title": "Show only non-default values"
+        },
+        {
+            "location": "/Unix-way/Messaging/Postfix/#display-all-default-values",
+            "text": "~ # postconf -d",
+            "title": "Display all default values"
+        },
+        {
+            "location": "/Unix-way/Messaging/Postfix/#list-map-lookup-types",
+            "text": "~ # postconf -m",
+            "title": "List map lookup types"
+        },
+        {
+            "location": "/Unix-way/Messaging/Postfix/#show-queue",
+            "text": "postqueue -p",
+            "title": "Show queue"
+        },
+        {
+            "location": "/Unix-way/Messaging/SMS/",
+            "text": "Via minicom\n\n\n\n\nminicom -s\n\n\n\n\nAT+CMGF=1\nAT+CMGS=\"+xxxxxxxxxx\"\nWrite message here. <ctrl+z>\n\n\n\n\nSMSd\n\n\nsmssend +xxxxxxxxxxx 'One-Line Test 02' > /dev/null 2>&1\n\n\n\n\n\n\nExample smsd.conf. Read the manual for a description\n\n\n\n\ndevices = xenium0\nlogfile = /var/log/smsd/smsd.log\nloglevel = 2\n#user = smstools\nuser = nagios\n# 3.1.5 introduced smart logging\n# once your configuration is OK, set log level lower (5 is good in most cases)\nsmart_logging = yes\ninfofile = /run/smsd/smsd.working\npidfile = /run/smsd/smsd.pid\n\n[xenium0]\ndevice = /dev/ttyUSB0\n#pin = 1122\npin = ignore\nbaudrate = 115200\nrtscts = no\n#init = ATE0\n#init = at+cpms=\"sm\",\"sm\",\"\"\n#init = AT+CMGF=1\nloglevel_lac_ci = 8\nincoming = yes\nincoming = high",
+            "title": "SMS"
+        },
+        {
+            "location": "/Unix-way/Messaging/SMS/#via-minicom",
+            "text": "minicom -s   AT+CMGF=1\nAT+CMGS=\"+xxxxxxxxxx\"\nWrite message here. <ctrl+z>",
+            "title": "Via minicom"
+        },
+        {
+            "location": "/Unix-way/Messaging/SMS/#smsd",
+            "text": "smssend +xxxxxxxxxxx 'One-Line Test 02' > /dev/null 2>&1   Example smsd.conf. Read the manual for a description   devices = xenium0\nlogfile = /var/log/smsd/smsd.log\nloglevel = 2\n#user = smstools\nuser = nagios\n# 3.1.5 introduced smart logging\n# once your configuration is OK, set log level lower (5 is good in most cases)\nsmart_logging = yes\ninfofile = /run/smsd/smsd.working\npidfile = /run/smsd/smsd.pid\n\n[xenium0]\ndevice = /dev/ttyUSB0\n#pin = 1122\npin = ignore\nbaudrate = 115200\nrtscts = no\n#init = ATE0\n#init = at+cpms=\"sm\",\"sm\",\"\"\n#init = AT+CMGF=1\nloglevel_lac_ci = 8\nincoming = yes\nincoming = high",
+            "title": "SMSd"
+        },
+        {
             "location": "/Unix-way/Monitoring/Nagios/",
             "text": "Convert Nagios server logs to human-readable format\n\n\ncat <path_to_nagios_log_file> | perl -pe 's/(\\d+)/localtime($1)/e'\n\n\n\n\nCheck TCP port from remote Windows PC\n\n\n\n\nDownload \ncheck_tcp.exe\n to C:\\Program Files\\NSClient++\\\n\n\nCreate PowerShell external script - \ncheck_tcp_port\n :\n\n\n\n\n$exe = 'C:\\Program Files\\NSClient++\\check_tcp.exe'\n$arg1 = '-H'\n$arg2 = '<place_remote_host_ip_here'\n$arg3 = '-p'\n$arg4 = '<place_remote_tcp_port_here>'\n$arg5 = '-w'\n$arg6 = '100'\n$arg7 = '-c'\n$arg8 = '1000'\n\n$cmd = $arg1 + \" \" + $arg2 + \" \" + $arg3 + \" \" + $arg4 + \" \" + $arg5 + \" \" + $arg6 + \" \" + $arg7 + \" \" + $arg8\n$process = New-Object -TypeName System.Diagnostics.Process\n$process.StartInfo.FileName = $exe\n$process.StartInfo.Arguments = $cmd\n$process.StartInfo.RedirectStandardOutput = $true\n$process.StartInfo.UseShellExecute = $false\n$status = $process.Start()\n$process.WaitForExit()\n$process.StandardOutput.ReadToEnd()\nexit $process.ExitCode  \n\n\n\n\n\n\nMake a record in Nagion Agent configuration file:\n\n\n\n\n[/settings/external scripts/scripts]\ncheck_tcp_port =  cmd /c echo scripts\\check_tcp_mq.ps1; exit($lastexitcode) | powershell.exe -command -",
             "title": "Nagios"
@@ -1994,41 +2054,6 @@
             "location": "/Unix-way/Security/SELinux/#disabling-selinux",
             "text": "```bash\nsed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux && cat /etc/sysconfig/selinux",
             "title": "Disabling SELinux"
-        },
-        {
-            "location": "/Unix-way/Services/Email/",
-            "text": "Telnet commands\n\n\nHow to send email using telnet\n\n\nOriginal at \nMediatemple\n\n\n\n\nTIP: We use the domain example.com as an example. Be sure to replace with your own domain.\n\n\n\n\n\n\nOpen your command prompt. Now, connect with telnet using the following command:\n\n\n\n\ntelnet example.com 25\n\n\n\n\n\n\nType ehlo example.com. Some servers also accept helo in place of ehlo.\n\n\n\n\nehlo example.com\n\n\n\n\n\n\nType mail from: username@example.com:\n\n\n\n\nmail from: username@example.com\n\n\n\n\n\n\nType rcpt to: friend@hotmail.com, friend2@yahoo.com (replace with your actual recipient name):\n\n\n\n\nrcpt to: friend@hotmail.com, friend2@yahoo.com\n\n\n\n\n\n\nTo write the message - type data, followed by your subject and message. To end the message, put a period on a line by itself and press enter:\n\n\n\n\ndata\nSubject: My Telnet Test Email\n\nHello,\n\nThis is an email sent by using the telnet command.\n\nYour friend,\nMe\n\n.\n\n\n\n\n\n\nType quit to exit telnet.\n\n\n\n\nquit\n\n\n\n\nHow to check or read email with telnet\n\n\nOriginal at  \nMediatemple\n\n* Open your command prompt. At the command prompt, type in\n\n\ntelnet example.com 110\n\n\n\n\n\n\nType user and the email address (username@example.com) of the user for which you wish to view emails:\n\n\n\n\nuser username@example.com\n\n\n\n\n\n\nThen type in pass followed by your password:\n\n\n\n\npass yourpasswordgoeshere\n\n\n\n\n\n\nType list to bring up a list of your emails:\n\n\n\n\nlist\n\n\n\n\n\n\nYou will see a list of items with labels like \"1 897\" and \"2 5136.\" Here is an example:\n\n\n\n\nlist\n+OK POP3 clients that break here, they violate STD53.\n1 897\n2 5136\n3 1884\n4 2973\n5 2595\n6 3063\n7 3509\n8 2283\n9 1926\n10 2763\n11 1795\n12 2780\n13 2342\n14 2342\n15 2342\n16 3833\n17 2211\n18 793\n19 797\n20 2599\n.\n\n\n\n\n\n\nIf you wish to read an email message such as 2 5136, you can type the following:\n\n\n\n\nretr 2 \n\n\n\n\n\n\nIf you want to delete a message such as 1 897, type dele 1:\n\n\n\n\ndele 1\n\n\n\n\n\n\nWhen you are done checking your email, type quit.\n\n\n\n\nquit",
-            "title": "Email"
-        },
-        {
-            "location": "/Unix-way/Services/Email/#telnet-commands",
-            "text": "",
-            "title": "Telnet commands"
-        },
-        {
-            "location": "/Unix-way/Services/Email/#how-to-send-email-using-telnet",
-            "text": "Original at  Mediatemple   TIP: We use the domain example.com as an example. Be sure to replace with your own domain.    Open your command prompt. Now, connect with telnet using the following command:   telnet example.com 25   Type ehlo example.com. Some servers also accept helo in place of ehlo.   ehlo example.com   Type mail from: username@example.com:   mail from: username@example.com   Type rcpt to: friend@hotmail.com, friend2@yahoo.com (replace with your actual recipient name):   rcpt to: friend@hotmail.com, friend2@yahoo.com   To write the message - type data, followed by your subject and message. To end the message, put a period on a line by itself and press enter:   data\nSubject: My Telnet Test Email\n\nHello,\n\nThis is an email sent by using the telnet command.\n\nYour friend,\nMe\n\n.   Type quit to exit telnet.   quit",
-            "title": "How to send email using telnet"
-        },
-        {
-            "location": "/Unix-way/Services/Email/#how-to-check-or-read-email-with-telnet",
-            "text": "Original at   Mediatemple \n* Open your command prompt. At the command prompt, type in  telnet example.com 110   Type user and the email address (username@example.com) of the user for which you wish to view emails:   user username@example.com   Then type in pass followed by your password:   pass yourpasswordgoeshere   Type list to bring up a list of your emails:   list   You will see a list of items with labels like \"1 897\" and \"2 5136.\" Here is an example:   list\n+OK POP3 clients that break here, they violate STD53.\n1 897\n2 5136\n3 1884\n4 2973\n5 2595\n6 3063\n7 3509\n8 2283\n9 1926\n10 2763\n11 1795\n12 2780\n13 2342\n14 2342\n15 2342\n16 3833\n17 2211\n18 793\n19 797\n20 2599\n.   If you wish to read an email message such as 2 5136, you can type the following:   retr 2    If you want to delete a message such as 1 897, type dele 1:   dele 1   When you are done checking your email, type quit.   quit",
-            "title": "How to check or read email with telnet"
-        },
-        {
-            "location": "/Unix-way/Services/SMS/",
-            "text": "Via minicom\n\n\n\n\nminicom -s\n\n\n\n\nAT+CMGF=1\nAT+CMGS=\"+xxxxxxxxxx\"\nWrite message here. <ctrl+z>\n\n\n\n\nSMSd\n\n\nsmssend +xxxxxxxxxxx 'One-Line Test 02' > /dev/null 2>&1\n\n\n\n\n\n\nExample smsd.conf. Read the manual for a description\n\n\n\n\ndevices = xenium0\nlogfile = /var/log/smsd/smsd.log\nloglevel = 2\n#user = smstools\nuser = nagios\n# 3.1.5 introduced smart logging\n# once your configuration is OK, set log level lower (5 is good in most cases)\nsmart_logging = yes\ninfofile = /run/smsd/smsd.working\npidfile = /run/smsd/smsd.pid\n\n[xenium0]\ndevice = /dev/ttyUSB0\n#pin = 1122\npin = ignore\nbaudrate = 115200\nrtscts = no\n#init = ATE0\n#init = at+cpms=\"sm\",\"sm\",\"\"\n#init = AT+CMGF=1\nloglevel_lac_ci = 8\nincoming = yes\nincoming = high",
-            "title": "SMS"
-        },
-        {
-            "location": "/Unix-way/Services/SMS/#via-minicom",
-            "text": "minicom -s   AT+CMGF=1\nAT+CMGS=\"+xxxxxxxxxx\"\nWrite message here. <ctrl+z>",
-            "title": "Via minicom"
-        },
-        {
-            "location": "/Unix-way/Services/SMS/#smsd",
-            "text": "smssend +xxxxxxxxxxx 'One-Line Test 02' > /dev/null 2>&1   Example smsd.conf. Read the manual for a description   devices = xenium0\nlogfile = /var/log/smsd/smsd.log\nloglevel = 2\n#user = smstools\nuser = nagios\n# 3.1.5 introduced smart logging\n# once your configuration is OK, set log level lower (5 is good in most cases)\nsmart_logging = yes\ninfofile = /run/smsd/smsd.working\npidfile = /run/smsd/smsd.pid\n\n[xenium0]\ndevice = /dev/ttyUSB0\n#pin = 1122\npin = ignore\nbaudrate = 115200\nrtscts = no\n#init = ATE0\n#init = at+cpms=\"sm\",\"sm\",\"\"\n#init = AT+CMGF=1\nloglevel_lac_ci = 8\nincoming = yes\nincoming = high",
-            "title": "SMSd"
         },
         {
             "location": "/Unix-way/Storage/Extend_Ext4_Partition/",
