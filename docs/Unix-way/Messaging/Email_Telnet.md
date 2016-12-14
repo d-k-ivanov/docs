@@ -1,5 +1,4 @@
-## Telnet commands
-### How to send email using telnet
+### Send email
 Original at [Mediatemple](https://mediatemple.net/community/products/dv/204404584/sending-or-viewing-emails-using-telnet)
 > TIP: We use the domain example.com as an example. Be sure to replace with your own domain.
 
@@ -38,7 +37,7 @@ Me
 quit
 ```
 
-### How to check or read email with telnet
+### How to check or read email
 Original at  [Mediatemple](https://mediatemple.net/community/products/dv/204404584/sending-or-viewing-emails-using-telnet)
 * Open your command prompt. At the command prompt, type in
 ```bash
