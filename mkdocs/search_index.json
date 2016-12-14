@@ -1672,7 +1672,7 @@
         },
         {
             "location": "/Unix-way/Messaging/Postfix/",
-            "text": "Show configuration\n\n\n~ # postconf\n\n\n\n\nShow only non-default values\n\n\n~ # postconf -n\n\n\n\n\nDisplay all default values\n\n\n~ # postconf -d\n\n\n\n\nList map lookup types\n\n\n~ # postconf -m\n\n\n\n\nShow queue\n\n\npostqueue -p",
+            "text": "Show configuration\n\n\n~ # postconf\n\n\n\n\nShow only non-default values\n\n\n~ # postconf -n\n\n\n\n\nDisplay all default values\n\n\n~ # postconf -d\n\n\n\n\nList map lookup types\n\n\n~ # postconf -m\n\n\n\n\nShow queue\n\n\nmqilq\npostqueue -p",
             "title": "Postfix"
         },
         {
@@ -1697,7 +1697,7 @@
         },
         {
             "location": "/Unix-way/Messaging/Postfix/#show-queue",
-            "text": "postqueue -p",
+            "text": "mqilq\npostqueue -p",
             "title": "Show queue"
         },
         {
