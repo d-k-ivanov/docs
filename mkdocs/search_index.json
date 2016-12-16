@@ -2216,6 +2216,16 @@
             "title": "Raid1"
         },
         {
+            "location": "/Unix-way/Userspace/Images/",
+            "text": "Create gif from bunch of images\n\n\n# delay between frames in milliseconds, loop 0 = indefinitely\nconvert -delay 50 -loop 0 *.png <output_file>.gif",
+            "title": "Images"
+        },
+        {
+            "location": "/Unix-way/Userspace/Images/#create-gif-from-bunch-of-images",
+            "text": "# delay between frames in milliseconds, loop 0 = indefinitely\nconvert -delay 50 -loop 0 *.png <output_file>.gif",
+            "title": "Create gif from bunch of images"
+        },
+        {
             "location": "/Unix-way/Userspace/Skype/",
             "text": "Unable to receive group messages\n\n\nAfter struggling a bit, I found some useful commands:\n    /dumpmsnp - show details about your connection\n    /showplaces - show where you are currently connected\nYou can execute them in any chat window.\n\n*/dumpmsnp* command was showing \"LoggedOut\", but I was online and talking almost normally (except group chats).\n\nSystem: MSNP: Connection Data:\n * Status: LoggedOut\n\nA lot of people are/were suffering from this problem.\n\nTo solve this \"LoggedOut\" issue, try this on any chat window:\n/msnp24\n\nand restart your Skype.\n\nAfter restarting, /dumpmsnp output shows the following status:\n\nSystem: MSNP: Connection Data (MSNP24):\n * Status: LoggedIn\n\nI don't know exactly why, but the /msnp24 command kinds of converted my account to this protocol and now everything works perfectly.",
             "title": "Skype"

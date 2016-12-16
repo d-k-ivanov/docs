@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Unix-way/Packages/PIP/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Unix-way/Userspace/Images/"> 
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-    <title>PIP - Technical Info</title>
+    <title>Images - Technical Info</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -753,8 +753,8 @@
     <ul class="dropdown-menu">
         
             
-<li class="active">
-    <a href="./">PIP</a>
+<li >
+    <a href="../../Packages/PIP/">PIP</a>
 </li>
 
         
@@ -864,26 +864,26 @@
     <ul class="dropdown-menu">
         
             
-<li >
-    <a href="../../Userspace/Images/">Images</a>
+<li class="active">
+    <a href="./">Images</a>
 </li>
 
         
             
 <li >
-    <a href="../../Userspace/Skype/">Skype</a>
+    <a href="../Skype/">Skype</a>
 </li>
 
         
             
 <li >
-    <a href="../../Userspace/WINE/">WINE</a>
+    <a href="../WINE/">WINE</a>
 </li>
 
         
             
 <li >
-    <a href="../../Userspace/X/">X</a>
+    <a href="../X/">X</a>
 </li>
 
         
@@ -942,12 +942,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../../Network/tcpdump/">
+                        <a rel="next" href="../../Storage/mdadm/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../../Security/EncFS/">
+                        <a rel="prev" href="../Skype/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -970,32 +970,16 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#install">Install</a></li>
-        
-    
-        <li class="first-level "><a href="#update">Update</a></li>
-        
-    
-        <li class="first-level "><a href="#update-all">Update all</a></li>
+        <li class="first-level active"><a href="#create-gif-from-bunch-of-images">Create gif from bunch of images</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="install">Install</h3>
-<pre><code class="bash">pip install &lt;package_name&gt;
-pip3 install &lt;package_name&gt;
-</code></pre>
-
-<h3 id="update">Update</h3>
-<pre><code class="bash">pip install -U &lt;package_name&gt;
-pip3 install -U &lt;package_name&gt;
-</code></pre>
-
-<h3 id="update-all">Update all</h3>
-<pre><code class="bash">pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
-pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U
+<h3 id="create-gif-from-bunch-of-images">Create gif from bunch of images</h3>
+<pre><code class="bash"># delay between frames in milliseconds, loop 0 = indefinitely
+convert -delay 50 -loop 0 *.png &lt;output_file&gt;.gif
 </code></pre></div>
         
     </div>
