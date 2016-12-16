@@ -261,6 +261,16 @@
             "title": "libGL error: unable to load driver: i965_dri.so"
         },
         {
+            "location": "/Dev/Android/Apk/",
+            "text": "Install released signed apk\n\n\nIf you trying to install release apk on device which was used to debug, you need to uninstall previous build because application signature is changed. \n\n\n~/Android/Sdk/platform-tools/adb uninstall <full_application_name>\n# ~/Android/Sdk/platform-tools/adb uninstall com.google.market",
+            "title": "Apk"
+        },
+        {
+            "location": "/Dev/Android/Apk/#install-released-signed-apk",
+            "text": "If you trying to install release apk on device which was used to debug, you need to uninstall previous build because application signature is changed.   ~/Android/Sdk/platform-tools/adb uninstall <full_application_name>\n# ~/Android/Sdk/platform-tools/adb uninstall com.google.market",
+            "title": "Install released signed apk"
+        },
+        {
             "location": "/Dev/Bash/Collect_bash_history/",
             "text": "Collect .bash_history from a bunch of servers.\n\n\nip_base_file\n - just a list of IP address. And you have to have same password on all servers.\n\n\n#!/bin/bash\n#\n#  Script to collect bash history from remote servers\n#\necho \"Usage: ./collect.sh <ip_base_file>\"\n\nread -n 1 -p \"Do you want to collect bash_history? (y/[a]): \" AMSURE\n[ \"$AMSURE\" = \"y\" ] || exit\necho \"\" 1>&2\n\nnow=$(date +\"%m_%d_%Y\")\nmkdir ./$now\n## Provide BASE64 encoded password here\n## echo \"MEGA-SECURE-PASSWORD\" | base64 -i\nPASS=`echo \"TUVHQS1TRUNVUkUtUEFTU1dPUkQK\" | base64 -di`\nawk '{print $1}' < ./\"$1\" | while read ip; do\n\nexpect -c \"\n    set timeout 1\n    spawn scp  root@$ip:~/.bash_history ./\"$now\"/\"$ip\"_history.txt\n    expect yes/no { send yes\\r ; exp_continue }\n    expect password: { send $PASS\\r }\n    expect 100%\n    sleep 1\n    exit\n\"\ndone",
             "title": "Collect bash history"
