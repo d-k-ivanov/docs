@@ -251,6 +251,21 @@
             "title": "Open cursors"
         },
         {
+            "location": "/Dev/Android/Adb/",
+            "text": "Copy file to android device\n\n\n````bash\nadb push \n/\n \n/\n\n\n~/Android/Sdk/platform-tools/adb push /home/flash/Dropbox/dev/Android/armenianalphabet/armenianalphabet.apk /mnt/sdcard/Download/armenianalphabet.apk\n\n\n```",
+            "title": "Adb"
+        },
+        {
+            "location": "/Dev/Android/Adb/#copy-file-to-android-device",
+            "text": "````bash\nadb push  /   /",
+            "title": "Copy file to android device"
+        },
+        {
+            "location": "/Dev/Android/Adb/#androidsdkplatform-toolsadb-push-homeflashdropboxdevandroidarmenianalphabetarmenianalphabetapk-mntsdcarddownloadarmenianalphabetapk",
+            "text": "```",
+            "title": "~/Android/Sdk/platform-tools/adb push /home/flash/Dropbox/dev/Android/armenianalphabet/armenianalphabet.apk /mnt/sdcard/Download/armenianalphabet.apk"
+        },
+        {
             "location": "/Dev/Android/Android_Studio/",
             "text": "libGL error: unable to load driver: i965_dri.so\n\n\n# Arch Linux\nmv ~/Android/Sdk/tools/lib64/libstdc++/libstdc++.so.6{,.bak}\nmv ~/Android/Sdk/tools/lib64/libstdc++/libstdc++.so.6.0.18{,.bak}\nln -s /usr/lib/libstdc++.so  ~/Android/Sdk/tools/lib64/libstdc++/",
             "title": "Android Studio"
@@ -262,13 +277,13 @@
         },
         {
             "location": "/Dev/Android/Apk/",
-            "text": "Install released signed apk\n\n\nIf you trying to install release apk on device which was used to debug, you need to uninstall previous build because application signature is changed. \n\n\n~/Android/Sdk/platform-tools/adb uninstall <full_application_name>\n# ~/Android/Sdk/platform-tools/adb uninstall com.google.market",
+            "text": "Install release signed apk\n\n\nIf you trying to install release apk on device which was used to debug, you need to uninstall previous build because application signature is changed. \n\n\n~/Android/Sdk/platform-tools/adb uninstall <full_application_name>\n# ~/Android/Sdk/platform-tools/adb uninstall com.google.market",
             "title": "Apk"
         },
         {
-            "location": "/Dev/Android/Apk/#install-released-signed-apk",
+            "location": "/Dev/Android/Apk/#install-release-signed-apk",
             "text": "If you trying to install release apk on device which was used to debug, you need to uninstall previous build because application signature is changed.   ~/Android/Sdk/platform-tools/adb uninstall <full_application_name>\n# ~/Android/Sdk/platform-tools/adb uninstall com.google.market",
-            "title": "Install released signed apk"
+            "title": "Install release signed apk"
         },
         {
             "location": "/Dev/Bash/Collect_bash_history/",
