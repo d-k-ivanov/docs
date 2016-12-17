@@ -6,8 +6,8 @@ site_author: Dmitry Ivanov
 repo_url: https://keepbot.github.io/
 
 #theme: readthedocs
-#theme: cinder
-theme: 'material'
+theme: cinder
+#theme: 'material'
 
 
 copyright: Copyright &copy; 2016 Dmitry Ivanov.
