@@ -1,4 +1,4 @@
-site_name: Technical Info
+config.site_name: Technical Info
 site_url: https://keepbot.github.io/docs/
 site_description: Collection of Technical guides
 site_author: Dmitry Ivanov
