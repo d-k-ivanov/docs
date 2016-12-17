@@ -982,16 +982,24 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#copy-file-to-android-device">Copy file to android device</a></li>
+        <li class="first-level active"><a href="#upload-file-to-android-device">Upload file to android device</a></li>
+        
+    
+        <li class="first-level "><a href="#download-file-from-android-device">Download file from android device</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="copy-file-to-android-device">Copy file to android device</h3>
+<h3 id="upload-file-to-android-device">Upload file to android device</h3>
 <pre><code class="bash">adb push &lt;path_to&gt;/&lt;file&gt; &lt;remote_path_to&gt;/&lt;file&gt;
-# ~/Android/Sdk/platform-tools/adb push /home/flash/Dropbox/dev/Android/armenianalphabet/armenianalphabet.apk /mnt/sdcard/Download/armenianalphabet.apk
+# adb push ~/dev/armenianalphabet/armenianalphabet.apk /mnt/sdcard/Download/armenianalphabet.apk
+</code></pre>
+
+<h3 id="download-file-from-android-device">Download file from android device</h3>
+<pre><code class="bash">adb pull &lt;path_to_remote&gt;/&lt;file&gt; &lt;path_to_local&gt;/&lt;file&gt;
+# adb pull /mnt/sdcard/Download/armenianalphabet.apk ~/tmp/armenianalphabet.apk
 </code></pre></div>
         
     </div>

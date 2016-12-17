@@ -252,13 +252,18 @@
         },
         {
             "location": "/Dev/Android/Adb/",
-            "text": "Copy file to android device\n\n\nadb push <path_to>/<file> <remote_path_to>/<file>\n# ~/Android/Sdk/platform-tools/adb push /home/flash/Dropbox/dev/Android/armenianalphabet/armenianalphabet.apk /mnt/sdcard/Download/armenianalphabet.apk",
+            "text": "Upload file to android device\n\n\nadb push <path_to>/<file> <remote_path_to>/<file>\n# adb push ~/dev/armenianalphabet/armenianalphabet.apk /mnt/sdcard/Download/armenianalphabet.apk\n\n\n\n\nDownload file from android device\n\n\nadb pull <path_to_remote>/<file> <path_to_local>/<file>\n# adb pull /mnt/sdcard/Download/armenianalphabet.apk ~/tmp/armenianalphabet.apk",
             "title": "Adb"
         },
         {
-            "location": "/Dev/Android/Adb/#copy-file-to-android-device",
-            "text": "adb push <path_to>/<file> <remote_path_to>/<file>\n# ~/Android/Sdk/platform-tools/adb push /home/flash/Dropbox/dev/Android/armenianalphabet/armenianalphabet.apk /mnt/sdcard/Download/armenianalphabet.apk",
-            "title": "Copy file to android device"
+            "location": "/Dev/Android/Adb/#upload-file-to-android-device",
+            "text": "adb push <path_to>/<file> <remote_path_to>/<file>\n# adb push ~/dev/armenianalphabet/armenianalphabet.apk /mnt/sdcard/Download/armenianalphabet.apk",
+            "title": "Upload file to android device"
+        },
+        {
+            "location": "/Dev/Android/Adb/#download-file-from-android-device",
+            "text": "adb pull <path_to_remote>/<file> <path_to_local>/<file>\n# adb pull /mnt/sdcard/Download/armenianalphabet.apk ~/tmp/armenianalphabet.apk",
+            "title": "Download file from android device"
         },
         {
             "location": "/Dev/Android/Android_Studio/",
