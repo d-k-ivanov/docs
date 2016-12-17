@@ -252,18 +252,13 @@
         },
         {
             "location": "/Dev/Android/Adb/",
-            "text": "Copy file to android device\n\n\n````bash\nadb push \n/\n \n/\n\n\n~/Android/Sdk/platform-tools/adb push /home/flash/Dropbox/dev/Android/armenianalphabet/armenianalphabet.apk /mnt/sdcard/Download/armenianalphabet.apk\n\n\n```",
+            "text": "Copy file to android device\n\n\nadb push <path_to>/<file> <remote_path_to>/<file>\n# ~/Android/Sdk/platform-tools/adb push /home/flash/Dropbox/dev/Android/armenianalphabet/armenianalphabet.apk /mnt/sdcard/Download/armenianalphabet.apk",
             "title": "Adb"
         },
         {
             "location": "/Dev/Android/Adb/#copy-file-to-android-device",
-            "text": "````bash\nadb push  /   /",
+            "text": "adb push <path_to>/<file> <remote_path_to>/<file>\n# ~/Android/Sdk/platform-tools/adb push /home/flash/Dropbox/dev/Android/armenianalphabet/armenianalphabet.apk /mnt/sdcard/Download/armenianalphabet.apk",
             "title": "Copy file to android device"
-        },
-        {
-            "location": "/Dev/Android/Adb/#androidsdkplatform-toolsadb-push-homeflashdropboxdevandroidarmenianalphabetarmenianalphabetapk-mntsdcarddownloadarmenianalphabetapk",
-            "text": "```",
-            "title": "~/Android/Sdk/platform-tools/adb push /home/flash/Dropbox/dev/Android/armenianalphabet/armenianalphabet.apk /mnt/sdcard/Download/armenianalphabet.apk"
         },
         {
             "location": "/Dev/Android/Android_Studio/",
