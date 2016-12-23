@@ -1,9 +1,8 @@
-# C++11/14/17
-
-## Overview
+## Overview C++11/14/17
 Many of these descriptions and examples come from various resources (see [Acknowledgements](#acknowledgements) section), summarized in my own words.
 
 C++17 includes the following new language features:
+
 - [template argument deduction for class templates](#template-argument-deduction-for-class-templates)
 - [declaring non-type template parameters with auto](#declaring-non-type-template-parameters-with-auto)
 - [folding expressions](#folding-expressions)
@@ -16,6 +15,7 @@ C++17 includes the following new language features:
 - [constexpr if](#constexpr-if)
 
 C++17 includes the following new library features:
+
 - [std::variant](#stdvariant)
 - [std::optional](#stdoptional)
 - [std::any](#stdany)
@@ -25,6 +25,7 @@ C++17 includes the following new library features:
 - [splicing for maps and sets](#splicing-for-maps-and-sets)
 
 C++14 includes the following new language features:
+
 - [binary literals](#binary-literals)
 - [generic lambda expressions](#generic-lambda-expressions)
 - [lambda capture initializers](#lambda-capture-initializers)
@@ -33,10 +34,12 @@ C++14 includes the following new language features:
 - [relaxing constraints on constexpr functions](#relaxing-constraints-on-constexpr-functions)
 
 C++14 includes the following new library features:
+
 - [user-defined literals for standard library types](#user-defined-literals-for-standard-library-types)
 - [compile-time integer sequences](#compile-time-integer-sequences)
 
 C++11 includes the following new language features:
+
 - [move semantics](#move-semantics)
 - [variadic templates](#variadic-templates)
 - [rvalue references](#rvalue-references)
@@ -59,6 +62,7 @@ C++11 includes the following new language features:
 - [special member functions for move semantics](#special-member-functions-for-move-semantics)
 
 C++11 includes the following new library features:
+
 - [std::move](#stdmove)
 - [std::forward](#stdforward)
 - [std::to_string](#stdto_string)
