@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="author" content="Dmitry Ivanov"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/OS/Gentoo/Installation/"> 
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    <title>Installation - Technical Info</title>
+
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link href="../../../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+
+
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-80208201-1', 'keepbot.github.io');
+    ga('send', 'pageview');
+    </script>
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../../..">Technical Info</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Databases <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MariaDB</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Databases/MariaDB/Installation/">Installation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MongoDB</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Databases/MongoDB/Mongo/">Mongo</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/MongoDB/Quick_Reference/">Quick Reference</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MySQL</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Databases/MySQL/Replication/">Replication</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Oracle</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Blocking_sessions/">Blocking sessions</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/CentOS_7_Installation/">CentOS 7 Installation</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Dump/">Dump</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Memory/">Memory</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/OJDBC/">OJDBC</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Tablespace/">Tablespace</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Useful_Queries/">Useful Queries</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dev <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Android</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Android/Adb/">Adb</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Android/Android_Studio/">Android Studio</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Android/Apk/">Apk</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Bash</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Bash/Collect_bash_history/">Collect bash history</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Bash/Convert-CP1251-to-UTF8/">Convert CP1251 to UTF8</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Brainfuck</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Brainfuck/Sample1/">Sample1</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Cmd</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Cmd/cmd/">Cmd</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Cpp</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Cpp/Modern_Cpp_Features/">Modern Cpp Features</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Debug</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Debug/Core_Dumps/">Core Dumps</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Debug/GDB/">GDB</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">GCC</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/GCC/Make/">Make</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Hardware</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Hardware/Latency_Numbers/">Latency Numbers</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Java</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Java/Runtime_customization/">Runtime customization</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MPI</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/MPI/HelloWorld/">HelloWorld</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/MPI/MPI-Lib/">MPI Lib</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Markdown</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Markdown/Markdown/">Markdown</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Power Shell</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Power_Shell/Power_Shell/">Power Shell</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Python</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Python/Users_and_groups/">Users and groups</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Ruby</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Ruby/Installation/">Installation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Stress tests</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Stress_tests/Ackerman_function/">Ackerman function</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Vbs</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Vbs/Kaspersky_Base_Actuality/">Kaspersky Base Actuality</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Vbs/Links/">Links</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Version Control</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Version_Control/Git/">Git</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Version_Control/GitHub/">GitHub</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Version_Control/Gitignore/">Gitignore</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Version_Control/Subversion/">Subversion</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">OS <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../AIX/">AIX</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../Android/">Android</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../ArchLinux/">ArchLinux</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../Debian/">Debian</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../FreeBSD/">FreeBSD</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../MacOS_X/">MacOS X</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../RHEL/">RHEL</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Gentoo</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../Console_Font/">Console Font</a>
+</li>
+
+        
+            
+<li >
+    <a href="../Gnome/">Gnome</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Installation</a>
+</li>
+
+        
+            
+<li >
+    <a href="../Portage/">Portage</a>
+</li>
+
+        
+            
+<li >
+    <a href="../Systemd/">Systemd</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Unix way <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Backup</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Backup/TSM/">TSM</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Backup/Tape/">Tape</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Backup/Veeam/">Veeam</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Common</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Common/Audit/">Audit</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Common/Files_and_folders/">Files and folders</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Common/NTP/">NTP</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Common/Power/">Power</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Common/Processes/">Processes</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Edit</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Edit/Vim/">Vim</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Hardware</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Hardware/Hardware_info/">Hardware info</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Management</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Management/Ansible/">Ansible</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Management/Remote_management/">Remote management</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Messaging</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Messaging/Email_Telnet/">Email Telnet</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Messaging/Postfix/">Postfix</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Messaging/SMS/">SMS</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Monitoring</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Monitoring/Nagios/">Nagios</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Monitoring/NetXMS/">NetXMS</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Network</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Network/Common/">Common</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Network/Ports/">Ports</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Network/SNMP/">SNMP</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Network/WiFi/">WiFi</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Network/tcpdump/">Tcpdump</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Packages</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Packages/PIP/">PIP</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Security</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Security/EncFS/">EncFS</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Security/FirewallD/">FirewallD</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Security/HSM/">HSM</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Security/IPTables/">IPTables</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Security/OpenSSL/">OpenSSL</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Security/PF/">PF</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Security/SELinux/">SELinux</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Storage</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Storage/Extend_Ext4_Partition/">Extend Ext4 Partition</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Storage/GPFS/">GPFS</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Storage/HDD/">HDD</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Storage/LVM/">LVM</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Storage/SAN/">SAN</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Storage/mdadm/">Mdadm</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Userspace</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Userspace/Images/">Images</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Userspace/Skype/">Skype</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Userspace/WINE/">WINE</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Userspace/X/">X</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Virtual</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Virtual/Docker/">Docker</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Unix-way/Virtual/KVM/">KVM</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Web</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Unix-way/Web/Tomcat/">Tomcat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="../Gnome/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../Portage/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a href="https://keepbot.github.io/">
+                            
+                            Keepbot
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="first-level active"><a href="#downloading-and-burning-installation-media">Downloading and burning installation media</a></li>
+        
+    
+        <li class="first-level "><a href="#boot-from-installation-media">Boot from installation media</a></li>
+        
+    
+        <li class="first-level "><a href="#network-configuration">Network configuration</a></li>
+        
+    
+        <li class="first-level "><a href="#disk-partitioning">Disk partitioning</a></li>
+        
+    
+        <li class="first-level "><a href="#mounting">Mounting</a></li>
+        
+    
+        <li class="first-level "><a href="#installing-stage-tarball">Installing Stage tarball</a></li>
+        
+    
+        <li class="first-level "><a href="#configuring-initial-options">Configuring initial options</a></li>
+        
+    
+        <li class="first-level "><a href="#chrooting">Chrooting</a></li>
+        
+    
+        <li class="first-level "><a href="#updating-world">Updating world</a></li>
+        
+    
+        <li class="first-level "><a href="#locale-and-timezone">Locale and TimeZone</a></li>
+        
+    
+        <li class="first-level "><a href="#kernel">Kernel</a></li>
+        
+    
+        <li class="first-level "><a href="#fstab">Fstab</a></li>
+        
+    
+        <li class="first-level "><a href="#network">Network</a></li>
+        
+    
+        <li class="first-level "><a href="#post-install">Post install</a></li>
+        
+    
+        <li class="first-level "><a href="#bootloader">Bootloader</a></li>
+        
+    
+        <li class="first-level "><a href="#post-reboot">Post reboot</a></li>
+        
+    
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h3 id="downloading-and-burning-installation-media">Downloading and burning installation media</h3>
+<pre><code class="bash"># Minimal installation image:
+wget http://distfiles.gentoo.org/releases/amd64/autobuilds/current-install-amd64-minimal/install-amd64-minimal-{date-here}.iso
+dd if=install-amd64-minimal-{date-here}.iso of=/dev/sdb-flash-drive bs=8192k &amp;&amp; sync
+
+# Or burn it on CD:
+cdrecord dev=/dev/sr0 install-amd64-minimal-{date-here}.iso
+
+# If you want to use pure EFI, you should boot from EFI-compliant CD, and it isn't minimal CD.
+# You should use another one: 
+# SystemRescueCd - Gentoo-based live CD (I use this one)
+# Offician Gentoo Live CD
+# Archlinux boot CD - also good choice
+https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/4.9.1/systemrescuecd-x86-4.9.1.iso/download
+dd if=systemrescuecd-x86-4.9.1.iso of=/dev/sdb-flash-drive bs=8192k &amp;&amp; sync
+</code></pre>
+
+<h3 id="boot-from-installation-media">Boot from installation media</h3>
+<pre><code class="bash"># Enter kernel to boot: gentoo, gentoo-nofb, memtest86
+boot: gentoo
+
+# [Optionally] You can choose specific hardware options like: gentoo acpi=off
+# acpi=on, acpi=off, console=X, dmraid=X, doapm, dopcmcia, doscsi, sda=stroke, ide=nodma, noapic, nodetect, nodhcp, nodmraid, nofirewire, nogpm, nohotplug, nokeymap, nolapic, nosata, nosmp, nosound, nousb, slowusb, 
+# dolvm, debug, docache, doload=X, dosshd, passwd=foo, noload=X, nonfs, nox, scandelay, scandelay=X,
+</code></pre>
+
+<h3 id="network-configuration">Network configuration</h3>
+<p>Like Gentoo Handbook says 'Maybe it just works'. I'm pretty sure that you have DHCP in your network environment and cable connection, but if not:</p>
+<pre><code class="bash"># Determine network intercaces (ifconfig is also existed, but it's recomnded to use 'ip' as a next generation app)
+ip link show
+
+# LAN
+net-setup &lt;your-network-interface&gt;
+
+# WiFi
+iwconfig &lt;your-wifi-network-interface&gt; essid &lt;WiFi-SSID-Name&gt;
+iwconfig &lt;your-wifi-network-interface&gt; key s:some-password
+
+# Retrive IP
+dhcpcd &lt;your-network-interface&gt;
+# In case of hostName and domainName provided by the DHCP server
+dhcpcd -HD &lt;your-network-interface&gt;
+
+# Manual IP via 'ip'
+ip link set &lt;your-network-interface&gt; up
+ip addr add &lt;your-IP-address&gt;/&lt;your-netmask&gt; broadcast &lt;your-brodcast-address&gt; dev &lt;your-network-interface&gt;
+ip route add default via &lt;your-gateway&gt;
+
+# Manual IP via 'ifconfig'
+ifconfig &lt;your-network-interface&gt; &lt;your-IP-address&gt; broadcast &lt;your-brodcast-address&gt; netmask &lt;your-netmask&gt; up
+route add default gw &lt;your-gateway&gt;a
+
+# DNS servers
+echo &quot;nameserver &lt;SNDServer1&gt;&quot; &gt; /etc/resolv.conf
+echo &quot;nameserver &lt;DNSServer2&gt;&quot; &gt;&gt; /etc/resolv.conf
+</code></pre>
+
+<h3 id="disk-partitioning">Disk partitioning</h3>
+<p>It's recommended to use GPT on modern systems.</p>
+<pre><code class="bash"># Partition scheme:
+# /dev/sda1 (bootloader)  2M      Just in case, but I don't think it's really needed on modern EFI systems.
+# /dev/sda2 fat32-UFFI    1024M   EFI Partition to hold more than one kernel. Yes I know that Handbook recommends 128M.
+# /dev/sda3 root-ext4     100% 
+# For swap I will use swapfile, because there is no performance advantage to either a contiguous swap file or a partition, both are treated the same way.
+
+parted -a optimal /dev/sda
+(parted) mklabel gpt
+
+# Partition 1: Bootloader
+(parted) unit mib
+(parted) mkpart primary 1 3
+(parted) name 1 grub 
+(parted) set 1 bios_grub on
+
+# Partition 1: Boot
+(parted) mkpart primary 3 1027
+(parted) name 2 boot
+(parted) set 2 boot on
+
+# Partition 1: Root
+(parted) mkpart primary 1027 -1
+(parted) name 4 rootfs
+</code></pre>
+
+<h3 id="mounting">Mounting</h3>
+<pre><code class="bash">mount /dev/sda3 /mnt/gentoo
+mount /dev/sda2 /mnt/gentoo/boot
+
+# System remount for chrooting
+mount -t proc proc /mnt/gentoo/proc
+mount --rbind /sys /mnt/gentoo/sys
+mount --make-rslave /mnt/gentoo/sys
+mount --rbind /dev /mnt/gentoo/dev
+mount --make-rslave /mnt/gentoo/dev
+</code></pre>
+
+<h3 id="installing-stage-tarball">Installing Stage tarball</h3>
+<pre><code class="bash">cd /mnt/gentoo/
+wget http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64-systemd/stage3-amd64-systemd-&lt;YYYYMMDD&gt;.tar.bz2
+tar xvjpf stage3-amd64-systemd-&lt;YYYYMMDD&gt;.tar.bz2 --xattrs
+</code></pre>
+
+<h3 id="configuring-initial-options">Configuring initial options</h3>
+<pre><code class="bash">vim /mnt/gentoo/etc/portage/make.conf
+# --- make.conf ---
+CFLAGS=&quot;-march=native -O2 -pipe&quot;
+# Number of your CPU cores +1
+MAKEOPTS=&quot;-j5&quot;
+# --- END OF FILE ---
+
+mirrorselect -i -o &gt;&gt; /mnt/gentoo/etc/portage/make.conf
+
+mkdir /mnt/gentoo/etc/portage/repos.conf
+cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+
+cp -L /etc/resolv.conf /mnt/gentoo/etc/
+</code></pre>
+
+<h3 id="chrooting">Chrooting</h3>
+<pre><code class="bash">chroot /mnt/gentoo /bin/bash 
+source /etc/profile
+</code></pre>
+
+<h3 id="updating-world">Updating world</h3>
+<pre><code class="bash">emerge-webrsync
+emerge --sync
+
+eselect profile list
+# Choose aproriate profile, I reccomend use systemd profile
+eselect profile set 12
+
+emerge --ask --update --deep --newuse @world
+</code></pre>
+
+<h3 id="locale-and-timezone">Locale and TimeZone</h3>
+<pre><code class="bash">echo &quot;Europe/Moscow&quot; &gt; /etc/timezone
+emerge --config sys-libs/timezone-data
+
+vim /etc/locale.gen
+# --- locale.gen ---
+en_US.UTF-8 UTF-8
+ru_RU.UTF-8 UTF-8
+# --- END OF FILE ---
+
+locale-gen
+eselect locale list
+eselect locale set &lt;choose-right-number&gt;
+
+env-update &amp;&amp; source /etc/profile
+</code></pre>
+
+<h3 id="kernel">Kernel</h3>
+<p>Of course you need to configure kernel from scratch, but for initial convinience I recommend to use genkernel</p>
+<pre><code class="bash">emerge --ask sys-kernel/gentoo-sources
+emerge --ask sys-apps/pciutils
+emerge --ask sys-kernel/genkernel-next
+# If you use RC-based prfile:
+# emerge --ask sys-kernel/genkernel
+
+genkernel all
+
+emerge --ask sys-kernel/linux-firmware
+</code></pre>
+
+<h3 id="fstab">Fstab</h3>
+<pre><code class="bash"># Look for UUID and write it down:
+blkid
+
+vim /etc/fstab
+# --- fstab ---
+UUID=&quot;place your UUID here&quot;   boot      vfat        rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro,discard  0 2
+UUID=&quot;place your UUID here&quot;   /         ext4        rw,relatime,data=ordered,discard                                                                              0 1
+# --- END OF FILE
+</code></pre>
+
+<h3 id="network">Network</h3>
+<pre><code class="bash">hostnamectl set-hostname your-hostname.your-network
+
+vim /etc/hosts
+# --- hosts ---
+127.0.0.1   your-hostname.your-network your-hostname localhost
+# --- END OF FILE ---
+
+emerge --ask net-misc/dhcpcd
+</code></pre>
+
+<h3 id="post-install">Post install</h3>
+<pre><code class="bash">emerge --ask sys-apps/mlocate
+
+passwd
+</code></pre>
+
+<h3 id="bootloader">Bootloader</h3>
+<pre><code class="bash">echo 'GRUB_PLATFORMS=&quot;efi-64&quot;' &gt;&gt; /etc/portage/make.conf
+emerge --ask --update --newuse --verbose sys-boot/grub:2
+
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
+grub-mkconfig -o /boot/grub/grub.cfg
+
+reboot
+</code></pre>
+
+<h3 id="post-reboot">Post reboot</h3>
+<pre><code class="bash"># Add new user
+useradd -m -G users,wheel,audio,cdrom,floppy,games,portage,usb,video -s /bin/bash 
+</code></pre></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Copyright &copy; 2016 Dmitry Ivanov. <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter40819844 = new Ya.Metrika({ id:40819844, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript><br></small>
+        
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '../../..';
+    </script>
+    <script data-main="../../../mkdocs/js/search.js" src="../../../mkdocs/js/require.js"></script>
+    <script src="../../../js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>

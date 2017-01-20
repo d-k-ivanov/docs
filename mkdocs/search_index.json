@@ -1781,6 +1781,141 @@
             "title": "EPEL repository"
         },
         {
+            "location": "/OS/Gentoo/Console_Font/",
+            "text": "Terminus\n\n\nemerge --ask media-fonts/terminus-font\nsetfont ter-p32n.psf.gz\n\nvim /etc/vconsole.conf\n# --- vconsole.conf ---\nFONT=ter-p32n.psf.gz\n# --- END OF FILE ---\n\n\n\n\nGRUB\n\n\nUSE=\"truerype\" emerge --ask --update --newuse --verbose sys-boot/grub:2\nemerge --ask media-fonts/terminus-font\ngrub-mkfont -s 32 -o /boot/grub/fonts/terminus32.pf2 /usr/share/fonts/terminus/ter-x32n.pcf.gz\n\nvim /etc/default/grub\nGRUB_FONT=/boot/grub/fonts/terminus32.pf2",
+            "title": "Console Font"
+        },
+        {
+            "location": "/OS/Gentoo/Console_Font/#terminus",
+            "text": "emerge --ask media-fonts/terminus-font\nsetfont ter-p32n.psf.gz\n\nvim /etc/vconsole.conf\n# --- vconsole.conf ---\nFONT=ter-p32n.psf.gz\n# --- END OF FILE ---",
+            "title": "Terminus"
+        },
+        {
+            "location": "/OS/Gentoo/Console_Font/#grub",
+            "text": "USE=\"truerype\" emerge --ask --update --newuse --verbose sys-boot/grub:2\nemerge --ask media-fonts/terminus-font\ngrub-mkfont -s 32 -o /boot/grub/fonts/terminus32.pf2 /usr/share/fonts/terminus/ter-x32n.pcf.gz\n\nvim /etc/default/grub\nGRUB_FONT=/boot/grub/fonts/terminus32.pf2",
+            "title": "GRUB"
+        },
+        {
+            "location": "/OS/Gentoo/Gnome/",
+            "text": "Choose graphical profile\n\n\neselect profile list\neselect profile set 5\n\nemerge --ask --update --newuse --deep world",
+            "title": "Gnome"
+        },
+        {
+            "location": "/OS/Gentoo/Gnome/#choose-graphical-profile",
+            "text": "eselect profile list\neselect profile set 5\n\nemerge --ask --update --newuse --deep world",
+            "title": "Choose graphical profile"
+        },
+        {
+            "location": "/OS/Gentoo/Installation/",
+            "text": "Downloading and burning installation media\n\n\n# Minimal installation image:\nwget http://distfiles.gentoo.org/releases/amd64/autobuilds/current-install-amd64-minimal/install-amd64-minimal-{date-here}.iso\ndd if=install-amd64-minimal-{date-here}.iso of=/dev/sdb-flash-drive bs=8192k && sync\n\n# Or burn it on CD:\ncdrecord dev=/dev/sr0 install-amd64-minimal-{date-here}.iso\n\n# If you want to use pure EFI, you should boot from EFI-compliant CD, and it isn't minimal CD.\n# You should use another one: \n# SystemRescueCd - Gentoo-based live CD (I use this one)\n# Offician Gentoo Live CD\n# Archlinux boot CD - also good choice\nhttps://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/4.9.1/systemrescuecd-x86-4.9.1.iso/download\ndd if=systemrescuecd-x86-4.9.1.iso of=/dev/sdb-flash-drive bs=8192k && sync\n\n\n\n\nBoot from installation media\n\n\n# Enter kernel to boot: gentoo, gentoo-nofb, memtest86\nboot: gentoo\n\n# [Optionally] You can choose specific hardware options like: gentoo acpi=off\n# acpi=on, acpi=off, console=X, dmraid=X, doapm, dopcmcia, doscsi, sda=stroke, ide=nodma, noapic, nodetect, nodhcp, nodmraid, nofirewire, nogpm, nohotplug, nokeymap, nolapic, nosata, nosmp, nosound, nousb, slowusb, \n# dolvm, debug, docache, doload=X, dosshd, passwd=foo, noload=X, nonfs, nox, scandelay, scandelay=X,\n\n\n\n\nNetwork configuration\n\n\nLike Gentoo Handbook says 'Maybe it just works'. I'm pretty sure that you have DHCP in your network environment and cable connection, but if not:\n\n\n# Determine network intercaces (ifconfig is also existed, but it's recomnded to use 'ip' as a next generation app)\nip link show\n\n# LAN\nnet-setup <your-network-interface>\n\n# WiFi\niwconfig <your-wifi-network-interface> essid <WiFi-SSID-Name>\niwconfig <your-wifi-network-interface> key s:some-password\n\n# Retrive IP\ndhcpcd <your-network-interface>\n# In case of hostName and domainName provided by the DHCP server\ndhcpcd -HD <your-network-interface>\n\n# Manual IP via 'ip'\nip link set <your-network-interface> up\nip addr add <your-IP-address>/<your-netmask> broadcast <your-brodcast-address> dev <your-network-interface>\nip route add default via <your-gateway>\n\n# Manual IP via 'ifconfig'\nifconfig <your-network-interface> <your-IP-address> broadcast <your-brodcast-address> netmask <your-netmask> up\nroute add default gw <your-gateway>a\n\n# DNS servers\necho \"nameserver <SNDServer1>\" > /etc/resolv.conf\necho \"nameserver <DNSServer2>\" >> /etc/resolv.conf\n\n\n\n\nDisk partitioning\n\n\nIt's recommended to use GPT on modern systems.\n\n\n# Partition scheme:\n# /dev/sda1 (bootloader)  2M      Just in case, but I don't think it's really needed on modern EFI systems.\n# /dev/sda2 fat32-UFFI    1024M   EFI Partition to hold more than one kernel. Yes I know that Handbook recommends 128M.\n# /dev/sda3 root-ext4     100% \n# For swap I will use swapfile, because there is no performance advantage to either a contiguous swap file or a partition, both are treated the same way.\n\nparted -a optimal /dev/sda\n(parted) mklabel gpt\n\n# Partition 1: Bootloader\n(parted) unit mib\n(parted) mkpart primary 1 3\n(parted) name 1 grub \n(parted) set 1 bios_grub on\n\n# Partition 1: Boot\n(parted) mkpart primary 3 1027\n(parted) name 2 boot\n(parted) set 2 boot on\n\n# Partition 1: Root\n(parted) mkpart primary 1027 -1\n(parted) name 4 rootfs\n\n\n\n\nMounting\n\n\nmount /dev/sda3 /mnt/gentoo\nmount /dev/sda2 /mnt/gentoo/boot\n\n# System remount for chrooting\nmount -t proc proc /mnt/gentoo/proc\nmount --rbind /sys /mnt/gentoo/sys\nmount --make-rslave /mnt/gentoo/sys\nmount --rbind /dev /mnt/gentoo/dev\nmount --make-rslave /mnt/gentoo/dev\n\n\n\n\nInstalling Stage tarball\n\n\ncd /mnt/gentoo/\nwget http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64-systemd/stage3-amd64-systemd-<YYYYMMDD>.tar.bz2\ntar xvjpf stage3-amd64-systemd-<YYYYMMDD>.tar.bz2 --xattrs\n\n\n\n\nConfiguring initial options\n\n\nvim /mnt/gentoo/etc/portage/make.conf\n# --- make.conf ---\nCFLAGS=\"-march=native -O2 -pipe\"\n# Number of your CPU cores +1\nMAKEOPTS=\"-j5\"\n# --- END OF FILE ---\n\nmirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf\n\nmkdir /mnt/gentoo/etc/portage/repos.conf\ncp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf\n\ncp -L /etc/resolv.conf /mnt/gentoo/etc/\n\n\n\n\nChrooting\n\n\nchroot /mnt/gentoo /bin/bash \nsource /etc/profile\n\n\n\n\nUpdating world\n\n\nemerge-webrsync\nemerge --sync\n\neselect profile list\n# Choose aproriate profile, I reccomend use systemd profile\neselect profile set 12\n\nemerge --ask --update --deep --newuse @world\n\n\n\n\nLocale and TimeZone\n\n\necho \"Europe/Moscow\" > /etc/timezone\nemerge --config sys-libs/timezone-data\n\nvim /etc/locale.gen\n# --- locale.gen ---\nen_US.UTF-8 UTF-8\nru_RU.UTF-8 UTF-8\n# --- END OF FILE ---\n\nlocale-gen\neselect locale list\neselect locale set <choose-right-number>\n\nenv-update && source /etc/profile\n\n\n\n\nKernel\n\n\nOf course you need to configure kernel from scratch, but for initial convinience I recommend to use genkernel\n\n\nemerge --ask sys-kernel/gentoo-sources\nemerge --ask sys-apps/pciutils\nemerge --ask sys-kernel/genkernel-next\n# If you use RC-based prfile:\n# emerge --ask sys-kernel/genkernel\n\ngenkernel all\n\nemerge --ask sys-kernel/linux-firmware\n\n\n\n\nFstab\n\n\n# Look for UUID and write it down:\nblkid\n\nvim /etc/fstab\n# --- fstab ---\nUUID=\"place your UUID here\"   boot      vfat        rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro,discard  0 2\nUUID=\"place your UUID here\"   /         ext4        rw,relatime,data=ordered,discard                                                                              0 1\n# --- END OF FILE\n\n\n\n\nNetwork\n\n\nhostnamectl set-hostname your-hostname.your-network\n\nvim /etc/hosts\n# --- hosts ---\n127.0.0.1   your-hostname.your-network your-hostname localhost\n# --- END OF FILE ---\n\nemerge --ask net-misc/dhcpcd\n\n\n\n\nPost install\n\n\nemerge --ask sys-apps/mlocate\n\npasswd\n\n\n\n\nBootloader\n\n\necho 'GRUB_PLATFORMS=\"efi-64\"' >> /etc/portage/make.conf\nemerge --ask --update --newuse --verbose sys-boot/grub:2\n\ngrub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub\ngrub-mkconfig -o /boot/grub/grub.cfg\n\nreboot\n\n\n\n\nPost reboot\n\n\n# Add new user\nuseradd -m -G users,wheel,audio,cdrom,floppy,games,portage,usb,video -s /bin/bash",
+            "title": "Installation"
+        },
+        {
+            "location": "/OS/Gentoo/Installation/#downloading-and-burning-installation-media",
+            "text": "# Minimal installation image:\nwget http://distfiles.gentoo.org/releases/amd64/autobuilds/current-install-amd64-minimal/install-amd64-minimal-{date-here}.iso\ndd if=install-amd64-minimal-{date-here}.iso of=/dev/sdb-flash-drive bs=8192k && sync\n\n# Or burn it on CD:\ncdrecord dev=/dev/sr0 install-amd64-minimal-{date-here}.iso\n\n# If you want to use pure EFI, you should boot from EFI-compliant CD, and it isn't minimal CD.\n# You should use another one: \n# SystemRescueCd - Gentoo-based live CD (I use this one)\n# Offician Gentoo Live CD\n# Archlinux boot CD - also good choice\nhttps://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/4.9.1/systemrescuecd-x86-4.9.1.iso/download\ndd if=systemrescuecd-x86-4.9.1.iso of=/dev/sdb-flash-drive bs=8192k && sync",
+            "title": "Downloading and burning installation media"
+        },
+        {
+            "location": "/OS/Gentoo/Installation/#boot-from-installation-media",
+            "text": "# Enter kernel to boot: gentoo, gentoo-nofb, memtest86\nboot: gentoo\n\n# [Optionally] You can choose specific hardware options like: gentoo acpi=off\n# acpi=on, acpi=off, console=X, dmraid=X, doapm, dopcmcia, doscsi, sda=stroke, ide=nodma, noapic, nodetect, nodhcp, nodmraid, nofirewire, nogpm, nohotplug, nokeymap, nolapic, nosata, nosmp, nosound, nousb, slowusb, \n# dolvm, debug, docache, doload=X, dosshd, passwd=foo, noload=X, nonfs, nox, scandelay, scandelay=X,",
+            "title": "Boot from installation media"
+        },
+        {
+            "location": "/OS/Gentoo/Installation/#network-configuration",
+            "text": "Like Gentoo Handbook says 'Maybe it just works'. I'm pretty sure that you have DHCP in your network environment and cable connection, but if not:  # Determine network intercaces (ifconfig is also existed, but it's recomnded to use 'ip' as a next generation app)\nip link show\n\n# LAN\nnet-setup <your-network-interface>\n\n# WiFi\niwconfig <your-wifi-network-interface> essid <WiFi-SSID-Name>\niwconfig <your-wifi-network-interface> key s:some-password\n\n# Retrive IP\ndhcpcd <your-network-interface>\n# In case of hostName and domainName provided by the DHCP server\ndhcpcd -HD <your-network-interface>\n\n# Manual IP via 'ip'\nip link set <your-network-interface> up\nip addr add <your-IP-address>/<your-netmask> broadcast <your-brodcast-address> dev <your-network-interface>\nip route add default via <your-gateway>\n\n# Manual IP via 'ifconfig'\nifconfig <your-network-interface> <your-IP-address> broadcast <your-brodcast-address> netmask <your-netmask> up\nroute add default gw <your-gateway>a\n\n# DNS servers\necho \"nameserver <SNDServer1>\" > /etc/resolv.conf\necho \"nameserver <DNSServer2>\" >> /etc/resolv.conf",
+            "title": "Network configuration"
+        },
+        {
+            "location": "/OS/Gentoo/Installation/#disk-partitioning",
+            "text": "It's recommended to use GPT on modern systems.  # Partition scheme:\n# /dev/sda1 (bootloader)  2M      Just in case, but I don't think it's really needed on modern EFI systems.\n# /dev/sda2 fat32-UFFI    1024M   EFI Partition to hold more than one kernel. Yes I know that Handbook recommends 128M.\n# /dev/sda3 root-ext4     100% \n# For swap I will use swapfile, because there is no performance advantage to either a contiguous swap file or a partition, both are treated the same way.\n\nparted -a optimal /dev/sda\n(parted) mklabel gpt\n\n# Partition 1: Bootloader\n(parted) unit mib\n(parted) mkpart primary 1 3\n(parted) name 1 grub \n(parted) set 1 bios_grub on\n\n# Partition 1: Boot\n(parted) mkpart primary 3 1027\n(parted) name 2 boot\n(parted) set 2 boot on\n\n# Partition 1: Root\n(parted) mkpart primary 1027 -1\n(parted) name 4 rootfs",
+            "title": "Disk partitioning"
+        },
+        {
+            "location": "/OS/Gentoo/Installation/#mounting",
+            "text": "mount /dev/sda3 /mnt/gentoo\nmount /dev/sda2 /mnt/gentoo/boot\n\n# System remount for chrooting\nmount -t proc proc /mnt/gentoo/proc\nmount --rbind /sys /mnt/gentoo/sys\nmount --make-rslave /mnt/gentoo/sys\nmount --rbind /dev /mnt/gentoo/dev\nmount --make-rslave /mnt/gentoo/dev",
+            "title": "Mounting"
+        },
+        {
+            "location": "/OS/Gentoo/Installation/#installing-stage-tarball",
+            "text": "cd /mnt/gentoo/\nwget http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64-systemd/stage3-amd64-systemd-<YYYYMMDD>.tar.bz2\ntar xvjpf stage3-amd64-systemd-<YYYYMMDD>.tar.bz2 --xattrs",
+            "title": "Installing Stage tarball"
+        },
+        {
+            "location": "/OS/Gentoo/Installation/#configuring-initial-options",
+            "text": "vim /mnt/gentoo/etc/portage/make.conf\n# --- make.conf ---\nCFLAGS=\"-march=native -O2 -pipe\"\n# Number of your CPU cores +1\nMAKEOPTS=\"-j5\"\n# --- END OF FILE ---\n\nmirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf\n\nmkdir /mnt/gentoo/etc/portage/repos.conf\ncp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf\n\ncp -L /etc/resolv.conf /mnt/gentoo/etc/",
+            "title": "Configuring initial options"
+        },
+        {
+            "location": "/OS/Gentoo/Installation/#chrooting",
+            "text": "chroot /mnt/gentoo /bin/bash \nsource /etc/profile",
+            "title": "Chrooting"
+        },
+        {
+            "location": "/OS/Gentoo/Installation/#updating-world",
+            "text": "emerge-webrsync\nemerge --sync\n\neselect profile list\n# Choose aproriate profile, I reccomend use systemd profile\neselect profile set 12\n\nemerge --ask --update --deep --newuse @world",
+            "title": "Updating world"
+        },
+        {
+            "location": "/OS/Gentoo/Installation/#locale-and-timezone",
+            "text": "echo \"Europe/Moscow\" > /etc/timezone\nemerge --config sys-libs/timezone-data\n\nvim /etc/locale.gen\n# --- locale.gen ---\nen_US.UTF-8 UTF-8\nru_RU.UTF-8 UTF-8\n# --- END OF FILE ---\n\nlocale-gen\neselect locale list\neselect locale set <choose-right-number>\n\nenv-update && source /etc/profile",
+            "title": "Locale and TimeZone"
+        },
+        {
+            "location": "/OS/Gentoo/Installation/#kernel",
+            "text": "Of course you need to configure kernel from scratch, but for initial convinience I recommend to use genkernel  emerge --ask sys-kernel/gentoo-sources\nemerge --ask sys-apps/pciutils\nemerge --ask sys-kernel/genkernel-next\n# If you use RC-based prfile:\n# emerge --ask sys-kernel/genkernel\n\ngenkernel all\n\nemerge --ask sys-kernel/linux-firmware",
+            "title": "Kernel"
+        },
+        {
+            "location": "/OS/Gentoo/Installation/#fstab",
+            "text": "# Look for UUID and write it down:\nblkid\n\nvim /etc/fstab\n# --- fstab ---\nUUID=\"place your UUID here\"   boot      vfat        rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro,discard  0 2\nUUID=\"place your UUID here\"   /         ext4        rw,relatime,data=ordered,discard                                                                              0 1\n# --- END OF FILE",
+            "title": "Fstab"
+        },
+        {
+            "location": "/OS/Gentoo/Installation/#network",
+            "text": "hostnamectl set-hostname your-hostname.your-network\n\nvim /etc/hosts\n# --- hosts ---\n127.0.0.1   your-hostname.your-network your-hostname localhost\n# --- END OF FILE ---\n\nemerge --ask net-misc/dhcpcd",
+            "title": "Network"
+        },
+        {
+            "location": "/OS/Gentoo/Installation/#post-install",
+            "text": "emerge --ask sys-apps/mlocate\n\npasswd",
+            "title": "Post install"
+        },
+        {
+            "location": "/OS/Gentoo/Installation/#bootloader",
+            "text": "echo 'GRUB_PLATFORMS=\"efi-64\"' >> /etc/portage/make.conf\nemerge --ask --update --newuse --verbose sys-boot/grub:2\n\ngrub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub\ngrub-mkconfig -o /boot/grub/grub.cfg\n\nreboot",
+            "title": "Bootloader"
+        },
+        {
+            "location": "/OS/Gentoo/Installation/#post-reboot",
+            "text": "# Add new user\nuseradd -m -G users,wheel,audio,cdrom,floppy,games,portage,usb,video -s /bin/bash",
+            "title": "Post reboot"
+        },
+        {
+            "location": "/OS/Gentoo/Portage/",
+            "text": "XX config files need updating\n\n\netc-update",
+            "title": "Portage"
+        },
+        {
+            "location": "/OS/Gentoo/Portage/#xx-config-files-need-updating",
+            "text": "etc-update",
+            "title": "XX config files need updating"
+        },
+        {
+            "location": "/OS/Gentoo/Systemd/",
+            "text": "Journal failed to get machine id: No such file or directory\n\n\nsystemd-machine-id-setup\n\n\n\n\nTimedatectl\n\n\ntimedatectl set-timezone Europe/Moscow\ntimedatectl set-ntp yes",
+            "title": "Systemd"
+        },
+        {
+            "location": "/OS/Gentoo/Systemd/#journal-failed-to-get-machine-id-no-such-file-or-directory",
+            "text": "systemd-machine-id-setup",
+            "title": "Journal failed to get machine id: No such file or directory"
+        },
+        {
+            "location": "/OS/Gentoo/Systemd/#timedatectl",
+            "text": "timedatectl set-timezone Europe/Moscow\ntimedatectl set-ntp yes",
+            "title": "Timedatectl"
+        },
+        {
             "location": "/Unix-way/Backup/TSM/",
             "text": "Queries\n\n\n# Check backup\nq ev * * \n\n# Check path\nq path \n\n# Check drive\nq dri \n\n# Status\nq stat\n\n# Tape status\nq vol\n\n# Check volumes in the tape library                                                                 \nq libvol\n\n# Check processes\nq pro\n\n# Cancel process\ncan pro\u00a0(<process>)\n\n# Check pools\nq stg\n\n# Check working sessions\nq sess\n\n# Cancel session\ncan sess\u00a0(<session>)\n\n# Shedule backup\nq eve domain name schedulename\n\n# Viwe assigned nodes in a Tivoli server\nq node\n\n# Check backup space utilized for each file system of a server\nq filespace\n\n# View activity log\nq actlog\nq act begind=mm/dd/yyyy begint=hh:mm:ss endd= mm/dd/yyyy endt=hh:mm:ss\nq act begind=today-1 begint=00:00\nq act search=transferred begint=00:00\nq act search=nodenam\n\n# Get detailed drive report\nq drive f=d\n\n# Get detailed information about tape library\nq library f=d\n\n# Get requests\nq req\n# Reply to request \nreply\u00a0(<request>)\n\n# Schedule\nq sched\nq sched f=d\nq sched * type=admin f=d\n\n\n\n\n\nUnload tape\n\n\nConfigure Library \u2192 Drive \u2192 []Power ON\nConfigure Library \u2192 Drive \u2192 [X]Power ON\nWait for 5 minutes until tape will be rewinded\n# Move tape to empty slot\nManage Library \u2192 Move Media \n\n\n\n\nHow to get logs\n\n\n# Library logs\nService \u2192 View Logs\nSave Service Dump\n\n# Drive logs\nService Library \u2192 Save Drive Dump\n\n\n\n\nChanges\n\n\n# Path (set online)\n#Drive1:\nUPD PATH TSM DRIVE01 SRCT=SERVer DESTT=DRIVE LIBR=TS3100 ONL=Y\n#Drive2:\nUPD PATH TSM DRIVE02 SRCT=SERVer DESTT=DRIVE LIBR=TS3100 ONL=Y\n\n# Update drive status to online\nupdate path sourceservername TAPE0 srct=server destt=drive libr=ts3200 online=yes\n\n# Drive (set online)\n#Drive1:\nUPD DRI TS3100 DRIVE01 ONL=Y\n#Drive2:\nUPD DRI TS3100 DRIVE02 ONL=Y\n\n# Change a library volume ( L41117L4 ) status to scratch from private\nUPDATE LIBVOLUME TS3200 L41117L4 STATUS=SCRATCH\n\n# Change a tivoli login password of a node\nupdate node nodename \"admin\" domain=domainname forcepwreset=Yes\n\n# Add new tape L41116L4 to a storagepool\ndefine vol storagepoolname L41116L4\n\n# Delete data inside a tape media L41116L4\ndelete volume L41116L4 discarddata=yes\n\n# Set serial number of a drive in tape library\nUPDATE DRIVE TS3200 TAPE0 ELEMENT=autodetect ONLINE=Yes WWN=\"2002000E11107B6C\" SERIAL=autodetect\n\n# Detect label of a tape in tape library\nlabel libvol t3200 checkin=scratch labelsource=barcode search=bulk waittime=0\n\n# Remove tape media from tape library\ncheckout libvol ts3200 VOLLIST=A00015L3,A00019L3 CHECKLABEL=YES REMOVE=YES\n\n# Add and label new tapes into library\nLABEL libvol TS3200 search=yes labelsource=barcode overwrite=NO checkin=SCRATCH WAITTIME=0\n\n# Assign a tape drive to a server\nUPDATE PATH servername TAPE0 SRCTYPE=SERVER DESTTYPE=DRIVE LIBRARY=TS3200 DEVICE=\\\\.\\Tape0 ONLINE=YES AUTODETECT=no\n\n\n\n\nCreating backups\n\n\n# Create a new schedule backup (incremental) for a node\nUPDATE SCHEDULE domainname nodename desc=\"daily incremental backup for a server\" action=Incremental options=-subdir=yes objects=\"\"/fs1/*\" \"/fs2/*\" \"/home/user1/*\"\" priority=5startdate=mm/dd/yyyy starttime=hh:mm duration=1 duru=Houperiod=1 perunits=Day dayofweek=Any expiration=never\n\n# Full backup of Tivoli database manually to file on local disk\nbackup db dev=FILECLASS type=full\n\n\n\n\nStartup\n\n\n# Start Tivoly on AIX\ncd /usr/tivoli/tsm/client/ba/bin\nnohup dsmc sched &\nnohup dsmcad\u00a0&\n\ncd /usr/tivoli/tsm/StorageAgent/bin\nnohup ./dsmsta\u00a0&\n\nps -ef | grep dsm\n\n\n\n\nIf tape is not shown\n\n\ncheckin libvolume TS3100 search=yes status=scratch \u00a0 \u00a0 \u00a0\u00a0\ncheckin libvolume TS3100 search=yes status=private",
             "title": "TSM"
