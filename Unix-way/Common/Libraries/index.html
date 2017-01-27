@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Unix-way/Monitoring/NetXMS/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Unix-way/Common/Libraries/"> 
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-    <title>NetXMS - Technical Info</title>
+    <title>Libraries - Technical Info</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -655,37 +655,37 @@
         
             
 <li >
-    <a href="../../Common/Audit/">Audit</a>
+    <a href="../Audit/">Audit</a>
 </li>
 
         
             
 <li >
-    <a href="../../Common/Files_and_folders/">Files and folders</a>
+    <a href="../Files_and_folders/">Files and folders</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Libraries</a>
 </li>
 
         
             
 <li >
-    <a href="../../Common/Libraries/">Libraries</a>
+    <a href="../NTP/">NTP</a>
 </li>
 
         
             
 <li >
-    <a href="../../Common/NTP/">NTP</a>
+    <a href="../Power/">Power</a>
 </li>
 
         
             
 <li >
-    <a href="../../Common/Power/">Power</a>
-</li>
-
-        
-            
-<li >
-    <a href="../../Common/Processes/">Processes</a>
+    <a href="../Processes/">Processes</a>
 </li>
 
         
@@ -778,13 +778,13 @@
         
             
 <li >
-    <a href="../Nagios/">Nagios</a>
+    <a href="../../Monitoring/Nagios/">Nagios</a>
 </li>
 
         
             
-<li class="active">
-    <a href="./">NetXMS</a>
+<li >
+    <a href="../../Monitoring/NetXMS/">NetXMS</a>
 </li>
 
         
@@ -1026,12 +1026,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../Nagios/">
+                        <a rel="next" href="../Files_and_folders/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../../Network/Common/">
+                        <a rel="prev" href="../NTP/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -1054,141 +1054,16 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#web-console">Web console</a></li>
-        
-    
-        <li class="first-level "><a href="#wmi-scripts">WMI Scripts</a></li>
-        
-    
-        <li class="first-level "><a href="#external-parameter">External parameter</a></li>
-        
-    
-        <li class="first-level "><a href="#sql-queries-parsing-from-the-log-file">SQL queries parsing from the log-file</a></li>
-        
-    
-        <li class="first-level "><a href="#installation">Installation</a></li>
+        <li class="first-level active"><a href="#add-global-library-path">Add global library path</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="web-console">Web console</h3>
-<pre><code class="bash">cd /opt/
-wget http://apache-mirror.rbc.ru/pub/apache/tomcat/tomcat-7/v7.0.70/bin/apache-tomcat-7.0.70.tar.gz
-tar zxvf apache-tomcat-7.0.70.tar.gz
-
-iptables -I INPUT -p tcp --dport 8005 -j ACCEPT
-iptables -I INPUT -p tcp --dport 8009 -j ACCEPT
-iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
-iptables -I INPUT -p tcp --dport 8443 -j ACCEPT
-
-/opt/apache-tomcat-7.0.70/bin/startup.sh
-
-# ...Wait until tomcat is started...
-
-wget -O /opt/apache-tomcat-7.0.70/webapps/nxmc-2.0.5.war http://www.netxms.org/download/webui/nxmc-2.0.5.war
-
-http://&lt;ip_address&gt;:8080/nxmc-2.0.5/nxmc
-</code></pre>
-
-<h3 id="wmi-scripts">WMI Scripts</h3>
-<pre><code class="bash">#Query:
-/usr/local/bin/nxget 192.168.122.252 &quot;WMI.Query(root\CIMV2,SELECT * FROM XXX)&quot;
-</code></pre>
-
-<h3 id="external-parameter">External parameter</h3>
-<pre><code class="bash">ExternalParameterShellExec = KasperskyBasesState:C:\Windows\System32\cscript.exe //E:VBscript //NoLogo c:\Path_TO\kav.vbs
-</code></pre>
-
-<h3 id="sql-queries-parsing-from-the-log-file">SQL queries parsing from the log-file</h3>
-<pre><code class="bash"># Print queries execution time. Change &quot;SELECT&quot; to keyword you want.
-grep &quot;SELECT&quot; &lt;log-file&gt; | grep -oP '[0-9]* ms' | awk '{print $1}'
-
-# Extarct all SQL-Inserts to file
-grep -oP '\&quot;INSERT INTO.*' &lt;log-file&gt; &gt; insert.sql
-
-# Extract all SQL-Selects to file
-grep -oP '\&quot;SELECT.*' &lt;log-file&gt; &gt; select.sql
-
-# Extract all other than inserts and selects t file
-grep -v '\&quot;SELECT.*' &lt;log-file&gt; | grep -v '\&quot;INSERT INTO.*' &gt; other.sql
-
-# Extarct all SQL-Explains to file
-grep -oP '\&quot;EXPLAIN.*' other.sql &gt; explain.sql
-
-# Extarct all SQL-Updates to file
-grep -v '\&quot;EXPLAIN.*' other.sql | grep -oP '\&quot;UPDATE.*' &gt; update.sql
-
-# Extarct all SQL-Deletes to file
-grep -v '\&quot;EXPLAIN.*' other.sql | grep -v '\&quot;UPDATE.*' | grep -oP '\&quot;DELETE.*' &gt; delete.sql
-
-# Extarct all SQL-Merges to file
-grep -v '\&quot;EXPLAIN.*' other.sql | grep -v '\&quot;UPDATE.*' | grep -v '\&quot;DELETE.*' | grep -oP '\&quot;MERGE.*' &gt; merge.sql
-</code></pre>
-
-<h3 id="installation">Installation</h3>
-<ul>
-<li>MySQL Database</li>
-</ul>
-<pre><code class="bash">mysql -u root -p mysql
-mysql&gt; CREATE DATABASE netxms;
-mysql&gt; GRANT ALL ON netxms.* TO netxms@localhost IDENTIFIED BY 'netxms';
-mysql&gt; \q
-</code></pre>
-
-<ul>
-<li>Installation from source</li>
-</ul>
-<pre><code class="bash">tar zxvf netxms-x.x.x.tar.gz
-#tar zxvf netxms-2.0.6.tar.gz
-
-cd netxms-x.x.x
-#cd netxms-2.0.6
-
-# You need MySQl or MariadDB development packages for installation with &quot;mysql&quot; option
-# On CentOS7 something like:
-# yum install mysql55-mysql-devel
-# yum install mariadb-devel
-
-sh ./configure --with-server --with-mysql --with-agent --prefix=&lt;path_to_custom_dir&gt;
-#sh ./configure --with-server --with-mysql --with-agent --prefix=/home/soft/netxms
-
-make
-make install
-
-vim /etc/netxmsd.conf
----
-DBDriver = &lt;path_to_netxms_prefix&gt;/lib/libnxddr_mysql.so
-#DBDriver = /home/soft/netxms/lib/libnxddr_mysql.so
-DBServer = localhost
-DBName = netxms
-DBLogin = netxms
-DBPassword = netxms
-LogFailedSQLQueries = yes
-LogFile = &lt;path_to_netxms_prefix&gt;/var/netxms.log
-#LogFile = /home/soft/netxms/var/netxms.log
----
-
-vim /etc/nxagentd.conf
----
-MasterServers = 127.0.0.1, localhost, centos-02.keeobot.net
-LogFile = &lt;path_to_netxms_prefix&gt;/var/nxagentd.log
-#LogFile = /home/soft/netxms/var/nxagentd.log
----
-
-touch &lt;path_to_log_files&gt;
-#touch /home/soft/netxms/var/netxms.log
-#touch /home/soft/netxms/var/nxagentd.log
-
-&lt;path_to_netxms_prefix&gt;/bin/nxdbmgr init &lt;path_to_netxms_prefix&gt;/sql/dbinit_mysql.sql
-#/home/soft/netxms/bin/nxdbmgr init /home/soft/netxms/share/netxms/sql/dbinit_mysql.sql
-
-&lt;path_to_netxms_prefix&gt;/bin/nxagentd -D6 -d
- &lt;path_to_netxms_prefix&gt;/bin/netxmsd -D6 -d
-#/home/soft/netxms/bin/nxagentd -D6 -d
-#/home/soft/netxms/bin/netxmsd -D6 -d
-
+<h3 id="add-global-library-path">Add global library path</h3>
+<pre><code class="bash">echo '/path/to/library/dir' &gt;&gt; /etc/ld.so.conf.d/&lt;your-custom-name&gt;.conf
+ldconfig
 </code></pre></div>
         
     </div>

@@ -2121,6 +2121,16 @@
             "title": "Joining all similarly prefixed files"
         },
         {
+            "location": "/Unix-way/Common/Libraries/",
+            "text": "Add global library path\n\n\necho '/path/to/library/dir' \n /etc/ld.so.conf.d/\nyour-custom-name\n.conf\nldconfig",
+            "title": "Libraries"
+        },
+        {
+            "location": "/Unix-way/Common/Libraries/#add-global-library-path",
+            "text": "echo '/path/to/library/dir'   /etc/ld.so.conf.d/ your-custom-name .conf\nldconfig",
+            "title": "Add global library path"
+        },
+        {
             "location": "/Unix-way/Common/NTP/",
             "text": "ntp.conf in Ansible way\n\n\ndriftfile /var/lib/ntp/ntp.drift\n\n{% for ntp_server in net_ntp_servers %}\nserver {{ ntp_server }} burst iburst minpoll 4 maxpoll 6\n{% endfor %}\n\nrestrict default kod nomodify notrap nopeer noquery\nrestrict -6 default kod nomodify notrap nopeer noquery\n\n---\nnet_ntp_servers:\n  - 0.ru.pool.ntp.org\n  - 1.ru.pool.ntp.org\n  - 2.ru.pool.ntp.org\n  - 3.ru.pool.ntp.org\n\n\n\n\nntp.conf common\n\n\ndriftfile /var/lib/ntp/ntp.drift\n\nserver 0.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6\nserver 1.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6\nserver 2.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6\nserver 3.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6\n\nrestrict default kod nomodify notrap nopeer noquery\nrestrict -6 default kod nomodify notrap nopeer noquery",
             "title": "NTP"
