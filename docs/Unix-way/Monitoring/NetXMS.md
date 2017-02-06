@@ -117,4 +117,19 @@ touch <path_to_log_files>
 
 ```
 
+### Compile NXAgent with Mongo-C-Driver
+```bash
+cd /opt
+# Mongo-C-Driver
+wget https://github.com/mongodb/mongo-c-driver/releases/download/1.6.0/mongo-c-driver-1.6.0.tar.gz
+tar xzvf mongo-c-driver-1.6.0.tar.gz && cd mongo-c-driver-1.6.0
+./configure --prefix=/opt/mongo-c-driver
+make && make install
 
+#NetXMS Agent with Mongo and SNMP
+git clone http://git.netxms.org/public/netxms.git nxbuild
+cd nxbuild
+git checkout stable-2.0
+./configure --with-agent --with-mongodb=/opt/mongo-c-driver --with-snmp --prefix=/opt/netxms
+make && make install
+```
