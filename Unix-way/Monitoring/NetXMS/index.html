@@ -1075,6 +1075,9 @@
         <li class="first-level "><a href="#installation">Installation</a></li>
         
     
+        <li class="first-level "><a href="#compile-nxagent-with-mongo-c-driver">Compile NXAgent with Mongo-C-Driver</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -1195,6 +1198,22 @@ touch &lt;path_to_log_files&gt;
 #/home/soft/netxms/bin/nxagentd -D6 -d
 #/home/soft/netxms/bin/netxmsd -D6 -d
 
+</code></pre>
+
+<h3 id="compile-nxagent-with-mongo-c-driver">Compile NXAgent with Mongo-C-Driver</h3>
+<pre><code class="bash">cd /opt
+# Mongo-C-Driver
+wget https://github.com/mongodb/mongo-c-driver/releases/download/1.6.0/mongo-c-driver-1.6.0.tar.gz
+tar xzvf mongo-c-driver-1.6.0.tar.gz &amp;&amp; cd mongo-c-driver-1.6.0
+./configure --prefix=/opt/mongo-c-driver
+make &amp;&amp; make install
+
+#NetXMS Agent with Mongo and SNMP
+git clone http://git.netxms.org/public/netxms.git nxbuild
+cd nxbuild
+git checkout stable-2.0
+./configure --with-agent --with-mongodb=/opt/mongo-c-driver --with-snmp --prefix=/opt/netxms
+make &amp;&amp; make install
 </code></pre></div>
         
     </div>
