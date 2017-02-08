@@ -166,6 +166,36 @@
             "title": "Autostart"
         },
         {
+            "location": "/Databases/Oracle/Common/",
+            "text": "Show tables\n\n\nSELECT owner, table_name FROM dba_tables;\nSELECT owner, table_name FROM all_tables;\nSELECT table_name FROM user_tables;\n\n\n\n\nShow filterd tables\n\n\nSELECT table_name FROM user_tables WHERE table_name LIKE '%\nany_pattern\n%';\n# Example: SELECT table_name FROM user_tables WHERE table_name LIKE '%BLACK_LIST%';\n\n\n\n\nLogin to database\n\n\n# First of all you can just use clean 'sqlplus' and it request user and password\nsqlplus \nusername\n/\npassword\n@\noracle_database_hostname\n\n\n\n\n\nRun SQL script\n\n\n# Unix\n@/path/to/sql_script.sql\nSTART /path/to/sql_script.sql\n# Windows\n@c:\\path\\to\\sql_script.sql\nSTART c:\\path\\to\\sql_script.sql\n\n\n\n\nShow table information\n\n\nDESCRIBE \ntable_name",
+            "title": "Common"
+        },
+        {
+            "location": "/Databases/Oracle/Common/#show-tables",
+            "text": "SELECT owner, table_name FROM dba_tables;\nSELECT owner, table_name FROM all_tables;\nSELECT table_name FROM user_tables;",
+            "title": "Show tables"
+        },
+        {
+            "location": "/Databases/Oracle/Common/#show-filterd-tables",
+            "text": "SELECT table_name FROM user_tables WHERE table_name LIKE '% any_pattern %';\n# Example: SELECT table_name FROM user_tables WHERE table_name LIKE '%BLACK_LIST%';",
+            "title": "Show filterd tables"
+        },
+        {
+            "location": "/Databases/Oracle/Common/#login-to-database",
+            "text": "# First of all you can just use clean 'sqlplus' and it request user and password\nsqlplus  username / password @ oracle_database_hostname",
+            "title": "Login to database"
+        },
+        {
+            "location": "/Databases/Oracle/Common/#run-sql-script",
+            "text": "# Unix\n@/path/to/sql_script.sql\nSTART /path/to/sql_script.sql\n# Windows\n@c:\\path\\to\\sql_script.sql\nSTART c:\\path\\to\\sql_script.sql",
+            "title": "Run SQL script"
+        },
+        {
+            "location": "/Databases/Oracle/Common/#show-table-information",
+            "text": "DESCRIBE  table_name",
+            "title": "Show table information"
+        },
+        {
             "location": "/Databases/Oracle/Dump/",
             "text": "Fast oracle database dump creation\n\n\nThis way of making dump isn't safe, but convenient within clean or dev environment.\n\n\n# Export\nexpdp / full=Y dumpfile=\nDBNAME\n.dmp logfile=expdp\nDBNAME\n.log\nexpdp 'DBNAME'/DBPASSWORD@SID dumpfile=\ndumpfile\n.dmp nologfile=Y\n\n# Import \nimpdp / full=Y dumpfile=\nDBNAME\n.dmp logfile=impdp\nDBNAME\n.log \nimpdp 'DBNAME'/DBPASSWORD@SID dumpfile=\ndumpfile\n.dmp nologfile=Y",
             "title": "Dump"

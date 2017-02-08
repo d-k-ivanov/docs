@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Databases/MySQL/Replication/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Databases/Oracle/Common/"> 
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-    <title>Replication - Technical Info</title>
+    <title>Common - Technical Info</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,8 +138,8 @@
     <ul class="dropdown-menu">
         
             
-<li class="active">
-    <a href="./">Replication</a>
+<li >
+    <a href="../../MySQL/Replication/">Replication</a>
 </li>
 
         
@@ -154,49 +154,49 @@
         
             
 <li >
-    <a href="../../Oracle/Blocking_sessions/">Blocking sessions</a>
+    <a href="../Blocking_sessions/">Blocking sessions</a>
 </li>
 
         
             
 <li >
-    <a href="../../Oracle/CentOS_7_Installation/">CentOS 7 Installation</a>
+    <a href="../CentOS_7_Installation/">CentOS 7 Installation</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Common</a>
 </li>
 
         
             
 <li >
-    <a href="../../Oracle/Common/">Common</a>
+    <a href="../Dump/">Dump</a>
 </li>
 
         
             
 <li >
-    <a href="../../Oracle/Dump/">Dump</a>
+    <a href="../Memory/">Memory</a>
 </li>
 
         
             
 <li >
-    <a href="../../Oracle/Memory/">Memory</a>
+    <a href="../OJDBC/">OJDBC</a>
 </li>
 
         
             
 <li >
-    <a href="../../Oracle/OJDBC/">OJDBC</a>
+    <a href="../Tablespace/">Tablespace</a>
 </li>
 
         
             
 <li >
-    <a href="../../Oracle/Tablespace/">Tablespace</a>
-</li>
-
-        
-            
-<li >
-    <a href="../../Oracle/Useful_Queries/">Useful Queries</a>
+    <a href="../Useful_Queries/">Useful Queries</a>
 </li>
 
         
@@ -1038,12 +1038,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../../MongoDB/Quick_Reference/">
+                        <a rel="next" href="../CentOS_7_Installation/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../../Oracle/Blocking_sessions/">
+                        <a rel="prev" href="../Dump/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -1066,36 +1066,52 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#replication">Replication</a></li>
+        <li class="first-level active"><a href="#show-tables">Show tables</a></li>
+        
+    
+        <li class="first-level "><a href="#show-filterd-tables">Show filterd tables</a></li>
+        
+    
+        <li class="first-level "><a href="#login-to-database">Login to database</a></li>
+        
+    
+        <li class="first-level "><a href="#run-sql-script">Run SQL script</a></li>
+        
+    
+        <li class="first-level "><a href="#show-table-information">Show table information</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="replication">Replication</h3>
-<pre><code class="bash"># On Master:
-vim /etc/mysql/my.cnf:
-   server-id   = 2
-   log_bin     = /var/lib/mysql-binlog/mysql-bin.log
+<h3 id="show-tables">Show tables</h3>
+<pre><code class="sql">SELECT owner, table_name FROM dba_tables;
+SELECT owner, table_name FROM all_tables;
+SELECT table_name FROM user_tables;
+</code></pre>
 
-# SQL on master:
-mysql&gt; grant replication slave on *.* to replica@'%' identified by '&lt;password&gt;';
-mysql&gt; flush privileges;
-mysql&gt; exit
+<h3 id="show-filterd-tables">Show filterd tables</h3>
+<pre><code class="sql">SELECT table_name FROM user_tables WHERE table_name LIKE '%&lt;any_pattern&gt;%';
+# Example: SELECT table_name FROM user_tables WHERE table_name LIKE '%BLACK_LIST%';
+</code></pre>
 
-# On Slave:
-vim /etc/mysql/my.cnf:
-   server-id   = 3
-   log_bin     = /var/lib/mysql-binlog/mysql-bin.log
+<h3 id="login-to-database">Login to database</h3>
+<pre><code class="bash"># First of all you can just use clean 'sqlplus' and it request user and password
+sqlplus &lt;username&gt;/&lt;password&gt;@&lt;oracle_database_hostname&gt;
+</code></pre>
 
-# SQL on Slave
-mysql&gt; change master to 
-      -&gt; master_host='&lt;master_server&gt;',
-      -&gt; master_user='replica', 
-      -&gt; master_password='&lt;password&gt;',
-      -&gt; master_log_file='&lt;bin_log&gt;', 
-      -&gt; master_log_pos=&lt;bin_log_position&gt;;
+<h3 id="run-sql-script">Run SQL script</h3>
+<pre><code class="sql"># Unix
+@/path/to/sql_script.sql
+START /path/to/sql_script.sql
+# Windows
+@c:\path\to\sql_script.sql
+START c:\path\to\sql_script.sql
+</code></pre>
+
+<h3 id="show-table-information">Show table information</h3>
+<pre><code class="sql">DESCRIBE &lt;table_name&gt;
 </code></pre></div>
         
     </div>
