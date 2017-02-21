@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Unix-way/Backup/TSM/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Unix-way/Users/Rename_User/"> 
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-    <title>TSM - Technical Info</title>
+    <title>Rename User - Technical Info</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -663,20 +663,20 @@
     <ul class="dropdown-menu">
         
             
-<li class="active">
-    <a href="./">TSM</a>
+<li >
+    <a href="../../Backup/TSM/">TSM</a>
 </li>
 
         
             
 <li >
-    <a href="../Tape/">Tape</a>
+    <a href="../../Backup/Tape/">Tape</a>
 </li>
 
         
             
 <li >
-    <a href="../Veeam/">Veeam</a>
+    <a href="../../Backup/Veeam/">Veeam</a>
 </li>
 
         
@@ -990,8 +990,8 @@
     <ul class="dropdown-menu">
         
             
-<li >
-    <a href="../../Users/Rename_User/">Rename User</a>
+<li class="active">
+    <a href="./">Rename User</a>
 </li>
 
         
@@ -1083,12 +1083,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../../../OS/Gentoo/Systemd/">
+                        <a rel="next" href="../../Storage/mdadm/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../Tape/">
+                        <a rel="prev" href="../../Userspace/Images/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -1111,183 +1111,29 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#queries">Queries</a></li>
+        <li class="first-level active"><a href="#change-username">Change username</a></li>
         
     
-        <li class="first-level "><a href="#unload-tape">Unload tape</a></li>
+        <li class="first-level "><a href="#change-username-and-home-directory">Change username and home directory</a></li>
         
     
-        <li class="first-level "><a href="#how-to-get-logs">How to get logs</a></li>
-        
-    
-        <li class="first-level "><a href="#changes">Changes</a></li>
-        
-    
-        <li class="first-level "><a href="#creating-backups">Creating backups</a></li>
-        
-    
-        <li class="first-level "><a href="#startup">Startup</a></li>
-        
-    
-        <li class="first-level "><a href="#if-tape-is-not-shown">If tape is not shown</a></li>
+        <li class="first-level "><a href="#change-the-name-of-the-group-associated-with-the-user">Change the name of the group associated with the user</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="queries">Queries</h3>
-<pre><code class="bash"># Check backup
-q ev * * 
-
-# Check path
-q path 
-
-# Check drive
-q dri 
-
-# Status
-q stat
-
-# Tape status
-q vol
-
-# Check volumes in the tape library                                                                 
-q libvol
-
-# Check processes
-q pro
-
-# Cancel process
-can pro (&lt;process&gt;)
-
-# Check pools
-q stg
-
-# Check working sessions
-q sess
-
-# Cancel session
-can sess (&lt;session&gt;)
-
-# Shedule backup
-q eve domain name schedulename
-
-# Viwe assigned nodes in a Tivoli server
-q node
-
-# Check backup space utilized for each file system of a server
-q filespace
-
-# View activity log
-q actlog
-q act begind=mm/dd/yyyy begint=hh:mm:ss endd= mm/dd/yyyy endt=hh:mm:ss
-q act begind=today-1 begint=00:00
-q act search=transferred begint=00:00
-q act search=nodenam
-
-# Get detailed drive report
-q drive f=d
-
-# Get detailed information about tape library
-q library f=d
-
-# Get requests
-q req
-# Reply to request 
-reply (&lt;request&gt;)
-
-# Schedule
-q sched
-q sched f=d
-q sched * type=admin f=d
-
+<h3 id="change-username">Change username</h3>
+<pre><code class="bash">usermod -l &lt;new_name&gt; &lt;old_name&gt;
 </code></pre>
 
-<h3 id="unload-tape">Unload tape</h3>
-<pre><code class="bash">Configure Library → Drive → []Power ON
-Configure Library → Drive → [X]Power ON
-Wait for 5 minutes until tape will be rewinded
-# Move tape to empty slot
-Manage Library → Move Media 
+<h3 id="change-username-and-home-directory">Change username and home directory</h3>
+<pre><code class="bash">usermod -l &lt;New_Name&gt; -m -d /home/&lt;new_dir&gt; &lt;old_name&gt;
 </code></pre>
 
-<h3 id="how-to-get-logs">How to get logs</h3>
-<pre><code># Library logs
-Service → View Logs
-Save Service Dump
-
-# Drive logs
-Service Library → Save Drive Dump
-</code></pre>
-
-<h3 id="changes">Changes</h3>
-<pre><code class="bash"># Path (set online)
-#Drive1:
-UPD PATH TSM DRIVE01 SRCT=SERVer DESTT=DRIVE LIBR=TS3100 ONL=Y
-#Drive2:
-UPD PATH TSM DRIVE02 SRCT=SERVer DESTT=DRIVE LIBR=TS3100 ONL=Y
-
-# Update drive status to online
-update path sourceservername TAPE0 srct=server destt=drive libr=ts3200 online=yes
-
-# Drive (set online)
-#Drive1:
-UPD DRI TS3100 DRIVE01 ONL=Y
-#Drive2:
-UPD DRI TS3100 DRIVE02 ONL=Y
-
-# Change a library volume ( L41117L4 ) status to scratch from private
-UPDATE LIBVOLUME TS3200 L41117L4 STATUS=SCRATCH
-
-# Change a tivoli login password of a node
-update node nodename &quot;admin&quot; domain=domainname forcepwreset=Yes
-
-# Add new tape L41116L4 to a storagepool
-define vol storagepoolname L41116L4
-
-# Delete data inside a tape media L41116L4
-delete volume L41116L4 discarddata=yes
-
-# Set serial number of a drive in tape library
-UPDATE DRIVE TS3200 TAPE0 ELEMENT=autodetect ONLINE=Yes WWN=&quot;2002000E11107B6C&quot; SERIAL=autodetect
-
-# Detect label of a tape in tape library
-label libvol t3200 checkin=scratch labelsource=barcode search=bulk waittime=0
-
-# Remove tape media from tape library
-checkout libvol ts3200 VOLLIST=A00015L3,A00019L3 CHECKLABEL=YES REMOVE=YES
-
-# Add and label new tapes into library
-LABEL libvol TS3200 search=yes labelsource=barcode overwrite=NO checkin=SCRATCH WAITTIME=0
-
-# Assign a tape drive to a server
-UPDATE PATH servername TAPE0 SRCTYPE=SERVER DESTTYPE=DRIVE LIBRARY=TS3200 DEVICE=\\.\Tape0 ONLINE=YES AUTODETECT=no
-</code></pre>
-
-<h3 id="creating-backups">Creating backups</h3>
-<pre><code class="bash"># Create a new schedule backup (incremental) for a node
-UPDATE SCHEDULE domainname nodename desc=&quot;daily incremental backup for a server&quot; action=Incremental options=-subdir=yes objects=&quot;&quot;/fs1/*&quot; &quot;/fs2/*&quot; &quot;/home/user1/*&quot;&quot; priority=5startdate=mm/dd/yyyy starttime=hh:mm duration=1 duru=Houperiod=1 perunits=Day dayofweek=Any expiration=never
-
-# Full backup of Tivoli database manually to file on local disk
-backup db dev=FILECLASS type=full
-</code></pre>
-
-<h3 id="startup">Startup</h3>
-<pre><code class="bash"># Start Tivoly on AIX
-cd /usr/tivoli/tsm/client/ba/bin
-nohup dsmc sched &amp;
-nohup dsmcad &amp;
-
-cd /usr/tivoli/tsm/StorageAgent/bin
-nohup ./dsmsta &amp;
-
-ps -ef | grep dsm
-</code></pre>
-
-<h3 id="if-tape-is-not-shown">If tape is not shown</h3>
-<pre><code class="bash">checkin libvolume TS3100 search=yes status=scratch       
-checkin libvolume TS3100 search=yes status=private
+<h3 id="change-the-name-of-the-group-associated-with-the-user">Change the name of the group associated with the user</h3>
+<pre><code class="bash">groupmod -n &lt;new_group_name&gt; &lt;old_group_name&gt;
 </code></pre></div>
         
     </div>

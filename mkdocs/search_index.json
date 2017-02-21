@@ -2851,6 +2851,26 @@
             "title": "Raid1"
         },
         {
+            "location": "/Unix-way/Users/Rename_User/",
+            "text": "Change username\n\n\nusermod -l \nnew_name\n \nold_name\n\n\n\n\n\nChange username and home directory\n\n\nusermod -l \nNew_Name\n -m -d /home/\nnew_dir\n \nold_name\n\n\n\n\n\nChange the name of the group associated with the user\n\n\ngroupmod -n \nnew_group_name\n \nold_group_name",
+            "title": "Rename User"
+        },
+        {
+            "location": "/Unix-way/Users/Rename_User/#change-username",
+            "text": "usermod -l  new_name   old_name",
+            "title": "Change username"
+        },
+        {
+            "location": "/Unix-way/Users/Rename_User/#change-username-and-home-directory",
+            "text": "usermod -l  New_Name  -m -d /home/ new_dir   old_name",
+            "title": "Change username and home directory"
+        },
+        {
+            "location": "/Unix-way/Users/Rename_User/#change-the-name-of-the-group-associated-with-the-user",
+            "text": "groupmod -n  new_group_name   old_group_name",
+            "title": "Change the name of the group associated with the user"
+        },
+        {
             "location": "/Unix-way/Userspace/Images/",
             "text": "Create gif from bunch of images\n\n\n# delay between frames in milliseconds, loop 0 = indefinitely\nconvert -delay 50 -loop 0 *.png \noutput_file\n.gif",
             "title": "Images"
