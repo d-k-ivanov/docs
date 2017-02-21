@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/MS-way/DevOps/Cheh/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/MS-way/DevOps/Chef/"> 
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-    <title>Cheh - Technical Info</title>
+    <title>Chef - Technical Info</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -550,7 +550,7 @@
         
             
 <li class="active">
-    <a href="./">Cheh</a>
+    <a href="./">Chef</a>
 </li>
 
         
@@ -1129,6 +1129,9 @@
         <li class="first-level active"><a href="#chef-environment-by-steven-murawski">Chef environment by Steven Murawski</a></li>
         
     
+        <li class="first-level "><a href="#chef-environment-by-karsten-muller">Chef environment by Karsten Müller</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -1157,7 +1160,74 @@ chef-apply c:/basic.rb
 # After Visual Studio Code is installed, you'll want to install a couple of handy extensions:
 #    Chef - https://marketplace.visualstudio.com/items?itemName=Pendrica.Chef
 #    PowerShell - https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell
+</code></pre>
 
+<h3 id="chef-environment-by-karsten-muller">Chef environment by Karsten Müller</h3>
+<ul>
+<li>basic.rb </li>
+</ul>
+<pre><code class="ruby">chocolatey_package 'git' do
+  package_name 'git'
+  options '-params /GitAndUnixToolsOnPath'
+end
+
+packages =  %w[conemu visualstudiocode 7zip winmerge vagrant autohotkey]
+packages.each do |pkg|
+  chocolatey_package pkg
+end
+
+gems = %w[kitchen-pester kitchen-hyperv kitchen-dsc kitchen-azurerm azure-credentials pry pry-byebug pry-stack_explorer appbundle-updater]
+gems.each do |gem|
+  chef_gem gem do
+    compile_time false if respond_to?(:compile_time)
+  end
+end
+
+extensions = %w[ ms-vscode.PowerShell msazurermtools.azurerm-vscode-tools Pendrica.Chef ]
+extensions.each do |ext|
+  execute &quot;install vscode extension #{ext}&quot; do
+    command &quot;code --install-extension #{ext}&quot;
+  end
+end
+
+powershell_script 'Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force' do
+end
+
+modules = %w[ PSReadline ]
+modules.each do |mod|
+  powershell_script &quot;Install-Module #{mod} -Force&quot; do
+  end
+end
+
+directory 'C:\Work\Chef' do
+  recursive true
+  action :create
+end
+
+execute 'chef generate repo example_repo -p' do
+  cwd 'C:\Work\Chef'
+end
+</code></pre>
+
+<ul>
+<li>bootstrap.ps1</li>
+</ul>
+<pre><code class="powershell"># Setup my execution policy for both the 64 bit and 32 bit shells
+set-executionpolicy remotesigned
+start-job -runas32 {set-executionpolicy remotesigned} | receive-job -wait
+# Install fixed version of ChefDK 
+invoke-restmethod 'https://omnitruck.chef.io/install.ps1' | iex
+install-project chefdk -verbose -version 1.1.16
+# Install Chocolatey
+invoke-expression ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
+choco feature enable -n allowGlobalConfirmation
+# Get a basic setup recipe
+Invoke-RestMethod -UseBasicParsing 'https://gist.githubusercontent.com/karstenmueller/0c2257684b8e6a44bac9526c52074e18/raw/a150048b7ffbfe202f90fdce446b8095b3e7858c/basic.rb' | out-file -encoding ascii -filepath c:/basic.rb
+# We dont need any Windows 10 Apps
+Get-AppxPackage | Remove-AppxPackage 2&gt;&amp;1&gt;$null
+# Use Chef Apply to setup 
+chef-apply c:/basic.rb
+write-host &quot;executed chef recipe c:/basic.rb&quot;
 </code></pre></div>
         
     </div>
