@@ -133,4 +133,7 @@ chown -R apache:apache /var/www/redmine
 chmod -R 777 /var/www/redmine/tmp
 
 systemctl restart httpd
+
+# http://your.redmone.server
+# Initial username/password "admin/admin"
 ```
