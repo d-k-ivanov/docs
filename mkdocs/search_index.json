@@ -2296,6 +2296,41 @@
             "title": "Create all host_vars from inventory"
         },
         {
+            "location": "/Unix-way/Management/Redmine/",
+            "text": "CentOS 7\n\n\nDependencies\n\n\n# For Ruby\nyum \nDevleopment Tools\n\n# For Redmine\nyum install ImageMagick ImageMagick-devel libcurl-devel httpd-devel httpd mariadb-devel mariadb-server zlib-devel zlib\n\n\n\n\nRuby\n\n\nmkdir ~/dst \n cd dst\nwget https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.3.tar.gz\ntar xzvf ruby-2.3.3.tar.gz \n cd ruby-2.3.3\n# Configure from root! Bacause sometime it doesn't see zlib\n./configure\nmake\nmake install\n\n\n\n\nMariaDB Database\n\n\nsystemctl enable --now mariadb.service\nfirewall-cmd --add-service=mysql --permanent\nfirewall-cmd --reload\n\nvi /etc/my.cnf\n# --- VI ---\n[mysqld]\ncharacter-set-server=utf8 \n# ----------\n\nmysql_secure_installation\nSet root password? [Y/n] Y\nRemove anonymous users? [Y/n] Y\nDisallow root login remotely? [Y/n] Y\nRemove test database and access to it? [Y/n] Y\nReload privilege tables now? [Y/n] Y\n\nmysql -u root -p \nEnter password: *****\n# --- SQL ---\nCREATE DATABASE redmine CHARACTER SET utf8;\nGRANT ALL PRIVILEGES ON redmine.* TO redmine@'localhost' IDENTIFIED BY 'my_password'; \nFLUSH PRIVILEGES;\nEXIT;\n# -----------\n\n\n\n\nWeb server\n\n\nrm -f /etc/httpd/conf.d/welcome.conf\n\nvi /etc/httpd/conf/httpd.con\n# --- VI ---\n# Change those values\n# Line 86\nServerAdmin your@emain.name\n# Line 95\nServerName www.your-server-name:80\n# Line 151\nAllowOverride All\n# Line 164\nDirectoryIndex index.html index.cgi index.php\n# At the end of file\nServerTokens Prod\nKeepAlive On\n# ----------\n\nsystemctl enable --now httpd.service\nfirewall-cmd --add-service=http --permanent \nfirewall-cmd --reload \n\n\n\n\nRedmine\n\n\ncd ~/dst\nwget --no-check-certificate  https://redmine.org/releases/redmine-3.3.2.tar.gz\ntar xzvf redmine-3.3.2.tar.gz\nmv redmine-3.3.2 /var/www/redmine\n\nvi /var/www/redmine/config/database.yml\n# --- VI ---\nproduction:\n    adapter: mysql2\n    database: redmine\n    host: localhost\n    username: redmine\n    password: \nmy_password\n\n    encoding: utf8\n# ----------\n\nvi /var/www/redmine/config/configuration.yml\n# --- VI ---\nproduction:\n  email_delivery:\n    delivery_method: :smtp\n      smtp_settings:\n        address: \nyour.email.server.name\n\n        port: 25\n        authentication: :login\n        domain: 'your.domain.name'\n        user_name: 'username@your.domain.name'\n        password: 'your-email-password'\n        enable_starttls_auto: false\n# ----------\n\ncd /var/www/redmine/\ngem install bundler --no-rdoc --no-ri \nbundle install --without development test postgresql sqlite \nbundle exec rake generate_secret_token RAILS_ENV=production\nbundle exec rake db:migrate RAILS_ENV=production\ngem install passenger --no-rdoc --no-ri\npassenger-install-apache2-module\n\nvi /etc/httpd/conf.d/passenger.conf\n# --- VI ---\nLoadModule passenger_module /usr/local/lib/ruby/gems/2.3.0/gems/passenger-5.1.2/buildout/apache2/mod_passenger.so\n   \nIfModule mod_passenger.c\n\n     PassengerRoot /usr/local/lib/ruby/gems/2.3.0/gems/passenger-5.1.2\n     PassengerDefaultRuby /usr/local/bin/ruby\n   \n/IfModule\n\n\nNameVirtualHost *:80\n\nVirtualHost *:80\n\n    ServerName redmine.pupupon.com\n    DocumentRoot /var/www/redmine/public\n\n/VirtualHost\n\n# ----------\n\nchown -R apache:apache /var/www/redmine\nchmod -R 777 /var/www/redmine/tmp\n\nsystemctl restart httpd",
+            "title": "Redmine"
+        },
+        {
+            "location": "/Unix-way/Management/Redmine/#centos-7",
+            "text": "",
+            "title": "CentOS 7"
+        },
+        {
+            "location": "/Unix-way/Management/Redmine/#dependencies",
+            "text": "# For Ruby\nyum  Devleopment Tools \n# For Redmine\nyum install ImageMagick ImageMagick-devel libcurl-devel httpd-devel httpd mariadb-devel mariadb-server zlib-devel zlib",
+            "title": "Dependencies"
+        },
+        {
+            "location": "/Unix-way/Management/Redmine/#ruby",
+            "text": "mkdir ~/dst   cd dst\nwget https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.3.tar.gz\ntar xzvf ruby-2.3.3.tar.gz   cd ruby-2.3.3\n# Configure from root! Bacause sometime it doesn't see zlib\n./configure\nmake\nmake install",
+            "title": "Ruby"
+        },
+        {
+            "location": "/Unix-way/Management/Redmine/#mariadb-database",
+            "text": "systemctl enable --now mariadb.service\nfirewall-cmd --add-service=mysql --permanent\nfirewall-cmd --reload\n\nvi /etc/my.cnf\n# --- VI ---\n[mysqld]\ncharacter-set-server=utf8 \n# ----------\n\nmysql_secure_installation\nSet root password? [Y/n] Y\nRemove anonymous users? [Y/n] Y\nDisallow root login remotely? [Y/n] Y\nRemove test database and access to it? [Y/n] Y\nReload privilege tables now? [Y/n] Y\n\nmysql -u root -p \nEnter password: *****\n# --- SQL ---\nCREATE DATABASE redmine CHARACTER SET utf8;\nGRANT ALL PRIVILEGES ON redmine.* TO redmine@'localhost' IDENTIFIED BY 'my_password'; \nFLUSH PRIVILEGES;\nEXIT;\n# -----------",
+            "title": "MariaDB Database"
+        },
+        {
+            "location": "/Unix-way/Management/Redmine/#web-server",
+            "text": "rm -f /etc/httpd/conf.d/welcome.conf\n\nvi /etc/httpd/conf/httpd.con\n# --- VI ---\n# Change those values\n# Line 86\nServerAdmin your@emain.name\n# Line 95\nServerName www.your-server-name:80\n# Line 151\nAllowOverride All\n# Line 164\nDirectoryIndex index.html index.cgi index.php\n# At the end of file\nServerTokens Prod\nKeepAlive On\n# ----------\n\nsystemctl enable --now httpd.service\nfirewall-cmd --add-service=http --permanent \nfirewall-cmd --reload",
+            "title": "Web server"
+        },
+        {
+            "location": "/Unix-way/Management/Redmine/#redmine",
+            "text": "cd ~/dst\nwget --no-check-certificate  https://redmine.org/releases/redmine-3.3.2.tar.gz\ntar xzvf redmine-3.3.2.tar.gz\nmv redmine-3.3.2 /var/www/redmine\n\nvi /var/www/redmine/config/database.yml\n# --- VI ---\nproduction:\n    adapter: mysql2\n    database: redmine\n    host: localhost\n    username: redmine\n    password:  my_password \n    encoding: utf8\n# ----------\n\nvi /var/www/redmine/config/configuration.yml\n# --- VI ---\nproduction:\n  email_delivery:\n    delivery_method: :smtp\n      smtp_settings:\n        address:  your.email.server.name \n        port: 25\n        authentication: :login\n        domain: 'your.domain.name'\n        user_name: 'username@your.domain.name'\n        password: 'your-email-password'\n        enable_starttls_auto: false\n# ----------\n\ncd /var/www/redmine/\ngem install bundler --no-rdoc --no-ri \nbundle install --without development test postgresql sqlite \nbundle exec rake generate_secret_token RAILS_ENV=production\nbundle exec rake db:migrate RAILS_ENV=production\ngem install passenger --no-rdoc --no-ri\npassenger-install-apache2-module\n\nvi /etc/httpd/conf.d/passenger.conf\n# --- VI ---\nLoadModule passenger_module /usr/local/lib/ruby/gems/2.3.0/gems/passenger-5.1.2/buildout/apache2/mod_passenger.so\n    IfModule mod_passenger.c \n     PassengerRoot /usr/local/lib/ruby/gems/2.3.0/gems/passenger-5.1.2\n     PassengerDefaultRuby /usr/local/bin/ruby\n    /IfModule \n\nNameVirtualHost *:80 VirtualHost *:80 \n    ServerName redmine.pupupon.com\n    DocumentRoot /var/www/redmine/public /VirtualHost \n# ----------\n\nchown -R apache:apache /var/www/redmine\nchmod -R 777 /var/www/redmine/tmp\n\nsystemctl restart httpd",
+            "title": "Redmine"
+        },
+        {
             "location": "/Unix-way/Management/Remote_management/",
             "text": "XfreeRDP\n\n\nxfreerdp [+clipboard]/w:\nWIDTH\n /h:\nHEIGHT\n /drive:\ncuatom_drive_name\n,\npath_to_attach\n /v:\nip\n:\nport\n /u:\nuser_name\n\nxfreerdp +clipboard /w:1600 /h:900 /v:10.15.0.10:3389 /u:Administrator\nxfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM/HMC/7.9_sp3 /v:10.15.0.10",
             "title": "Remote management"
