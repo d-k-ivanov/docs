@@ -21,3 +21,12 @@ dpkg --get-selections | grep -v deinstall > ~/Desktop/packages
 # Alternatively, simply use
 dpkg -l
 ```
+
+### Python alternatives
+```bash
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.4 1
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+sudo update-alternatives --config python
+```
+
+
