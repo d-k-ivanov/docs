@@ -1817,7 +1817,7 @@
         },
         {
             "location": "/OS/Debian/",
-            "text": "This section describes work with Debian-based Linux distributives like:\nDebian Linux, Ubuntu Linux, Astra Linux, Linux Mint\n\n\n\n\nApt\n\n\n# Show installed packages\napt --installed list\n# Search for software\napt-cache search \npattern\n\n# Install package\napt-get install \npackage_name\n\n\n\n\n\nDpkg\n\n\n# To get a list of packages installed locally do this in your terminal:\ndpkg --get-selections | grep -v deinstall\n# To get a list of a specific package installed:\ndpkg --get-selections | grep postgres\n# To save that list to a text file called packages on your desktop do this in your terminal:\ndpkg --get-selections | grep -v deinstall \n ~/Desktop/packages\n# Alternatively, simply use\ndpkg -l",
+            "text": "This section describes work with Debian-based Linux distributives like:\nDebian Linux, Ubuntu Linux, Astra Linux, Linux Mint\n\n\n\n\nApt\n\n\n# Show installed packages\napt --installed list\n# Search for software\napt-cache search \npattern\n\n# Install package\napt-get install \npackage_name\n\n\n\n\n\nDpkg\n\n\n# To get a list of packages installed locally do this in your terminal:\ndpkg --get-selections | grep -v deinstall\n# To get a list of a specific package installed:\ndpkg --get-selections | grep postgres\n# To save that list to a text file called packages on your desktop do this in your terminal:\ndpkg --get-selections | grep -v deinstall \n ~/Desktop/packages\n# Alternatively, simply use\ndpkg -l\n\n\n\n\nPython alternatives\n\n\nsudo update-alternatives --install /usr/bin/python python /usr/bin/python3.4 1\nsudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1\nsudo update-alternatives --config python",
             "title": "Debian"
         },
         {
@@ -1829,6 +1829,11 @@
             "location": "/OS/Debian/#dpkg",
             "text": "# To get a list of packages installed locally do this in your terminal:\ndpkg --get-selections | grep -v deinstall\n# To get a list of a specific package installed:\ndpkg --get-selections | grep postgres\n# To save that list to a text file called packages on your desktop do this in your terminal:\ndpkg --get-selections | grep -v deinstall   ~/Desktop/packages\n# Alternatively, simply use\ndpkg -l",
             "title": "Dpkg"
+        },
+        {
+            "location": "/OS/Debian/#python-alternatives",
+            "text": "sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.4 1\nsudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1\nsudo update-alternatives --config python",
+            "title": "Python alternatives"
         },
         {
             "location": "/OS/FreeBSD/",
@@ -2737,12 +2742,12 @@
         },
         {
             "location": "/Unix-way/Security/SELinux/",
-            "text": "Disabling SELinux\n\n\n```bash\nsed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux \n cat /etc/sysconfig/selinux",
+            "text": "Disabling SELinux\n\n\nsed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux \n cat /etc/sysconfig/selinux",
             "title": "SELinux"
         },
         {
             "location": "/Unix-way/Security/SELinux/#disabling-selinux",
-            "text": "```bash\nsed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux   cat /etc/sysconfig/selinux",
+            "text": "sed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux   cat /etc/sysconfig/selinux",
             "title": "Disabling SELinux"
         },
         {
