@@ -1721,6 +1721,16 @@
             "title": "Chef environment by Karsten M\u00fcller"
         },
         {
+            "location": "/MS-way/Domain/Connect/",
+            "text": "Use domain credentials from non domain worksation\n\n\nrunas /netonly /user:DOMAIN\\username \nprogram\n\n# DNS Management\n#runas /netonly /user:username@domain \n%SystemRoot%\\system32\\mmc.exe %SystemRoot%\\system32\\dnsmgmt.msc\n\n# AD Users and Computers\n#runas /netonly /user:username@domain \n%SystemRoot%\\system32\\mmc.exe %SystemRoot%\\system32\\dsa.msc",
+            "title": "Connect"
+        },
+        {
+            "location": "/MS-way/Domain/Connect/#use-domain-credentials-from-non-domain-worksation",
+            "text": "runas /netonly /user:DOMAIN\\username  program \n# DNS Management\n#runas /netonly /user:username@domain  %SystemRoot%\\system32\\mmc.exe %SystemRoot%\\system32\\dnsmgmt.msc \n# AD Users and Computers\n#runas /netonly /user:username@domain  %SystemRoot%\\system32\\mmc.exe %SystemRoot%\\system32\\dsa.msc",
+            "title": "Use domain credentials from non domain worksation"
+        },
+        {
             "location": "/MS-way/Hyper-V/NAT/",
             "text": "Create NATted local vSwitch\n\n\n# Opent PowerShell console:\npowershell\n\n# Create simple internal vSwitch:\nNew-VMSwitch -SwitchName \nNAT\n -SwitchType Internal\n\n# Write down index of network adapter:\nGet-NetAdapter\n\n# Set network addresses:\nNew-NetIPAddress -IPAddress \nNAT Gateway IP\n -PrefixLength \nNAT Subnet Prefix Length\n -InterfaceIndex \nifIndex\n\n# New-NetIPAddress -IPAddress 172.188.188.1 -PrefixLength 24 -InterfaceIndex 46\n\n\nNew-NetNat -Name \nNAT_NetworkName\n -InternalIPInterfaceAddressPrefix \nNAT_Subnet/prefix\n\n# New-NetNat -Name LocalNatNetwork -InternalIPInterfaceAddressPrefix 172.188.188.0/24\n\n# Diagnostic\nGet-NetNat\nGet-VMSwitch\n\n# Removing NAT network\nGet-NetNat | Remove-NetNat\n\n# Removing vSwitch\nGet-NetIPAddress -InterfaceAlias \nvEthernet(\nname of vSwitch\n)\n\nRemove-NetIPAddress -InterfaceAlias \nvEthernet(\nname of vSwitch\n)\n -IPAddress \nIPAddress",
             "title": "NAT"
@@ -1729,6 +1739,16 @@
             "location": "/MS-way/Hyper-V/NAT/#create-natted-local-vswitch",
             "text": "# Opent PowerShell console:\npowershell\n\n# Create simple internal vSwitch:\nNew-VMSwitch -SwitchName  NAT  -SwitchType Internal\n\n# Write down index of network adapter:\nGet-NetAdapter\n\n# Set network addresses:\nNew-NetIPAddress -IPAddress  NAT Gateway IP  -PrefixLength  NAT Subnet Prefix Length  -InterfaceIndex  ifIndex \n# New-NetIPAddress -IPAddress 172.188.188.1 -PrefixLength 24 -InterfaceIndex 46\n\n\nNew-NetNat -Name  NAT_NetworkName  -InternalIPInterfaceAddressPrefix  NAT_Subnet/prefix \n# New-NetNat -Name LocalNatNetwork -InternalIPInterfaceAddressPrefix 172.188.188.0/24\n\n# Diagnostic\nGet-NetNat\nGet-VMSwitch\n\n# Removing NAT network\nGet-NetNat | Remove-NetNat\n\n# Removing vSwitch\nGet-NetIPAddress -InterfaceAlias  vEthernet( name of vSwitch ) \nRemove-NetIPAddress -InterfaceAlias  vEthernet( name of vSwitch )  -IPAddress  IPAddress",
             "title": "Create NATted local vSwitch"
+        },
+        {
+            "location": "/MS-way/User_Experience/Files_and_Folders/",
+            "text": "Map local folder to drive letter\n\n\nsubst \ndrive_letter:\n \npath_to_local_folder\n\n#subst U: d:\\AdminTools",
+            "title": "Files and Folders"
+        },
+        {
+            "location": "/MS-way/User_Experience/Files_and_Folders/#map-local-folder-to-drive-letter",
+            "text": "subst  drive_letter:   path_to_local_folder \n#subst U: d:\\AdminTools",
+            "title": "Map local folder to drive letter"
         },
         {
             "location": "/OS/AIX/",
