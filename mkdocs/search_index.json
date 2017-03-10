@@ -1742,13 +1742,18 @@
         },
         {
             "location": "/MS-way/User_Experience/Files_and_Folders/",
-            "text": "Map local folder to drive letter\n\n\nsubst \ndrive_letter:\n \npath_to_local_folder\n\n#subst U: d:\\AdminTools",
+            "text": "Map local folder to drive letter\n\n\nsubst \ndrive_letter:\n \npath_to_local_folder\n\n#subst U: d:\\AdminTools\n\n\n\n\nMap reemote folder within domain\n\n\nnet use \nDriveLetter\n: \\\\Server\\SharedFolder /USER:\nusername\n@\ndomain\n * /PERSISTENT:YES\n# net use U: \\\\FileServer\\HomeFolder /USER:Administrator@example.ru * /PERSISTENT:YES",
             "title": "Files and Folders"
         },
         {
             "location": "/MS-way/User_Experience/Files_and_Folders/#map-local-folder-to-drive-letter",
             "text": "subst  drive_letter:   path_to_local_folder \n#subst U: d:\\AdminTools",
             "title": "Map local folder to drive letter"
+        },
+        {
+            "location": "/MS-way/User_Experience/Files_and_Folders/#map-reemote-folder-within-domain",
+            "text": "net use  DriveLetter : \\\\Server\\SharedFolder /USER: username @ domain  * /PERSISTENT:YES\n# net use U: \\\\FileServer\\HomeFolder /USER:Administrator@example.ru * /PERSISTENT:YES",
+            "title": "Map reemote folder within domain"
         },
         {
             "location": "/OS/AIX/",

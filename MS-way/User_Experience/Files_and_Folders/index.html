@@ -1171,6 +1171,9 @@
         <li class="first-level active"><a href="#map-local-folder-to-drive-letter">Map local folder to drive letter</a></li>
         
     
+        <li class="first-level "><a href="#map-reemote-folder-within-domain">Map reemote folder within domain</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -1178,6 +1181,11 @@
 <h3 id="map-local-folder-to-drive-letter">Map local folder to drive letter</h3>
 <pre><code class="bash">subst &lt;drive_letter:&gt; &lt;path_to_local_folder&gt;
 #subst U: d:\AdminTools
+</code></pre>
+
+<h3 id="map-reemote-folder-within-domain">Map reemote folder within domain</h3>
+<pre><code class="bash">net use &lt;DriveLetter&gt;: \\Server\SharedFolder /USER:&lt;username&gt;@&lt;domain&gt; * /PERSISTENT:YES
+# net use U: \\FileServer\HomeFolder /USER:Administrator@example.ru * /PERSISTENT:YES
 </code></pre></div>
         
     </div>
