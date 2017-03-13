@@ -12,6 +12,7 @@
 * [VbsEdit](http://www.vbsedit.com/) - VBS scripts 
 * [Morgan's Library](http://www.morganslibrary.org/) - Dan Morgan's Oracle Library
 * [Adminer](https://www.adminer.org/) - simple database management php console
+* [Global DNS record check](https://www.whatsmydns.net/) - Site to get responce from many DNS servers around the world
 
 ---
 
