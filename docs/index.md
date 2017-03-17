@@ -37,4 +37,5 @@ sudo tmux -2 -S /tmp/tmux-<UID>/default
 ### Cool weather
 ```bash
 curl http://wttr.in/moscow
+
 ```
