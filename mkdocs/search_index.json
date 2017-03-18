@@ -1742,12 +1742,12 @@
         },
         {
             "location": "/MS-way/IIS/Log_Files/",
-            "text": "Places\n\n\n# First one: Default place to keep Site's logs (But it can be changed in IIS Manager)\n%SystemDrive%\\inetpub\\logs\\LogFiles\n\n# HTTP Error logs:\n%SystemDrive%\\Windows\\System32\\LogFiles\\HTTPERR",
+            "text": "Places\n\n\n# First one: Default place to keep Site's logs (But it can be changed in IIS Manager)\n%SystemDrive%\\inetpub\\logs\\LogFiles\n\n# HTTP Error logs:\n%SystemDrive%\\Windows\\System32\\LogFiles\\HTTPERR\n\n# If you cann't find log you should be sure that they are enabled:\n# * Go to \nPrograms and Features\n\n# * Click on \nTurn Windows features on or off\n(on the left side)\n# * Select \nInternet Information Services\\World Wide Web Services\\Health and Diagnostics\\HTTP Logging",
             "title": "Log Files"
         },
         {
             "location": "/MS-way/IIS/Log_Files/#places",
-            "text": "# First one: Default place to keep Site's logs (But it can be changed in IIS Manager)\n%SystemDrive%\\inetpub\\logs\\LogFiles\n\n# HTTP Error logs:\n%SystemDrive%\\Windows\\System32\\LogFiles\\HTTPERR",
+            "text": "# First one: Default place to keep Site's logs (But it can be changed in IIS Manager)\n%SystemDrive%\\inetpub\\logs\\LogFiles\n\n# HTTP Error logs:\n%SystemDrive%\\Windows\\System32\\LogFiles\\HTTPERR\n\n# If you cann't find log you should be sure that they are enabled:\n# * Go to  Programs and Features \n# * Click on  Turn Windows features on or off (on the left side)\n# * Select  Internet Information Services\\World Wide Web Services\\Health and Diagnostics\\HTTP Logging",
             "title": "Places"
         },
         {
