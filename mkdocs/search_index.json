@@ -1741,6 +1741,16 @@
             "title": "Create NATted local vSwitch"
         },
         {
+            "location": "/MS-way/IIS/Log_Files/",
+            "text": "Places\n\n\n# First one: Default place to keep Site's logs (But it can be changed in IIS Manager)\n%SystemDrive%\\inetpub\\logs\\LogFiles\n\n# HTTP Error logs:\n%SystemDrive%\\Windows\\System32\\LogFiles\\HTTPERR",
+            "title": "Log Files"
+        },
+        {
+            "location": "/MS-way/IIS/Log_Files/#places",
+            "text": "# First one: Default place to keep Site's logs (But it can be changed in IIS Manager)\n%SystemDrive%\\inetpub\\logs\\LogFiles\n\n# HTTP Error logs:\n%SystemDrive%\\Windows\\System32\\LogFiles\\HTTPERR",
+            "title": "Places"
+        },
+        {
             "location": "/MS-way/User_Experience/Files_and_Folders/",
             "text": "Map local folder to drive letter\n\n\nsubst \ndrive_letter:\n \npath_to_local_folder\n\n#subst U: d:\\AdminTools\n\n\n\n\nMap reemote folder within domain\n\n\nnet use \nDriveLetter\n: \\\\Server\\SharedFolder /USER:\nusername\n@\ndomain\n * /PERSISTENT:YES\n# net use U: \\\\FileServer\\HomeFolder /USER:Administrator@example.ru * /PERSISTENT:YES",
             "title": "Files and Folders"
