@@ -1476,31 +1476,6 @@
             "title": "Generate MD file from baunch of man files"
         },
         {
-            "location": "/Dev/Power_Shell/Power_Shell/",
-            "text": "Windows 2008 Server R2\n\n\nTo release this error:\n\n\n\n\nScript cannot be loaded because the execution of scripts is disabled on this system.\n\n\n\n\n# Run as Administrator\nSet-ExecutionPolicy RemoteSigned\n\n# There is following parameters:\n# * Restricted - No scripts can be run. Windows PowerShell can be used only in interactive mode.\n# * AllSigned - Only scripts signed by a trusted publisher can be run.\n# * RemoteSigned - Downloaded scripts must be signed by a trusted publisher before they can be run.\n# * Unrestricted - No restrictions; all Windows PowerShell scripts can be run.\n\n\n\n\nShow current logged user\n\n\ngwmi win32_computersystem -comp $computer | select USername,Caption,Manufacturer\nGet_WmiObject win32_computersystem -comp $computer | select USername,Caption,Manufacturer\n\n\n\n\nList of logged in users (any user in any time)\n\n\nGet-WmiObject Win32_LoggedOnUser -ComputerName msk-sales-02 | Select __SERVER, Antecedent -Unique | %{\n{0} : {1}\\{2}\n -f $_.__SERVER, $_.Antecedent.ToString().Split('\n')[1],$_.Antecedent.ToString().Split('\n')[3]}\n\n\n\n\nRead from keyboard\n\n\n$variable=read-host \nEnter computer name:",
-            "title": "Power Shell"
-        },
-        {
-            "location": "/Dev/Power_Shell/Power_Shell/#windows-2008-server-r2",
-            "text": "To release this error:   Script cannot be loaded because the execution of scripts is disabled on this system.   # Run as Administrator\nSet-ExecutionPolicy RemoteSigned\n\n# There is following parameters:\n# * Restricted - No scripts can be run. Windows PowerShell can be used only in interactive mode.\n# * AllSigned - Only scripts signed by a trusted publisher can be run.\n# * RemoteSigned - Downloaded scripts must be signed by a trusted publisher before they can be run.\n# * Unrestricted - No restrictions; all Windows PowerShell scripts can be run.",
-            "title": "Windows 2008 Server R2"
-        },
-        {
-            "location": "/Dev/Power_Shell/Power_Shell/#show-current-logged-user",
-            "text": "gwmi win32_computersystem -comp $computer | select USername,Caption,Manufacturer\nGet_WmiObject win32_computersystem -comp $computer | select USername,Caption,Manufacturer",
-            "title": "Show current logged user"
-        },
-        {
-            "location": "/Dev/Power_Shell/Power_Shell/#list-of-logged-in-users-any-user-in-any-time",
-            "text": "Get-WmiObject Win32_LoggedOnUser -ComputerName msk-sales-02 | Select __SERVER, Antecedent -Unique | %{ {0} : {1}\\{2}  -f $_.__SERVER, $_.Antecedent.ToString().Split(' ')[1],$_.Antecedent.ToString().Split(' ')[3]}",
-            "title": "List of logged in users (any user in any time)"
-        },
-        {
-            "location": "/Dev/Power_Shell/Power_Shell/#read-from-keyboard",
-            "text": "$variable=read-host  Enter computer name:",
-            "title": "Read from keyboard"
-        },
-        {
             "location": "/Dev/Python/Users_and_groups/",
             "text": "Print list of users with all user's groups\n\n\n#!/usr/bin/python\n\nimport re\n\n#cols\nc0 = 2      # Separator\nc1 = 10     # User\nc2 = 3      # Separator\nc3 = 10     # UID\nc4 = 3      # Separator\nc5 = 54     # Groups\nc6 = 2      # Separator\n\n\n\nf = open(\n/etc/passwd\n)\n\nt_len = c0+c1+c2+c3+c4+c5+c6\n\nprint \n-\n * t_len\nprint '{0:34}{1:48}{2:2}'.format(\n| \n,\nUsers and Groups\n,\n |\n)\nprint \n-\n * t_len\nprint '{0:2}{1:10}{2:3}{3:10}{4:3}{5:54}{6:2}'.format(\n| \n,\nUsername\n,\n | \n,\nUID\n,\n | \n,\nGroups\n,\n |\n)\n\nfor fline in f:\n    groups = []\n    h = open(\n/etc/group\n)\n    for hline in h:\n        if fline.split(\n:\n)[3] == hline.split(\n:\n)[2]:\n            groups.append(hline.split(\n:\n)[0])\n        if re.search(fline.split(\n:\n)[0],hline) is not None:\n            if not hline.split(\n:\n)[2] == fline.split(\n:\n)[3]:\n                groups.append(hline.split(\n:\n)[0])\n    h.close()\n    print '{0:2}{1:10}{2:3}{3:10}{4:3}{5:54}{6:2}'.format(\n| \n,fline.split(\n:\n)[0],\n | \n,fline.split(\n:\n)[2],\n | \n,\n,\n.join(groups),\n |\n)\n\nprint \n-\n * t_len\n\nf.close()",
             "title": "Users and groups"
@@ -1731,6 +1706,16 @@
             "title": "Use domain credentials from non domain worksation"
         },
         {
+            "location": "/MS-way/Domain/DNS/",
+            "text": "Re-register computer in domain DNS server:\n\n\n# Open an elevated command prompt (cmd).\n# Type ipconfig /all and verify that the correct DNS servers are listed. A domain controller, like any other domain-joined machine, should use only DNS servers that are inside the domain.\nipconfig /flushdns\nipconfig /registerdns\n\n# To register DC's SRV records, type: \nnet stop netlogon\nnet start netlogon",
+            "title": "DNS"
+        },
+        {
+            "location": "/MS-way/Domain/DNS/#re-register-computer-in-domain-dns-server",
+            "text": "# Open an elevated command prompt (cmd).\n# Type ipconfig /all and verify that the correct DNS servers are listed. A domain controller, like any other domain-joined machine, should use only DNS servers that are inside the domain.\nipconfig /flushdns\nipconfig /registerdns\n\n# To register DC's SRV records, type: \nnet stop netlogon\nnet start netlogon",
+            "title": "Re-register computer in domain DNS server:"
+        },
+        {
             "location": "/MS-way/Hyper-V/NAT/",
             "text": "Create NATted local vSwitch\n\n\n# Opent PowerShell console:\npowershell\n\n# Create simple internal vSwitch:\nNew-VMSwitch -SwitchName \nNAT\n -SwitchType Internal\n\n# Write down index of network adapter:\nGet-NetAdapter\n\n# Set network addresses:\nNew-NetIPAddress -IPAddress \nNAT Gateway IP\n -PrefixLength \nNAT Subnet Prefix Length\n -InterfaceIndex \nifIndex\n\n# New-NetIPAddress -IPAddress 172.188.188.1 -PrefixLength 24 -InterfaceIndex 46\n\n\nNew-NetNat -Name \nNAT_NetworkName\n -InternalIPInterfaceAddressPrefix \nNAT_Subnet/prefix\n\n# New-NetNat -Name LocalNatNetwork -InternalIPInterfaceAddressPrefix 172.188.188.0/24\n\n# Diagnostic\nGet-NetNat\nGet-VMSwitch\n\n# Removing NAT network\nGet-NetNat | Remove-NetNat\n\n# Removing vSwitch\nGet-NetIPAddress -InterfaceAlias \nvEthernet(\nname of vSwitch\n)\n\nRemove-NetIPAddress -InterfaceAlias \nvEthernet(\nname of vSwitch\n)\n -IPAddress \nIPAddress",
             "title": "NAT"
@@ -1749,6 +1734,81 @@
             "location": "/MS-way/IIS/Log_Files/#places",
             "text": "# First one: Default place to keep Site's logs (But it can be changed in IIS Manager)\n%SystemDrive%\\inetpub\\logs\\LogFiles\n\n# HTTP Error logs:\n%SystemDrive%\\Windows\\System32\\LogFiles\\HTTPERR\n\n# If you cann't find log you should be sure that they are enabled:\n# * Go to  Programs and Features \n# * Click on  Turn Windows features on or off (on the left side)\n# * Select  Internet Information Services\\World Wide Web Services\\Health and Diagnostics\\HTTP Logging",
             "title": "Places"
+        },
+        {
+            "location": "/MS-way/Power_Shell/Azure/",
+            "text": "Install the Azure Resource Manager modules from the PowerShell Gallery\n\n\nInstall-Module AzureRM\n\n\n\n\nTo log in to Azure Resource Manager\n\n\nLogin-AzureRmAccount\n\n\n\n\nYou can also use a specific Tenant if you would like a faster log in experience\n\n\nLogin-AzureRmAccount -TenantId xxxx\n\n\n\n\nTo view all subscriptions for your account\n\n\nGet-AzureRmSubscription\n\n\n\n\nTo select a default subscription for your current session.\n\n\n# This is useful when you have multiple subscriptions.\nGet-AzureRmSubscription -SubscriptionName \nyour sub\n | Select-AzureRmSubscription\n\n\n\n\nView your current Azure PowerShell session context\n\n\n# This session state is only applicable to the current session and will not affect other sessions\nGet-AzureRmContext\n\n\n\n\nTo select the default storage context for your current session\n\n\nSet-AzureRmCurrentStorageAccount -ResourceGroupName \nyour resource group\n -StorageAccountName \nyour storage account name\n\n\n\n\n\nView your current Azure PowerShell session context\n\n\n# Note: the CurrentStorageAccount is now set in your session context\nGet-AzureRmContext\n\n\n\n\nTo list all of the blobs in all of your containers in all of your accounts\n\n\nGet-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob\n\n\n\n\n`",
+            "title": "Azure"
+        },
+        {
+            "location": "/MS-way/Power_Shell/Azure/#install-the-azure-resource-manager-modules-from-the-powershell-gallery",
+            "text": "Install-Module AzureRM",
+            "title": "Install the Azure Resource Manager modules from the PowerShell Gallery"
+        },
+        {
+            "location": "/MS-way/Power_Shell/Azure/#to-log-in-to-azure-resource-manager",
+            "text": "Login-AzureRmAccount",
+            "title": "To log in to Azure Resource Manager"
+        },
+        {
+            "location": "/MS-way/Power_Shell/Azure/#you-can-also-use-a-specific-tenant-if-you-would-like-a-faster-log-in-experience",
+            "text": "Login-AzureRmAccount -TenantId xxxx",
+            "title": "You can also use a specific Tenant if you would like a faster log in experience"
+        },
+        {
+            "location": "/MS-way/Power_Shell/Azure/#to-view-all-subscriptions-for-your-account",
+            "text": "Get-AzureRmSubscription",
+            "title": "To view all subscriptions for your account"
+        },
+        {
+            "location": "/MS-way/Power_Shell/Azure/#to-select-a-default-subscription-for-your-current-session",
+            "text": "# This is useful when you have multiple subscriptions.\nGet-AzureRmSubscription -SubscriptionName  your sub  | Select-AzureRmSubscription",
+            "title": "To select a default subscription for your current session."
+        },
+        {
+            "location": "/MS-way/Power_Shell/Azure/#view-your-current-azure-powershell-session-context",
+            "text": "# This session state is only applicable to the current session and will not affect other sessions\nGet-AzureRmContext",
+            "title": "View your current Azure PowerShell session context"
+        },
+        {
+            "location": "/MS-way/Power_Shell/Azure/#to-select-the-default-storage-context-for-your-current-session",
+            "text": "Set-AzureRmCurrentStorageAccount -ResourceGroupName  your resource group  -StorageAccountName  your storage account name",
+            "title": "To select the default storage context for your current session"
+        },
+        {
+            "location": "/MS-way/Power_Shell/Azure/#view-your-current-azure-powershell-session-context_1",
+            "text": "# Note: the CurrentStorageAccount is now set in your session context\nGet-AzureRmContext",
+            "title": "View your current Azure PowerShell session context"
+        },
+        {
+            "location": "/MS-way/Power_Shell/Azure/#to-list-all-of-the-blobs-in-all-of-your-containers-in-all-of-your-accounts",
+            "text": "Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob  `",
+            "title": "To list all of the blobs in all of your containers in all of your accounts"
+        },
+        {
+            "location": "/MS-way/Power_Shell/Power_Shell/",
+            "text": "Windows 2008 Server R2\n\n\nTo release this error:\n\n\n\n\nScript cannot be loaded because the execution of scripts is disabled on this system.\n\n\n\n\n# Run as Administrator\nSet-ExecutionPolicy RemoteSigned\n\n# There is following parameters:\n# * Restricted - No scripts can be run. Windows PowerShell can be used only in interactive mode.\n# * AllSigned - Only scripts signed by a trusted publisher can be run.\n# * RemoteSigned - Downloaded scripts must be signed by a trusted publisher before they can be run.\n# * Unrestricted - No restrictions; all Windows PowerShell scripts can be run.\n\n\n\n\nShow current logged user\n\n\ngwmi win32_computersystem -comp $computer | select USername,Caption,Manufacturer\nGet_WmiObject win32_computersystem -comp $computer | select USername,Caption,Manufacturer\n\n\n\n\nList of logged in users (any user in any time)\n\n\nGet-WmiObject Win32_LoggedOnUser -ComputerName msk-sales-02 | Select __SERVER, Antecedent -Unique | %{\n{0} : {1}\\{2}\n -f $_.__SERVER, $_.Antecedent.ToString().Split('\n')[1],$_.Antecedent.ToString().Split('\n')[3]}\n\n\n\n\nRead from keyboard\n\n\n$variable=read-host \nEnter computer name:",
+            "title": "Power Shell"
+        },
+        {
+            "location": "/MS-way/Power_Shell/Power_Shell/#windows-2008-server-r2",
+            "text": "To release this error:   Script cannot be loaded because the execution of scripts is disabled on this system.   # Run as Administrator\nSet-ExecutionPolicy RemoteSigned\n\n# There is following parameters:\n# * Restricted - No scripts can be run. Windows PowerShell can be used only in interactive mode.\n# * AllSigned - Only scripts signed by a trusted publisher can be run.\n# * RemoteSigned - Downloaded scripts must be signed by a trusted publisher before they can be run.\n# * Unrestricted - No restrictions; all Windows PowerShell scripts can be run.",
+            "title": "Windows 2008 Server R2"
+        },
+        {
+            "location": "/MS-way/Power_Shell/Power_Shell/#show-current-logged-user",
+            "text": "gwmi win32_computersystem -comp $computer | select USername,Caption,Manufacturer\nGet_WmiObject win32_computersystem -comp $computer | select USername,Caption,Manufacturer",
+            "title": "Show current logged user"
+        },
+        {
+            "location": "/MS-way/Power_Shell/Power_Shell/#list-of-logged-in-users-any-user-in-any-time",
+            "text": "Get-WmiObject Win32_LoggedOnUser -ComputerName msk-sales-02 | Select __SERVER, Antecedent -Unique | %{ {0} : {1}\\{2}  -f $_.__SERVER, $_.Antecedent.ToString().Split(' ')[1],$_.Antecedent.ToString().Split(' ')[3]}",
+            "title": "List of logged in users (any user in any time)"
+        },
+        {
+            "location": "/MS-way/Power_Shell/Power_Shell/#read-from-keyboard",
+            "text": "$variable=read-host  Enter computer name:",
+            "title": "Read from keyboard"
         },
         {
             "location": "/MS-way/User_Experience/Files_and_Folders/",
