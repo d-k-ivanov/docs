@@ -1736,6 +1736,16 @@
             "title": "Places"
         },
         {
+            "location": "/MS-way/Office/Outlook/",
+            "text": "Outlook blocked access to the following potentially unsafe attachments\n\n\n1. Run regedit\n2. Go to HKEY_CURRENT_USER\\Software\\Microsoft\\Office\\{{9.0, 10.0, 11.0, 12.0, 14.0, 16.0}}\\Outlook\\Security\n3. New \nString Value\n named \nLevel1Remove\n\n4. Modify\n5. .exe;.com;.vbs;etc.\n6. OK and restart Outlook",
+            "title": "Outlook"
+        },
+        {
+            "location": "/MS-way/Office/Outlook/#outlook-blocked-access-to-the-following-potentially-unsafe-attachments",
+            "text": "1. Run regedit\n2. Go to HKEY_CURRENT_USER\\Software\\Microsoft\\Office\\{{9.0, 10.0, 11.0, 12.0, 14.0, 16.0}}\\Outlook\\Security\n3. New  String Value  named  Level1Remove \n4. Modify\n5. .exe;.com;.vbs;etc.\n6. OK and restart Outlook",
+            "title": "Outlook blocked access to the following potentially unsafe attachments"
+        },
+        {
             "location": "/MS-way/Power_Shell/Azure/",
             "text": "Install the Azure Resource Manager modules from the PowerShell Gallery\n\n\nInstall-Module AzureRM\n\n\n\n\nTo log in to Azure Resource Manager\n\n\nLogin-AzureRmAccount\n\n\n\n\nYou can also use a specific Tenant if you would like a faster log in experience\n\n\nLogin-AzureRmAccount -TenantId xxxx\n\n\n\n\nTo view all subscriptions for your account\n\n\nGet-AzureRmSubscription\n\n\n\n\nTo select a default subscription for your current session.\n\n\n# This is useful when you have multiple subscriptions.\nGet-AzureRmSubscription -SubscriptionName \nyour sub\n | Select-AzureRmSubscription\n\n\n\n\nView your current Azure PowerShell session context\n\n\n# This session state is only applicable to the current session and will not affect other sessions\nGet-AzureRmContext\n\n\n\n\nTo select the default storage context for your current session\n\n\nSet-AzureRmCurrentStorageAccount -ResourceGroupName \nyour resource group\n -StorageAccountName \nyour storage account name\n\n\n\n\n\nView your current Azure PowerShell session context\n\n\n# Note: the CurrentStorageAccount is now set in your session context\nGet-AzureRmContext\n\n\n\n\nTo list all of the blobs in all of your containers in all of your accounts\n\n\nGet-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob\n\n\n\n\n`",
             "title": "Azure"
