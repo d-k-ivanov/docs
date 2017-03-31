@@ -1531,6 +1531,16 @@
             "title": "List of useful urls"
         },
         {
+            "location": "/Dev/Vbs/Network/",
+            "text": "Convert Server Name to IpAddress\n\n\nwebNodes = Array(\nserver1.localdomain\n,\nserver2.localdomain\n,\nserver3.localdomain\n)\n\nset objPing = GetObject(\nwinmgmts:{impersonationLevel=impersonate}\n).ExecQuery (\nselect * from Win32_PingStatus where address = '\n \n webNode \n \n'\n)\nfor each objRetStatus in objPing\n  if IsNull(objRetStatus.StatusCode) or objRetStatus.StatusCode\n0 then\n    ipAddress = \n\n  else\n    ipAddress = objRetStatus.ProtocolAddress\n  end if\nnext\n\nWScript.Echo webNode \n \n \n \n ipAddress\nWScript.Echo \nhttps://eshop_user:8R63La1Gt2XmSRk@172.67.136.200/access/\nenablers?rs=\nipAddress",
+            "title": "Network"
+        },
+        {
+            "location": "/Dev/Vbs/Network/#convert-server-name-to-ipaddress",
+            "text": "webNodes = Array( server1.localdomain , server2.localdomain , server3.localdomain )\n\nset objPing = GetObject( winmgmts:{impersonationLevel=impersonate} ).ExecQuery ( select * from Win32_PingStatus where address = '    webNode    ' )\nfor each objRetStatus in objPing\n  if IsNull(objRetStatus.StatusCode) or objRetStatus.StatusCode 0 then\n    ipAddress =  \n  else\n    ipAddress = objRetStatus.ProtocolAddress\n  end if\nnext\n\nWScript.Echo webNode         ipAddress\nWScript.Echo  https://eshop_user:8R63La1Gt2XmSRk@172.67.136.200/access/ enablers?rs= ipAddress",
+            "title": "Convert Server Name to IpAddress"
+        },
+        {
             "location": "/Dev/Vbs/Run/",
             "text": "Run from command line:\n\n\ncscript script.vbs\nwscript script.vbs",
             "title": "Run"
@@ -2584,6 +2594,16 @@
             "location": "/Unix-way/Network/Common/#share-current-folder-over-http",
             "text": "python2 -m SimpleHTTPServer 8080\npython3 -mhttp.server 8080",
             "title": "Share current folder over HTTP"
+        },
+        {
+            "location": "/Unix-way/Network/KEMP/",
+            "text": "Some REST commands\n\n\n# Disable Real server \ncurl -k -X GET https://username:password@ip_address/access/disablers?rs=realServerIP\n\n# Enable Real server \ncurl -k -X GET https://username:password@ip_address/access/enablers?rs=realServerIP\n\n# Get any parameter\ncurl -k -X GET https://username:password@ip_address/access/get?param=parameterName",
+            "title": "KEMP"
+        },
+        {
+            "location": "/Unix-way/Network/KEMP/#some-rest-commands",
+            "text": "# Disable Real server \ncurl -k -X GET https://username:password@ip_address/access/disablers?rs=realServerIP\n\n# Enable Real server \ncurl -k -X GET https://username:password@ip_address/access/enablers?rs=realServerIP\n\n# Get any parameter\ncurl -k -X GET https://username:password@ip_address/access/get?param=parameterName",
+            "title": "Some REST commands"
         },
         {
             "location": "/Unix-way/Network/Ports/",
