@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/",
-            "text": "About me\n\n\n\n\nDmitry Ivanov\n\n\nGitHub repo\n\n\nFacebook\n\n\nVK.com\n\n\nLinkedIn\n\n\n\n\n\n\nUseful links\n\n\n\n\nRob van der Woude's Scripting Page\n\n\nVbsEdit\n - VBS scripts \n\n\nMorgan's Library\n - Dan Morgan's Oracle Library\n\n\nAdminer\n - simple database management php console\n\n\nGlobal DNS record check\n - Site to get responce from many DNS servers around the world\n\n\n\n\n\n\nUnsorted\n\n\nJoining all similarly prefixed files\n\n\nFor example, \"_tar.gz.1of2\" and \"_tar.gz.2of2\".\n\n\n# Unix\ncat \nFileName_tar.gz.1of3\n \nFileName_tar.gz.2of3\n \nFileName_tar.gz.3of3\n \n \nFileName.tar.gz\n\n# Windows\ncopy /b \nFileName_tar.gz.1of3\n+\nFileName_tar.gz.2of3\n+\nFileName_tar.gz.3of3\n \nFileName.tar.gz\n\n\n\n\n\nTMUX\n\n\ntmux list-sessions\ntmux attach -t 2\nsudo tmux -2 -S /tmp/tmux-\nUID\n/default\n\n\n\n\nCool weather\n\n\ncurl http://wttr.in/moscow",
+            "text": "About me\n\n\n\n\nDmitry Ivanov\n\n\nGitHub repo\n\n\nFacebook\n\n\nVK.com\n\n\nLinkedIn\n\n\n\n\n\n\nUseful links\n\n\n\n\nRob van der Woude's Scripting Page\n\n\nVbsEdit\n - VBS scripts \n\n\nMorgan's Library\n - Dan Morgan's Oracle Library\n\n\nAdminer\n - simple database management php console\n\n\nGlobal DNS record check\n - Site to get responce from many DNS servers around the world\n\n\n\n\n\n\nUnsorted\n\n\nJoining all similarly prefixed files\n\n\nFor example, \"_tar.gz.1of2\" and \"_tar.gz.2of2\".\n\n\n# Unix\ncat \nFileName_tar.gz.1of3\n \nFileName_tar.gz.2of3\n \nFileName_tar.gz.3of3\n \n \nFileName.tar.gz\n\n# Windows\ncopy /b \nFileName_tar.gz.1of3\n+\nFileName_tar.gz.2of3\n+\nFileName_tar.gz.3of3\n \nFileName.tar.gz\n\n\n\n\n\nTMUX\n\n\ntmux list-sessions\ntmux attach -t 2\nsudo tmux -2 -S /tmp/tmux-\nUID\n/default",
             "title": "Home"
         },
         {
@@ -29,11 +29,6 @@
             "location": "/#tmux",
             "text": "tmux list-sessions\ntmux attach -t 2\nsudo tmux -2 -S /tmp/tmux- UID /default",
             "title": "TMUX"
-        },
-        {
-            "location": "/#cool-weather",
-            "text": "curl http://wttr.in/moscow",
-            "title": "Cool weather"
         },
         {
             "location": "/Databases/MariaDB/Backup_and_Restore/",
