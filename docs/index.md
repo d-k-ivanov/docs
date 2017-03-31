@@ -34,8 +34,3 @@ tmux attach -t 2
 sudo tmux -2 -S /tmp/tmux-<UID>/default
 ```
 
-### Cool weather
-```bash
-curl http://wttr.in/moscow
-
-```
