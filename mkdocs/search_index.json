@@ -3186,6 +3186,21 @@
             "title": "Open Virtual Machine Firmware (OVMF)"
         },
         {
+            "location": "/Unix-way/Web/Curl/",
+            "text": "Cool console weather\n\n\ncurl http://wttr.in/moscow\n\n\n\n\nGET example\n\n\ncurl -k -X GET -u \nuser\n:\npassword\n https://\naddress\n/\nmethod\n?\nparams",
+            "title": "Curl"
+        },
+        {
+            "location": "/Unix-way/Web/Curl/#cool-console-weather",
+            "text": "curl http://wttr.in/moscow",
+            "title": "Cool console weather"
+        },
+        {
+            "location": "/Unix-way/Web/Curl/#get-example",
+            "text": "curl -k -X GET -u  user : password  https:// address / method ? params",
+            "title": "GET example"
+        },
+        {
             "location": "/Unix-way/Web/Tomcat/",
             "text": "Delay for apps deployment\n\n\n\n\nSubject:\n TC7 very slow SessionIdGenerator SecureRandom initialization\n\n\n\n\nFrom list:\n tomcat-user\nTC7+ can often take a long time to start up due to slow initialization of the SessionIdGenerator - it can take up to nearly 2-3 minutes. TC7+ uses secure randomizer /dev/urandom to generate \nSession ID\n but JRE uses /dev/random instead for \"Oracle security reasons\" so it causes some intitialisation delays when random generator waits to sufficient amount entropy.\nThere is some issues about it: \nJDK-6521844\n, JDK-6521844.\n\n\n\n\n\n\nTo view amount of available entropy:\n\n\n\n\n\n\ncat /proc/sys/kernel/random/entropy_avail\n\n\n\n\n\n\nTo avoid this behaviour you need to set JAVA_OPTS manually like bellow:\n\n\n\n\nJAVA_OPTS=\n-Djava.security.egd=file:/dev/./urandom\n /opt/apache-tomcat-7.0.70/bin/startup.sh",
             "title": "Tomcat"
