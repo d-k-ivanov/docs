@@ -2672,13 +2672,18 @@
         },
         {
             "location": "/Unix-way/Network/tcpdump/",
-            "text": "TCPDUMP (with all commands use '| head' optionally)\n\n\n### Capture bunch of packets\n```bash\ntcpdump -w capture.pcap\n\n\n\n\nShow list of unique tcp or udp connections ip addresses\n\n\ntcpdump -nn -r capture.pcap 'tcp or udp' | cut -f 3 -d \n \n | cut -f 1-4 -d \n.\n | sort | uniq | sort -nr\n\n\n\n\nShow list of unique destinations with SYN flag(\u2018tcp[13]=2\u2019)\n\n\ntcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 5 -d \n \n | sort | uniq -c | sort -nr\n\n\n\n\nShow list of unique sources with SYN flag(\u2018tcp[13]=2\u2019)\n\n\ntcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 3 -d \n \n | cut -f 1-4 -d \n.\n | sort | uniq -c | sort -nr\n\n\n\n\nSearch for plain texts (-A)\n\n\ntcpdump -Ann -r capture.pcap 'dst port 25 or dst port 514 or dst port 110 or dst port 21 or dst port 53 or dst port 80'\n\n\n\n\nSearch for top level domains (optiolally for names only: | grep -E '[a-z]')\n\n\ntcpdump -nn -r capture.pcap 'port 53' | grep -Ev '(com|ru|net|org|gov|mil|arpa)' | cut -f 9 -d \n \n  \n\n\n\n\nInvestigate HTTP traffic\n\n\ntcpdump -Ann -r capture.pcap 'port 80' | grep 'HTTP' | grep -Ev '(GET|HEAD)'\n\n\n\n\nSearch HTTP traffic for user-agent list\n\n\ntcpdump -Ann -r capture.pcap 'port 80' | grep -Ei 'user-agent' | sort | uniq -c | sort -n\ntcpdump -Ann -r capture.pcap 'port 80' | sed -n '/Mozilla/,$p'\n\n\n\n\nPcap repository (-C filesize in MBytes, -W number of files, -G time in seconds, %s timestamp)\n\n\nsudo -b tcpdump -nn -i eth0 -w capture.pcap -C 1 -W 5         \nsudo -b tcpdump -nn -i eth0 -w capture-%s.pcap -G 600 -W 5    \n# Dealing with pcap files\nfor capfile in $(ls *.pcap); do tcpdump -nnr $capfile 'dst port 53'; done",
+            "text": "TCPDUMP (with all commands use '| head' optionally)\n\n\nCapture bunch of packets\n\n\ntcpdump -w capture.pcap\n\n\n\n\nShow list of unique tcp or udp connections ip addresses\n\n\ntcpdump -nn -r capture.pcap 'tcp or udp' | cut -f 3 -d \n \n | cut -f 1-4 -d \n.\n | sort | uniq | sort -nr\n\n\n\n\nShow list of unique destinations with SYN flag(\u2018tcp[13]=2\u2019)\n\n\ntcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 5 -d \n \n | sort | uniq -c | sort -nr\n\n\n\n\nShow list of unique sources with SYN flag(\u2018tcp[13]=2\u2019)\n\n\ntcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 3 -d \n \n | cut -f 1-4 -d \n.\n | sort | uniq -c | sort -nr\n\n\n\n\nSearch for plain texts (-A)\n\n\ntcpdump -Ann -r capture.pcap 'dst port 25 or dst port 514 or dst port 110 or dst port 21 or dst port 53 or dst port 80'\n\n\n\n\nSearch for top level domains (optiolally for names only: | grep -E '[a-z]')\n\n\ntcpdump -nn -r capture.pcap 'port 53' | grep -Ev '(com|ru|net|org|gov|mil|arpa)' | cut -f 9 -d \n \n  \n\n\n\n\nInvestigate HTTP traffic\n\n\ntcpdump -Ann -r capture.pcap 'port 80' | grep 'HTTP' | grep -Ev '(GET|HEAD)'\n\n\n\n\nSearch HTTP traffic for user-agent list\n\n\ntcpdump -Ann -r capture.pcap 'port 80' | grep -Ei 'user-agent' | sort | uniq -c | sort -n\ntcpdump -Ann -r capture.pcap 'port 80' | sed -n '/Mozilla/,$p'\n\n\n\n\nPcap repository (-C filesize in MBytes, -W number of files, -G time in seconds, %s timestamp)\n\n\nsudo -b tcpdump -nn -i eth0 -w capture.pcap -C 1 -W 5         \nsudo -b tcpdump -nn -i eth0 -w capture-%s.pcap -G 600 -W 5    \n# Dealing with pcap files\nfor capfile in $(ls *.pcap); do tcpdump -nnr $capfile 'dst port 53'; done",
             "title": "Tcpdump"
         },
         {
             "location": "/Unix-way/Network/tcpdump/#tcpdump-with-all-commands-use-head-optionally",
-            "text": "### Capture bunch of packets\n```bash\ntcpdump -w capture.pcap",
+            "text": "",
             "title": "TCPDUMP (with all commands use '| head' optionally)"
+        },
+        {
+            "location": "/Unix-way/Network/tcpdump/#capture-bunch-of-packets",
+            "text": "tcpdump -w capture.pcap",
+            "title": "Capture bunch of packets"
         },
         {
             "location": "/Unix-way/Network/tcpdump/#show-list-of-unique-tcp-or-udp-connections-ip-addresses",
