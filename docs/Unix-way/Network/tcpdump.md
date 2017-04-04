@@ -1,7 +1,6 @@
 
-###  TCPDUMP (with all commands use '| head' optionally)
+##  TCPDUMP (with all commands use '| head' optionally)
 
-```bash
 ### Capture bunch of packets
 ```bash
 tcpdump -w capture.pcap
