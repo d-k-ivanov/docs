@@ -19,3 +19,15 @@ python -m pip install https://github.com/kivy/kivy/zipball/master
 # http://www.lfd.uci.edu/~gohlke/pythonlibs/#pygame
 python -m pip install pygame-1.9.3-cp36-cp36m-win_amd64.whl
 ```
+
+### Test
+```py
+from kivy.app import App
+from kivy.uix.button import Button
+
+class TestApp(App):
+  def build(self):
+    return Button(text='Hello World')
+
+TestApp().run()
+```
