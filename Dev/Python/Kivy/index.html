@@ -1243,7 +1243,10 @@
         <li class="first-level active"><a href="#python-2-and-35">Python 2 and &gt;3.5</a></li>
         
     
-        <li class="first-level "><a href="#python-35">Python &gt;3.5</a></li>
+        <li class="first-level "><a href="#python-35">Python 3.5+</a></li>
+        
+    
+        <li class="first-level "><a href="#test">Test</a></li>
         
     
     </ul>
@@ -1257,7 +1260,7 @@ python -m pip install kivy.deps.gstreamer
 python -m pip install kivy
 </code></pre>
 
-<h3 id="python-35">Python &gt;3.5</h3>
+<h3 id="python-35">Python 3.5+</h3>
 <blockquote>
 <p>You will need <a href="http://glew.sourceforge.net/">Glew</a></p>
 </blockquote>
@@ -1270,6 +1273,17 @@ python -m pip install https://github.com/kivy/kivy/zipball/master
 # For x64 you need to  download 64-bit version pygame from here:
 # http://www.lfd.uci.edu/~gohlke/pythonlibs/#pygame
 python -m pip install pygame-1.9.3-cp36-cp36m-win_amd64.whl
+</code></pre>
+
+<h3 id="test">Test</h3>
+<pre><code class="py">from kivy.app import App
+from kivy.uix.button import Button
+
+class TestApp(App):
+  def build(self):
+    return Button(text='Hello World')
+
+TestApp().run()
 </code></pre></div>
         
     </div>
