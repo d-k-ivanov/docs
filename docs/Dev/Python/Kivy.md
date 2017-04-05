@@ -6,7 +6,7 @@ python -m pip install kivy.deps.gstreamer
 python -m pip install kivy
 ```
 
-### Python <3.5
+### Python 3.5+
 > You will need [Glew](http://glew.sourceforge.net/)
 ```bash
 python -m pip install --upgrade pip wheel setuptools
