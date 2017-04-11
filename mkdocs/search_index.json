@@ -1471,6 +1471,16 @@
             "title": "Generate MD file from baunch of man files"
         },
         {
+            "location": "/Dev/Python/Installation/",
+            "text": "Install Python 2.7.13 on Linux\n\n\nwget https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz\ntar -xvf Python-2.7.13.tgz\ncd Python-2.7.13\n./configure\nmake\nsudo make install",
+            "title": "Installation"
+        },
+        {
+            "location": "/Dev/Python/Installation/#install-python-2713-on-linux",
+            "text": "wget https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz\ntar -xvf Python-2.7.13.tgz\ncd Python-2.7.13\n./configure\nmake\nsudo make install",
+            "title": "Install Python 2.7.13 on Linux"
+        },
+        {
             "location": "/Dev/Python/Kivy/",
             "text": "Python 2 and \n3.5\n\n\npython -m pip install --upgrade pip wheel setuptools\npython -m pip install docutils pygments pypiwin32 kivy.deps.sdl2 kivy.deps.glew\npython -m pip install kivy.deps.gstreamer\npython -m pip install kivy\n\n\n\n\nPython 3.5+\n\n\n\n\nYou will need \nGlew\n\n\n\n\npython -m pip install --upgrade pip wheel setuptools\npython -m pip install docutils pygments pypiwin32 kivy.deps.sdl2 kivy.deps.glew\npython -m pip install kivy.deps.gstreamer\npython -m pip install Cython\npython -m pip install https://github.com/kivy/kivy/zipball/master\n\n# For x64 you need to  download 64-bit version pygame from here:\n# http://www.lfd.uci.edu/~gohlke/pythonlibs/#pygame\npython -m pip install pygame-1.9.3-cp36-cp36m-win_amd64.whl\n\n\n\n\nTest\n\n\nfrom kivy.app import App\nfrom kivy.uix.button import Button\n\nclass TestApp(App):\n  def build(self):\n    return Button(text='Hello World')\n\nTestApp().run()",
             "title": "Kivy"
