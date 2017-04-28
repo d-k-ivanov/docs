@@ -1,5 +1,9 @@
+## Common commands
+```bash
+tcpdump -ttttnnvvS -i any port XXX and host XX.XX.XX.XX
+```
 
-##  TCPDUMP (with all commands use '| head' optionally)
+##  Capyure TCPDUMP (with all commands use '| head' optionally)
 
 ### Capture bunch of packets
 ```bash

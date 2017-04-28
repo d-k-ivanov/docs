@@ -1,6 +1,6 @@
 ### Run docker conainer
 ```
-sudo docker run --name mysql-nx -e MYSQL_ROOT_PASSWORD=JuSCY1Bq -d -p 127.0.0.1:3306:3306 mysql:latest
+sudo docker run --name mysql-nx -e MYSQL_ROOT_PASSWORD=password -d -p 127.0.0.1:3306:3306 mysql:latest
 ```
 
 ### Execute in-docker console
@@ -51,3 +51,8 @@ docker volume rm $(docker volume ls -qf dangling=true)
 docker run --rm -e GRACE_PERIOD_SECONDS=86400 -e FORCE_IMAGE_REMOVAL=1 -v /var/run/docker.sock:/var/run/docker.sock spotify/docker-gc
 ```
 
+### Docker on windows
+```bash
+# Docker on windows doesn't support fsync() so it makes impossible to use shared volumes with databases like MondoDB or PostgesSQL
+
+```
