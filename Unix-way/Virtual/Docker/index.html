@@ -124,6 +124,12 @@
         
             
 <li >
+    <a href="../../../Databases/MongoDB/Backup_and_restore/">Backup and restore</a>
+</li>
+
+        
+            
+<li >
     <a href="../../../Databases/MongoDB/Mongo/">Mongo</a>
 </li>
 
@@ -1267,12 +1273,15 @@
         <li class="first-level "><a href="#delete-obsolete-containers">Delete obsolete containers</a></li>
         
     
+        <li class="first-level "><a href="#docker-on-windows">Docker on windows</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
 <h3 id="run-docker-conainer">Run docker conainer</h3>
-<pre><code>sudo docker run --name mysql-nx -e MYSQL_ROOT_PASSWORD=JuSCY1Bq -d -p 127.0.0.1:3306:3306 mysql:latest
+<pre><code>sudo docker run --name mysql-nx -e MYSQL_ROOT_PASSWORD=password -d -p 127.0.0.1:3306:3306 mysql:latest
 </code></pre>
 
 <h3 id="execute-in-docker-console">Execute in-docker console</h3>
@@ -1315,6 +1324,11 @@ docker rmi $(docker images -qf dangling=true)
 docker volume rm $(docker volume ls -qf dangling=true)
 
 docker run --rm -e GRACE_PERIOD_SECONDS=86400 -e FORCE_IMAGE_REMOVAL=1 -v /var/run/docker.sock:/var/run/docker.sock spotify/docker-gc
+</code></pre>
+
+<h3 id="docker-on-windows">Docker on windows</h3>
+<pre><code class="bash"># Docker on windows doesn't support fsync() so it makes impossible to use shared volumes with databases like MondoDB or PostgesSQL
+
 </code></pre></div>
         
     </div>

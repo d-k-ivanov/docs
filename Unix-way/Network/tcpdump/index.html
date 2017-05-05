@@ -124,6 +124,12 @@
         
             
 <li >
+    <a href="../../../Databases/MongoDB/Backup_and_restore/">Backup and restore</a>
+</li>
+
+        
+            
+<li >
     <a href="../../../Databases/MongoDB/Mongo/">Mongo</a>
 </li>
 
@@ -1246,7 +1252,10 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#tcpdump-with-all-commands-use-head-optionally">TCPDUMP (with all commands use '| head' optionally)</a></li>
+        <li class="first-level active"><a href="#common-commands">Common commands</a></li>
+        
+    
+        <li class="first-level "><a href="#capyure-tcpdump-with-all-commands-use-head-optionally">Capyure TCPDUMP (with all commands use '| head' optionally)</a></li>
         
             <li class="second-level"><a href="#capture-bunch-of-packets">Capture bunch of packets</a></li>
             
@@ -1280,7 +1289,11 @@
 </div></div>
         <div class="col-md-9" role="main">
 
-<h2 id="tcpdump-with-all-commands-use-head-optionally">TCPDUMP (with all commands use '| head' optionally)</h2>
+<h2 id="common-commands">Common commands</h2>
+<pre><code class="bash">tcpdump -ttttnnvvS -i any port XXX and host XX.XX.XX.XX
+</code></pre>
+
+<h2 id="capyure-tcpdump-with-all-commands-use-head-optionally">Capyure TCPDUMP (with all commands use '| head' optionally)</h2>
 <h3 id="capture-bunch-of-packets">Capture bunch of packets</h3>
 <pre><code class="bash">tcpdump -w capture.pcap
 </code></pre>
