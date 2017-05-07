@@ -18,8 +18,10 @@ All the rest of the memory is used when the card is working with 3D graphics to 
 So basically the more memory you have the better it will be for 3D gaming.
 
 ### UHD 8K
+```
 7680 × 4320 = 33177600 px
 33177600 x 48 = 1592524800 bits
 1592524800 / 8 = 199065600 byte
 199065600 / 1024 = 194400 KB
 194400 / 1024 = 189,84375 MB
+```

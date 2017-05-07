@@ -915,8 +915,8 @@ perl -MModule -le 'print $Module::VERSION'
 perl -MLWP::UserAgent -le 'print $LWP::UserAgent::VERSION'
 ```
 
-## CREDITS
-
+### CREDITS
+```
 * Andy Lester       http://www.petdance.com
 * Shlomi Fish       http://www.shlomifish.org
 * Madars Virza      http://www.madars.org
@@ -924,4 +924,5 @@ perl -MLWP::UserAgent -le 'print $LWP::UserAgent::VERSION'
 * Kirk Kimmel       https://github.com/kimmel
 * avar              https://github.com/avar
 * rent0n
+```
 
