@@ -3561,32 +3561,32 @@
             "title": "TMUX cheat sheet"
         }, 
         {
-            "location": "/UX/Terminal/cmd.exe/", 
+            "location": "/UX/Terminal/cmd/", 
             "text": "Cmd Colours\n\n\nDefault\n\n\nWindows Registry Editor Version 5.00\n; Default color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\nColorTable00\n=dword:00000000\n\nColorTable08\n=dword:00808080\n; BLUE LBLUE\n\nColorTable01\n=dword:00800000\n\nColorTable09\n=dword:00ff0000\n; GREEN LGREEN\n\nColorTable02\n=dword:00008000\n\nColorTable10\n=dword:0000ff00\n; CYAN LCYAN\n\nColorTable03\n=dword:00808000\n\nColorTable11\n=dword:00ffff00\n; RED LRED\n\nColorTable04\n=dword:00000080\n\nColorTable12\n=dword:000000ff\n; MAGENTA LMAGENTA\n\nColorTable05\n=dword:00800080\n\nColorTable13\n=dword:00ff00ff\n; YELLOW LYELLOW\n\nColorTable06\n=dword:00008080\n\nColorTable14\n=dword:0000ffff\n; LGRAY WHITE\n\nColorTable07\n=dword:00c0c0c0\n\nColorTable15\n=dword:00ffffff\n\n\n\n\nMonokai\n\n\nWindows Registry Editor Version 5.00\n; Monokai color theme for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK   DGRAY\n\nColorTable00\n=dword:00222827\n\nColorTable08\n=dword:00414746\n; BLUE    LBLUE\n\nColorTable01\n=dword:00a64c1d\n\nColorTable09\n=dword:00ef9566\n; GREEN   LGREEN\n\nColorTable02\n=dword:0000995d\n\nColorTable10\n=dword:002ee2a6\n; CYAN    LCYAN\n\nColorTable03\n=dword:00746a31\n\nColorTable11\n=dword:00efd966\n; RED     LRED\n\nColorTable04\n=dword:002900b0\n\nColorTable12\n=dword:007226f9\n; MAGENTA LMAGENTA\n\nColorTable05\n=dword:00b63865\n\nColorTable13\n=dword:00ff81ae\n; YELLOW  LYELLOW\n\nColorTable06\n=dword:001f97fd\n\nColorTable14\n=dword:0074dbe6\n; LGRAY   WHITE\n\nColorTable07\n=dword:008a908f\n\nColorTable15\n=dword:00f2f8f8\n\n\n\n\nPastel\n\n\nWindows Registry Editor Version 5.00\n; Low-contrast, pastel color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\nColorTable00\n=dword:00222222\n\nColorTable08\n=dword:00454545\n; BLUE LBLUE\n\nColorTable01\n=dword:00a69a7c\n\nColorTable09\n=dword:00bfad8f\n; GREEN LGREEN\n\nColorTable02\n=dword:00557e6c\n\nColorTable10\n=dword:007db37d\n; CYAN LCYAN\n\nColorTable03\n=dword:00a18e4c\n\nColorTable11\n=dword:00d0c16b\n; RED LRED\n\nColorTable04\n=dword:0041569e\n\nColorTable12\n=dword:006d89cc\n; MAGENTA LMAGENTA\n\nColorTable05\n=dword:009d6d95\n\nColorTable13\n=dword:00cb8fc1\n; YELLOW LYELLOW\n\nColorTable06\n=dword:002bafca\n\nColorTable14\n=dword:0056b5bf\n; LGRAY WHITE\n\nColorTable07\n=dword:00808080\n\nColorTable15\n=dword:00cdcdcd\n\n\n\n\nZenburn\n\n\nWindows Registry Editor Version 5.00\n; Zenburn is a low-contrast color scheme\n; for Windows command prompt.\n; See : http://slinky.imukuppi.org/zenburnpage/\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY\n\nColorTable00\n=dword:003f3f3f\n\nColorTable08\n=dword:008080c0\n; BLUE LBLUE\n\nColorTable01\n=dword:00af6464\n\nColorTable09\n=dword:00ffafaf\n; GREEN LGREEN\n\nColorTable02\n=dword:00008000\n\nColorTable10\n=dword:007f9f7f\n; CYAN LCYAN\n\nColorTable03\n=dword:00808000\n\nColorTable11\n=dword:00d3d08c\n; RED LRED\n\nColorTable04\n=dword:00232333\n\nColorTable12\n=dword:007071e3\n; MAGENTA LMAGENTA\n\nColorTable05\n=dword:00aa50aa\n\nColorTable13\n=dword:00c880c8\n; YELLOW LYELLOW\n\nColorTable06\n=dword:0000dcdc\n\nColorTable14\n=dword:00afdff0\n; LGRAY WHITE\n\nColorTable07\n=dword:00ccdcdc\n\nColorTable15\n=dword:00ffffff", 
-            "title": "Cmd.exe"
+            "title": "Cmd"
         }, 
         {
-            "location": "/UX/Terminal/cmd.exe/#cmd-colours", 
+            "location": "/UX/Terminal/cmd/#cmd-colours", 
             "text": "", 
             "title": "Cmd Colours"
         }, 
         {
-            "location": "/UX/Terminal/cmd.exe/#default", 
+            "location": "/UX/Terminal/cmd/#default", 
             "text": "Windows Registry Editor Version 5.00\n; Default color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY ColorTable00 =dword:00000000 ColorTable08 =dword:00808080\n; BLUE LBLUE ColorTable01 =dword:00800000 ColorTable09 =dword:00ff0000\n; GREEN LGREEN ColorTable02 =dword:00008000 ColorTable10 =dword:0000ff00\n; CYAN LCYAN ColorTable03 =dword:00808000 ColorTable11 =dword:00ffff00\n; RED LRED ColorTable04 =dword:00000080 ColorTable12 =dword:000000ff\n; MAGENTA LMAGENTA ColorTable05 =dword:00800080 ColorTable13 =dword:00ff00ff\n; YELLOW LYELLOW ColorTable06 =dword:00008080 ColorTable14 =dword:0000ffff\n; LGRAY WHITE ColorTable07 =dword:00c0c0c0 ColorTable15 =dword:00ffffff", 
             "title": "Default"
         }, 
         {
-            "location": "/UX/Terminal/cmd.exe/#monokai", 
+            "location": "/UX/Terminal/cmd/#monokai", 
             "text": "Windows Registry Editor Version 5.00\n; Monokai color theme for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK   DGRAY ColorTable00 =dword:00222827 ColorTable08 =dword:00414746\n; BLUE    LBLUE ColorTable01 =dword:00a64c1d ColorTable09 =dword:00ef9566\n; GREEN   LGREEN ColorTable02 =dword:0000995d ColorTable10 =dword:002ee2a6\n; CYAN    LCYAN ColorTable03 =dword:00746a31 ColorTable11 =dword:00efd966\n; RED     LRED ColorTable04 =dword:002900b0 ColorTable12 =dword:007226f9\n; MAGENTA LMAGENTA ColorTable05 =dword:00b63865 ColorTable13 =dword:00ff81ae\n; YELLOW  LYELLOW ColorTable06 =dword:001f97fd ColorTable14 =dword:0074dbe6\n; LGRAY   WHITE ColorTable07 =dword:008a908f ColorTable15 =dword:00f2f8f8", 
             "title": "Monokai"
         }, 
         {
-            "location": "/UX/Terminal/cmd.exe/#pastel", 
+            "location": "/UX/Terminal/cmd/#pastel", 
             "text": "Windows Registry Editor Version 5.00\n; Low-contrast, pastel color scheme\n; for Windows command prompt.\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY ColorTable00 =dword:00222222 ColorTable08 =dword:00454545\n; BLUE LBLUE ColorTable01 =dword:00a69a7c ColorTable09 =dword:00bfad8f\n; GREEN LGREEN ColorTable02 =dword:00557e6c ColorTable10 =dword:007db37d\n; CYAN LCYAN ColorTable03 =dword:00a18e4c ColorTable11 =dword:00d0c16b\n; RED LRED ColorTable04 =dword:0041569e ColorTable12 =dword:006d89cc\n; MAGENTA LMAGENTA ColorTable05 =dword:009d6d95 ColorTable13 =dword:00cb8fc1\n; YELLOW LYELLOW ColorTable06 =dword:002bafca ColorTable14 =dword:0056b5bf\n; LGRAY WHITE ColorTable07 =dword:00808080 ColorTable15 =dword:00cdcdcd", 
             "title": "Pastel"
         }, 
         {
-            "location": "/UX/Terminal/cmd.exe/#zenburn", 
+            "location": "/UX/Terminal/cmd/#zenburn", 
             "text": "Windows Registry Editor Version 5.00\n; Zenburn is a low-contrast color scheme\n; for Windows command prompt.\n; See : http://slinky.imukuppi.org/zenburnpage/\n\n; Values stored as 00-BB-GG-RR\n[HKEY_CURRENT_USER\\Console]\n; BLACK DGRAY ColorTable00 =dword:003f3f3f ColorTable08 =dword:008080c0\n; BLUE LBLUE ColorTable01 =dword:00af6464 ColorTable09 =dword:00ffafaf\n; GREEN LGREEN ColorTable02 =dword:00008000 ColorTable10 =dword:007f9f7f\n; CYAN LCYAN ColorTable03 =dword:00808000 ColorTable11 =dword:00d3d08c\n; RED LRED ColorTable04 =dword:00232333 ColorTable12 =dword:007071e3\n; MAGENTA LMAGENTA ColorTable05 =dword:00aa50aa ColorTable13 =dword:00c880c8\n; YELLOW LYELLOW ColorTable06 =dword:0000dcdc ColorTable14 =dword:00afdff0\n; LGRAY WHITE ColorTable07 =dword:00ccdcdc ColorTable15 =dword:00ffffff", 
             "title": "Zenburn"
         }, 
