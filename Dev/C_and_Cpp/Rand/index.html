@@ -1429,16 +1429,18 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
+        <li class="first-level active"><a href="#random-number">Random number</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<blockquote>
+<h3 id="random-number">Random number</h3>
 <p>Returning rand() % N does not uniformly give a number in the range [0, N) unless N divides the length of the interval into which rand() returns (i.e. is a power of 2). Furthermore, one has no idea whether the moduli of rand() are independent: it's possible that they go 0, 1, 2, ..., which is uniform but not very random. The only assumption it seems reasonable to make is that rand() puts out a Poisson distribution: any two nonoverlapping subintervals of the same size are equally likely and independent. For a finite set of values, this implies a uniform distribution and also ensures that the values of rand() are nicely scattered.</p>
 <p>This means that the only correct way of changing the range of rand() is to divide it into boxes; for example, if RAND_MAX == 11 and you want a range of 1..6, you should assign {0,1} to 1, {2,3} to 2, and so on. These are disjoint, equally-sized intervals and thus are uniformly and independently distributed.</p>
 <p>The suggestion to use floating-point division is mathematically plausible but suffers from rounding issues in principle. Perhaps double is high-enough precision to make it work; perhaps not. I don't know and I don't want to have to figure it out; in any case, the answer is system-dependent.</p>
 <p>The correct way is to use integer arithmetic. That is, you want something like the following:</p>
-</blockquote>
 <pre><code class="C">#include &lt;stdlib.h&gt; // For random(), RAND_MAX
 
 // Assumes 0 &lt;= max &lt;= RAND_MAX
@@ -1463,10 +1465,8 @@ long random_at_most(long max) {
 }
 </code></pre>
 
-<blockquote>
 <p>The loop is necessary to get a perfectly uniform distribution. For example, if you are given random numbers from 0 to 2 and you want only ones from 0 to 1, you just keep pulling until you don't get a 2; it's not hard to check that this gives 0 or 1 with equal probability. This method is also described in the link that nos gave in their answer, though coded differently. I'm using random() rather than rand() as it has a better distribution (as noted by the man page for rand()).</p>
-<p>If you want to get random values outside the default range [0, RAND_MAX], then you have to do something tricky. Perhaps the most expedient is to define a function random_extended() that pulls n bits (using random_at_most()) and returns in [0, 2<strong>n), and then apply random_at_most() with random_extended() in place of random() (and 2</strong>n - 1 in place of RAND_MAX) to pull a random value less than 2**n, assuming you have a numerical type that can hold such a value. Finally, of course, you can get values in [min, max] using min + random_at_most(max - min), including negative values.</p>
-</blockquote></div>
+<p>If you want to get random values outside the default range [0, RAND_MAX], then you have to do something tricky. Perhaps the most expedient is to define a function random_extended() that pulls n bits (using random_at_most()) and returns in [0, 2<strong>n), and then apply random_at_most() with random_extended() in place of random() (and 2</strong>n - 1 in place of RAND_MAX) to pull a random value less than 2**n, assuming you have a numerical type that can hold such a value. Finally, of course, you can get values in [min, max] using min + random_at_most(max - min), including negative values.</p></div>
         
     </div>
 

@@ -1448,28 +1448,32 @@
 <h2 id="how-to-install-curse-client-on-linux">How to install curse client on Linux</h2>
 <h3 id="what-works">What works</h3>
 <pre><code>- Adding games. Well, at least World of Warcraft is recognized.
-- Installing, updating &amp; deleting addons for WoW. My installed addons were automatically recognized.
+- Installing, updating &amp; deleting addons for WoW. Installed addons were automatically recognized.
 </code></pre>
 <h3 id="what-was-not-tested">What was not tested</h3>
 <pre><code>- Premium features.
 - Anything not WoW related.
 </code></pre>
 <h3 id="installastion-steps">Installastion steps</h3>
-<p>As you can suspect from other tests, it doesn't really work out of the box. These are the steps I followed :
-    - Create a clean 32bits prefix.
-    - winetricks dotnet35sp1
-    - winetricks windowscodecs
-    - winetricks wininet
-    - See https://github.com/Winetricks/winetricks/issues/600 for wininet install failures.
-    - Install the app here.
-    - Symlinked my wow folder from its prefix to this prefix.</p>
-<p>Reasons :
-    - The 32bits prefix is needed to install .NET 2.0 (does not work on 64bits).
-    - The installer tries to install .NET profile and will fail if .NET 3.5sp1 is not installed.
-    - The app will crash right after login if you don't install windowscodecs. The debug logs were full of "fixme" about wincodecs.
-    -   The app buttons will be unclickable and you can't even go past the 1st screen if you don't install wininet.</p>
+<p>As you can suspect from other tests, it doesn't really work out of the box. These are the steps I followed :</p>
+<ul>
+<li>Create a clean 32bits prefix.</li>
+<li>winetricks dotnet35sp1</li>
+<li>winetricks windowscodecs</li>
+<li>winetricks wininet</li>
+<li>See https://github.com/Winetricks/winetricks/issues/600 for wininet install failures.</li>
+<li>Install the app here.</li>
+<li>Symlinked my wow folder from its prefix to this prefix.</li>
+</ul>
+<p>Reasons :</p>
+<ul>
+<li>The 32bits prefix is needed to install .NET 2.0 (does not work on 64bits).</li>
+<li>The installer tries to install .NET profile and will fail if .NET 3.5sp1 is not installed.</li>
+<li>The app will crash right after login if you don't install windowscodecs. The debug logs were full of "fixme" about wincodecs.</li>
+<li>The app buttons will be unclickable and you can't even go past the 1st screen if you don't install wininet.</li>
+</ul>
 <p>Here is a command line to start the app which you might not need, depends where you install it :
-    - WINEPREFIX=/home/wine/curse wine explorer "file:///c:/users/USER/Start Menu/Programs/Curse/Curse Client.appref-ms"</p>
+- WINEPREFIX=/home/wine/curse wine explorer "file:///c:/users/USER/Start Menu/Programs/Curse/Curse Client.appref-ms"</p>
 <p>Credit to https://archimedesden.wordpress.com/2013/05/11/running-rebtel-one-click-application-in-wine/ for the explorer trick.</p></div>
         
     </div>
