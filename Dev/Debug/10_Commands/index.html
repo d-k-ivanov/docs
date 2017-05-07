@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="author" content="Dmitry Ivanov"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Dev/Debug/10_Commands/"> 
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    <title>10 Commands - Technical Info</title>
+
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link href="../../../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+
+
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-80208201-1', 'keepbot.github.io');
+    ga('send', 'pageview');
+    </script>
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../../..">Technical Info</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../Admin/Windows_Administrative_Tools/">Windows Administrative Tools</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../Admin/xFreeRDP/">xFreeRDP</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Databases <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MariaDB</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Databases/MariaDB/Backup_and_Restore/">Backup and Restore</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/MariaDB/Installation/">Installation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MongoDB</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Databases/MongoDB/Backup_and_restore/">Backup and restore</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/MongoDB/Mongo/">Mongo</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/MongoDB/Quick_Reference/">Quick Reference</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MySQL</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Databases/MySQL/Replication/">Replication</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Oracle</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Blocking_sessions/">Blocking sessions</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/CentOS_7_Installation/">CentOS 7 Installation</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Common/">Common</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Dump/">Dump</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Memory/">Memory</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/OJDBC/">OJDBC</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Tablespace/">Tablespace</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Useful_Queries/">Useful Queries</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dev <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Android</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Android/Adb/">Adb</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Android/Android_Studio/">Android Studio</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Android/Apk/">Apk</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Bash</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Bash/Collect_bash_history/">Collect bash history</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Bash/Convert-CP1251-to-UTF8/">Convert CP1251 to UTF8</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Bash/Gentoo_Functions/">Gentoo Functions</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Brainfuck</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Brainfuck/Sample1/">Sample1</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">C and Cpp</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../C_and_Cpp/Modern_Cpp_Features/">Modern Cpp Features</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../C_and_Cpp/ping_whole_subnet/">Ping whole subnet</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Cmd</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Cmd/ping_whole_subnet/">Ping whole subnet</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Debug</a>
+    <ul class="dropdown-menu">
+        
+            
+<li class="active">
+    <a href="./">10 Commands</a>
+</li>
+
+        
+            
+<li >
+    <a href="../Core_Dumps/">Core Dumps</a>
+</li>
+
+        
+            
+<li >
+    <a href="../GDB/">GDB</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">GCC</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../GCC/Make/">Make</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Hardware</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Hardware/GPU/">GPU</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Hardware/IP_Packet_Example/">IP Packet Example</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Hardware/Latency_Numbers/">Latency Numbers</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Hardware/Networks/">Networks</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Java</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Java/Environment/">Environment</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Java/Runtime_customization/">Runtime customization</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Libraries</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Libraries/Linux/">Linux</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MPI</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../MPI/HelloWorld/">HelloWorld</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../MPI/MPI-Lib/">MPI Lib</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Markdown</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Markdown/Markdown/">Markdown</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Perl</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Perl/Perl_one-liners/">Perl one liners</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Perl/Perl_scripts_for_sa/">Perl scripts for sa</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Power Shell</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Power_Shell/Azure/">Azure</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Power_Shell/Power_Shell/">Power Shell</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Python</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Python/Installation/">Installation</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Python/Kivy/">Kivy</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Python/Users_and_groups/">Users and groups</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Ruby</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Ruby/Installation/">Installation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Stress tests</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Stress_tests/Ackerman_function/">Ackerman function</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Vbs</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Vbs/Kaspersky_Base_Actuality/">Kaspersky Base Actuality</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Vbs/Links/">Links</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Vbs/Network/">Network</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Vbs/Run/">Run</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Version Control</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Version_Control/Git/">Git</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Version_Control/GitHub/">GitHub</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Version_Control/Gitignore/">Gitignore</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Version_Control/Subversion/">Subversion</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">DevOps <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../DevOps/Ansible/">Ansible</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../DevOps/Chef-Windows/">Chef Windows</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">OS <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../OS/AIX/">AIX</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../OS/Android/">Android</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../OS/FreeBSD/">FreeBSD</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../OS/Useful_UNIX_distros/">Useful UNIX distros</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Gentoo</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../OS/Gentoo/Console_Font/">Console Font</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../OS/Gentoo/Gnome/">Gnome</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../OS/Gentoo/Installation/">Installation</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../OS/Gentoo/Portage/">Portage</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../OS/Gentoo/Systemd/">Systemd</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tech <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Audit</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Audit/Fork_unavailable/">Fork unavailable</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Audit/Hardware_info/">Hardware info</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Audit/Processes/">Processes</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Audit/Reboot_Investigation/">Reboot Investigation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Backup</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Backup/TSM/">TSM</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Backup/Tape/">Tape</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Backup/Veeam/">Veeam</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">BigData</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/BigData/Zookeper_grow/">Zookeper grow</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Messaging</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Messaging/Email_Telnet/">Email Telnet</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Messaging/Postfix/">Postfix</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Messaging/SMS/">SMS</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Monitoring</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Monitoring/80_tools_for_monitoring/">80 tools for monitoring</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Monitoring/Nagios/">Nagios</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Monitoring/NetXMS/">NetXMS</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Monitoring/Zabbix/">Zabbix</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Network</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Network/Common/">Common</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Network/KEMP/">KEMP</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Network/NTP/">NTP</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Network/Ports/">Ports</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Network/SNMP/">SNMP</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Network/WiFi/">WiFi</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Network/tcpdump/">Tcpdump</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Package Management</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Package_Management/Apt/">Apt</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Package_Management/PIP/">PIP</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Package_Management/Pacman/">Pacman</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Package_Management/Yum/">Yum</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Project Management</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Project_Management/Redmine/">Redmine</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Security</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Security/EncFS/">EncFS</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/FirewallD/">FirewallD</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/HSM/">HSM</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/IPTables/">IPTables</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/OpenSSL/">OpenSSL</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/PF/">PF</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/SELinux/">SELinux</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/SSH/">SSH</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Storage and filesystems</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/Extend_Ext4_Partition/">Extend Ext4 Partition</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/Files_in_Unix/">Files in Unix</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/GPFS/">GPFS</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/HDD/">HDD</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/LVM/">LVM</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/Links/">Links</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/Map_Disks_in_Windows/">Map Disks in Windows</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/SAN/">SAN</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/mdadm/">Mdadm</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Users</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Users/Rename_User/">Rename User</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Virtual</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Virtual/Docker/">Docker</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Virtual/Hyper-V/">Hyper V</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Virtual/KVM/">KVM</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Web</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Web/Curl/">Curl</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Web/IIS/">IIS</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Web/Tomcat/">Tomcat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">UX <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Edittors</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Edittors/My_Sublime_Text_config/">My Sublime Text config</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../UX/Edittors/Vim/">Vim</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Hi DPI</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Hi_DPI/Awesome_VM/">Awesome VM</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../UX/Hi_DPI/Java/">Java</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Images</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Images/Convert/">Convert</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MacOS</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/MacOS/Root/">Root</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Messangers</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Messangers/Skype/">Skype</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Network</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Network/Windows_refresh_DNS/">Windows refresh DNS</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Office</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Office/Outlook/">Outlook</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Power Management</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Power_Management/Laptop_lid_linux/">Laptop lid linux</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Terminal</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Terminal/Tmux/">Tmux</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../UX/Terminal/cmd.exe/">Cmd.exe</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Wine</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Wine/Custom_prefix/">Custom prefix</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../UX/Wine/curse_client_5/">Curse client 5</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">X Window</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/X-Window/Common/">Common</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="../../Cmd/ping_whole_subnet/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../Core_Dumps/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a href="https://keepbot.github.io/">
+                            
+                            Keepbot
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="first-level active"><a href="#ten-commands-every-linux-developer-should-know">Ten Commands Every Linux Developer Should Know</a></li>
+        
+            <li class="second-level"><a href="#ctags">ctags</a></li>
+            
+        
+            <li class="second-level"><a href="#strace">strace</a></li>
+            
+        
+            <li class="second-level"><a href="#fuser">fuser</a></li>
+            
+        
+            <li class="second-level"><a href="#ps">ps</a></li>
+            
+        
+            <li class="second-level"><a href="#time">time</a></li>
+            
+        
+            <li class="second-level"><a href="#nm">nm</a></li>
+            
+        
+            <li class="second-level"><a href="#strings">strings</a></li>
+            
+        
+            <li class="second-level"><a href="#od-xxd">od, xxd</a></li>
+            
+        
+            <li class="second-level"><a href="#file">file</a></li>
+            
+        
+            <li class="second-level"><a href="#objdump">objdump</a></li>
+            
+        
+    
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h2 id="ten-commands-every-linux-developer-should-know">Ten Commands Every Linux Developer Should Know</h2>
+<p>This article presents a list of commands you should be able to find on any Linux installation. These are tools to help you improve your code and be more productive. The list comes from my own experience as a programmer and includes tools I've come to rely on repeatedly. Some tools help create code, some help debug code and some help reverse engineer code that's been dumped in your lap.</p>
+<h3 id="ctags">ctags</h3>
+<p>Those of you addicted to integrated development environments (IDEs) probably never heard of this tool, or if you did you probably think it's obsolete. But a tags-aware editor is a productive programming tool.
+Tagging your code allows editors like vi and Emacs to treat your code like hypertext (Figure 1). Each object in your code becomes hyperlinked to its definition. For example, if you are browsing code in vi and want to know where the variable foo was defined, type :ta foo. If your cursor is pointing to the variable, simply use Ctrl-right bracket.</p>
+<p>The good news for the vi-impaired is ctags is not only for C and vi anymore. The GNU version of ctags produces tags that can be used with Emacs and many other editors that recognize tag files. In addition, ctags recognizes many languages other than C and C++, including Perl and Python, and even hardware design languages, such as Verilog. It even can produce a human-readable cross-reference that can be useful for understanding code and performing metrics. Even if you're not interested in using ctags in your editor, you might want to check out the human-readable cross-reference by typing:</p>
+<pre><code>  ctags -x *.c*.
+</code></pre>
+
+<p>What I like about this tool is that you get useful information whether you input one file or one hundred files, unlike many IDEs that aren't useful unless they can see your entire application. It's not a program checker, so garbage in, garbage out (GIGO) rules apply.</p>
+<h3 id="strace">strace</h3>
+<p>strace lets you decipher what's going on when you have no debugger nor the source code. One of my pet peeves is a program that doesn't start and doesn't tell you why. Perhaps a required file is missing or has the wrong permissions. strace can tell you what the program is doing right up to the point where it exits. It can tell you what system calls the program is using and whether they pass or fail. It even can follow forks.</p>
+<p>strace often gives me answers much more quickly than a debugger, especially if the code is unfamiliar. On occasion, I have to debug code on a live system with no debugger. A quick run with strace sometimes can avoid patching the system or littering my code with printfs. Here is a trivial example of me as an unprivileged user trying to delete a protected file:</p>
+<pre><code>strace -o strace.out rm -f /etc/yp.conf
+</code></pre>
+
+<p>The output shows where things went wrong:</p>
+<pre><code>lstat64(&quot;/etc/yp.conf&quot;, {st_mode=S_IFREG|0644,st_size=361, ...}) = 0
+access(&quot;/etc/yp.conf&quot;, W_OK) = -1 EACCES(Permission denied)
+unlink(&quot;/etc/yp.conf&quot;) = -1 EACCES (Permission denied)
+</code></pre>
+
+<p>strace also lets you attach to processes for just-in-time debugging. Suppose a process seems to be spending a lot of time doing nothing. A quick way to find out what is going on is to type:</p>
+<pre><code>strace -c -p mypid
+</code></pre>
+
+<p>After a second or two, press Ctrl-C and you might see a dump something like this:</p>
+<pre><code>% time    seconds  usecs/call     calls    errors  syscall
+------ ----------- ----------- --------- --------- ----------------
+ 91.31    0.480456        3457       139           poll
+  6.66    0.035025         361        97           write
+  0.91    0.004794          16       304           futex
+  0.52    0.002741          14       203           read
+  0.31    0.001652           3       533           gettimeofday
+  0.26    0.001361           4       374           ioctl
+  0.01    0.000075           8        10           brk
+  0.01    0.000064          64         1           clone
+  0.00    0.000026          26         1           stat64
+  0.00    0.000007           7         1           uname
+  0.00    0.000005           5         1           sched_get_priority_max
+  0.00    0.000002           2         1           sched_get_priority_min
+------ ----------- ----------- --------- --------- ----------------
+100.00    0.526208                  1665           total
+</code></pre>
+
+<p>In this case, it's spending most of its time in the poll system call—probably waiting on a socket.</p>
+<h3 id="fuser">fuser</h3>
+<p>The name is a mnemonic for file user and tells what processes have opened a given file. It also can send a signal to all those processes for you. Suppose you want to delete a file but can't because some program has it open and won't close it. Instead of rebooting, type fuser -k myfile. This sends a SIGTERM to every process that has myfile opened.
+Perhaps you need to kill a process that forked itself all over the place, intentionally or otherwise. An unenlightened programmer might type something like ps | grep myprogram. This inevitably would be followed by several cut-and-paste operations with the mouse. An easier way is to type fuser -k ./myprogram, where myprogram is the pathname of the executable. fuser typically is located in /sbin, which generally is reserved for system administrative tools. You can add /usr/sbin and /sbin to the end of your $PATH.</p>
+<h3 id="ps">ps</h3>
+<p>ps is used to find process status, but many people don't realize it also can be a powerful debugging tool. To get at these features, use the -o option, which lets you access many details of your processes, including CPU usage, virtual memory usage, current state and much more. Many of these options are defined in the POSIX standard, so they work across platforms.
+To look at your running commands by pid and process state, type ps -e -o pid,state,cmd. The output looks like this:</p>
+<pre><code>4576 S /opt/OpenOffice.org1.1.0/program/soffice.bin -writer
+4618 D dd if /dev/cdrom of /dev/null
+4619 S bash
+4645 R ps -e -o pid,state,cmd
+</code></pre>
+
+<p>Here you can see my dd command is in an uninterruptible sleep (state D). Basically, it is blocking while waiting for /dev/cdrom. My OpenOffice.org writer is sleeping (state S) while I type my example, and my ps command is running (state R).
+For an idea of how a running program is performing, type:</p>
+<pre><code>ps -o start,time,etime -p mypid
+</code></pre>
+
+<p>This shows the basic output from the time command, discussed later, except you don't have to wait until your program is finished.
+Most of the information that ps produces is available from the <strong>/proc</strong> filesystem, but if you are writing a script, using ps is more portable. You never know when a minor kernel rev will break all of your scripts that are mining the <strong>/proc</strong> filesystem. Use ps instead.</p>
+<h3 id="time">time</h3>
+<p>The time command is useful for understanding your code's performance. The most basic output consists of real, user and system time. Intuitively, real time is the amount of time between when the code started and when it exited. User time and system time are the amount of time spent executing application code versus kernel code, respectively.
+Two flavors of the time command are available. The shell has a built-in version that tells you only scheduler information. A version in /usr/bin includes more information and allows you to format the output. You easily can override the built-in time command by preceding it with a backslash, as in the examples that follow.
+A basic knowledge of the Linux scheduler is helpful in interpreting the output, but this tool also is helpful for learning how the scheduler works. For example, the real time of a process typically is larger than the sum of the user and system time. Time spent blocking in a system call does not count against the process, because the scheduler is free to schedule other processes during this time. The following sleep command takes one second to execute but takes no measurable system or user time:</p>
+<pre><code>\time -p sleep 1
+real 1.03
+user 0.00
+sys 0.00
+</code></pre>
+
+<p>The next example shows how a task can spend all of its time in user space. Here, Perl calls the log() function in a loop, which requires nothing from the kernel:</p>
+<pre><code>\time perl -e 'log(2.0) foreach(0..0x100000)'
+real 0.40
+user 0.20
+sys 0.00
+</code></pre>
+
+<p>This example shows a process using a lot of memory:</p>
+<pre><code>\time perl -e '$x = 'a' x 0x1000000'
+
+0.06user 0.12system 0:00.22elapsed 81%CPU (0avgtext+0avgdata 0maxresident)k
+0inputs+0outputs (309major+8235minor)pagefaults
+0swaps
+</code></pre>
+
+<p>The useful information here is listed as pagefaults. Although the GNU time command advertises a lot of information, the 2.4 series of the Linux kernel stores only major and minor page-fault information. A major page fault is one that requires I/O; a minor page fault does not.</p>
+<h3 id="nm">nm</h3>
+<p>This command allows you to retrieve information on symbol names inside an object file or executable file. By default, the output gives you a symbol name and its virtual address. What good is that? Suppose you are compiling code and the compiler complains that you have an unresolved symbol _foo. You search all of your source code and cannot find anywhere where you use this symbol. Perhaps it got pulled in from some template or a macro buried in one of the dozens of include files that compiled along with your code. The command:</p>
+<pre><code>nm -guA *.o | grep foo
+</code></pre>
+
+<p>shows all the modules that refer to foo. If you want to find out what library defines foo, simply use:</p>
+<pre><code>nm -gA /usr/lib/* | grep foo
+</code></pre>
+
+<p>The nm command also understands how to demangle C++ names, which can be handy when mixing C and C++. For example, forgetting to declare a C function with extern"C" produces a link time error something like this:</p>
+<pre><code>undefined reference to `cfunc(char*)'
+</code></pre>
+
+<p>In a large project with poorly defined headers, you might have a hard time tracking down the offending module. In this case, you can look for all the unresolved symbols in each object file with demangling turned on as follows:</p>
+<pre><code>nm -guC *.o
+extern-c.o:cfunc
+no-extern-c.o:cfunc(char*)
+</code></pre>
+
+<p>The first module is correct; the second is not.</p>
+<h3 id="strings">strings</h3>
+<p>This command looks for ASCII strings embedded in binary files. It can be used for good or for evil. The good uses include trying to figure out what library is producing that cryptic string on stdout every once in a while, for example:
+strings -f /usr/lib/lib* | grep "cryptic message"
+On the evil side, the character strings can be used to probe your format strings looking for clues and vulnerabilities. This is why you should never put passwords and logins in your programs. It might be wise to examine your own programs with this tool and see what a clever programmer can see. The version of strings that comes with the GNU binutils has many useful options.</p>
+<h3 id="od-xxd">od, xxd</h3>
+<p>These two commands do basically the same thing, but each offers slightly different features. od is used to convert a binary file to whatever format you like. When dealing with programs that generate raw binary files, od can be indispensable. Although the name stands for octal dump, it can dump data in decimal and hexadecimal as well. od dumps integers, IEEE floats or plain bytes. When looking at multibyte integers or floats, the host byte order affects the output.
+xxd also dumps binary files but does not try to interpret them as integers or floats, so the host byte order does not affect the output, which can be confusing or helpful depending on the file. Let's create a four-byte file on an Intel machine:</p>
+<pre><code>$ echo -n abcd &gt; foo.bin
+$ od -tx4 foo.bin
+0000000 64636261
+0000004
+
+$ xxd -g4 foo.bin
+0000000: 61626364         abcd
+</code></pre>
+
+<p>The output of od is a byte-swapped 32-bit integer, and the output of xxd is a group of four bytes in the same byte order as they appear in the file. If you're looking for the string abcd, xxd is the command for you. But, if you're looking for the 32-bit number 0x64636261, od is the right command.
+xxd also knows a few cool tricks that od doesn't, including the ability to format the output in binary and to translate a binary file into a C array. Suppose you have a binary file that you want to encode inside an array in your C program. One way to do this is by creating a text file as follows:</p>
+<pre><code>$ xxd -i foo.bin
+
+unsigned char foo_bin[] = {
+  0x61, 0x62, 0x63, 0x64
+};
+
+unsigned int foo_bin_len = 4;
+</code></pre>
+
+<h3 id="file">file</h3>
+<p>UNIX and Linux have never enforced any policy of filename extensions. Naming conventions have evolved, but they are guidelines, not policies. If you want to name your digital picture image00.exe, go ahead. Your Linux photo application gladly accepts the file no matter what the name is, although it may be hard to remember.
+The file command can help when you have to retrieve a file from a brain-dead Web browser, which mangles the name—say a file that should have been named foo.bar.hello.world.tar.gz comes out as foo.bar. The file command can help like this:</p>
+<pre><code>$ file foo.bar
+
+foo.bar: gzip compressed data, was &quot;foo.bar.hello.world.tar&quot;, from Unix
+</code></pre>
+
+<p>Perhaps you received a distribution with a bin directory full of dozens of files, some of which are executables and some are scripts. Suppose you want to pick out all the shell scripts. Try this:</p>
+<pre><code>$ file /usr/sbin/*  | grep script
+
+/usr/sbin/makewhatis:  a /bin/bash script text executable
+
+/usr/sbin/xconv.pl:    a /usr/bin/perl script text executable
+</code></pre>
+
+<p>The file command identifies all the files in the bin directory, and the grep command filters out everything not a script. Here are some more examples:</p>
+<pre><code>file core.4867
+
+core.4867: ELF 32-bit LSB core file Intel 80386, version 1 (SYSV), SVR4-style, from 'abort'
+
+file /boot/initrd-2.4.20-6.img
+
+/boot/initrd-2.4.20-6.img: gzip compressed data, from Unix, max compression
+
+file -z /boot/initrd-2.4.20-6.img
+
+/boot/initrd-2.4.20-6.img: Linux rev 1.0 ext2
+filesystem data (gzip compressed data, from Unix, max compression)
+</code></pre>
+
+<p>Just as you shouldn't judge a book by its cover, you shouldn't assume the contents of a file based on its name.</p>
+<h3 id="objdump">objdump</h3>
+<p>This is a more advanced tool and is not for the faint of heart. It's sort of a data-mining tool for object files. A treasure trove of information is encoded inside your object code, and this tool lets you see it. One useful thing this tool can do is dump assembly code mixed with source lines, something gcc -S doesn't do for some reason. Your object code must be compiled with debug (-g) for this to work:</p>
+<pre><code>objdump --demangle --source myobject.o
+</code></pre>
+
+<p>objdump also can help extract binary data from a core file for postmortem debug when you don't have access to a debugger. A complete example is too long for this article, but you need the virtual address from nm or obdump -t. Then, you can dump the file offsets for each virtual address with objdump -x. Finally, objdump is able to read from non-ELF file formats that gdb and other tools can't touch.
+This article is not intended as a definitive reference but as a starting point to help you become more productive. Each one of these commands is well documented in the Linux man and info pages. Consult them for more information and more ideas.</p></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Copyright &copy; 2017 Dmitry Ivanov. <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter40819844 = new Ya.Metrika({ id:40819844, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript><br></small>
+        
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '../../..';
+    </script>
+    <script data-main="../../../mkdocs/js/search.js" src="../../../mkdocs/js/require.js"></script>
+    <script src="../../../js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>

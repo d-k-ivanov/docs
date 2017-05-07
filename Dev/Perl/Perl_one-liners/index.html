@@ -1,0 +1,2432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="author" content="Dmitry Ivanov"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Dev/Perl/Perl_one-liners/"> 
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    <title>Perl one liners - Technical Info</title>
+
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link href="../../../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+
+
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-80208201-1', 'keepbot.github.io');
+    ga('send', 'pageview');
+    </script>
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../../..">Technical Info</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../Admin/Windows_Administrative_Tools/">Windows Administrative Tools</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../Admin/xFreeRDP/">xFreeRDP</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Databases <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MariaDB</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Databases/MariaDB/Backup_and_Restore/">Backup and Restore</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/MariaDB/Installation/">Installation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MongoDB</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Databases/MongoDB/Backup_and_restore/">Backup and restore</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/MongoDB/Mongo/">Mongo</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/MongoDB/Quick_Reference/">Quick Reference</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MySQL</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Databases/MySQL/Replication/">Replication</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Oracle</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Blocking_sessions/">Blocking sessions</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/CentOS_7_Installation/">CentOS 7 Installation</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Common/">Common</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Dump/">Dump</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Memory/">Memory</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/OJDBC/">OJDBC</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Tablespace/">Tablespace</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Databases/Oracle/Useful_Queries/">Useful Queries</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dev <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Android</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Android/Adb/">Adb</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Android/Android_Studio/">Android Studio</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Android/Apk/">Apk</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Bash</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Bash/Collect_bash_history/">Collect bash history</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Bash/Convert-CP1251-to-UTF8/">Convert CP1251 to UTF8</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Bash/Gentoo_Functions/">Gentoo Functions</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Brainfuck</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Brainfuck/Sample1/">Sample1</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">C and Cpp</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../C_and_Cpp/Modern_Cpp_Features/">Modern Cpp Features</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../C_and_Cpp/ping_whole_subnet/">Ping whole subnet</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Cmd</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Cmd/ping_whole_subnet/">Ping whole subnet</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Debug</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Debug/10_Commands/">10 Commands</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Debug/Core_Dumps/">Core Dumps</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Debug/GDB/">GDB</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">GCC</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../GCC/Make/">Make</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Hardware</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Hardware/GPU/">GPU</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Hardware/IP_Packet_Example/">IP Packet Example</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Hardware/Latency_Numbers/">Latency Numbers</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Hardware/Networks/">Networks</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Java</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Java/Environment/">Environment</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Java/Runtime_customization/">Runtime customization</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Libraries</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Libraries/Linux/">Linux</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MPI</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../MPI/HelloWorld/">HelloWorld</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../MPI/MPI-Lib/">MPI Lib</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Markdown</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Markdown/Markdown/">Markdown</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Perl</a>
+    <ul class="dropdown-menu">
+        
+            
+<li class="active">
+    <a href="./">Perl one liners</a>
+</li>
+
+        
+            
+<li >
+    <a href="../Perl_scripts_for_sa/">Perl scripts for sa</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Power Shell</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Power_Shell/Azure/">Azure</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Power_Shell/Power_Shell/">Power Shell</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Python</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Python/Installation/">Installation</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Python/Kivy/">Kivy</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Python/Users_and_groups/">Users and groups</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Ruby</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Ruby/Installation/">Installation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Stress tests</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Stress_tests/Ackerman_function/">Ackerman function</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Vbs</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Vbs/Kaspersky_Base_Actuality/">Kaspersky Base Actuality</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Vbs/Links/">Links</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Vbs/Network/">Network</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Vbs/Run/">Run</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Version Control</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Version_Control/Git/">Git</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Version_Control/GitHub/">GitHub</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Version_Control/Gitignore/">Gitignore</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Version_Control/Subversion/">Subversion</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">DevOps <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../DevOps/Ansible/">Ansible</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../DevOps/Chef-Windows/">Chef Windows</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">OS <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../OS/AIX/">AIX</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../OS/Android/">Android</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../OS/FreeBSD/">FreeBSD</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../OS/Useful_UNIX_distros/">Useful UNIX distros</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Gentoo</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../OS/Gentoo/Console_Font/">Console Font</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../OS/Gentoo/Gnome/">Gnome</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../OS/Gentoo/Installation/">Installation</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../OS/Gentoo/Portage/">Portage</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../OS/Gentoo/Systemd/">Systemd</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tech <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Audit</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Audit/Fork_unavailable/">Fork unavailable</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Audit/Hardware_info/">Hardware info</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Audit/Processes/">Processes</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Audit/Reboot_Investigation/">Reboot Investigation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Backup</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Backup/TSM/">TSM</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Backup/Tape/">Tape</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Backup/Veeam/">Veeam</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">BigData</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/BigData/Zookeper_grow/">Zookeper grow</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Messaging</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Messaging/Email_Telnet/">Email Telnet</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Messaging/Postfix/">Postfix</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Messaging/SMS/">SMS</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Monitoring</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Monitoring/80_tools_for_monitoring/">80 tools for monitoring</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Monitoring/Nagios/">Nagios</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Monitoring/NetXMS/">NetXMS</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Monitoring/Zabbix/">Zabbix</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Network</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Network/Common/">Common</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Network/KEMP/">KEMP</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Network/NTP/">NTP</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Network/Ports/">Ports</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Network/SNMP/">SNMP</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Network/WiFi/">WiFi</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Network/tcpdump/">Tcpdump</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Package Management</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Package_Management/Apt/">Apt</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Package_Management/PIP/">PIP</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Package_Management/Pacman/">Pacman</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Package_Management/Yum/">Yum</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Project Management</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Project_Management/Redmine/">Redmine</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Security</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Security/EncFS/">EncFS</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/FirewallD/">FirewallD</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/HSM/">HSM</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/IPTables/">IPTables</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/OpenSSL/">OpenSSL</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/PF/">PF</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/SELinux/">SELinux</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/SSH/">SSH</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Storage and filesystems</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/Extend_Ext4_Partition/">Extend Ext4 Partition</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/Files_in_Unix/">Files in Unix</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/GPFS/">GPFS</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/HDD/">HDD</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/LVM/">LVM</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/Links/">Links</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/Map_Disks_in_Windows/">Map Disks in Windows</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/SAN/">SAN</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/mdadm/">Mdadm</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Users</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Users/Rename_User/">Rename User</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Virtual</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Virtual/Docker/">Docker</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Virtual/Hyper-V/">Hyper V</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Virtual/KVM/">KVM</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Web</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Web/Curl/">Curl</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Web/IIS/">IIS</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Web/Tomcat/">Tomcat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">UX <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Edittors</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Edittors/My_Sublime_Text_config/">My Sublime Text config</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../UX/Edittors/Vim/">Vim</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Hi DPI</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Hi_DPI/Awesome_VM/">Awesome VM</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../UX/Hi_DPI/Java/">Java</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Images</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Images/Convert/">Convert</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MacOS</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/MacOS/Root/">Root</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Messangers</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Messangers/Skype/">Skype</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Network</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Network/Windows_refresh_DNS/">Windows refresh DNS</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Office</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Office/Outlook/">Outlook</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Power Management</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Power_Management/Laptop_lid_linux/">Laptop lid linux</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Terminal</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Terminal/Tmux/">Tmux</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../UX/Terminal/cmd.exe/">Cmd.exe</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Wine</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Wine/Custom_prefix/">Custom prefix</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../UX/Wine/curse_client_5/">Curse client 5</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">X Window</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/X-Window/Common/">Common</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="../../Markdown/Markdown/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../Perl_scripts_for_sa/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a href="https://keepbot.github.io/">
+                            
+                            Keepbot
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="first-level active"><a href="#useful-one-line-scripts-for-perl">Useful One-Line Scripts for Perl</a></li>
+        
+            <li class="second-level"><a href="#file-spacing">FILE SPACING</a></li>
+            
+        
+            <li class="second-level"><a href="#line-numbering">LINE NUMBERING</a></li>
+            
+        
+            <li class="second-level"><a href="#calculations">CALCULATIONS</a></li>
+            
+        
+            <li class="second-level"><a href="#string-creation-and-array-creation">STRING CREATION AND ARRAY CREATION</a></li>
+            
+        
+            <li class="second-level"><a href="#text-conversion-and-substitution">TEXT CONVERSION AND SUBSTITUTION</a></li>
+            
+        
+            <li class="second-level"><a href="#selective-printing-and-deleting-of-certain-lines">SELECTIVE PRINTING AND DELETING OF CERTAIN LINES</a></li>
+            
+        
+            <li class="second-level"><a href="#handy-regular-expressions">HANDY REGULAR EXPRESSIONS</a></li>
+            
+        
+            <li class="second-level"><a href="#perl-tricks">PERL TRICKS</a></li>
+            
+        
+    
+        <li class="first-level "><a href="#credits">CREDITS</a></li>
+        
+    
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h2 id="useful-one-line-scripts-for-perl">Useful One-Line Scripts for Perl</h2>
+<h3 id="file-spacing">FILE SPACING</h3>
+<ul>
+<li>Double space a file</li>
+</ul>
+<pre><code class="perl">perl -pe '$\=&quot;\n&quot;'
+perl -pe 'BEGIN { $\=&quot;\n&quot; }'
+perl -pe '$_ .= &quot;\n&quot;'
+perl -pe 's/$/\n/'
+perl -nE 'say'
+</code></pre>
+
+<ul>
+<li>Double space a file, except the blank lines</li>
+</ul>
+<pre><code class="perl">perl -pe '$_ .= &quot;\n&quot; unless /^$/'
+perl -pe '$_ .= &quot;\n&quot; if /\S/'
+</code></pre>
+
+<ul>
+<li>Triple space a file</li>
+</ul>
+<pre><code class="perl">perl -pe '$\=&quot;\n\n&quot;'
+perl -pe '$_.=&quot;\n\n&quot;'
+</code></pre>
+
+<ul>
+<li>N-space a file</li>
+</ul>
+<pre><code class="perl">perl -pe '$_.=&quot;\n&quot;x7'
+</code></pre>
+
+<ul>
+<li>Add a blank line before every line</li>
+</ul>
+<pre><code class="perl">perl -pe 's//\n/'
+</code></pre>
+
+<ul>
+<li>Remove all blank lines</li>
+</ul>
+<pre><code class="perl">perl -ne 'print unless /^$/'
+perl -lne 'print if length'
+perl -ne 'print if /\S/'
+</code></pre>
+
+<ul>
+<li>Remove all consecutive blank lines, leaving just one</li>
+</ul>
+<pre><code class="perl">perl -00 -pe ''
+perl -00pe0
+</code></pre>
+
+<ul>
+<li>Compress/expand all blank lines into N consecutive ones</li>
+</ul>
+<pre><code class="perl">perl -00 -pe '$_.=&quot;\n&quot;x4'
+</code></pre>
+
+<ul>
+<li>Fold a file so that every set of 10 lines becomes one tab-separated line</li>
+</ul>
+<pre><code class="perl">perl -lpe '$\ = $. % 10 ? &quot;\t&quot; : &quot;\n&quot;'
+</code></pre>
+
+<h3 id="line-numbering">LINE NUMBERING</h3>
+<ul>
+<li>Number all lines in a file</li>
+</ul>
+<pre><code class="perl">perl -pe '$_ = &quot;$. $_&quot;'
+</code></pre>
+
+<ul>
+<li>Number only non-empty lines in a file</li>
+</ul>
+<pre><code class="perl">perl -pe '$_ = ++$a.&quot; $_&quot; if /./'
+</code></pre>
+
+<ul>
+<li>Number and print only non-empty lines in a file (drop empty lines)</li>
+</ul>
+<pre><code class="perl">perl -ne 'print ++$a.&quot; $_&quot; if /./'
+</code></pre>
+
+<ul>
+<li>Number all lines but print line numbers only non-empty lines</li>
+</ul>
+<pre><code class="perl">perl -pe '$_ = &quot;$. $_&quot; if /./'
+</code></pre>
+
+<ul>
+<li>Number only lines that match a pattern, print others unmodified</li>
+</ul>
+<pre><code class="perl">perl -pe '$_ = ++$a.&quot; $_&quot; if /regex/'
+</code></pre>
+
+<ul>
+<li>Number and print only lines that match a pattern</li>
+</ul>
+<pre><code class="perl">perl -ne 'print ++$a.&quot; $_&quot; if /regex/'
+</code></pre>
+
+<ul>
+<li>Number all lines, but print line numbers only for lines that match a pattern</li>
+</ul>
+<pre><code class="perl">perl -pe '$_ = &quot;$. $_&quot; if /regex/'
+</code></pre>
+
+<ul>
+<li>Number all lines in a file using a custom format (emulate cat -n)</li>
+</ul>
+<pre><code class="perl">perl -ne 'printf &quot;%-5d %s&quot;, $., $_'
+</code></pre>
+
+<ul>
+<li>Print the total number of lines in a file (emulate wc -l)</li>
+</ul>
+<pre><code class="perl">perl -lne 'END { print $. }'
+perl -le 'print $n=()=&lt;&gt;'
+perl -le 'print scalar(()=&lt;&gt;)'
+perl -le 'print scalar(@foo=&lt;&gt;)'
+perl -ne '}{print $.'
+perl -nE '}{say $.'
+</code></pre>
+
+<ul>
+<li>Print the number of non-empty lines in a file</li>
+</ul>
+<pre><code class="perl">perl -le 'print scalar(grep{/./}&lt;&gt;)'
+perl -le 'print ~~grep{/./}&lt;&gt;'
+perl -le 'print~~grep/./,&lt;&gt;'
+perl -E 'say~~grep/./,&lt;&gt;'
+</code></pre>
+
+<ul>
+<li>Print the number of empty lines in a file</li>
+</ul>
+<pre><code class="perl">perl -lne '$a++ if /^$/; END {print $a+0}'
+perl -le 'print scalar(grep{/^$/}&lt;&gt;)'
+perl -le 'print ~~grep{/^$/}&lt;&gt;'
+perl -E 'say~~grep{/^$/}&lt;&gt;'
+</code></pre>
+
+<ul>
+<li>Print the number of lines in a file that match a pattern (emulate grep -c)</li>
+</ul>
+<pre><code class="perl">perl -lne '$a++ if /regex/; END {print $a+0}'
+perl -nE '$a++ if /regex/; END {say $a+0}'
+</code></pre>
+
+<h3 id="calculations">CALCULATIONS</h3>
+<ul>
+<li>Check if a number is a prime</li>
+</ul>
+<pre><code class="perl">perl -lne '(1x$_) !~ /^1?$|^(11+?)\1+$/ &amp;&amp; print &quot;$_ is prime&quot;'
+</code></pre>
+
+<ul>
+<li>Print the sum of all the fields on a line</li>
+</ul>
+<pre><code class="perl">perl -MList::Util=sum -alne 'print sum @F'
+</code></pre>
+
+<ul>
+<li>Print the sum of all the fields on all lines</li>
+</ul>
+<pre><code class="perl">perl -MList::Util=sum -alne 'push @S,@F; END { print sum @S }'
+perl -MList::Util=sum -alne '$s += sum @F; END { print $s }'
+</code></pre>
+
+<ul>
+<li>Shuffle all fields on a line</li>
+</ul>
+<pre><code class="perl">perl -MList::Util=shuffle -alne 'print &quot;@{[shuffle @F]}&quot;'
+perl -MList::Util=shuffle -alne 'print join &quot; &quot;, shuffle @F'
+</code></pre>
+
+<ul>
+<li>Find the minimum element on a line</li>
+</ul>
+<pre><code class="perl">perl -MList::Util=min -alne 'print min @F'
+</code></pre>
+
+<ul>
+<li>Find the minimum element over all the lines</li>
+</ul>
+<pre><code class="perl">perl -MList::Util=min -alne '@M = (@M, @F); END { print min @M }'
+perl -MList::Util=min -alne '$min = min @F; $rmin = $min unless defined $rmin &amp;&amp; $min &gt; $rmin; END { print $rmin }'
+</code></pre>
+
+<ul>
+<li>Find the maximum element on a line</li>
+</ul>
+<pre><code class="perl">perl -MList::Util=max -alne 'print max @F'
+</code></pre>
+
+<ul>
+<li>Find the maximum element over all the lines</li>
+</ul>
+<pre><code class="perl">perl -MList::Util=max -alne '@M = (@M, @F); END { print max @M }'
+</code></pre>
+
+<ul>
+<li>Replace each field with its absolute value</li>
+</ul>
+<pre><code class="perl">perl -alne 'print &quot;@{[map { abs } @F]}&quot;'
+</code></pre>
+
+<ul>
+<li>Find the total number of fields (words) on each line</li>
+</ul>
+<pre><code class="perl">perl -alne 'print scalar @F'
+</code></pre>
+
+<ul>
+<li>Print the total number of fields (words) on each line followed by the line</li>
+</ul>
+<pre><code class="perl">perl -alne 'print scalar @F, &quot; $_&quot;'
+</code></pre>
+
+<ul>
+<li>Find the total number of fields (words) on all lines</li>
+</ul>
+<pre><code class="perl">perl -alne '$t += @F; END { print $t}'
+</code></pre>
+
+<ul>
+<li>Print the total number of fields that match a pattern</li>
+</ul>
+<pre><code class="perl">perl -alne 'map { /regex/ &amp;&amp; $t++ } @F; END { print $t }'
+perl -alne '$t += /regex/ for @F; END { print $t }'
+perl -alne '$t += grep /regex/, @F; END { print $t }'
+</code></pre>
+
+<ul>
+<li>Print the total number of lines that match a pattern</li>
+</ul>
+<pre><code class="perl">perl -lne '/regex/ &amp;&amp; $t++; END { print $t }'
+</code></pre>
+
+<ul>
+<li>Print the number PI to n decimal places</li>
+</ul>
+<pre><code class="perl">perl -Mbignum=bpi -le 'print bpi(n)'
+</code></pre>
+
+<ul>
+<li>Print the number PI to 39 decimal places</li>
+</ul>
+<pre><code class="perl">perl -Mbignum=PI -le 'print PI'
+</code></pre>
+
+<ul>
+<li>Print the number E to n decimal places</li>
+</ul>
+<pre><code class="perl">perl -Mbignum=bexp -le 'print bexp(1,n+1)'
+</code></pre>
+
+<ul>
+<li>Print the number E to 39 decimal places</li>
+</ul>
+<pre><code class="perl">perl -Mbignum=e -le 'print e'
+</code></pre>
+
+<ul>
+<li>Print UNIX time (seconds since Jan 1, 1970, 00:00:00 UTC)</li>
+</ul>
+<pre><code class="perl">perl -le 'print time'
+</code></pre>
+
+<ul>
+<li>Print GMT (Greenwich Mean Time) and local computer time</li>
+</ul>
+<pre><code class="perl">perl -le 'print scalar gmtime'
+perl -le 'print scalar localtime'
+</code></pre>
+
+<ul>
+<li>Print local computer time in H:M:S format</li>
+</ul>
+<pre><code class="perl">perl -le 'print join &quot;:&quot;, (localtime)[2,1,0]'
+</code></pre>
+
+<ul>
+<li>Print yesterday's date</li>
+</ul>
+<pre><code class="perl">perl -MPOSIX -le '@now = localtime; $now[3] -= 1; print scalar localtime mktime @now'
+</code></pre>
+
+<ul>
+<li>Print date 14 months, 9 days and 7 seconds ago</li>
+</ul>
+<pre><code class="perl">perl -MPOSIX -le '@now = localtime; $now[0] -= 7; $now[4] -= 14; $now[7] -= 9; print scalar localtime mktime @now'
+</code></pre>
+
+<ul>
+<li>Prepend timestamps to stdout (GMT, localtime)</li>
+</ul>
+<pre><code class="perl">tail -f logfile | perl -ne 'print scalar gmtime,&quot; &quot;,$_'
+tail -f logfile | perl -ne 'print scalar localtime,&quot; &quot;,$_'
+</code></pre>
+
+<ul>
+<li>Calculate factorial of 5</li>
+</ul>
+<pre><code class="perl">perl -MMath::BigInt -le 'print Math::BigInt-&gt;new(5)-&gt;bfac()'
+perl -le '$f = 1; $f *= $_ for 1..5; print $f'
+</code></pre>
+
+<ul>
+<li>Calculate greatest common divisor (GCM)</li>
+</ul>
+<pre><code class="perl">perl -MMath::BigInt=bgcd -le 'print bgcd(@list_of_numbers)'
+</code></pre>
+
+<ul>
+<li>Calculate GCM of numbers 20 and 35 using Euclid's algorithm</li>
+</ul>
+<pre><code class="perl">perl -le '$n = 20; $m = 35; ($m,$n) = ($n,$m%$n) while $n; print $m'
+</code></pre>
+
+<ul>
+<li>Calculate least common multiple (LCM) of numbers 35, 20 and 8</li>
+</ul>
+<pre><code class="perl">perl -MMath::BigInt=blcm -le 'print blcm(35,20,8)'
+</code></pre>
+
+<ul>
+<li>Calculate LCM of 20 and 35 using Euclid's formula: n*m/gcd(n,m)</li>
+</ul>
+<pre><code class="perl">perl -le '$a = $n = 20; $b = $m = 35; ($m,$n) = ($n,$m%$n) while $n; print $a*$b/$m'
+</code></pre>
+
+<ul>
+<li>Generate 10 random numbers between 5 and 15 (excluding 15)</li>
+</ul>
+<pre><code class="perl">perl -le '$n=10; $min=5; $max=15; $, = &quot; &quot;; print map { int(rand($max-$min))+$min } 1..$n'
+</code></pre>
+
+<ul>
+<li>Find and print all permutations of a list</li>
+</ul>
+<pre><code class="perl">perl -MAlgorithm::Permute -le '$l = [1,2,3,4,5]; $p = Algorithm::Permute-&gt;new($l); print @r while @r = $p-&gt;next'
+</code></pre>
+
+<ul>
+<li>Generate the power set</li>
+</ul>
+<pre><code class="perl">perl -MList::PowerSet=powerset -le '@l = (1,2,3,4,5); for (@{powerset(@l)}) { print &quot;@$_&quot; }'
+</code></pre>
+
+<ul>
+<li>Convert an IP address to unsigned integer</li>
+</ul>
+<pre><code class="perl">perl -le '$i=3; $u += ($_&lt;&lt;8*$i--) for &quot;127.0.0.1&quot; =~ /(\d+)/g; print $u'
+perl -le '$ip=&quot;127.0.0.1&quot;; $ip =~ s/(\d+)\.?/sprintf(&quot;%02x&quot;, $1)/ge; print hex($ip)'
+perl -le 'print unpack(&quot;N&quot;, 127.0.0.1)'
+perl -MSocket -le 'print unpack(&quot;N&quot;, inet_aton(&quot;127.0.0.1&quot;))'
+</code></pre>
+
+<ul>
+<li>Convert an unsigned integer to an IP address</li>
+</ul>
+<pre><code class="perl">perl -MSocket -le 'print inet_ntoa(pack(&quot;N&quot;, 2130706433))'
+perl -le '$ip = 2130706433; print join &quot;.&quot;, map { (($ip&gt;&gt;8*($_))&amp;0xFF) } reverse 0..3'
+perl -le '$ip = 2130706433; $, = &quot;.&quot;; print map { (($ip&gt;&gt;8*($_))&amp;0xFF) } reverse 0..3'
+</code></pre>
+
+<h3 id="string-creation-and-array-creation">STRING CREATION AND ARRAY CREATION</h3>
+<ul>
+<li>Generate and print the alphabet</li>
+</ul>
+<pre><code class="perl">perl -le 'print a..z'
+perl -le 'print (&quot;a&quot;..&quot;z&quot;)'
+perl -le '$, = &quot;,&quot;; print (&quot;a&quot;..&quot;z&quot;)'
+perl -le 'print join &quot;,&quot;, (&quot;a&quot;..&quot;z&quot;)'
+</code></pre>
+
+<ul>
+<li>Generate and print all the strings from "a" to "zz"</li>
+</ul>
+<pre><code class="perl">perl -le 'print (&quot;a&quot;..&quot;zz&quot;)'
+perl -le 'print &quot;aa&quot;..&quot;zz&quot;'
+</code></pre>
+
+<ul>
+<li>Create a hex lookup table</li>
+</ul>
+<pre><code class="perl">@hex = (0..9, &quot;a&quot;..&quot;f&quot;)
+</code></pre>
+
+<ul>
+<li>Convert a decimal number to hex using @hex lookup table</li>
+</ul>
+<pre><code class="perl">perl -le '$num = 255; @hex = (0..9, &quot;a&quot;..&quot;f&quot;); while ($num) { $s = $hex[($num%16)&amp;15].$s; $num = int $num/16 } print $s'
+perl -le '$hex = sprintf(&quot;%x&quot;, 255); print $hex'
+perl -le '$num = &quot;ff&quot;; print hex $num'
+</code></pre>
+
+<ul>
+<li>Generate a random 8 character password</li>
+</ul>
+<pre><code class="perl">perl -le 'print map { (&quot;a&quot;..&quot;z&quot;)[rand 26] } 1..8'
+perl -le 'print map { (&quot;a&quot;..&quot;z&quot;, 0..9)[rand 36] } 1..8'
+</code></pre>
+
+<ul>
+<li>Create a string of specific length</li>
+</ul>
+<pre><code class="perl">perl -le 'print &quot;a&quot;x50'
+</code></pre>
+
+<ul>
+<li>Create a repeated list of elements</li>
+</ul>
+<pre><code class="perl">perl -le '@list = (1,2)x20; print &quot;@list&quot;'
+</code></pre>
+
+<ul>
+<li>Create an array from a string</li>
+</ul>
+<pre><code class="perl">@months = split ' ', &quot;Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec&quot;
+@months = qw/Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec/
+</code></pre>
+
+<ul>
+<li>Create a string from an array</li>
+</ul>
+<pre><code class="perl">@stuff = (&quot;hello&quot;, 0..9, &quot;world&quot;); $string = join '-', @stuff
+</code></pre>
+
+<ul>
+<li>Find the numeric values for characters in the string</li>
+</ul>
+<pre><code class="perl">perl -le 'print join &quot;, &quot;, map { ord } split //, &quot;hello world&quot;'
+</code></pre>
+
+<ul>
+<li>Convert a list of numeric ASCII values into a string</li>
+</ul>
+<pre><code class="perl">perl -le '@ascii = (99, 111, 100, 105, 110, 103); print pack(&quot;C*&quot;, @ascii)'
+perl -le '@ascii = (99, 111, 100, 105, 110, 103); print map { chr } @ascii'
+</code></pre>
+
+<ul>
+<li>Generate an array with odd numbers from 1 to 100</li>
+</ul>
+<pre><code class="perl">perl -le '@odd = grep {$_ % 2 == 1} 1..100; print &quot;@odd&quot;'
+perl -le '@odd = grep { $_ &amp; 1 } 1..100; print &quot;@odd&quot;'
+</code></pre>
+
+<ul>
+<li>Generate an array with even numbers from 1 to 100</li>
+</ul>
+<pre><code class="perl">perl -le '@even = grep {$_ % 2 == 0} 1..100; print &quot;@even&quot;'
+</code></pre>
+
+<ul>
+<li>Find the length of the string</li>
+</ul>
+<pre><code class="perl">perl -le 'print length &quot;one-liners are great&quot;'
+</code></pre>
+
+<ul>
+<li>Find the number of elements in an array</li>
+</ul>
+<pre><code class="perl">perl -le '@array = (&quot;a&quot;..&quot;z&quot;); print scalar @array'
+perl -le '@array = (&quot;a&quot;..&quot;z&quot;); print $#array + 1'
+</code></pre>
+
+<h3 id="text-conversion-and-substitution">TEXT CONVERSION AND SUBSTITUTION</h3>
+<ul>
+<li>ROT13 a string</li>
+</ul>
+<pre><code class="perl">'y/A-Za-z/N-ZA-Mn-za-m/'
+</code></pre>
+
+<ul>
+<li>ROT 13 a file</li>
+</ul>
+<pre><code class="perl">perl -lpe 'y/A-Za-z/N-ZA-Mn-za-m/' file
+</code></pre>
+
+<ul>
+<li>Base64 encode a string</li>
+</ul>
+<pre><code class="perl">perl -MMIME::Base64 -e 'print encode_base64(&quot;string&quot;)'
+perl -MMIME::Base64 -0777 -ne 'print encode_base64($_)' file
+</code></pre>
+
+<ul>
+<li>Base64 decode a string</li>
+</ul>
+<pre><code class="perl">perl -MMIME::Base64 -le 'print decode_base64(&quot;base64string&quot;)'
+perl -MMIME::Base64 -ne 'print decode_base64($_)' file
+</code></pre>
+
+<ul>
+<li>URL-escape a string</li>
+</ul>
+<pre><code class="perl">perl -MURI::Escape -le 'print uri_escape($string)'
+</code></pre>
+
+<ul>
+<li>URL-unescape a string</li>
+</ul>
+<pre><code class="perl">perl -MURI::Escape -le 'print uri_unescape($string)'
+</code></pre>
+
+<ul>
+<li>HTML-encode a string</li>
+</ul>
+<pre><code class="perl">perl -MHTML::Entities -le 'print encode_entities($string)'
+</code></pre>
+
+<ul>
+<li>HTML-decode a string</li>
+</ul>
+<pre><code class="perl">perl -MHTML::Entities -le 'print decode_entities($string)'
+</code></pre>
+
+<ul>
+<li>Convert all text to uppercase</li>
+</ul>
+<pre><code class="perl">perl -nle 'print uc'
+perl -ple '$_=uc'
+perl -nle 'print &quot;\U$_&quot;'
+</code></pre>
+
+<ul>
+<li>Convert all text to lowercase</li>
+</ul>
+<pre><code class="perl">perl -nle 'print lc'
+perl -ple '$_=lc'
+perl -nle 'print &quot;\L$_&quot;'
+</code></pre>
+
+<ul>
+<li>Uppercase only the first word of each line</li>
+</ul>
+<pre><code class="perl">perl -nle 'print ucfirst lc'
+perl -nle 'print &quot;\u\L$_&quot;'
+</code></pre>
+
+<ul>
+<li>Invert the letter case</li>
+</ul>
+<pre><code class="perl">perl -ple 'y/A-Za-z/a-zA-Z/'
+</code></pre>
+
+<ul>
+<li>Camel case each line</li>
+</ul>
+<pre><code class="perl">perl -ple 's/(\w+)/\u$1/g'
+perl -ple 's/(?&lt;!['])(\w+)/\u\1/g'
+</code></pre>
+
+<ul>
+<li>Strip leading whitespace (spaces, tabs) from the beginning of each line</li>
+</ul>
+<pre><code class="perl">perl -ple 's/^[ \t]+//'
+perl -ple 's/^\s+//'
+</code></pre>
+
+<ul>
+<li>Strip trailing whitespace (space, tabs) from the end of each line</li>
+</ul>
+<pre><code class="perl">perl -ple 's/[ \t]+$//'
+</code></pre>
+
+<ul>
+<li>Strip whitespace from the beginning and end of each line</li>
+</ul>
+<pre><code class="perl">perl -ple 's/^[ \t]+|[ \t]+$//g'
+</code></pre>
+
+<ul>
+<li>Convert UNIX newlines to DOS/Windows newlines</li>
+</ul>
+<pre><code class="perl">perl -pe 's|\n|\r\n|'
+</code></pre>
+
+<ul>
+<li>Convert DOS/Windows newlines to UNIX newlines</li>
+</ul>
+<pre><code class="perl">perl -pe 's|\r\n|\n|'
+</code></pre>
+
+<ul>
+<li>Convert UNIX newlines to Mac newlines</li>
+</ul>
+<pre><code class="perl">perl -pe 's|\n|\r|'
+</code></pre>
+
+<ul>
+<li>Substitute (find and replace) "foo" with "bar" on each line</li>
+</ul>
+<pre><code class="perl">perl -pe 's/foo/bar/'
+</code></pre>
+
+<ul>
+<li>Substitute (find and replace) all "foo"s with "bar" on each line</li>
+</ul>
+<pre><code class="perl">perl -pe 's/foo/bar/g'
+</code></pre>
+
+<ul>
+<li>Substitute (find and replace) "foo" with "bar" on lines that match "baz"</li>
+</ul>
+<pre><code class="perl">perl -pe '/baz/ &amp;&amp; s/foo/bar/'
+</code></pre>
+
+<ul>
+<li>Binary patch a file (find and replace a given array of bytes as hex numbers)</li>
+</ul>
+<pre><code class="perl">perl -pi -e 's/\x89\xD8\x48\x8B/\x90\x90\x48\x8B/g' file
+</code></pre>
+
+<h3 id="selective-printing-and-deleting-of-certain-lines">SELECTIVE PRINTING AND DELETING OF CERTAIN LINES</h3>
+<ul>
+<li>Print the first line of a file (emulate head -1)</li>
+</ul>
+<pre><code class="perl">perl -ne 'print; exit'
+</code></pre>
+
+<ul>
+<li>Print the first 10 lines of a file (emulate head -10)</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if $. &lt;= 10'
+perl -ne '$. &lt;= 10 &amp;&amp; print'
+perl -ne 'print if 1..10'
+</code></pre>
+
+<ul>
+<li>Print the last line of a file (emulate tail -1)</li>
+</ul>
+<pre><code class="perl">perl -ne '$last = $_; END { print $last }'
+perl -ne 'print if eof'
+</code></pre>
+
+<ul>
+<li>Print the last 10 lines of a file (emulate tail -10)</li>
+</ul>
+<pre><code class="perl">perl -ne 'push @a, $_; @a = @a[@a-10..$#a]; END { print @a }'
+</code></pre>
+
+<ul>
+<li>Print only lines that match a regular expression</li>
+</ul>
+<pre><code class="perl">perl -ne '/regex/ &amp;&amp; print'
+</code></pre>
+
+<ul>
+<li>Print only lines that do not match a regular expression</li>
+</ul>
+<pre><code class="perl">perl -ne '!/regex/ &amp;&amp; print'
+</code></pre>
+
+<ul>
+<li>Print the line before a line that matches a regular expression</li>
+</ul>
+<pre><code class="perl">perl -ne '/regex/ &amp;&amp; $last &amp;&amp; print $last; $last = $_'
+</code></pre>
+
+<ul>
+<li>Print the line after a line that matches a regular expression</li>
+</ul>
+<pre><code class="perl">perl -ne 'if ($p) { print; $p = 0 } $p++ if /regex/'
+</code></pre>
+
+<ul>
+<li>Print lines that match regex AAA and regex BBB in any order</li>
+</ul>
+<pre><code class="perl">perl -ne '/AAA/ &amp;&amp; /BBB/ &amp;&amp; print'
+</code></pre>
+
+<ul>
+<li>Print lines that don't match match regexes AAA and BBB</li>
+</ul>
+<pre><code class="perl">perl -ne '!/AAA/ &amp;&amp; !/BBB/ &amp;&amp; print'
+</code></pre>
+
+<ul>
+<li>Print lines that match regex AAA followed by regex BBB followed by CCC</li>
+</ul>
+<pre><code class="perl">perl -ne '/AAA.*BBB.*CCC/ &amp;&amp; print'
+</code></pre>
+
+<ul>
+<li>Print lines that are 80 chars or longer</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if length &gt;= 80'
+</code></pre>
+
+<ul>
+<li>Print lines that are less than 80 chars in length</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if length &lt; 80'
+</code></pre>
+
+<ul>
+<li>Print only line 13</li>
+</ul>
+<pre><code class="perl">perl -ne '$. == 13 &amp;&amp; print &amp;&amp; exit'
+</code></pre>
+
+<ul>
+<li>Print all lines except line 27</li>
+</ul>
+<pre><code class="perl">perl -ne '$. != 27 &amp;&amp; print'
+perl -ne 'print if $. != 27'
+</code></pre>
+
+<ul>
+<li>Print only lines 13, 19 and 67</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if $. == 13 || $. == 19 || $. == 67'
+perl -ne 'print if int($.) ~~ (13, 19, 67)'
+</code></pre>
+
+<ul>
+<li>Print all lines between two regexes (including lines that match regex)</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if /regex1/../regex2/'
+</code></pre>
+
+<ul>
+<li>Print all lines from line 17 to line 30</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if $. &gt;= 17 &amp;&amp; $. &lt;= 30'
+perl -ne 'print if int($.) ~~ (17..30)'
+perl -ne 'print if grep { $_ == $. } 17..30'
+</code></pre>
+
+<ul>
+<li>Print the longest line</li>
+</ul>
+<pre><code class="perl">perl -ne '$l = $_ if length($_) &gt; length($l); END { print $l }'
+</code></pre>
+
+<ul>
+<li>Print the shortest line</li>
+</ul>
+<pre><code class="perl">perl -ne '$s = $_ if $. == 1; $s = $_ if length($_) &lt; length($s); END { print $s }'
+</code></pre>
+
+<ul>
+<li>Print all lines that contain a number</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if /\d/'
+</code></pre>
+
+<ul>
+<li>Find all lines that contain only a number</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if /^\d+$/'
+</code></pre>
+
+<ul>
+<li>Print all lines that contain only characters</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if /^[[:alpha:]]+$/
+</code></pre>
+
+<ul>
+<li>Print every second line</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if $. % 2'
+</code></pre>
+
+<ul>
+<li>Print every second line, starting the second line</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if $. % 2 == 0'
+</code></pre>
+
+<ul>
+<li>Print all lines that repeat</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if ++$a{$_} == 2'
+</code></pre>
+
+<ul>
+<li>Print all unique lines</li>
+</ul>
+<pre><code class="perl">perl -ne 'print unless $a{$_}++'
+</code></pre>
+
+<ul>
+<li>Print the first field (word) of every line (emulate cut -f 1 -d ' ')</li>
+</ul>
+<pre><code class="perl">perl -alne 'print $F[0]'
+</code></pre>
+
+<h3 id="handy-regular-expressions">HANDY REGULAR EXPRESSIONS</h3>
+<ul>
+<li>Match something that looks like an IP address</li>
+</ul>
+<pre><code class="perl">/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/
+/^(\d{1,3}\.){3}\d{1,3}$/
+</code></pre>
+
+<ul>
+<li>Test if a number is in range 0-255</li>
+</ul>
+<pre><code class="perl">/^([0-9]|[0-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$/
+</code></pre>
+
+<ul>
+<li>Match an IP address</li>
+</ul>
+<pre><code class="perl">my $ip_part = qr|([0-9]|[0-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])|;
+if ($ip =~ /^($ip_part\.){3}$ip_part$/) {
+ say &quot;valid ip&quot;;
+}
+</code></pre>
+
+<ul>
+<li>Check if the string looks like an email address</li>
+</ul>
+<pre><code class="perl">/\S+@\S+\.\S+/
+</code></pre>
+
+<ul>
+<li>Check if the string is a decimal number</li>
+</ul>
+<pre><code class="perl">/^\d+$/
+/^[+-]?\d+$/
+/^[+-]?\d+\.?\d*$/
+</code></pre>
+
+<ul>
+<li>Check if the string is a hexadecimal number</li>
+</ul>
+<pre><code class="perl">/^0x[0-9a-f]+$/i
+</code></pre>
+
+<ul>
+<li>Check if the string is an octal number</li>
+</ul>
+<pre><code class="perl">/^0[0-7]+$/
+</code></pre>
+
+<ul>
+<li>Check if the string is binary</li>
+</ul>
+<pre><code class="perl">/^[01]+$/
+</code></pre>
+
+<ul>
+<li>Check if a word appears twice in the string</li>
+</ul>
+<pre><code class="perl">/(word).*\1/
+</code></pre>
+
+<ul>
+<li>Increase all numbers by one in the string</li>
+</ul>
+<pre><code class="perl">$str =~ s/(\d+)/$1+1/ge
+</code></pre>
+
+<ul>
+<li>Extract HTTP User-Agent string from the HTTP headers</li>
+</ul>
+<pre><code class="perl">/^User-Agent: (.+)$/
+</code></pre>
+
+<ul>
+<li>Match printable ASCII characters</li>
+</ul>
+<pre><code class="perl">/[ -~]/
+</code></pre>
+
+<ul>
+<li>Match unprintable ASCII characters</li>
+</ul>
+<pre><code class="perl">/[^ -~]/
+</code></pre>
+
+<ul>
+<li>Match text between two HTML tags</li>
+</ul>
+<pre><code class="perl">m|&lt;strong&gt;([^&lt;]*)&lt;/strong&gt;|
+m|&lt;strong&gt;(.*?)&lt;/strong&gt;|
+</code></pre>
+
+<ul>
+<li>Replace all <b> tags with <strong></li>
+</ul>
+<pre><code class="perl">$html =~ s|&lt;(/)?b&gt;|&lt;$1strong&gt;|g
+</code></pre>
+
+<ul>
+<li>Extract all matches from a regular expression</li>
+</ul>
+<pre><code class="perl">my @matches = $text =~ /regex/g;
+</code></pre>
+
+<h3 id="perl-tricks">PERL TRICKS</h3>
+<ul>
+<li>Print the version of a Perl module</li>
+</ul>
+<pre><code class="perl">perl -MModule -le 'print $Module::VERSION'
+perl -MLWP::UserAgent -le 'print $LWP::UserAgent::VERSION'
+</code></pre>
+
+<h2 id="credits">CREDITS</h2>
+<ul>
+<li>Andy Lester       http://www.petdance.com</li>
+<li>Shlomi Fish       http://www.shlomifish.org</li>
+<li>Madars Virza      http://www.madars.org</li>
+<li>caffecaldo        https://github.com/caffecaldo</li>
+<li>Kirk Kimmel       https://github.com/kimmel</li>
+<li>avar              https://github.com/avar</li>
+<li>rent0n</li>
+</ul></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Copyright &copy; 2017 Dmitry Ivanov. <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter40819844 = new Ya.Metrika({ id:40819844, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript><br></small>
+        
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '../../..';
+    </script>
+    <script data-main="../../../mkdocs/js/search.js" src="../../../mkdocs/js/require.js"></script>
+    <script src="../../../js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>
