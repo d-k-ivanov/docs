@@ -48,3 +48,7 @@ mv /etc/ssl/certs/ca-certificates.crt /tmp
 pacman -Syu
 ```
 
+### Sort installed packages by size
+```
+pacman -Qi | egrep '^(Name|Installed)' | cut -f2 -d':' | paste - - | column -t | sort -nrk 2 | grep MiB | less 
+```
