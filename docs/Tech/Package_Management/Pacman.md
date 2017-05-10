@@ -28,3 +28,23 @@ gpg --recv-key 0000000000000000
 pacman-key --verify <sig_file>
 makepkg --skippgpcheck -sri
 ```
+
+### Some Python packages exist in filesystem
+```bash
+# First method:
+mv /usr/lib/python2.7/site-packages/<package> /tmp/removed_py/
+# Second method:
+pip freeze | xargs pip uninstall -y
+pip freeze | grep -v "^-e" | xargs pip uninstall -y
+# Then you can update your Arch
+#yaourt -Syu --aur
+pacman -Syu
+```
+
+### ca-certificates-utils: /etc/ssl/certs/ca-certificates.crt exists in filesystem
+```bash
+mv /etc/ssl/certs/ca-certificates.crt /tmp
+#yaourt -Syu --aur
+pacman -Syu
+```
+
