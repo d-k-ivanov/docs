@@ -16,3 +16,8 @@ python -c "import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load
 # Another way to clone up to 200 user's repos(just in shell): 
 curl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | ."clone_url"' | xargs -I '{}' git clone {}
 ```
+
+### Generate new key-pair in current folder`
+```bash
+sh-keygen -t rsa -b 4096 -C "email@domain" -f deploy_key
+```
