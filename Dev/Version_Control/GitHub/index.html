@@ -1435,6 +1435,9 @@
         <li class="first-level "><a href="#clone-all-users-repositories">Clone all user's repositories</a></li>
         
     
+        <li class="first-level "><a href="#generate-new-key-pair-in-current-folder">Generate new key-pair in current folder`</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -1455,6 +1458,10 @@ python -c &quot;import json,sys,os;file = open('repo.list.json' ,'r');obj = json
 # And dont forget about &quot;space&quot;(%20, &quot; &quot;) in cmd = 'git clone ', it's completely nessesary
 # Another way to clone up to 200 user's repos(just in shell): 
 curl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | .&quot;clone_url&quot;' | xargs -I '{}' git clone {}
+</code></pre>
+
+<h3 id="generate-new-key-pair-in-current-folder">Generate new key-pair in current folder`</h3>
+<pre><code class="bash">sh-keygen -t rsa -b 4096 -C &quot;email@domain&quot; -f deploy_key
 </code></pre></div>
         
     </div>

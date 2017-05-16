@@ -1932,7 +1932,7 @@
         }, 
         {
             "location": "/Dev/Version_Control/GitHub/", 
-            "text": "Independent history catalogs of git repositories\n\n\n# Makes a bunch of history folders formatted by the next way: \nrepository\n-\nnumber_of_commit\n-\ncommit_hash\n\n# Check commit_list.end for mistakes, you need simple list of commits\ngit clone \nrepository_url\n \nrepository\n\ncd \nrepository\n \n git log --pretty=format:\n%h\n \n ../commit_list \n cd ..\ntac commit_list \n commit_list.end \ni=1; for cid in `cat commit_list.end`; do cp -r \nrepository\n \nrepository\n-$i-$cid; cd \nrepository\n-$i-$cid; git checkout $cid; cd ..; ((i=i+1)); done\n\n\n\n\nClone all user's repositories\n\n\n# Get complete list of user's repositories in JSON file\ncurl -s https://api.github.com/users/\nusername\n/repos?per_page=200 \n repo.list.json\npython -c \nimport json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close()\n\n# And dont forget about \nspace\n(%20, \n \n) in cmd = 'git clone ', it's completely nessesary\n# Another way to clone up to 200 user's repos(just in shell): \ncurl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | .\nclone_url\n' | xargs -I '{}' git clone {}", 
+            "text": "Independent history catalogs of git repositories\n\n\n# Makes a bunch of history folders formatted by the next way: \nrepository\n-\nnumber_of_commit\n-\ncommit_hash\n\n# Check commit_list.end for mistakes, you need simple list of commits\ngit clone \nrepository_url\n \nrepository\n\ncd \nrepository\n \n git log --pretty=format:\n%h\n \n ../commit_list \n cd ..\ntac commit_list \n commit_list.end \ni=1; for cid in `cat commit_list.end`; do cp -r \nrepository\n \nrepository\n-$i-$cid; cd \nrepository\n-$i-$cid; git checkout $cid; cd ..; ((i=i+1)); done\n\n\n\n\nClone all user's repositories\n\n\n# Get complete list of user's repositories in JSON file\ncurl -s https://api.github.com/users/\nusername\n/repos?per_page=200 \n repo.list.json\npython -c \nimport json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close()\n\n# And dont forget about \nspace\n(%20, \n \n) in cmd = 'git clone ', it's completely nessesary\n# Another way to clone up to 200 user's repos(just in shell): \ncurl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | .\nclone_url\n' | xargs -I '{}' git clone {}\n\n\n\n\nGenerate new key-pair in current folder`\n\n\nsh-keygen -t rsa -b 4096 -C \nemail@domain\n -f deploy_key", 
             "title": "GitHub"
         }, 
         {
@@ -1944,6 +1944,11 @@
             "location": "/Dev/Version_Control/GitHub/#clone-all-users-repositories", 
             "text": "# Get complete list of user's repositories in JSON file\ncurl -s https://api.github.com/users/ username /repos?per_page=200   repo.list.json\npython -c  import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close() \n# And dont forget about  space (%20,    ) in cmd = 'git clone ', it's completely nessesary\n# Another way to clone up to 200 user's repos(just in shell): \ncurl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | . clone_url ' | xargs -I '{}' git clone {}", 
             "title": "Clone all user's repositories"
+        }, 
+        {
+            "location": "/Dev/Version_Control/GitHub/#generate-new-key-pair-in-current-folder", 
+            "text": "sh-keygen -t rsa -b 4096 -C  email@domain  -f deploy_key", 
+            "title": "Generate new key-pair in current folder`"
         }, 
         {
             "location": "/Dev/Version_Control/Gitignore/", 
