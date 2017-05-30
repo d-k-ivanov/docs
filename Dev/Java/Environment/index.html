@@ -1432,6 +1432,9 @@
         <li class="first-level active"><a href="#windows-variables">Windows variables</a></li>
         
     
+        <li class="first-level "><a href="#unix-variables">Unix variables</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -1444,6 +1447,21 @@ CLASSPATH         : .;%JAVA_HOME%\lib;%JAVA_HOME%\jre\lib
 PATH              : &lt;all_your_recors&gt;;%JAVA_HOME%\bin
 # Optional
 JAVA_TOOL_OPTIONS : -Dfile.encoding=&quot;UTF-8&quot;
+</code></pre>
+
+<h3 id="unix-variables">Unix variables</h3>
+<pre><code class="bash"># If you install JRE only:
+JAVA_HOME=/path/to/jre
+JRE_HOME=$JAVA_HOME
+CLASSPATH=.;$JAVA_HOME/lib
+PATH=$PATH;$JAVA_HOME/bin
+
+# If you install JDK:
+JAVA_HOME=/path/to/jdk
+JDK_HOME=$JAVA_HOME
+JRE_HOME=$JAVA_HOME/jre
+CLASSPATH=.;$JAVA_HOME/lib;$JAVA_HOME/jre/lib
+PATH=$PATH;$JAVA_HOME/bin
 </code></pre></div>
         
     </div>

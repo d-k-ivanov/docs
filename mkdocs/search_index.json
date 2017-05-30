@@ -917,13 +917,18 @@
         }, 
         {
             "location": "/Dev/Java/Environment/", 
-            "text": "Windows variables\n\n\nJAVA_HOME         : C:\\Program Files\\Java\\jdkx.x.x_xxx\nJDK_HOME          : %JAVA_HOME%\nJRE_HOME          : %JAVA_HOME%\\jre\nCLASSPATH         : .;%JAVA_HOME%\\lib;%JAVA_HOME%\\jre\\lib\nPATH              : \nall_your_recors\n;%JAVA_HOME%\\bin\n# Optional\nJAVA_TOOL_OPTIONS : -Dfile.encoding=\nUTF-8", 
+            "text": "Windows variables\n\n\nJAVA_HOME         : C:\\Program Files\\Java\\jdkx.x.x_xxx\nJDK_HOME          : %JAVA_HOME%\nJRE_HOME          : %JAVA_HOME%\\jre\nCLASSPATH         : .;%JAVA_HOME%\\lib;%JAVA_HOME%\\jre\\lib\nPATH              : \nall_your_recors\n;%JAVA_HOME%\\bin\n# Optional\nJAVA_TOOL_OPTIONS : -Dfile.encoding=\nUTF-8\n\n\n\n\n\nUnix variables\n\n\n# If you install JRE only:\nJAVA_HOME=/path/to/jre\nJRE_HOME=$JAVA_HOME\nCLASSPATH=.;$JAVA_HOME/lib\nPATH=$PATH;$JAVA_HOME/bin\n\n# If you install JDK:\nJAVA_HOME=/path/to/jdk\nJDK_HOME=$JAVA_HOME\nJRE_HOME=$JAVA_HOME/jre\nCLASSPATH=.;$JAVA_HOME/lib;$JAVA_HOME/jre/lib\nPATH=$PATH;$JAVA_HOME/bin", 
             "title": "Environment"
         }, 
         {
             "location": "/Dev/Java/Environment/#windows-variables", 
             "text": "JAVA_HOME         : C:\\Program Files\\Java\\jdkx.x.x_xxx\nJDK_HOME          : %JAVA_HOME%\nJRE_HOME          : %JAVA_HOME%\\jre\nCLASSPATH         : .;%JAVA_HOME%\\lib;%JAVA_HOME%\\jre\\lib\nPATH              :  all_your_recors ;%JAVA_HOME%\\bin\n# Optional\nJAVA_TOOL_OPTIONS : -Dfile.encoding= UTF-8", 
             "title": "Windows variables"
+        }, 
+        {
+            "location": "/Dev/Java/Environment/#unix-variables", 
+            "text": "# If you install JRE only:\nJAVA_HOME=/path/to/jre\nJRE_HOME=$JAVA_HOME\nCLASSPATH=.;$JAVA_HOME/lib\nPATH=$PATH;$JAVA_HOME/bin\n\n# If you install JDK:\nJAVA_HOME=/path/to/jdk\nJDK_HOME=$JAVA_HOME\nJRE_HOME=$JAVA_HOME/jre\nCLASSPATH=.;$JAVA_HOME/lib;$JAVA_HOME/jre/lib\nPATH=$PATH;$JAVA_HOME/bin", 
+            "title": "Unix variables"
         }, 
         {
             "location": "/Dev/Java/Runtime_customization/", 
