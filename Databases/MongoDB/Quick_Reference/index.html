@@ -151,12 +151,6 @@
         
             
 <li >
-    <a href="../Mongo/">Mongo</a>
-</li>
-
-        
-            
-<li >
     <a href="../Queries/">Queries</a>
 </li>
 
@@ -1438,6 +1432,12 @@
         <li class="first-level active"><a href="#quick-reference">Quick reference</a></li>
         
     
+        <li class="first-level "><a href="#dump-to-json">Dump to JSON</a></li>
+        
+    
+        <li class="first-level "><a href="#connect">Connect</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -1467,6 +1467,16 @@ db.collection.drop()
 db.collection.createIndex()
 db.getSiblingDB()
 
+</code></pre>
+
+<h3 id="dump-to-json">Dump to JSON</h3>
+<pre><code class="bash">mongo --host &lt;db_server&gt; &lt;db_name&gt; -u &lt;username&gt; -p &lt;password&gt; &lt;&lt; EOF &gt; out.json
+db.File.files.find().pretty()
+EOF
+</code></pre>
+
+<h3 id="connect">Connect</h3>
+<pre><code class="bash">mongo --host &lt;db_server&gt; &lt;db_name&gt; -u &lt;username&gt; -p &lt;password&gt;
 </code></pre></div>
         
     </div>

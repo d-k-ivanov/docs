@@ -96,21 +96,6 @@
             "title": "Restore"
         }, 
         {
-            "location": "/Databases/MongoDB/Mongo/", 
-            "text": "Dump to JSON\n\n\nmongo --host \ndb_server\n \ndb_name\n -u \nusername\n -p \npassword\n \n EOF \n out.json\ndb.File.files.find().pretty()\nEOF\n\n\n\n\nConnect\n\n\nmongo --host \ndb_server\n \ndb_name\n -u \nusername\n -p \npassword", 
-            "title": "Mongo"
-        }, 
-        {
-            "location": "/Databases/MongoDB/Mongo/#dump-to-json", 
-            "text": "mongo --host  db_server   db_name  -u  username  -p  password    EOF   out.json\ndb.File.files.find().pretty()\nEOF", 
-            "title": "Dump to JSON"
-        }, 
-        {
-            "location": "/Databases/MongoDB/Mongo/#connect", 
-            "text": "mongo --host  db_server   db_name  -u  username  -p  password", 
-            "title": "Connect"
-        }, 
-        {
             "location": "/Databases/MongoDB/Queries/", 
             "text": "Find by _id\n\n\ndb.ticket.find({ \nfield_name_with_id\n : ObjectId(\n--_id--\n) });", 
             "title": "Queries"
@@ -122,13 +107,23 @@
         }, 
         {
             "location": "/Databases/MongoDB/Quick_Reference/", 
-            "text": "Quick reference\n\n\nhelp\n\ndb.help()\n\nshow dbs\nshow databases\nuse \ndb\n\n\nshow collections\ndb.\ncollection\n.help()\n\nshow users\nshow roles\nshow profile\n\ndb.collection.find()\ndb.collection.insert()\ndb.collection.update()\ndb.collection.save()\ndb.collection.remove()\ndb.collection.drop()\ndb.collection.createIndex()\ndb.getSiblingDB()", 
+            "text": "Quick reference\n\n\nhelp\n\ndb.help()\n\nshow dbs\nshow databases\nuse \ndb\n\n\nshow collections\ndb.\ncollection\n.help()\n\nshow users\nshow roles\nshow profile\n\ndb.collection.find()\ndb.collection.insert()\ndb.collection.update()\ndb.collection.save()\ndb.collection.remove()\ndb.collection.drop()\ndb.collection.createIndex()\ndb.getSiblingDB()\n\n\n\n\n\nDump to JSON\n\n\nmongo --host \ndb_server\n \ndb_name\n -u \nusername\n -p \npassword\n \n EOF \n out.json\ndb.File.files.find().pretty()\nEOF\n\n\n\n\nConnect\n\n\nmongo --host \ndb_server\n \ndb_name\n -u \nusername\n -p \npassword", 
             "title": "Quick Reference"
         }, 
         {
             "location": "/Databases/MongoDB/Quick_Reference/#quick-reference", 
             "text": "help\n\ndb.help()\n\nshow dbs\nshow databases\nuse  db \n\nshow collections\ndb. collection .help()\n\nshow users\nshow roles\nshow profile\n\ndb.collection.find()\ndb.collection.insert()\ndb.collection.update()\ndb.collection.save()\ndb.collection.remove()\ndb.collection.drop()\ndb.collection.createIndex()\ndb.getSiblingDB()", 
             "title": "Quick reference"
+        }, 
+        {
+            "location": "/Databases/MongoDB/Quick_Reference/#dump-to-json", 
+            "text": "mongo --host  db_server   db_name  -u  username  -p  password    EOF   out.json\ndb.File.files.find().pretty()\nEOF", 
+            "title": "Dump to JSON"
+        }, 
+        {
+            "location": "/Databases/MongoDB/Quick_Reference/#connect", 
+            "text": "mongo --host  db_server   db_name  -u  username  -p  password", 
+            "title": "Connect"
         }, 
         {
             "location": "/Databases/MySQL/Replication/", 
@@ -3337,7 +3332,7 @@
         }, 
         {
             "location": "/Tech/Package_Management/Pacman/", 
-            "text": "Pacman\n\n\n# Search for software\npacman -Ss \npattern\n\n# Install package\npacman -S \npackage_name\n\n# Update the system\npacman -Syu\n# Remove orphaned packages (Be careful, double check for list of deleted packages)\npacman -Rscn $(pacman -Qtdq)\npacman -Sc\npacman-optimize \n sync\n# Show all pacages whitc now installed as dependencies\npacman -Qet\n\n\n\n\nAUR package installation\n\n\ngit clone https://aur.archlinux.org/\npackiage_name\n\ncd \npackage_name\n\nmakepkg -sri\n\n# In case of error like:\n# \npackage\n.tar.gz ... FAILED (unknown public key 0000000000000000)\ngpg --recv-key 0000000000000000\n# Or manually check key and skip key verification vith makepkg\npacman-key --verify \nsig_file\n\nmakepkg --skippgpcheck -sri", 
+            "text": "Pacman\n\n\n# Search for software\npacman -Ss \npattern\n\n# Install package\npacman -S \npackage_name\n\n# Update the system\npacman -Syu\n# Remove orphaned packages (Be careful, double check for list of deleted packages)\npacman -Rscn $(pacman -Qtdq)\npacman -Sc\npacman-optimize \n sync\n# Show all pacages whitc now installed as dependencies\npacman -Qet\n\n\n\n\nAUR package installation\n\n\ngit clone https://aur.archlinux.org/\npackiage_name\n\ncd \npackage_name\n\nmakepkg -sri\n\n# In case of error like:\n# \npackage\n.tar.gz ... FAILED (unknown public key 0000000000000000)\ngpg --recv-key 0000000000000000\n# Or manually check key and skip key verification vith makepkg\npacman-key --verify \nsig_file\n\nmakepkg --skippgpcheck -sri\n\n\n\n\nSome Python packages exist in filesystem\n\n\n# First method:\nmv /usr/lib/python2.7/site-packages/\npackage\n /tmp/removed_py/\n# Second method:\npip freeze | xargs pip uninstall -y\npip freeze | grep -v \n^-e\n | xargs pip uninstall -y\n# Then you can update your Arch\n#yaourt -Syu --aur\npacman -Syu\n\n\n\n\nca-certificates-utils: /etc/ssl/certs/ca-certificates.crt exists in filesystem\n\n\nmv /etc/ssl/certs/ca-certificates.crt /tmp\n#yaourt -Syu --aur\npacman -Syu\n\n\n\n\nSort installed packages by size\n\n\npacman -Qi | egrep '^(Name|Installed)' | cut -f2 -d':' | paste - - | column -t | sort -nrk 2 | grep MiB | less", 
             "title": "Pacman"
         }, 
         {
@@ -3349,6 +3344,21 @@
             "location": "/Tech/Package_Management/Pacman/#aur-package-installation", 
             "text": "git clone https://aur.archlinux.org/ packiage_name \ncd  package_name \nmakepkg -sri\n\n# In case of error like:\n#  package .tar.gz ... FAILED (unknown public key 0000000000000000)\ngpg --recv-key 0000000000000000\n# Or manually check key and skip key verification vith makepkg\npacman-key --verify  sig_file \nmakepkg --skippgpcheck -sri", 
             "title": "AUR package installation"
+        }, 
+        {
+            "location": "/Tech/Package_Management/Pacman/#some-python-packages-exist-in-filesystem", 
+            "text": "# First method:\nmv /usr/lib/python2.7/site-packages/ package  /tmp/removed_py/\n# Second method:\npip freeze | xargs pip uninstall -y\npip freeze | grep -v  ^-e  | xargs pip uninstall -y\n# Then you can update your Arch\n#yaourt -Syu --aur\npacman -Syu", 
+            "title": "Some Python packages exist in filesystem"
+        }, 
+        {
+            "location": "/Tech/Package_Management/Pacman/#ca-certificates-utils-etcsslcertsca-certificatescrt-exists-in-filesystem", 
+            "text": "mv /etc/ssl/certs/ca-certificates.crt /tmp\n#yaourt -Syu --aur\npacman -Syu", 
+            "title": "ca-certificates-utils: /etc/ssl/certs/ca-certificates.crt exists in filesystem"
+        }, 
+        {
+            "location": "/Tech/Package_Management/Pacman/#sort-installed-packages-by-size", 
+            "text": "pacman -Qi | egrep '^(Name|Installed)' | cut -f2 -d':' | paste - - | column -t | sort -nrk 2 | grep MiB | less", 
+            "title": "Sort installed packages by size"
         }, 
         {
             "location": "/Tech/Package_Management/Yum/", 

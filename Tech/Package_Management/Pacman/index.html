@@ -151,12 +151,6 @@
         
             
 <li >
-    <a href="../../../Databases/MongoDB/Mongo/">Mongo</a>
-</li>
-
-        
-            
-<li >
     <a href="../../../Databases/MongoDB/Queries/">Queries</a>
 </li>
 
@@ -1441,6 +1435,15 @@
         <li class="first-level "><a href="#aur-package-installation">AUR package installation</a></li>
         
     
+        <li class="first-level "><a href="#some-python-packages-exist-in-filesystem">Some Python packages exist in filesystem</a></li>
+        
+    
+        <li class="first-level "><a href="#ca-certificates-utils-etcsslcertsca-certificatescrt-exists-in-filesystem">ca-certificates-utils: /etc/ssl/certs/ca-certificates.crt exists in filesystem</a></li>
+        
+    
+        <li class="first-level "><a href="#sort-installed-packages-by-size">Sort installed packages by size</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -1471,6 +1474,27 @@ gpg --recv-key 0000000000000000
 # Or manually check key and skip key verification vith makepkg
 pacman-key --verify &lt;sig_file&gt;
 makepkg --skippgpcheck -sri
+</code></pre>
+
+<h3 id="some-python-packages-exist-in-filesystem">Some Python packages exist in filesystem</h3>
+<pre><code class="bash"># First method:
+mv /usr/lib/python2.7/site-packages/&lt;package&gt; /tmp/removed_py/
+# Second method:
+pip freeze | xargs pip uninstall -y
+pip freeze | grep -v &quot;^-e&quot; | xargs pip uninstall -y
+# Then you can update your Arch
+#yaourt -Syu --aur
+pacman -Syu
+</code></pre>
+
+<h3 id="ca-certificates-utils-etcsslcertsca-certificatescrt-exists-in-filesystem">ca-certificates-utils: /etc/ssl/certs/ca-certificates.crt exists in filesystem</h3>
+<pre><code class="bash">mv /etc/ssl/certs/ca-certificates.crt /tmp
+#yaourt -Syu --aur
+pacman -Syu
+</code></pre>
+
+<h3 id="sort-installed-packages-by-size">Sort installed packages by size</h3>
+<pre><code>pacman -Qi | egrep '^(Name|Installed)' | cut -f2 -d':' | paste - - | column -t | sort -nrk 2 | grep MiB | less 
 </code></pre></div>
         
     </div>
