@@ -111,6 +111,16 @@
             "title": "Connect"
         }, 
         {
+            "location": "/Databases/MongoDB/Queries/", 
+            "text": "Find by _id\n\n\ndb.ticket.find({ \nfield_name_with_id\n : ObjectId(\n--_id--\n) });", 
+            "title": "Queries"
+        }, 
+        {
+            "location": "/Databases/MongoDB/Queries/#find-by-_id", 
+            "text": "db.ticket.find({  field_name_with_id  : ObjectId( --_id-- ) });", 
+            "title": "Find by _id"
+        }, 
+        {
             "location": "/Databases/MongoDB/Quick_Reference/", 
             "text": "Quick reference\n\n\nhelp\n\ndb.help()\n\nshow dbs\nshow databases\nuse \ndb\n\n\nshow collections\ndb.\ncollection\n.help()\n\nshow users\nshow roles\nshow profile\n\ndb.collection.find()\ndb.collection.insert()\ndb.collection.update()\ndb.collection.save()\ndb.collection.remove()\ndb.collection.drop()\ndb.collection.createIndex()\ndb.getSiblingDB()", 
             "title": "Quick Reference"
