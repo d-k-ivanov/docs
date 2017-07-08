@@ -1,3 +1,8 @@
+### Chack linux kernel
+```
+exec /usr/share/docker/contrib/check-config.sh
+```
+
 ### Run docker conainer
 ```
 sudo docker run --name mysql-nx -e MYSQL_ROOT_PASSWORD=password -d -p 127.0.0.1:3306:3306 mysql:latest
