@@ -1,4 +1,4 @@
 #!/bin/bash
 
-mkdocs serve
+python -m mkdocs serve
 

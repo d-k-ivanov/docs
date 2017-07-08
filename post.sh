@@ -6,4 +6,4 @@ git commit -a -m "Post $(date +%Y-%m-%d-%H:%M:%S)"
 
 git push -u origin master
 
-mkdocs gh-deploy --clean
+pyhon -m mkdocs gh-deploy --clean
