@@ -1,3307 +1,1496 @@
-
 <!DOCTYPE html>
-<html lang="en" class="no-js">
-  <head>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="author" content="Dmitry Ivanov"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Databases/Oracle/Tablespace/"> 
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    <title>Tablespace - Technical Info</title>
+
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link href="../../../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+
+
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
     
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
-      
-        <meta name="description" content="Collection of Technical guides">
-      
-      
-        <link rel="canonical" href="https://keepbot.github.io/docs/Databases/Oracle/Tablespace/">
-      
-      
-        <meta name="author" content="Dmitry Ivanov">
-      
-      
-        <link rel="shortcut icon" href="../../../assets/images/favicon.png">
-      
-      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.7.4">
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-80208201-1', 'keepbot.github.io');
+    ga('send', 'pageview');
+    </script>
     
-    
-      
-        <title>Tablespace - Technical Info</title>
-      
-    
-    
-      <script src="../../../assets/javascripts/modernizr-1df76c4e58.js"></script>
-    
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/application-769c285a91.css">
-      
-        <link rel="stylesheet" href="../../../assets/stylesheets/application-02c2a4388f.palette.css">
-      
-    
-    
-      
-        
-        
-        
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
-      
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    
-    
-      <link rel="stylesheet" href="../../../css/extra.css">
-    
-    
-  </head>
-  
-  
-  
-  
-    <body data-md-color-primary="indigo" data-md-color-accent="purple">
-  
-    <svg class="md-svg">
-      <defs>
-        
-        
-          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
-        
-      </defs>
-    </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
-    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <a href="https://keepbot.github.io/docs/" title="Technical Info" class="md-icon md-icon--home md-header-nav__button">
-          </a>
-        
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <span class="md-flex__ellipsis md-header-nav__title">
-          
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
             
-              
-                <span class="md-header-nav__parent">
-                  Databases
-                </span>
-              
-                <span class="md-header-nav__parent">
-                  Oracle
-                </span>
-              
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
             
-            Tablespace
-          
-        </span>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
-          
-<div class="md-search" data-md-component="search">
-  <label class="md-search__overlay" for="search"></label>
-  <div class="md-search__inner">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" required placeholder="Search" accesskey="s" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
-      <label class="md-icon md-search__icon" for="search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">close</button>
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result" data-md-lang-search="">
-          <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
-            Type to start searching
-          </div>
-          <ol class="md-search-result__list"></ol>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../../..">Technical Info</a>
         </div>
-      </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../Admin/Windows_Administrative_Tools/">Windows Administrative Tools</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../Admin/xFreeRDP/">xFreeRDP</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Databases <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MariaDB</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../MariaDB/Backup_and_Restore/">Backup and Restore</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../MariaDB/Installation/">Installation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MongoDB</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../MongoDB/Backup_and_restore/">Backup and restore</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../MongoDB/Queries/">Queries</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../MongoDB/Quick_Reference/">Quick Reference</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MySQL</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../MySQL/Replication/">Replication</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Oracle</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../Blocking_sessions/">Blocking sessions</a>
+</li>
+
+        
+            
+<li >
+    <a href="../CentOS_7_Installation/">CentOS 7 Installation</a>
+</li>
+
+        
+            
+<li >
+    <a href="../Common/">Common</a>
+</li>
+
+        
+            
+<li >
+    <a href="../Dump/">Dump</a>
+</li>
+
+        
+            
+<li >
+    <a href="../Memory/">Memory</a>
+</li>
+
+        
+            
+<li >
+    <a href="../OJDBC/">OJDBC</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Tablespace</a>
+</li>
+
+        
+            
+<li >
+    <a href="../Useful_Queries/">Useful Queries</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dev <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Android</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Android/Adb/">Adb</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Android/Android_Studio/">Android Studio</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Android/Apk/">Apk</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Bash</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Bash/Collect_bash_history/">Collect bash history</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Bash/Convert-CP1251-to-UTF8/">Convert CP1251 to UTF8</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Bash/Gentoo_Functions/">Gentoo Functions</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Brainfuck</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Brainfuck/Sample1/">Sample1</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">C and Cpp</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/C_and_Cpp/Modern_Cpp_Features/">Modern Cpp Features</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/C_and_Cpp/Rand/">Rand</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Cmd</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Cmd/ping_whole_subnet/">Ping whole subnet</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Debug</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Debug/10_Commands/">10 Commands</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Debug/Core_Dumps/">Core Dumps</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Debug/GDB/">GDB</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">GCC</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/GCC/Make/">Make</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Hardware</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Hardware/GPU/">GPU</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Hardware/IP_Packet_Example/">IP Packet Example</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Hardware/Latency_Numbers/">Latency Numbers</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Hardware/Networks/">Networks</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Java</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Java/Environment/">Environment</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Java/Runtime_customization/">Runtime customization</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Libraries</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Libraries/Linux/">Linux</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MPI</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/MPI/HelloWorld/">HelloWorld</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/MPI/MPI-Lib/">MPI Lib</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Markdown</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Markdown/Markdown/">Markdown</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Perl</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Perl/Perl_one-liners/">Perl one liners</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Perl/Perl_scripts_for_sa/">Perl scripts for sa</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Power Shell</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Power_Shell/Azure/">Azure</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Power_Shell/Power_Shell/">Power Shell</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Python</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Python/Installation/">Installation</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Python/Kivy/">Kivy</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Python/Users_and_groups/">Users and groups</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Ruby</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Ruby/Installation/">Installation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Stress tests</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Stress_tests/Ackerman_function/">Ackerman function</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Vbs</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Vbs/Kaspersky_Base_Actuality/">Kaspersky Base Actuality</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Vbs/Links/">Links</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Vbs/Network/">Network</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Vbs/Run/">Run</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Version Control</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Dev/Version_Control/Git/">Git</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Version_Control/GitHub/">GitHub</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Version_Control/Gitignore/">Gitignore</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Dev/Version_Control/Subversion/">Subversion</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">DevOps <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../DevOps/Ansible/">Ansible</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../DevOps/Chef-Windows/">Chef Windows</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">OS <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../OS/AIX/">AIX</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../OS/Android/">Android</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../OS/FreeBSD/">FreeBSD</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../OS/Useful_UNIX_distros/">Useful UNIX distros</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Gentoo</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../OS/Gentoo/Console_Font/">Console Font</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../OS/Gentoo/Gnome/">Gnome</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../OS/Gentoo/Installation/">Installation</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../OS/Gentoo/Portage/">Portage</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../OS/Gentoo/Systemd/">Systemd</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tech <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Audit</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Audit/Fork_unavailable/">Fork unavailable</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Audit/Hardware_info/">Hardware info</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Audit/Processes/">Processes</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Audit/Reboot_Investigation/">Reboot Investigation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Backup</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Backup/TSM/">TSM</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Backup/Tape/">Tape</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Backup/Veeam/">Veeam</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">BigData</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/BigData/Zookeper_grow/">Zookeper grow</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Messaging</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Messaging/Email_Telnet/">Email Telnet</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Messaging/Postfix/">Postfix</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Messaging/SMS/">SMS</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Monitoring</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Monitoring/80_tools_for_monitoring/">80 tools for monitoring</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Monitoring/Nagios/">Nagios</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Monitoring/NetXMS/">NetXMS</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Monitoring/Zabbix/">Zabbix</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Network</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Network/Common/">Common</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Network/KEMP/">KEMP</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Network/NTP/">NTP</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Network/Ports/">Ports</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Network/SNMP/">SNMP</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Network/WiFi/">WiFi</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Network/tcpdump/">Tcpdump</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Package Management</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Package_Management/Apt/">Apt</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Package_Management/PIP/">PIP</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Package_Management/Pacman/">Pacman</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Package_Management/Yum/">Yum</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Project Management</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Project_Management/Redmine/">Redmine</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Security</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Security/EncFS/">EncFS</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/FirewallD/">FirewallD</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/HSM/">HSM</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/IPTables/">IPTables</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/OpenSSL/">OpenSSL</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/PF/">PF</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/SELinux/">SELinux</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Security/SSH/">SSH</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Storage and filesystems</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/Extend_Ext4_Partition/">Extend Ext4 Partition</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/Files_in_Unix/">Files in Unix</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/GPFS/">GPFS</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/HDD/">HDD</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/LVM/">LVM</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/Links/">Links</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/Map_Disks_in_Windows/">Map Disks in Windows</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/SAN/">SAN</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Storage_and_filesystems/mdadm/">Mdadm</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Users</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Users/Rename_User/">Rename User</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Virtual</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Virtual/Docker/">Docker</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Virtual/Hyper-V/">Hyper V</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Virtual/KVM/">KVM</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Web</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Tech/Web/Curl/">Curl</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Web/IIS/">IIS</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Tech/Web/Tomcat/">Tomcat</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">UX <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Edittors</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Edittors/My_Sublime_Text_config/">My Sublime Text config</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../UX/Edittors/Vim/">Vim</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Hi DPI</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Hi_DPI/Awesome_VM/">Awesome VM</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../UX/Hi_DPI/Java/">Java</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Images</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Images/Convert/">Convert</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MacOS</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/MacOS/Root/">Root</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Messangers</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Messangers/Skype/">Skype</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Network</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Network/Windows_refresh_DNS/">Windows refresh DNS</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Office</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Office/Outlook/">Outlook</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Power Management</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Power_Management/Laptop_lid_linux/">Laptop lid linux</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Terminal</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Terminal/Tmux/">Tmux</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../UX/Terminal/cmd/">Cmd</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Wine</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/Wine/Custom_prefix/">Custom prefix</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../UX/Wine/curse_client_5/">Curse client 5</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">X Window</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../UX/X-Window/Common/">Common</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="../OJDBC/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../Useful_Queries/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a href="https://keepbot.github.io/">
+                            
+                            Keepbot
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
     </div>
-  </div>
 </div>
+
+    <div class="container">
         
-      </div>
-      
-        <div class="md-flex__cell md-flex__cell--shrink">
-          <div class="md-header-nav__source">
-            
-
-
-  
-
-
-  <a href="https://keepbot.github.io/" title="Go to repository" class="md-source" data-md-source="github">
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
     
-      <div class="md-source__icon">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <use xlink:href="#github" width="24" height="24"></use>
-        </svg>
-      </div>
+        <li class="first-level active"><a href="#create">Create</a></li>
+        
     
-    <div class="md-source__repository">
-      Keepbot
-    </div>
-  </a>
-
-          </div>
-        </div>
-      
-    </div>
-  </nav>
-</header>
-    
-    <div class="md-container">
-      
-      
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container">
-          
-            
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="drawer">
-    
-      <i class="md-icon md-icon--home md-nav__button"></i>
-    
-    Technical Info
-  </label>
-  
-    <div class="md-nav__source">
-      
-
-
-  
-
-
-  <a href="https://keepbot.github.io/" title="Go to repository" class="md-source" data-md-source="github">
-    
-      <div class="md-source__icon">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <use xlink:href="#github" width="24" height="24"></use>
-        </svg>
-      </div>
-    
-    <div class="md-source__repository">
-      Keepbot
-    </div>
-  </a>
-
-    </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../.." title="Home" class="md-nav__link">
-      Home
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
-    
-    <label class="md-nav__link" for="nav-2">
-      Admin
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
-        Admin
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Admin/Windows_Administrative_Tools/" title="Windows Administrative Tools" class="md-nav__link">
-      Windows Administrative Tools
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Admin/xFreeRDP/" title="xFreeRDP" class="md-nav__link">
-      xFreeRDP
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
-    
-    <label class="md-nav__link" for="nav-3">
-      Databases
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
-        Databases
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1">
-    
-    <label class="md-nav__link" for="nav-3-1">
-      MariaDB
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-1">
-        MariaDB
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../MariaDB/Backup_and_Restore/" title="Backup and Restore" class="md-nav__link">
-      Backup and Restore
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../MariaDB/Installation/" title="Installation" class="md-nav__link">
-      Installation
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
-    
-    <label class="md-nav__link" for="nav-3-2">
-      MongoDB
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-2">
-        MongoDB
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../MongoDB/Backup_and_restore/" title="Backup and restore" class="md-nav__link">
-      Backup and restore
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../MongoDB/Queries/" title="Queries" class="md-nav__link">
-      Queries
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../MongoDB/Quick_Reference/" title="Quick Reference" class="md-nav__link">
-      Quick Reference
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
-    
-    <label class="md-nav__link" for="nav-3-3">
-      MySQL
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="4">
-      <label class="md-nav__title" for="nav-3-3">
-        MySQL
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../MySQL/Replication/" title="Replication" class="md-nav__link">
-      Replication
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" checked>
-    
-    <label class="md-nav__link" for="nav-3-4">
-      Oracle
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="5">
-      <label class="md-nav__title" for="nav-3-4">
-        Oracle
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Blocking_sessions/" title="Blocking sessions" class="md-nav__link">
-      Blocking sessions
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../CentOS_7_Installation/" title="CentOS 7 Installation" class="md-nav__link">
-      CentOS 7 Installation
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Common/" title="Common" class="md-nav__link">
-      Common
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Dump/" title="Dump" class="md-nav__link">
-      Dump
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Memory/" title="Memory" class="md-nav__link">
-      Memory
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../OJDBC/" title="OJDBC" class="md-nav__link">
-      OJDBC
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        Tablespace
-      </label>
-    
-    <a href="./" title="Tablespace" class="md-nav__link md-nav__link--active">
-      Tablespace
-    </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#create" title="Create" class="md-nav__link">
-    Create
-  </a>
-  
-</li>
-      
-      
-      
     </ul>
-  
-</nav>
-    
-  </li>
+</div></div>
+        <div class="col-md-9" role="main">
 
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Useful_Queries/" title="Useful Queries" class="md-nav__link">
-      Useful Queries
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
-    
-    <label class="md-nav__link" for="nav-4">
-      Dev
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        Dev
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1">
-    
-    <label class="md-nav__link" for="nav-4-1">
-      Android
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-1">
-        Android
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Android/Adb/" title="Adb" class="md-nav__link">
-      Adb
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Android/Android_Studio/" title="Android Studio" class="md-nav__link">
-      Android Studio
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Android/Apk/" title="Apk" class="md-nav__link">
-      Apk
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
-    
-    <label class="md-nav__link" for="nav-4-2">
-      Bash
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-4-2">
-        Bash
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Bash/Collect_bash_history/" title="Collect bash history" class="md-nav__link">
-      Collect bash history
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Bash/Convert-CP1251-to-UTF8/" title="Convert CP1251 to UTF8" class="md-nav__link">
-      Convert CP1251 to UTF8
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Bash/Gentoo_Functions/" title="Gentoo Functions" class="md-nav__link">
-      Gentoo Functions
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
-    
-    <label class="md-nav__link" for="nav-4-3">
-      Brainfuck
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="4">
-      <label class="md-nav__title" for="nav-4-3">
-        Brainfuck
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Brainfuck/Sample1/" title="Sample1" class="md-nav__link">
-      Sample1
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
-    
-    <label class="md-nav__link" for="nav-4-4">
-      C and Cpp
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="5">
-      <label class="md-nav__title" for="nav-4-4">
-        C and Cpp
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/C_and_Cpp/Modern_Cpp_Features/" title="Modern Cpp Features" class="md-nav__link">
-      Modern Cpp Features
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/C_and_Cpp/Rand/" title="Rand" class="md-nav__link">
-      Rand
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
-    
-    <label class="md-nav__link" for="nav-4-5">
-      Cmd
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="6">
-      <label class="md-nav__title" for="nav-4-5">
-        Cmd
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Cmd/ping_whole_subnet/" title="Ping whole subnet" class="md-nav__link">
-      Ping whole subnet
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6">
-    
-    <label class="md-nav__link" for="nav-4-6">
-      Debug
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="7">
-      <label class="md-nav__title" for="nav-4-6">
-        Debug
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Debug/10_Commands/" title="10 Commands" class="md-nav__link">
-      10 Commands
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Debug/Core_Dumps/" title="Core Dumps" class="md-nav__link">
-      Core Dumps
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Debug/GDB/" title="GDB" class="md-nav__link">
-      GDB
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7">
-    
-    <label class="md-nav__link" for="nav-4-7">
-      GCC
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="8">
-      <label class="md-nav__title" for="nav-4-7">
-        GCC
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/GCC/Make/" title="Make" class="md-nav__link">
-      Make
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-8" type="checkbox" id="nav-4-8">
-    
-    <label class="md-nav__link" for="nav-4-8">
-      Hardware
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="9">
-      <label class="md-nav__title" for="nav-4-8">
-        Hardware
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Hardware/GPU/" title="GPU" class="md-nav__link">
-      GPU
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Hardware/IP_Packet_Example/" title="IP Packet Example" class="md-nav__link">
-      IP Packet Example
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Hardware/Latency_Numbers/" title="Latency Numbers" class="md-nav__link">
-      Latency Numbers
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Hardware/Networks/" title="Networks" class="md-nav__link">
-      Networks
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-9" type="checkbox" id="nav-4-9">
-    
-    <label class="md-nav__link" for="nav-4-9">
-      Java
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="10">
-      <label class="md-nav__title" for="nav-4-9">
-        Java
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Java/Environment/" title="Environment" class="md-nav__link">
-      Environment
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Java/Runtime_customization/" title="Runtime customization" class="md-nav__link">
-      Runtime customization
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-10" type="checkbox" id="nav-4-10">
-    
-    <label class="md-nav__link" for="nav-4-10">
-      Libraries
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="11">
-      <label class="md-nav__title" for="nav-4-10">
-        Libraries
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Libraries/Linux/" title="Linux" class="md-nav__link">
-      Linux
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-11" type="checkbox" id="nav-4-11">
-    
-    <label class="md-nav__link" for="nav-4-11">
-      MPI
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="12">
-      <label class="md-nav__title" for="nav-4-11">
-        MPI
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/MPI/HelloWorld/" title="HelloWorld" class="md-nav__link">
-      HelloWorld
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/MPI/MPI-Lib/" title="MPI Lib" class="md-nav__link">
-      MPI Lib
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-12" type="checkbox" id="nav-4-12">
-    
-    <label class="md-nav__link" for="nav-4-12">
-      Markdown
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="13">
-      <label class="md-nav__title" for="nav-4-12">
-        Markdown
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Markdown/Markdown/" title="Markdown" class="md-nav__link">
-      Markdown
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-13" type="checkbox" id="nav-4-13">
-    
-    <label class="md-nav__link" for="nav-4-13">
-      Perl
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="14">
-      <label class="md-nav__title" for="nav-4-13">
-        Perl
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Perl/Perl_one-liners/" title="Perl one liners" class="md-nav__link">
-      Perl one liners
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Perl/Perl_scripts_for_sa/" title="Perl scripts for sa" class="md-nav__link">
-      Perl scripts for sa
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-14" type="checkbox" id="nav-4-14">
-    
-    <label class="md-nav__link" for="nav-4-14">
-      Power Shell
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="15">
-      <label class="md-nav__title" for="nav-4-14">
-        Power Shell
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Power_Shell/Azure/" title="Azure" class="md-nav__link">
-      Azure
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Power_Shell/Power_Shell/" title="Power Shell" class="md-nav__link">
-      Power Shell
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-15" type="checkbox" id="nav-4-15">
-    
-    <label class="md-nav__link" for="nav-4-15">
-      Python
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="16">
-      <label class="md-nav__title" for="nav-4-15">
-        Python
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Python/Installation/" title="Installation" class="md-nav__link">
-      Installation
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Python/Kivy/" title="Kivy" class="md-nav__link">
-      Kivy
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Python/Users_and_groups/" title="Users and groups" class="md-nav__link">
-      Users and groups
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-16" type="checkbox" id="nav-4-16">
-    
-    <label class="md-nav__link" for="nav-4-16">
-      Ruby
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="17">
-      <label class="md-nav__title" for="nav-4-16">
-        Ruby
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Ruby/Installation/" title="Installation" class="md-nav__link">
-      Installation
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-17" type="checkbox" id="nav-4-17">
-    
-    <label class="md-nav__link" for="nav-4-17">
-      Stress tests
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="18">
-      <label class="md-nav__title" for="nav-4-17">
-        Stress tests
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Stress_tests/Ackerman_function/" title="Ackerman function" class="md-nav__link">
-      Ackerman function
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-18" type="checkbox" id="nav-4-18">
-    
-    <label class="md-nav__link" for="nav-4-18">
-      Vbs
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="19">
-      <label class="md-nav__title" for="nav-4-18">
-        Vbs
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Vbs/Kaspersky_Base_Actuality/" title="Kaspersky Base Actuality" class="md-nav__link">
-      Kaspersky Base Actuality
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Vbs/Links/" title="Links" class="md-nav__link">
-      Links
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Vbs/Network/" title="Network" class="md-nav__link">
-      Network
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Vbs/Run/" title="Run" class="md-nav__link">
-      Run
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-19" type="checkbox" id="nav-4-19">
-    
-    <label class="md-nav__link" for="nav-4-19">
-      Version Control
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="20">
-      <label class="md-nav__title" for="nav-4-19">
-        Version Control
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Version_Control/Git/" title="Git" class="md-nav__link">
-      Git
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Version_Control/GitHub/" title="GitHub" class="md-nav__link">
-      GitHub
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Version_Control/Gitignore/" title="Gitignore" class="md-nav__link">
-      Gitignore
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Dev/Version_Control/Subversion/" title="Subversion" class="md-nav__link">
-      Subversion
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
-    
-    <label class="md-nav__link" for="nav-5">
-      DevOps
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        DevOps
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../DevOps/Ansible/" title="Ansible" class="md-nav__link">
-      Ansible
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../DevOps/Chef-Windows/" title="Chef Windows" class="md-nav__link">
-      Chef Windows
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
-    
-    <label class="md-nav__link" for="nav-6">
-      OS
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
-        OS
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../OS/AIX/" title="AIX" class="md-nav__link">
-      AIX
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../OS/Android/" title="Android" class="md-nav__link">
-      Android
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../OS/FreeBSD/" title="FreeBSD" class="md-nav__link">
-      FreeBSD
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../OS/Useful_UNIX_distros/" title="Useful UNIX distros" class="md-nav__link">
-      Useful UNIX distros
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5" type="checkbox" id="nav-6-5">
-    
-    <label class="md-nav__link" for="nav-6-5">
-      Gentoo
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="6">
-      <label class="md-nav__title" for="nav-6-5">
-        Gentoo
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../OS/Gentoo/Console_Font/" title="Console Font" class="md-nav__link">
-      Console Font
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../OS/Gentoo/Gnome/" title="Gnome" class="md-nav__link">
-      Gnome
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../OS/Gentoo/Installation/" title="Installation" class="md-nav__link">
-      Installation
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../OS/Gentoo/Portage/" title="Portage" class="md-nav__link">
-      Portage
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../OS/Gentoo/Systemd/" title="Systemd" class="md-nav__link">
-      Systemd
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
-    
-    <label class="md-nav__link" for="nav-7">
-      Tech
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
-        Tech
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-1" type="checkbox" id="nav-7-1">
-    
-    <label class="md-nav__link" for="nav-7-1">
-      Audit
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-1">
-        Audit
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Audit/Fork_unavailable/" title="Fork unavailable" class="md-nav__link">
-      Fork unavailable
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Audit/Hardware_info/" title="Hardware info" class="md-nav__link">
-      Hardware info
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Audit/Processes/" title="Processes" class="md-nav__link">
-      Processes
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Audit/Reboot_Investigation/" title="Reboot Investigation" class="md-nav__link">
-      Reboot Investigation
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
-    
-    <label class="md-nav__link" for="nav-7-2">
-      Backup
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-7-2">
-        Backup
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Backup/TSM/" title="TSM" class="md-nav__link">
-      TSM
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Backup/Tape/" title="Tape" class="md-nav__link">
-      Tape
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Backup/Veeam/" title="Veeam" class="md-nav__link">
-      Veeam
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
-    
-    <label class="md-nav__link" for="nav-7-3">
-      BigData
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="4">
-      <label class="md-nav__title" for="nav-7-3">
-        BigData
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/BigData/Zookeper_grow/" title="Zookeper grow" class="md-nav__link">
-      Zookeper grow
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4">
-    
-    <label class="md-nav__link" for="nav-7-4">
-      Messaging
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="5">
-      <label class="md-nav__title" for="nav-7-4">
-        Messaging
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Messaging/Email_Telnet/" title="Email Telnet" class="md-nav__link">
-      Email Telnet
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Messaging/Postfix/" title="Postfix" class="md-nav__link">
-      Postfix
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Messaging/SMS/" title="SMS" class="md-nav__link">
-      SMS
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Monitoring
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="6">
-      <label class="md-nav__title" for="nav-7-5">
-        Monitoring
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Monitoring/80_tools_for_monitoring/" title="80 tools for monitoring" class="md-nav__link">
-      80 tools for monitoring
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Monitoring/Nagios/" title="Nagios" class="md-nav__link">
-      Nagios
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Monitoring/NetXMS/" title="NetXMS" class="md-nav__link">
-      NetXMS
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Monitoring/Zabbix/" title="Zabbix" class="md-nav__link">
-      Zabbix
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-6" type="checkbox" id="nav-7-6">
-    
-    <label class="md-nav__link" for="nav-7-6">
-      Network
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="7">
-      <label class="md-nav__title" for="nav-7-6">
-        Network
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Network/Common/" title="Common" class="md-nav__link">
-      Common
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Network/KEMP/" title="KEMP" class="md-nav__link">
-      KEMP
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Network/NTP/" title="NTP" class="md-nav__link">
-      NTP
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Network/Ports/" title="Ports" class="md-nav__link">
-      Ports
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Network/SNMP/" title="SNMP" class="md-nav__link">
-      SNMP
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Network/WiFi/" title="WiFi" class="md-nav__link">
-      WiFi
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Network/tcpdump/" title="Tcpdump" class="md-nav__link">
-      Tcpdump
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-7" type="checkbox" id="nav-7-7">
-    
-    <label class="md-nav__link" for="nav-7-7">
-      Package Management
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="8">
-      <label class="md-nav__title" for="nav-7-7">
-        Package Management
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Package_Management/Apt/" title="Apt" class="md-nav__link">
-      Apt
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Package_Management/PIP/" title="PIP" class="md-nav__link">
-      PIP
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Package_Management/Pacman/" title="Pacman" class="md-nav__link">
-      Pacman
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Package_Management/Yum/" title="Yum" class="md-nav__link">
-      Yum
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-8" type="checkbox" id="nav-7-8">
-    
-    <label class="md-nav__link" for="nav-7-8">
-      Project Management
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="9">
-      <label class="md-nav__title" for="nav-7-8">
-        Project Management
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Project_Management/Redmine/" title="Redmine" class="md-nav__link">
-      Redmine
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-9" type="checkbox" id="nav-7-9">
-    
-    <label class="md-nav__link" for="nav-7-9">
-      Security
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="10">
-      <label class="md-nav__title" for="nav-7-9">
-        Security
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Security/EncFS/" title="EncFS" class="md-nav__link">
-      EncFS
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Security/FirewallD/" title="FirewallD" class="md-nav__link">
-      FirewallD
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Security/HSM/" title="HSM" class="md-nav__link">
-      HSM
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Security/IPTables/" title="IPTables" class="md-nav__link">
-      IPTables
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Security/OpenSSL/" title="OpenSSL" class="md-nav__link">
-      OpenSSL
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Security/PF/" title="PF" class="md-nav__link">
-      PF
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Security/SELinux/" title="SELinux" class="md-nav__link">
-      SELinux
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Security/SSH/" title="SSH" class="md-nav__link">
-      SSH
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-10" type="checkbox" id="nav-7-10">
-    
-    <label class="md-nav__link" for="nav-7-10">
-      Storage and filesystems
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="11">
-      <label class="md-nav__title" for="nav-7-10">
-        Storage and filesystems
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Storage_and_filesystems/Extend_Ext4_Partition/" title="Extend Ext4 Partition" class="md-nav__link">
-      Extend Ext4 Partition
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Storage_and_filesystems/Files_in_Unix/" title="Files in Unix" class="md-nav__link">
-      Files in Unix
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Storage_and_filesystems/GPFS/" title="GPFS" class="md-nav__link">
-      GPFS
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Storage_and_filesystems/HDD/" title="HDD" class="md-nav__link">
-      HDD
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Storage_and_filesystems/LVM/" title="LVM" class="md-nav__link">
-      LVM
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Storage_and_filesystems/Links/" title="Links" class="md-nav__link">
-      Links
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Storage_and_filesystems/Map_Disks_in_Windows/" title="Map Disks in Windows" class="md-nav__link">
-      Map Disks in Windows
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Storage_and_filesystems/SAN/" title="SAN" class="md-nav__link">
-      SAN
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Storage_and_filesystems/mdadm/" title="Mdadm" class="md-nav__link">
-      Mdadm
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-11" type="checkbox" id="nav-7-11">
-    
-    <label class="md-nav__link" for="nav-7-11">
-      Users
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="12">
-      <label class="md-nav__title" for="nav-7-11">
-        Users
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Users/Rename_User/" title="Rename User" class="md-nav__link">
-      Rename User
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-12" type="checkbox" id="nav-7-12">
-    
-    <label class="md-nav__link" for="nav-7-12">
-      Virtual
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="13">
-      <label class="md-nav__title" for="nav-7-12">
-        Virtual
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Virtual/Docker/" title="Docker" class="md-nav__link">
-      Docker
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Virtual/Hyper-V/" title="Hyper V" class="md-nav__link">
-      Hyper V
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Virtual/KVM/" title="KVM" class="md-nav__link">
-      KVM
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-13" type="checkbox" id="nav-7-13">
-    
-    <label class="md-nav__link" for="nav-7-13">
-      Web
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="14">
-      <label class="md-nav__title" for="nav-7-13">
-        Web
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Web/Curl/" title="Curl" class="md-nav__link">
-      Curl
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Web/IIS/" title="IIS" class="md-nav__link">
-      IIS
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../Tech/Web/Tomcat/" title="Tomcat" class="md-nav__link">
-      Tomcat
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
-    
-    <label class="md-nav__link" for="nav-8">
-      UX
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-8">
-        UX
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-1" type="checkbox" id="nav-8-1">
-    
-    <label class="md-nav__link" for="nav-8-1">
-      Edittors
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-8-1">
-        Edittors
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../UX/Edittors/My_Sublime_Text_config/" title="My Sublime Text config" class="md-nav__link">
-      My Sublime Text config
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../UX/Edittors/Vim/" title="Vim" class="md-nav__link">
-      Vim
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2">
-    
-    <label class="md-nav__link" for="nav-8-2">
-      Hi DPI
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-8-2">
-        Hi DPI
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../UX/Hi_DPI/Awesome_VM/" title="Awesome VM" class="md-nav__link">
-      Awesome VM
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../UX/Hi_DPI/Java/" title="Java" class="md-nav__link">
-      Java
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3">
-    
-    <label class="md-nav__link" for="nav-8-3">
-      Images
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="4">
-      <label class="md-nav__title" for="nav-8-3">
-        Images
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../UX/Images/Convert/" title="Convert" class="md-nav__link">
-      Convert
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-4" type="checkbox" id="nav-8-4">
-    
-    <label class="md-nav__link" for="nav-8-4">
-      MacOS
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="5">
-      <label class="md-nav__title" for="nav-8-4">
-        MacOS
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../UX/MacOS/Root/" title="Root" class="md-nav__link">
-      Root
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-5" type="checkbox" id="nav-8-5">
-    
-    <label class="md-nav__link" for="nav-8-5">
-      Messangers
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="6">
-      <label class="md-nav__title" for="nav-8-5">
-        Messangers
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../UX/Messangers/Skype/" title="Skype" class="md-nav__link">
-      Skype
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-6" type="checkbox" id="nav-8-6">
-    
-    <label class="md-nav__link" for="nav-8-6">
-      Network
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="7">
-      <label class="md-nav__title" for="nav-8-6">
-        Network
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../UX/Network/Windows_refresh_DNS/" title="Windows refresh DNS" class="md-nav__link">
-      Windows refresh DNS
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-7" type="checkbox" id="nav-8-7">
-    
-    <label class="md-nav__link" for="nav-8-7">
-      Office
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="8">
-      <label class="md-nav__title" for="nav-8-7">
-        Office
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../UX/Office/Outlook/" title="Outlook" class="md-nav__link">
-      Outlook
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-8" type="checkbox" id="nav-8-8">
-    
-    <label class="md-nav__link" for="nav-8-8">
-      Power Management
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="9">
-      <label class="md-nav__title" for="nav-8-8">
-        Power Management
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../UX/Power_Management/Laptop_lid_linux/" title="Laptop lid linux" class="md-nav__link">
-      Laptop lid linux
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-9" type="checkbox" id="nav-8-9">
-    
-    <label class="md-nav__link" for="nav-8-9">
-      Terminal
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="10">
-      <label class="md-nav__title" for="nav-8-9">
-        Terminal
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../UX/Terminal/Tmux/" title="Tmux" class="md-nav__link">
-      Tmux
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../UX/Terminal/cmd/" title="Cmd" class="md-nav__link">
-      Cmd
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10" type="checkbox" id="nav-8-10">
-    
-    <label class="md-nav__link" for="nav-8-10">
-      Wine
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="11">
-      <label class="md-nav__title" for="nav-8-10">
-        Wine
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../UX/Wine/Custom_prefix/" title="Custom prefix" class="md-nav__link">
-      Custom prefix
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../UX/Wine/curse_client_5/" title="Curse client 5" class="md-nav__link">
-      Curse client 5
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-11" type="checkbox" id="nav-8-11">
-    
-    <label class="md-nav__link" for="nav-8-11">
-      X Window
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="12">
-      <label class="md-nav__title" for="nav-8-11">
-        X Window
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../UX/X-Window/Common/" title="Common" class="md-nav__link">
-      Common
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#create" title="Create" class="md-nav__link">
-    Create
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content">
-            <article class="md-content__inner md-typeset">
-              
-                
-                
-                  <h1>Tablespace</h1>
-                
-                <h3 id="create">Create</h3>
+<h3 id="create">Create</h3>
 <pre><code>CREATE TABLESPACE tablespace_name DATAFILE 'tablespace_name.ora' SIZE 20M AUTOEXTEND ON;
 ### You need this line only for Oracle 12 
 ALTER SESSION SET &quot;_ORACLE_SCRIPT&quot;=true;
 CREATE USER tablespace_username IDENTIFIED BY tablespace_username_password DEFAULT TABLESPACE tablespace_name;
 GRANT ALL PRIVILEGES TO tablespabe+username ;
-</code></pre>
-                
-                  
-                
-              
-              
-                
-              
-            </article>
-          </div>
+</code></pre></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Copyright &copy; 2017 Dmitry Ivanov. <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter40819844 = new Ya.Metrika({ id:40819844, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript><br></small>
+        
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '../../..';
+    </script>
+    <script data-main="../../../mkdocs/js/search.js" src="../../../mkdocs/js/require.js"></script>
+    <script src="../../../js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
         </div>
-      </main>
-      
-        
-<footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../OJDBC/" title="OJDBC" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                OJDBC
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../Useful_Queries/" title="Useful Queries" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Useful Queries
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
     </div>
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-          <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2017 Dmitry Ivanov. <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter40819844 = new Ya.Metrika({ id:40819844, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-          </div>
-        
-        powered by
-        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
-        and
-        <a href="http://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
-          Material for MkDocs</a>
-      </div>
-      
-        
-      
-    </div>
-  </div>
-</footer>
-      
-    </div>
-    
-      <script src="../../../assets/javascripts/application-c35428f87f.js"></script>
-      
-      
-      <script>app.initialize({url:{base:"../../.."}})</script>
-      
-    
-    
-      
-      <script>!function(e,t,a,n,o,c,i){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=t.createElement(a),i=t.getElementsByTagName(a)[0],c.async=1,c.src=n,i.parentNode.insertBefore(c,i)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-80208201-1","keepbot.github.io"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var t=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",t,e.href)})});var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})</script>
-      
-    
-  </body>
+
+    </body>
+
 </html>
