@@ -1,4 +1,4 @@
-### Chack linux kernel
+### Check linux kernel
 ```
 exec /usr/share/docker/contrib/check-config.sh
 ```
