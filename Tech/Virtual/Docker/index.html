@@ -1429,7 +1429,10 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#run-docker-conainer">Run docker conainer</a></li>
+        <li class="first-level active"><a href="#chack-linux-kernel">Chack linux kernel</a></li>
+        
+    
+        <li class="first-level "><a href="#run-docker-conainer">Run docker conainer</a></li>
         
     
         <li class="first-level "><a href="#execute-in-docker-console">Execute in-docker console</a></li>
@@ -1456,6 +1459,10 @@
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
+
+<h3 id="chack-linux-kernel">Chack linux kernel</h3>
+<pre><code>exec /usr/share/docker/contrib/check-config.sh
+</code></pre>
 
 <h3 id="run-docker-conainer">Run docker conainer</h3>
 <pre><code>sudo docker run --name mysql-nx -e MYSQL_ROOT_PASSWORD=password -d -p 127.0.0.1:3306:3306 mysql:latest
