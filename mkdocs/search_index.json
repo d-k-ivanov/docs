@@ -846,6 +846,16 @@
             "title": "Analyse core dumps"
         }, 
         {
+            "location": "/Dev/GCC/Alternatives/", 
+            "text": "Ubuntu: GCC-5 and GCC-6\n\n\n# It could be useful to remove old gcc alternatives\nsudo update-alternatives --remove-all gcc \nsudo update-alternatives --remove-all g++\n\n# Alternatives for GCC 5 and 6\nsudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 100 --slave /usr/bin/g++ g++ /usr/bin/g++-6\nsudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 50 --slave /usr/bin/g++ g++ /usr/bin/g++-5\nsudo update-alternatives --config gcc", 
+            "title": "Alternatives"
+        }, 
+        {
+            "location": "/Dev/GCC/Alternatives/#ubuntu-gcc-5-and-gcc-6", 
+            "text": "# It could be useful to remove old gcc alternatives\nsudo update-alternatives --remove-all gcc \nsudo update-alternatives --remove-all g++\n\n# Alternatives for GCC 5 and 6\nsudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 100 --slave /usr/bin/g++ g++ /usr/bin/g++-6\nsudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 50 --slave /usr/bin/g++ g++ /usr/bin/g++-5\nsudo update-alternatives --config gcc", 
+            "title": "Ubuntu: GCC-5 and GCC-6"
+        }, 
+        {
             "location": "/Dev/GCC/Make/", 
             "text": "Flags to configure\n\n\n/configure CFLAGS='-std=gnu89 -g -O2 -w' CXXFLAGS='-std=gnu++98 -g -O2 -w'", 
             "title": "Make"
