@@ -77,18 +77,28 @@ git apply --check 0001-Linux-agent-LVM-subagent-initial-implementation.patch
 git am < 0001-Linux-agent-LVM-subagent-initial-implementation.patch
 ```
 
-### Submodules
-- Add submodule:
+### Add submodule
 ```bash
 git submodule add <submodule_git_url> <local_path>
 ```
-- Delete submodule:
-```bash
-git submodule deinit <submodule>    
-git rm --cached <submodule>
-rm -rf .git/modules/<submodule>
-# Remove module record from .gitmodules
-vim .gitmodules
+
+### Remove submodule
+```
+# 1. Delete the relevant section from the *.gitmodules* file.
+[submodule "vendor"]
+	path = vendor
+	url = git://github.com/some-user/some-repo.git
+# 2. Stage the *.gitmodules* changes with following command:
+git add .gitmodules
+# 3.Delete the relevant section from *.git/config*:
+[submodule "vendor"]
+	url = git://github.com/some-user/some-repo.git
+# 4. Remove submodule folders from repo:
+git rm --cached path/to/submodule
+rm -rf .git/modules/submodule_name
+# 6. Commit changes
+# 7. Delete files
+rm -rf path/to/submodule
 ```
 
 ### Logs
@@ -114,30 +124,4 @@ sudo chmod 400 ~/.ssh/<your_custom_ssh_key>
 Now you can clone repo
 ```
 
-### Remove submodule
-1. Delete the relevant section from the *.gitmodules* file.
-```bash
-[submodule "vendor"]
-	path = vendor
-	url = git://github.com/some-user/some-repo.git
-```
-2. Stage the *.gitmodules* changes with following command:
-```bash
-git add .gitmodules
-```
-3.Delete the relevant section from *.git/config*:
-```bash
-[submodule "vendor"]
-	url = git://github.com/some-user/some-repo.git
-```
-4. Remove submodule folders from repo:
-```
-git rm --cached path/to/submodule
-rm -rf .git/modules/submodule_name
-```
-6. Commit changes
-7. Delete files
-```bash
-rm -rf path/to/submodule
-```
 
