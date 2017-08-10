@@ -1480,16 +1480,16 @@
         <li class="first-level "><a href="#making-patches-from-commits">Making patches from commits:</a></li>
         
     
-        <li class="first-level "><a href="#submodules">Submodules</a></li>
+        <li class="first-level "><a href="#add-submodule">Add submodule</a></li>
+        
+    
+        <li class="first-level "><a href="#remove-submodule">Remove submodule</a></li>
         
     
         <li class="first-level "><a href="#logs">Logs</a></li>
         
     
         <li class="first-level "><a href="#provide-separate-ssh-key">Provide separate ssh-key</a></li>
-        
-    
-        <li class="first-level "><a href="#remove-submodule">Remove submodule</a></li>
         
     
     </ul>
@@ -1574,21 +1574,26 @@ git apply --check 0001-Linux-agent-LVM-subagent-initial-implementation.patch
 git am &lt; 0001-Linux-agent-LVM-subagent-initial-implementation.patch
 </code></pre>
 
-<h3 id="submodules">Submodules</h3>
-<ul>
-<li>Add submodule:</li>
-</ul>
+<h3 id="add-submodule">Add submodule</h3>
 <pre><code class="bash">git submodule add &lt;submodule_git_url&gt; &lt;local_path&gt;
 </code></pre>
 
-<ul>
-<li>Delete submodule:</li>
-</ul>
-<pre><code class="bash">git submodule deinit &lt;submodule&gt;    
-git rm --cached &lt;submodule&gt;
-rm -rf .git/modules/&lt;submodule&gt;
-# Remove module record from .gitmodules
-vim .gitmodules
+<h3 id="remove-submodule">Remove submodule</h3>
+<pre><code># 1. Delete the relevant section from the *.gitmodules* file.
+[submodule &quot;vendor&quot;]
+    path = vendor
+    url = git://github.com/some-user/some-repo.git
+# 2. Stage the *.gitmodules* changes with following command:
+git add .gitmodules
+# 3.Delete the relevant section from *.git/config*:
+[submodule &quot;vendor&quot;]
+    url = git://github.com/some-user/some-repo.git
+# 4. Remove submodule folders from repo:
+git rm --cached path/to/submodule
+rm -rf .git/modules/submodule_name
+# 6. Commit changes
+# 7. Delete files
+rm -rf path/to/submodule
 </code></pre>
 
 <h3 id="logs">Logs</h3>
@@ -1610,40 +1615,6 @@ host github.com
 #----------------
 sudo chmod 400 ~/.ssh/&lt;your_custom_ssh_key&gt;
 Now you can clone repo
-</code></pre>
-
-<h3 id="remove-submodule">Remove submodule</h3>
-<ol>
-<li>Delete the relevant section from the <em>.gitmodules</em> file.</li>
-</ol>
-<pre><code class="bash">[submodule &quot;vendor&quot;]
-    path = vendor
-    url = git://github.com/some-user/some-repo.git
-</code></pre>
-
-<ol>
-<li>Stage the <em>.gitmodules</em> changes with following command:</li>
-</ol>
-<pre><code class="bash">git add .gitmodules
-</code></pre>
-
-<p>3.Delete the relevant section from <em>.git/config</em>:</p>
-<pre><code class="bash">[submodule &quot;vendor&quot;]
-    url = git://github.com/some-user/some-repo.git
-</code></pre>
-
-<ol>
-<li>Remove submodule folders from repo:</li>
-</ol>
-<pre><code>git rm --cached path/to/submodule
-rm -rf .git/modules/submodule_name
-</code></pre>
-
-<ol>
-<li>Commit changes</li>
-<li>Delete files</li>
-</ol>
-<pre><code class="bash">rm -rf path/to/submodule
 </code></pre></div>
         
     </div>
