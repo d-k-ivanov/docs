@@ -1,5 +1,5 @@
 ### Clone
-```
+```bash
 # For new repos(-jN - number of simltaniuos jobs):
 git clone --recursive -j4 https://github.com/keepbot/dotfiles-srv
 git clone --recursive https://github.com/keepbot/dotfiles-srv
@@ -16,6 +16,7 @@ git -c http.sslVerify=false clone --recursive https://github.com/keepbot/dotfile
 git config --global user.name "Your Name"
 git config --global user.email your@e-mail.com
 ```
+
 ### Create new repository
 ```bash
 mkdir -p <path_to_repository>
@@ -26,6 +27,7 @@ git remote add origin https://github.com/username/<repository>.git
 git push -u origin master
 git checkout 
 ```
+
 ### Commit
 ```bash
 # Addition of new files with automatic staging of deleted and modified files
@@ -52,6 +54,7 @@ git pull rebase
 git fetch --all
 git reset --hard origin/master
 ```
+
 ### Working with bunch of  repositories
 ```bash
 # Last commits
@@ -60,8 +63,7 @@ for d in `ls`; do cd $d; git log --pretty=format:"%h - %an, %ar : %s" -1; cd ..;
 for d in `ls`; do cd $d; git checkout; cd ..; done
 ```
 
-### Making patches from commits:
-- Create patch:
+### Creating patches from commits:
 ```bash
 # The easiest version (you can specify number of commit to patch) 
 git format-patch -1 HEAD
@@ -70,7 +72,8 @@ git format-patch -n HEAD^
 # Simple cat ftom stdout, works fine on most of systems, but be carfull, if you have customized terminal (color tags, special symbols, etc.)
 git show HEAD > path_to.patch
 ```
-- Apply patch:
+
+### Apply patches:
 ```bash
 git apply --stat 0001-Linux-agent-LVM-subagent-initial-implementation.patch
 git apply --check 0001-Linux-agent-LVM-subagent-initial-implementation.patch
