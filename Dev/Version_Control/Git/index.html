@@ -1489,6 +1489,9 @@
         <li class="first-level "><a href="#provide-separate-ssh-key">Provide separate ssh-key</a></li>
         
     
+        <li class="first-level "><a href="#remove-submodule">Remove submodule</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -1607,6 +1610,40 @@ host github.com
 #----------------
 sudo chmod 400 ~/.ssh/&lt;your_custom_ssh_key&gt;
 Now you can clone repo
+</code></pre>
+
+<h3 id="remove-submodule">Remove submodule</h3>
+<ol>
+<li>Delete the relevant section from the <em>.gitmodules</em> file.</li>
+</ol>
+<pre><code class="bash">[submodule &quot;vendor&quot;]
+    path = vendor
+    url = git://github.com/some-user/some-repo.git
+</code></pre>
+
+<ol>
+<li>Stage the <em>.gitmodules</em> changes with following command:</li>
+</ol>
+<pre><code class="bash">git add .gitmodules
+</code></pre>
+
+<p>3.Delete the relevant section from <em>.git/config</em>:</p>
+<pre><code class="bash">[submodule &quot;vendor&quot;]
+    url = git://github.com/some-user/some-repo.git
+</code></pre>
+
+<ol>
+<li>Remove submodule folders from repo:</li>
+</ol>
+<pre><code>git rm --cached path/to/submodule
+rm -rf .git/modules/submodule_name
+</code></pre>
+
+<ol>
+<li>Commit changes</li>
+<li>Delete files</li>
+</ol>
+<pre><code class="bash">rm -rf path/to/submodule
 </code></pre></div>
         
     </div>
