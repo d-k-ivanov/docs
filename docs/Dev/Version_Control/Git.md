@@ -113,3 +113,31 @@ host github.com
 sudo chmod 400 ~/.ssh/<your_custom_ssh_key>
 Now you can clone repo
 ```
+
+### Remove submodule
+1. Delete the relevant section from the *.gitmodules* file.
+```bash
+[submodule "vendor"]
+	path = vendor
+	url = git://github.com/some-user/some-repo.git
+```
+2. Stage the *.gitmodules* changes with following command:
+```bash
+git add .gitmodules
+```
+3.Delete the relevant section from *.git/config*:
+```bash
+[submodule "vendor"]
+	url = git://github.com/some-user/some-repo.git
+```
+4. Remove submodule folders from repo:
+```
+git rm --cached path/to/submodule
+rm -rf .git/modules/submodule_name
+```
+6. Commit changes
+7. Delete files
+```bash
+rm -rf path/to/submodule
+```
+
