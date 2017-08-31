@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Dmitry Ivanov"> 
-    <link rel="canonical" href="https://keepbot.github.io/docs/Dev/Cmd/ping_whole_subnet/"> 
+    <link rel="canonical" href="https://keepbot.github.io/docs/Dev/Web/Redirect/"> 
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-    <title>Ping whole subnet - Technical Info</title>
+    <title>Redirect - Technical Info</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -342,8 +342,8 @@
     <ul class="dropdown-menu">
         
             
-<li class="active">
-    <a href="./">Ping whole subnet</a>
+<li >
+    <a href="../../Cmd/ping_whole_subnet/">Ping whole subnet</a>
 </li>
 
         
@@ -690,8 +690,8 @@
     <ul class="dropdown-menu">
         
             
-<li >
-    <a href="../../Web/Redirect/">Redirect</a>
+<li class="active">
+    <a href="./">Redirect</a>
 </li>
 
         
@@ -1443,12 +1443,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../../C_and_Cpp/Rand/">
+                        <a rel="next" href="../../Version_Control/Subversion/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../../Cuda/Make/">
+                        <a rel="prev" href="../../../DevOps/Ansible/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -1471,15 +1471,20 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#ping-subnet">Ping subnet</a></li>
+        <li class="first-level active"><a href="#redirect-through-indexhtml">Redirect through index.html</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="ping-subnet">Ping subnet</h3>
-<pre><code>FOR /L %i IN (1,1,254) DO ping -n 1 192.168.10.%i | FIND /i &quot;Reply&quot;&gt;&gt;c:\ipaddresses.txt
+<h3 id="redirect-through-indexhtml">Redirect through index.html</h3>
+<pre><code class="html">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=Refresh content=&quot;0;url=/path_to_subfolder/&quot;&gt;&lt;/head&gt;&lt;/html&gt;
+
+&lt;!--
+
+--&gt;
 </code></pre></div>
         
     </div>
