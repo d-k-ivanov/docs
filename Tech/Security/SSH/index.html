@@ -1474,6 +1474,9 @@
         <li class="first-level active"><a href="#public-key-authentication">Public key authentication</a></li>
         
     
+        <li class="first-level "><a href="#avoid-checking-rsa-key-of-remote-host">Avoid checking rsa key of remote host</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -1487,6 +1490,10 @@ chmod 755 ~/.ssh
 cat ~/.ssh/id_rsa.pub &gt; /tmp/pubkeytmp
 scp /tmp/pubkeytmp &lt;username&gt;@&lt;hostname&gt;:~/.ssh/authorized_keys
 rm /tmp/pubkeytmp
+</code></pre>
+
+<h3 id="avoid-checking-rsa-key-of-remote-host">Avoid checking rsa key of remote host</h3>
+<pre><code class="bash">ssh -o StrictHostKeyChecking=no -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null &lt;IP ADDRESS&gt;
 </code></pre></div>
         
     </div>

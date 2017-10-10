@@ -3597,13 +3597,18 @@
         }, 
         {
             "location": "/Tech/Security/SSH/", 
-            "text": "Public key authentication\n\n\n# On remote:\nmkdir ~/.ssh\nchmod 755 ~/.ssh\n\n# On local\ncat ~/.ssh/id_rsa.pub \n /tmp/pubkeytmp\nscp /tmp/pubkeytmp \nusername\n@\nhostname\n:~/.ssh/authorized_keys\nrm /tmp/pubkeytmp", 
+            "text": "Public key authentication\n\n\n# On remote:\nmkdir ~/.ssh\nchmod 755 ~/.ssh\n\n# On local\ncat ~/.ssh/id_rsa.pub \n /tmp/pubkeytmp\nscp /tmp/pubkeytmp \nusername\n@\nhostname\n:~/.ssh/authorized_keys\nrm /tmp/pubkeytmp\n\n\n\n\nAvoid checking rsa key of remote host\n\n\nssh -o StrictHostKeyChecking=no -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null \nIP ADDRESS", 
             "title": "SSH"
         }, 
         {
             "location": "/Tech/Security/SSH/#public-key-authentication", 
             "text": "# On remote:\nmkdir ~/.ssh\nchmod 755 ~/.ssh\n\n# On local\ncat ~/.ssh/id_rsa.pub   /tmp/pubkeytmp\nscp /tmp/pubkeytmp  username @ hostname :~/.ssh/authorized_keys\nrm /tmp/pubkeytmp", 
             "title": "Public key authentication"
+        }, 
+        {
+            "location": "/Tech/Security/SSH/#avoid-checking-rsa-key-of-remote-host", 
+            "text": "ssh -o StrictHostKeyChecking=no -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null  IP ADDRESS", 
+            "title": "Avoid checking rsa key of remote host"
         }, 
         {
             "location": "/Tech/Storage_and_filesystems/Extend_Ext4_Partition/", 
