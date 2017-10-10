@@ -9,3 +9,8 @@ cat ~/.ssh/id_rsa.pub > /tmp/pubkeytmp
 scp /tmp/pubkeytmp <username>@<hostname>:~/.ssh/authorized_keys
 rm /tmp/pubkeytmp
 ```
+
+### Avoid checking rsa key of remote host
+```bash
+ssh -o StrictHostKeyChecking=no -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null <IP ADDRESS>
+```
