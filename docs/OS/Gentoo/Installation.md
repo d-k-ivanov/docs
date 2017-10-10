@@ -209,16 +209,27 @@ passwd
 echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
 emerge --ask --update --newuse --verbose sys-boot/grub:2
 
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
+mount -o remount /sys/firmware/efi/efivars -o rw,nosuid,nodev,noexec,noatime
+
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
+```
+
+### Umount and reboot
+```bash
+exit
+umount -l /mnt/gentoo/dev{/shm,/pts,}
+umount -R /mnt/gentoo
 reboot
 ```
+
 
 ### Post reboot
 ```bash
 # Add new user
-useradd -m -G users,wheel,audio,cdrom,floppy,games,portage,usb,video -s /bin/bash 
+useradd -m -G users,wheel,audio,cdrom,floppy,games,portage,usb,video -s /bin/bash <username>
+passwd <username>
 ```
 
 
