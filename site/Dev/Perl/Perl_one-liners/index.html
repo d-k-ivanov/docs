@@ -1,0 +1,4494 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Collection of Technical guides">
+      
+      
+        <link rel="canonical" href="https://keepbot.github.io/docs/Dev/Perl/Perl_one-liners/">
+      
+      
+        <meta name="author" content="Dmitry Ivanov">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.6.6">
+    
+    
+      
+        <title>Perl one liners - Technical Info</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.78aab2dc.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.6079476c.css">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="cyan">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <a href="#useful-one-line-scripts-for-perl" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://keepbot.github.io/docs/" title="Technical Info" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Technical Info
+              </span>
+              <span class="md-header-nav__topic">
+                Perl one liners
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://keepbot.github.io/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      Keepbot
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <span class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </span>
+    Technical Info
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://keepbot.github.io/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      Keepbot
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Admin
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Admin
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Admin/Windows_Administrative_Tools/" title="Windows Administrative Tools" class="md-nav__link">
+      Windows Administrative Tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Admin/xFreeRDP/" title="xFreeRDP" class="md-nav__link">
+      xFreeRDP
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Databases
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Databases
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1">
+    
+    <label class="md-nav__link" for="nav-3-1">
+      MariaDB
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        MariaDB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/MariaDB/Backup_and_Restore/" title="Backup and Restore" class="md-nav__link">
+      Backup and Restore
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/MariaDB/Installation/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      MongoDB
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        MongoDB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/MongoDB/Backup_and_restore/" title="Backup and restore" class="md-nav__link">
+      Backup and restore
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/MongoDB/Queries/" title="Queries" class="md-nav__link">
+      Queries
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/MongoDB/Quick_Reference/" title="Quick Reference" class="md-nav__link">
+      Quick Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      MySQL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        MySQL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/MySQL/Replication/" title="Replication" class="md-nav__link">
+      Replication
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Oracle
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        Oracle
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/Oracle/Blocking_sessions/" title="Blocking sessions" class="md-nav__link">
+      Blocking sessions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/Oracle/CentOS_7_Installation/" title="CentOS 7 Installation" class="md-nav__link">
+      CentOS 7 Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/Oracle/Common/" title="Common" class="md-nav__link">
+      Common
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/Oracle/Dump/" title="Dump" class="md-nav__link">
+      Dump
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/Oracle/Memory/" title="Memory" class="md-nav__link">
+      Memory
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/Oracle/OJDBC/" title="OJDBC" class="md-nav__link">
+      OJDBC
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/Oracle/Tablespace/" title="Tablespace" class="md-nav__link">
+      Tablespace
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/Oracle/Useful_Queries/" title="Useful Queries" class="md-nav__link">
+      Useful Queries
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Dev
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Dev
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1">
+    
+    <label class="md-nav__link" for="nav-4-1">
+      Android
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        Android
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Android/Adb/" title="Adb" class="md-nav__link">
+      Adb
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Android/Android_Studio/" title="Android Studio" class="md-nav__link">
+      Android Studio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Android/Apk/" title="Apk" class="md-nav__link">
+      Apk
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
+    
+    <label class="md-nav__link" for="nav-4-2">
+      Bash
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        Bash
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Bash/Collect_bash_history/" title="Collect bash history" class="md-nav__link">
+      Collect bash history
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Bash/Convert-CP1251-to-UTF8/" title="Convert CP1251 to UTF8" class="md-nav__link">
+      Convert CP1251 to UTF8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Bash/Gentoo_Functions/" title="Gentoo Functions" class="md-nav__link">
+      Gentoo Functions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      Brainfuck
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        Brainfuck
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Brainfuck/Sample1/" title="Sample1" class="md-nav__link">
+      Sample1
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4">
+      C and Cpp
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        C and Cpp
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../C_and_Cpp/Modern_Cpp_Features/" title="Modern Cpp Features" class="md-nav__link">
+      Modern Cpp Features
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../C_and_Cpp/Rand/" title="Rand" class="md-nav__link">
+      Rand
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Cmd
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        Cmd
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Cmd/ping_whole_subnet/" title="Ping whole subnet" class="md-nav__link">
+      Ping whole subnet
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6">
+    
+    <label class="md-nav__link" for="nav-4-6">
+      Cuda
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        Cuda
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Cuda/Make/" title="Make" class="md-nav__link">
+      Make
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7">
+    
+    <label class="md-nav__link" for="nav-4-7">
+      Debug
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-7">
+        Debug
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Debug/10_Commands/" title="10 Commands" class="md-nav__link">
+      10 Commands
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Debug/Core_Dumps/" title="Core Dumps" class="md-nav__link">
+      Core Dumps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Debug/GDB/" title="GDB" class="md-nav__link">
+      GDB
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-8" type="checkbox" id="nav-4-8">
+    
+    <label class="md-nav__link" for="nav-4-8">
+      GCC
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-8">
+        GCC
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GCC/Alternatives/" title="Alternatives" class="md-nav__link">
+      Alternatives
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GCC/Make/" title="Make" class="md-nav__link">
+      Make
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-9" type="checkbox" id="nav-4-9">
+    
+    <label class="md-nav__link" for="nav-4-9">
+      Hardware
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-9">
+        Hardware
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Hardware/GPU/" title="GPU" class="md-nav__link">
+      GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Hardware/IP_Packet_Example/" title="IP Packet Example" class="md-nav__link">
+      IP Packet Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Hardware/Latency_Numbers/" title="Latency Numbers" class="md-nav__link">
+      Latency Numbers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Hardware/Networks/" title="Networks" class="md-nav__link">
+      Networks
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-10" type="checkbox" id="nav-4-10">
+    
+    <label class="md-nav__link" for="nav-4-10">
+      Java
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-10">
+        Java
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Java/Environment/" title="Environment" class="md-nav__link">
+      Environment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Java/Runtime_customization/" title="Runtime customization" class="md-nav__link">
+      Runtime customization
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-11" type="checkbox" id="nav-4-11">
+    
+    <label class="md-nav__link" for="nav-4-11">
+      Libraries
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-11">
+        Libraries
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Libraries/Linux/" title="Linux" class="md-nav__link">
+      Linux
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-12" type="checkbox" id="nav-4-12">
+    
+    <label class="md-nav__link" for="nav-4-12">
+      MPI
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-12">
+        MPI
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../MPI/HelloWorld/" title="HelloWorld" class="md-nav__link">
+      HelloWorld
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../MPI/MPI-Lib/" title="MPI Lib" class="md-nav__link">
+      MPI Lib
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-13" type="checkbox" id="nav-4-13">
+    
+    <label class="md-nav__link" for="nav-4-13">
+      Markdown
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-13">
+        Markdown
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Markdown/Markdown/" title="Markdown" class="md-nav__link">
+      Markdown
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-14" type="checkbox" id="nav-4-14" checked>
+    
+    <label class="md-nav__link" for="nav-4-14">
+      Perl
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-14">
+        Perl
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Perl one liners
+      </label>
+    
+    <a href="./" title="Perl one liners" class="md-nav__link md-nav__link--active">
+      Perl one liners
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#useful-one-line-scripts-for-perl" title="Useful One-Line Scripts for Perl" class="md-nav__link">
+    Useful One-Line Scripts for Perl
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-spacing" title="FILE SPACING" class="md-nav__link">
+    FILE SPACING
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#line-numbering" title="LINE NUMBERING" class="md-nav__link">
+    LINE NUMBERING
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calculations" title="CALCULATIONS" class="md-nav__link">
+    CALCULATIONS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-creation-and-array-creation" title="STRING CREATION AND ARRAY CREATION" class="md-nav__link">
+    STRING CREATION AND ARRAY CREATION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-conversion-and-substitution" title="TEXT CONVERSION AND SUBSTITUTION" class="md-nav__link">
+    TEXT CONVERSION AND SUBSTITUTION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selective-printing-and-deleting-of-certain-lines" title="SELECTIVE PRINTING AND DELETING OF CERTAIN LINES" class="md-nav__link">
+    SELECTIVE PRINTING AND DELETING OF CERTAIN LINES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handy-regular-expressions" title="HANDY REGULAR EXPRESSIONS" class="md-nav__link">
+    HANDY REGULAR EXPRESSIONS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perl-tricks" title="PERL TRICKS" class="md-nav__link">
+    PERL TRICKS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credits" title="CREDITS" class="md-nav__link">
+    CREDITS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Perl_scripts_for_sa/" title="Perl scripts for sa" class="md-nav__link">
+      Perl scripts for sa
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-15" type="checkbox" id="nav-4-15">
+    
+    <label class="md-nav__link" for="nav-4-15">
+      Power Shell
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-15">
+        Power Shell
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Power_Shell/Azure/" title="Azure" class="md-nav__link">
+      Azure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Power_Shell/Power_Shell/" title="Power Shell" class="md-nav__link">
+      Power Shell
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-16" type="checkbox" id="nav-4-16">
+    
+    <label class="md-nav__link" for="nav-4-16">
+      Python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-16">
+        Python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Python/Installation/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Python/Kivy/" title="Kivy" class="md-nav__link">
+      Kivy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Python/Users_and_groups/" title="Users and groups" class="md-nav__link">
+      Users and groups
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-17" type="checkbox" id="nav-4-17">
+    
+    <label class="md-nav__link" for="nav-4-17">
+      Ruby
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-17">
+        Ruby
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Ruby/Installation/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-18" type="checkbox" id="nav-4-18">
+    
+    <label class="md-nav__link" for="nav-4-18">
+      Stress tests
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-18">
+        Stress tests
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Stress_tests/Ackerman_function/" title="Ackerman function" class="md-nav__link">
+      Ackerman function
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-19" type="checkbox" id="nav-4-19">
+    
+    <label class="md-nav__link" for="nav-4-19">
+      Vbs
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-19">
+        Vbs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Vbs/Kaspersky_Base_Actuality/" title="Kaspersky Base Actuality" class="md-nav__link">
+      Kaspersky Base Actuality
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Vbs/Links/" title="Links" class="md-nav__link">
+      Links
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Vbs/Network/" title="Network" class="md-nav__link">
+      Network
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Vbs/Run/" title="Run" class="md-nav__link">
+      Run
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-20" type="checkbox" id="nav-4-20">
+    
+    <label class="md-nav__link" for="nav-4-20">
+      Version Control
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-20">
+        Version Control
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Version_Control/Git/" title="Git" class="md-nav__link">
+      Git
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Version_Control/GitHub/" title="GitHub" class="md-nav__link">
+      GitHub
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Version_Control/Gitignore/" title="Gitignore" class="md-nav__link">
+      Gitignore
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Version_Control/Subversion/" title="Subversion" class="md-nav__link">
+      Subversion
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-21" type="checkbox" id="nav-4-21">
+    
+    <label class="md-nav__link" for="nav-4-21">
+      Web
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-21">
+        Web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Web/Redirect/" title="Redirect" class="md-nav__link">
+      Redirect
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      DevOps
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        DevOps
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../DevOps/Ansible/" title="Ansible" class="md-nav__link">
+      Ansible
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../DevOps/Chef-Windows/" title="Chef Windows" class="md-nav__link">
+      Chef Windows
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      OS
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        OS
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../OS/AIX/" title="AIX" class="md-nav__link">
+      AIX
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../OS/Android/" title="Android" class="md-nav__link">
+      Android
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../OS/FreeBSD/" title="FreeBSD" class="md-nav__link">
+      FreeBSD
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../OS/Useful_UNIX_distros/" title="Useful UNIX distros" class="md-nav__link">
+      Useful UNIX distros
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5" type="checkbox" id="nav-6-5">
+    
+    <label class="md-nav__link" for="nav-6-5">
+      Gentoo
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-5">
+        Gentoo
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../OS/Gentoo/Console_Font/" title="Console Font" class="md-nav__link">
+      Console Font
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../OS/Gentoo/Gnome/" title="Gnome" class="md-nav__link">
+      Gnome
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../OS/Gentoo/Installation/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../OS/Gentoo/Portage/" title="Portage" class="md-nav__link">
+      Portage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../OS/Gentoo/Systemd/" title="Systemd" class="md-nav__link">
+      Systemd
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Tech
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Tech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-1" type="checkbox" id="nav-7-1">
+    
+    <label class="md-nav__link" for="nav-7-1">
+      Audit
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-1">
+        Audit
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Audit/Fork_unavailable/" title="Fork unavailable" class="md-nav__link">
+      Fork unavailable
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Audit/Hardware_info/" title="Hardware info" class="md-nav__link">
+      Hardware info
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Audit/Processes/" title="Processes" class="md-nav__link">
+      Processes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Audit/Reboot_Investigation/" title="Reboot Investigation" class="md-nav__link">
+      Reboot Investigation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      Backup
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        Backup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Backup/TSM/" title="TSM" class="md-nav__link">
+      TSM
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Backup/Tape/" title="Tape" class="md-nav__link">
+      Tape
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Backup/Veeam/" title="Veeam" class="md-nav__link">
+      Veeam
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
+    
+    <label class="md-nav__link" for="nav-7-3">
+      BigData
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-3">
+        BigData
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/BigData/Zookeper_grow/" title="Zookeper grow" class="md-nav__link">
+      Zookeper grow
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4">
+    
+    <label class="md-nav__link" for="nav-7-4">
+      Messaging
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-4">
+        Messaging
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Messaging/Email_Telnet/" title="Email Telnet" class="md-nav__link">
+      Email Telnet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Messaging/Postfix/" title="Postfix" class="md-nav__link">
+      Postfix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Messaging/SMS/" title="SMS" class="md-nav__link">
+      SMS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
+    
+    <label class="md-nav__link" for="nav-7-5">
+      Monitoring
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-5">
+        Monitoring
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Monitoring/80_tools_for_monitoring/" title="80 tools for monitoring" class="md-nav__link">
+      80 tools for monitoring
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Monitoring/Nagios/" title="Nagios" class="md-nav__link">
+      Nagios
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Monitoring/NetXMS/" title="NetXMS" class="md-nav__link">
+      NetXMS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Monitoring/Zabbix/" title="Zabbix" class="md-nav__link">
+      Zabbix
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-6" type="checkbox" id="nav-7-6">
+    
+    <label class="md-nav__link" for="nav-7-6">
+      Network
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-6">
+        Network
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Network/Common/" title="Common" class="md-nav__link">
+      Common
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Network/KEMP/" title="KEMP" class="md-nav__link">
+      KEMP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Network/NTP/" title="NTP" class="md-nav__link">
+      NTP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Network/Ports/" title="Ports" class="md-nav__link">
+      Ports
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Network/SNMP/" title="SNMP" class="md-nav__link">
+      SNMP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Network/WiFi/" title="WiFi" class="md-nav__link">
+      WiFi
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Network/tcpdump/" title="Tcpdump" class="md-nav__link">
+      Tcpdump
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-7" type="checkbox" id="nav-7-7">
+    
+    <label class="md-nav__link" for="nav-7-7">
+      Package Management
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-7">
+        Package Management
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Package_Management/Apt/" title="Apt" class="md-nav__link">
+      Apt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Package_Management/PIP/" title="PIP" class="md-nav__link">
+      PIP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Package_Management/Pacman/" title="Pacman" class="md-nav__link">
+      Pacman
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Package_Management/Yum/" title="Yum" class="md-nav__link">
+      Yum
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-8" type="checkbox" id="nav-7-8">
+    
+    <label class="md-nav__link" for="nav-7-8">
+      Project Management
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-8">
+        Project Management
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Project_Management/Redmine/" title="Redmine" class="md-nav__link">
+      Redmine
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-9" type="checkbox" id="nav-7-9">
+    
+    <label class="md-nav__link" for="nav-7-9">
+      Security
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-9">
+        Security
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Security/EncFS/" title="EncFS" class="md-nav__link">
+      EncFS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Security/FirewallD/" title="FirewallD" class="md-nav__link">
+      FirewallD
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Security/HSM/" title="HSM" class="md-nav__link">
+      HSM
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Security/IPTables/" title="IPTables" class="md-nav__link">
+      IPTables
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Security/OpenSSL/" title="OpenSSL" class="md-nav__link">
+      OpenSSL
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Security/PF/" title="PF" class="md-nav__link">
+      PF
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Security/SELinux/" title="SELinux" class="md-nav__link">
+      SELinux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Security/SSH/" title="SSH" class="md-nav__link">
+      SSH
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-10" type="checkbox" id="nav-7-10">
+    
+    <label class="md-nav__link" for="nav-7-10">
+      Storage and filesystems
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-10">
+        Storage and filesystems
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Storage_and_filesystems/Extend_Ext4_Partition/" title="Extend Ext4 Partition" class="md-nav__link">
+      Extend Ext4 Partition
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Storage_and_filesystems/Files_in_Unix/" title="Files in Unix" class="md-nav__link">
+      Files in Unix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Storage_and_filesystems/GPFS/" title="GPFS" class="md-nav__link">
+      GPFS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Storage_and_filesystems/HDD/" title="HDD" class="md-nav__link">
+      HDD
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Storage_and_filesystems/LVM/" title="LVM" class="md-nav__link">
+      LVM
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Storage_and_filesystems/Links/" title="Links" class="md-nav__link">
+      Links
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Storage_and_filesystems/Map_Disks_in_Windows/" title="Map Disks in Windows" class="md-nav__link">
+      Map Disks in Windows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Storage_and_filesystems/SAN/" title="SAN" class="md-nav__link">
+      SAN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Storage_and_filesystems/mdadm/" title="Mdadm" class="md-nav__link">
+      Mdadm
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-11" type="checkbox" id="nav-7-11">
+    
+    <label class="md-nav__link" for="nav-7-11">
+      Users
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-11">
+        Users
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Users/Rename_User/" title="Rename User" class="md-nav__link">
+      Rename User
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-12" type="checkbox" id="nav-7-12">
+    
+    <label class="md-nav__link" for="nav-7-12">
+      Virtual
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-12">
+        Virtual
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Virtual/Docker/" title="Docker" class="md-nav__link">
+      Docker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Virtual/Hyper-V/" title="Hyper V" class="md-nav__link">
+      Hyper V
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Virtual/KVM/" title="KVM" class="md-nav__link">
+      KVM
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-13" type="checkbox" id="nav-7-13">
+    
+    <label class="md-nav__link" for="nav-7-13">
+      Web
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-13">
+        Web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Web/Curl/" title="Curl" class="md-nav__link">
+      Curl
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Web/IIS/" title="IIS" class="md-nav__link">
+      IIS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Web/Tomcat/" title="Tomcat" class="md-nav__link">
+      Tomcat
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      UX
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        UX
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-1" type="checkbox" id="nav-8-1">
+    
+    <label class="md-nav__link" for="nav-8-1">
+      Edittors
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-1">
+        Edittors
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Edittors/My_Sublime_Text_config/" title="My Sublime Text config" class="md-nav__link">
+      My Sublime Text config
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Edittors/VSCode/" title="VSCode" class="md-nav__link">
+      VSCode
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Edittors/Vim/" title="Vim" class="md-nav__link">
+      Vim
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2">
+    
+    <label class="md-nav__link" for="nav-8-2">
+      Hi DPI
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        Hi DPI
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Hi_DPI/Awesome_VM/" title="Awesome VM" class="md-nav__link">
+      Awesome VM
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Hi_DPI/Java/" title="Java" class="md-nav__link">
+      Java
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3">
+    
+    <label class="md-nav__link" for="nav-8-3">
+      Images
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-3">
+        Images
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Images/Convert/" title="Convert" class="md-nav__link">
+      Convert
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-4" type="checkbox" id="nav-8-4">
+    
+    <label class="md-nav__link" for="nav-8-4">
+      MacOS
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-4">
+        MacOS
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/MacOS/Root/" title="Root" class="md-nav__link">
+      Root
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-5" type="checkbox" id="nav-8-5">
+    
+    <label class="md-nav__link" for="nav-8-5">
+      Messangers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-5">
+        Messangers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Messangers/Skype/" title="Skype" class="md-nav__link">
+      Skype
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-6" type="checkbox" id="nav-8-6">
+    
+    <label class="md-nav__link" for="nav-8-6">
+      Network
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-6">
+        Network
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Network/Windows_refresh_DNS/" title="Windows refresh DNS" class="md-nav__link">
+      Windows refresh DNS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-7" type="checkbox" id="nav-8-7">
+    
+    <label class="md-nav__link" for="nav-8-7">
+      Office
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-7">
+        Office
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Office/Outlook/" title="Outlook" class="md-nav__link">
+      Outlook
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-8" type="checkbox" id="nav-8-8">
+    
+    <label class="md-nav__link" for="nav-8-8">
+      Power Management
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-8">
+        Power Management
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Power_Management/Laptop_lid_linux/" title="Laptop lid linux" class="md-nav__link">
+      Laptop lid linux
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-9" type="checkbox" id="nav-8-9">
+    
+    <label class="md-nav__link" for="nav-8-9">
+      Terminal
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-9">
+        Terminal
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Terminal/Tmux/" title="Tmux" class="md-nav__link">
+      Tmux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Terminal/cmd/" title="Cmd" class="md-nav__link">
+      Cmd
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10" type="checkbox" id="nav-8-10">
+    
+    <label class="md-nav__link" for="nav-8-10">
+      Wine
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-10">
+        Wine
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Wine/Custom_prefix/" title="Custom prefix" class="md-nav__link">
+      Custom prefix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Wine/curse_client_5/" title="Curse client 5" class="md-nav__link">
+      Curse client 5
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-11" type="checkbox" id="nav-8-11">
+    
+    <label class="md-nav__link" for="nav-8-11">
+      X Window
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-11">
+        X Window
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/X-Window/Common/" title="Common" class="md-nav__link">
+      Common
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#useful-one-line-scripts-for-perl" title="Useful One-Line Scripts for Perl" class="md-nav__link">
+    Useful One-Line Scripts for Perl
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-spacing" title="FILE SPACING" class="md-nav__link">
+    FILE SPACING
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#line-numbering" title="LINE NUMBERING" class="md-nav__link">
+    LINE NUMBERING
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calculations" title="CALCULATIONS" class="md-nav__link">
+    CALCULATIONS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-creation-and-array-creation" title="STRING CREATION AND ARRAY CREATION" class="md-nav__link">
+    STRING CREATION AND ARRAY CREATION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-conversion-and-substitution" title="TEXT CONVERSION AND SUBSTITUTION" class="md-nav__link">
+    TEXT CONVERSION AND SUBSTITUTION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selective-printing-and-deleting-of-certain-lines" title="SELECTIVE PRINTING AND DELETING OF CERTAIN LINES" class="md-nav__link">
+    SELECTIVE PRINTING AND DELETING OF CERTAIN LINES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handy-regular-expressions" title="HANDY REGULAR EXPRESSIONS" class="md-nav__link">
+    HANDY REGULAR EXPRESSIONS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perl-tricks" title="PERL TRICKS" class="md-nav__link">
+    PERL TRICKS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credits" title="CREDITS" class="md-nav__link">
+    CREDITS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Perl one liners</h1>
+                
+                <h2 id="useful-one-line-scripts-for-perl">Useful One-Line Scripts for Perl</h2>
+<h3 id="file-spacing">FILE SPACING</h3>
+<ul>
+<li>Double space a file</li>
+</ul>
+<pre><code class="perl">perl -pe '$\=&quot;\n&quot;'
+perl -pe 'BEGIN { $\=&quot;\n&quot; }'
+perl -pe '$_ .= &quot;\n&quot;'
+perl -pe 's/$/\n/'
+perl -nE 'say'
+</code></pre>
+
+<ul>
+<li>Double space a file, except the blank lines</li>
+</ul>
+<pre><code class="perl">perl -pe '$_ .= &quot;\n&quot; unless /^$/'
+perl -pe '$_ .= &quot;\n&quot; if /\S/'
+</code></pre>
+
+<ul>
+<li>Triple space a file</li>
+</ul>
+<pre><code class="perl">perl -pe '$\=&quot;\n\n&quot;'
+perl -pe '$_.=&quot;\n\n&quot;'
+</code></pre>
+
+<ul>
+<li>N-space a file</li>
+</ul>
+<pre><code class="perl">perl -pe '$_.=&quot;\n&quot;x7'
+</code></pre>
+
+<ul>
+<li>Add a blank line before every line</li>
+</ul>
+<pre><code class="perl">perl -pe 's//\n/'
+</code></pre>
+
+<ul>
+<li>Remove all blank lines</li>
+</ul>
+<pre><code class="perl">perl -ne 'print unless /^$/'
+perl -lne 'print if length'
+perl -ne 'print if /\S/'
+</code></pre>
+
+<ul>
+<li>Remove all consecutive blank lines, leaving just one</li>
+</ul>
+<pre><code class="perl">perl -00 -pe ''
+perl -00pe0
+</code></pre>
+
+<ul>
+<li>Compress/expand all blank lines into N consecutive ones</li>
+</ul>
+<pre><code class="perl">perl -00 -pe '$_.=&quot;\n&quot;x4'
+</code></pre>
+
+<ul>
+<li>Fold a file so that every set of 10 lines becomes one tab-separated line</li>
+</ul>
+<pre><code class="perl">perl -lpe '$\ = $. % 10 ? &quot;\t&quot; : &quot;\n&quot;'
+</code></pre>
+
+<h3 id="line-numbering">LINE NUMBERING</h3>
+<ul>
+<li>Number all lines in a file</li>
+</ul>
+<pre><code class="perl">perl -pe '$_ = &quot;$. $_&quot;'
+</code></pre>
+
+<ul>
+<li>Number only non-empty lines in a file</li>
+</ul>
+<pre><code class="perl">perl -pe '$_ = ++$a.&quot; $_&quot; if /./'
+</code></pre>
+
+<ul>
+<li>Number and print only non-empty lines in a file (drop empty lines)</li>
+</ul>
+<pre><code class="perl">perl -ne 'print ++$a.&quot; $_&quot; if /./'
+</code></pre>
+
+<ul>
+<li>Number all lines but print line numbers only non-empty lines</li>
+</ul>
+<pre><code class="perl">perl -pe '$_ = &quot;$. $_&quot; if /./'
+</code></pre>
+
+<ul>
+<li>Number only lines that match a pattern, print others unmodified</li>
+</ul>
+<pre><code class="perl">perl -pe '$_ = ++$a.&quot; $_&quot; if /regex/'
+</code></pre>
+
+<ul>
+<li>Number and print only lines that match a pattern</li>
+</ul>
+<pre><code class="perl">perl -ne 'print ++$a.&quot; $_&quot; if /regex/'
+</code></pre>
+
+<ul>
+<li>Number all lines, but print line numbers only for lines that match a pattern</li>
+</ul>
+<pre><code class="perl">perl -pe '$_ = &quot;$. $_&quot; if /regex/'
+</code></pre>
+
+<ul>
+<li>Number all lines in a file using a custom format (emulate cat -n)</li>
+</ul>
+<pre><code class="perl">perl -ne 'printf &quot;%-5d %s&quot;, $., $_'
+</code></pre>
+
+<ul>
+<li>Print the total number of lines in a file (emulate wc -l)</li>
+</ul>
+<pre><code class="perl">perl -lne 'END { print $. }'
+perl -le 'print $n=()=&lt;&gt;'
+perl -le 'print scalar(()=&lt;&gt;)'
+perl -le 'print scalar(@foo=&lt;&gt;)'
+perl -ne '}{print $.'
+perl -nE '}{say $.'
+</code></pre>
+
+<ul>
+<li>Print the number of non-empty lines in a file</li>
+</ul>
+<pre><code class="perl">perl -le 'print scalar(grep{/./}&lt;&gt;)'
+perl -le 'print ~~grep{/./}&lt;&gt;'
+perl -le 'print~~grep/./,&lt;&gt;'
+perl -E 'say~~grep/./,&lt;&gt;'
+</code></pre>
+
+<ul>
+<li>Print the number of empty lines in a file</li>
+</ul>
+<pre><code class="perl">perl -lne '$a++ if /^$/; END {print $a+0}'
+perl -le 'print scalar(grep{/^$/}&lt;&gt;)'
+perl -le 'print ~~grep{/^$/}&lt;&gt;'
+perl -E 'say~~grep{/^$/}&lt;&gt;'
+</code></pre>
+
+<ul>
+<li>Print the number of lines in a file that match a pattern (emulate grep -c)</li>
+</ul>
+<pre><code class="perl">perl -lne '$a++ if /regex/; END {print $a+0}'
+perl -nE '$a++ if /regex/; END {say $a+0}'
+</code></pre>
+
+<h3 id="calculations">CALCULATIONS</h3>
+<ul>
+<li>Check if a number is a prime</li>
+</ul>
+<pre><code class="perl">perl -lne '(1x$_) !~ /^1?$|^(11+?)\1+$/ &amp;&amp; print &quot;$_ is prime&quot;'
+</code></pre>
+
+<ul>
+<li>Print the sum of all the fields on a line</li>
+</ul>
+<pre><code class="perl">perl -MList::Util=sum -alne 'print sum @F'
+</code></pre>
+
+<ul>
+<li>Print the sum of all the fields on all lines</li>
+</ul>
+<pre><code class="perl">perl -MList::Util=sum -alne 'push @S,@F; END { print sum @S }'
+perl -MList::Util=sum -alne '$s += sum @F; END { print $s }'
+</code></pre>
+
+<ul>
+<li>Shuffle all fields on a line</li>
+</ul>
+<pre><code class="perl">perl -MList::Util=shuffle -alne 'print &quot;@{[shuffle @F]}&quot;'
+perl -MList::Util=shuffle -alne 'print join &quot; &quot;, shuffle @F'
+</code></pre>
+
+<ul>
+<li>Find the minimum element on a line</li>
+</ul>
+<pre><code class="perl">perl -MList::Util=min -alne 'print min @F'
+</code></pre>
+
+<ul>
+<li>Find the minimum element over all the lines</li>
+</ul>
+<pre><code class="perl">perl -MList::Util=min -alne '@M = (@M, @F); END { print min @M }'
+perl -MList::Util=min -alne '$min = min @F; $rmin = $min unless defined $rmin &amp;&amp; $min &gt; $rmin; END { print $rmin }'
+</code></pre>
+
+<ul>
+<li>Find the maximum element on a line</li>
+</ul>
+<pre><code class="perl">perl -MList::Util=max -alne 'print max @F'
+</code></pre>
+
+<ul>
+<li>Find the maximum element over all the lines</li>
+</ul>
+<pre><code class="perl">perl -MList::Util=max -alne '@M = (@M, @F); END { print max @M }'
+</code></pre>
+
+<ul>
+<li>Replace each field with its absolute value</li>
+</ul>
+<pre><code class="perl">perl -alne 'print &quot;@{[map { abs } @F]}&quot;'
+</code></pre>
+
+<ul>
+<li>Find the total number of fields (words) on each line</li>
+</ul>
+<pre><code class="perl">perl -alne 'print scalar @F'
+</code></pre>
+
+<ul>
+<li>Print the total number of fields (words) on each line followed by the line</li>
+</ul>
+<pre><code class="perl">perl -alne 'print scalar @F, &quot; $_&quot;'
+</code></pre>
+
+<ul>
+<li>Find the total number of fields (words) on all lines</li>
+</ul>
+<pre><code class="perl">perl -alne '$t += @F; END { print $t}'
+</code></pre>
+
+<ul>
+<li>Print the total number of fields that match a pattern</li>
+</ul>
+<pre><code class="perl">perl -alne 'map { /regex/ &amp;&amp; $t++ } @F; END { print $t }'
+perl -alne '$t += /regex/ for @F; END { print $t }'
+perl -alne '$t += grep /regex/, @F; END { print $t }'
+</code></pre>
+
+<ul>
+<li>Print the total number of lines that match a pattern</li>
+</ul>
+<pre><code class="perl">perl -lne '/regex/ &amp;&amp; $t++; END { print $t }'
+</code></pre>
+
+<ul>
+<li>Print the number PI to n decimal places</li>
+</ul>
+<pre><code class="perl">perl -Mbignum=bpi -le 'print bpi(n)'
+</code></pre>
+
+<ul>
+<li>Print the number PI to 39 decimal places</li>
+</ul>
+<pre><code class="perl">perl -Mbignum=PI -le 'print PI'
+</code></pre>
+
+<ul>
+<li>Print the number E to n decimal places</li>
+</ul>
+<pre><code class="perl">perl -Mbignum=bexp -le 'print bexp(1,n+1)'
+</code></pre>
+
+<ul>
+<li>Print the number E to 39 decimal places</li>
+</ul>
+<pre><code class="perl">perl -Mbignum=e -le 'print e'
+</code></pre>
+
+<ul>
+<li>Print UNIX time (seconds since Jan 1, 1970, 00:00:00 UTC)</li>
+</ul>
+<pre><code class="perl">perl -le 'print time'
+</code></pre>
+
+<ul>
+<li>Print GMT (Greenwich Mean Time) and local computer time</li>
+</ul>
+<pre><code class="perl">perl -le 'print scalar gmtime'
+perl -le 'print scalar localtime'
+</code></pre>
+
+<ul>
+<li>Print local computer time in H:M:S format</li>
+</ul>
+<pre><code class="perl">perl -le 'print join &quot;:&quot;, (localtime)[2,1,0]'
+</code></pre>
+
+<ul>
+<li>Print yesterday's date</li>
+</ul>
+<pre><code class="perl">perl -MPOSIX -le '@now = localtime; $now[3] -= 1; print scalar localtime mktime @now'
+</code></pre>
+
+<ul>
+<li>Print date 14 months, 9 days and 7 seconds ago</li>
+</ul>
+<pre><code class="perl">perl -MPOSIX -le '@now = localtime; $now[0] -= 7; $now[4] -= 14; $now[7] -= 9; print scalar localtime mktime @now'
+</code></pre>
+
+<ul>
+<li>Prepend timestamps to stdout (GMT, localtime)</li>
+</ul>
+<pre><code class="perl">tail -f logfile | perl -ne 'print scalar gmtime,&quot; &quot;,$_'
+tail -f logfile | perl -ne 'print scalar localtime,&quot; &quot;,$_'
+</code></pre>
+
+<ul>
+<li>Calculate factorial of 5</li>
+</ul>
+<pre><code class="perl">perl -MMath::BigInt -le 'print Math::BigInt-&gt;new(5)-&gt;bfac()'
+perl -le '$f = 1; $f *= $_ for 1..5; print $f'
+</code></pre>
+
+<ul>
+<li>Calculate greatest common divisor (GCM)</li>
+</ul>
+<pre><code class="perl">perl -MMath::BigInt=bgcd -le 'print bgcd(@list_of_numbers)'
+</code></pre>
+
+<ul>
+<li>Calculate GCM of numbers 20 and 35 using Euclid's algorithm</li>
+</ul>
+<pre><code class="perl">perl -le '$n = 20; $m = 35; ($m,$n) = ($n,$m%$n) while $n; print $m'
+</code></pre>
+
+<ul>
+<li>Calculate least common multiple (LCM) of numbers 35, 20 and 8</li>
+</ul>
+<pre><code class="perl">perl -MMath::BigInt=blcm -le 'print blcm(35,20,8)'
+</code></pre>
+
+<ul>
+<li>Calculate LCM of 20 and 35 using Euclid's formula: n*m/gcd(n,m)</li>
+</ul>
+<pre><code class="perl">perl -le '$a = $n = 20; $b = $m = 35; ($m,$n) = ($n,$m%$n) while $n; print $a*$b/$m'
+</code></pre>
+
+<ul>
+<li>Generate 10 random numbers between 5 and 15 (excluding 15)</li>
+</ul>
+<pre><code class="perl">perl -le '$n=10; $min=5; $max=15; $, = &quot; &quot;; print map { int(rand($max-$min))+$min } 1..$n'
+</code></pre>
+
+<ul>
+<li>Find and print all permutations of a list</li>
+</ul>
+<pre><code class="perl">perl -MAlgorithm::Permute -le '$l = [1,2,3,4,5]; $p = Algorithm::Permute-&gt;new($l); print @r while @r = $p-&gt;next'
+</code></pre>
+
+<ul>
+<li>Generate the power set</li>
+</ul>
+<pre><code class="perl">perl -MList::PowerSet=powerset -le '@l = (1,2,3,4,5); for (@{powerset(@l)}) { print &quot;@$_&quot; }'
+</code></pre>
+
+<ul>
+<li>Convert an IP address to unsigned integer</li>
+</ul>
+<pre><code class="perl">perl -le '$i=3; $u += ($_&lt;&lt;8*$i--) for &quot;127.0.0.1&quot; =~ /(\d+)/g; print $u'
+perl -le '$ip=&quot;127.0.0.1&quot;; $ip =~ s/(\d+)\.?/sprintf(&quot;%02x&quot;, $1)/ge; print hex($ip)'
+perl -le 'print unpack(&quot;N&quot;, 127.0.0.1)'
+perl -MSocket -le 'print unpack(&quot;N&quot;, inet_aton(&quot;127.0.0.1&quot;))'
+</code></pre>
+
+<ul>
+<li>Convert an unsigned integer to an IP address</li>
+</ul>
+<pre><code class="perl">perl -MSocket -le 'print inet_ntoa(pack(&quot;N&quot;, 2130706433))'
+perl -le '$ip = 2130706433; print join &quot;.&quot;, map { (($ip&gt;&gt;8*($_))&amp;0xFF) } reverse 0..3'
+perl -le '$ip = 2130706433; $, = &quot;.&quot;; print map { (($ip&gt;&gt;8*($_))&amp;0xFF) } reverse 0..3'
+</code></pre>
+
+<h3 id="string-creation-and-array-creation">STRING CREATION AND ARRAY CREATION</h3>
+<ul>
+<li>Generate and print the alphabet</li>
+</ul>
+<pre><code class="perl">perl -le 'print a..z'
+perl -le 'print (&quot;a&quot;..&quot;z&quot;)'
+perl -le '$, = &quot;,&quot;; print (&quot;a&quot;..&quot;z&quot;)'
+perl -le 'print join &quot;,&quot;, (&quot;a&quot;..&quot;z&quot;)'
+</code></pre>
+
+<ul>
+<li>Generate and print all the strings from "a" to "zz"</li>
+</ul>
+<pre><code class="perl">perl -le 'print (&quot;a&quot;..&quot;zz&quot;)'
+perl -le 'print &quot;aa&quot;..&quot;zz&quot;'
+</code></pre>
+
+<ul>
+<li>Create a hex lookup table</li>
+</ul>
+<pre><code class="perl">@hex = (0..9, &quot;a&quot;..&quot;f&quot;)
+</code></pre>
+
+<ul>
+<li>Convert a decimal number to hex using @hex lookup table</li>
+</ul>
+<pre><code class="perl">perl -le '$num = 255; @hex = (0..9, &quot;a&quot;..&quot;f&quot;); while ($num) { $s = $hex[($num%16)&amp;15].$s; $num = int $num/16 } print $s'
+perl -le '$hex = sprintf(&quot;%x&quot;, 255); print $hex'
+perl -le '$num = &quot;ff&quot;; print hex $num'
+</code></pre>
+
+<ul>
+<li>Generate a random 8 character password</li>
+</ul>
+<pre><code class="perl">perl -le 'print map { (&quot;a&quot;..&quot;z&quot;)[rand 26] } 1..8'
+perl -le 'print map { (&quot;a&quot;..&quot;z&quot;, 0..9)[rand 36] } 1..8'
+</code></pre>
+
+<ul>
+<li>Create a string of specific length</li>
+</ul>
+<pre><code class="perl">perl -le 'print &quot;a&quot;x50'
+</code></pre>
+
+<ul>
+<li>Create a repeated list of elements</li>
+</ul>
+<pre><code class="perl">perl -le '@list = (1,2)x20; print &quot;@list&quot;'
+</code></pre>
+
+<ul>
+<li>Create an array from a string</li>
+</ul>
+<pre><code class="perl">@months = split ' ', &quot;Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec&quot;
+@months = qw/Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec/
+</code></pre>
+
+<ul>
+<li>Create a string from an array</li>
+</ul>
+<pre><code class="perl">@stuff = (&quot;hello&quot;, 0..9, &quot;world&quot;); $string = join '-', @stuff
+</code></pre>
+
+<ul>
+<li>Find the numeric values for characters in the string</li>
+</ul>
+<pre><code class="perl">perl -le 'print join &quot;, &quot;, map { ord } split //, &quot;hello world&quot;'
+</code></pre>
+
+<ul>
+<li>Convert a list of numeric ASCII values into a string</li>
+</ul>
+<pre><code class="perl">perl -le '@ascii = (99, 111, 100, 105, 110, 103); print pack(&quot;C*&quot;, @ascii)'
+perl -le '@ascii = (99, 111, 100, 105, 110, 103); print map { chr } @ascii'
+</code></pre>
+
+<ul>
+<li>Generate an array with odd numbers from 1 to 100</li>
+</ul>
+<pre><code class="perl">perl -le '@odd = grep {$_ % 2 == 1} 1..100; print &quot;@odd&quot;'
+perl -le '@odd = grep { $_ &amp; 1 } 1..100; print &quot;@odd&quot;'
+</code></pre>
+
+<ul>
+<li>Generate an array with even numbers from 1 to 100</li>
+</ul>
+<pre><code class="perl">perl -le '@even = grep {$_ % 2 == 0} 1..100; print &quot;@even&quot;'
+</code></pre>
+
+<ul>
+<li>Find the length of the string</li>
+</ul>
+<pre><code class="perl">perl -le 'print length &quot;one-liners are great&quot;'
+</code></pre>
+
+<ul>
+<li>Find the number of elements in an array</li>
+</ul>
+<pre><code class="perl">perl -le '@array = (&quot;a&quot;..&quot;z&quot;); print scalar @array'
+perl -le '@array = (&quot;a&quot;..&quot;z&quot;); print $#array + 1'
+</code></pre>
+
+<h3 id="text-conversion-and-substitution">TEXT CONVERSION AND SUBSTITUTION</h3>
+<ul>
+<li>ROT13 a string</li>
+</ul>
+<pre><code class="perl">'y/A-Za-z/N-ZA-Mn-za-m/'
+</code></pre>
+
+<ul>
+<li>ROT 13 a file</li>
+</ul>
+<pre><code class="perl">perl -lpe 'y/A-Za-z/N-ZA-Mn-za-m/' file
+</code></pre>
+
+<ul>
+<li>Base64 encode a string</li>
+</ul>
+<pre><code class="perl">perl -MMIME::Base64 -e 'print encode_base64(&quot;string&quot;)'
+perl -MMIME::Base64 -0777 -ne 'print encode_base64($_)' file
+</code></pre>
+
+<ul>
+<li>Base64 decode a string</li>
+</ul>
+<pre><code class="perl">perl -MMIME::Base64 -le 'print decode_base64(&quot;base64string&quot;)'
+perl -MMIME::Base64 -ne 'print decode_base64($_)' file
+</code></pre>
+
+<ul>
+<li>URL-escape a string</li>
+</ul>
+<pre><code class="perl">perl -MURI::Escape -le 'print uri_escape($string)'
+</code></pre>
+
+<ul>
+<li>URL-unescape a string</li>
+</ul>
+<pre><code class="perl">perl -MURI::Escape -le 'print uri_unescape($string)'
+</code></pre>
+
+<ul>
+<li>HTML-encode a string</li>
+</ul>
+<pre><code class="perl">perl -MHTML::Entities -le 'print encode_entities($string)'
+</code></pre>
+
+<ul>
+<li>HTML-decode a string</li>
+</ul>
+<pre><code class="perl">perl -MHTML::Entities -le 'print decode_entities($string)'
+</code></pre>
+
+<ul>
+<li>Convert all text to uppercase</li>
+</ul>
+<pre><code class="perl">perl -nle 'print uc'
+perl -ple '$_=uc'
+perl -nle 'print &quot;\U$_&quot;'
+</code></pre>
+
+<ul>
+<li>Convert all text to lowercase</li>
+</ul>
+<pre><code class="perl">perl -nle 'print lc'
+perl -ple '$_=lc'
+perl -nle 'print &quot;\L$_&quot;'
+</code></pre>
+
+<ul>
+<li>Uppercase only the first word of each line</li>
+</ul>
+<pre><code class="perl">perl -nle 'print ucfirst lc'
+perl -nle 'print &quot;\u\L$_&quot;'
+</code></pre>
+
+<ul>
+<li>Invert the letter case</li>
+</ul>
+<pre><code class="perl">perl -ple 'y/A-Za-z/a-zA-Z/'
+</code></pre>
+
+<ul>
+<li>Camel case each line</li>
+</ul>
+<pre><code class="perl">perl -ple 's/(\w+)/\u$1/g'
+perl -ple 's/(?&lt;!['])(\w+)/\u\1/g'
+</code></pre>
+
+<ul>
+<li>Strip leading whitespace (spaces, tabs) from the beginning of each line</li>
+</ul>
+<pre><code class="perl">perl -ple 's/^[ \t]+//'
+perl -ple 's/^\s+//'
+</code></pre>
+
+<ul>
+<li>Strip trailing whitespace (space, tabs) from the end of each line</li>
+</ul>
+<pre><code class="perl">perl -ple 's/[ \t]+$//'
+</code></pre>
+
+<ul>
+<li>Strip whitespace from the beginning and end of each line</li>
+</ul>
+<pre><code class="perl">perl -ple 's/^[ \t]+|[ \t]+$//g'
+</code></pre>
+
+<ul>
+<li>Convert UNIX newlines to DOS/Windows newlines</li>
+</ul>
+<pre><code class="perl">perl -pe 's|\n|\r\n|'
+</code></pre>
+
+<ul>
+<li>Convert DOS/Windows newlines to UNIX newlines</li>
+</ul>
+<pre><code class="perl">perl -pe 's|\r\n|\n|'
+</code></pre>
+
+<ul>
+<li>Convert UNIX newlines to Mac newlines</li>
+</ul>
+<pre><code class="perl">perl -pe 's|\n|\r|'
+</code></pre>
+
+<ul>
+<li>Substitute (find and replace) "foo" with "bar" on each line</li>
+</ul>
+<pre><code class="perl">perl -pe 's/foo/bar/'
+</code></pre>
+
+<ul>
+<li>Substitute (find and replace) all "foo"s with "bar" on each line</li>
+</ul>
+<pre><code class="perl">perl -pe 's/foo/bar/g'
+</code></pre>
+
+<ul>
+<li>Substitute (find and replace) "foo" with "bar" on lines that match "baz"</li>
+</ul>
+<pre><code class="perl">perl -pe '/baz/ &amp;&amp; s/foo/bar/'
+</code></pre>
+
+<ul>
+<li>Binary patch a file (find and replace a given array of bytes as hex numbers)</li>
+</ul>
+<pre><code class="perl">perl -pi -e 's/\x89\xD8\x48\x8B/\x90\x90\x48\x8B/g' file
+</code></pre>
+
+<h3 id="selective-printing-and-deleting-of-certain-lines">SELECTIVE PRINTING AND DELETING OF CERTAIN LINES</h3>
+<ul>
+<li>Print the first line of a file (emulate head -1)</li>
+</ul>
+<pre><code class="perl">perl -ne 'print; exit'
+</code></pre>
+
+<ul>
+<li>Print the first 10 lines of a file (emulate head -10)</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if $. &lt;= 10'
+perl -ne '$. &lt;= 10 &amp;&amp; print'
+perl -ne 'print if 1..10'
+</code></pre>
+
+<ul>
+<li>Print the last line of a file (emulate tail -1)</li>
+</ul>
+<pre><code class="perl">perl -ne '$last = $_; END { print $last }'
+perl -ne 'print if eof'
+</code></pre>
+
+<ul>
+<li>Print the last 10 lines of a file (emulate tail -10)</li>
+</ul>
+<pre><code class="perl">perl -ne 'push @a, $_; @a = @a[@a-10..$#a]; END { print @a }'
+</code></pre>
+
+<ul>
+<li>Print only lines that match a regular expression</li>
+</ul>
+<pre><code class="perl">perl -ne '/regex/ &amp;&amp; print'
+</code></pre>
+
+<ul>
+<li>Print only lines that do not match a regular expression</li>
+</ul>
+<pre><code class="perl">perl -ne '!/regex/ &amp;&amp; print'
+</code></pre>
+
+<ul>
+<li>Print the line before a line that matches a regular expression</li>
+</ul>
+<pre><code class="perl">perl -ne '/regex/ &amp;&amp; $last &amp;&amp; print $last; $last = $_'
+</code></pre>
+
+<ul>
+<li>Print the line after a line that matches a regular expression</li>
+</ul>
+<pre><code class="perl">perl -ne 'if ($p) { print; $p = 0 } $p++ if /regex/'
+</code></pre>
+
+<ul>
+<li>Print lines that match regex AAA and regex BBB in any order</li>
+</ul>
+<pre><code class="perl">perl -ne '/AAA/ &amp;&amp; /BBB/ &amp;&amp; print'
+</code></pre>
+
+<ul>
+<li>Print lines that don't match match regexes AAA and BBB</li>
+</ul>
+<pre><code class="perl">perl -ne '!/AAA/ &amp;&amp; !/BBB/ &amp;&amp; print'
+</code></pre>
+
+<ul>
+<li>Print lines that match regex AAA followed by regex BBB followed by CCC</li>
+</ul>
+<pre><code class="perl">perl -ne '/AAA.*BBB.*CCC/ &amp;&amp; print'
+</code></pre>
+
+<ul>
+<li>Print lines that are 80 chars or longer</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if length &gt;= 80'
+</code></pre>
+
+<ul>
+<li>Print lines that are less than 80 chars in length</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if length &lt; 80'
+</code></pre>
+
+<ul>
+<li>Print only line 13</li>
+</ul>
+<pre><code class="perl">perl -ne '$. == 13 &amp;&amp; print &amp;&amp; exit'
+</code></pre>
+
+<ul>
+<li>Print all lines except line 27</li>
+</ul>
+<pre><code class="perl">perl -ne '$. != 27 &amp;&amp; print'
+perl -ne 'print if $. != 27'
+</code></pre>
+
+<ul>
+<li>Print only lines 13, 19 and 67</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if $. == 13 || $. == 19 || $. == 67'
+perl -ne 'print if int($.) ~~ (13, 19, 67)'
+</code></pre>
+
+<ul>
+<li>Print all lines between two regexes (including lines that match regex)</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if /regex1/../regex2/'
+</code></pre>
+
+<ul>
+<li>Print all lines from line 17 to line 30</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if $. &gt;= 17 &amp;&amp; $. &lt;= 30'
+perl -ne 'print if int($.) ~~ (17..30)'
+perl -ne 'print if grep { $_ == $. } 17..30'
+</code></pre>
+
+<ul>
+<li>Print the longest line</li>
+</ul>
+<pre><code class="perl">perl -ne '$l = $_ if length($_) &gt; length($l); END { print $l }'
+</code></pre>
+
+<ul>
+<li>Print the shortest line</li>
+</ul>
+<pre><code class="perl">perl -ne '$s = $_ if $. == 1; $s = $_ if length($_) &lt; length($s); END { print $s }'
+</code></pre>
+
+<ul>
+<li>Print all lines that contain a number</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if /\d/'
+</code></pre>
+
+<ul>
+<li>Find all lines that contain only a number</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if /^\d+$/'
+</code></pre>
+
+<ul>
+<li>Print all lines that contain only characters</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if /^[[:alpha:]]+$/
+</code></pre>
+
+<ul>
+<li>Print every second line</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if $. % 2'
+</code></pre>
+
+<ul>
+<li>Print every second line, starting the second line</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if $. % 2 == 0'
+</code></pre>
+
+<ul>
+<li>Print all lines that repeat</li>
+</ul>
+<pre><code class="perl">perl -ne 'print if ++$a{$_} == 2'
+</code></pre>
+
+<ul>
+<li>Print all unique lines</li>
+</ul>
+<pre><code class="perl">perl -ne 'print unless $a{$_}++'
+</code></pre>
+
+<ul>
+<li>Print the first field (word) of every line (emulate cut -f 1 -d ' ')</li>
+</ul>
+<pre><code class="perl">perl -alne 'print $F[0]'
+</code></pre>
+
+<h3 id="handy-regular-expressions">HANDY REGULAR EXPRESSIONS</h3>
+<ul>
+<li>Match something that looks like an IP address</li>
+</ul>
+<pre><code class="perl">/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/
+/^(\d{1,3}\.){3}\d{1,3}$/
+</code></pre>
+
+<ul>
+<li>Test if a number is in range 0-255</li>
+</ul>
+<pre><code class="perl">/^([0-9]|[0-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$/
+</code></pre>
+
+<ul>
+<li>Match an IP address</li>
+</ul>
+<pre><code class="perl">my $ip_part = qr|([0-9]|[0-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])|;
+if ($ip =~ /^($ip_part\.){3}$ip_part$/) {
+ say &quot;valid ip&quot;;
+}
+</code></pre>
+
+<ul>
+<li>Check if the string looks like an email address</li>
+</ul>
+<pre><code class="perl">/\S+@\S+\.\S+/
+</code></pre>
+
+<ul>
+<li>Check if the string is a decimal number</li>
+</ul>
+<pre><code class="perl">/^\d+$/
+/^[+-]?\d+$/
+/^[+-]?\d+\.?\d*$/
+</code></pre>
+
+<ul>
+<li>Check if the string is a hexadecimal number</li>
+</ul>
+<pre><code class="perl">/^0x[0-9a-f]+$/i
+</code></pre>
+
+<ul>
+<li>Check if the string is an octal number</li>
+</ul>
+<pre><code class="perl">/^0[0-7]+$/
+</code></pre>
+
+<ul>
+<li>Check if the string is binary</li>
+</ul>
+<pre><code class="perl">/^[01]+$/
+</code></pre>
+
+<ul>
+<li>Check if a word appears twice in the string</li>
+</ul>
+<pre><code class="perl">/(word).*\1/
+</code></pre>
+
+<ul>
+<li>Increase all numbers by one in the string</li>
+</ul>
+<pre><code class="perl">$str =~ s/(\d+)/$1+1/ge
+</code></pre>
+
+<ul>
+<li>Extract HTTP User-Agent string from the HTTP headers</li>
+</ul>
+<pre><code class="perl">/^User-Agent: (.+)$/
+</code></pre>
+
+<ul>
+<li>Match printable ASCII characters</li>
+</ul>
+<pre><code class="perl">/[ -~]/
+</code></pre>
+
+<ul>
+<li>Match unprintable ASCII characters</li>
+</ul>
+<pre><code class="perl">/[^ -~]/
+</code></pre>
+
+<ul>
+<li>Match text between two HTML tags</li>
+</ul>
+<pre><code class="perl">m|&lt;strong&gt;([^&lt;]*)&lt;/strong&gt;|
+m|&lt;strong&gt;(.*?)&lt;/strong&gt;|
+</code></pre>
+
+<ul>
+<li>Replace all <b> tags with <strong></li>
+</ul>
+<pre><code class="perl">$html =~ s|&lt;(/)?b&gt;|&lt;$1strong&gt;|g
+</code></pre>
+
+<ul>
+<li>Extract all matches from a regular expression</li>
+</ul>
+<pre><code class="perl">my @matches = $text =~ /regex/g;
+</code></pre>
+
+<h3 id="perl-tricks">PERL TRICKS</h3>
+<ul>
+<li>Print the version of a Perl module</li>
+</ul>
+<pre><code class="perl">perl -MModule -le 'print $Module::VERSION'
+perl -MLWP::UserAgent -le 'print $LWP::UserAgent::VERSION'
+</code></pre>
+
+<h3 id="credits">CREDITS</h3>
+<pre><code>* Andy Lester       http://www.petdance.com
+* Shlomi Fish       http://www.shlomifish.org
+* Madars Virza      http://www.madars.org
+* caffecaldo        https://github.com/caffecaldo
+* Kirk Kimmel       https://github.com/kimmel
+* avar              https://github.com/avar
+* rent0n
+</code></pre>
+                
+                  
+                
+              
+              
+                
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../Markdown/Markdown/" title="Markdown" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Markdown
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../Perl_scripts_for_sa/" title="Perl scripts for sa" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Perl scripts for sa
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2017 Dmitry Ivanov. <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter40819844 = new Ya.Metrika({ id:40819844, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+          </div>
+        
+        powered by
+        <a href="http://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.02434462.js"></script>
+      
+      <script>app.initialize({version:"0.17.2",url:{base:"../../.."}})</script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-80208201-1","keepbot.github.io"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>

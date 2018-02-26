@@ -1,0 +1,53 @@
+.navbar {
+    background-image: -webkit-linear-gradient(#8476ad);
+    background-image: linear-gradient(#8476ad);
+    background-repeat: no-repeat;
+    border-bottom: 1px solid #8476ad;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff54b4eb',endColorstr='#ff1d9ce5',GradientType=0);
+    filter: none;
+    -webkit-box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+}
+.navbar-default {
+    background-color: #8476ad;
+    border-color: #8476ad;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+    color: #fff;
+    background-color: #61577F;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+    color: #fff;
+    background-color: #61577F;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+    color: #fff;
+    background-color: #61577F;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover, .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
+    color: #fff;
+    background-color: #61577F;
+}
+.navbar-default .navbar-nav .open .dropdown-menu>.active>a, .navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover, .navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus {
+    color: #fff;
+    background-color: #61577F;
+}
+
+.navbar-default .dropdown-menu>li>a:hover, .navbar-default .dropdown-menu>.active>a, .navbar-default .dropdown-menu>.active>a:hover {
+    background-color: #61577F;
+}
+
+.navbar-default .dropdown-menu {
+    background-color: #8476ad
+}
+
+a {
+    color: #8476ad;
+}
+
+a:hover, a:focus {
+    color: #61577F;
+}

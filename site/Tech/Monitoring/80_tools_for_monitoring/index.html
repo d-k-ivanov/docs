@@ -1,0 +1,5013 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Collection of Technical guides">
+      
+      
+        <link rel="canonical" href="https://keepbot.github.io/docs/Tech/Monitoring/80_tools_for_monitoring/">
+      
+      
+        <meta name="author" content="Dmitry Ivanov">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.6.6">
+    
+    
+      
+        <title>80 tools for monitoring - Technical Info</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.78aab2dc.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.6079476c.css">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="cyan">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <a href="#top" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://keepbot.github.io/docs/" title="Technical Info" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Technical Info
+              </span>
+              <span class="md-header-nav__topic">
+                80 tools for monitoring
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://keepbot.github.io/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      Keepbot
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <span class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </span>
+    Technical Info
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://keepbot.github.io/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      Keepbot
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Admin
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Admin
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Admin/Windows_Administrative_Tools/" title="Windows Administrative Tools" class="md-nav__link">
+      Windows Administrative Tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Admin/xFreeRDP/" title="xFreeRDP" class="md-nav__link">
+      xFreeRDP
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Databases
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Databases
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1">
+    
+    <label class="md-nav__link" for="nav-3-1">
+      MariaDB
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        MariaDB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/MariaDB/Backup_and_Restore/" title="Backup and Restore" class="md-nav__link">
+      Backup and Restore
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/MariaDB/Installation/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      MongoDB
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        MongoDB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/MongoDB/Backup_and_restore/" title="Backup and restore" class="md-nav__link">
+      Backup and restore
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/MongoDB/Queries/" title="Queries" class="md-nav__link">
+      Queries
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/MongoDB/Quick_Reference/" title="Quick Reference" class="md-nav__link">
+      Quick Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      MySQL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        MySQL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/MySQL/Replication/" title="Replication" class="md-nav__link">
+      Replication
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Oracle
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        Oracle
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/Oracle/Blocking_sessions/" title="Blocking sessions" class="md-nav__link">
+      Blocking sessions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/Oracle/CentOS_7_Installation/" title="CentOS 7 Installation" class="md-nav__link">
+      CentOS 7 Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/Oracle/Common/" title="Common" class="md-nav__link">
+      Common
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/Oracle/Dump/" title="Dump" class="md-nav__link">
+      Dump
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/Oracle/Memory/" title="Memory" class="md-nav__link">
+      Memory
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/Oracle/OJDBC/" title="OJDBC" class="md-nav__link">
+      OJDBC
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/Oracle/Tablespace/" title="Tablespace" class="md-nav__link">
+      Tablespace
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Databases/Oracle/Useful_Queries/" title="Useful Queries" class="md-nav__link">
+      Useful Queries
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Dev
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Dev
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1">
+    
+    <label class="md-nav__link" for="nav-4-1">
+      Android
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        Android
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Android/Adb/" title="Adb" class="md-nav__link">
+      Adb
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Android/Android_Studio/" title="Android Studio" class="md-nav__link">
+      Android Studio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Android/Apk/" title="Apk" class="md-nav__link">
+      Apk
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
+    
+    <label class="md-nav__link" for="nav-4-2">
+      Bash
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        Bash
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Bash/Collect_bash_history/" title="Collect bash history" class="md-nav__link">
+      Collect bash history
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Bash/Convert-CP1251-to-UTF8/" title="Convert CP1251 to UTF8" class="md-nav__link">
+      Convert CP1251 to UTF8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Bash/Gentoo_Functions/" title="Gentoo Functions" class="md-nav__link">
+      Gentoo Functions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      Brainfuck
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        Brainfuck
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Brainfuck/Sample1/" title="Sample1" class="md-nav__link">
+      Sample1
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4">
+      C and Cpp
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        C and Cpp
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/C_and_Cpp/Modern_Cpp_Features/" title="Modern Cpp Features" class="md-nav__link">
+      Modern Cpp Features
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/C_and_Cpp/Rand/" title="Rand" class="md-nav__link">
+      Rand
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Cmd
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        Cmd
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Cmd/ping_whole_subnet/" title="Ping whole subnet" class="md-nav__link">
+      Ping whole subnet
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6">
+    
+    <label class="md-nav__link" for="nav-4-6">
+      Cuda
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-6">
+        Cuda
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Cuda/Make/" title="Make" class="md-nav__link">
+      Make
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7">
+    
+    <label class="md-nav__link" for="nav-4-7">
+      Debug
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-7">
+        Debug
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Debug/10_Commands/" title="10 Commands" class="md-nav__link">
+      10 Commands
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Debug/Core_Dumps/" title="Core Dumps" class="md-nav__link">
+      Core Dumps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Debug/GDB/" title="GDB" class="md-nav__link">
+      GDB
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-8" type="checkbox" id="nav-4-8">
+    
+    <label class="md-nav__link" for="nav-4-8">
+      GCC
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-8">
+        GCC
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/GCC/Alternatives/" title="Alternatives" class="md-nav__link">
+      Alternatives
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/GCC/Make/" title="Make" class="md-nav__link">
+      Make
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-9" type="checkbox" id="nav-4-9">
+    
+    <label class="md-nav__link" for="nav-4-9">
+      Hardware
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-9">
+        Hardware
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Hardware/GPU/" title="GPU" class="md-nav__link">
+      GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Hardware/IP_Packet_Example/" title="IP Packet Example" class="md-nav__link">
+      IP Packet Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Hardware/Latency_Numbers/" title="Latency Numbers" class="md-nav__link">
+      Latency Numbers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Hardware/Networks/" title="Networks" class="md-nav__link">
+      Networks
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-10" type="checkbox" id="nav-4-10">
+    
+    <label class="md-nav__link" for="nav-4-10">
+      Java
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-10">
+        Java
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Java/Environment/" title="Environment" class="md-nav__link">
+      Environment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Java/Runtime_customization/" title="Runtime customization" class="md-nav__link">
+      Runtime customization
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-11" type="checkbox" id="nav-4-11">
+    
+    <label class="md-nav__link" for="nav-4-11">
+      Libraries
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-11">
+        Libraries
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Libraries/Linux/" title="Linux" class="md-nav__link">
+      Linux
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-12" type="checkbox" id="nav-4-12">
+    
+    <label class="md-nav__link" for="nav-4-12">
+      MPI
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-12">
+        MPI
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/MPI/HelloWorld/" title="HelloWorld" class="md-nav__link">
+      HelloWorld
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/MPI/MPI-Lib/" title="MPI Lib" class="md-nav__link">
+      MPI Lib
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-13" type="checkbox" id="nav-4-13">
+    
+    <label class="md-nav__link" for="nav-4-13">
+      Markdown
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-13">
+        Markdown
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Markdown/Markdown/" title="Markdown" class="md-nav__link">
+      Markdown
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-14" type="checkbox" id="nav-4-14">
+    
+    <label class="md-nav__link" for="nav-4-14">
+      Perl
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-14">
+        Perl
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Perl/Perl_one-liners/" title="Perl one liners" class="md-nav__link">
+      Perl one liners
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Perl/Perl_scripts_for_sa/" title="Perl scripts for sa" class="md-nav__link">
+      Perl scripts for sa
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-15" type="checkbox" id="nav-4-15">
+    
+    <label class="md-nav__link" for="nav-4-15">
+      Power Shell
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-15">
+        Power Shell
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Power_Shell/Azure/" title="Azure" class="md-nav__link">
+      Azure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Power_Shell/Power_Shell/" title="Power Shell" class="md-nav__link">
+      Power Shell
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-16" type="checkbox" id="nav-4-16">
+    
+    <label class="md-nav__link" for="nav-4-16">
+      Python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-16">
+        Python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Python/Installation/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Python/Kivy/" title="Kivy" class="md-nav__link">
+      Kivy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Python/Users_and_groups/" title="Users and groups" class="md-nav__link">
+      Users and groups
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-17" type="checkbox" id="nav-4-17">
+    
+    <label class="md-nav__link" for="nav-4-17">
+      Ruby
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-17">
+        Ruby
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Ruby/Installation/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-18" type="checkbox" id="nav-4-18">
+    
+    <label class="md-nav__link" for="nav-4-18">
+      Stress tests
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-18">
+        Stress tests
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Stress_tests/Ackerman_function/" title="Ackerman function" class="md-nav__link">
+      Ackerman function
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-19" type="checkbox" id="nav-4-19">
+    
+    <label class="md-nav__link" for="nav-4-19">
+      Vbs
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-19">
+        Vbs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Vbs/Kaspersky_Base_Actuality/" title="Kaspersky Base Actuality" class="md-nav__link">
+      Kaspersky Base Actuality
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Vbs/Links/" title="Links" class="md-nav__link">
+      Links
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Vbs/Network/" title="Network" class="md-nav__link">
+      Network
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Vbs/Run/" title="Run" class="md-nav__link">
+      Run
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-20" type="checkbox" id="nav-4-20">
+    
+    <label class="md-nav__link" for="nav-4-20">
+      Version Control
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-20">
+        Version Control
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Version_Control/Git/" title="Git" class="md-nav__link">
+      Git
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Version_Control/GitHub/" title="GitHub" class="md-nav__link">
+      GitHub
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Version_Control/Gitignore/" title="Gitignore" class="md-nav__link">
+      Gitignore
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Version_Control/Subversion/" title="Subversion" class="md-nav__link">
+      Subversion
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-21" type="checkbox" id="nav-4-21">
+    
+    <label class="md-nav__link" for="nav-4-21">
+      Web
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-21">
+        Web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Dev/Web/Redirect/" title="Redirect" class="md-nav__link">
+      Redirect
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      DevOps
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        DevOps
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../DevOps/Ansible/" title="Ansible" class="md-nav__link">
+      Ansible
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../DevOps/Chef-Windows/" title="Chef Windows" class="md-nav__link">
+      Chef Windows
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      OS
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        OS
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../OS/AIX/" title="AIX" class="md-nav__link">
+      AIX
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../OS/Android/" title="Android" class="md-nav__link">
+      Android
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../OS/FreeBSD/" title="FreeBSD" class="md-nav__link">
+      FreeBSD
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../OS/Useful_UNIX_distros/" title="Useful UNIX distros" class="md-nav__link">
+      Useful UNIX distros
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5" type="checkbox" id="nav-6-5">
+    
+    <label class="md-nav__link" for="nav-6-5">
+      Gentoo
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-5">
+        Gentoo
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../OS/Gentoo/Console_Font/" title="Console Font" class="md-nav__link">
+      Console Font
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../OS/Gentoo/Gnome/" title="Gnome" class="md-nav__link">
+      Gnome
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../OS/Gentoo/Installation/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../OS/Gentoo/Portage/" title="Portage" class="md-nav__link">
+      Portage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../OS/Gentoo/Systemd/" title="Systemd" class="md-nav__link">
+      Systemd
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
+    
+    <label class="md-nav__link" for="nav-7">
+      Tech
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Tech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-1" type="checkbox" id="nav-7-1">
+    
+    <label class="md-nav__link" for="nav-7-1">
+      Audit
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-1">
+        Audit
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Audit/Fork_unavailable/" title="Fork unavailable" class="md-nav__link">
+      Fork unavailable
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Audit/Hardware_info/" title="Hardware info" class="md-nav__link">
+      Hardware info
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Audit/Processes/" title="Processes" class="md-nav__link">
+      Processes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Audit/Reboot_Investigation/" title="Reboot Investigation" class="md-nav__link">
+      Reboot Investigation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      Backup
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        Backup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Backup/TSM/" title="TSM" class="md-nav__link">
+      TSM
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Backup/Tape/" title="Tape" class="md-nav__link">
+      Tape
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Backup/Veeam/" title="Veeam" class="md-nav__link">
+      Veeam
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
+    
+    <label class="md-nav__link" for="nav-7-3">
+      BigData
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-3">
+        BigData
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../BigData/Zookeper_grow/" title="Zookeper grow" class="md-nav__link">
+      Zookeper grow
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4">
+    
+    <label class="md-nav__link" for="nav-7-4">
+      Messaging
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-4">
+        Messaging
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Messaging/Email_Telnet/" title="Email Telnet" class="md-nav__link">
+      Email Telnet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Messaging/Postfix/" title="Postfix" class="md-nav__link">
+      Postfix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Messaging/SMS/" title="SMS" class="md-nav__link">
+      SMS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5" checked>
+    
+    <label class="md-nav__link" for="nav-7-5">
+      Monitoring
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-5">
+        Monitoring
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        80 tools for monitoring
+      </label>
+    
+    <a href="./" title="80 tools for monitoring" class="md-nav__link md-nav__link--active">
+      80 tools for monitoring
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#top" title="Top" class="md-nav__link">
+    Top
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#htop" title="htop" class="md-nav__link">
+    htop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atop" title="atop" class="md-nav__link">
+    atop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apachetop" title="apachetop" class="md-nav__link">
+    apachetop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ftptop" title="ftptop" class="md-nav__link">
+    ftptop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mytop" title="mytop" class="md-nav__link">
+    mytop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powertop" title="powertop" class="md-nav__link">
+    powertop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iotop" title="iotop" class="md-nav__link">
+    iotop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ntopng" title="ntopng" class="md-nav__link">
+    ntopng
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iftop" title="iftop" class="md-nav__link">
+    iftop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jnettop" title="jnettop" class="md-nav__link">
+    jnettop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bandwidthd" title="bandwidthd" class="md-nav__link">
+    bandwidthd
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etherape" title="EtherApe" class="md-nav__link">
+    EtherApe
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ethtool" title="ethtool" class="md-nav__link">
+    ethtool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nethogs" title="NetHogs" class="md-nav__link">
+    NetHogs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iptraf" title="iptraf" class="md-nav__link">
+    iptraf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ngrep" title="ngrep" class="md-nav__link">
+    ngrep
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mrtg" title="MRTG" class="md-nav__link">
+    MRTG
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bmon" title="bmon" class="md-nav__link">
+    bmon
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traceroute" title="traceroute" class="md-nav__link">
+    traceroute
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iptstate" title="IPTState" class="md-nav__link">
+    IPTState
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#darkstat" title="darkstat" class="md-nav__link">
+    darkstat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vnstat" title="vnStat" class="md-nav__link">
+    vnStat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#netstat" title="netstat" class="md-nav__link">
+    netstat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ss" title="ss" class="md-nav__link">
+    ss
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nmap" title="nmap" class="md-nav__link">
+    nmap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtr" title="MTR" class="md-nav__link">
+    MTR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcpdump" title="tcpdump" class="md-nav__link">
+    tcpdump
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#justniffer" title="Justniffer" class="md-nav__link">
+    Justniffer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-density" title="Server Density" class="md-nav__link">
+    Server Density
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opennms" title="OpenNMS" class="md-nav__link">
+    OpenNMS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sysusage" title="SysUsage" class="md-nav__link">
+    SysUsage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#brainypdm" title="brainypdm" class="md-nav__link">
+    brainypdm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pcp" title="PCP" class="md-nav__link">
+    PCP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kde-system-guard" title="KDE system guard" class="md-nav__link">
+    KDE system guard
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#munin" title="Munin" class="md-nav__link">
+    Munin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nagios" title="Nagios" class="md-nav__link">
+    Nagios
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zenoss" title="Zenoss" class="md-nav__link">
+    Zenoss
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cacti" title="Cacti" class="md-nav__link">
+    Cacti
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zabbix" title="Zabbix" class="md-nav__link">
+    Zabbix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nmon" title="nmon" class="md-nav__link">
+    nmon
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conky" title="conky" class="md-nav__link">
+    conky
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glances" title="Glances" class="md-nav__link">
+    Glances
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saidar" title="saidar" class="md-nav__link">
+    saidar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rrdtool" title="RRDtool" class="md-nav__link">
+    RRDtool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monit" title="monit" class="md-nav__link">
+    monit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-process-explorer" title="Linux process explorer" class="md-nav__link">
+    Linux process explorer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#df" title="df" class="md-nav__link">
+    df
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discus" title="discus" class="md-nav__link">
+    discus
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xosview" title="xosview" class="md-nav__link">
+    xosview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dstat" title="Dstat" class="md-nav__link">
+    Dstat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#net-snmp" title="Net-SNMP" class="md-nav__link">
+    Net-SNMP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#incron" title="incron" class="md-nav__link">
+    incron
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitorix" title="monitorix" class="md-nav__link">
+    monitorix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmstat" title="vmstat" class="md-nav__link">
+    vmstat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uptime" title="uptime" class="md-nav__link">
+    uptime
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mpstat" title="mpstat" class="md-nav__link">
+    mpstat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pmap" title="pmap" class="md-nav__link">
+    pmap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ps" title="ps" class="md-nav__link">
+    ps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sar" title="sar" class="md-nav__link">
+    sar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#collectl" title="collectl" class="md-nav__link">
+    collectl
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iostat" title="iostat" class="md-nav__link">
+    iostat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#free" title="free" class="md-nav__link">
+    free
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proc-file-system" title="/Proc file system" class="md-nav__link">
+    /Proc file system
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gkrellm" title="GKrellM" class="md-nav__link">
+    GKrellM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnome-system-monitor" title="Gnome system monitor" class="md-nav__link">
+    Gnome system monitor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#goaccess" title="GoAccess" class="md-nav__link">
+    GoAccess
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logwatch" title="Logwatch" class="md-nav__link">
+    Logwatch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#swatch" title="Swatch" class="md-nav__link">
+    Swatch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multitail" title="MultiTail" class="md-nav__link">
+    MultiTail
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acct-or-psacct" title="acct or psacct" class="md-nav__link">
+    acct or psacct
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whowatch" title="whowatch" class="md-nav__link">
+    whowatch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strace" title="strace" class="md-nav__link">
+    strace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dtrace" title="DTrace" class="md-nav__link">
+    DTrace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#webmin" title="webmin" class="md-nav__link">
+    webmin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stat" title="stat" class="md-nav__link">
+    stat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ifconfig" title="ifconfig" class="md-nav__link">
+    ifconfig
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ulimit" title="ulimit" class="md-nav__link">
+    ulimit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cpulimit" title="cpulimit" class="md-nav__link">
+    cpulimit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lshw" title="lshw" class="md-nav__link">
+    lshw
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#w" title="w" class="md-nav__link">
+    w
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lsof" title="lsof" class="md-nav__link">
+    lsof
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#collectd" title="collectd" class="md-nav__link">
+    collectd
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#observium" title="Observium" class="md-nav__link">
+    Observium
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nload" title="Nload" class="md-nav__link">
+    Nload
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smokeping" title="SmokePing" class="md-nav__link">
+    SmokePing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mobaxterm" title="MobaXterm" class="md-nav__link">
+    MobaXterm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shinken-monitoring" title="Shinken monitoring" class="md-nav__link">
+    Shinken monitoring
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Nagios/" title="Nagios" class="md-nav__link">
+      Nagios
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NetXMS/" title="NetXMS" class="md-nav__link">
+      NetXMS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Zabbix/" title="Zabbix" class="md-nav__link">
+      Zabbix
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-6" type="checkbox" id="nav-7-6">
+    
+    <label class="md-nav__link" for="nav-7-6">
+      Network
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-6">
+        Network
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Network/Common/" title="Common" class="md-nav__link">
+      Common
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Network/KEMP/" title="KEMP" class="md-nav__link">
+      KEMP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Network/NTP/" title="NTP" class="md-nav__link">
+      NTP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Network/Ports/" title="Ports" class="md-nav__link">
+      Ports
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Network/SNMP/" title="SNMP" class="md-nav__link">
+      SNMP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Network/WiFi/" title="WiFi" class="md-nav__link">
+      WiFi
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Network/tcpdump/" title="Tcpdump" class="md-nav__link">
+      Tcpdump
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-7" type="checkbox" id="nav-7-7">
+    
+    <label class="md-nav__link" for="nav-7-7">
+      Package Management
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-7">
+        Package Management
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Package_Management/Apt/" title="Apt" class="md-nav__link">
+      Apt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Package_Management/PIP/" title="PIP" class="md-nav__link">
+      PIP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Package_Management/Pacman/" title="Pacman" class="md-nav__link">
+      Pacman
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Package_Management/Yum/" title="Yum" class="md-nav__link">
+      Yum
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-8" type="checkbox" id="nav-7-8">
+    
+    <label class="md-nav__link" for="nav-7-8">
+      Project Management
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-8">
+        Project Management
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Project_Management/Redmine/" title="Redmine" class="md-nav__link">
+      Redmine
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-9" type="checkbox" id="nav-7-9">
+    
+    <label class="md-nav__link" for="nav-7-9">
+      Security
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-9">
+        Security
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Security/EncFS/" title="EncFS" class="md-nav__link">
+      EncFS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Security/FirewallD/" title="FirewallD" class="md-nav__link">
+      FirewallD
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Security/HSM/" title="HSM" class="md-nav__link">
+      HSM
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Security/IPTables/" title="IPTables" class="md-nav__link">
+      IPTables
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Security/OpenSSL/" title="OpenSSL" class="md-nav__link">
+      OpenSSL
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Security/PF/" title="PF" class="md-nav__link">
+      PF
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Security/SELinux/" title="SELinux" class="md-nav__link">
+      SELinux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Security/SSH/" title="SSH" class="md-nav__link">
+      SSH
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-10" type="checkbox" id="nav-7-10">
+    
+    <label class="md-nav__link" for="nav-7-10">
+      Storage and filesystems
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-10">
+        Storage and filesystems
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Storage_and_filesystems/Extend_Ext4_Partition/" title="Extend Ext4 Partition" class="md-nav__link">
+      Extend Ext4 Partition
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Storage_and_filesystems/Files_in_Unix/" title="Files in Unix" class="md-nav__link">
+      Files in Unix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Storage_and_filesystems/GPFS/" title="GPFS" class="md-nav__link">
+      GPFS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Storage_and_filesystems/HDD/" title="HDD" class="md-nav__link">
+      HDD
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Storage_and_filesystems/LVM/" title="LVM" class="md-nav__link">
+      LVM
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Storage_and_filesystems/Links/" title="Links" class="md-nav__link">
+      Links
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Storage_and_filesystems/Map_Disks_in_Windows/" title="Map Disks in Windows" class="md-nav__link">
+      Map Disks in Windows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Storage_and_filesystems/SAN/" title="SAN" class="md-nav__link">
+      SAN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Storage_and_filesystems/mdadm/" title="Mdadm" class="md-nav__link">
+      Mdadm
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-11" type="checkbox" id="nav-7-11">
+    
+    <label class="md-nav__link" for="nav-7-11">
+      Users
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-11">
+        Users
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Users/Rename_User/" title="Rename User" class="md-nav__link">
+      Rename User
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-12" type="checkbox" id="nav-7-12">
+    
+    <label class="md-nav__link" for="nav-7-12">
+      Virtual
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-12">
+        Virtual
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Virtual/Docker/" title="Docker" class="md-nav__link">
+      Docker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Virtual/Hyper-V/" title="Hyper V" class="md-nav__link">
+      Hyper V
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Virtual/KVM/" title="KVM" class="md-nav__link">
+      KVM
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-13" type="checkbox" id="nav-7-13">
+    
+    <label class="md-nav__link" for="nav-7-13">
+      Web
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-13">
+        Web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Web/Curl/" title="Curl" class="md-nav__link">
+      Curl
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Web/IIS/" title="IIS" class="md-nav__link">
+      IIS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Web/Tomcat/" title="Tomcat" class="md-nav__link">
+      Tomcat
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      UX
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        UX
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-1" type="checkbox" id="nav-8-1">
+    
+    <label class="md-nav__link" for="nav-8-1">
+      Edittors
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-1">
+        Edittors
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Edittors/My_Sublime_Text_config/" title="My Sublime Text config" class="md-nav__link">
+      My Sublime Text config
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Edittors/VSCode/" title="VSCode" class="md-nav__link">
+      VSCode
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Edittors/Vim/" title="Vim" class="md-nav__link">
+      Vim
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2">
+    
+    <label class="md-nav__link" for="nav-8-2">
+      Hi DPI
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        Hi DPI
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Hi_DPI/Awesome_VM/" title="Awesome VM" class="md-nav__link">
+      Awesome VM
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Hi_DPI/Java/" title="Java" class="md-nav__link">
+      Java
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3">
+    
+    <label class="md-nav__link" for="nav-8-3">
+      Images
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-3">
+        Images
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Images/Convert/" title="Convert" class="md-nav__link">
+      Convert
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-4" type="checkbox" id="nav-8-4">
+    
+    <label class="md-nav__link" for="nav-8-4">
+      MacOS
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-4">
+        MacOS
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/MacOS/Root/" title="Root" class="md-nav__link">
+      Root
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-5" type="checkbox" id="nav-8-5">
+    
+    <label class="md-nav__link" for="nav-8-5">
+      Messangers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-5">
+        Messangers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Messangers/Skype/" title="Skype" class="md-nav__link">
+      Skype
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-6" type="checkbox" id="nav-8-6">
+    
+    <label class="md-nav__link" for="nav-8-6">
+      Network
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-6">
+        Network
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Network/Windows_refresh_DNS/" title="Windows refresh DNS" class="md-nav__link">
+      Windows refresh DNS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-7" type="checkbox" id="nav-8-7">
+    
+    <label class="md-nav__link" for="nav-8-7">
+      Office
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-7">
+        Office
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Office/Outlook/" title="Outlook" class="md-nav__link">
+      Outlook
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-8" type="checkbox" id="nav-8-8">
+    
+    <label class="md-nav__link" for="nav-8-8">
+      Power Management
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-8">
+        Power Management
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Power_Management/Laptop_lid_linux/" title="Laptop lid linux" class="md-nav__link">
+      Laptop lid linux
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-9" type="checkbox" id="nav-8-9">
+    
+    <label class="md-nav__link" for="nav-8-9">
+      Terminal
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-9">
+        Terminal
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Terminal/Tmux/" title="Tmux" class="md-nav__link">
+      Tmux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Terminal/cmd/" title="Cmd" class="md-nav__link">
+      Cmd
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10" type="checkbox" id="nav-8-10">
+    
+    <label class="md-nav__link" for="nav-8-10">
+      Wine
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-10">
+        Wine
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Wine/Custom_prefix/" title="Custom prefix" class="md-nav__link">
+      Custom prefix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/Wine/curse_client_5/" title="Curse client 5" class="md-nav__link">
+      Curse client 5
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-11" type="checkbox" id="nav-8-11">
+    
+    <label class="md-nav__link" for="nav-8-11">
+      X Window
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-11">
+        X Window
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../UX/X-Window/Common/" title="Common" class="md-nav__link">
+      Common
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#top" title="Top" class="md-nav__link">
+    Top
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#htop" title="htop" class="md-nav__link">
+    htop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atop" title="atop" class="md-nav__link">
+    atop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apachetop" title="apachetop" class="md-nav__link">
+    apachetop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ftptop" title="ftptop" class="md-nav__link">
+    ftptop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mytop" title="mytop" class="md-nav__link">
+    mytop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powertop" title="powertop" class="md-nav__link">
+    powertop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iotop" title="iotop" class="md-nav__link">
+    iotop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ntopng" title="ntopng" class="md-nav__link">
+    ntopng
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iftop" title="iftop" class="md-nav__link">
+    iftop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jnettop" title="jnettop" class="md-nav__link">
+    jnettop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bandwidthd" title="bandwidthd" class="md-nav__link">
+    bandwidthd
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etherape" title="EtherApe" class="md-nav__link">
+    EtherApe
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ethtool" title="ethtool" class="md-nav__link">
+    ethtool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nethogs" title="NetHogs" class="md-nav__link">
+    NetHogs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iptraf" title="iptraf" class="md-nav__link">
+    iptraf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ngrep" title="ngrep" class="md-nav__link">
+    ngrep
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mrtg" title="MRTG" class="md-nav__link">
+    MRTG
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bmon" title="bmon" class="md-nav__link">
+    bmon
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traceroute" title="traceroute" class="md-nav__link">
+    traceroute
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iptstate" title="IPTState" class="md-nav__link">
+    IPTState
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#darkstat" title="darkstat" class="md-nav__link">
+    darkstat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vnstat" title="vnStat" class="md-nav__link">
+    vnStat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#netstat" title="netstat" class="md-nav__link">
+    netstat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ss" title="ss" class="md-nav__link">
+    ss
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nmap" title="nmap" class="md-nav__link">
+    nmap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtr" title="MTR" class="md-nav__link">
+    MTR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcpdump" title="tcpdump" class="md-nav__link">
+    tcpdump
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#justniffer" title="Justniffer" class="md-nav__link">
+    Justniffer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-density" title="Server Density" class="md-nav__link">
+    Server Density
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opennms" title="OpenNMS" class="md-nav__link">
+    OpenNMS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sysusage" title="SysUsage" class="md-nav__link">
+    SysUsage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#brainypdm" title="brainypdm" class="md-nav__link">
+    brainypdm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pcp" title="PCP" class="md-nav__link">
+    PCP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kde-system-guard" title="KDE system guard" class="md-nav__link">
+    KDE system guard
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#munin" title="Munin" class="md-nav__link">
+    Munin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nagios" title="Nagios" class="md-nav__link">
+    Nagios
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zenoss" title="Zenoss" class="md-nav__link">
+    Zenoss
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cacti" title="Cacti" class="md-nav__link">
+    Cacti
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zabbix" title="Zabbix" class="md-nav__link">
+    Zabbix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nmon" title="nmon" class="md-nav__link">
+    nmon
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conky" title="conky" class="md-nav__link">
+    conky
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glances" title="Glances" class="md-nav__link">
+    Glances
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saidar" title="saidar" class="md-nav__link">
+    saidar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rrdtool" title="RRDtool" class="md-nav__link">
+    RRDtool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monit" title="monit" class="md-nav__link">
+    monit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-process-explorer" title="Linux process explorer" class="md-nav__link">
+    Linux process explorer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#df" title="df" class="md-nav__link">
+    df
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discus" title="discus" class="md-nav__link">
+    discus
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xosview" title="xosview" class="md-nav__link">
+    xosview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dstat" title="Dstat" class="md-nav__link">
+    Dstat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#net-snmp" title="Net-SNMP" class="md-nav__link">
+    Net-SNMP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#incron" title="incron" class="md-nav__link">
+    incron
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitorix" title="monitorix" class="md-nav__link">
+    monitorix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmstat" title="vmstat" class="md-nav__link">
+    vmstat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uptime" title="uptime" class="md-nav__link">
+    uptime
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mpstat" title="mpstat" class="md-nav__link">
+    mpstat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pmap" title="pmap" class="md-nav__link">
+    pmap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ps" title="ps" class="md-nav__link">
+    ps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sar" title="sar" class="md-nav__link">
+    sar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#collectl" title="collectl" class="md-nav__link">
+    collectl
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iostat" title="iostat" class="md-nav__link">
+    iostat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#free" title="free" class="md-nav__link">
+    free
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proc-file-system" title="/Proc file system" class="md-nav__link">
+    /Proc file system
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gkrellm" title="GKrellM" class="md-nav__link">
+    GKrellM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnome-system-monitor" title="Gnome system monitor" class="md-nav__link">
+    Gnome system monitor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#goaccess" title="GoAccess" class="md-nav__link">
+    GoAccess
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logwatch" title="Logwatch" class="md-nav__link">
+    Logwatch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#swatch" title="Swatch" class="md-nav__link">
+    Swatch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multitail" title="MultiTail" class="md-nav__link">
+    MultiTail
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acct-or-psacct" title="acct or psacct" class="md-nav__link">
+    acct or psacct
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whowatch" title="whowatch" class="md-nav__link">
+    whowatch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strace" title="strace" class="md-nav__link">
+    strace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dtrace" title="DTrace" class="md-nav__link">
+    DTrace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#webmin" title="webmin" class="md-nav__link">
+    webmin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stat" title="stat" class="md-nav__link">
+    stat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ifconfig" title="ifconfig" class="md-nav__link">
+    ifconfig
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ulimit" title="ulimit" class="md-nav__link">
+    ulimit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cpulimit" title="cpulimit" class="md-nav__link">
+    cpulimit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lshw" title="lshw" class="md-nav__link">
+    lshw
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#w" title="w" class="md-nav__link">
+    w
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lsof" title="lsof" class="md-nav__link">
+    lsof
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#collectd" title="collectd" class="md-nav__link">
+    collectd
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#observium" title="Observium" class="md-nav__link">
+    Observium
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nload" title="Nload" class="md-nav__link">
+    Nload
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smokeping" title="SmokePing" class="md-nav__link">
+    SmokePing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mobaxterm" title="MobaXterm" class="md-nav__link">
+    MobaXterm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shinken-monitoring" title="Shinken monitoring" class="md-nav__link">
+    Shinken monitoring
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>80 tools for monitoring</h1>
+                
+                <h3 id="top">Top</h3>
+<pre><code>This is a small tool which is pre-installed on many unix systems. When you want an overview of all the processes or threads running in the system: top is a good tool. Order processes on different criteria – the default of which is CPU.
+</code></pre>
+
+<h3 id="htop">htop</h3>
+<pre><code>Htop is essentially an enhanced version of top. It’s easier to sort by processes. It’s visually easier to understand and has built in commands for common things you would like to do. Plus it’s fully interactive.
+</code></pre>
+
+<h3 id="atop">atop</h3>
+<pre><code>Atop monitors all processes much like top and htop, unlike top and htop however it has daily logging of the processes for long-term analysis. It also shows resource consumption by all processes. It will also highlight resources that have reached a critical load.
+</code></pre>
+
+<h3 id="apachetop">apachetop</h3>
+<pre><code>Apachetop monitors the overall performance of your apache webserver. It’s largely based on mytop. It displays current number of reads, writes and the overall number of requests processed.
+</code></pre>
+
+<h3 id="ftptop">ftptop</h3>
+<pre><code>ftptop gives you basic information of all the current ftp connections to your server such as the total amount of sessions, how many are uploading and downloading and who the client is.
+</code></pre>
+
+<h3 id="mytop">mytop</h3>
+<pre><code>mytop is a neat tool for monitoring threads and performance of mysql. It gives you a live look into the database and what queries it’s processing in real time.
+</code></pre>
+
+<h3 id="powertop">powertop</h3>
+<pre><code>powertop helps you diagnose issues that has to do with power consumption and power management. It can also help you experiment with power management settings to achieve the most efficient settings for your server. You switch tabs with the tab key.
+</code></pre>
+
+<h3 id="iotop">iotop</h3>
+<pre><code>iotop checks the I/O usage information and gives you a top-like interface to that. It displays columns on read and write and each row represents a process. It also displays the percentage of time the process spent while swapping in and while waiting on I/O.
+</code></pre>
+
+<h3 id="ntopng">ntopng</h3>
+<pre><code>ntopng is the next generation of ntop and the tool provides a graphical user interface via the browser for network monitoring. It can do stuff such as: geolocate hosts, get network traffic and show ip traffic distribution and analyze it.
+</code></pre>
+
+<h3 id="iftop">iftop</h3>
+<pre><code>iftop is similar to top, but instead of mainly checking for cpu usage it listens to network traffic on selected network interfaces and displays a table of current usage. It can be handy for answering questions such as “Why on earth is my internet connection so slow?!”.
+</code></pre>
+
+<h3 id="jnettop">jnettop</h3>
+<pre><code>jnettop visualises network traffic in much the same way as iftop does. It also supports customizable text output and a machine-friendly mode to support further analysis.
+</code></pre>
+
+<h3 id="bandwidthd">bandwidthd</h3>
+<pre><code>BandwidthD tracks usage of TCP/IP network subnets and visualises that in the browser by building a html page with graphs in png. There is a database driven system that supports searching, filtering, multiple sensors and custom reports.
+</code></pre>
+
+<h3 id="etherape">EtherApe</h3>
+<pre><code>EtherApe displays network traffic graphically, the more talkative the bigger the node. It either captures live traffic or can read it from a tcpdump. The displayed can also be refined using a network filter with pcap syntax.
+</code></pre>
+
+<h3 id="ethtool">ethtool</h3>
+<pre><code>ethtool is used for displaying and modifying some parameters of the network interface controllers. It can also be used to diagnose Ethernet devices and get more statistics from the devices.
+</code></pre>
+
+<h3 id="nethogs">NetHogs</h3>
+<pre><code>NetHogs breaks down network traffic per protocol or per subnet. It then groups by process. So if there’s a surge in network traffic you can fire up NetHogs and see which process is causing it.
+</code></pre>
+
+<h3 id="iptraf">iptraf</h3>
+<pre><code>iptraf gathers a variety of metrics such as TCP connection packet and byte count, interface statistics and activity indicators, TCP/UDP traffic breakdowns and station packet and byte counts.
+</code></pre>
+
+<h3 id="ngrep">ngrep</h3>
+<pre><code>ngrep is grep but for the network layer. It’s pcap aware and will allow to specify extended regular or hexadecimal expressions to match against packets of .
+</code></pre>
+
+<h3 id="mrtg">MRTG</h3>
+<pre><code>MRTG was orginally developed to monitor router traffic, but now it’s able to monitor other network related things as well. It typically collects every five minutes and then generates a html page. It also has the capability of sending warning emails.
+</code></pre>
+
+<h3 id="bmon">bmon</h3>
+<pre><code>Bmon monitors and helps you debug networks. It captures network related statistics and presents it in human friendly way. You can also interact with bmon through curses or through scripting.
+</code></pre>
+
+<h3 id="traceroute">traceroute</h3>
+<pre><code>Traceroute is a built-in tool for displaying the route and measuring the delay of packets across a network.
+</code></pre>
+
+<h3 id="iptstate">IPTState</h3>
+<pre><code>IPTState allows you to watch where traffic that crosses your iptables is going and then sort that by different criteria as you please. The tool also allows you to delete states from the table.
+</code></pre>
+
+<h3 id="darkstat">darkstat</h3>
+<pre><code>Darkstat captures network traffic and calculates statistics about usage. The reports are served over a simple HTTP server and gives you a nice graphical user interface of the graphs.
+</code></pre>
+
+<h3 id="vnstat">vnStat</h3>
+<pre><code>vnStat is a network traffic monitor that uses statistics provided by the kernel which ensures light use of system resources. The gathered statistics persists through system reboots. It has color options for the artistic sysadmins.
+</code></pre>
+
+<h3 id="netstat">netstat</h3>
+<pre><code>Netstat is a built-in tool that displays TCP network connections, routing tables and a number of network interfaces. It’s used to find problems in the network.
+</code></pre>
+
+<h3 id="ss">ss</h3>
+<pre><code>Instead of using netstat, it’s however preferable to use ss. The ss command is capable of showing more information than netstat and is actually faster. If you want a summary statistics you can use the command ss -s.
+</code></pre>
+
+<h3 id="nmap">nmap</h3>
+<pre><code>Nmap allows you to scan your server for open ports or detect which OS is being used. But you could also use this for SQL injection vulnerabilities, network discovery and other means related to penetration testing.
+</code></pre>
+
+<h3 id="mtr">MTR</h3>
+<pre><code>MTR combines the functionality of traceroute and the ping tool into a single network diagnostic tool. When using the tool it will limit the number hops individual packets has to travel while also listening to their expiry. It then repeats this every second.
+</code></pre>
+
+<h3 id="tcpdump">tcpdump</h3>
+<pre><code>tcpdump will output a description of the contents of the packet it just captured which matches the expression that you provided in the command. You can also save the this data for further analysis.
+</code></pre>
+
+<h3 id="justniffer">Justniffer</h3>
+<pre><code>Justniffer is a tcp packet sniffer. You can choose whether you would like to collect low-level data or high-level data with this sniffer. It also allows you to generate logs in customizable way. You could for instance mimic the access log that apache has.
+</code></pre>
+
+<h3 id="server-density">Server Density</h3>
+<pre><code>Our server monitoring tool! It has a web interface that allows you to set alerts and view graphs for all system and network metrics. You can also set up monitoring of websites whether they are up or down. Server Density allows you to set permissions for users and you can extend your monitoring with our plugin infrastructure or api. The service already supports Nagios plugins.
+</code></pre>
+
+<h3 id="opennms">OpenNMS</h3>
+<pre><code>OpenNMS has four main functional areas: event management and notifications; discovery and provisioning; service monitoring and data collection. It’s designed to be customizable to work in a variety of network environments.
+</code></pre>
+
+<h3 id="sysusage">SysUsage</h3>
+<pre><code>SysUsage monitors your system continuously via Sar and other system commands. It also allows notifications to alarm you once a threshold is reached. SysUsage itself can be run from a centralized place where all the collected statistics are also being stored. It has a web interface where you can view all the stats.
+</code></pre>
+
+<h3 id="brainypdm">brainypdm</h3>
+<pre><code>brainypdm is a data management and monitoring tool that has the capability to gather data from nagios or another generic source to make graphs. It’s cross-platform, has custom graphs and is web based.
+</code></pre>
+
+<h3 id="pcp">PCP</h3>
+<pre><code>PCP has the capability of collating metrics from multiple hosts and does so efficiently. It also has a plugin framework so you can make it collect specific metrics that is important to you. You can access graph data through either a web interface or a GUI. Good for monitoring large systems.
+</code></pre>
+
+<h3 id="kde-system-guard">KDE system guard</h3>
+<pre><code>This tool is both a system monitor and task manager. You can view server metrics from several machines through the worksheet and if a process needs to be killed or if you need to start a process it can be done within KDE system guard.
+</code></pre>
+
+<h3 id="munin">Munin</h3>
+<pre><code>Munin is both a network and a system monitoring tool which offers alerts for when metrics go beyond a given threshold. It uses RRDtool to create the graphs and it has web interface to display these graphs. Its emphasis is on plug and play capabilities with a number of plugins available.
+</code></pre>
+
+<h3 id="nagios">Nagios</h3>
+<pre><code>Nagios is system and network monitoring tool that helps you monitor monitor your many servers. It has support for alerting for when things go wrong. It also has many plugins written for the platform.
+</code></pre>
+
+<h3 id="zenoss">Zenoss</h3>
+<pre><code>Zenoss provides a web interface that allows you to monitor all system and network metrics. Moreover it discovers network resources and changes in network configurations. It has alerts for you to take action on and it supports the Nagios plugins.
+</code></pre>
+
+<h3 id="cacti">Cacti</h3>
+<pre><code>(And one for luck!) Cacti is network graphing solution that uses the RRDtool data storage. It allows a user to poll services at predetermined intervals and graph the result. Cacti can be extended to monitor a source of your choice through shell scripts.
+</code></pre>
+
+<h3 id="zabbix">Zabbix</h3>
+<pre><code>Zabbix is an open source infrastructure monitoring solution. It can use most databases out there to store the monitoring statistics. The Core is written in C and has a frontend in PHP. If you don’t like installing an agent, Zabbix might be an option for you.
+</code></pre>
+
+<h3 id="nmon">nmon</h3>
+<pre><code>nmon either outputs the data on screen or saves it in a comma separated file. You can display CPU, memory, network, filesystems, top processes. The data can also be added to a RRD database for further analysis.
+</code></pre>
+
+<h3 id="conky">conky</h3>
+<pre><code>Conky monitors a plethora of different OS stats. It has support for IMAP and POP3 and even support for many popular music players! For the handy person you could extend it with your own scripts or programs using Lua.
+</code></pre>
+
+<h3 id="glances">Glances</h3>
+<pre><code>Glances monitors your system and aims to present a maximum amount of information in a minimum amount of space. It has the capability to function in a client/server mode as well as monitoring remotely. It also has a web interface.
+</code></pre>
+
+<h3 id="saidar">saidar</h3>
+<pre><code>Saidar is a very small tool that gives you basic information about your system resources. It displays a full screen of the standard system resources. The emphasis for saidar is being as simple as possible.
+</code></pre>
+
+<h3 id="rrdtool">RRDtool</h3>
+<pre><code>RRDtool is a tool developed to handle round-robin databases or RRD. RRD aims to handle time-series data like CPU load, temperatures etc. This tool provides a way to extract RRD data in a graphical format.
+</code></pre>
+
+<h3 id="monit">monit</h3>
+<pre><code>Monit has the capability of sending you alerts as well as restarting services if they run into trouble. It’s possible to perform any type of check you could write a script for with monit and it has a web user interface to ease your eyes.
+</code></pre>
+
+<h3 id="linux-process-explorer">Linux process explorer</h3>
+<pre><code>Linux process explorer is akin to the activity monitor for OSX or the windows equivalent. It aims to be more usable than top or ps. You can view each process and see how much memory usage or CPU it uses.
+</code></pre>
+
+<h3 id="df">df</h3>
+<pre><code>df is an abbreviation for disk free and is pre-installed program in all unix systems used to display the amount of available disk space for filesystems which the user have access to.
+</code></pre>
+
+<h3 id="discus">discus</h3>
+<pre><code>Discus is similar to df however it aims to improve df by making it prettier using fancy features as colors, graphs and smart formatting of numbers.
+</code></pre>
+
+<h3 id="xosview">xosview</h3>
+<pre><code>xosview is a classic system monitoring tool and it gives you a simple overview of all the different parts of the including IRQ.
+</code></pre>
+
+<h3 id="dstat">Dstat</h3>
+<pre><code>Dstat aims to be a replacement for vmstat, iostat, netstat and ifstat. It allows you to view all of your system resources in real-time. The data can then be exported into csv. Most importantly dstat allows for plugins and could thus be extended into areas not yet known to mankind.
+</code></pre>
+
+<h3 id="net-snmp">Net-SNMP</h3>
+<pre><code>SNMP is the protocol ‘simple network management protocol’ and the Net-SNMP tool suite helps you collect accurate information about your servers using this protocol.
+</code></pre>
+
+<h3 id="incron">incron</h3>
+<pre><code>Incron allows you to monitor a directory tree and then take action on those changes. If you wanted to copy files to directory ‘b’ once new files appeared in directory ‘a’ that’s exactly what incron does.
+</code></pre>
+
+<h3 id="monitorix">monitorix</h3>
+<pre><code>Monitorix is lightweight system monitoring tool. It helps you monitor a single machine and gives you a wealth of metrics. It also has a built-in HTTP server to view graphs and a reporting mechanism of all metrics.
+</code></pre>
+
+<h3 id="vmstat">vmstat</h3>
+<pre><code>vmstat or virtual memory statistics is a small built-in tool that monitors and displays a summary about the memory in the machine.
+</code></pre>
+
+<h3 id="uptime">uptime</h3>
+<pre><code>This small command that quickly gives you information about how long the machine has been running, how many users currently are logged on and the system load average for the past 1, 5 and 15 minutes.
+</code></pre>
+
+<h3 id="mpstat">mpstat</h3>
+<pre><code>mpstat is a built-in tool that monitors cpu usage. The most common command is using mpstat -P ALL which gives you the usage of all the cores. You can also get an interval update of the CPU usage.
+</code></pre>
+
+<h3 id="pmap">pmap</h3>
+<pre><code>pmap is a built-in tool that reports the memory map of a process. You can use this command to find out causes of memory bottlenecks.
+</code></pre>
+
+<h3 id="ps">ps</h3>
+<pre><code>The ps command will give you an overview of all the current processes. You can easily select all processes using the command ps -A
+</code></pre>
+
+<h3 id="sar">sar</h3>
+<pre><code>sar is a part of the sysstat package and helps you to collect, report and save different system metrics. With different commands it will give you CPU, memory and I/O usage among other things.
+</code></pre>
+
+<h3 id="collectl">collectl</h3>
+<pre><code>Similar to sar collectl collects performance metrics for your machine. By default it shows cpu, network and disk stats but it collects a lot more. The difference to sar is collectl is able to deal with times below 1 second, it can be fed into a plotting tool directly and collectl monitors processes more extensively.
+</code></pre>
+
+<h3 id="iostat">iostat</h3>
+<pre><code>iostat is also part of the sysstat package. This command is used for monitoring system input/output. The reports themselves can be used to change system configurations to better balance input/output load between hard drives in your machine.
+</code></pre>
+
+<h3 id="free">free</h3>
+<pre><code>This is a built-in command that displays the total amount of free and used physical memory on your machine. It also displays the buffers used by the kernel at that given moment.
+</code></pre>
+
+<h3 id="proc-file-system">/Proc file system</h3>
+<pre><code>The proc file system gives you a peek into kernel statistics. From these statistics you can get detailed information about the different hardware devices on your machine. Take a look at the full list of the proc file statistics
+</code></pre>
+
+<h3 id="gkrellm">GKrellM</h3>
+<pre><code>GKrellm is a gui application that monitor the status of your hardware such CPU, main memory, hard disks, network interfaces and many other things. It can also monitor and launch a mail reader of your choice.
+</code></pre>
+
+<h3 id="gnome-system-monitor">Gnome system monitor</h3>
+<pre><code>Gnome system monitor is a basic system monitoring tool that has features looking at process dependencies from a tree view, kill or renice processes and graphs of all server metrics.
+</code></pre>
+
+<h3 id="goaccess">GoAccess</h3>
+<pre><code>GoAccess is a real-time web log analyzer which analyzes the access log from either apache, nginx or amazon cloudfront. It’s also possible to output the data into HTML, JSON or CSV. It will give you general statistics, top visitors, 404s, geolocation and many other things.
+</code></pre>
+
+<h3 id="logwatch">Logwatch</h3>
+<pre><code>Logwatch is a log analysis system. It parses through your system’s logs and creates a report analyzing the areas that you specify. It can give you daily reports with short digests of the activities taking place on your machine.
+</code></pre>
+
+<h3 id="swatch">Swatch</h3>
+<pre><code>Much like Logwatch Swatch also monitors your logs, but instead of giving reports it watches for regular expression and notifies you via mail or the console when there is a match. It could be used for intruder detection for example.
+</code></pre>
+
+<h3 id="multitail">MultiTail</h3>
+<pre><code>MultiTail helps you monitor logfiles in multiple windows. You can merge two or more of these logfiles into one. It will also use colors to display the logfiles for easier reading with the help of regular expressions.
+</code></pre>
+
+<h3 id="acct-or-psacct">acct or psacct</h3>
+<pre><code>acct or psacct (depending on if you use apt-get or yum) allows you to monitor all the commands a users executes inside the system including CPU and memory time. Once installed you get that summary with the command ‘sa’.
+</code></pre>
+
+<h3 id="whowatch">whowatch</h3>
+<pre><code>Similar to acct this tool monitors users on your system and allows you to see in real time what commands and processes they are using. It gives you a tree structure of all the processes and so you can see exactly what’s happening.
+</code></pre>
+
+<h3 id="strace">strace</h3>
+<pre><code>strace is used to diagnose, debug and monitor interactions between processes. The most common thing to do is making strace print a list of system calls made by the program which is useful if the program does not behave as expected.
+</code></pre>
+
+<h3 id="dtrace">DTrace</h3>
+<pre><code>DTrace is the big brother of strace. It dynamically patches live running instructions with instrumentation code. This allows you to do in-depth performance analysis and troubleshooting. However, it’s not for the weak of heart as there is a 1200 book written on the topic.
+</code></pre>
+
+<h3 id="webmin">webmin</h3>
+<pre><code>Webmin is a web-based system administration tool. It removes the need to manually edit unix configuration files and lets you manage the system remotely if need be. It has a couple of monitoring modules that you can attach to it.
+</code></pre>
+
+<h3 id="stat">stat</h3>
+<pre><code>Stat is a built-in tool for displaying status information of files and file systems. It will give you information such as when the file was modified, accessed or changed.
+</code></pre>
+
+<h3 id="ifconfig">ifconfig</h3>
+<pre><code>ifconfig is a built-in tool used to configure the network interfaces. Behind the scenes network monitor tools use ifconfig to set it into promiscuous mode to capture all packets. You can do it yourself with ifconfig eth0 promisc and return to normal mode with ifconfig eth0 -promisc.
+</code></pre>
+
+<h3 id="ulimit">ulimit</h3>
+<pre><code>ulimit is a built-in tool that monitors system resources and keeps a limit so any of the monitored resources don’t go overboard. For instance making a fork bomb where a properly configured ulimit is in place would be totally fine.
+</code></pre>
+
+<h3 id="cpulimit">cpulimit</h3>
+<pre><code>CPUlimit is a small tool that monitors and then limits the CPU usage of a process. It’s particularly useful to make batch jobs not eat up too many CPU cycles.
+</code></pre>
+
+<h3 id="lshw">lshw</h3>
+<pre><code>lshw is a small built-in tool extract detailed information about the hardware configuration of the machine. It can output everything from CPU version and speed to mainboard configuration.
+</code></pre>
+
+<h3 id="w">w</h3>
+<pre><code>W is a built-in command that displays information about the users currently using the machine and their processes.
+</code></pre>
+
+<h3 id="lsof">lsof</h3>
+<pre><code>lsof is a built-in tool that gives you a list of all open files and network connections. From there you can narrow it down to files opened by processes, based on the process name, by a specific user or perhaps kill all processes that belongs to a specific user.
+</code></pre>
+
+<h3 id="collectd">collectd</h3>
+<pre><code>Collectd is a Unix daemon that collects all your monitoring statistics. It uses a modular design and plugins to fill in any niche monitoring. This way collectd stays as lightweight and customizable as possible.
+</code></pre>
+
+<h3 id="observium">Observium</h3>
+<pre><code>Observium is an auto-discovering network monitoring platform supporting a wide range of hardware platforms and operating systems. Observium focuses on providing a beautiful and powerful yet simple and intuitive interface to the health and status of your network.
+</code></pre>
+
+<h3 id="nload">Nload</h3>
+<pre><code>It’s a command line tool that monitors network throughput. It’s neat because it visualizes the in and and outgoing traffic using two graphs and some additional useful data like total amount of transferred data. You can install it with 
+yum install nload
+or 
+1 sudo apt-get install nload
+</code></pre>
+
+<h3 id="smokeping">SmokePing</h3>
+<pre><code>SmokePing keeps track of the network latencies of your network and it visualises them too. There are a wide range of latency measurement plugins developed for SmokePing. If a GUI is important to you it’s there is an ongoing development to make that happen.
+</code></pre>
+
+<h3 id="mobaxterm">MobaXterm</h3>
+<pre><code>If you’re working in windows environment day in and day out. You may feel limited by the terminal Windows provides. MobaXterm comes to the rescue and allows you to use many of the terminal commands commonly found in Linux. Which will help you tremendously in your monitoring needs!
+</code></pre>
+
+<h3 id="shinken-monitoring">Shinken monitoring</h3>
+<pre><code>Shinken is a monitoring framework which is a total rewrite of Nagios in python. It aims to enhance flexibility and managing a large environment. While still keeping all your nagios configuration and plugins.
+</code></pre>
+                
+                  
+                
+              
+              
+                
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../Messaging/SMS/" title="SMS" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                SMS
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../Nagios/" title="Nagios" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Nagios
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2017 Dmitry Ivanov. <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter40819844 = new Ya.Metrika({ id:40819844, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+          </div>
+        
+        powered by
+        <a href="http://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.02434462.js"></script>
+      
+      <script>app.initialize({version:"0.17.2",url:{base:"../../.."}})</script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-80208201-1","keepbot.github.io"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>
