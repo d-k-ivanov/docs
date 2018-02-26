@@ -3,7 +3,7 @@ site_url: 'https://keepbot.github.io/docs/'
 site_description: 'Collection of Technical guides'
 site_author: 'Dmitriy Ivanov'
 
-repo_name: 'Main'
+repo_name: 'Main site'
 repo_url: 'https://keepbot.github.io/'
 
 theme: 
