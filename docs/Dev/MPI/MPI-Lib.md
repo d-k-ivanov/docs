@@ -1,4 +1,4 @@
-### MPI_Abort.md
+### MPI_Abort
 ```
 MPI_Abort(3)                          MPI                         MPI_Abort(3)
 
@@ -40,7 +40,7 @@ LOCATION
                                   12/13/2001                      MPI_Abort(3)
 ```
 
-### MPI_Address.md
+### MPI_Address
 ```
 MPI_Address(3)                        MPI                       MPI_Address(3)
 
@@ -89,7 +89,7 @@ LOCATION
                                   11/14/2001                    MPI_Address(3)
 ```
 
-### MPI_Allgather.md
+### MPI_Allgather
 ```
 MPI_Allgather(3)                      MPI                     MPI_Allgather(3)
 
@@ -182,7 +182,7 @@ LOCATION
                                    10/1/2004                  MPI_Allgather(3)
 ```
 
-### MPI_Allgatherv.md
+### MPI_Allgatherv
 ```
 MPI_Allgatherv(3)                     MPI                    MPI_Allgatherv(3)
 
@@ -276,7 +276,7 @@ LOCATION
                                   11/14/2001                 MPI_Allgatherv(3)
 ```
 
-### MPI_Allreduce.md
+### MPI_Allreduce
 ```
 MPI_Allreduce(3)                      MPI                     MPI_Allreduce(3)
 
@@ -364,7 +364,7 @@ LOCATION
                                   11/14/2001                  MPI_Allreduce(3)
 ```
 
-### MPI_Alltoall.md
+### MPI_Alltoall
 ```
 MPI_Alltoall(3)                       MPI                      MPI_Alltoall(3)
 
@@ -440,7 +440,7 @@ LOCATION
                                   11/14/2001                   MPI_Alltoall(3)
 ```
 
-### MPI_Alltoallv.md
+### MPI_Alltoallv
 ```
 MPI_Alltoallv(3)                      MPI                     MPI_Alltoallv(3)
 
@@ -536,7 +536,7 @@ LOCATION
                                   11/14/2001                  MPI_Alltoallv(3)
 ```
 
-### MPI_Attr_delete.md
+### MPI_Attr_delete
 ```
 MPI_Attr_delete(3)                    MPI                   MPI_Attr_delete(3)
 
@@ -591,7 +591,7 @@ LOCATION
                                   11/14/2001                MPI_Attr_delete(3)
 ```
 
-### MPI_Attr_get.md
+### MPI_Attr_get
 ```
 MPI_Attr_get(3)                       MPI                      MPI_Attr_get(3)
 
@@ -674,7 +674,7 @@ LOCATION
                                   11/14/2001                   MPI_Attr_get(3)
 ```
 
-### MPI_Attr_put.md
+### MPI_Attr_put
 ```
 MPI_Attr_put(3)                       MPI                      MPI_Attr_put(3)
 
@@ -755,7 +755,7 @@ LOCATION
                                   11/14/2001                   MPI_Attr_put(3)
 ```
 
-### MPI_Barrier.md
+### MPI_Barrier
 ```
 MPI_Barrier(3)                        MPI                       MPI_Barrier(3)
 
@@ -821,7 +821,7 @@ LOCATION
                                   11/14/2001                    MPI_Barrier(3)
 ```
 
-### MPI_Bcast.md
+### MPI_Bcast
 ```
 MPI_Bcast(3)                          MPI                         MPI_Bcast(3)
 
@@ -905,7 +905,7 @@ LOCATION
                                   11/14/2001                      MPI_Bcast(3)
 ```
 
-### MPI_Bsend_init.md
+### MPI_Bsend_init
 ```
 MPI_Bsend_init(3)                     MPI                    MPI_Bsend_init(3)
 
@@ -987,7 +987,7 @@ LOCATION
                                   12/13/2001                 MPI_Bsend_init(3)
 ```
 
-### MPI_Bsend.md
+### MPI_Bsend
 ```
 MPI_Bsend(3)                          MPI                         MPI_Bsend(3)
 
@@ -1100,7 +1100,7 @@ LOCATION
                                   11/14/2001                      MPI_Bsend(3)
 ```
 
-### MPI_Buffer_attach.md
+### MPI_Buffer_attach
 ```
 MPI_Buffer_attach(3)                  MPI                 MPI_Buffer_attach(3)
 
@@ -1186,7 +1186,7 @@ LOCATION
                                   11/14/2001              MPI_Buffer_attach(3)
 ```
 
-### MPI_Buffer_detach.md
+### MPI_Buffer_detach
 ```
 MPI_Buffer_detach(3)                  MPI                 MPI_Buffer_detach(3)
 
@@ -1278,7 +1278,7 @@ LOCATION
                                   11/14/2001              MPI_Buffer_detach(3)
 ```
 
-### MPI_Cancel.md
+### MPI_Cancel
 ```
 MPI_Cancel(3)                         MPI                        MPI_Cancel(3)
 
@@ -1363,7 +1363,7 @@ LOCATION
                                   11/14/2001                     MPI_Cancel(3)
 ```
 
-### MPI_Cart_coords.md
+### MPI_Cart_coords
 ```
 MPI_Cart_coords(3)                    MPI                   MPI_Cart_coords(3)
 
@@ -1438,7 +1438,7 @@ LOCATION
                                    3/28/2002                MPI_Cart_coords(3)
 ```
 
-### MPI_Cart_create.md
+### MPI_Cart_create
 ```
 MPI_Cart_create(3)                    MPI                   MPI_Cart_create(3)
 
@@ -1517,7 +1517,7 @@ LOCATION
                                   11/14/2001                MPI_Cart_create(3)
 ```
 
-### MPI_Cartdim_get.md
+### MPI_Cartdim_get
 ```
 MPI_Cartdim_get(3)                    MPI                   MPI_Cartdim_get(3)
 
@@ -1577,7 +1577,7 @@ LOCATION
                                   11/14/2001                MPI_Cartdim_get(3)
 ```
 
-### MPI_Cart_get.md
+### MPI_Cart_get
 ```
 MPI_Cart_get(3)                       MPI                      MPI_Cart_get(3)
 
@@ -1655,7 +1655,7 @@ LOCATION
                                   11/14/2001                   MPI_Cart_get(3)
 ```
 
-### MPI_Cart_map.md
+### MPI_Cart_map
 ```
 MPI_Cart_map(3)                       MPI                      MPI_Cart_map(3)
 
@@ -1730,7 +1730,7 @@ LOCATION
                                    3/28/2002                   MPI_Cart_map(3)
 ```
 
-### MPI_Cart_rank.md
+### MPI_Cart_rank
 ```
 MPI_Cart_rank(3)                      MPI                     MPI_Cart_rank(3)
 
@@ -1808,7 +1808,7 @@ LOCATION
                                   11/14/2001                  MPI_Cart_rank(3)
 ```
 
-### MPI_Cart_shift.md
+### MPI_Cart_shift
 ```
 MPI_Cart_shift(3)                     MPI                    MPI_Cart_shift(3)
 
@@ -1885,7 +1885,7 @@ LOCATION
                                   11/14/2001                 MPI_Cart_shift(3)
 ```
 
-### MPI_Cart_sub.md
+### MPI_Cart_sub
 ```
 MPI_Cart_sub(3)                       MPI                      MPI_Cart_sub(3)
 
@@ -1955,7 +1955,7 @@ LOCATION
                                   11/14/2001                   MPI_Cart_sub(3)
 ```
 
-### MPI_Comm_compare.md
+### MPI_Comm_compare
 ```
 MPI_Comm_compare(3)                   MPI                  MPI_Comm_compare(3)
 
@@ -2030,7 +2030,7 @@ LOCATION
                                   11/14/2001               MPI_Comm_compare(3)
 ```
 
-### MPI_Comm_create.md
+### MPI_Comm_create
 ```
 MPI_Comm_create(3)                    MPI                   MPI_Comm_create(3)
 
@@ -2097,7 +2097,7 @@ LOCATION
                                   11/14/2001                MPI_Comm_create(3)
 ```
 
-### MPI_Comm_dup.md
+### MPI_Comm_dup
 ```
 MPI_Comm_dup(3)                       MPI                      MPI_Comm_dup(3)
 
@@ -2187,7 +2187,7 @@ LOCATION
                                   11/14/2001                   MPI_Comm_dup(3)
 ```
 
-### MPI_Comm_free.md
+### MPI_Comm_free
 ```
 MPI_Comm_free(3)                      MPI                     MPI_Comm_free(3)
 
@@ -2255,7 +2255,7 @@ LOCATION
                                   10/31/2002                  MPI_Comm_free(3)
 ```
 
-### MPI_Comm_group.md
+### MPI_Comm_group
 ```
 MPI_Comm_group(3)                     MPI                    MPI_Comm_group(3)
 
@@ -2330,7 +2330,7 @@ LOCATION
                                   11/14/2001                 MPI_Comm_group(3)
 ```
 
-### MPI_Comm_rank.md
+### MPI_Comm_rank
 ```
 MPI_Comm_rank(3)                      MPI                     MPI_Comm_rank(3)
 
@@ -2387,7 +2387,7 @@ LOCATION
                                   11/14/2001                  MPI_Comm_rank(3)
 ```
 
-### MPI_Comm_remote_group.md
+### MPI_Comm_remote_group
 ```
 MPI_Comm_remote_group(3)              MPI             MPI_Comm_remote_group(3)
 
@@ -2444,7 +2444,7 @@ LOCATION
                                   11/14/2001          MPI_Comm_remote_group(3)
 ```
 
-### MPI_Comm_remote_size.md
+### MPI_Comm_remote_size
 ```
 MPI_Comm_remote_size(3)               MPI              MPI_Comm_remote_size(3)
 
@@ -2504,7 +2504,7 @@ LOCATION
                                   11/14/2001           MPI_Comm_remote_size(3)
 ```
 
-### MPI_Comm_size.md
+### MPI_Comm_size
 ```
 MPI_Comm_size(3)                      MPI                     MPI_Comm_size(3)
 
@@ -2568,7 +2568,7 @@ LOCATION
                                   11/14/2001                  MPI_Comm_size(3)
 ```
 
-### MPI_Comm_split.md
+### MPI_Comm_split
 ```
 MPI_Comm_split(3)                     MPI                    MPI_Comm_split(3)
 
@@ -2664,7 +2664,7 @@ LOCATION
                                    8/29/2002                 MPI_Comm_split(3)
 ```
 
-### MPI_Comm_test_inter.md
+### MPI_Comm_test_inter
 ```
 MPI_Comm_test_inter(3)                MPI               MPI_Comm_test_inter(3)
 
@@ -2723,7 +2723,7 @@ LOCATION
                                   11/14/2001            MPI_Comm_test_inter(3)
 ```
 
-### MPI_Dims_create.md
+### MPI_Dims_create
 ```
 MPI_Dims_create(3)                    MPI                   MPI_Dims_create(3)
 
@@ -2767,7 +2767,7 @@ LOCATION
                                    4/24/2002                MPI_Dims_create(3)
 ```
 
-### MPI_Errhandler_create.md
+### MPI_Errhandler_create
 ```
 MPI_Errhandler_create(3)              MPI             MPI_Errhandler_create(3)
 
@@ -2836,7 +2836,7 @@ LOCATION
                                   11/14/2001          MPI_Errhandler_create(3)
 ```
 
-### MPI_Errhandler_free.md
+### MPI_Errhandler_free
 ```
 MPI_Errhandler_free(3)                MPI               MPI_Errhandler_free(3)
 
@@ -2890,7 +2890,7 @@ LOCATION
                                   11/14/2001            MPI_Errhandler_free(3)
 ```
 
-### MPI_Errhandler_get.md
+### MPI_Errhandler_get
 ```
 MPI_Errhandler_get(3)                 MPI                MPI_Errhandler_get(3)
 
@@ -2962,7 +2962,7 @@ LOCATION
                                   11/14/2001             MPI_Errhandler_get(3)
 ```
 
-### MPI_Errhandler_set.md
+### MPI_Errhandler_set
 ```
 MPI_Errhandler_set(3)                 MPI                MPI_Errhandler_set(3)
 
@@ -3019,7 +3019,7 @@ LOCATION
                                   11/14/2001             MPI_Errhandler_set(3)
 ```
 
-### MPI_Error_class.md
+### MPI_Error_class
 ```
 MPI_Error_class(3)                    MPI                   MPI_Error_class(3)
 
@@ -3063,7 +3063,7 @@ LOCATION
                                   11/14/2001                MPI_Error_class(3)
 ```
 
-### MPI_Error_string.md
+### MPI_Error_string
 ```
 MPI_Error_string(3)                   MPI                  MPI_Error_string(3)
 
@@ -3110,7 +3110,7 @@ LOCATION
                                   11/14/2001               MPI_Error_string(3)
 ```
 
-### MPI_Finalize.md
+### MPI_Finalize
 ```
 MPI_Finalize(3)                       MPI                      MPI_Finalize(3)
 
@@ -3148,7 +3148,7 @@ LOCATION
                                    4/9/2002                    MPI_Finalize(3)
 ```
 
-### MPI_Gather.md
+### MPI_Gather
 ```
 MPI_Gather(3)                         MPI                        MPI_Gather(3)
 
@@ -3229,7 +3229,7 @@ LOCATION
                                   11/14/2001                     MPI_Gather(3)
 ```
 
-### MPI_Gatherv.md
+### MPI_Gatherv
 ```
 MPI_Gatherv(3)                        MPI                       MPI_Gatherv(3)
 
@@ -3313,7 +3313,7 @@ LOCATION
                                    2/19/2002                    MPI_Gatherv(3)
 ```
 
-### MPI_Get_count.md
+### MPI_Get_count
 ```
 MPI_Get_count(3)                      MPI                     MPI_Get_count(3)
 
@@ -3378,7 +3378,7 @@ LOCATION
                                   11/14/2001                  MPI_Get_count(3)
 ```
 
-### MPI_Get_elements.md
+### MPI_Get_elements
 ```
 MPI_Get_elements(3)                   MPI                  MPI_Get_elements(3)
 
@@ -3438,7 +3438,7 @@ LOCATION
                                   11/14/2001               MPI_Get_elements(3)
 ```
 
-### MPI_Get_processor_name.md
+### MPI_Get_processor_name
 ```
 MPI_Get_processor_name(3)             MPI            MPI_Get_processor_name(3)
 
@@ -3487,7 +3487,7 @@ LOCATION
                                   11/14/2001         MPI_Get_processor_name(3)
 ```
 
-### MPI_Get_version.md
+### MPI_Get_version
 ```
 MPI_Get_version(3)                    MPI                   MPI_Get_version(3)
 
@@ -3534,7 +3534,7 @@ LOCATION
 
 ```
 
-### MPI_Graph_create.md
+### MPI_Graph_create
 ```
 MPI_Graph_create(3)                   MPI                  MPI_Graph_create(3)
 
@@ -3610,7 +3610,7 @@ LOCATION
                                    1/4/2002                MPI_Graph_create(3)
 ```
 
-### MPI_Graphdims_get.md
+### MPI_Graphdims_get
 ```
 MPI_Graphdims_get(3)                  MPI                 MPI_Graphdims_get(3)
 
@@ -3675,7 +3675,7 @@ LOCATION
                                   11/14/2001              MPI_Graphdims_get(3)
 ```
 
-### MPI_Graph_get.md
+### MPI_Graph_get
 ```
 MPI_Graph_get(3)                      MPI                     MPI_Graph_get(3)
 
@@ -3746,7 +3746,7 @@ LOCATION
                                    1/4/2002                   MPI_Graph_get(3)
 ```
 
-### MPI_Graph_map.md
+### MPI_Graph_map
 ```
 MPI_Graph_map(3)                      MPI                     MPI_Graph_map(3)
 
@@ -3816,7 +3816,7 @@ LOCATION
                                    1/4/2002                   MPI_Graph_map(3)
 ```
 
-### MPI_Graph_neighbors_count.md
+### MPI_Graph_neighbors_count
 ```
 MPI_Graph_neighbors_count(3)          MPI         MPI_Graph_neighbors_count(3)
 
@@ -3888,7 +3888,7 @@ LOCATION
                                   11/14/2001      MPI_Graph_neighbors_count(3)
 ```
 
-### MPI_Graph_neighbors.md
+### MPI_Graph_neighbors
 ```
 MPI_Graph_neighbors(3)                MPI               MPI_Graph_neighbors(3)
 
@@ -3964,7 +3964,7 @@ LOCATION
                                   11/14/2001            MPI_Graph_neighbors(3)
 ```
 
-### MPI_Group_compare.md
+### MPI_Group_compare
 ```
 MPI_Group_compare(3)                  MPI                 MPI_Group_compare(3)
 
@@ -4025,7 +4025,7 @@ LOCATION
                                   11/14/2001              MPI_Group_compare(3)
 ```
 
-### MPI_Group_difference.md
+### MPI_Group_difference
 ```
 MPI_Group_difference(3)               MPI              MPI_Group_difference(3)
 
@@ -4090,7 +4090,7 @@ LOCATION
                                   11/14/2001           MPI_Group_difference(3)
 ```
 
-### MPI_Group_excl.md
+### MPI_Group_excl
 ```
 MPI_Group_excl(3)                     MPI                    MPI_Group_excl(3)
 
@@ -4173,7 +4173,7 @@ LOCATION
                                   11/14/2001                 MPI_Group_excl(3)
 ```
 
-### MPI_Group_free.md
+### MPI_Group_free
 ```
 MPI_Group_free(3)                     MPI                    MPI_Group_free(3)
 
@@ -4233,7 +4233,7 @@ LOCATION
                                   11/14/2001                 MPI_Group_free(3)
 ```
 
-### MPI_Group_incl.md
+### MPI_Group_incl
 ```
 MPI_Group_incl(3)                     MPI                    MPI_Group_incl(3)
 
@@ -4317,7 +4317,7 @@ LOCATION
                                   11/14/2001                 MPI_Group_incl(3)
 ```
 
-### MPI_Group_intersection.md
+### MPI_Group_intersection
 ```
 MPI_Group_intersection(3)             MPI            MPI_Group_intersection(3)
 
@@ -4383,7 +4383,7 @@ LOCATION
                                   11/14/2001         MPI_Group_intersection(3)
 ```
 
-### MPI_Group_range_excl.md
+### MPI_Group_range_excl
 ```
 MPI_Group_range_excl(3)               MPI              MPI_Group_range_excl(3)
 
@@ -4469,7 +4469,7 @@ LOCATION
                                   11/14/2001           MPI_Group_range_excl(3)
 ```
 
-### MPI_Group_range_incl.md
+### MPI_Group_range_incl
 ```
 MPI_Group_range_incl(3)               MPI              MPI_Group_range_incl(3)
 
@@ -4554,7 +4554,7 @@ LOCATION
                                   11/14/2001           MPI_Group_range_incl(3)
 ```
 
-### MPI_Group_rank.md
+### MPI_Group_rank
 ```
 MPI_Group_rank(3)                     MPI                    MPI_Group_rank(3)
 
@@ -4614,7 +4614,7 @@ LOCATION
                                   11/14/2001                 MPI_Group_rank(3)
 ```
 
-### MPI_Group_size.md
+### MPI_Group_size
 ```
 MPI_Group_size(3)                     MPI                    MPI_Group_size(3)
 
@@ -4670,7 +4670,7 @@ LOCATION
                                   11/14/2001                 MPI_Group_size(3)
 ```
 
-### MPI_Group_translate_ranks.md
+### MPI_Group_translate_ranks
 ```
 MPI_Group_translate_ranks(3)          MPI         MPI_Group_translate_ranks(3)
 
@@ -4742,7 +4742,7 @@ LOCATION
                                   11/14/2001      MPI_Group_translate_ranks(3)
 ```
 
-### MPI_Group_union.md
+### MPI_Group_union
 ```
 MPI_Group_union(3)                    MPI                   MPI_Group_union(3)
 
@@ -4807,7 +4807,7 @@ LOCATION
                                   11/14/2001                MPI_Group_union(3)
 ```
 
-### MPI_Ibsend.md
+### MPI_Ibsend
 ```
 MPI_Ibsend(3)                         MPI                        MPI_Ibsend(3)
 
@@ -4893,7 +4893,7 @@ LOCATION
                                   11/14/2001                     MPI_Ibsend(3)
 ```
 
-### MPI_Initialized.md
+### MPI_Initialized
 ```
 MPI_Initialized(3)                    MPI                   MPI_Initialized(3)
 
@@ -4928,7 +4928,7 @@ LOCATION
                                   11/14/2001                MPI_Initialized(3)
 ```
 
-### MPI_Init.md
+### MPI_Init
 ```
 MPI_Init(3)                           MPI                          MPI_Init(3)
 
@@ -5089,7 +5089,7 @@ LOCATION
                                    4/8/2002                        MPI_Init(3)
 ```
 
-### mpi_init_thread.md
+### mpi_init_thread
 ```
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -5106,7 +5106,7 @@ The requested URL was not found on this server.
 </html>
 ```
 
-### MPI_Intercomm_create.md
+### MPI_Intercomm_create
 ```
 MPI_Intercomm_create(3)               MPI              MPI_Intercomm_create(3)
 
@@ -5237,7 +5237,7 @@ LOCATION
                                   11/14/2001           MPI_Intercomm_create(3)
 ```
 
-### MPI_Intercomm_merge.md
+### MPI_Intercomm_merge
 ```
 MPI_Intercomm_merge(3)                MPI               MPI_Intercomm_merge(3)
 
@@ -5312,7 +5312,7 @@ LOCATION
                                   11/14/2001            MPI_Intercomm_merge(3)
 ```
 
-### MPI_Iprobe.md
+### MPI_Iprobe
 ```
 MPI_Iprobe(3)                         MPI                        MPI_Iprobe(3)
 
@@ -5385,7 +5385,7 @@ LOCATION
                                    12/7/2004                     MPI_Iprobe(3)
 ```
 
-### MPI_Irecv.md
+### MPI_Irecv
 ```
 MPI_Irecv(3)                          MPI                         MPI_Irecv(3)
 
@@ -5432,7 +5432,7 @@ LOCATION
                                   11/14/2001                      MPI_Irecv(3)
 ```
 
-### MPI_Irsend.md
+### MPI_Irsend
 ```
 MPI_Irsend(3)                         MPI                        MPI_Irsend(3)
 
@@ -5515,7 +5515,7 @@ LOCATION
                                   11/14/2001                     MPI_Irsend(3)
 ```
 
-### MPI_Isend.md
+### MPI_Isend
 ```
 MPI_Isend(3)                          MPI                         MPI_Isend(3)
 
@@ -5601,7 +5601,7 @@ LOCATION
                                   11/14/2001                      MPI_Isend(3)
 ```
 
-### MPI_Issend.md
+### MPI_Issend
 ```
 MPI_Issend(3)                         MPI                        MPI_Issend(3)
 
@@ -5686,7 +5686,7 @@ LOCATION
                                   11/14/2001                     MPI_Issend(3)
 ```
 
-### MPI_Keyval_create.md
+### MPI_Keyval_create
 ```
 MPI_Keyval_create(3)                  MPI                 MPI_Keyval_create(3)
 
@@ -5766,7 +5766,7 @@ LOCATION
                                   11/14/2001              MPI_Keyval_create(3)
 ```
 
-### MPI_Keyval_free.md
+### MPI_Keyval_free
 ```
 MPI_Keyval_free(3)                    MPI                   MPI_Keyval_free(3)
 
@@ -5830,7 +5830,7 @@ LOCATION
                                    6/12/2002                MPI_Keyval_free(3)
 ```
 
-### MPI_Op_create.md
+### MPI_Op_create
 ```
 MPI_Op_create(3)                      MPI                     MPI_Op_create(3)
 
@@ -5918,7 +5918,7 @@ LOCATION
                                   11/14/2001                  MPI_Op_create(3)
 ```
 
-### MPI_Op_free.md
+### MPI_Op_free
 ```
 MPI_Op_free(3)                        MPI                       MPI_Op_free(3)
 
@@ -6003,7 +6003,7 @@ LOCATION
                                   11/14/2001                    MPI_Op_free(3)
 ```
 
-### MPI_Pack.md
+### MPI_Pack
 ```
 MPI_Pack(3)                           MPI                          MPI_Pack(3)
 
@@ -6083,7 +6083,7 @@ LOCATION
                                   11/14/2001                       MPI_Pack(3)
 ```
 
-### MPI_Pack_size.md
+### MPI_Pack_size
 ```
 MPI_Pack_size(3)                      MPI                     MPI_Pack_size(3)
 
@@ -6159,7 +6159,7 @@ LOCATION
                                   11/14/2001                  MPI_Pack_size(3)
 ```
 
-### MPI_Pcontrol.md
+### MPI_Pcontrol
 ```
 MPI_Pcontrol(3)                       MPI                      MPI_Pcontrol(3)
 
@@ -6200,7 +6200,7 @@ LOCATION
                                   11/14/2001                   MPI_Pcontrol(3)
 ```
 
-### MPI_Probe.md
+### MPI_Probe
 ```
 MPI_Probe(3)                          MPI                         MPI_Probe(3)
 
@@ -6270,7 +6270,7 @@ LOCATION
                                    12/7/2004                      MPI_Probe(3)
 ```
 
-### MPI_Recv_init.md
+### MPI_Recv_init
 ```
 MPI_Recv_init(3)                      MPI                     MPI_Recv_init(3)
 
@@ -6359,7 +6359,7 @@ LOCATION
                                   11/14/2001                  MPI_Recv_init(3)
 ```
 
-### MPI_Recv.md
+### MPI_Recv
 ```
 MPI_Recv(3)                           MPI                          MPI_Recv(3)
 
@@ -6447,7 +6447,7 @@ LOCATION
                                    2/24/2004                       MPI_Recv(3)
 ```
 
-### MPI_Reduce.md
+### MPI_Reduce
 ```
 MPI_Reduce(3)                         MPI                        MPI_Reduce(3)
 
@@ -6544,7 +6544,7 @@ LOCATION
                                    2/19/2002                     MPI_Reduce(3)
 ```
 
-### MPI_Reduce_scatter.md
+### MPI_Reduce_scatter
 ```
 MPI_Reduce_scatter(3)                 MPI                MPI_Reduce_scatter(3)
 
@@ -6644,7 +6644,7 @@ LOCATION
                                   11/14/2001             MPI_Reduce_scatter(3)
 ```
 
-### MPI_Request_free.md
+### MPI_Request_free
 ```
 MPI_Request_free(3)                   MPI                  MPI_Request_free(3)
 
@@ -6717,7 +6717,7 @@ LOCATION
                                   11/14/2001               MPI_Request_free(3)
 ```
 
-### MPI_Rsend_init.md
+### MPI_Rsend_init
 ```
 MPI_Rsend_init(3)                     MPI                    MPI_Rsend_init(3)
 
@@ -6806,7 +6806,7 @@ LOCATION
                                   11/14/2001                 MPI_Rsend_init(3)
 ```
 
-### MPI_Rsend.md
+### MPI_Rsend
 ```
 MPI_Rsend(3)                          MPI                         MPI_Rsend(3)
 
@@ -6884,7 +6884,7 @@ LOCATION
                                   11/14/2001                      MPI_Rsend(3)
 ```
 
-### MPI_Scan.md
+### MPI_Scan
 ```
 MPI_Scan(3)                           MPI                          MPI_Scan(3)
 
@@ -6977,7 +6977,7 @@ LOCATION
                                   11/14/2001                       MPI_Scan(3)
 ```
 
-### MPI_Scatter.md
+### MPI_Scatter
 ```
 MPI_Scatter(3)                        MPI                       MPI_Scatter(3)
 
@@ -7064,7 +7064,7 @@ LOCATION
                                    4/5/2004                     MPI_Scatter(3)
 ```
 
-### MPI_Scatterv.md
+### MPI_Scatterv
 ```
 MPI_Scatterv(3)                       MPI                      MPI_Scatterv(3)
 
@@ -7155,7 +7155,7 @@ LOCATION
                                    2/21/2002                   MPI_Scatterv(3)
 ```
 
-### MPI_Send_init.md
+### MPI_Send_init
 ```
 MPI_Send_init(3)                      MPI                     MPI_Send_init(3)
 
@@ -7241,7 +7241,7 @@ LOCATION
                                   11/14/2001                  MPI_Send_init(3)
 ```
 
-### MPI_Send.md
+### MPI_Send
 ```
 MPI_Send(3)                           MPI                          MPI_Send(3)
 
@@ -7326,7 +7326,7 @@ LOCATION
                                   11/14/2001                       MPI_Send(3)
 ```
 
-### MPI_Sendrecv.md
+### MPI_Sendrecv
 ```
 MPI_Sendrecv(3)                       MPI                      MPI_Sendrecv(3)
 
@@ -7421,7 +7421,7 @@ LOCATION
                                   11/14/2001                   MPI_Sendrecv(3)
 ```
 
-### MPI_Sendrecv_replace.md
+### MPI_Sendrecv_replace
 ```
 MPI_Sendrecv_replace(3)               MPI              MPI_Sendrecv_replace(3)
 
@@ -7515,7 +7515,7 @@ LOCATION
                                   11/14/2001           MPI_Sendrecv_replace(3)
 ```
 
-### MPI_Ssend_init.md
+### MPI_Ssend_init
 ```
 MPI_Ssend_init(3)                     MPI                    MPI_Ssend_init(3)
 
@@ -7597,7 +7597,7 @@ LOCATION
                                   11/14/2001                 MPI_Ssend_init(3)
 ```
 
-### MPI_Ssend.md
+### MPI_Ssend
 ```
 MPI_Ssend(3)                          MPI                         MPI_Ssend(3)
 
@@ -7674,7 +7674,7 @@ LOCATION
                                   11/14/2001                      MPI_Ssend(3)
 ```
 
-### MPI_Startall.md
+### MPI_Startall
 ```
 MPI_Startall(3)                       MPI                      MPI_Startall(3)
 
@@ -7711,7 +7711,7 @@ LOCATION
                                   11/14/2001                   MPI_Startall(3)
 ```
 
-### MPI_Start.md
+### MPI_Start
 ```
 MPI_Start(3)                          MPI                         MPI_Start(3)
 
@@ -7766,7 +7766,7 @@ LOCATION
                                   11/14/2001                      MPI_Start(3)
 ```
 
-### MPI_Testall.md
+### MPI_Testall
 ```
 MPI_Testall(3)                        MPI                       MPI_Testall(3)
 
@@ -7865,7 +7865,7 @@ LOCATION
                                    2/19/2003                    MPI_Testall(3)
 ```
 
-### MPI_Testany.md
+### MPI_Testany
 ```
 MPI_Testany(3)                        MPI                       MPI_Testany(3)
 
@@ -7935,7 +7935,7 @@ LOCATION
                                    1/9/2003                     MPI_Testany(3)
 ```
 
-### MPI_Test_cancelled.md
+### MPI_Test_cancelled
 ```
 MPI_Test_cancelled(3)                 MPI                MPI_Test_cancelled(3)
 
@@ -7976,7 +7976,7 @@ LOCATION
                                   11/14/2001             MPI_Test_cancelled(3)
 ```
 
-### MPI_Test.md
+### MPI_Test
 ```
 MPI_Test(3)                           MPI                          MPI_Test(3)
 
@@ -8047,7 +8047,7 @@ LOCATION
                                    1/9/2003                        MPI_Test(3)
 ```
 
-### MPI_Testsome.md
+### MPI_Testsome
 ```
 MPI_Testsome(3)                       MPI                      MPI_Testsome(3)
 
@@ -8145,7 +8145,7 @@ LOCATION
                                    1/9/2003                    MPI_Testsome(3)
 ```
 
-### MPI_Topo_test.md
+### MPI_Topo_test
 ```
 MPI_Topo_test(3)                      MPI                     MPI_Topo_test(3)
 
@@ -8210,7 +8210,7 @@ LOCATION
                                   11/14/2001                  MPI_Topo_test(3)
 ```
 
-### MPI_Type_commit.md
+### MPI_Type_commit
 ```
 MPI_Type_commit(3)                    MPI                   MPI_Type_commit(3)
 
@@ -8263,7 +8263,7 @@ LOCATION
                                   11/14/2001                MPI_Type_commit(3)
 ```
 
-### MPI_Type_contiguous.md
+### MPI_Type_contiguous
 ```
 MPI_Type_contiguous(3)                MPI               MPI_Type_contiguous(3)
 
@@ -8331,7 +8331,7 @@ LOCATION
                                   11/14/2001            MPI_Type_contiguous(3)
 ```
 
-### MPI_Type_extent.md
+### MPI_Type_extent
 ```
 MPI_Type_extent(3)                    MPI                   MPI_Type_extent(3)
 
@@ -8388,7 +8388,7 @@ LOCATION
                                   11/14/2001                MPI_Type_extent(3)
 ```
 
-### MPI_Type_free.md
+### MPI_Type_free
 ```
 MPI_Type_free(3)                      MPI                     MPI_Type_free(3)
 
@@ -8454,7 +8454,7 @@ LOCATION
                                   11/14/2001                  MPI_Type_free(3)
 ```
 
-### MPI_Type_hindexed.md
+### MPI_Type_hindexed
 ```
 MPI_Type_hindexed(3)                  MPI                 MPI_Type_hindexed(3)
 
@@ -8536,7 +8536,7 @@ LOCATION
                                    4/7/2003               MPI_Type_hindexed(3)
 ```
 
-### MPI_Type_hvector.md
+### MPI_Type_hvector
 ```
 MPI_Type_hvector(3)                   MPI                  MPI_Type_hvector(3)
 
@@ -8613,7 +8613,7 @@ LOCATION
                                   11/14/2001               MPI_Type_hvector(3)
 ```
 
-### MPI_Type_indexed.md
+### MPI_Type_indexed
 ```
 MPI_Type_indexed(3)                   MPI                  MPI_Type_indexed(3)
 
@@ -8712,7 +8712,7 @@ LOCATION
                                   11/14/2001               MPI_Type_indexed(3)
 ```
 
-### MPI_Type_lb.md
+### MPI_Type_lb
 ```
 MPI_Type_lb(3)                        MPI                       MPI_Type_lb(3)
 
@@ -8773,7 +8773,7 @@ LOCATION
                                   11/14/2001                    MPI_Type_lb(3)
 ```
 
-### MPI_Type_size.md
+### MPI_Type_size
 ```
 MPI_Type_size(3)                      MPI                     MPI_Type_size(3)
 
@@ -8834,7 +8834,7 @@ LOCATION
                                   11/14/2001                  MPI_Type_size(3)
 ```
 
-### MPI_Type_struct.md
+### MPI_Type_struct
 ```
 MPI_Type_struct(3)                    MPI                   MPI_Type_struct(3)
 
@@ -8949,7 +8949,7 @@ LOCATION
                                    7/12/2002                MPI_Type_struct(3)
 ```
 
-### MPI_Type_ub.md
+### MPI_Type_ub
 ```
 MPI_Type_ub(3)                        MPI                       MPI_Type_ub(3)
 
@@ -9010,7 +9010,7 @@ LOCATION
                                   11/14/2001                    MPI_Type_ub(3)
 ```
 
-### MPI_Type_vector.md
+### MPI_Type_vector
 ```
 MPI_Type_vector(3)                    MPI                   MPI_Type_vector(3)
 
@@ -9060,7 +9060,7 @@ LOCATION
                                   11/14/2001                MPI_Type_vector(3)
 ```
 
-### MPI_Unpack.md
+### MPI_Unpack
 ```
 MPI_Unpack(3)                         MPI                        MPI_Unpack(3)
 
@@ -9139,7 +9139,7 @@ LOCATION
                                   11/14/2001                     MPI_Unpack(3)
 ```
 
-### MPI_Waitall.md
+### MPI_Waitall
 ```
 MPI_Waitall(3)                        MPI                       MPI_Waitall(3)
 
@@ -9239,7 +9239,7 @@ LOCATION
                                    2/24/2004                    MPI_Waitall(3)
 ```
 
-### MPI_Waitany.md
+### MPI_Waitany
 ```
 MPI_Waitany(3)                        MPI                       MPI_Waitany(3)
 
@@ -9319,7 +9319,7 @@ LOCATION
                                    1/9/2003                     MPI_Waitany(3)
 ```
 
-### MPI_Wait.md
+### MPI_Wait
 ```
 MPI_Wait(3)                           MPI                          MPI_Wait(3)
 
@@ -9388,7 +9388,7 @@ LOCATION
                                    1/9/2003                        MPI_Wait(3)
 ```
 
-### MPI_Waitsome.md
+### MPI_Waitsome
 ```
 MPI_Waitsome(3)                       MPI                      MPI_Waitsome(3)
 
@@ -9500,7 +9500,7 @@ LOCATION
                                    1/9/2003                    MPI_Waitsome(3)
 ```
 
-### MPI_Wtick.md
+### MPI_Wtick
 ```
 MPI_Wtick(3)                          MPI                         MPI_Wtick(3)
 
@@ -9530,7 +9530,7 @@ LOCATION
                                    8/20/2004                      MPI_Wtick(3)
 ```
 
-### MPI_Wtime.md
+### MPI_Wtime
 ```
 MPI_Wtime(3)                          MPI                         MPI_Wtime(3)
 
