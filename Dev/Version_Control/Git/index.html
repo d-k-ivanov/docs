@@ -99,7 +99,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#clone" tabindex="1" class="md-skip">
+      <a href="#dealing-with-line-endings" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -1579,6 +1579,20 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#dealing-with-line-endings" title="Dealing with line endings" class="md-nav__link">
+    Dealing with line endings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normalize-all-the-line-endings" title="Normalize all the line endings" class="md-nav__link">
+    Normalize all the line endings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#clone" title="Clone" class="md-nav__link">
     Clone
   </a>
@@ -1644,6 +1658,27 @@
         <li class="md-nav__item">
   <a href="#add-submodule" title="Add submodule" class="md-nav__link">
     Add submodule
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-branch-for-existing-submodule" title="Change branch for existing submodule" class="md-nav__link">
+    Change branch for existing submodule
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-submodules" title="Update submodules" class="md-nav__link">
+    Update submodules
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-all-submodules" title="Download all submodules" class="md-nav__link">
+    Download all submodules
   </a>
   
 </li>
@@ -3413,6 +3448,20 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#dealing-with-line-endings" title="Dealing with line endings" class="md-nav__link">
+    Dealing with line endings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normalize-all-the-line-endings" title="Normalize all the line endings" class="md-nav__link">
+    Normalize all the line endings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#clone" title="Clone" class="md-nav__link">
     Clone
   </a>
@@ -3483,6 +3532,27 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#change-branch-for-existing-submodule" title="Change branch for existing submodule" class="md-nav__link">
+    Change branch for existing submodule
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-submodules" title="Update submodules" class="md-nav__link">
+    Update submodules
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-all-submodules" title="Download all submodules" class="md-nav__link">
+    Download all submodules
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#remove-submodule" title="Remove submodule" class="md-nav__link">
     Remove submodule
   </a>
@@ -3522,16 +3592,48 @@
                 
                   <h1>Git</h1>
                 
-                <h3 id="clone">Clone</h3>
-<pre><code class="bash"># For new repos(-jN - number of simltaniuos jobs):
-git clone --recursive -j4 https://github.com/keepbot/dotfiles-srv
-git clone --recursive https://github.com/keepbot/dotfiles-srv
+                <h3 id="dealing-with-line-endings">Dealing with line endings</h3>
+<pre><code class="bash"># Mac
+git config --global core.autocrlf input
+# Linux
+git config --global core.autocrlf input
+# Windows
+git config --global core.autocrlf true
+</code></pre>
 
-# For already cloned repos:
-git submodule update --init --recursive
+<h3 id="normalize-all-the-line-endings">Normalize all the line endings</h3>
+<pre><code class="bash"># Save your current files in Git, so that none of your work is lost.
+git add . -u
+git commit -m &quot;Saving files before refreshing line endings&quot;
+
+# Remove the index and force Git to rescan the working directory.
+rm .git/index
+
+# Rewrite the Git index to pick up all the new line endings.
+git reset
+
+# Show the rewritten, normalized files.
+git status
+
+# Add all your changed files back, and prepare them for a commit. This is your chance to inspect which files, if any, were unchanged.
+git add -u
+# It is perfectly safe to see a lot of messages here that read
+# &quot;warning: CRLF will be replaced by LF in file.&quot;
+
+# Rewrite the .gitattributes file.
+git add .gitattributes
+
+# Commit the changes to your repository.
+git commit -m &quot;Normalize all the line endings&quot;
+</code></pre>
+
+<h3 id="clone">Clone</h3>
+<pre><code class="bash"># For new repos(-jN - number of simltaniuos jobs):
+git clone --recursive-submodules -j4 https://github.com/keepbot/dotfiles
+git clone --recursive-submodules https://github.com/keepbot/dotfiles
 
 # Ignore self signed ssl certificates
-git -c http.sslVerify=false clone --recursive https://github.com/keepbot/dotfiles-srv.git
+git -c http.sslVerify=false clone --recursive https://github.com/keepbot/dotfiles.git
 </code></pre>
 
 <h3 id="global-settings">Global settings</h3>
@@ -3596,7 +3698,28 @@ git am &lt; 0001-Linux-agent-LVM-subagent-initial-implementation.patch
 </code></pre>
 
 <h3 id="add-submodule">Add submodule</h3>
-<pre><code class="bash">git submodule add &lt;submodule_git_url&gt; &lt;local_path&gt;
+<pre><code class="bash">git submodule add -b &lt;branch_name&gt; &lt;submodule_git_url&gt; &lt;local_path&gt;
+</code></pre>
+
+<h3 id="change-branch-for-existing-submodule">Change branch for existing submodule</h3>
+<pre><code class="bash">cd &lt;path_to_repo&gt;
+git config -f .gitmodules submodule.&lt;local_path&gt;.branch &lt;branch_name&gt;
+
+# Make sure that submodule is at the latest of branch (OR)
+cd &lt;submodule_local_path&gt;
+git checkout -b branch --track origin/branch
+git branch -u origin/master master
+
+cd &lt;path_to_repo&gt;
+git add &lt;submodule_local_path&gt;
+</code></pre>
+
+<h3 id="update-submodules">Update submodules</h3>
+<pre><code class="bash">git submodule update --recursive --remote
+</code></pre>
+
+<h3 id="download-all-submodules">Download all submodules</h3>
+<pre><code class="bash">git submodule update --init --recursive
 </code></pre>
 
 <h3 id="remove-submodule">Remove submodule</h3>
