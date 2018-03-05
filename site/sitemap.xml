@@ -163,24 +163,6 @@
      <changefreq>daily</changefreq>
     </url>
         
-    <url>
-     <loc>https://keepbot.github.io/docs/</loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://keepbot.github.io/docs/</loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>https://keepbot.github.io/docs/</loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
     
 
     
@@ -194,6 +176,22 @@
     <url>
      <loc>https://keepbot.github.io/docs//DevOps/Chef-Windows/</loc>
      <lastmod>2018-03-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -224,6 +222,16 @@
      <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
+        
+    <url>
+     <loc>https://keepbot.github.io/docs/</loc>
+     <lastmod></lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
         
     <url>
      <loc>https://keepbot.github.io/docs/</loc>
