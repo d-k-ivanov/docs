@@ -1,14 +1,48 @@
+### Dealing with line endings
+```bash
+# Mac
+git config --global core.autocrlf input
+# Linux
+git config --global core.autocrlf input
+# Windows
+git config --global core.autocrlf true
+```
+
+### Normalize all the line endings
+```bash
+# Save your current files in Git, so that none of your work is lost.
+git add . -u
+git commit -m "Saving files before refreshing line endings"
+
+# Remove the index and force Git to rescan the working directory.
+rm .git/index
+
+# Rewrite the Git index to pick up all the new line endings.
+git reset
+
+# Show the rewritten, normalized files.
+git status
+
+# Add all your changed files back, and prepare them for a commit. This is your chance to inspect which files, if any, were unchanged.
+git add -u
+# It is perfectly safe to see a lot of messages here that read
+# "warning: CRLF will be replaced by LF in file."
+
+# Rewrite the .gitattributes file.
+git add .gitattributes
+
+# Commit the changes to your repository.
+git commit -m "Normalize all the line endings"
+```
+
 ### Clone
 ```bash
 # For new repos(-jN - number of simltaniuos jobs):
-git clone --recursive -j4 https://github.com/keepbot/dotfiles-srv
-git clone --recursive https://github.com/keepbot/dotfiles-srv
-
-# For already cloned repos:
-git submodule update --init --recursive
+git clone --recursive-submodules -j4 https://github.com/keepbot/dotfiles
+git clone --recursive-submodules https://github.com/keepbot/dotfiles
 
 # Ignore self signed ssl certificates
-git -c http.sslVerify=false clone --recursive https://github.com/keepbot/dotfiles-srv.git
+git -c http.sslVerify=false clone --recursive https://github.com/keepbot/dotfiles.git
 ```
 
 ### Global settings
@@ -82,7 +116,31 @@ git am < 0001-Linux-agent-LVM-subagent-initial-implementation.patch
 
 ### Add submodule
 ```bash
-git submodule add <submodule_git_url> <local_path>
+git submodule add -b <branch_name> <submodule_git_url> <local_path>
+```
+
+### Change branch for existing submodule
+```bash
+cd <path_to_repo>
+git config -f .gitmodules submodule.<local_path>.branch <branch_name>
+
+# Make sure that submodule is at the latest of branch (OR)
+cd <submodule_local_path>
+git checkout -b branch --track origin/branch
+git branch -u origin/master master
+
+cd <path_to_repo>
+git add <submodule_local_path>
+```
+
+### Update submodules
+```bash
+git submodule update --recursive --remote
+```
+
+### Download all submodules
+```bash
+git submodule update --init --recursive
 ```
 
 ### Remove submodule
