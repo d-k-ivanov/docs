@@ -846,26 +846,6 @@
             "title": "Analyse core dumps"
         },
         {
-            "location": "/Dev/GCC/Alternatives/",
-            "text": "Ubuntu: GCC-5 and GCC-6\n\n\n# It could be useful to remove old gcc alternatives\nsudo update-alternatives --remove-all gcc \nsudo update-alternatives --remove-all g++\n\n# Alternatives for GCC 5 and 6\nsudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 100 --slave /usr/bin/g++ g++ /usr/bin/g++-6\nsudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 50 --slave /usr/bin/g++ g++ /usr/bin/g++-5\nsudo update-alternatives --config gcc",
-            "title": "Alternatives"
-        },
-        {
-            "location": "/Dev/GCC/Alternatives/#ubuntu-gcc-5-and-gcc-6",
-            "text": "# It could be useful to remove old gcc alternatives\nsudo update-alternatives --remove-all gcc \nsudo update-alternatives --remove-all g++\n\n# Alternatives for GCC 5 and 6\nsudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 100 --slave /usr/bin/g++ g++ /usr/bin/g++-6\nsudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 50 --slave /usr/bin/g++ g++ /usr/bin/g++-5\nsudo update-alternatives --config gcc",
-            "title": "Ubuntu: GCC-5 and GCC-6"
-        },
-        {
-            "location": "/Dev/GCC/Make/",
-            "text": "Flags to configure\n\n\n/configure CFLAGS='-std=gnu89 -g -O2 -w' CXXFLAGS='-std=gnu++98 -g -O2 -w'",
-            "title": "Make"
-        },
-        {
-            "location": "/Dev/GCC/Make/#flags-to-configure",
-            "text": "/configure CFLAGS='-std=gnu89 -g -O2 -w' CXXFLAGS='-std=gnu++98 -g -O2 -w'",
-            "title": "Flags to configure"
-        },
-        {
             "location": "/Dev/Hardware/GPU/",
             "text": "How to calc max resolution to MB\n\n\nA graphics card actually requires relatively little memory to function as a simple framebuffer (2D graphics) device:\n\n\nFor example - the framebuffer requirements for 1920x1080 in 32 bit colour would be:\n\n\n    1920 x 1080 = 2073600 pixels\n    2073600 x 32 = 66355200 bits\n    66355200 / 8 = 8294400 bytes\n    8294400 / 1024 = 8100 kilobytes\n    8100 / 1024 = 7.91015625 megabytes\n\n\n\n\nSo even at that high resolution an 8MB card would be able to display an image.\n\n\nYou can double, or even triple that amount if you are using double or triple buffering (display one image while rendering another then switch to that new image while you render a third, etc).\n\n\nAll the rest of the memory is used when the card is working with 3D graphics to store internal copies (and transformed copies) of textures for rendering. The more memory you have the more and higher resolution textures the card can hold internally, so it won't need to be repeatedly sent the same textures over and over again by the gaming engine.\n\n\nSo basically the more memory you have the better it will be for 3D gaming.\n\n\nUHD 8K\n\n\n7680 \u00d7 4320 = 33177600 px\n33177600 x 48 = 1592524800 bits\n1592524800 / 8 = 199065600 byte\n199065600 / 1024 = 194400 KB\n194400 / 1024 = 189,84375 MB",
             "title": "GPU"
@@ -1841,21 +1821,6 @@
             "title": "via RVM on Ubuntu"
         },
         {
-            "location": "/Dev/Stress_tests/Ackerman_function/",
-            "text": "C\n\n\n#include <stdio.h>\n\nint ackermann(int m, int n)\n{\n   if (!m) return n + 1;\n   if (!n) return ackermann(m - 1, 1);\n   return ackermann(m - 1, ackermann(m, n - 1));\n}\n\nint main()\n{\n   int m, n;\n   for (m = 0; m <= 4; m++)\n      for (n = 0; n < 6 - m; n++)\n         printf(\"A(%d, %d) = %d\\n\", m, n, ackermann(m, n));\n\n   return 0;\n}\n\n\n\n\nC++\n\n\n#include <iostream>\n\nunsigned int ackermann(unsigned int m, unsigned int n) {\n  if (m == 0) {\n    return n + 1;\n  }\n  if (n == 0) {\n    return ackermann(m - 1, 1);\n  }\n  return ackermann(m - 1, ackermann(m, n - 1));\n}\n\nint main() {\n  for (unsigned int m = 0; m < 4; ++m) {\n    for (unsigned int n = 0; n < 30; ++n) {\n      std::cout << \"A(\" << m << \", \" << n << \") = \" << ackermann(m, n) << \"\\n\";\n    }\n  }\n}",
-            "title": "Ackerman function"
-        },
-        {
-            "location": "/Dev/Stress_tests/Ackerman_function/#c",
-            "text": "#include <stdio.h>\n\nint ackermann(int m, int n)\n{\n   if (!m) return n + 1;\n   if (!n) return ackermann(m - 1, 1);\n   return ackermann(m - 1, ackermann(m, n - 1));\n}\n\nint main()\n{\n   int m, n;\n   for (m = 0; m <= 4; m++)\n      for (n = 0; n < 6 - m; n++)\n         printf(\"A(%d, %d) = %d\\n\", m, n, ackermann(m, n));\n\n   return 0;\n}",
-            "title": "C"
-        },
-        {
-            "location": "/Dev/Stress_tests/Ackerman_function/#c_1",
-            "text": "#include <iostream>\n\nunsigned int ackermann(unsigned int m, unsigned int n) {\n  if (m == 0) {\n    return n + 1;\n  }\n  if (n == 0) {\n    return ackermann(m - 1, 1);\n  }\n  return ackermann(m - 1, ackermann(m, n - 1));\n}\n\nint main() {\n  for (unsigned int m = 0; m < 4; ++m) {\n    for (unsigned int n = 0; n < 30; ++n) {\n      std::cout << \"A(\" << m << \", \" << n << \") = \" << ackermann(m, n) << \"\\n\";\n    }\n  }\n}",
-            "title": "C++"
-        },
-        {
             "location": "/Dev/Vbs/Kaspersky_Base_Actuality/",
             "text": "With WMI query to get AVBasesStat path\n\n\n' VBscript:\n' Script to check actual date of Kaspersky Bases update\n' Author  : Dmitry Ivanov\n' Usage : C:\\Windows\\System32\\cscript.exe //E:VBscript //NoLogo <Path_TO>\\kav.vbs\n'   NetXMS Agent config:\n'   ExternalParameterShellExec = KasperskyBasesState:C:\\Windows\\System32\\cscript.exe //E:VBscript //NoLogo c:\\Path_TO\\kav.vbs\n\nOn Error Resume Next\n\nstrComputer     = \".\"\nstrNamespace    = \"\\root\\CIMV2\"\nstrClass    = \"Win32_SoftwareElement\"\n\nSet objWMIService   = GetObject(\"winmgmts:\\\\\" & strComputer & strNamespace) \nset colItems    = objWMIService.ExecQuery(_\n        \"Select * from \" & strClass &\" Where Name='AVBasesStatComponent'\", _\n        \"WQL\", wbemFlagReturnImmediately + wbemFlagForwardOnly)\n\nkavStatFile   = colItems.ItemIndex(0).Path + \"kdb.stt\"\n\nConst FILE_READ   = 1\nSet objFSO    = CreateObject(\"Scripting.FileSystemObject\")\nSet objStatFile   = objFSO.OpenTextFile(kavStatFile, FILE_READ)\nkavBasesStatStr   = objStatFile.ReadLine\nkavBasesStatArr   = Split(kavBasesStatStr,\";\")\nkavBaseDateStr    = kavBasesStatArr(1)\n\ntheYear     = Mid(kavBaseDateStr, 1, 4)\ntheMonth    = Mid(kavBaseDateStr, 5, 2)\ntheDay      = Mid(kavBaseDateStr, 7, 2)\ntheHour     = Mid(kavBaseDateStr, 9, 2)\ntheMin      = Mid(kavBaseDateStr, 11, 2)\n\nkavBaseDate   = CDate(theDay & \"/\" & theMonth & \"/\" & theYear & \" \" & theHour & \":\" & theMin)\ndateNow     = Now()\ndateTreshold    = DateAdd(\"H\",-24, dateNow)\n\nIF dateNow < kavBaseDate Then\n  Wscript.Echo \"!!!ERROR: Wrong time. Kaspersky bases from future! Check server timezone!\"\nElseIF dateTreshold < kavBaseDate Then\n  Wscript.Echo \"Yes\"\nElse\n  Wscript.Echo \"No\"\nEnd If\n\nobjStatFile.close()\n\n\n' DEBUG\n'Wscript.Echo \"kavBaseDate: \"     & kavBaseDate\n'Wscript.Echo \"dateNow: \"     & dateNow\n'Wscript.Echo \"kavBaseDateStr: \"  & kavBaseDateStr\n'Wscript.Echo \"dateTreshold \"     & dateTreshold\n'Wscript.Echo \"IF: \"      & dateTreshold < kavBaseDate\n'Wscript.Echo \n\n\n\n\nHardcoded AVBasesStat path\n\n\n' VBscript:\n' Script to check actual date of Kaspersky Bases update\n' Author  : Dmitry Ivanov\n' Usage : C:\\Windows\\System32\\cscript.exe //E:VBscript //NoLogo <Path_TO>\\kav.vbs\n'   NetXMS Agent config:\n'   ExternalParameterShellExec = KasperskyBasesState:C:\\Windows\\System32\\cscript.exe //E:VBscript //NoLogo c:\\Path_TO\\kav.vbs\n\nOn Error Resume Next\n\nkavStatFile   = \"c:\\ProgramData\\Kaspersky Lab\\KAV for Windows Servers Enterprise Edition\\8.0\\Bases\\Current\\Stat\\kdb.stt\"\n\nConst FILE_READ   = 1\nSet objFSO    = CreateObject(\"Scripting.FileSystemObject\")\nSet objStatFile   = objFSO.OpenTextFile(kavStatFile, FILE_READ)\nkavBasesStatStr   = objStatFile.ReadLine\nkavBasesStatArr   = Split(kavBasesStatStr,\";\")\nkavBaseDateStr    = kavBasesStatArr(1)\n\ntheYear     = Mid(kavBaseDateStr, 1, 4)\ntheMonth    = Mid(kavBaseDateStr, 5, 2)\ntheDay      = Mid(kavBaseDateStr, 7, 2)\ntheHour     = Mid(kavBaseDateStr, 9, 2)\ntheMin      = Mid(kavBaseDateStr, 11, 2)\n\nkavBaseDate   = CDate(theDay & \"/\" & theMonth & \"/\" & theYear & \" \" & theHour & \":\" & theMin)\ndateNow     = Now()\ndateTreshold    = DateAdd(\"H\",-24, dateNow)\n\nIF dateNow < kavBaseDate Then\n  Wscript.Echo \"!!!ERROR: Wrong time. Kaspersky bases from future! Check server timezone!\"\nElseIF dateTreshold < kavBaseDate Then\n  Wscript.Echo \"Yes\"\nElse\n  Wscript.Echo \"No\"\nEnd If\n\nobjStatFile.close()\n\n\n' DEBUG\n'Wscript.Echo \"kavBaseDate: \"     & kavBaseDate\n'Wscript.Echo \"dateNow: \"     & dateNow\n'Wscript.Echo \"kavBaseDateStr: \"  & kavBaseDateStr\n'Wscript.Echo \"dateTreshold \"     & dateTreshold\n'Wscript.Echo \"IF: \"      & dateTreshold < kavBaseDate\n'Wscript.Echo",
             "title": "Kaspersky Base Actuality"
@@ -1901,191 +1866,6 @@
             "title": "Run from command line:"
         },
         {
-            "location": "/Dev/Version_Control/Git/",
-            "text": "Dealing with line endings\n\n\n# Mac\ngit config --global core.autocrlf input\n# Linux\ngit config --global core.autocrlf input\n# Windows\ngit config --global core.autocrlf true\n\n\n\n\nNormalize all the line endings\n\n\n# Save your current files in Git, so that none of your work is lost.\ngit add . -u\ngit commit -m \"Saving files before refreshing line endings\"\n\n# Remove the index and force Git to rescan the working directory.\nrm .git/index\n\n# Rewrite the Git index to pick up all the new line endings.\ngit reset\n\n# Show the rewritten, normalized files.\ngit status\n\n# Add all your changed files back, and prepare them for a commit. This is your chance to inspect which files, if any, were unchanged.\ngit add -u\n# It is perfectly safe to see a lot of messages here that read\n# \"warning: CRLF will be replaced by LF in file.\"\n\n# Rewrite the .gitattributes file.\ngit add .gitattributes\n\n# Commit the changes to your repository.\ngit commit -m \"Normalize all the line endings\"\n\n\n\n\nClone\n\n\n# For new repos(-jN - number of simltaniuos jobs):\ngit clone --recursive-submodules -j4 https://github.com/keepbot/dotfiles\ngit clone --recursive-submodules https://github.com/keepbot/dotfiles\n\n# Ignore self signed ssl certificates\ngit -c http.sslVerify=false clone --recursive https://github.com/keepbot/dotfiles.git\n\n\n\n\nGlobal settings\n\n\ngit config --global user.name \"Your Name\"\ngit config --global user.email your@e-mail.com\n\n\n\n\nCreate new repository\n\n\nmkdir -p <path_to_repository>\ncd <path_to_repository>\ngit add .\ngit commit -m \"Initialization\"\ngit remote add origin https://github.com/username/<repository>.git\ngit push -u origin master\ngit checkout \n\n\n\n\nCommit\n\n\n# Addition of new files with automatic staging of deleted and modified files\ngit add .\ngit commit -a -m \"new commentary\"\ngit push -u origin master\n\n\n\n\nClean\n\n\ngit clean -d -x -f\n\n\n\n\nUpdate local reposytory from remote\n\n\n# Fentch + Merge\ngit pull\n# Fetch only\ngit fetch\n# Fetch changes from remote repository with modified local repository\ngit commit -a -m \"new commentary\"\ngit pull rebase\n# pull remote with overwrite local changes\ngit fetch --all\ngit reset --hard origin/master\n\n\n\n\nWorking with bunch of  repositories\n\n\n# Last commits\nfor d in `ls`; do cd $d; git log --pretty=format:\"%h - %an, %ar : %s\" -1; cd ..; done\n# Mass checkout\nfor d in `ls`; do cd $d; git checkout; cd ..; done\n\n\n\n\nCreating patches from commits:\n\n\n# The easiest version (you can specify number of commit to patch) \ngit format-patch -1 HEAD\n# Same as first, but create numbered files (00001-nnnnn)\ngit format-patch -n HEAD^\n# Simple cat ftom stdout, works fine on most of systems, but be carfull, if you have customized terminal (color tags, special symbols, etc.)\ngit show HEAD > path_to.patch\n\n\n\n\nApply patches:\n\n\ngit apply --stat 0001-Linux-agent-LVM-subagent-initial-implementation.patch\ngit apply --check 0001-Linux-agent-LVM-subagent-initial-implementation.patch\ngit am < 0001-Linux-agent-LVM-subagent-initial-implementation.patch\n\n\n\n\nAdd submodule\n\n\ngit submodule add -b <branch_name> <submodule_git_url> <local_path>\n\n\n\n\nChange branch for existing submodule\n\n\ncd <path_to_repo>\ngit config -f .gitmodules submodule.<local_path>.branch <branch_name>\n\n# Make sure that submodule is at the latest of branch (OR)\ncd <submodule_local_path>\ngit checkout -b branch --track origin/branch\ngit branch -u origin/master master\n\ncd <path_to_repo>\ngit add <submodule_local_path>\n\n\n\n\nUpdate submodules\n\n\ngit submodule update --recursive --remote\n\n\n\n\nDownload all submodules\n\n\ngit submodule update --init --recursive\n\n\n\n\nRemove submodule\n\n\n# 1. Delete the relevant section from the *.gitmodules* file.\n[submodule \"vendor\"]\n    path = vendor\n    url = git://github.com/some-user/some-repo.git\n# 2. Stage the *.gitmodules* changes with following command:\ngit add .gitmodules\n# 3.Delete the relevant section from *.git/config*:\n[submodule \"vendor\"]\n    url = git://github.com/some-user/some-repo.git\n# 4. Remove submodule folders from repo:\ngit rm --cached path/to/submodule\nrm -rf .git/modules/submodule_name\n# 6. Commit changes\n# 7. Delete files\nrm -rf path/to/submodule\n\n\n\n\nLogs\n\n\ngit log --pretty=format:\"%h - %an, %ar : %s\" -1\n\n\n\n\nProvide separate ssh-key\n\n\nvim ~/.ssh/config\n#------ add ------\nhost <full_server_hostname>\n HostName <full_server_hostname>\n IdentityFile ~/.ssh/<your_custom_ssh_key>\n User <git_user>\n#---- example ---\nhost github.com\n HostName github.com\n IdentityFile ~/.ssh/id_rsa_github\n User git\n#----------------\nsudo chmod 400 ~/.ssh/<your_custom_ssh_key>\nNow you can clone repo",
-            "title": "Git"
-        },
-        {
-            "location": "/Dev/Version_Control/Git/#dealing-with-line-endings",
-            "text": "# Mac\ngit config --global core.autocrlf input\n# Linux\ngit config --global core.autocrlf input\n# Windows\ngit config --global core.autocrlf true",
-            "title": "Dealing with line endings"
-        },
-        {
-            "location": "/Dev/Version_Control/Git/#normalize-all-the-line-endings",
-            "text": "# Save your current files in Git, so that none of your work is lost.\ngit add . -u\ngit commit -m \"Saving files before refreshing line endings\"\n\n# Remove the index and force Git to rescan the working directory.\nrm .git/index\n\n# Rewrite the Git index to pick up all the new line endings.\ngit reset\n\n# Show the rewritten, normalized files.\ngit status\n\n# Add all your changed files back, and prepare them for a commit. This is your chance to inspect which files, if any, were unchanged.\ngit add -u\n# It is perfectly safe to see a lot of messages here that read\n# \"warning: CRLF will be replaced by LF in file.\"\n\n# Rewrite the .gitattributes file.\ngit add .gitattributes\n\n# Commit the changes to your repository.\ngit commit -m \"Normalize all the line endings\"",
-            "title": "Normalize all the line endings"
-        },
-        {
-            "location": "/Dev/Version_Control/Git/#clone",
-            "text": "# For new repos(-jN - number of simltaniuos jobs):\ngit clone --recursive-submodules -j4 https://github.com/keepbot/dotfiles\ngit clone --recursive-submodules https://github.com/keepbot/dotfiles\n\n# Ignore self signed ssl certificates\ngit -c http.sslVerify=false clone --recursive https://github.com/keepbot/dotfiles.git",
-            "title": "Clone"
-        },
-        {
-            "location": "/Dev/Version_Control/Git/#global-settings",
-            "text": "git config --global user.name \"Your Name\"\ngit config --global user.email your@e-mail.com",
-            "title": "Global settings"
-        },
-        {
-            "location": "/Dev/Version_Control/Git/#create-new-repository",
-            "text": "mkdir -p <path_to_repository>\ncd <path_to_repository>\ngit add .\ngit commit -m \"Initialization\"\ngit remote add origin https://github.com/username/<repository>.git\ngit push -u origin master\ngit checkout",
-            "title": "Create new repository"
-        },
-        {
-            "location": "/Dev/Version_Control/Git/#commit",
-            "text": "# Addition of new files with automatic staging of deleted and modified files\ngit add .\ngit commit -a -m \"new commentary\"\ngit push -u origin master",
-            "title": "Commit"
-        },
-        {
-            "location": "/Dev/Version_Control/Git/#clean",
-            "text": "git clean -d -x -f",
-            "title": "Clean"
-        },
-        {
-            "location": "/Dev/Version_Control/Git/#update-local-reposytory-from-remote",
-            "text": "# Fentch + Merge\ngit pull\n# Fetch only\ngit fetch\n# Fetch changes from remote repository with modified local repository\ngit commit -a -m \"new commentary\"\ngit pull rebase\n# pull remote with overwrite local changes\ngit fetch --all\ngit reset --hard origin/master",
-            "title": "Update local reposytory from remote"
-        },
-        {
-            "location": "/Dev/Version_Control/Git/#working-with-bunch-of-repositories",
-            "text": "# Last commits\nfor d in `ls`; do cd $d; git log --pretty=format:\"%h - %an, %ar : %s\" -1; cd ..; done\n# Mass checkout\nfor d in `ls`; do cd $d; git checkout; cd ..; done",
-            "title": "Working with bunch of  repositories"
-        },
-        {
-            "location": "/Dev/Version_Control/Git/#creating-patches-from-commits",
-            "text": "# The easiest version (you can specify number of commit to patch) \ngit format-patch -1 HEAD\n# Same as first, but create numbered files (00001-nnnnn)\ngit format-patch -n HEAD^\n# Simple cat ftom stdout, works fine on most of systems, but be carfull, if you have customized terminal (color tags, special symbols, etc.)\ngit show HEAD > path_to.patch",
-            "title": "Creating patches from commits:"
-        },
-        {
-            "location": "/Dev/Version_Control/Git/#apply-patches",
-            "text": "git apply --stat 0001-Linux-agent-LVM-subagent-initial-implementation.patch\ngit apply --check 0001-Linux-agent-LVM-subagent-initial-implementation.patch\ngit am < 0001-Linux-agent-LVM-subagent-initial-implementation.patch",
-            "title": "Apply patches:"
-        },
-        {
-            "location": "/Dev/Version_Control/Git/#add-submodule",
-            "text": "git submodule add -b <branch_name> <submodule_git_url> <local_path>",
-            "title": "Add submodule"
-        },
-        {
-            "location": "/Dev/Version_Control/Git/#change-branch-for-existing-submodule",
-            "text": "cd <path_to_repo>\ngit config -f .gitmodules submodule.<local_path>.branch <branch_name>\n\n# Make sure that submodule is at the latest of branch (OR)\ncd <submodule_local_path>\ngit checkout -b branch --track origin/branch\ngit branch -u origin/master master\n\ncd <path_to_repo>\ngit add <submodule_local_path>",
-            "title": "Change branch for existing submodule"
-        },
-        {
-            "location": "/Dev/Version_Control/Git/#update-submodules",
-            "text": "git submodule update --recursive --remote",
-            "title": "Update submodules"
-        },
-        {
-            "location": "/Dev/Version_Control/Git/#download-all-submodules",
-            "text": "git submodule update --init --recursive",
-            "title": "Download all submodules"
-        },
-        {
-            "location": "/Dev/Version_Control/Git/#remove-submodule",
-            "text": "# 1. Delete the relevant section from the *.gitmodules* file.\n[submodule \"vendor\"]\n    path = vendor\n    url = git://github.com/some-user/some-repo.git\n# 2. Stage the *.gitmodules* changes with following command:\ngit add .gitmodules\n# 3.Delete the relevant section from *.git/config*:\n[submodule \"vendor\"]\n    url = git://github.com/some-user/some-repo.git\n# 4. Remove submodule folders from repo:\ngit rm --cached path/to/submodule\nrm -rf .git/modules/submodule_name\n# 6. Commit changes\n# 7. Delete files\nrm -rf path/to/submodule",
-            "title": "Remove submodule"
-        },
-        {
-            "location": "/Dev/Version_Control/Git/#logs",
-            "text": "git log --pretty=format:\"%h - %an, %ar : %s\" -1",
-            "title": "Logs"
-        },
-        {
-            "location": "/Dev/Version_Control/Git/#provide-separate-ssh-key",
-            "text": "vim ~/.ssh/config\n#------ add ------\nhost <full_server_hostname>\n HostName <full_server_hostname>\n IdentityFile ~/.ssh/<your_custom_ssh_key>\n User <git_user>\n#---- example ---\nhost github.com\n HostName github.com\n IdentityFile ~/.ssh/id_rsa_github\n User git\n#----------------\nsudo chmod 400 ~/.ssh/<your_custom_ssh_key>\nNow you can clone repo",
-            "title": "Provide separate ssh-key"
-        },
-        {
-            "location": "/Dev/Version_Control/GitHub/",
-            "text": "Independent history catalogs of git repositories\n\n\n# Makes a bunch of history folders formatted by the next way: <repository>-<number_of_commit>-<commit_hash>\n# Check commit_list.end for mistakes, you need simple list of commits\ngit clone <repository_url> <repository>\ncd <repository> && git log --pretty=format:\"%h\" > ../commit_list && cd ..\ntac commit_list > commit_list.end \ni=1; for cid in `cat commit_list.end`; do cp -r <repository> <repository>-$i-$cid; cd <repository>-$i-$cid; git checkout $cid; cd ..; ((i=i+1)); done\n\n\n\n\nClone all user's repositories\n\n\n# Get complete list of user's repositories in JSON file\ncurl -s https://api.github.com/users/<username>/repos?per_page=200 > repo.list.json\npython -c \"import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close()\"\n# And dont forget about \"space\"(%20, \" \") in cmd = 'git clone ', it's completely nessesary\n# Another way to clone up to 200 user's repos(just in shell): \ncurl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | .\"clone_url\"' | xargs -I '{}' git clone {}\n\n\n\n\nGenerate new key-pair in current folder`\n\n\nsh-keygen -t rsa -b 4096 -C \"email@domain\" -f deploy_key",
-            "title": "GitHub"
-        },
-        {
-            "location": "/Dev/Version_Control/GitHub/#independent-history-catalogs-of-git-repositories",
-            "text": "# Makes a bunch of history folders formatted by the next way: <repository>-<number_of_commit>-<commit_hash>\n# Check commit_list.end for mistakes, you need simple list of commits\ngit clone <repository_url> <repository>\ncd <repository> && git log --pretty=format:\"%h\" > ../commit_list && cd ..\ntac commit_list > commit_list.end \ni=1; for cid in `cat commit_list.end`; do cp -r <repository> <repository>-$i-$cid; cd <repository>-$i-$cid; git checkout $cid; cd ..; ((i=i+1)); done",
-            "title": "Independent history catalogs of git repositories"
-        },
-        {
-            "location": "/Dev/Version_Control/GitHub/#clone-all-users-repositories",
-            "text": "# Get complete list of user's repositories in JSON file\ncurl -s https://api.github.com/users/<username>/repos?per_page=200 > repo.list.json\npython -c \"import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close()\"\n# And dont forget about \"space\"(%20, \" \") in cmd = 'git clone ', it's completely nessesary\n# Another way to clone up to 200 user's repos(just in shell): \ncurl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | .\"clone_url\"' | xargs -I '{}' git clone {}",
-            "title": "Clone all user's repositories"
-        },
-        {
-            "location": "/Dev/Version_Control/GitHub/#generate-new-key-pair-in-current-folder",
-            "text": "sh-keygen -t rsa -b 4096 -C \"email@domain\" -f deploy_key",
-            "title": "Generate new key-pair in current folder`"
-        },
-        {
-            "location": "/Dev/Version_Control/Gitignore/",
-            "text": "Clean up repository for new gitignore\n\n\ngit rm --cached `git ls-files -i --exclude-standard`\n\n\n\n\nAndroid development\n\n\n# Built application files\n*.apk\n*.ap_\n\n# Files for the ART/Dalvik VM\n*.dex\n\n# Java class files\n*.class\n\n# Generated files\nbin/\ngen/\nout/\n\n# Gradle files\n.gradle/\nbuild/\n\n# Local configuration file (sdk path, etc)\nlocal.properties\n\n# Log Files\n*.log\n\n# Android Studio Navigation editor temp files\n.navigation/\n\n# Android Studio captures folder\ncaptures/\n\n# Eclipse project files\n.classpath\n.project\n\n# Eclipse Metadata\n.metadata/\n\n# Proguard folder generated by Eclipse\nproguard/\n\n# Intellij| .idea - for all Android Studio environment\n*.iml\n.idea\n#.idea/workspace.xml\n#.idea/tasks.xml\n#.idea/libraries\n\n# Keystore files\n*.jks\n\n# External native build folder generated in Android Studio 2.2 and later\n.externalNativeBuild\n\n# NDK\nobj/\n\n# MacOS\n.DS_Store\n.DS_Store?\n\n# Windows\nehthumbs.db\nThumbs.db\n\n# Other files\n.Spotlight-V100\n.Trashes\n/*/out\n/*/*/build\n/*/*/production\n*.iws\n*.ipr\n*~\n*.swp",
-            "title": "Gitignore"
-        },
-        {
-            "location": "/Dev/Version_Control/Gitignore/#clean-up-repository-for-new-gitignore",
-            "text": "git rm --cached `git ls-files -i --exclude-standard`",
-            "title": "Clean up repository for new gitignore"
-        },
-        {
-            "location": "/Dev/Version_Control/Gitignore/#android-development",
-            "text": "# Built application files\n*.apk\n*.ap_\n\n# Files for the ART/Dalvik VM\n*.dex\n\n# Java class files\n*.class\n\n# Generated files\nbin/\ngen/\nout/\n\n# Gradle files\n.gradle/\nbuild/\n\n# Local configuration file (sdk path, etc)\nlocal.properties\n\n# Log Files\n*.log\n\n# Android Studio Navigation editor temp files\n.navigation/\n\n# Android Studio captures folder\ncaptures/\n\n# Eclipse project files\n.classpath\n.project\n\n# Eclipse Metadata\n.metadata/\n\n# Proguard folder generated by Eclipse\nproguard/\n\n# Intellij| .idea - for all Android Studio environment\n*.iml\n.idea\n#.idea/workspace.xml\n#.idea/tasks.xml\n#.idea/libraries\n\n# Keystore files\n*.jks\n\n# External native build folder generated in Android Studio 2.2 and later\n.externalNativeBuild\n\n# NDK\nobj/\n\n# MacOS\n.DS_Store\n.DS_Store?\n\n# Windows\nehthumbs.db\nThumbs.db\n\n# Other files\n.Spotlight-V100\n.Trashes\n/*/out\n/*/*/build\n/*/*/production\n*.iws\n*.ipr\n*~\n*.swp",
-            "title": "Android development"
-        },
-        {
-            "location": "/Dev/Version_Control/Subversion/",
-            "text": "Get local copy\n\n\nsvn checkout <url> <local_path>\n\n\n\n\nSave changes to repository\n\n\nsvn commit -m \"log messages\"\n\n\n\n\nLists directories\n\n\nsvn list\n\n\n\n\nAdd file to repository\n\n\nsvn add <filename>\n\n\n\n\nRemove file from repository\n\n\nsvn delete <url_to_file>\n\n\n\n\nDisplay the difference\n\n\nsvn diff <filename>\n\n\n\n\nStatus of your copy\n\n\nsvn status <local_path>\n\n\n\n\nDisplay log message\n\n\nsvn log <local_path>\n\n\n\n\nRename file or directory\n\n\nsvn move <old_filename> <new_filename>\n\n\n\n\nUpdate of your copy\n\n\nsvn update <local_path>",
-            "title": "Subversion"
-        },
-        {
-            "location": "/Dev/Version_Control/Subversion/#get-local-copy",
-            "text": "svn checkout <url> <local_path>",
-            "title": "Get local copy"
-        },
-        {
-            "location": "/Dev/Version_Control/Subversion/#save-changes-to-repository",
-            "text": "svn commit -m \"log messages\"",
-            "title": "Save changes to repository"
-        },
-        {
-            "location": "/Dev/Version_Control/Subversion/#lists-directories",
-            "text": "svn list",
-            "title": "Lists directories"
-        },
-        {
-            "location": "/Dev/Version_Control/Subversion/#add-file-to-repository",
-            "text": "svn add <filename>",
-            "title": "Add file to repository"
-        },
-        {
-            "location": "/Dev/Version_Control/Subversion/#remove-file-from-repository",
-            "text": "svn delete <url_to_file>",
-            "title": "Remove file from repository"
-        },
-        {
-            "location": "/Dev/Version_Control/Subversion/#display-the-difference",
-            "text": "svn diff <filename>",
-            "title": "Display the difference"
-        },
-        {
-            "location": "/Dev/Version_Control/Subversion/#status-of-your-copy",
-            "text": "svn status <local_path>",
-            "title": "Status of your copy"
-        },
-        {
-            "location": "/Dev/Version_Control/Subversion/#display-log-message",
-            "text": "svn log <local_path>",
-            "title": "Display log message"
-        },
-        {
-            "location": "/Dev/Version_Control/Subversion/#rename-file-or-directory",
-            "text": "svn move <old_filename> <new_filename>",
-            "title": "Rename file or directory"
-        },
-        {
-            "location": "/Dev/Version_Control/Subversion/#update-of-your-copy",
-            "text": "svn update <local_path>",
-            "title": "Update of your copy"
-        },
-        {
             "location": "/Dev/Web/Redirect/",
             "text": "Redirect through index.html\n\n\n<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">\n<html><head><meta http-equiv=Refresh content=\"0;url=/path_to_subfolder/\"></head></html>\n\n<!--\n\n-->",
             "title": "Redirect"
@@ -2119,6 +1899,211 @@
             "location": "/DevOps/Chef-Windows/#chef-environment-by-karsten-muller",
             "text": "basic.rb    chocolatey_package 'git' do\n  package_name 'git'\n  options '-params /GitAndUnixToolsOnPath'\nend\n\npackages =  %w[conemu visualstudiocode 7zip winmerge vagrant autohotkey]\npackages.each do |pkg|\n  chocolatey_package pkg\nend\n\ngems = %w[kitchen-pester kitchen-hyperv kitchen-dsc kitchen-azurerm azure-credentials pry pry-byebug pry-stack_explorer appbundle-updater]\ngems.each do |gem|\n  chef_gem gem do\n    compile_time false if respond_to?(:compile_time)\n  end\nend\n\nextensions = %w[ ms-vscode.PowerShell msazurermtools.azurerm-vscode-tools Pendrica.Chef ]\nextensions.each do |ext|\n  execute \"install vscode extension #{ext}\" do\n    command \"code --install-extension #{ext}\"\n  end\nend\n\npowershell_script 'Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force' do\nend\n\nmodules = %w[ PSReadline ]\nmodules.each do |mod|\n  powershell_script \"Install-Module #{mod} -Force\" do\n  end\nend\n\ndirectory 'C:\\Work\\Chef' do\n  recursive true\n  action :create\nend\n\nexecute 'chef generate repo example_repo -p' do\n  cwd 'C:\\Work\\Chef'\nend   bootstrap.ps1   # Setup my execution policy for both the 64 bit and 32 bit shells\nset-executionpolicy remotesigned\nstart-job -runas32 {set-executionpolicy remotesigned} | receive-job -wait\n# Install fixed version of ChefDK \ninvoke-restmethod 'https://omnitruck.chef.io/install.ps1' | iex\ninstall-project chefdk -verbose -version 1.1.16\n# Install Chocolatey\ninvoke-expression ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))\nchoco feature enable -n allowGlobalConfirmation\n# Get a basic setup recipe\nInvoke-RestMethod -UseBasicParsing 'https://gist.githubusercontent.com/karstenmueller/0c2257684b8e6a44bac9526c52074e18/raw/a150048b7ffbfe202f90fdce446b8095b3e7858c/basic.rb' | out-file -encoding ascii -filepath c:/basic.rb\n# We dont need any Windows 10 Apps\nGet-AppxPackage | Remove-AppxPackage 2>&1>$null\n# Use Chef Apply to setup \nchef-apply c:/basic.rb\nwrite-host \"executed chef recipe c:/basic.rb\"",
             "title": "Chef environment by Karsten M\u00fcller"
+        },
+        {
+            "location": "/DevTools/Build/GCC/",
+            "text": "Ubuntu: GCC-5 and GCC-6\n\n\n# It could be useful to remove old gcc alternatives\nsudo update-alternatives --remove-all gcc \nsudo update-alternatives --remove-all g++\n\n# Alternatives for GCC 5 and 6\nsudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 100 --slave /usr/bin/g++ g++ /usr/bin/g++-6\nsudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 50 --slave /usr/bin/g++ g++ /usr/bin/g++-5\nsudo update-alternatives --config gcc",
+            "title": "GCC"
+        },
+        {
+            "location": "/DevTools/Build/GCC/#ubuntu-gcc-5-and-gcc-6",
+            "text": "# It could be useful to remove old gcc alternatives\nsudo update-alternatives --remove-all gcc \nsudo update-alternatives --remove-all g++\n\n# Alternatives for GCC 5 and 6\nsudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 100 --slave /usr/bin/g++ g++ /usr/bin/g++-6\nsudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 50 --slave /usr/bin/g++ g++ /usr/bin/g++-5\nsudo update-alternatives --config gcc",
+            "title": "Ubuntu: GCC-5 and GCC-6"
+        },
+        {
+            "location": "/DevTools/Build/Make/",
+            "text": "Flags to configure\n\n\n/configure CFLAGS='-std=gnu89 -g -O2 -w' CXXFLAGS='-std=gnu++98 -g -O2 -w'",
+            "title": "Make"
+        },
+        {
+            "location": "/DevTools/Build/Make/#flags-to-configure",
+            "text": "/configure CFLAGS='-std=gnu89 -g -O2 -w' CXXFLAGS='-std=gnu++98 -g -O2 -w'",
+            "title": "Flags to configure"
+        },
+        {
+            "location": "/DevTools/Version_Control/Git/",
+            "text": "Dealing with line endings\n\n\n# Mac\ngit config --global core.autocrlf input\n# Linux\ngit config --global core.autocrlf input\n# Windows\ngit config --global core.autocrlf true\n\n\n\n\nNormalize all the line endings\n\n\n# Save your current files in Git, so that none of your work is lost.\ngit add . -u\ngit commit -m \"Saving files before refreshing line endings\"\n\n# Remove the index and force Git to rescan the working directory.\nrm .git/index\n\n# Rewrite the Git index to pick up all the new line endings.\ngit reset\n\n# Show the rewritten, normalized files.\ngit status\n\n# Add all your changed files back, and prepare them for a commit. This is your chance to inspect which files, if any, were unchanged.\ngit add -u\n# It is perfectly safe to see a lot of messages here that read\n# \"warning: CRLF will be replaced by LF in file.\"\n\n# Rewrite the .gitattributes file.\ngit add .gitattributes\n\n# Commit the changes to your repository.\ngit commit -m \"Normalize all the line endings\"\n\n\n\n\nClone\n\n\n# For new repos(-jN - number of simltaniuos jobs):\ngit clone --recursive-submodules -j4 https://github.com/keepbot/dotfiles\ngit clone --recursive-submodules https://github.com/keepbot/dotfiles\n\n# Ignore self signed ssl certificates\ngit -c http.sslVerify=false clone --recursive https://github.com/keepbot/dotfiles.git\n\n\n\n\nGlobal settings\n\n\ngit config --global user.name \"Your Name\"\ngit config --global user.email your@e-mail.com\n\n\n\n\nCreate new repository\n\n\nmkdir -p <path_to_repository>\ncd <path_to_repository>\ngit add .\ngit commit -m \"Initialization\"\ngit remote add origin https://github.com/username/<repository>.git\ngit push -u origin master\ngit checkout \n\n\n\n\nCommit\n\n\n# Addition of new files with automatic staging of deleted and modified files\ngit add .\ngit commit -a -m \"new commentary\"\ngit push -u origin master\n\n\n\n\nClean\n\n\ngit clean -d -x -f\n\n\n\n\nUpdate local reposytory from remote\n\n\n# Fentch + Merge\ngit pull\n# Fetch only\ngit fetch\n# Fetch changes from remote repository with modified local repository\ngit commit -a -m \"new commentary\"\ngit pull rebase\n# pull remote with overwrite local changes\ngit fetch --all\ngit reset --hard origin/master\n\n\n\n\nWorking with bunch of  repositories\n\n\n# Last commits\nfor d in `ls`; do cd $d; git log --pretty=format:\"%h - %an, %ar : %s\" -1; cd ..; done\n# Mass checkout\nfor d in `ls`; do cd $d; git checkout; cd ..; done\n\n\n\n\nCreating patches from commits:\n\n\n# The easiest version (you can specify number of commit to patch) \ngit format-patch -1 HEAD\n# Same as first, but create numbered files (00001-nnnnn)\ngit format-patch -n HEAD^\n# Simple cat ftom stdout, works fine on most of systems, but be carfull, if you have customized terminal (color tags, special symbols, etc.)\ngit show HEAD > path_to.patch\n\n\n\n\nApply patches:\n\n\ngit apply --stat 0001-Linux-agent-LVM-subagent-initial-implementation.patch\ngit apply --check 0001-Linux-agent-LVM-subagent-initial-implementation.patch\ngit am < 0001-Linux-agent-LVM-subagent-initial-implementation.patch\n\n\n\n\nAdd submodule\n\n\ngit submodule add -b <branch_name> <submodule_git_url> <local_path>\n\n\n\n\nChange branch for existing submodule\n\n\ncd <path_to_repo>\ngit config -f .gitmodules submodule.<local_path>.branch <branch_name>\n\n# Make sure that submodule is at the latest of branch (OR)\ncd <submodule_local_path>\ngit checkout -b branch --track origin/branch\ngit branch -u origin/master master\n\ncd <path_to_repo>\ngit add <submodule_local_path>\n\n\n\n\nUpdate submodules\n\n\ngit submodule update --recursive --remote\n\n\n\n\nDownload all submodules\n\n\ngit submodule update --init --recursive\n\n\n\n\nRemove submodule\n\n\n# 1. Delete the relevant section from the *.gitmodules* file.\n[submodule \"vendor\"]\n    path = vendor\n    url = git://github.com/some-user/some-repo.git\n# 2. Stage the *.gitmodules* changes with following command:\ngit add .gitmodules\n# 3.Delete the relevant section from *.git/config*:\n[submodule \"vendor\"]\n    url = git://github.com/some-user/some-repo.git\n# 4. Remove submodule folders from repo:\ngit rm --cached path/to/submodule\nrm -rf .git/modules/submodule_name\n# 6. Commit changes\n# 7. Delete files\nrm -rf path/to/submodule\n\n\n\n\nLogs\n\n\ngit log --pretty=format:\"%h - %an, %ar : %s\" -1\n\n\n\n\nProvide separate ssh-key\n\n\nvim ~/.ssh/config\n#------ add ------\nhost <full_server_hostname>\n HostName <full_server_hostname>\n IdentityFile ~/.ssh/<your_custom_ssh_key>\n User <git_user>\n#---- example ---\nhost github.com\n HostName github.com\n IdentityFile ~/.ssh/id_rsa_github\n User git\n#----------------\nsudo chmod 400 ~/.ssh/<your_custom_ssh_key>\nNow you can clone repo",
+            "title": "Git"
+        },
+        {
+            "location": "/DevTools/Version_Control/Git/#dealing-with-line-endings",
+            "text": "# Mac\ngit config --global core.autocrlf input\n# Linux\ngit config --global core.autocrlf input\n# Windows\ngit config --global core.autocrlf true",
+            "title": "Dealing with line endings"
+        },
+        {
+            "location": "/DevTools/Version_Control/Git/#normalize-all-the-line-endings",
+            "text": "# Save your current files in Git, so that none of your work is lost.\ngit add . -u\ngit commit -m \"Saving files before refreshing line endings\"\n\n# Remove the index and force Git to rescan the working directory.\nrm .git/index\n\n# Rewrite the Git index to pick up all the new line endings.\ngit reset\n\n# Show the rewritten, normalized files.\ngit status\n\n# Add all your changed files back, and prepare them for a commit. This is your chance to inspect which files, if any, were unchanged.\ngit add -u\n# It is perfectly safe to see a lot of messages here that read\n# \"warning: CRLF will be replaced by LF in file.\"\n\n# Rewrite the .gitattributes file.\ngit add .gitattributes\n\n# Commit the changes to your repository.\ngit commit -m \"Normalize all the line endings\"",
+            "title": "Normalize all the line endings"
+        },
+        {
+            "location": "/DevTools/Version_Control/Git/#clone",
+            "text": "# For new repos(-jN - number of simltaniuos jobs):\ngit clone --recursive-submodules -j4 https://github.com/keepbot/dotfiles\ngit clone --recursive-submodules https://github.com/keepbot/dotfiles\n\n# Ignore self signed ssl certificates\ngit -c http.sslVerify=false clone --recursive https://github.com/keepbot/dotfiles.git",
+            "title": "Clone"
+        },
+        {
+            "location": "/DevTools/Version_Control/Git/#global-settings",
+            "text": "git config --global user.name \"Your Name\"\ngit config --global user.email your@e-mail.com",
+            "title": "Global settings"
+        },
+        {
+            "location": "/DevTools/Version_Control/Git/#create-new-repository",
+            "text": "mkdir -p <path_to_repository>\ncd <path_to_repository>\ngit add .\ngit commit -m \"Initialization\"\ngit remote add origin https://github.com/username/<repository>.git\ngit push -u origin master\ngit checkout",
+            "title": "Create new repository"
+        },
+        {
+            "location": "/DevTools/Version_Control/Git/#commit",
+            "text": "# Addition of new files with automatic staging of deleted and modified files\ngit add .\ngit commit -a -m \"new commentary\"\ngit push -u origin master",
+            "title": "Commit"
+        },
+        {
+            "location": "/DevTools/Version_Control/Git/#clean",
+            "text": "git clean -d -x -f",
+            "title": "Clean"
+        },
+        {
+            "location": "/DevTools/Version_Control/Git/#update-local-reposytory-from-remote",
+            "text": "# Fentch + Merge\ngit pull\n# Fetch only\ngit fetch\n# Fetch changes from remote repository with modified local repository\ngit commit -a -m \"new commentary\"\ngit pull rebase\n# pull remote with overwrite local changes\ngit fetch --all\ngit reset --hard origin/master",
+            "title": "Update local reposytory from remote"
+        },
+        {
+            "location": "/DevTools/Version_Control/Git/#working-with-bunch-of-repositories",
+            "text": "# Last commits\nfor d in `ls`; do cd $d; git log --pretty=format:\"%h - %an, %ar : %s\" -1; cd ..; done\n# Mass checkout\nfor d in `ls`; do cd $d; git checkout; cd ..; done",
+            "title": "Working with bunch of  repositories"
+        },
+        {
+            "location": "/DevTools/Version_Control/Git/#creating-patches-from-commits",
+            "text": "# The easiest version (you can specify number of commit to patch) \ngit format-patch -1 HEAD\n# Same as first, but create numbered files (00001-nnnnn)\ngit format-patch -n HEAD^\n# Simple cat ftom stdout, works fine on most of systems, but be carfull, if you have customized terminal (color tags, special symbols, etc.)\ngit show HEAD > path_to.patch",
+            "title": "Creating patches from commits:"
+        },
+        {
+            "location": "/DevTools/Version_Control/Git/#apply-patches",
+            "text": "git apply --stat 0001-Linux-agent-LVM-subagent-initial-implementation.patch\ngit apply --check 0001-Linux-agent-LVM-subagent-initial-implementation.patch\ngit am < 0001-Linux-agent-LVM-subagent-initial-implementation.patch",
+            "title": "Apply patches:"
+        },
+        {
+            "location": "/DevTools/Version_Control/Git/#add-submodule",
+            "text": "git submodule add -b <branch_name> <submodule_git_url> <local_path>",
+            "title": "Add submodule"
+        },
+        {
+            "location": "/DevTools/Version_Control/Git/#change-branch-for-existing-submodule",
+            "text": "cd <path_to_repo>\ngit config -f .gitmodules submodule.<local_path>.branch <branch_name>\n\n# Make sure that submodule is at the latest of branch (OR)\ncd <submodule_local_path>\ngit checkout -b branch --track origin/branch\ngit branch -u origin/master master\n\ncd <path_to_repo>\ngit add <submodule_local_path>",
+            "title": "Change branch for existing submodule"
+        },
+        {
+            "location": "/DevTools/Version_Control/Git/#update-submodules",
+            "text": "git submodule update --recursive --remote",
+            "title": "Update submodules"
+        },
+        {
+            "location": "/DevTools/Version_Control/Git/#download-all-submodules",
+            "text": "git submodule update --init --recursive",
+            "title": "Download all submodules"
+        },
+        {
+            "location": "/DevTools/Version_Control/Git/#remove-submodule",
+            "text": "# 1. Delete the relevant section from the *.gitmodules* file.\n[submodule \"vendor\"]\n    path = vendor\n    url = git://github.com/some-user/some-repo.git\n# 2. Stage the *.gitmodules* changes with following command:\ngit add .gitmodules\n# 3.Delete the relevant section from *.git/config*:\n[submodule \"vendor\"]\n    url = git://github.com/some-user/some-repo.git\n# 4. Remove submodule folders from repo:\ngit rm --cached path/to/submodule\nrm -rf .git/modules/submodule_name\n# 6. Commit changes\n# 7. Delete files\nrm -rf path/to/submodule",
+            "title": "Remove submodule"
+        },
+        {
+            "location": "/DevTools/Version_Control/Git/#logs",
+            "text": "git log --pretty=format:\"%h - %an, %ar : %s\" -1",
+            "title": "Logs"
+        },
+        {
+            "location": "/DevTools/Version_Control/Git/#provide-separate-ssh-key",
+            "text": "vim ~/.ssh/config\n#------ add ------\nhost <full_server_hostname>\n HostName <full_server_hostname>\n IdentityFile ~/.ssh/<your_custom_ssh_key>\n User <git_user>\n#---- example ---\nhost github.com\n HostName github.com\n IdentityFile ~/.ssh/id_rsa_github\n User git\n#----------------\nsudo chmod 400 ~/.ssh/<your_custom_ssh_key>\nNow you can clone repo",
+            "title": "Provide separate ssh-key"
+        },
+        {
+            "location": "/DevTools/Version_Control/GitHub/",
+            "text": "Independent history catalogs of git repositories\n\n\n# Makes a bunch of history folders formatted by the next way: <repository>-<number_of_commit>-<commit_hash>\n# Check commit_list.end for mistakes, you need simple list of commits\ngit clone <repository_url> <repository>\ncd <repository> && git log --pretty=format:\"%h\" > ../commit_list && cd ..\ntac commit_list > commit_list.end \ni=1; for cid in `cat commit_list.end`; do cp -r <repository> <repository>-$i-$cid; cd <repository>-$i-$cid; git checkout $cid; cd ..; ((i=i+1)); done\n\n\n\n\nClone all user's repositories\n\n\n# Get complete list of user's repositories in JSON file\ncurl -s https://api.github.com/users/<username>/repos?per_page=200 > repo.list.json\npython -c \"import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close()\"\n# And dont forget about \"space\"(%20, \" \") in cmd = 'git clone ', it's completely nessesary\n# Another way to clone up to 200 user's repos(just in shell): \ncurl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | .\"clone_url\"' | xargs -I '{}' git clone {}\n\n\n\n\nGenerate new key-pair in current folder`\n\n\nsh-keygen -t rsa -b 4096 -C \"email@domain\" -f deploy_key",
+            "title": "GitHub"
+        },
+        {
+            "location": "/DevTools/Version_Control/GitHub/#independent-history-catalogs-of-git-repositories",
+            "text": "# Makes a bunch of history folders formatted by the next way: <repository>-<number_of_commit>-<commit_hash>\n# Check commit_list.end for mistakes, you need simple list of commits\ngit clone <repository_url> <repository>\ncd <repository> && git log --pretty=format:\"%h\" > ../commit_list && cd ..\ntac commit_list > commit_list.end \ni=1; for cid in `cat commit_list.end`; do cp -r <repository> <repository>-$i-$cid; cd <repository>-$i-$cid; git checkout $cid; cd ..; ((i=i+1)); done",
+            "title": "Independent history catalogs of git repositories"
+        },
+        {
+            "location": "/DevTools/Version_Control/GitHub/#clone-all-users-repositories",
+            "text": "# Get complete list of user's repositories in JSON file\ncurl -s https://api.github.com/users/<username>/repos?per_page=200 > repo.list.json\npython -c \"import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close()\"\n# And dont forget about \"space\"(%20, \" \") in cmd = 'git clone ', it's completely nessesary\n# Another way to clone up to 200 user's repos(just in shell): \ncurl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | .\"clone_url\"' | xargs -I '{}' git clone {}",
+            "title": "Clone all user's repositories"
+        },
+        {
+            "location": "/DevTools/Version_Control/GitHub/#generate-new-key-pair-in-current-folder",
+            "text": "sh-keygen -t rsa -b 4096 -C \"email@domain\" -f deploy_key",
+            "title": "Generate new key-pair in current folder`"
+        },
+        {
+            "location": "/DevTools/Version_Control/Gitignore/",
+            "text": "Clean up repository for new gitignore\n\n\ngit rm --cached `git ls-files -i --exclude-standard`\n\n\n\n\nAndroid development\n\n\n# Built application files\n*.apk\n*.ap_\n\n# Files for the ART/Dalvik VM\n*.dex\n\n# Java class files\n*.class\n\n# Generated files\nbin/\ngen/\nout/\n\n# Gradle files\n.gradle/\nbuild/\n\n# Local configuration file (sdk path, etc)\nlocal.properties\n\n# Log Files\n*.log\n\n# Android Studio Navigation editor temp files\n.navigation/\n\n# Android Studio captures folder\ncaptures/\n\n# Eclipse project files\n.classpath\n.project\n\n# Eclipse Metadata\n.metadata/\n\n# Proguard folder generated by Eclipse\nproguard/\n\n# Intellij| .idea - for all Android Studio environment\n*.iml\n.idea\n#.idea/workspace.xml\n#.idea/tasks.xml\n#.idea/libraries\n\n# Keystore files\n*.jks\n\n# External native build folder generated in Android Studio 2.2 and later\n.externalNativeBuild\n\n# NDK\nobj/\n\n# MacOS\n.DS_Store\n.DS_Store?\n\n# Windows\nehthumbs.db\nThumbs.db\n\n# Other files\n.Spotlight-V100\n.Trashes\n/*/out\n/*/*/build\n/*/*/production\n*.iws\n*.ipr\n*~\n*.swp",
+            "title": "Gitignore"
+        },
+        {
+            "location": "/DevTools/Version_Control/Gitignore/#clean-up-repository-for-new-gitignore",
+            "text": "git rm --cached `git ls-files -i --exclude-standard`",
+            "title": "Clean up repository for new gitignore"
+        },
+        {
+            "location": "/DevTools/Version_Control/Gitignore/#android-development",
+            "text": "# Built application files\n*.apk\n*.ap_\n\n# Files for the ART/Dalvik VM\n*.dex\n\n# Java class files\n*.class\n\n# Generated files\nbin/\ngen/\nout/\n\n# Gradle files\n.gradle/\nbuild/\n\n# Local configuration file (sdk path, etc)\nlocal.properties\n\n# Log Files\n*.log\n\n# Android Studio Navigation editor temp files\n.navigation/\n\n# Android Studio captures folder\ncaptures/\n\n# Eclipse project files\n.classpath\n.project\n\n# Eclipse Metadata\n.metadata/\n\n# Proguard folder generated by Eclipse\nproguard/\n\n# Intellij| .idea - for all Android Studio environment\n*.iml\n.idea\n#.idea/workspace.xml\n#.idea/tasks.xml\n#.idea/libraries\n\n# Keystore files\n*.jks\n\n# External native build folder generated in Android Studio 2.2 and later\n.externalNativeBuild\n\n# NDK\nobj/\n\n# MacOS\n.DS_Store\n.DS_Store?\n\n# Windows\nehthumbs.db\nThumbs.db\n\n# Other files\n.Spotlight-V100\n.Trashes\n/*/out\n/*/*/build\n/*/*/production\n*.iws\n*.ipr\n*~\n*.swp",
+            "title": "Android development"
+        },
+        {
+            "location": "/DevTools/Version_Control/Subversion/",
+            "text": "Get local copy\n\n\nsvn checkout <url> <local_path>\n\n\n\n\nSave changes to repository\n\n\nsvn commit -m \"log messages\"\n\n\n\n\nLists directories\n\n\nsvn list\n\n\n\n\nAdd file to repository\n\n\nsvn add <filename>\n\n\n\n\nRemove file from repository\n\n\nsvn delete <url_to_file>\n\n\n\n\nDisplay the difference\n\n\nsvn diff <filename>\n\n\n\n\nStatus of your copy\n\n\nsvn status <local_path>\n\n\n\n\nDisplay log message\n\n\nsvn log <local_path>\n\n\n\n\nRename file or directory\n\n\nsvn move <old_filename> <new_filename>\n\n\n\n\nUpdate of your copy\n\n\nsvn update <local_path>",
+            "title": "Subversion"
+        },
+        {
+            "location": "/DevTools/Version_Control/Subversion/#get-local-copy",
+            "text": "svn checkout <url> <local_path>",
+            "title": "Get local copy"
+        },
+        {
+            "location": "/DevTools/Version_Control/Subversion/#save-changes-to-repository",
+            "text": "svn commit -m \"log messages\"",
+            "title": "Save changes to repository"
+        },
+        {
+            "location": "/DevTools/Version_Control/Subversion/#lists-directories",
+            "text": "svn list",
+            "title": "Lists directories"
+        },
+        {
+            "location": "/DevTools/Version_Control/Subversion/#add-file-to-repository",
+            "text": "svn add <filename>",
+            "title": "Add file to repository"
+        },
+        {
+            "location": "/DevTools/Version_Control/Subversion/#remove-file-from-repository",
+            "text": "svn delete <url_to_file>",
+            "title": "Remove file from repository"
+        },
+        {
+            "location": "/DevTools/Version_Control/Subversion/#display-the-difference",
+            "text": "svn diff <filename>",
+            "title": "Display the difference"
+        },
+        {
+            "location": "/DevTools/Version_Control/Subversion/#status-of-your-copy",
+            "text": "svn status <local_path>",
+            "title": "Status of your copy"
+        },
+        {
+            "location": "/DevTools/Version_Control/Subversion/#display-log-message",
+            "text": "svn log <local_path>",
+            "title": "Display log message"
+        },
+        {
+            "location": "/DevTools/Version_Control/Subversion/#rename-file-or-directory",
+            "text": "svn move <old_filename> <new_filename>",
+            "title": "Rename file or directory"
+        },
+        {
+            "location": "/DevTools/Version_Control/Subversion/#update-of-your-copy",
+            "text": "svn update <local_path>",
+            "title": "Update of your copy"
         },
         {
             "location": "/OS/AIX/",
@@ -2419,6 +2404,21 @@
             "location": "/OS/Gentoo/Systemd/#timedatectl",
             "text": "timedatectl set-timezone Europe/Moscow\ntimedatectl set-ntp yes",
             "title": "Timedatectl"
+        },
+        {
+            "location": "/QA/Stress_tests/Ackerman_function/",
+            "text": "C\n\n\n#include <stdio.h>\n\nint ackermann(int m, int n)\n{\n   if (!m) return n + 1;\n   if (!n) return ackermann(m - 1, 1);\n   return ackermann(m - 1, ackermann(m, n - 1));\n}\n\nint main()\n{\n   int m, n;\n   for (m = 0; m <= 4; m++)\n      for (n = 0; n < 6 - m; n++)\n         printf(\"A(%d, %d) = %d\\n\", m, n, ackermann(m, n));\n\n   return 0;\n}\n\n\n\n\nC++\n\n\n#include <iostream>\n\nunsigned int ackermann(unsigned int m, unsigned int n) {\n  if (m == 0) {\n    return n + 1;\n  }\n  if (n == 0) {\n    return ackermann(m - 1, 1);\n  }\n  return ackermann(m - 1, ackermann(m, n - 1));\n}\n\nint main() {\n  for (unsigned int m = 0; m < 4; ++m) {\n    for (unsigned int n = 0; n < 30; ++n) {\n      std::cout << \"A(\" << m << \", \" << n << \") = \" << ackermann(m, n) << \"\\n\";\n    }\n  }\n}",
+            "title": "Ackerman function"
+        },
+        {
+            "location": "/QA/Stress_tests/Ackerman_function/#c",
+            "text": "#include <stdio.h>\n\nint ackermann(int m, int n)\n{\n   if (!m) return n + 1;\n   if (!n) return ackermann(m - 1, 1);\n   return ackermann(m - 1, ackermann(m, n - 1));\n}\n\nint main()\n{\n   int m, n;\n   for (m = 0; m <= 4; m++)\n      for (n = 0; n < 6 - m; n++)\n         printf(\"A(%d, %d) = %d\\n\", m, n, ackermann(m, n));\n\n   return 0;\n}",
+            "title": "C"
+        },
+        {
+            "location": "/QA/Stress_tests/Ackerman_function/#c_1",
+            "text": "#include <iostream>\n\nunsigned int ackermann(unsigned int m, unsigned int n) {\n  if (m == 0) {\n    return n + 1;\n  }\n  if (n == 0) {\n    return ackermann(m - 1, 1);\n  }\n  return ackermann(m - 1, ackermann(m, n - 1));\n}\n\nint main() {\n  for (unsigned int m = 0; m < 4; ++m) {\n    for (unsigned int n = 0; n < 30; ++n) {\n      std::cout << \"A(\" << m << \", \" << n << \") = \" << ackermann(m, n) << \"\\n\";\n    }\n  }\n}",
+            "title": "C++"
         },
         {
             "location": "/Tech/Audit/Fork_unavailable/",
@@ -4156,12 +4156,12 @@
             "title": "Activate root"
         },
         {
-            "location": "/UX/Messangers/Skype/",
+            "location": "/UX/Messengers/Skype/",
             "text": "Unable to receive group messages\n\n\nAfter struggling a bit, I found some useful commands:\n    /dumpmsnp - show details about your connection\n    /showplaces - show where you are currently connected\nYou can execute them in any chat window.\n\n*/dumpmsnp* command was showing \"LoggedOut\", but I was online and talking almost normally (except group chats).\n\nSystem: MSNP: Connection Data:\n * Status: LoggedOut\n\nA lot of people are/were suffering from this problem.\n\nTo solve this \"LoggedOut\" issue, try this on any chat window:\n/msnp24\n\nand restart your Skype.\n\nAfter restarting, /dumpmsnp output shows the following status:\n\nSystem: MSNP: Connection Data (MSNP24):\n * Status: LoggedIn\n\nI don't know exactly why, but the /msnp24 command kinds of converted my account to this protocol and now everything works perfectly.",
             "title": "Skype"
         },
         {
-            "location": "/UX/Messangers/Skype/#unable-to-receive-group-messages",
+            "location": "/UX/Messengers/Skype/#unable-to-receive-group-messages",
             "text": "After struggling a bit, I found some useful commands:\n    /dumpmsnp - show details about your connection\n    /showplaces - show where you are currently connected\nYou can execute them in any chat window.\n\n*/dumpmsnp* command was showing \"LoggedOut\", but I was online and talking almost normally (except group chats).\n\nSystem: MSNP: Connection Data:\n * Status: LoggedOut\n\nA lot of people are/were suffering from this problem.\n\nTo solve this \"LoggedOut\" issue, try this on any chat window:\n/msnp24\n\nand restart your Skype.\n\nAfter restarting, /dumpmsnp output shows the following status:\n\nSystem: MSNP: Connection Data (MSNP24):\n * Status: LoggedIn\n\nI don't know exactly why, but the /msnp24 command kinds of converted my account to this protocol and now everything works perfectly.",
             "title": "Unable to receive group messages"
         },
