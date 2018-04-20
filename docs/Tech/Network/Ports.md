@@ -1,3 +1,17 @@
+### Test bunch of hosts for open ports
+```bash
+cat > /tmp/ips-to-test.txt <<-EOF
+1.1.1.1
+2.2.2.2
+3.3.3.3
+4.4.4.4
+5.5.5.5
+6.6.6.6
+EOF
+
+for line in `cat /tmp/ips-to-test.txt`; do nc -z -v -w5 ${line} 443; sleep 1; done
+```
+
 ### Common
 ```bash
 sudo netstat -tunapl

@@ -3211,6 +3211,16 @@
             "title": "Share current folder over HTTP"
         },
         {
+            "location": "/Tech/Network/DNS/",
+            "text": "Get ip addresses\n\n\nhost <hostname> | grep \" has address \"| cut -d\" \" -f4",
+            "title": "DNS"
+        },
+        {
+            "location": "/Tech/Network/DNS/#get-ip-addresses",
+            "text": "host <hostname> | grep \" has address \"| cut -d\" \" -f4",
+            "title": "Get ip addresses"
+        },
+        {
             "location": "/Tech/Network/KEMP/",
             "text": "Some REST commands\n\n\n# Disable Real server \ncurl -k -X GET https://username:password@ip_address/access/disablers?rs=realServerIP\n\n# Enable Real server \ncurl -k -X GET https://username:password@ip_address/access/enablers?rs=realServerIP\n\n# Get any parameter\ncurl -k -X GET https://username:password@ip_address/access/get?param=parameterName",
             "title": "KEMP"
@@ -3237,8 +3247,13 @@
         },
         {
             "location": "/Tech/Network/Ports/",
-            "text": "Common\n\n\nsudo netstat -tunapl\n\n\n\n\nWhich process uses port\n\n\nLinux\n\n\n# Find out PID via ss\nss -nltp | grep <port>\n# Find out PID via deprecated netstat:\nnetstat -tulpn | grep <port>\n# Find out particular binary\nls -l /proc/<pid>/exe\n# Find out full run command\nps -ef | grep <PID>\n\n\n\n\nAIX\n\n\nlsof -i:<port>\nps -ef | grep <pid>\n\n\n\n\nWindows\n\n\nnetstat -aon | findstr \"<port>\"\npslist <PID>\n\n\n\n\nWhich port is used by a process\n\n\nUnix\n\n\nsudo lsof -i -P -n | grep LISTEN | grep <process>\n# Remember about sudo: root access rights is required to see at non-current-user processes\nsudo netstat -tulpn | grep LISTEN | grep <process>\n# For FreeBSD or MacOS:\nsudo netstat -anp tcp | grep LISTEN | grep <process>\nsudo netstat -anp udp | grep LISTEN | grep <process>\n# Use flags -T fot TCP -U for UDP or both. You can use any IP address instead localhost.\nsudo nmap -sTU -O localhost\n\n\n\n\nWindows\n\n\nnetstat -bano | findstr /R /C:\"[LISTING]\" | findstr /R /C:\"<process>\"",
+            "text": "Test bunch of hosts for open ports\n\n\ncat > /tmp/ips-to-test.txt <<-EOF\n1.1.1.1\n2.2.2.2\n3.3.3.3\n4.4.4.4\n5.5.5.5\n6.6.6.6\nEOF\n\nfor line in `cat /tmp/ips-to-test.txt`; do nc -z -v -w5 ${line} 443; sleep 1; done\n\n\n\n\nCommon\n\n\nsudo netstat -tunapl\n\n\n\n\nWhich process uses port\n\n\nLinux\n\n\n# Find out PID via ss\nss -nltp | grep <port>\n# Find out PID via deprecated netstat:\nnetstat -tulpn | grep <port>\n# Find out particular binary\nls -l /proc/<pid>/exe\n# Find out full run command\nps -ef | grep <PID>\n\n\n\n\nAIX\n\n\nlsof -i:<port>\nps -ef | grep <pid>\n\n\n\n\nWindows\n\n\nnetstat -aon | findstr \"<port>\"\npslist <PID>\n\n\n\n\nWhich port is used by a process\n\n\nUnix\n\n\nsudo lsof -i -P -n | grep LISTEN | grep <process>\n# Remember about sudo: root access rights is required to see at non-current-user processes\nsudo netstat -tulpn | grep LISTEN | grep <process>\n# For FreeBSD or MacOS:\nsudo netstat -anp tcp | grep LISTEN | grep <process>\nsudo netstat -anp udp | grep LISTEN | grep <process>\n# Use flags -T fot TCP -U for UDP or both. You can use any IP address instead localhost.\nsudo nmap -sTU -O localhost\n\n\n\n\nWindows\n\n\nnetstat -bano | findstr /R /C:\"[LISTING]\" | findstr /R /C:\"<process>\"",
             "title": "Ports"
+        },
+        {
+            "location": "/Tech/Network/Ports/#test-bunch-of-hosts-for-open-ports",
+            "text": "cat > /tmp/ips-to-test.txt <<-EOF\n1.1.1.1\n2.2.2.2\n3.3.3.3\n4.4.4.4\n5.5.5.5\n6.6.6.6\nEOF\n\nfor line in `cat /tmp/ips-to-test.txt`; do nc -z -v -w5 ${line} 443; sleep 1; done",
+            "title": "Test bunch of hosts for open ports"
         },
         {
             "location": "/Tech/Network/Ports/#common",
