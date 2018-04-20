@@ -99,7 +99,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#common" tabindex="1" class="md-skip">
+      <a href="#test-bunch-of-hosts-for-open-ports" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -2252,6 +2252,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../DNS/" title="DNS" class="md-nav__link">
+      DNS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../KEMP/" title="KEMP" class="md-nav__link">
       KEMP
     </a>
@@ -2297,6 +2309,13 @@
   
     <label class="md-nav__title" for="toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#test-bunch-of-hosts-for-open-ports" title="Test bunch of hosts for open ports" class="md-nav__link">
+    Test bunch of hosts for open ports
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#common" title="Common" class="md-nav__link">
@@ -3438,6 +3457,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#test-bunch-of-hosts-for-open-ports" title="Test bunch of hosts for open ports" class="md-nav__link">
+    Test bunch of hosts for open ports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#common" title="Common" class="md-nav__link">
     Common
   </a>
@@ -3524,7 +3550,20 @@
                 
                   <h1>Ports</h1>
                 
-                <h3 id="common">Common</h3>
+                <h3 id="test-bunch-of-hosts-for-open-ports">Test bunch of hosts for open ports</h3>
+<pre><code class="bash">cat &gt; /tmp/ips-to-test.txt &lt;&lt;-EOF
+1.1.1.1
+2.2.2.2
+3.3.3.3
+4.4.4.4
+5.5.5.5
+6.6.6.6
+EOF
+
+for line in `cat /tmp/ips-to-test.txt`; do nc -z -v -w5 ${line} 443; sleep 1; done
+</code></pre>
+
+<h3 id="common">Common</h3>
 <pre><code class="bash">sudo netstat -tunapl
 </code></pre>
 
