@@ -1746,29 +1746,39 @@
             "title": "To list all of the blobs in all of your containers in all of your accounts"
         },
         {
-            "location": "/Dev/Power_Shell/Power_Shell/",
+            "location": "/Dev/Power_Shell/Misc/",
             "text": "Windows 2008 Server R2\n\n\nTo release this error:\n\n\n\n\nScript cannot be loaded because the execution of scripts is disabled on this system.\n\n\n\n\n# Run as Administrator\nSet-ExecutionPolicy RemoteSigned\n\n# There is following parameters:\n# * Restricted - No scripts can be run. Windows PowerShell can be used only in interactive mode.\n# * AllSigned - Only scripts signed by a trusted publisher can be run.\n# * RemoteSigned - Downloaded scripts must be signed by a trusted publisher before they can be run.\n# * Unrestricted - No restrictions; all Windows PowerShell scripts can be run.\n\n\n\n\nShow current logged user\n\n\ngwmi win32_computersystem -comp $computer | select USername,Caption,Manufacturer\nGet_WmiObject win32_computersystem -comp $computer | select USername,Caption,Manufacturer\n\n\n\n\nList of logged in users (any user in any time)\n\n\nGet-WmiObject Win32_LoggedOnUser -ComputerName msk-sales-02 | Select __SERVER, Antecedent -Unique | %{\"{0} : {1}\\{2}\" -f $_.__SERVER, $_.Antecedent.ToString().Split('\"')[1],$_.Antecedent.ToString().Split('\"')[3]}\n\n\n\n\nRead from keyboard\n\n\n$variable=read-host \"Enter computer name:\"",
-            "title": "Power Shell"
+            "title": "Misc"
         },
         {
-            "location": "/Dev/Power_Shell/Power_Shell/#windows-2008-server-r2",
+            "location": "/Dev/Power_Shell/Misc/#windows-2008-server-r2",
             "text": "To release this error:   Script cannot be loaded because the execution of scripts is disabled on this system.   # Run as Administrator\nSet-ExecutionPolicy RemoteSigned\n\n# There is following parameters:\n# * Restricted - No scripts can be run. Windows PowerShell can be used only in interactive mode.\n# * AllSigned - Only scripts signed by a trusted publisher can be run.\n# * RemoteSigned - Downloaded scripts must be signed by a trusted publisher before they can be run.\n# * Unrestricted - No restrictions; all Windows PowerShell scripts can be run.",
             "title": "Windows 2008 Server R2"
         },
         {
-            "location": "/Dev/Power_Shell/Power_Shell/#show-current-logged-user",
+            "location": "/Dev/Power_Shell/Misc/#show-current-logged-user",
             "text": "gwmi win32_computersystem -comp $computer | select USername,Caption,Manufacturer\nGet_WmiObject win32_computersystem -comp $computer | select USername,Caption,Manufacturer",
             "title": "Show current logged user"
         },
         {
-            "location": "/Dev/Power_Shell/Power_Shell/#list-of-logged-in-users-any-user-in-any-time",
+            "location": "/Dev/Power_Shell/Misc/#list-of-logged-in-users-any-user-in-any-time",
             "text": "Get-WmiObject Win32_LoggedOnUser -ComputerName msk-sales-02 | Select __SERVER, Antecedent -Unique | %{\"{0} : {1}\\{2}\" -f $_.__SERVER, $_.Antecedent.ToString().Split('\"')[1],$_.Antecedent.ToString().Split('\"')[3]}",
             "title": "List of logged in users (any user in any time)"
         },
         {
-            "location": "/Dev/Power_Shell/Power_Shell/#read-from-keyboard",
+            "location": "/Dev/Power_Shell/Misc/#read-from-keyboard",
             "text": "$variable=read-host \"Enter computer name:\"",
             "title": "Read from keyboard"
+        },
+        {
+            "location": "/Dev/Power_Shell/One-Liners/",
+            "text": "Copy file to bunch of servers by ip\n\n\n# for ($i=<1>; $i -le <254>; $i++) { scp <Path-To-File> <username>@<XXX.XXX.XXX>.$($i):<Path-On-server> }\nfor ($i=2; $i -le 3; $i++) { scp C:\\Users\\dkiva\\Downloads\\jdk-10.0.1_linux-x64_bin.rpm divanov@172.30.30.$($i):~/jdk-10.0.1_linux-x64_bin.rpm }",
+            "title": "One Liners"
+        },
+        {
+            "location": "/Dev/Power_Shell/One-Liners/#copy-file-to-bunch-of-servers-by-ip",
+            "text": "# for ($i=<1>; $i -le <254>; $i++) { scp <Path-To-File> <username>@<XXX.XXX.XXX>.$($i):<Path-On-server> }\nfor ($i=2; $i -le 3; $i++) { scp C:\\Users\\dkiva\\Downloads\\jdk-10.0.1_linux-x64_bin.rpm divanov@172.30.30.$($i):~/jdk-10.0.1_linux-x64_bin.rpm }",
+            "title": "Copy file to bunch of servers by ip"
         },
         {
             "location": "/Dev/Python/Installation/",

@@ -13,7 +13,7 @@
         <meta name="description" content="Collection of Technical guides">
       
       
-        <link rel="canonical" href="https://keepbot.github.io/docs/Dev/Power_Shell/Power_Shell/">
+        <link rel="canonical" href="https://keepbot.github.io/docs/Dev/Power_Shell/One-Liners/">
       
       
         <meta name="author" content="Dmitriy Ivanov">
@@ -42,7 +42,7 @@
     
     
       
-        <title>Power Shell - Technical Info</title>
+        <title>One Liners - Technical Info</title>
       
     
     
@@ -99,7 +99,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#windows-2008-server-r2" tabindex="1" class="md-skip">
+      <a href="#copy-file-to-bunch-of-servers-by-ip" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -125,7 +125,7 @@
                 Technical Info
               </span>
               <span class="md-header-nav__topic">
-                Power Shell
+                One Liners
               </span>
             
           
@@ -1266,6 +1266,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../Misc/" title="Misc" class="md-nav__link">
+      Misc
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -1275,11 +1287,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="toc">
-        Power Shell
+        One Liners
       </label>
     
-    <a href="./" title="Power Shell" class="md-nav__link md-nav__link--active">
-      Power Shell
+    <a href="./" title="One Liners" class="md-nav__link md-nav__link--active">
+      One Liners
     </a>
     
       
@@ -1291,29 +1303,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#windows-2008-server-r2" title="Windows 2008 Server R2" class="md-nav__link">
-    Windows 2008 Server R2
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#show-current-logged-user" title="Show current logged user" class="md-nav__link">
-    Show current logged user
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#list-of-logged-in-users-any-user-in-any-time" title="List of logged in users (any user in any time)" class="md-nav__link">
-    List of logged in users (any user in any time)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#read-from-keyboard" title="Read from keyboard" class="md-nav__link">
-    Read from keyboard
+  <a href="#copy-file-to-bunch-of-servers-by-ip" title="Copy file to bunch of servers by ip" class="md-nav__link">
+    Copy file to bunch of servers by ip
   </a>
   
 </li>
@@ -3410,29 +3401,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#windows-2008-server-r2" title="Windows 2008 Server R2" class="md-nav__link">
-    Windows 2008 Server R2
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#show-current-logged-user" title="Show current logged user" class="md-nav__link">
-    Show current logged user
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#list-of-logged-in-users-any-user-in-any-time" title="List of logged in users (any user in any time)" class="md-nav__link">
-    List of logged in users (any user in any time)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#read-from-keyboard" title="Read from keyboard" class="md-nav__link">
-    Read from keyboard
+  <a href="#copy-file-to-bunch-of-servers-by-ip" title="Copy file to bunch of servers by ip" class="md-nav__link">
+    Copy file to bunch of servers by ip
   </a>
   
 </li>
@@ -3454,34 +3424,11 @@
               
                 
                 
-                  <h1>Power Shell</h1>
+                  <h1>One Liners</h1>
                 
-                <h3 id="windows-2008-server-r2">Windows 2008 Server R2</h3>
-<p>To release this error:</p>
-<blockquote>
-<p>Script cannot be loaded because the execution of scripts is disabled on this system.</p>
-</blockquote>
-<pre><code class="ps"># Run as Administrator
-Set-ExecutionPolicy RemoteSigned
-
-# There is following parameters:
-# * Restricted - No scripts can be run. Windows PowerShell can be used only in interactive mode.
-# * AllSigned - Only scripts signed by a trusted publisher can be run.
-# * RemoteSigned - Downloaded scripts must be signed by a trusted publisher before they can be run.
-# * Unrestricted - No restrictions; all Windows PowerShell scripts can be run.
-</code></pre>
-
-<h3 id="show-current-logged-user">Show current logged user</h3>
-<pre><code class="ps">gwmi win32_computersystem -comp $computer | select USername,Caption,Manufacturer
-Get_WmiObject win32_computersystem -comp $computer | select USername,Caption,Manufacturer
-</code></pre>
-
-<h3 id="list-of-logged-in-users-any-user-in-any-time">List of logged in users (any user in any time)</h3>
-<pre><code class="ps">Get-WmiObject Win32_LoggedOnUser -ComputerName msk-sales-02 | Select __SERVER, Antecedent -Unique | %{&quot;{0} : {1}\{2}&quot; -f $_.__SERVER, $_.Antecedent.ToString().Split('&quot;')[1],$_.Antecedent.ToString().Split('&quot;')[3]}
-</code></pre>
-
-<h3 id="read-from-keyboard">Read from keyboard</h3>
-<pre><code class="ps">$variable=read-host &quot;Enter computer name:&quot;
+                <h3 id="copy-file-to-bunch-of-servers-by-ip">Copy file to bunch of servers by ip</h3>
+<pre><code class="ps1"># for ($i=&lt;1&gt;; $i -le &lt;254&gt;; $i++) { scp &lt;Path-To-File&gt; &lt;username&gt;@&lt;XXX.XXX.XXX&gt;.$($i):&lt;Path-On-server&gt; }
+for ($i=2; $i -le 3; $i++) { scp C:\Users\dkiva\Downloads\jdk-10.0.1_linux-x64_bin.rpm divanov@172.30.30.$($i):~/jdk-10.0.1_linux-x64_bin.rpm }
 </code></pre>
                 
                   
@@ -3501,7 +3448,7 @@ Get_WmiObject win32_computersystem -comp $computer | select USername,Caption,Man
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../Azure/" title="Azure" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../Misc/" title="Misc" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -3510,7 +3457,7 @@ Get_WmiObject win32_computersystem -comp $computer | select USername,Caption,Man
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Azure
+                Misc
               </span>
             </div>
           </a>
