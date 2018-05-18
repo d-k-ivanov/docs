@@ -1772,13 +1772,23 @@
         },
         {
             "location": "/Dev/Power_Shell/One-Liners/",
-            "text": "Copy file to bunch of servers by ip\n\n\n# for ($i=<1>; $i -le <254>; $i++) { scp <Path-To-File> <username>@<XXX.XXX.XXX>.$($i):<Path-On-server> }\nfor ($i=2; $i -le 3; $i++) { scp C:\\Users\\dkiva\\Downloads\\jdk-10.0.1_linux-x64_bin.rpm divanov@172.30.30.$($i):~/jdk-10.0.1_linux-x64_bin.rpm }",
+            "text": "Copy file to bunch of servers by ip\n\n\n# for ($i=<1>; $i -le <254>; $i++) { scp <Path-To-File> <username>@<XXX.XXX.XXX>.$($i):<Path-On-server> }\nfor ($i=2; $i -le 3; $i++) { scp C:\\Users\\dkiva\\Downloads\\jdk-10.0.1_linux-x64_bin.rpm divanov@172.30.30.$($i):~/jdk-10.0.1_linux-x64_bin.rpm }\n\n\n\n\nUnpack any tar.gz in current folder\n\n\nGet-Location | Get-ChildItem | ForEach-Object {tar zxf $_.Name }\n\n\n\n\nKill process by name\n\n\n# Get-Process <ProcessName> | ForEach-Object { Stop-Process $_.Id }\nGet-Process tar | ForEach-Object { Stop-Process $_.Id }",
             "title": "One Liners"
         },
         {
             "location": "/Dev/Power_Shell/One-Liners/#copy-file-to-bunch-of-servers-by-ip",
             "text": "# for ($i=<1>; $i -le <254>; $i++) { scp <Path-To-File> <username>@<XXX.XXX.XXX>.$($i):<Path-On-server> }\nfor ($i=2; $i -le 3; $i++) { scp C:\\Users\\dkiva\\Downloads\\jdk-10.0.1_linux-x64_bin.rpm divanov@172.30.30.$($i):~/jdk-10.0.1_linux-x64_bin.rpm }",
             "title": "Copy file to bunch of servers by ip"
+        },
+        {
+            "location": "/Dev/Power_Shell/One-Liners/#unpack-any-targz-in-current-folder",
+            "text": "Get-Location | Get-ChildItem | ForEach-Object {tar zxf $_.Name }",
+            "title": "Unpack any tar.gz in current folder"
+        },
+        {
+            "location": "/Dev/Power_Shell/One-Liners/#kill-process-by-name",
+            "text": "# Get-Process <ProcessName> | ForEach-Object { Stop-Process $_.Id }\nGet-Process tar | ForEach-Object { Stop-Process $_.Id }",
+            "title": "Kill process by name"
         },
         {
             "location": "/Dev/Python/Installation/",
