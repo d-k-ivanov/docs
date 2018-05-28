@@ -1,6 +1,5 @@
 ## General info
-> Mostly from [BWITS/terraform-best-practices](https://github.com/BWITS/terraform-best-practices)
-> Will be updated based on my experience
+> Mostly from [BWITS/terraform-best-practices](https://github.com/BWITS/terraform-best-practices).
 
 ## Always Run terraform command with var-file
 ```bash
