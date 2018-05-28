@@ -38,7 +38,6 @@ terraform {
     }
   }
 }
-}
 ```
 
 Define backend variables for particular environment
