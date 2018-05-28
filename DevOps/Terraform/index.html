@@ -1600,19 +1600,6 @@
     Manage s3 backend for tfstate files
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#notes" title="Notes" class="md-nav__link">
-    Notes
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1626,19 +1613,6 @@
   <a href="#use-share-modules" title="Use share modules" class="md-nav__link">
     Use share modules
   </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#notes_1" title="Notes" class="md-nav__link">
-    Notes
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3572,19 +3546,6 @@
     Manage s3 backend for tfstate files
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#notes" title="Notes" class="md-nav__link">
-    Notes
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -3598,19 +3559,6 @@
   <a href="#use-share-modules" title="Use share modules" class="md-nav__link">
     Use share modules
   </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#notes_1" title="Notes" class="md-nav__link">
-    Notes
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3758,11 +3706,10 @@ kms_key_id = &quot;alias/terraform&quot;
 dynamodb_table = &quot;terraform-lock&quot;
 </code></pre>
 
-<h3 id="notes">Notes</h3>
 <ul>
-<li>bucket - s3 bucket name, has to be globally unique.</li>
-<li>key - Set some meanful names for different services and applications, such as vpc.tfstate, application_name.tfstate, etc</li>
-<li>dynamodb_table - optional when you want to enable <a href="https://www.terraform.io/docs/state/locking.html">State Locking</a></li>
+<li>bucket - s3 bucket name, has to be globally unique.  </li>
+<li>key - Set some meanful names for different services and applications, such as vpc.tfstate, application_name.tfstate, etc  </li>
+<li>dynamodb_table - optional when you want to enable <a href="https://www.terraform.io/docs/state/locking.html">State Locking</a>  </li>
 </ul>
 <p>After you set <code>config/backend-dev.conf</code> and <code>config/dev.tfvars</code> properly (for each environment). You can easily run terraform as below:</p>
 <pre><code>env=dev
@@ -3794,11 +3741,14 @@ resource &quot;aws_xx_xxxx&quot; &quot;main&quot; {
 <h2 id="use-share-modules">Use share modules</h2>
 <p>Manage terraform resource with shared modules, this will save a lot of coding time. </p>
 <p>For detail, you can start from below links: </p>
-<p><a href="https://www.terraform.io/docs/modules/usage.html">terraform module usage</a></p>
-<p><a href="https://registry.terraform.io/">Terraform Module Registry</a></p>
-<p><a href="https://github.com/terraform-aws-modules">Terraform aws modules</a></p>
-<h3 id="notes_1">Notes</h3>
+<ul>
+<li><a href="https://www.terraform.io/docs/modules/usage.html">Terraform module usage</a></li>
+<li><a href="https://registry.terraform.io/">Terraform module registry</a></li>
+<li><a href="https://github.com/terraform-aws-modules">Terraform AWS modules</a></li>
+</ul>
+<blockquote>
 <p>terraform modules don't support <code>count</code> parameter currently. You can follow up this ticket for updates: https://github.com/hashicorp/terraform/issues/953</p>
+</blockquote>
 <h2 id="isolate-environment">Isolate environment</h2>
 <p>Sometimes, developers like to create a security group and share it to all non-prod (dev/qa) environments. Don't do that, create resources with different name for each environment and each resource.</p>
 <pre><code class="bash">variable &quot;application&quot; {
