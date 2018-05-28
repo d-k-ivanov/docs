@@ -52,11 +52,9 @@ kms_key_id = "alias/terraform"
 dynamodb_table = "terraform-lock"
 ```
 
-### Notes
-
-- bucket - s3 bucket name, has to be globally unique.
-- key - Set some meanful names for different services and applications, such as vpc.tfstate, application_name.tfstate, etc
-- dynamodb_table - optional when you want to enable [State Locking](https://www.terraform.io/docs/state/locking.html)
+- bucket - s3 bucket name, has to be globally unique.  
+- key - Set some meanful names for different services and applications, such as vpc.tfstate, application_name.tfstate, etc  
+- dynamodb_table - optional when you want to enable [State Locking](https://www.terraform.io/docs/state/locking.html)  
 
 After you set `config/backend-dev.conf` and `config/dev.tfvars` properly (for each environment). You can easily run terraform as below:
 
@@ -96,15 +94,11 @@ Manage terraform resource with shared modules, this will save a lot of coding ti
 
 For detail, you can start from below links: 
 
-[terraform module usage](https://www.terraform.io/docs/modules/usage.html)
+- [Terraform module usage](https://www.terraform.io/docs/modules/usage.html)
+- [Terraform module registry](https://registry.terraform.io/)
+- [Terraform AWS modules](https://github.com/terraform-aws-modules)
 
-[Terraform Module Registry](https://registry.terraform.io/)
-
-[Terraform aws modules](https://github.com/terraform-aws-modules)
-
-### Notes
-
-terraform modules don't support `count` parameter currently. You can follow up this ticket for updates: https://github.com/hashicorp/terraform/issues/953
+> terraform modules don't support `count` parameter currently. You can follow up this ticket for updates: https://github.com/hashicorp/terraform/issues/953
 
 ## Isolate environment
 
