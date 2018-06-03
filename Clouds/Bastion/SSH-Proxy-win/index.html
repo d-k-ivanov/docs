@@ -3535,31 +3535,32 @@
 </li>
 <li>
 <p>Go to <strong>Connection -&gt; Data</strong> and set <strong>Auto-Login username</strong> to your remote username on hosts behind bastion</p>
-<p><img alt="Data" src="../putty1.png" /></p>
 </li>
-<li>
-<p>Go to <strong>Connection -&gt; Proxy</strong> and set up local proxy:</p>
-<p><code>bash
-Proxy type: Local
+</ol>
+<p><img alt="Data" src="../../putty1.png" /></p>
+<ol>
+<li>Go to <strong>Connection -&gt; Proxy</strong> and set up local proxy:</li>
+</ol>
+<pre><code>Proxy type: Local
 Proxy hostname: sshproxy.example.com
 Port: 22
 Username: ec2-user
 Telnet command:
-plink.exe -i "&lt;path_to_your_key&gt;" %user@%proxyhost -nc %host:%port</code></p>
-<p><img alt="Proxy" src="../putty1.png" /></p>
-</li>
-<li>
-<p>Go to <strong>Connection -&gt; SSH -&gt; Auth</strong> and set up ssh key and auth params:</p>
-<ul>
-<li>Allow agen forwarding = True</li>
-<li>Allow attemted changes of username in SSH-2 = Tue</li>
-<li>Private key = <path_to_your_key></li>
-</ul>
-<p><img alt="Auth" src="../putty3.png" /> </p>
-</li>
-<li>
-<p>Thats all. Now you could use this session as template to your connections</p>
-</li>
+plink.exe -i &quot;&lt;path_to_your_key&gt;&quot; %user@%proxyhost -nc %host:%port
+</code></pre>
+
+<p><img alt="Proxy" src="../../putty1.png" /></p>
+<ol>
+<li>Go to <strong>Connection -&gt; SSH -&gt; Auth</strong> and set up ssh key and auth params:</li>
+</ol>
+<pre><code>+ Allow agen forwarding = True
++ Allow attemted changes of username in SSH-2 = Tue
++ Private key = &lt;path_to_your_key&gt;
+</code></pre>
+
+<p><img alt="Auth" src="../../putty3.png" /> </p>
+<ol>
+<li>Thats all. Now you could use this session as template to your connections</li>
 </ol>
                 
                   
