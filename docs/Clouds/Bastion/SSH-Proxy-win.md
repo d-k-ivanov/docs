@@ -8,7 +8,7 @@ On Windows OpenSSH works as fine as on Linux hosts, but most of people using PyT
 
 2. Go to **Connection -> Data** and set **Auto-Login username** to your remote username on hosts behind bastion
 
-![Data](../putty1.png)
+![Data](putty1.png)
 
 3. Go to **Connection -> Proxy** and set up local proxy:
 
@@ -21,7 +21,7 @@ Telnet command:
 plink.exe -i "<path_to_your_key>" %user@%proxyhost -nc %host:%port
 ```
 
-![Proxy](../putty1.png)
+![Proxy](putty1.png)
 
 4. Go to **Connection -> SSH -> Auth** and set up ssh key and auth params:
 
@@ -31,6 +31,6 @@ plink.exe -i "<path_to_your_key>" %user@%proxyhost -nc %host:%port
 + Private key = <path_to_your_key>
 ```
 
-![Auth](../putty3.png) 
+![Auth](putty3.png) 
 
 5. Thats all. Now you could use this session as template to your connections
