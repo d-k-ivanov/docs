@@ -51,6 +51,26 @@
             "title": "XfreeRDP"
         },
         {
+            "location": "/Clouds/Bastion/SSH-Proxy-nix/",
+            "text": "Connect through Bastion host\n\n\nTo connect via Bastion host which work as SSH Proxy you need simple ssh config on  your nix client machine:\n\n\nConfig 1: Masked subnet\n\n\nvim ~/.ssh/config\n\nHost <bastion_name>\nHostname <bastion_ip_addrese>\n        Port 22\n        #  ec2-user is standard for bastion host, of course it can be different\n        User ec2-user\n        IdentityFile ~/.ssh/<your-key>\n\n# Masked subnet which accessible through bastion only\n# Host 10.*\n# Host 172.16.0.*\nHost 192.168.*\n        ProxyCommand ssh -W %h:%p <bastion_name>\n        User <username>\n        IdentityFile ~/.ssh/<your-key>\n        StrictHostKeyChecking no\n        UserKnownHostsFile=/dev/null\n\n\n\n\n\nAlternative config with host aliases\n\n\nHost <bastion_name>\nHostname <bastion_ip_addrese>\n        Port 22\n        User ec2-user\n        IdentityFile ~/.ssh/<your-key>\n\nHost node0\nHostname 192.168.0.1\n        ProxyCommand ssh -W %h:%p <bastion_name>\n        User <username>\n        IdentityFile ~/.ssh/<your-key>\n        StrictHostKeyChecking no\n        UserKnownHostsFile=/dev/null\n\nHost node1\nHostname 192.168.0.2\n        ProxyCommand ssh -W %h:%p <bastion_name>\n        User <username>\n        IdentityFile ~/.ssh/<your-key>\n        StrictHostKeyChecking no\n        UserKnownHostsFile=/dev/null\n\nHost router0\nHostname 192.168.0.3\n        ProxyCommand ssh -W %h:%p <bastion_name>\n        User <username>\n        IdentityFile ~/.ssh/<your-key>\n        StrictHostKeyChecking no\n        UserKnownHostsFile=/dev/null\n\nHost router1\nHostname 192.168.0.4\n        ProxyCommand ssh -W %h:%p <bastion_name>\n        User <username>\n        IdentityFile ~/.ssh/<your-key>\n        StrictHostKeyChecking no\n        UserKnownHostsFile=/dev/null",
+            "title": "Connect through Bastion host"
+        },
+        {
+            "location": "/Clouds/Bastion/SSH-Proxy-nix/#connect-through-bastion-host",
+            "text": "To connect via Bastion host which work as SSH Proxy you need simple ssh config on  your nix client machine:",
+            "title": "Connect through Bastion host"
+        },
+        {
+            "location": "/Clouds/Bastion/SSH-Proxy-nix/#config-1-masked-subnet",
+            "text": "vim ~/.ssh/config\n\nHost <bastion_name>\nHostname <bastion_ip_addrese>\n        Port 22\n        #  ec2-user is standard for bastion host, of course it can be different\n        User ec2-user\n        IdentityFile ~/.ssh/<your-key>\n\n# Masked subnet which accessible through bastion only\n# Host 10.*\n# Host 172.16.0.*\nHost 192.168.*\n        ProxyCommand ssh -W %h:%p <bastion_name>\n        User <username>\n        IdentityFile ~/.ssh/<your-key>\n        StrictHostKeyChecking no\n        UserKnownHostsFile=/dev/null",
+            "title": "Config 1: Masked subnet"
+        },
+        {
+            "location": "/Clouds/Bastion/SSH-Proxy-nix/#alternative-config-with-host-aliases",
+            "text": "Host <bastion_name>\nHostname <bastion_ip_addrese>\n        Port 22\n        User ec2-user\n        IdentityFile ~/.ssh/<your-key>\n\nHost node0\nHostname 192.168.0.1\n        ProxyCommand ssh -W %h:%p <bastion_name>\n        User <username>\n        IdentityFile ~/.ssh/<your-key>\n        StrictHostKeyChecking no\n        UserKnownHostsFile=/dev/null\n\nHost node1\nHostname 192.168.0.2\n        ProxyCommand ssh -W %h:%p <bastion_name>\n        User <username>\n        IdentityFile ~/.ssh/<your-key>\n        StrictHostKeyChecking no\n        UserKnownHostsFile=/dev/null\n\nHost router0\nHostname 192.168.0.3\n        ProxyCommand ssh -W %h:%p <bastion_name>\n        User <username>\n        IdentityFile ~/.ssh/<your-key>\n        StrictHostKeyChecking no\n        UserKnownHostsFile=/dev/null\n\nHost router1\nHostname 192.168.0.4\n        ProxyCommand ssh -W %h:%p <bastion_name>\n        User <username>\n        IdentityFile ~/.ssh/<your-key>\n        StrictHostKeyChecking no\n        UserKnownHostsFile=/dev/null",
+            "title": "Alternative config with host aliases"
+        },
+        {
             "location": "/Databases/MariaDB/Backup_and_Restore/",
             "text": "Dump\n\n\nmysqldump db_name > backup-file.sql\n\n\n\n\nRestore\n\n\nmysql db_name < backup-file.sql",
             "title": "Backup and Restore"
