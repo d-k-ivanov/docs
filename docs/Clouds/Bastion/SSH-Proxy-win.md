@@ -12,12 +12,12 @@ On Windows OpenSSH works as fine as on Linux hosts, but most of people using PyT
 
 3. Go to **Connection -> Proxy** and set up local proxy:
 
-    * Proxy type: Local
-    * Proxy hostname: sshproxy.example.com
-    * Port: 22
-    * Username: ec2-user
-    * Telnet command: 
-    ```plink.exe -i "<path_to_your_key>" %user@%proxyhost -nc %host:%port```
+    * Proxy type: ```Local```
+    * Proxy hostname: ```sshproxy.example.com```
+    * Port: ```22```
+    * Username: ```ec2-user```
+    * Telnet command:
+    * ```plink.exe -i "<path_to_your_key>" %user@%proxyhost -nc %host:%port```
 
 
     ![Proxy](img/putty2.png)
