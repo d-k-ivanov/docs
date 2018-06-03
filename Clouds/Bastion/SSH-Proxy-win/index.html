@@ -3544,19 +3544,18 @@
 <li>Proxy hostname: sshproxy.example.com</li>
 <li>Port: 22</li>
 <li>Username: ec2-user</li>
-<li>Telnet command: <code>plink.exe -i "&lt;path_to_your_key&gt;" %user@%proxyhost -nc %host:%port</code></li>
+<li>Telnet command: 
+<code>plink.exe -i "&lt;path_to_your_key&gt;" %user@%proxyhost -nc %host:%port</code></li>
 </ul>
 <p><img alt="Proxy" src="../img/putty2.png" /></p>
 </li>
 <li>
 <p>Go to <strong>Connection -&gt; SSH -&gt; Auth</strong> and set up ssh key and auth params:</p>
-<p>```</p>
 <ul>
-<li>Allow agen forwarding = True</li>
-<li>Allow attemted changes of username in SSH-2 = Tue</li>
-<li>Private key = <path_to_your_key></li>
+<li><code>Allow agen forwarding = True</code></li>
+<li><code>Allow attemted changes of username in SSH-2 = Tue</code></li>
+<li><code>Private key = &lt;path_to_your_key&gt;</code></li>
 </ul>
-<p>```</p>
 <p><img alt="Auth" src="../img/putty3.png" /> </p>
 </li>
 <li>
