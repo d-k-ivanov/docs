@@ -42,7 +42,7 @@
     
     
       
-        <title>Connect through Bastion host - Technical Info</title>
+        <title>Connect through Bastion host on Nix - Technical Info</title>
       
     
     
@@ -99,7 +99,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#connect-through-bastion-host" tabindex="1" class="md-skip">
+      <a href="#connect-through-bastion-host-on-nix" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -125,7 +125,7 @@
                 Technical Info
               </span>
               <span class="md-header-nav__topic">
-                Connect through Bastion host
+                Connect through Bastion host on Nix
               </span>
             
           
@@ -353,11 +353,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="toc">
-        Connect through Bastion host
+        Connect through Bastion host on Nix
       </label>
     
-    <a href="./" title="Connect through Bastion host" class="md-nav__link md-nav__link--active">
-      Connect through Bastion host
+    <a href="./" title="Connect through Bastion host on Nix" class="md-nav__link md-nav__link--active">
+      Connect through Bastion host on Nix
     </a>
     
       
@@ -378,8 +378,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#alternative-config-with-host-aliases" title="Alternative config with host aliases" class="md-nav__link">
-    Alternative config with host aliases
+  <a href="#config-2-host-aliases" title="Config 2: Host aliases" class="md-nav__link">
+    Config 2: Host aliases
   </a>
   
 </li>
@@ -392,6 +392,18 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../SSH-Proxy-win/" title="SSH Proxy win" class="md-nav__link">
+      SSH Proxy win
+    </a>
   </li>
 
         
@@ -3505,8 +3517,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#alternative-config-with-host-aliases" title="Alternative config with host aliases" class="md-nav__link">
-    Alternative config with host aliases
+  <a href="#config-2-host-aliases" title="Config 2: Host aliases" class="md-nav__link">
+    Config 2: Host aliases
   </a>
   
 </li>
@@ -3528,7 +3540,7 @@
               
                 
                 
-                <h1 id="connect-through-bastion-host">Connect through Bastion host</h1>
+                <h1 id="connect-through-bastion-host-on-nix">Connect through Bastion host on Nix</h1>
 <p>To connect via Bastion host which work as SSH Proxy you need simple ssh config on  your nix client machine:</p>
 <h2 id="config-1-masked-subnet">Config 1: Masked subnet</h2>
 <pre><code class="bash">vim ~/.ssh/config
@@ -3552,7 +3564,7 @@ Host 192.168.*
 
 </code></pre>
 
-<h2 id="alternative-config-with-host-aliases">Alternative config with host aliases</h2>
+<h2 id="config-2-host-aliases">Config 2: Host aliases</h2>
 <pre><code class="bash">Host &lt;bastion_name&gt;
 Hostname &lt;bastion_ip_addrese&gt;
         Port 22
@@ -3625,13 +3637,13 @@ Hostname 192.168.0.4
           </a>
         
         
-          <a href="../../../Databases/MariaDB/Backup_and_Restore/" title="Backup and Restore" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../SSH-Proxy-win/" title="SSH Proxy win" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Backup and Restore
+                SSH Proxy win
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

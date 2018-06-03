@@ -1,4 +1,4 @@
-# Connect through Bastion host
+# Connect through Bastion host on Nix
 
 To connect via Bastion host which work as SSH Proxy you need simple ssh config on  your nix client machine:
 
@@ -26,7 +26,7 @@ Host 192.168.*
 
 ```
 
-## Alternative config with host aliases
+## Config 2: Host aliases
 
 ```bash
 Host <bastion_name>
