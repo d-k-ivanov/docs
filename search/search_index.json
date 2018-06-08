@@ -2576,6 +2576,31 @@
             "title": "C++"
         },
         {
+            "location": "/Security/GPG/Windows/",
+            "text": "Using GPG4Win\n\n\nWith git\n\n\ngpg --full-generate-key\ngit config --global gpg.program \"C:\\Program Files (x86)\\Gpg4win\\..\\GnuPG\\bin\\gpg.exe\"\ngpg --list-secret-keys --keyid-format LONG\ngit config --global user.signingkey {YourKeyID}\n\n\n\n\nExport and Import\n\n\ngpg --list-secret-keys --keyid-format LONG\ngpg --armor --export 21788557EE03EA8E > key.pub\ngpg --armor --export-secret-keys 21788557EE03EA8E > private.key\ngpg --export-ownertrust > otrust.txt\n\n\n\n\nGitHub key\n\n\nwget https://github.com/web-flow.gpg\ngpg --import .\\web-flow.gpg\nrm .\\web-flow.gpg",
+            "title": "Using GPG4Win"
+        },
+        {
+            "location": "/Security/GPG/Windows/#using-gpg4win",
+            "text": "",
+            "title": "Using GPG4Win"
+        },
+        {
+            "location": "/Security/GPG/Windows/#with-git",
+            "text": "gpg --full-generate-key\ngit config --global gpg.program \"C:\\Program Files (x86)\\Gpg4win\\..\\GnuPG\\bin\\gpg.exe\"\ngpg --list-secret-keys --keyid-format LONG\ngit config --global user.signingkey {YourKeyID}",
+            "title": "With git"
+        },
+        {
+            "location": "/Security/GPG/Windows/#export-and-import",
+            "text": "gpg --list-secret-keys --keyid-format LONG\ngpg --armor --export 21788557EE03EA8E > key.pub\ngpg --armor --export-secret-keys 21788557EE03EA8E > private.key\ngpg --export-ownertrust > otrust.txt",
+            "title": "Export and Import"
+        },
+        {
+            "location": "/Security/GPG/Windows/#github-key",
+            "text": "wget https://github.com/web-flow.gpg\ngpg --import .\\web-flow.gpg\nrm .\\web-flow.gpg",
+            "title": "GitHub key"
+        },
+        {
             "location": "/Tech/Audit/Fork_unavailable/",
             "text": "Fork: Resource temporarily unavailable on AIX\n\n\nTo investigate the promles you need to run this bunch of commands:\n\n\ncat /etc/passwd\n\n\n\n\nFrom root you need to look at limint of every active user:\n\n\nulimit -a\nsu oracle -c \"ulimit -a\"\nsu mongod -c \"ulimit -a\"\nsu userX -c \"ulimit -a\"\n\n\n\n\nLook at system wide defined limits:\n\n\ncat /etc/security/limits\n\n\n\n\nLook at kernel parameters, especially on \nmaxuproc\n\n\nlsattr -El sys0\n\n\n\n\nLook at count of running processes by user:\n\n\nps -f -l -uroot | wc -l\nps -f -l -uoracle | wc -l\nps -f -l -umongod | wc -l\nps -f -l -uuserX | wc -l\n\n\n\n\nAnd after all look at avaible mamory and swap:\n\n\nsvmon -G -O unit=MB",
             "title": "Fork unavailable"
