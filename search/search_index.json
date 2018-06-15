@@ -2601,6 +2601,26 @@
             "title": "GitHub key"
         },
         {
+            "location": "/Security/OpenSSL/Troubleshuting/",
+            "text": "Troubleshutind SSL Connections\n\n\nRemove password from SSL certificate\n\n\nopenssl rsa -<algorithm> -in secured.key -out unsecured.key\n\n\n\n\nGet SSL info about URL\n\n\n# SNI\nopenssl s_client -showcerts -servername www.example.com -connect www.example.com:<port|443>\n# Not SNI\nopenssl s_client -showcerts -connect www.example.com:<port|443>\n# Connetc with self-signed certificates\nopenssl s_client -showcerts -key self-signed.key -cert self-signed.cert -connect www.example.com:<port|443>",
+            "title": "Troubleshutind SSL Connections"
+        },
+        {
+            "location": "/Security/OpenSSL/Troubleshuting/#troubleshutind-ssl-connections",
+            "text": "",
+            "title": "Troubleshutind SSL Connections"
+        },
+        {
+            "location": "/Security/OpenSSL/Troubleshuting/#remove-password-from-ssl-certificate",
+            "text": "openssl rsa -<algorithm> -in secured.key -out unsecured.key",
+            "title": "Remove password from SSL certificate"
+        },
+        {
+            "location": "/Security/OpenSSL/Troubleshuting/#get-ssl-info-about-url",
+            "text": "# SNI\nopenssl s_client -showcerts -servername www.example.com -connect www.example.com:<port|443>\n# Not SNI\nopenssl s_client -showcerts -connect www.example.com:<port|443>\n# Connetc with self-signed certificates\nopenssl s_client -showcerts -key self-signed.key -cert self-signed.cert -connect www.example.com:<port|443>",
+            "title": "Get SSL info about URL"
+        },
+        {
             "location": "/Tech/Audit/Fork_unavailable/",
             "text": "Fork: Resource temporarily unavailable on AIX\n\n\nTo investigate the promles you need to run this bunch of commands:\n\n\ncat /etc/passwd\n\n\n\n\nFrom root you need to look at limint of every active user:\n\n\nulimit -a\nsu oracle -c \"ulimit -a\"\nsu mongod -c \"ulimit -a\"\nsu userX -c \"ulimit -a\"\n\n\n\n\nLook at system wide defined limits:\n\n\ncat /etc/security/limits\n\n\n\n\nLook at kernel parameters, especially on \nmaxuproc\n\n\nlsattr -El sys0\n\n\n\n\nLook at count of running processes by user:\n\n\nps -f -l -uroot | wc -l\nps -f -l -uoracle | wc -l\nps -f -l -umongod | wc -l\nps -f -l -uuserX | wc -l\n\n\n\n\nAnd after all look at avaible mamory and swap:\n\n\nsvmon -G -O unit=MB",
             "title": "Fork unavailable"
