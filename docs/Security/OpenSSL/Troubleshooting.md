@@ -1,4 +1,4 @@
-# Troubleshutind SSL Connections
+# Troubleshoot SSL Connections
 
 ## Remove password from SSL certificate
 
