@@ -2601,22 +2601,22 @@
             "title": "GitHub key"
         },
         {
-            "location": "/Security/OpenSSL/Troubleshuting/",
-            "text": "Troubleshutind SSL Connections\n\n\nRemove password from SSL certificate\n\n\nopenssl rsa -<algorithm> -in secured.key -out unsecured.key\n\n\n\n\nGet SSL info about URL\n\n\n# SNI\nopenssl s_client -showcerts -servername www.example.com -connect www.example.com:<port|443>\n# Not SNI\nopenssl s_client -showcerts -connect www.example.com:<port|443>\n# Connetc with self-signed certificates\nopenssl s_client -showcerts -key self-signed.key -cert self-signed.cert -connect www.example.com:<port|443>",
-            "title": "Troubleshutind SSL Connections"
+            "location": "/Security/OpenSSL/Troubleshooting/",
+            "text": "Troubleshoot SSL Connections\n\n\nRemove password from SSL certificate\n\n\nopenssl rsa -<algorithm> -in secured.key -out unsecured.key\n\n\n\n\nGet SSL info about URL\n\n\n# SNI\nopenssl s_client -showcerts -servername www.example.com -connect www.example.com:<port|443>\n# Not SNI\nopenssl s_client -showcerts -connect www.example.com:<port|443>\n# Connetc with self-signed certificates\nopenssl s_client -showcerts -key self-signed.key -cert self-signed.cert -connect www.example.com:<port|443>",
+            "title": "Troubleshoot SSL Connections"
         },
         {
-            "location": "/Security/OpenSSL/Troubleshuting/#troubleshutind-ssl-connections",
+            "location": "/Security/OpenSSL/Troubleshooting/#troubleshoot-ssl-connections",
             "text": "",
-            "title": "Troubleshutind SSL Connections"
+            "title": "Troubleshoot SSL Connections"
         },
         {
-            "location": "/Security/OpenSSL/Troubleshuting/#remove-password-from-ssl-certificate",
+            "location": "/Security/OpenSSL/Troubleshooting/#remove-password-from-ssl-certificate",
             "text": "openssl rsa -<algorithm> -in secured.key -out unsecured.key",
             "title": "Remove password from SSL certificate"
         },
         {
-            "location": "/Security/OpenSSL/Troubleshuting/#get-ssl-info-about-url",
+            "location": "/Security/OpenSSL/Troubleshooting/#get-ssl-info-about-url",
             "text": "# SNI\nopenssl s_client -showcerts -servername www.example.com -connect www.example.com:<port|443>\n# Not SNI\nopenssl s_client -showcerts -connect www.example.com:<port|443>\n# Connetc with self-signed certificates\nopenssl s_client -showcerts -key self-signed.key -cert self-signed.cert -connect www.example.com:<port|443>",
             "title": "Get SSL info about URL"
         },
