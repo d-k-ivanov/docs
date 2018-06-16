@@ -9,7 +9,6 @@ gpg --list-secret-keys --keyid-format LONG
 git config --global user.signingkey {YourKeyID}
 ```
 
-
 ## Export and Import
 
 ```ps1
