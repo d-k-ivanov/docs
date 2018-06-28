@@ -1,3 +1,8 @@
+### Login to container with root user
+```
+docker exec -u 0 -it <container_name> <command>
+```
+
 ### Check linux kernel
 ```
 exec /usr/share/docker/contrib/check-config.sh
