@@ -2,7 +2,7 @@
 
 ## API
 
-### Get informatin about repository
+### Get information about repository
 
 ```bash
 # Get common repo info

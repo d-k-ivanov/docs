@@ -4532,7 +4532,7 @@
         },
         {
             "location": "/Vendors/Atlassian/Bitbucket/",
-            "text": "Bitbucket related things\n\n\nAPI\n\n\nGet informatin about repository\n\n\n# Get common repo info\ncurl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment | jq .\n# Get list of branches\ncurl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment/refs/branches | jq .",
+            "text": "Bitbucket related things\n\n\nAPI\n\n\nGet information about repository\n\n\n# Get common repo info\ncurl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment | jq .\n# Get list of branches\ncurl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment/refs/branches | jq .",
             "title": "Bitbucket related things"
         },
         {
@@ -4546,9 +4546,9 @@
             "title": "API"
         },
         {
-            "location": "/Vendors/Atlassian/Bitbucket/#get-informatin-about-repository",
+            "location": "/Vendors/Atlassian/Bitbucket/#get-information-about-repository",
             "text": "# Get common repo info\ncurl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment | jq .\n# Get list of branches\ncurl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment/refs/branches | jq .",
-            "title": "Get informatin about repository"
+            "title": "Get information about repository"
         }
     ]
 }
