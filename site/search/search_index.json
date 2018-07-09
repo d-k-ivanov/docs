@@ -4529,6 +4529,26 @@
             "location": "/UX/X-Window/Common/#filed-to-load-xresources-with-gdm",
             "text": "vim /etc/gdm/Xsession\n\nif [ -f \"$userresources\" ]; then\n    #xrdb -nocpp -merge \"$userresources\" <<<----- Comment this, and add new one, like below\n    xrdb -merge \"$userresources\"\nfi",
             "title": "Filed to load .Xresources with GDM"
+        },
+        {
+            "location": "/Vendors/Atlassian/Bitbucket/",
+            "text": "Bitbucket related things\n\n\nAPI\n\n\nGet informatin about repository\n\n\n# Get common repo info\ncurl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment | jq .\n# Get list of branches\ncurl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment/refs/branches | jq .",
+            "title": "Bitbucket related things"
+        },
+        {
+            "location": "/Vendors/Atlassian/Bitbucket/#bitbucket-related-things",
+            "text": "",
+            "title": "Bitbucket related things"
+        },
+        {
+            "location": "/Vendors/Atlassian/Bitbucket/#api",
+            "text": "",
+            "title": "API"
+        },
+        {
+            "location": "/Vendors/Atlassian/Bitbucket/#get-informatin-about-repository",
+            "text": "# Get common repo info\ncurl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment | jq .\n# Get list of branches\ncurl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment/refs/branches | jq .",
+            "title": "Get informatin about repository"
         }
     ]
 }
