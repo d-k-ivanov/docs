@@ -4532,7 +4532,7 @@
         },
         {
             "location": "/Vendors/Atlassian/Bitbucket/",
-            "text": "Bitbucket related things\n\n\nAPI\n\n\nGet information about repository\n\n\n# Get common repo info\ncurl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment | jq .\n# API links\ncurl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment | jq [.links]\n# Get list of branches\ncurl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment/refs/branches | jq .",
+            "text": "Bitbucket related things\n\n\nAPI\n\n\nGet information about repository\n\n\n# Get common repo info\ncurl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment | jq .\n# API links\ncurl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment | jq [.links]\n# Get list of branches\ncurl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment/refs/branches | jq .\n\n\n\n\nGet SSH URLs of each user's or team's repo\n\n\n\n\nCurl\n\n\n\n\ncurl -G -u XXX:XXX \"https://api.bitbucket.org/2.0/repositories/{user-or-team}?pagelen=100\" | jq '(.values[].links.clone[] | select(.name | contains(\\\"ssh\\\"))).href' | sort\n\n\n\n\n\n\nPosershell\n\n\n\n\n[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12\n$username = Read-Host 'What is your username?'\n$password = Read-Host 'What is your password?' -AsSecureString\n$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes((\"{0}:{1}\" -f $username,$password)))\n# Many repos\n(Invoke-RestMethod -Headers @{Authorization=(\"Basic {0}\" -f $base64AuthInfo)} -Uri 'https://api.bitbucket.org/2.0/repositories/{user-or-team}?pagelen=100').values.links | %{Write-Host ($_.clone | Where name -eq ssh).href}\n\n# If only one repo there is second method\n(Invoke-WebRequest -Headers @{Authorization=(\"Basic {0}\" -f $base64AuthInfo)} -Uri 'https://api.bitbucket.org/2.0/repositories/{user-or-team}?pagelen=1' | ConvertFrom-Json).values.links.clone | Where name -eq ssh | Select href",
             "title": "Bitbucket related things"
         },
         {
@@ -4549,6 +4549,11 @@
             "location": "/Vendors/Atlassian/Bitbucket/#get-information-about-repository",
             "text": "# Get common repo info\ncurl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment | jq .\n# API links\ncurl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment | jq [.links]\n# Get list of branches\ncurl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment/refs/branches | jq .",
             "title": "Get information about repository"
+        },
+        {
+            "location": "/Vendors/Atlassian/Bitbucket/#get-ssh-urls-of-each-users-or-teams-repo",
+            "text": "Curl   curl -G -u XXX:XXX \"https://api.bitbucket.org/2.0/repositories/{user-or-team}?pagelen=100\" | jq '(.values[].links.clone[] | select(.name | contains(\\\"ssh\\\"))).href' | sort   Posershell   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12\n$username = Read-Host 'What is your username?'\n$password = Read-Host 'What is your password?' -AsSecureString\n$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes((\"{0}:{1}\" -f $username,$password)))\n# Many repos\n(Invoke-RestMethod -Headers @{Authorization=(\"Basic {0}\" -f $base64AuthInfo)} -Uri 'https://api.bitbucket.org/2.0/repositories/{user-or-team}?pagelen=100').values.links | %{Write-Host ($_.clone | Where name -eq ssh).href}\n\n# If only one repo there is second method\n(Invoke-WebRequest -Headers @{Authorization=(\"Basic {0}\" -f $base64AuthInfo)} -Uri 'https://api.bitbucket.org/2.0/repositories/{user-or-team}?pagelen=1' | ConvertFrom-Json).values.links.clone | Where name -eq ssh | Select href",
+            "title": "Get SSH URLs of each user's or team's repo"
         }
     ]
 }
