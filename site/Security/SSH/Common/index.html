@@ -13,7 +13,7 @@
         <meta name="description" content="Collection of Technical guides">
       
       
-        <link rel="canonical" href="https://keepbot.github.io/docs/Tech/Security/IPTables/">
+        <link rel="canonical" href="https://keepbot.github.io/docs/Security/SSH/Common/">
       
       
         <meta name="author" content="Dmitriy Ivanov">
@@ -38,17 +38,22 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.6.6">
+      <meta name="generator" content="mkdocs-1.0.1, mkdocs-material-3.0.3">
     
     
       
-        <title>IPTables - Technical Info</title>
+        <title>Common - Technical Info</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.78aab2dc.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.451f80e5.css">
       
-        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.6079476c.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
       
     
     
@@ -60,8 +65,8 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
     
     
   </head>
@@ -75,7 +80,7 @@
         
         
           <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
-    viewBox="0 0 416 448" id="github">
+    viewBox="0 0 416 448" id="__github">
   <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
         8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
         18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
@@ -95,11 +100,11 @@
         
       </defs>
     </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
-    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#show-rules" tabindex="1" class="md-skip">
+      <a href="../../../#public-key-authentication" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -115,7 +120,7 @@
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
@@ -125,7 +130,7 @@
                 Technical Info
               </span>
               <span class="md-header-nav__topic">
-                IPTables
+                Common
               </span>
             
           
@@ -134,14 +139,14 @@
       <div class="md-flex__cell md-flex__cell--shrink">
         
           
-            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
             
 <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="search"></label>
+  <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="search"></label>
+      <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
       </button>
@@ -174,7 +179,7 @@
     
       <div class="md-source__icon">
         <svg viewBox="0 0 24 24" width="24" height="24">
-          <use xlink:href="#github" width="24" height="24"></use>
+          <use xlink:href="#__github" width="24" height="24"></use>
         </svg>
       </div>
     
@@ -203,12 +208,12 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="drawer">
-    <span class="md-nav__button md-logo">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://keepbot.github.io/docs/" title="Technical Info" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
-    </span>
+    </a>
     Technical Info
   </label>
   
@@ -223,7 +228,7 @@
     
       <div class="md-source__icon">
         <svg viewBox="0 0 24 24" width="24" height="24">
-          <use xlink:href="#github" width="24" height="24"></use>
+          <use xlink:href="#__github" width="24" height="24"></use>
         </svg>
       </div>
     
@@ -2004,10 +2009,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10" checked>
     
     <label class="md-nav__link" for="nav-10">
       Security
@@ -2029,11 +2036,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10-1" type="checkbox" id="nav-10-1">
     
     <label class="md-nav__link" for="nav-10-1">
-      GPG
+      Encryption
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
       <label class="md-nav__title" for="nav-10-1">
-        GPG
+        Encryption
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -2044,8 +2051,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../Security/GPG/Windows/" title="Using GPG4Win" class="md-nav__link">
-      Using GPG4Win
+    <a href="../../Encryption/EncFS/" title="EncFS" class="md-nav__link">
+      EncFS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Encryption/HSM/" title="HSM" class="md-nav__link">
+      HSM
     </a>
   </li>
 
@@ -2065,10 +2084,106 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10-2" type="checkbox" id="nav-10-2">
     
     <label class="md-nav__link" for="nav-10-2">
-      OpenSSL
+      Firewalls
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
       <label class="md-nav__title" for="nav-10-2">
+        Firewalls
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Firewalls/FirewallD/" title="FirewallD" class="md-nav__link">
+      FirewallD
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Firewalls/IPTables/" title="IPTables" class="md-nav__link">
+      IPTables
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Firewalls/PF/" title="PF" class="md-nav__link">
+      PF
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10-3" type="checkbox" id="nav-10-3">
+    
+    <label class="md-nav__link" for="nav-10-3">
+      GPG
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-10-3">
+        GPG
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GPG/Windows/" title="Using GPG4Win" class="md-nav__link">
+      Using GPG4Win
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10-4" type="checkbox" id="nav-10-4">
+    
+    <label class="md-nav__link" for="nav-10-4">
+      OpenSSL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-10-4">
         OpenSSL
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2080,7 +2195,19 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../Security/OpenSSL/Troubleshooting/" title="Troubleshoot SSL Connections" class="md-nav__link">
+    <a href="../../OpenSSL/Common/" title="Common" class="md-nav__link">
+      Common
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../OpenSSL/Troubleshooting/" title="Troubleshoot SSL Connections" class="md-nav__link">
       Troubleshoot SSL Connections
     </a>
   </li>
@@ -2091,6 +2218,121 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10-5" type="checkbox" id="nav-10-5">
+    
+    <label class="md-nav__link" for="nav-10-5">
+      SELinux
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-10-5">
+        SELinux
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../SELinux/Common/" title="Common" class="md-nav__link">
+      Common
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10-6" type="checkbox" id="nav-10-6" checked>
+    
+    <label class="md-nav__link" for="nav-10-6">
+      SSH
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-10-6">
+        SSH
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Common
+      </label>
+    
+    <a href="./" title="Common" class="md-nav__link md-nav__link--active">
+      Common
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#public-key-authentication" title="Public key authentication" class="md-nav__link">
+    Public key authentication
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avoid-checking-rsa-key-of-remote-host" title="Avoid checking rsa key of remote host" class="md-nav__link">
+    Avoid checking rsa key of remote host
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -2100,12 +2342,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
     
     <label class="md-nav__link" for="nav-11">
       Tech
@@ -2142,7 +2382,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Audit/Fork_unavailable/" title="Fork unavailable" class="md-nav__link">
+    <a href="../../../Tech/Audit/Fork_unavailable/" title="Fork unavailable" class="md-nav__link">
       Fork unavailable
     </a>
   </li>
@@ -2154,7 +2394,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Audit/Hardware_info/" title="Hardware info" class="md-nav__link">
+    <a href="../../../Tech/Audit/Hardware_info/" title="Hardware info" class="md-nav__link">
       Hardware info
     </a>
   </li>
@@ -2166,7 +2406,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Audit/Processes/" title="Processes" class="md-nav__link">
+    <a href="../../../Tech/Audit/Processes/" title="Processes" class="md-nav__link">
       Processes
     </a>
   </li>
@@ -2178,7 +2418,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Audit/Reboot_Investigation/" title="Reboot Investigation" class="md-nav__link">
+    <a href="../../../Tech/Audit/Reboot_Investigation/" title="Reboot Investigation" class="md-nav__link">
       Reboot Investigation
     </a>
   </li>
@@ -2214,7 +2454,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Backup/TSM/" title="TSM" class="md-nav__link">
+    <a href="../../../Tech/Backup/TSM/" title="TSM" class="md-nav__link">
       TSM
     </a>
   </li>
@@ -2226,7 +2466,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Backup/Tape/" title="Tape" class="md-nav__link">
+    <a href="../../../Tech/Backup/Tape/" title="Tape" class="md-nav__link">
       Tape
     </a>
   </li>
@@ -2238,7 +2478,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Backup/Veeam/" title="Veeam" class="md-nav__link">
+    <a href="../../../Tech/Backup/Veeam/" title="Veeam" class="md-nav__link">
       Veeam
     </a>
   </li>
@@ -2274,7 +2514,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../BigData/Zookeper_grow/" title="Zookeper grow" class="md-nav__link">
+    <a href="../../../Tech/BigData/Zookeper_grow/" title="Zookeper grow" class="md-nav__link">
       Zookeper grow
     </a>
   </li>
@@ -2310,7 +2550,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Messaging/Email_Telnet/" title="Email Telnet" class="md-nav__link">
+    <a href="../../../Tech/Messaging/Email_Telnet/" title="Email Telnet" class="md-nav__link">
       Email Telnet
     </a>
   </li>
@@ -2322,7 +2562,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Messaging/Postfix/" title="Postfix" class="md-nav__link">
+    <a href="../../../Tech/Messaging/Postfix/" title="Postfix" class="md-nav__link">
       Postfix
     </a>
   </li>
@@ -2334,7 +2574,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Messaging/SMS/" title="SMS" class="md-nav__link">
+    <a href="../../../Tech/Messaging/SMS/" title="SMS" class="md-nav__link">
       SMS
     </a>
   </li>
@@ -2370,7 +2610,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Monitoring/80_tools_for_monitoring/" title="80 tools for monitoring" class="md-nav__link">
+    <a href="../../../Tech/Monitoring/80_tools_for_monitoring/" title="80 tools for monitoring" class="md-nav__link">
       80 tools for monitoring
     </a>
   </li>
@@ -2382,7 +2622,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Monitoring/Nagios/" title="Nagios" class="md-nav__link">
+    <a href="../../../Tech/Monitoring/Nagios/" title="Nagios" class="md-nav__link">
       Nagios
     </a>
   </li>
@@ -2394,7 +2634,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Monitoring/NetXMS/" title="NetXMS" class="md-nav__link">
+    <a href="../../../Tech/Monitoring/NetXMS/" title="NetXMS" class="md-nav__link">
       NetXMS
     </a>
   </li>
@@ -2406,7 +2646,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Monitoring/Zabbix/" title="Zabbix" class="md-nav__link">
+    <a href="../../../Tech/Monitoring/Zabbix/" title="Zabbix" class="md-nav__link">
       Zabbix
     </a>
   </li>
@@ -2442,7 +2682,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Network/Common/" title="Common" class="md-nav__link">
+    <a href="../../../Tech/Network/Common/" title="Common" class="md-nav__link">
       Common
     </a>
   </li>
@@ -2454,7 +2694,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Network/DNS/" title="DNS" class="md-nav__link">
+    <a href="../../../Tech/Network/DNS/" title="DNS" class="md-nav__link">
       DNS
     </a>
   </li>
@@ -2466,7 +2706,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Network/KEMP/" title="KEMP" class="md-nav__link">
+    <a href="../../../Tech/Network/KEMP/" title="KEMP" class="md-nav__link">
       KEMP
     </a>
   </li>
@@ -2478,7 +2718,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Network/NTP/" title="NTP" class="md-nav__link">
+    <a href="../../../Tech/Network/NTP/" title="NTP" class="md-nav__link">
       NTP
     </a>
   </li>
@@ -2490,7 +2730,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Network/Ports/" title="Ports" class="md-nav__link">
+    <a href="../../../Tech/Network/Ports/" title="Ports" class="md-nav__link">
       Ports
     </a>
   </li>
@@ -2502,7 +2742,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Network/SNMP/" title="SNMP" class="md-nav__link">
+    <a href="../../../Tech/Network/SNMP/" title="SNMP" class="md-nav__link">
       SNMP
     </a>
   </li>
@@ -2514,7 +2754,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Network/WiFi/" title="WiFi" class="md-nav__link">
+    <a href="../../../Tech/Network/WiFi/" title="WiFi" class="md-nav__link">
       WiFi
     </a>
   </li>
@@ -2526,7 +2766,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Network/tcpdump/" title="Tcpdump" class="md-nav__link">
+    <a href="../../../Tech/Network/tcpdump/" title="Tcpdump" class="md-nav__link">
       Tcpdump
     </a>
   </li>
@@ -2562,7 +2802,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Package_Management/Apt/" title="Apt" class="md-nav__link">
+    <a href="../../../Tech/Package_Management/Apt/" title="Apt" class="md-nav__link">
       Apt
     </a>
   </li>
@@ -2574,7 +2814,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Package_Management/PIP/" title="PIP" class="md-nav__link">
+    <a href="../../../Tech/Package_Management/PIP/" title="PIP" class="md-nav__link">
       PIP
     </a>
   </li>
@@ -2586,7 +2826,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Package_Management/Pacman/" title="Pacman" class="md-nav__link">
+    <a href="../../../Tech/Package_Management/Pacman/" title="Pacman" class="md-nav__link">
       Pacman
     </a>
   </li>
@@ -2598,7 +2838,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Package_Management/Yum/" title="Yum" class="md-nav__link">
+    <a href="../../../Tech/Package_Management/Yum/" title="Yum" class="md-nav__link">
       Yum
     </a>
   </li>
@@ -2634,7 +2874,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Project_Management/Redmine/" title="Redmine" class="md-nav__link">
+    <a href="../../../Tech/Project_Management/Redmine/" title="Redmine" class="md-nav__link">
       Redmine
     </a>
   </li>
@@ -2649,19 +2889,17 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-9" type="checkbox" id="nav-11-9" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-9" type="checkbox" id="nav-11-9">
     
     <label class="md-nav__link" for="nav-11-9">
-      Security
+      Storage and filesystems
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
       <label class="md-nav__title" for="nav-11-9">
-        Security
+        Storage and filesystems
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -2672,8 +2910,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../EncFS/" title="EncFS" class="md-nav__link">
-      EncFS
+    <a href="../../../Tech/Storage_and_filesystems/Extend_Ext4_Partition/" title="Extend Ext4 Partition" class="md-nav__link">
+      Extend Ext4 Partition
     </a>
   </li>
 
@@ -2684,8 +2922,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../FirewallD/" title="FirewallD" class="md-nav__link">
-      FirewallD
+    <a href="../../../Tech/Storage_and_filesystems/Files_in_Unix/" title="Files in Unix" class="md-nav__link">
+      Files in Unix
     </a>
   </li>
 
@@ -2696,80 +2934,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../HSM/" title="HSM" class="md-nav__link">
-      HSM
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        IPTables
-      </label>
-    
-    <a href="./" title="IPTables" class="md-nav__link md-nav__link--active">
-      IPTables
-    </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#show-rules" title="Show rules" class="md-nav__link">
-    Show rules
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#autoreset-by-vivek-gite" title="Autoreset by Vivek Gite" class="md-nav__link">
-    Autoreset by Vivek Gite
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sibple-rules" title="Sibple Rules" class="md-nav__link">
-    Sibple Rules
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../OpenSSL/" title="OpenSSL" class="md-nav__link">
-      OpenSSL
+    <a href="../../../Tech/Storage_and_filesystems/GPFS/" title="GPFS" class="md-nav__link">
+      GPFS
     </a>
   </li>
 
@@ -2780,8 +2946,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../PF/" title="PF" class="md-nav__link">
-      PF
+    <a href="../../../Tech/Storage_and_filesystems/HDD/" title="HDD" class="md-nav__link">
+      HDD
     </a>
   </li>
 
@@ -2792,8 +2958,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../SELinux/" title="SELinux" class="md-nav__link">
-      SELinux
+    <a href="../../../Tech/Storage_and_filesystems/LVM/" title="LVM" class="md-nav__link">
+      LVM
     </a>
   </li>
 
@@ -2804,8 +2970,44 @@
 
 
   <li class="md-nav__item">
-    <a href="../SSH/" title="SSH" class="md-nav__link">
-      SSH
+    <a href="../../../Tech/Storage_and_filesystems/Links/" title="Links" class="md-nav__link">
+      Links
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Storage_and_filesystems/Map_Disks_in_Windows/" title="Map Disks in Windows" class="md-nav__link">
+      Map Disks in Windows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Storage_and_filesystems/SAN/" title="SAN" class="md-nav__link">
+      SAN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Storage_and_filesystems/mdadm/" title="Mdadm" class="md-nav__link">
+      Mdadm
     </a>
   </li>
 
@@ -2825,11 +3027,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-10" type="checkbox" id="nav-11-10">
     
     <label class="md-nav__link" for="nav-11-10">
-      Storage and filesystems
+      Users
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
       <label class="md-nav__title" for="nav-11-10">
-        Storage and filesystems
+        Users
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -2840,104 +3042,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Storage_and_filesystems/Extend_Ext4_Partition/" title="Extend Ext4 Partition" class="md-nav__link">
-      Extend Ext4 Partition
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Storage_and_filesystems/Files_in_Unix/" title="Files in Unix" class="md-nav__link">
-      Files in Unix
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Storage_and_filesystems/GPFS/" title="GPFS" class="md-nav__link">
-      GPFS
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Storage_and_filesystems/HDD/" title="HDD" class="md-nav__link">
-      HDD
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Storage_and_filesystems/LVM/" title="LVM" class="md-nav__link">
-      LVM
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Storage_and_filesystems/Links/" title="Links" class="md-nav__link">
-      Links
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Storage_and_filesystems/Map_Disks_in_Windows/" title="Map Disks in Windows" class="md-nav__link">
-      Map Disks in Windows
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Storage_and_filesystems/SAN/" title="SAN" class="md-nav__link">
-      SAN
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Storage_and_filesystems/mdadm/" title="Mdadm" class="md-nav__link">
-      Mdadm
+    <a href="../../../Tech/Users/Rename_User/" title="Rename User" class="md-nav__link">
+      Rename User
     </a>
   </li>
 
@@ -2957,11 +3063,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-11" type="checkbox" id="nav-11-11">
     
     <label class="md-nav__link" for="nav-11-11">
-      Users
+      Virtual
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
       <label class="md-nav__title" for="nav-11-11">
-        Users
+        Virtual
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -2972,8 +3078,32 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Users/Rename_User/" title="Rename User" class="md-nav__link">
-      Rename User
+    <a href="../../../Tech/Virtual/Docker/" title="Docker" class="md-nav__link">
+      Docker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Virtual/Hyper-V/" title="Hyper V" class="md-nav__link">
+      Hyper V
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tech/Virtual/KVM/" title="KVM" class="md-nav__link">
+      KVM
     </a>
   </li>
 
@@ -2993,70 +3123,10 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-12" type="checkbox" id="nav-11-12">
     
     <label class="md-nav__link" for="nav-11-12">
-      Virtual
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-11-12">
-        Virtual
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Virtual/Docker/" title="Docker" class="md-nav__link">
-      Docker
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Virtual/Hyper-V/" title="Hyper V" class="md-nav__link">
-      Hyper V
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Virtual/KVM/" title="KVM" class="md-nav__link">
-      KVM
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-13" type="checkbox" id="nav-11-13">
-    
-    <label class="md-nav__link" for="nav-11-13">
       Web
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-11-13">
+      <label class="md-nav__title" for="nav-11-12">
         Web
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3068,7 +3138,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Web/Curl/" title="Curl" class="md-nav__link">
+    <a href="../../../Tech/Web/Curl/" title="Curl" class="md-nav__link">
       Curl
     </a>
   </li>
@@ -3080,7 +3150,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Web/IIS/" title="IIS" class="md-nav__link">
+    <a href="../../../Tech/Web/IIS/" title="IIS" class="md-nav__link">
       IIS
     </a>
   </li>
@@ -3092,7 +3162,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Web/Tomcat/" title="Tomcat" class="md-nav__link">
+    <a href="../../../Tech/Web/Tomcat/" title="Tomcat" class="md-nav__link">
       Tomcat
     </a>
   </li>
@@ -3632,8 +3702,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../Vendors/Atlassian/Bitbucket/" title="Bitbucket" class="md-nav__link">
-      Bitbucket
+    <a href="../../../Vendors/Atlassian/Bitbucket/" title="Bitbucket related things" class="md-nav__link">
+      Bitbucket related things
     </a>
   </li>
 
@@ -3663,26 +3733,19 @@
   
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#show-rules" title="Show rules" class="md-nav__link">
-    Show rules
+  <a href="#public-key-authentication" title="Public key authentication" class="md-nav__link">
+    Public key authentication
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#autoreset-by-vivek-gite" title="Autoreset by Vivek Gite" class="md-nav__link">
-    Autoreset by Vivek Gite
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sibple-rules" title="Sibple Rules" class="md-nav__link">
-    Sibple Rules
+  <a href="#avoid-checking-rsa-key-of-remote-host" title="Avoid checking rsa key of remote host" class="md-nav__link">
+    Avoid checking rsa key of remote host
   </a>
   
 </li>
@@ -3704,100 +3767,21 @@
               
                 
                 
-                  <h1>IPTables</h1>
+                  <h1>Common</h1>
                 
-                <h3 id="show-rules">Show rules</h3>
-<pre><code>iptables -nvL
-iptable -t nat -nvL
+                <h3 id="public-key-authentication">Public key authentication</h3>
+<pre><code class="bash"># On remote:
+mkdir ~/.ssh
+chmod 755 ~/.ssh
+
+# On local
+cat ~/.ssh/id_rsa.pub &gt; /tmp/pubkeytmp
+scp /tmp/pubkeytmp &lt;username&gt;@&lt;hostname&gt;:~/.ssh/authorized_keys
+rm /tmp/pubkeytmp
 </code></pre>
 
-<h3 id="autoreset-by-vivek-gite">Autoreset by Vivek Gite</h3>
-<ul>
-<li>Just add to crontab while remote rules configuration:</li>
-</ul>
-<pre><code class="bash">crontab -e
-# ---
-*/5 * * * * root /root/reset.fw &gt;/dev/null 2&gt;&amp;1
-</code></pre>
-
-<ul>
-<li>reset.fw:</li>
-</ul>
-<pre><code class="bash">#!/bin/bash
-# reset.fw - Reset firewall
-# set x to 0 - No reset
-# set x to 1 - Reset firewall
-# ---------------------------------------------------------------------------------------------------------------
-# Added support for IPV6 Firewall
-# ---------------------------------------------------------------------------------------------------------------
-# Written by Vivek Gite &lt;vivek@nixcraft.com&gt;
-# ---------------------------------------------------------------------------------------------------------------
-# You can copy / paste / redistribute this script under GPL version 2.0 or above
-# =============================================================
-x=1
-
-# set to true if it is CentOS / RHEL / Fedora box
-RHEL=false
-
-### no need to edit below  ###
-IPT=/sbin/iptables
-IPT6=/sbin/ip6tables
-
-if [ &quot;$x&quot; == &quot;1&quot; ];
-then
-    if [ &quot;$RHEL&quot; == &quot;true&quot; ];
-    then
-          # reset firewall using redhat script
-        /etc/init.d/iptables stop
-        /etc/init.d/ip6tables stop
-    else
-        # for all other Linux distro use following rules to reset firewall
-        ### reset ipv4 iptales ###
-        $IPT -F
-        $IPT -X
-        $IPT -Z
-        for table in $(&lt;/proc/net/ip_tables_names)
-        do
-            $IPT -t $table -F
-            $IPT -t $table -X
-            $IPT -t $table -Z
-        done
-        $IPT -P INPUT ACCEPT
-        $IPT -P OUTPUT ACCEPT
-        $IPT -P FORWARD ACCEPT
-        ### reset ipv6 iptales ###
-        $IPT6 -F
-        $IPT6 -X
-        $IPT6 -Z
-        for table in $(&lt;/proc/net/ip6_tables_names)
-        do
-            $IPT6 -t $table -F
-            $IPT6 -t $table -X
-            $IPT6 -t $table -Z
-        done
-        $IPT6 -P INPUT ACCEPT
-        $IPT6 -P OUTPUT ACCEPT
-        $IPT6 -P FORWARD ACCEPT
-    fi
-else
-        :
-fi
-</code></pre>
-
-<h3 id="sibple-rules">Sibple Rules</h3>
-<pre><code class="bash">iptables -I INPUT -p tcp --dport 8005 -j ACCEPT
-iptables -I INPUT -p tcp --dport 8009 -j ACCEPT
-iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
-iptables -I INPUT -p tcp --dport 8443 -j ACCEPT
-
-ip6tables -I INPUT -p tcp --dport 8005 -j ACCEPT
-ip6tables -I INPUT -p tcp --dport 8009 -j ACCEPT
-ip6tables -I INPUT -p tcp --dport 8080 -j ACCEPT
-ip6tables -I INPUT -p tcp --dport 8443 -j ACCEPT
-
-service iptables save 
-service ip6tables save
-
+<h3 id="avoid-checking-rsa-key-of-remote-host">Avoid checking rsa key of remote host</h3>
+<pre><code class="bash">ssh -o StrictHostKeyChecking=no -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null &lt;IP ADDRESS&gt;
 </code></pre>
                 
                   
@@ -3805,6 +3789,8 @@ service ip6tables save
               
               
                 
+
+
               
             </article>
           </div>
@@ -3817,7 +3803,7 @@ service ip6tables save
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../HSM/" title="HSM" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../SELinux/Common/" title="Common" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -3826,19 +3812,19 @@ service ip6tables save
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                HSM
+                Common
               </span>
             </div>
           </a>
         
         
-          <a href="../OpenSSL/" title="OpenSSL" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../../Tech/Audit/Fork_unavailable/" title="Fork unavailable" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                OpenSSL
+                Fork unavailable
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -3858,7 +3844,7 @@ service ip6tables save
           </div>
         
         powered by
-        <a href="http://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
@@ -3866,8 +3852,7 @@ service ip6tables save
       
         
   <div class="md-footer-social">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
     
       <a href="https://github.com/keepbot" class="md-footer-social__link fa fa-github"></a>
     
@@ -3882,9 +3867,9 @@ service ip6tables save
       
     </div>
     
-      <script src="../../../assets/javascripts/application.02434462.js"></script>
+      <script src="../../../assets/javascripts/application.583bbe55.js"></script>
       
-      <script>app.initialize({version:"0.17.2",url:{base:"../../.."}})</script>
+      <script>app.initialize({version:"1.0.1",url:{base:"../../.."}})</script>
       
     
     
