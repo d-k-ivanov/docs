@@ -1957,6 +1957,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tagging" title="Tagging" class="md-nav__link">
+    Tagging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#submodules" title="Submodules" class="md-nav__link">
     Submodules
   </a>
@@ -4232,6 +4239,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tagging" title="Tagging" class="md-nav__link">
+    Tagging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#submodules" title="Submodules" class="md-nav__link">
     Submodules
   </a>
@@ -4413,6 +4427,21 @@ git commit -v
 git commit --amend
 # Add changes to previous commit without changing commit message
 git commit --amend --no-edit
+</code></pre>
+
+<h2 id="tagging">Tagging</h2>
+<pre><code class="bash"># Add tag to current commit
+git tag &lt;tag_name&gt;
+# Add tag to commit
+git tag &lt;tag_name&gt; &lt;commit_hash&gt;
+# Rewrite existed tag to current commit
+git tag --force &lt;tag_name&gt;
+# Rewrite existed tag to commit
+git tag --force &lt;tag_name&gt; &lt;commit_hash&gt;
+# Push tags to remote repository
+git push --tags
+# Overwrite tags to remote repository
+git push --tags --force
 </code></pre>
 
 <h2 id="submodules">Submodules</h2>
