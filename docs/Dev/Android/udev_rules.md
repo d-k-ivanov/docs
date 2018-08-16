@@ -1,4 +1,4 @@
-# UDEV rules for Android devices
+# UDEV Rules
 
 ## Instalaltion
 
