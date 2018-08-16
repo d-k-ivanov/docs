@@ -42,7 +42,7 @@
     
     
       
-        <title>Git - Technical Info</title>
+        <title>Common Git commands - Technical Info</title>
       
     
     
@@ -104,7 +104,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../../#dealing-with-line-endings" tabindex="1" class="md-skip">
+      <a href="../../../#common-git-commands" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -130,7 +130,7 @@
                 Technical Info
               </span>
               <span class="md-header-nav__topic">
-                Git
+                Common Git commands
               </span>
             
           
@@ -1746,68 +1746,153 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
+      
+    
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Git
+        Common Git commands
       </label>
     
-    <a href="./" title="Git" class="md-nav__link md-nav__link--active">
-      Git
+    <a href="./" title="Common Git commands" class="md-nav__link md-nav__link--active">
+      Common Git commands
     </a>
     
       
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dealing-with-line-endings" title="Dealing with line endings" class="md-nav__link">
-    Dealing with line endings
+  <a href="#cloning" title="Cloning" class="md-nav__link">
+    Cloning
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#normalize-all-the-line-endings" title="Normalize all the line endings" class="md-nav__link">
-    Normalize all the line endings
+  <a href="#cleaning-repository" title="Cleaning repository" class="md-nav__link">
+    Cleaning repository
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#clone" title="Clone" class="md-nav__link">
-    Clone
+  <a href="#commits" title="Commits" class="md-nav__link">
+    Commits
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#global-settings" title="Global settings" class="md-nav__link">
-    Global settings
+  <a href="#submodules" title="Submodules" class="md-nav__link">
+    Submodules
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-and-update-submodule" title="Add and Update submodule" class="md-nav__link">
+    Add and Update submodule
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-submodule" title="Remove submodule" class="md-nav__link">
+    Remove submodule
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-branch-for-existing-submodule" title="Change branch for existing submodule" class="md-nav__link">
+    Change branch for existing submodule
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branches" title="Branches" class="md-nav__link">
+    Branches
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-new-repository" title="Create new repository" class="md-nav__link">
-    Create new repository
+  <a href="#garbage-collection" title="Garbage collection" class="md-nav__link">
+    Garbage collection
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#commit" title="Commit" class="md-nav__link">
-    Commit
+  <a href="#patches" title="Patches" class="md-nav__link">
+    Patches
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-patch-from-commit" title="Create patch from commit" class="md-nav__link">
+    Create patch from commit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apply-patches" title="Apply patches" class="md-nav__link">
+    Apply patches
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#clean" title="Clean" class="md-nav__link">
-    Clean
+  <a href="#line-endings" title="Line endings" class="md-nav__link">
+    Line endings
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#os-based-proper-config" title="OS-based proper config" class="md-nav__link">
+    OS-based proper config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normalize-line-endings" title="Normalize line endings" class="md-nav__link">
+    Normalize line endings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings" title="Settings" class="md-nav__link">
+    Settings
   </a>
   
 </li>
@@ -1822,55 +1907,6 @@
         <li class="md-nav__item">
   <a href="#working-with-bunch-of-repositories" title="Working with bunch of  repositories" class="md-nav__link">
     Working with bunch of  repositories
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#creating-patches-from-commits" title="Creating patches from commits:" class="md-nav__link">
-    Creating patches from commits:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apply-patches" title="Apply patches:" class="md-nav__link">
-    Apply patches:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-submodule" title="Add submodule" class="md-nav__link">
-    Add submodule
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#change-branch-for-existing-submodule" title="Change branch for existing submodule" class="md-nav__link">
-    Change branch for existing submodule
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#update-submodules" title="Update submodules" class="md-nav__link">
-    Update submodules
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#download-all-submodules" title="Download all submodules" class="md-nav__link">
-    Download all submodules
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#remove-submodule" title="Remove submodule" class="md-nav__link">
-    Remove submodule
   </a>
   
 </li>
@@ -3844,55 +3880,138 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dealing-with-line-endings" title="Dealing with line endings" class="md-nav__link">
-    Dealing with line endings
+  <a href="#cloning" title="Cloning" class="md-nav__link">
+    Cloning
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#normalize-all-the-line-endings" title="Normalize all the line endings" class="md-nav__link">
-    Normalize all the line endings
+  <a href="#cleaning-repository" title="Cleaning repository" class="md-nav__link">
+    Cleaning repository
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#clone" title="Clone" class="md-nav__link">
-    Clone
+  <a href="#commits" title="Commits" class="md-nav__link">
+    Commits
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#global-settings" title="Global settings" class="md-nav__link">
-    Global settings
+  <a href="#submodules" title="Submodules" class="md-nav__link">
+    Submodules
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-and-update-submodule" title="Add and Update submodule" class="md-nav__link">
+    Add and Update submodule
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-submodule" title="Remove submodule" class="md-nav__link">
+    Remove submodule
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-branch-for-existing-submodule" title="Change branch for existing submodule" class="md-nav__link">
+    Change branch for existing submodule
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branches" title="Branches" class="md-nav__link">
+    Branches
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-new-repository" title="Create new repository" class="md-nav__link">
-    Create new repository
+  <a href="#garbage-collection" title="Garbage collection" class="md-nav__link">
+    Garbage collection
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#commit" title="Commit" class="md-nav__link">
-    Commit
+  <a href="#patches" title="Patches" class="md-nav__link">
+    Patches
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-patch-from-commit" title="Create patch from commit" class="md-nav__link">
+    Create patch from commit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apply-patches" title="Apply patches" class="md-nav__link">
+    Apply patches
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#clean" title="Clean" class="md-nav__link">
-    Clean
+  <a href="#line-endings" title="Line endings" class="md-nav__link">
+    Line endings
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#os-based-proper-config" title="OS-based proper config" class="md-nav__link">
+    OS-based proper config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normalize-line-endings" title="Normalize line endings" class="md-nav__link">
+    Normalize line endings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings" title="Settings" class="md-nav__link">
+    Settings
   </a>
   
 </li>
@@ -3907,55 +4026,6 @@
         <li class="md-nav__item">
   <a href="#working-with-bunch-of-repositories" title="Working with bunch of  repositories" class="md-nav__link">
     Working with bunch of  repositories
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#creating-patches-from-commits" title="Creating patches from commits:" class="md-nav__link">
-    Creating patches from commits:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apply-patches" title="Apply patches:" class="md-nav__link">
-    Apply patches:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-submodule" title="Add submodule" class="md-nav__link">
-    Add submodule
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#change-branch-for-existing-submodule" title="Change branch for existing submodule" class="md-nav__link">
-    Change branch for existing submodule
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#update-submodules" title="Update submodules" class="md-nav__link">
-    Update submodules
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#download-all-submodules" title="Download all submodules" class="md-nav__link">
-    Download all submodules
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#remove-submodule" title="Remove submodule" class="md-nav__link">
-    Remove submodule
   </a>
   
 </li>
@@ -3991,9 +4061,135 @@
               
                 
                 
-                  <h1>Git</h1>
-                
-                <h3 id="dealing-with-line-endings">Dealing with line endings</h3>
+                <h1 id="common-git-commands">Common Git commands</h1>
+<h2 id="cloning">Cloning</h2>
+<pre><code class="bash">
+# For new repos(-jN - number of simltaniuos jobs):
+git clone --recursive-submodules -j4 git@github.com:keepbot/docs.git
+git clone --recursive-submodules git@github.com:keepbot/docs.git
+
+# Ignore self signed ssl certificates
+git -c http.sslVerify=false clone --recursive git@github.com:keepbot/docs.git
+</code></pre>
+
+<h2 id="cleaning-repository">Cleaning repository</h2>
+<pre><code class="bash"># Those commands reset all changes. The repository will be the same as clone new repos.
+git reset --hard
+git clean -d -x -f
+</code></pre>
+
+<h2 id="commits">Commits</h2>
+<pre><code class="bash"># Add files to commit
+git add &lt;path_to_file&gt;
+# Commit with comment
+git commit -m &quot;Your comment here&quot;
+# Commit with review (Will be shown as diff)
+git commit -v
+# Add changes to previous commit or change commit message
+git commit --amend
+# Add changes to previous commit without changing commit message
+git commit --amend --no-edit
+</code></pre>
+
+<h2 id="submodules">Submodules</h2>
+<h3 id="add-and-update-submodule">Add and Update submodule</h3>
+<pre><code class="bash"># Add
+git submodule add -b &lt;branch_name&gt; &lt;submodule_git_url&gt; &lt;local_path&gt;
+# Update
+git submodule update --recursive --remote
+# Download all
+git submodule update --init --recursive
+</code></pre>
+
+<h3 id="remove-submodule">Remove submodule</h3>
+<pre><code class="bash"># 1. Delete the relevant section from the *.gitmodules* file.
+[submodule &quot;vendor&quot;]
+    path = vendor
+    url = git://github.com/some-user/some-repo.git
+# 2. Stage the *.gitmodules* changes with following command:
+git add .gitmodules
+# 3.Delete the relevant section from *.git/config*:
+[submodule &quot;vendor&quot;]
+    url = git://github.com/some-user/some-repo.git
+# 4. Remove submodule folders from repo:
+git rm --cached path/to/submodule
+rm -rf .git/modules/submodule_name
+# 6. Commit changes
+# 7. Delete files
+rm -rf path/to/submodule
+</code></pre>
+
+<h3 id="change-branch-for-existing-submodule">Change branch for existing submodule</h3>
+<pre><code class="bash">cd &lt;path_to_repo&gt;
+git config -f .gitmodules submodule.&lt;local_path&gt;.branch &lt;branch_name&gt;
+
+# Make sure that submodule is at the latest of branch (OR)
+cd &lt;submodule_local_path&gt;
+git checkout -b branch --track origin/branch
+git branch -u origin/master master
+
+cd &lt;path_to_repo&gt;
+git add &lt;submodule_local_path&gt;
+</code></pre>
+
+<h2 id="branches">Branches</h2>
+<pre><code class="bash"># Create branch
+git checkout -b &lt;branch_name&gt;
+# Checkout branch
+git checkout &lt;branch_name&gt;
+# List local branches
+git branch
+# List remote branches
+git branch -r
+# List all branches
+git branch -a
+# List all merged branches
+git branch -a --merged
+# List all not merged branches
+git branch -a --no-merged
+# Remove branch
+git push origin --delete &lt;branch_name&gt;
+</code></pre>
+
+<h2 id="garbage-collection">Garbage collection</h2>
+<pre><code class="bash"># Help: https://git-scm.com/docs/git-gc
+# Runs a number of housekeeping tasks within the current repository, such as compressing file revisions (to reduce disk space and increase performance), removing unreachable objects which may have been created from prior invocations of git add, packing refs, pruning reflog, rerere metadata or stale working trees.
+# Users are encouraged to run this task on a regular basis within each repository to maintain good disk space utilization and good operating performance.
+# Some git commands may automatically run git gc
+# Enable automatic garbage collection
+git config --global gc.auto 1
+# Disable automatic garbage collection
+git config --global gc.auto 0
+
+# Run garbage collector
+git gc
+# Run garbage collector to prune old file
+git gc --prune=now
+# Run garbage collector if necessary
+git gc --auto
+# Alternative ways to cleanup old references:
+git remote prune origin
+git fetch --prune
+</code></pre>
+
+<h2 id="patches">Patches</h2>
+<h3 id="create-patch-from-commit">Create patch from commit</h3>
+<pre><code class="bash">## The easiest version (you can specify number of commit to patch)
+git format-patch -1 HEAD
+## Same as first, but create numbered files (00001-nnnnn)
+git format-patch -n HEAD^
+## Simple cat ftom stdout, works fine on most of systems, but be carfull, if you have customized terminal (color tags, special symbols, etc.)
+git show HEAD &gt; path_to.patch
+</code></pre>
+
+<h3 id="apply-patches">Apply patches</h3>
+<pre><code class="bash">git apply --stat 00001-File-Name.patch
+git apply --check 00001-File-Name.patch
+git am &lt; 0001-File-Name.patch
+</code></pre>
+
+<h2 id="line-endings">Line endings</h2>
+<h3 id="os-based-proper-config">OS-based proper config</h3>
 <pre><code class="bash"># Mac
 git config --global core.autocrlf input
 # Linux
@@ -4002,7 +4198,7 @@ git config --global core.autocrlf input
 git config --global core.autocrlf true
 </code></pre>
 
-<h3 id="normalize-all-the-line-endings">Normalize all the line endings</h3>
+<h3 id="normalize-line-endings">Normalize line endings</h3>
 <pre><code class="bash"># Save your current files in Git, so that none of your work is lost.
 git add . -u
 git commit -m &quot;Saving files before refreshing line endings&quot;
@@ -4028,42 +4224,18 @@ git add .gitattributes
 git commit -m &quot;Normalize all the line endings&quot;
 </code></pre>
 
-<h3 id="clone">Clone</h3>
-<pre><code class="bash"># For new repos(-jN - number of simltaniuos jobs):
-git clone --recursive-submodules -j4 https://github.com/keepbot/dotfiles
-git clone --recursive-submodules https://github.com/keepbot/dotfiles
-
-# Ignore self signed ssl certificates
-git -c http.sslVerify=false clone --recursive https://github.com/keepbot/dotfiles.git
-</code></pre>
-
-<h3 id="global-settings">Global settings</h3>
-<pre><code class="bash">git config --global user.name &quot;Your Name&quot;
+<h2 id="settings">Settings</h2>
+<pre><code class="bash"># System namespace
+git config --global user.name &quot;Your Name&quot;
 git config --global user.email your@e-mail.com
+
+# Repository namespace
+git config --local user.name &quot;Your Name&quot;
+git config --local user.email your@e-mail.com
+
 </code></pre>
 
-<h3 id="create-new-repository">Create new repository</h3>
-<pre><code class="bash">mkdir -p &lt;path_to_repository&gt;
-cd &lt;path_to_repository&gt;
-git add .
-git commit -m &quot;Initialization&quot;
-git remote add origin https://github.com/username/&lt;repository&gt;.git
-git push -u origin master
-git checkout 
-</code></pre>
-
-<h3 id="commit">Commit</h3>
-<pre><code class="bash"># Addition of new files with automatic staging of deleted and modified files
-git add .
-git commit -a -m &quot;new commentary&quot;
-git push -u origin master
-</code></pre>
-
-<h3 id="clean">Clean</h3>
-<pre><code class="bash">git clean -d -x -f
-</code></pre>
-
-<h3 id="update-local-reposytory-from-remote">Update local reposytory from remote</h3>
+<h2 id="update-local-reposytory-from-remote">Update local reposytory from remote</h2>
 <pre><code class="bash"># Fentch + Merge
 git pull
 # Fetch only
@@ -4076,76 +4248,18 @@ git fetch --all
 git reset --hard origin/master
 </code></pre>
 
-<h3 id="working-with-bunch-of-repositories">Working with bunch of  repositories</h3>
+<h2 id="working-with-bunch-of-repositories">Working with bunch of  repositories</h2>
 <pre><code class="bash"># Last commits
 for d in `ls`; do cd $d; git log --pretty=format:&quot;%h - %an, %ar : %s&quot; -1; cd ..; done
 # Mass checkout
 for d in `ls`; do cd $d; git checkout; cd ..; done
 </code></pre>
 
-<h3 id="creating-patches-from-commits">Creating patches from commits:</h3>
-<pre><code class="bash"># The easiest version (you can specify number of commit to patch) 
-git format-patch -1 HEAD
-# Same as first, but create numbered files (00001-nnnnn)
-git format-patch -n HEAD^
-# Simple cat ftom stdout, works fine on most of systems, but be carfull, if you have customized terminal (color tags, special symbols, etc.)
-git show HEAD &gt; path_to.patch
-</code></pre>
-
-<h3 id="apply-patches">Apply patches:</h3>
-<pre><code class="bash">git apply --stat 0001-Linux-agent-LVM-subagent-initial-implementation.patch
-git apply --check 0001-Linux-agent-LVM-subagent-initial-implementation.patch
-git am &lt; 0001-Linux-agent-LVM-subagent-initial-implementation.patch
-</code></pre>
-
-<h3 id="add-submodule">Add submodule</h3>
-<pre><code class="bash">git submodule add -b &lt;branch_name&gt; &lt;submodule_git_url&gt; &lt;local_path&gt;
-</code></pre>
-
-<h3 id="change-branch-for-existing-submodule">Change branch for existing submodule</h3>
-<pre><code class="bash">cd &lt;path_to_repo&gt;
-git config -f .gitmodules submodule.&lt;local_path&gt;.branch &lt;branch_name&gt;
-
-# Make sure that submodule is at the latest of branch (OR)
-cd &lt;submodule_local_path&gt;
-git checkout -b branch --track origin/branch
-git branch -u origin/master master
-
-cd &lt;path_to_repo&gt;
-git add &lt;submodule_local_path&gt;
-</code></pre>
-
-<h3 id="update-submodules">Update submodules</h3>
-<pre><code class="bash">git submodule update --recursive --remote
-</code></pre>
-
-<h3 id="download-all-submodules">Download all submodules</h3>
-<pre><code class="bash">git submodule update --init --recursive
-</code></pre>
-
-<h3 id="remove-submodule">Remove submodule</h3>
-<pre><code># 1. Delete the relevant section from the *.gitmodules* file.
-[submodule &quot;vendor&quot;]
-    path = vendor
-    url = git://github.com/some-user/some-repo.git
-# 2. Stage the *.gitmodules* changes with following command:
-git add .gitmodules
-# 3.Delete the relevant section from *.git/config*:
-[submodule &quot;vendor&quot;]
-    url = git://github.com/some-user/some-repo.git
-# 4. Remove submodule folders from repo:
-git rm --cached path/to/submodule
-rm -rf .git/modules/submodule_name
-# 6. Commit changes
-# 7. Delete files
-rm -rf path/to/submodule
-</code></pre>
-
-<h3 id="logs">Logs</h3>
+<h2 id="logs">Logs</h2>
 <pre><code class="bash">git log --pretty=format:&quot;%h - %an, %ar : %s&quot; -1
 </code></pre>
 
-<h3 id="provide-separate-ssh-key">Provide separate ssh-key</h3>
+<h2 id="provide-separate-ssh-key">Provide separate ssh-key</h2>
 <pre><code class="bash">vim ~/.ssh/config
 #------ add ------
 host &lt;full_server_hostname&gt;
