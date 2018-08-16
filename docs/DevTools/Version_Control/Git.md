@@ -35,6 +35,23 @@ git commit --amend
 git commit --amend --no-edit
 ```
 
+## Tagging
+
+```bash
+# Add tag to current commit
+git tag <tag_name>
+# Add tag to commit
+git tag <tag_name> <commit_hash>
+# Rewrite existed tag to current commit
+git tag --force <tag_name>
+# Rewrite existed tag to commit
+git tag --force <tag_name> <commit_hash>
+# Push tags to remote repository
+git push --tags
+# Overwrite tags to remote repository
+git push --tags --force
+```
+
 ## Submodules
 
 ### Add and Update submodule
