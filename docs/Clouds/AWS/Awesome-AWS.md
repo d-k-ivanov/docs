@@ -1416,6 +1416,7 @@ Other awesome lists can be found in [awesome](https://github.com/sindresorhus/aw
 ## Contact Info
 
 Feel free to contact me to discuss any issues, questions, or comments.
+
 My contact info can be found on my [GitHub page](https://github.com/donnemartin).
 
 ## License
