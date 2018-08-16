@@ -1,0 +1,4629 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Collection of Technical guides">
+      
+      
+        <link rel="canonical" href="https://keepbot.github.io/docs/Awesome/Awesome_Vulkan/">
+      
+      
+        <meta name="author" content="Dmitriy Ivanov">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.1, mkdocs-material-3.0.3">
+    
+    
+      
+        <title>Awesome Vulkan - Technical Info</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="cyan">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#awesome-vulkan" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://keepbot.github.io/docs/" title="Technical Info" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Technical Info
+              </span>
+              <span class="md-header-nav__topic">
+                Awesome Vulkan
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://keepbot.github.io/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      Main site
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://keepbot.github.io/docs/" title="Technical Info" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Technical Info
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://keepbot.github.io/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      Main site
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Admin
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Admin
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Admin/Windows_Administrative_Tools/" title="Windows Administrative Tools" class="md-nav__link">
+      Windows Administrative Tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Admin/xFreeRDP/" title="xFreeRDP" class="md-nav__link">
+      xFreeRDP
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Awesome
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Awesome
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Awesome_AWS/" title="Awesome AWS" class="md-nav__link">
+      Awesome AWS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Awesome_OpenGL/" title="Awesome OpenGL" class="md-nav__link">
+      Awesome OpenGL
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Awesome Vulkan
+      </label>
+    
+    <a href="./" title="Awesome Vulkan" class="md-nav__link md-nav__link--active">
+      Awesome Vulkan
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-support" title="Hardware Support" class="md-nav__link">
+    Hardware Support
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdk" title="SDK" class="md-nav__link">
+    SDK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#document" title="Document" class="md-nav__link">
+    Document
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial" title="Tutorial" class="md-nav__link">
+    Tutorial
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apps" title="Apps" class="md-nav__link">
+    Apps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#samples" title="Samples" class="md-nav__link">
+    Samples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#libraries" title="Libraries" class="md-nav__link">
+    Libraries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bindings" title="Bindings" class="md-nav__link">
+    Bindings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools" title="Tools" class="md-nav__link">
+    Tools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#books" title="Books" class="md-nav__link">
+    Books
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#community" title="Community" class="md-nav__link">
+    Community
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-lists" title="Related lists" class="md-nav__link">
+    Related lists
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" title="License" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" title="Contributing" class="md-nav__link">
+    Contributing
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Awesome CPP
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        Awesome CPP
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Awesome_CPP/Awesome_CPP/" title="Awesome C++" class="md-nav__link">
+      Awesome C++
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Awesome_CPP/Books/" title="Books" class="md-nav__link">
+      Books
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Awesome_CPP/Minor/" title="Minor" class="md-nav__link">
+      Minor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Awesome_CPP/Videos/" title="Videos" class="md-nav__link">
+      Videos
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Clouds
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Clouds
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1">
+    
+    <label class="md-nav__link" for="nav-4-1">
+      Bastion
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        Bastion
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Clouds/Bastion/SSH-Proxy-nix/" title="Connect through Bastion host on Nix" class="md-nav__link">
+      Connect through Bastion host on Nix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Clouds/Bastion/SSH-Proxy-win/" title="Connect through Bastion host on Windows" class="md-nav__link">
+      Connect through Bastion host on Windows
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Databases
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Databases
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-1" type="checkbox" id="nav-5-1">
+    
+    <label class="md-nav__link" for="nav-5-1">
+      MariaDB
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-1">
+        MariaDB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Databases/MariaDB/Backup_and_Restore/" title="Backup and Restore" class="md-nav__link">
+      Backup and Restore
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Databases/MariaDB/Installation/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      MongoDB
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        MongoDB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Databases/MongoDB/Backup_and_restore/" title="Backup and restore" class="md-nav__link">
+      Backup and restore
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Databases/MongoDB/Queries/" title="Queries" class="md-nav__link">
+      Queries
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Databases/MongoDB/Quick_Reference/" title="Quick Reference" class="md-nav__link">
+      Quick Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+    
+    <label class="md-nav__link" for="nav-5-3">
+      MySQL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        MySQL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Databases/MySQL/Replication/" title="Replication" class="md-nav__link">
+      Replication
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Oracle
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        Oracle
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Databases/Oracle/Blocking_sessions/" title="Blocking sessions" class="md-nav__link">
+      Blocking sessions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Databases/Oracle/CentOS_7_Installation/" title="CentOS 7 Installation" class="md-nav__link">
+      CentOS 7 Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Databases/Oracle/Common/" title="Common" class="md-nav__link">
+      Common
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Databases/Oracle/Dump/" title="Dump" class="md-nav__link">
+      Dump
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Databases/Oracle/Memory/" title="Memory" class="md-nav__link">
+      Memory
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Databases/Oracle/OJDBC/" title="OJDBC" class="md-nav__link">
+      OJDBC
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Databases/Oracle/Tablespace/" title="Tablespace" class="md-nav__link">
+      Tablespace
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Databases/Oracle/Useful_Queries/" title="Useful Queries" class="md-nav__link">
+      Useful Queries
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Dev
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Dev
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-1" type="checkbox" id="nav-6-1">
+    
+    <label class="md-nav__link" for="nav-6-1">
+      Android
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-1">
+        Android
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Android/Adb/" title="Adb" class="md-nav__link">
+      Adb
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Android/Android_Studio/" title="Android Studio" class="md-nav__link">
+      Android Studio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Android/Apk/" title="APK" class="md-nav__link">
+      APK
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Android/udev_rules/" title="UDEV Rules" class="md-nav__link">
+      UDEV Rules
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+    
+    <label class="md-nav__link" for="nav-6-2">
+      Bash
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        Bash
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Bash/Collect_bash_history/" title="Collect bash history" class="md-nav__link">
+      Collect bash history
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Bash/Convert-CP1251-to-UTF8/" title="Convert CP1251 to UTF8" class="md-nav__link">
+      Convert CP1251 to UTF8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Bash/Gentoo_Functions/" title="Gentoo Functions" class="md-nav__link">
+      Gentoo Functions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      Brainfuck
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        Brainfuck
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Brainfuck/Sample1/" title="Sample1" class="md-nav__link">
+      Sample1
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4">
+    
+    <label class="md-nav__link" for="nav-6-4">
+      C and Cpp
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-4">
+        C and Cpp
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/C_and_Cpp/Modern_Cpp_Features/" title="Modern Cpp Features" class="md-nav__link">
+      Modern Cpp Features
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/C_and_Cpp/Rand/" title="Rand" class="md-nav__link">
+      Rand
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5" type="checkbox" id="nav-6-5">
+    
+    <label class="md-nav__link" for="nav-6-5">
+      Cmd
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-5">
+        Cmd
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Cmd/ping_whole_subnet/" title="Ping whole subnet" class="md-nav__link">
+      Ping whole subnet
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-6" type="checkbox" id="nav-6-6">
+    
+    <label class="md-nav__link" for="nav-6-6">
+      Cuda
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-6">
+        Cuda
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Cuda/Make/" title="Make" class="md-nav__link">
+      Make
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-7" type="checkbox" id="nav-6-7">
+    
+    <label class="md-nav__link" for="nav-6-7">
+      Debug
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-7">
+        Debug
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Debug/10_Commands/" title="10 Commands" class="md-nav__link">
+      10 Commands
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Debug/Core_Dumps/" title="Core Dumps" class="md-nav__link">
+      Core Dumps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Debug/GDB/" title="GDB" class="md-nav__link">
+      GDB
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-8" type="checkbox" id="nav-6-8">
+    
+    <label class="md-nav__link" for="nav-6-8">
+      Hardware
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-8">
+        Hardware
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Hardware/GPU/" title="GPU" class="md-nav__link">
+      GPU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Hardware/IP_Packet_Example/" title="IP Packet Example" class="md-nav__link">
+      IP Packet Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Hardware/Latency_Numbers/" title="Latency Numbers" class="md-nav__link">
+      Latency Numbers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Hardware/Networks/" title="Networks" class="md-nav__link">
+      Networks
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-9" type="checkbox" id="nav-6-9">
+    
+    <label class="md-nav__link" for="nav-6-9">
+      Java
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-9">
+        Java
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Java/Environment/" title="Environment" class="md-nav__link">
+      Environment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Java/Runtime_customization/" title="Runtime customization" class="md-nav__link">
+      Runtime customization
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-10" type="checkbox" id="nav-6-10">
+    
+    <label class="md-nav__link" for="nav-6-10">
+      Libraries
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-10">
+        Libraries
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Libraries/Linux/" title="Linux" class="md-nav__link">
+      Linux
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-11" type="checkbox" id="nav-6-11">
+    
+    <label class="md-nav__link" for="nav-6-11">
+      MPI
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-11">
+        MPI
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/MPI/HelloWorld/" title="HelloWorld" class="md-nav__link">
+      HelloWorld
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/MPI/MPI-Lib/" title="MPI Lib" class="md-nav__link">
+      MPI Lib
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-12" type="checkbox" id="nav-6-12">
+    
+    <label class="md-nav__link" for="nav-6-12">
+      Markdown
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-12">
+        Markdown
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Markdown/Markdown/" title="Markdown" class="md-nav__link">
+      Markdown
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-13" type="checkbox" id="nav-6-13">
+    
+    <label class="md-nav__link" for="nav-6-13">
+      Perl
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-13">
+        Perl
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Perl/Perl_one-liners/" title="Perl one liners" class="md-nav__link">
+      Perl one liners
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Perl/Perl_scripts_for_sa/" title="Perl scripts for sa" class="md-nav__link">
+      Perl scripts for sa
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-14" type="checkbox" id="nav-6-14">
+    
+    <label class="md-nav__link" for="nav-6-14">
+      Power Shell
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-14">
+        Power Shell
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Power_Shell/Azure/" title="Azure" class="md-nav__link">
+      Azure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Power_Shell/Misc/" title="Misc" class="md-nav__link">
+      Misc
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Power_Shell/One-Liners/" title="One Liners" class="md-nav__link">
+      One Liners
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-15" type="checkbox" id="nav-6-15">
+    
+    <label class="md-nav__link" for="nav-6-15">
+      Python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-15">
+        Python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Python/Installation/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Python/Kivy/" title="Kivy" class="md-nav__link">
+      Kivy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Python/Users_and_groups/" title="Users and groups" class="md-nav__link">
+      Users and groups
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Python/pip/" title="Pip" class="md-nav__link">
+      Pip
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-16" type="checkbox" id="nav-6-16">
+    
+    <label class="md-nav__link" for="nav-6-16">
+      Ruby
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-16">
+        Ruby
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Ruby/Installation/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-17" type="checkbox" id="nav-6-17">
+    
+    <label class="md-nav__link" for="nav-6-17">
+      Vbs
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-17">
+        Vbs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Vbs/Kaspersky_Base_Actuality/" title="Kaspersky Base Actuality" class="md-nav__link">
+      Kaspersky Base Actuality
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Vbs/Links/" title="Links" class="md-nav__link">
+      Links
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Vbs/Network/" title="Network" class="md-nav__link">
+      Network
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Vbs/Run/" title="Run" class="md-nav__link">
+      Run
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-18" type="checkbox" id="nav-6-18">
+    
+    <label class="md-nav__link" for="nav-6-18">
+      Web
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-18">
+        Web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dev/Web/Redirect/" title="Redirect" class="md-nav__link">
+      Redirect
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      DevOps
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        DevOps
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DevOps/Ansible/" title="Ansible" class="md-nav__link">
+      Ansible
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DevOps/Chef-Windows/" title="Chef Windows" class="md-nav__link">
+      Chef Windows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DevOps/Terraform/" title="Terraform" class="md-nav__link">
+      Terraform
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      DevTools
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        DevTools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-1" type="checkbox" id="nav-8-1">
+    
+    <label class="md-nav__link" for="nav-8-1">
+      Build
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-1">
+        Build
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DevTools/Build/GCC/" title="GCC" class="md-nav__link">
+      GCC
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DevTools/Build/Make/" title="Make" class="md-nav__link">
+      Make
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2">
+    
+    <label class="md-nav__link" for="nav-8-2">
+      Version Control
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        Version Control
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DevTools/Version_Control/Git-Flow/" title="Git-Flow" class="md-nav__link">
+      Git-Flow
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DevTools/Version_Control/Git/" title="Common Git commands" class="md-nav__link">
+      Common Git commands
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DevTools/Version_Control/GitHub/" title="GitHub" class="md-nav__link">
+      GitHub
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DevTools/Version_Control/Gitignore/" title="Gitignore" class="md-nav__link">
+      Gitignore
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../DevTools/Version_Control/Subversion/" title="Subversion" class="md-nav__link">
+      Subversion
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Education
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Education
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-1" type="checkbox" id="nav-9-1">
+    
+    <label class="md-nav__link" for="nav-9-1">
+      Free Programming Books
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-1">
+        Free Programming Books
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Education/Free_Programming_Books/Courses_EN/" title="Courses EN" class="md-nav__link">
+      Courses EN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Education/Free_Programming_Books/Courses_RU/" title="Courses RU" class="md-nav__link">
+      Courses RU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Education/Free_Programming_Books/Podcasts_and_Screencasts_EN/" title="Podcasts and Screencasts EN" class="md-nav__link">
+      Podcasts and Screencasts EN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Education/Free_Programming_Books/Podcasts_and_Screencasts_RU/" title="Podcasts and Screencasts RU" class="md-nav__link">
+      Podcasts and Screencasts RU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Education/Free_Programming_Books/Problem_Sets_Competitive_Programming/" title="Problem Sets Competitive Programming" class="md-nav__link">
+      Problem Sets Competitive Programming
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Education/Free_Programming_Books/Programming_Books_EN/" title="Programming Books EN" class="md-nav__link">
+      Programming Books EN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Education/Free_Programming_Books/Programming_Books_RU/" title="Programming Books RU" class="md-nav__link">
+      Programming Books RU
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Education/Free_Programming_Books/Programming_Interactive_Tutorials_EN/" title="Programming Interactive Tutorials EN" class="md-nav__link">
+      Programming Interactive Tutorials EN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Education/Free_Programming_Books/Programming_Interactive_Tutorials_RU/" title="Programming Interactive Tutorials RU" class="md-nav__link">
+      Programming Interactive Tutorials RU
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      OS
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        OS
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../OS/AIX/" title="AIX" class="md-nav__link">
+      AIX
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../OS/Android/" title="Android" class="md-nav__link">
+      Android
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../OS/FreeBSD/" title="FreeBSD" class="md-nav__link">
+      FreeBSD
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../OS/Useful_UNIX_distros/" title="Useful UNIX distros" class="md-nav__link">
+      Useful UNIX distros
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10-5" type="checkbox" id="nav-10-5">
+    
+    <label class="md-nav__link" for="nav-10-5">
+      Gentoo
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-10-5">
+        Gentoo
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../OS/Gentoo/Console_Font/" title="Console Font" class="md-nav__link">
+      Console Font
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../OS/Gentoo/Gnome/" title="Gnome" class="md-nav__link">
+      Gnome
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../OS/Gentoo/Installation/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../OS/Gentoo/Portage/" title="Portage" class="md-nav__link">
+      Portage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../OS/Gentoo/Systemd/" title="Systemd" class="md-nav__link">
+      Systemd
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      QA
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        QA
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-1" type="checkbox" id="nav-11-1">
+    
+    <label class="md-nav__link" for="nav-11-1">
+      Stress tests
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-11-1">
+        Stress tests
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../QA/Stress_tests/Ackerman_function/" title="Ackerman function" class="md-nav__link">
+      Ackerman function
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Security
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        Security
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12-1" type="checkbox" id="nav-12-1">
+    
+    <label class="md-nav__link" for="nav-12-1">
+      Encryption
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-1">
+        Encryption
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Security/Encryption/EncFS/" title="EncFS" class="md-nav__link">
+      EncFS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Security/Encryption/HSM/" title="HSM" class="md-nav__link">
+      HSM
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12-2" type="checkbox" id="nav-12-2">
+    
+    <label class="md-nav__link" for="nav-12-2">
+      Firewalls
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-2">
+        Firewalls
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Security/Firewalls/FirewallD/" title="FirewallD" class="md-nav__link">
+      FirewallD
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Security/Firewalls/IPTables/" title="IPTables" class="md-nav__link">
+      IPTables
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Security/Firewalls/PF/" title="PF" class="md-nav__link">
+      PF
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12-3" type="checkbox" id="nav-12-3">
+    
+    <label class="md-nav__link" for="nav-12-3">
+      GPG
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-3">
+        GPG
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Security/GPG/Windows/" title="Using GPG4Win" class="md-nav__link">
+      Using GPG4Win
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12-4" type="checkbox" id="nav-12-4">
+    
+    <label class="md-nav__link" for="nav-12-4">
+      OpenSSL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-4">
+        OpenSSL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Security/OpenSSL/Common/" title="Common" class="md-nav__link">
+      Common
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Security/OpenSSL/Troubleshooting/" title="Troubleshoot SSL Connections" class="md-nav__link">
+      Troubleshoot SSL Connections
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12-5" type="checkbox" id="nav-12-5">
+    
+    <label class="md-nav__link" for="nav-12-5">
+      SELinux
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-5">
+        SELinux
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Security/SELinux/Common/" title="Common" class="md-nav__link">
+      Common
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12-6" type="checkbox" id="nav-12-6">
+    
+    <label class="md-nav__link" for="nav-12-6">
+      SSH
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-12-6">
+        SSH
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Security/SSH/Common/" title="Common" class="md-nav__link">
+      Common
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
+    
+    <label class="md-nav__link" for="nav-13">
+      Tech
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-13">
+        Tech
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13-1" type="checkbox" id="nav-13-1">
+    
+    <label class="md-nav__link" for="nav-13-1">
+      Audit
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-13-1">
+        Audit
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Audit/Fork_unavailable/" title="Fork unavailable" class="md-nav__link">
+      Fork unavailable
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Audit/Hardware_info/" title="Hardware info" class="md-nav__link">
+      Hardware info
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Audit/Processes/" title="Processes" class="md-nav__link">
+      Processes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Audit/Reboot_Investigation/" title="Reboot Investigation" class="md-nav__link">
+      Reboot Investigation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13-2" type="checkbox" id="nav-13-2">
+    
+    <label class="md-nav__link" for="nav-13-2">
+      Backup
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-13-2">
+        Backup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Backup/TSM/" title="TSM" class="md-nav__link">
+      TSM
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Backup/Tape/" title="Tape" class="md-nav__link">
+      Tape
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Backup/Veeam/" title="Veeam" class="md-nav__link">
+      Veeam
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13-3" type="checkbox" id="nav-13-3">
+    
+    <label class="md-nav__link" for="nav-13-3">
+      BigData
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-13-3">
+        BigData
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/BigData/Zookeper_grow/" title="Zookeper grow" class="md-nav__link">
+      Zookeper grow
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13-4" type="checkbox" id="nav-13-4">
+    
+    <label class="md-nav__link" for="nav-13-4">
+      Messaging
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-13-4">
+        Messaging
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Messaging/Email_Telnet/" title="Email Telnet" class="md-nav__link">
+      Email Telnet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Messaging/Postfix/" title="Postfix" class="md-nav__link">
+      Postfix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Messaging/SMS/" title="SMS" class="md-nav__link">
+      SMS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13-5" type="checkbox" id="nav-13-5">
+    
+    <label class="md-nav__link" for="nav-13-5">
+      Monitoring
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-13-5">
+        Monitoring
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Monitoring/80_tools_for_monitoring/" title="80 tools for monitoring" class="md-nav__link">
+      80 tools for monitoring
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Monitoring/Nagios/" title="Nagios" class="md-nav__link">
+      Nagios
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Monitoring/NetXMS/" title="NetXMS" class="md-nav__link">
+      NetXMS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Monitoring/Zabbix/" title="Zabbix" class="md-nav__link">
+      Zabbix
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13-6" type="checkbox" id="nav-13-6">
+    
+    <label class="md-nav__link" for="nav-13-6">
+      Network
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-13-6">
+        Network
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Network/Common/" title="Common" class="md-nav__link">
+      Common
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Network/DNS/" title="DNS" class="md-nav__link">
+      DNS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Network/KEMP/" title="KEMP" class="md-nav__link">
+      KEMP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Network/NTP/" title="NTP" class="md-nav__link">
+      NTP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Network/Ports/" title="Ports" class="md-nav__link">
+      Ports
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Network/SNMP/" title="SNMP" class="md-nav__link">
+      SNMP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Network/WiFi/" title="WiFi" class="md-nav__link">
+      WiFi
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Network/tcpdump/" title="Tcpdump" class="md-nav__link">
+      Tcpdump
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13-7" type="checkbox" id="nav-13-7">
+    
+    <label class="md-nav__link" for="nav-13-7">
+      Package Management
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-13-7">
+        Package Management
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Package_Management/Apt/" title="Apt" class="md-nav__link">
+      Apt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Package_Management/PIP/" title="PIP" class="md-nav__link">
+      PIP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Package_Management/Pacman/" title="Pacman" class="md-nav__link">
+      Pacman
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Package_Management/Yum/" title="Yum" class="md-nav__link">
+      Yum
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13-8" type="checkbox" id="nav-13-8">
+    
+    <label class="md-nav__link" for="nav-13-8">
+      Project Management
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-13-8">
+        Project Management
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Project_Management/Redmine/" title="Redmine" class="md-nav__link">
+      Redmine
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13-9" type="checkbox" id="nav-13-9">
+    
+    <label class="md-nav__link" for="nav-13-9">
+      Storage and filesystems
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-13-9">
+        Storage and filesystems
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Storage_and_filesystems/Extend_Ext4_Partition/" title="Extend Ext4 Partition" class="md-nav__link">
+      Extend Ext4 Partition
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Storage_and_filesystems/Files_in_Unix/" title="Files in Unix" class="md-nav__link">
+      Files in Unix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Storage_and_filesystems/GPFS/" title="GPFS" class="md-nav__link">
+      GPFS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Storage_and_filesystems/HDD/" title="HDD" class="md-nav__link">
+      HDD
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Storage_and_filesystems/LVM/" title="LVM" class="md-nav__link">
+      LVM
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Storage_and_filesystems/Links/" title="Links" class="md-nav__link">
+      Links
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Storage_and_filesystems/Map_Disks_in_Windows/" title="Map Disks in Windows" class="md-nav__link">
+      Map Disks in Windows
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Storage_and_filesystems/SAN/" title="SAN" class="md-nav__link">
+      SAN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Storage_and_filesystems/mdadm/" title="Mdadm" class="md-nav__link">
+      Mdadm
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13-10" type="checkbox" id="nav-13-10">
+    
+    <label class="md-nav__link" for="nav-13-10">
+      Users
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-13-10">
+        Users
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Users/Rename_User/" title="Rename User" class="md-nav__link">
+      Rename User
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13-11" type="checkbox" id="nav-13-11">
+    
+    <label class="md-nav__link" for="nav-13-11">
+      Virtual
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-13-11">
+        Virtual
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Virtual/Docker/" title="Docker" class="md-nav__link">
+      Docker
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Virtual/Hyper-V/" title="Hyper V" class="md-nav__link">
+      Hyper V
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Virtual/KVM/" title="KVM" class="md-nav__link">
+      KVM
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13-12" type="checkbox" id="nav-13-12">
+    
+    <label class="md-nav__link" for="nav-13-12">
+      Web
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-13-12">
+        Web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Web/Curl/" title="Curl" class="md-nav__link">
+      Curl
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Web/IIS/" title="IIS" class="md-nav__link">
+      IIS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tech/Web/Tomcat/" title="Tomcat" class="md-nav__link">
+      Tomcat
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-14" type="checkbox" id="nav-14">
+    
+    <label class="md-nav__link" for="nav-14">
+      UX
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-14">
+        UX
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-14-1" type="checkbox" id="nav-14-1">
+    
+    <label class="md-nav__link" for="nav-14-1">
+      Edittors
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-14-1">
+        Edittors
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UX/Edittors/My_Sublime_Text_config/" title="My Sublime Text config" class="md-nav__link">
+      My Sublime Text config
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UX/Edittors/VSCode/" title="VSCode" class="md-nav__link">
+      VSCode
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UX/Edittors/Vim/" title="Vim" class="md-nav__link">
+      Vim
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-14-2" type="checkbox" id="nav-14-2">
+    
+    <label class="md-nav__link" for="nav-14-2">
+      Hi DPI
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-14-2">
+        Hi DPI
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UX/Hi_DPI/Awesome_VM/" title="Awesome VM" class="md-nav__link">
+      Awesome VM
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UX/Hi_DPI/Java/" title="Java" class="md-nav__link">
+      Java
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-14-3" type="checkbox" id="nav-14-3">
+    
+    <label class="md-nav__link" for="nav-14-3">
+      Images
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-14-3">
+        Images
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UX/Images/Convert/" title="Convert" class="md-nav__link">
+      Convert
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-14-4" type="checkbox" id="nav-14-4">
+    
+    <label class="md-nav__link" for="nav-14-4">
+      MacOS
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-14-4">
+        MacOS
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UX/MacOS/Root/" title="Root" class="md-nav__link">
+      Root
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-14-5" type="checkbox" id="nav-14-5">
+    
+    <label class="md-nav__link" for="nav-14-5">
+      Messengers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-14-5">
+        Messengers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UX/Messengers/Skype/" title="Skype" class="md-nav__link">
+      Skype
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-14-6" type="checkbox" id="nav-14-6">
+    
+    <label class="md-nav__link" for="nav-14-6">
+      Network
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-14-6">
+        Network
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UX/Network/Windows_refresh_DNS/" title="Windows refresh DNS" class="md-nav__link">
+      Windows refresh DNS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-14-7" type="checkbox" id="nav-14-7">
+    
+    <label class="md-nav__link" for="nav-14-7">
+      Office
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-14-7">
+        Office
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UX/Office/Outlook/" title="Outlook" class="md-nav__link">
+      Outlook
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-14-8" type="checkbox" id="nav-14-8">
+    
+    <label class="md-nav__link" for="nav-14-8">
+      Power Management
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-14-8">
+        Power Management
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UX/Power_Management/Laptop_lid_linux/" title="Laptop lid linux" class="md-nav__link">
+      Laptop lid linux
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-14-9" type="checkbox" id="nav-14-9">
+    
+    <label class="md-nav__link" for="nav-14-9">
+      Terminal
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-14-9">
+        Terminal
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UX/Terminal/Tmux/" title="Tmux" class="md-nav__link">
+      Tmux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UX/Terminal/cmd/" title="Cmd" class="md-nav__link">
+      Cmd
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-14-10" type="checkbox" id="nav-14-10">
+    
+    <label class="md-nav__link" for="nav-14-10">
+      Wine
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-14-10">
+        Wine
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UX/Wine/Custom_prefix/" title="Custom prefix" class="md-nav__link">
+      Custom prefix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UX/Wine/curse_client_5/" title="Curse client 5" class="md-nav__link">
+      Curse client 5
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-14-11" type="checkbox" id="nav-14-11">
+    
+    <label class="md-nav__link" for="nav-14-11">
+      X Window
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-14-11">
+        X Window
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../UX/X-Window/Common/" title="Common" class="md-nav__link">
+      Common
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-15" type="checkbox" id="nav-15">
+    
+    <label class="md-nav__link" for="nav-15">
+      Vendors
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-15">
+        Vendors
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-15-1" type="checkbox" id="nav-15-1">
+    
+    <label class="md-nav__link" for="nav-15-1">
+      Atlassian
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-15-1">
+        Atlassian
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Vendors/Atlassian/Bitbucket/" title="Bitbucket related things" class="md-nav__link">
+      Bitbucket related things
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-support" title="Hardware Support" class="md-nav__link">
+    Hardware Support
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdk" title="SDK" class="md-nav__link">
+    SDK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#document" title="Document" class="md-nav__link">
+    Document
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial" title="Tutorial" class="md-nav__link">
+    Tutorial
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apps" title="Apps" class="md-nav__link">
+    Apps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#samples" title="Samples" class="md-nav__link">
+    Samples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#libraries" title="Libraries" class="md-nav__link">
+    Libraries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bindings" title="Bindings" class="md-nav__link">
+    Bindings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools" title="Tools" class="md-nav__link">
+    Tools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#books" title="Books" class="md-nav__link">
+    Books
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#community" title="Community" class="md-nav__link">
+    Community
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-lists" title="Related lists" class="md-nav__link">
+    Related lists
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" title="License" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" title="Contributing" class="md-nav__link">
+    Contributing
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="awesome-vulkan">Awesome Vulkan</h1>
+<p>A curated list of awesome Vulkan libraries, debuggers and resources. Inspired by <a href="https://github.com/eug/awesome-opengl">awesome-opengl</a> and other awesome-... stuff.</p>
+<ul>
+<li><strong><a href="#hardware-support">Hardware Support</a></strong></li>
+<li><strong><a href="#sdk">SDK</a></strong></li>
+<li><strong><a href="#document">IHV Document</a></strong></li>
+<li><strong><a href="#tutorial">Tutorial</a></strong></li>
+<li><strong><a href="#apps">Apps</a></strong></li>
+<li><strong><a href="#samples">Samples</a></strong></li>
+<li><strong><a href="#libraries">Libraries</a></strong></li>
+<li><strong><a href="#bindings">Bindings</a></strong></li>
+<li><strong><a href="#tools">Tools</a></strong></li>
+<li><strong><a href="#books">Books</a></strong></li>
+<li><strong><a href="#community">Community</a></strong></li>
+</ul>
+<h2 id="hardware-support">Hardware Support</h2>
+<ul>
+<li><a href="http://vulkan.gpuinfo.org/">gpuinfo</a> - Vulkan Hardware Database by Sascha Willems</li>
+<li><a href="https://www.khronos.org/vulkan">Khronos</a></li>
+<li><a href="https://developer.nvidia.com/Vulkan">NVIDIA</a><ul>
+<li><a href="https://developer.nvidia.com/vulkan-driver">Driver for Desktop</a></li>
+<li><a href="https://developer.nvidia.com/vulkan-android">Driver for Android</a></li>
+<li><a href="https://developer.nvidia.com/embedded/vulkan">Driver for Linux for Tegra (L4T)</a></li>
+</ul>
+</li>
+<li><a href="http://www.amd.com/en-gb/innovations/software-technologies/technologies-gaming/vulkan">AMD</a><ul>
+<li><a href="https://github.com/GPUOpen-Drivers/AMDVLK">Open-source Driver</a></li>
+</ul>
+</li>
+<li><a href="https://imgtec.com/tools/powervr-early-access-program/">Imagination</a></li>
+<li>Intel<ul>
+<li><a href="https://01.org/linuxgraphics/blogs/jekstrand/2016/open-source-vulkan-drivers-intel-hardware/">Open-source Driver</a></li>
+<li><a href="https://software.intel.com/en-us/blogs/2016/03/14/new-intel-vulkan-beta-1540204404-graphics-driver-for-windows-78110-1540">Driver for Windows</a></li>
+</ul>
+</li>
+<li><a href="https://developer.qualcomm.com/software/adreno-gpu-sdk/gpu">Qualcomm</a></li>
+<li><a href="http://malideveloper.arm.com/resources/sdks/mali-vulkan-sdk/">ARM</a></li>
+</ul>
+<h2 id="sdk">SDK</h2>
+<ul>
+<li><a href="https://vulkan.lunarg.com/signin">For Windows &amp; Linux</a></li>
+<li><a href="https://developer.android.com/ndk/guides/graphics/index.html">For Android</a></li>
+</ul>
+<h2 id="document">Document</h2>
+<ul>
+<li><a href="http://gpuopen.com/tag/vulkan/">AMD</a><ul>
+<li><a href="http://gpuopen.com/vulkan-barriers-explained/">Vulkan barriers explained</a></li>
+<li><a href="http://32ipi028l5q82yhj72224m8j.wpengine.netdna-cdn.com/wp-content/uploads/2016/03/VulkanFastPaths.pdf">Vulkan Fast Paths</a></li>
+<li><a href="http://32ipi028l5q82yhj72224m8j.wpengine.netdna-cdn.com/wp-content/uploads/2016/03/Let_your_game_shine_optimizing_DirectX-12_and_Vulkan-performance_with_AMD_CodeXL.pdf">Let Your Game Shine – Optimizing DirectX 12 and Vulkan Performance with AMD CodeXL  </a></li>
+<li><a href="http://32ipi028l5q82yhj72224m8j.wpengine.netdna-cdn.com/wp-content/uploads/2016/03/d3d12_vulkan_lessons_learned.pdf">D3D12 &amp; Vulkan: Lessons Learned  </a></li>
+<li><a href="http://gpuopen.com/say-hello/">Say Hello to a New Rendering API in Town!</a></li>
+<li><a href="http://gpuopen.com/vulkan-renderpasses/">Vulkan Renderpasses</a></li>
+<li><a href="http://gpuopen.com/performance-tweets-series-barriers-fences-synchronization/">Performance tweets series: Barriers, fences, synchronization</a></li>
+<li><a href="http://gpuopen.com/using-the-vulkan-validation-layers/">Using the Vulkan™ Validation Layers</a></li>
+<li><a href="http://32ipi028l5q82yhj72224m8j.wpengine.netdna-cdn.com/wp-content/uploads/2016/05/Most-common-mistakes-in-Vulkan-apps.pdf">Most common mistakes in Vulkan apps</a></li>
+<li><a href="http://gpuopen.com/vulkan-device-memory/">Vulkan Device Memory</a></li>
+</ul>
+</li>
+<li><a href="https://developer.nvidia.com/taxonomy/term/586">NVIDIA</a><ul>
+<li><a href="https://developer.nvidia.com/device-generated-commands-vulkan">Vulkan Device-Generated Commands</a></li>
+<li><a href="https://developer.nvidia.com/getting-vulkan-ready-vr">Getting Vulkan Ready For VR</a></li>
+<li><a href="http://on-demand.gputechconf.com/gtc/2016/presentation/s6138-christoph-kubisch-pierre-boudier-gpu-driven-rendering.pdf">GPU-Driven Rendering</a></li>
+<li><a href="http://developer.download.nvidia.com/gameworks/events/GDC2016/mschott_lbishop_gl_vulkan.pdf">GDC 16 - High-performance, Low-Overhead Rendering with OpenGL and Vulkan</a>  </li>
+<li><a href="http://developer.download.nvidia.com/gameworks/events/GDC2016/Vulkan_Essentials_GDC16_tlorach.pdf">GDC 16 - Vulkan and NVIDIA – The Essentials</a></li>
+<li><a href="https://developer.nvidia.com/engaging-voyage-vulkan">Engaging the Voyage to Vulkan</a></li>
+<li><a href="https://developer.nvidia.com/vulkan-shader-resource-binding">Vulkan Shader Resource Binding</a></li>
+<li><a href="https://developer.nvidia.com/vulkan-memory-management">Vulkan Memory Management</a></li>
+<li><a href="https://developer.nvidia.com/opengl-vulkan">OpenGL like Vulkan</a></li>
+<li><a href="https://developer.nvidia.com/transitioning-opengl-vulkan">Transitioning from OpenGL to Vulkan</a></li>
+<li><a href="http://on-demand.gputechconf.com/siggraph/2015/presentation/SIG1501-Piers-Daniell.pdf">Siggraph 15 talk - Vulkan on NVIDIA GPUs</a></li>
+</ul>
+</li>
+<li>ARM<ul>
+<li><a href="https://community.arm.com/groups/arm-mali-graphics/blog/2016/02/16/porting-a-graphics-engine-to-the-vulkan-api">Porting a Graphics Engine to the Vulkan API</a></li>
+<li><a href="https://community.arm.com/groups/arm-mali-graphics/blog/2016/04/19/massively-multi-thread-for-vulkan">Multi-Threading in Vulkan</a></li>
+<li><a href="https://developer.arm.com/-/media/Files/pdf/graphics-and-multimedia/Vulkan%20API%20key%20features%20on%20ARM%20architecture.pdf">Vulkan's Key Features on ARM Architecture</a></li>
+<li><a href="https://developer.arm.com/-/media/Files/pdf/graphics-and-multimedia/Get%20Your%20Engine%20Ready%20for%20Vulkan%20on%20Mobile.pdf">Get Your Engine Ready for Vulkan on Mobile</a></li>
+<li><a href="https://arm-software.github.io/vulkan-sdk/tutorials.html">Mali Vulkan Tutorials</a> and <a href="https://developer.arm.com/graphics/vulkan/vulkan-tutorials">Slides</a> Vulkan tutorials from the <a href="https://developer.arm.com/products/software/mali-sdks/vulkan">Mali Vulkan SDK</a></li>
+</ul>
+</li>
+<li>Intel<ul>
+<li><a href="https://github.com/GameTechDev/IntroductionToVulkan">API without Secrets: Introduction to Vulkan</a> [<a href="https://github.com/GameTechDev/IntroductionToVulkan/blob/master/license.txt">LICENSE</a>]<ul>
+<li><a href="https://software.intel.com/en-us/api-without-secrets-introduction-to-vulkan-part-1">Part 1: The Beginning</a></li>
+<li><a href="https://software.intel.com/en-us/api-without-secrets-introduction-to-vulkan-part-2">Part 2: Swap Chain</a></li>
+<li><a href="https://software.intel.com/en-us/api-without-secrets-introduction-to-vulkan-part-3">Part 3: First Triangle</a></li>
+<li><a href="https://software.intel.com/en-us/articles/api-without-secrets-introduction-to-vulkan-part-4">Part 4: Vertex Attributes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="http://blog.imgtec.com/tag/vulkan">Imagination</a><ul>
+<li><a href="https://imagination-technologies-cloudfront-assets.s3.amazonaws.com/idc-docs/gdc16/6_Efficient%20rendering%20with%20Vulkan%20on%20PowerVR.pdf">Efficient Rendering with Vulkan on PowerVR</a></li>
+<li><a href="https://imagination-technologies-cloudfront-assets.s3.amazonaws.com/idc-docs/gdc16/7_FrameworkIDC16.pdf">Migrating to Vulkan with the New PowerVR Graphics Framework</a></li>
+</ul>
+</li>
+<li>Samgsung<ul>
+<li><a href="https://community.arm.com/cfs-file/__key/telligent-evolution-extensions-calendar-calendarfiles/00-00-00-00-05/2_2D00_mmg_2D00_siggraph2016_2D00_best_2D00_practice_2D00_andrew.pdf">Siggraph 2016 - Best Practices for Mobile</a></li>
+<li><a href="https://developer.samsung.com/game/usage">Vulkan Usage Recommencation</a> (for mobile)</li>
+</ul>
+</li>
+<li>Epic<ul>
+<li><a href="https://community.arm.com/cfs-file/__key/telligent-evolution-extensions-calendar-calendarfiles/00-00-00-00-05/6_2D00_mmg_2D00_siggraph2016_2D00_vulkan_2D00_smedis.pdf">Efficient use of Vulkan on UE4 Mobile</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="tutorial">Tutorial</h2>
+<ul>
+<li><a href="https://www.jeremyong.com/c++/vulkan/graphics/rendering/2018/03/26/how-to-learn-vulkan.html">How to Learn Vulkan</a> - Meta post on how to learn Vulkan</li>
+<li><a href="https://www.fasterthan.life/blog/2017/7/11/i-am-graphics-and-so-can-you-part-1">I Am Graphics And So Can You</a> - Blog post style tutorial for those new to graphics learning Vulkan.</li>
+<li><a href="http://jhenriques.net/development.html">jhenriques's tutorial</a></li>
+<li><a href="https://www.khronos.org/registry/vulkan/">Khronos</a><ul>
+<li><a href="https://www.khronos.org/registry/vulkan/specs/1.0/refguide/Vulkan-1.0-web.pdf">Vulkan 1.0 Quick Reference</a></li>
+<li><a href="https://www.khronos.org/registry/vulkan/specs/1.0-wsi_extensions/pdf/vkspec.pdf">Vulkan 1.0 Specification</a></li>
+<li><a href="https://www.khronos.org/developers/library/2016-gdc">GDC 2016 Presentations</a></li>
+<li><a href="https://www.khronos.org/assets/uploads/developers/library/2016-uk-chapter-moving-to-vulkan/Moving-to-Vulkan_Khronos-UK_May16.pdf">Moving to Vulkan Khronos UK May16</a></li>
+<li><a href="https://www.khronos.org/assets/uploads/developers/library/2016-siggraph/Khronos-3D-BOF-SIGGRAPH_Jul16.pdf">SIGGRPAH 2016 3D BOF</a></li>
+</ul>
+</li>
+<li><a href="https://vulkan.lunarg.com/doc/sdk/1.0.26.0/windows/tutorial.html">Lunarg's tutorial</a></li>
+<li><a href="https://developer.qualcomm.com/software/adreno-gpu-sdk/tutorial-videos">Qualcomm Video Tutorial Series</a> - Leans more towards Vulkan for mobile devices.</li>
+<li><a href="https://alain.xyz/blog/raw-vulkan">Raw Vulkan</a> - Overview on how to program a Vulkan application from the ground up.</li>
+<li>Siggraph<ul>
+<li><a href="http://nextgenapis.realtimerendering.com/">An overview of next-generation graphics APIs</a> - covers Vulkan, D3D12 etc.</li>
+</ul>
+</li>
+<li><a href="https://vulkan-tutorial.com/">Tutorial by Overv</a> and <a href="https://github.com/Overv/VulkanTutorial">its github repository</a>. [CC BY-SA 4.0]</li>
+<li><a href="https://github.com/philiptaylor/vulkan-sxs">vulkan-sxs</a> - explain the Vulkan API step by step and <a href="https://github.com/philiptaylor/vulkan-sync">vulkan-sync</a> - rephrase Vulkan's requirements on execution dependencies in a more precise form. [MIT]</li>
+<li><a href="https://renderdoc.org/vulkan-in-30-minutes.html">Vulkan in 30 minutes</a> - by baldurk.</li>
+<li><a href="https://github.com/Z80Fan/VulkanDemos">Vulkan Demos and Tutorials</a> [MIT].</li>
+<li><a href="https://github.com/vcoda/basic-graphics-samples">Vulkan Basic Graphics Samples</a> - Collection of simple graphics samples that are written using Magma library.</li>
+</ul>
+<h2 id="apps">Apps</h2>
+<ul>
+<li><a href="http://www.croteam.com/talos-principle-will-support-vulkan-first-screenshot-released/">The Talos Principle</a> - by Croteam.</li>
+<li><a href="https://github.com/ValveSoftware/Dota-2-Vulkan/">Dota2</a> - by Valve.</li>
+<li><a href="http://www.basemark.com/2015/11/10/basemark-extends-its-benchmarking-lead-with-a-vulkan-performance-test/">Basemark</a> - by Basemark.</li>
+<li><a href="https://kishonti.net/news_single.jsp?id=31133884">GFXBench 5</a> - by Kishonti.</li>
+<li><a href="https://www.unrealengine.com/blog/epic-games-unveils-protostar-at-samsung-galaxy-unpacked">ProtoStar</a> - by Epic, built with Unreal Engine 4 technology.</li>
+<li><a href="https://en.wikipedia.org/wiki/Doom_(2016_video_game)">Doom</a> - by id Software.</li>
+<li><a href="https://github.com/Novum/vkQuake">vkQuake</a> - Vulkan Quake port based on QuakeSpasm. [GPL]</li>
+<li><a href="https://github.com/ValveSoftware/SteamVR-for-Linux">Linux port of SteamVR</a> - SteamVR is built on top of the Vulkan API.</li>
+<li><a href="https://www.futuremark.com/pressreleases/compare-vulkan-and-directx-12-performance-with-3dmark">3DMark</a> - 3DMark API Overhead test.</li>
+</ul>
+<h2 id="samples">Samples</h2>
+<ul>
+<li>Sascha Willems's <a href="https://github.com/SaschaWillems/Vulkan">samples</a> and <a href="https://github.com/SaschaWillems/VulkanSponza">Deferred rendering of  Sponza</a> and his talk of <a href="https://github.com/SaschaWillems/Vulkan/blob/master/documentation/Khronos_meetup_munich_fromGLtoVulkan.pdf">Khronos_meetup_munich</a>.</li>
+<li>Sascha Willems's <a href="https://github.com/SaschaWillems/Vulkan-glTF-PBR">Vulkan-glTF-PBR</a> - physical based rendering with Vulkan using glTF 2.0 models. [MIT]</li>
+<li><a href="https://github.com/KhronosGroup">KhronosGroup</a><ul>
+<li><a href="https://github.com/KhronosGroup/Vulkan-Samples">Samples</a></li>
+<li><a href="https://github.com/KhronosGroup/Vulkan-CTS">Conformance Tests (CTS)</a></li>
+</ul>
+</li>
+<li>Google<ul>
+<li><a href="https://github.com/googlesamples/vulkan-basic-samples">Android port of LunarG samples</a>.</li>
+<li><a href="https://github.com/googlesamples/android-vulkan-tutorials">android tutorials</a>.</li>
+</ul>
+</li>
+<li><a href="https://github.com/nvpro-samples">nvpro-samples</a> - NVIDIA DesignWorks Samples. [<a href="https://github.com/nvpro-samples/gl_vk_threaded_cadscene/blob/master/LICENSE">LICENSE</a>]<ul>
+<li><a href="https://github.com/nvpro-samples/gl_vk_chopper">gl_vk_chopper</a> - Simple vulkan rendering example.</li>
+<li><a href="https://github.com/nvpro-samples/gl_vk_threaded_cadscene">gl_vk_threaded_cadscene</a> - OpenGL and Vulkan comparison on rendering a CAD scene using veraious techniques and <a href="https://developer.nvidia.com/vulkan-opengl-threaded-cad-scene-sample">the blog</a> about it.</li>
+<li><a href="https://github.com/nvpro-samples/gl_vk_bk3dthreaded">gl_vk_bk3dthreaded</a> - Vulkan sample rendering 3D with 'worker-threads'.</li>
+<li><a href="https://github.com/nvpro-samples/gl_vk_supersampled">gl_vk_supersampled</a> - Vulkan sample showing a high quality super-sampled rendering.</li>
+</ul>
+</li>
+<li><a href="https://github.com/NVIDIAGameWorks/GraphicsSamples">NVIDIA GameWorks Samples</a> - GameWorks cross-platform graphics API samples. [<a href="https://github.com/NVIDIAGameWorks/GraphicsSamples/blob/master/license.txt">LICENSE</a>]</li>
+<li><a href="https://github.com/LunarG/VulkanSamples">LunarG's samples</a></li>
+<li><a href="https://github.com/krh/vkcube">vkcube</a> - 'vkcube' sample from krh, works under X, wayland and VT console with
+drm/kms.</li>
+<li><a href="https://github.com/GameTechDev/stardust_vulkan">Stardust from Intel</a> - The Stardust sample application uses the Vulkan graphics API to efficiently render a cloud of animated particles. [<a href="https://github.com/GameTechDev/stardust_vulkan/blob/master/license.txt">LICENSE</a>]</li>
+<li><a href="https://github.com/Novum/vkQuake">Vulkan Quake port based on QuakeSpasm</a>.</li>
+<li><a href="https://github.com/FacticiusVir/SharpVk-Samples">C# Samples</a> - Port of Overv's tutorials to <a href="https://github.com/FacticiusVir/SharpVk">SharpVk</a> [MIT]</li>
+<li><a href="https://github.com/WindyDarian/Vulkan-Forward-Plus-Renderer">Vulkan-Forward-Plus-Renderer</a> - VFPR - a Vulkan Forward Plus Renderer. [MIT]</li>
+<li><a href="https://github.com/jian-ru/laugh_engine">Laugh Engine</a> - Vulkan implementation of real-time PBR renderer.</li>
+<li><a href="https://github.com/chaoticbob/tinyrenderers">tinyrenderers</a> - Single header implemenations of Vulkan and D3D12 renderers.</li>
+<li><a href="https://github.com/trungtle/TLVulkanRenderer">TLVulkanRenderer</a> - Simple Vulkan-based renderer for my master thesis on real-time transparency. [CC BY-SA 4.0]</li>
+<li><a href="https://github.com/jherico/Vulkan">Vulkan-Hpp Samples</a> - Fork of Sascha Willems excellent Vulkan examples that uses Vulkan-Hpp.</li>
+<li><a href="https://github.com/kocsis1david/font-demo">SDF Font Demo</a> - Text rendering in Vulkan by estimating signed distance. [MIT]</li>
+<li><a href="https://github.com/jpystynen/vulkantoy">vulkantoy</a> - Shadertoy image shader test app with Vulkan. [MIT]</li>
+<li><a href="https://github.com/RippeR37/GL_vs_VK">GL_vs_VK</a> - Comparison of OpenGL and Vulkan API in terms of performance. [MIT]</li>
+</ul>
+<h2 id="libraries">Libraries</h2>
+<ul>
+<li><a href="https://github.com/cinder/Cinder">Cinder</a> and <a href="https://libcinder.org/notes/vulkan">the story</a> <a href="https://forum.libcinder.org/#Topic/23286000002614007">behind</a>. [BSD]</li>
+<li><a href="https://github.com/DiligentGraphics/DiligentEngine">Diligent Engine</a> - a modern cross-platform low-level graphics library that supports OpenGL/GLES, Direct3D11/12 and Vulkan. [Apache License 2.0]</li>
+<li><a href="https://discourse.libsdl.org/t/sdl-2-0-6-released/23109">SDL</a> - added cross-platform Vulkan graphics support in SDL_vulkan.h. [zlib]</li>
+<li><a href="https://github.com/NXPmicro/gtec-demo-framework">DemoFramework</a> - NXP GTEC C++11 cross-platform demo framework including lots of samples for Vulkan, OpenGL ES, OpenVX, OpenCL, OpenVG and OpenCV. [<a href="https://github.com/NXPmicro/gtec-demo-framework/blob/master/License.md">BSD-3-clause</a>]</li>
+<li><a href="https://github.com/openframeworks-vk/openFrameworks">openFrameworks</a> - the most famouse C++ creative coding framework. [MIT]</li>
+<li><a href="https://github.com/bkaradzic/bgfx">bgfx</a> - Cross-platform rendering library, bgfx backend is WIP. [<a href="https://github.com/bkaradzic/bgfx/blob/master/LICENSE">LICENSE</a>]</li>
+<li><a href="https://github.com/powervr-graphics/Native_SDK">PowerVR SDK</a> - C++ cross-platform 3D graphics SDK to speed up development of Vulkan and GLES. [<a href="https://github.com/powervr-graphics/Native_SDK/blob/4.1/LICENSE_POWERVR_SDK.txt">LICENSE</a>]</li>
+<li><a href="https://github.com/glfw/glfw">glfw</a> and <a href="http://www.glfw.org/docs/3.2/vulkan.html">the guide</a>.  [<a href="https://github.com/glfw/glfw/blob/master/COPYING.txt">LICENSE</a>]</li>
+<li><a href="https://github.com/KhronosGroup/MoltenVK/">MoltenVK</a> - run Vulkan on iOS and macOS. [Apache-2.0]</li>
+<li><a href="https://github.com/ocornut/imgui">imgui</a> - Immediate Mode Graphical User interface. [MIT]</li>
+<li><a href="https://github.com/Glavnokoman/vuh">vuh</a> - Vulkan-based C++ GPGPU computing framework. [MIT]</li>
+<li><a href="https://github.com/alexhultman/libvc">libvc</a> - Vulkan Compute for C++.  [<a href="https://github.com/alexhultman/libvc/blob/master/LICENSE">LICENSE</a>]</li>
+<li><a href="https://github.com/GPUOpen-LibrariesAndSDKs/Anvil">AMD's Anvil</a> - cross-platform framework for Vulkan. [<a href="https://github.com/GPUOpen-LibrariesAndSDKs/OutOfOrderRasterization/blob/master/LICENSE.txt">LICENSE</a>]<ul>
+<li><a href="https://github.com/GPUOpen-LibrariesAndSDKs/HelloVulkan">Introductory Vulkan sample</a>. [MIT]</li>
+</ul>
+</li>
+<li><a href="https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator">Vulkan Memory Allocator</a> - Easy to integrate Vulkan memory allocation library from AMD. [MIT]</li>
+<li><a href="https://github.com/GPUOpen-LibrariesAndSDKs/V-EZ">V-EZ</a> - light-weight middleware layer for the Vulkan API targeting Professional Workstation ISVs. [MIT]</li>
+<li><a href="https://github.com/google/vulkan-cpp-library">Google's vulkan-cpp-library</a> - Vulkan abstraction library using C++11 for memory, resource management, type and thread safety as well as system independency. [Apache]</li>
+<li><a href="https://github.com/andy-thomason/Vookoo">Vookoo</a> - Vookoo is a set of dependency-free utilities to assist in the construction and updating of Vulkan graphics data structres. [MIT]</li>
+<li><a href="https://github.com/nyorain/vpp">vpp</a> - Modern C++ Vulkan Abstraction focused on performance and a straightforward interface. [MIT]</li>
+<li><a href="http://www.intrinsic-engine.com/">Intrinsic Engine</a> - Intrinsic is a Vulkan based cross-platform graphics and game engine. [Apache License 2.0]</li>
+<li><a href="https://github.com/g-truc/glo">glo / OpenGL Overload</a> - OpenGL implementation on top of Vulkan.</li>
+<li><a href="https://skia.googlesource.com/skia">Skia</a> - Google's 2D graphics library has a <a href="https://skia.org/user/special/vulkan">Vulkan</a> <a href="https://github.com/google/skia/tree/master/src/gpu/vk">backend</a>, demonstrated in a cross-platform <a href="https://skia.org/user/sample/viewer">sample application</a> with its own <a href="https://github.com/google/skia/tree/master/tools/viewer">window library</a>. [BSD 3-clause] <a href="https://skia.org">website</a></li>
+<li><a href="https://github.com/mwalczyk/spectrum_core">Spectrum</a> - Work-in-progress framework and abstraction layer around Vulkan.</li>
+<li><a href="https://github.com/nvpro-pipeline/VkHLF">VkHLF</a> - Vulkan High Level Framework. <a href="https://github.com/nvpro-pipeline/VkHLF/blob/master/LICENSE.txt">[LICENSE]</a></li>
+<li><a href="https://github.com/Chabloom/VulkanOnD3D12">VulkanOnD3D12</a> - Vulkan API for D3D12. [Apache License 2.0]</li>
+<li><a href="https://github.com/baldurk/visor">visor</a> - Vulkan Ignoble Software Rasterizer. [MIT]</li>
+<li><a href="https://github.com/Lugdunum3D/Lugdunum">Lugdunum</a> - Modern cross-platform 3D rendering engine built with Vulkan and modern C++14. [MIT]</li>
+<li><a href="https://github.com/renelindsay/Vulkan-WSIWindow">Vulkan-WSIWindow</a> - Multi-platform library to create a Vulkan window, and handle input events. [Apache License 2.0]</li>
+<li><a href="https://github.com/NVIDIAGameWorks/Falcor">Falcor</a> - Real-time rendering framework from NVIDIA, supporting DX12 and Vulkan. [BSD 3-clause]</li>
+<li><a href="https://github.com/ConfettiFX/The-Forge">The-Forge</a> - DirectX 12, Vulkan, macOS Metal 2 rendering framework. [Apache License 2.0]</li>
+<li><a href="https://github.com/disks86/VK9">VK9</a> - Direct3D 9 compatibility layer using Vulkan</li>
+<li><a href="https://github.com/gfx-rs/gfx">gfx-rs</a> - High-performance, bindless graphics API for Rust. [Apache License 2.0]</li>
+<li><a href="https://github.com/world8th/satellite-oem">satellite-oem</a> - Vulkan API (&gt;=1.1) based ray tracing engine for geeks, enthusiasts and developers, is not final production for end users</li>
+<li><a href="https://github.com/msiglreith/rostkatze">rostkatze</a> - C++ implementation of Vulkan sitting on D3D12 🐈[Apache License 2.0]</li>
+<li><a href="https://github.com/Themaister/Fossilize">Fossilize</a> - serialization format for various persistent Vulkan object types. [MIT]</li>
+<li><a href="https://github.com/openscenegraph/VulkanSceneGraph">VulkanSceneGraph</a> - next-gen OpenSceneGraph.</li>
+<li><a href="https://github.com/google/clspv">clspv</a> - prototype compiler for a subset of OpenCL C to Vulkan compute shaders. [Apache License 2.0]</li>
+<li><a href="https://github.com/pumexx/pumex">Pumex</a> - cross-platform Vulkan renderer implementing frame graph and simple scene graph. Able to render on many surfaces at once [MIT]</li>
+</ul>
+<h2 id="bindings">Bindings</h2>
+<ul>
+<li><a href="https://github.com/CapsAdmin/ffibuild/blob/master/examples/vulkan/libvulkan.lua">libvulkan.lua</a> - Lua bindings for Vulkan.</li>
+<li><a href="https://github.com/ColonelThirtyTwo/dvulkan">dvulkan</a> - Auto-generated D bindings for Vulkan.</li>
+<li><a href="https://github.com/ParticlePeter/ErupteD">ErupteD</a> - Another Auto-generated D bindings for Vulkan.</li>
+<li><a href="https://github.com/expipiplus1/vulkan">Haskell bindings for Vulkan</a> - [<a href="https://github.com/expipiplus1/vulkan/blob/master/LICENSE">LICENSE</a>]</li>
+<li><a href="https://github.com/KhronosGroup/Vulkan-Hpp">Vulkan-hpp</a> Open-Source Vulkan C++ API originated from NVIDIA and <a href="https://developer.nvidia.com/open-source-vulkan-c-api">the blog</a> about it.</li>
+<li><a href="https://github.com/mono/VulkanSharp">VulkanSharp</a> - C# bindings for Vulkan. [MIT]</li>
+<li><a href="https://github.com/vulkano-rs/vulkano">Vulkano</a> - Safe and rich Rust wrapper around the Vulkan API. [MIT]</li>
+<li><a href="https://www.lwjgl.org/">LWJGL</a> - Lightweight Java Game Library 3 has Vulkan bindings. [BSD]</li>
+<li><a href="https://github.com/FacticiusVir/SharpVk">SharpVk</a> - C# bindings for Vulkan with Linq-to-SPIR-V &amp; <a href="https://www.nuget.org/packages/SharpVk">NuGet package</a>. [MIT]</li>
+<li><a href="https://github.com/realitix/vulkan">vulkan</a> - Ultimate Python bindings for Vulkan generated with CFFI. [Apache Licence 2.0]</li>
+</ul>
+<h2 id="tools">Tools</h2>
+<ul>
+<li><a href="https://developer.nvidia.com/nvidia-nsight-visual-studio-edition">Nsight™ Visual Studio Edition 5.2+</a>.</li>
+<li><a href="https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers">LoaderAndValidationLayers</a> - from KhronosGroup. [Apache Licence 2.0]</li>
+<li><a href="https://github.com/baldurk/renderdoc">renderdoc</a> - by baldurk, a stand-alone graphics debugging tool. [MIT]</li>
+<li><a href="https://github.com/LunarG/VulkanTools">VulkanTools</a> - LunarG's tools including layers, <code>vktrace</code> and <code>vkreplay</code>. [Apache Licence 2.0]</li>
+<li><a href="https://github.com/GPUOpen-Tools/CodeXL">CodeXL</a> - CodeXL goes open source. [MIT]</li>
+<li><a href="https://developer.qualcomm.com/software/adreno-gpu-sdk/tools">Qualcomm GPU Tools</a>.</li>
+<li><a href="http://malideveloper.arm.com/resources/tools/mali-graphics-debugger/">Mali Graphics Debugger</a>.</li>
+<li><a href="https://github.com/GPUOpen-Tools/OCAT">Open Capture and Analytics Tool (OCAT)</a> - rovides an FPS overlay and performance measurement for D3D11, D3D12, and Vulkan. [MIT]</li>
+<li><a href="https://github.com/google/gapid">gapid</a> - Graphics API Debugger, can trace and replay Android OpenGL ES and Vulkan applications. [Apache License 2.0]</li>
+<li><a href="https://github.com/ARM-software/perfdoc">ARM - PerfDoc</a> - a validation layer against the Mali Application Developer Best Practices document. [MIT]</li>
+</ul>
+<h2 id="books">Books</h2>
+<ul>
+<li><a href="https://www.amazon.com/Introduction-Computer-Graphics-Vulkan-API/dp/1548616176">Introduction to Computer Graphics and the Vulkan API</a> by <strong>Kenwright</strong> - Introduce the reader to the exciting topic of computer graphics from a grounds-up practical perspective with the Vulkan API.</li>
+<li><a href="https://www.amazon.com/Learning-Vulkan-Parminder-Singh/dp/1786469804">Learning Vulkan</a> - by <strong>Parminder Singh</strong> - Get started with the Vulkan API and its programming techniques using the easy-to-follow examples.</li>
+<li><a href="https://github.com/PacktPublishing/Learning-Vulkan">Book's Examples</a></li>
+<li><a href="https://www.amazon.com/Vulkan-Cookbook-Pawel-Lapinski/dp/1786468158">Vulkan Cookbook</a>- by <strong>Pawel Lapinski</strong> - Explores a wide range of graphics programming and GPU compute methods to make the best use of the Vulkan API.</li>
+<li><a href="https://github.com/PacktPublishing/Vulkan-Cookbook">Book's Examples</a></li>
+<li><a href="https://www.amazon.com/Vulkan-Programming-Guide-Official-Learning/dp/0134464540">Vulkan Programming Guide</a> - by <strong>Graham Sellers</strong> and <strong>John Kessenich</strong> - Introduces powerful 3D development techniques for many fields.</li>
+</ul>
+<h2 id="community">Community</h2>
+<ul>
+<li><a href="http://webchat.freenode.net/?channels=Vulkan">Freenode IRC</a></li>
+<li><a href="https://plus.google.com/communities/108983304183191634377">Google Plus</a></li>
+<li><a href="https://forums.khronos.org/forumdisplay.php/114-Vulkan">Khronos Forum</a></li>
+<li><a href="https://www.reddit.com/r/vulkan/">Reddit</a></li>
+<li><a href="http://stackoverflow.com/questions/tagged/vulkan">Stack Overflow</a></li>
+<li><a href="https://discord.gg/JyJDbyH">Discord</a></li>
+</ul>
+<h2 id="related-lists">Related lists</h2>
+<ul>
+<li><a href="https://github.com/sindresorhus/awesome">awesome</a> - Curated list of awesome lists.</li>
+<li><a href="https://github.com/eug/awesome-opengl">awesome-opengl</a> - Curated list of awesome OpenGL libraries, debuggers and resources.</li>
+<li><a href="https://github.com/ellisonleao/magictools">gamedev</a> - Awesome list about game development.</li>
+<li><a href="https://github.com/mattdesl/graphics-resources">graphics-resources</a> - List of graphic programming resources.</li>
+<li><a href="https://github.com/vinjn/awesome-d3d12">awesome-d3d12</a> - Curated list of awesome D3D12 libraries, debuggers and resources.</li>
+</ul>
+<h2 id="license">License</h2>
+<p><a href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+<h2 id="contributing">Contributing</h2>
+<p>Please see <a href="https://github.com/vinjn/awesome-vulkan/blob/master/CONTRIBUTING.md">CONTRIBUTING</a> for details.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../Awesome_OpenGL/" title="Awesome OpenGL" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Awesome OpenGL
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../Awesome_CPP/Awesome_CPP/" title="Awesome C++" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Awesome C++
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016-2018 Dmitriy Ivanov. <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter40819844 = new Ya.Metrika({ id:40819844, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/keepbot" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://linkedin.com/in/dmitry-ivanov-5b9275b3" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.583bbe55.js"></script>
+      
+      <script>app.initialize({version:"1.0.1",url:{base:"../.."}})</script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-80208201-1","keepbot.github.io"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>

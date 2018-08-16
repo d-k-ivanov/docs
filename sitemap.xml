@@ -16,7 +16,37 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://keepbot.github.io/docs/Clouds/AWS/Awesome-AWS/</loc>
+     <loc>https://keepbot.github.io/docs/Awesome/Awesome_AWS/</loc>
+     <lastmod>2018-08-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://keepbot.github.io/docs/Awesome/Awesome_OpenGL/</loc>
+     <lastmod>2018-08-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://keepbot.github.io/docs/Awesome/Awesome_Vulkan/</loc>
+     <lastmod>2018-08-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://keepbot.github.io/docs/Awesome/Awesome_CPP/Awesome_CPP/</loc>
+     <lastmod>2018-08-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://keepbot.github.io/docs/Awesome/Awesome_CPP/Books/</loc>
+     <lastmod>2018-08-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://keepbot.github.io/docs/Awesome/Awesome_CPP/Minor/</loc>
+     <lastmod>2018-08-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://keepbot.github.io/docs/Awesome/Awesome_CPP/Videos/</loc>
      <lastmod>2018-08-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -147,26 +177,6 @@
     </url>
     <url>
      <loc>https://keepbot.github.io/docs/Dev/C_and_Cpp/Rand/</loc>
-     <lastmod>2018-08-16</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://keepbot.github.io/docs/Dev/C_and_Cpp/Awesome_CPP/Awesome_CPP/</loc>
-     <lastmod>2018-08-16</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://keepbot.github.io/docs/Dev/C_and_Cpp/Awesome_CPP/Books/</loc>
-     <lastmod>2018-08-16</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://keepbot.github.io/docs/Dev/C_and_Cpp/Awesome_CPP/Minor/</loc>
-     <lastmod>2018-08-16</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://keepbot.github.io/docs/Dev/C_and_Cpp/Awesome_CPP/Videos/</loc>
      <lastmod>2018-08-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
