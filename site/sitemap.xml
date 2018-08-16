@@ -296,6 +296,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://keepbot.github.io/docs/DevOps/Awesome-AWS/</loc>
+     <lastmod>2018-08-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://keepbot.github.io/docs/DevOps/Chef-Windows/</loc>
      <lastmod>2018-08-16</lastmod>
      <changefreq>daily</changefreq>
