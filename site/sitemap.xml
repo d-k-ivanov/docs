@@ -316,6 +316,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://keepbot.github.io/docs/DevTools/Version_Control/Git-Flow/</loc>
+     <lastmod>2018-08-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://keepbot.github.io/docs/DevTools/Version_Control/Git/</loc>
      <lastmod>2018-08-16</lastmod>
      <changefreq>daily</changefreq>
