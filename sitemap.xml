@@ -116,6 +116,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://keepbot.github.io/docs/Dev/Android/udev_rules/</loc>
+     <lastmod>2018-08-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://keepbot.github.io/docs/Dev/Bash/Collect_bash_history/</loc>
      <lastmod>2018-08-16</lastmod>
      <changefreq>daily</changefreq>
