@@ -1,10 +1,10 @@
 site_name: 'Technical Info'
-site_url: 'https://keepbot.github.io/docs/'
+site_url: 'https://d-k-ivanov.github.io/docs/'
 site_description: 'Collection of Technical guides'
 site_author: 'Dmitriy Ivanov'
 
 repo_name: 'Main site'
-repo_url: 'https://keepbot.github.io/'
+repo_url: 'https://d-k-ivanov.github.io/'
 
 theme: 
   name: 'material'
@@ -15,13 +15,13 @@ theme:
 extra:
   social:
     - type: 'github'
-      link: 'https://github.com/keepbot'
+      link: 'https://github.com/d-k-ivanov'
     - type: 'linkedin'
-      link: 'https://linkedin.com/in/dmitry-ivanov-5b9275b3'
+      link: 'https://www.linkedin.com/in/dmitriy-ivanov-5b9275b3/'
 
 google_analytics:
   - 'UA-80208201-1'
-  - 'keepbot.github.io'
+  - 'd-k-ivanov.github.io'
 
 copyright: Copyright &copy; 2016-2018 Dmitriy Ivanov.
   <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter40819844 = new Ya.Metrika({ id:40819844, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
