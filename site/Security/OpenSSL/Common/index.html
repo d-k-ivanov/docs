@@ -2583,13 +2583,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#extracting-certificate-and-private-key-files-from-a-pfx-file" title="Extracting Certificate and Private Key Files from a .pfx File" class="md-nav__link">
-    Extracting Certificate and Private Key Files from a .pfx File
-  </a>
-  
-</li>
-      
       
       
       
@@ -2598,6 +2591,18 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../PFX/" title="PFX" class="md-nav__link">
+      PFX
+    </a>
   </li>
 
         
@@ -4121,13 +4126,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#extracting-certificate-and-private-key-files-from-a-pfx-file" title="Extracting Certificate and Private Key Files from a .pfx File" class="md-nav__link">
-    Extracting Certificate and Private Key Files from a .pfx File
-  </a>
-  
-</li>
-      
       
       
       
@@ -4164,25 +4162,6 @@ openssl x509 -in certname.crt -text -noout
 <h3 id="der-to-pem">DER to PEM</h3>
 <pre><code class="bash">openssl x509 -in certname.crt -inform der -outform pem -out cert.pem
 </code></pre>
-
-<h3 id="extracting-certificate-and-private-key-files-from-a-pfx-file">Extracting Certificate and Private Key Files from a .pfx File</h3>
-<ul>
-<li>Extract private key: </li>
-</ul>
-<pre><code class="bash">openssl pkcs12 -in certname.pfx -nocerts -out key.pem -nodes
-</code></pre>
-
-<ul>
-<li>Extract certificate: </li>
-</ul>
-<pre><code class="bash">openssl pkcs12 -in certname.pfx -nokeys -out certname.pem
-</code></pre>
-
-<ul>
-<li>Remove passphrase from private key: </li>
-</ul>
-<pre><code class="bash">openssl rsa -in key.pem -out certname.key 
-</code></pre>
                 
                   
                 
@@ -4218,13 +4197,13 @@ openssl x509 -in certname.crt -text -noout
           </a>
         
         
-          <a href="../Troubleshooting/" title="Troubleshoot SSL Connections" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../PFX/" title="PFX" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Troubleshoot SSL Connections
+                PFX
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
