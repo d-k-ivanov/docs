@@ -12,16 +12,25 @@ git config --global user.signingkey {YourKeyID}
 ## Export
 
 ```ps1
+# Get key ID
 gpg --list-secret-keys --keyid-format LONG
-gpg --armor --export 21788557EE03EA8E > key.pub
-gpg --armor --export-secret-keys 21788557EE03EA8E > private.key
+
+gpg --armor --export <KEY_ID> > key.pub
+gpg --armor --export-secret-keys <KEY_ID> > private.key
 gpg --export-ownertrust > otrust.txt
 ```
 
 ## Emport
 
 ```ps1
+# Be sure that keys is in UTF-8 (on in powershell defult encoding UTF-16LE)
 gpg --import private.key
+# Get key ID
+gpg --list-secret-keys --keyid-format LONG
+gpg --edit-key <KEY_ID>
+    gpg> trust
+    gpg> Your decision? 5
+    gpg> quit
 ```
 
 ## GitHub key
