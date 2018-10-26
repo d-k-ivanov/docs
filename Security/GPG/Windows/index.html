@@ -2567,8 +2567,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#export-and-import" title="Export and Import" class="md-nav__link">
-    Export and Import
+  <a href="#export" title="Export" class="md-nav__link">
+    Export
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#emport" title="Emport" class="md-nav__link">
+    Emport
   </a>
   
 </li>
@@ -4141,8 +4148,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#export-and-import" title="Export and Import" class="md-nav__link">
-    Export and Import
+  <a href="#export" title="Export" class="md-nav__link">
+    Export
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#emport" title="Emport" class="md-nav__link">
+    Emport
   </a>
   
 </li>
@@ -4179,11 +4193,15 @@ gpg --list-secret-keys --keyid-format LONG
 git config --global user.signingkey {YourKeyID}
 </code></pre>
 
-<h2 id="export-and-import">Export and Import</h2>
+<h2 id="export">Export</h2>
 <pre><code class="ps1">gpg --list-secret-keys --keyid-format LONG
 gpg --armor --export 21788557EE03EA8E &gt; key.pub
 gpg --armor --export-secret-keys 21788557EE03EA8E &gt; private.key
 gpg --export-ownertrust &gt; otrust.txt
+</code></pre>
+
+<h2 id="emport">Emport</h2>
+<pre><code class="ps1">gpg --import private.key
 </code></pre>
 
 <h2 id="github-key">GitHub key</h2>
