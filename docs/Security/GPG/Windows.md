@@ -9,13 +9,19 @@ gpg --list-secret-keys --keyid-format LONG
 git config --global user.signingkey {YourKeyID}
 ```
 
-## Export and Import
+## Export
 
 ```ps1
 gpg --list-secret-keys --keyid-format LONG
 gpg --armor --export 21788557EE03EA8E > key.pub
 gpg --armor --export-secret-keys 21788557EE03EA8E > private.key
 gpg --export-ownertrust > otrust.txt
+```
+
+## Emport
+
+```ps1
+gpg --import private.key
 ```
 
 ## GitHub key
