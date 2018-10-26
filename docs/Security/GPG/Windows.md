@@ -14,7 +14,6 @@ git config --global user.signingkey {YourKeyID}
 ```ps1
 # Get key ID
 gpg --list-secret-keys --keyid-format LONG
-
 gpg --armor --export <KEY_ID> > key.pub
 gpg --armor --export-secret-keys <KEY_ID> > private.key
 gpg --export-ownertrust > otrust.txt
@@ -31,6 +30,15 @@ gpg --edit-key <KEY_ID>
     gpg> trust
     gpg> Your decision? 5
     gpg> quit
+
+```
+
+## Delete key:
+
+```ps1
+# Get key ID
+gpg --list-secret-keys --keyid-format LONG
+gpg --delete-secret-keys <KEY_ID>
 ```
 
 ## GitHub key
