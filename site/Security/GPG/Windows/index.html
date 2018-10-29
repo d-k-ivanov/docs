@@ -42,7 +42,7 @@
     
     
       
-        <title>Using GPG4Win - Technical Info</title>
+        <title>Windows - Technical Info</title>
       
     
     
@@ -104,7 +104,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../../#using-gpg4win" tabindex="1" class="md-skip">
+      <a href="../../../#using-gpg4win-with-git" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -130,7 +130,7 @@
                 Technical Info
               </span>
               <span class="md-header-nav__topic">
-                Using GPG4Win
+                Windows
               </span>
             
           
@@ -2543,6 +2543,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../Common_Usage/" title="Common Usage" class="md-nav__link">
+      Common Usage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -2550,58 +2562,26 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
-      
-    
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Using GPG4Win
+        Windows
       </label>
     
-    <a href="./" title="Using GPG4Win" class="md-nav__link md-nav__link--active">
-      Using GPG4Win
+    <a href="./" title="Windows" class="md-nav__link md-nav__link--active">
+      Windows
     </a>
     
       
 <nav class="md-nav md-nav--secondary">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#with-git" title="With git" class="md-nav__link">
-    With git
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#export" title="Export" class="md-nav__link">
-    Export
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#emport" title="Emport" class="md-nav__link">
-    Emport
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#delete-key" title="Delete key:" class="md-nav__link">
-    Delete key:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#github-key" title="GitHub key" class="md-nav__link">
-    GitHub key
+  <a href="#using-gpg4win-with-git" title="Using GPG4Win with git" class="md-nav__link">
+    Using GPG4Win with git
   </a>
   
 </li>
@@ -4153,43 +4133,13 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#with-git" title="With git" class="md-nav__link">
-    With git
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#export" title="Export" class="md-nav__link">
-    Export
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#emport" title="Emport" class="md-nav__link">
-    Emport
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#delete-key" title="Delete key:" class="md-nav__link">
-    Delete key:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#github-key" title="GitHub key" class="md-nav__link">
-    GitHub key
+  <a href="#using-gpg4win-with-git" title="Using GPG4Win with git" class="md-nav__link">
+    Using GPG4Win with git
   </a>
   
 </li>
@@ -4211,44 +4161,13 @@
               
                 
                 
-                <h1 id="using-gpg4win">Using GPG4Win</h1>
-<h2 id="with-git">With git</h2>
+                  <h1>Windows</h1>
+                
+                <h2 id="using-gpg4win-with-git">Using GPG4Win with git</h2>
 <pre><code class="ps1">gpg --full-generate-key
 git config --global gpg.program &quot;C:\Program Files (x86)\Gpg4win\..\GnuPG\bin\gpg.exe&quot;
 gpg --list-secret-keys --keyid-format LONG
 git config --global user.signingkey {YourKeyID}
-</code></pre>
-
-<h2 id="export">Export</h2>
-<pre><code class="ps1"># Get key ID
-gpg --list-secret-keys --keyid-format LONG
-gpg --armor --export &lt;KEY_ID&gt; &gt; key.pub
-gpg --armor --export-secret-keys &lt;KEY_ID&gt; &gt; private.key
-gpg --export-ownertrust &gt; otrust.txt
-</code></pre>
-
-<h2 id="emport">Emport</h2>
-<pre><code class="ps1"># Be sure that keys is in UTF-8 (on in powershell defult encoding UTF-16LE)
-gpg --import private.key
-# Get key ID
-gpg --list-secret-keys --keyid-format LONG
-gpg --edit-key &lt;KEY_ID&gt;
-    gpg&gt; trust
-    gpg&gt; Your decision? 5
-    gpg&gt; quit
-
-</code></pre>
-
-<h2 id="delete-key">Delete key:</h2>
-<pre><code class="ps1"># Get key ID
-gpg --list-secret-keys --keyid-format LONG
-gpg --delete-secret-keys &lt;KEY_ID&gt;
-</code></pre>
-
-<h2 id="github-key">GitHub key</h2>
-<pre><code class="ps1">wget https://github.com/web-flow.gpg
-gpg --import .\web-flow.gpg
-rm .\web-flow.gpg
 </code></pre>
                 
                   
@@ -4270,7 +4189,7 @@ rm .\web-flow.gpg
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../Firewalls/PF/" title="PF" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../Common_Usage/" title="Common Usage" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -4279,7 +4198,7 @@ rm .\web-flow.gpg
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                PF
+                Common Usage
               </span>
             </div>
           </a>
