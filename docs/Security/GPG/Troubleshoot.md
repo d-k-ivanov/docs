@@ -1,6 +1,6 @@
 ## Inappropriate ioctl for device
 
-To get rid of the completely usless misleading "Inappropriate ioctl for device" error, starting with gpg 2.1.0, you have to:
+To get rid of the completely usless misleading "Inappropriate ioctl for device" error, starting with gpg 2.1.0,` you have to:
 
 ```bash
 export GPG_TTY=$(tty)
