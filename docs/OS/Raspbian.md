@@ -1,3 +1,8 @@
+## Default credentials
+
+* username: **pi**
+* password: **raspberry**
+
 ## Stay awake
 
 ```bash
