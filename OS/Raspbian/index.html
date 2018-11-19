@@ -104,7 +104,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#stay-awake" tabindex="1" class="md-skip">
+      <a href="../../#default-credentials" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -2259,6 +2259,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#default-credentials" title="Default credentials" class="md-nav__link">
+    Default credentials
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#stay-awake" title="Stay awake" class="md-nav__link">
     Stay awake
   </a>
@@ -4160,6 +4167,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#default-credentials" title="Default credentials" class="md-nav__link">
+    Default credentials
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#stay-awake" title="Stay awake" class="md-nav__link">
     Stay awake
   </a>
@@ -4185,7 +4199,12 @@
                 
                   <h1>Raspbian</h1>
                 
-                <h2 id="stay-awake">Stay awake</h2>
+                <h2 id="default-credentials">Default credentials</h2>
+<ul>
+<li>username: <strong>pi</strong></li>
+<li>password: <strong>raspberry</strong></li>
+</ul>
+<h2 id="stay-awake">Stay awake</h2>
 <pre><code class="bash">sudo vim.tiny /etc/lightdm/lightdm.conf
 
 # Uncomment xserver-command option in [Seat:*] and add params
