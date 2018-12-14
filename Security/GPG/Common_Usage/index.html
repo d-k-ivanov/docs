@@ -2614,6 +2614,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#multiple-uid" title="Multiple UID" class="md-nav__link">
+    Multiple UID
+  </a>
+  
+</li>
+      
       
       
       
@@ -4224,6 +4231,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#multiple-uid" title="Multiple UID" class="md-nav__link">
+    Multiple UID
+  </a>
+  
+</li>
+      
       
       
       
@@ -4274,12 +4288,23 @@ gpg --edit-key &lt;KEY_ID&gt;
 <pre><code class="sh"># Get key ID
 gpg --list-secret-keys --keyid-format LONG
 gpg --delete-secret-keys &lt;KEY_ID&gt;
+gpg --delete-keys &lt;KEY_ID&gt;
+
 </code></pre>
 
 <h2 id="github-key">GitHub key</h2>
 <pre><code class="sh">wget https://github.com/web-flow.gpg
 gpg --import .\web-flow.gpg
 rm .\web-flow.gpg
+</code></pre>
+
+<h2 id="multiple-uid">Multiple UID</h2>
+<pre><code class="sh">gpg --list-secret-keys --keyid-format LONG
+gpg --edit-key &lt;KEY_ID&gt;
+    gpg&gt; adduid
+    gpg&gt; uid &lt;N&gt;
+    gpg&gt; trust
+    gpg&gt; quit
 </code></pre>
                 
                   
