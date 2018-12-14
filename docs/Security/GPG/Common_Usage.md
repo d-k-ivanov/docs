@@ -37,6 +37,8 @@ gpg --edit-key <KEY_ID>
 # Get key ID
 gpg --list-secret-keys --keyid-format LONG
 gpg --delete-secret-keys <KEY_ID>
+gpg --delete-keys <KEY_ID>
+
 ```
 
 ## GitHub key
@@ -45,4 +47,15 @@ gpg --delete-secret-keys <KEY_ID>
 wget https://github.com/web-flow.gpg
 gpg --import .\web-flow.gpg
 rm .\web-flow.gpg
+```
+
+## Multiple UID
+
+```sh
+gpg --list-secret-keys --keyid-format LONG
+gpg --edit-key <KEY_ID>
+    gpg> adduid
+    gpg> uid <N>
+    gpg> trust
+    gpg> quit
 ```
