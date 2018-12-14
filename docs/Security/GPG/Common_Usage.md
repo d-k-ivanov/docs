@@ -17,7 +17,7 @@ gpg --armor --export-secret-keys <KEY_ID> > private.key
 gpg --export-ownertrust > otrust.txt
 ```
 
-## Emport
+## Import
 
 ```sh
 # Be sure that keys is in UTF-8 (on in powershell defult encoding UTF-16LE)
