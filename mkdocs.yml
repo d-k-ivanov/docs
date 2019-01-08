@@ -7,10 +7,13 @@ repo_name: 'Main site'
 repo_url: 'https://d-k-ivanov.github.io/'
 
 theme: 
-  name: 'material'
-  palette:
-    primary: 'blue grey'
-    accent: 'cyan'
+  name: 'windmill'
+
+# theme: 
+#   name: 'material'
+#   palette:
+#     primary: 'blue grey'
+#     accent: 'cyan'
 
 extra:
   social:
