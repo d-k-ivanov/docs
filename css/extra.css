@@ -1,6 +1,11 @@
+footer {
+    margin-bottom: 0px !important;
+}
+
+.wm-page-content {
+    max-width: 90% !important;
+}
+
 .col-md-12 {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+    margin-left: auto !important;
 }
