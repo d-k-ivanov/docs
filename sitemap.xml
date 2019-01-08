@@ -6,16 +6,6 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Admin/Windows_Administrative_Tools/</loc>
-     <lastmod>2019-01-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Admin/xFreeRDP/</loc>
-     <lastmod>2019-01-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
      <loc>https://d-k-ivanov.github.io/docs/Awesome/Awesome_AWS/</loc>
      <lastmod>2019-01-08</lastmod>
      <changefreq>daily</changefreq>
@@ -821,6 +811,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://d-k-ivanov.github.io/docs/Tech/Windows/Common/</loc>
+     <lastmod>2019-01-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://d-k-ivanov.github.io/docs/UX/Edittors/My_Sublime_Text_config/</loc>
      <lastmod>2019-01-08</lastmod>
      <changefreq>daily</changefreq>
@@ -882,6 +877,11 @@
     </url>
     <url>
      <loc>https://d-k-ivanov.github.io/docs/UX/Terminal/cmd/</loc>
+     <lastmod>2019-01-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/UX/Terminal/xFreeRDP/</loc>
      <lastmod>2019-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>

@@ -8,37 +8,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="author" content="Dmitriy Ivanov">
-    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Admin/xFreeRDP/">
-    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Tech/Windows/Common/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>xFreeRDP - Technical Info</title>
-    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
-    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
-    <link href="../../css/base.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/highlight.css">
-    <link href="../../css/extra.css" rel="stylesheet">
+    <title>Common - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
-    <script src="../../js/jquery-3.2.1.min.js"></script>
-    <script src="../../js/bootstrap-3.3.7.min.js"></script>
-    <script src="../../js/highlight.pack.js"></script>
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
     
     <base target="_top">
     <script>
-      var base_url = '../..';
+      var base_url = '../../..';
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "XfreeRDP", url: "#_top", children: [
+          {title: "Use domain credentials from non domain worksation", url: "#_top", children: [
           ]},
         ];
 
     </script>
-    <script src="../../js/base.js"></script>
+    <script src="../../../js/base.js"></script>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -64,20 +64,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="Awesome/Awesome_AWS/" class="btn btn-xs btn-default pull-right">
+      <a href="UX/Edittors/My_Sublime_Text_config/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="Awesome/Awesome_AWS/" class="btn btn-xs btn-link">
-        Awesome AWS
+      <a href="UX/Edittors/My_Sublime_Text_config/" class="btn btn-xs btn-link">
+        My Sublime Text config
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="Admin/Windows_Administrative_Tools/" class="btn btn-xs btn-default pull-left">
+      <a href="Tech/Web/Tomcat/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="Admin/Windows_Administrative_Tools/" class="btn btn-xs btn-link">
-        Windows Administrative Tools
+        Previous</a><a href="Tech/Web/Tomcat/" class="btn btn-xs btn-link">
+        Tomcat
       </a>
     </div>
     
@@ -85,10 +85,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="xfreerdp">XfreeRDP</h3>
-<pre><code class="bash">xfreerdp [+clipboard]/w:&lt;WIDTH&gt; /h:&lt;HEIGHT&gt; /drive:&lt;cuatom_drive_name&gt;,&lt;path_to_attach&gt; /v:&lt;ip&gt;:&lt;port&gt; /u:&lt;user_name&gt;
-xfreerdp +clipboard /w:1600 /h:900 /v:10.15.0.10:3389 /u:Administrator
-xfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM/HMC/7.9_sp3 /v:10.15.0.10
+    <h3 id="use-domain-credentials-from-non-domain-worksation">Use domain credentials from non domain worksation</h3>
+<pre><code class="bash">runas /netonly /user:DOMAIN\username &quot;&lt;program&gt;&quot;
+# DNS Management
+#runas /netonly /user:username@domain &quot;%SystemRoot%\system32\mmc.exe %SystemRoot%\system32\dnsmgmt.msc&quot;
+# AD Users and Computers
+#runas /netonly /user:username@domain &quot;%SystemRoot%\system32\mmc.exe %SystemRoot%\system32\dsa.msc&quot;
 </code></pre>
 
   <br>
@@ -97,20 +99,20 @@ xfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="Awesome/Awesome_AWS/" class="btn btn-xs btn-default pull-right">
+      <a href="UX/Edittors/My_Sublime_Text_config/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="Awesome/Awesome_AWS/" class="btn btn-xs btn-link">
-        Awesome AWS
+      <a href="UX/Edittors/My_Sublime_Text_config/" class="btn btn-xs btn-link">
+        My Sublime Text config
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="Admin/Windows_Administrative_Tools/" class="btn btn-xs btn-default pull-left">
+      <a href="Tech/Web/Tomcat/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="Admin/Windows_Administrative_Tools/" class="btn btn-xs btn-link">
-        Windows Administrative Tools
+        Previous</a><a href="Tech/Web/Tomcat/" class="btn btn-xs btn-link">
+        Tomcat
       </a>
     </div>
     
