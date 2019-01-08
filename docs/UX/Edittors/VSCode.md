@@ -10,4 +10,3 @@ sudo apt-get update
 # Install
 sudo apt-get install code # or code-insiders
 ```
-

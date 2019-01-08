@@ -16,9 +16,9 @@
 
 ---
 
-## How it started
+## How was it started
 
-> Some years ago I've found a beautiful collection of unix triks, which could help me to start customizing my unix environment and collect unix tricks by myself. So now I've started to publish my triks [here](http://d-k-ivanov.github.io/docs) 
+> Few years ago I've found a beautiful collection of unix tips, which could help me to start customizing my unix environment and collect unix tricks I'm using by myself. So now I've started to publish my triks [here](http://d-k-ivanov.github.io/docs)
 
 <p></p>
 
@@ -129,7 +129,7 @@ NETWORKING
       FromLineOverride=YES 
 ```
 
-***
+---
 
 (CC) by-nc, Carlos Fenollosa <carlos.fenollosa@gmail.com>
 Retrieved from [http://cfenollosa.com/misc/tricks.txt](http://cfenollosa.com/misc/tricks.txt)
