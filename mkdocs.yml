@@ -15,9 +15,10 @@ theme:
 #     primary: 'blue grey'
 #     accent: 'cyan'
 
+extra_css:
+  - css/extra.css
+
 extra:
-  extra_css:
-    - css/extra.css
   social:
     - type: 'github'
       link: 'https://github.com/d-k-ivanov'
