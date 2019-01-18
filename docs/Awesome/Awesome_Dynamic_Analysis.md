@@ -1,4 +1,4 @@
- ![Logo](https://github.com/mre/awesome-dynamic-analysis/blob/master/awesome.png)
+ ![Logo](https://raw.githubusercontent.com/mre/awesome-dynamic-analysis/master/awesome.png)
 
 
 > Dynamic program analysis is the analysis of computer software that is performed by executing programs on a real or virtual processor. — [Wikipedia](https://en.wikipedia.org/wiki/Dynamic_program_analysis)

@@ -1,4 +1,4 @@
- ![Logo](https://github.com/mre/awesome-static-analysis/blob/master/awesome.png)
+ ![Logo](https://raw.githubusercontent.com/mre/awesome-static-analysis/master/awesome.png)
 
 > Static program analysis is the analysis of computer software that is performed without actually executing programs — [Wikipedia](https://en.wikipedia.org/wiki/Static_program_analysis)
 
