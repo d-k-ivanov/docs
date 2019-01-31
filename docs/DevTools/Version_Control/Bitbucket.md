@@ -21,7 +21,7 @@ curl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deplo
 curl -G -u XXX:XXX "https://api.bitbucket.org/2.0/repositories/{user-or-team}?pagelen=100" | jq '(.values[].links.clone[] | select(.name | contains(\"ssh\"))).href' | sort
 ```
 
-* **Posershell**
+* **Power Shell**
 
 ```ps
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
