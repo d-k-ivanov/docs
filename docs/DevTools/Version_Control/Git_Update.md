@@ -1,4 +1,4 @@
-## Debian ans Ubuntu
+## Debian and Ubuntu
 
 ```bash
 sudo wget https://github.com/git/git/archive/v2.20.1.tar.gz -O git.tar.gz
