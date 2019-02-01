@@ -35,6 +35,8 @@
         var pageToc = [
           {title: "Use domain credentials from non domain worksation", url: "#_top", children: [
           ]},
+          {title: "Connect to Domain resource from non domain ws", url: "#connect-to-domain-resource-from-non-domain-ws", children: [
+          ]},
         ];
 
     </script>
@@ -85,12 +87,16 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="use-domain-credentials-from-non-domain-worksation">Use domain credentials from non domain worksation</h3>
-<pre><code class="bash">runas /netonly /user:DOMAIN\username &quot;&lt;program&gt;&quot;
+    <h2 id="use-domain-credentials-from-non-domain-worksation">Use domain credentials from non domain worksation</h2>
+<pre><code class="sh">runas /netonly /user:DOMAIN\username &quot;&lt;program&gt;&quot;
 # DNS Management
 #runas /netonly /user:username@domain &quot;%SystemRoot%\system32\mmc.exe %SystemRoot%\system32\dnsmgmt.msc&quot;
 # AD Users and Computers
 #runas /netonly /user:username@domain &quot;%SystemRoot%\system32\mmc.exe %SystemRoot%\system32\dsa.msc&quot;
+</code></pre>
+
+<h2 id="connect-to-domain-resource-from-non-domain-ws">Connect to Domain resource from non domain ws</h2>
+<pre><code class="sh">net use \\fqdn-to-resource /USER:username@domain.name
 </code></pre>
 
   <br>
