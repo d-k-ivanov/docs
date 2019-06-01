@@ -72,22 +72,27 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <a name="_top"></a>
     
 
+    
+    
+      
+    
+
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="Dev/Cmd/ping_whole_subnet/" class="btn btn-xs btn-default pull-right">
+      <a href="../../../Cmd/ping_whole_subnet/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="Dev/Cmd/ping_whole_subnet/" class="btn btn-xs btn-link">
+      <a href="../../../Cmd/ping_whole_subnet/" class="btn btn-xs btn-link">
         Ping whole subnet
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="Dev/C_and_Cpp/Modern_CPP_Features/CPP17/" class="btn btn-xs btn-default pull-left">
+      <a href="../CPP17/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="Dev/C_and_Cpp/Modern_CPP_Features/CPP17/" class="btn btn-xs btn-link">
+        Previous</a><a href="../CPP17/" class="btn btn-xs btn-link">
         C++17
       </a>
     </div>
@@ -210,8 +215,8 @@ auto seq2 = my_integer_sequence&lt;0, 1, 2&gt;();
 <p>* - For example, you cannot use a <code>double</code> as a template parameter type, which also makes this an invalid deduction using <code>auto</code>.</p>
 <h3 id="folding-expressions">Folding expressions</h3>
 <p>A fold expression performs a fold of a template parameter pack over a binary operator.
-<em> An expression of the form <code>(... op e)</code> or <code>(e op ...)</code>, where <code>op</code> is a fold-operator and <code>e</code> is an unexpanded parameter pack, are called <em>unary folds</em>.
-</em> An expression of the form <code>(e1 op ... op e2)</code>, where <code>op</code> are fold-operators, is called a <em>binary fold</em>. Either <code>e1</code> or <code>e2</code> is an unexpanded parameter pack, but not both.</p>
+* An expression of the form <code>(... op e)</code> or <code>(e op ...)</code>, where <code>op</code> is a fold-operator and <code>e</code> is an unexpanded parameter pack, are called <em>unary folds</em>.
+* An expression of the form <code>(e1 op ... op e2)</code>, where <code>op</code> are fold-operators, is called a <em>binary fold</em>. Either <code>e1</code> or <code>e2</code> is an unexpanded parameter pack, but not both.</p>
 <pre><code class="c++">template&lt;typename... Args&gt;
 bool logicalAnd(Args... args) {
     // Binary folding.
@@ -655,8 +660,8 @@ std::chrono::duration_cast&lt;std::chrono::minutes&gt;(day).count(); // == 1440
 
 <h3 id="compile-time-integer-sequences">Compile-time integer sequences</h3>
 <p>The class template <code>std::integer_sequence</code> represents a compile-time sequence of integers. There are a few helpers built on top:
-<em> <code>std::make_integer_sequence&lt;T, N...&gt;</code> - creates a sequence of <code>0, ..., N - 1</code> with type <code>T</code>.
-</em> <code>std::index_sequence_for&lt;T...&gt;</code> - converts a template parameter pack into an integer sequence.</p>
+* <code>std::make_integer_sequence&lt;T, N...&gt;</code> - creates a sequence of <code>0, ..., N - 1</code> with type <code>T</code>.
+* <code>std::index_sequence_for&lt;T...&gt;</code> - converts a template parameter pack into an integer sequence.</p>
 <p>Convert an array into a tuple:</p>
 <pre><code class="c++">template&lt;typename Array, std::size_t... I&gt;
 decltype(auto) a2t_impl(const Array&amp; a, std::integer_sequence&lt;std::size_t, I...&gt;) {
@@ -671,8 +676,8 @@ decltype(auto) a2t(const std::array&lt;T, N&gt;&amp; a) {
 
 <h3 id="stdmake_unique">std::make_unique</h3>
 <p><code>std::make_unique</code> is the recommended way to create instances of <code>std::unique_ptr</code>s due to the following reasons:
-<em> Avoid having to use the <code>new</code> operator.
-</em> Prevents code repetition when specifying the underlying type the pointer shall hold.
+* Avoid having to use the <code>new</code> operator.
+* Prevents code repetition when specifying the underlying type the pointer shall hold.
 * Most importantly, it provides exception-safety. Suppose we were calling a function <code>foo</code> like so:</p>
 <pre><code class="c++">foo(std::unique_ptr&lt;T&gt;{new T{}}, function_that_throws(), std::unique_ptr&lt;T&gt;{new T{}});
 </code></pre>
@@ -701,10 +706,10 @@ int&amp;&amp; xr2 = 0; // `xr2` is an lvalue of type `int&amp;&amp;` -- binds to
 <h3 id="forwarding-references">Forwarding references</h3>
 <p>Also known (unofficially) as <em>universal references</em>. A forwarding reference is created with the syntax <code>T&amp;&amp;</code> where <code>T</code> is a template type parameter, or using <code>auto&amp;&amp;</code>. This enables two major features: move semantics; and <em>perfect forwarding</em>, the ability to pass arguments that are either lvalues or rvalues.</p>
 <p>Forwarding references allow a reference to bind to either an lvalue or rvalue depending on the type. Forwarding references follow the rules of <em>reference collapsing</em>:
-<em> <code>T&amp; &amp;</code> becomes <code>T&amp;</code>
-</em> <code>T&amp; &amp;&amp;</code> becomes <code>T&amp;</code>
-<em> <code>T&amp;&amp; &amp;</code> becomes <code>T&amp;</code>
-</em> <code>T&amp;&amp; &amp;&amp;</code> becomes <code>T&amp;&amp;</code></p>
+* <code>T&amp; &amp;</code> becomes <code>T&amp;</code>
+* <code>T&amp; &amp;&amp;</code> becomes <code>T&amp;</code>
+* <code>T&amp;&amp; &amp;</code> becomes <code>T&amp;</code>
+* <code>T&amp;&amp; &amp;&amp;</code> becomes <code>T&amp;&amp;</code></p>
 <p><code>auto</code> type deduction with lvalues and rvalues:</p>
 <pre><code class="c++">int x = 0; // `x` is an lvalue of type `int`
 auto&amp;&amp; al = x; // `al` is an lvalue of type `int&amp;` -- binds to the lvalue, `x`
@@ -798,10 +803,10 @@ add(1.5, 1.5); // == 3.0
 <p>The trailing return type in the above example is the <em>declared type</em> (see section on <a href="#decltype"><code>decltype</code></a>) of the expression <code>x + y</code>. For example, if <code>x</code> is an integer and <code>y</code> is a double, <code>decltype(x + y)</code> is a double. Therefore, the above function will deduce the type depending on what type the expression <code>x + y</code> yields. Notice that the trailing return type has access to its parameters, and <code>this</code> when appropriate.</p>
 <h3 id="lambda-expressions">Lambda expressions</h3>
 <p>A <code>lambda</code> is an unnamed function object capable of capturing variables in scope. It features: a <em>capture list</em>; an optional set of parameters with an optional trailing return type; and a body. Examples of capture lists:
-<em> <code>[]</code> - captures nothing.
-</em> <code>[=]</code> - capture local objects (local variables, parameters) in scope by value.
-<em> <code>[&amp;]</code> - capture local objects (local variables, parameters) in scope by reference.
-</em> <code>[this]</code> - capture <code>this</code> pointer by value.
+* <code>[]</code> - captures nothing.
+* <code>[=]</code> - capture local objects (local variables, parameters) in scope by value.
+* <code>[&amp;]</code> - capture local objects (local variables, parameters) in scope by reference.
+* <code>[this]</code> - capture <code>this</code> pointer by value.
 * <code>[a, &amp;b]</code> - capture objects <code>a</code> by value, <code>b</code> by reference.</p>
 <pre><code class="c++">int x = 1;
 
@@ -1311,14 +1316,14 @@ for (int&amp; x : a) x *= 2; // a == { 2, 4, 6 }
 
 <h3 id="unordered-containers">Unordered containers</h3>
 <p>These containers maintain average constant-time complexity for search, insert, and remove operations. In order to achieve constant-time complexity, sacrifices order for speed by hashing elements into buckets. There are four unordered containers:
-<em> <code>unordered_set</code>
-</em> <code>unordered_multiset</code>
-<em> <code>unordered_map</code>
-</em> <code>unordered_multimap</code></p>
+* <code>unordered_set</code>
+* <code>unordered_multiset</code>
+* <code>unordered_map</code>
+* <code>unordered_multimap</code></p>
 <h3 id="stdmake_shared">std::make_shared</h3>
 <p><code>std::make_shared</code> is the recommended way to create instances of <code>std::shared_ptr</code>s due to the following reasons:
-<em> Avoid having to use the <code>new</code> operator.
-</em> Prevents code repetition when specifying the underlying type the pointer shall hold.
+* Avoid having to use the <code>new</code> operator.
+* Prevents code repetition when specifying the underlying type the pointer shall hold.
 * It provides exception-safety. Suppose we were calling a function <code>foo</code> like so:</p>
 <pre><code class="c++">foo(std::shared_ptr&lt;T&gt;{new T{}}, function_that_throws(), std::shared_ptr&lt;T&gt;{new T{}});
 </code></pre>
@@ -1376,22 +1381,27 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
   <br>
     
 
+    
+    
+      
+    
+
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="Dev/Cmd/ping_whole_subnet/" class="btn btn-xs btn-default pull-right">
+      <a href="../../../Cmd/ping_whole_subnet/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="Dev/Cmd/ping_whole_subnet/" class="btn btn-xs btn-link">
+      <a href="../../../Cmd/ping_whole_subnet/" class="btn btn-xs btn-link">
         Ping whole subnet
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="Dev/C_and_Cpp/Modern_CPP_Features/CPP17/" class="btn btn-xs btn-default pull-left">
+      <a href="../CPP17/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="Dev/C_and_Cpp/Modern_CPP_Features/CPP17/" class="btn btn-xs btn-link">
+        Previous</a><a href="../CPP17/" class="btn btn-xs btn-link">
         C++17
       </a>
     </div>

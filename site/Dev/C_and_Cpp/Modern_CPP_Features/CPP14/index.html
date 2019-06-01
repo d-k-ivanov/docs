@@ -68,22 +68,27 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <a name="_top"></a>
     
 
+    
+    
+      
+    
+
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="Dev/C_and_Cpp/Modern_CPP_Features/CPP17/" class="btn btn-xs btn-default pull-right">
+      <a href="../CPP17/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="Dev/C_and_Cpp/Modern_CPP_Features/CPP17/" class="btn btn-xs btn-link">
+      <a href="../CPP17/" class="btn btn-xs btn-link">
         C++17
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="Dev/C_and_Cpp/Modern_CPP_Features/CPP11/" class="btn btn-xs btn-default pull-left">
+      <a href="../CPP11/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="Dev/C_and_Cpp/Modern_CPP_Features/CPP11/" class="btn btn-xs btn-link">
+        Previous</a><a href="../CPP11/" class="btn btn-xs btn-link">
         C++11
       </a>
     </div>
@@ -237,8 +242,8 @@ std::chrono::duration_cast&lt;std::chrono::minutes&gt;(day).count(); // == 1440
 
 <h3 id="compile-time-integer-sequences">Compile-time integer sequences</h3>
 <p>The class template <code>std::integer_sequence</code> represents a compile-time sequence of integers. There are a few helpers built on top:
-<em> <code>std::make_integer_sequence&lt;T, N...&gt;</code> - creates a sequence of <code>0, ..., N - 1</code> with type <code>T</code>.
-</em> <code>std::index_sequence_for&lt;T...&gt;</code> - converts a template parameter pack into an integer sequence.</p>
+* <code>std::make_integer_sequence&lt;T, N...&gt;</code> - creates a sequence of <code>0, ..., N - 1</code> with type <code>T</code>.
+* <code>std::index_sequence_for&lt;T...&gt;</code> - converts a template parameter pack into an integer sequence.</p>
 <p>Convert an array into a tuple:</p>
 <pre><code class="c++">template&lt;typename Array, std::size_t... I&gt;
 decltype(auto) a2t_impl(const Array&amp; a, std::integer_sequence&lt;std::size_t, I...&gt;) {
@@ -253,8 +258,8 @@ decltype(auto) a2t(const std::array&lt;T, N&gt;&amp; a) {
 
 <h3 id="stdmake_unique">std::make_unique</h3>
 <p><code>std::make_unique</code> is the recommended way to create instances of <code>std::unique_ptr</code>s due to the following reasons:
-<em> Avoid having to use the <code>new</code> operator.
-</em> Prevents code repetition when specifying the underlying type the pointer shall hold.
+* Avoid having to use the <code>new</code> operator.
+* Prevents code repetition when specifying the underlying type the pointer shall hold.
 * Most importantly, it provides exception-safety. Suppose we were calling a function <code>foo</code> like so:</p>
 <pre><code class="c++">foo(std::unique_ptr&lt;T&gt;{new T{}}, function_that_throws(), std::unique_ptr&lt;T&gt;{new T{}});
 </code></pre>
@@ -291,22 +296,27 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
   <br>
     
 
+    
+    
+      
+    
+
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="Dev/C_and_Cpp/Modern_CPP_Features/CPP17/" class="btn btn-xs btn-default pull-right">
+      <a href="../CPP17/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="Dev/C_and_Cpp/Modern_CPP_Features/CPP17/" class="btn btn-xs btn-link">
+      <a href="../CPP17/" class="btn btn-xs btn-link">
         C++17
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="Dev/C_and_Cpp/Modern_CPP_Features/CPP11/" class="btn btn-xs btn-default pull-left">
+      <a href="../CPP11/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="Dev/C_and_Cpp/Modern_CPP_Features/CPP11/" class="btn btn-xs btn-link">
+        Previous</a><a href="../CPP11/" class="btn btn-xs btn-link">
         C++11
       </a>
     </div>

@@ -101,22 +101,27 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <a name="_top"></a>
     
 
+    
+    
+      
+    
+
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="OS/Gentoo/Dell_7510_Kernel/" class="btn btn-xs btn-default pull-right">
+      <a href="../Dell_7510_Kernel/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="OS/Gentoo/Dell_7510_Kernel/" class="btn btn-xs btn-link">
+      <a href="../Dell_7510_Kernel/" class="btn btn-xs btn-link">
         Dell 7510 Kernel
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="OS/Gentoo/Console_Font/" class="btn btn-xs btn-default pull-left">
+      <a href="../Console_Font/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="OS/Gentoo/Console_Font/" class="btn btn-xs btn-link">
+        Previous</a><a href="../Console_Font/" class="btn btn-xs btn-link">
         Console Font
       </a>
     </div>
@@ -194,7 +199,7 @@ tar xvjpf stage3-amd64-systemd-&lt;YYYYMMDD&gt;.tar.bz2 --xattrs
 
 <h3 id="chrooting">Chrooting</h3>
 <ul>
-<li><a href="../../../data/gentoo/make.conf.txt">make.conf</a></li>
+<li><a href="/data/gentoo/make.conf.txt">make.conf</a></li>
 </ul>
 <pre><code class="bash"># See link above to get contents of make.conf
 vim /mnt/gentoo/etc/portage/make.conf
@@ -250,7 +255,7 @@ UUID=&quot;XXX&quot; /home/storage ext4 rw,relatime,data=ordered                
 
 <h3 id="kernel">Kernel</h3>
 <ul>
-<li><a href="../../../data/gentoo/config-4.12.txt">.config</a></li>
+<li><a href="/data/gentoo/config-4.12.txt">.config</a></li>
 </ul>
 <pre><code class="bash">emerge --ask sys-kernel/gentoo-sources sys-apps/pciutils sys-kernel/genkernel-next
 eselect kernel list
@@ -278,8 +283,8 @@ emerge --ask net-misc/dhcpcd
 
 <h3 id="grub">Grub</h3>
 <p>Make sure that you have "GRUB_PLATFORMS="efi-64" in /etc/portage/make.conf (see above)
-- <a href="../../../data/gentoo/grub.txt">grub</a>
-- <a href="../../../data/gentoo/terminus32.pf2">terminus32.pf2</a></p>
+- <a href="/data/gentoo/grub.txt">grub</a>
+- <a href="/data/gentoo/terminus32.pf2">terminus32.pf2</a></p>
 <pre><code class="bash">emerge --ask --update --newuse --verbose sys-boot/grub:2
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 # See link above to contents
@@ -320,20 +325,20 @@ reboot
 
 <h3 id="my-portage-package-files">My portage package files</h3>
 <ul>
-<li><a href="../../../data/gentoo/package.accept_keywords.txt">package.accept_keywords</a></li>
-<li><a href="../../../data/gentoo/package.license.txt">package.license</a></li>
-<li><a href="../../../data/gentoo/package.unmask.txt">package.unmask</a></li>
-<li><a href="../../../data/gentoo/package.use.txt">package.use</a></li>
+<li><a href="/data/gentoo/package.accept_keywords.txt">package.accept_keywords</a></li>
+<li><a href="/data/gentoo/package.license.txt">package.license</a></li>
+<li><a href="/data/gentoo/package.unmask.txt">package.unmask</a></li>
+<li><a href="/data/gentoo/package.use.txt">package.use</a></li>
 </ul>
 <h3 id="my-xorg-config-files">My Xorg config files</h3>
 <ul>
-<li><a href="../../../data/gentoo/xorg.conf.txt">xorg.conf</a></li>
-<li><a href="../../../data/gentoo/xorg-10-evdev.conf.txt">10-evdev.conf</a></li>
-<li><a href="../../../data/gentoo/xorg-10-keyboard.conf.txt">10-keyboard.conf</a></li>
-<li><a href="../../../data/gentoo/xorg-20-trackpoint.conf.txt">20-trackpoint.conf</a></li>
-<li><a href="../../../data/gentoo/xorg-20opengl.conf.txt">20opengl.conf</a></li>
-<li><a href="../../../data/gentoo/xorg-30-fonts.conf.txt">30-fonts.conf</a></li>
-<li><a href="../../../data/gentoo/xorg-70-synaptics.conf.txt">70-synaptics.conf</a></li>
+<li><a href="/data/gentoo/xorg.conf.txt">xorg.conf</a></li>
+<li><a href="/data/gentoo/xorg-10-evdev.conf.txt">10-evdev.conf</a></li>
+<li><a href="/data/gentoo/xorg-10-keyboard.conf.txt">10-keyboard.conf</a></li>
+<li><a href="/data/gentoo/xorg-20-trackpoint.conf.txt">20-trackpoint.conf</a></li>
+<li><a href="/data/gentoo/xorg-20opengl.conf.txt">20opengl.conf</a></li>
+<li><a href="/data/gentoo/xorg-30-fonts.conf.txt">30-fonts.conf</a></li>
+<li><a href="/data/gentoo/xorg-70-synaptics.conf.txt">70-synaptics.conf</a></li>
 </ul>
 <h3 id="udev-rules">Udev rules</h3>
 <pre><code class="bash">vim /etc/udev/rules.d/01-touchpad.rules
@@ -385,22 +390,27 @@ net.ipv4.ip_default_ttl=65
   <br>
     
 
+    
+    
+      
+    
+
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="OS/Gentoo/Dell_7510_Kernel/" class="btn btn-xs btn-default pull-right">
+      <a href="../Dell_7510_Kernel/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="OS/Gentoo/Dell_7510_Kernel/" class="btn btn-xs btn-link">
+      <a href="../Dell_7510_Kernel/" class="btn btn-xs btn-link">
         Dell 7510 Kernel
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="OS/Gentoo/Console_Font/" class="btn btn-xs btn-default pull-left">
+      <a href="../Console_Font/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="OS/Gentoo/Console_Font/" class="btn btn-xs btn-link">
+        Previous</a><a href="../Console_Font/" class="btn btn-xs btn-link">
         Console Font
       </a>
     </div>
