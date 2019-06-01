@@ -61,22 +61,27 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <a name="_top"></a>
     
 
+    
+    
+      
+    
+
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="OS/AIX/" class="btn btn-xs btn-default pull-right">
+      <a href="../../../OS/AIX/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="OS/AIX/" class="btn btn-xs btn-link">
+      <a href="../../../OS/AIX/" class="btn btn-xs btn-link">
         AIX
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="Education/Low_Level/Low-Level-Programming-University-En/" class="btn btn-xs btn-default pull-left">
+      <a href="../Low-Level-Programming-University-En/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="Education/Low_Level/Low-Level-Programming-University-En/" class="btn btn-xs btn-link">
+        Previous</a><a href="../Low-Level-Programming-University-En/" class="btn btn-xs btn-link">
         Low Level Programming University En
       </a>
     </div>
@@ -122,20 +127,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Наконец, эта страница включает темы от аппаратных компонентов до ядра Linux. Между ними невероятно большое число слоев. Документ на одну страницу никогда не сможет покрыть детали каждого из них, поэтому его целью является лишь дать точку входа в мир низкоуровневого программирования. </p>
 <h2 id="_4"><a name="Theory"></a>Теория</h2>
 <p>Низкоуровневое программирование базируется на двух теориях:
-<em> Архитектура Компьютеров
-</em> Операционные Системы</p>
+* Архитектура Компьютеров
+* Операционные Системы</p>
 <p>Мне кажется, лучший способ выучить теорию - пройти соответствующий курс. Чтение книг само по себе не плохо, но отнимает слишком много времени и сил. При желании, можно найти много хороших курсов в онлайн университетах, в частности, на coursera.org и edx.org.
 Но теория - это лишь теория. Не думаю, что необходимо закончить курс на отлично, чтобы понять общую суть.
 Ты будешь становиться лучше и лучше с ростом опыта.</p>
 <p>Позволь мне представить несколько книг, которые я читал. Они широко используются в качестве учебников в университетах. Если их нет или не было у читателя в университете, то стоит потратить немного времени на ознакомление. 
-<em> Архитектура Копмьютеров
+* Архитектура Копмьютеров
   * Computer Architecture, Fifth Edition: A Quantitative Approach 
   * <a href="http://www.technosphera.ru/files/book_pdf/0/book_348_882.pdf">Компьютерная Архитектура. Количественный подход. Издание 5-е</a>
   * Computer Systems: A Programmer's Perspective 
   * <a href="https://www.ozon.ru/context/detail/id/2355879/">Компьютерные системы: архитектура и программирование</a> 
   * Computer Organization and Design, Fourth Edition: The Hardware/Software Interface 
   * <a href="https://www.labirint.ru/books/317754/">Архитектура компьютера и проектирование компьютерных систем</a>
-</em> Операционные системы
+* Операционные системы
   * The Magic Garden Explained: The Internals of UNIX System V Release 4 an Open Systems Design
   * The Design of the UNIX Operating System 
   * <a href="http://lib.ru/BACH/">Архитектура операционной системы Unix</a>
@@ -211,17 +216,17 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>Веб-версия: https://pdos.csail.mit.edu/6.828/2011/readings/i386/toc.htm</li>
 </ul>
 <p>К этому моменту, можно приступать к последним процессорам архитектур ARM и x86.
-<em> https://www.raspberrypi.org/
-</em> https://beagleboard.org/
+* https://www.raspberrypi.org/
+* https://beagleboard.org/
 * https://www.arduino.cc/en/ArduinoCertified/IntelEdison</p>
 <p>Для примера, плата Raspberry Pi имеет процессор Cortex-A53, поддерживающий 64-битный набор инструкций.
 Это позволяет получить опыт в работе с современной процессорной архитектуры с помощью rPi.
 Да, его можно купить... но... что ты собираешься с ним делать?
 Если нет целевого проекта, скорее всего ты просто положишь плату в дальний ящик и забудешь о ней как и обо всех других, купленных до этого.</p>
 <p>Поэтому, я рекомендую следующий проект.
-<em> <a href="http://wiki.osdev.org/Getting_Started">Создание своего собственного ядра</a>
+* <a href="http://wiki.osdev.org/Getting_Started">Создание своего собственного ядра</a>
   * Хорошие ссылки: https://www.reddit.com/r/osdev/
-</em> <a href="https://github.com/s-matyukevich/raspberry-pi-os">Учимся разработке операционных систем используя Linux и Raspberry Pi</a>
+* <a href="https://github.com/s-matyukevich/raspberry-pi-os">Учимся разработке операционных систем используя Linux и Raspberry Pi</a>
   * (Описание проекта) Этот репозиторий содержит пошаговый гайд, учащий создавать простое ядро операционной системы с нуля...(пропуск)...Каждый урок создан таким образом, что сначала объясняет, как некоторые фичи ядра реализованы в RPI OS, и лишь потом пытается продемонстрировать работу подобного функционала в ядре Linux.</p>
 <p>Я сделал <a href="https://github.com/gurugio/caos">игрушечное ядро</a>, поддерживающее 64-битный "длинный" режим, подкачку страниц и очень простое переключение контекста. создания ядра является хорошим способом понять архитектуру современного компьютера и управление "железом".</p>
 <p>Вообще говоря, у тебя уже есть доступ к последнему процессору и последним аппаратным устройствам.
@@ -232,8 +237,8 @@ QEMU может эмулировать последние процессоры A
 Существует множество игрушечных ядер и документации для справки.
 Просто установи QEMU эмулятор и создай микро-ядро, которое способно загрузиться, включить подкачку и вывести текстовые сообщения. </p>
 <p>Другие игрушечные ядра:
-<em> https://littleosbook.github.io/
-</em> https://tuhdo.github.io/os01/</p>
+* https://littleosbook.github.io/
+* https://tuhdo.github.io/os01/</p>
 <h3 id="linux"><a name="Linux-kernel-and-device-driver"></a>Ядро Linux и драйвера устройств</h3>
 <p>Не нужно создавать свою полноценную операционную систему.
 Присоединйяся к сообществу Linux и участвуй в разработке.</p>
@@ -307,13 +312,13 @@ QEMU может эмулировать последние процессоры A
 </ul>
 <h3 id="_11"><a name="Other-applications"></a>Прочие приложения</h3>
 <p>Да, ты можешь быть и не заинтересован в линуксе и прошивках. Если так, то можно найти и другие сферы:
-<em> Системное программирование и драйвера устройств под Windows
-</em> Безопасность
+* Системное программирование и драйвера устройств под Windows
+* Безопасность
 * Реверс инженеринг</p>
 <p>У меня нет каких-либо знаний в данных сферах. Поэтому прошу отправить мне любую информацию о них для новичков.</p>
 <p><strong>Ядра и драйверы - еще не все низкоуровневое программирование.</strong> Одним из наиболее важных приложений низкоуровневого программирования являются распределенные файловые системы и хранилища. Подробное их описание находится на пределами фокуса этого документа, но существует отлличный курс, в котором можно попробовать себя в данной сфере. 
-<em> Курс: https://pdos.csail.mit.edu/archive/6.824-2012/
-</em> Исходный код для работы с ним: https://github.com/srned/yfs</p>
+* Курс: https://pdos.csail.mit.edu/archive/6.824-2012/
+* Исходный код для работы с ним: https://github.com/srned/yfs</p>
 <h2 id="_12"><a name="Future-of-low-level-programming"></a> Будущее низкоуровневого программирования</h2>
 <p>Мне неизвестно будущее, но я посматриваю на RUST.
 * https://hacks.mozilla.org/2016/11/rust-and-the-future-of-systems-programming/</p>
@@ -327,8 +332,8 @@ ARM, Samsung и некоторые другие компании имеют св
 <p>Обычные облачные сервера имеют множество слоев; в частности, хостовую ОС, драйвер kvm, процесс qemu, гостевая ОС и сервисное приложение. Контейнер был создан, чтобы предоставить легку. виртуализацию. В ближайшем будущем, новый концепт ОС, так называемый "библиотечная ОС" или Unikernel, может заменить типичный стэк SW для виртуализации.
 * http://unikernel.org/</p>
 <p>Big data и облачные вычисления требуют хранения все больших и больших объемов данных. Некоторые диски, напрямую подключенные к серверам, не могут удовлетворить требующуюся емкость, стабильность и производительность. Поэтому были проведены исследования для создания больших систем хранения данных с помощью множества машин, соединенных высокоскоростной сетью. Поначалу они были сфокусированы на создании одного большого тома-хранилища. Но теперь предлагаю множества томов, выделенных для множества виртуальных машин.
-<em> https://en.wikipedia.org/wiki/Software-defined_storage
-</em> https://en.wikipedia.org/wiki/Clustered_file_system
+* https://en.wikipedia.org/wiki/Software-defined_storage
+* https://en.wikipedia.org/wiki/Clustered_file_system
 * https://en.wikipedia.org/wiki/Ceph_(software)</p>
 <h2 id="_13"><a name="How-to-start"></a>Как начать?</h2>
 <p>Однажды, я получил письмо с таким вопросом. На этой странице представлено множество информационных книг, курсов и проектов. И в том, что я забыл напистаь тут ответ на него - моя вина. Конечно, не существует единственного прямого пути. Я просто пишу, что делал сам и в каком порядке. Если ты уже знаком с чем-то, то можешь это пропустить. ПОВТОРЯЮ, это все лишь пример, которому ты можешь следовать. Если не знаешь, что делать, просто делай все ПО ПОРЯДКУ. </p>
@@ -383,32 +388,37 @@ ARM, Samsung и некоторые другие компании имеют св
 <h1 id="_15"><a name="who-am-i"></a>Кто я такой?</h1>
 <p>Вдохновляясь <a href="https://github.com/jwasham/coding-interview-university">google-interview-university</a>, мне бы хотелось поделиться опытом и показать путь к становлению программистом низкого уровня, потому что соответствующие навыки перестали быть столь обыденными, каковыми были раньше. К тому же, многие учащиеся и просто новички часто меня сами спрашивают, как стать низкоуровневым программистом и разработчиком ядра Linux в частности.</p>
 <p>Для информации, у меня более 10 лет опыта в качестве низкоуровневого программиста, мой опыт включает:
-<em> Программирование на ассмемблере под 80x86 
-</em> Аппаратные средства на чипах Atmel и прошивки для них
-<em> Язык C и системное программирование под Unix
-</em> Драйвера устройств под Linux
-<em> Ядро Linux: подкачка страниц
-</em> Ядро Linux: драйвер блочного устройства и md module</p>
+* Программирование на ассмемблере под 80x86 
+* Аппаратные средства на чипах Atmel и прошивки для них
+* Язык C и системное программирование под Unix
+* Драйвера устройств под Linux
+* Ядро Linux: подкачка страниц
+* Ядро Linux: драйвер блочного устройства и md module</p>
 
   <br>
+    
+
+    
+    
+      
     
 
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="OS/AIX/" class="btn btn-xs btn-default pull-right">
+      <a href="../../../OS/AIX/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="OS/AIX/" class="btn btn-xs btn-link">
+      <a href="../../../OS/AIX/" class="btn btn-xs btn-link">
         AIX
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="Education/Low_Level/Low-Level-Programming-University-En/" class="btn btn-xs btn-default pull-left">
+      <a href="../Low-Level-Programming-University-En/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="Education/Low_Level/Low-Level-Programming-University-En/" class="btn btn-xs btn-link">
+        Previous</a><a href="../Low-Level-Programming-University-En/" class="btn btn-xs btn-link">
         Low Level Programming University En
       </a>
     </div>

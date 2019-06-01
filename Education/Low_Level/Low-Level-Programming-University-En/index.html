@@ -61,22 +61,27 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <a name="_top"></a>
     
 
+    
+    
+      
+    
+
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="Education/Low_Level/Low-Level-Programming-University-Ru/" class="btn btn-xs btn-default pull-right">
+      <a href="../Low-Level-Programming-University-Ru/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="Education/Low_Level/Low-Level-Programming-University-Ru/" class="btn btn-xs btn-link">
+      <a href="../Low-Level-Programming-University-Ru/" class="btn btn-xs btn-link">
         Low Level Programming University Ru
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="Education/Free_Programming_Books/Programming_Interactive_Tutorials_RU/" class="btn btn-xs btn-default pull-left">
+      <a href="../../Free_Programming_Books/Programming_Interactive_Tutorials_RU/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="Education/Free_Programming_Books/Programming_Interactive_Tutorials_RU/" class="btn btn-xs btn-link">
+        Previous</a><a href="../../Free_Programming_Books/Programming_Interactive_Tutorials_RU/" class="btn btn-xs btn-link">
         Programming Interactive Tutorials RU
       </a>
     </div>
@@ -120,17 +125,17 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Finally, this page includes topics ranging from hardware components to the Linux kernel. That is a huge range of layers. A one page document can never cover the details of all the layers, so the aim of this document is to serve as a starting point for low-level programming.</p>
 <h2 id="theory"><a name="Theory"></a>Theory</h2>
 <p>There are two background theories to low-level programming:
-<em> Computer Architecture
-</em> Operating Systems</p>
+* Computer Architecture
+* Operating Systems</p>
 <p>I think the best way to learn theory is by taking a course. Reading books is not bad but takes too much time and effort. You can find many good classes on online universities, for instance, Coursera.org and edx.org.
 Theory is theory. I don't think you need to get an A+ in the class, just understand the big picture.
 You'll get better and better with experience.</p>
 <p>Let me introduce several books that I've read. They are commonly used as textbooks in universities. If there is no class with these books in your university, it's worth spending some time reading them.
-<em> Computer Architecture
+* Computer Architecture
   * Computer Architecture, Fifth Edition: A Quantitative Approach
   * Computer Systems: A Programmer's Perspective
   * Computer Organization and Design, Fourth Edition: The Hardware/Software Interface
-</em> Operating Systems
+* Operating Systems
   * The Magic Garden Explained: The Internals of UNIX System V Release 4 an Open Systems Design
   * The Design of the UNIX Operating System
   * Operating Systems: Internals and Design Principles by William Stallings
@@ -205,17 +210,17 @@ You'll get better and better with experience.</p>
 <li>Web version: https://pdos.csail.mit.edu/6.828/2011/readings/i386/toc.htm</li>
 </ul>
 <p>At this point, you should be good to start the latest ARM or x86 processor.
-<em> https://www.raspberrypi.org/
-</em> https://beagleboard.org/
+* https://www.raspberrypi.org/
+* https://beagleboard.org/
 * https://www.arduino.cc/en/ArduinoCertified/IntelEdison</p>
 <p>For example, the Raspberry Pi board has a Cortex-A53 Processor that supports a 64-bit instruction set.
 This allows you to experience a modern processor architecture with rPi.
 Yes, you can buy it... but... what are you going to do with it?
 If you have no target project, you would be likely to throw the board into a drawer and forget it like other gadgets you may have bought before.</p>
 <p>So, I recommend one project for you.
-<em> <a href="http://wiki.osdev.org/Getting_Started">Making your own kernel</a>
+* <a href="http://wiki.osdev.org/Getting_Started">Making your own kernel</a>
   * Good references: https://www.reddit.com/r/osdev/
-</em> <a href="https://github.com/s-matyukevich/raspberry-pi-os">Learning operating system development using Linux kernel and Raspberry Pi</a>
+* <a href="https://github.com/s-matyukevich/raspberry-pi-os">Learning operating system development using Linux kernel and Raspberry Pi</a>
   * (description of the project) This repository contains a step-by-step guide that teaches how to create a simple operating system (OS) kernel from scratch...(skip)...Each lesson is designed in such a way that it first explains how some kernel feature is implemented in the RPi OS, and then it tries to demonstrate how the same functionality works in the Linux kernel.</p>
 <p>I've made <a href="https://github.com/gurugio/caos">a toy kernel</a> that supports 64-bit long mode, paging and very simple context switching. Making a toy kernel is good way to understand modern computer architecture and hardware control.</p>
 <p>In fact, you have already the latest processor and the latest hardware devices.
@@ -226,8 +231,8 @@ So everything you need is already on hand.
 There are many toy kernels and documents you can refer to.
 Just install qemu emulator and make a tiny kernel that just boots, turns on paging, and prints some messages.</p>
 <p>Other toy kernels:
-<em> https://littleosbook.github.io/
-</em> https://tuhdo.github.io/os01/</p>
+* https://littleosbook.github.io/
+* https://tuhdo.github.io/os01/</p>
 <h3 id="linux-kernel-and-device-driver"><a name="Linux-kernel-and-device-driver"></a>Linux kernel and device driver</h3>
 <p>You don't need to make a complete operating system.
 Join the Linux community and participate in development.</p>
@@ -297,13 +302,13 @@ Join the Linux community and participate in development.</p>
 </ul>
 <h3 id="other-application"><a name="Other-applications"></a>Other application</h3>
 <p>Yes, you might not be interested in Linux or firmware. If so, you can find other applications:
-<em> Windows systems programming &amp; device drivers
-</em> Security
+* Windows systems programming &amp; device drivers
+* Security
 * Reverse engineering</p>
 <p>I don't have any knowledge about those applications. Please send me any information for beginners.</p>
 <p><strong>Kernels and drivers are not all of low-level programming.</strong> One more important application of low-level programming is the software-defined storage or distributed filesystem. Detailed descriptions of them is beyond the scope of this document but there is an excellent course where you can try a simple distributed filesystem.
-<em> Course: https://pdos.csail.mit.edu/archive/6.824-2012/
-</em> reference Source: https://github.com/srned/yfs</p>
+* Course: https://pdos.csail.mit.edu/archive/6.824-2012/
+* reference Source: https://github.com/srned/yfs</p>
 <h2 id="future-of-low-level-programming"><a name="Future-of-low-level-programming"></a>Future of low-level programming</h2>
 <p>I do not know the future, but I keep my eye on RUST.
 * https://hacks.mozilla.org/2016/11/rust-and-the-future-of-systems-programming/</p>
@@ -317,8 +322,8 @@ But Linux Foundation also has a solution: Zephyr
 <p>Typical cloud servers have many layers; for instance, host OS, kvm driver, qemu process, guest OS and service application. A container has been developed to provide light virtualization. In the near future, a new concept of OS, a so-called library OS or Unikernel, would replace the typical stack of SW for virtualization.
 * http://unikernel.org/</p>
 <p>Big data and cloud computing require bigger and bigger storage. Some disks directly attached to server machines cannot satisfy the required capacity, stability and performance. Therefore there has been research to make huge storage systems with many storage machines connected by a high speed network. It used to be focused on making one huge storage volume. But currently they are providing many volumes dedicated for many virtual machines.
-<em> https://en.wikipedia.org/wiki/Software-defined_storage
-</em> https://en.wikipedia.org/wiki/Clustered_file_system
+* https://en.wikipedia.org/wiki/Software-defined_storage
+* https://en.wikipedia.org/wiki/Clustered_file_system
 * https://en.wikipedia.org/wiki/Ceph_(software)</p>
 <h2 id="how-to-start"><a name="How-to-start"></a>How to start?</h2>
 <p>I received an email to ask how to start. There are so many information about books, courses and projects in this page. It is my mistake to forget to write how to start. Of course, there is no King's Road to follow. I just write what I did in order. If you have already done something, please skip it. AGAIN, this is an example that you could do in order. If you do not know what to do, please do following IN ORDER.</p>
@@ -369,32 +374,37 @@ But Linux Foundation also has a solution: Zephyr
 <h1 id="who-am-i"><a name="who-am-i"></a>Who am I?</h1>
 <p>I'm inspired by <a href="https://github.com/jwasham/google-interview-university">google-interview-university</a>. I'd like to share my experience and show a roadmap to becoming a low-level programmer because I have found that these skills are not as common as they once were. In addition, many students and beginners ask me how they could become low-level programmers and Linux kernel engineers.</p>
 <p>FYI, I have over 10 years of experience as a low-level programmer:
-<em> 80x86 Assembly programming
-</em> Hardware device with Atmel chip and firmware
-<em> C language system programming for Unix
-</em> Device driver in Linux
-<em> Linux kernel: page allocation
-</em> Linux kernel: block device driver and md module</p>
+* 80x86 Assembly programming
+* Hardware device with Atmel chip and firmware
+* C language system programming for Unix
+* Device driver in Linux
+* Linux kernel: page allocation
+* Linux kernel: block device driver and md module</p>
 
   <br>
+    
+
+    
+    
+      
     
 
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="Education/Low_Level/Low-Level-Programming-University-Ru/" class="btn btn-xs btn-default pull-right">
+      <a href="../Low-Level-Programming-University-Ru/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="Education/Low_Level/Low-Level-Programming-University-Ru/" class="btn btn-xs btn-link">
+      <a href="../Low-Level-Programming-University-Ru/" class="btn btn-xs btn-link">
         Low Level Programming University Ru
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="Education/Free_Programming_Books/Programming_Interactive_Tutorials_RU/" class="btn btn-xs btn-default pull-left">
+      <a href="../../Free_Programming_Books/Programming_Interactive_Tutorials_RU/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="Education/Free_Programming_Books/Programming_Interactive_Tutorials_RU/" class="btn btn-xs btn-link">
+        Previous</a><a href="../../Free_Programming_Books/Programming_Interactive_Tutorials_RU/" class="btn btn-xs btn-link">
         Programming Interactive Tutorials RU
       </a>
     </div>
