@@ -136,11 +136,6 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev/Android/AA_Privacy_Policy/</loc>
-     <lastmod>2019-06-15</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
      <loc>https://d-k-ivanov.github.io/docs/Dev/Android/Adb/</loc>
      <lastmod>2019-06-15</lastmod>
      <changefreq>daily</changefreq>
@@ -562,6 +557,11 @@
     </url>
     <url>
      <loc>https://d-k-ivanov.github.io/docs/OS/Gentoo/Systemd/</loc>
+     <lastmod>2019-06-15</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Privacy/Policies/Armenian_Alphabet/</loc>
      <lastmod>2019-06-15</lastmod>
      <changefreq>daily</changefreq>
     </url>
