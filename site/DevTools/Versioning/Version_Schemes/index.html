@@ -33,23 +33,16 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "PEP", url: "#_top", children: [
-          ]},
-          {title: "SemVer", url: "#semver", children: [
-          ]},
-          {title: "ComVer", url: "#comver", children: [
-          ]},
-          {title: "CalVer", url: "#calver", children: [
-          ]},
-          {title: "RomVer", url: "#romver", children: [
-          ]},
-          {title: "Serial", url: "#serial", children: [
-          ]},
-          {title: "Roman", url: "#roman", children: [
-          ]},
-          {title: "ZeroVer", url: "#zerover", children: [
-          ]},
-          {title: "FebVer", url: "#febver", children: [
+          {title: "Version Schemes", url: "#_top", children: [
+              {title: "PEP", url: "#pep" },
+              {title: "SemVer", url: "#semver" },
+              {title: "ComVer", url: "#comver" },
+              {title: "CalVer", url: "#calver" },
+              {title: "RomVer", url: "#romver" },
+              {title: "Serial", url: "#serial" },
+              {title: "Roman", url: "#roman" },
+              {title: "ZeroVer", url: "#zerover" },
+              {title: "FebVer", url: "#febver" },
           ]},
         ];
 
@@ -106,7 +99,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="pep">PEP</h2>
+    <h1 id="version-schemes">Version Schemes</h1>
+<h2 id="pep">PEP</h2>
 <p><a href="https://www.python.org/dev/peps/pep-0440/#version-scheme">PepVer</a> – versioning scheme specified in PEP-420. Based on SemVer, but has much more features. All tools in Python  parse projects versions by this PEP, so you can use it for your project and don’t care about machines. However, this pep allows to make over-complicated versions that really difficult to understand for humans.</p>
 <h2 id="semver">SemVer</h2>
 <p><a href="https://semver.org/">SemVer</a> – Semantic Versioning – most recommend versioning scheme. Allows your users (and machines) by version easily understand when you have broken something in your project, have added some new features or have fixed some bugs. If you don’t know what to use, use it.</p>
