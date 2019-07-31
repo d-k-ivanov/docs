@@ -1,5 +1,17 @@
 # Bitbucket related things
 
+## OAuth URLs
+
+1 [Access Token URL](https://bitbucket.org/site/oauth2/access_token)
+2 [Auth URL](https://bitbucket.org/site/oauth2/authorize)
+3 [Bitbucker Internal CallBack URL to auto authorize OAuth Consumers](http://localhost/bitbucket/authenticated)
+
+```bash
+1: https://bitbucket.org/site/oauth2/access_token
+2: https://bitbucket.org/site/oauth2/authorize
+3: http://localhost/bitbucket/authenticated
+```
+
 ## API
 
 ### Get information about repository
