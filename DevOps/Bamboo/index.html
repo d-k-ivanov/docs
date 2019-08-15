@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="author" content="Dmitriy Ivanov">
-    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/DevOps/Ansible/">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/DevOps/Bamboo/">
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Ansible - Technical Info</title>
+    <title>Bamboo - Technical Info</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -33,7 +33,8 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Create all host_vars from inventory", url: "#_top", children: [
+          {title: "Bamboo", url: "#_top", children: [
+              {title: "Fix PowerShell Task on Windows Agent", url: "#fix-powershell-task-on-windows-agent" },
           ]},
         ];
 
@@ -69,20 +70,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../Bamboo/" class="btn btn-xs btn-default pull-right">
+      <a href="../Chef-Windows/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../Bamboo/" class="btn btn-xs btn-link">
-        Bamboo
+      <a href="../Chef-Windows/" class="btn btn-xs btn-link">
+        Chef Windows
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../../Dev/Web/Redirect/" class="btn btn-xs btn-default pull-left">
+      <a href="../Ansible/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../../Dev/Web/Redirect/" class="btn btn-xs btn-link">
-        Redirect
+        Previous</a><a href="../Ansible/" class="btn btn-xs btn-link">
+        Ansible
       </a>
     </div>
     
@@ -90,22 +91,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="create-all-host_vars-from-inventory">Create all host_vars from inventory</h3>
-<p>In this example we have 21 inventry recond in ansible inventory file. Something like this:</p>
-<pre><code>server1     ansible_host=1.1.1.1
-server2     ansible_host=1.1.1.2  
-server3     ansible_host=1.1.1.3
-#server4    ansible_host=1.1.1.4
-server5     ansible_host=1.1.1.5
-server6     ansible_host=1.1.1.6
-...
-#server19   ansible_host=1.1.1.19
-server20    ansible_host=1.1.1.20
-server21    ansible_host=1.1.1.21
-</code></pre>
-
-<p>Some records comented, some not... And we need to create whole list of host envs for any active server:</p>
-<pre><code class="bash">cat inventory | head -21 | awk '{print $1}' | grep -v '#' | xargs -I '{}' touch host_vars/{}
+    <h1 id="bamboo">Bamboo</h1>
+<h2 id="fix-powershell-task-on-windows-agent">Fix PowerShell Task on Windows Agent</h2>
+<pre><code class="ps1">Remove-ItemProperty -Path 'Registry::HKEY_USERS\.DEFAULT\Environment\' -Name PATH
 </code></pre>
 
   <br>
@@ -119,20 +107,20 @@ server21    ansible_host=1.1.1.21
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../Bamboo/" class="btn btn-xs btn-default pull-right">
+      <a href="../Chef-Windows/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../Bamboo/" class="btn btn-xs btn-link">
-        Bamboo
+      <a href="../Chef-Windows/" class="btn btn-xs btn-link">
+        Chef Windows
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../../Dev/Web/Redirect/" class="btn btn-xs btn-default pull-left">
+      <a href="../Ansible/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../../Dev/Web/Redirect/" class="btn btn-xs btn-link">
-        Redirect
+        Previous</a><a href="../Ansible/" class="btn btn-xs btn-link">
+        Ansible
       </a>
     </div>
     
