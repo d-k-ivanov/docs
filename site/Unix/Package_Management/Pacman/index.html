@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Unix/Package_Management/Pacman/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Pacman - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Pacman", url: "#_top", children: [
+          ]},
+          {title: "AUR package installation", url: "#aur-package-installation", children: [
+          ]},
+          {title: "Some Python packages exist in filesystem", url: "#some-python-packages-exist-in-filesystem", children: [
+          ]},
+          {title: "ca-certificates-utils: /etc/ssl/certs/ca-certificates.crt exists in filesystem", url: "#ca-certificates-utils-etcsslcertsca-certificatescrt-exists-in-filesystem", children: [
+          ]},
+          {title: "Sort installed packages by size", url: "#sort-installed-packages-by-size", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Yum/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Yum/" class="btn btn-xs btn-link">
+        Yum
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Apt/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Apt/" class="btn btn-xs btn-link">
+        Apt
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="pacman">Pacman</h3>
+<pre><code class="sh"># Search for software
+pacman -Ss &lt;pattern&gt;
+# Install package
+pacman -S &lt;package_name&gt;
+# Update the system
+pacman -Syu
+# Remove orphaned packages (Be careful, double check for list of deleted packages)
+pacman -Rscn $(pacman -Qtdq)
+pacman -Sc
+pacman-optimize &amp;&amp; sync
+# Show all pacages whitc now installed as dependencies
+pacman -Qet
+</code></pre>
+
+<h3 id="aur-package-installation">AUR package installation</h3>
+<pre><code class="sh">git clone https://aur.archlinux.org/&lt;packiage_name&gt;
+cd &lt;package_name&gt;
+makepkg -sri
+
+# In case of error like:
+# &lt;package&gt;.tar.gz ... FAILED (unknown public key 0000000000000000)
+gpg --recv-key 0000000000000000
+# Or manually check key and skip key verification vith makepkg
+pacman-key --verify &lt;sig_file&gt;
+makepkg --skippgpcheck -sri
+</code></pre>
+
+<h3 id="some-python-packages-exist-in-filesystem">Some Python packages exist in filesystem</h3>
+<pre><code class="bash"># First method:
+mv /usr/lib/python2.7/site-packages/&lt;package&gt; /tmp/removed_py/
+# Second method:
+pip freeze | xargs pip uninstall -y
+pip freeze | grep -v &quot;^-e&quot; | xargs pip uninstall -y
+# Then you can update your Arch
+#yaourt -Syu --aur
+pacman -Syu
+</code></pre>
+
+<h3 id="ca-certificates-utils-etcsslcertsca-certificatescrt-exists-in-filesystem">ca-certificates-utils: /etc/ssl/certs/ca-certificates.crt exists in filesystem</h3>
+<pre><code class="bash">mv /etc/ssl/certs/ca-certificates.crt /tmp
+#yaourt -Syu --aur
+pacman -Syu
+</code></pre>
+
+<h3 id="sort-installed-packages-by-size">Sort installed packages by size</h3>
+<pre><code>pacman -Qi | egrep '^(Name|Installed)' | cut -f2 -d':' | paste - - | column -t | sort -nrk 2 | grep MiB | less 
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Yum/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Yum/" class="btn btn-xs btn-link">
+        Yum
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Apt/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Apt/" class="btn btn-xs btn-link">
+        Apt
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2018 Dmitriy Ivanov. <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter40819844 = new Ya.Metrika({ id:40819844, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

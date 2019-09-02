@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Unix/Audit/Hardware_info/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Hardware info - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "All hardware", url: "#_top", children: [
+          ]},
+          {title: "RAW Devices", url: "#raw-devices", children: [
+          ]},
+          {title: "CPU", url: "#cpu", children: [
+          ]},
+          {title: "RAM", url: "#ram", children: [
+          ]},
+          {title: "VM", url: "#vm", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Processes/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Processes/" class="btn btn-xs btn-link">
+        Processes
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Fork_unavailable/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Fork_unavailable/" class="btn btn-xs btn-link">
+        Fork unavailable
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="all-hardware">All hardware</h3>
+<pre><code class="bash">hwinfo
+</code></pre>
+
+<h3 id="raw-devices">RAW Devices</h3>
+<pre><code class="bash"># ISO to USB:
+dd bs=4M if=/path/to/&lt;iso_image&gt; of=/dev/sdX &amp;&amp; sync
+</code></pre>
+
+<h3 id="cpu">CPU</h3>
+<pre><code class="bash">lscpu
+cat /proc/cpuinfo
+</code></pre>
+
+<h3 id="ram">RAM</h3>
+<pre><code class="bash"># Basic commands:
+vmstat -s
+cat /proc/meminfo
+free -m
+# Sum of used RAM
+ps -eo rss,pid,user,command --sort -size | awk '{ hr=$1/1024 ; printf(&quot;%13.2f Mb &quot;,hr) } { for ( x=4 ; x&lt;=NF ; x++ ) { printf(&quot;%s &quot;,$x) } print &quot;&quot; }' | awk '{print $1}' | paste -sd+ | bc
+# Clean RAM buffer and swap cache
+sync &amp;&amp; echo 3 &gt; /proc/sys/vm/drop_caches
+</code></pre>
+
+<h3 id="vm">VM</h3>
+<p>To check if server's environment is virtual or real you can use stanasrd Linux commands</p>
+<ul>
+<li>cat /proc/scsi/scsi </li>
+</ul>
+<pre><code>Attached devices:
+Host: scsi2 Channel: 00 Id: 00 Lun: 00
+  Vendor: VMware   Model: Virtual disk     Rev: 1.0
+  Type:   Direct-Access                    ANSI  SCSI revision: 02
+Host: scsi1 Channel: 00 Id: 00 Lun: 00
+  Vendor: NECVMWar Model: VMware IDE CDR10 Rev: 1.00
+  Type:   CD-ROM                           ANSI  SCSI revision: 05
+</code></pre>
+
+<ul>
+<li>ethtool -i eth0</li>
+</ul>
+<pre><code>driver: vmxnet3
+version: 1.1.30.0-k-NAPI
+firmware-version:
+bus-info: 0000:03:00.0
+supports-statistics: yes
+supports-test: no
+supports-eeprom-access: no
+supports-register-dump: yes
+supports-priv-flags: no
+</code></pre>
+
+<ul>
+<li>dmidecode | grep -i vmware</li>
+</ul>
+<pre><code>        Manufacturer: VMware, Inc.
+        Product Name: VMware Virtual Platform
+        Serial Number: VMware-42 28 f6 4e 92 c6 36 0a-2e 21 47 23 85 9f 5d 64
+        Description: VMware SVGA II
+
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Processes/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Processes/" class="btn btn-xs btn-link">
+        Processes
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Fork_unavailable/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Fork_unavailable/" class="btn btn-xs btn-link">
+        Fork unavailable
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2018 Dmitriy Ivanov. <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter40819844 = new Ya.Metrika({ id:40819844, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

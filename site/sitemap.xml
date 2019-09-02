@@ -146,22 +146,22 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Android/Adb/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev Arch/Hardware/GPU/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Android/Android_Studio/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev Arch/Hardware/IP_Packet_Example/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Android/Apk/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev Arch/Hardware/Latency_Numbers/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Android/udev_rules/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev Arch/Hardware/Networks/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -206,32 +206,22 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Hardware/GPU/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Hardware/IP_Packet_Example/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Hardware/Latency_Numbers/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Hardware/Networks/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
      <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Java/Environment/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Java/HiDPI/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Java/Runtime_customization/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Java/Tomcat/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -306,6 +296,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://d-k-ivanov.github.io/docs/Dev QA/Stress_tests/Ackermann_function/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://d-k-ivanov.github.io/docs/Dev Scripts/Bash/Collect_bash_history/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
@@ -321,7 +316,12 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Scripts/Cmd/ping_whole_subnet/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev Scripts/Cmd/Colours/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Dev Scripts/Cmd/Ping_Whole_Subnet/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -372,96 +372,6 @@
     </url>
     <url>
      <loc>https://d-k-ivanov.github.io/docs/Dev Scripts/VBS/Run/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Tools/Build/Cmake_Vars/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Tools/Build/GCC/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Tools/Build/Make/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Tools/Debug/10_Commands/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Tools/Debug/Core_Dumps/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Tools/Debug/GDB/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Tools/Libraries/Linux/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Tools/Mac_Pacaging/Install_Packages_1.2.4/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Tools/Mac_Pacaging/Signing/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Tools/QMake/Link_Dynamic_libraries_on_Mac/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Tools/Version_Control/Bitbucket/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Tools/Version_Control/Git-Flow/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Tools/Version_Control/Git/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Tools/Version_Control/GitHub/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Tools/Version_Control/Git_Update/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Tools/Version_Control/Gitignore/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Tools/Version_Control/Subversion/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Tools/Versioning/Version_Schemes/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -526,72 +436,12 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/OS/AIX/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/OS/Android/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/OS/FreeBSD/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/OS/Raspbian/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/OS/Useful_UNIX_distros/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/OS/Gentoo/Console_Font/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/OS/Gentoo/Dell_7510/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/OS/Gentoo/Dell_7510_Kernel/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/OS/Gentoo/Gnome/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/OS/Gentoo/Installation/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/OS/Gentoo/Portage/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/OS/Gentoo/Systemd/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Links/Useful_UNIX_distros/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://d-k-ivanov.github.io/docs/Privacy/Policies/Armenian_Alphabet/</loc>
-     <lastmod>2019-09-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://d-k-ivanov.github.io/docs/QA/Stress_tests/Ackermann_function/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -661,322 +511,467 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Audit/Fork_unavailable/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Android/Adb/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Audit/Hardware_info/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Android/Android_Studio/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Audit/Processes/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Android/Apk/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Audit/Reboot_Investigation/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Android/Common/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Backup/TSM/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Android/udev_rules/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Backup/Tape/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/BigData/Zookeper_grow/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Backup/Veeam/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Build/Cmake_Vars/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/BigData/Zookeper_grow/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Build/GCC/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Docker/CMD_vs_Entrypoint/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Build/Make/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Docker/Common/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Debug/10_Commands/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Messaging/Email_Telnet/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Debug/Core_Dumps/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Messaging/Postfix/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Debug/GDB/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Messaging/SMS/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Docker/CMD_vs_Entrypoint/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Monitoring/80_tools_for_monitoring/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Docker/Common/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Monitoring/Nagios/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Edittors/My_Sublime_Text_config/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Monitoring/NetXMS/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Edittors/VSCode/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Monitoring/Zabbix/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Edittors/Vim/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Network/Common/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Libraries/Linux/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Network/DNS/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Mac_Pacaging/Install_Packages_1.2.4/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Network/KEMP/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Mac_Pacaging/Signing/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Network/NTP/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Project_Management/Redmine/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Network/Ports/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Project_Management/Unresolve_Jira_Issue/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Network/SNMP/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/QMake/Link_Dynamic_libraries_on_Mac/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Network/WiFi/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Version_Control/Bitbucket/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Network/tcpdump/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Version_Control/Git-Flow/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Package_Management/Apt/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Version_Control/Git/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Package_Management/PIP/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Version_Control/GitHub/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Package_Management/Pacman/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Version_Control/Git_Update/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Package_Management/Yum/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Version_Control/Gitignore/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Project_Management/Redmine/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Version_Control/Subversion/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Project_Management/Unresolve_Jira_Issue/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Versioning/Version_Schemes/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Storage_and_filesystems/Extend_Ext4_Partition/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/AIX/Common/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Storage_and_filesystems/Files_in_Unix/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Audit/Fork_unavailable/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Storage_and_filesystems/GPFS/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Audit/Hardware_info/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Storage_and_filesystems/HDD/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Audit/Processes/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Storage_and_filesystems/LVM/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Audit/Reboot_Investigation/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Storage_and_filesystems/Links/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/BSD/FreeBSD/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Storage_and_filesystems/Map_Disks_in_Windows/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Backup/TSM/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Storage_and_filesystems/SAN/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Backup/Tape/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Storage_and_filesystems/mdadm/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Backup/Veeam/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Users/Rename_User/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Gentoo/Console_Font/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Virtual/Hyper-V/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Gentoo/Dell_7510/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Virtual/KVM/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Gentoo/Dell_7510_Kernel/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Web/Curl/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Gentoo/Gnome/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Web/IIS/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Gentoo/Installation/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Web/Tomcat/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Gentoo/Portage/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Tech/Windows/Common/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Gentoo/Systemd/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/UX/Edittors/My_Sublime_Text_config/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Images/Convert/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/UX/Edittors/VSCode/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/MacOS/Root/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/UX/Edittors/Vim/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Messaging/Email_Telnet/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/UX/Hi_DPI/Awesome_VM/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Messaging/Postfix/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/UX/Hi_DPI/Java/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Messaging/SMS/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/UX/Images/Convert/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Messengers/Skype/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/UX/MacOS/Root/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Monitoring/80_tools_for_monitoring/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/UX/Messengers/Skype/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Monitoring/Nagios/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/UX/Network/Windows_refresh_DNS/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Monitoring/NetXMS/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/UX/Office/Outlook/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Monitoring/Zabbix/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/UX/Power_Management/Laptop_lid_linux/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Network/Common/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/UX/Terminal/Tmux/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Network/DNS/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/UX/Terminal/cmd/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Network/KEMP/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/UX/Terminal/xFreeRDP/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Network/NTP/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/UX/Wine/Custom_prefix/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Network/Ports/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/UX/Wine/curse_client_5/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Network/SNMP/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/UX/X-Window/Common/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Network/WiFi/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Network/tcpdump/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Package_Management/Apt/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Package_Management/Pacman/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Package_Management/Yum/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Power_Management/Laptop_lid/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Raspberry_PI/Raspbian/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Remote_Connection/xFreeRDP/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Storage_and_filesystems/Extend_Ext4_Partition/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Storage_and_filesystems/Files_in_Unix/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Storage_and_filesystems/GPFS/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Storage_and_filesystems/HDD/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Storage_and_filesystems/LVM/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Storage_and_filesystems/Links/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Storage_and_filesystems/Map_Disks_in_Windows/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Storage_and_filesystems/SAN/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Storage_and_filesystems/mdadm/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Terminal/Tmux/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Users/Rename_User/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Virtual/Hyper-V/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Virtual/KVM/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Web/Curl/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Windows_Managers/Awesome_VM/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Wine/Custom_prefix/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/Wine/curse_client_5/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Unix/X-Window/Common/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Windows/Common/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Windows/IIS/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Windows/Outlook/</loc>
+     <lastmod>2019-09-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Windows/Refresh_DNS/</loc>
      <lastmod>2019-09-03</lastmod>
      <changefreq>daily</changefreq>
     </url>

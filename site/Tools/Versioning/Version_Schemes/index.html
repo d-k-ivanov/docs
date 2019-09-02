@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Tools/Versioning/Version_Schemes/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Version Schemes - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Version Schemes", url: "#_top", children: [
+              {title: "PEP", url: "#pep" },
+              {title: "SemVer", url: "#semver" },
+              {title: "ComVer", url: "#comver" },
+              {title: "CalVer", url: "#calver" },
+              {title: "RomVer", url: "#romver" },
+              {title: "Serial", url: "#serial" },
+              {title: "Roman", url: "#roman" },
+              {title: "ZeroVer", url: "#zerover" },
+              {title: "FebVer", url: "#febver" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../../Unix/AIX/Common/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../../Unix/AIX/Common/" class="btn btn-xs btn-link">
+        Common
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Version_Control/Subversion/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Version_Control/Subversion/" class="btn btn-xs btn-link">
+        Subversion
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="version-schemes">Version Schemes</h1>
+<h2 id="pep">PEP</h2>
+<p><a href="https://www.python.org/dev/peps/pep-0440/#version-scheme">PepVer</a> – versioning scheme specified in PEP-420. Based on SemVer, but has much more features. All tools in Python  parse projects versions by this PEP, so you can use it for your project and don’t care about machines. However, this pep allows to make over-complicated versions that really difficult to understand for humans.</p>
+<h2 id="semver">SemVer</h2>
+<p><a href="https://semver.org/">SemVer</a> – Semantic Versioning – most recommend versioning scheme. Allows your users (and machines) by version easily understand when you have broken something in your project, have added some new features or have fixed some bugs. If you don’t know what to use, use it.</p>
+<p>Given a version number MAJOR.MINOR.PATCH, increment the:</p>
+<ul>
+<li>MAJOR version when you make incompatible API changes,</li>
+<li>MINOR version when you add functionality in a backwards-compatible manner, and</li>
+<li>PATCH version when you make backwards-compatible bug fixes.</li>
+</ul>
+<p>Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.</p>
+<h2 id="comver">ComVer</h2>
+<p><a href="https://gitlab.com/staltz/comver">ComVer</a> – Compatible Versioning – this is semver without patch number. All changes that don’t broke anything increments minor version number. You can use it if in your project it’s difficult to separate bug fixes and features.</p>
+<p>Given a version number MAJOR.MINOR, increment the:</p>
+<ul>
+<li>MAJOR version when you make backwards-incompatible updates of any kind</li>
+<li>MINOR version when you make 100% backwards-compatible updates</li>
+</ul>
+<p>Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR format.</p>
+<h2 id="calver">CalVer</h2>
+<p><a href="https://calver.org">CalVer</a> – Calendar Versioning – it’s when you use current date (year and month) instead of version. For example, 2018.12. DepHell uses 4-numbers year as major number to explicitly indicate that your project uses CalVer. Also you can pass micro rule to add day in the version number. If previous release was today then micro rule will just increment this number. You can use this versioning if you don’t want to care about versioning at all. However, this is strongly discouraged for any projects that can be used as dependency for third-party code.</p>
+<p>There are multiple calendar versioning schemes, long used by projects big and small. Rather than declaring a single scheme to be CalVer, it's important to recognize the practicality of each and design the scheme to fit the project. First, the parts of the version:</p>
+<ul>
+<li>Major - The first number in the version. 2 and 3 are Python's famous major versions. The major segment is the most common calendar-based component.</li>
+<li>Minor - The second number in the version. 7 is the most popular minor version of Python.</li>
+<li>Micro - The third and usually final number in the version. Sometimes referred to as the "patch" segment.</li>
+<li>Modifier - An optional text tag, such as "dev", "alpha", "beta", "rc1", and so on.</li>
+</ul>
+<p>The vast majority of modern version identifiers are composed of two or three numeric segments, plus the optional modifier. Convention suggests that four-numeric-segment versions are discouraged.</p>
+<h2 id="romver">RomVer</h2>
+<p><a href="https://dafoster.net/articles/2015/03/14/semantic-versioning-vs-romantic-versioning/">RomVer</a> – Romantic Versioning – romantic versioning (not Sentimental Versioning, please) is when humans and marketing more important for you than machines. Bumping major, minor or patch number shows importance of changes and says nothing about type of this changes. Every update can break everything. As calver, never use this versioning in tools that can be used in any third-party code. But it’s OK for products for users like Firefox. DepHell allows only major, minor and patch rules for RomVer because this versioning for humans, and humans don’t understand complicated combinations of pre, post and local.</p>
+<ul>
+<li>A version number is a multi-part value such as X, X.Y, or X.Y.Z; with numeric components.</li>
+<li>A conceptually major change bumps the first component of the value.</li>
+<li>A conceptually minor change or bug fix bumps a later component of the value.</li>
+</ul>
+<p>Romantic versioning is meant primarily for humans to understand, at the possible expense of easy understanding by a computer. This makes it suitable for marketing purposes (since marketing is directed at humans) but often not suitable for automated dependency management (which is performed by a computer).</p>
+<h2 id="serial">Serial</h2>
+<p><a href="https://packaging.python.org/guides/distributing-packages-using-setuptools/#serial-versioning">Serial</a> – Serial Versioning – this is just single number that you increment for every release (1, 2, 3…). Simplest versioning scheme, but doesn’t provide any information about release changes type. Avoid this scheme if possible.</p>
+<h2 id="roman">Roman</h2>
+<p><a href="https://en.wikipedia.org/wiki/Roman_numerals">Roman</a> – Roman numerals – roman numbers versioning. Never use it. It won’t work after third release. However, you can try it for your internal project. Just for fun. Don’t say anyone that I’ve recommended it to you.</p>
+<h2 id="zerover">ZeroVer</h2>
+<p><a href="https://0ver.org/">ZeroVer</a> – 0-based Versioning – kind of semver, but your major number always 0. Sounds like joke, but this is the best versioning for experimental projects that can broke anything in any release. It says to your users that they can’t upgrade without running quite strong integration tests.</p>
+<p>Unlike other versioning schemes like Semantic Versioning and Calendar Versioning, ZeroVer (AKA 0ver) is simple: Your software's major version should never exceed the first and most important number in computing: zero.</p>
+<p>A down-to-earth demo:</p>
+<ul>
+<li>YES: 0.0.1, 0.1.0dev, 0.4.0, 0.4.1, 0.9.8n, 0.999999999</li>
+<li>NO: 1.0, 1.0.0-rc1, 18.0, 2018.04.01</li>
+</ul>
+<p>In short, software versioning best practice is like the modern list/array: 0-based.</p>
+<p>We'll leave it to computer scientists to determine how expert coders wield the power of the "zero-point" to produce top-notch software. Meanwhile, open-source and industry developers agree: ZeroVer is software's most popular versioning scheme for good reason.</p>
+<h2 id="febver">FebVer</h2>
+<p><a href="https://fibver.org/">FebVer</a> – Fibonacci Versioning – In the world of software management there exists a dreaded place called “dependency hell.” The bigger your system grows and the more packages you integrate into your software, the more likely you are to find yourself, one day, in this pit of despair.</p>
+<p>In systems with many dependencies, releasing new package versions can quickly become a nightmare. Many different versioning systems exists, including the very popular Semantic Versioning - currently in version 1.2.0 2.0.0. While all they are really trying to help you with moving your project forward, it is not the numbers and rules used that make it so problematic, but rather our human nature.</p>
+<p>As a solution to this problem, I propose yet another one broken versioning rules, consisting with some numbers and dots. With this very simple set of rules and requirements that dictate how version numbers are assigned and incremented, you can communicate changes to your public API or software units. As by default they won’t help you in maintaining your software, it is at least mathematically elegant.</p>
+<p>Given a version number MAJOR.MINOR.PATCH, increment to the next Fibonacci number the:</p>
+<ul>
+<li>MAJOR version when you make incompatible API changes,</li>
+<li>MINOR version when you add functionality in a backwards compatible manner, and</li>
+<li>PATCH version when you make backwards compatible bug fixes.</li>
+</ul>
+<p>Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../../Unix/AIX/Common/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../../Unix/AIX/Common/" class="btn btn-xs btn-link">
+        Common
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Version_Control/Subversion/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Version_Control/Subversion/" class="btn btn-xs btn-link">
+        Subversion
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2018 Dmitriy Ivanov. <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter40819844 = new Ya.Metrika({ id:40819844, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

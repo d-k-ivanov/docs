@@ -37,6 +37,10 @@
           ]},
           {title: "Update all packages with powershell", url: "#update-all-packages-with-powershell", children: [
           ]},
+          {title: "Update", url: "#update", children: [
+          ]},
+          {title: "Update all", url: "#update-all", children: [
+          ]},
         ];
 
     </script>
@@ -98,6 +102,22 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
 <h3 id="update-all-packages-with-powershell">Update all packages with powershell</h3>
 <pre><code>$packs = $(pip freeze --local); foreach($pack in $packs) { pip install -U $pack.Substring(0, $pack.IndexOf('=')) }
+
+
+### Install
+```bash
+pip install &lt;package_name&gt;
+pip3 install &lt;package_name&gt;
+</code></pre>
+
+<h3 id="update">Update</h3>
+<pre><code class="bash">pip install -U &lt;package_name&gt;
+pip3 install -U &lt;package_name&gt;
+</code></pre>
+
+<h3 id="update-all">Update all</h3>
+<pre><code class="bash">pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
+pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U
 </code></pre>
 
   <br>
