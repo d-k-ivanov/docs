@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Unix/Storage_and_filesystems/GPFS/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>GPFS - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Instalaltion on AIX", url: "#_top", children: [
+          ]},
+          {title: "Creating cluster", url: "#creating-cluster", children: [
+          ]},
+          {title: "Create GPFS mirror partition", url: "#create-gpfs-mirror-partition", children: [
+          ]},
+          {title: "Autostart GPFS", url: "#autostart-gpfs", children: [
+          ]},
+          {title: "Increase Inodes", url: "#increase-inodes", children: [
+          ]},
+          {title: "Change hostname on GPFS nodes", url: "#change-hostname-on-gpfs-nodes", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../HDD/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../HDD/" class="btn btn-xs btn-link">
+        HDD
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Files_in_Unix/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Files_in_Unix/" class="btn btn-xs btn-link">
+        Files in Unix
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="instalaltion-on-aix">Instalaltion on AIX</h3>
+<pre><code class="bash"># on each node:
+cd /&lt;path_to_gpfs_base_package&gt;/base-3-5/
+inutoc .
+installp -aXY -d/&lt;path_to_gpfs_base_package&gt;/base-3-5 all
+cd /&lt;path_to_gpfs_fix_package&gt;/fix-3-5-10/
+inutoc .
+installp -aXY -d/&lt;path_to_gpfs_fix_package&gt;/fix-3-5-10 all
+lslpp -L gpfs.\*
+</code></pre>
+
+<h3 id="creating-cluster">Creating cluster</h3>
+<pre><code class="bash"># You need to setup paswordless shh connection between nodes
+# Add this path to /etc/environment on each node
+export PATH=$PATH:/usr/lpp/mmfs/bin
+
+mmcrcluster -N &lt;PRIMARY_NODE_HOSTNAME&gt;:manager-quorum -p PRIMARY_NODE_HOSTNAME -r /usr/bin/ssh -R /usr/bin/scp
+mmchlicense server --accept -N PRIMARY_NODE_HOSTNAME
+mmstartup -a
+mmaddnode -N &lt;SECONDARY_NODE_HOSTNAME&gt;
+mmaddnode -N &lt;THIRDARY_NODE_HOSTNAME&gt;
+mmaddnode -N &lt;N-ARY_NODE_HOSTNAME&gt;
+mmchcluster -s &lt;SECONDARY_NODE_HOSTNAME&gt;
+mmchlicense server --accept -N &lt;SECONDARY_NODE_HOSTNAME&gt;
+mmchlicense server --accept -N &lt;THIRDARY_NODE_HOSTNAME&gt;
+mmchlicense server --accept -N &lt;N-ARY_NODE_HOSTNAME&gt;
+mmstartup -N &lt;SECONDARY_NODE_HOSTNAME&gt;
+mmstartup -N &lt;THIRDARY_NODE_HOSTNAME&gt;
+mmstartup -N &lt;N-ARY_NODE_HOSTNAME&gt;
+mmchnode --quorum --manager -N &lt;SECONDARY_NODE_HOSTNAME&gt;
+# To check status of cluster:
+mmlscluster
+mmgetstate -a
+</code></pre>
+
+<h3 id="create-gpfs-mirror-partition">Create GPFS mirror partition</h3>
+<pre><code class="bash"># On primary node:
+mkdir /etc/gpfs
+vi /etc/gpfs/diskdesk.txt
+### --insert in diskdesk.txt--
+hdiskX:::dataAndMetadata:1:nsd1:
+hdiskY:::dataAndMetadata:2:nsd2:
+### --end of insert--
+
+mmcrnsd -F /etc/gpfs/diskdesk.txt
+mmshutdown -a
+mmchconfig tiebreakerdisks=&quot;nsd1;nsd2&quot;
+mmstartup -a
+mmcrfs /mnt/gpfs gpfsfs -F /etc/gpfs/diskdesk.txt -A yes -B 512K -M2 -m2 -R2 -r2 -n 2 -N 50000
+mmlsconfig
+mmmount all -a
+mmchconfig minQuorumNodes=2
+df -g
+</code></pre>
+
+<h3 id="autostart-gpfs">Autostart GPFS</h3>
+<pre><code>mmchconfig autoload=yes
+</code></pre>
+
+<h3 id="increase-inodes">Increase Inodes</h3>
+<pre><code>mmchfs &lt;fsname&gt; -F 1M
+</code></pre>
+
+<h3 id="change-hostname-on-gpfs-nodes">Change hostname on GPFS nodes</h3>
+<ul>
+<li><em>[Preface]</em></li>
+</ul>
+<pre><code>#Old names:
+10.10.10.10     OLD-SRV-NAME-01
+10.10.10.10     OLD-SRV-NAME-02
+#New names:
+10.10.10.10     NEW-SRV-NAME-01
+10.10.10.10     NEW-SRV-NAME-02
+
+</code></pre>
+
+<ul>
+<li><em>[Preface]</em> Stop all services which use GPFS</li>
+<li><em>[On each node]</em> add new names to /etc/hosts (old ones keep too)</li>
+</ul>
+<pre><code>10.10.10.10     NEW-SRV-NAME-01
+10.10.10.11     NEW-SRV-NAME-02
+</code></pre>
+
+<ul>
+<li><em>[On master node]</em> Shut down GPFS-cluster</li>
+</ul>
+<pre><code>mmshutdown -a
+</code></pre>
+
+<ul>
+<li><em>[On master node]</em> Run command for configuration changing</li>
+</ul>
+<pre><code># Change interface names to names placed after &quot;-N&quot; key
+mmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx1 -N NEW-SRV-NAME-01
+mmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx2 -N NEW-SRV-NAME-02
+</code></pre>
+
+<ul>
+<li><em>[On master node]</em> Start GPFS-cluster</li>
+</ul>
+<pre><code>mmstartup -a
+</code></pre>
+
+<ul>
+<li><em>[On master node]</em> Check cluster details and make sure that names were changed</li>
+</ul>
+<pre><code>mmlscluster
+mmgetstate -a
+</code></pre>
+
+<ul>
+<li><em>[On each node]</em> If everything right remove old records from /etc/hosts</li>
+<li><em>[On maser node]</em> Recheck than everything still OK</li>
+</ul>
+<pre><code>mmshutdown -a
+mmstartup -a
+mmlscluster
+mmgetstate -a
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../HDD/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../HDD/" class="btn btn-xs btn-link">
+        HDD
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Files_in_Unix/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Files_in_Unix/" class="btn btn-xs btn-link">
+        Files in Unix
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2018 Dmitriy Ivanov. <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter40819844 = new Ya.Metrika({ id:40819844, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

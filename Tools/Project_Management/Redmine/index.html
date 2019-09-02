@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Tools/Project_Management/Redmine/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Redmine - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Installation on CentOS 7", url: "#_top", children: [
+              {title: "Dependencies", url: "#dependencies" },
+              {title: "Ruby", url: "#ruby" },
+              {title: "MariaDB Database", url: "#mariadb-database" },
+              {title: "Web server", url: "#web-server" },
+              {title: "Redmine", url: "#redmine" },
+          ]},
+          {title: "Email truncate", url: "#email-truncate", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Unresolve_Jira_Issue/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Unresolve_Jira_Issue/" class="btn btn-xs btn-link">
+        Unresolve Jira Issue
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Mac_Pacaging/Signing/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Mac_Pacaging/Signing/" class="btn btn-xs btn-link">
+        Signing
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="installation-on-centos-7">Installation on CentOS 7</h2>
+<h3 id="dependencies">Dependencies</h3>
+<pre><code class="bash"># For Ruby
+yum &quot;Devleopment Tools&quot;
+# For Redmine
+yum install ImageMagick ImageMagick-devel libcurl-devel httpd-devel httpd mariadb-devel mariadb-server zlib-devel zlib
+</code></pre>
+
+<h3 id="ruby">Ruby</h3>
+<pre><code class="bash">mkdir ~/dst &amp;&amp; cd dst
+wget https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.3.tar.gz
+tar xzvf ruby-2.3.3.tar.gz &amp;&amp; cd ruby-2.3.3
+# Configure from root! Bacause sometime it doesn't see zlib
+./configure
+make
+make install
+</code></pre>
+
+<h3 id="mariadb-database">MariaDB Database</h3>
+<pre><code class="bash">systemctl enable --now mariadb.service
+firewall-cmd --add-service=mysql --permanent
+firewall-cmd --reload
+
+vi /etc/my.cnf
+# --- VI ---
+[mysqld]
+character-set-server=utf8 
+# ----------
+
+mysql_secure_installation
+Set root password? [Y/n] Y
+Remove anonymous users? [Y/n] Y
+Disallow root login remotely? [Y/n] Y
+Remove test database and access to it? [Y/n] Y
+Reload privilege tables now? [Y/n] Y
+
+mysql -u root -p 
+Enter password: *****
+# --- SQL ---
+CREATE DATABASE redmine CHARACTER SET utf8;
+GRANT ALL PRIVILEGES ON redmine.* TO redmine@'localhost' IDENTIFIED BY 'my_password'; 
+FLUSH PRIVILEGES;
+EXIT;
+# -----------
+</code></pre>
+
+<h3 id="web-server">Web server</h3>
+<pre><code class="bash">rm -f /etc/httpd/conf.d/welcome.conf
+
+vi /etc/httpd/conf/httpd.con
+# --- VI ---
+# Change those values
+# Line 86
+ServerAdmin your@emain.name
+# Line 95
+ServerName www.your-server-name:80
+# Line 151
+AllowOverride All
+# Line 164
+DirectoryIndex index.html index.cgi index.php
+# At the end of file
+ServerTokens Prod
+KeepAlive On
+# ----------
+
+systemctl enable --now httpd.service
+firewall-cmd --add-service=http --permanent 
+firewall-cmd --reload 
+</code></pre>
+
+<h3 id="redmine">Redmine</h3>
+<pre><code class="bash">cd ~/dst
+wget --no-check-certificate  https://redmine.org/releases/redmine-3.3.2.tar.gz
+tar xzvf redmine-3.3.2.tar.gz
+mv redmine-3.3.2 /var/www/redmine
+
+vi /var/www/redmine/config/database.yml
+# --- VI ---
+production:
+    adapter: mysql2
+    database: redmine
+    host: localhost
+    username: redmine
+    password: &quot;my_password&quot;
+    encoding: utf8
+# ----------
+
+vi /var/www/redmine/config/configuration.yml
+# --- VI ---
+production:
+  email_delivery:
+    delivery_method: :smtp
+      smtp_settings:
+        address: &quot;your.email.server.name&quot;
+        port: 25
+        authentication: :login
+        domain: 'your.domain.name'
+        user_name: 'username@your.domain.name'
+        password: 'your-email-password'
+        enable_starttls_auto: false
+# ----------
+
+cd /var/www/redmine/
+gem install bundler --no-rdoc --no-ri 
+bundle install --without development test postgresql sqlite 
+bundle exec rake generate_secret_token RAILS_ENV=production
+bundle exec rake db:migrate RAILS_ENV=production
+gem install passenger --no-rdoc --no-ri
+passenger-install-apache2-module
+
+vi /etc/httpd/conf.d/passenger.conf
+# --- VI ---
+LoadModule passenger_module /usr/local/lib/ruby/gems/2.3.0/gems/passenger-5.1.2/buildout/apache2/mod_passenger.so
+   &lt;IfModule mod_passenger.c&gt;
+     PassengerRoot /usr/local/lib/ruby/gems/2.3.0/gems/passenger-5.1.2
+     PassengerDefaultRuby /usr/local/bin/ruby
+   &lt;/IfModule&gt;
+
+NameVirtualHost *:80
+&lt;VirtualHost *:80&gt;
+    ServerName redmine.pupupon.com
+    DocumentRoot /var/www/redmine/public
+&lt;/VirtualHost&gt;
+# ----------
+
+chown -R apache:apache /var/www/redmine
+chmod -R 777 /var/www/redmine/tmp
+
+systemctl restart httpd
+
+# http://your.redmone.server
+# Initial username/password &quot;admin/admin&quot;
+</code></pre>
+
+<h2 id="email-truncate">Email truncate</h2>
+<pre><code>diff --git a/app/models/mail_handler.rb b/app/models/mail_handler.rb
+index 520183c..717e49b 100644
+--- a/app/models/mail_handler.rb
++++ b/app/models/mail_handler.rb
+@@ -441,12 +441,20 @@
+
+   # Removes the email body of text after the truncation configurations.
+   def cleanup_body(body)
+-    delimiters = Setting.mail_handler_body_delimiters.to_s.split(/[\r\n]+/).reject(&amp;:blank?).map {|s| Regexp.escape(s)}
+-    unless delimiters.empty?
+-      regex = Regexp.new(&quot;^[&gt; ]*(#{ delimiters.join('|') })\s*[\r\n].*&quot;, Regexp::MULTILINE)
+-      body = body.gsub(regex, '')
++    address = Setting.mail_from
++    regex_arr = [
++      Regexp.new(&quot;From:\s*&quot; + Regexp.escape(address), Regexp::IGNORECASE),
++      Regexp.new(&quot;&lt;&quot; + Regexp.escape(address) + &quot;&gt;&quot;, Regexp::IGNORECASE),
++      Regexp.new(Regexp.escape(address) + &quot;\s+wrote:&quot;, Regexp::IGNORECASE),
++      Regexp.new(&quot;^.*On.*(\n)?wrote:$&quot;, Regexp::IGNORECASE),
++      Regexp.new(&quot;-+original\s+message-+\s*$&quot;, Regexp::IGNORECASE),
++      Regexp.new(&quot;from:\s*$&quot;, Regexp::IGNORECASE)
++    ]
++    body_length = body.length
++    index = regex_arr.inject(body_length) do |min, regex|
++      [(body.index(regex) || body_length), min].min
+     end
+-    body.strip
++    body[0, index].strip
+   end
+
+   def find_assignee_from_keyword(keyword, issue)
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Unresolve_Jira_Issue/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Unresolve_Jira_Issue/" class="btn btn-xs btn-link">
+        Unresolve Jira Issue
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Mac_Pacaging/Signing/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Mac_Pacaging/Signing/" class="btn btn-xs btn-link">
+        Signing
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2018 Dmitriy Ivanov. <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter40819844 = new Ya.Metrika({ id:40819844, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
