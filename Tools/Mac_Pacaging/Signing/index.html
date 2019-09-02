@@ -33,7 +33,16 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Requirements", url: "#_top", children: [
+          {title: "Signing Identity Types", url: "#_top", children: [
+              {title: "iOS Development", url: "#ios-development" },
+              {title: "iOS Distribution", url: "#ios-distribution" },
+              {title: "Mac Development", url: "#mac-development" },
+              {title: "Mac App Distribution", url: "#mac-app-distribution" },
+              {title: "Mac Installer Distribution", url: "#mac-installer-distribution" },
+              {title: "Developer ID Application", url: "#developer-id-application" },
+              {title: "Developer ID Installer", url: "#developer-id-installer" },
+          ]},
+          {title: "Requirements", url: "#requirements", children: [
           ]},
           {title: "List of Apple Identities an their usage", url: "#list-of-apple-identities-an-their-usage", children: [
           ]},
@@ -95,7 +104,36 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="requirements">Requirements</h2>
+    <h2 id="signing-identity-types">Signing Identity Types</h2>
+<h3 id="ios-development">iOS Development</h3>
+<ul>
+<li><strong>iPhone Developer</strong>: Team Member Name Used to run an iOS app on devices and use certain app services during development.</li>
+</ul>
+<h3 id="ios-distribution">iOS Distribution</h3>
+<ul>
+<li><strong>iPhone Distribution</strong>: Team Name Used to distribute your iOS app on designated devices for testing or to submit it to the App Store.</li>
+</ul>
+<h3 id="mac-development">Mac Development</h3>
+<ul>
+<li><strong>Mac Developer</strong>: Team Member Name Used to enable certain app services during development and testing.</li>
+</ul>
+<h3 id="mac-app-distribution">Mac App Distribution</h3>
+<ul>
+<li><strong>3rd Party Mac Developer Application</strong>: Team Name Used to sign a Mac app before submitting it to the Mac App Store.</li>
+</ul>
+<h3 id="mac-installer-distribution">Mac Installer Distribution</h3>
+<ul>
+<li><strong>3rd Party Mac Developer Installer</strong>: Team Name Used to sign and submit a Mac Installer Package, containing your signed app, to the Mac App Store.</li>
+</ul>
+<h3 id="developer-id-application">Developer ID Application</h3>
+<ul>
+<li><strong>Developer ID Application</strong>: Team Name Used to sign a Mac app before distributing it outside the Mac App Store.</li>
+</ul>
+<h3 id="developer-id-installer">Developer ID Installer</h3>
+<ul>
+<li><strong>Developer ID Installer</strong>: Team Name Used to sign and distribute a Mac Installer Package, containing your signed app, outside the Mac App Store</li>
+</ul>
+<h2 id="requirements">Requirements</h2>
 <ul>
 <li>Register as Apple Developer</li>
 <li>Get your Apple Developer ID</li>
