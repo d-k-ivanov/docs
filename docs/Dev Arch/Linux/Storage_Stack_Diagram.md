@@ -1,2 +1,3 @@
+# Storage Stack Diagram
 
-![Storage Stack Diagram](/data/Linux-storage-stack-diagram_v4.10.png)
+![Storage Stack Diagram](/docs/data/Linux-storage-stack-diagram_v4.10.png)
