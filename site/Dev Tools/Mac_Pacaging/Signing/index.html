@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Dev Tools/Mac_Pacaging/Signing/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Signing - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Requirements", url: "#_top", children: [
+          ]},
+          {title: "List of Apple Identities an their usage", url: "#list-of-apple-identities-an-their-usage", children: [
+          ]},
+          {title: "Sing Application Code", url: "#sing-application-code", children: [
+              {title: "Sign Installer", url: "#sign-installer" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../QMake/Link_Dynamic_libraries_on_Mac/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../QMake/Link_Dynamic_libraries_on_Mac/" class="btn btn-xs btn-link">
+        Link Dynamic libraries on Mac
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Install_Packages_1.2.4/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Install_Packages_1.2.4/" class="btn btn-xs btn-link">
+        Install Packages 1.2.4
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="requirements">Requirements</h2>
+<ul>
+<li>Register as Apple Developer</li>
+<li>Get your Apple Developer ID</li>
+<li>Generate certificates</li>
+<li>Import certificated to Keychain</li>
+<li>Got to Settings --&gt; Security &amp; Privacy</li>
+<li>Add your Terminal App to Accessibility</li>
+<li>Add your Terminal App to Automation: System Events (Request will be appeared)</li>
+</ul>
+<h2 id="list-of-apple-identities-an-their-usage">List of Apple Identities an their usage</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Identity prefix</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iOS Development</td>
+<td>iPhone Developer:</td>
+<td>Team Member Name Used to run an iOS app on devices and use certain app services during development</td>
+</tr>
+<tr>
+<td>iOS Distribution</td>
+<td>iPhone Distribution:</td>
+<td>Team Name Used to distribute your iOS app on designated devices for testing or to submit it to the App Store.</td>
+</tr>
+<tr>
+<td>Mac Development</td>
+<td>Mac Developer:</td>
+<td>Team Member Name Used to enable certain app services during development and testing.</td>
+</tr>
+<tr>
+<td>Mac App Distribution</td>
+<td>3rd Party Mac Developer Application:</td>
+<td>Team Name Used to sign a Mac app before submitting it to the Mac App Store.</td>
+</tr>
+<tr>
+<td>Mac Installer Distribution</td>
+<td>3rd Party Mac Developer Installer:</td>
+<td>Team Name Used to sign and submit a Mac Installer Package, containing your signed app, to the Mac App Store.</td>
+</tr>
+<tr>
+<td>Developer ID Application</td>
+<td>Developer ID Application:</td>
+<td>Team Name Used to sign a Mac app before distributing it outside the Mac App Store.</td>
+</tr>
+<tr>
+<td>Developer ID Installer</td>
+<td>Developer ID Installer:</td>
+<td>Team Name Used to sign and distribute a Mac Installer Package, containing your signed app, outside the Mac App Store</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sing-application-code">Sing Application Code</h2>
+<pre><code class="bash">codesign --force --verify --verbose --deep --sign &quot;Developer ID Application: YOUR_NAME&quot; &quot;PATH_TO_APP&quot;
+
+# With osascritp
+echo '
+tell application &quot;Terminal&quot; to activate
+tell application &quot;System Events&quot;
+    set cmd to &quot;codesign --force --verify --verbose --deep --sign \&quot;Developer ID Application: YOUR_NAME\&quot; \&quot;PATH_TO_APP\&quot;&quot;
+    set cmd1 to &quot;cd '$RELEASE_PATH'&quot;
+    keystroke cmd1
+    key code 36
+    keystroke cmd
+    key code 36
+    delay 240
+end tell
+' | osascript
+</code></pre>
+
+<h3 id="sign-installer">Sign Installer</h3>
+<pre><code class="bash">productsign --sign &quot;Developer ID Installer: YOUR_NAME&quot; &quot;PATH_TO_UNSIGNED_PKG&quot; &quot;PATH_TO_PKG&quot;
+
+echo '
+tell application &quot;Terminal&quot; to activate
+tell application &quot;System Events&quot;
+    set cmd to &quot;productsign --sign \&quot;Developer ID Installer: YOUR_NAME\&quot; \&quot;PATH_TO_UNSIGNED_PKG\&quot; \&quot;PATH_TO_PKG\&quot;&quot;
+    set cmd1 to &quot;cd '$RELEASE_PATH'&quot;
+    keystroke cmd1
+    key code 36
+    keystroke cmd
+    key code 36
+    delay 60
+end tell
+' | osascript
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../QMake/Link_Dynamic_libraries_on_Mac/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../QMake/Link_Dynamic_libraries_on_Mac/" class="btn btn-xs btn-link">
+        Link Dynamic libraries on Mac
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Install_Packages_1.2.4/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Install_Packages_1.2.4/" class="btn btn-xs btn-link">
+        Install Packages 1.2.4
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2018 Dmitriy Ivanov. <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter40819844 = new Ya.Metrika({ id:40819844, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
