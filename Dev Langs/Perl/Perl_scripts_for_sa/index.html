@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Dev Langs/Perl/Perl_scripts_for_sa/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Perl scripts for sa - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Perl tricks for system administrators", url: "#_top", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Python/Installation/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Python/Installation/" class="btn btn-xs btn-link">
+        Installation
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Perl_one-liners/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Perl_one-liners/" class="btn btn-xs btn-link">
+        Perl one liners
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="perl-tricks-for-system-administrators">Perl tricks for system administrators</h2>
+<p>Did you know that Perl is a great programming language for system administrators? Perl is platform-independent so you can do things on different operating systems without rewriting your scripts. Scripting in Perl is quick and easy, and its portability makes your scripts amazingly useful. Here are a few examples, just to get your creative juices flowing!
+Renaming a bunch of files</p>
+<p>Suppose you need to rename a whole bunch of files in a directory. In this case, we've got a directory full of .xml files, and we want to rename them all to .html. Easy-peasy!</p>
+<pre><code class="perl">#!/usr/bin/perl
+use strict;
+use warnings;
+
+foreach my $file (glob &quot;*.xml&quot;) {
+    my $new = substr($file, 0, -3) . &quot;html&quot;;
+    rename $file, $new;
+}
+</code></pre>
+
+<p>Then just cd to the directory where you need to make the change, and run the script. You could put this in a cron job, if you needed to run it regularly, and it is easily enhanced to accept parameters.</p>
+<p>Speaking of accepting parameters, let's take a look at a script that does just that.
+Creating a Linux user account</p>
+<p>Suppose you need to regularly create Linux user accounts on your system, and the format of the username is first initial/last name, as is common in many businesses. (This is, of course, a good idea, until you get John Smith and Jane Smith working at the same company—or want John to have two accounts, as he works part-time in two different departments. But humor me, okay?) Each user account needs to be in a group based on their department, and home directories are of the format /home/<department>/<username>. Let's take a look at a script to do that:</p>
+<pre><code class="perl">#!/usr/bin/env perl
+use strict;
+use warnings;
+
+my $adduser = '/usr/sbin/adduser';
+
+use Getopt::Long qw(GetOptions);
+
+# If the user calls the script with no parameters, 
+# give them help!
+
+if (not @ARGV) {
+    usage();
+}
+
+# Gather our options; if they specify any undefined option, 
+# they'll get sent some help!
+
+my %opts;
+GetOptions(\%opts,
+    'fname=s',
+    'lname=s',
+    'dept=s',
+    'run',
+) or usage();
+
+# Let's validate our inputs. All three parameters are 
+# required, and must be alphabetic.
+# You could be clever, and do this with a foreach loop, 
+# but let's keep it simple for now.
+
+if (not $opts{fname} or $opts{fname} !~ /^[a-zA-Z]+$/) {
+    usage(&quot;First name must be alphabetic&quot;);
+}
+if (not $opts{lname} or $opts{lname} !~ /^[a-zA-Z]+$/) {
+    usage(&quot;Last name must be alphabetic&quot;);
+}
+if (not $opts{dept} or $opts{dept} !~ /^[a-zA-Z]+$/) {
+    usage(&quot;Department must be alphabetic&quot;);
+}
+
+# Construct the username and home directory
+
+my $username = lc( substr($opts{fname}, 0, 1) . $opts{lname});
+my $home     = &quot;/home/$opts{dept}/$username&quot;;
+
+# Show them what we've got ready to go.
+
+print &quot;Name:           $opts{fname} $opts{lname}\n&quot;;
+print &quot;Username:       $username\n&quot;;
+print &quot;Department:     $opts{dept}\n&quot;;
+print &quot;Home directory: $home\n\n&quot;;
+
+# use qq() here, so that the quotes in the --gecos flag
+# get carried into the command!
+
+my $cmd = qq($adduser --home $home --ingroup $opts{dept} \\
+--gecos &quot;$opts{fname} $opts{lname}&quot; $username);
+
+print &quot;$cmd\n&quot;;
+if ($opts{run}) {
+    system $cmd;
+} else {
+    print &quot;You need to add the --run flag to actually execute\n&quot;;
+}
+
+sub usage {
+    my ($msg) = @_;
+    if ($msg) {
+        print &quot;$msg\n\n&quot;;
+    }
+    print &quot;Usage: $0 --fname FirstName --lname LastName --dept Department --run\n&quot;;
+    exit;
+}
+</code></pre>
+
+<p>As with the previous script, there are opportunities for enhancement, but something like this might be all that you need for this task.</p>
+<p>One more, just for fun!
+Change copyright text in every Perl source file in a directory tree</p>
+<p>Now we're going to try a mass edit. Suppose you've got a directory full of code, and each file has a copyright statement somewhere in it. (Rich Bowen wrote a great article, Copyright statements proliferate inside open source code a couple of years ago that discusses the wisdom of copyright statements in open source code. It is a good read, and I recommend it highly. But again, humor me.) You want to change that text in each and every file in the directory tree. File::Find and File::Slurp are your friends!</p>
+<pre><code class="perl">#!/usr/bin/perl
+use strict;
+use warnings;
+
+use File::Find qw(find);
+use File::Slurp qw(read_file write_file);
+
+# If the user gives a directory name, use that. Otherwise, 
+# use the current directory.
+
+my $dir = $ARGV[0] || '.';
+
+# File::Find::find is kind of dark-arts magic. 
+# You give it a reference to some code, 
+# and a directory to hunt in, and it will 
+# execute that code  on every file in the 
+# directory, and all subdirectories. In this 
+# case, \&amp;change_file is the reference 
+# to our code, a subroutine.  You could, if 
+# what you wanted to do was really short, 
+# include it in a { } block instead. But doing 
+# it this way is nice and readable.
+
+find( \&amp;change_file, $dir);
+
+sub change_file {
+    my $name= $_;
+
+    # If the file is a directory, symlink, or other 
+    # non-regular file, don't do anything
+
+    if (not -f $name) {
+        return;
+    }
+    # If it's not Perl, don't do anything.
+
+    if (substr($name, -3) ne &quot;.pl&quot;) {
+        return;
+    }
+    print &quot;$name\n&quot;;
+
+    # Gobble up the file, complete with carriage
+    # returns and everything. 
+    # Be wary of this if you have very large files
+    # on a system with limited memory!
+
+    my $data = read_file($name);
+
+    # Use a regex to make the change. If the string appears 
+    # more than once, this will change it everywhere!
+
+    $data =~ s/Copyright Old/Copyright New/g;
+
+    # Let's not ruin our original files
+
+    my $backup = &quot;$name.bak&quot;;
+    rename $name, $backup; 
+    write_file($name, $data);
+
+    return;
+}
+</code></pre>
+
+<p>Because of Perl's portability, you could use this script on a Windows system as well as a Linux system—it Just Works because of the underlying Perl interpreter code. In our create-an-account code above, that one is not portable, but is Linux-specific because it uses Linux commands such as adduser.</p>
+<p>In my experience, I've found it useful to have a Git repository of these things somewhere that I can clone on each new system I'm working with. Over time, you'll think of changes to make to the code to enhance the capabilities, or you'll add new scripts, and Git can help you make sure that all your tools and tricks are available on all your systems.</p>
+<p>I hope these little scripts have given you some ideas how you can use Perl to make your system administration life a little easier. In addition to these longer scripts, take a look at a fantastic list of Perl one-liners, and links to other Perl magic assembled by Mischa Peterson.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Python/Installation/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Python/Installation/" class="btn btn-xs btn-link">
+        Installation
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Perl_one-liners/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Perl_one-liners/" class="btn btn-xs btn-link">
+        Perl one liners
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2018 Dmitriy Ivanov. <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter40819844 = new Ya.Metrika({ id:40819844, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
