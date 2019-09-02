@@ -1,3 +1,33 @@
+## Signing Identity Types
+
+### iOS Development
+
+* **iPhone Developer**: Team Member Name Used to run an iOS app on devices and use certain app services during development.
+
+### iOS Distribution
+
+* **iPhone Distribution**: Team Name Used to distribute your iOS app on designated devices for testing or to submit it to the App Store.
+
+### Mac Development
+
+* **Mac Developer**: Team Member Name Used to enable certain app services during development and testing.
+
+### Mac App Distribution
+
+* **3rd Party Mac Developer Application**: Team Name Used to sign a Mac app before submitting it to the Mac App Store.
+
+### Mac Installer Distribution
+
+* **3rd Party Mac Developer Installer**: Team Name Used to sign and submit a Mac Installer Package, containing your signed app, to the Mac App Store.
+
+### Developer ID Application
+
+* **Developer ID Application**: Team Name Used to sign a Mac app before distributing it outside the Mac App Store.
+
+### Developer ID Installer
+
+* **Developer ID Installer**: Team Name Used to sign and distribute a Mac Installer Package, containing your signed app, outside the Mac App Store
+
 ## Requirements
 
 * Register as Apple Developer
