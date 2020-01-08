@@ -25,9 +25,8 @@ extra:
     - type: 'linkedin'
       link: 'https://www.linkedin.com/in/dmitriy-ivanov-5b9275b3/'
 
-google_analytics:
-  - 'UA-80208201-1'
-  - 'd-k-ivanov.github.io'
+
+google_analytics: ['UA-80208201-1', 'd-k-ivanov.github.io']
 
 copyright: Copyright &copy; 2016-2018 Dmitriy Ivanov.
   <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter40819844 = new Ya.Metrika({ id:40819844, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
