@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Dev_Scripts/VBS/Kaspersky_Base_Actuality/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Kaspersky Base Actuality - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "With WMI query to get AVBasesStat path", url: "#_top", children: [
+          ]},
+          {title: "Hardcoded AVBasesStat path", url: "#hardcoded-avbasesstat-path", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Links/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Links/" class="btn btn-xs btn-link">
+        Links
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Power_Shell/SSL/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Power_Shell/SSL/" class="btn btn-xs btn-link">
+        SSL
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="with-wmi-query-to-get-avbasesstat-path">With WMI query to get AVBasesStat path</h3>
+<pre><code class="vbs">' VBscript:
+' Script to check actual date of Kaspersky Bases update
+' Author  : Dmitry Ivanov
+' Usage : C:\Windows\System32\cscript.exe //E:VBscript //NoLogo &lt;Path_TO&gt;\kav.vbs
+'   NetXMS Agent config:
+'   ExternalParameterShellExec = KasperskyBasesState:C:\Windows\System32\cscript.exe //E:VBscript //NoLogo c:\Path_TO\kav.vbs
+
+On Error Resume Next
+
+strComputer     = &quot;.&quot;
+strNamespace    = &quot;\root\CIMV2&quot;
+strClass    = &quot;Win32_SoftwareElement&quot;
+
+Set objWMIService   = GetObject(&quot;winmgmts:\\&quot; &amp; strComputer &amp; strNamespace) 
+set colItems    = objWMIService.ExecQuery(_
+        &quot;Select * from &quot; &amp; strClass &amp;&quot; Where Name='AVBasesStatComponent'&quot;, _
+        &quot;WQL&quot;, wbemFlagReturnImmediately + wbemFlagForwardOnly)
+
+kavStatFile   = colItems.ItemIndex(0).Path + &quot;kdb.stt&quot;
+
+Const FILE_READ   = 1
+Set objFSO    = CreateObject(&quot;Scripting.FileSystemObject&quot;)
+Set objStatFile   = objFSO.OpenTextFile(kavStatFile, FILE_READ)
+kavBasesStatStr   = objStatFile.ReadLine
+kavBasesStatArr   = Split(kavBasesStatStr,&quot;;&quot;)
+kavBaseDateStr    = kavBasesStatArr(1)
+
+theYear     = Mid(kavBaseDateStr, 1, 4)
+theMonth    = Mid(kavBaseDateStr, 5, 2)
+theDay      = Mid(kavBaseDateStr, 7, 2)
+theHour     = Mid(kavBaseDateStr, 9, 2)
+theMin      = Mid(kavBaseDateStr, 11, 2)
+
+kavBaseDate   = CDate(theDay &amp; &quot;/&quot; &amp; theMonth &amp; &quot;/&quot; &amp; theYear &amp; &quot; &quot; &amp; theHour &amp; &quot;:&quot; &amp; theMin)
+dateNow     = Now()
+dateTreshold    = DateAdd(&quot;H&quot;,-24, dateNow)
+
+IF dateNow &lt; kavBaseDate Then
+  Wscript.Echo &quot;!!!ERROR: Wrong time. Kaspersky bases from future! Check server timezone!&quot;
+ElseIF dateTreshold &lt; kavBaseDate Then
+  Wscript.Echo &quot;Yes&quot;
+Else
+  Wscript.Echo &quot;No&quot;
+End If
+
+objStatFile.close()
+
+
+' DEBUG
+'Wscript.Echo &quot;kavBaseDate: &quot;     &amp; kavBaseDate
+'Wscript.Echo &quot;dateNow: &quot;     &amp; dateNow
+'Wscript.Echo &quot;kavBaseDateStr: &quot;  &amp; kavBaseDateStr
+'Wscript.Echo &quot;dateTreshold &quot;     &amp; dateTreshold
+'Wscript.Echo &quot;IF: &quot;      &amp; dateTreshold &lt; kavBaseDate
+'Wscript.Echo 
+</code></pre>
+
+<h3 id="hardcoded-avbasesstat-path">Hardcoded AVBasesStat path</h3>
+<pre><code class="vbs">' VBscript:
+' Script to check actual date of Kaspersky Bases update
+' Author  : Dmitry Ivanov
+' Usage : C:\Windows\System32\cscript.exe //E:VBscript //NoLogo &lt;Path_TO&gt;\kav.vbs
+'   NetXMS Agent config:
+'   ExternalParameterShellExec = KasperskyBasesState:C:\Windows\System32\cscript.exe //E:VBscript //NoLogo c:\Path_TO\kav.vbs
+
+On Error Resume Next
+
+kavStatFile   = &quot;c:\ProgramData\Kaspersky Lab\KAV for Windows Servers Enterprise Edition\8.0\Bases\Current\Stat\kdb.stt&quot;
+
+Const FILE_READ   = 1
+Set objFSO    = CreateObject(&quot;Scripting.FileSystemObject&quot;)
+Set objStatFile   = objFSO.OpenTextFile(kavStatFile, FILE_READ)
+kavBasesStatStr   = objStatFile.ReadLine
+kavBasesStatArr   = Split(kavBasesStatStr,&quot;;&quot;)
+kavBaseDateStr    = kavBasesStatArr(1)
+
+theYear     = Mid(kavBaseDateStr, 1, 4)
+theMonth    = Mid(kavBaseDateStr, 5, 2)
+theDay      = Mid(kavBaseDateStr, 7, 2)
+theHour     = Mid(kavBaseDateStr, 9, 2)
+theMin      = Mid(kavBaseDateStr, 11, 2)
+
+kavBaseDate   = CDate(theDay &amp; &quot;/&quot; &amp; theMonth &amp; &quot;/&quot; &amp; theYear &amp; &quot; &quot; &amp; theHour &amp; &quot;:&quot; &amp; theMin)
+dateNow     = Now()
+dateTreshold    = DateAdd(&quot;H&quot;,-24, dateNow)
+
+IF dateNow &lt; kavBaseDate Then
+  Wscript.Echo &quot;!!!ERROR: Wrong time. Kaspersky bases from future! Check server timezone!&quot;
+ElseIF dateTreshold &lt; kavBaseDate Then
+  Wscript.Echo &quot;Yes&quot;
+Else
+  Wscript.Echo &quot;No&quot;
+End If
+
+objStatFile.close()
+
+
+' DEBUG
+'Wscript.Echo &quot;kavBaseDate: &quot;     &amp; kavBaseDate
+'Wscript.Echo &quot;dateNow: &quot;     &amp; dateNow
+'Wscript.Echo &quot;kavBaseDateStr: &quot;  &amp; kavBaseDateStr
+'Wscript.Echo &quot;dateTreshold &quot;     &amp; dateTreshold
+'Wscript.Echo &quot;IF: &quot;      &amp; dateTreshold &lt; kavBaseDate
+'Wscript.Echo 
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Links/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Links/" class="btn btn-xs btn-link">
+        Links
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Power_Shell/SSL/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Power_Shell/SSL/" class="btn btn-xs btn-link">
+        SSL
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2018 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

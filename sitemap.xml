@@ -141,307 +141,317 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Arch/S.O.L.I.D/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Arch/S.O.L.I.D/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Arch/Apple/Plist/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Arch/Apple/Plist/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Arch/Hardware/GPU/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Arch/Hardware/GPU/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Arch/Hardware/IP_Packet_Example/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Arch/Hardware/IP_Packet_Example/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Arch/Hardware/Latency_Numbers/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Arch/Hardware/Latency_Numbers/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Arch/Hardware/Networks/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Arch/Hardware/Networks/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Arch/Linux/Storage_Stack_Diagram/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Arch/Linux/Storage_Stack_Diagram/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Brainfuck/Sample1/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/Brainfuck/Sample1/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/C_and_Cpp/Rand/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/C_and_Cpp/Rand/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/01-Preface/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/01-Preface/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/02-Use_the_Tools_Available/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/02-Use_the_Tools_Available/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/03-Style/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/03-Style/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/04-Considering_Safety/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/04-Considering_Safety/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/05-Considering_Maintainability/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/05-Considering_Maintainability/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/06-Considering_Portability/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/06-Considering_Portability/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/07-Considering_Threadability/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/07-Considering_Threadability/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/08-Considering_Performance/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/08-Considering_Performance/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/09-Considering_Correctness/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/09-Considering_Correctness/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/10-Enable_Scripting/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/10-Enable_Scripting/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/11-Further_Reading/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/11-Further_Reading/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/12-Final_Thoughts/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/12-Final_Thoughts/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/C_and_Cpp/Modern_CPP_Features/CPP11/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/C_and_Cpp/ECE_CMU_Standards/CPP_Coding_Standard/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/C_and_Cpp/Modern_CPP_Features/CPP14/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/C_and_Cpp/ECE_CMU_Standards/C_Coding_Standard/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/C_and_Cpp/Modern_CPP_Features/CPP17/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/C_and_Cpp/Modern_CPP_Features/CPP11/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/C_and_Cpp/Modern_CPP_Features/Overview/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/C_and_Cpp/Modern_CPP_Features/CPP14/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Cuda/Make/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/C_and_Cpp/Modern_CPP_Features/CPP17/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/HTML/Redirect/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/C_and_Cpp/Modern_CPP_Features/Overview/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Java/Environment/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/Cuda/Make/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Java/HiDPI/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/HTML/Redirect/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Java/Runtime_customization/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/Java/Environment/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Java/Tomcat/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/Java/HiDPI/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/MPI/HelloWorld/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/Java/Runtime_customization/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/MPI/MPI-Lib/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/Java/Tomcat/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Markdown/Markdown/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/MPI/HelloWorld/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Perl/Perl_one-liners/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/MPI/MPI-Lib/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Perl/Perl_scripts_for_sa/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/Markdown/Markdown/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Python/Installation/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/Perl/Perl_one-liners/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Python/Kivy/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/Perl/Perl_scripts_for_sa/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Python/Users_and_groups/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/Python/Installation/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Python/pip/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/Python/Kivy/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Langs/Ruby/Installation/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/Python/Users_and_groups/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Ops/Ansible/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/Python/pip/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Ops/Bamboo/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Langs/Ruby/Installation/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Ops/Chef-Windows/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Ops/Ansible/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Ops/Terraform/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Ops/Bamboo/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev QA/Stress_tests/Ackermann_function/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Ops/Chef-Windows/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Scripts/Bash/Collect_bash_history/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Ops/Terraform/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Scripts/Bash/Convert-CP1251-to-UTF8/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_QA/Stress_tests/Ackermann_function/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Scripts/Bash/Gentoo_Functions/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Scripts/Bash/Collect_bash_history/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Scripts/Cmd/Colours/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Scripts/Bash/Convert-CP1251-to-UTF8/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Scripts/Cmd/Ping_Whole_Subnet/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Scripts/Bash/Gentoo_Functions/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Scripts/Power_Shell/Azure/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Scripts/Cmd/Colours/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Scripts/Power_Shell/Encoding/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Scripts/Cmd/Ping_Whole_Subnet/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Scripts/Power_Shell/Misc/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Scripts/Power_Shell/Azure/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Scripts/Power_Shell/One-Liners/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Scripts/Power_Shell/Encoding/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Scripts/Power_Shell/PSCmdlet/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Scripts/Power_Shell/Misc/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Scripts/Power_Shell/SSL/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Scripts/Power_Shell/One-Liners/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Scripts/VBS/Kaspersky_Base_Actuality/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Scripts/Power_Shell/PSCmdlet/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Scripts/VBS/Links/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Scripts/Power_Shell/SSL/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Scripts/VBS/Network/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Scripts/VBS/Kaspersky_Base_Actuality/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://d-k-ivanov.github.io/docs/Dev Scripts/VBS/Run/</loc>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Scripts/VBS/Links/</loc>
+     <lastmod>2020-02-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Scripts/VBS/Network/</loc>
+     <lastmod>2020-02-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://d-k-ivanov.github.io/docs/Dev_Scripts/VBS/Run/</loc>
      <lastmod>2020-02-16</lastmod>
      <changefreq>daily</changefreq>
     </url>
