@@ -4,7 +4,6 @@
 
 ***
 
-* [Design Stories](DesignStories.html)
 * [OO Info Sources](http://www.sente.ch/cetus/software.html)
 * [Unified Modeling Language (UML)](http://www.rational.com/uml/index.jtmpl)
 * [OPEN Method](http://www.markv.com/OPEN/)
@@ -17,7 +16,6 @@
 * [Design by Contract from Eiffle](http://www.eiffel.com/doc/manuals/technology/contract/)
 * [C++ isn't Perfect, Here are Some Reasons Why](http://www.progsoc.uts.edu.au/~geldridg/cpp/cppcv3.html)
 * [Doxygen](http://www.stack.nl/~dimitri/doxygen/) \- is a 'javadoc' like utility that extracts comments and relevant information from your C++/C programs and generates HTML pages from it.
-* [Const Correctness](const.html) \- A very nice article on const correctness by Chad Loder.
 * [Abraxis Code Check](http://www.abxsoft.com/) - A program for checking code for coding standard violations and other problems.
 
 ***
@@ -779,7 +777,7 @@ It is recommended a program like [Doxygen](http://www.doxygen.org/) be used to d
 
 #### Required Methods Placeholders
 
-This template has placeholders for [required methods](CppCodingStandard.html#req) . You can delete them or implement them.
+This template has placeholders for required methods. You can delete them or implement them.
 
 ***
 
