@@ -20,6 +20,7 @@
 *.spl binary
 *.sys binary
 
-
-
-
+*.eot binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
