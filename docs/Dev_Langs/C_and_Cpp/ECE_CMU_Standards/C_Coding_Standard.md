@@ -348,7 +348,7 @@ Note: "A lot of code" is necessary in order that the problem cannot be caught ea
 
 From the above example, a further rule may be given: Mixing continue with break in the same loop is a sure way to disaster.
 
-#### ?:
+#### The ternary operator
 
 The trouble is people usually try and stuff too much code in between the _?_ and _:_. Here are a couple of clarity rules to follow:
 
