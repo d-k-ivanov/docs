@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Dev_Langs/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/07-Considering_Threadability/">
+    <link rel="shortcut icon" href="../../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Considering Threadability - Technical Info</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <link href="../../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Considering Threadability", url: "#_top", children: [
+              {title: "Avoid Global Data", url: "#avoid-global-data" },
+              {title: "Avoid Heap Operations", url: "#avoid-heap-operations" },
+              {title: "Mutex and mutable go together (M&amp;M rule, C++11)", url: "#mutex-and-mutable-go-together-mm-rule-c11" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../08-Considering_Performance/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../08-Considering_Performance/" class="btn btn-xs btn-link">
+        Considering Performance
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../06-Considering_Portability/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../06-Considering_Portability/" class="btn btn-xs btn-link">
+        Considering Portability
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="considering-threadability">Considering Threadability</h1>
+<h2 id="avoid-global-data">Avoid Global Data</h2>
+<p>Global data leads to unintended side effects between functions and can make code difficult or impossible to parallelize. Even if the code is not intended today for parallelization, there is no reason to make it impossible for the future.</p>
+<h3 id="statics">Statics</h3>
+<p>Besides being global data, statics are not always constructed and deconstructed as you would expect. This is particularly true in cross-platform environments. See for example, <a href="https://gcc.gnu.org/bugzilla/show_bug.cgi?id=66830">this g++ bug</a> regarding the order of destruction of shared static data loaded from dynamic modules.</p>
+<h3 id="shared-pointers">Shared Pointers</h3>
+<p><code>std::shared_ptr</code> is "as good as a global" (http://stackoverflow.com/a/18803611/29975) because it allows multiple pieces of code to interact with the same data.</p>
+<h3 id="singletons">Singletons</h3>
+<p>A singleton is often implemented with a static and/or <code>shared_ptr</code>.</p>
+<h2 id="avoid-heap-operations">Avoid Heap Operations</h2>
+<p>Much slower in threaded environments. In many or maybe even most cases, copying data is faster. Plus with move operations and such and things.</p>
+<h2 id="mutex-and-mutable-go-together-mm-rule-c11">Mutex and mutable go together (M&amp;M rule, C++11)</h2>
+<p>For member variables it is good practice to use mutex and mutable together. This applies in both ways:
+* A mutable member variable is presumed to be a shared variable so it should be synchronized with a mutex (or made atomic)
+* If a member variable is itself a mutex, it should be mutable. This is required to use it inside a const member function.</p>
+<p>For more information see the following article from Herb Sutter: http://herbsutter.com/2013/05/24/gotw-6a-const-correctness-part-1-3/</p>
+<p>See also <a href="../04-Considering_Safety/#consider-return-by-value-for-mutable-data-const--for-immutable">related safety discussion</a> about <code>const &amp;</code> return values</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../08-Considering_Performance/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../08-Considering_Performance/" class="btn btn-xs btn-link">
+        Considering Performance
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../06-Considering_Portability/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../06-Considering_Portability/" class="btn btn-xs btn-link">
+        Considering Portability
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2018 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
