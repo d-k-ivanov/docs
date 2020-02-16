@@ -99,12 +99,10 @@ char *name, address;
 
 ### Global Variables
 
+It's important to know the scope of a variable.
+
 * Global variables should be prepended with a 'g\_'.
 * Global variables should be avoided whenever possible.
-
-Justification:
-
-* It's important to know the scope of a variable.
 
 Example:
 
@@ -115,11 +113,9 @@ Logger* g_plog;
 
 ### Global Constants
 
+It's tradition for global constants to named this way. You must be careful to not conflict with other global _#define_s and enum labels.
+
 * Global constants should be all caps with '\_' separators.
-
-Justification:
-
-* It's tradition for global constants to named this way. You must be careful to not conflict with other global _#define_s and enum labels.
 
 Example:
 
@@ -186,11 +182,11 @@ Of the three major brace placement strategies one is recommended:
 
 ### When Braces are Needed
 
-All if, while and do statements must either have braces or be on a single line.
+* All if, while and do statements must either have braces or be on a single line.
+* Always Uses Braces Form
+* All if, while and do statements require braces even if there is only a single statement within the braces.
 
-**Always Uses Braces Form:**
-
-All if, while and do statements require braces even if there is only a single statement within the braces. For example:
+It ensures that when someone adds a line of code later there are already braces and they don't forget. It provides a more consistent look. This doesn't affect execution speed. It's easy to do.
 
 ```cpp
 if (1 == somevalue) {
@@ -198,155 +194,129 @@ if (1 == somevalue) {
 }
 ```
 
-Justification:
-
-* It ensures that when someone adds a line of code later there are already braces and they don't forget. It provides a more consistent look. This doesn't affect execution speed. It's easy to do.
-
-### One Line Form
-
-if (1 == somevalue) somevalue = 2;
-
-#### Justification
-
+One Line Form: `if (1 == somevalue) somevalue = 2;`
 It provides safety when adding new lines while maintainng a compact readable form.
 
-* * *
-
-Add Comments to Closing Braces
-------------------------------
+### Add Comments to Closing Braces
 
 Adding a comment to closing braces can help when you are reading code because you don't have to find the begin brace to know what is going on.
 
+```cpp
 while(1) {
    if (valid) {
   
-   } /\* if valid \*/
+   } /* if valid */
    else {
-   } /\* not valid \*/
 
-} /\* end forever \*/
+   } /* not valid */
 
-* * *
+} /* end forever */
+```
 
-Consider Screen Size Limits
----------------------------
+### Consider Screen Size Limits
 
 Some people like blocks to fit within a common screen size so scrolling is not necessary when reading code.  
 
-* * *
+### Parens _()_ with Key Words and Functions Policy
 
-Parens _()_ with Key Words and Functions Policy
------------------------------------------------
+* Do not put parens next to keywords. Put a space between.
+* Do put parens next to function names.
+* Do not use parens in return statements when it's not necessary.
 
-*   Do not put parens next to keywords. Put a space between.
-*   Do put parens next to function names.
-*   Do not use parens in return statements when it's not necessary.
+Keywords are not functions. By putting parens next to keywords keywords and function names are made to look alike.
 
-### Justification
+Example:
 
-*   Keywords are not functions. By putting parens next to keywords keywords and function names are made to look alike.
+```cpp
+if (condition) {
+}
 
-### Example
+while (condition) {
+}
 
-    if (condition) {
-    }
+strcpy(s, s1);
 
-    while (condition) {
-    }
+return 1;
+```
 
-    strcpy(s, s1);
+### A Line Should Not Exceed 78 Characters
 
-    return 1;
+* Lines should not exceed 78 characters.
+* Even though with big monitors we stretch windows wide our printers can only print so wide. And we still need to print code.
+* The wider the window the fewer windows we can have on a screen. More windows is better than wider windows.
+* We even view and print diff output correctly on all terminals and printers.
 
-* * *
+### _If Then Else_ Formatting
 
-A Line Should Not Exceed 78 Characters
---------------------------------------
-
-*   Lines should not exceed 78 characters.
-
-Justification
--------------
-
-*   Even though with big monitors we stretch windows wide our printers can only print so wide. And we still need to print code.
-*   The wider the window the fewer windows we can have on a screen. More windows is better than wider windows.
-*   We even view and print diff output correctly on all terminals and printers.
-
-* * *
-
-_If Then Else_ Formatting
--------------------------
-
-### Layout
+#### Layout
 
 It's up to the programmer. Different bracing styles will yield slightly different looks. One common approach is:
 
-   if (condition) {
-   } else if (condition) {
-   } else {
-   }
+```cpp
+if (condition) {
+} else if (condition) {
+} else {
+}
+```
 
 If you have _else if_ statements then it is usually a good idea to always have an else block for finding unhandled cases. Maybe put a log message in the else even if there is no corrective action taken.
 
-### Condition Format
+#### Condition Format
 
 Always put the constant on the left hand side of an equality/inequality comparison. For example:
 
-if ( 6 == errorNum ) ...
+`if ( 6 == errorNum ) ...`
 
 One reason is that if you leave out one of the = signs, the compiler will find the error for you. A second reason is that it puts the value you are looking for right up front where you can find it instead of buried at the end of your expression. It takes a little time to get used to this format, but then it really gets useful.
 
-* * *
+### _switch_ Formatting
 
-_switch_ Formatting
--------------------
+* Falling through a case statement into the next case statement shall be permitted as long as a comment is included.
+* The _default_ case should always be present and trigger an error if it should not be reached, yet is reached.
+* If you need to create variables put all the code in a block.
 
-*   Falling through a case statement into the next case statement shall be permitted as long as a comment is included.
-*   The _default_ case should always be present and trigger an error if it should not be reached, yet is reached.
-*   If you need to create variables put all the code in a block.
+Example:
 
-### Example
+```cpp
+switch (...)
+{
+   case 1:
+      ...
+   /* comments */
 
-   switch (...)
+   case 2:
    {
-      case 1:
-         ...
-      /\* comments \*/
-
-      case 2:
-      {        
-         int v;
-         ...
-      }
-      break;
-
-      default:
+      int v;
+      ...
    }
+   break;
 
-* * *
+   default:
+}
+```
 
-Use of _goto,continue,break_ and _?:_
--------------------------------------
+### Use of _goto,continue,break_ and _?:_
 
-### Goto
+#### Goto
 
 Goto statements should be used sparingly, as in any well-structured code. The goto debates are boring so we won't go into them here. The main place where they can be usefully employed is to break out of several levels of switch, for, and while nesting, although the need to do such a thing may indicate that the inner constructs should be broken out into a separate function, with a success/failure return code.
 
- for (...) {
-      while (...) {
-      ...
-         if (disaster) {
-            goto error;
-
+```cpp
+for (...) {
+     while (...) {
+     ...
+        if (disaster) {
+           goto error;
          } }
    }
    ...
 error:
-   clean up the mess 
+   clean up the mess
+```
 
 When a goto is necessary the accompanying label should be alone on a line and to the left of the code that follows. The goto should be commented (possibly in the block header) as to its utility and purpose.
 
-### Continue and Break
+#### Continue and Break
 
 Continue and break are really disguised gotos so they are covered here.
 
@@ -354,78 +324,79 @@ Continue and break like goto should be used sparingly as they are magic in code.
 
 The two main problems with continue are:
 
-*   It may bypass the test condition
-*   It may bypass the increment/decrement expression
+* It may bypass the test condition
+* It may bypass the increment/decrement expression
 
 Consider the following example where both problems occur:
 
+```cpp
 while (TRUE) {
    ...
-   /\* A lot of code \*/
+   /* A lot of code */
    ...
-   if (/\* some condition \*/) {
+   if (/* some condition */) {
       continue;
    }
    ...
-   /\* A lot of code \*/
+   /* A lot of code */
    ...
-   if ( i++ > STOP\_VALUE) break;
+   if ( i++ > STOP_VALUE) break;
 }
+```
 
 Note: "A lot of code" is necessary in order that the problem cannot be caught easily by the programmer.
 
 From the above example, a further rule may be given: Mixing continue with break in the same loop is a sure way to disaster.
 
-### ?:
+#### ?:
 
 The trouble is people usually try and stuff too much code in between the _?_ and _:_. Here are a couple of clarity rules to follow:
 
-*   Put the condition in parens so as to set it off from other code
-*   If possible, the actions for the test should be simple functions.
-*   Put the action for the then and else statement on a separate line unless it can be clearly put on one line.
+* Put the condition in parens so as to set it off from other code
+* If possible, the actions for the test should be simple functions.
+* Put the action for the then and else statement on a separate line unless it can be clearly put on one line.
 
-### Example
+Example:
 
-   (condition) ? funct1() : func2();
+```cppp
+(condition) ? funct1() : func2();
 
-   or
+or
 
-   (condition)
-      ? long statement
-      : another long statement;
+(condition)
+   ? long statement
+   : another long statement;
+```
 
-* * *
-
-One Statement Per Line
-----------------------
+#### One Statement Per Line
 
 There should be only one statement per line unless the statements are very closely related.
+The reasons are: The code is easier to read. Use some white space too. Nothing better than to read code that is one line after another with no white space or comments.
 
-The reasons are:
-
-1.  The code is easier to read. Use some white space too. Nothing better than to read code that is one line after another with no white space or comments.
-
-### One Variable Per Line
+#### One Variable Per Line
 
 Related to this is always define one variable per line:
 
 **Not:**
-char \*\*a, \*x;
+
+```cpp
+char **a, *x;
+```
 
 **Do**:
-char \*\*a = 0;  /\* add doc \*/
-char  \*x = 0;  /\* add doc \*/
+
+```cpp
+char **a = 0;  /* add doc */
+char  *x = 0;  /* add doc */
+```
 
 The reasons are:
 
-1.  Documentation can be added for the variable on the line.
-2.  It's clear that the variables are initialized.
-3.  Declarations are clear which reduces the probablity of declaring a pointer when you meant to declare just a char.
+1. Documentation can be added for the variable on the line.
+2. It's clear that the variables are initialized.
+3. Declarations are clear which reduces the probablity of declaring a pointer when you meant to declare just a char.
 
-* * *
-
-To Use Enums or Not to Use Enums
---------------------------------
+### To Use Enums or Not to Use Enums
 
 C allows constant variables, which should deprecate the use of enums as constants. Unfortunately, in most compilers constants take space. Some compilers will remove constants, but not all. Constants taking space precludes them from being used in tight memory environments like embedded systems. Workstation users should use constants and ignore the rest of this discussion.
 
@@ -433,273 +404,261 @@ In general enums are preferred to _#define_ as enums are understood by the debug
 
 Be aware enums are not of a guaranteed size. So if you have a type that can take a known range of values and it is transported in a message you can't use an enum as the type. Use the correct integer size and use constants or _#define_. Casting between integers and enums is very error prone as you could cast a value not in the enum.
 
-* * *
-
-Use Header File Guards
-----------------------
+### Use Header File Guards
 
 Include files should protect against multiple inclusion through the use of macros that "guard" the files. Note that for C++ compatibility and interoperatibility reasons, do **not** use underscores '\_' as the first or last character of a header guard (see below)
 
-#ifndef sys\_socket\_h
-  #define sys\_socket\_h  /\* NOT \_sys\_socket\_h\_ \*/
-  #endif 
-  
+```cpp
+#ifndef sys_socket_h
+   #define sys_socket_h  /* NOT _sys_socket_h_ */
+#endif
+```
 
-* * *
+## Macros
 
-Macros
-======
+***
 
-Don't Turn C into Pascal
-------------------------
+### Don't Turn C into Pascal
 
 Don't change syntax via macro substitution. It makes the program unintelligible to all but the perpetrator.
 
-Replace Macros with Inline Functions
-------------------------------------
+### Replace Macros with Inline Functions
 
 In C macros are not needed for code efficiency. Use inlines. However, macros for small functions are ok.
 
-### Example
+Example:
 
-#define  MAX(x,y)	(((x) > (y) ? (x) : (y))	// Get the maximum
+```cpp
+#define MAX(x,y) (((x) > (y) ? (x) : (y))   // Get the maximum
+```
 
 The macro above can be replaced for integers with the following inline function with no loss of efficiency:
 
-   inline int 
-   max(int x, int y) {
-      return (x > y ? x : y);
-   }
+```cpp
+inline int
+max(int x, int y) {
+   return (x > y ? x : y);
+}
+```
 
-Be Careful of Side Effects
---------------------------
+### Be Careful of Side Effects
 
 Macros should be used with caution because of the potential for error when invoked with an expression that has side effects.
 
-### Example
+Example:
 
-   MAX(f(x),z++);
+```cpp
+MAX(f(x),z++);
+```
 
-Always Wrap the Expression in Parenthesis
------------------------------------------
+### Always Wrap the Expression in Parenthesis
 
 When putting expressions in macros always wrap the expression in parenthesis to avoid potential communitive operation abiguity.
 
-### Example
+Example:
 
+```cpp
 #define ADD(x,y) x + y
+```
 
-must be written as 
+must be written as:
 
+```cpp
 #define ADD(x,y) ((x) + (y))
+```
 
-Make Macro Names Unique
------------------------
+### Make Macro Names Unique
 
 Like global variables macros can conflict with macros from other packages.
 
-1.  Prepend macro names with package names.
-2.  Avoid simple and common names like MAX and MIN.
+1. Prepend macro names with package names.
+2. void simple and common names like MAX and MIN.
 
-* * *
+## Initialize all Variables
 
-Initialize all Variables
-========================
+***
 
-*   You shall always initialize variables. Always. Every time. gcc with the flag -W may catch operations on uninitialized variables, but it may also not.
+* You shall always initialize variables. Always. Every time. gcc with the flag -W may catch operations on uninitialized variables, but it may also not.
+* More problems than you can believe are eventually traced back to a pointer or variable left uninitialized.
 
-Justification
--------------
+## Short Functions
 
-*   More problems than you can believe are eventually traced back to a pointer or variable left uninitialized.
+***
 
-* * *
+* Functions should limit themselves to a single page of code.
+* The idea is that the each method represents a technique for achieving a single objective.
+* Most arguments of inefficiency turn out to be false in the long run.
+* True function calls are slower than not, but there needs to a thought out decision (see premature optimization).
 
-Short Functions
-===============
+### Document Null Statements
 
-*   Functions should limit themselves to a single page of code.
-
-### Justification
-
-*   The idea is that the each method represents a technique for achieving a single objective.
-*   Most arguments of inefficiency turn out to be false in the long run.
-*   True function calls are slower than not, but there needs to a thought out decision (see premature optimization).
-
-* * *
-
-Document Null Statements
-========================
+***
 
 Always document a null body for a for or while statement so that it is clear that the null body is intentional and not missing code.
 
- while (\*dest++ = \*src++) 
+```cpp
+while (\*dest++ = \*src++)
 
- {
-      ; 
+{
+   ;
 
-   }  
+}  
+```
 
-* * *
+### Do Not Default If Test to Non-Zero
 
-Do Not Default If Test to Non-Zero
-==================================
+***
 
 Do not default the test for non-zero, i.e.
 
- if (FAIL != f()) 
+```cpp
+ if (FAIL != f())
+```
 
 is better than
 
- if (f()) 
+```cpp
+if (f())
+```
 
-even though FAIL may have the value 0 which C considers to be false. An explicit test will help you out later when somebody decides that a failure return should be -1 instead of 0. Explicit comparison should be used even if the comparison value will never change; e.g., **if (!(bufsize % sizeof(int)))** should be written instead as **if ((bufsize % sizeof(int)) == 0)** to reflect the numeric (not boolean) nature of the test. A frequent trouble spot is using strcmp to test for string equality, where the result should _never_ _ever_ be defaulted. The preferred approach is to define a macro _STREQ_.
+even though FAIL may have the value 0 which C considers to be false. An explicit test will help you out later when somebody decides that a failure return should be -1 instead of 0. Explicit comparison should be used even if the comparison value will never change; e.g., `if (!(bufsize % sizeof(int)))` should be written instead as `if ((bufsize % sizeof(int)) == 0)` to reflect the numeric (not boolean) nature of the test. A frequent trouble spot is using strcmp to test for string equality, where the result should _never_ _ever_ be defaulted. The preferred approach is to define a macro _STREQ_.
 
- #define STREQ(a, b) (strcmp((a), (b)) == 0) 
+```cpp
+#define STREQ(a, b) (strcmp((a), (b)) == 0)
+```
 
 Or better yet use an inline method:
 
- inline bool
-   string\_equal(char\* a, char\* b)
-   {
-      (strcmp(a, b) == 0) ? return true : return false;
-	  Or more compactly:
-      return (strcmp(a, b) == 0);
-   } 
+```cpp
+inline bool
+string\_equal(char\* a, char\* b)
+{
+   (strcmp(a, b) == 0) ? return true : return false;
+   // Or more compactly:
+   return (strcmp(a, b) == 0);
+}
+```
 
 Note, this is just an example, you should really use the standard library string type for doing the comparison.
 
 The non-zero test is often defaulted for predicates and other functions or expressions which meet the following restrictions:
 
-*   Returns 0 for false, nothing else.
-*   Is named so that the meaning of (say) a **true** return is absolutely obvious. Call a predicate is\_valid(), not check\_valid().
+* Returns 0 for false, nothing else.
+* Is named so that the meaning of (say) a **true** return is absolutely obvious. Call a predicate is\_valid(), not check\_valid().
 
-* * *
+## Usually Avoid Embedded Assignments
 
-Usually Avoid Embedded Assignments
-==================================
+***
 
 There is a time and a place for embedded assignment statements. In some constructs there is no better way to accomplish the results without making the code bulkier and less readable.
 
- while (EOF != (c = getchar())) {
-      process the character
-   } 
+```cpp
+while (EOF != (c = getchar())) {
+   process the character
+}
+```
 
 The ++ and -- operators count as assignment statements. So, for many purposes, do functions with side effects. Using embedded assignment statements to improve run-time performance is also possible. However, one should consider the tradeoff between increased speed and decreased maintainability that results when embedded assignments are used in artificial places. For example,
 
- a = b + c;
-   d = a + r; 
+```cpp
+a = b + c;
+d = a + r;
+```
 
 should not be replaced by
 
- d = (a = b + c) + r; 
+```cpp
+ d = (a = b + c) + r;
+```
 
 even though the latter may save one cycle. In the long run the time difference between the two will decrease as the optimizer gains maturity, while the difference in ease of maintenance will increase as the human memory of what's going on in the latter piece of code begins to fade.
 
-* * *
+## Documentation
 
-Documentation
-=============
+***
 
-* * *
-
-Comments Should Tell a Story
-----------------------------
+### Comments Should Tell a Story
 
 Consider your comments a story describing the system. Expect your comments to be extracted by a robot and formed into a man page. Class comments are one part of the story, method signature comments are another part of the story, method arguments another part, and method implementation yet another part. All these parts should weave together and inform someone else at another point of time just exactly what you did and why.
 
-* * *
-
-Document Decisions
-------------------
+### Document Decisions
 
 Comments should document decisions. At every point where you had a choice of what to do place a comment describing which choice you made and why. Archeologists will find this the most useful information.
 
-* * *
-
-Use Headers
------------
+### Use Headers
 
 Use a document extraction system like [Doxygen](http://www.doxygen.org/).
-
 These headers are structured in such a way as they can be parsed and extracted. They are not useless like normal headers. So take time to fill them out. If you do it right once no more documentation may be necessary.
 
-* * *
-
-Comment Layout
---------------
+### Comment Layout
 
 Each part of the project has a specific comment layout. [Doxygen](http://www.doxygen.org/) has the recommended format for the comment layouts.
 
-* * *
-
-Make Gotchas Explicit
----------------------
+### Make Gotchas Explicit
 
 Explicitly comment variables changed out of the normal control flow or other code likely to break during maintenance. Embedded keywords are used to point out issues and potential problems. Consider a robot will parse your comments looking for keywords, stripping them out, and making a report so people can make a special effort where needed.
 
-### Gotcha Keywords
+#### Gotcha Keywords
 
-*   **@author:**  
-    specifies the author of the module
-    
-*   **@version:**  
-    specifies the version of the module
-    
-*   **@param:**  
-    specifies a parameter into a function
-    
-*   **@return:**  
-    specifies what a function returns
-    
-*   **@deprecated:**  
-    says that a function is not to be used anymore
-    
-*   **@see:**  
-    creates a link in the documentation to the file/function/variable to consult to get a better understanding on what the current block of code does.
-*   **@todo:**  
-    what remains to be done
-    
-*   **@bug:**  
-    report a bug found in the piece of code
-    
+* **@author:**  
+   specifies the author of the module
 
-### Gotcha Formatting
+* **@version:**  
+   specifies the version of the module
 
-*   Make the gotcha keyword the first symbol in the comment.
-*   Comments may consist of multiple lines, but the first line should be a self-containing, meaningful summary.
-*   The writer's name and the date of the remark should be part of the comment. This information is in the source repository, but it can take a quite a while to find out when and by whom it was added. Often gotchas stick around longer than they should. Embedding date information allows other programmer to make this decision. Embedding who information lets us know who to ask.
+* **@param:**  
+   specifies a parameter into a function
 
-Commenting function declarations
---------------------------------
+* **@return:**  
+   specifies what a function returns
+
+* **@deprecated:**  
+   says that a function is not to be used anymore
+
+* **@see:**  
+   creates a link in the documentation to the file/function/variable to consult to get a better understanding on what the current block of code does.
+
+* **@todo:**  
+   what remains to be done
+
+* **@bug:**  
+   report a bug found in the piece of code
+
+#### Gotcha Formatting
+
+* Make the gotcha keyword the first symbol in the comment.
+* Comments may consist of multiple lines, but the first line should be a self-containing, meaningful summary.
+* The writer's name and the date of the remark should be part of the comment. This information is in the source repository, but it can take a quite a while to find out when and by whom it was added. Often gotchas stick around longer than they should. Embedding date information allows other programmer to make this decision. Embedding who information lets us know who to ask.
+
+### Commenting function declarations
 
 Functions headers should be in the file where they are declared. This means that most likely the functions will have a header in the .h file. However, functions like main() with no explicit prototype declaration in the .h file, should have a header in the .c file.
 
-* * *
-
-Include Statement Documentation
--------------------------------
+### Include Statement Documentation
 
 Include statements should be documented, telling the user why a particular file was included.  
-/\*  
-\* Kernel include files come first.  
-\*/  
-/\* Non-local includes in brackets. \*/  
-/\*  
-\* If it's a network program, put the network include files next.  
-\* Group the includes files by subdirectory.  
-\*/  
-/\*  
-\* Then there's a blank line, followed by the /usr include files.  
-\* The /usr include files should be sorted!  
-\*/
 
-* * *
+```cpp
+/*  
+ * Kernel include files come first.  
+ */  
 
-Layering
-========
+/* Non-local includes in brackets. */
 
-* * *
+/*  
+ * If it's a network program, put the network include files next.  
+ * Group the includes files by subdirectory.  
+ */  
+
+/*  
+ * Then there's a blank line, followed by the /usr include files.  
+ * The /usr include files should be sorted!  
+ */
+```
+
+## Layering
+
+***
 
 Layering is the primary technique for reducing complexity in a system. A system should be divided into layers. Layers should communicate between adjacent layers using well defined interfaces. When a layer uses a non-adjacent layer then a layering violation has occurred.
 
@@ -707,202 +666,198 @@ A layering violation simply means we have dependency between layers that is not 
 
 Sometimes we need to jump layers for performance reasons. This is fine, but we should know we are doing it and document appropriately.
 
-* * *
+## Miscellaneous
 
-Miscellaneous
-=============
+***
 
-* * *
-
-General advice
---------------
+### General advice
 
 This section contains some miscellaneous do's and don'ts.
 
-*   Don't use floating-point variables where discrete values are needed. Using a float for a loop counter is a great way to shoot yourself in the foot. Always test floating-point numbers as <= or >=, never use an exact comparison (== or !=).
-    
-*   Compilers have bugs. Common trouble spots include structure assignment and bit fields. You cannot generally predict which bugs a compiler has. You could write a program that avoids all constructs that are known broken on all compilers. You won't be able to write anything useful, you might still encounter bugs, and the compiler might get fixed in the meanwhile. Thus, you should write \`\`around'' compiler bugs only when you are forced to use a particular buggy compiler.
-    
-*   Do not rely on automatic beautifiers. The main person who benefits from good program style is the programmer him/herself, and especially in the early design of handwritten algorithms or pseudo-code. Automatic beautifiers can only be applied to complete, syntactically correct programs and hence are not available when the need for attention to white space and indentation is greatest. Programmers can do a better job of making clear the complete visual layout of a function or file, with the normal attention to detail of a careful programmer (in other words, some of the visual layout is dictated by intent rather than syntax and beautifiers cannot read minds). Sloppy programmers should learn to be careful programmers instead of relying on a beautifier to make their code readable. Finally, since beautifiers are non-trivial programs that must parse the source, a sophisticated beautifier is not worth the benefits gained by such a program. Beautifiers are best for gross formatting of machine-generated code.
-    
-*   Accidental omission of the second \`\`='' of the logical compare is a problem. The following is confusing and prone to error.
-    
-            if (abool= bbool) { ... }
-         
-    
-    Does the programmer really mean assignment here? Often yes, but usually no. The solution is to just not do it, an inverse Nike philosophy. Instead use explicit tests and avoid assignment with an implicit test. The recommended form is to do the assignment before doing the test:
-    
-     abool= bbool;
-           if (abool) { ... } 
-    
-*   Modern compilers will put variables in registers automatically. Use the register sparingly to indicate the variables that you think are most critical. In extreme cases, mark the 2-4 most critical values as register and mark the rest as REGISTER. The latter can be #defined to register on those machines with many registers.
+* Don't use floating-point variables where discrete values are needed. Using a float for a loop counter is a great way to shoot yourself in the foot. Always test floating-point numbers as <= or >=, never use an exact comparison (== or !=).
+* Compilers have bugs. Common trouble spots include structure assignment and bit fields. You cannot generally predict which bugs a compiler has. You could write a program that avoids all constructs that are known broken on all compilers. You won't be able to write anything useful, you might still encounter bugs, and the compiler might get fixed in the meanwhile. Thus, you should write around compiler bugs only when you are forced to use a particular buggy compiler.
+* Do not rely on automatic beautifiers. The main person who benefits from good program style is the programmer him/herself, and especially in the early design of handwritten algorithms or pseudo-code. Automatic beautifiers can only be applied to complete, syntactically correct programs and hence are not available when the need for attention to white space and indentation is greatest. Programmers can do a better job of making clear the complete visual layout of a function or file, with the normal attention to detail of a careful programmer (in other words, some of the visual layout is dictated by intent rather than syntax and beautifiers cannot read minds). Sloppy programmers should learn to be careful programmers instead of relying on a beautifier to make their code readable. Finally, since beautifiers are non-trivial programs that must parse the source, a sophisticated beautifier is not worth the benefits gained by such a program. Beautifiers are best for gross formatting of machine-generated code.
+* Accidental omission of the second `=` of the logical compare is a problem. The following is confusing and prone to error.
 
-* * *
+```cpp
+if (abool= bbool) { ... }
+```
 
-Be Const Correct
-----------------
+Does the programmer really mean assignment here? Often yes, but usually no. The solution is to just not do it, an inverse Nike philosophy. Instead use explicit tests and avoid assignment with an implicit test. The recommended form is to do the assignment before doing the test:
+
+```cpp
+abool= bbool;
+if (abool) { ... }
+```
+
+Modern compilers will put variables in registers automatically. Use the register sparingly to indicate the variables that you think are most critical. In extreme cases, mark the 2-4 most critical values as register and mark the rest as REGISTER. The latter can be #defined to register on those machines with many registers.
+
+### Be Const Correct
 
 C provides the _const_ key word to allow passing as parameters objects that cannot change to indicate when a method doesn't modify its object. Using const in all the right places is called "const correctness." It's hard at first, but using const really tightens up your coding style. Const correctness grows on you.
 
-* * *
-
-Use #if Not #ifdef
-------------------
+### Use #if Not #ifdef
 
 Use #if MACRO not #ifdef MACRO. Someone might write code like:
 
+```cpp
 #ifdef DEBUG
-        temporary\_debugger\_break();
+   temporary_debugger_break();
 #endif
+```
 
 Someone else might compile the code with turned-of debug info like:
 
+```bash
 cc -c lurker.cc -DDEBUG=0
+```
 
 Alway use #if, if you have to use the preprocessor. This works fine, and does the right thing, even if DEBUG is not defined at all (!)
 
+```cpp
 #if DEBUG
         temporary\_debugger\_break();
 #endif
+```
 
 If you really need to test whether a symbol is defined or not, test it with the defined() construct, which allows you to add more things later to the conditional without editing text that's already in the program:
 
-#if !defined(USER\_NAME)
- #define USER\_NAME "john smith"
+```cpp
+#if !defined(USER_NAME)
+   #define USER_NAME "john smith"
 #endif
+```
 
-* * *
-
-Commenting Out Large Code Blocks
---------------------------------
+### Commenting Out Large Code Blocks
 
 Sometimes large blocks of code need to be commented out for testing.
 
-### Using #if 0
+#### Using #if 0
 
 The easiest way to do this is with an #if 0 block:
 
-   void 
-   example()
-   {
-      great looking code
+```cpp
+void
+example()
+{
+   // great looking code
 
-      #if 0
-      lots of code
-      #endif
-    
-      more code
-    }
+   #if 0
+      //lots of code
+   #endif
+
+   //more code
+}
+```
 
 You can't use **/\*\*/** style comments because comments can't contain comments and surely a large block of your code will contain a comment, won't it?
 
 Don't use #ifdef as someone can unknowingly trigger ifdefs from the compiler command line. #if 0is that even day later you or anyone else has know idea why this code is commented out. Is it because a feature has been dropped? Is it because it was buggy? It didn't compile? Can it be added back? It's a mystery.
 
-### Use Descriptive Macro Names Instead of #if 0
+#### Use Descriptive Macro Names Instead of #if 0
 
-#if NOT\_YET\_IMPLEMENTED  
+```cpp
+#if NOT_YET_IMPLEMENTED  
 
 #if OBSOLETE
 
-#if TEMP\_DISABLED 
+#if TEMP_DISABLED
+```
 
-### Add a Comment to Document Why
+#### Add a Comment to Document Why
 
 Add a short comment explaining why it is not implemented, obsolete or temporarily disabled.
 
-* * *
-
-File Extensions
----------------
+### File Extensions
 
 In short: Use the _.h_ extension for header files and _.c_ for source files.
 
-* * *
-
-No Data Definitions in Header Files
------------------------------------
+### No Data Definitions in Header Files
 
 Do not put data definitions in header files. for example:
 
-/\* 
- \* aheader.h 
- \*/
+```cpp
+/*
+ * aheader.h
+ */
 int x = 0;
+```
 
-1.  It's bad magic to have space consuming code silently inserted through the innocent use of header files.
-2.  It's not common practice to define variables in the header file so it will not occur to developers to look for this when there are problems.
-3.  Consider defining the variable once in a .c file and use an extern statement to reference it.
+1. It's bad magic to have space consuming code silently inserted through the innocent use of header files.
+2. It's not common practice to define variables in the header file so it will not occur to developers to look for this when there are problems.
+3. Consider defining the variable once in a .c file and use an extern statement to reference it.
 
-* * *
-
-Mixing C and C++
-----------------
+### Mixing C and C++
 
 In order to be backward compatible with dumb linkers C++'s link time type safety is implemented by encoding type information in link symbols, a process called _name mangling_. This creates a problem when linking to C code as C function names are not mangled. When calling a C function from C++ the function name will be mangled unless you turn it off. Name mangling is turned off with the _extern "C"_ syntax. If you want to create a C function in C++ you must wrap it with the above syntax. If you want to call a C function in a C library from C++ you must wrap in the above syntax. Here are some examples:
 
-### Calling C Functions from C++
+#### Calling C Functions from C++
 
+```cpp
 extern "C" int strncpy(...);
-extern "C" int my\_great\_function();
+extern "C" int my_great_function();
 extern "C"
 {
    int strncpy(...);
-   int my\_great\_function();
+   int my_great_function();
 };
+```
 
-### Creating a C Function in C++
+#### Creating a C Function in C++
 
+```cpp
 extern "C" void
-a\_c\_function\_in\_cplusplus(int a)
+a_c_function_in_cplusplus(int a)
 {
 }
+```
 
-### _\_\_cplusplus_ Preprocessor Directive
+#### _\_\_cplusplus_ Preprocessor Directive
 
 If you have code that must compile in a C and C++ environment then you must use the _\_\_cplusplus_ preprocessor directive. For example:
 
-#ifdef \_\_cplusplus
+```cpp
+#ifdef __cplusplus
 
-extern "C" some\_function();
+extern "C" some_function();
 
 #else
 
-extern some\_function();
+extern some_function();
 
 #endif
+```
 
-* * *
-
-No Magic Numbers
-----------------
+### No Magic Numbers
 
 A magic number is a bare naked number used in source code. It's magic because no-one has a clue what it means including the author inside 3 months. For example:
 
-if      (22 == foo) { start\_thermo\_nuclear\_war(); }
-else if (19 == foo) { refund\_lotso\_money(); }
-else if (16 == foo) { infinite\_loop(); }
-else                { cry\_cause\_im\_lost(); }
+```cpp
+if      (22 == foo) { start_thermo_nuclear_war(); }
+else if (19 == foo) { refund_lotso_money(); }
+else if (16 == foo) { infinite_loop(); }
+else                { cry_cause_im_lost(); }
+```
 
 In the above example what do 22 and 19 mean? If there was a number change or the numbers were just plain wrong how would you know? Instead of magic numbers use a real name that means something. You can use _#define_ or constants or enums as names. Which one is a design choice. For example:
 
-#define   PRESIDENT\_WENT\_CRAZY  (22)
-const int WE\_GOOFED= 19;
+```cpp
+#define PRESIDENT_WENT_CRAZY (22)
+const int WE_GOOFED= 19;
 enum  {
-   THEY\_DIDNT\_PAY= 16
+   THEY_DIDNT_PAY= 16
 };
 
-if      (PRESIDENT\_WENT\_CRAZY == foo) { start\_thermo\_nuclear\_war(); }
-else if (WE\_GOOFED            == foo) { refund\_lotso\_money(); }
-else if (THEY\_DIDNT\_PAY       == foo) { infinite\_loop(); }
-else                                  { happy\_days\_i\_know\_why\_im\_here(); }
+if      (PRESIDENT_WENT_CRAZY == foo) { start_thermo_nuclear_war(); }
+else if (WE_GOOFED            == foo) { refund_lotso_money(); }
+else if (THEY_DIDNT_PAY       == foo) { infinite_loop(); }
+else                                  { happy_days_i_know_why_im_here(); }
+```
 
 Now isn't that better? The const and enum options are preferable because when debugging the debugger has enough information to display both the value and the label. The #define option just shows up as a number in the debugger which is very inconvenient. The const option has the downside of allocating memory. Only you know if this matters for your application.
 
-* * *
+### Error Return Check Policy
 
-Error Return Check Policy
--------------------------
-
-*   Check every system call for an error return, unless you know you wish to ignore errors. For example, _printf_ returns an error code but rarely would you check for its return code. In which case you can cast the return to **(void)** if you really care.
-*   Include the system error text for every system error message.
-*   Check every call to malloc or realloc unless you know your versions of these calls do the right thing. You might want to have your own wrapper for these calls, including new, so you can do the right thing always and developers don't have to make memory checks everywhere.
+* Check every system call for an error return, unless you know you wish to ignore errors. For example, _printf_ returns an error code but rarely would you check for its return code. In which case you can cast the return to **(void)** if you really care.
+* Include the system error text for every system error message.
+* Check every call to malloc or realloc unless you know your versions of these calls do the right thing. You might want to have your own wrapper for these calls, including new, so you can do the right thing always and developers don't have to make memory checks everywhere.
