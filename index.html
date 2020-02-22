@@ -35,11 +35,9 @@
       var is_top_frame = (window === window.parent);
         
         var pageToc = [
-          {title: "About me", url: "#_top", children: [
-          ]},
-          {title: "Useful links", url: "#useful-links", children: [
-          ]},
-          {title: "How was it started", url: "#how-was-it-started", children: [
+          {title: "Documentation collection", url: "#_top", children: [
+              {title: "About me", url: "#about-me" },
+              {title: "Useful links", url: "#useful-links" },
           ]},
         ];
 
@@ -114,7 +112,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
       </li>
     </ul>
   <ul class="wm-toctree">
-        <li class="wm-toc-li wm-toc-lev1 "><a href="" class="wm-article-link wm-toc-text">Home</a>
+        <li class="wm-toc-li wm-toc-lev1 "><a href="" class="wm-article-link wm-toc-text">Documentation collection</a>
 </li>
         <li class="wm-toc-li wm-toc-lev1 wm-toc-opener"><span class="wm-toc-text">Awesome</span>
 </li>
@@ -489,6 +487,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
       <li class="wm-toc-li wm-toc-lev3 "><a href="Dev_Scripts/Bash/Convert-CP1251-to-UTF8/" class="wm-article-link wm-toc-text">Convert CP1251 to UTF8</a>
 </li>
       <li class="wm-toc-li wm-toc-lev3 "><a href="Dev_Scripts/Bash/Gentoo_Functions/" class="wm-article-link wm-toc-text">Gentoo Functions</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="Dev_Scripts/Bash/Tricks_by_Carlos_Fenollosa/" class="wm-article-link wm-toc-text">Tricks by Carlos Fenollosa</a>
 </li>
   </ul>
 </li>
@@ -1171,9 +1171,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="about-me">About me</h2>
+    <h1 id="documentation-collection">Documentation collection</h1>
+<h2 id="about-me">About me</h2>
 <ul>
-<li><a href="https://d-k-ivanov.github.io">Dmitry Ivanov</a></li>
+<li><a href="https://d-k-ivanov.github.io">Personal website</a></li>
 <li><a href="https://github.com/d-k-ivanov">GitHub repo</a></li>
 <li><a href="https://www.facebook.com/a1231239849">Facebook</a></li>
 <li><a href="https://vk.com/d.k.ivanov">VK.com</a></li>
@@ -1188,123 +1189,6 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li><a href="https://www.adminer.org/">Adminer</a> - simple database management php console</li>
 <li><a href="https://www.whatsmydns.net/">Global DNS record check</a> - Site to get responce from many DNS servers around the world</li>
 </ul>
-<hr />
-<h2 id="how-was-it-started">How was it started</h2>
-<blockquote>
-<p>Few years ago I've found a beautiful collection of unix tips, which could help me to start customizing my unix environment and collect unix tricks I'm using by myself. So now I've started to publish my triks <a href="http://d-k-ivanov.github.io/docs">here</a></p>
-</blockquote>
-<p></p>
-
-<pre><code>I have marked with a * those which I think are absolutely essential
-Items for each section are sorted by oldest to newest. Come back soon for more! 
-
-BASH
-* In bash, 'ctrl-r' searches your command history as you type
-- Input from the commandline as if it were a file by replacing 
-  'command &lt; file.in' with 'command &lt;&lt;&lt; &quot;some input text&quot;'
-- '^' is a sed-like operator to replace chars from last command 
-  'ls docs; ^docs^web^' is equal to 'ls web'. The second argument can be empty.
-* '!!:n' selects the nth argument of the last command, and '!$' the last arg
-  'ls file1 file2 file3; cat !!:1-2' shows all files and cats only 1 and 2
-- More in-line substitutions: http://tiny.cc/ecv0cw http://tiny.cc/8zbltw
-- 'nohup ./long_script &amp;' to leave stuff in background even if you logout
-- 'cd -' change to the previous directory you were working on
-- 'ctrl-x ctrl-e' opens an editor to work with long or complex command lines
-* Use traps for cleaning up bash scripts on exit http://tiny.cc/traps
-* 'shopt -s cdspell' automatically fixes your 'cd folder' spelling mistakes
-* Add 'set editing-mode vi' in your ~/.inputrc to use the vi keybindings 
-  for bash and all readline-enabled applications (python, mysql, etc)
-
-PSEUDO ALIASES FOR COMMONLY USED LONG COMMANDS
-- function lt() { ls -ltrsa &quot;$@&quot; | tail; }
-- function psgrep() { ps axuf | grep -v grep | grep &quot;$@&quot; -i --color=auto; }
-- function fname() { find . -iname &quot;*$@*&quot;; }
-- function remove_lines_from() { grep -F -x -v -f $2 $1; }
-  removes lines from $1 if they appear in $2
-- alias pp=&quot;ps axuf | pager&quot;
-- alias sum=&quot;xargs | tr ' ' '+' | bc&quot; ## Usage: echo 1 2 3 | sum
-- function mcd() { mkdir $1 &amp;&amp; cd $1; } 
-
-VIM
-- ':set spell' activates vim spellchecker. Use ']s' and '[s' to move between
-  mistakes, 'zg' adds to the dictionary, 'z=' suggests correctly spelled words
-- check my .vimrc http://tiny.cc/qxzktw and here http://tiny.cc/kzzktw for more 
-
-TOOLS
-* 'htop' instead of 'top'
-- 'ranger' is a nice console file manager for vi fans
-- Use 'apt-file' to see which package provides that file you're missing
-- 'dict' is a commandline dictionary
-- Learn to use 'find' and 'locate' to look for files
-- Compile your own version of 'screen' from the git sources. Most versions
-  have a slow scrolling on a vertical split or even no vertical split at all
-* 'trash-cli' sends files to the trash instead of deleting them forever. 
-  Be very careful with 'rm' or maybe make a wrapper to avoid deleting '*' by
-  accident (e.g. you want to type 'rm tmp*' but type 'rm tmp *')
-- 'file' gives information about a file, as image dimensions or text encoding
-- 'sort | uniq' to check for duplicate lines
-- 'echo start_backup.sh | at midnight' starts a command at the specified time
-- Pipe any command over 'column -t' to nicely align the columns
-* Google 'magic sysrq' to bring a Linux machine back from the dead
-- 'diff --side-by-side fileA.txt fileB.txt | pager' to see a nice diff
-* 'j.py' http://tiny.cc/62qjow remembers your most used folders and is an 
-  incredible substitute to browse directories by name instead of 'cd' 
-- 'dropbox_uploader.sh' http://tiny.cc/o2qjow is a fantastic solution to 
-  upload by commandline via Dropbox's API if you can't use the official client
-- learn to use 'pushd' to save time navigating folders (j.py is better though)
-- if you liked the 'psgrep' alias, check 'pgrep' as it is far more powerful
-* never run 'chmod o+x * -R', capitalize the X to avoid executable files. If
-  you want _only_ executable folders: 'find . -type d -exec chmod g+x {} \;'
-- 'xargs' gets its input from a pipe and runs some command for each argument
-* run jobs in parallel easily: 'ls *.png | parallel -j4 convert {} {.}.jpg'
-- grep has a '-c' switch that counts occurences. Don't pipe grep to 'wc -l'.
-
-NETWORKING
-- Don't know where to start? SMB is usually better than NFS for most cases.
-- If you use 'sshfs_mount' and suffer from disconnects, use 
-  '-o reconnect,workaround=truncate:rename'
-- 'python -m SimpleHTTPServer 8080' or 'python3 -mhttp.server localhost 8080'
-  shares all the files in the current folder over HTTP. 
-- 'ssh -R 12345:localhost:22 server.com &quot;sleep 1000; exit&quot;' forwards 
-  server.com's port 12345 to your local ssh port, even if you machine 
-  is not externally visible on the net. 
-  Now you can 'ssh localhost -p 12345' from server.com and you will 
-  log into your machine. 
-  'sleep' avoids getting kicked out from server.com for inactivity
-* Read on 'ssh-agent' to strenghten your ssh connections using private keys, 
-  while avoiding typing passwords every time you ssh.
-- 'socat TCP4-LISTEN:1234,fork TCP4:192.168.1.1:22' forwards your port
-  1234 to another machine's port 22. Very useful for quick NAT redirection.
-- Some tools to monitor network connections and bandwith:
-  'lsof -i' monitors network connections in real time
-  'iftop' shows bandwith usage per *connection*
-  'nethogs' shows the bandwith usage per *process*
-* Use this trick on .ssh/config to directly access 'host2' which is on a private 
-  network, and must be accessed by ssh-ing into 'host1' first
-  Host host2
-      ProxyCommand ssh -T host1 'nc %h %p'
-      HostName host2
-* Pipe a compressed file over ssh to avoid creating large temporary .tgz files
-  'tar cz folder/ | ssh server &quot;tar xz&quot;' or even better, use 'rsync'
-* ssmtp can use a Gmail account as SMTP and send emails from the command line.
-  'echo &quot;Hello, User!&quot; | mail user@domain.com' ## Thanks to Adam Ziaja.
-  Configure your /etc/ssmtp/ssmtp.conf:
-      root=***E-MAIL***
-      mailhub=smtp.gmail.com:587
-      rewriteDomain=
-      hostname=smtp.gmail.com:587
-      UseSTARTTLS=YES
-      UseTLS=YES
-      AuthUser=***E-MAIL***
-      AuthPass=***PASSWORD***
-      AuthMethod=LOGIN
-      FromLineOverride=YES 
-</code></pre>
-
-<hr />
-<p>(CC) by-nc, Carlos Fenollosa <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#97;&#114;&#108;&#111;&#115;&#46;&#102;&#101;&#110;&#111;&#108;&#108;&#111;&#115;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#99;&#97;&#114;&#108;&#111;&#115;&#46;&#102;&#101;&#110;&#111;&#108;&#108;&#111;&#115;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>
-Retrieved from <a href="http://cfenollosa.com/misc/tricks.txt">http://cfenollosa.com/misc/tricks.txt</a>
-Last modified: Fri Feb 28 07:18:39 CET 2014 </p>
 
   <br>
     
@@ -1331,7 +1215,7 @@ Last modified: Fri Feb 28 07:18:39 CET 2014 </p>
     <br>
 </div>
 
-<footer class="col-md-12 wm-page-content">
+<footer class="container-fluid wm-page-content">
       <p>
         <a href="https://d-k-ivanov.github.io/">Main site</a>
       </p><p>Copyright &copy; 2016-2018 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
@@ -1342,5 +1226,5 @@ Last modified: Fri Feb 28 07:18:39 CET 2014 </p>
 </html>
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2020-02-21 21:46:42
+Build Date UTC : 2020-02-22 08:45:36
 -->
