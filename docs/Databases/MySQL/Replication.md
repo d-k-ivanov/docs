@@ -1,4 +1,5 @@
 ### Replication
+
 ```bash
 # On Master:
 vim /etc/mysql/my.cnf:
@@ -16,10 +17,10 @@ vim /etc/mysql/my.cnf:
    log_bin     = /var/lib/mysql-binlog/mysql-bin.log
 
 # SQL on Slave
-mysql> change master to 
+mysql> change master to
       -> master_host='<master_server>',
-      -> master_user='replica', 
+      -> master_user='replica',
       -> master_password='<password>',
-      -> master_log_file='<bin_log>', 
+      -> master_log_file='<bin_log>',
       -> master_log_pos=<bin_log_position>;
 ```
