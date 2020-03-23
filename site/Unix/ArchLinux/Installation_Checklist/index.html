@@ -39,7 +39,7 @@
               {title: "Disk Encryption", url: "#disk-encryption" },
               {title: "LVM", url: "#lvm" },
               {title: "File System", url: "#file-system" },
-              {title: "Mount add in one command", url: "#mount-add-in-one-command" },
+              {title: "Mount all in one command", url: "#mount-all-in-one-command" },
               {title: "Install", url: "#install" },
               {title: "Chrooting", url: "#chrooting" },
               {title: "Initial software", url: "#initial-software" },
@@ -47,6 +47,7 @@
               {title: "Hostname", url: "#hostname" },
               {title: "Bootloader", url: "#bootloader" },
               {title: "Users", url: "#users" },
+              {title: "Sudoers", url: "#sudoers" },
               {title: "Finish", url: "#finish" },
           ]},
         ];
@@ -111,6 +112,30 @@ dhcpcd wlan0
 </code></pre>
 
 <h2 id="partitioning">Partitioning</h2>
+<h3 id="layout">Layout</h3>
+<pre><code>+-------------------------+-------------------------+-------------------------+
+| ESP partition:          | Boot partition:         | LVM partition:          |
+|                         |                         |                         |
+| /boot/efi               | /boot                   | rootpv                  |
+|                         |                         |                         |
+| /dev/nvme0n1p1          | /dev/nvme0n1p2          | /dev/nvme0n1p3          |
++-------------------------+-------------------------+-------------------------+
+|                                /dev/nvme0n1                                 |
++-----------------------------------------------------------------------------+
+
++-------------------------+-------------------------+-------------------------+-------------------------+
+| Volume 1:               | Volume 2:               | Volume 3:               | Volume 4:               |
+|                         |                         |                         |                         |
+| swap                    | root                    | var                     | home                    |
+|                         |                         |                         |                         |
+| /dev/mapper/rootvg-swap | /dev/mapper/rootvg-root | /dev/mapper/rootvg-var  | /dev/mapper/rootvg-home |
++-------------------------+-------------------------+-------------------------+-------------------------+
+| /dev/nvme0n1p3                            rootpv                                                      |
++-------------------------------------------------------------------------------------------------------+
+
+</code></pre>
+
+<h3 id="parted">Parted</h3>
 <pre><code class="bash">parted -a optimal /dev/nvme0n1
 unit mib
 mklabel gpt
@@ -144,7 +169,10 @@ quit
 </code></pre>
 
 <h2 id="lvm">LVM</h2>
-<pre><code class="bash">pvcreate /dev/nvme0n1p3
+<pre><code class="bash"># If encrypted:
+# pvcreate /dev/mapper/rootpv-encrypted
+# vgcreate rootvg /dev/mapper/rootpv-encrypted
+pvcreate /dev/nvme0n1p3
 vgcreate rootvg /dev/nvme0n1p3
 lvcreate -L 32GiB -n swap rootvg
 lvcreate -l 50GiB -n root rootvg
@@ -174,7 +202,7 @@ mount /dev/mapper/rootvg-home /mnt/home
 mount /dev/mapper/rootvg-var /mnt/var
 </code></pre>
 
-<h2 id="mount-add-in-one-command">Mount add in one command</h2>
+<h2 id="mount-all-in-one-command">Mount all in one command</h2>
 <pre><code class="bash">swapon /dev/mapper/datavg-swap              \
 &amp;&amp; mount /dev/mapper/rootvg-root /mnt       \
 &amp;&amp; mount /dev/nvme0n1p2 /mnt/boot           \
@@ -206,6 +234,8 @@ grep -v '^#' /etc/locale.gen
 &gt; ru_RU.UTF-8 UTF-8
 
 locale-gen
+
+echo &quot;LANG=en_US.UTF-8&quot; &gt;&gt; /etc/locale.conf
 </code></pre>
 
 <h2 id="hostname">Hostname</h2>
@@ -219,8 +249,9 @@ vim /etc/hosts
 </code></pre>
 
 <h2 id="bootloader">Bootloader</h2>
-<pre><code class="bash">vim /etc/mkinitcpio.conf
-&gt; HOOKS=(base udev ... block lvm2 filesystems ...)
+<pre><code class="bash">sed -i &quot;s/^MODULES=.*/MODULES=(ext4)/g&quot; /etc/mkinitcpio.conf
+sed -i &quot;s/^HOOKS=.*/HOOKS=(base udev autodetect modconf block lvm2 filesystems keyboard fsck)/g&quot; /etc/mkinitcpio.conf
+
 mkinitcpio -P
 
 mount -o remount /sys/firmware/efi/efivars -o rw,nosuid,nodev,noexec,noatime
@@ -233,14 +264,21 @@ grub-mkconfig -o /boot/grub/grub.cfg
 </code></pre>
 
 <h2 id="users">Users</h2>
-<pre><code class="bash">useradd -g users -G audio,input,kvm,video,wheel -m user
+<pre><code class="bash">useradd -g users -G wheel -m user
 passwd 
 passwd user
+</code></pre>
+
+<h2 id="sudoers">Sudoers</h2>
+<pre><code class="bash">EDITOR=vim visudo
+# Uncomment: `%wheel ALL=(ALL) ALL`
+# Optional:  `%wheel ALL=(ALL) NOPASSWD:ALL`
 </code></pre>
 
 <h2 id="finish">Finish</h2>
 <pre><code class="bash">logout
 umount -R /mnt
+swapoff -a
 reboot
 </code></pre>
 

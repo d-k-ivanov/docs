@@ -9,6 +9,33 @@ dhcpcd wlan0
 
 ## Partitioning
 
+### Layout
+
+```
++-------------------------+-------------------------+-------------------------+
+| ESP partition:          | Boot partition:         | LVM partition:          |
+|                         |                         |                         |
+| /boot/efi               | /boot                   | rootpv                  |
+|                         |                         |                         |
+| /dev/nvme0n1p1          | /dev/nvme0n1p2          | /dev/nvme0n1p3          |
++-------------------------+-------------------------+-------------------------+
+|                                /dev/nvme0n1                                 |
++-----------------------------------------------------------------------------+
+
++-------------------------+-------------------------+-------------------------+-------------------------+
+| Volume 1:               | Volume 2:               | Volume 3:               | Volume 4:               |
+|                         |                         |                         |                         |
+| swap                    | root                    | var                     | home                    |
+|                         |                         |                         |                         |
+| /dev/mapper/rootvg-swap | /dev/mapper/rootvg-root | /dev/mapper/rootvg-var  | /dev/mapper/rootvg-home |
++-------------------------+-------------------------+-------------------------+-------------------------+
+| /dev/nvme0n1p3                            rootpv                                                      |
++-------------------------------------------------------------------------------------------------------+
+
+```
+
+### Parted
+
 ```bash
 parted -a optimal /dev/nvme0n1
 unit mib
@@ -47,6 +74,9 @@ quit
 ## LVM
 
 ```bash
+# If encrypted:
+# pvcreate /dev/mapper/rootpv-encrypted
+# vgcreate rootvg /dev/mapper/rootpv-encrypted
 pvcreate /dev/nvme0n1p3
 vgcreate rootvg /dev/nvme0n1p3
 lvcreate -L 32GiB -n swap rootvg
@@ -80,7 +110,7 @@ mount /dev/mapper/rootvg-var /mnt/var
 ```
 
 
-## Mount add in one command
+## Mount all in one command
 
 ```bash
 swapon /dev/mapper/datavg-swap              \
@@ -122,6 +152,8 @@ grep -v '^#' /etc/locale.gen
 > ru_RU.UTF-8 UTF-8
 
 locale-gen
+
+echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 ```
 
 ## Hostname
@@ -139,8 +171,9 @@ vim /etc/hosts
 ## Bootloader
 
 ```bash
-vim /etc/mkinitcpio.conf
-> HOOKS=(base udev ... block lvm2 filesystems ...)
+sed -i "s/^MODULES=.*/MODULES=(ext4)/g" /etc/mkinitcpio.conf
+sed -i "s/^HOOKS=.*/HOOKS=(base udev autodetect modconf block lvm2 filesystems keyboard fsck)/g" /etc/mkinitcpio.conf
+
 mkinitcpio -P
 
 mount -o remount /sys/firmware/efi/efivars -o rw,nosuid,nodev,noexec,noatime
@@ -155,9 +188,17 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ## Users
 
 ```bash
-useradd -g users -G audio,input,kvm,video,wheel -m user
+useradd -g users -G wheel -m user
 passwd 
 passwd user
+```
+
+## Sudoers
+
+```bash
+EDITOR=vim visudo
+# Uncomment: `%wheel ALL=(ALL) ALL`
+# Optional:  `%wheel ALL=(ALL) NOPASSWD:ALL`
 ```
 
 ## Finish
@@ -165,5 +206,6 @@ passwd user
 ```bash
 logout
 umount -R /mnt
+swapoff -a
 reboot
 ```
