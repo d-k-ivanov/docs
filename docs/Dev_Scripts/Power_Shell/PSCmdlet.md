@@ -1,4 +1,4 @@
-## PSCmdlet example 
+## PSCmdlet example
 
 ```ps1
 ls -la | grep Xresources

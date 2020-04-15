@@ -1,6 +1,6 @@
 ## Enable TLS 1.1 ans 1.2 when invoking web request
 
-```ps
+```ps1
 $AllProtocols = [System.Net.SecurityProtocolType]'Ssl3,Tls,Tls11,Tls12'
 [System.Net.ServicePointManager]::SecurityProtocol = $AllProtocols
 

@@ -1,8 +1,10 @@
 
 ### Windows 2008 Server R2
+
 To release this error:
 > Script cannot be loaded because the execution of scripts is disabled on this system.
-```ps
+
+```ps1
 # Run as Administrator
 Set-ExecutionPolicy RemoteSigned
 
@@ -14,16 +16,22 @@ Set-ExecutionPolicy RemoteSigned
 ```
 
 ### Show current logged user
-```ps
+
+```ps1
 gwmi win32_computersystem -comp $computer | select USername,Caption,Manufacturer
 Get_WmiObject win32_computersystem -comp $computer | select USername,Caption,Manufacturer
 ```
 
 ### List of logged in users (any user in any time)
-```ps
-Get-WmiObject Win32_LoggedOnUser -ComputerName msk-sales-02 | Select __SERVER, Antecedent -Unique | %{"{0} : {1}\{2}" -f $_.__SERVER, $_.Antecedent.ToString().Split('"')[1],$_.Antecedent.ToString().Split('"')[3]}
+
+```ps1
+Get-WmiObject Win32_LoggedOnUser -ComputerName divanov-dev | `
+Select __SERVER, Antecedent -Unique                         | `
+%{"{0} : {1}\{2}" -f $_.__SERVER, $_.Antecedent.ToString().Split('"')[1],$_.Antecedent.ToString().Split('"')[3]}
 ```
+
 ### Read from keyboard
-```ps
+
+```ps1
 $variable=read-host "Enter computer name:"
 ```
