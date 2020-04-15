@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="author" content="Dmitriy Ivanov">
-    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Dev_Scripts/Power_Shell/Misc/">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Dev_Scripts/Power_Shell/Profile/">
     <link rel="shortcut icon" href="../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Misc - Technical Info</title>
+    <title>Profile - Technical Info</title>
     <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../css/base.css" rel="stylesheet">
@@ -33,13 +33,7 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Windows 2008 Server R2", url: "#_top", children: [
-          ]},
-          {title: "Show current logged user", url: "#show-current-logged-user", children: [
-          ]},
-          {title: "List of logged in users (any user in any time)", url: "#list-of-logged-in-users-any-user-in-any-time", children: [
-          ]},
-          {title: "Read from keyboard", url: "#read-from-keyboard", children: [
+          {title: "Automatically add Workdir folder to PSModulePath in Visual Studio Code", url: "#_top", children: [
           ]},
         ];
 
@@ -75,20 +69,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../One-Liners/" class="btn btn-xs btn-default pull-right">
+      <a href="../SSL/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../One-Liners/" class="btn btn-xs btn-link">
-        One Liners
+      <a href="../SSL/" class="btn btn-xs btn-link">
+        SSL
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../Encoding/" class="btn btn-xs btn-default pull-left">
+      <a href="../PSCmdlet/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../Encoding/" class="btn btn-xs btn-link">
-        Encoding
+        Previous</a><a href="../PSCmdlet/" class="btn btn-xs btn-link">
+        PSCmdlet
       </a>
     </div>
     
@@ -96,34 +90,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="windows-2008-server-r2">Windows 2008 Server R2</h3>
-<p>To release this error:</p>
-<blockquote>
-<p>Script cannot be loaded because the execution of scripts is disabled on this system.</p>
-</blockquote>
-<pre><code class="ps1"># Run as Administrator
-Set-ExecutionPolicy RemoteSigned
-
-# There is following parameters:
-# * Restricted - No scripts can be run. Windows PowerShell can be used only in interactive mode.
-# * AllSigned - Only scripts signed by a trusted publisher can be run.
-# * RemoteSigned - Downloaded scripts must be signed by a trusted publisher before they can be run.
-# * Unrestricted - No restrictions; all Windows PowerShell scripts can be run.
-</code></pre>
-
-<h3 id="show-current-logged-user">Show current logged user</h3>
-<pre><code class="ps1">gwmi win32_computersystem -comp $computer | select USername,Caption,Manufacturer
-Get_WmiObject win32_computersystem -comp $computer | select USername,Caption,Manufacturer
-</code></pre>
-
-<h3 id="list-of-logged-in-users-any-user-in-any-time">List of logged in users (any user in any time)</h3>
-<pre><code class="ps1">Get-WmiObject Win32_LoggedOnUser -ComputerName divanov-dev | `
-Select __SERVER, Antecedent -Unique                         | `
-%{&quot;{0} : {1}\{2}&quot; -f $_.__SERVER, $_.Antecedent.ToString().Split('&quot;')[1],$_.Antecedent.ToString().Split('&quot;')[3]}
-</code></pre>
-
-<h3 id="read-from-keyboard">Read from keyboard</h3>
-<pre><code class="ps1">$variable=read-host &quot;Enter computer name:&quot;
+    <h3 id="automatically-add-workdir-folder-to-psmodulepath-in-visual-studio-code">Automatically add Workdir folder to PSModulePath in Visual Studio Code</h3>
+<pre><code class="ps1">'$Env:PSModulePath  = &quot;$(Get-Location)&quot; + &quot;$([System.IO.Path]::PathSeparator)${Env:PSModulePath}&quot;' | `
+Add-Content $(Join-Path $(Split-Path $profile) Microsoft.VSCode_profile.ps1)
 </code></pre>
 
   <br>
@@ -137,20 +106,20 @@ Select __SERVER, Antecedent -Unique                         | `
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../One-Liners/" class="btn btn-xs btn-default pull-right">
+      <a href="../SSL/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../One-Liners/" class="btn btn-xs btn-link">
-        One Liners
+      <a href="../SSL/" class="btn btn-xs btn-link">
+        SSL
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../Encoding/" class="btn btn-xs btn-default pull-left">
+      <a href="../PSCmdlet/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../Encoding/" class="btn btn-xs btn-link">
-        Encoding
+        Previous</a><a href="../PSCmdlet/" class="btn btn-xs btn-link">
+        PSCmdlet
       </a>
     </div>
     
