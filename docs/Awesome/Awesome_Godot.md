@@ -1,4 +1,4 @@
-# Awesome Godot [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Godot
 
 [![Godot Engine logo](https://raw.githubusercontent.com/Calinou/awesome-godot/master/godot-logo.svg)](https://godotengine.org)
 
