@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="author" content="Dmitriy Ivanov">
-    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Dev_Langs/Python/Installation/">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Dev_Langs/Python/HTTP/">
     <link rel="shortcut icon" href="../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Installation - Technical Info</title>
+    <title>HTTP - Technical Info</title>
     <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../css/base.css" rel="stylesheet">
@@ -33,7 +33,7 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Install Python 2.7.13 on Linux", url: "#_top", children: [
+          {title: "Enable debug output for HTTP requests", url: "#_top", children: [
           ]},
         ];
 
@@ -69,20 +69,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../Kivy/" class="btn btn-xs btn-default pull-right">
+      <a href="../Installation/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../Kivy/" class="btn btn-xs btn-link">
-        Kivy
+      <a href="../Installation/" class="btn btn-xs btn-link">
+        Installation
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../HTTP/" class="btn btn-xs btn-default pull-left">
+      <a href="../../Perl/Perl_scripts_for_sa/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../HTTP/" class="btn btn-xs btn-link">
-        HTTP
+        Previous</a><a href="../../Perl/Perl_scripts_for_sa/" class="btn btn-xs btn-link">
+        Perl scripts for sa
       </a>
     </div>
     
@@ -90,13 +90,14 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="install-python-2713-on-linux">Install Python 2.7.13 on Linux</h3>
-<pre><code class="bash">wget https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz
-tar -xvf Python-2.7.13.tgz
-cd Python-2.7.13
-./configure
-make
-sudo make install
+    <h2 id="enable-debug-output-for-http-requests">Enable debug output for HTTP requests</h2>
+<pre><code class="py">try:
+    import http.client as http_client
+except ImportError:
+    # Python 2
+    import httplib as http_client
+
+http_client.HTTPConnection.debuglevel = 1
 </code></pre>
 
   <br>
@@ -110,20 +111,20 @@ sudo make install
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../Kivy/" class="btn btn-xs btn-default pull-right">
+      <a href="../Installation/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../Kivy/" class="btn btn-xs btn-link">
-        Kivy
+      <a href="../Installation/" class="btn btn-xs btn-link">
+        Installation
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../HTTP/" class="btn btn-xs btn-default pull-left">
+      <a href="../../Perl/Perl_scripts_for_sa/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../HTTP/" class="btn btn-xs btn-link">
-        HTTP
+        Previous</a><a href="../../Perl/Perl_scripts_for_sa/" class="btn btn-xs btn-link">
+        Perl scripts for sa
       </a>
     </div>
     
