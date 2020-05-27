@@ -8,28 +8,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="author" content="Dmitriy Ivanov">
-    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Dev_Arch/Hardware/GPU/">
-    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Dev_Arch/GPU/">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title>GPU - Technical Info</title>
-    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
-    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
-    <link href="../../../css/base.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../../css/highlight.css">
-    <link href="../../../css/extra.css" rel="stylesheet">
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <link href="../../css/extra.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
-    <script src="../../../js/jquery-3.2.1.min.js"></script>
-    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
-    <script src="../../../js/highlight.pack.js"></script>
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
     
     <base target="_top">
     <script>
-      var base_url = '../../..';
+      var base_url = '../..';
       var is_top_frame = false;
         
         var pageToc = [
@@ -40,7 +40,7 @@
         ];
 
     </script>
-    <script src="../../../js/base.js"></script>
+    <script src="../../js/base.js"></script>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -81,10 +81,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     </div>
     
     <div class="wm-article-nav">
-      <a href="../../Apple/Plist/" class="btn btn-xs btn-default pull-left">
+      <a href="../Algorithms/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../../Apple/Plist/" class="btn btn-xs btn-link">
-        Apple Info.plist
+        Previous</a><a href="../Algorithms/" class="btn btn-xs btn-link">
+        Algorithms
       </a>
     </div>
     
@@ -95,7 +95,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <h3 id="how-to-calc-max-resolution-to-mb">How to calc max resolution to MB</h3>
 <p>A graphics card actually requires relatively little memory to function as a simple framebuffer (2D graphics) device:</p>
 <p>For example - the framebuffer requirements for 1920x1080 in 32 bit colour would be:</p>
-<pre><code>    1920 x 1080 = 2073600 pixels
+<pre><code class="txt">    1920 x 1080 = 2073600 pixels
     2073600 x 32 = 66355200 bits
     66355200 / 8 = 8294400 bytes
     8294400 / 1024 = 8100 kilobytes
@@ -107,7 +107,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>All the rest of the memory is used when the card is working with 3D graphics to store internal copies (and transformed copies) of textures for rendering. The more memory you have the more and higher resolution textures the card can hold internally, so it won't need to be repeatedly sent the same textures over and over again by the gaming engine.</p>
 <p>So basically the more memory you have the better it will be for 3D gaming.</p>
 <h3 id="uhd-8k">UHD 8K</h3>
-<pre><code>7680 × 4320 = 33177600 px
+<pre><code class="txt">7680 × 4320 = 33177600 px
 33177600 x 48 = 1592524800 bits
 1592524800 / 8 = 199065600 byte
 199065600 / 1024 = 194400 KB
@@ -135,10 +135,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     </div>
     
     <div class="wm-article-nav">
-      <a href="../../Apple/Plist/" class="btn btn-xs btn-default pull-left">
+      <a href="../Algorithms/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../../Apple/Plist/" class="btn btn-xs btn-link">
-        Apple Info.plist
+        Previous</a><a href="../Algorithms/" class="btn btn-xs btn-link">
+        Algorithms
       </a>
     </div>
     

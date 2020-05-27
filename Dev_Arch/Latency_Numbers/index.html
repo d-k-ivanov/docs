@@ -8,37 +8,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="author" content="Dmitriy Ivanov">
-    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Dev_Arch/Hardware/IP_Packet_Example/">
-    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Dev_Arch/Latency_Numbers/">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>IP Packet Example - Technical Info</title>
-    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
-    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
-    <link href="../../../css/base.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../../css/highlight.css">
-    <link href="../../../css/extra.css" rel="stylesheet">
+    <title>Latency Numbers - Technical Info</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <link href="../../css/extra.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
-    <script src="../../../js/jquery-3.2.1.min.js"></script>
-    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
-    <script src="../../../js/highlight.pack.js"></script>
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
     
     <base target="_top">
     <script>
-      var base_url = '../../..';
+      var base_url = '../..';
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "IP Packet Example", url: "#_top", children: [
+          {title: "Latency Numbers Every Programmer Should Know", url: "#_top", children: [
           ]},
         ];
 
     </script>
-    <script src="../../../js/base.js"></script>
+    <script src="../../js/base.js"></script>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -69,20 +69,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../Latency_Numbers/" class="btn btn-xs btn-default pull-right">
+      <a href="../Networks/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../Latency_Numbers/" class="btn btn-xs btn-link">
-        Latency Numbers
+      <a href="../Networks/" class="btn btn-xs btn-link">
+        Networks
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../GPU/" class="btn btn-xs btn-default pull-left">
+      <a href="../IP_Packet_Example/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../GPU/" class="btn btn-xs btn-link">
-        GPU
+        Previous</a><a href="../IP_Packet_Example/" class="btn btn-xs btn-link">
+        IP Packet Example
       </a>
     </div>
     
@@ -90,43 +90,33 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="ip-packet-example">IP Packet Example</h3>
-<pre><code>    0x0000:  0050 5684 0731 0013 19ff 1343 0800 4500  .PV..1.....C..E.
-    0x0010:  0034 448b 4000 7f06 8d9a 0a0a 0a83 0a0a  .4D.@...........
-    0x0020:  0b08 d7ec 0050 57bb 1851 0000 0000 8002  .....PW..Q......
-    0x0030:  2000 dd28 0000 0204 05b4 0103 0308 0101  ...(............
-    0x0040:  0402
+    <h3 id="latency-numbers-every-programmer-should-know">Latency Numbers Every Programmer Should Know</h3>
+<ul>
+<li><a href="https://people.eecs.berkeley.edu/~rcs/research/interactive_latency.html">Latency Numbers Every Programmer Should Know</a></li>
+</ul>
+<pre><code class="txt"># From Jonas Bonér
+Latency Comparison Numbers
+--------------------------
+L1 cache reference                           0.5 ns
+Branch mispredict                            5   ns
+L2 cache reference                           7   ns                      14x L1 cache
+Mutex lock/unlock                           25   ns
+Main memory reference                      100   ns                      20x L2 cache, 200x L1 cache
+Compress 1K bytes with Zippy             3,000   ns        3 us
+Send 1K bytes over 1 Gbps network       10,000   ns       10 us
+Read 4K randomly from SSD*             150,000   ns      150 us          ~1GB/sec SSD
+Read 1 MB sequentially from memory     250,000   ns      250 us
+Round trip within same datacenter      500,000   ns      500 us
+Read 1 MB sequentially from SSD*     1,000,000   ns    1,000 us    1 ms  ~1GB/sec SSD, 4X memory
+Disk seek                           10,000,000   ns   10,000 us   10 ms  20x datacenter roundtrip
+Read 1 MB sequentially from disk    20,000,000   ns   20,000 us   20 ms  80x memory, 20X SSD
+Send packet CA-&gt;Netherlands-&gt;CA    150,000,000   ns  150,000 us  150 ms
 
-0x0000:
-0050 5684 0731 - Destination MAC-address 00:50:56:84:07:31
-0013 19ff 1343 - Source MAC-address 00:13:19:ff:13:43
-0800 - Type (0x0800 - IP)
-4500 - IP version, IHL (IP Header Length), Type of service
-0x0010:
-0034 - Packet Length 52
-448b - Packet ID 17547
-4000 - Flag DF (Don't fragment) и Fregment Offset
-7f06 - TTL and protocol (127 и 6)
-8d9a - Header checksum
-0a0a 0a83 - Source IP 10.10.10.131
-0x0020 - '0000':
-0a0a 0b08 - Destination IP 10.10.11.8
-d7ec - Source port 55276
-0050 - Destination port 80
-57bb 1851 - Queue number 1471879249
-0000 0000 - Answer number ACK, тут 0
-8002 - ТСР Header Length, message type (here: SYN)
-0x0030:
-2000 - Window 8192
-dd28 - CheckSUM
-0000 - Urgent pointer
-0204 - TCP Options: MSS (max segment size option)
-05b4 - TCP Options: MSS (max segment size = 1460)
-0103 - TCP Options: nop
-0308 - TCP Options: Window Scale 8
-0101 - TCP Options: nop, nop
-0x0040:
-0402 - TCP Options: SackOK
+Notes
+-----
+1 ns = 10^-9 seconds
+1 us = 10^-6 seconds = 1,000 ns
+1 ms = 10^-3 seconds = 1,000 us = 1,000,000 ns
 </code></pre>
 
   <br>
@@ -140,20 +130,20 @@ dd28 - CheckSUM
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../Latency_Numbers/" class="btn btn-xs btn-default pull-right">
+      <a href="../Networks/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../Latency_Numbers/" class="btn btn-xs btn-link">
-        Latency Numbers
+      <a href="../Networks/" class="btn btn-xs btn-link">
+        Networks
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../GPU/" class="btn btn-xs btn-default pull-left">
+      <a href="../IP_Packet_Example/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../GPU/" class="btn btn-xs btn-link">
-        GPU
+        Previous</a><a href="../IP_Packet_Example/" class="btn btn-xs btn-link">
+        IP Packet Example
       </a>
     </div>
     
