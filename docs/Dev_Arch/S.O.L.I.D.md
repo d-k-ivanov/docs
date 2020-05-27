@@ -31,7 +31,7 @@ In the field of software engineering, the **interface-segregation principle (ISP
 
 ## Dependency inversion principle
 
-The **dependency inversion principle** is a specific form of decoupling software modules. When following this principle, the conventional dependency relationships established from high-level, policy-setting modules to low-level, dependency modules are reversed, thus rendering high-level modules independent of the low-level module implementation details. 
+The **dependency inversion principle** is a specific form of decoupling software modules. When following this principle, the conventional dependency relationships established from high-level, policy-setting modules to low-level, dependency modules are reversed, thus rendering high-level modules independent of the low-level module implementation details.
 
 The principle states:
 

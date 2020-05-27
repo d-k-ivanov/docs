@@ -1,7 +1,8 @@
 ## RFC1878
-### Full Table 
 
-```
+### Full Table
+
+```txt
    The following table lists the variable length subnets from 1 to 32,
    the CIDR [3] representation form (/xx) and the Decmial equivalents.
    (M = Million, K=Thousand, A,B,C= traditional class values)
@@ -43,10 +44,12 @@
 ```
 
 ## Subnets and Networks
->   The number of available network and host addresses are derived from the number of bits used for subnet masking.  The tables below depict the number of subnetting bits and the resulting network, broadcast address, and host addresses.  Please note that all-zeros and all-ones subnets are included in Tables 1-1 and 1-2 per the current, standards- based practice for using all definable subnets.
+
+>The number of available network and host addresses are derived from the number of bits used for subnet masking.  The tables below depict the number of subnetting bits and the resulting network, broadcast address, and host addresses.  Please note that all-zeros and all-ones subnets are included in Tables 1-1 and 1-2 per the current, standards- based practice for using all definable subnets.
 
 ### Table 1-1 Class B
-```
+
+```txt
 Subnet Mask     # of nets    Net. Addr.  Host Addr Range  Brodcast Addr.
 Bits of Subnet  hosts/subnet
 
@@ -142,7 +145,8 @@ Bits of Subnet  hosts/subnet
 ```
 
 ### Table 1-2 Class C
-```
+
+```txt
 Subnet Mask     # of nets    Net. Addr.  Host Addr Range  Brodcast Addr.
 Bits of Subnet  hosts/subnet
 
@@ -227,7 +231,8 @@ Bits of Subnet  hosts/subnet
 > For the sake of completeness within this memo, tables 2-1 and 2-2 illistrate some options for subnet/host partions within selected block sizes using calculations which exclude all-zeros and all-ones subnets.  Many vendors only support subnetting based upon this premise.  This practice is obsolete!  Modern software will be able to utilize all definable networks.
 
 ### Table 2-1 from a /16 block
-```
+
+```txt
 # bits          Mask            Effective Subnets       Effective Hosts
 ========        =====           =================       ===============
 2               255.255.192.0   2                       16382
@@ -246,7 +251,8 @@ Bits of Subnet  hosts/subnet
 ```
 
 ### Table 2-2 from a /24 block
-```
+
+```txt
 # bits          Mask            Effective Subnets       Effective Hosts
 ========        =====           =================       ===============
 2               255.255.255.192 2                       62

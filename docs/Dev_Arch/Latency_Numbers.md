@@ -1,7 +1,8 @@
 ### Latency Numbers Every Programmer Should Know
+
 * [Latency Numbers Every Programmer Should Know](https://people.eecs.berkeley.edu/~rcs/research/interactive_latency.html)
 
-```
+```txt
 # From Jonas Bonér
 Latency Comparison Numbers
 --------------------------
