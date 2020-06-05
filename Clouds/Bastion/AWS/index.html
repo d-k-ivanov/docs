@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="author" content="Dmitriy Ivanov">
-    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Clouds/Bastion/SSH-Proxy-nix/">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Clouds/Bastion/AWS/">
     <link rel="shortcut icon" href="../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Connect through Bastion host on Nix - Technical Info</title>
+    <title>AWS - Technical Info</title>
     <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../css/base.css" rel="stylesheet">
@@ -33,9 +33,8 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Connect through Bastion host on Nix", url: "#_top", children: [
-              {title: "Config 1: Masked subnet", url: "#config-1-masked-subnet" },
-              {title: "Config 2: Host aliases", url: "#config-2-host-aliases" },
+          {title: "AWS", url: "#_top", children: [
+              {title: "Convert instances without ENA support modern type", url: "#convert-instances-without-ena-support-modern-type" },
           ]},
         ];
 
@@ -71,20 +70,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../SSH-Proxy-win/" class="btn btn-xs btn-default pull-right">
+      <a href="../SSH-Proxy-nix/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../SSH-Proxy-win/" class="btn btn-xs btn-link">
-        Connect through Bastion host on Windows
+      <a href="../SSH-Proxy-nix/" class="btn btn-xs btn-link">
+        Connect through Bastion host on Nix
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../AWS/" class="btn btn-xs btn-default pull-left">
+      <a href="../../../Awesome/Awesome_CPP/Videos/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../AWS/" class="btn btn-xs btn-link">
-        AWS
+        Previous</a><a href="../../../Awesome/Awesome_CPP/Videos/" class="btn btn-xs btn-link">
+        Videos
       </a>
     </div>
     
@@ -92,69 +91,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="connect-through-bastion-host-on-nix">Connect through Bastion host on Nix</h1>
-<p>To connect via Bastion host which work as SSH Proxy you need simple ssh config on  your nix client machine:</p>
-<h2 id="config-1-masked-subnet">Config 1: Masked subnet</h2>
-<pre><code class="bash">vim ~/.ssh/config
-
-Host &lt;bastion_name&gt;
-Hostname &lt;bastion_ip_addrese&gt;
-        Port 22
-        #  ec2-user is standard for bastion host, of course it can be different
-        User ec2-user
-        IdentityFile ~/.ssh/&lt;your-key&gt;
-
-# Masked subnet which accessible through bastion only
-# Host 10.*
-# Host 172.16.0.*
-Host 192.168.*
-        ProxyCommand ssh -W %h:%p &lt;bastion_name&gt;
-        User &lt;username&gt;
-        IdentityFile ~/.ssh/&lt;your-key&gt;
-        StrictHostKeyChecking no
-        UserKnownHostsFile=/dev/null
-
-</code></pre>
-
-<h2 id="config-2-host-aliases">Config 2: Host aliases</h2>
-<pre><code class="bash">Host &lt;bastion_name&gt;
-Hostname &lt;bastion_ip_addrese&gt;
-        Port 22
-        User ec2-user
-        IdentityFile ~/.ssh/&lt;your-key&gt;
-
-Host node0
-Hostname 192.168.0.1
-        ProxyCommand ssh -W %h:%p &lt;bastion_name&gt;
-        User &lt;username&gt;
-        IdentityFile ~/.ssh/&lt;your-key&gt;
-        StrictHostKeyChecking no
-        UserKnownHostsFile=/dev/null
-
-Host node1
-Hostname 192.168.0.2
-        ProxyCommand ssh -W %h:%p &lt;bastion_name&gt;
-        User &lt;username&gt;
-        IdentityFile ~/.ssh/&lt;your-key&gt;
-        StrictHostKeyChecking no
-        UserKnownHostsFile=/dev/null
-
-Host router0
-Hostname 192.168.0.3
-        ProxyCommand ssh -W %h:%p &lt;bastion_name&gt;
-        User &lt;username&gt;
-        IdentityFile ~/.ssh/&lt;your-key&gt;
-        StrictHostKeyChecking no
-        UserKnownHostsFile=/dev/null
-
-Host router1
-Hostname 192.168.0.4
-        ProxyCommand ssh -W %h:%p &lt;bastion_name&gt;
-        User &lt;username&gt;
-        IdentityFile ~/.ssh/&lt;your-key&gt;
-        StrictHostKeyChecking no
-        UserKnownHostsFile=/dev/null
-
+    <h1 id="aws">AWS</h1>
+<h2 id="convert-instances-without-ena-support-modern-type">Convert instances without ENA support modern type</h2>
+<pre><code class="bash">aws ec2 modify-instance-attribute --instance-id &lt;instance_id&gt; --ena-support
 </code></pre>
 
   <br>
@@ -168,20 +107,20 @@ Hostname 192.168.0.4
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../SSH-Proxy-win/" class="btn btn-xs btn-default pull-right">
+      <a href="../SSH-Proxy-nix/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../SSH-Proxy-win/" class="btn btn-xs btn-link">
-        Connect through Bastion host on Windows
+      <a href="../SSH-Proxy-nix/" class="btn btn-xs btn-link">
+        Connect through Bastion host on Nix
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../AWS/" class="btn btn-xs btn-default pull-left">
+      <a href="../../../Awesome/Awesome_CPP/Videos/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../AWS/" class="btn btn-xs btn-link">
-        AWS
+        Previous</a><a href="../../../Awesome/Awesome_CPP/Videos/" class="btn btn-xs btn-link">
+        Videos
       </a>
     </div>
     
