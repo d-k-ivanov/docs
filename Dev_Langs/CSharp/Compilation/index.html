@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="author" content="Dmitriy Ivanov">
-    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Dev_Langs/Brainfuck/Sample1/">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Dev_Langs/CSharp/Compilation/">
     <link rel="shortcut icon" href="../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Sample1 - Technical Info</title>
+    <title>Compilation - Technical Info</title>
     <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../css/base.css" rel="stylesheet">
@@ -33,7 +33,7 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Print \"2 + 2 = 4\"**", url: "#_top", children: [
+          {title: "Publish", url: "#_top", children: [
           ]},
         ];
 
@@ -69,20 +69,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../../CSharp/Compilation/" class="btn btn-xs btn-default pull-right">
+      <a href="../../C_and_Cpp/Rand/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../../CSharp/Compilation/" class="btn btn-xs btn-link">
-        Compilation
+      <a href="../../C_and_Cpp/Rand/" class="btn btn-xs btn-link">
+        Rand
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../../../Dev_Arch/S.O.L.I.D/" class="btn btn-xs btn-default pull-left">
+      <a href="../../Brainfuck/Sample1/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../../../Dev_Arch/S.O.L.I.D/" class="btn btn-xs btn-link">
-        S.O.L.I.D
+        Previous</a><a href="../../Brainfuck/Sample1/" class="btn btn-xs btn-link">
+        Sample1
       </a>
     </div>
     
@@ -90,36 +90,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="print-2-2-4">Print "2 + 2 = 4"**</h3>
-<pre><code># Increase a[1] to 50 and print ASCII value &quot;2&quot;  
-# 1.    ++++++++++[&gt;+++++&lt;-]&gt;.&lt; 
-# Increase a[2] to 32 and print ASCII value &quot; &quot;  
-# 2.    ++++++++[&gt;&gt;++++&lt;&lt;-]&gt;&gt;.&lt;&lt;
-# Increase a[3] to 43 and print ASCII value &quot;+&quot;  
-# 3.    ++++++++++[&gt;&gt;&gt;++++&lt;&lt;&lt;-]&gt;&gt;&gt;+++.&lt;&lt;&lt;
-# Print from a[2] ASCII value &quot; &quot;  
-# 4.    &gt;&gt;.&lt;&lt;
-# Print from a[1] ASCII value &quot;2&quot;  
-# 5.    &gt;.&lt;
-# Print from a[2] ASCII value &quot; &quot;  
-# 6.    &gt;&gt;.&lt;&lt;
-# Increase a[4] to 61 and print ASCII value &quot;=&quot;  
-# 7.    ++++++++++[&gt;&gt;&gt;&gt;++++++&lt;&lt;&lt;&lt;-]&gt;&gt;&gt;&gt;+.&lt;&lt;&lt;&lt;
-# Print from a[2] ASCII value &quot; &quot;  
-# 8.    &gt;&gt;.&lt;&lt;
-# Increase a[5] to 52 and print ASCII value &quot;4&quot;  
-# 9.    ++++++++++[&gt;&gt;&gt;&gt;&gt;+++++&lt;&lt;&lt;&lt;&lt;-]&gt;&gt;&gt;&gt;&gt;++.&lt;&lt;&lt;&lt;&lt;
-
-++++++++++[&gt;+++++&lt;-]&gt;.&lt;
-++++++++[&gt;&gt;++++&lt;&lt;-]&gt;&gt;.&lt;&lt;
-++++++++++[&gt;&gt;&gt;++++&lt;&lt;&lt;-]&gt;&gt;&gt;+++.&lt;&lt;&lt;
-&gt;&gt;.&lt;&lt;
-&gt;.&lt;
-&gt;&gt;.&lt;&lt;
-++++++++++[&gt;&gt;&gt;&gt;++++++&lt;&lt;&lt;&lt;-]&gt;&gt;&gt;&gt;+.&lt;&lt;&lt;&lt;
-&gt;&gt;.&lt;&lt;
-++++++++++[&gt;&gt;&gt;&gt;&gt;+++++&lt;&lt;&lt;&lt;&lt;-]&gt;&gt;&gt;&gt;&gt;++.&lt;&lt;&lt;&lt;&lt;
-
+    <h2 id="publish">Publish</h2>
+<pre><code class="ps1">dotnet publish -r win-x64 -c Release --self-contained
+dotnet publish -r win-x64 -c Release /p:PublishSingleFile=true
 </code></pre>
 
   <br>
@@ -133,20 +106,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../../CSharp/Compilation/" class="btn btn-xs btn-default pull-right">
+      <a href="../../C_and_Cpp/Rand/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../../CSharp/Compilation/" class="btn btn-xs btn-link">
-        Compilation
+      <a href="../../C_and_Cpp/Rand/" class="btn btn-xs btn-link">
+        Rand
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../../../Dev_Arch/S.O.L.I.D/" class="btn btn-xs btn-default pull-left">
+      <a href="../../Brainfuck/Sample1/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../../../Dev_Arch/S.O.L.I.D/" class="btn btn-xs btn-link">
-        S.O.L.I.D
+        Previous</a><a href="../../Brainfuck/Sample1/" class="btn btn-xs btn-link">
+        Sample1
       </a>
     </div>
     
