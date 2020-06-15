@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="author" content="Dmitriy Ivanov">
-    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Windows/IIS/">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Windows/Layouts/">
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>IIS - Technical Info</title>
+    <title>Layouts - Technical Info</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -33,7 +33,7 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Place for Log Files", url: "#_top", children: [
+          {title: "Remove unused or wrong layout", url: "#_top", children: [
           ]},
         ];
 
@@ -69,20 +69,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../Layouts/" class="btn btn-xs btn-default pull-right">
+      <a href="../Outlook/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../Layouts/" class="btn btn-xs btn-link">
-        Layouts
+      <a href="../Outlook/" class="btn btn-xs btn-link">
+        Outlook
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../Common/" class="btn btn-xs btn-default pull-left">
+      <a href="../IIS/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../Common/" class="btn btn-xs btn-link">
-        Common
+        Previous</a><a href="../IIS/" class="btn btn-xs btn-link">
+        IIS
       </a>
     </div>
     
@@ -90,17 +90,24 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="place-for-log-files">Place for Log Files</h3>
-<pre><code class="bash"># First one: Default place to keep Site's logs (But it can be changed in IIS Manager)
-%SystemDrive%\inetpub\logs\LogFiles
+    <h2 id="remove-unused-or-wrong-layout">Remove unused or wrong layout</h2>
+<pre><code class="txt">1. Use regedit to navigate to following registry keys, where you will find there the list of keyboards that are preloaded at boot.
 
-# HTTP Error logs:
-%SystemDrive%\Windows\System32\LogFiles\HTTPERR
+HKEY_USERS\.DEFAULT\Keyboard Layout\Preload
+HKEY_CURRENT_USER\Keyboard Layout\Preload
+HKEY_USERS\.DEFAULT\Control Panel\International\User Profile
+HKEY_USERS\.DEFAULT\Control Panel\International\User Profile System Backup
 
-# If you cann't find log you should be sure that they are enabled:
-# * Go to &quot;Programs and Features&quot;
-# * Click on &quot;Turn Windows features on or off&quot;(on the left side)
-# * Select &quot;Internet Information Services\World Wide Web Services\Health and Diagnostics\HTTP Logging&quot;
+2. Find the keyboard identifier among the list of [Keyboard Identifiers](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/windows-language-pack-default-values)
+
+3. Delete the key.
+
+# Some record examples
+# 00000409 - United States - English
+# 00000419 - Russian
+# 00000809 - United Kingdom
+# 00000c0a - Spanish(Spain)
+
 </code></pre>
 
   <br>
@@ -114,20 +121,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../Layouts/" class="btn btn-xs btn-default pull-right">
+      <a href="../Outlook/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../Layouts/" class="btn btn-xs btn-link">
-        Layouts
+      <a href="../Outlook/" class="btn btn-xs btn-link">
+        Outlook
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../Common/" class="btn btn-xs btn-default pull-left">
+      <a href="../IIS/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../Common/" class="btn btn-xs btn-link">
-        Common
+        Previous</a><a href="../IIS/" class="btn btn-xs btn-link">
+        IIS
       </a>
     </div>
     
