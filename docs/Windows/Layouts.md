@@ -14,5 +14,6 @@
 # 00000409 - United States - English
 # 00000419 - Russian
 # 00000809 - United Kingdom
-# 00000c0a - Spanish(Spain)
+# 00000c0a - Spanish - Spain
+# 00002000 - English - Europe
 ```
