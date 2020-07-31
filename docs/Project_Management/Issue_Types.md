@@ -15,18 +15,18 @@
     3. Lock account after too many failed attempts.
     4. Google login support.
     5. Facebook login support.
-* Sub-Tasks:
-  * User Login screen:
-    1. Design login page.
-    2. Cut SVG icons and images.
-    3. Implement login page HTML/CSS/JS.
-    4. Create SQL scripts to create tables.
-    5. Create SQL scripts for stored procedures.
-    6. Create web service REST API for user resource.
-    7. Hook up login page to web service REST API.
-  * Forgot Password workflow:
-    1. ...
-    2. ...
+  * Sub-Tasks:
+    1. User Login screen:
+      * Design login page.
+      * Cut SVG icons and images.
+      * Implement login page HTML/CSS/JS.
+      * Create SQL scripts to create tables.
+      * Create SQL scripts for stored procedures.
+      * Create web service REST API for user resource.
+      * Hook up login page to web service REST API.
+    2. Forgot Password workflow:
+      * ...
+      * ...
 * (Engineering) Tasks:
   * Setup GitHub project repo.
   * Setup GCP (or AWS) account, containers, and services.
