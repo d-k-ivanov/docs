@@ -8,28 +8,28 @@
 ### Example
 
 * Epic: User Authentication.
-* User Stories:
-  * User Login screen.
-  * Forgot Password workflow.
-  * Lock account after too many failed attempts.
-  * Google login support.
-  * Facebook login support.
+  * User Stories:
+    1. User Login screen.
+    2. Forgot Password workflow.
+    3. Lock account after too many failed attempts.
+    4. Google login support.
+    5. Facebook login support.
 * Sub-Tasks:
   * User Login screen:
-    * Design login page.
-    * Cut SVG icons and images.
-    * Implement login page HTML/CSS/JS.
-    * Create SQL scripts to create tables.
-    * Create SQL scripts for stored procedures.
-    * Create web service REST API for user resource.
-    * Hook up login page to web service REST API.
+    1. Design login page.
+    2. Cut SVG icons and images.
+    3. Implement login page HTML/CSS/JS.
+    4. Create SQL scripts to create tables.
+    5. Create SQL scripts for stored procedures.
+    6. Create web service REST API for user resource.
+    7. Hook up login page to web service REST API.
   * Forgot Password workflow:
-    * ...
+    1. ...
 * (Engineering) Tasks:
   * Setup GitHub project repo.
   * Setup GCP (or AWS) account, containers, and services.
-    * (There might be Sub-Tasks for these too)
-    * ...
+    1. (There might be Sub-Tasks for these too)
+    2. ...
   * Setup Jenkins CI pipeline.
   * Design overall (high-level) system architecture.
   * Research and decide on unit test and mocking framework.
