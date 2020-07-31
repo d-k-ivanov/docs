@@ -7,6 +7,7 @@
 
 ### Example
 
+```txt
 * Epic: User Authentication.
   * User Stories:
     1. User Login screen.
@@ -25,11 +26,14 @@
     7. Hook up login page to web service REST API.
   * Forgot Password workflow:
     1. ...
+    2. ...
 * (Engineering) Tasks:
   * Setup GitHub project repo.
   * Setup GCP (or AWS) account, containers, and services.
     1. (There might be Sub-Tasks for these too)
     2. ...
+    3. ...
   * Setup Jenkins CI pipeline.
   * Design overall (high-level) system architecture.
   * Research and decide on unit test and mocking framework.
+```
