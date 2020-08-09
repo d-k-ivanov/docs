@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Scripting/Power_Shell/Azure/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Azure - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Install the Azure Resource Manager modules from the PowerShell Gallery", url: "#_top", children: [
+          ]},
+          {title: "To log in to Azure Resource Manager", url: "#to-log-in-to-azure-resource-manager", children: [
+          ]},
+          {title: "You can also use a specific Tenant if you would like a faster log in experience", url: "#you-can-also-use-a-specific-tenant-if-you-would-like-a-faster-log-in-experience", children: [
+          ]},
+          {title: "To view all subscriptions for your account", url: "#to-view-all-subscriptions-for-your-account", children: [
+          ]},
+          {title: "To select a default subscription for your current session.", url: "#to-select-a-default-subscription-for-your-current-session", children: [
+          ]},
+          {title: "View your current Azure PowerShell session context", url: "#view-your-current-azure-powershell-session-context", children: [
+          ]},
+          {title: "To select the default storage context for your current session", url: "#to-select-the-default-storage-context-for-your-current-session", children: [
+          ]},
+          {title: "View your current Azure PowerShell session context", url: "#view-your-current-azure-powershell-session-context_1", children: [
+          ]},
+          {title: "To list all of the blobs in all of your containers in all of your accounts", url: "#to-list-all-of-the-blobs-in-all-of-your-containers-in-all-of-your-accounts", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Encoding/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Encoding/" class="btn btn-xs btn-link">
+        Encoding
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Cmd/Ping_Whole_Subnet/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Cmd/Ping_Whole_Subnet/" class="btn btn-xs btn-link">
+        Ping Whole Subnet
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="install-the-azure-resource-manager-modules-from-the-powershell-gallery">Install the Azure Resource Manager modules from the PowerShell Gallery</h3>
+<pre><code class="ps1">Install-Module AzureRM
+</code></pre>
+
+<h3 id="to-log-in-to-azure-resource-manager">To log in to Azure Resource Manager</h3>
+<pre><code class="ps1">Login-AzureRmAccount
+</code></pre>
+
+<h3 id="you-can-also-use-a-specific-tenant-if-you-would-like-a-faster-log-in-experience">You can also use a specific Tenant if you would like a faster log in experience</h3>
+<pre><code class="ps1">Login-AzureRmAccount -TenantId xxxx
+</code></pre>
+
+<h3 id="to-view-all-subscriptions-for-your-account">To view all subscriptions for your account</h3>
+<pre><code class="ps1">Get-AzureRmSubscription
+</code></pre>
+
+<h3 id="to-select-a-default-subscription-for-your-current-session">To select a default subscription for your current session.</h3>
+<pre><code class="ps1"># This is useful when you have multiple subscriptions.
+Get-AzureRmSubscription -SubscriptionName &quot;your sub&quot; | Select-AzureRmSubscription
+</code></pre>
+
+<h3 id="view-your-current-azure-powershell-session-context">View your current Azure PowerShell session context</h3>
+<pre><code class="ps1"># This session state is only applicable to the current session and will not affect other sessions
+Get-AzureRmContext
+</code></pre>
+
+<h3 id="to-select-the-default-storage-context-for-your-current-session">To select the default storage context for your current session</h3>
+<pre><code class="ps1">Set-AzureRmCurrentStorageAccount -ResourceGroupName &quot;your resource group&quot; -StorageAccountName &quot;your storage account name&quot;
+</code></pre>
+
+<h3 id="view-your-current-azure-powershell-session-context_1">View your current Azure PowerShell session context</h3>
+<pre><code class="ps1"># Note: the CurrentStorageAccount is now set in your session context
+Get-AzureRmContext
+</code></pre>
+
+<h3 id="to-list-all-of-the-blobs-in-all-of-your-containers-in-all-of-your-accounts">To list all of the blobs in all of your containers in all of your accounts</h3>
+<pre><code class="ps1">Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

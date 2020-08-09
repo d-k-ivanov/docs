@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Combinatorics/burnside/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Burnside's lemma / Pólya enumeration theorem - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Burnside's lemma / P\u00f3lya enumeration theorem", url: "#_top", children: [
+              {title: "Burnside's lemma", url: "#burnsides-lemma" },
+              {title: "P\u00f3lya enumeration theorem", url: "#polya-enumeration-theorem" },
+              {title: "Application: Coloring necklaces", url: "#application-coloring-necklaces" },
+              {title: "Application: Coloring a torus", url: "#application-coloring-a-torus" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../catalan-numbers/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../catalan-numbers/" class="btn btn-xs btn-link">
+        Catalan Numbers
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../bracket_sequences/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../bracket_sequences/" class="btn btn-xs btn-link">
+        Balanced bracket sequences
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="burnsides-lemma-polya-enumeration-theorem">Burnside's lemma / Pólya enumeration theorem</h1>
+<h2 id="burnsides-lemma">Burnside's lemma</h2>
+<p><strong>Burnside's lemma</strong> was formulated and proven by <strong>Burnside</strong> in 1897, but historically it was already discovered in 1887 by <strong>Frobenius</strong>, and even earlier in 1845 by <strong>Cauchy</strong>.
+Therefore it is also sometimes named the <strong>Cauchy-Frobenius lemma</strong>.</p>
+<p>Burnside's lemma allows us to count the number of equivalence classes in sets, based on internal symmetry.</p>
+<h3 id="objects-and-representations">Objects and representations</h3>
+<p>We have to clearly distinguish between the number of objects and the number of representations.</p>
+<p>Different representations can correspond to the same objects, but of course any representation corresponds to exactly one object.
+Consequently the set of all representations is divided into equivalence classes.
+Our task is to compute the number of objects, or equivalently, the number of equivalence classes.
+The following example will make the difference between object and representation clearer.</p>
+<h3 id="example-coloring-of-binary-trees">Example: coloring of binary trees</h3>
+<p>Suppose we have the following problem.
+We have to count the number of ways to color a rooted binary tree with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices with two colors, where at each vertex we do not distinguish between the left and the right children.</p>
+<p>Here the set of objects is the set of different colorings of the tree.</p>
+<p>We now define the set of representations.
+A representation of a coloring is a function <span><span class="MathJax_Preview">f(v)</span><script type="math/tex">f(v)</script></span>, which assigns each vertex a color (here we use the colors <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span> and <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>).
+The set of representations is the set containing all possible functions of this kind, and its size is obviously equal to <span><span class="MathJax_Preview">2^n</span><script type="math/tex">2^n</script></span>.</p>
+<p>At the same time we introduce a partition of this set into equivalence classes.</p>
+<p>For example, suppose <span><span class="MathJax_Preview">n = 3</span><script type="math/tex">n = 3</script></span>, and the tree consists of the root <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> and its two children <span><span class="MathJax_Preview">2</span><script type="math/tex">2</script></span> and <span><span class="MathJax_Preview">3</span><script type="math/tex">3</script></span>.
+Then the following functions <span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span> and <span><span class="MathJax_Preview">f_2</span><script type="math/tex">f_2</script></span> are considered equivalent.
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{array}{ll}f_1(1) = 0 &amp; f_2(1) = 0\\\\
+f_1(2) = 1 &amp; f_2(2) = 0\\\\
+f_1(3) = 0 &amp; f_2(3) = 1
+\end{array}</span><script type="math/tex">\begin{array}{ll}f_1(1) = 0 & f_2(1) = 0\\\\
+f_1(2) = 1 & f_2(2) = 0\\\\
+f_1(3) = 0 & f_2(3) = 1
+\end{array}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\begin{array}{ll}f_1(1) = 0 &amp; f_2(1) = 0\\\\
+f_1(2) = 1 &amp; f_2(2) = 0\\\\
+f_1(3) = 0 &amp; f_2(3) = 1
+\end{array}</span><script type="math/tex">\begin{array}{ll}f_1(1) = 0 & f_2(1) = 0\\\\
+f_1(2) = 1 & f_2(2) = 0\\\\
+f_1(3) = 0 & f_2(3) = 1
+\end{array}</script></span></script></span></p>
+<h3 id="invariant-permutations">Invariant permutations</h3>
+<p>Why do these two function <span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span> and <span><span class="MathJax_Preview">f_2</span><script type="math/tex">f_2</script></span> belong to the same equivalence class?
+Intuitively this is understandable - we can rearrange the children of vertex <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>, the vertices <span><span class="MathJax_Preview">2</span><script type="math/tex">2</script></span> and <span><span class="MathJax_Preview">3</span><script type="math/tex">3</script></span>, and after such a transformation of the function <span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span> it will coincide with <span><span class="MathJax_Preview">f_2</span><script type="math/tex">f_2</script></span>.</p>
+<p>But formally this means that there exists an <strong>invariant permutation</strong> <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span> (i.e. a permutation which does not change the object itself, but only its representation), such that:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">f_2 \pi \equiv f_1</span><script type="math/tex">f_2 \pi \equiv f_1</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">f_2 \pi \equiv f_1</span><script type="math/tex">f_2 \pi \equiv f_1</script></span></script></span></p>
+<p>So starting from the definition of objects, we can find all the invariant permutations, i.e. all permutations which do not change the object when applying the permutation to the representation.
+Then we can check whether two functions <span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span> and <span><span class="MathJax_Preview">f_2</span><script type="math/tex">f_2</script></span> are equivalent (i.e. if they correspond to the same object) by checking the condition <span><span class="MathJax_Preview">f_2 \pi \equiv f_1</span><script type="math/tex">f_2 \pi \equiv f_1</script></span> for each invariant permutation (or equivalently <span><span class="MathJax_Preview">f_1 \pi \equiv f_2</span><script type="math/tex">f_1 \pi \equiv f_2</script></span>).
+If at least one permutation is found for which the condition is satisfied, then <span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span> and <span><span class="MathJax_Preview">f_2</span><script type="math/tex">f_2</script></span> are equivalent, otherwise they are not equivalent.</p>
+<p>Finding all such invariant permutations with respect to the object definition is a key step for the application of both Burnside's lemma and the Pólya enumeration theorem.
+It is clear that these invariant permutations depend on the specific problem, and their finding is a purely heuristic process based on intuitive considerations.
+However in most cases it is sufficient to manually find several "basic" permutations, with which all other permutations can be generated (and this part of the work can be shifted to a computer).</p>
+<p>It is not difficult to understand that invariant permutations form a <strong>group</strong>, since the product (composition) of invariant permutations is again an invariant permutation.
+We denote the <strong>group of invariant permutations</strong> by <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>.</p>
+<h3 id="the-statement-of-the-lemma">The statement of the lemma</h3>
+<p>For the formulation of the lemma we need one more definition from algebra.
+A <strong>fixed point</strong> <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> for a permutation <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span> is an element that is invariant under this permutation: <span><span class="MathJax_Preview">f \equiv f \pi</span><script type="math/tex">f \equiv f \pi</script></span>.
+For example in out example the fixed points are those functions <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>, which correspond to colorings that do not change when the permutation <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span> is applied to them (i.e. they do not change in the formal sense of the equality of functions).
+We denote by <span><span class="MathJax_Preview">I(\pi)</span><script type="math/tex">I(\pi)</script></span> the <strong>number of fixed points</strong> for the permutation <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>.</p>
+<p>Then <strong>Burnside's lemma</strong> goes as follows:
+the number of equivalence classes is equal to the sum of the numbers of fixed points with respect to all permutations from the group <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>, divided by the size of this group:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">|\text{Classes}| = \frac{1}{|G|} \sum_{\pi \in G} I(\pi)</span><script type="math/tex">|\text{Classes}| = \frac{1}{|G|} \sum_{\pi \in G} I(\pi)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">|\text{Classes}| = \frac{1}{|G|} \sum_{\pi \in G} I(\pi)</span><script type="math/tex">|\text{Classes}| = \frac{1}{|G|} \sum_{\pi \in G} I(\pi)</script></span></script></span></p>
+<p>Although Burnside's lemma itself is not so convenient to use in practice (it is unclear how to quickly look for the value <span><span class="MathJax_Preview">I(\pi)</span><script type="math/tex">I(\pi)</script></span>, it most clearly reveals the mathematical essence on which the idea of calculating equivalence classes is based.</p>
+<h3 id="proof-of-burnsides-lemma">Proof of Burnside's lemma</h3>
+<p>The proof of Burnside's lemma described here is not important for the practical applications, so it can be skipped on the first reading.</p>
+<p>The proof here is the simplest known, and does not use group theory.
+The proof was published by Kenneth P. Bogart in 1991.</p>
+<p>We need to prove the following statement:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">|\text{Classes}| \cdot |G| = \sum_{\pi \in G} I(\pi)</span><script type="math/tex">|\text{Classes}| \cdot |G| = \sum_{\pi \in G} I(\pi)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">|\text{Classes}| \cdot |G| = \sum_{\pi \in G} I(\pi)</span><script type="math/tex">|\text{Classes}| \cdot |G| = \sum_{\pi \in G} I(\pi)</script></span></script></span></p>
+<p>The value on the right side is nothing more than the number of "invariant pairs" <span><span class="MathJax_Preview">(f, \pi)</span><script type="math/tex">(f, \pi)</script></span>, i.e. pairs such that <span><span class="MathJax_Preview">f \pi \equiv f</span><script type="math/tex">f \pi \equiv f</script></span>.
+It is obvious that we can change the order of summation.
+We let the sum iterate over all elements <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> and sum over the values <span><span class="MathJax_Preview">J(f)</span><script type="math/tex">J(f)</script></span> - the number of permutations for which <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> is a fixed point.
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">|\text{Classes}| \cdot |G| = \sum_{f} J(f)</span><script type="math/tex">|\text{Classes}| \cdot |G| = \sum_{f} J(f)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">|\text{Classes}| \cdot |G| = \sum_{f} J(f)</span><script type="math/tex">|\text{Classes}| \cdot |G| = \sum_{f} J(f)</script></span></script></span></p>
+<p>To prove this formula we will compose a table with columns labeled with all functions <span><span class="MathJax_Preview">f_i</span><script type="math/tex">f_i</script></span> and rows labeled with all permutations <span><span class="MathJax_Preview">\pi_j</span><script type="math/tex">\pi_j</script></span>.
+And we fill the cells with <span><span class="MathJax_Preview">f_i \pi_j</span><script type="math/tex">f_i \pi_j</script></span>.
+If we look at the columns in this table as sets, then some of them will coincide, and this means that the corresponding functions <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> for these columns are also equivalent.
+Thus the numbers of different (as sets) columns is equal to the number of classes.
+Incidentally, from the standpoint of group theory, the column labeled with <span><span class="MathJax_Preview">f_i</span><script type="math/tex">f_i</script></span> is the orbit of this element.
+For equivalent elements the orbits coincides, and the number of orbits gives exactly the number of classes.</p>
+<p>Thus the columns of the table decompose into equivalence classes.
+Let us fix a class, and look at the columns in it.
+First, note that these columns can only contain elements <span><span class="MathJax_Preview">f_i</span><script type="math/tex">f_i</script></span> of the equivalence class (otherwise some permutation <span><span class="MathJax_Preview">\pi_j</span><script type="math/tex">\pi_j</script></span> moved one of the functions into a different equivalence class, which is impossible since we only look at invariant permutations).
+Secondly each element <span><span class="MathJax_Preview">f_i</span><script type="math/tex">f_i</script></span> will occur the same number of times in each columns (this also follows from the fact that the columns correspond to equivalent elements).
+From this we can conclude, that all the columns within the same equivalence class coincide with each other as multisets.</p>
+<p>Now fix an arbitrary element <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>.
+On the one hand, it occurs in its column exactly <span><span class="MathJax_Preview">J(f)</span><script type="math/tex">J(f)</script></span> times (by definition).
+On the other hand, all columns within the same equivalence class are the same as multisets.
+Therefore within each column of a given equivalence class any element <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> occurs exactly <span><span class="MathJax_Preview">J(g)</span><script type="math/tex">J(g)</script></span> times.</p>
+<p>Thus if we arbitrarily take one column from each equivalence class, and sum the number of elements in them, we obtain on one hand <span><span class="MathJax_Preview">|\text{Classes}| \cdot |G|</span><script type="math/tex">|\text{Classes}| \cdot |G|</script></span> (simply by multiplying the number of columns by the number of rows), and on the other hand the sum of the quantities <span><span class="MathJax_Preview">J(f)</span><script type="math/tex">J(f)</script></span> for all <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> (this follows from all the previous arguments):
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">|\text{Classes}| \cdot |G| = \sum_{f} J(f)</span><script type="math/tex">|\text{Classes}| \cdot |G| = \sum_{f} J(f)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">|\text{Classes}| \cdot |G| = \sum_{f} J(f)</span><script type="math/tex">|\text{Classes}| \cdot |G| = \sum_{f} J(f)</script></span></script></span></p>
+<h2 id="polya-enumeration-theorem">Pólya enumeration theorem</h2>
+<p>The Pólya enumeration theorem is a generalization of Burnside's lemma, and it also provides a more convenient tool for finding the number of equivalence classes.
+It should noted that this theorem was already discovered before Pólya by Redfield in 1927, but his publication went unnoticed by mathematicians.
+Pólya independently came to the same results in 1937, and his publication was more successful.</p>
+<p>Here we discuss only a special case of the Pólya enumeration theorem, which will turn out very useful in practice.
+The general formula of the theorem will not be discussed.</p>
+<p>We denote by <span><span class="MathJax_Preview">C(\pi)</span><script type="math/tex">C(\pi)</script></span> the number of cycles in the permutation <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>.
+Then the following formula (a <strong>special case of the Pólya enumeration theorem</strong>) holds:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">|\text{Classes}| = \frac{1}{|G|} \sum_{\pi \in G} k^{C(\pi)}</span><script type="math/tex">|\text{Classes}| = \frac{1}{|G|} \sum_{\pi \in G} k^{C(\pi)}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">|\text{Classes}| = \frac{1}{|G|} \sum_{\pi \in G} k^{C(\pi)}</span><script type="math/tex">|\text{Classes}| = \frac{1}{|G|} \sum_{\pi \in G} k^{C(\pi)}</script></span></script></span>
+<span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> is the number of values that each representation element can take, in the case of the coloring of a binary tree this would be <span><span class="MathJax_Preview">k = 2</span><script type="math/tex">k = 2</script></span>.</p>
+<h3 id="evidence">Evidence</h3>
+<p>This formula is a direct consequence of Burnside's lemma.
+To get it, we just need to find an explicit expression for <span><span class="MathJax_Preview">I(\pi)</span><script type="math/tex">I(\pi)</script></span>, which appears in the lemma.
+Recall, that <span><span class="MathJax_Preview">I(\pi)</span><script type="math/tex">I(\pi)</script></span> is the number of fixed points in the permutation <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>.</p>
+<p>Thus we consider a permutation <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span> and some element <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>.
+During the application of <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>, the elements in <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> move via the cycles in the permutation.
+Since the result should obtain <span><span class="MathJax_Preview">f \equiv f \pi</span><script type="math/tex">f \equiv f \pi</script></span>, the elements touched by one cycle must all be equal.
+At the same time different cycles are independent.
+Thus for each permutation cycle <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span> we can choose one value (among <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> possible) and thus we get the number of fixed points:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">I(\pi) = k^{C(\pi)}</span><script type="math/tex">I(\pi) = k^{C(\pi)}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">I(\pi) = k^{C(\pi)}</span><script type="math/tex">I(\pi) = k^{C(\pi)}</script></span></script></span></p>
+<h2 id="application-coloring-necklaces">Application: Coloring necklaces</h2>
+<p>The problem "Necklace" is one of the classical combinatorial problems.
+The task is to count the number of different necklaces from <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> beads, each of which can be painted in one of the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> colors.
+When comparing two necklaces, they can be rotated, but not reversed (i.e. a cyclic shift is permitted).</p>
+<p>In this problem we can immediately find the group of invariant permutations:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{align}
+\pi_0 &amp;= 1 2 3 \dots n\\\\
+\pi_1 &amp;= 2 3 \dots n 1\\\\
+\pi_2 &amp;= 3 \dots n 12\\\\
+&amp;\dots\\\\
+\pi_{n-1} &amp;= n 1 2 3\dots\end{align}</span><script type="math/tex">\begin{align}
+\pi_0 &= 1 2 3 \dots n\\\\
+\pi_1 &= 2 3 \dots n 1\\\\
+\pi_2 &= 3 \dots n 12\\\\
+&\dots\\\\
+\pi_{n-1} &= n 1 2 3\dots\end{align}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\begin{align}
+\pi_0 &amp;= 1 2 3 \dots n\\\\
+\pi_1 &amp;= 2 3 \dots n 1\\\\
+\pi_2 &amp;= 3 \dots n 12\\\\
+&amp;\dots\\\\
+\pi_{n-1} &amp;= n 1 2 3\dots\end{align}</span><script type="math/tex">\begin{align}
+\pi_0 &= 1 2 3 \dots n\\\\
+\pi_1 &= 2 3 \dots n 1\\\\
+\pi_2 &= 3 \dots n 12\\\\
+&\dots\\\\
+\pi_{n-1} &= n 1 2 3\dots\end{align}</script></span></script></span></p>
+<p>Let us find an explicit formula for calculating <span><span class="MathJax_Preview">C(\pi_i)</span><script type="math/tex">C(\pi_i)</script></span>.
+First we note, that the permutation <span><span class="MathJax_Preview">\pi_i</span><script type="math/tex">\pi_i</script></span> has at the <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>-th position the value <span><span class="MathJax_Preview">i + j</span><script type="math/tex">i + j</script></span> (taken modulo <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>).
+If we check the cycle structure for <span><span class="MathJax_Preview">\pi_i</span><script type="math/tex">\pi_i</script></span>.
+We see that <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> goes to <span><span class="MathJax_Preview">1 + i</span><script type="math/tex">1 + i</script></span>, <span><span class="MathJax_Preview">1 + i</span><script type="math/tex">1 + i</script></span> goes to <span><span class="MathJax_Preview">1 + 2i</span><script type="math/tex">1 + 2i</script></span>, which goes to <span><span class="MathJax_Preview">1 + 3i</span><script type="math/tex">1 + 3i</script></span>, etc., until we come to a number of the form <span><span class="MathJax_Preview">1 + k n</span><script type="math/tex">1 + k n</script></span>.
+Similar statements can be mode for the remaining elements.
+Hence we see that all cycles have the same length, namely <span><span class="MathJax_Preview">\frac{\\text{lcm}(i, n)}{i} = \frac{n}{\gcd(i, n)}</span><script type="math/tex">\frac{\\text{lcm}(i, n)}{i} = \frac{n}{\gcd(i, n)}</script></span>.
+Thus the number of cycles in <span><span class="MathJax_Preview">\pi_i</span><script type="math/tex">\pi_i</script></span> will be equal to <span><span class="MathJax_Preview">\gcd(i, n)</span><script type="math/tex">\gcd(i, n)</script></span>.</p>
+<p>Substituting these values into the Pólya enumeration theorem, we obtain the solution:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\frac{1}{n} \sum_{i=1}^n k^{\gcd(i, n)}</span><script type="math/tex">\frac{1}{n} \sum_{i=1}^n k^{\gcd(i, n)}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\frac{1}{n} \sum_{i=1}^n k^{\gcd(i, n)}</span><script type="math/tex">\frac{1}{n} \sum_{i=1}^n k^{\gcd(i, n)}</script></span></script></span></p>
+<p>You can leave this formula in this form, or you can simplify it even more.
+Let transfer the sum so that it iterates over all divisors of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.
+In the original sum there will be many equivalent terms: if <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> is not a divisor of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, then such a divisor can be found after computing <span><span class="MathJax_Preview">\gcd(i, n)</span><script type="math/tex">\gcd(i, n)</script></span>.
+Therefore for each divisor <span><span class="MathJax_Preview">d ~|~ n</span><script type="math/tex">d ~|~ n</script></span> its term <span><span class="MathJax_Preview">k^{\gcd(d, n)} = k^d</span><script type="math/tex">k^{\gcd(d, n)} = k^d</script></span> will appear in the sum multiple times, i.e. the answer to the problem can be rewritten as
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\frac{1}{n} \sum_{d ~|~ n} C_d k^d,</span><script type="math/tex">\frac{1}{n} \sum_{d ~|~ n} C_d k^d,</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\frac{1}{n} \sum_{d ~|~ n} C_d k^d,</span><script type="math/tex">\frac{1}{n} \sum_{d ~|~ n} C_d k^d,</script></span></script></span>
+where <span><span class="MathJax_Preview">C_d</span><script type="math/tex">C_d</script></span> is the number of such numbers <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> with <span><span class="MathJax_Preview">\gcd(i, n) = d</span><script type="math/tex">\gcd(i, n) = d</script></span>.
+We can find an explicit expression for this value.
+Any such number <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> has the form <span><span class="MathJax_Preview">i = d j</span><script type="math/tex">i = d j</script></span> with <span><span class="MathJax_Preview">\gcd(j, n / d) = 1</span><script type="math/tex">\gcd(j, n / d) = 1</script></span> (otherwise <span><span class="MathJax_Preview">\gcd(i, n) &gt; d</span><script type="math/tex">\gcd(i, n) > d</script></span>).
+So we can count the number of <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> with this behavior.
+<a href="/docs/#Algorithms/algebra/phi-function/">Euler's phi function</a> gives us the result <span><span class="MathJax_Preview">C_d = \phi(n / d)</span><script type="math/tex">C_d = \phi(n / d)</script></span>, and therefore we get the answer:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\frac{1}{n} \sum_{d ~|~ n} \phi\left(\frac{n}{d}\right) k^d</span><script type="math/tex">\frac{1}{n} \sum_{d ~|~ n} \phi\left(\frac{n}{d}\right) k^d</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\frac{1}{n} \sum_{d ~|~ n} \phi\left(\frac{n}{d}\right) k^d</span><script type="math/tex">\frac{1}{n} \sum_{d ~|~ n} \phi\left(\frac{n}{d}\right) k^d</script></span></script></span></p>
+<h2 id="application-coloring-a-torus">Application: Coloring a torus</h2>
+<p>Quite often we cannot obtain an explicit formula for the number of equivalence classes.
+In many problems the number of permutations in a group can be too large for manual calculations and it is not possible to compute analytically the number of cycles in them.</p>
+<p>In that case we should manually find several "basic" permutations, so that they can generate the entire group <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>.
+Next we can write a program that will generate all permutations of the group <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>, count the number of cycles in them, and compute the answer with the formula.</p>
+<p>Consider the example of the problem for coloring a torus.
+There is a checkered sheet of paper <span><span class="MathJax_Preview">n \times m</span><script type="math/tex">n \times m</script></span> (<span><span class="MathJax_Preview">n &lt; m</span><script type="math/tex">n < m</script></span>), some of the cells are black.
+Then a cylinder is obtained from this sheet by gluing together the two sides with lengths <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>.
+Then a torus is obtained from the cylinder by gluing together the two circles (top and bottom) without twisting.
+The task is to compute the number of different colored tori, assuming that we cannot see the glued lines, and the torus can be turned and turned.</p>
+<p>We again start with a piece of <span><span class="MathJax_Preview">n \times m</span><script type="math/tex">n \times m</script></span> paper.
+It is easy to see that the following types of transformations preserve the equivalence class:
+a cyclic shift of the rows, a cyclic shift of the columns, and a rotation of the sheet by 180 degrees.
+It is also easy to see, that these transformations can generate the entire group of invariant transformations.
+If we somehow number the cells of the paper, then we can write three permutations <span><span class="MathJax_Preview">p_1</span><script type="math/tex">p_1</script></span>, <span><span class="MathJax_Preview">p_2</span><script type="math/tex">p_2</script></span>, <span><span class="MathJax_Preview">p_3</span><script type="math/tex">p_3</script></span> corresponding to these types of transformation.</p>
+<p>Next it only remains to generate all permutations obtained as a product.
+It is obvious that all such permutations have the form <span><span class="MathJax_Preview">p_1^{i_1} p_2^{i_2} p_3^{i_3}</span><script type="math/tex">p_1^{i_1} p_2^{i_2} p_3^{i_3}</script></span> where <span><span class="MathJax_Preview">i_1 = 0 \dots m-1</span><script type="math/tex">i_1 = 0 \dots m-1</script></span>, <span><span class="MathJax_Preview">i_2 = 0 \dots n-1</span><script type="math/tex">i_2 = 0 \dots n-1</script></span>, <span><span class="MathJax_Preview">i_3 = 0 \dots 1</span><script type="math/tex">i_3 = 0 \dots 1</script></span>.</p>
+<p>Thus we can write the implementations to this problem.</p>
+<p>```cpp burnside_tori
+using Permutation = vector<int>;</p>
+<p>void operator*=(Permutation&amp; p, Permutation const&amp; q) {
+    Permutation copy = p;
+    for (int i = 0; i &lt; p.size(); i++)
+        p[i] = copy[q[i]];
+}</p>
+<p>int count_cycles(Permutation p) {
+    int cnt = 0;
+    for (int i = 0; i &lt; p.size(); i++) {
+        if (p[i] != -1) {
+            cnt++;
+            for (int j = i; p[j] != -1;) {
+                int next = p[j];
+                p[j] = -1;
+                j = next;
+            }
+        }
+    }
+    return cnt;
+}</p>
+<p>int solve(int n, int m) {
+    Permutation p(n<em>m), p1(n</em>m), p2(n<em>m), p3(n</em>m);
+    for (int i = 0; i &lt; n*m; i++) {
+        p[i] = i;
+        p1[i] = (i % n + 1) % n + i / n * n;
+        p2[i] = (i / n + 1) % m * n + i % n;
+        p3[i] = (m - 1 - i / n) * n + (n - 1 - i % n);
+    }</p>
+<pre><code>set&lt;Permutation&gt; s;
+for (int i1 = 0; i1 &lt; n; i1++) {
+    for (int i2 = 0; i2 &lt; m; i2++) {
+        for (int i3 = 0; i3 &lt; 2; i3++) {
+            s.insert(p);
+            p *= p3;
+        }
+        p *= p2;
+    }
+    p *= p1;
+}
+
+int sum = 0;
+for (Permutation const&amp; p : s) {
+    sum += 1 &lt;&lt; count_cycles(p);
+}
+return sum / s.size();
+</code></pre>
+<p>}
+```</p>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

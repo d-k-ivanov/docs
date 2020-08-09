@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Geometry/circle-line-intersection/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Circle-Line Intersection - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Circle-Line Intersection", url: "#_top", children: [
+              {title: "Solution", url: "#solution" },
+              {title: "Implementation", url: "#implementation" },
+              {title: "Practice Problems", url: "#practice-problems" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../convex_hull_trick/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../convex_hull_trick/" class="btn btn-xs btn-link">
+        Convex hull trick and Li Chao tree
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../circle-circle-intersection/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../circle-circle-intersection/" class="btn btn-xs btn-link">
+        Circle-Circle Intersection
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="circle-line-intersection">Circle-Line Intersection</h1>
+<p>Given the coordinates of the center of a circle and its radius, and the equation of a line, you're required to find the points of intersection.</p>
+<h2 id="solution">Solution</h2>
+<p>Instead of solving the system of two equations, we will approach the problem geometrically. This way we get a more accurate solution from the point of view of numerical stability.</p>
+<p>We assume without loss of generality that the circle is centered at the origin. If it's not, we translate it there and correct the <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> constant in the line equation. So we have a circle centered at <span><span class="MathJax_Preview">(0,0)</span><script type="math/tex">(0,0)</script></span> of radius <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> and a line with equation <span><span class="MathJax_Preview">Ax+By+C=0</span><script type="math/tex">Ax+By+C=0</script></span>.</p>
+<p>Let's start by find the point on the line which is closest to the origin <span><span class="MathJax_Preview">(x_0, y_0)</span><script type="math/tex">(x_0, y_0)</script></span>. First, it has to be at a distance</p>
+<div>
+<div class="MathJax_Preview"> d_0 = \frac{|C|}{\sqrt{A^2+B^2}} </div>
+<script type="math/tex; mode=display"> d_0 = \frac{|C|}{\sqrt{A^2+B^2}} </script>
+</div>
+<p>Second, since the vector <span><span class="MathJax_Preview">(A, B)</span><script type="math/tex">(A, B)</script></span> is perpendicular to the line, the coordinates of the point must be proportional to the coordinates of this vector. Since we know the distance of the point to the origin, we just need to scale the vector <span><span class="MathJax_Preview">(A, B)</span><script type="math/tex">(A, B)</script></span> to this length, and we'll get:</p>
+<div>
+<div class="MathJax_Preview"> x_0 = - \frac{AC}{A^2 + B^2} $$
+$$ y_0 = - \frac{BC}{A^2 + B^2} </div>
+<script type="math/tex; mode=display"> x_0 = - \frac{AC}{A^2 + B^2} $$
+$$ y_0 = - \frac{BC}{A^2 + B^2} </script>
+</div>
+<p>The minus signs are not obvious, but they can be easily verified by substituting <span><span class="MathJax_Preview">x_0</span><script type="math/tex">x_0</script></span> and <span><span class="MathJax_Preview">y_0</span><script type="math/tex">y_0</script></span> in the equation of the line.</p>
+<p>At this stage we can determine the number of intersection points, and even find the solution when there is one or zero points. Indeed, if the distance from <span><span class="MathJax_Preview">(x_0, y_0)</span><script type="math/tex">(x_0, y_0)</script></span> to the origin <span><span class="MathJax_Preview">d_0</span><script type="math/tex">d_0</script></span> is greater than the radius <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>, the answer is <strong>zero points</strong>. If <span><span class="MathJax_Preview">d_0=r</span><script type="math/tex">d_0=r</script></span>, the answer is <strong>one point</strong> <span><span class="MathJax_Preview">(x_0, y_0)</span><script type="math/tex">(x_0, y_0)</script></span>. If <span><span class="MathJax_Preview">d_0&lt;r</span><script type="math/tex">d_0<r</script></span>, there are two points of intersection, and now we have to find their coordinates.</p>
+<p>So, we know that the point <span><span class="MathJax_Preview">(x_0, y_0)</span><script type="math/tex">(x_0, y_0)</script></span> is inside the circle. The two points of intersection, <span><span class="MathJax_Preview">(a_x, a_y)</span><script type="math/tex">(a_x, a_y)</script></span> and <span><span class="MathJax_Preview">(b_x, b_y)</span><script type="math/tex">(b_x, b_y)</script></span>, must belong to the line <span><span class="MathJax_Preview">Ax+By+C=0</span><script type="math/tex">Ax+By+C=0</script></span> and must be at the same distance <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> from <span><span class="MathJax_Preview">(x_0, y_0)</span><script type="math/tex">(x_0, y_0)</script></span>, and this distance is easy to find:</p>
+<div>
+<div class="MathJax_Preview"> d = \sqrt{r^2 - \frac{C^2}{A^2 + B^2}} </div>
+<script type="math/tex; mode=display"> d = \sqrt{r^2 - \frac{C^2}{A^2 + B^2}} </script>
+</div>
+<p>Note that the vector <span><span class="MathJax_Preview">(-B, A)</span><script type="math/tex">(-B, A)</script></span> is collinear to the line, and thus we can find the points in question by adding and subtracting  vector <span><span class="MathJax_Preview">(-B,A)</span><script type="math/tex">(-B,A)</script></span>, scaled to the length <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>, to the point <span><span class="MathJax_Preview">(x_0, y_0)</span><script type="math/tex">(x_0, y_0)</script></span>.</p>
+<p>Finally, the equations of the two points of intersection are:</p>
+<div>
+<div class="MathJax_Preview"> m = \sqrt{\frac{d^2}{A^2 + B^2}} $$
+$$ a_x = x_0 + B \cdot m, a_y = y_0 - A \cdot m $$
+$$ b_x = x_0 - B \cdot m, b_y = y_0 + A \cdot m </div>
+<script type="math/tex; mode=display"> m = \sqrt{\frac{d^2}{A^2 + B^2}} $$
+$$ a_x = x_0 + B \cdot m, a_y = y_0 - A \cdot m $$
+$$ b_x = x_0 - B \cdot m, b_y = y_0 + A \cdot m </script>
+</div>
+<p>Had we solved the original system of equations using algebraic methods, we would likely get an answer in a different form with a larger error. The geometric method described here is more graphic and more accurate.</p>
+<h2 id="implementation">Implementation</h2>
+<p>As indicated at the outset, we assume that the circle is centered at the origin, and therefore the input to the program is the radius <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> of the circle and the parameters <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>, <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> and <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> of the equation of the line.</p>
+<pre><code class="cpp">double r, a, b, c; // given as input
+double x0 = -a*c/(a*a+b*b), y0 = -b*c/(a*a+b*b);
+if (c*c &gt; r*r*(a*a+b*b)+EPS)
+    puts (&quot;no points&quot;);
+else if (abs (c*c - r*r*(a*a+b*b)) &lt; EPS) {
+    puts (&quot;1 point&quot;);
+    cout &lt;&lt; x0 &lt;&lt; ' ' &lt;&lt; y0 &lt;&lt; '\n';
+}
+else {
+    double d = r*r - c*c/(a*a+b*b);
+    double mult = sqrt (d / (a*a+b*b));
+    double ax, ay, bx, by;
+    ax = x0 + b * mult;
+    bx = x0 - b * mult;
+    ay = y0 - a * mult;
+    by = y0 + a * mult;
+    puts (&quot;2 points&quot;);
+    cout &lt;&lt; ax &lt;&lt; ' ' &lt;&lt; ay &lt;&lt; '\n' &lt;&lt; bx &lt;&lt; ' ' &lt;&lt; by &lt;&lt; '\n';
+}
+</code></pre>
+
+<h2 id="practice-problems">Practice Problems</h2>
+<ul>
+<li><a href="https://www.codechef.com/problems/ANDOOR">CODECHEF: ANDOOR</a></li>
+</ul>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

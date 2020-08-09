@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Combinatorics/counting_labeled_graphs/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Counting labeled graphs - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Counting labeled graphs", url: "#_top", children: [
+              {title: "Labeled graphs", url: "#labeled-graphs" },
+              {title: "Connected labeled graphs", url: "#connected-labeled-graphs" },
+              {title: "Labeled graphs with kk connected components", url: "#labeled-graphs-with-kk-connected-components" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../generating_combinations/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../generating_combinations/" class="btn btn-xs btn-link">
+        Generating all $K$-combinations
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../catalan-numbers/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../catalan-numbers/" class="btn btn-xs btn-link">
+        Catalan Numbers
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="counting-labeled-graphs">Counting labeled graphs</h1>
+<h2 id="labeled-graphs">Labeled graphs</h2>
+<p>Let the number of vertices in a graph be <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.
+We have to compute the number <span><span class="MathJax_Preview">G_n</span><script type="math/tex">G_n</script></span> of labeled graphs with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices (labeled means that the vertices are marked with the numbers from <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> to <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>).
+The edges of the graphs are considered undirected, and loops and multiple edges are forbidden.</p>
+<p>We consider the set of all possible edges of the graph.
+For each edge <span><span class="MathJax_Preview">(i, j)</span><script type="math/tex">(i, j)</script></span> we can assume that <span><span class="MathJax_Preview">i &lt; j</span><script type="math/tex">i < j</script></span> (because the graph is undirected, and there are no loops).
+Therefore the set of all edges has the cardinality <span><span class="MathJax_Preview">\binom{n}{2}</span><script type="math/tex">\binom{n}{2}</script></span>, i.e. <span><span class="MathJax_Preview">\frac{n(n-1)}{2}</span><script type="math/tex">\frac{n(n-1)}{2}</script></span>.</p>
+<p>Since any labeled graph is uniquely determined by its edges, the number of labeled graphs with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices is equal to:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">G_n = 2^{\frac{n(n-1)}{2}}</span><script type="math/tex">G_n = 2^{\frac{n(n-1)}{2}}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">G_n = 2^{\frac{n(n-1)}{2}}</span><script type="math/tex">G_n = 2^{\frac{n(n-1)}{2}}</script></span></script></span></p>
+<h2 id="connected-labeled-graphs">Connected labeled graphs</h2>
+<p>Here, we additionally impose the restriction that the graph has to be connected.</p>
+<p>Let's denote the required number of connected graphs with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices as <span><span class="MathJax_Preview">C_n</span><script type="math/tex">C_n</script></span>.</p>
+<p>We will first discuss how many <strong>disconnected</strong> graphs exists.
+Then the number of connected graphs will be <span><span class="MathJax_Preview">G_n</span><script type="math/tex">G_n</script></span> minus the number of disconnected graphs.
+Even more, we will count the number of <strong>disconnected, rooted graphs</strong>.A rooted graph is a graph, where we emphasize one vertex by labeling it as root.
+Obviously we have <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> possibilities to root a graph with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> labeled vertices, therefore we will need to divide the number of disconnected rooted graphs by <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> at the end to get the number of disconnected graphs.</p>
+<p>The root vertex will appear in a connected component of size <span><span class="MathJax_Preview">1, \dots n-1</span><script type="math/tex">1, \dots n-1</script></span>.
+There are <span><span class="MathJax_Preview">k \binom{n}{k} C_k G_{n-k}</span><script type="math/tex">k \binom{n}{k} C_k G_{n-k}</script></span> graphs such that the root vertex is in a connected component with <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> vertices (there are <span><span class="MathJax_Preview">\binom{n}{k}</span><script type="math/tex">\binom{n}{k}</script></span> ways to choose <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> vertices for the component, these are connected in one of <span><span class="MathJax_Preview">C_k</span><script type="math/tex">C_k</script></span> ways, the root vertex can be any of the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> vertices, and the remainder <span><span class="MathJax_Preview">n-k</span><script type="math/tex">n-k</script></span> vertices can be connected/disconnected in any way, which gives a factor of <span><span class="MathJax_Preview">G_{n-k}</span><script type="math/tex">G_{n-k}</script></span>).
+Therefore the number of disconnected graphs with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices is:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\frac{1}{n} \sum_{k=1}^{n-1} k \binom{n}{k} C_k G_{n-k}</span><script type="math/tex">\frac{1}{n} \sum_{k=1}^{n-1} k \binom{n}{k} C_k G_{n-k}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\frac{1}{n} \sum_{k=1}^{n-1} k \binom{n}{k} C_k G_{n-k}</span><script type="math/tex">\frac{1}{n} \sum_{k=1}^{n-1} k \binom{n}{k} C_k G_{n-k}</script></span></script></span>
+And finally the number of connected graphs is:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">C_n = G_n - \frac{1}{n} \sum_{k=1}^{n-1} k \binom{n}{k} C_k G_{n-k}</span><script type="math/tex">C_n = G_n - \frac{1}{n} \sum_{k=1}^{n-1} k \binom{n}{k} C_k G_{n-k}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">C_n = G_n - \frac{1}{n} \sum_{k=1}^{n-1} k \binom{n}{k} C_k G_{n-k}</span><script type="math/tex">C_n = G_n - \frac{1}{n} \sum_{k=1}^{n-1} k \binom{n}{k} C_k G_{n-k}</script></span></script></span></p>
+<h2 id="labeled-graphs-with-kk-connected-components">Labeled graphs with <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> connected components</h2>
+<p>Based on the formula from the previous section, we will learn how to count the number of labeled graphs with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices and <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> connected components.</p>
+<p>This number can be computed using dynamic programming.
+We will compute <span><span class="MathJax_Preview">D[i][j]</span><script type="math/tex">D[i][j]</script></span> - the number of labeled graphs with <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> vertices and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> components - for each <span><span class="MathJax_Preview">i \le n</span><script type="math/tex">i \le n</script></span> and <span><span class="MathJax_Preview">j \le k</span><script type="math/tex">j \le k</script></span>.</p>
+<p>Let's discuss how to compute the next element <span><span class="MathJax_Preview">D[n][k]</span><script type="math/tex">D[n][k]</script></span> if we already know the previous values.
+We use a common approach, we take the last vertex (index <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>).
+This vertex belongs to some component.
+If the size of this component be <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, then there are <span><span class="MathJax_Preview">\binom{n-1}{s-1}</span><script type="math/tex">\binom{n-1}{s-1}</script></span> ways to choose such a set of vertices, and <span><span class="MathJax_Preview">C_s</span><script type="math/tex">C_s</script></span> ways to connect them.After removing this component from the graph we have <span><span class="MathJax_Preview">n-s</span><script type="math/tex">n-s</script></span> remaining vertices with <span><span class="MathJax_Preview">k-1</span><script type="math/tex">k-1</script></span> connected components.
+Therefore we obtain the following recurrence relation:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">D[n][k] = \sum_{s=1}^{n} \binom{n-1}{s-1} C_s D[n-s][k-1]</span><script type="math/tex">D[n][k] = \sum_{s=1}^{n} \binom{n-1}{s-1} C_s D[n-s][k-1]</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">D[n][k] = \sum_{s=1}^{n} \binom{n-1}{s-1} C_s D[n-s][k-1]</span><script type="math/tex">D[n][k] = \sum_{s=1}^{n} \binom{n-1}{s-1} C_s D[n-s][k-1]</script></span></script></span></p>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

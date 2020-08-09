@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Misc/josephus_problem/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Josephus Problem - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Josephus Problem", url: "#_top", children: [
+              {title: "Statement", url: "#statement" },
+              {title: "Modeling a O(n)O(n) solution", url: "#modeling-a-onon-solution" },
+              {title: "Implementation", url: "#implementation" },
+              {title: "Modeling a O(k \\log n)O(k \\log n) solution", url: "#modeling-a-ok-log-nok-log-n-solution" },
+              {title: "Analytical solution for k = 2k = 2", url: "#analytical-solution-for-k-2k-2" },
+              {title: "Analytical solution for k &gt; 2k &gt; 2", url: "#analytical-solution-for-k-2k-2_1" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../maximum_average_segment/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../maximum_average_segment/" class="btn btn-xs btn-link">
+        Search the subarray with the maximum/minimum sum
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../15-puzzle/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../15-puzzle/" class="btn btn-xs btn-link">
+        15 Puzzle Game: Existence Of The Solution
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="josephus-problem">Josephus Problem</h1>
+<h2 id="statement">Statement</h2>
+<p>We are given the natural numbers <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> and <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.
+All natural numbers from <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> to <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> are written in a circle.
+First, count the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th number starting from the first one and delete it.
+Then <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> numbers are counted starting from the next one and the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th one is removed again, and so on.
+The process stops when one number remains.
+It is required to find the last number.</p>
+<p>This task was set by <strong>Flavius Josephus</strong> in the 1st century (though in a somewhat narrower formulation: for <span><span class="MathJax_Preview">k = 2</span><script type="math/tex">k = 2</script></span>).</p>
+<p>This problem can be solved by modeling the procedure.
+Brute force modeling will work <span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span>. Using a <a href="/data_structures/segment_tree/">segment tree</a>, we can improve it to <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>.
+We want something better though.</p>
+<h2 id="modeling-a-onon-solution">Modeling a <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> solution</h2>
+<p>We will try to find a pattern expressing the answer for the problem <span><span class="MathJax_Preview">J_{n, k}</span><script type="math/tex">J_{n, k}</script></span> through the solution of the previous problems.</p>
+<p>Using brute force modeling we can construct a table of values, for example, the following:</p>
+<div>
+<div class="MathJax_Preview">\begin{array}{ccccccccccc}
+n\setminus k &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 &amp; 8 &amp; 9 &amp; 10 \\\\
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\\\
+2 &amp; 2 &amp; 1 &amp; 2 &amp; 1 &amp; 2 &amp; 1 &amp; 2 &amp; 1 &amp; 2 &amp; 1 \\\\
+3 &amp; 3 &amp; 3 &amp; 2 &amp; 2 &amp; 1 &amp; 1 &amp; 3 &amp; 3 &amp; 2 &amp; 2 \\\\
+4 &amp; 4 &amp; 1 &amp; 1 &amp; 2 &amp; 2 &amp; 3 &amp; 2 &amp; 3 &amp; 3 &amp; 4 \\\\
+5 &amp; 5 &amp; 3 &amp; 4 &amp; 1 &amp; 2 &amp; 4 &amp; 4 &amp; 1 &amp; 2 &amp; 4 \\\\
+6 &amp; 6 &amp; 5 &amp; 1 &amp; 5 &amp; 1 &amp; 4 &amp; 5 &amp; 3 &amp; 5 &amp; 2 \\\\
+7 &amp; 7 &amp; 7 &amp; 4 &amp; 2 &amp; 6 &amp; 3 &amp; 5 &amp; 4 &amp; 7 &amp; 5 \\\\
+8 &amp; 8 &amp; 1 &amp; 7 &amp; 6 &amp; 3 &amp; 1 &amp; 4 &amp; 4 &amp; 8 &amp; 7 \\\\
+9 &amp; 9 &amp; 3 &amp; 1 &amp; 1 &amp; 8 &amp; 7 &amp; 2 &amp; 3 &amp; 8 &amp; 8 \\\\
+10 &amp; 10 &amp; 5 &amp; 4 &amp; 5 &amp; 3 &amp; 3 &amp; 9 &amp; 1 &amp; 7 &amp; 8 \\\\
+\end{array}</div>
+<script type="math/tex; mode=display">\begin{array}{ccccccccccc}
+n\setminus k & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\\\
+1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\\\
+2 & 2 & 1 & 2 & 1 & 2 & 1 & 2 & 1 & 2 & 1 \\\\
+3 & 3 & 3 & 2 & 2 & 1 & 1 & 3 & 3 & 2 & 2 \\\\
+4 & 4 & 1 & 1 & 2 & 2 & 3 & 2 & 3 & 3 & 4 \\\\
+5 & 5 & 3 & 4 & 1 & 2 & 4 & 4 & 1 & 2 & 4 \\\\
+6 & 6 & 5 & 1 & 5 & 1 & 4 & 5 & 3 & 5 & 2 \\\\
+7 & 7 & 7 & 4 & 2 & 6 & 3 & 5 & 4 & 7 & 5 \\\\
+8 & 8 & 1 & 7 & 6 & 3 & 1 & 4 & 4 & 8 & 7 \\\\
+9 & 9 & 3 & 1 & 1 & 8 & 7 & 2 & 3 & 8 & 8 \\\\
+10 & 10 & 5 & 4 & 5 & 3 & 3 & 9 & 1 & 7 & 8 \\\\
+\end{array}</script>
+</div>
+<p>And here we can clearly see the following <strong>pattern</strong>:</p>
+<div>
+<div class="MathJax_Preview">J_ {n, k} = (J _ {(n-1), k} + k - 1) \ \bmod n + 1 $$
+$$J_ {1, k} = 1 </div>
+<script type="math/tex; mode=display">J_ {n, k} = (J _ {(n-1), k} + k - 1) \ \bmod n + 1 $$
+$$J_ {1, k} = 1 </script>
+</div>
+<p>Here, 1-indexing makes for a somewhat messy formula; if you instead number the positions from 0, you get a very elegant formula:</p>
+<div>
+<div class="MathJax_Preview">J_ {n, k} = (J _ {(n-1), k} + k) \ \bmod n</div>
+<script type="math/tex; mode=display">J_ {n, k} = (J _ {(n-1), k} + k) \ \bmod n</script>
+</div>
+<p>So, we found a solution to the problem of Josephus, working in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> operations.</p>
+<h2 id="implementation">Implementation</h2>
+<p>Simple <strong>recursive implementation</strong> (in 1-indexing)</p>
+<pre><code class="cpp">int josephus(int n, int k) {
+    return n &gt; 1 ? (joseph(n-1, k) + k - 1) % n + 1 : 1;
+}
+</code></pre>
+
+<p><strong>Non-recursive form</strong> :</p>
+<pre><code class="cpp">int josephus(int n, int k) {
+    int res = 0;
+    for (int i = 1; i &lt;= n; ++i)
+        res = (res + k) % i;
+    return res + 1;
+}
+</code></pre>
+
+<p>This formula can also be found analytically.
+Again here we assume 0-indexing.
+After we delete the first number, we have <span><span class="MathJax_Preview">n-1</span><script type="math/tex">n-1</script></span> numbers left.
+When we repeat the procedure, we will start with the number that had originally the index <span><span class="MathJax_Preview">k \bmod m</span><script type="math/tex">k \bmod m</script></span>.
+<span><span class="MathJax_Preview">J_{(n-1), k}</span><script type="math/tex">J_{(n-1), k}</script></span> would be the answer for the remaining circle, if we start counting at <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>, but because we actually start with <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> we have <span><span class="MathJax_Preview">J_ {n, k} = (J _ {(n-1), k} + k) \ \bmod n</span><script type="math/tex">J_ {n, k} = (J _ {(n-1), k} + k) \ \bmod n</script></span>.</p>
+<h2 id="modeling-a-ok-log-nok-log-n-solution">Modeling a <span><span class="MathJax_Preview">O(k \log n)</span><script type="math/tex">O(k \log n)</script></span> solution</h2>
+<p>For relatively small <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> we can come up with a better solution than the above recursive solution in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>.
+If <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> is a lot smaller than <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, then we can delete multiple numbers (<span><span class="MathJax_Preview">\lfloor \frac{n}{k} \rfloor</span><script type="math/tex">\lfloor \frac{n}{k} \rfloor</script></span>) in one run without looping over.
+Afterwards we have <span><span class="MathJax_Preview">n - \lfloor \frac{n}{k} \rfloor</span><script type="math/tex">n - \lfloor \frac{n}{k} \rfloor</script></span> numbers left, and we start with the <span><span class="MathJax_Preview">(\lfloor \frac{n}{k} \rfloor \cdot n)</span><script type="math/tex">(\lfloor \frac{n}{k} \rfloor \cdot n)</script></span>-th number.
+So we have to shift by that many.
+We can notice that <span><span class="MathJax_Preview">\lfloor \frac{n}{k} \rfloor \cdot n</span><script type="math/tex">\lfloor \frac{n}{k} \rfloor \cdot n</script></span> is simply <span><span class="MathJax_Preview">n \bmod k</span><script type="math/tex">n \bmod k</script></span>.
+And since we removed every <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th number, we have to add the number of numbers that we removed before the result index.</p>
+<p>Also, we need to handle the case when <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> becomes less than <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>. In this case, the above optimization would cause an infinite loop.</p>
+<p><strong>Implementation</strong> (for convenience in 0-indexing):</p>
+<pre><code class="cpp">int josephus(int n, int k) {
+    if (n == 1)
+        return 0;
+    if (k == 1)
+        return n-1;
+    if (k &gt; n)
+        return (joseph(n-1, k) + k) % n;
+    int cnt = n / k;
+    int res = joseph(n - cnt, k);
+    res -= n % k;
+    if (res &lt; 0)
+        res += n;
+    else
+        res += res / (k - 1);
+    return res;
+}
+</code></pre>
+
+<p>Let us estimate the <strong>complexity</strong> of this algorithm. Immediately note that the case <span><span class="MathJax_Preview">n &lt; k</span><script type="math/tex">n < k</script></span> is analyzed by the old solution, which will work in this case for <span><span class="MathJax_Preview">O(k)</span><script type="math/tex">O(k)</script></span>. Now consider the algorithm itself. In fact, after every iteration, instead of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> numbers, we are left with <span><span class="MathJax_Preview">n \left( 1 - \frac{1}{k} \right)</span><script type="math/tex">n \left( 1 - \frac{1}{k} \right)</script></span> numbers, so the total number of iterations <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> of the algorithm can be found roughly from the following equation:</p>
+<div>
+<div class="MathJax_Preview"> n \left(1 - \frac{1}{k} \right) ^ x = 1, </div>
+<script type="math/tex; mode=display"> n \left(1 - \frac{1}{k} \right) ^ x = 1, </script>
+</div>
+<p>on taking logarithm on both sides, we obtain:</p>
+<div>
+<div class="MathJax_Preview">\ln n + x \ln \left(1 - \frac{1}{k} \right) = 0,$$
+$$x = - \frac{\ln n}{\ln \left(1 - \frac{1}{k} \right)},</div>
+<script type="math/tex; mode=display">\ln n + x \ln \left(1 - \frac{1}{k} \right) = 0,$$
+$$x = - \frac{\ln n}{\ln \left(1 - \frac{1}{k} \right)},</script>
+</div>
+<p>using the decomposition of the logarithm into Taylor series, we obtain an approximate estimate:</p>
+<div>
+<div class="MathJax_Preview">x \approx k \ln n</div>
+<script type="math/tex; mode=display">x \approx k \ln n</script>
+</div>
+<p>Thus, the complexity of the algorithm is actually <span><span class="MathJax_Preview">O (k \log n)</span><script type="math/tex">O (k \log n)</script></span>.</p>
+<h2 id="analytical-solution-for-k-2k-2">Analytical solution for <span><span class="MathJax_Preview">k = 2</span><script type="math/tex">k = 2</script></span></h2>
+<p>In this particular case (in which this task was set by Josephus Flavius) the problem is solved much easier.</p>
+<p>In the case of even <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> we get that all even numbers will be crossed out, and then there will be a problem remaining for <span><span class="MathJax_Preview">\frac{n}{2}</span><script type="math/tex">\frac{n}{2}</script></span>, then the answer for <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> will be obtained from the answer for <span><span class="MathJax_Preview">\frac{n}{2}</span><script type="math/tex">\frac{n}{2}</script></span> by multiplying by two and subtracting one (by shifting positions):</p>
+<div>
+<div class="MathJax_Preview"> J_{2n, 2} = 2 J_{n, 2} - 1 </div>
+<script type="math/tex; mode=display"> J_{2n, 2} = 2 J_{n, 2} - 1 </script>
+</div>
+<p>Similarly, in the case of an odd <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, all even numbers will be crossed out, then the first number, and the problem for <span><span class="MathJax_Preview">\frac{n-1}{2}</span><script type="math/tex">\frac{n-1}{2}</script></span> will remain, and taking into account the shift of positions, we obtain the second formula:</p>
+<div>
+<div class="MathJax_Preview">J_{2n+1,2} = 2 J_{n, 2} + 1 </div>
+<script type="math/tex; mode=display">J_{2n+1,2} = 2 J_{n, 2} + 1 </script>
+</div>
+<p>We can use this recurrent dependency directly in our implementation. This pattern can be translated into another form: <span><span class="MathJax_Preview">J_{n, 2}</span><script type="math/tex">J_{n, 2}</script></span> represents a sequence of all odd numbers, "restarting" from one whenever <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> turns out to be a power of two. This can be written as a single formula:</p>
+<div>
+<div class="MathJax_Preview">J_{n, 2} = 1 + 2 \left(n-2^{\lfloor \log_2 n \rfloor} \right)</div>
+<script type="math/tex; mode=display">J_{n, 2} = 1 + 2 \left(n-2^{\lfloor \log_2 n \rfloor} \right)</script>
+</div>
+<h2 id="analytical-solution-for-k-2k-2_1">Analytical solution for <span><span class="MathJax_Preview">k &gt; 2</span><script type="math/tex">k > 2</script></span></h2>
+<p>Despite the simple form of the problem and a large number of articles on this and related problems, a simple analytical representation of the solution of Josephus' problem has not yet been found. For small <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>, some formulas are derived, but apparently they are all difficult to apply in practice (for example, see Halbeisen, Hungerbuhler "The Josephus Problem" and Odlyzko, Wilf "Functional iteration and the Josephus problem").</p>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
