@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Computer_Science/Graph_Theory/flow_with_demands/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Flows with demands - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Flows with demands", url: "#_top", children: [
+              {title: "Finding an arbitrary flow", url: "#finding-an-arbitrary-flow" },
+              {title: "Minimal flow", url: "#minimal-flow" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../hld/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../hld/" class="btn btn-xs btn-link">
+        Heavy-light decomposition
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../fixed_length_paths/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../fixed_length_paths/" class="btn btn-xs btn-link">
+        Number of paths of fixed length / Shortest paths of fixed length
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="flows-with-demands">Flows with demands</h1>
+<p>In a normal flow network the flow of an edge is only limited by the capacity <span><span class="MathJax_Preview">c(e)</span><script type="math/tex">c(e)</script></span> from above and by 0 from below.
+In this article we will discuss flow networks, where we additionally require the flow of each edge to have a certain amount, i.e. we bound the flow from below by a <strong>demand</strong> function <span><span class="MathJax_Preview">d(e)</span><script type="math/tex">d(e)</script></span>:
+$$ d(e) \le f(e) \le c(e)$$
+So next each edge has a minimal flow value, that we have to pass along the edge.</p>
+<p>This is a generalization of the normal flow problem, since setting <span><span class="MathJax_Preview">d(e) = 0</span><script type="math/tex">d(e) = 0</script></span> for all edges <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span> gives a normal flow network.
+Notice, that in the normal flow network it is extremely trivial to find a valid flow, just setting <span><span class="MathJax_Preview">f(e) = 0</span><script type="math/tex">f(e) = 0</script></span> is already a valid one.
+However if the flow of each edge has to satisfy a demand, than suddenly finding a valid flow is already pretty complicated.</p>
+<p>We will consider two problems:</p>
+<ol>
+<li>finding an arbitrary flow that satisfies all constraints</li>
+<li>finding a minimal flow that satisfies all constraints</li>
+</ol>
+<h2 id="finding-an-arbitrary-flow">Finding an arbitrary flow</h2>
+<p>We make the following changes in the network.
+We add a new source <span><span class="MathJax_Preview">s'</span><script type="math/tex">s'</script></span> and a new sink <span><span class="MathJax_Preview">t'</span><script type="math/tex">t'</script></span>, a new edge from the source <span><span class="MathJax_Preview">s'</span><script type="math/tex">s'</script></span> to every other vertex, a new edge for every vertex to the sink <span><span class="MathJax_Preview">t'</span><script type="math/tex">t'</script></span>, and one edge from <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> to <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.
+Additionally we define the new capacity function <span><span class="MathJax_Preview">c'</span><script type="math/tex">c'</script></span> as:</p>
+<ul>
+<li><span><span class="MathJax_Preview">c'((s', v)) = \sum_{u \in V} d((u, v))</span><script type="math/tex">c'((s', v)) = \sum_{u \in V} d((u, v))</script></span> for each edge <span><span class="MathJax_Preview">(s', v)</span><script type="math/tex">(s', v)</script></span>.</li>
+<li><span><span class="MathJax_Preview">c'((v, t')) = \sum_{w \in V} d((v, w))</span><script type="math/tex">c'((v, t')) = \sum_{w \in V} d((v, w))</script></span> for each edge <span><span class="MathJax_Preview">(v, t')</span><script type="math/tex">(v, t')</script></span>.</li>
+<li><span><span class="MathJax_Preview">c'((u, v)) = c((u, v)) - d((u, v))</span><script type="math/tex">c'((u, v)) = c((u, v)) - d((u, v))</script></span> for each edge <span><span class="MathJax_Preview">(u, v)</span><script type="math/tex">(u, v)</script></span> in the old network.</li>
+<li><span><span class="MathJax_Preview">c'((t, s)) = \infty</span><script type="math/tex">c'((t, s)) = \infty</script></span></li>
+</ul>
+<p>If the new network has a saturating flow (a flow where each edge outgoing from <span><span class="MathJax_Preview">s'</span><script type="math/tex">s'</script></span> is completely filled, which is equivalent to every edge incoming to <span><span class="MathJax_Preview">t'</span><script type="math/tex">t'</script></span> is completely filled), then the network with demands has a valid flow, and the actual flow can be easily reconstructed from the new network.
+Otherwise there doesn't exist a flow that satisfies all conditions.
+Since a saturating flow has to be a maximum flow, it can be found by any maximum flow algorithm, like the <a href="./graph/edmonds_karp/">Edmonds-Karp algorithm</a> or the <a href="./graph/push-relabel/">Push-relabel algorithm</a>.</p>
+<p>The correctness of these transformations is more difficult to understand.
+We can think of it in the following way:
+Each edge <span><span class="MathJax_Preview">e = (u, v)</span><script type="math/tex">e = (u, v)</script></span> with <span><span class="MathJax_Preview">d(e) &gt; 0</span><script type="math/tex">d(e) > 0</script></span> is originally replaced by two edges: one with the capacity <span><span class="MathJax_Preview">d(i)</span><script type="math/tex">d(i)</script></span> , and the other with <span><span class="MathJax_Preview">c(i) - d(i)</span><script type="math/tex">c(i) - d(i)</script></span>.
+We want to find a flow that saturates the first edge (i.e. the flow along this edge must be equal to its capacity).
+The second edge is less important - the flow along it can be anything, assuming that it doesn't exceed its capacity.
+Consider each edge that has to be saturated, and we perform the following operation:
+we draw the edge from the new source <span><span class="MathJax_Preview">s'</span><script type="math/tex">s'</script></span> to its end <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>, draw the edge from its start <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> to the new sink <span><span class="MathJax_Preview">t'</span><script type="math/tex">t'</script></span>, remove the edge itself, and from the old sink <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> to the old source <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> we draw an edge of infinite capacity.
+By these actions we simulate the fact that this edge is saturated - from <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> there will be an additionally <span><span class="MathJax_Preview">d(e)</span><script type="math/tex">d(e)</script></span> flow outgoing (we simulate it with a new source that feeds the right amount of flow to <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>), and <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> will also push <span><span class="MathJax_Preview">d(e)</span><script type="math/tex">d(e)</script></span> additional flow (but instead along the old edge, this flow will go directly to the new sink <span><span class="MathJax_Preview">t'</span><script type="math/tex">t'</script></span>).
+A flow with the value <span><span class="MathJax_Preview">d(e)</span><script type="math/tex">d(e)</script></span>, that originally flowed along the path <span><span class="MathJax_Preview">s - \dots - u - v - \dots t</span><script type="math/tex">s - \dots - u - v - \dots t</script></span> can now take the new path <span><span class="MathJax_Preview">s' - v - \dots - t - s - \dots - u - t'</span><script type="math/tex">s' - v - \dots - t - s - \dots - u - t'</script></span>.
+The only thing that got simplified in the definition of the new network, is that if procedure created multiple edges between the same pair of vertices, then they are combined to one single edge with the summed capacity.</p>
+<h2 id="minimal-flow">Minimal flow</h2>
+<p>Note that along the edge <span><span class="MathJax_Preview">(t, s)</span><script type="math/tex">(t, s)</script></span> (from the old sink to the old source) with the capacity <span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span> flows the entire flow of the corresponding old network.
+I.e. the capacity of this edge effects the flow value of the old network.
+By giving this edge a sufficient large capacity (i.e. <span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span>), the flow of the old network is unlimited.
+By limiting this edge by smaller capacities, the flow value will decrease.
+However if we limit this edge by a too small value, than the network will not have a saturated solution, e.g. the corresponding solution for the original network will not satisfy the demand of the edges.
+Obviously here can use a binary search to find the lowest value with which all constraints are still satisfied.
+This gives the minimal flow of the original network.</p>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

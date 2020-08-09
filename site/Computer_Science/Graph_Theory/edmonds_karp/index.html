@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Computer_Science/Graph_Theory/edmonds_karp/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Maximum flow - Ford-Fulkerson and Edmonds-Karp - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Maximum flow - Ford-Fulkerson and Edmonds-Karp", url: "#_top", children: [
+              {title: "Flow network", url: "#flow-network" },
+              {title: "Ford-Fulkerson method", url: "#ford-fulkerson-method" },
+              {title: "Edmonds-Karp algorithm", url: "#edmonds-karp-algorithm" },
+              {title: "Integral flow theorem ## {#integral-theorem}", url: "#integral-flow-theorem-integral-theorem" },
+              {title: "Max-flow min-cut theorem", url: "#max-flow-min-cut-theorem" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../euler_path/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../euler_path/" class="btn btn-xs btn-link">
+        Finding the Eulerian path in $O(M)$
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../edge_vertex_connectivity/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../edge_vertex_connectivity/" class="btn btn-xs btn-link">
+        Edge connectivity / Vertex connectivity
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="maximum-flow-ford-fulkerson-and-edmonds-karp">Maximum flow - Ford-Fulkerson and Edmonds-Karp</h1>
+<p>The Edmonds-Karp algorithm is an implementation of the Ford-Fulkerson method for computing a maximal flow in a flow network.</p>
+<h2 id="flow-network">Flow network</h2>
+<p>First let's define what a <strong>flow network</strong>, a <strong>flow</strong>, and a <strong>maximum flow</strong> is.</p>
+<p>A <strong>network</strong> is a directed graph <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> with vertices <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span> and edges <span><span class="MathJax_Preview">E</span><script type="math/tex">E</script></span> combined with a function <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>, which assigns each edge <span><span class="MathJax_Preview">e \in E</span><script type="math/tex">e \in E</script></span> a non-negative integer value, the <strong>capacity</strong> of <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span>.
+Such a network is called a <strong>flow network</strong>, if we additionally label two vertices, one as <strong>source</strong> and one as <strong>sink</strong>.</p>
+<p>A <strong>flow</strong> in a flow network is function <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>, that again assigns each edge <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span> a non-negative integer value, namely the flow.
+The function has to fulfill the following two conditions:</p>
+<p>The flow of an edge cannot exceed the capacity.
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">f(e) \le c(e)</span><script type="math/tex">f(e) \le c(e)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">f(e) \le c(e)</span><script type="math/tex">f(e) \le c(e)</script></span></script></span></p>
+<p>And the sum of the incoming flow of a vertex <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> has to be equal to the sum of the outgoing flow of <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> except in the source and sink vertices.
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\sum_{(v, u) \in E} f((v, u)) = \sum_{(u, v) \in E} f((u, v))</span><script type="math/tex">\sum_{(v, u) \in E} f((v, u)) = \sum_{(u, v) \in E} f((u, v))</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\sum_{(v, u) \in E} f((v, u)) = \sum_{(u, v) \in E} f((u, v))</span><script type="math/tex">\sum_{(v, u) \in E} f((v, u)) = \sum_{(u, v) \in E} f((u, v))</script></span></script></span>
+The source vertex <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> only has an outgoing flow, and the sink vertex <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> has only incoming flow.</p>
+<p>It is easy to see that the following equation holds:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\sum_{(s, u) \in E} f((s, u)) = \sum_{(u, t) \in E} f((u, t))</span><script type="math/tex">\sum_{(s, u) \in E} f((s, u)) = \sum_{(u, t) \in E} f((u, t))</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\sum_{(s, u) \in E} f((s, u)) = \sum_{(u, t) \in E} f((u, t))</span><script type="math/tex">\sum_{(s, u) \in E} f((s, u)) = \sum_{(u, t) \in E} f((u, t))</script></span></script></span></p>
+<p>A good analogy for a flow network is the following visualization:
+We represent edges as water pipes, the capacity of an edge is the maximal amount of water that can flow through the pipe per second, and the flow of an edge is the amount of water that currently flows though the pipe per second.
+This motivates the first flow condition. There cannot flow more water through a pipe than its capacity.
+The vertices act as junctions, where water comes out of some pipes, and distributes it in some way to other pipes.
+This also motivates the second flow condition.
+In each junction all the incoming water has to be distributed to the other pipes.
+It cannot magically disappear or appear.
+The source <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> is origin of all the water, and the water can only drain in the sink <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>.</p>
+<p>The following image show a flow network.
+The first value of each edge represents the flow, which is initially 0, and the second value represents the capacity.
+<center><img alt="Flow network" src="/docs/data/cs/Flow1.png" /></center></p>
+<p>The value of a flow of a network is the sum of all flows that gets produced in source <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, or equivalently of the flows that are consumed in the sink <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>.
+A <strong>maximal flow</strong> is a flow with the maximal possible value.
+Finding this maximal flow of a flow network is the problem that we want to solve.</p>
+<p>In the visualization with water pipes, the problem can be formulated in the following way:
+how much water can we push through the pipes from the source to the sink.</p>
+<p>The following image show the maximal flow in the flow network.
+<center><img alt="Maximal flow" src="/docs/data/cs/Flow9.png" /></center></p>
+<h2 id="ford-fulkerson-method">Ford-Fulkerson method</h2>
+<p>Let's define one more thing.
+A <strong>residual capacity</strong> of an directed edge is the capacity minus the flow.
+It should be noted that if there is a flow along some directed edge <span><span class="MathJax_Preview">(u, v)</span><script type="math/tex">(u, v)</script></span>, than the reversed edge has capacity 0 and we can define the flow of it as <span><span class="MathJax_Preview">f((v, u)) = -f((u, v))</span><script type="math/tex">f((v, u)) = -f((u, v))</script></span>.
+This also defines the residual capacity for all reversed edges.
+From all these edges we can create a <strong>residual network</strong>, which is just a network with the same vertices and same edges, but we use the residual capacities as capacities.</p>
+<p>The Ford-Fulkerson method works as follows.
+First we set the flow of each edge to zero.
+Then we look for an <strong>augmenting path</strong> from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>.
+An augmenting path is simple path in the residual graph, i.e. along the edges whose residual capacity is positive.
+Is such a path is found, then we can add increase the flow along these edges.
+We keep on searching for augmenting paths and increasing the flow.
+Once there doesn't exists an augmenting path any more, the flow is maximal.</p>
+<p>Let us specify in more detail, what increasing the flow along an augmenting path means.
+Let <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> be the smallest residual capacity of the edges in the path.
+Then we increase the flow in the following way:
+we update <span><span class="MathJax_Preview">f((u, v)) ~\text{+=}~ C</span><script type="math/tex">f((u, v)) ~\text{+=}~ C</script></span> and <span><span class="MathJax_Preview">f((v, u)) ~\text{-=}~ C</span><script type="math/tex">f((v, u)) ~\text{-=}~ C</script></span> for every edge <span><span class="MathJax_Preview">(u, v)</span><script type="math/tex">(u, v)</script></span> in the path.</p>
+<p>Here is an example to demonstrate the method.
+We use the same flow network as above.
+Initially we start with a flow of 0.
+<center><img alt="Flow network" src="/docs/data/cs/Flow1.png" /></center></p>
+<p>We can find the path <span><span class="MathJax_Preview">s - A - B - t</span><script type="math/tex">s - A - B - t</script></span> with the residual capacities 7, 5 and 8.
+Their minimum is 5, therefore we can increase the flow along this path by 5.
+This gives a flow of 5 for the network.
+<center><img alt="First path" src="/docs/data/cs/Flow2.png" /> <img alt="Network after first path" src="/docs/data/cs/Flow3.png" /></center></p>
+<p>Again we look for an augmenting path, this time we find <span><span class="MathJax_Preview">s - D - A - C - t</span><script type="math/tex">s - D - A - C - t</script></span> with the residual capacities 4, 3, 3 and 5.
+Therefore we can increase the flow by 3 and we get a flow of 8 for the network.
+<center><img alt="Second path" src="/docs/data/cs/Flow4.png" /> <img alt="Network after second path" src="/docs/data/cs/Flow5.png" /></center></p>
+<p>This time we find the path <span><span class="MathJax_Preview">s - D - C - B - t</span><script type="math/tex">s - D - C - B - t</script></span> with the residual capacities 1, 2, 3 and 3, and we increase by 1.
+<center><img alt="Third path" src="/docs/data/cs/Flow6.png" /> <img alt="Network after third path" src="/docs/data/cs/Flow7.png" /></center></p>
+<p>This time we find the augmenting path <span><span class="MathJax_Preview">s - A - D - C - t</span><script type="math/tex">s - A - D - C - t</script></span> with the residual capacities 2, 3, 1 and 2.
+We can increase by 1.
+But this path is very interesting.
+It includes the reversed edge <span><span class="MathJax_Preview">(A, D)</span><script type="math/tex">(A, D)</script></span>.
+In the original flow network we are not allowed to send any flow from <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> to <span><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span>.
+But because we already have a flow of 3 from <span><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span> to <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> this is possible.
+The intuition of it is the following:
+Instead of sending a flow of 3 from <span><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span> to <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>, we only send 2 and compensate this by sending an additional flow of 1 from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>, which allows us to send an additional flow of 1 along the path <span><span class="MathJax_Preview">D - C - t</span><script type="math/tex">D - C - t</script></span>.
+<center><img alt="Fourth path" src="/docs/data/cs/Flow8.png" /> <img alt="Network after fourth path" src="/docs/data/cs/Flow9.png" /></center></p>
+<p>Now it is impossible to find an augmenting path between <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> and <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>, therefore this flow of <span><span class="MathJax_Preview">10</span><script type="math/tex">10</script></span> is the maximal possible.
+We have found the maximal flow.</p>
+<p>It should be noted, that the Ford-Fulkerson method doesn't specify a method of finding the augmenting path.
+Possible approaches are using <a href="./graph/depth-first-search/">DFS</a> or <a href="./graph/breadth-first-search/">BFS</a> which both work in <span><span class="MathJax_Preview">O(E)</span><script type="math/tex">O(E)</script></span>.
+If all capacities of the network are integers, then for each augmenting path the flow of the network increases by at least 1 (for more details see <a href="#integral-theorem">Integral flow theorem</a>).
+Therefore the complexity of Ford-Fulkerson is <span><span class="MathJax_Preview">O(E F)</span><script type="math/tex">O(E F)</script></span>, where <span><span class="MathJax_Preview">F</span><script type="math/tex">F</script></span> is the maximal flow of the network.
+In case of rational capacities, the algorithm will also terminate, but the complexity is not bounded.
+In case of irrational capacities, the algorithm might never terminate, and might not even converge to the maximal flow.</p>
+<h2 id="edmonds-karp-algorithm">Edmonds-Karp algorithm</h2>
+<p>Edmonds-Karp algorithm is just an implementation of the Ford-Fulkerson method that uses <a href="./graph/breadth-first-search/">BFS</a> for finding augmenting paths.
+The algorithm was first published by Yefim Dinitz in 1970, and later independently published by Jack Edmonds and Richard Karp in 1972.</p>
+<p>The complexity can be given independently of the maximal flow.
+The algorithm runs in <span><span class="MathJax_Preview">O(V E^2)</span><script type="math/tex">O(V E^2)</script></span> time, even for irrational capacities.
+The intuition is, that every time we find an augmenting path one of the edges becomes saturated, and the distance from the edge to <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> will be longer, if it appears later again in an augmenting path.
+And the length of a simple paths is bounded by <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span>.</p>
+<h3 id="implementation">Implementation</h3>
+<p>The matrix <code>capacity</code> stores the capacity for every pair of vertices.
+<code>adj</code> is the adjacency list of the <strong>undirected graph</strong>, since we have also to use the reversed of directed edges when we are looking for augmenting paths.</p>
+<p>The function <code>maxflow</code> will return the value of the maximal flow.
+During the algorithm the matrix <code>capacity</code> will actually store the residual capacity of the network.
+The value of the flow in each edge will actually no stored, but it is easy to extent the implementation - by using an additional matrix - to also store the flow and return it.</p>
+<p>```cpp edmondskarp
+int n;
+vector<vector\<int>> capacity;
+vector<vector\<int>> adj;</p>
+<p>int bfs(int s, int t, vector<int>&amp; parent) {
+    fill(parent.begin(), parent.end(), -1);
+    parent[s] = -2;
+    queue<pair\<int, int>> q;
+    q.push({s, INF});</p>
+<pre><code>while (!q.empty()) {
+    int cur = q.front().first;
+    int flow = q.front().second;
+    q.pop();
+
+    for (int next : adj[cur]) {
+        if (parent[next] == -1 &amp;&amp; capacity[cur][next]) {
+            parent[next] = cur;
+            int new_flow = min(flow, capacity[cur][next]);
+            if (next == t)
+                return new_flow;
+            q.push({next, new_flow});
+        }
+    }
+}
+
+return 0;
+</code></pre>
+<p>}</p>
+<p>int maxflow(int s, int t) {
+    int flow = 0;
+    vector<int> parent(n);
+    int new_flow;</p>
+<pre><code>while (new_flow = bfs(s, t, parent)) {
+    flow += new_flow;
+    int cur = t;
+    while (cur != s) {
+        int prev = parent[cur];
+        capacity[prev][cur] -= new_flow;
+        capacity[cur][prev] += new_flow;
+        cur = prev;
+    }
+}
+
+return flow;
+</code></pre>
+<p>}
+```</p>
+<h2 id="integral-flow-theorem-integral-theorem">Integral flow theorem ## {#integral-theorem}</h2>
+<p>The theorem simply says, that if every capacity in the network is integer, than also the flow in each edge will be integer in the maximal flow.</p>
+<h2 id="max-flow-min-cut-theorem">Max-flow min-cut theorem</h2>
+<p>A <strong><span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>-<span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>-cut</strong> is a partition of the vertices of a flow network into two sets, such that a set includes the source <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> and the other one includes the sink <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>.
+The capacity of a <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>-<span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>-cut is defined as the sum of capacities of the edges from the source side to the sink side.</p>
+<p>Obviously we cannot send more flow from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> than the capacity of any <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>-<span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>-cut.
+Therefore the maximum flow is bounded by the minimum cut capacity.</p>
+<p>The max-flow min-cut theorem goes even further.
+It says that the capacity of the maximum flow has to be equal to the capacity of the minimum cut.</p>
+<p>In the following image you can see the minimum cut of the flow network we used earlier.
+It shows that the capacity of the cut <span><span class="MathJax_Preview">\\{s, A, D\\}</span><script type="math/tex">\\{s, A, D\\}</script></span> and <span><span class="MathJax_Preview">\\{B, C, t\\}</span><script type="math/tex">\\{B, C, t\\}</script></span> is <span><span class="MathJax_Preview">5 + 3 + 2 = 10</span><script type="math/tex">5 + 3 + 2 = 10</script></span>, which is equal to the maximum flow that we found.
+Other cuts will have a bigger capacity, like the capacity between <span><span class="MathJax_Preview">\\{s, A\\}</span><script type="math/tex">\\{s, A\\}</script></span> and <span><span class="MathJax_Preview">\\{B, C, D, t\\}</span><script type="math/tex">\\{B, C, D, t\\}</script></span> is <span><span class="MathJax_Preview">4 + 3 + 5 = 12</span><script type="math/tex">4 + 3 + 5 = 12</script></span>.
+<center><img alt="Minimum cut" src="/docs/data/cs/Cut.png" /></center></p>
+<p>A minimum cut can be found after performing a maximum flow computation using the Ford-Fulkerson method.
+One possible minimum cut is the following:
+the set of all vertices that can be reached from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> in the residual graph (using edges with positive residual capacity), and the set of all the other vertices.
+This partition can be easily found using <a href="./graph/depth-first-search/">DFS</a> starting at <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.</p>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

@@ -26,6 +26,8 @@ extra_javascript:
   - https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 extra:
+  extra.article_nav_top: false
+  article_nav_bottom: false
   social:
     - type: 'github'
       link: 'https://github.com/d-k-ivanov'
