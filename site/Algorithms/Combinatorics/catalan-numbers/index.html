@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Combinatorics/catalan-numbers/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Catalan Numbers - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Catalan Numbers", url: "#_top", children: [
+              {title: "Application in some combinatorial problems", url: "#application-in-some-combinatorial-problems" },
+              {title: "Calculations", url: "#calculations" },
+              {title: "Recursive formula", url: "#recursive-formula" },
+              {title: "Analytical formula", url: "#analytical-formula" },
+              {title: "Reference", url: "#reference" },
+              {title: "Practice Problems", url: "#practice-problems" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../counting_labeled_graphs/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../counting_labeled_graphs/" class="btn btn-xs btn-link">
+        Counting labeled graphs
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../burnside/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../burnside/" class="btn btn-xs btn-link">
+        Burnside's lemma / Pólya enumeration theorem
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="catalan-numbers">Catalan Numbers</h1>
+<p>Catalan numbers is a number sequence, which is found useful in a number of combinatorial problems, often involving recursively-defined objects.</p>
+<p>This sequence was named after the Belgian mathematician <a href="https://en.wikipedia.org/wiki/Eug%C3%A8ne_Charles_Catalan">Catalan</a>, who lived in the 19th century. (In fact it was known before to Euler, who lived a century before Catalan).</p>
+<p>The first few numbers Catalan numbers, <span><span class="MathJax_Preview">C_n</span><script type="math/tex">C_n</script></span> (starting from zero):</p>
+<p><span><span class="MathJax_Preview">1, 1, 2, 5, 14, 42, 132, 429, 1430, \ldots</span><script type="math/tex">1, 1, 2, 5, 14, 42, 132, 429, 1430, \ldots</script></span></p>
+<h2 id="application-in-some-combinatorial-problems">Application in some combinatorial problems</h2>
+<p>The Catalan number <span><span class="MathJax_Preview">C_n</span><script type="math/tex">C_n</script></span> is the solution for</p>
+<ul>
+<li>Number of correct bracket sequence consisting of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> opening and <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> closing brackets.</li>
+<li>The number of rooted full binary trees with <span><span class="MathJax_Preview">n + 1</span><script type="math/tex">n + 1</script></span> leaves (vertices are not numbered). A rooted binary tree is full if every vertex has either two children or no children.</li>
+<li>The number of ways to completely parenthesize <span><span class="MathJax_Preview">n + 1</span><script type="math/tex">n + 1</script></span> factors.</li>
+<li>The number of triangulations of a convex polygon with <span><span class="MathJax_Preview">n + 2</span><script type="math/tex">n + 2</script></span> sides (i.e. the number of partitions of polygon into disjoint triangles by using the diagonals).</li>
+<li>The number of ways to connect the <span><span class="MathJax_Preview">2n</span><script type="math/tex">2n</script></span> points on a circle to form <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> disjoint chords.</li>
+<li>The number of <a href="https://en.wikipedia.org/wiki/Graph_isomorphism">non-isomorphic</a> full binary trees with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> internal nodes (i.e. nodes having at least one son).</li>
+<li>The number of monotonic lattice paths from point <span><span class="MathJax_Preview">(0, 0)</span><script type="math/tex">(0, 0)</script></span> to point <span><span class="MathJax_Preview">(n, n)</span><script type="math/tex">(n, n)</script></span> in a square lattice of size <span><span class="MathJax_Preview">n \times n</span><script type="math/tex">n \times n</script></span>, which do not pass above the main diagonal (i.e. connecting <span><span class="MathJax_Preview">(0, 0)</span><script type="math/tex">(0, 0)</script></span> to <span><span class="MathJax_Preview">(n, n)</span><script type="math/tex">(n, n)</script></span>).</li>
+<li>Number of permutations of length <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> that can be <a href="https://en.wikipedia.org/wiki/Stack-sortable_permutation">stack sorted</a> (i.e. it can be shown that the rearrangement is stack sorted if and only if there is no such index <span><span class="MathJax_Preview">i &lt; j &lt; k</span><script type="math/tex">i < j < k</script></span>, such that <span><span class="MathJax_Preview">a_k &lt; a_i &lt; a_j</span><script type="math/tex">a_k < a_i < a_j</script></span> ).</li>
+<li>The number of <a href="https://en.wikipedia.org/wiki/Noncrossing_partition">non-crossing partitions</a> of a set of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> elements.</li>
+<li>The number of ways to cover the ladder <span><span class="MathJax_Preview">1 \ldots n</span><script type="math/tex">1 \ldots n</script></span> using <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> rectangles (The ladder consists of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> columns, where <span><span class="MathJax_Preview">i^{th}</span><script type="math/tex">i^{th}</script></span> column has a height <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>).</li>
+</ul>
+<h2 id="calculations">Calculations</h2>
+<p>There are two formulas for the Catalan numbers: <strong>Recursive and Analytical</strong>. Since, we believe that all the mentioned above problems are equivalent (have the same solution), for the proof of the formulas below we will choose the task which it is easiest to do.</p>
+<h2 id="recursive-formula">Recursive formula</h2>
+<p><span><span class="MathJax_Preview"><span><span class="MathJax_Preview">C_0 = C_1 = 1</span><script type="math/tex">C_0 = C_1 = 1</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">C_0 = C_1 = 1</span><script type="math/tex">C_0 = C_1 = 1</script></span></script></span>
+ <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">C_n = \sum_{k = 0}^{n-1} C_k C_{n-1-k} , {n} \geq 2</span><script type="math/tex">C_n = \sum_{k = 0}^{n-1} C_k C_{n-1-k} , {n} \geq 2</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">C_n = \sum_{k = 0}^{n-1} C_k C_{n-1-k} , {n} \geq 2</span><script type="math/tex">C_n = \sum_{k = 0}^{n-1} C_k C_{n-1-k} , {n} \geq 2</script></span></script></span></p>
+<p>The recurrence formula can be easily deduced from the problem of the correct bracket sequence.</p>
+<p>The leftmost opening parenthesis <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> corresponds to certain closing bracket <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>, which divides the sequence into 2 parts which in turn should be a correct sequence of brackets. Thus formula is also divided into 2 parts. If we denote <span><span class="MathJax_Preview">k = {r - l - 1}</span><script type="math/tex">k = {r - l - 1}</script></span>, then for fixed <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>, there will be exactly <span><span class="MathJax_Preview">C_k C_{n-1-k}</span><script type="math/tex">C_k C_{n-1-k}</script></span> such bracket sequences. Summing this over all admissible <span><span class="MathJax_Preview">k's</span><script type="math/tex">k's</script></span>, we get the recurrence relation on <span><span class="MathJax_Preview">C_n</span><script type="math/tex">C_n</script></span>.</p>
+<p>You can also think it in this manner. By definition, <span><span class="MathJax_Preview">C_n</span><script type="math/tex">C_n</script></span> denotes number of correct bracket sequences. Now, the sequence may be divided into 2 parts of length <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> and <span><span class="MathJax_Preview">{n - k}</span><script type="math/tex">{n - k}</script></span>, each of which should be a correct bracket sequence. Example :</p>
+<p><span><span class="MathJax_Preview">( ) ( ( ) )</span><script type="math/tex">( ) ( ( ) )</script></span> can be divided into <span><span class="MathJax_Preview">( )</span><script type="math/tex">( )</script></span> and <span><span class="MathJax_Preview">( ( ) )</span><script type="math/tex">( ( ) )</script></span>, but cannot be divided into <span><span class="MathJax_Preview">( ) (</span><script type="math/tex">( ) (</script></span> and <span><span class="MathJax_Preview">( ) )</span><script type="math/tex">( ) )</script></span>. Again summing over all admissible <span><span class="MathJax_Preview">k's</span><script type="math/tex">k's</script></span>, we get the recurrence relation on <span><span class="MathJax_Preview">C_n</span><script type="math/tex">C_n</script></span>.</p>
+<h3 id="c-implementation-showhide">C++ implementation <span class="toggle-code">Show/Hide</span></h3>
+<pre><code class="cpp">const int MOD = ....
+const int MAX = ....
+int catalan[MAX];
+void init() {
+    catalan[0] = catalan[1] = 1;
+    for (int i=2; i&lt;=n; i++) {
+        catalan[i] = 0;
+        for (int j=0; j &lt; i; j++) {
+            catalan[i] += (catalan[j] * catalan[i-j-1]) % MOD;
+            if (catalan[i] &gt;= MOD) {
+                catalan[i] -= MOD;
+            }
+        }
+    }
+}
+</code></pre>
+
+<h2 id="analytical-formula">Analytical formula</h2>
+<div>
+<div class="MathJax_Preview">C_n = \frac{1}{n + 1} {\binom{2n}{n}}</div>
+<script type="math/tex; mode=display">C_n = \frac{1}{n + 1} {\binom{2n}{n}}</script>
+</div>
+<p>(here <span><span class="MathJax_Preview">\binom{n}{k}</span><script type="math/tex">\binom{n}{k}</script></span> denotes the usual binomial coefficient, i.e. number of ways to select <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> objects from set of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> objects).</p>
+<p>The above formula can be easily concluded from the problem of the monotonic paths in square grid. The total number of  monotonic paths in the lattice size of <span><span class="MathJax_Preview">n \times n</span><script type="math/tex">n \times n</script></span> is given by <span><span class="MathJax_Preview">\binom{2n}{n}</span><script type="math/tex">\binom{2n}{n}</script></span>.</p>
+<p>Now we count the number of monotonic paths which cross the main diagonal. Consider such paths crossing the main diagonal and find the first edge in it which is above the diagonal. Reflect the path about the diagonal all the way, going after this edge. The result is always a monotonic path in the grid <span><span class="MathJax_Preview">(n - 1) \times (n + 1)</span><script type="math/tex">(n - 1) \times (n + 1)</script></span>. On the other hand, any monotonic path in the lattice <span><span class="MathJax_Preview">(n - 1) \times (n + 1)</span><script type="math/tex">(n - 1) \times (n + 1)</script></span> must intersect the diagonal. Hence, we enumerated all monotonic paths crossing the main diagonal in the lattice <span><span class="MathJax_Preview">n \times n</span><script type="math/tex">n \times n</script></span>.</p>
+<p>The number of monotonic paths in the lattice <span><span class="MathJax_Preview">(n - 1) \times (n + 1)</span><script type="math/tex">(n - 1) \times (n + 1)</script></span> are <span><span class="MathJax_Preview">\binom{2n}{n-1}</span><script type="math/tex">\binom{2n}{n-1}</script></span> . Let us call such paths as "bad" paths. As a result, to obtain the number of monotonic paths which do not cross the main diagonal, we subtract the above "bad" paths, obtaining the formula:</p>
+<div>
+<div class="MathJax_Preview">C_n = \binom{2n}{n} - \binom{2n}{n-1} = \frac{1}{n + 1} \binom{2n}{n} , {n} \geq 0</div>
+<script type="math/tex; mode=display">C_n = \binom{2n}{n} - \binom{2n}{n-1} = \frac{1}{n + 1} \binom{2n}{n} , {n} \geq 0</script>
+</div>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="http://www.geometer.org/mathcircles/catalan.pdf">Catalan Number by Tom Davis</a></li>
+</ul>
+<h2 id="practice-problems">Practice Problems</h2>
+<ul>
+<li><a href="https://www.codechef.com/APRIL12/problems/PANSTACK/">Codechef - PANSTACK</a></li>
+<li><a href="http://www.spoj.com/problems/SKYLINE/">Spoj - Skyline</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=932">UVA - Safe Salutations</a></li>
+<li><a href="http://codeforces.com/problemset/problem/9/D">Codeforces - How many trees?</a></li>
+<li><a href="http://www.spoj.com/problems/FUNPROB/">SPOJ - FUNPROB</a></li>
+<li><a href="http://lightoj.com/volume_showproblem.php?problem=1170">LOJ - 1170 - Counting Perfect BST</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=4752">UVA - 12887 - The Soldier's Dilemma</a></li>
+</ul>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

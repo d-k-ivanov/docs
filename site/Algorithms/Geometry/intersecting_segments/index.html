@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Geometry/intersecting_segments/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Search for a pair of intersecting segments - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Search for a pair of intersecting segments", url: "#_top", children: [
+              {title: "Algorithm", url: "#algorithm" },
+              {title: "Implementation", url: "#implementation" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../lattice-points/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../lattice-points/" class="btn btn-xs btn-link">
+        Lattice points inside non-lattice polygon
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../grahams-scan-convex-hull/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../grahams-scan-convex-hull/" class="btn btn-xs btn-link">
+        Convex Hull construction using Graham's Scan
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="search-for-a-pair-of-intersecting-segments">Search for a pair of intersecting segments</h1>
+<p>Given <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> line segments on the plane. It is required to check whether at least two of them intersect with each other.
+If the answer is yes, then print this pair of intersecting segments; it is enough to choose any of them among several answers.</p>
+<p>The naive solution algorithm is to iterate over all pairs of segments in <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span> and check for each pair whether they intersect or not. This article describes an algorithm with the runtime time <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>, which is based on the <strong>sweep line algorithm</strong>.</p>
+<h2 id="algorithm">Algorithm</h2>
+<p>Let's draw a vertical line <span><span class="MathJax_Preview">x = -\infty</span><script type="math/tex">x = -\infty</script></span> mentally and start moving this line to the right.
+In the course of its movement, this line will meet with segments, and at each time a segment intersect with our line it intersects in exactly one point (we will assume that there are no vertical segments).</p>
+<p><center><img alt="sweep line and line segment intersection" src="/docs/data/cs/sweep_line_1.png" /></center></p>
+<p>Thus, for each segment, at some point in time, its point will appear on the sweep line, then with the movement of the line, this point will move, and finally, at some point, the segment will disappear from the line.</p>
+<p>We are interested in the <strong>relative order of the segments</strong> along the vertical.
+Namely, we will store a list of segments crossing the sweep line at a given time, where the segments will be sorted by their <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>-coordinate on the sweep line.</p>
+<p><center><img alt="relative order of the segments across sweep line" src="/docs/data/cs/sweep_line_2.png" /></center></p>
+<p>This order is interesting because intersecting segments will have the same <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>-coordinate at least at one time:</p>
+<p><center><img alt="intersection point having same y-coordinate" src="/docs/data/cs/sweep_line_3.png" /></center></p>
+<p>We formulate key statements:</p>
+<ul>
+<li>To find an intersecting pair, it is sufficient to consider <strong>only adjacent segments</strong> at each fixed position of the sweep line.</li>
+<li>It is enough to consider the sweep line not in all possible real positions <span><span class="MathJax_Preview">(-\infty \ldots +\infty)</span><script type="math/tex">(-\infty \ldots +\infty)</script></span>, but <strong>only in those positions when new segments appear or old ones disappear</strong>. In other words, it is enough to limit yourself only to the positions equal to the abscissas of the end points of the segments.</li>
+<li>When a new line segment appears, it is enough to <strong>insert</strong> it to the desired location in the list obtained for the previous sweep line. We should only check for the intersection of the <strong>added segment with its immediate neighbors in the list above and below</strong>.</li>
+<li>If the segment disappears, it is enough to <strong>remove</strong> it from the current list. After that, it is necessary <strong>check for the intersection of the upper and lower neighbors in the list</strong>.</li>
+<li>Other changes in the sequence of segments in the list, except for those described, do not exist. No other intersection checks are required.</li>
+</ul>
+<p>To understand the truth of these statements, the following remarks are sufficient:</p>
+<ul>
+<li>Two disjoint segments never change their <strong>relative order</strong>.<br>
+  In fact, if one segment was first higher than the other, and then became lower, then between these two moments there was an intersection of these two segments.</li>
+<li>Two non-intersecting segments also cannot have the same <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>-coordinates.</li>
+<li>From this it follows that at the moment of the segment appearance we can find the position for this segment in the queue, and we will not have to rearrange this segment in the queue any more: <strong>its order relative to other segments in the queue will not change</strong>.</li>
+<li>Two intersecting segments at the moment of their intersection point will be neighbors of each other in the queue.</li>
+<li>Therefore, for finding pairs of intersecting line segments is sufficient to check the intersection of all and only those pairs of segments that sometime during the movement of the sweep line at least once were neighbors to each other. <br>
+  It is easy to notice that it is enough only to check the added segment with its upper and lower neighbors, as well as when removing the segment — its upper and lower neighbors (which after removal will become neighbors of each other).<br></li>
+<li>It should be noted that at a fixed position of the sweep line, we must <strong>first add all the segments</strong> that start at this x-coordinate, and only <strong>then remove all the segments</strong> that end here.<br>
+  Thus, we do not miss the intersection of segments on the vertex: i.e. such cases when two segments have a common vertex.</li>
+<li>Note that <strong>vertical segments</strong> do not actually affect the correctness of the algorithm.<br>
+  These segments are distinguished by the fact that they appear and disappear at the same time. However, due to the previous comment, we know that all segments will be added to the queue first, and   only then they will be deleted. Therefore, if the vertical segment intersects with some other segment opened at that moment (including the vertical one), it will be detected.<br>
+  <strong>In what place of the queue to place vertical segments?</strong> After all, a vertical segment does not have one specific <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>-coordinate, it extends for an entire segment along the <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>-coordinate.   However, it is easy to understand that any coordinate from this segment can be taken as a <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>-coordinate.</li>
+</ul>
+<p>Thus, the entire algorithm will perform no more than <span><span class="MathJax_Preview">2n</span><script type="math/tex">2n</script></span> tests on the intersection of a pair of segments, and will perform <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> operations with a queue of segments (<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> operations at the time of appearance and disappearance of each segment).</p>
+<p>The final <strong>asymptotic behavior of the algorithm</strong> is thus <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>.</p>
+<h2 id="implementation">Implementation</h2>
+<p>We present the full implementation of the described algorithm:</p>
+<pre><code class="cpp">const double EPS = 1E-9;
+
+struct pt {
+    double x, y;
+};
+
+struct seg {
+    pt p, q;
+    int id;
+
+    double get_y(double x) const {
+        if (abs(p.x - q.x) &lt; EPS)
+            return p.y;
+        return p.y + (q.y - p.y) * (x - p.x) / (q.x - p.x);
+    }
+};
+
+bool intersect1d(double l1, double r1, double l2, double r2) {
+    if (l1 &gt; r1)
+        swap(l1, r1);
+    if (l2 &gt; r2)
+        swap(l2, r2);
+    return max(l1, l2) &lt;= min(r1, r2) + EPS;
+}
+
+int vec(const pt&amp; a, const pt&amp; b, const pt&amp; c) {
+    double s = (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
+    return abs(s) &lt; EPS ? 0 : s &gt; 0 ? +1 : -1;
+}
+
+bool intersect(const seg&amp; a, const seg&amp; b)
+{
+    return intersect1d(a.p.x, a.q.x, b.p.x, b.q.x) &amp;&amp;
+           intersect1d(a.p.y, a.q.y, b.p.y, b.q.y) &amp;&amp;
+           vec(a.p, a.q, b.p) * vec(a.p, a.q, b.q) &lt;= 0 &amp;&amp;
+           vec(b.p, b.q, a.p) * vec(b.p, b.q, a.q) &lt;= 0;
+}
+
+bool operator&lt;(const seg&amp; a, const seg&amp; b)
+{
+    double x = max(min(a.p.x, a.q.x), min(b.p.x, b.q.x));
+    return a.get_y(x) &lt; b.get_y(x) - EPS;
+}
+
+struct event {
+    double x;
+    int tp, id;
+
+    event() {}
+    event(double x, int tp, int id) : x(x), tp(tp), id(id) {}
+
+    bool operator&lt;(const event&amp; e) const {
+        if (abs(x - e.x) &gt; EPS)
+            return x &lt; e.x;
+        return tp &gt; e.tp;
+    }
+};
+
+set&lt;seg&gt; s;
+vector&lt;set&lt;seg&gt;::iterator&gt; where;
+
+set&lt;seg&gt;::iterator prev(set&lt;seg&gt;::iterator it) {
+    return it == s.begin() ? s.end() : --it;
+}
+
+set&lt;seg&gt;::iterator next(set&lt;seg&gt;::iterator it) {
+    return ++it;
+}
+
+pair&lt;int, int&gt; solve(const vector&lt;seg&gt;&amp; a) {
+    int n = (int)a.size();
+    vector&lt;event&gt; e;
+    for (int i = 0; i &lt; n; ++i) {
+        e.push_back(event(min(a[i].p.x, a[i].q.x), +1, i));
+        e.push_back(event(max(a[i].p.x, a[i].q.x), -1, i));
+    }
+    sort(e.begin(), e.end());
+
+    s.clear();
+    where.resize(a.size());
+    for (size_t i = 0; i &lt; e.size(); ++i) {
+        int id = e[i].id;
+        if (e[i].tp == +1) {
+            set&lt;seg&gt;::iterator nxt = s.lower_bound(a[id]), prv = prev(nxt);
+            if (nxt != s.end() &amp;&amp; intersect(*nxt, a[id]))
+                return make_pair(nxt-&gt;id, id);
+            if (prv != s.end() &amp;&amp; intersect(*prv, a[id]))
+                return make_pair(prv-&gt;id, id);
+            where[id] = s.insert(nxt, a[id]);
+        } else {
+            set&lt;seg&gt;::iterator nxt = next(where[id]), prv = prev(where[id]);
+            if (nxt != s.end() &amp;&amp; prv != s.end() &amp;&amp; intersect(*nxt, *prv))
+                return make_pair(prv-&gt;id, nxt-&gt;id);
+            s.erase(where[id]);
+        }
+    }
+
+    return make_pair(-1, -1);
+}
+</code></pre>
+
+<p>The main function here is <code>solve()</code>, which returns the number of found intersecting segments, or <span><span class="MathJax_Preview">(-1, -1)</span><script type="math/tex">(-1, -1)</script></span>, if there are no intersections.</p>
+<p>Checking for the intersection of two segments is carried out by the <code>intersect ()</code> function, using an <strong>algorithm based on the oriented area of the triangle</strong>.</p>
+<p>The queue of segments is the global variable <code>s</code>, a <code>set&lt;event&gt;</code>. Iterators that specify the position of each segment in the queue (for convenient removal of segments from the queue) are stored in the global array <code>where</code>.</p>
+<p>Two auxiliary functions <code>prev()</code> and <code>next()</code> are also introduced, which return iterators to the previous and next elements (or <code>end()</code>, if one does not exist).</p>
+<p>The constant <code>EPS</code> denotes the error of comparing two real numbers (it is mainly used when checking two segments for intersection).</p>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

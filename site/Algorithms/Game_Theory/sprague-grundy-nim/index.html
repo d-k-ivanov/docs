@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Game_Theory/sprague-grundy-nim/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Sprague-Grundy theorem. Nim - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Sprague-Grundy theorem. Nim", url: "#_top", children: [
+              {title: "Introduction", url: "#introduction" },
+              {title: "Nim", url: "#nim" },
+              {title: "The equivalence of impartial games and Nim (Sprague-Grundy theorem)", url: "#the-equivalence-of-impartial-games-and-nim-sprague-grundy-theorem" },
+              {title: "Application of the theorem", url: "#application-of-the-theorem" },
+              {title: "Patterns in Grundy values", url: "#patterns-in-grundy-values" },
+              {title: "Example games", url: "#example-games" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Geometry/area-of-simple-polygon/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Geometry/area-of-simple-polygon/" class="btn btn-xs btn-link">
+        Finding area of simple polygon in $O(N)$
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../games_on_graphs/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../games_on_graphs/" class="btn btn-xs btn-link">
+        Games on arbitrary graphs
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="sprague-grundy-theorem-nim">Sprague-Grundy theorem. Nim</h1>
+<h2 id="introduction">Introduction</h2>
+<p>This theorem describes the so-called <strong>impartial</strong> two-player game,
+i.e. those in which the available moves and winning/losing depends only on the state of the game.
+In other words, the only difference between the two players is that one of them moves first.</p>
+<p>Additionally, we assume that the game has <strong>perfect information</strong>, i.e. no information is hidden from the players (they know the rules and the possible moves).</p>
+<p>It is assumed that the game is <strong>finite</strong>, i.e. after a certain number of moves, one of the players will end up in a losing position — from which they can't move to another position.
+On the other side, the player who set up this position for the opponent wins.
+Understandably, there are no draws in this game.</p>
+<p>Such games can be completely described by a <em>directed acyclic graph</em>: the vertices are game states and the edges are transitions (moves).
+A vertex without outgoing edges is a losing vertex (a player who must make a move from this vertex loses).</p>
+<p>Since there are no draws, we can classify all game states as either <strong>winning</strong> or <strong>losing</strong>.
+Winning states are those from which there is a move that causes inevitable defeat of the other player, even with their best response.
+Losing states are those from which all moves lead to winning states for the other player.
+Summarizing, a state is winning if there is at least one transition to a losing state and is losing if there isn't at least one transition to a losing state.</p>
+<p>Our task is to classify the states of a given game.</p>
+<p>The theory of such games was independently developed by Roland Sprague in 1935 and Patrick Michael Grundy in 1939.</p>
+<h2 id="nim">Nim</h2>
+<p>This game obeys the restrictions described above above.
+Moreover, <em>any</em> perfect-information impartial two-player game can be reduced to the game of Nim.
+Studying this game will allow us to solve all other similar games, but more on that later.</p>
+<p>Historically this game was popular in ancient times.
+Its origin is probably in China — or at least the game <em>Jianshizi</em> is very similar to it.
+In Europe the earliest references to it are from the 16th century.
+The name was given by Charles Bouton, who in 1901 published a full analysis of this game.</p>
+<h3 id="game-description">Game description</h3>
+<p>There are several piles, each with several stones.
+In a move a player can take any positive number of stones from any one pile and throw them away.
+A player loses if they can't make a move, which happens when all the piles are empty.</p>
+<p>The game state is unambiguously described by a multiset of positive integers.
+A move consists of strictly decreasing a chosen integer (if it becomes zero, it is removed from the set).</p>
+<h3 id="the-solution">The solution</h3>
+<p>The solution by Charles L. Bouton looks like this:</p>
+<p><strong>Theorem.</strong>
+The current player has a winning strategy if and only if the xor-sum of the pile sizes is non-zero.
+The xor-sum of a sequence <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> is <span><span class="MathJax_Preview">a_1 \oplus a_2 \oplus \ldots \oplus  a_n</span><script type="math/tex">a_1 \oplus a_2 \oplus \ldots \oplus  a_n</script></span>, where <span><span class="MathJax_Preview">\oplus</span><script type="math/tex">\oplus</script></span> is the <em>bitwise exclusive or</em>.</p>
+<p><strong>Proof.</strong>
+The key to the proof is the presence of a <strong>symmetric strategy for the opponent</strong>.
+We show that a once in a position with the xor-sum equal to zero, the player won't be able to make it non-zero in the long term —
+if they transition to a position with a non-zero xor-sum, the opponent will always have a move returning the xor-sum back to zero.</p>
+<p>We will prove the theorem by mathematical induction.</p>
+<p>For an empty Nim (where all the piles are empty i.e. the multiset is empty) the xor-sum is zero and the theorem is true.</p>
+<p>Now suppose we are in a non-empty state.
+Using the assumption of induction (and the acyclicity of the game) we assume that the theorem is proven for all states reachable from the current one.</p>
+<p>Then the proof splits into two parts:
+if for the current position the xor-sum <span><span class="MathJax_Preview">s = 0</span><script type="math/tex">s = 0</script></span>, we have to prove that this state is losing, i.e. all reachable states have xor-sum <span><span class="MathJax_Preview">t \neq 0</span><script type="math/tex">t \neq 0</script></span>.
+If <span><span class="MathJax_Preview">s \neq 0</span><script type="math/tex">s \neq 0</script></span>, we have to prove that there is a move leading to a state with <span><span class="MathJax_Preview">t = 0</span><script type="math/tex">t = 0</script></span>.</p>
+<ul>
+<li>Let <span><span class="MathJax_Preview">s = 0</span><script type="math/tex">s = 0</script></span> and let's consider any move.
+This move reduces the size of a pile <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> to a size <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>.
+Using elementary properties of <span><span class="MathJax_Preview">\oplus</span><script type="math/tex">\oplus</script></span>, we have</li>
+</ul>
+<div>
+<div class="MathJax_Preview">t = s \oplus x \oplus y = 0 \oplus x \oplus y = x \oplus y</div>
+<script type="math/tex; mode=display">t = s \oplus x \oplus y = 0 \oplus x \oplus y = x \oplus y</script>
+</div>
+<p>Since <span><span class="MathJax_Preview">y &lt; x</span><script type="math/tex">y < x</script></span>, <span><span class="MathJax_Preview">y \oplus x</span><script type="math/tex">y \oplus x</script></span> can't be zero, so <span><span class="MathJax_Preview">t \neq 0</span><script type="math/tex">t \neq 0</script></span>.
+That means any reachable state is a winning one (by the assumption of induction), so we are in a losing position.</p>
+<ul>
+<li>Let <span><span class="MathJax_Preview">s \neq 0</span><script type="math/tex">s \neq 0</script></span>.
+Consider the binary representation of the number <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.
+Let <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> be the number of its leading (biggest value) non-zero bit.
+Our move will be on a pile whose size's bit number <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> is set (it must exist, otherwise the bit wouldn't be set in <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>).
+We will reduce its size <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> to <span><span class="MathJax_Preview">y = x \oplus s</span><script type="math/tex">y = x \oplus s</script></span>.
+All bits at positions greater than <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> in <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> and <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> match and bit <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> is set in <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> but not set in <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>.
+Therefore, <span><span class="MathJax_Preview">y &lt; x</span><script type="math/tex">y < x</script></span>, which is all we need for a move to be legal.
+Now we have:</li>
+</ul>
+<div>
+<div class="MathJax_Preview"> t = s \oplus x \oplus y = s \oplus x \oplus (s \oplus x) = 0</div>
+<script type="math/tex; mode=display"> t = s \oplus x \oplus y = s \oplus x \oplus (s \oplus x) = 0</script>
+</div>
+<p>This means we found a reachable losing state (by the assumption of induction) and the current state is winning.</p>
+<p><strong>Corollary.</strong>
+Any state of Nim can be replaced by an equivalent state as long as the xor-sum doesn't change.
+Moreover, when analyzing a Nim with several piles, we can replace it with a single pile of size <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.</p>
+<h2 id="the-equivalence-of-impartial-games-and-nim-sprague-grundy-theorem">The equivalence of impartial games and Nim (Sprague-Grundy theorem)</h2>
+<p>Now we will learn how to find, for any game state of any impartial game, a corresponding state of Nim.</p>
+<h3 id="lemma-about-nim-with-increases">Lemma about Nim with increases</h3>
+<p>We consider the following modification to Nim: we also allow <strong>adding stones to a chosen pile</strong>.
+The exact rules about how and when increasing is allowed <strong>do not interest us</strong>, however the rules should keep our game <strong>acyclic</strong>. In later sections, example games are considered.</p>
+<p><strong>Lemma.</strong>
+The addition of increasing to Nim doesn't change how winning and losing states are determined.
+In other words, increases are useless, and we don't have to use them in a winning strategy.</p>
+<p><strong>Proof.</strong>
+Suppose a player added stones to a pile. Then his opponent can simply undo his move — decrease the number back to the previous value.
+Since the game is acyclic, sooner or later the current player won't be able to use an increase move and will have to do the usual Nim move.</p>
+<h3 id="sprague-grundy-theorem">Sprague-Grundy theorem</h3>
+<p>Let's consider a state <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> of a two-player impartial game and let <span><span class="MathJax_Preview">v_i</span><script type="math/tex">v_i</script></span> be the states reachable from it (where <span><span class="MathJax_Preview">i \in \{ 1, 2, \dots, k \} , k \ge 0</span><script type="math/tex">i \in \{ 1, 2, \dots, k \} , k \ge 0</script></span>).
+To this state, we can assign a fully equivalent game of Nim with one pile of size <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>.
+The number <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> is called the Grundy value or nim-value of state <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>.</p>
+<p>Moreover, this number can be found in the following recursive way:</p>
+<div>
+<div class="MathJax_Preview"> x = \text{mex} \{ x_1, \ldots, x_k \}, </div>
+<script type="math/tex; mode=display"> x = \text{mex} \{ x_1, \ldots, x_k \}, </script>
+</div>
+<p>where <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> is the Grundy value for state <span><span class="MathJax_Preview">v_i</span><script type="math/tex">v_i</script></span> and the function <span><span class="MathJax_Preview">\text{mex}</span><script type="math/tex">\text{mex}</script></span> (<em>minimum excludant</em>) is the smallest non-negative integer not found in the given set.</p>
+<p>Viewing the game as a graph, we can gradually calculate the Grundy values starting from vertices without outgoing edges.
+Grundy value being equal to zero means a state is losing.</p>
+<p><strong>Proof.</strong>
+We will use a proof by induction.</p>
+<p>For vertices without a move, the value <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> is the <span><span class="MathJax_Preview">\text{mex}</span><script type="math/tex">\text{mex}</script></span> of an empty set, which is zero.
+That is correct, since an empty Nim is losing.</p>
+<p>Now consider any other vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>.
+By induction, we assume the values <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> corresponding to its reachable vertices are already calculated.</p>
+<p>Let <span><span class="MathJax_Preview">p = \text{mex} \{ x_1, \ldots, x_k \}</span><script type="math/tex">p = \text{mex} \{ x_1, \ldots, x_k \}</script></span>.
+Then we know that for any integer <span><span class="MathJax_Preview">i \in [0, p)</span><script type="math/tex">i \in [0, p)</script></span> there exists a reachable vertex with Grundy value <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>.
+This means <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> is <strong>equivalent to a state of the game of Nim with increases with one pile of size <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span></strong>.
+In such a game we have transitions to piles of every size smaller than <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> and possibly transitions to piles with sizes greater than <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>.
+Therefore, <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> is indeed the desired Grundy value for the currently considered state.</p>
+<h2 id="application-of-the-theorem">Application of the theorem</h2>
+<p>Finally, we describe an algorithm to determine the win/loss outcome of a game, which is applicable to any impartial two-player game.</p>
+<p>To calculate the Grundy value of a given state you need to:</p>
+<ul>
+<li>
+<p>Get all possible transitions from this state</p>
+</li>
+<li>
+<p>Each transition can lead to a <strong>sum of independent games</strong> (one game in the degenerate case).
+Calculate the Grundy value for each independent game and xor-sum them.
+Of course xor does nothing if there is just one game.</p>
+</li>
+<li>
+<p>After we calculated Grundy values for each transition we find the state's value as the <span><span class="MathJax_Preview">\text{mex}</span><script type="math/tex">\text{mex}</script></span> of these numbers.</p>
+</li>
+<li>
+<p>If the value is zero, then the current state is losing, otherwise it is winning.</p>
+</li>
+</ul>
+<p>In comparison to the previous section, we take into account the fact that there can be transitions to combined games.
+We consider them a Nim with pile sizes equal to the independent games' Grundy values.
+We can xor-sum them just like usual Nim according to Bouton's theorem.</p>
+<h2 id="patterns-in-grundy-values">Patterns in Grundy values</h2>
+<p>Very often when solving specific tasks using Grundy values, it may be beneficial to <strong>study the table of the values</strong> in search of patterns.</p>
+<p>In many games, which may seem rather difficult for theoretical analysis,
+the Grundy values turn out to be periodic or of an easily understandable form.
+In the overwhelming majority of cases the observed pattern turns out to be true and can be proved by induction if desired.</p>
+<p>However, Grundy values are far from <em>always</em> containing such regularities and even for some very simple games, the problem asking if those regularities exist is still open (e.g. "Grundy's game").</p>
+<h2 id="example-games">Example games</h2>
+<h3 id="crosses-crosses">Crosses-crosses</h3>
+<p><strong>The rules.</strong>
+Consider a checkered strip of size <span><span class="MathJax_Preview">1 \times n</span><script type="math/tex">1 \times n</script></span>. In one move, the player must put one cross, but it is forbidden to put two crosses next to each other (in adjacent cells). As usual, the player without a valid move loses.</p>
+<p><strong>The solution.</strong>
+When a player puts a cross in any cell, we can think of the strip being split into two independent parts:
+to the left of the cross and to the right of it.
+In this case, the cell with a cross, as well as its left and right neighbours are destroyed — nothing more can be put in them.
+Therefore, if we number the cells from <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> to <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> then putting the cross in position <span><span class="MathJax_Preview">1 &lt; i &lt; n</span><script type="math/tex">1 < i < n</script></span> breaks the strip
+into two strips of length <span><span class="MathJax_Preview">i-2</span><script type="math/tex">i-2</script></span> and <span><span class="MathJax_Preview">n-i-1</span><script type="math/tex">n-i-1</script></span> i.e. we go to the sum of games <span><span class="MathJax_Preview">i-2</span><script type="math/tex">i-2</script></span> and <span><span class="MathJax_Preview">n-i-1</span><script type="math/tex">n-i-1</script></span>.
+For the edge case of the cross being marked on position <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> or <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, we go to the game <span><span class="MathJax_Preview">n-2</span><script type="math/tex">n-2</script></span>.</p>
+<p>Thus, the Grundy value <span><span class="MathJax_Preview">g(n)</span><script type="math/tex">g(n)</script></span> has the form:</p>
+<div>
+<div class="MathJax_Preview">g(n) = \text{mex} \Bigl( \{ g(n-2) \} \cup \{g(i-2) \oplus g(n-i-1) \mid 2 \leq i \leq n-1\} \Bigr) .</div>
+<script type="math/tex; mode=display">g(n) = \text{mex} \Bigl( \{ g(n-2) \} \cup \{g(i-2) \oplus g(n-i-1) \mid 2 \leq i \leq n-1\} \Bigr) .</script>
+</div>
+<p>So we've got a <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span> solution.</p>
+<p>In fact, <span><span class="MathJax_Preview">g(n)</span><script type="math/tex">g(n)</script></span> has a period of length 34 starting with <span><span class="MathJax_Preview">n=52</span><script type="math/tex">n=52</script></span>.</p>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Data_Structures/sparse-table/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Sparse Table - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Sparse Table", url: "#_top", children: [
+              {title: "Intuition", url: "#intuition" },
+              {title: "Precomputation", url: "#precomputation" },
+              {title: "Range Sum Queries", url: "#range-sum-queries" },
+              {title: "Range Minimum Queries (RMQ)", url: "#range-minimum-queries-rmq" },
+              {title: "Similar data structures supporting more types of queries", url: "#similar-data-structures-supporting-more-types-of-queries" },
+              {title: "Practice Problems", url: "#practice-problems" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../sqrt-tree/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../sqrt-tree/" class="btn btn-xs btn-link">
+        Sqrt Tree
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../segment_tree/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../segment_tree/" class="btn btn-xs btn-link">
+        Segment tree
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="sparse-table">Sparse Table</h1>
+<p>Sparse Table is a data structure, that allows answering range queries.
+It can answer most range queries in <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>, but its true power is answering range minimum queries (or equivalent range maximum queries).
+For those queries it can compute the answer in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> time.</p>
+<p>The only drawback of this data structure is, that it can only be used on <em>immutable</em> arrays.
+This means, that the array cannot be changed between two queries.
+If any element in the array changes, the complete data structure has to be recomputed.</p>
+<h2 id="intuition">Intuition</h2>
+<p>Any non-negative number can be uniquely represented as a sum of decreasing powers of two.
+This is just a variant of the binary representation of a number.
+E.g. <span><span class="MathJax_Preview">13 = (1101)_2 = 8 + 4 + 1</span><script type="math/tex">13 = (1101)_2 = 8 + 4 + 1</script></span>.
+For a number <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> there can be at most <span><span class="MathJax_Preview">\lceil \log_2 x \rceil</span><script type="math/tex">\lceil \log_2 x \rceil</script></span> summands.</p>
+<p>By the same reasoning any interval can be uniquely represented as a union of intervals with lengths that are decreasing powers of two.
+E.g. <span><span class="MathJax_Preview">[2, 14] = [2, 9] \cup [10, 13] \cup [14, 14]</span><script type="math/tex">[2, 14] = [2, 9] \cup [10, 13] \cup [14, 14]</script></span>, where the complete interval has length 13, and the individual intervals have the lengths 8, 4 and 1 respectably.
+And also here the union consists of at most <span><span class="MathJax_Preview">\lceil \log_2(\text{length of interval}) \rceil</span><script type="math/tex">\lceil \log_2(\text{length of interval}) \rceil</script></span> many intervals.</p>
+<p>The main idea behind Sparse Tables is to precompute all answers for range queries with power of two length.
+Afterwards a different range query can be answered by splitting the range into ranges with power of two lengths, looking up the precomputed answers, and combining them to receive a complete answer.</p>
+<h2 id="precomputation">Precomputation</h2>
+<p>We will use a 2-dimensional array for storing the answers to the precomputed queries.
+<span><span class="MathJax_Preview">\text{st}[i][j]</span><script type="math/tex">\text{st}[i][j]</script></span> will store the answer for the range <span><span class="MathJax_Preview">[i, i + 2^j - 1]</span><script type="math/tex">[i, i + 2^j - 1]</script></span> of length <span><span class="MathJax_Preview">2^j</span><script type="math/tex">2^j</script></span>.
+The size of the 2-dimensional array will be <span><span class="MathJax_Preview">\text{MAXN} \times (K + 1)</span><script type="math/tex">\text{MAXN} \times (K + 1)</script></span>, where <span><span class="MathJax_Preview">\text{MAXN}</span><script type="math/tex">\text{MAXN}</script></span> is the biggest possible array length.
+<span><span class="MathJax_Preview">\text{K}</span><script type="math/tex">\text{K}</script></span> has to satisfy <span><span class="MathJax_Preview">\text{K} \ge \lfloor \log_2 \text{MAXN} \rfloor + 1</span><script type="math/tex">\text{K} \ge \lfloor \log_2 \text{MAXN} \rfloor + 1</script></span>, because <span><span class="MathJax_Preview">2^{\lfloor \log_2 \text{MAXN} \rfloor}</span><script type="math/tex">2^{\lfloor \log_2 \text{MAXN} \rfloor}</script></span> is the biggest power of two range, that we have to support.
+For arrays with reasonable length (<span><span class="MathJax_Preview">\le 10^7</span><script type="math/tex">\le 10^7</script></span> elements), <span><span class="MathJax_Preview">K = 25</span><script type="math/tex">K = 25</script></span> is a good value.</p>
+<p>```cpp sparsetable_definition
+int st[MAXN][K + 1];</p>
+<pre><code>
+Because the range $[i, i + 2^j - 1]$ of length $2^j$ splits nicely into the ranges $[i, i + 2^{j - 1} - 1]$ and $[i + 2^{j - 1}, i + 2^j - 1]$, both of length $2^{j - 1}$, we can generate the table efficiently using dynamic programming:
+
+```cpp sparsetable_generation
+for (int i = 0; i &lt; N; i++)
+    st[i][0] = f(array[i]);
+
+for (int j = 1; j &lt;= K; j++)
+    for (int i = 0; i + (1 &lt;&lt; j) &lt;= N; i++)
+        st[i][j] = f(st[i][j-1], st[i + (1 &lt;&lt; (j - 1))][j - 1]);
+</code></pre>
+
+<p>The function <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> will depend on the type of query.
+For range sum queries it will compute the sum, for range minimum queries it will compute the minimum.</p>
+<p>The time complexity of the precomputation is <span><span class="MathJax_Preview">O(\text{N} \log \text{N})</span><script type="math/tex">O(\text{N} \log \text{N})</script></span>.</p>
+<h2 id="range-sum-queries">Range Sum Queries</h2>
+<p>For this type of queries, we want to find the sum of all values in a range.
+Therefore the natural definition of the function <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> is <span><span class="MathJax_Preview">f(x, y) = x + y</span><script type="math/tex">f(x, y) = x + y</script></span>.
+We can construct the data structure with:</p>
+<p>```cpp sparsetable_sum_generation
+long long st[MAXN][K];</p>
+<p>for (int i = 0; i &lt; N; i++)
+    st[i][0] = array[i];</p>
+<p>for (int j = 1; j &lt;= K; j++)
+    for (int i = 0; i + (1 &lt;&lt; j) &lt;= N; i++)
+        st[i][j] = st[i][j-1] + st[i + (1 &lt;&lt; (j - 1))][j - 1];</p>
+<pre><code>
+To answer the sum query for the range $[L, R]$, we iterate over all powers of two, starting from the biggest one.
+As soon as a power of two $2^j$ is smaller or equal to the length of the range ($= R - L + 1$), we process the first the first part of range $[L, L + 2^j - 1]$, and continue with the remaining range $[L + 2^j, R]$.
+
+```cpp sparsetable_sum_query
+long long sum = 0;
+for (int j = K; j &gt;= 0; j--) {
+    if ((1 &lt;&lt; j) &lt;= R - L + 1) {
+        sum += st[L][j];
+        L += 1 &lt;&lt; j;
+    }
+}
+</code></pre>
+
+<p>Time complexity for a Range Sum Query is <span><span class="MathJax_Preview">O(K) = O(\log \text{MAXN})</span><script type="math/tex">O(K) = O(\log \text{MAXN})</script></span>.</p>
+<h2 id="range-minimum-queries-rmq">Range Minimum Queries (RMQ)</h2>
+<p>These are the queries where the Sparse Table shines.
+When computing the minimum of a range, it doesn't matter if we process a value in the range once or twice.
+Therefore instead of splitting a range into multiple ranges, we can also split the range into only two overlapping ranges with power of two length.
+E.g. we can split the range <span><span class="MathJax_Preview">[1, 6]</span><script type="math/tex">[1, 6]</script></span> into the ranges <span><span class="MathJax_Preview">[1, 4]</span><script type="math/tex">[1, 4]</script></span> and <span><span class="MathJax_Preview">[3, 6]</span><script type="math/tex">[3, 6]</script></span>.
+The range minimum of <span><span class="MathJax_Preview">[1, 6]</span><script type="math/tex">[1, 6]</script></span> is clearly the same as the minimum of the range minimum of <span><span class="MathJax_Preview">[1, 4]</span><script type="math/tex">[1, 4]</script></span> and the range minimum of <span><span class="MathJax_Preview">[3, 6]</span><script type="math/tex">[3, 6]</script></span>.
+So we can compute the minimum of the range <span><span class="MathJax_Preview">[L, R]</span><script type="math/tex">[L, R]</script></span> with:</p>
+<div>
+<div class="MathJax_Preview">\min(\text{st}[L][j], \text{st}[R - 2^j + 1][j]) \quad \text{ where } j = \log_2(R - L + 1)</div>
+<script type="math/tex; mode=display">\min(\text{st}[L][j], \text{st}[R - 2^j + 1][j]) \quad \text{ where } j = \log_2(R - L + 1)</script>
+</div>
+<p>This requires that we are able to compute <span><span class="MathJax_Preview">\log_2(R - L + 1)</span><script type="math/tex">\log_2(R - L + 1)</script></span> fast.
+You can accomplish that by precomputing all logarithms:</p>
+<p>```cpp sparse_table_log_table
+int log[MAXN+1];
+log[1] = 0;
+for (int i = 2; i &lt;= MAXN; i++)
+    log[i] = log[i/2] + 1;</p>
+<pre><code>
+Afterwards we need to precompute the Sparse Table structure. This time we define $f$ with $f(x, y) = \min(x, y)$.
+
+```cpp sparse_table_minimum_generation
+int st[MAXN][K];
+
+for (int i = 0; i &lt; N; i++)
+    st[i][0] = array[i];
+
+for (int j = 1; j &lt;= K; j++)
+    for (int i = 0; i + (1 &lt;&lt; j) &lt;= N; i++)
+        st[i][j] = min(st[i][j-1], st[i + (1 &lt;&lt; (j - 1))][j - 1]);
+</code></pre>
+
+<p>And the minimum of a range <span><span class="MathJax_Preview">[L, R]</span><script type="math/tex">[L, R]</script></span> can be computed with:</p>
+<p><code>cpp sparse_table_minimum_query
+int j = log[R - L + 1];
+int minimum = min(st[L][j], st[R - (1 &lt;&lt; j) + 1][j]);</code></p>
+<p>Time complexity for a Range Minimum Query is <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>.</p>
+<h2 id="similar-data-structures-supporting-more-types-of-queries">Similar data structures supporting more types of queries</h2>
+<p>One of the main weakness of the <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> approach discussed in the previous section is, that this approach only supports queries of <a href="https://en.wikipedia.org/wiki/Idempotence">idempotent functions</a>.
+I.e. it works great for range minimum queries, but it is not possible to answer range sum queries using this approach.</p>
+<p>There are similar data structures that can handle any type of associative functions and answer range queries in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>.
+One of them is called is called <a href="https://discuss.codechef.com/questions/117696/tutorial-disjoint-sparse-table">Disjoint Sparse Table</a>.
+Another one would be the <a href="/docs/#Algorithms/data_structures/sqrt-tree/">Sqrt Tree</a>.</p>
+<h2 id="practice-problems">Practice Problems</h2>
+<ul>
+<li><a href="http://www.spoj.com/problems/RMQSQ/">SPOJ - RMQSQ</a></li>
+<li><a href="http://www.spoj.com/problems/THRBL/">SPOJ - THRBL</a></li>
+<li><a href="https://www.codechef.com/problems/MSTICK">Codechef - MSTICK</a></li>
+<li><a href="https://www.codechef.com/problems/SEAD">Codechef - SEAD</a></li>
+<li><a href="http://codeforces.com/contest/475/problem/D">Codeforces - CGCDSSQ</a></li>
+<li><a href="http://codeforces.com/problemset/problem/514/D">Codeforces - R2D2 and Droid Army</a></li>
+<li><a href="http://codeforces.com/problemset/problem/872/B">Codeforces - Maximum of Maximums of Minimums</a></li>
+<li><a href="http://www.spoj.com/problems/TNVFC1M/">SPOJ - Miraculous</a></li>
+<li><a href="https://devskill.com/CodingProblems/ViewProblem/19">DevSkills - Multiplication Interval</a></li>
+<li><a href="http://codeforces.com/contest/713/problem/D">Codeforces - Animals and Puzzles</a></li>
+<li><a href="http://codeforces.com/contest/675/problem/E">Codeforces - Trains and Statistics</a></li>
+<li><a href="http://www.spoj.com/problems/POSTERIN/">SPOJ - Postering</a></li>
+<li><a href="http://www.spoj.com/problems/RPLN/">SPOJ - Negative Score</a></li>
+<li><a href="http://www.spoj.com/problems/CITY2/">SPOJ - A Famous City</a></li>
+<li><a href="http://www.spoj.com/problems/DIFERENC/">SPOJ - Diferencija</a></li>
+<li><a href="http://codeforces.com/contest/863/problem/E">Codeforces - Turn off the TV</a></li>
+<li><a href="http://codeforces.com/contest/15/problem/D">Codeforces - Map</a></li>
+<li><a href="http://codeforces.com/contest/873/problem/E">Codeforces - Awards for Contestants</a></li>
+<li><a href="http://codeforces.com/contest/5/problem/C">Codeforces - Longest Regular Bracket Sequence</a></li>
+</ul>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
