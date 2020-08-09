@@ -1,9 +1,10 @@
 ### Raid1
+
 ```bash
 fdisk /dev/<disk1>
 fdisk /dev/<disk2>
 
-mdadm --zero-superblock /dev/<disk1> /dev/<disk2> 
+mdadm --zero-superblock /dev/<disk1> /dev/<disk2>
 
 mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/<disk1_partition> /dev/<disk2_partition>
 

@@ -1,4 +1,5 @@
 ### Hot addition hdd
+
 ```bash
 # Run rescan for devices under root (sodo doesn't work)
 echo "- - -" > /sys/class/scsi_host/host0/scan

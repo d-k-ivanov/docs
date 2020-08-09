@@ -1,4 +1,5 @@
 ### Info
+
 ```bash
 #PV
 pvdisplay
@@ -10,10 +11,11 @@ vgs
 
 #LV
 lvdisplay
-lvs 
+lvs
 ```
 
 ### Phisical volumes(PV)
+
 ```bash
 # Scan devices
 lvmdiskscan
@@ -27,7 +29,7 @@ pvresize <phisical_device>
 # Reduce PV space
 pvresize --setphysicalvolumesize <new_size> <phisical_device>
 
-# Move contents to another device 
+# Move contents to another device
 pvmove <device_from> <device_to>
 
 # Remove PV from LVM
@@ -35,6 +37,7 @@ pvremove <phisical_device>
 ```
 
 ### Volume groups(VG)
+
 ```bash
 # Create VG on the PV
 vgcreate <vg_name> <pv_name>
@@ -51,6 +54,7 @@ vgreduce <vg_name> <pv_name>
 ```
 
 ### Logical volume(LV)
+
 ```bash
 # Create LV on VG
 lvcreate -L <size> <vg_name> -n <lv_name> [phisical_device_to_store_data]

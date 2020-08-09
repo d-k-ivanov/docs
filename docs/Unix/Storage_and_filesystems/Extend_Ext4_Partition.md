@@ -1,4 +1,5 @@
 ### Check current partition table
+
 ```bash
 fdisk -l /dev/vda
 
@@ -20,6 +21,7 @@ vda    253:0    0    5G  0 disk
 ```
 
 ### Check current partition size
+
 ```bash
 df -h
 Filesystem      Size  Used Avail Use% Mounted on
@@ -31,16 +33,20 @@ tmpfs           497M     0  497M   0% /sys/fs/cgroup
 tmpfs           100M     0  100M   0% /run/user/0
 ```
 
-### Resize hard drive 
+### Resize hard drive
+
 Rescan devices under root (sudo doesn't work). In some cases reboot is needed
+
 ```bash
 echo "- - -" > /sys/class/scsi_host/host0/scan
 echo "- - -" > /sys/class/scsi_host/host1/scan
 echo "- - -" > /sys/class/scsi_host/hostX/scan
 ```
 
-### Check extended partition table 
+### Check extended partition table
+
 Check your partition after resizing. Write down Start and End segment of your target partition:
+
 ```bash
 fdisk -l /dev/vda
 
@@ -62,15 +68,19 @@ vda    253:0    0    6G  0 disk
 ```
 
 ### Recreate partition with new End
+
 * Run **fdisk /dev/vda**
 * Delete old partition: Command (m for help): **d**
-```
+
+```sh
 # If you have multiple partition you have to choose partition which you want to resize
 Selected partition 1
 Partition 1 is deleted
 ```
+
 * Check for changes: Command (m for help): **p**
-```
+
+```sh
 Disk /dev/vda: 6442 MB, 6442450944 bytes, 12582912 sectors
 Units = sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
@@ -80,8 +90,10 @@ Disk identifier: 0x0000811f
 
    Device Boot      Start         End      Blocks   Id  System
 ```
+
 * Create new extended partition: Command (m for help): **n**
-```
+
+```sh
 Partition type:
    p   primary (0 primary, 0 extended, 4 free)
    e   extended
@@ -93,8 +105,10 @@ Last sector, +sectors or +size{K,M,G} (2048-12582911, default 12582911):
 Using default value 12582911
 Partition 1 of type Linux and of size 6 GiB is set
 ```
+
 * Check for changes: Command (m for help): **p**
-```
+
+```sh
 Disk /dev/vda: 6442 MB, 6442450944 bytes, 12582912 sectors
 Units = sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
@@ -105,8 +119,10 @@ Disk identifier: 0x0000811f
    Device Boot      Start         End      Blocks   Id  System
 /dev/vda1            2048    12582911     6290432   83  Linux
 ```
+
 * Write changes and exit: Command (m for help): **w**
-```
+
+```sh
 The partition table has been altered!
 
 Calling ioctl() to re-read partition table.
@@ -116,9 +132,11 @@ The kernel still uses the old table. The new table will be used at
 the next reboot or after you run partprobe(8) or kpartx(8)
 Syncing disks.
 ```
+
 * **!!!Reboot the system to inform kernel about changes in partition table!!!**
 
 ### Resize file system
+
 ```bash
 resize2fs /dev/vda1
 
@@ -129,6 +147,7 @@ The filesystem on /dev/vda1 is now 1572608 blocks long.
 ```
 
 ### Check current partition
+
 ```bash
 lsblk
 NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT

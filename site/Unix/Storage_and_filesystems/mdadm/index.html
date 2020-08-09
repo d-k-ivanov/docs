@@ -94,7 +94,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <pre><code class="bash">fdisk /dev/&lt;disk1&gt;
 fdisk /dev/&lt;disk2&gt;
 
-mdadm --zero-superblock /dev/&lt;disk1&gt; /dev/&lt;disk2&gt; 
+mdadm --zero-superblock /dev/&lt;disk1&gt; /dev/&lt;disk2&gt;
 
 mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/&lt;disk1_partition&gt; /dev/&lt;disk2_partition&gt;
 

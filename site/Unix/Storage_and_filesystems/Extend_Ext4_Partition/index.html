@@ -166,7 +166,7 @@ vda    253:0    0    6G  0 disk
 <li>Run <strong>fdisk /dev/vda</strong></li>
 <li>Delete old partition: Command (m for help): <strong>d</strong></li>
 </ul>
-<pre><code># If you have multiple partition you have to choose partition which you want to resize
+<pre><code class="sh"># If you have multiple partition you have to choose partition which you want to resize
 Selected partition 1
 Partition 1 is deleted
 </code></pre>
@@ -174,7 +174,7 @@ Partition 1 is deleted
 <ul>
 <li>Check for changes: Command (m for help): <strong>p</strong></li>
 </ul>
-<pre><code>Disk /dev/vda: 6442 MB, 6442450944 bytes, 12582912 sectors
+<pre><code class="sh">Disk /dev/vda: 6442 MB, 6442450944 bytes, 12582912 sectors
 Units = sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
@@ -187,7 +187,7 @@ Disk identifier: 0x0000811f
 <ul>
 <li>Create new extended partition: Command (m for help): <strong>n</strong></li>
 </ul>
-<pre><code>Partition type:
+<pre><code class="sh">Partition type:
    p   primary (0 primary, 0 extended, 4 free)
    e   extended
 Select (default p): p
@@ -202,7 +202,7 @@ Partition 1 of type Linux and of size 6 GiB is set
 <ul>
 <li>Check for changes: Command (m for help): <strong>p</strong></li>
 </ul>
-<pre><code>Disk /dev/vda: 6442 MB, 6442450944 bytes, 12582912 sectors
+<pre><code class="sh">Disk /dev/vda: 6442 MB, 6442450944 bytes, 12582912 sectors
 Units = sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
@@ -216,7 +216,7 @@ Disk identifier: 0x0000811f
 <ul>
 <li>Write changes and exit: Command (m for help): <strong>w</strong></li>
 </ul>
-<pre><code>The partition table has been altered!
+<pre><code class="sh">The partition table has been altered!
 
 Calling ioctl() to re-read partition table.
 

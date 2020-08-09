@@ -1,5 +1,6 @@
 
-### Instalaltion on AIX
+### Instalaltion on AIX\
+
 ```bash
 # on each node:
 cd /<path_to_gpfs_base_package>/base-3-5/
@@ -10,7 +11,9 @@ inutoc .
 installp -aXY -d/<path_to_gpfs_fix_package>/fix-3-5-10 all
 lslpp -L gpfs.\*
 ```
+
 ### Creating cluster
+
 ```bash
 # You need to setup paswordless shh connection between nodes
 # Add this path to /etc/environment on each node
@@ -34,7 +37,9 @@ mmchnode --quorum --manager -N <SECONDARY_NODE_HOSTNAME>
 mmlscluster
 mmgetstate -a
 ```
+
 ### Create GPFS mirror partition
+
 ```bash
 # On primary node:
 mkdir /etc/gpfs
@@ -56,18 +61,22 @@ df -g
 ```
 
 ### Autostart GPFS
-```
+
+```sh
 mmchconfig autoload=yes
 ```
 
 ### Increase Inodes
-```
+
+```sh
 mmchfs <fsname> -F 1M
 ```
 
 ### Change hostname on GPFS nodes
+
 * *[Preface]*
-```
+
+```sh
 #Old names:
 10.10.10.10     OLD-SRV-NAME-01
 10.10.10.10     OLD-SRV-NAME-02
@@ -76,37 +85,48 @@ mmchfs <fsname> -F 1M
 10.10.10.10     NEW-SRV-NAME-02
 
 ```
+
 * *[Preface]* Stop all services which use GPFS
 * *[On each node]* add new names to /etc/hosts (old ones keep too)
-```
+
+```sh
 10.10.10.10     NEW-SRV-NAME-01
 10.10.10.11     NEW-SRV-NAME-02
 ```
+
 * *[On master node]* Shut down GPFS-cluster
-```
+
+```sh
 mmshutdown -a
 ```
+
 * *[On master node]* Run command for configuration changing
-```
+
+```sh
 # Change interface names to names placed after "-N" key
 mmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx1 -N NEW-SRV-NAME-01
 mmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx2 -N NEW-SRV-NAME-02
 ```
+
 * *[On master node]* Start GPFS-cluster
-```
+
+```sh
 mmstartup -a
 ```
+
 * *[On master node]* Check cluster details and make sure that names were changed
-```
+
+```sh
 mmlscluster
 mmgetstate -a
 ```
+
 * *[On each node]* If everything right remove old records from /etc/hosts
 * *[On maser node]* Recheck than everything still OK
-```
+
+```sh
 mmshutdown -a
 mmstartup -a
 mmlscluster
 mmgetstate -a
 ```
-
