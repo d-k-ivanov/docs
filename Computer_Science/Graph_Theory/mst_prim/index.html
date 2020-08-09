@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Computer_Science/Graph_Theory/mst_prim/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Minimum spanning tree - Prim's algorithm - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Minimum spanning tree - Prim's algorithm", url: "#_top", children: [
+              {title: "Prim's Algorithm", url: "#prims-algorithm" },
+              {title: "Implementation", url: "#implementation" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../pruefer_code/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../pruefer_code/" class="btn btn-xs btn-link">
+        Prüfer code
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../mst_kruskal_with_dsu/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../mst_kruskal_with_dsu/" class="btn btn-xs btn-link">
+        Minimum spanning tree - Kruskal with Disjoint Set Union
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="minimum-spanning-tree-prims-algorithm">Minimum spanning tree - Prim's algorithm</h1>
+<p>Given a weighted, undirected graph <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> edges.
+You want to find a spanning tree of this graph which connects all vertices and has the least weight (i.e. the sum of weights of edges is minimal).
+A spanning tree is a set of edges such that any vertex can reach any other by exactly one simple path.
+The spanning tree with the least weight is called a minimum spanning tree.</p>
+<p>In the left image you can see a weighted undirected graph, and in the right image you can see the corresponding minimum spanning tree.</p>
+<p><center><img alt="Random graph" src="/docs/data/cs/MST_before.png" /> <img alt="MST of this graph" src="/docs/data/cs/MST_after.png" /></center></p>
+<p>It is easy to see that any spanning tree will necessarily contain <span><span class="MathJax_Preview">n-1</span><script type="math/tex">n-1</script></span> edges.</p>
+<p>This problem appears quite naturally in a lot of problems.
+For instance in the following problem:
+there are <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> cities and for each pair of cities we are given the cost to build a road between them (or we know that is physically impossible to build a road between them).
+We have to build roads, such that we can get from each city to every other city, and the cost for building all roads is minimal.</p>
+<h2 id="prims-algorithm">Prim's Algorithm</h2>
+<p>This algorithm was originally discovered by the Czech mathematician Vojtěch Jarník in 1930.
+However this algorithm is mostly known as Prim's algorithm after the American mathematician Robert Clay Prim, who rediscovered and republished it in 1957.
+Additionally Edsger Dijkstra published this algorithm in 1959.</p>
+<h3 id="algorithm-description">Algorithm description</h3>
+<p>Here we describe the algorithm in its simplest form.
+The minimum spanning tree is built gradually by adding edges one at a time.
+At first the spanning tree consists only of a single vertex (chosen arbitrarily).
+Then the minimum weight edge outgoing from this vertex is selected and added to the spanning tree.
+After that the spanning tree already consists of two vertices.
+Now select and add the edge with the minimum weight that has one end in an already selected vertex (i.e. a vertex that is already part of the spanning tree), and the other end in an unselected vertex.
+And so on, i.e. every time we select and add the edge with minimal weight that connects one selected vertex with one unselected vertex.
+The process is repeated until the spanning tree contains all vertices (or equivalently until we have <span><span class="MathJax_Preview">n - 1</span><script type="math/tex">n - 1</script></span> edges).</p>
+<p>In the end the constructed spanning tree will be minimal.
+If the graph was originally not connected, then there doesn't exist a spanning tree, so the number of selected edges will be less than <span><span class="MathJax_Preview">n - 1</span><script type="math/tex">n - 1</script></span>.</p>
+<h3 id="proof">Proof</h3>
+<p>Let the graph <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> be connected, i.e. the answer exists.
+We denote by <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> the resulting graph found by Prim's algorithm, and by <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> the minimum spanning tree.
+Obviously <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> is indeed a spanning tree and a subgraph of <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>.
+We only need to show that the weights of <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> and <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> coincide.</p>
+<p>Consider the first time in the algorithm when we add an edge to <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> that is not part of <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span>.
+Let us denote this edge with <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span>, its ends by <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>, and the set of already selected vertices as <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span> (<span><span class="MathJax_Preview">a \in V</span><script type="math/tex">a \in V</script></span> and <span><span class="MathJax_Preview">b \notin V</span><script type="math/tex">b \notin V</script></span>, or visa versa).</p>
+<p>In the minimal spanning tree <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> the vertices <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> are connected by some path <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span>.
+On this path we can find an edge <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> such that one end of <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> lies in <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span> and the other end doesn't.
+Since the algorithm chose <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span> instead of <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>, it means that the weight of <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> is greater or equal to the weight of <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span>.</p>
+<p>We add the edge <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span> to the minimum spanning tree <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> and remove the edge <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>.
+By adding <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span> we created a cycle, and since <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> was also part of the only cycle, by removing it the resulting graph is again free of cycles.
+And because we only removed an edge from a cycle, the resulting graph is still connected.</p>
+<p>The resulting spanning tree cannot have a larger total weight, since the weight of <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span> was not larger than the weight of <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>, and it also cannot have a smaller weight since <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> was a minimum spanning tree.
+This means that by replacing the edge <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> with <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span> we generated a different minimum spanning tree.
+And <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span> has to have the same weight as <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>.</p>
+<p>Thus all the edges we pick in Prim's algorithm have the same weights as the edges of any minimum spanning tree, which means that Prim's algorithm really generates a minimum spanning tree.</p>
+<h2 id="implementation">Implementation</h2>
+<p>The complexity of the algorithm depends on how we search for the next minimal edge among the appropriate edges.
+There are multiple approaches leading to different complexities and different implementations.</p>
+<h3 id="trivial-implementations-on-mon-m-and-on2-m-log-non2-m-log-n">Trivial implementations: <span><span class="MathJax_Preview">O(n m)</span><script type="math/tex">O(n m)</script></span> and <span><span class="MathJax_Preview">O(n^2 + m \log n)</span><script type="math/tex">O(n^2 + m \log n)</script></span></h3>
+<p>If we search the edge by iterating over all possible edges, then it takes <span><span class="MathJax_Preview">O(m)</span><script type="math/tex">O(m)</script></span> time to find the edge with the minimal weight.
+The total complexity will be <span><span class="MathJax_Preview">O(n m)</span><script type="math/tex">O(n m)</script></span>.
+In the worst case this is <span><span class="MathJax_Preview">O(n^3)</span><script type="math/tex">O(n^3)</script></span>, really slow.</p>
+<p>This algorithm can be improved if we only look at one edge from each already selected vertex.
+For example we can sort the edges from each vertex in ascending order of their weights, and store a pointer to the first valid edge (i.e. an edge that goes to an non-selected vertex).
+Then after finding and selecting the minimal edge, we update the pointers.
+This give a complexity of <span><span class="MathJax_Preview">O(n^2 + m)</span><script type="math/tex">O(n^2 + m)</script></span>, and for sorting the edges an additional <span><span class="MathJax_Preview">O(m \log n)</span><script type="math/tex">O(m \log n)</script></span>, which gives the complexity <span><span class="MathJax_Preview">O(n^2 \log n)</span><script type="math/tex">O(n^2 \log n)</script></span> in the worst case.</p>
+<p>Below we consider two slightly different algorithms, one for dense and one for sparse graphs, both with a better complexity.</p>
+<h3 id="dense-graphs-on2on2">Dense graphs: <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span></h3>
+<p>We approach this problem for a different side:
+for every not yet selected vertex we will store the minimum edge to an already selected vertex.</p>
+<p>Then during a step we only have to look at these minimum weight edges, which will have a complexity of <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>.</p>
+<p>After adding an edge some minimum edge pointers have to be recalculated.
+Note that the weights only can decrease, i.e. the minimal weight edge of every not yet selected vertex might stay the same, or it will be updated by an edge to the newly selected vertex.
+Therefore this phase can also be done in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>.</p>
+<p>Thus we received a version of Prim's algorithm with the complexity <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span>.</p>
+<p>In particular this implementation is very convenient for the Euclidean Minimum Spanning Tree problem:
+we have <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> points on a plane and the distance between each pair of points is the Euclidean distance between them, and we want to find a minimum spanning tree for this complete graph.
+This task can be solved by the described algorithm in <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span> time and <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> memory, which is not possible with <a href="./graph/mst_kruskal/">Kruskal's algorithm</a>.</p>
+<pre><code class="cpp">int n;
+vector&lt;vector&lt;int&gt;&gt; adj; // adjacency matrix of graph
+const int INF = 1000000000; // weight INF means there is no edge
+
+struct Edge {
+    int w = INF, to = -1;
+};
+
+void prim() {
+    int total_weight = 0;
+    vector&lt;bool&gt; selected(n, false);
+    vector&lt;Edge&gt; min_e(n);
+    min_e[0].w = 0;
+
+    for (int i=0; i&lt;n; ++i) {
+        int v = -1;
+        for (int j = 0; j &lt; n; ++j) {
+            if (!selected[j] &amp;&amp; (v == -1 || min_e[j].w &lt; min_e[v].w))
+                v = j;
+        }
+
+        if (min_e[v].w == INF) {
+            cout &lt;&lt; &quot;No MST!&quot; &lt;&lt; endl;
+            exit(0);
+        }
+
+        selected[v] = true;
+        total_weight += min_e[v].w;
+        if (min_e[v].to != -1)
+            cout &lt;&lt; v &lt;&lt; &quot; &quot; &lt;&lt; min_e[v].to &lt;&lt; endl;
+
+        for (int to = 0; to &lt; n; ++to) {
+            if (adj[v][to] &lt; min_e[to].w)
+                min_e[to] = {adj[v][to], v};
+        }
+    }
+
+    cout &lt;&lt; total_weight &lt;&lt; endl;
+}
+</code></pre>
+
+<p>The adjacency matrix <code>adj[][]</code> of size <span><span class="MathJax_Preview">n \times n</span><script type="math/tex">n \times n</script></span> stores the weights of the edges, and it uses the weight <code>INF</code> if there doesn't exist an edge between two vertices.
+The algorithm uses two arrays: the flag <code>selected[]</code>, which indicates which vertices we already have selected, and the array <code>min_e[]</code> which stores the edge with minimal weight to an selected vertex for each not-yet-selected vertex (it stores the weight and the end vertex).
+The algorithm does <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> steps, in each iteration the vertex with the smallest edge weight is selected, and the <code>min_e[]</code> of all other vertices gets updated.</p>
+<h3 id="sparse-graphs-om-log-nom-log-n">Sparse graphs: <span><span class="MathJax_Preview">O(m \log n)</span><script type="math/tex">O(m \log n)</script></span></h3>
+<p>In the above described algorithm it is possible to interpret the operations of finding the minimum and modifying some values as set operations.
+These two classical operations are supported by many data structure, for example by <code>set</code> in C++ (which are implemented via red-black trees).</p>
+<p>The main algorithm remains the same, but now we can find the minimum edge in <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> time.
+On the other hand recomputing the pointers will now take <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> time, which is worse than in the previous algorithm.</p>
+<p>But when we consider that we only need to update <span><span class="MathJax_Preview">O(m)</span><script type="math/tex">O(m)</script></span> times in total, and perform <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> searches for the minimal edge, then the total complexity will be <span><span class="MathJax_Preview">O(m \log n)</span><script type="math/tex">O(m \log n)</script></span>.
+For sparse graphs this is better than the above algorithm, but for dense graphs this will be slower.</p>
+<pre><code class="cpp">const int INF = 1000000000;
+
+struct Edge {
+    int w = INF, to = -1;
+    bool operator&lt;(Edge const&amp; other) const {
+        return w &lt; other.w;
+    }
+};
+
+int n;
+vector&lt;vector&lt;Edge&gt;&gt; adj;
+
+void prim() {
+    int total_weight = 0;
+    vector&lt;Edge&gt; min_e(n);
+    min_e[0].w = 0;
+    set&lt;Edge&gt; q;
+    q.insert({0, 0});
+    vector&lt;bool&gt; selected(n, false);
+    for (int i = 0; i &lt; n; ++i) {
+        if (q.empty()) {
+            cout &lt;&lt; &quot;No MST!&quot; &lt;&lt; endl;
+            exit(0);
+        }
+
+        int v = q.begin()-&gt;to;
+        selected[v] = true;
+        total_weight += q.begin()-&gt;w;
+        q.erase(q.begin());
+
+        if (min_e[v].to != -1)
+            cout &lt;&lt; v &lt;&lt; &quot; &quot; &lt;&lt; min_e[v].to &lt;&lt; endl;
+
+        for (Edge e : adj[v]) {
+            if (!selected[e.to] &amp;&amp; e.w &lt; min_e[e.to].w) {
+                q.erase({min_e[e.to].w, e.to});
+                min_e[e.to] = {e.w, v};
+                q.insert({e.w, e.to});
+            }
+        }
+    }
+
+    cout &lt;&lt; total_weight &lt;&lt; endl;
+}
+</code></pre>
+
+<p>Here the graph is represented via a adjacency list <code>adj[]</code>, where <code>adj[v]</code> contains all edges (in form of weight and target pairs) for the vertex <code>v</code>.
+<code>min_e[v]</code> will store the weight of the smallest edge from vertex <code>v</code> to an already selected vertex (again in the form of a weight and target pair).
+In addition the queue <code>q</code> is filled with all not yet selected vertices in the order of increasing weights <code>min_e</code>.
+The algorithm does <code>n</code> steps, on each of which it selects the vertex <code>v</code> with the smallest weight <code>min_e</code> (by extracting it from the beginning of the queue), and then looks through all the edges from this vertex and updates the values in <code>min_e</code> (during an update we also need to also remove the old edge from the queue <code>q</code> and put in the new edge).</p>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

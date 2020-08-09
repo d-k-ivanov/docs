@@ -125,36 +125,6 @@ long random_at_most(long max) {
 <p>If you want to get random values outside the default range [0, RAND_MAX], then you have to do something tricky. Perhaps the most expedient is to define a function random_extended() that pulls n bits (using random_at_most()) and returns in [0, 2<strong>n), and then apply random_at_most() with random_extended() in place of random() (and 2</strong>n - 1 in place of RAND_MAX) to pull a random value less than 2**n, assuming you have a numerical type that can hold such a value. Finally, of course, you can get values in [min, max] using min + random_at_most(max - min), including negative values.</p>
 
   <br>
-    
-
-    
-    
-      
-    
-
-  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
-    
-    <div class="wm-article-nav pull-right">
-      <a href="../CPP_Best_Practices_by_Jason_Turner/01-Preface/" class="btn btn-xs btn-default pull-right">
-        Next
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-      </a>
-      <a href="../CPP_Best_Practices_by_Jason_Turner/01-Preface/" class="btn btn-xs btn-link">
-        Preface
-      </a>
-    </div>
-    
-    <div class="wm-article-nav">
-      <a href="../../CSharp/Compilation/" class="btn btn-xs btn-default pull-left">
-        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../../CSharp/Compilation/" class="btn btn-xs btn-link">
-        Compilation
-      </a>
-    </div>
-    
-  </div>
-
-    <br>
 </div>
 
 <footer class="container-fluid wm-page-content">

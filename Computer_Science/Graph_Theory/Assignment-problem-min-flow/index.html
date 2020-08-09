@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Computer_Science/Graph_Theory/Assignment-problem-min-flow/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Solving assignment problem using min-cost-flow - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Solving assignment problem using min-cost-flow", url: "#_top", children: [
+              {title: "Description", url: "#description" },
+              {title: "Implementation", url: "#implementation" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../all-pair-shortest-path-floyd-warshall/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../all-pair-shortest-path-floyd-warshall/" class="btn btn-xs btn-link">
+        Floyd-Warshall Algorithm
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../2SAT/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../2SAT/" class="btn btn-xs btn-link">
+        2 - SAT
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="solving-assignment-problem-using-min-cost-flow">Solving assignment problem using min-cost-flow</h1>
+<p>The <strong>assignment problem</strong> has two equivalent statements:</p>
+<ul>
+<li>Given a square matrix <span><span class="MathJax_Preview">A[1..N, 1..N]</span><script type="math/tex">A[1..N, 1..N]</script></span>, you need to select <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> elements in it so that exactly one element is selected in each row and column, and the sum of the values of these elements is the smallest.</li>
+<li>There are <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> orders and <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> machines. The cost of manufacturing on each machine is known for each order.  Only one order can be performed on each machine. It is required to assign all orders to the machines so that the total cost is minimized.</li>
+</ul>
+<p>Here we will consider the solution of the problem based on the algorithm for finding the <a href="./graph/min_cost_flow/">minimum cost flow (min-cost-flow)</a>, solving the assignment problem in <span><span class="MathJax_Preview">\mathcal{O}(N^5)</span><script type="math/tex">\mathcal{O}(N^5)</script></span>.</p>
+<h2 id="description">Description</h2>
+<p>Let's build a bipartite network: there is a source <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span>, a drain <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>, in the first part there are <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> vertices (corresponding to rows of the matrix, or orders), in the second there are also <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> vertices (corresponding to the columns of the matrix, or machines). Between each vertex <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> of the first set and each vertex <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> of the second set, we draw an edge with bandwidth 1 and cost <span><span class="MathJax_Preview">A_{ij}</span><script type="math/tex">A_{ij}</script></span>. From the source <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> we draw edges to all vertices <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> of the first set with bandwidth 1 and cost 0. We draw an edge with bandwidth 1 and cost 0 from each vertex of the second set <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> to the drain <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>.</p>
+<p>We find in the resulting network the maximum flow of the minimum cost. Obviously, the value of the flow will be <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>. Further, for each vertex <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> of the first segment there is exactly one vertex <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> of the second segment, such that the flow <span><span class="MathJax_Preview">F_{ij}</span><script type="math/tex">F_{ij}</script></span> = 1. Finally, this is a one-to-one correspondence between the vertices of the first segment and the vertices of the second part, which is the solution to the problem (since the found flow has a minimal cost, then the sum of the costs of the selected edges will be the lowest possible, which is the optimality criterion).</p>
+<p>The complexity of this solution of the assignment problem depends on the algorithm by which the search for the maximum flow of the minimum cost is performed. The complexity will be <span><span class="MathJax_Preview">\mathcal{O}(N^5)</span><script type="math/tex">\mathcal{O}(N^5)</script></span> using <a href="./graph/dijkstra/">Dijkstra</a> or <span><span class="MathJax_Preview">\mathcal{O}(N^6)</span><script type="math/tex">\mathcal{O}(N^6)</script></span> using <a href="./graph/bellman_ford/">Bellman-Ford</a>.</p>
+<h2 id="implementation">Implementation</h2>
+<p>The implementation given here is long, it can probably be significantly reduced.
+It uses the <a href="./graph/bellman_ford/">SPFA algorithm</a> for finding shortest paths.</p>
+<pre><code class="cpp">const int INF = 1000 * 1000 * 1000;
+
+vector&lt;int&gt; assignment(vector&lt;vector&lt;int&gt;&gt; a) {
+    int n = a.size();
+    int m = n * 2 + 2;
+    vector&lt;vector&lt;int&gt;&gt; f(m, vector&lt;int&gt;(m));
+    int s = m - 2, t = m - 1;
+    int cost = 0;
+    while (true) {
+        vector&lt;int&gt; dist(m, INF);
+        vector&lt;int&gt; p(m);
+        vector&lt;bool&gt; inq(m, false);
+        queue&lt;int&gt; q;
+        dist[s] = 0;
+        p[s] = -1;
+        q.push_back(s);
+        while (!q.empty()) {
+            int v = q.front();
+            q.pop();
+            inq[v] = false;
+            if (v == s) {
+                for (int i = 0; i &lt; n; ++i) {
+                    if (f[s][i] == 0) {
+                        dist[i] = 0;
+                        p[i] = s;
+                        inq[i] = true;
+                        q.push(i);
+                    }
+                }
+            } else {
+                if (v &lt; n) {
+                    for (int j = n; j &lt; n + n; ++j) {
+                        if (f[v][j] &lt; 1 &amp;&amp; dist[j] &gt; dist[v] + a[v][j - n]) {
+                            dist[j] = dist[v] + a[v][j - n];
+                            p[j] = v;
+                            if (!inq[j]) {
+                                q.push(j);
+                                inq[j] = true;
+                            }
+                        }
+                    }
+                } else {
+                    for (int j = 0; j &lt; n; ++j) {
+                        if (f[v][j] &lt; 0 &amp;&amp; dist[j] &gt; dist[v] - a[j][v - n]) {
+                            dist[j] = dist[v] - a[j][v - n];
+                            p[j] = v;
+                            if (!inq[j]) {
+                                q.push(j);
+                                inq[j] = true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        int curcost = INF;
+        for (int i = n; i &lt; n + n; ++i) {
+            if (f[i][t] == 0 &amp;&amp; dist[i] &lt; curcost) {
+                curcost = dist[i];
+                p[t] = i;
+            }
+        }
+        if (curcost == INF)
+            break;
+        cost += curcost;
+        for (int cur = t; cur != -1; cur = p[cur]) {
+            int prev = p[cur];
+            if (prev != -1)
+                f[cur][prev] = -(f[prev][cur] = 1);
+        }
+    }
+
+    vector&lt;int&gt; answer(n);
+    for (int i = 0; i &lt; n; ++i) {
+        for (int j = 0; j &lt; n; ++j) {
+            if (f[i][j + n] == 1)
+                answer[i] = j;
+        }
+    }
+    return answer;
+}
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

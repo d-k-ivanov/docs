@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Computer_Science/Graph_Theory/all-pair-shortest-path-floyd-warshall/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Floyd-Warshall Algorithm - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Floyd-Warshall Algorithm", url: "#_top", children: [
+              {title: "Description of the algorithm", url: "#description-of-the-algorithm" },
+              {title: "Implementation", url: "#implementation" },
+              {title: "Retrieving the sequence of vertices in the shortest path", url: "#retrieving-the-sequence-of-vertices-in-the-shortest-path" },
+              {title: "The case of real weights", url: "#the-case-of-real-weights" },
+              {title: "The case of negative cycles", url: "#the-case-of-negative-cycles" },
+              {title: "Practice Problems", url: "#practice-problems" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../bellman_ford/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../bellman_ford/" class="btn btn-xs btn-link">
+        Bellman-Ford Algorithm
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Assignment-problem-min-flow/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Assignment-problem-min-flow/" class="btn btn-xs btn-link">
+        Solving assignment problem using min-cost-flow
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="floyd-warshall-algorithm">Floyd-Warshall Algorithm</h1>
+<p>Given an undirected weighted graph <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices. The task is to find the length of the shortest path <span><span class="MathJax_Preview">d_{ij}</span><script type="math/tex">d_{ij}</script></span> between each pair of vertices <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>.</p>
+<p>The graph may have negative weight edges, but no negative weight cycles (for then the shortest path is undefined).</p>
+<p>This algorithm can also be used to detect the presence of negative cycles.
+The graph has a negative cycle if at the end of the algorithm, the distance from a vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> to itself is negative.</p>
+<p>This algorithm has been simultaneously published in articles by Robert Floyd and Stephen Warshall in 1962.
+However, in 1959, Bernard Roy published essentially the same algorithm, but its publication went unnoticed.</p>
+<h2 id="description-of-the-algorithm">Description of the algorithm</h2>
+<p>The key idea of the algorithm is to partition the process of finding the shortest path between any two vertices to several incremental phases.</p>
+<p>Let us number the vertices starting from 1 to <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.
+The matrix of distances is <span><span class="MathJax_Preview">d[ ][ ]</span><script type="math/tex">d[ ][ ]</script></span>.</p>
+<p>Before <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th phase (<span><span class="MathJax_Preview">k = 1 \dots n</span><script type="math/tex">k = 1 \dots n</script></span>), <span><span class="MathJax_Preview">d[i][j]</span><script type="math/tex">d[i][j]</script></span> for any vertices <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> stores the length of the shortest path between the vertex <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and vertex <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>, which contains only the vertices <span><span class="MathJax_Preview">\\{1, 2, ..., k-1\\}</span><script type="math/tex">\\{1, 2, ..., k-1\\}</script></span> as internal vertices in the path.</p>
+<p>In other words, before <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th phase the value of <span><span class="MathJax_Preview">d[i][j]</span><script type="math/tex">d[i][j]</script></span> is equal to the length of the shortest path from vertex <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> to the vertex <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>, if this path is allowed to enter only the vertex with numbers smaller than <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> (the beginning and end of the path are not restricted by this property).</p>
+<p>It is easy to make sure that this property holds for the first phase. For <span><span class="MathJax_Preview">k = 0</span><script type="math/tex">k = 0</script></span>, we can fill matrix with <span><span class="MathJax_Preview">d[i][j] = w_{i j}</span><script type="math/tex">d[i][j] = w_{i j}</script></span> if there exists an edge between <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> with weight <span><span class="MathJax_Preview">w_{i j}</span><script type="math/tex">w_{i j}</script></span> and <span><span class="MathJax_Preview">d[i][j] = \infty</span><script type="math/tex">d[i][j] = \infty</script></span> if there doesn't exist an edge.
+In practice <span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span> will be some high value.
+As we shall see later, this is a requirement for the algorithm.</p>
+<p>Suppose now that we are in the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th phase, and we want to compute the matrix <span><span class="MathJax_Preview">d[ ][ ]</span><script type="math/tex">d[ ][ ]</script></span> so that it meets the requirements for the <span><span class="MathJax_Preview">(k + 1)</span><script type="math/tex">(k + 1)</script></span>-th phase.
+We have to fix the distances for some vertices pairs <span><span class="MathJax_Preview">(i, j)</span><script type="math/tex">(i, j)</script></span>.
+There are two fundamentally different cases:</p>
+<ul>
+<li>The shortest way from the vertex <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> to the vertex <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> with internal vertices from the set <span><span class="MathJax_Preview">\\{1, 2, \dots, k\\}</span><script type="math/tex">\\{1, 2, \dots, k\\}</script></span> coincides with the shortest path with internal vertices from the set <span><span class="MathJax_Preview">\\{1, 2, \dots, k-1\\}</span><script type="math/tex">\\{1, 2, \dots, k-1\\}</script></span>.</li>
+</ul>
+<p>In this case, <span><span class="MathJax_Preview">d[i][j]</span><script type="math/tex">d[i][j]</script></span> will not change during the transition.</p>
+<ul>
+<li>The shortest path with internal vertices from <span><span class="MathJax_Preview">\\{1, 2, \dots, k\\}</span><script type="math/tex">\\{1, 2, \dots, k\\}</script></span> is shorter.</li>
+</ul>
+<p>This means that the new, shorter path passes through the vertex <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.
+  This means that we can split the shortest path between <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> into two paths:
+  the path between <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>, and the path between <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>.
+  It is clear that both this paths only use internal vertices of <span><span class="MathJax_Preview">\\{1, 2, \dots, k-1\\}</span><script type="math/tex">\\{1, 2, \dots, k-1\\}</script></span> and are the shortest such paths in that respect.
+  Therefore we already have computed the lengths of those paths before, and we can compute the length of the shortest path between <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> as <span><span class="MathJax_Preview">d[i][k] + d[k][j]</span><script type="math/tex">d[i][k] + d[k][j]</script></span>.</p>
+<p>Combining these two cases we find that we can recalculate the length of all pairs <span><span class="MathJax_Preview">(i, j)</span><script type="math/tex">(i, j)</script></span> in the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th phase in the following way:</p>
+<div>
+<div class="MathJax_Preview">d_{\text{new}}[i][j] = min(d[i][j], d[i][k] + d[k][j])</div>
+<script type="math/tex; mode=display">d_{\text{new}}[i][j] = min(d[i][j], d[i][k] + d[k][j])</script>
+</div>
+<p>Thus, all the work that is required in the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th phase is to iterate over all pairs of vertices and recalculate the length of the shortest path between them.
+As a result, after the <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>-th phase, the value <span><span class="MathJax_Preview">d[i][j]</span><script type="math/tex">d[i][j]</script></span> in the distance matrix is the length of the shortest path between <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>, or is <span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span> if the path between the vertices <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> does not exist.</p>
+<p>A last remark - we don't need to create a separate distance matrix <span><span class="MathJax_Preview">d_{\text{new}}[ ][ ]</span><script type="math/tex">d_{\text{new}}[ ][ ]</script></span> for temporarily storing the shortest paths of the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th phase, i.e. all changes can be made directly in the matrix <span><span class="MathJax_Preview">d[ ][ ]</span><script type="math/tex">d[ ][ ]</script></span> at any phase.
+In fact at any <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th phase we are at most improving the distance of any path in the distance matrix, hence we cannot worsen the length of the shortest path for any pair of the vertices that are to be processed in the <span><span class="MathJax_Preview">(k+1)</span><script type="math/tex">(k+1)</script></span>-th phase or later.</p>
+<p>The time complexity of this algorithm is obviously <span><span class="MathJax_Preview">O(n^3)</span><script type="math/tex">O(n^3)</script></span>.</p>
+<h2 id="implementation">Implementation</h2>
+<p>Let <span><span class="MathJax_Preview">d[][]</span><script type="math/tex">d[][]</script></span> is a 2D array of size <span><span class="MathJax_Preview">n \times n</span><script type="math/tex">n \times n</script></span>, which is filled according to the <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>-th phase as explained earlier.
+Also we will set <span><span class="MathJax_Preview">d[i][i] = 0</span><script type="math/tex">d[i][i] = 0</script></span> for any <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> at the <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>-th phase.</p>
+<p>Then the algorithm is implemented as follows:</p>
+<pre><code class="cpp">for (int k = 0; k &lt; n; ++k) {
+    for (int i = 0; i &lt; n; ++i) {
+        for (int j = 0; j &lt; n; ++j) {
+            d[i][j] = min(d[i][j], d[i][k] + d[k][j]);
+        }
+    }
+}
+</code></pre>
+
+<p>It is assumed that if there is no edge between any two vertices <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>, then the matrix at <span><span class="MathJax_Preview">d[i][j]</span><script type="math/tex">d[i][j]</script></span> contains a large number (large enough so that it is greater than the length of any path in this graph).
+Then this edge will always be unprofitable to take, and the algorithm will work correctly.</p>
+<p>However if there are negative weight edges in the graph, special measures have to be taken.
+Otherwise the resulting values in matrix may be of the form <span><span class="MathJax_Preview">\infty - 1</span><script type="math/tex">\infty - 1</script></span>,  <span><span class="MathJax_Preview">\infty - 2</span><script type="math/tex">\infty - 2</script></span>, etc., which, of course, still indicates that between the respective vertices doesn't exist a path.
+Therefore, if the graph has negative weight edges, it is better to write the Floyd-Warshall algorithm in the following way, so that it does not perform transitions using paths that don't exist.</p>
+<pre><code class="cpp">for (int k = 0; k &lt; n; ++k) {
+    for (int i = 0; i &lt; n; ++i) {
+        for (int j = 0; j &lt; n; ++j) {
+            if (d[i][k] &lt; INF &amp;&amp; d[k][j] &lt; INF)
+                d[i][j] = min(d[i][j], d[i][k] + d[k][j]);
+        }
+    }
+}
+</code></pre>
+
+<h2 id="retrieving-the-sequence-of-vertices-in-the-shortest-path">Retrieving the sequence of vertices in the shortest path</h2>
+<p>It is easy to maintain additional information with which it will be possible to retrieve the shortest path between any two given vertices in the form of a sequence of vertices.</p>
+<p>For this, in addition to the distance matrix <span><span class="MathJax_Preview">d[ ][ ]</span><script type="math/tex">d[ ][ ]</script></span>, a matrix of ancestors <span><span class="MathJax_Preview">p[ ][ ]</span><script type="math/tex">p[ ][ ]</script></span> must be maintained, which will contain the number of the phase where the shortest distance between two vertices was last modified.
+It is clear that the number of the phase is nothing more than a vertex in the middle of the desired shortest path.
+Now we just need to find the shortest path between vertices <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">p[i][j]</span><script type="math/tex">p[i][j]</script></span>, and between <span><span class="MathJax_Preview">p[i][j]</span><script type="math/tex">p[i][j]</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>.
+This leads to a simple recursive reconstruction algorithm of the shortest path.</p>
+<h2 id="the-case-of-real-weights">The case of real weights</h2>
+<p>If the weights of the edges are not integer but real, it is necessary to take the errors, which occur when working with float types, into account.</p>
+<p>The Floyd-Warshall algorithm has the unpleasant effect, that the errors accumulate very quickly.
+In fact if there is an error in the first phase of <span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span>, this error may propagate to the second iteration as <span><span class="MathJax_Preview">2 \delta</span><script type="math/tex">2 \delta</script></span>, to the third iteration as <span><span class="MathJax_Preview">4 \delta</span><script type="math/tex">4 \delta</script></span>, and so on.</p>
+<p>To avoid this the algorithm can be modified to take the error (EPS = <span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span>) into account by using following comparison:</p>
+<pre><code class="cpp">if (d[i][k] + d[k][j] &lt; d[i][j] - EPS)
+    d[i][j] = d[i][k] + d[k][j];
+</code></pre>
+
+<h2 id="the-case-of-negative-cycles">The case of negative cycles</h2>
+<p>Formally the Floyd-Warshall algorithm does not apply to graphs containing negative weight cycle(s).
+But for all pairs of vertices <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> for which there doesn't exist a path starting at <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>, visiting a negative cycle, and end at <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>,  the algorithm will still work correctly.</p>
+<p>For the pair of vertices for which the answer does not exist (due to the presence of a negative cycle in the path between them), the Floyd algorithm will store any number (perhaps highly negative, but not necessarily) in the distance matrix.
+However it is possible to improve the Floyd-Warshall algorithm, so that it carefully treats such pairs of vertices, and outputs them, for example as <span><span class="MathJax_Preview">-\text{INF}</span><script type="math/tex">-\text{INF}</script></span>.</p>
+<p>This can be done in the following way:
+let us run the usual Floyd-Warshall algorithm for a given graph.
+Then a shortest path between vertices <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> does not exist, if and only if, there is a vertex <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> that is reachable from <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and also from <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>, for which <span><span class="MathJax_Preview">d[t][t] &lt; 0</span><script type="math/tex">d[t][t] < 0</script></span>.</p>
+<p>In addition, when using the Floyd-Warshall algorithm for graphs with negative cycles, we should keep in mind that situations may arise in which distances can get exponentially fast into the negative.
+Therefore integer overflow must be handled by limiting the minimal distance by some value (e.g. <span><span class="MathJax_Preview">-\text{INF}</span><script type="math/tex">-\text{INF}</script></span>).</p>
+<p>To learn more about finding negative cycles in a graph, see the separate article <a href="./graph/finding-negative-cycle-in-graph/">Finding a negative cycle in the graph</a>.</p>
+<h2 id="practice-problems">Practice Problems</h2>
+<ul>
+<li><a href="https://uva.onlinejudge.org/index.php?option=onlinejudge&amp;page=show_problem&amp;problem=762">UVA: Page Hopping</a></li>
+<li><a href="http://www.spoj.com/problems/SOCIALNE/">SPOJ: Possible Friends</a></li>
+<li><a href="http://codeforces.com/problemset/problem/295/B">CODEFORCES: Greg and Graph</a></li>
+<li><a href="http://www.spoj.com/problems/CHICAGO/">SPOJ: CHICAGO - 106 miles to Chicago</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=onlinejudge&amp;page=show_problem&amp;problem=1665">UVA 10724 - Road Construction</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=onlinejudge&amp;page=show_problem&amp;problem=53">UVA  117 - The Postal Worker Rings Once</a></li>
+<li><a href="http://codeforces.com/problemset/problem/21/D">Codeforces - Traveling Graph</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=onlinejudge&amp;page=show_problem&amp;problem=3639">UVA - 1198 - The Geodetic Set Problem</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=989">UVA - 10048 - Audiophobia</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=onlinejudge&amp;page=show_problem&amp;problem=61">UVA - 125 - Numbering Paths</a></li>
+<li><a href="http://lightoj.com/volume_showproblem.php?problem=1221">LOJ - Travel Company</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=364">UVA 423 - MPI Maelstrom</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=4162">UVA 1416 - Warfare And Logistics</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=3674">UVA 1233 - USHER</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=1734">UVA 10793 - The Orc Attack</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=1040">UVA 10099 The Tourist Guide</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=810">UVA 869 - Airline Comparison</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=5134">UVA 13211 - Geonosis</a></li>
+<li><a href="http://www.spoj.com/problems/ROHAAN/">SPOJ - Defend the Rohan</a></li>
+<li><a href="http://codeforces.com/contest/25/problem/C">Codeforces - Roads in Berland</a></li>
+<li><a href="http://codeforces.com/contest/33/problem/B">Codeforces - String Problem</a></li>
+<li><a href="http://codeforces.com/gym/101223">GYM - Manic Moving (C)</a></li>
+<li><a href="http://www.spoj.com/problems/ARBITRAG/">SPOJ - Arbitrage</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=3331">UVA - 12179 - Randomly-priced Tickets</a></li>
+<li><a href="http://lightoj.com/volume_showproblem.php?problem=1086">LOJ - 1086 - Jogging Trails</a></li>
+<li><a href="http://www.spoj.com/problems/INGRED/">SPOJ - Ingredients</a></li>
+</ul>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

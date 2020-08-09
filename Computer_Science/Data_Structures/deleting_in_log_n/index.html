@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Computer_Science/Data_Structures/deleting_in_log_n/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Deleting from a data structure in $O(T(n)\log n)$ - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Deleting from a data structure in O(T(n)\\log n)O(T(n)\\log n)", url: "#_top", children: [
+              {title: "Algorithm", url: "#algorithm" },
+              {title: "Notes", url: "#notes" },
+              {title: "Implementation", url: "#implementation" },
+              {title: "Problems", url: "#problems" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../disjoint_set_union/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../disjoint_set_union/" class="btn btn-xs btn-link">
+        Disjoint Set Union
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Combinatorics/stars_and_bars/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Combinatorics/stars_and_bars/" class="btn btn-xs btn-link">
+        Stars and bars
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="deleting-from-a-data-structure-in-otnlog-notnlog-n">Deleting from a data structure in <span><span class="MathJax_Preview">O(T(n)\log n)</span><script type="math/tex">O(T(n)\log n)</script></span></h1>
+<p>Suppose you have a data structure which allows adding elements in <strong>true</strong> <span><span class="MathJax_Preview">O(T(n))</span><script type="math/tex">O(T(n))</script></span>.
+This article will describe a technique that allows deletion in <span><span class="MathJax_Preview">O(T(n)\log n)</span><script type="math/tex">O(T(n)\log n)</script></span> offline.</p>
+<h2 id="algorithm">Algorithm</h2>
+<p>Each element lives in the data structure for some segments of time between additions and deletions.
+Let's build a segment tree over the queries.
+Each segment when some element is alive splits into <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> nodes of the tree.
+Let's put each query when we want to know something about the structure into the corresponding leaf.
+Now to process all queries we will run a DFS on the segment tree.
+When entering the node we will add all the elements that are inside this node.
+Then we will go further to the children of this node or answer the queries (if the node is a leaf).
+When leaving the node, we must undo the additions.
+Note that if we change the structure in <span><span class="MathJax_Preview">O(T(n))</span><script type="math/tex">O(T(n))</script></span> we can roll back the changes in <span><span class="MathJax_Preview">O(T(n))</span><script type="math/tex">O(T(n))</script></span> by keeping a stack of changes.
+Note that rollbacks break amortized complexity.</p>
+<h2 id="notes">Notes</h2>
+<p>The idea of creating a segment tree over segments when something is alive may be used not only for data structure problems.
+See some problems below.</p>
+<h2 id="implementation">Implementation</h2>
+<p>This implementation is for the <a href="https://en.wikipedia.org/wiki/Dynamic_connectivity">dynamic connectivity</a> problem.
+It can add edges, remove edges and count the number of connected components.</p>
+<p>```cpp dynamic-conn
+struct dsu_save {
+    int v, rnkv, u, rnku;</p>
+<pre><code>dsu_save() {}
+
+dsu_save(int _v, int _rnkv, int _u, int _rnku)
+    : v(_v), rnkv(_rnkv), u(_u), rnku(_rnku) {}
+</code></pre>
+<p>};</p>
+<p>struct dsu_with_rollbacks {
+    vector<int> p, rnk;
+    int comps;
+    stack<dsu_save> op;</p>
+<pre><code>dsu_with_rollbacks() {}
+
+dsu_with_rollbacks(int n) {
+    p.resize(n);
+    rnk.resize(n);
+    for (int i = 0; i &lt; n; i++) {
+        p[i] = i;
+        rnk[i] = 0;
+    }
+    comps = n;
+}
+
+int find_set(int v) {
+    return (v == p[v]) ? v : find_set(p[v]);
+}
+
+bool unite(int v, int u) {
+    v = find_set(v);
+    u = find_set(u);
+    if (v == u)
+        return false;
+    comps--;
+    if (rnk[v] &gt; rnk[u])
+        swap(v, u);
+    op.push(dsu_save(v, rnk[v], u, rnk[u]));
+    p[v] = u;
+    if (rnk[u] == rnk[v])
+        rnk[u]++;
+    return true;
+}
+
+void rollback() {
+    if (op.empty())
+        return;
+    dsu_save x = op.top();
+    op.pop();
+    comps++;
+    p[x.v] = x.v;
+    rnk[x.v] = x.rnkv;
+    p[x.u] = x.u;
+    rnk[x.u] = x.rnku;
+}
+</code></pre>
+<p>};</p>
+<p>struct query {
+    int v, u;
+    bool united;
+    query(int _v, int _u) : v(_v), u(_u) {
+    }
+};</p>
+<p>struct QueryTree {
+    vector<vector\<query>> t;
+    dsu_with_rollbacks dsu;
+    int T;</p>
+<pre><code>QueryTree() {}
+
+QueryTree(int _T, int n) : T(_T) {
+    dsu = dsu_with_rollbacks(n);
+    t.resize(4 * T + 4);
+}
+
+void add_to_tree(int v, int l, int r, int ul, int ur, query&amp; q) {
+    if (ul &gt; ur)
+        return;
+    if (l == ul &amp;&amp; r == ur) {
+        t[v].push_back(q);
+        return;
+    }
+    int mid = (l + r) / 2;
+    add_to_tree(2 * v, l, mid, ul, min(ur, mid), q);
+    add_to_tree(2 * v + 1, mid + 1, r, max(ul, mid + 1), ur, q);
+}
+
+void add_query(query q, int l, int r) {
+    add_to_tree(1, 0, T - 1, l, r, q);
+}
+
+void dfs(int v, int l, int r, vector&lt;int&gt;&amp; ans) {
+    for (query&amp; q : t[v]) {
+        q.united = dsu.unite(q.v, q.u);
+    }
+    if (l == r)
+        ans[l] = dsu.comps;
+    else {
+        int mid = (l + r) / 2;
+        dfs(2 * v, l, mid, ans);
+        dfs(2 * v + 1, mid + 1, r, ans);
+    }
+    for (query q : t[v]) {
+        if (q.united)
+            dsu.rollback();
+    }
+}
+
+vector&lt;int&gt; solve() {
+    vector&lt;int&gt; ans(T);
+    dfs(1, 0, T - 1, ans);
+    return ans;
+}
+</code></pre>
+<p>};
+```</p>
+<h2 id="problems">Problems</h2>
+<ul>
+<li><a href="https://codeforces.com/gym/100551/problem/A">Codeforces - Connect and Disconnect</a></li>
+<li><a href="https://codeforces.com/contest/981/problem/E">Codeforces - Addition on Segments</a></li>
+<li><a href="https://codeforces.com/contest/1140/problem/F">Codeforces - Extending Set of Points</a></li>
+</ul>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
