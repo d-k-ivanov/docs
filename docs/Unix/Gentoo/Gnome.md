@@ -1,4 +1,5 @@
 ### Choose graphical profile
+
 ```bash
 eselect profile list
 eselect profile set 5

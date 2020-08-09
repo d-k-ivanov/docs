@@ -1,4 +1,5 @@
 ### Downloading and burning installation media
+
 ```bash
 # Minimal installation image:
 wget http://distfiles.gentoo.org/releases/amd64/autobuilds/current-install-amd64-minimal/install-amd64-minimal-{date-here}.iso
@@ -8,7 +9,7 @@ dd if=install-amd64-minimal-{date-here}.iso of=/dev/sdb-flash-drive bs=8192k && 
 cdrecord dev=/dev/sr0 install-amd64-minimal-{date-here}.iso
 
 # If you want to use pure EFI, you should boot from EFI-compliant CD, and it isn't minimal CD.
-# You should use another one: 
+# You should use another one:
 # SystemRescueCd - Gentoo-based live CD (I use this one)
 # Offician Gentoo Live CD
 # Archlinux boot CD - also good choice
@@ -17,17 +18,20 @@ dd if=systemrescuecd-x86-4.9.1.iso of=/dev/sdb-flash-drive bs=8192k && sync
 ```
 
 ### Boot from installation media
+
 ```bash
 # Enter kernel to boot: gentoo, gentoo-nofb, memtest86
 boot: gentoo
 
 # [Optionally] You can choose specific hardware options like: gentoo acpi=off
-# acpi=on, acpi=off, console=X, dmraid=X, doapm, dopcmcia, doscsi, sda=stroke, ide=nodma, noapic, nodetect, nodhcp, nodmraid, nofirewire, nogpm, nohotplug, nokeymap, nolapic, nosata, nosmp, nosound, nousb, slowusb, 
+# acpi=on, acpi=off, console=X, dmraid=X, doapm, dopcmcia, doscsi, sda=stroke, ide=nodma, noapic, nodetect, nodhcp, nodmraid, nofirewire, nogpm, nohotplug, nokeymap, nolapic, nosata, nosmp, nosound, nousb, slowusb,
 # dolvm, debug, docache, doload=X, dosshd, passwd=foo, noload=X, nonfs, nox, scandelay, scandelay=X,
 ```
 
 ### Network configuration
+
 Like Gentoo Handbook says 'Maybe it just works'. I'm pretty sure that you have DHCP in your network environment and cable connection, but if not:
+
 ```bash
 # Determine network intercaces (ifconfig is also existed, but it's recomnded to use 'ip' as a next generation app)
 ip link show
@@ -59,12 +63,14 @@ echo "nameserver <DNSServer2>" >> /etc/resolv.conf
 ```
 
 ### Disk partitioning
+
 It's recommended to use GPT on modern systems.
+
 ```bash
 # Partition scheme:
 # /dev/sda1 (bootloader)  2M      Just in case, but I don't think it's really needed on modern EFI systems.
 # /dev/sda2 fat32-UFFI    1024M   EFI Partition to hold more than one kernel. Yes I know that Handbook recommends 128M.
-# /dev/sda3 root-ext4     100% 
+# /dev/sda3 root-ext4     100%
 # For swap I will use swapfile, because there is no performance advantage to either a contiguous swap file or a partition, both are treated the same way.
 
 parted -a optimal /dev/sda
@@ -73,7 +79,7 @@ parted -a optimal /dev/sda
 # Partition 1: Bootloader
 (parted) unit mib
 (parted) mkpart primary 1 3
-(parted) name 1 grub 
+(parted) name 1 grub
 (parted) set 1 bios_grub on
 
 # Partition 1: Boot
@@ -87,6 +93,7 @@ parted -a optimal /dev/sda
 ```
 
 ### Mounting
+
 ```bash
 mount /dev/sda3 /mnt/gentoo
 mount /dev/sda2 /mnt/gentoo/boot
@@ -100,6 +107,7 @@ mount --make-rslave /mnt/gentoo/dev
 ```
 
 ### Installing Stage tarball
+
 ```bash
 cd /mnt/gentoo/
 wget http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64-systemd/stage3-amd64-systemd-<YYYYMMDD>.tar.bz2
@@ -107,6 +115,7 @@ tar xvjpf stage3-amd64-systemd-<YYYYMMDD>.tar.bz2 --xattrs
 ```
 
 ### Configuring initial options
+
 ```bash
 vim /mnt/gentoo/etc/portage/make.conf
 # --- make.conf ---
@@ -124,12 +133,14 @@ cp -L /etc/resolv.conf /mnt/gentoo/etc/
 ```
 
 ### Chrooting
+
 ```bash
-chroot /mnt/gentoo /bin/bash 
+chroot /mnt/gentoo /bin/bash
 source /etc/profile
 ```
 
 ### Updating world
+
 ```bash
 emerge-webrsync
 emerge --sync
@@ -142,6 +153,7 @@ emerge --ask --update --deep --newuse @world
 ```
 
 ### Locale and TimeZone
+
 ```bash
 echo "Europe/Moscow" > /etc/timezone
 emerge --config sys-libs/timezone-data
@@ -160,7 +172,9 @@ env-update && source /etc/profile
 ```
 
 ### Kernel
+
 Of course you need to configure kernel from scratch, but for initial convinience I recommend to use genkernel
+
 ```bash
 emerge --ask sys-kernel/gentoo-sources
 emerge --ask sys-apps/pciutils
@@ -174,6 +188,7 @@ emerge --ask sys-kernel/linux-firmware
 ```
 
 ### Fstab
+
 ```bash
 # Look for UUID and write it down:
 blkid
@@ -186,6 +201,7 @@ UUID="place your UUID here"   /         ext4        rw,relatime,data=ordered,dis
 ```
 
 ### Network
+
 ```bash
 hostnamectl set-hostname your-hostname.your-network
 
@@ -198,6 +214,7 @@ emerge --ask net-misc/dhcpcd
 ```
 
 ### Post install
+
 ```bash
 emerge --ask sys-apps/mlocate
 
@@ -205,6 +222,7 @@ passwd
 ```
 
 ### Bootloader
+
 ```bash
 echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
 emerge --ask --update --newuse --verbose sys-boot/grub:2
@@ -217,6 +235,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ### Umount and reboot
+
 ```bash
 exit
 umount -l /mnt/gentoo/dev{/shm,/pts,}
@@ -224,14 +243,10 @@ umount -R /mnt/gentoo
 reboot
 ```
 
-
 ### Post reboot
+
 ```bash
 # Add new user
 useradd -m -G users,wheel,audio,cdrom,floppy,games,portage,usb,video -s /bin/bash <username>
 passwd <username>
 ```
-
-
-
-
