@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/ComputerScience/Strings/string-hashing/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>String Hashing - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "String Hashing", url: "#_top", children: [
+              {title: "Calculation of the hash of a string", url: "#calculation-of-the-hash-of-a-string" },
+              {title: "Applications of Hashing", url: "#applications-of-hashing" },
+              {title: "Improve no-collision probability", url: "#improve-no-collision-probability" },
+              {title: "Practice Problems", url: "#practice-problems" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../suffix-array/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../suffix-array/" class="btn btn-xs btn-link">
+        Suffix Array
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../rabin-karp/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../rabin-karp/" class="btn btn-xs btn-link">
+        Rabin-Karp Algorithm for string matching
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="string-hashing">String Hashing</h1>
+<p>Hashing algorithms are helpful in solving a lot of problems.</p>
+<p>The problem we want to solve is the problem, we want to compare strings efficiently.
+The brute force way of doing so is just to compare the letters of both strings, which has a time complexity of <span><span class="MathJax_Preview">O(\min(n_1, n_2))</span><script type="math/tex">O(\min(n_1, n_2))</script></span> if <span><span class="MathJax_Preview">n_1</span><script type="math/tex">n_1</script></span> and <span><span class="MathJax_Preview">n_2</span><script type="math/tex">n_2</script></span> are the sizes of the two strings.
+We want to do better.
+The idea behind strings is the following: we convert each string into an integer, and compare those instead of the strings.
+Comparing two strings is then an <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> operation.</p>
+<p>For the conversion we need a so-called <strong>hash function</strong>.
+The goal of it is to convert a string into a integer, the so-called <strong>hash</strong> of the string.
+The following condition has to hold: if two strings <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> and <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> are equal (<span><span class="MathJax_Preview">s = t</span><script type="math/tex">s = t</script></span>), then also their hashes have to be equal (<span><span class="MathJax_Preview">\text{hash}(s) = \text{hash}(t)</span><script type="math/tex">\text{hash}(s) = \text{hash}(t)</script></span>).
+Otherwise we will not be able to compare strings.</p>
+<p>Notice, the opposite direction doesn't have to hold.
+If the hashes are equal (<span><span class="MathJax_Preview">\text{hash}(s) = \text{hash}(t)</span><script type="math/tex">\text{hash}(s) = \text{hash}(t)</script></span>), then the strings do not necessarily have to be equal.
+E.g. a valid hash function would be simply <span><span class="MathJax_Preview">\text{hash}(s) = 0</span><script type="math/tex">\text{hash}(s) = 0</script></span> for each <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.
+Now, this is just a stupid example, because this function will be completely useless, but it is a valid hash function.
+The reason why the opposite direction doesn't have to hold, if because there are exponential many strings.
+If we only want this hash function to distinguish between all strings consisting of lowercase characters of length smaller than 15, then already the hash wouldn't fit into a 64 bit integer (e.g. unsigned long long) any more, because there are so many of them.
+And of course we don't want to compare arbitrary long integers, because this will also have the complexity <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>.</p>
+<p>So usually we want the hash function to map strings onto numbers of a fixed range <span><span class="MathJax_Preview">[0, m)</span><script type="math/tex">[0, m)</script></span>, then comparing strings is just comparison of two integers with fixed length.
+And of course we want <span><span class="MathJax_Preview">\text{hash}(s) \neq \text{hash}(t)</span><script type="math/tex">\text{hash}(s) \neq \text{hash}(t)</script></span> to be very likely, if <span><span class="MathJax_Preview">s \neq t</span><script type="math/tex">s \neq t</script></span>.</p>
+<p>That's the important part that you have to keep in mind.
+Using hashing will not be 100% deterministically correct, because two complete different strings might have the same hash (the hashes collide).
+However, in a wide majority of tasks this can be safely ignored as the probability of the hashes of two different strings colliding is still very small.
+And we will discuss some techniques in this article how to keep the probability of collisions very low.</p>
+<h2 id="calculation-of-the-hash-of-a-string">Calculation of the hash of a string</h2>
+<p>The good and widely used way to define the hash of a string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> of length <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{align}
+\text{hash}(s) &amp;= s[0] + s[1] \cdot p + s[2] \cdot p^2 + ... + s[n-1] \cdot p^{n-1} \mod m \\\\
+&amp;= \sum_{i=0}^{n-1} s[i] \cdot p^i \mod m,
+\end{align}</span><script type="math/tex">\begin{align}
+\text{hash}(s) &= s[0] + s[1] \cdot p + s[2] \cdot p^2 + ... + s[n-1] \cdot p^{n-1} \mod m \\\\
+&= \sum_{i=0}^{n-1} s[i] \cdot p^i \mod m,
+\end{align}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\begin{align}
+\text{hash}(s) &amp;= s[0] + s[1] \cdot p + s[2] \cdot p^2 + ... + s[n-1] \cdot p^{n-1} \mod m \\\\
+&amp;= \sum_{i=0}^{n-1} s[i] \cdot p^i \mod m,
+\end{align}</span><script type="math/tex">\begin{align}
+\text{hash}(s) &= s[0] + s[1] \cdot p + s[2] \cdot p^2 + ... + s[n-1] \cdot p^{n-1} \mod m \\\\
+&= \sum_{i=0}^{n-1} s[i] \cdot p^i \mod m,
+\end{align}</script></span></script></span>
+where <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> are some chosen, positive numbers.
+It is called a <strong>polynomial rolling hash function</strong>.</p>
+<p>It is reasonable to make <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> a prime number roughly equal to the number of characters in the input alphabet.
+For example, if the input is composed of only lowercase letters of English alphabet, <span><span class="MathJax_Preview">p = 31</span><script type="math/tex">p = 31</script></span> is a good choice.
+If the input may contain both uppercase and lowercase letters, then <span><span class="MathJax_Preview">p = 53</span><script type="math/tex">p = 53</script></span> is a possible choice.
+The code in this article will use <span><span class="MathJax_Preview">p = 31</span><script type="math/tex">p = 31</script></span>.</p>
+<p>Obviously <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> should be a large number, since the probability of two random strings colliding is about <span><span class="MathJax_Preview">\approx \frac{1}{m}</span><script type="math/tex">\approx \frac{1}{m}</script></span>.
+Sometimes <span><span class="MathJax_Preview">m = 2^{64}</span><script type="math/tex">m = 2^{64}</script></span> is chosen, since then the integer overflows of 64 bit integers work exactly like the modulo operation.
+However there exists a method, which generates colliding strings (which work independent from the choice of <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>).
+So in practice <span><span class="MathJax_Preview">m = 2^{64}</span><script type="math/tex">m = 2^{64}</script></span> is not recommended.
+A good choice for <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is some large prime number.
+The code in this article will just use <span><span class="MathJax_Preview">m = 10^9+9</span><script type="math/tex">m = 10^9+9</script></span>.
+This is a large number, but still small enough so that we can perform multiplication of two values using 64 bit integers.</p>
+<p>Here is an example of calculating the hash of a string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, which contains only lowercase letters.
+We convert each character of <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to an integer.
+Here we use the conversion <span><span class="MathJax_Preview">a \rightarrow 1</span><script type="math/tex">a \rightarrow 1</script></span>, <span><span class="MathJax_Preview">b \rightarrow 2</span><script type="math/tex">b \rightarrow 2</script></span>, <span><span class="MathJax_Preview">\dots</span><script type="math/tex">\dots</script></span>, <span><span class="MathJax_Preview">z \rightarrow 26</span><script type="math/tex">z \rightarrow 26</script></span>.
+Converting <span><span class="MathJax_Preview">a \rightarrow 0</span><script type="math/tex">a \rightarrow 0</script></span> is not a good idea, because then the hashes of the strings <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>, <span><span class="MathJax_Preview">aa</span><script type="math/tex">aa</script></span>, <span><span class="MathJax_Preview">aaa</span><script type="math/tex">aaa</script></span>, <span><span class="MathJax_Preview">\dots</span><script type="math/tex">\dots</script></span> all evaluate to <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>.</p>
+<p>```cpp hashing_function
+long long compute_hash(string const&amp; s) {
+    const int p = 31;
+    const int m = 1e9 + 9;
+    long long hash_value = 0;
+    long long p_pow = 1;
+    for (char c : s) {
+        hash_value = (hash_value + (c - 'a' + 1) * p_pow) % m;
+        p_pow = (p_pow * p) % m;
+    }
+    return hash_value;
+}</p>
+<pre><code>
+Precomputing the powers of $p$ might give a performance boost.
+
+## Example tasks
+
+### Search for duplicate strings in an array of strings
+
+Problem: Given a list of $n$ strings $s_i$, each no longer than $m$ characters, find all the duplicate strings and divide them into groups.
+
+From the obvious algorithm involving sorting the strings, we would get a time complexity of $O(n m \log n)$ where the sorting requires $O(n \log n)$ comparisons and each comparison take $O(m)$ time.
+However by using hashes, we reduce the comparison time to $O(1)$, giving us an algorithm that runs in $O(n m + n \log n)$ time.
+
+We calculate the hash for each string, sort the hashes together with the indices, and then group the indices by identical hashes.
+
+```cpp hashing_group_identical_strings
+vector&lt;vector&lt;int&gt;&gt; group_identical_strings(vector&lt;string&gt; const&amp; s) {
+    int n = s.size();
+    vector&lt;pair&lt;long long, int&gt;&gt; hashes(n);
+    for (int i = 0; i &lt; n; i++)
+        hashes[i] = {compute_hash(s[i]), i};
+
+    sort(hashes.begin(), hashes.end());
+
+    vector&lt;vector&lt;int&gt;&gt; groups;
+    for (int i = 0; i &lt; n; i++) {
+        if (i == 0 || hashes[i].first != hashes[i-1].first)
+            groups.emplace_back();
+        groups.back().push_back(hashes[i].second);
+    }
+    return groups;
+}
+</code></pre>
+
+<h3 id="fast-hash-calculation-of-substrings-of-given-string">Fast hash calculation of substrings of given string</h3>
+<p>Problem: Given a string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> and indices <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>, find the hash of the substring <span><span class="MathJax_Preview">s [i \dots j]</span><script type="math/tex">s [i \dots j]</script></span>.</p>
+<p>By definition, we have:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\text{hash}(s[i \dots j]) = \sum_{k = i}^j s[k] \cdot p^{k-i} \mod m</span><script type="math/tex">\text{hash}(s[i \dots j]) = \sum_{k = i}^j s[k] \cdot p^{k-i} \mod m</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\text{hash}(s[i \dots j]) = \sum_{k = i}^j s[k] \cdot p^{k-i} \mod m</span><script type="math/tex">\text{hash}(s[i \dots j]) = \sum_{k = i}^j s[k] \cdot p^{k-i} \mod m</script></span></script></span>
+Multiplying by <span><span class="MathJax_Preview">p^i</span><script type="math/tex">p^i</script></span> gives:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{align}
+\text{hash}(s[i \dots j]) \cdot p^i &amp;= \sum_{k = i}^j s[k] \cdot p^k \mod m \\\\
+&amp;= \text{hash}(s[0 \dots j]) - \text{hash}(s[0 \dots i-1]) \mod m
+\end{align}</span><script type="math/tex">\begin{align}
+\text{hash}(s[i \dots j]) \cdot p^i &= \sum_{k = i}^j s[k] \cdot p^k \mod m \\\\
+&= \text{hash}(s[0 \dots j]) - \text{hash}(s[0 \dots i-1]) \mod m
+\end{align}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\begin{align}
+\text{hash}(s[i \dots j]) \cdot p^i &amp;= \sum_{k = i}^j s[k] \cdot p^k \mod m \\\\
+&amp;= \text{hash}(s[0 \dots j]) - \text{hash}(s[0 \dots i-1]) \mod m
+\end{align}</span><script type="math/tex">\begin{align}
+\text{hash}(s[i \dots j]) \cdot p^i &= \sum_{k = i}^j s[k] \cdot p^k \mod m \\\\
+&= \text{hash}(s[0 \dots j]) - \text{hash}(s[0 \dots i-1]) \mod m
+\end{align}</script></span></script></span></p>
+<p>So by knowing the hash value of each prefix of the string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, we can compute the hash of any substring directly using this formula.
+The only problem that we face in calculating it is that we must be able to divide <span><span class="MathJax_Preview">\text{hash}(s[0 \dots j]) - \text{hash}(s[0 \dots i-1])</span><script type="math/tex">\text{hash}(s[0 \dots j]) - \text{hash}(s[0 \dots i-1])</script></span> by <span><span class="MathJax_Preview">p^i</span><script type="math/tex">p^i</script></span>.
+Therefore we need to find the <a href="./algebra/module-inverse/">modular multiplicative inverse</a> of <span><span class="MathJax_Preview">p^i</span><script type="math/tex">p^i</script></span> and then perform multiplication with this inverse.
+We can precompute the inverse of every <span><span class="MathJax_Preview">p^i</span><script type="math/tex">p^i</script></span>, which allows computing the hash of any substring of <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> time.</p>
+<p>However, there does exist an easier way.
+In most cases, rather than calculating the hashes of substring exactly, it is enough to compute the hash multiplied by some power of <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>.
+Suppose we have two hashes of two substrings, one multiplied by <span><span class="MathJax_Preview">p^i</span><script type="math/tex">p^i</script></span> and the other by <span><span class="MathJax_Preview">p^j</span><script type="math/tex">p^j</script></span>.
+If <span><span class="MathJax_Preview">i &lt; j</span><script type="math/tex">i < j</script></span> then we multiply the first hash by <span><span class="MathJax_Preview">p^{j-i}</span><script type="math/tex">p^{j-i}</script></span>, otherwise we multiply the second hash by <span><span class="MathJax_Preview">p^{i-j}</span><script type="math/tex">p^{i-j}</script></span>.
+By doing this, we get both the hashes multiplied by the same power of <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> (which is the maximum of <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>) and now these hashes can be compared easily with no need for any division.</p>
+<h2 id="applications-of-hashing">Applications of Hashing</h2>
+<p>Here are some typical applications of Hashing:</p>
+<ul>
+<li><a href="./string/rabin-karp/">Rabin-Karp algorithm</a> for pattern matching in a string in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> time</li>
+<li>Calculating the number of different substrings of a string in <span><span class="MathJax_Preview">O(n^2 \log n)</span><script type="math/tex">O(n^2 \log n)</script></span> (see below)</li>
+<li>Calculating the number of palindromic substrings in a string.</li>
+</ul>
+<h3 id="determine-the-number-of-different-substrings-in-a-string">Determine the number of different substrings in a string</h3>
+<p>Problem: Given a string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> of length <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, consisting only of lowercase English letters, find the number of different substrings in this string.</p>
+<p>To solve this problem, we iterate over all substring lengths <span><span class="MathJax_Preview">l = 1 \dots n</span><script type="math/tex">l = 1 \dots n</script></span>.
+For every substring length <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> we construct an array of hashes of all substrings of length <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> multiplied by the same power of <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>.
+The number of different elements in the array is equal to the number of distinct substrings of length <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> in the string.
+This number is added to the final answer.</p>
+<p>For convenience we will use <span><span class="MathJax_Preview">h[i]</span><script type="math/tex">h[i]</script></span> as the hash of the prefix with <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> characters, and define <span><span class="MathJax_Preview">h[0] = 0</span><script type="math/tex">h[0] = 0</script></span>.</p>
+<p>```cpp hashing_count_unique_substrings
+int count_unique_substrings(string const&amp; s) {
+    int n = s.size();</p>
+<pre><code>const int p = 31;
+const int m = 1e9 + 9;
+vector&lt;long long&gt; p_pow(n);
+p_pow[0] = 1;
+for (int i = 1; i &lt; n; i++)
+    p_pow[i] = (p_pow[i-1] * p) % m;
+
+vector&lt;long long&gt; h(n + 1, 0);
+for (int i = 0; i &lt; n; i++)
+    h[i+1] = (h[i] + (s[i] - 'a' + 1) * p_pow[i]) % m;
+
+int cnt = 0;
+for (int l = 1; l &lt;= n; l++) {
+    set&lt;long long&gt; hs;
+    for (int i = 0; i &lt;= n - l; i++) {
+        long long cur_h = (h[i + l] + m - h[i]) % m;
+        cur_h = (cur_h * p_pow[n-i-1]) % m;
+        hs.insert(cur_h);
+    }
+    cnt += hs.size();
+}
+return cnt;
+</code></pre>
+<p>}
+```</p>
+<h2 id="improve-no-collision-probability">Improve no-collision probability</h2>
+<p>Quite often the above mentioned polynomial hash is good enough, and no collisions will happen during tests.
+Remember, the probability that collision happens is only <span><span class="MathJax_Preview">\approx \frac{1}{m}</span><script type="math/tex">\approx \frac{1}{m}</script></span>.
+For <span><span class="MathJax_Preview">m = 10^9 + 9</span><script type="math/tex">m = 10^9 + 9</script></span> the probability is <span><span class="MathJax_Preview">\approx 10^{-9}</span><script type="math/tex">\approx 10^{-9}</script></span> which is quite low.
+But notice, that we only did one comparison.
+What if we compared a string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> with <span><span class="MathJax_Preview">10^6</span><script type="math/tex">10^6</script></span> different strings.
+The probability that the at least one collision happens is now <span><span class="MathJax_Preview">\approx 10^{-3}</span><script type="math/tex">\approx 10^{-3}</script></span>.
+And if we want to compare <span><span class="MathJax_Preview">10^6</span><script type="math/tex">10^6</script></span> different strings with each other (e.g. by counting how many unique strings exists), then the probability of at least one collision happening is already <span><span class="MathJax_Preview">\approx 1</span><script type="math/tex">\approx 1</script></span>.
+It is pretty much guaranteed that this task will end with a collision and returns the wrong result.</p>
+<p>There is a really easy trick to get better probabilities.
+We can just compute two different hashes for each string (by using two different <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>, and/or different <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>, and compare these pairs instead.
+If <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is about <span><span class="MathJax_Preview">10^9</span><script type="math/tex">10^9</script></span> for each of the two hash functions, than this is more or less equivalent as having one hash function with <span><span class="MathJax_Preview">m \approx 10^{18}</span><script type="math/tex">m \approx 10^{18}</script></span>.
+When comparing <span><span class="MathJax_Preview">10^6</span><script type="math/tex">10^6</script></span> strings with each other, the probability that at least one collision happens is now reduced to <span><span class="MathJax_Preview">\approx 10^{-6}</span><script type="math/tex">\approx 10^{-6}</script></span>.</p>
+<h2 id="practice-problems">Practice Problems</h2>
+<ul>
+<li><a href="http://www.spoj.com/problems/NHAY/">A Needle in the Haystack - SPOJ</a></li>
+<li><a href="http://codeforces.com/problemset/problem/154/C">Double Profiles - Codeforces</a></li>
+<li><a href="http://codeforces.com/problemset/problem/126/B">Password - Codeforces</a></li>
+<li><a href="http://www.spoj.com/problems/SUB_PROB/">SUB_PROB - SPOJ</a></li>
+<li><a href="https://www.codechef.com/problems/INSQ15_A">INSQ15_A</a></li>
+<li><a href="http://www.spoj.com/problems/ADACLEAN/">SPOJ - Ada and Spring Cleaning</a></li>
+<li><a href="http://codeforces.com/gym/101466/problem/E">GYM - Text Editor</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=onlinejudge&amp;page=show_problem&amp;problem=3163">12012 - Detection of Extraterrestrial</a></li>
+<li><a href="http://codeforces.com/contest/727/problem/E">Codeforces - Games on a CD</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=2955">UVA 11855 - Buzzwords</a></li>
+<li><a href="http://codeforces.com/contest/752/problem/D">Codeforces - Santa Claus and a Palindrome</a></li>
+<li><a href="http://codeforces.com/contest/825/problem/F">Codeforces - String Compression</a></li>
+<li><a href="http://codeforces.com/contest/835/problem/D">Codeforces - Palindromic Characteristics</a></li>
+<li><a href="http://www.spoj.com/problems/CF25E/">SPOJ - Test</a></li>
+<li><a href="http://codeforces.com/contest/7/problem/D">Codeforces - Palindrome Degree</a></li>
+<li><a href="http://codeforces.com/contest/19/problem/C">Codeforces - Deletion of Repeats</a></li>
+</ul>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../suffix-array/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../suffix-array/" class="btn btn-xs btn-link">
+        Suffix Array
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../rabin-karp/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../rabin-karp/" class="btn btn-xs btn-link">
+        Rabin-Karp Algorithm for string matching
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/ComputerScience/Misc/maximum_average_segment/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Search the subarray with the maximum/minimum sum - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Search the subarray with the maximum/minimum sum", url: "#_top", children: [
+              {title: "Problem statement", url: "#problem-statement" },
+              {title: "Algorithm 1", url: "#algorithm-1" },
+              {title: "Algorithm 2", url: "#algorithm-2" },
+              {title: "Related tasks", url: "#related-tasks" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../stern_brocot_tree_farey_sequences/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../stern_brocot_tree_farey_sequences/" class="btn btn-xs btn-link">
+        The Stern-Brocot tree and Farey sequences
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../josephus_problem/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../josephus_problem/" class="btn btn-xs btn-link">
+        Josephus Problem
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="search-the-subarray-with-the-maximumminimum-sum">Search the subarray with the maximum/minimum sum</h1>
+<p>Here, we consider the problem of finding a subarray with maximum sum, as well as some of its variations (including the algorithm for solving this problem online).</p>
+<h2 id="problem-statement">Problem statement</h2>
+<p>Given an array of numbers <span><span class="MathJax_Preview">a[1 \ldots n]</span><script type="math/tex">a[1 \ldots n]</script></span>. It is required to find a subarray <span><span class="MathJax_Preview">a[l \ldots r]</span><script type="math/tex">a[l \ldots r]</script></span> with the maximal sum:</p>
+<div>
+<div class="MathJax_Preview"> \max_{ 1 \le l \le r \le n } \sum_{i=l}^{r} a[i].</div>
+<script type="math/tex; mode=display"> \max_{ 1 \le l \le r \le n } \sum_{i=l}^{r} a[i].</script>
+</div>
+<p>For example, if all integers in array <span><span class="MathJax_Preview">a[]</span><script type="math/tex">a[]</script></span> were non-negative, then the answer would be the array itself.
+However, the solution is non-trivial when the array can contain both positive and negative numbers.</p>
+<p>It is clear that the problem of finding the <strong>minimum</strong> subarray is essentially the same, you just need to change the signs of all numbers.</p>
+<h2 id="algorithm-1">Algorithm 1</h2>
+<p>Here we consider an almost obvious algorithm. (Next, we'll look at another algorithm, which is a little harder to come up with, but its implementation is even shorter.)</p>
+<h3 id="algorithm-description">Algorithm description</h3>
+<p>The algorithm is very simple.</p>
+<p>We introduce for convenience the <strong>notation</strong>: <span><span class="MathJax_Preview">s[i] = \sum_{j=1}^{i} a[j]</span><script type="math/tex">s[i] = \sum_{j=1}^{i} a[j]</script></span>. That is, the array <span><span class="MathJax_Preview">s[i]</span><script type="math/tex">s[i]</script></span> is an array of partial sums of array <span><span class="MathJax_Preview">a[]</span><script type="math/tex">a[]</script></span>. Also, set <span><span class="MathJax_Preview">s[0] = 0</span><script type="math/tex">s[0] = 0</script></span>.</p>
+<p>Let us now iterate over the index <span><span class="MathJax_Preview">r = 1 \ldots n</span><script type="math/tex">r = 1 \ldots n</script></span>, and learn how to quickly find the optimal <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> for each current value <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>, at which the maximum sum is reached on the subarray <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span>.</p>
+<p>Formally, this means that for the current <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> we need to find an <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> (not exceeding <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>), so that the value of <span><span class="MathJax_Preview">s[r] - s[l-1]</span><script type="math/tex">s[r] - s[l-1]</script></span> is maximal. After a trivial transformation, we can see that we need to find in the array <span><span class="MathJax_Preview">s[]</span><script type="math/tex">s[]</script></span> a minimum on the segment <span><span class="MathJax_Preview">[0, r-1]</span><script type="math/tex">[0, r-1]</script></span>.</p>
+<p>From here, we immediately obtain a solution: we simply store where the current minimum is in the array <span><span class="MathJax_Preview">s[]</span><script type="math/tex">s[]</script></span>. Using this minimum, we find the current optimal index <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>, and when moving from the current index <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> to the next one, we simply update this minimum.</p>
+<p>Obviously, this algorithm works in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> and is asymptotically optimal.</p>
+<h3 id="implementation">Implementation</h3>
+<p>To implement it, we don't even need to explicitly store an array of partial sums <span><span class="MathJax_Preview">s[]</span><script type="math/tex">s[]</script></span> — we will only need the current element from it.</p>
+<p>The implementation is given in 0-indexed arrays, not in 1-numbering as described above.</p>
+<p>We first give a solution that finds a simple numerical answer without finding the indices of the desired segment:</p>
+<pre><code class="cpp">int ans = a[0], sum = 0, min_sum = 0;
+
+for (int r = 0; r &lt; n; ++r) {
+    sum += a[r];
+    ans = max(ans, sum - min_sum);
+    min_sum = min(min_sum, sum);
+}
+</code></pre>
+
+<p>Now we give a full version of the solution, which additionally also finds the boundaries of the desired segment:</p>
+<pre><code class="cpp">int ans = a[0], ans_l = 0, ans_r = 0;
+int sum = 0, min_sum = 0, min_pos = -1;
+
+for (int r = 0; r &lt; n; ++r) {
+    sum += a[r];
+    int cur = sum - min_sum;
+    if (cur &gt; ans) {
+        ans = cur;
+        ans_l = min_pos + 1;
+        ans_r = r;
+    }
+    if (sum &lt; min_sum) {
+        min_sum = sum;
+        min_pos = r;
+    }
+}
+</code></pre>
+
+<h2 id="algorithm-2">Algorithm 2</h2>
+<p>Here we consider a different algorithm. It is a little more difficult to understand, but it is more elegant than the above, and its implementation is a little bit shorter. This algorithm was proposed by Jay Kadane in 1984.</p>
+<h3 id="algorithm-description_1">Algorithm description</h3>
+<p>The algorithm itself is as follows. Let's go through the array and accumulate the current partial sum in some variable <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>. If at some point <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> is negative, we just assign <span><span class="MathJax_Preview">s=0</span><script type="math/tex">s=0</script></span>. It is argued that the maximum all the values that the variable <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> is assigned to during the algorithm will be the answer to the problem.</p>
+<p><strong>Proof:</strong></p>
+<p>Consider the first index when the sum of <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> becomes negative. This means that starting with a zero partial sum, we eventually obtain a negative partial sum — so this whole prefix of the array, as well as any suffix, has a negative sum. Therefore, this subarray never contributes to the partial sum of any subarray of which it is a prefix, and can simply be dropped.</p>
+<p>However, this is not enough to prove the algorithm. In the algorithm, we are actually limited in finding the answer only to such segments that begin immediately after the places when <span><span class="MathJax_Preview">s&lt;0</span><script type="math/tex">s<0</script></span> happened.</p>
+<p>But, in fact, consider an arbitrary segment <span><span class="MathJax_Preview">[l,r]</span><script type="math/tex">[l,r]</script></span>, and <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> is not in such a "critical" position (i.e. <span><span class="MathJax_Preview">l &gt; p+1</span><script type="math/tex">l > p+1</script></span>, where <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> is the last such position, in which <span><span class="MathJax_Preview">s&lt;0</span><script type="math/tex">s<0</script></span>). Since the last critical position is strictly earlier than in <span><span class="MathJax_Preview">l-1</span><script type="math/tex">l-1</script></span>, it turns out that the sum of <span><span class="MathJax_Preview">a[p+1 \ldots l-1]</span><script type="math/tex">a[p+1 \ldots l-1]</script></span> is non-negative. This means that by moving <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> to position <span><span class="MathJax_Preview">p+1</span><script type="math/tex">p+1</script></span>, we will increase the answer or, in extreme cases, we will not change it.</p>
+<p>One way or another, it turns out that when searching for an answer, you can limit yourself to only segments that begin immediately after the positions in which <span><span class="MathJax_Preview">s&lt;0</span><script type="math/tex">s<0</script></span> appeared. This proves that the algorithm is correct.</p>
+<h3 id="implementation_1">Implementation</h3>
+<p>As in algorithm 1, we first gave a simplified implementation that looks for only a numerical answer without finding the boundaries of the desired segment:</p>
+<pre><code class="cpp">int ans = a[0], sum = 0;
+
+for (int r = 0; r &lt; n; ++r) {
+    sum += a[r];
+    ans = max(ans, sum);
+    sum = max(sum, 0);
+}
+</code></pre>
+
+<p>A complete solution, maintaining the indexes of the boundaries of the corresponding segment:</p>
+<pre><code class="cpp">int ans = a[0], ans_l = 0, ans_r = 0;
+int sum = 0, minus_pos = -1;
+
+for (int r = 0; r &lt; n; ++r) {
+    sum += a[r];
+    if (sum &gt; ans) {
+        ans = sum;
+        ans_l = minus_pos + 1;
+        ans_r = r;
+    }
+    if (sum &lt; 0) {
+        sum = 0;
+        minus_pos = r;
+    }
+}
+</code></pre>
+
+<h2 id="related-tasks">Related tasks</h2>
+<h3 id="finding-the-maximumminimum-subarray-with-constraints">Finding the maximum/minimum subarray with constraints</h3>
+<p>If the problem condition imposes additional restrictions on the required segment <span><span class="MathJax_Preview">[l,r]</span><script type="math/tex">[l,r]</script></span> (for example, that the length <span><span class="MathJax_Preview">r-l+1</span><script type="math/tex">r-l+1</script></span> of the segment must be within the specified limits), then the described algorithm is likely to be easily generalized to these cases — anyway, the problem will still be to find the minimum in the array <span><span class="MathJax_Preview">s[]</span><script type="math/tex">s[]</script></span> with the specified additional restrictions.</p>
+<h3 id="two-dimensional-case-of-the-problem-search-for-maximumminimum-submatrix">Two-dimensional case of the problem: search for maximum/minimum submatrix</h3>
+<p>The problem described in this article is naturally generalized to large dimensions. For example, in a two-dimensional case, it turns into a search for such a submatrix <span><span class="MathJax_Preview">[l_1 \ldots r_1; l_2 \ldots r_2]</span><script type="math/tex">[l_1 \ldots r_1; l_2 \ldots r_2]</script></span> of a given matrix, which has the maximum sum of numbers in it.</p>
+<p>Using the solution for the one-dimensional case, it is easy to obtain a solution in <span><span class="MathJax_Preview">O(n^3)</span><script type="math/tex">O(n^3)</script></span> for the two-dimensions case:
+we iterate over all possible values of <span><span class="MathJax_Preview">l_1</span><script type="math/tex">l_1</script></span> and <span><span class="MathJax_Preview">r_1</span><script type="math/tex">r_1</script></span>, and calculate the sums from <span><span class="MathJax_Preview">l_1</span><script type="math/tex">l_1</script></span> to <span><span class="MathJax_Preview">r_1</span><script type="math/tex">r_1</script></span> in each row of the matrix. Now we have the one-dimensional problem of finding the indices <span><span class="MathJax_Preview">l_2</span><script type="math/tex">l_2</script></span> and <span><span class="MathJax_Preview">r_2</span><script type="math/tex">r_2</script></span> in this array, which can already be solved in linear time.</p>
+<p><strong>Faster</strong> algorithms for solving this problem are known, but they are not much faster than <span><span class="MathJax_Preview">O(n^3)</span><script type="math/tex">O(n^3)</script></span>, and are very complex (so complex that many of them are inferior to the trivial algorithm for all reasonable constraints by the hidden constant). Currently, the best known algorithm works in <span><span class="MathJax_Preview">O\left(n^3 \frac{ \log^3 \log n }{ \log^2 n} \right)</span><script type="math/tex">O\left(n^3 \frac{ \log^3 \log n }{ \log^2 n} \right)</script></span> time (T. Chan 2007 "More algorithms for all-pairs shortest paths in weighted graphs")</p>
+<p>This algorithm by Chan, as well as many other results in this area, actually describe <strong>fast matrix multiplication</strong> (where matrix multiplication means modified multiplication: minimum is used instead of addition, and addition is used instead of multiplication). The problem of finding the submatrix with the largest sum can be reduced to the problem of finding the shortest paths between all pairs of vertices, and this problem, in turn, can be reduced to such a multiplication of matrices.</p>
+<h3 id="search-for-a-subarray-with-a-maximumminimum-average">Search for a subarray with a maximum/minimum average</h3>
+<p>This problem lies in finding such a segment <span><span class="MathJax_Preview">a[l,r]</span><script type="math/tex">a[l,r]</script></span>, such that the average value is maximal:</p>
+<div>
+<div class="MathJax_Preview"> \max_{l \le r} \frac{ 1 }{ r-l+1 } \sum_{i=l}^{r} a[i].</div>
+<script type="math/tex; mode=display"> \max_{l \le r} \frac{ 1 }{ r-l+1 } \sum_{i=l}^{r} a[i].</script>
+</div>
+<p>Of course, if no other conditions are imposed on the required segment <span><span class="MathJax_Preview">[l,r]</span><script type="math/tex">[l,r]</script></span>, then the solution will always be a segment of length <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> at the maximum element of the array.
+he problem only makes sense, if there are additional restrictions (for example, the length of the desired segment is bounded below).</p>
+<p>In this case, we apply the <strong>standard technique</strong> when working with the problems of the average value: we will select the desired maximum average value by <strong>binary search</strong>.</p>
+<p>To do this, we need to learn how to solve the following subproblem: given the number <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>, and we need to check whether there is a subarray of array <span><span class="MathJax_Preview">a[]</span><script type="math/tex">a[]</script></span> (of course, satisfying all additional constraints of the problem), where the average value is greater than <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>.</p>
+<p>To solve this subproblem, subtract <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> from each element of array <span><span class="MathJax_Preview">a[]</span><script type="math/tex">a[]</script></span>. Then our subproblem actually turns into this one: whether or not there are positive sum subarrays in this array. And we already know how to solve this problem.</p>
+<p>Thus, we obtained the solution for the asymptotic <span><span class="MathJax_Preview">O(T(n) \log W)</span><script type="math/tex">O(T(n) \log W)</script></span>, where <span><span class="MathJax_Preview">W</span><script type="math/tex">W</script></span> is the required accuracy, <span><span class="MathJax_Preview">T(n)</span><script type="math/tex">T(n)</script></span> is the time of solving the subtask for an array of length <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> (which may vary depending on the specific additional restrictions imposed).</p>
+<h3 id="solving-the-online-problem">Solving the online problem</h3>
+<p>The condition of the problem is as follows: given an array of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> numbers, and a number <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>. There are queries of the form <span><span class="MathJax_Preview">(l,r)</span><script type="math/tex">(l,r)</script></span>, and in response to each query, it is required to find a subarray of the segment <span><span class="MathJax_Preview">[l,r]</span><script type="math/tex">[l,r]</script></span> of length not less than <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> with the maximum possible arithmetic mean.</p>
+<p>The algorithm for solving this problem is quite complex. KADR (Yaroslav Tverdokhleb) described his algorithm on the <a href="http://e-maxx.ru/forum/viewtopic.php?id=410">Russian forum</a>.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../stern_brocot_tree_farey_sequences/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../stern_brocot_tree_farey_sequences/" class="btn btn-xs btn-link">
+        The Stern-Brocot tree and Farey sequences
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../josephus_problem/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../josephus_problem/" class="btn btn-xs btn-link">
+        Josephus Problem
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

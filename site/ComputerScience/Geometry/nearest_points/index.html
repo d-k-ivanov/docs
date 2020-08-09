@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/ComputerScience/Geometry/nearest_points/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Finding the nearest pair of points - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Finding the nearest pair of points", url: "#_top", children: [
+              {title: "Problem statement", url: "#problem-statement" },
+              {title: "Algorithm", url: "#algorithm" },
+              {title: "Evaluation of the asymptotics", url: "#evaluation-of-the-asymptotics" },
+              {title: "Implementation", url: "#implementation" },
+              {title: "Generalization: finding a triangle with minimal perimeter", url: "#generalization-finding-a-triangle-with-minimal-perimeter" },
+              {title: "Practice problems", url: "#practice-problems" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../oriented-triangle-area/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../oriented-triangle-area/" class="btn btn-xs btn-link">
+        Oriented area of a triangle
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../lines-intersection/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../lines-intersection/" class="btn btn-xs btn-link">
+        Intersection Point of Lines
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="finding-the-nearest-pair-of-points">Finding the nearest pair of points</h1>
+<h2 id="problem-statement">Problem statement</h2>
+<p>Given <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> points on the plane. Each point <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span> is defined by its coordinates <span><span class="MathJax_Preview">(x_i,y_i)</span><script type="math/tex">(x_i,y_i)</script></span>. It is required to find among them two such points, such that the distance between them is minimal:</p>
+<div>
+<div class="MathJax_Preview"> \min_{\scriptstyle i, j=0 \ldots n-1,\atop \scriptstyle i \neq j } \rho (p_i, p_j). </div>
+<script type="math/tex; mode=display"> \min_{\scriptstyle i, j=0 \ldots n-1,\atop \scriptstyle i \neq j } \rho (p_i, p_j). </script>
+</div>
+<p>We take the usual Euclidean distances:</p>
+<div>
+<div class="MathJax_Preview"> \rho (p_i,p_j) = \sqrt{(x_i-x_j)^2 + (y_i-y_j)^2} .</div>
+<script type="math/tex; mode=display"> \rho (p_i,p_j) = \sqrt{(x_i-x_j)^2 + (y_i-y_j)^2} .</script>
+</div>
+<p>The trivial algorithm - iterating over all pairs and calculating the distance for each — works in <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span>.</p>
+<p>The algorithm running in time <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> is described below. This algorithm was proposed by Preparata in 1975. Preparata and Shamos also showed that this algorithm is optimal in the decision tree model.</p>
+<h2 id="algorithm">Algorithm</h2>
+<p>We construct an algorithm according to the general scheme of <strong>divide-and-conquer</strong> algorithms: the algorithm is designed as a recursive function, to which we pass a set of points; this recursive function splits this set in half, calls itself recursively on each half, and then performs some operations to combine the answers. The operation of combining consist of  detecting the cases when one point of the optimal solution fell into one half, and the other point into the other (in this case, recursive calls from each of the halves cannot detect this pair separately). The main difficulty, as always in case of divide and conquer algorithms, lies in the effective implementation of the merging stage. If a set of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> points is passed to the recursive function, then the merge stage should work no more than <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>, then the asymptotics of the whole algorithm <span><span class="MathJax_Preview">T(n)</span><script type="math/tex">T(n)</script></span> will be found from the equation:</p>
+<div>
+<div class="MathJax_Preview">T(n) = 2T(n/2) + O(n).</div>
+<script type="math/tex; mode=display">T(n) = 2T(n/2) + O(n).</script>
+</div>
+<p>The solution to this equation, as is known, is <span><span class="MathJax_Preview">T(n) = O(n \log n).</span><script type="math/tex">T(n) = O(n \log n).</script></span></p>
+<p>So, we proceed on to the construction of the algorithm. In order to come to an effective implementation of the merge stage in the future, we will divide the set of points into two subsets, according to their <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>-coordinates: In fact, we draw some vertical line dividing the set of points into two subsets of approximately the same size. Is is convenient to make such a partition as follows: We sort the points in the standard way as pairs of numbers, ie.:</p>
+<div>
+<div class="MathJax_Preview">p_i &lt; p_j \Longleftrightarrow (x_i &lt; x_j) \lor \Big(\left(x_i = x_j\right) \wedge \left(y_i &lt; y_j \right) \Big) </div>
+<script type="math/tex; mode=display">p_i < p_j \Longleftrightarrow (x_i < x_j) \lor \Big(\left(x_i = x_j\right) \wedge \left(y_i < y_j \right) \Big) </script>
+</div>
+<p>Then take the middle point after sorting <span><span class="MathJax_Preview">p_m (m = \lfloor n/2 \rfloor)</span><script type="math/tex">p_m (m = \lfloor n/2 \rfloor)</script></span>, and all the points before it and the <span><span class="MathJax_Preview">p_m</span><script type="math/tex">p_m</script></span> itself are assigned to the first half, and all the points after it - to the second half:</p>
+<div>
+<div class="MathJax_Preview">A_1 = \{p_i \ | \ i = 0 \ldots m \}$$
+$$A_2 = \{p_i \ | \ i = m + 1 \ldots n-1 \}.</div>
+<script type="math/tex; mode=display">A_1 = \{p_i \ | \ i = 0 \ldots m \}$$
+$$A_2 = \{p_i \ | \ i = m + 1 \ldots n-1 \}.</script>
+</div>
+<p>Now, calling recursively on each of the sets <span><span class="MathJax_Preview">A_1</span><script type="math/tex">A_1</script></span> and <span><span class="MathJax_Preview">A_2</span><script type="math/tex">A_2</script></span>, we will find the answers <span><span class="MathJax_Preview">h_1</span><script type="math/tex">h_1</script></span> and <span><span class="MathJax_Preview">h_2</span><script type="math/tex">h_2</script></span> for each of the halves. And take the best of them: <span><span class="MathJax_Preview">h = \min(h_1, h_2)</span><script type="math/tex">h = \min(h_1, h_2)</script></span>.</p>
+<p>Now we need to make a <strong>merge stage</strong>, i.e. we try to find such pairs of points, for which the distance between which is less than <span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span> and one point is lying in <span><span class="MathJax_Preview">A_1</span><script type="math/tex">A_1</script></span> and the other in <span><span class="MathJax_Preview">A_2</span><script type="math/tex">A_2</script></span>.
+It is obvious that it is sufficient to consider only those points that are separated from the vertical line by a distance less than <span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span>, i.e. the set <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> of the points considered at this stage is equal to:</p>
+<div>
+<div class="MathJax_Preview">B = \{ p_i\ | \ | x_i - x_m\ | &lt; h \}.</div>
+<script type="math/tex; mode=display">B = \{ p_i\ | \ | x_i - x_m\ | < h \}.</script>
+</div>
+<p>For each point in the set <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>, we try to find the points that are closer to it than <span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span>. For example, it is sufficient to consider only those points whose <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>-coordinate differs by no more than <span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span>. Moreover, it makes no sense to consider those points whose <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>-coordinate is greater than the <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>-coordinate of the current point. Thus, for each point <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span> we define the set of considered points <span><span class="MathJax_Preview">C(p_i)</span><script type="math/tex">C(p_i)</script></span> as follows:</p>
+<div>
+<div class="MathJax_Preview">C(p_i) = \{ p_j\ |\ p_j \in B,\ \ y_i - h &lt; y_j \le y_i \}.</div>
+<script type="math/tex; mode=display">C(p_i) = \{ p_j\ |\ p_j \in B,\ \ y_i - h < y_j \le y_i \}.</script>
+</div>
+<p>If we sort the points of the set <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> by <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>-coordinate, it will be very easy to find <span><span class="MathJax_Preview">C(p_i)</span><script type="math/tex">C(p_i)</script></span>: these are several points in a row ahead to the point <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span>.</p>
+<p>So, in the new notation, the <strong>merging stage</strong> looks like this: build a set <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>, sort the points in it by <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>-coordinate, then for each point <span><span class="MathJax_Preview">p_i \in B</span><script type="math/tex">p_i \in B</script></span> consider all points <span><span class="MathJax_Preview">p_j \in C(p_i)</span><script type="math/tex">p_j \in C(p_i)</script></span>, and for each pair <span><span class="MathJax_Preview">(p_i,p_j)</span><script type="math/tex">(p_i,p_j)</script></span> calculate the distance and compare with the current best distance.</p>
+<p>At first glance, this is still a non-optimal algorithm: it seems that the sizes of sets <span><span class="MathJax_Preview">C(p_i)</span><script type="math/tex">C(p_i)</script></span> will be of order <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, and the required asymptotics will not work. However, surprisingly, it can be proved that the size of each of the sets <span><span class="MathJax_Preview">C(p_i)</span><script type="math/tex">C(p_i)</script></span> is a quantity <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>, i.e. it does not exceed some small constant regardless of the points themselves. Proof of this fact is given in the next section.</p>
+<p>Finally, we pay attention to the sorting, which the above algorithm contains: first,sorting by pairs <span><span class="MathJax_Preview">(x, y)</span><script type="math/tex">(x, y)</script></span>, and then second, sorting the elements of the set <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> by <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>. In fact, both of these sorts inside the recursive function can be eliminated (otherwise we would not reach the <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> estimate for the <strong>merging stage</strong>, and the general asymptotics of the algorithm would be <span><span class="MathJax_Preview">O(n \log^2 n)</span><script type="math/tex">O(n \log^2 n)</script></span>). It is easy to get rid of the first sort — it is enough to perform this sort before starting the recursion: after all, the elements themselves do not change inside the recursion, so there is no need to sort again. With the second sorting a little more difficult to perform, performing it previously will not work. But, remembering the merge sort, which also works on the principle of divide-and-conquer, we can simply embed this sort in our recursion. Let recursion, taking some set of points (as we remember,ordered by pairs <span><span class="MathJax_Preview">(x, y)</span><script type="math/tex">(x, y)</script></span>), return the same set, but sorted by the <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>-coordinate. To do this, simply merge (in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>) the two results returned by recursive calls. This will result in a set sorted by <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>-coordinate.</p>
+<h2 id="evaluation-of-the-asymptotics">Evaluation of the asymptotics</h2>
+<p>To show that the above algorithm is actually executed in <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>, we need to prove the following fact: <span><span class="MathJax_Preview">|C(p_i)| = O(1)</span><script type="math/tex">|C(p_i)| = O(1)</script></span>.</p>
+<p>So, let us consider some point <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span>; recall that the set <span><span class="MathJax_Preview">C(p_i)</span><script type="math/tex">C(p_i)</script></span> is a set of points whose <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>-coordinate lies in the segment <span><span class="MathJax_Preview">[y_i-h; y_i]</span><script type="math/tex">[y_i-h; y_i]</script></span>, and, moreover, along the <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> coordinate, the point <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span> itself, and all the points of the set <span><span class="MathJax_Preview">C(p_i)</span><script type="math/tex">C(p_i)</script></span> lie in the band width <span><span class="MathJax_Preview">2h</span><script type="math/tex">2h</script></span>. In other words, the points we are considering <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span> and <span><span class="MathJax_Preview">C(p_i)</span><script type="math/tex">C(p_i)</script></span> lie in a rectangle of size <span><span class="MathJax_Preview">2h \times h</span><script type="math/tex">2h \times h</script></span>.</p>
+<p>Our task is to estimate the maximum number of points that can lie in this rectangle <span><span class="MathJax_Preview">2h \times h</span><script type="math/tex">2h \times h</script></span>; thus, we estimate the maximum size of the set <span><span class="MathJax_Preview">C(p_i)</span><script type="math/tex">C(p_i)</script></span>. At the same time, when evaluating, we must not forget that there may be repeated points.</p>
+<p>Remember that <span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span> was obtained from the results of two recursive calls — on sets <span><span class="MathJax_Preview">A_1</span><script type="math/tex">A_1</script></span> and <span><span class="MathJax_Preview">A_2</span><script type="math/tex">A_2</script></span>, and <span><span class="MathJax_Preview">A_1</span><script type="math/tex">A_1</script></span> contains points to the left of the partition line and partially on it, <span><span class="MathJax_Preview">A_2</span><script type="math/tex">A_2</script></span> contains the remaining points of the partition line and points to the right of it. For any pair of points from <span><span class="MathJax_Preview">A_1</span><script type="math/tex">A_1</script></span>, as well as from <span><span class="MathJax_Preview">A_2</span><script type="math/tex">A_2</script></span>, the distance can not be less than <span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span> — otherwise it would mean incorrect operation of the recursive function.</p>
+<p>To estimate the maximum number of points in the rectangle <span><span class="MathJax_Preview">2h \times h</span><script type="math/tex">2h \times h</script></span> we divide it into two squares <span><span class="MathJax_Preview">h \times h</span><script type="math/tex">h \times h</script></span>, the first square include all points <span><span class="MathJax_Preview">C(p_i) \cap A_1</span><script type="math/tex">C(p_i) \cap A_1</script></span>, and the second contains all the others, i.e. <span><span class="MathJax_Preview">C(p_i) \cap A_2</span><script type="math/tex">C(p_i) \cap A_2</script></span>. It follows from the above considerations that in each of these squares the distance between any two points is at least <span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span>.</p>
+<p>We show that there are at most four points in each square. For example, this can be done as follows: divide the square into <span><span class="MathJax_Preview">4</span><script type="math/tex">4</script></span> sub-squares with sides <span><span class="MathJax_Preview">h/2</span><script type="math/tex">h/2</script></span>. Then there can be no more than one point in each of these sub-squares (since even the diagonal is equal to <span><span class="MathJax_Preview">h / \sqrt{2}</span><script type="math/tex">h / \sqrt{2}</script></span>, which is less than <span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span>). Therefore, there can be no more than <span><span class="MathJax_Preview">4</span><script type="math/tex">4</script></span> points in the whole square.</p>
+<p>So, we have proved that in a rectangle <span><span class="MathJax_Preview">2h \times h</span><script type="math/tex">2h \times h</script></span> can not be more than <span><span class="MathJax_Preview">4 \cdot 2 = 8</span><script type="math/tex">4 \cdot 2 = 8</script></span> points, and, therefore, the size of the set <span><span class="MathJax_Preview">C(p_i)</span><script type="math/tex">C(p_i)</script></span> cannot exceed <span><span class="MathJax_Preview">7</span><script type="math/tex">7</script></span>, as required.</p>
+<h2 id="implementation">Implementation</h2>
+<p>We introduce a data structure to store a point (its coordinates and a number) and comparison operators required for two types of sorting:</p>
+<p>```cpp nearest_pair_def
+struct pt {
+    int x, y, id;
+};</p>
+<p>struct cmp_x {
+    bool operator()(const pt &amp; a, const pt &amp; b) const {
+        return a.x &lt; b.x || (a.x == b.x &amp;&amp; a.y &lt; b.y);
+    }
+};</p>
+<p>struct cmp_y {
+    bool operator()(const pt &amp; a, const pt &amp; b) const {
+        return a.y &lt; b.y;
+    }
+};</p>
+<p>int n;
+vector<pt> a;</p>
+<pre><code>
+For a convenient implementation of recursion, we introduce an auxiliary function upd_ans(), which will calculate the distance between two points and check whether it is better than the current answer:
+
+```cpp nearest_pair_update
+double mindist;
+pair&lt;int, int&gt; best_pair;
+
+void upd_ans(const pt &amp; a, const pt &amp; b) {
+    double dist = sqrt((a.x - b.x)*(a.x - b.x) + (a.y - b.y)*(a.y - b.y));
+    if (dist &lt; mindist) {
+        mindist = dist;
+        best_pair = {a.id, b.id};
+    }
+}
+</code></pre>
+
+<p>Finally, the implementation of the recursion itself. It is assumed that before calling it, the array <span><span class="MathJax_Preview">a[]</span><script type="math/tex">a[]</script></span> is already sorted by <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>-coordinate. In recursion we pass just two pointers <span><span class="MathJax_Preview">l, r</span><script type="math/tex">l, r</script></span>, which indicate that it should look for the answer for <span><span class="MathJax_Preview">a[l \ldots r)</span><script type="math/tex">a[l \ldots r)</script></span>. If the distance between <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> and <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> is too small, the recursion must be stopped, and perform a trivial algorithm to find the nearest pair and then sort the subarray by <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>-coordinate.</p>
+<p>To merge two sets of points received from recursive calls into one (ordered by <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>-coordinate), we use the standard STL <span><span class="MathJax_Preview">merge()</span><script type="math/tex">merge()</script></span> function, and create an auxiliary buffer <span><span class="MathJax_Preview">t[]</span><script type="math/tex">t[]</script></span>(one for all recursive calls). (Using inplace_merge () is impractical because it generally does not work in linear time.)</p>
+<p>Finally, the set <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> is stored in the same array <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>.</p>
+<p>```cpp nearest_pair_rec
+vector<pt> t;</p>
+<p>void rec(int l, int r) {
+    if (r - l &lt;= 3) {
+        for (int i = l; i &lt; r; ++i) {
+            for (int j = i + 1; j &lt; r; ++j) {
+                upd_ans(a[i], a[j]);
+            }
+        }
+        sort(a.begin() + l, a.begin() + r, cmp_y());
+        return;
+    }</p>
+<pre><code>int m = (l + r) &gt;&gt; 1;
+int midx = a[m].x;
+rec(l, m);
+rec(m, r);
+
+merge(a.begin() + l, a.begin() + m, a.begin() + m, a.begin() + r, t.begin(), cmp_y());
+copy(t.begin(), t.begin() + r - l, a.begin() + l);
+
+int tsz = 0;
+for (int i = l; i &lt; r; ++i) {
+    if (abs(a[i].x - midx) &lt; mindist) {
+        for (int j = tsz - 1; j &gt;= 0 &amp;&amp; a[i].y - t[j].y &lt; mindist; --j)
+            upd_ans(a[i], t[j]);
+        t[tsz++] = a[i];
+    }
+}
+</code></pre>
+<p>}</p>
+<pre><code>
+By the way, if all the coordinates are integer, then at the time of the recursion you can not move to fractional values, and store in $mindist$ the square of the minimum distance.
+
+In the main program, recursion should be called as follows:
+
+```cpp nearest_pair_main
+t.resize(n);
+sort(a.begin(), a.end(), cmp_x());
+mindist = 1E20;
+rec(0, n);
+</code></pre>
+
+<h2 id="generalization-finding-a-triangle-with-minimal-perimeter">Generalization: finding a triangle with minimal perimeter</h2>
+<p>The algorithm described above is interestingly generalized to this problem: among a given set of points, choose three different points so that the sum of pairwise distances between them is the smallest.</p>
+<p>In fact, to solve this problem, the algorithm remains the same: we divide the field into two halves of the vertical line, call the solution recursively on both halves, choose the minimum <span><span class="MathJax_Preview">minper</span><script type="math/tex">minper</script></span> from the found perimeters, build a strip with the thickness of <span><span class="MathJax_Preview">minper / 2</span><script type="math/tex">minper / 2</script></span>, and iterate through all triangles that can improve the answer. (Note that the triangle with perimeter <span><span class="MathJax_Preview">\le minper</span><script type="math/tex">\le minper</script></span> has the longest side <span><span class="MathJax_Preview">\le minper / 2</span><script type="math/tex">\le minper / 2</script></span>.)</p>
+<h2 id="practice-problems">Practice problems</h2>
+<ul>
+<li><a href="https://uva.onlinejudge.org/index.php?option=onlinejudge&amp;page=show_problem&amp;problem=1186">UVA 10245 "The Closest Pair Problem" [difficulty: low]</a></li>
+<li><a href="https://www.spoj.com/problems/CLOPPAIR/">SPOJ #8725 CLOPPAIR "Closest Point Pair" [difficulty: low]</a></li>
+<li><a href="http://codeforces.com/contest/120/problem/J">CODEFORCES Team Olympiad Saratov - 2011 "Minimum amount" [difficulty: medium]</a></li>
+<li><a href="https://code.google.com/codejam/contest/311101/dashboard#s=a&amp;a=1">Google CodeJam 2009 Final " Min Perimeter "[difficulty: medium]</a></li>
+<li><a href="https://www.spoj.com/problems/CLOSEST/">SPOJ #7029 CLOSEST "Closest Triple" [difficulty: medium]</a></li>
+</ul>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../oriented-triangle-area/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../oriented-triangle-area/" class="btn btn-xs btn-link">
+        Oriented area of a triangle
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../lines-intersection/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../lines-intersection/" class="btn btn-xs btn-link">
+        Intersection Point of Lines
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

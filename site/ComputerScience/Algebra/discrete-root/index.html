@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/ComputerScience/Algebra/discrete-root/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Discrete Root - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Discrete Root", url: "#_top", children: [
+              {title: "The algorithm", url: "#the-algorithm" },
+              {title: "Finding all solutions from one known solution", url: "#finding-all-solutions-from-one-known-solution" },
+              {title: "Implementation", url: "#implementation" },
+              {title: "Practice problems", url: "#practice-problems" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../divisors/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../divisors/" class="btn btn-xs btn-link">
+        Number of divisors / sum of divisors
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../discrete-log/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../discrete-log/" class="btn btn-xs btn-link">
+        Discrete Logarithm
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="discrete-root">Discrete Root</h1>
+<p>The problem of finding a discrete root is defined as follows. Given a prime <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> and two integers <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>, find all <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> for which:</p>
+<p><span><span class="MathJax_Preview">x^k \equiv a \pmod n</span><script type="math/tex">x^k \equiv a \pmod n</script></span></p>
+<h2 id="the-algorithm">The algorithm</h2>
+<p>We will solve this problem by reducing it to the <a href="./algebra/discrete-log/">discrete logarithm problem</a>.</p>
+<p>Let's apply the concept of a <a href="./algebra/primitive-root/">primitive root</a> modulo <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>. Let <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> be a primitive root modulo <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>. Note that since <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is prime, it must exist, and it can be found in <span><span class="MathJax_Preview">O(Ans \cdot \log \phi (n) \cdot \log n) = O(Ans \cdot \log^2 n)</span><script type="math/tex">O(Ans \cdot \log \phi (n) \cdot \log n) = O(Ans \cdot \log^2 n)</script></span> plus time of factoring <span><span class="MathJax_Preview">\phi (n)</span><script type="math/tex">\phi (n)</script></span>.</p>
+<p>We can easily discard the case where <span><span class="MathJax_Preview">a = 0</span><script type="math/tex">a = 0</script></span>. In this case, obviously there is only one answer: <span><span class="MathJax_Preview">x = 0</span><script type="math/tex">x = 0</script></span>.</p>
+<p>Since we know that <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is a prime and any number between 1 and <span><span class="MathJax_Preview">n-1</span><script type="math/tex">n-1</script></span> can be represented as a power of the primitive root, we can represent the discrete root problem as follows:</p>
+<p><span><span class="MathJax_Preview">(g^y)^k \equiv a \pmod n</span><script type="math/tex">(g^y)^k \equiv a \pmod n</script></span></p>
+<p>where</p>
+<p><span><span class="MathJax_Preview">x \equiv g^y \pmod n</span><script type="math/tex">x \equiv g^y \pmod n</script></span></p>
+<p>This, in turn, can be rewritten as</p>
+<p><span><span class="MathJax_Preview">(g^k)^y \equiv a \pmod n</span><script type="math/tex">(g^k)^y \equiv a \pmod n</script></span></p>
+<p>Now we have one unknown <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>, which is a discrete logarithm problem. The solution can be found using Shanks' baby-step giant-step algorithm in <span><span class="MathJax_Preview">O(\sqrt {n} \log n)</span><script type="math/tex">O(\sqrt {n} \log n)</script></span> (or we can verify that there are no solutions).</p>
+<p>Having found one solution <span><span class="MathJax_Preview">y_0</span><script type="math/tex">y_0</script></span>, one of solutions of discrete root problem will be <span><span class="MathJax_Preview">x_0 = g^{y_0} \pmod n</span><script type="math/tex">x_0 = g^{y_0} \pmod n</script></span>.</p>
+<h2 id="finding-all-solutions-from-one-known-solution">Finding all solutions from one known solution</h2>
+<p>To solve the given problem in full, we need to find all solutions knowing one of them: <span><span class="MathJax_Preview">x_0 = g^{y_0} \pmod n</span><script type="math/tex">x_0 = g^{y_0} \pmod n</script></span>.</p>
+<p>Let's recall the fact that a primitive root always has order of <span><span class="MathJax_Preview">\phi (n)</span><script type="math/tex">\phi (n)</script></span>, i.e. the smallest power of <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> which gives 1 is <span><span class="MathJax_Preview">\phi (n)</span><script type="math/tex">\phi (n)</script></span>. Therefore, if we add the term <span><span class="MathJax_Preview">\phi (n)</span><script type="math/tex">\phi (n)</script></span> to the exponential, we still get the same value:</p>
+<p><span><span class="MathJax_Preview">x^k \equiv g^{ y_0 \cdot k + l \cdot \phi (n)} \equiv a \pmod n \forall l \in Z</span><script type="math/tex">x^k \equiv g^{ y_0 \cdot k + l \cdot \phi (n)} \equiv a \pmod n \forall l \in Z</script></span></p>
+<p>Hence, all the solutions are of the form:</p>
+<p><span><span class="MathJax_Preview">x = g^{y_0 + \frac {l \cdot \phi (n)}{k}} \pmod n \forall l \in Z</span><script type="math/tex">x = g^{y_0 + \frac {l \cdot \phi (n)}{k}} \pmod n \forall l \in Z</script></span>.</p>
+<p>where <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> is chosen such that the fraction must be an integer. For this to be true, the numerator has to be divisible by the least common multiple of  <span><span class="MathJax_Preview">\phi (n)</span><script type="math/tex">\phi (n)</script></span> and <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>. Remember that least common multiple of two numbers <span><span class="MathJax_Preview">lcm(a, b) = \frac{a \cdot b}{gcd(a, b)}</span><script type="math/tex">lcm(a, b) = \frac{a \cdot b}{gcd(a, b)}</script></span>; we'll get</p>
+<p><span><span class="MathJax_Preview">x = g^{y_0 + i \frac {\phi (n)}{gcd(k, \phi (n))}} \pmod n \forall i \in Z</span><script type="math/tex">x = g^{y_0 + i \frac {\phi (n)}{gcd(k, \phi (n))}} \pmod n \forall i \in Z</script></span>.</p>
+<p>This is the final formula for all solutions of the discrete root problem.</p>
+<h2 id="implementation">Implementation</h2>
+<p>Here is a full implementation, including procedures for finding the primitive root, discrete log and finding and printing all solutions.</p>
+<pre><code class="cpp">int gcd(int a, int b) {
+    return a ? gcd(b % a, a) : b;
+}
+
+int powmod(int a, int b, int p) {
+    int res = 1;
+    while (b &gt; 0) {
+        if (b &amp; 1) {
+            res = res * a % p;
+        }
+        a = a * a % p;
+        b &gt;&gt;= 1;
+    }
+    return res;
+}
+
+// Finds the primitive root modulo p
+int generator(int p) {
+    vector&lt;int&gt; fact;
+    int phi = p-1, n = phi;
+    for (int i = 2; i * i &lt;= n; ++i) {
+        if (n % i == 0) {
+            fact.push_back(i);
+            while (n % i == 0)
+                n /= i;
+        }
+    }
+    if (n &gt; 1)
+        fact.push_back(n);
+
+    for (int res = 2; res &lt;= p; ++res) {
+        bool ok = true;
+        for (int factor : fact) {
+            if (powmod(res, phi / factor, p) == 1) {
+                ok = false;
+                break;
+            }
+        }
+        if (ok) return res;
+    }
+    return -1;
+}
+
+// This program finds all numbers x such that x^k = a (mod n)
+int main() {
+    int n, k, a;
+    scanf(&quot;%d %d %d&quot;, &amp;n, &amp;k, &amp;a);
+    if (a == 0) {
+        puts(&quot;1\n0&quot;);
+        return 0;
+    }
+
+    int g = generator(n);
+
+    // Baby-step giant-step discrete logarithm algorithm
+    int sq = (int) sqrt (n + .0) + 1;
+    vector&lt;pair&lt;int, int&gt;&gt; dec(sq);
+    for (int i = 1; i &lt;= sq; ++i)
+        dec[i-1] = {powmod(g, i * sq * k % (n - 1), n), i};
+    sort(dec.begin(), dec.end());
+    int any_ans = -1;
+    for (int i = 0; i &lt; sq; ++i) {
+        int my = powmod(g, i * k % (n - 1), n) * a % n;
+        auto it = lower_bound(dec.begin(), dec.end(), make_pair(my, 0));
+        if (it != dec.end() &amp;&amp; it-&gt;first == my) {
+            any_ans = it-&gt;second * sq - i;
+            break;
+        }
+    }
+    if (any_ans == -1) {
+        puts(&quot;0&quot;);
+        return 0;
+    }
+
+    // Print all possible answers
+    int delta = (n-1) / gcd(k, n-1);
+    vector&lt;int&gt; ans;
+    for (int cur = any_ans % delta; cur &lt; n-1; cur += delta)
+        ans.push_back(powmod(g, cur, n));
+    sort(ans.begin(), ans.end());
+    printf(&quot;%d\n&quot;, ans.size());
+    for (int answer : ans)
+        printf(&quot;%d &quot;, answer);
+}
+</code></pre>
+
+<h2 id="practice-problems">Practice problems</h2>
+<ul>
+<li><a href="https://codeforces.com/contest/1106/problem/F">Codeforces - Lunar New Year and a Recursive Sequence</a></li>
+</ul>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../divisors/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../divisors/" class="btn btn-xs btn-link">
+        Number of divisors / sum of divisors
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../discrete-log/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../discrete-log/" class="btn btn-xs btn-link">
+        Discrete Logarithm
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

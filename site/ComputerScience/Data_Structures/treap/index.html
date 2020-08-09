@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/ComputerScience/Data_Structures/treap/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Treap (Cartesian tree) - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Treap (Cartesian tree)", url: "#_top", children: [
+              {title: "Advantages of such data organisation", url: "#advantages-of-such-data-organisation" },
+              {title: "Operations", url: "#operations" },
+              {title: "Implementation Description", url: "#implementation-description" },
+              {title: "Implementation", url: "#implementation" },
+              {title: "Maintaining the sizes of subtrees", url: "#maintaining-the-sizes-of-subtrees" },
+              {title: "Building a Treap in O (N)O (N) in offline mode", url: "#building-a-treap-in-o-no-n-in-offline-mode" },
+              {title: "Implicit Treaps", url: "#implicit-treaps" },
+              {title: "Literature", url: "#literature" },
+              {title: "Practice Problems", url: "#practice-problems" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Dynamic_Programming/divide-and-conquer-dp/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Dynamic_Programming/divide-and-conquer-dp/" class="btn btn-xs btn-link">
+        Divide and Conquer DP
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../stack_queue_modification/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../stack_queue_modification/" class="btn btn-xs btn-link">
+        Stack queue modification
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="treap-cartesian-tree">Treap (Cartesian tree)</h1>
+<p>Treap is a data structure which combines binary tree and binary heap (hence the name: tree + heap <span><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> Treap).</p>
+<p>More specifically, treap is a data structure that stores pairs (X, Y) in a binary tree in such a way that it is a binary search tree by X and a binary heap by Y.
+Assuming that all X and all Y are different, we can see that if some node of the tree contains values (<span><span class="MathJax_Preview">X_0</span><script type="math/tex">X_0</script></span>, <span><span class="MathJax_Preview">Y_0</span><script type="math/tex">Y_0</script></span>), all nodes in the left subtree have <span><span class="MathJax_Preview">X &lt; X_0</span><script type="math/tex">X < X_0</script></span>, all nodes in the right subtree have <span><span class="MathJax_Preview">X &gt; X_0</span><script type="math/tex">X > X_0</script></span>, and all nodes in both left and right subtrees have <span><span class="MathJax_Preview">Y &lt; Y_0</span><script type="math/tex">Y < Y_0</script></span>.</p>
+<p>Treaps have been proposed by Siedel and Aragon in 1989.</p>
+<h2 id="advantages-of-such-data-organisation">Advantages of such data organisation</h2>
+<p>In such implementation X values are the keys (and at same time the values stored in the treap), and Y values are called <strong>priorities</strong>. Without priorities, the treap would be a regular binary search tree by X, and one set of X values could correspond to a lot of different trees, some of them degenerate (for example, in the form of a linked list), and therefore extremely slow (the main operations would have <span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span> complexity).</p>
+<p>At the same time, <strong>priorities*- allow to </strong>uniquely<em>- specify the tree that will be constructed (of course, it does not depend on the order in which values are added), which can be proven using corresponding theorem. Obviously, if you </em><em>choose the priorities randomly</em><em>, you will get non-degenerate trees on average, which will ensure <span><span class="MathJax_Preview">O(\log N)</span><script type="math/tex">O(\log N)</script></span> complexity for the main operations. Hence another name of this data structure - </em><em>randomized binary search tree</em>*.</p>
+<h2 id="operations">Operations</h2>
+<p>A treap provides the following operations:</p>
+<ul>
+<li>*<em>Insert(X,Y)</em>- in <span><span class="MathJax_Preview">O(\log N)</span><script type="math/tex">O(\log N)</script></span>.
+  Adds a new node to the tree. One possible variant is to pass only X and generate Y randomly inside the operation (while ensuring that it's different from all other priorities in the tree).</li>
+<li>*<em>Search (X)</em>- in <span><span class="MathJax_Preview">O(\log N)</span><script type="math/tex">O(\log N)</script></span>.
+  Looks for a node with the specified key value X. The implementation is the same as for an ordinary binary search tree.</li>
+<li>*<em>Erase (X)</em>- in <span><span class="MathJax_Preview">O(\log N)</span><script type="math/tex">O(\log N)</script></span>.
+  Looks for a node with the specified key value X and removes it from the tree.</li>
+<li><strong>Build (<span><span class="MathJax_Preview">X_1</span><script type="math/tex">X_1</script></span>, ..., <span><span class="MathJax_Preview">X_N</span><script type="math/tex">X_N</script></span>)*- in <span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span>.
+  Builds a tree from a list of values. This can be done in linear time (assuming that <span><span class="MathJax_Preview">X_1, ..., X_N</span><script type="math/tex">X_1, ..., X_N</script></span> are sorted), but we will not discuss this implementation here. We will just use <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> serial calls of </strong>Insert*- operation, which has <span><span class="MathJax_Preview">O(N \log N)</span><script type="math/tex">O(N \log N)</script></span> complexity.</li>
+<li>*<em>Union (<span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span>, <span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span>)</em>- in <span><span class="MathJax_Preview">O(M \log (N/M))</span><script type="math/tex">O(M \log (N/M))</script></span>.
+  Merges two trees, assuming that all the elements are different. It is possible to achieve the same complexity if duplicate elements should be removed during merge.</li>
+<li>*<em>Intersect (<span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span>, <span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span>)</em>- in <span><span class="MathJax_Preview">O(M \log (N/M))</span><script type="math/tex">O(M \log (N/M))</script></span>.
+  Finds the intersection of two trees (i.e. their common elements). We will not consider the implementation of this operation here.</li>
+</ul>
+<p>In addition, due to the fact that a treap is a binary search tree, it can implement other operations, such as finding the K-th largest element or finding the index of an element.</p>
+<h2 id="implementation-description">Implementation Description</h2>
+<p>In terms of implementation, each node contains X, Y and pointers to the left (L) and right (R) children.</p>
+<p>We will implement all the required operations using just two auxiliary operations: Split and Merge.</p>
+<p>*<em>Split (T, X)</em>- separates tree T in 2 subtrees L and R trees (which are the return values of split) so that L contains all elements with key <span><span class="MathJax_Preview">X_L &lt; X</span><script type="math/tex">X_L < X</script></span>, and R contains all elements with key <span><span class="MathJax_Preview">X_R &gt; X</span><script type="math/tex">X_R > X</script></span>. This operation has <span><span class="MathJax_Preview">O (\log N)</span><script type="math/tex">O (\log N)</script></span> complexity and is implemented using an obvious recursion.</p>
+<p>*<em>Merge (<span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span>, <span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span>)</em>- combines two subtrees <span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span> and <span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span> and returns the new tree. This operation also has <span><span class="MathJax_Preview">O (\log N)</span><script type="math/tex">O (\log N)</script></span> complexity. It works under the assumption that <span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span> and <span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span> are ordered (all keys X in <span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span> are smaller than keys in <span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span>). Thus, we need to combine these trees without violating the order of priorities Y. To do this, we choose as the root the tree which has higher priority Y in the root node, and recursively call Merge for the other tree and the corresponding subtree of the selected root node.</p>
+<p>Now implementation of <strong>Insert (X, Y)*- becomes obvious. First we descend in the tree (as in a regular binary search tree by X), and stop at the first node in which the priority value is less than Y. We have found the place where we will insert the new element. Next, we call </strong>Split (T, X)*- on the subtree starting at the found node, and use returned subtrees L and R as left and right children of the new node.</p>
+<p>Implementation of <strong>Erase (X)*- is also clear. First we descend in the tree (as in a regular binary search tree by X), looking for the element we want to delete. Once the node is found, we call </strong>Merge*- on it children and put the return value of the operation in the place of the element we're deleting.</p>
+<p>We implement <strong>Build*- operation with <span><span class="MathJax_Preview">O (N \log N)</span><script type="math/tex">O (N \log N)</script></span> complexity using <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> </strong>Insert*- calls.</p>
+<p>*<em>Union (<span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span>, <span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span>)</em>- has theoretical complexity <span><span class="MathJax_Preview">O (M \log (N / M))</span><script type="math/tex">O (M \log (N / M))</script></span>, but in practice it works very well, probably with a very small hidden constant. Let's assume without loss of generality that <span><span class="MathJax_Preview">T_1 \rightarrow Y &gt; T_2 \rightarrow Y</span><script type="math/tex">T_1 \rightarrow Y > T_2 \rightarrow Y</script></span>, i. e. root of <span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span> will be the root of the result. To get the result, we need to merge trees <span><span class="MathJax_Preview">T_1 \rightarrow L</span><script type="math/tex">T_1 \rightarrow L</script></span>, <span><span class="MathJax_Preview">T_1 \rightarrow R</span><script type="math/tex">T_1 \rightarrow R</script></span> and <span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span> in two trees which could be children of <span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span> root. To do this, we call Split (<span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span>, <span><span class="MathJax_Preview">T_1\rightarrow X</span><script type="math/tex">T_1\rightarrow X</script></span>), thus splitting <span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span> in two parts L and R, which we then recursively combine with children of <span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span>: Union (<span><span class="MathJax_Preview">T_1 \rightarrow L</span><script type="math/tex">T_1 \rightarrow L</script></span>, <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>) and Union (<span><span class="MathJax_Preview">T_1 \rightarrow R</span><script type="math/tex">T_1 \rightarrow R</script></span>, <span><span class="MathJax_Preview">R</span><script type="math/tex">R</script></span>), thus getting left and right subtrees of the result.</p>
+<h2 id="implementation">Implementation</h2>
+<pre><code class="cpp">struct item {
+    int key, prior;
+    item - l, - r;
+    item() { }
+    item (int key, int prior) : key(key), prior(prior), l(NULL), r(NULL) { }
+};
+typedef item - pitem;
+
+void split (pitem t, int key, pitem &amp; l, pitem &amp; r) {
+    if (!t)
+        l = r = NULL;
+    else if (key &lt; t-&gt;key)
+        split (t-&gt;l, key, l, t-&gt;l),  r = t;
+    else
+        split (t-&gt;r, key, t-&gt;r, r),  l = t;
+}
+
+void insert (pitem &amp; t, pitem it) {
+    if (!t)
+        t = it;
+    else if (it-&gt;prior &gt; t-&gt;prior)
+        split (t, it-&gt;key, it-&gt;l, it-&gt;r),  t = it;
+    else
+        insert (it-&gt;key &lt; t-&gt;key ? t-&gt;l : t-&gt;r, it);
+}
+
+void merge (pitem &amp; t, pitem l, pitem r) {
+    if (!l || !r)
+        t = l ? l : r;
+    else if (l-&gt;prior &gt; r-&gt;prior)
+        merge (l-&gt;r, l-&gt;r, r),  t = l;
+    else
+        merge (r-&gt;l, l, r-&gt;l),  t = r;
+}
+
+void erase (pitem &amp; t, int key) {
+    if (t-&gt;key == key)
+        merge (t, t-&gt;l, t-&gt;r);
+    else
+        erase (key &lt; t-&gt;key ? t-&gt;l : t-&gt;r, key);
+}
+
+pitem unite (pitem l, pitem r) {
+    if (!l || !r)  return l ? l : r;
+    if (l-&gt;prior &lt; r-&gt;prior)  swap (l, r);
+    pitem lt, rt;
+    split (r, l-&gt;key, lt, rt);
+    l-&gt;l = unite (l-&gt;l, lt);
+    l-&gt;r = unite (l-&gt;r, rt);
+    return l;
+}
+</code></pre>
+
+<h2 id="maintaining-the-sizes-of-subtrees">Maintaining the sizes of subtrees</h2>
+<p>To extend the functionality of the treap, it is often necessary to store the number of nodes in subtree of each node - field <code>int cnt</code> in the <code>item</code> structure. For example, it can be used to find K-th largest element of tree in <span><span class="MathJax_Preview">O (\log N)</span><script type="math/tex">O (\log N)</script></span>, or to find the index of the element in the sorted list with the same complexity. The implementation of these operations will be the same as for the regular binary search tree.</p>
+<p>When a tree changes (nodes are added or removed etc.), <code>cnt</code> of some nodes should be updated accordingly. We'll create two functions: <code>cnt()</code> will return the current value of <code>cnt</code> or 0 if the node does not exist, and <code>upd_cnt()</code> will update the value of <code>cnt</code> for this node assuming that for its children L and R the values of <code>cnt</code> have already been updated. Evidently it's sufficient to add calls of <code>upd_cnt()</code> to the end of <code>insert</code>, <code>erase</code>, <code>split</code> and <code>merge</code> to keep <code>cnt</code> values up-to-date.</p>
+<pre><code class="cpp">int cnt (pitem t) {
+    return t ? t-&gt;cnt : 0;
+}
+
+void upd_cnt (pitem t) {
+    if (t)
+        t-&gt;cnt = 1 + cnt(t-&gt;l) + cnt (t-&gt;r);
+}
+</code></pre>
+
+<h2 id="building-a-treap-in-o-no-n-in-offline-mode">Building a Treap in <span><span class="MathJax_Preview">O (N)</span><script type="math/tex">O (N)</script></span> in offline mode</h2>
+<p>Given a sorted list of keys, it is possible to construct a treap faster than by inserting the keys one at a time which takes <span><span class="MathJax_Preview">O(N \log N)</span><script type="math/tex">O(N \log N)</script></span>. Since the keys are sorted, a balanced binary search tree can be easily constructed in linear time. The heap values <span><span class="MathJax_Preview">Y</span><script type="math/tex">Y</script></span> are initialized randomly and then can be heapified independent of the keys <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> to <a href="https://en.wikipedia.org/wiki/Binary_heap#Building_a_heap">build the heap</a> in <span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span>.</p>
+<pre><code class="cpp">void heapify (pitem t) {
+    if (!t) return;
+    pitem max = t;
+    if (t-&gt;l != NULL &amp;&amp; t-&gt;l-&gt;prior &gt; max-&gt;prior)
+        max = t-&gt;l;
+    if (t-&gt;r != NULL &amp;&amp; t-&gt;r-&gt;prior &gt; max-&gt;prior)
+        max = t-&gt;r;
+    if (max != t) {
+        swap (t-&gt;prior, max-&gt;prior);
+        heapify (max);
+    }
+}
+
+pitem build (int - a, int n) {
+    // Construct a treap on values {a[0], a[1], ..., a[n - 1]}
+    if (n == 0) return NULL;
+    int mid = n / 2;
+    pitem t = new item (a[mid], rand ());
+    t-&gt;l = build (a, mid);
+    t-&gt;r = build (a + mid + 1, n - mid - 1);
+    heapify (t);
+    return t;
+}
+</code></pre>
+
+<p>It's also possible to compute the sizes of the subtrees with this approach. It is enough to call <code>upd_cnt(t)</code> before returning from the <code>build</code> function.</p>
+<h2 id="implicit-treaps">Implicit Treaps</h2>
+<p>Implicit treap is a simple modification of the regular treap which is a very powerful data structure. In fact, implicit treap can be considered as an array with the following procedures implemented (all in <span><span class="MathJax_Preview">O (\log N)</span><script type="math/tex">O (\log N)</script></span> in the online mode):</p>
+<ul>
+<li>Inserting an element in the array in any location</li>
+<li>Removal of an arbitrary element</li>
+<li>Finding sum, minimum / maximum element etc. on an arbitrary interval</li>
+<li>Addition, painting on an arbitrary interval</li>
+<li>Reversing elements on an arbitrary interval</li>
+</ul>
+<p>The idea is that the keys should be *<em>indices</em>- of the elements in the array. But we will not store these values explicitly (otherwise, for example, inserting an element would cause changes of the key in <span><span class="MathJax_Preview">O (N)</span><script type="math/tex">O (N)</script></span> nodes of the tree).</p>
+<p>Note that the key of a node is the number of nodes less than it (such nodes can be present not only in its left subtree but also in left subtrees of its ancestors).
+More specifically, the *<em>implicit key</em>- for some node T is the number of vertices <span><span class="MathJax_Preview">cnt (T \rightarrow L)</span><script type="math/tex">cnt (T \rightarrow L)</script></span> in the left subtree of this node plus similar values <span><span class="MathJax_Preview">cnt (P \rightarrow L) + 1</span><script type="math/tex">cnt (P \rightarrow L) + 1</script></span> for each ancestor P of the node T, if T is in the right subtree of P.</p>
+<p>Now it's clear how to calculate the implicit key of current node quickly. Since in all operations we arrive to any node by descending in the tree, we can just accumulate this sum and pass it to the function. If we go to the left subtree, the accumulated sum does not change, if we go to the right subtree it increases by <span><span class="MathJax_Preview">cnt (T \rightarrow L) +1</span><script type="math/tex">cnt (T \rightarrow L) +1</script></span>.</p>
+<p>Here are the new implementations of <strong>Split*- and </strong>Merge**:</p>
+<pre><code class="cpp">void merge (pitem &amp; t, pitem l, pitem r) {
+    if (!l || !r)
+        t = l ? l : r;
+    else if (l-&gt;prior &gt; r-&gt;prior)
+        merge (l-&gt;r, l-&gt;r, r),  t = l;
+    else
+        merge (r-&gt;l, l, r-&gt;l),  t = r;
+    upd_cnt (t);
+}
+
+void split (pitem t, pitem &amp; l, pitem &amp; r, int key, int add = 0) {
+    if (!t)
+        return void( l = r = 0 );
+    int cur_key = add + cnt(t-&gt;l); //implicit key
+    if (key &lt;= cur_key)
+        split (t-&gt;l, l, t-&gt;l, key, add),  r = t;
+    else
+        split (t-&gt;r, t-&gt;r, r, key, add + 1 + cnt(t-&gt;l)),  l = t;
+    upd_cnt (t);
+}
+</code></pre>
+
+<p>Now let's consider the implementation of various operations on implicit treaps:</p>
+<ul>
+<li><strong>Insert element</strong>.
+  Suppose we need to insert an element at position <code>pos</code>. We divide the treap into two parts, which correspond to arrays <code>[0..pos-1]</code> and <code>[pos..sz]</code>; to do this we call <code>split</code> (T, <span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span>, <span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span>, pos). Then we can combine tree <span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span> with the new vertex by calling <code>merge</code> (<span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span>, <span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span>, new_item) (it is easy to see that all preconditions are met). Finally, we combine trees <span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span> and <span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span> back into T by calling <code>merge</code> (T, <span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span>, <span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span>).</li>
+<li><strong>Delete element</strong>.
+ This operation is even easier: find the element to be deleted T, perform merge of its children L and R, and replace the element T with the result of merge. In fact, element deletion in the implicit treap is exactly the same as in the regular treap.</li>
+<li>Find <strong>sum / minimum</strong>, etc. on the interval.
+ First, create an additional field F in the <code>item</code> structure to store the value of the target function for this node's subtree. This field is easy to maintain similarly to maintaining sizes of subtrees: create a function which calculates this value for a node based on values for its children and add calls of this function in the end of all functions which modify the tree.
+ Second, we need to know how to process a query for an arbitrary interval [A; B].
+ To get a part of tree which corresponds to the interval [A; B], we need to call <code>split</code> (T, <span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span>, <span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span>, A), and then <code>split</code> (<span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span>, <span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span>, <span><span class="MathJax_Preview">T_3</span><script type="math/tex">T_3</script></span>, B - A + 1): after this <span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span> will consist of all the elements in the interval [A; B], and only of them. Therefore, the response to the query will be stored in the field F of the root of <span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span>. After the query is answered, the tree has to be restored by calling <code>merge</code> (T, <span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span>, <span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span>) and <code>merge</code> (<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>, <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>, <span><span class="MathJax_Preview">T_3</span><script type="math/tex">T_3</script></span>).</li>
+<li>*<em>Addition / painting</em>- on the interval.
+ We act similarly to the previous paragraph, but instead of the field F we will store a field <code>add</code> which will contain the added value for the subtree (or the value to which the subtree is painted). Before performing any operation we have to "push" this value correctly - i.e. change <span><span class="MathJax_Preview">T \rightarrow L \rightarrow add</span><script type="math/tex">T \rightarrow L \rightarrow add</script></span> and <span><span class="MathJax_Preview">T \rightarrow R \rightarrow add</span><script type="math/tex">T \rightarrow R \rightarrow add</script></span>, and to clean up <code>add</code> in the parent node. This way after any changes to the tree the information will not be lost.</li>
+<li>*<em>Reverse</em>- on the interval.
+ This is again similar to the previous operation: we have to add boolean flag ‘rev’ and set it to true when the subtree of the current node has to be reversed. "Pushing" this value is a bit complicated - we swap children of this node and set this flag to true for them.</li>
+</ul>
+<p>Here is an example implementation of the implicit treap with reverse on the interval. For each node we store field called <code>value</code> which is the actual value of the array element at current position. We also provide implementation of the function <code>output()</code>, which outputs an array that corresponds to the current state of the implicit treap.</p>
+<pre><code class="cpp">typedef struct item - pitem;
+struct item {
+    int prior, value, cnt;
+    bool rev;
+    pitem l, r;
+};
+
+int cnt (pitem it) {
+    return it ? it-&gt;cnt : 0;
+}
+
+void upd_cnt (pitem it) {
+    if (it)
+        it-&gt;cnt = cnt(it-&gt;l) + cnt(it-&gt;r) + 1;
+}
+
+void push (pitem it) {
+    if (it &amp;&amp; it-&gt;rev) {
+        it-&gt;rev = false;
+        swap (it-&gt;l, it-&gt;r);
+        if (it-&gt;l)  it-&gt;l-&gt;rev ^= true;
+        if (it-&gt;r)  it-&gt;r-&gt;rev ^= true;
+    }
+}
+
+void merge (pitem &amp; t, pitem l, pitem r) {
+    push (l);
+    push (r);
+    if (!l || !r)
+        t = l ? l : r;
+    else if (l-&gt;prior &gt; r-&gt;prior)
+        merge (l-&gt;r, l-&gt;r, r),  t = l;
+    else
+        merge (r-&gt;l, l, r-&gt;l),  t = r;
+    upd_cnt (t);
+}
+
+void split (pitem t, pitem &amp; l, pitem &amp; r, int key, int add = 0) {
+    if (!t)
+        return void( l = r = 0 );
+    push (t);
+    int cur_key = add + cnt(t-&gt;l);
+    if (key &lt;= cur_key)
+        split (t-&gt;l, l, t-&gt;l, key, add),  r = t;
+    else
+        split (t-&gt;r, t-&gt;r, r, key, add + 1 + cnt(t-&gt;l)),  l = t;
+    upd_cnt (t);
+}
+
+void reverse (pitem t, int l, int r) {
+    pitem t1, t2, t3;
+    split (t, t1, t2, l);
+    split (t2, t2, t3, r-l+1);
+    t2-&gt;rev ^= true;
+    merge (t, t1, t2);
+    merge (t, t, t3);
+}
+
+void output (pitem t) {
+    if (!t)  return;
+    push (t);
+    output (t-&gt;l);
+    printf (&quot;%d &quot;, t-&gt;value);
+    output (t-&gt;r);
+}
+</code></pre>
+
+<h2 id="literature">Literature</h2>
+<ul>
+<li><a href="https://www.cs.cmu.edu/~scandal/papers/treaps-spaa98.pdf">Blelloch, Reid-Miller "Fast Set Operations Using Treaps"</a></li>
+</ul>
+<h2 id="practice-problems">Practice Problems</h2>
+<ul>
+<li><a href="http://www.spoj.com/problems/ADAAPHID/">SPOJ - Ada and Aphids</a></li>
+<li><a href="http://www.spoj.com/problems/ADACROP/">SPOJ - Ada and Harvest</a></li>
+<li><a href="http://codeforces.com/contest/762/problem/E">Codeforces - Radio Stations</a></li>
+<li><a href="http://www.spoj.com/problems/COUNT1IT/">SPOJ - Ghost Town</a></li>
+<li><a href="http://www.spoj.com/problems/IITWPC4D/">SPOJ - Arrangement Validity</a></li>
+<li><a href="http://www.spoj.com/problems/ALLIN1/">SPOJ - All in One</a></li>
+<li><a href="http://codeforces.com/contest/847/problem/D">Codeforces - Dog Show</a></li>
+<li><a href="http://codeforces.com/contest/863/problem/D">Codeforces - Yet Another Array Queries Problem</a></li>
+<li><a href="http://www.spoj.com/problems/MEANARR/">SPOJ - Mean of Array</a></li>
+<li><a href="http://www.spoj.com/problems/TWIST/">SPOJ - TWIST</a></li>
+<li><a href="http://www.spoj.com/problems/KOILINE/">SPOJ - KOILINE</a></li>
+<li><a href="https://www.codechef.com/problems/PRESTIGE">CodeChef - The Prestige</a></li>
+</ul>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Dynamic_Programming/divide-and-conquer-dp/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Dynamic_Programming/divide-and-conquer-dp/" class="btn btn-xs btn-link">
+        Divide and Conquer DP
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../stack_queue_modification/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../stack_queue_modification/" class="btn btn-xs btn-link">
+        Stack queue modification
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

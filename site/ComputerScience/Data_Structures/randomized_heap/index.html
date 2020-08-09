@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/ComputerScience/Data_Structures/randomized_heap/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Randomized Heap - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Randomized Heap", url: "#_top", children: [
+              {title: "Data structure", url: "#data-structure" },
+              {title: "Complexity", url: "#complexity" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../segment_tree/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../segment_tree/" class="btn btn-xs btn-link">
+        Segment tree
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../fenwick/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../fenwick/" class="btn btn-xs btn-link">
+        Fenwick Tree
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="randomized-heap">Randomized Heap</h1>
+<p>A randomized heap is a heap that, through using randomization, allows to perform all operations in expected logarithmic time.</p>
+<p>A <strong>min heap</strong> is a binary tree in which the value of each vertex is less than or equal to the values of its children.
+Thus the minimum of the tree is always in the root vertex.</p>
+<p>A max heap can be defined in a similar way: by replacing less with greater.</p>
+<p>The default operations of a heap are:</p>
+<ul>
+<li>Adding a value</li>
+<li>Extracting the minimum</li>
+<li>Removing the minimum</li>
+<li>Merging two heaps (without deleting duplicates)</li>
+<li>Removing an arbitrary element (if its position in the tree is known)</li>
+</ul>
+<p>A randomized heap can perform all these operations in expected <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> time with a very simple implementation.</p>
+<h2 id="data-structure">Data structure</h2>
+<p>We can immediately describe the structure of the binary heap:</p>
+<p>```cpp randomized_heap_structure
+struct Tree {
+    int value;
+    Tree * l = nullptr;
+    Tree * r = nullptr;
+};</p>
+<pre><code>
+In the vertex we store a value.
+In addition we have pointers to the left and right children, which are point to null if the corresponding child doesn't exist.
+
+## Operations
+
+It is not difficult to see, that all operations can be reduced to a single one: **merging** two heaps into one.
+Indeed, adding a new value to the heap is equivalent to merging the heap with a heap consisting of a single vertex with that value.
+Finding a minimum doesn't require any operation at all - the minimum is simply the value at the root.
+Removing the minimum is equivalent to the result of merging the left and right children of the root vertex.
+And removing an arbitrary element is similar.
+We merge the children of the vertex and replace the vertex with the result of the merge.
+
+So we actually only need to implement the operation of merging two heaps.
+All other operations are trivially reduced to this operation.
+
+Let two heaps $T_1$ and $T_2$ be given.
+It is clear that the root of each of these heaps contains its minimum.
+So the root of the resulting heap will be the minimum of these two values.
+So we compare both values, and use the smaller one as the new root.
+Now we have to combine the children of the selected vertex with the remaining heap.
+For this we select one of the children, and merge it with the remaining heap.
+Thus we again have the operation of merging two heaps.
+Sooner of later this process will end (the number of such steps is limited by the sum of the heights of the two heaps)
+
+To achieve logarithmic complexity on average, we need to specify a method for choosing one of the two children so that the average path length is logarithmic.
+It is not difficult to guess, that we will make this decision **randomly**.
+Thus the implementation of the merging operation is as follows:
+
+```cpp randomized_heap_merge
+Tree* merge(Tree* t1, Tree* t2) {
+    if (!t1 || !t2)
+        return t1 ? t1 : t2;
+    if (t2-&gt;value &lt; t1-&gt;value)
+        swap(t1, t2);
+    if (rand() &amp; 1)
+        swap(t1-&gt;l, t1-&gt;r);
+    t1-&gt;l = merge(t1-&gt;l, t2);
+    return t1;
+}
+</code></pre>
+
+<p>Here first we check if one of the heaps is empty, then we don't need to perform any merge action at all.
+Otherwise we make the heap <code>t1</code> the one with the smaller value (by swapping <code>t1</code> and <code>t2</code> if necessary).
+We want to merge the left child of <code>t1</code> with <code>t2</code>, therefore we randomly swap the children of <code>t1</code>, and then perform the merge.</p>
+<h2 id="complexity">Complexity</h2>
+<p>We introduce the random variable <span><span class="MathJax_Preview">h(T)</span><script type="math/tex">h(T)</script></span> which will denote the <strong>length of the random path</strong> from the root to the leaf (the length in the number of edges).
+It is clear that the algorithm <code>merge</code> performs <span><span class="MathJax_Preview">O(h(T_1) + h(T_2))</span><script type="math/tex">O(h(T_1) + h(T_2))</script></span> steps.
+Therefore to understand the complexity of the operations, we must look into the random variable <span><span class="MathJax_Preview">h(T)</span><script type="math/tex">h(T)</script></span>.</p>
+<h3 id="expected-value">Expected value</h3>
+<p>We assume that the expectation <span><span class="MathJax_Preview">h(T)</span><script type="math/tex">h(T)</script></span> can be estimated from above by the logarithm of the number of vertices in the heap:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\mathbf{E} h(T) \le \log(n+1)</span><script type="math/tex">\mathbf{E} h(T) \le \log(n+1)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\mathbf{E} h(T) \le \log(n+1)</span><script type="math/tex">\mathbf{E} h(T) \le \log(n+1)</script></span></script></span></p>
+<p>This can be easily proven by induction.
+Let <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> and <span><span class="MathJax_Preview">R</span><script type="math/tex">R</script></span> be the left and the right subtrees of the root <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>, and <span><span class="MathJax_Preview">n_L</span><script type="math/tex">n_L</script></span> and <span><span class="MathJax_Preview">n_R</span><script type="math/tex">n_R</script></span> the number of vertices in them (<span><span class="MathJax_Preview">n = n_L + n_R + 1</span><script type="math/tex">n = n_L + n_R + 1</script></span>).</p>
+<p>The following shows the induction step:</p>
+<div>
+<div class="MathJax_Preview">\begin{align}
+\mathbf{E} h(T) &amp;= 1 + \frac{\mathbf{E} h(L) + \mathbf{E} h(R)}{2}
+\le 1 + \frac{\log(n_L + 1) \log(n_R + 1)}{2} \\\\
+&amp;= 1 + \log\sqrt{(n_L + 1)(n_R + 1)} = \log 2\sqrt{(n_L + 1)(n_R + 1)} \\\\
+&amp;\le \log \frac{2\left((n_L + 1) + (n_R + 1)\right)}{2} = \log(n_L + n_R + 2) = \log(n+1)
+\end{align}</div>
+<script type="math/tex; mode=display">\begin{align}
+\mathbf{E} h(T) &= 1 + \frac{\mathbf{E} h(L) + \mathbf{E} h(R)}{2}
+\le 1 + \frac{\log(n_L + 1) \log(n_R + 1)}{2} \\\\
+&= 1 + \log\sqrt{(n_L + 1)(n_R + 1)} = \log 2\sqrt{(n_L + 1)(n_R + 1)} \\\\
+&\le \log \frac{2\left((n_L + 1) + (n_R + 1)\right)}{2} = \log(n_L + n_R + 2) = \log(n+1)
+\end{align}</script>
+</div>
+<h3 id="exceeding-the-expected-value">Exceeding the expected value</h3>
+<p>Of course we are still not happy.
+The expected value of <span><span class="MathJax_Preview">h(T)</span><script type="math/tex">h(T)</script></span> doesn't say anything about the worst case.
+It is still possible that the paths from the root to the vertices is on average much greater than <span><span class="MathJax_Preview">\log(n + 1)</span><script type="math/tex">\log(n + 1)</script></span> for a specific tree.</p>
+<p>Let us prove that exceeding the expected value is indeed very small:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">P\\{h(T &gt; (c+1) \log n\\} &lt; \frac{1}{n^c}</span><script type="math/tex">P\\{h(T > (c+1) \log n\\} < \frac{1}{n^c}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">P\\{h(T &gt; (c+1) \log n\\} &lt; \frac{1}{n^c}</span><script type="math/tex">P\\{h(T > (c+1) \log n\\} < \frac{1}{n^c}</script></span></script></span>
+for any positive constant <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>.</p>
+<p>Here we denote by <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> the set of paths from the root of the heap to the leaves where the length exceeds <span><span class="MathJax_Preview">(c+1) \log n</span><script type="math/tex">(c+1) \log n</script></span>.
+Note that for any path <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> of length <span><span class="MathJax_Preview">|p|</span><script type="math/tex">|p|</script></span> the probability that it will be chosen as random path is <span><span class="MathJax_Preview">2^{-|p|}</span><script type="math/tex">2^{-|p|}</script></span>.
+Therefore we get:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">P\\{h(T &gt; (c+1) \log n\\} = \sum_{p \in P} 2^{-|p|} &lt; \sum_{p \in P} 2^{-(c+1) \log n} = |P| n^{-(c+1)} \le n^{-c}</span><script type="math/tex">P\\{h(T > (c+1) \log n\\} = \sum_{p \in P} 2^{-|p|} < \sum_{p \in P} 2^{-(c+1) \log n} = |P| n^{-(c+1)} \le n^{-c}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">P\\{h(T &gt; (c+1) \log n\\} = \sum_{p \in P} 2^{-|p|} &lt; \sum_{p \in P} 2^{-(c+1) \log n} = |P| n^{-(c+1)} \le n^{-c}</span><script type="math/tex">P\\{h(T > (c+1) \log n\\} = \sum_{p \in P} 2^{-|p|} < \sum_{p \in P} 2^{-(c+1) \log n} = |P| n^{-(c+1)} \le n^{-c}</script></span></script></span></p>
+<h3 id="complexity-of-the-algorithm">Complexity of the algorithm</h3>
+<p>Thus the algorithm <code>merge</code>, and hence all other operations expressed with it, can be performed in <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> on average.</p>
+<p>Moreover for any positive constant <span><span class="MathJax_Preview">\epsilon</span><script type="math/tex">\epsilon</script></span> there is a positive constant <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>, such that the probability that the operation will require more than <span><span class="MathJax_Preview">c \log n</span><script type="math/tex">c \log n</script></span> steps is less than <span><span class="MathJax_Preview">n^{-\epsilon}</span><script type="math/tex">n^{-\epsilon}</script></span> (in some sense this describes the worst case behavior of the algorithm).</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../segment_tree/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../segment_tree/" class="btn btn-xs btn-link">
+        Segment tree
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../fenwick/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../fenwick/" class="btn btn-xs btn-link">
+        Fenwick Tree
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
