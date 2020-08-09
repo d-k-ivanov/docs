@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/ComputerScience/Geometry/tangents-to-two-circles/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Finding common tangents to two circles - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Finding common tangents to two circles", url: "#_top", children: [
+              {title: "The number of common tangents", url: "#the-number-of-common-tangents" },
+              {title: "Algorithm", url: "#algorithm" },
+              {title: "Implementation", url: "#implementation" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Graph_Theory/01_bfs/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Graph_Theory/01_bfs/" class="btn btn-xs btn-link">
+        0-1 BFS
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../segments-intersection/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../segments-intersection/" class="btn btn-xs btn-link">
+        Finding Intersection of Two Segments
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="finding-common-tangents-to-two-circles">Finding common tangents to two circles</h1>
+<p>Given two circles. It is required to find all their common tangents, i.e. all such lines that touch both circles simultaneously.</p>
+<p>The described algorithm will also work in the case when one (or both) circles degenerate into points. Thus, this algorithm can also be used to find tangents to a circle passing through a given point.</p>
+<h2 id="the-number-of-common-tangents">The number of common tangents</h2>
+<p>The number of common tangents to two circles can be <strong>0,1,2,3,4</strong> and <strong>infinite</strong>.
+Look at the images for different cases.
+<center><img alt="&quot;Different cases of tangents common to two circles&quot;" src="/docs/data/cs/tangents-to-two-circles.png" /></center></p>
+<p>Here, we won't be considering <strong>degenerate</strong> cases, i.e <em>when the circles coincide (in this case they have infinitely many common tangents), or one circle lies inside the other (in this case they have no common tangents, or if the circles are tangent, there is one common tangent).</em></p>
+<p>In most cases, two circles have <strong>four</strong> common tangents.</p>
+<p>If the circles <strong>are tangent</strong> , then they will have three common tangents, but this can be understood as a degenerate case: as if the two tangents coincided.</p>
+<p>Moreover, the algorithm described below will work in the case when one or both circles have zero radius: in this case there will be, respectively, two or one common tangent.</p>
+<p>Summing up, we will always look for <strong>four tangents</strong> for all cases except infinite tangents case (The infinite tangents case needs to be handled separately and it is not discussed here). In degenerate cases, some of tangents will coincide, but nevertheless, these cases will also fit into the big picture.</p>
+<h2 id="algorithm">Algorithm</h2>
+<p>For the sake of simplicity of the algorithm, we will assume, without losing generality, that the center of the first circle has coordinates <span><span class="MathJax_Preview">(0, 0)</span><script type="math/tex">(0, 0)</script></span>. (If this is not the case, then this can be achieved by simply shifting the whole picture, and after finding a solution, by shifting the obtained straight lines back.)</p>
+<p>Denote <span><span class="MathJax_Preview">r_1</span><script type="math/tex">r_1</script></span> and <span><span class="MathJax_Preview">r_2</span><script type="math/tex">r_2</script></span> the radii of the first and second circles, and by <span><span class="MathJax_Preview">(v_x,v_y)</span><script type="math/tex">(v_x,v_y)</script></span> the coordinates of the center of the second circle and point <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> different from origin. (Note: we are not considering the case in which both the circles are same).</p>
+<p>To solve the problem, we approach it purely <strong>algebraically</strong> . We need to find all the lines of the form <span><span class="MathJax_Preview">ax + by + c = 0</span><script type="math/tex">ax + by + c = 0</script></span> that lie at a distance <span><span class="MathJax_Preview">r_1</span><script type="math/tex">r_1</script></span> from the origin of coordinates, and at a distance <span><span class="MathJax_Preview">r_2</span><script type="math/tex">r_2</script></span> from a point <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>. In addition, we impose the condition of normalization of the straight line: the sum of the squares of the coefficients and must be equal to one (this is necessary, otherwise the same straight line will correspond to infinitely many representations of the form <span><span class="MathJax_Preview">ax + by + c = 0</span><script type="math/tex">ax + by + c = 0</script></span>). Total we get such a system of equations for the desired <span><span class="MathJax_Preview">a, b, c</span><script type="math/tex">a, b, c</script></span>:</p>
+<div>
+<div class="MathJax_Preview">a^2 + b^2 = 1$$
+$$\mid a \cdot 0 + b \cdot 0 + c \mid = r_1$$
+$$\mid a \cdot v_x + b \cdot v_y + c \mid = r_2</div>
+<script type="math/tex; mode=display">a^2 + b^2 = 1$$
+$$\mid a \cdot 0 + b \cdot 0 + c \mid = r_1$$
+$$\mid a \cdot v_x + b \cdot v_y + c \mid = r_2</script>
+</div>
+<p>To get rid of the modulus, note that there are only four ways to open the modulus in this system. All these methods can be considered by the general case, if we understand the opening of the modulus as the fact that the coefficient on the right-hand side may be multiplied by -1. In other words, we turn to this system:</p>
+<div>
+<div class="MathJax_Preview">a^2 + b^2 = 1$$
+$$c = \pm r_1$$
+$$a \cdot v_x + b \cdot v_y + c = \pm r_2</div>
+<script type="math/tex; mode=display">a^2 + b^2 = 1$$
+$$c = \pm r_1$$
+$$a \cdot v_x + b \cdot v_y + c = \pm r_2</script>
+</div>
+<p>Entering the notation <span><span class="MathJax_Preview">d_1 = \pm r_1</span><script type="math/tex">d_1 = \pm r_1</script></span> and <span><span class="MathJax_Preview">d_2 = \pm r_2</span><script type="math/tex">d_2 = \pm r_2</script></span> , we come to the conclusion that the system must have four solutions:</p>
+<div>
+<div class="MathJax_Preview">a^2 + b^2 = 1$$
+$$c = d_1$$
+$$a \cdot v_x + b \cdot v_y + c = d_2</div>
+<script type="math/tex; mode=display">a^2 + b^2 = 1$$
+$$c = d_1$$
+$$a \cdot v_x + b \cdot v_y + c = d_2</script>
+</div>
+<p>The solution of this system is reduced to solving a quadratic equation. We will omit all the cumbersome calculations, and immediately give a ready answer:</p>
+<div>
+<div class="MathJax_Preview">a = {( d_2 - d_1 ) v_x \pm v_y \sqrt{v_x^2 + v_y^2-(d_2-d_1)^2} \over {v_x^2 + v_y^2} }$$
+$$b = {( d_2 - d_1 ) v_y \pm v_x \sqrt{v_x^2 + v_y^2-(d_2-d_1)^2} \over {v_x^2 + v_y^2} }$$
+$$c = d_1</div>
+<script type="math/tex; mode=display">a = {( d_2 - d_1 ) v_x \pm v_y \sqrt{v_x^2 + v_y^2-(d_2-d_1)^2} \over {v_x^2 + v_y^2} }$$
+$$b = {( d_2 - d_1 ) v_y \pm v_x \sqrt{v_x^2 + v_y^2-(d_2-d_1)^2} \over {v_x^2 + v_y^2} }$$
+$$c = d_1</script>
+</div>
+<p>Total we got eight solutions instead four. However, it is easy to understand where superfluous decisions arise: in fact, in the latter system, it is enough to take only one solution (for example, the first). In fact, the geometric meaning of what we take <span><span class="MathJax_Preview">\pm r_1</span><script type="math/tex">\pm r_1</script></span> and <span><span class="MathJax_Preview">\pm r_2</span><script type="math/tex">\pm r_2</script></span> is clear: we are actually sorting out which side of each circle there is a straight line. Therefore, the two methods that arise when solving the latter system are redundant: it is enough to choose one of the two solutions (only, of course, in all four cases, you must choose the same family of solutions).</p>
+<p>The last thing that we have not yet considered is <strong>how to shift the straight lines</strong> in the case when the first circle was not originally located at the origin. However, everything is simple here: it follows from the linearity of the equation of a straight line that the value <span><span class="MathJax_Preview">a \cdot x_0 + b \cdot y_0</span><script type="math/tex">a \cdot x_0 + b \cdot y_0</script></span> (where <span><span class="MathJax_Preview">x_0</span><script type="math/tex">x_0</script></span> and <span><span class="MathJax_Preview">y_0</span><script type="math/tex">y_0</script></span> are the coordinates of the original center of the first circle) must be subtracted from the coefficient <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>.</p>
+<h2 id="implementation">Implementation</h2>
+<p>We first describe all the necessary data structures and other auxiliary definitions:</p>
+<pre><code class="point-line-circle-struct">struct pt {
+    double x, y;
+
+    pt operator- (pt p) {
+        pt res = { x-p.x, y-p.y };
+        return res;
+    }
+};
+
+struct circle : pt {
+    double r;
+};
+
+struct line {
+    double a, b, c;
+};
+
+const double EPS = 1E-9;
+
+double sqr (double a) {
+    return a * a;
+}
+</code></pre>
+
+<p>Then the solution itself can be written this way (where the main function for the call is the second; and the first function is an auxiliary):</p>
+<pre><code class="find-tangents-to-two-circles">void tangents (pt c, double r1, double r2, vector&lt;line&gt; &amp; ans) {
+    double r = r2 - r1;
+    double z = sqr(c.x) + sqr(c.y);
+    double d = z - sqr(r);
+    if (d &lt; -EPS)  return;
+    d = sqrt (abs (d));
+    line l;
+    l.a = (c.x * r + c.y * d) / z;
+    l.b = (c.y * r - c.x * d) / z;
+    l.c = r1;
+    ans.push_back (l);
+}
+
+vector&lt;line&gt; tangents (circle a, circle b) {
+    vector&lt;line&gt; ans;
+    for (int i=-1; i&lt;=1; i+=2)
+        for (int j=-1; j&lt;=1; j+=2)
+            tangents (b-a, a.r*i, b.r*j, ans);
+    for (size_t i=0; i&lt;ans.size(); ++i)
+        ans[i].c -= ans[i].a * a.x + ans[i].b * a.y;
+    return ans;
+}
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Graph_Theory/01_bfs/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Graph_Theory/01_bfs/" class="btn btn-xs btn-link">
+        0-1 BFS
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../segments-intersection/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../segments-intersection/" class="btn btn-xs btn-link">
+        Finding Intersection of Two Segments
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
