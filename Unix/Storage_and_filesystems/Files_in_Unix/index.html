@@ -49,7 +49,7 @@
           ]},
           {title: "Make dirs with indexes", url: "#make-dirs-with-indexes", children: [
           ]},
-          {title: "Create bunch of files from list in a file:", url: "#create-bunch-of-files-from-list-in-a-file", children: [
+          {title: "Create bunch of files from list in a file", url: "#create-bunch-of-files-from-list-in-a-file", children: [
           ]},
           {title: "Move bunch of folders", url: "#move-bunch-of-folders", children: [
           ]},
@@ -159,7 +159,7 @@ NF&amp;&amp;f{ print s&quot;/&quot;$0 }'
 <pre><code class="bash">for i in 0{1..9} {10..39}; do mkdir delete-$i; cd delete-$i; touch del-file-$i; cd ..; done
 </code></pre>
 
-<h3 id="create-bunch-of-files-from-list-in-a-file">Create bunch of files from list in a file:</h3>
+<h3 id="create-bunch-of-files-from-list-in-a-file">Create bunch of files from list in a file</h3>
 <pre><code class="bash"># Predefined number of records
 head -&lt;number_of_lines&gt; inventory | awk '{ print $1 }' | xargs -I '{}' touch &lt;destination_folder&gt;/{}
 #E.g. head -10 inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}
@@ -208,7 +208,7 @@ archive.tar.gz.03
 
 <h3 id="joining-all-similarly-prefixed-files">Joining all similarly prefixed files</h3>
 <p>For example, "_tar.gz.1of2" and "_tar.gz.2of2".</p>
-<pre><code># Unix
+<pre><code class="bash"># Unix
 cat &quot;FileName_tar.gz.1of3&quot; &quot;FileName_tar.gz.2of3&quot; &quot;FileName_tar.gz.3of3&quot; &gt; &quot;FileName.tar.gz&quot;
 # Windows
 copy /b &quot;FileName_tar.gz.1of3&quot;+&quot;FileName_tar.gz.2of3&quot;+&quot;FileName_tar.gz.3of3&quot; &quot;FileName.tar.gz&quot;

@@ -33,7 +33,7 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Scan fiber channel:", url: "#_top", children: [
+          {title: "Scan fiber channel", url: "#_top", children: [
           ]},
           {title: "Fetch device vendor and model", url: "#fetch-device-vendor-and-model", children: [
           ]},
@@ -45,7 +45,7 @@
           ]},
           {title: "Flush multipath", url: "#flush-multipath", children: [
           ]},
-          {title: "Delete the drives.", url: "#delete-the-drives", children: [
+          {title: "Delete the drives", url: "#delete-the-drives", children: [
           ]},
         ];
 
@@ -102,7 +102,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="scan-fiber-channel">Scan fiber channel:</h3>
+    <h3 id="scan-fiber-channel">Scan fiber channel</h3>
 <pre><code class="bash">for host in `ls /sys/class/fc_host`; do
 echo &quot;- - -&quot; &gt; /sys/class/scsi_host/${HOST}/scan
 done
@@ -130,8 +130,8 @@ multipath -l &lt;mpathalias&gt;
 <pre><code class="bash">multipath -F
 </code></pre>
 
-<h3 id="delete-the-drives">Delete the drives.</h3>
-<pre><code class="bash">echo 1 &gt; /sys/block/sdX/device/delete  
+<h3 id="delete-the-drives">Delete the drives</h3>
+<pre><code class="bash">echo 1 &gt; /sys/block/sdX/device/delete
 </code></pre>
 
   <br>

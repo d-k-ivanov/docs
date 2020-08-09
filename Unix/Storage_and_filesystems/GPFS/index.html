@@ -33,9 +33,7 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Instalaltion on AIX", url: "#_top", children: [
-          ]},
-          {title: "Creating cluster", url: "#creating-cluster", children: [
+          {title: "Creating cluster", url: "#_top", children: [
           ]},
           {title: "Create GPFS mirror partition", url: "#create-gpfs-mirror-partition", children: [
           ]},
@@ -100,7 +98,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="instalaltion-on-aix">Instalaltion on AIX</h3>
+    <p>### Instalaltion on AIX\</p>
 <pre><code class="bash"># on each node:
 cd /&lt;path_to_gpfs_base_package&gt;/base-3-5/
 inutoc .
@@ -156,18 +154,18 @@ df -g
 </code></pre>
 
 <h3 id="autostart-gpfs">Autostart GPFS</h3>
-<pre><code>mmchconfig autoload=yes
+<pre><code class="sh">mmchconfig autoload=yes
 </code></pre>
 
 <h3 id="increase-inodes">Increase Inodes</h3>
-<pre><code>mmchfs &lt;fsname&gt; -F 1M
+<pre><code class="sh">mmchfs &lt;fsname&gt; -F 1M
 </code></pre>
 
 <h3 id="change-hostname-on-gpfs-nodes">Change hostname on GPFS nodes</h3>
 <ul>
 <li><em>[Preface]</em></li>
 </ul>
-<pre><code>#Old names:
+<pre><code class="sh">#Old names:
 10.10.10.10     OLD-SRV-NAME-01
 10.10.10.10     OLD-SRV-NAME-02
 #New names:
@@ -180,20 +178,20 @@ df -g
 <li><em>[Preface]</em> Stop all services which use GPFS</li>
 <li><em>[On each node]</em> add new names to /etc/hosts (old ones keep too)</li>
 </ul>
-<pre><code>10.10.10.10     NEW-SRV-NAME-01
+<pre><code class="sh">10.10.10.10     NEW-SRV-NAME-01
 10.10.10.11     NEW-SRV-NAME-02
 </code></pre>
 
 <ul>
 <li><em>[On master node]</em> Shut down GPFS-cluster</li>
 </ul>
-<pre><code>mmshutdown -a
+<pre><code class="sh">mmshutdown -a
 </code></pre>
 
 <ul>
 <li><em>[On master node]</em> Run command for configuration changing</li>
 </ul>
-<pre><code># Change interface names to names placed after &quot;-N&quot; key
+<pre><code class="sh"># Change interface names to names placed after &quot;-N&quot; key
 mmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx1 -N NEW-SRV-NAME-01
 mmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx2 -N NEW-SRV-NAME-02
 </code></pre>
@@ -201,13 +199,13 @@ mmchnode --admin-interface=OLD-SRV-NAME-01 --daemon-interface=prodctx2 -N NEW-SR
 <ul>
 <li><em>[On master node]</em> Start GPFS-cluster</li>
 </ul>
-<pre><code>mmstartup -a
+<pre><code class="sh">mmstartup -a
 </code></pre>
 
 <ul>
 <li><em>[On master node]</em> Check cluster details and make sure that names were changed</li>
 </ul>
-<pre><code>mmlscluster
+<pre><code class="sh">mmlscluster
 mmgetstate -a
 </code></pre>
 
@@ -215,7 +213,7 @@ mmgetstate -a
 <li><em>[On each node]</em> If everything right remove old records from /etc/hosts</li>
 <li><em>[On maser node]</em> Recheck than everything still OK</li>
 </ul>
-<pre><code>mmshutdown -a
+<pre><code class="sh">mmshutdown -a
 mmstartup -a
 mmlscluster
 mmgetstate -a
