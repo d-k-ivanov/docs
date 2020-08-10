@@ -99,95 +99,84 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <h1 id="chinese-remainder-theorem">Chinese Remainder Theorem</h1>
 <p>The Chinese Remainder Theorem (which will be referred to as CRT in the rest of this article) was discovered by Chinese mathematician Sun Zi.</p>
 <h2 id="formulation">Formulation</h2>
-<p>Let <span><span class="MathJax_Preview">p = p_1 p_2 \cdots p_k</span><script type="math/tex">p = p_1 p_2 \cdots p_k</script></span>, where <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span> are pairwise relatively prime. In addition to <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span>, we are also given a set of congruence equations
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{align}
+<p>Let <span><span class="MathJax_Preview">p = p_1 p_2 \cdots p_k</span><script type="math/tex">p = p_1 p_2 \cdots p_k</script></span>, where <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span> are pairwise relatively prime. In addition to <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span>, we are also given a set of congruence equations</p>
+<div>
+<div class="MathJax_Preview">\begin{align}
     a &amp;\equiv a_1 \pmod{p_1} \\\\
     a &amp;\equiv a_2 \pmod{p_2} \\\\
       &amp;\ldots \\\\
     a &amp;\equiv a_k \pmod{p_k}
-\end{align}</span><script type="math/tex">\begin{align}
+\end{align}</div>
+<script type="math/tex; mode=display">\begin{align}
     a &\equiv a_1 \pmod{p_1} \\\\
     a &\equiv a_2 \pmod{p_2} \\\\
       &\ldots \\\\
     a &\equiv a_k \pmod{p_k}
-\end{align}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\begin{align}
-    a &amp;\equiv a_1 \pmod{p_1} \\\\
-    a &amp;\equiv a_2 \pmod{p_2} \\\\
-      &amp;\ldots \\\\
-    a &amp;\equiv a_k \pmod{p_k}
-\end{align}</span><script type="math/tex">\begin{align}
-    a &\equiv a_1 \pmod{p_1} \\\\
-    a &\equiv a_2 \pmod{p_2} \\\\
-      &\ldots \\\\
-    a &\equiv a_k \pmod{p_k}
-\end{align}</script></span></script></span>
-where <span><span class="MathJax_Preview">a_i</span><script type="math/tex">a_i</script></span> are some given constants. The original form of CRT then states that the given set of congruence equations always has <em>one and exactly one</em> solution modulo <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>.</p>
+\end{align}</script>
+</div>
+<p>where <span><span class="MathJax_Preview">a_i</span><script type="math/tex">a_i</script></span> are some given constants. The original form of CRT then states that the given set of congruence equations always has <em>one and exactly one</em> solution modulo <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>.</p>
 <h3 id="corollary">Corollary</h3>
-<p>A consequence of the CRT is that the equation
-$$
-    x \equiv a \pmod{p}
-$$
-is equivalent to the system of equations
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{align}
+<p>A consequence of the CRT is that the equation</p>
+<div>
+<div class="MathJax_Preview"> x \equiv a \pmod{p} </div>
+<script type="math/tex; mode=display"> x \equiv a \pmod{p} </script>
+</div>
+<p>is equivalent to the system of equations</p>
+<div>
+<div class="MathJax_Preview">\begin{align}
     x &amp;\equiv a \pmod{p_1} \\\\
       &amp;\ldots \\\\
     x &amp;\equiv a \pmod{p_k}
-\end{align}</span><script type="math/tex">\begin{align}
+\end{align}</div>
+<script type="math/tex; mode=display">\begin{align}
     x &\equiv a \pmod{p_1} \\\\
       &\ldots \\\\
     x &\equiv a \pmod{p_k}
-\end{align}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\begin{align}
-    x &amp;\equiv a \pmod{p_1} \\\\
-      &amp;\ldots \\\\
-    x &amp;\equiv a \pmod{p_k}
-\end{align}</span><script type="math/tex">\begin{align}
-    x &\equiv a \pmod{p_1} \\\\
-      &\ldots \\\\
-    x &\equiv a \pmod{p_k}
-\end{align}</script></span></script></span>
-(As above, assume that <span><span class="MathJax_Preview">p = p_1 p_2 \cdots p_k</span><script type="math/tex">p = p_1 p_2 \cdots p_k</script></span> and <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span> are pairwise relatively prime).</p>
+\end{align}</script>
+</div>
+<p>(As above, assume that <span><span class="MathJax_Preview">p = p_1 p_2 \cdots p_k</span><script type="math/tex">p = p_1 p_2 \cdots p_k</script></span> and <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span> are pairwise relatively prime).</p>
 <h2 id="garners-algorithm">Garner's Algorithm</h2>
 <p>Another consequence of the CRT is that we can represent big numbers using an array of small integers. For example, let <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> be the product of the first <span><span class="MathJax_Preview">1000</span><script type="math/tex">1000</script></span> primes. From calculations we can see that <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> has around <span><span class="MathJax_Preview">3000</span><script type="math/tex">3000</script></span> digits.</p>
-<p>Any number <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> less than <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> can be represented as an array <span><span class="MathJax_Preview">a_1, \ldots, a_k</span><script type="math/tex">a_1, \ldots, a_k</script></span>, where <span><span class="MathJax_Preview">a_i \equiv a \pmod{p_i}</span><script type="math/tex">a_i \equiv a \pmod{p_i}</script></span>. But to do this we obviously need to know how to get back the number <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> from its representation. In this section, we discuss Garner's Algorithm, which can be used for this purpose. We seek a representation on the form
-$$
-    a = x_1 + x_2 p_1 + x_3 p_1 p_2 + \ldots + x_k p_1 \ldots p_{k-1}
-$$
-which is called the mixed radix representation of <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>.
+<p>Any number <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> less than <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> can be represented as an array <span><span class="MathJax_Preview">a_1, \ldots, a_k</span><script type="math/tex">a_1, \ldots, a_k</script></span>, where <span><span class="MathJax_Preview">a_i \equiv a \pmod{p_i}</span><script type="math/tex">a_i \equiv a \pmod{p_i}</script></span>. But to do this we obviously need to know how to get back the number <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> from its representation. In this section, we discuss Garner's Algorithm, which can be used for this purpose. We seek a representation on the form</p>
+<div>
+<div class="MathJax_Preview"> a = x_1 + x_2 p_1 + x_3 p_1 p_2 + \ldots + x_k p_1 \ldots p_{k-1} </div>
+<script type="math/tex; mode=display"> a = x_1 + x_2 p_1 + x_3 p_1 p_2 + \ldots + x_k p_1 \ldots p_{k-1} </script>
+</div>
+<p>which is called the mixed radix representation of <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>.
 Garner's algorithm computes the coefficients <span><span class="MathJax_Preview">x_1, \ldots, x_k</span><script type="math/tex">x_1, \ldots, x_k</script></span>.</p>
-<p>Let <span><span class="MathJax_Preview">r_{ij}</span><script type="math/tex">r_{ij}</script></span> denote the inverse of <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span> modulo <span><span class="MathJax_Preview">p_j</span><script type="math/tex">p_j</script></span>
-$$
-    r_{ij} = (p_i)^{-1} \pmod{p_j}
-$$
-which can be found using the algorithm described in <a href="/docs/#Algorithms/algebra/module-inverse/">Modular Inverse</a>. Substituting <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> from the mixed radix representation into the first congruence equation we obtain
-$$
-    a_1 \equiv x_1 \pmod{p_1}.
-$$
-Substituting into the second equation yields
-$$
-    a_2 \equiv x_1 + x_2 p_1 \pmod{p_2}.
-$$
-which can be rewritten by subtracting <span><span class="MathJax_Preview">x_1</span><script type="math/tex">x_1</script></span> and dividing by <span><span class="MathJax_Preview">p_1</span><script type="math/tex">p_1</script></span> to get
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{array}{rclr}
-    a_2 - x_1 &amp;\equiv&amp; x_2 p_1 &amp;\pmod{p_2} \\\\
-    (a_2 - x_1) r_{12} &amp;\equiv&amp; x_2 &amp;\pmod{p_2} \\\\
-    x_2 &amp;\equiv&amp; (a_2 - x_1) r_{12} &amp;\pmod{p_2}
-\end{array}</span><script type="math/tex">\begin{array}{rclr}
-    a_2 - x_1 &\equiv& x_2 p_1 &\pmod{p_2} \\\\
-    (a_2 - x_1) r_{12} &\equiv& x_2 &\pmod{p_2} \\\\
-    x_2 &\equiv& (a_2 - x_1) r_{12} &\pmod{p_2}
-\end{array}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\begin{array}{rclr}
-    a_2 - x_1 &amp;\equiv&amp; x_2 p_1 &amp;\pmod{p_2} \\\\
-    (a_2 - x_1) r_{12} &amp;\equiv&amp; x_2 &amp;\pmod{p_2} \\\\
-    x_2 &amp;\equiv&amp; (a_2 - x_1) r_{12} &amp;\pmod{p_2}
-\end{array}</span><script type="math/tex">\begin{array}{rclr}
-    a_2 - x_1 &\equiv& x_2 p_1 &\pmod{p_2} \\\\
-    (a_2 - x_1) r_{12} &\equiv& x_2 &\pmod{p_2} \\\\
-    x_2 &\equiv& (a_2 - x_1) r_{12} &\pmod{p_2}
-\end{array}</script></span></script></span>
-Similarly we get that
-$$
-    x_3 \equiv ((a_3 - x_1) r_{13} - x_2) r_{23} \pmod{p_3}.
-$$</p>
+<p>Let <span><span class="MathJax_Preview">r_{ij}</span><script type="math/tex">r_{ij}</script></span> denote the inverse of <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span> modulo <span><span class="MathJax_Preview">p_j</span><script type="math/tex">p_j</script></span></p>
+<div>
+<div class="MathJax_Preview"> r_{ij} = (p_i)^{-1} \pmod{p_j} </div>
+<script type="math/tex; mode=display"> r_{ij} = (p_i)^{-1} \pmod{p_j} </script>
+</div>
+<p>which can be found using the algorithm described in <a href="/docs/#Algorithms/algebra/module-inverse/">Modular Inverse</a>. Substituting <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> from the mixed radix representation into the first congruence equation we obtain</p>
+<div>
+<div class="MathJax_Preview"> a_1 \equiv x_1 \pmod{p_1} </div>
+<script type="math/tex; mode=display"> a_1 \equiv x_1 \pmod{p_1} </script>
+</div>
+<p>Substituting into the second equation yields</p>
+<div>
+<div class="MathJax_Preview"> a_2 \equiv x_1 + x_2 p_1 \pmod{p_2}. </div>
+<script type="math/tex; mode=display"> a_2 \equiv x_1 + x_2 p_1 \pmod{p_2}. </script>
+</div>
+<p>which can be rewritten by subtracting <span><span class="MathJax_Preview">x_1</span><script type="math/tex">x_1</script></span> and dividing by <span><span class="MathJax_Preview">p_1</span><script type="math/tex">p_1</script></span> to get</p>
+<div>
+<div class="MathJax_Preview">\begin{array}{rclr}
+a_2 - x_1 &amp;\equiv&amp; x_2 p_1 &amp;\pmod{p_2} \\\\
+(a_2 - x_1) r_{12} &amp;\equiv&amp; x_2 &amp;\pmod{p_2} \\\\
+x_2 &amp;\equiv&amp; (a_2 - x_1) r_{12} &amp;\pmod{p_2}
+\end{array}</div>
+<script type="math/tex; mode=display">\begin{array}{rclr}
+a_2 - x_1 &\equiv& x_2 p_1 &\pmod{p_2} \\\\
+(a_2 - x_1) r_{12} &\equiv& x_2 &\pmod{p_2} \\\\
+x_2 &\equiv& (a_2 - x_1) r_{12} &\pmod{p_2}
+\end{array}</script>
+</div>
+<p>Similarly we get that</p>
+<div>
+<div class="MathJax_Preview"> x_3 \equiv ((a_3 - x_1) r_{13} - x_2) r_{23} \pmod{p_3} </div>
+<script type="math/tex; mode=display"> x_3 \equiv ((a_3 - x_1) r_{13} - x_2) r_{23} \pmod{p_3} </script>
+</div>
 <p>Now, we can clearly see an emerging pattern, which can be expressed by the following code:</p>
 <pre><code class="cpp">for (int i = 0; i &lt; k; ++i) {
     x[i] = a[i];
@@ -203,12 +192,8 @@ $$</p>
 
 <p>So we learned how to calculate coefficients <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> in <span><span class="MathJax_Preview">O(k^2)</span><script type="math/tex">O(k^2)</script></span> time. The number <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> can now be calculated using the previously mentioned formula</p>
 <div>
-<div class="MathJax_Preview">
-    a = x_1 + x_2 p_1 + x_3 p_1 p_2 + \ldots + x_k p_1 \ldots p_{k-1}
-</div>
-<script type="math/tex; mode=display">
-    a = x_1 + x_2 p_1 + x_3 p_1 p_2 + \ldots + x_k p_1 \ldots p_{k-1}
-</script>
+<div class="MathJax_Preview"> a = x_1 + x_2 p_1 + x_3 p_1 p_2 + \ldots + x_k p_1 \ldots p_{k-1} </div>
+<script type="math/tex; mode=display"> a = x_1 + x_2 p_1 + x_3 p_1 p_2 + \ldots + x_k p_1 \ldots p_{k-1} </script>
 </div>
 <p>It is worth noting that in practice, we almost always need to compute the answer using Big Integers, but the coefficients <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> can usually be calculated using built-in types, and therefore Garner's algorithm is very efficient.</p>
 <h2 id="implementation-of-garners-algorithm">Implementation of Garner's Algorithm</h2>
