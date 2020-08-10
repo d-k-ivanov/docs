@@ -15,11 +15,12 @@ to other problems which we will discuss below.
 Raising $a$ to the power of $n$ is expressed naively as multiplication by $a$ done $n - 1$ times:
 $a^{n} = a \cdot a \cdot \ldots \cdot a$. However, this approach is not practical for large $a$ or $n$.
 
-$a^{b+c} = a^b \cdot a^c$ and $a^{2b} = a^b \cdot a^b = (a^b)^2$.
+$a^{b+c} = a^b \cdot a^c$ and $a^{2b} = a^b \cdot a^b = (a^b)^2$
 
 The idea of binary exponentiation is, that we split the work using the binary representation of the exponent.
 
 Let's write $n$ in base 2, for example:
+
 $$3^{13} = 3^{1101_2} = 3^8 \cdot 3^4 \cdot 3^1$$
 
 Since the number $n$ has exactly $\lfloor \log_2 n \rfloor + 1$ digits in base 2, we only need to perform $O(\log n)$ multiplications, if we know the powers $a^1, a^2, a^4, a^8, \dots, a^{\lfloor \log n \rfloor}$.
@@ -35,6 +36,7 @@ $$\begin{align}
 \end{align}$$
 
 So to get the final answer for $3^{13}$, we only need to multiply three of them (skipping $3^2$ because the corresponding bit in $n$ is not set):
+
 $3^{13} = 6561 \cdot 81 \cdot 3 = 1594323$
 
 The final complexity of this algorithm is $O(\log n)$: we have to compute $\log n$ powers of $a$, and then have to do at most $\log n$ multiplications to get the final answer from them.

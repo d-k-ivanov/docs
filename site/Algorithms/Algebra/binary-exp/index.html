@@ -109,10 +109,13 @@ to other problems which we will discuss below.</p>
 <h2 id="algorithm">Algorithm</h2>
 <p>Raising <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> to the power of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is expressed naively as multiplication by <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> done <span><span class="MathJax_Preview">n - 1</span><script type="math/tex">n - 1</script></span> times:
 <span><span class="MathJax_Preview">a^{n} = a \cdot a \cdot \ldots \cdot a</span><script type="math/tex">a^{n} = a \cdot a \cdot \ldots \cdot a</script></span>. However, this approach is not practical for large <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> or <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.</p>
-<p><span><span class="MathJax_Preview">a^{b+c} = a^b \cdot a^c</span><script type="math/tex">a^{b+c} = a^b \cdot a^c</script></span> and <span><span class="MathJax_Preview">a^{2b} = a^b \cdot a^b = (a^b)^2</span><script type="math/tex">a^{2b} = a^b \cdot a^b = (a^b)^2</script></span>.</p>
+<p><span><span class="MathJax_Preview">a^{b+c} = a^b \cdot a^c</span><script type="math/tex">a^{b+c} = a^b \cdot a^c</script></span> and <span><span class="MathJax_Preview">a^{2b} = a^b \cdot a^b = (a^b)^2</span><script type="math/tex">a^{2b} = a^b \cdot a^b = (a^b)^2</script></span></p>
 <p>The idea of binary exponentiation is, that we split the work using the binary representation of the exponent.</p>
-<p>Let's write <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> in base 2, for example:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">3^{13} = 3^{1101_2} = 3^8 \cdot 3^4 \cdot 3^1</span><script type="math/tex">3^{13} = 3^{1101_2} = 3^8 \cdot 3^4 \cdot 3^1</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">3^{13} = 3^{1101_2} = 3^8 \cdot 3^4 \cdot 3^1</span><script type="math/tex">3^{13} = 3^{1101_2} = 3^8 \cdot 3^4 \cdot 3^1</script></span></script></span></p>
+<p>Let's write <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> in base 2, for example:</p>
+<div>
+<div class="MathJax_Preview">3^{13} = 3^{1101_2} = 3^8 \cdot 3^4 \cdot 3^1</div>
+<script type="math/tex; mode=display">3^{13} = 3^{1101_2} = 3^8 \cdot 3^4 \cdot 3^1</script>
+</div>
 <p>Since the number <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> has exactly <span><span class="MathJax_Preview">\lfloor \log_2 n \rfloor + 1</span><script type="math/tex">\lfloor \log_2 n \rfloor + 1</script></span> digits in base 2, we only need to perform <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> multiplications, if we know the powers <span><span class="MathJax_Preview">a^1, a^2, a^4, a^8, \dots, a^{\lfloor \log n \rfloor}</span><script type="math/tex">a^1, a^2, a^4, a^8, \dots, a^{\lfloor \log n \rfloor}</script></span>.</p>
 <p>So we only need to know a fast way to compute those.
 Luckily this is very easy, since an element in the sequence is just the square of the previous element.</p>
@@ -130,8 +133,8 @@ Luckily this is very easy, since an element in the sequence is just the square o
 3^8 &= \left(3^4\right)^2 = 81^2 = 6561
 \end{align}</script>
 </div>
-<p>So to get the final answer for <span><span class="MathJax_Preview">3^{13}</span><script type="math/tex">3^{13}</script></span>, we only need to multiply three of them (skipping <span><span class="MathJax_Preview">3^2</span><script type="math/tex">3^2</script></span> because the corresponding bit in <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is not set):
-<span><span class="MathJax_Preview">3^{13} = 6561 \cdot 81 \cdot 3 = 1594323</span><script type="math/tex">3^{13} = 6561 \cdot 81 \cdot 3 = 1594323</script></span></p>
+<p>So to get the final answer for <span><span class="MathJax_Preview">3^{13}</span><script type="math/tex">3^{13}</script></span>, we only need to multiply three of them (skipping <span><span class="MathJax_Preview">3^2</span><script type="math/tex">3^2</script></span> because the corresponding bit in <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is not set):</p>
+<p><span><span class="MathJax_Preview">3^{13} = 6561 \cdot 81 \cdot 3 = 1594323</span><script type="math/tex">3^{13} = 6561 \cdot 81 \cdot 3 = 1594323</script></span></p>
 <p>The final complexity of this algorithm is <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>: we have to compute <span><span class="MathJax_Preview">\log n</span><script type="math/tex">\log n</script></span> powers of <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>, and then have to do at most <span><span class="MathJax_Preview">\log n</span><script type="math/tex">\log n</script></span> multiplications to get the final answer from them.</p>
 <p>The following recursive approach expresses the same idea:</p>
 <div>
