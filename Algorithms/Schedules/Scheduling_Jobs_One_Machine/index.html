@@ -97,8 +97,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <h1 id="scheduling-jobs-one-machine">Scheduling Jobs: One Machine</h1>
 <p>This task is about finding an optimal schedule for <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> jobs on a single machine, if the job <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> can be processed in <span><span class="MathJax_Preview">t_i</span><script type="math/tex">t_i</script></span> time, but for the <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> seconds waiting before processing the job a penalty of <span><span class="MathJax_Preview">f_i(t)</span><script type="math/tex">f_i(t)</script></span> has to be paid.</p>
 <p>Thus the task asks to find such an permutation of the jobs, so that the total penalty is minimal.
-If we denote by <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span> the permutation of the jobs (<span><span class="MathJax_Preview">\pi_1</span><script type="math/tex">\pi_1</script></span> is the first processed item, <span><span class="MathJax_Preview">\pi_2</span><script type="math/tex">\pi_2</script></span> the second, etc.), then the total penalty is equal to:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">F(\pi) = f_{\pi_1}(0) + f_{\pi_2}(t_{\pi_1}) + f_{\pi_3}(t_{\pi_1} + t_{\pi_2}) + \dots + f_{\pi_n}\left(\sum_{i=1}^{n-1} t_{\pi_i}\right)</span><script type="math/tex">F(\pi) = f_{\pi_1}(0) + f_{\pi_2}(t_{\pi_1}) + f_{\pi_3}(t_{\pi_1} + t_{\pi_2}) + \dots + f_{\pi_n}\left(\sum_{i=1}^{n-1} t_{\pi_i}\right)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">F(\pi) = f_{\pi_1}(0) + f_{\pi_2}(t_{\pi_1}) + f_{\pi_3}(t_{\pi_1} + t_{\pi_2}) + \dots + f_{\pi_n}\left(\sum_{i=1}^{n-1} t_{\pi_i}\right)</span><script type="math/tex">F(\pi) = f_{\pi_1}(0) + f_{\pi_2}(t_{\pi_1}) + f_{\pi_3}(t_{\pi_1} + t_{\pi_2}) + \dots + f_{\pi_n}\left(\sum_{i=1}^{n-1} t_{\pi_i}\right)</script></span></script></span></p>
+If we denote by <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span> the permutation of the jobs (<span><span class="MathJax_Preview">\pi_1</span><script type="math/tex">\pi_1</script></span> is the first processed item, <span><span class="MathJax_Preview">\pi_2</span><script type="math/tex">\pi_2</script></span> the second, etc.), then the total penalty is equal to:</p>
+<div>
+<div class="MathJax_Preview">F(\pi) = f_{\pi_1}(0) + f_{\pi_2}(t_{\pi_1}) + f_{\pi_3}(t_{\pi_1} + t_{\pi_2}) + \dots + f_{\pi_n}\left(\sum_{i=1}^{n-1} t_{\pi_i}\right)</div>
+<script type="math/tex; mode=display">F(\pi) = f_{\pi_1}(0) + f_{\pi_2}(t_{\pi_1}) + f_{\pi_3}(t_{\pi_1} + t_{\pi_2}) + \dots + f_{\pi_n}\left(\sum_{i=1}^{n-1} t_{\pi_i}\right)</script>
+</div>
 <h2 id="solutions-for-special-cases">Solutions for special cases</h2>
 <h3 id="linear-penalty-functions">Linear penalty functions</h3>
 <p>First we will solve the problem in the case that all penalty functions <span><span class="MathJax_Preview">f_i(t)</span><script type="math/tex">f_i(t)</script></span> are linear, i.e. they have the form <span><span class="MathJax_Preview">f_i(t) = c_i \cdot t</span><script type="math/tex">f_i(t) = c_i \cdot t</script></span>, where <span><span class="MathJax_Preview">c_i</span><script type="math/tex">c_i</script></span> is a non-negative number.
@@ -106,39 +109,49 @@ Note that these functions don't have a constant term.
 Otherwise we can sum up all constant term, and resolve the problem without them.</p>
 <p>Let us fixate some permutation <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>, and take an index <span><span class="MathJax_Preview">i = 1 \dots n-1</span><script type="math/tex">i = 1 \dots n-1</script></span>.
 Let the permutation <span><span class="MathJax_Preview">\pi'</span><script type="math/tex">\pi'</script></span> be equal to the permutation <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span> with the elements <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">i+1</span><script type="math/tex">i+1</script></span> switched.
-Let's see how much the penalty changed.
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">F(\pi') - F(\pi) =</span><script type="math/tex">F(\pi') - F(\pi) =</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">F(\pi') - F(\pi) =</span><script type="math/tex">F(\pi') - F(\pi) =</script></span></script></span>
-It is easy to see that the changes only occur in the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>-th and <span><span class="MathJax_Preview">(i+1)</span><script type="math/tex">(i+1)</script></span>-th summands:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{align}
+Let's see how much the penalty changed.</p>
+<div>
+<div class="MathJax_Preview">F(\pi') - F(\pi) =</div>
+<script type="math/tex; mode=display">F(\pi') - F(\pi) =</script>
+</div>
+<p>It is easy to see that the changes only occur in the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>-th and <span><span class="MathJax_Preview">(i+1)</span><script type="math/tex">(i+1)</script></span>-th summands:</p>
+<div>
+<div class="MathJax_Preview">\begin{align}
 &amp;= c_{\pi_i'} \cdot \sum_{k = 1}^{i-1} t_{\pi_k'} + c_{\pi_{i+1}'} \cdot \sum_{k = 1}^i t_{\pi_k'} - c_{\pi_i} \cdot \sum_{k = 1}^{i-1} t_{\pi_k} - c_{\pi_{i+1}} \cdot \sum_{k = 1}^i t_{\pi_k} \\\\
 &amp;= c_{\pi_{i+1}} \cdot \sum_{k = 1}^{i-1} t_{\pi_k'} + c_{\pi_i} \cdot \sum_{k = 1}^i t_{\pi_k'} - c_{\pi_i} \cdot \sum_{k = 1}^{i-1} t_{\pi_k} - c_{\pi_{i+1}} \cdot \sum_{k = 1}^i t_{\pi_k} \\\\
 &amp;= c_{\pi_i} \cdot t_{\pi_{i+1}} - c_{\pi_{i+1}} \cdot t_{\pi_i}
-\end{align}</span><script type="math/tex">\begin{align}
+\end{align}</div>
+<script type="math/tex; mode=display">\begin{align}
 &= c_{\pi_i'} \cdot \sum_{k = 1}^{i-1} t_{\pi_k'} + c_{\pi_{i+1}'} \cdot \sum_{k = 1}^i t_{\pi_k'} - c_{\pi_i} \cdot \sum_{k = 1}^{i-1} t_{\pi_k} - c_{\pi_{i+1}} \cdot \sum_{k = 1}^i t_{\pi_k} \\\\
 &= c_{\pi_{i+1}} \cdot \sum_{k = 1}^{i-1} t_{\pi_k'} + c_{\pi_i} \cdot \sum_{k = 1}^i t_{\pi_k'} - c_{\pi_i} \cdot \sum_{k = 1}^{i-1} t_{\pi_k} - c_{\pi_{i+1}} \cdot \sum_{k = 1}^i t_{\pi_k} \\\\
 &= c_{\pi_i} \cdot t_{\pi_{i+1}} - c_{\pi_{i+1}} \cdot t_{\pi_i}
-\end{align}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\begin{align}
-&amp;= c_{\pi_i'} \cdot \sum_{k = 1}^{i-1} t_{\pi_k'} + c_{\pi_{i+1}'} \cdot \sum_{k = 1}^i t_{\pi_k'} - c_{\pi_i} \cdot \sum_{k = 1}^{i-1} t_{\pi_k} - c_{\pi_{i+1}} \cdot \sum_{k = 1}^i t_{\pi_k} \\\\
-&amp;= c_{\pi_{i+1}} \cdot \sum_{k = 1}^{i-1} t_{\pi_k'} + c_{\pi_i} \cdot \sum_{k = 1}^i t_{\pi_k'} - c_{\pi_i} \cdot \sum_{k = 1}^{i-1} t_{\pi_k} - c_{\pi_{i+1}} \cdot \sum_{k = 1}^i t_{\pi_k} \\\\
-&amp;= c_{\pi_i} \cdot t_{\pi_{i+1}} - c_{\pi_{i+1}} \cdot t_{\pi_i}
-\end{align}</span><script type="math/tex">\begin{align}
-&= c_{\pi_i'} \cdot \sum_{k = 1}^{i-1} t_{\pi_k'} + c_{\pi_{i+1}'} \cdot \sum_{k = 1}^i t_{\pi_k'} - c_{\pi_i} \cdot \sum_{k = 1}^{i-1} t_{\pi_k} - c_{\pi_{i+1}} \cdot \sum_{k = 1}^i t_{\pi_k} \\\\
-&= c_{\pi_{i+1}} \cdot \sum_{k = 1}^{i-1} t_{\pi_k'} + c_{\pi_i} \cdot \sum_{k = 1}^i t_{\pi_k'} - c_{\pi_i} \cdot \sum_{k = 1}^{i-1} t_{\pi_k} - c_{\pi_{i+1}} \cdot \sum_{k = 1}^i t_{\pi_k} \\\\
-&= c_{\pi_i} \cdot t_{\pi_{i+1}} - c_{\pi_{i+1}} \cdot t_{\pi_i}
-\end{align}</script></span></script></span></p>
-<p>It is easy to see, that if the schedule <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span> is optimal, than any change in it leads to an increased penalty (or to the identical penalty), therefore for the optimal schedule we can write down the following condition:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">c \cdot t_{\pi_{i+1}} - c_{\pi_{i+1}} \cdot t_{\pi_i} \ge 0 \quad \forall i = 1 \dots n-1</span><script type="math/tex">c \cdot t_{\pi_{i+1}} - c_{\pi_{i+1}} \cdot t_{\pi_i} \ge 0 \quad \forall i = 1 \dots n-1</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">c \cdot t_{\pi_{i+1}} - c_{\pi_{i+1}} \cdot t_{\pi_i} \ge 0 \quad \forall i = 1 \dots n-1</span><script type="math/tex">c \cdot t_{\pi_{i+1}} - c_{\pi_{i+1}} \cdot t_{\pi_i} \ge 0 \quad \forall i = 1 \dots n-1</script></span></script></span>
-And after rearranging we get:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\frac{c_{\pi_i}}{t_{\pi_i}} \ge \frac{c_{\pi_{i+1}}}{t_{\pi_{i+1}}} \quad \forall i = 1 \dots n-1</span><script type="math/tex">\frac{c_{\pi_i}}{t_{\pi_i}} \ge \frac{c_{\pi_{i+1}}}{t_{\pi_{i+1}}} \quad \forall i = 1 \dots n-1</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\frac{c_{\pi_i}}{t_{\pi_i}} \ge \frac{c_{\pi_{i+1}}}{t_{\pi_{i+1}}} \quad \forall i = 1 \dots n-1</span><script type="math/tex">\frac{c_{\pi_i}}{t_{\pi_i}} \ge \frac{c_{\pi_{i+1}}}{t_{\pi_{i+1}}} \quad \forall i = 1 \dots n-1</script></span></script></span></p>
+\end{align}</script>
+</div>
+<p>It is easy to see, that if the schedule <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span> is optimal, than any change in it leads to an increased penalty (or to the identical penalty), therefore for the optimal schedule we can write down the following condition:</p>
+<div>
+<div class="MathJax_Preview">c \cdot t_{\pi_{i+1}} - c_{\pi_{i+1}} \cdot t_{\pi_i} \ge 0 \quad \forall i = 1 \dots n-1</div>
+<script type="math/tex; mode=display">c \cdot t_{\pi_{i+1}} - c_{\pi_{i+1}} \cdot t_{\pi_i} \ge 0 \quad \forall i = 1 \dots n-1</script>
+</div>
+<p>And after rearranging we get:</p>
+<div>
+<div class="MathJax_Preview">\frac{c_{\pi_i}}{t_{\pi_i}} \ge \frac{c_{\pi_{i+1}}}{t_{\pi_{i+1}}} \quad \forall i = 1 \dots n-1</div>
+<script type="math/tex; mode=display">\frac{c_{\pi_i}}{t_{\pi_i}} \ge \frac{c_{\pi_{i+1}}}{t_{\pi_{i+1}}} \quad \forall i = 1 \dots n-1</script>
+</div>
 <p>Thus we obtain the <strong>optimal schedule</strong> by simply <strong>sorting</strong> the jobs by the fraction <span><span class="MathJax_Preview">\frac{c_i}{t_i}</span><script type="math/tex">\frac{c_i}{t_i}</script></span> in non-ascending order.</p>
 <p>It should be noted, that we constructed this algorithm by the so-called <strong>permutation method</strong>:
 we tried to swap two adjacent elements, calculated how much the penalty changed, and then derived the algorithm for finding the optimal method.</p>
 <h3 id="exponential-penalty-function">Exponential penalty function</h3>
-<p>Let the penalty function look like this:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">f_i(t) = c_i \cdot e^{\alpha \cdot t},</span><script type="math/tex">f_i(t) = c_i \cdot e^{\alpha \cdot t},</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">f_i(t) = c_i \cdot e^{\alpha \cdot t},</span><script type="math/tex">f_i(t) = c_i \cdot e^{\alpha \cdot t},</script></span></script></span>
-where all numbers <span><span class="MathJax_Preview">c_i</span><script type="math/tex">c_i</script></span> are non-negative and the constant <span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span> is positive.</p>
-<p>By applying the permutation method, it is easy to determine that the jobs must be sorted in non-ascending order of the value:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">v_i = \frac{1 - e^{\alpha \cdot t_i}}{c_i}</span><script type="math/tex">v_i = \frac{1 - e^{\alpha \cdot t_i}}{c_i}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">v_i = \frac{1 - e^{\alpha \cdot t_i}}{c_i}</span><script type="math/tex">v_i = \frac{1 - e^{\alpha \cdot t_i}}{c_i}</script></span></script></span></p>
+<p>Let the penalty function look like this:</p>
+<div>
+<div class="MathJax_Preview">f_i(t) = c_i \cdot e^{\alpha \cdot t},</div>
+<script type="math/tex; mode=display">f_i(t) = c_i \cdot e^{\alpha \cdot t},</script>
+</div>
+<p>where all numbers <span><span class="MathJax_Preview">c_i</span><script type="math/tex">c_i</script></span> are non-negative and the constant <span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span> is positive.</p>
+<p>By applying the permutation method, it is easy to determine that the jobs must be sorted in non-ascending order of the value:</p>
+<div>
+<div class="MathJax_Preview">v_i = \frac{1 - e^{\alpha \cdot t_i}}{c_i}</div>
+<script type="math/tex; mode=display">v_i = \frac{1 - e^{\alpha \cdot t_i}}{c_i}</script>
+</div>
 <h3 id="identical-monotone-penalty-function">Identical monotone penalty function</h3>
 <p>In this case we consider the case that all <span><span class="MathJax_Preview">f_i(t)</span><script type="math/tex">f_i(t)</script></span> are equal, and this function is monotone increasing.</p>
 <p>It is obvious that in this case the optimal permutation is to arrange the jobs by non-ascending processing time <span><span class="MathJax_Preview">t_i</span><script type="math/tex">t_i</script></span>.</p>
