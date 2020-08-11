@@ -1,4 +1,4 @@
-# Stars and bars
+# Stars and Bars
 
 Stars and bars is a mathematical technique for solving certain combinatorial problems.
 It occurs whenever you want to count the number of ways to group identical objects.

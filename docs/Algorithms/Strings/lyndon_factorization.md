@@ -1,6 +1,4 @@
-# Lyndon factorization
-
-## Lyndon factorization
+# Lyndon Factorization
 
 First let us define the notion of the Lyndon factorization.
 

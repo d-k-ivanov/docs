@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="author" content="Dmitriy Ivanov">
-    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Algebra/divisors/">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Algebra/Divisors/">
     <link rel="shortcut icon" href="../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Number of divisors / sum of divisors - Technical Info</title>
+    <title>Divisors - Technical Info</title>
     <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../css/base.css" rel="stylesheet">
@@ -33,7 +33,7 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Number of divisors / sum of divisors", url: "#_top", children: [
+          {title: "Divisors", url: "#_top", children: [
               {title: "Number of divisors", url: "#number-of-divisors" },
               {title: "Sum of divisors", url: "#sum-of-divisors" },
               {title: "Multiplicative functions", url: "#multiplicative-functions" },
@@ -75,19 +75,19 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../euclid-algorithm/" class="btn btn-xs btn-default pull-right">
+      <a href="../Euler_Totient_Function/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../euclid-algorithm/" class="btn btn-xs btn-link">
-        Euclidean algorithm for computing the greatest common divisor
+      <a href="../Euler_Totient_Function/" class="btn btn-xs btn-link">
+        Euler's Totient Function
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../discrete-root/" class="btn btn-xs btn-default pull-left">
+      <a href="../Discrete_Root/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../discrete-root/" class="btn btn-xs btn-link">
+        Previous</a><a href="../Discrete_Root/" class="btn btn-xs btn-link">
         Discrete Root
       </a>
     </div>
@@ -96,7 +96,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="number-of-divisors-sum-of-divisors">Number of divisors / sum of divisors</h1>
+    <h1 id="divisors">Divisors</h1>
 <p>In this article we discuss how to compute the number of divisors <span><span class="MathJax_Preview">d(n)</span><script type="math/tex">d(n)</script></span> and the sum of divisors <span><span class="MathJax_Preview">\sigma(n)</span><script type="math/tex">\sigma(n)</script></span> of a given number <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.</p>
 <h2 id="number-of-divisors">Number of divisors</h2>
 <p>It should be obvious that the prime factorization of a divisor <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> has to be a subset of the prime factorization of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, e.g. <span><span class="MathJax_Preview">6 = 2 \cdot 3</span><script type="math/tex">6 = 2 \cdot 3</script></span> is a divisor of <span><span class="MathJax_Preview">60 = 2^2 \cdot 3 \cdot 5</span><script type="math/tex">60 = 2^2 \cdot 3 \cdot 5</script></span>.

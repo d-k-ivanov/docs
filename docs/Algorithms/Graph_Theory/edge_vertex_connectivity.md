@@ -1,4 +1,4 @@
-# Edge connectivity / Vertex connectivity
+# Edge / Vertex Connectivity
 
 ## Definition
 

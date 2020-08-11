@@ -1,4 +1,4 @@
-# Finding the nearest pair of points
+# Nearest Points
 
 ## Problem statement
 

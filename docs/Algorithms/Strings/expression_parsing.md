@@ -1,4 +1,4 @@
-# Expression parsing
+# Expression Parsing
 
 A string containing a mathematical expression containing numbers and various operators is given.
 We have to compute the value of it in $O(n)$, where $n$ is the length of the string.

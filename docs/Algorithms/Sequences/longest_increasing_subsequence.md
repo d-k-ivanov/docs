@@ -1,4 +1,4 @@
-# Longest increasing subsequence
+# Longest Increasing Subsequence
 
 We are given an array with $n$ numbers: $a[0 \dots n-1]$.
 The task is to find the longest, strictly increasing, subsequence in $a$.
