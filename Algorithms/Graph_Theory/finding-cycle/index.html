@@ -153,6 +153,59 @@ void find_cycle() {
 }
 </code></pre>
 
+<p>Here is an implementation for undirected graph.</p>
+<pre><code class="cpp">int n;
+vector&lt;vector&lt;int&gt;&gt; adj;
+vector&lt;char&gt; color;
+vector&lt;int&gt; parent;
+int cycle_start, cycle_end;
+
+bool dfs(int v, int par) { // passing vertex and its parent vertex
+    color[v] = 1;
+    for (int u : adj[v]) {
+        if(u == par) continue; // skipping edge to parent vertex
+        if (color[u] == 0) {
+            parent[u] = v;
+            if (dfs(u, parent[u]))
+                return true;
+        } else if (color[u] == 1) {
+            cycle_end = v;
+            cycle_start = u;
+            return true;
+        }
+    }
+    color[v] = 2;
+    return false;
+}
+
+void find_cycle() {
+    color.assign(n, 0);
+    parent.assign(n, -1);
+    cycle_start = -1;
+
+    for (int v = 0; v &lt; n; v++) {
+        if (color[v] == 0 &amp;&amp; dfs(v, parent[v]))
+            break;
+    }
+
+    if (cycle_start == -1) {
+        cout &lt;&lt; &quot;Acyclic&quot; &lt;&lt; endl;
+    } else {
+        vector&lt;int&gt; cycle;
+        cycle.push_back(cycle_start);
+        for (int v = cycle_end; v != cycle_start; v = parent[v])
+            cycle.push_back(v);
+        cycle.push_back(cycle_start);
+        reverse(cycle.begin(), cycle.end());
+
+        cout &lt;&lt; &quot;Cycle found: &quot;;
+        for (int v : cycle)
+            cout &lt;&lt; v &lt;&lt; &quot; &quot;;
+        cout &lt;&lt; endl;
+    }
+}
+</code></pre>
+
   <br>
 </div>
 

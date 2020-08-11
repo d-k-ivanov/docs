@@ -104,29 +104,41 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Given a system of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> linear algebraic equations (SLAE) with <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> unknowns. You are asked to solve the system: to determine if it has no solution, exactly one solution or infinite number of solutions. And in case it has at least one solution, find any of them.</p>
 <p>Formally, the problem is formulated as follows: solve the system:</p>
 <div>
-<div class="MathJax_Preview">a_{11} x_1 + a_{12} x_2 + \dots + a_{1m} x_m = b_1$$
-$$a_{21} x_1 + a_{22} x_2 + \dots + a_{2m} x_m = b_2$$
-$$\dots$$
-$$a_{n1} x_1 + a_{n2} x_2 + \dots + a_{nm} x_m = b_n</div>
-<script type="math/tex; mode=display">a_{11} x_1 + a_{12} x_2 + \dots + a_{1m} x_m = b_1$$
-$$a_{21} x_1 + a_{22} x_2 + \dots + a_{2m} x_m = b_2$$
-$$\dots$$
-$$a_{n1} x_1 + a_{n2} x_2 + \dots + a_{nm} x_m = b_n</script>
+<div class="MathJax_Preview">a_{11} x_1 + a_{12} x_2 + \dots + a_{1m} x_m = b_1</div>
+<script type="math/tex; mode=display">a_{11} x_1 + a_{12} x_2 + \dots + a_{1m} x_m = b_1</script>
+</div>
+<div>
+<div class="MathJax_Preview">a_{21} x_1 + a_{22} x_2 + \dots + a_{2m} x_m = b_2</div>
+<script type="math/tex; mode=display">a_{21} x_1 + a_{22} x_2 + \dots + a_{2m} x_m = b_2</script>
+</div>
+<div>
+<div class="MathJax_Preview">\dots</div>
+<script type="math/tex; mode=display">\dots</script>
+</div>
+<div>
+<div class="MathJax_Preview">a_{n1} x_1 + a_{n2} x_2 + \dots + a_{nm} x_m = b_n</div>
+<script type="math/tex; mode=display">a_{n1} x_1 + a_{n2} x_2 + \dots + a_{nm} x_m = b_n</script>
 </div>
 <p>where the coefficients <span><span class="MathJax_Preview">a_{ij}</span><script type="math/tex">a_{ij}</script></span> (for <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> from 1 to <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> from 1 to <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>) and <span><span class="MathJax_Preview">b_i</span><script type="math/tex">b_i</script></span> (<span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> from 1 to <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> are known and variables <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> (<span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> from 1 to <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>) are unknowns.</p>
-<p>This problem also has a simple matrix representation:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">Ax = b</span><script type="math/tex">Ax = b</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">Ax = b</span><script type="math/tex">Ax = b</script></span></script></span>,
-where <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> is a matrix of size <span><span class="MathJax_Preview">n \times m</span><script type="math/tex">n \times m</script></span> of coefficients <span><span class="MathJax_Preview">a_{ij}</span><script type="math/tex">a_{ij}</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> is the column vector of size <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.</p>
+<p>This problem also has a simple matrix representation:</p>
+<p><span><span class="MathJax_Preview"><span><span class="MathJax_Preview">Ax = b</span><script type="math/tex">Ax = b</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">Ax = b</span><script type="math/tex">Ax = b</script></span></script></span>,</p>
+<p>where <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> is a matrix of size <span><span class="MathJax_Preview">n \times m</span><script type="math/tex">n \times m</script></span> of coefficients <span><span class="MathJax_Preview">a_{ij}</span><script type="math/tex">a_{ij}</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> is the column vector of size <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.</p>
 <p>It is worth noting that the method presented in this article can also be used to solve the equation modulo any number p, i.e.:</p>
 <div>
-<div class="MathJax_Preview">a_{11} x_1 + a_{12} x_2 + \dots + a_{1m} x_m \equiv b_1 \pmod p$$
-$$a_{21} x_1 + a_{22} x_2 + \dots + a_{2m} x_m \equiv b_2 \pmod p$$
-$$\dots$$
-$$a_{n1} x_1 + a_{n2} x_2 + \dots + a_{nm} x_m \equiv b_n \pmod p</div>
-<script type="math/tex; mode=display">a_{11} x_1 + a_{12} x_2 + \dots + a_{1m} x_m \equiv b_1 \pmod p$$
-$$a_{21} x_1 + a_{22} x_2 + \dots + a_{2m} x_m \equiv b_2 \pmod p$$
-$$\dots$$
-$$a_{n1} x_1 + a_{n2} x_2 + \dots + a_{nm} x_m \equiv b_n \pmod p</script>
+<div class="MathJax_Preview">a_{11} x_1 + a_{12} x_2 + \dots + a_{1m} x_m \equiv b_1 \pmod p</div>
+<script type="math/tex; mode=display">a_{11} x_1 + a_{12} x_2 + \dots + a_{1m} x_m \equiv b_1 \pmod p</script>
+</div>
+<div>
+<div class="MathJax_Preview">a_{21} x_1 + a_{22} x_2 + \dots + a_{2m} x_m \equiv b_2 \pmod p</div>
+<script type="math/tex; mode=display">a_{21} x_1 + a_{22} x_2 + \dots + a_{2m} x_m \equiv b_2 \pmod p</script>
+</div>
+<div>
+<div class="MathJax_Preview">\dots</div>
+<script type="math/tex; mode=display">\dots</script>
+</div>
+<div>
+<div class="MathJax_Preview">a_{n1} x_1 + a_{n2} x_2 + \dots + a_{nm} x_m \equiv b_n \pmod p</div>
+<script type="math/tex; mode=display">a_{n1} x_1 + a_{n2} x_2 + \dots + a_{nm} x_m \equiv b_n \pmod p</script>
 </div>
 <h2 id="gauss">Gauss</h2>
 <p>Strictly speaking, the method described below should be called "Gauss-Jordan", or Gauss-Jordan elimination, because it is a variation of the Gauss method, described by Jordan in 1887.</p>
@@ -147,7 +159,7 @@ $$a_{n1} x_1 + a_{n2} x_2 + \dots + a_{nm} x_m \equiv b_n \pmod p</script>
 <p>In many implementations, when <span><span class="MathJax_Preview">a_{ii} \neq 0</span><script type="math/tex">a_{ii} \neq 0</script></span>, you can see people still swap the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>th row with some pivoting row, using some heuristics such as choosing the pivoting row with maximum absolute value of <span><span class="MathJax_Preview">a_{ji}</span><script type="math/tex">a_{ji}</script></span>. This heuristic is used to reduce the value range of the matrix in later steps. Without this heuristic, even for matrices of size about <span><span class="MathJax_Preview">20</span><script type="math/tex">20</script></span>, the error will be too big and can cause overflow for floating points data types of C++.</p>
 <h2 id="degenerate-cases">Degenerate cases</h2>
 <p>In the case where <span><span class="MathJax_Preview">m = n</span><script type="math/tex">m = n</script></span> and the system is non-degenerate (i.e. it has non-zero determinant, and has unique solution), the algorithm described above will transform <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> into identity matrix.</p>
-<p>Now we consider the <code>general case</code>, where <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> are not necessarily equal, and the system can be non-degenerate. In these cases, the pivoting element in <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>th step may not be found. This means that on the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>th column, starting from the current line, all contains zeros. In this case, either there is no possible value of variable <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> (meaning the SLAE has no solution), or <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> is an independent variable and can take arbitrary value. When implementing Gauss-Jordan, you should continue the work for subsequent variables and just skip the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>th column (this is equivalent to removing the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>th column of the matrix).</p>
+<p>Now we consider the <code>general case</code>, where <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> are not necessarily equal, and the system can be degenerate. In these cases, the pivoting element in <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>th step may not be found. This means that on the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>th column, starting from the current line, all contains zeros. In this case, either there is no possible value of variable <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> (meaning the SLAE has no solution), or <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> is an independent variable and can take arbitrary value. When implementing Gauss-Jordan, you should continue the work for subsequent variables and just skip the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>th column (this is equivalent to removing the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>th column of the matrix).</p>
 <p>So, some of the variables in the process can be found to be independent. When the number of variables, <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is greater than the number of equations, <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, then at least <span><span class="MathJax_Preview">m - n</span><script type="math/tex">m - n</script></span> independent variables will be found.</p>
 <p>In general, if you find at least one independent variable, it can take any arbitrary value, while the other (dependent) variables are expressed through it.  This means that when we work in the field of real numbers, the system potentially has infinitely many solutions. But you should remember that when there are independent variables, SLAE can have no solution at all. This happens when the remaining untreated equations have at least one non-zero constant term. You can check this by assigning zeros to all independent variables, calculate other variables, and then plug in to the original SLAE to check if they satisfy it.</p>
 <h2 id="implementation">Implementation</h2>

@@ -170,7 +170,7 @@ while (!(current = find_max_height_vertices(s, t)).empty()) {
 
 int max_flow = 0;
 for (int i = 0; i &lt; n; i++)
-    max_flow += flow[0][i];
+    max_flow += flow[i][t];
 return max_flow;
 </code></pre>
 <p>}

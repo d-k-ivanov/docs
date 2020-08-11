@@ -116,7 +116,7 @@ for (int st = 0; st &lt; n; ++st) {
             q.pop();
             for (int u : adj[v]) {
                 if (side[u] == -1) {
-                    side[u] = side[v] ^ 1
+                    side[u] = side[v] ^ 1;
                     q.push(u);
                 } else {
                     is_bipartite &amp;= side[u] != side[v];
@@ -133,6 +133,7 @@ cout &lt;&lt; (is_bipartite ? &quot;YES&quot; : &quot;NO&quot;) &lt;&lt; endl;
 <ul>
 <li><a href="http://www.spoj.com/problems/BUGLIFE/">SPOJ - BUGLIFE</a></li>
 <li><a href="https://codeforces.com/contest/1144/problem/F">Codeforces - Graph Without Long Directed Paths</a></li>
+<li><a href="https://codeforces.com/contest/1296/problem/E1">Codeforces - String Coloring (easy version)</a></li>
 </ul>
 
   <br>

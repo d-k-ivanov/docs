@@ -100,7 +100,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h2 id="description">Description</h2>
 <p>Let there be a tree <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices, with an arbitrary root.</p>
 <p>The essence of this tree decomposition is to <strong>split the tree into several paths</strong> so that we can reach the root vertex from any <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> by traversing at most <span><span class="MathJax_Preview">\log n</span><script type="math/tex">\log n</script></span> paths. In addition, none of these paths should intersect with another.</p>
-<p>It is clear that if we find such a decomposition for any tree, it will allow us to reduce certain single queries of the form <em>“calculate something on the path from <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> to <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>”</em> to several queries of the type <em>”calculate something on the segment <span><span class="MathJax_Preview">[l;r]</span><script type="math/tex">[l;r]</script></span> of the <span><span class="MathJax_Preview">k^{th}</span><script type="math/tex">k^{th}</script></span> path”</em>.</p>
+<p>It is clear that if we find such a decomposition for any tree, it will allow us to reduce certain single queries of the form <em>“calculate something on the path from <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> to <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>”</em> to several queries of the type <em>”calculate something on the segment <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span> of the <span><span class="MathJax_Preview">k^{th}</span><script type="math/tex">k^{th}</script></span> path”</em>.</p>
 <h3 id="construction-algorithm">Construction algorithm</h3>
 <p>We calculate for each vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> the size of its subtree  <span><span class="MathJax_Preview">s(v)</span><script type="math/tex">s(v)</script></span>, i.e. the number of vertices in the subtree of the vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> including itself.</p>
 <p>Next, consider all the edges leading to the children of a vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>. We call an edge  <strong>heavy</strong> if it leads to a vertex <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> such that:</p>
@@ -119,12 +119,8 @@ s(c) \ge \frac{s(v)}{2} \iff \text{edge }(v, c)\text{ is heavy}
 <p>First, we note that the heavy paths obtained by the algorithm will be <strong>disjoint</strong> . In fact, if two such paths have a common edge, it would imply that there are two heavy edges coming out of one vertex, which is impossible.</p>
 <p>Secondly, we will show that going down from the root of the tree to an arbitrary vertex, we will <strong>change no more than <span><span class="MathJax_Preview">\log n</span><script type="math/tex">\log n</script></span> heavy paths along the way</strong> . Moving down a light edge reduces the size of the current subtree to half or lower:</p>
 <div>
-<div class="MathJax_Preview">
-s(c) &lt; \frac{s(v)}{2} \iff \text{edge }(v, c)\text{ is light}
-</div>
-<script type="math/tex; mode=display">
-s(c) < \frac{s(v)}{2} \iff \text{edge }(v, c)\text{ is light}
-</script>
+<div class="MathJax_Preview"> s(c) &lt; \frac{s(v)}{2} \iff \text{edge }(v, c)\text{ is light} </div>
+<script type="math/tex; mode=display"> s(c) < \frac{s(v)}{2} \iff \text{edge }(v, c)\text{ is light} </script>
 </div>
 <p>Thus, we can go through at most <span><span class="MathJax_Preview">\log n</span><script type="math/tex">\log n</script></span> light edges before subtree size reduces to one.</p>
 <p>Since we can move from one heavy path to another only through a light edge (each heavy path, except the one starting at the root, has one light edge), we cannot change heavy paths more than <span><span class="MathJax_Preview">\log n</span><script type="math/tex">\log n</script></span> times along the path from the root to any vertex, as required.</p>

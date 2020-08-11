@@ -116,7 +116,8 @@ Which means we have <span><span class="MathJax_Preview">e+1</span><script type="
 <p>If there are two distinct prime divisors <span><span class="MathJax_Preview">n = p_1^{e_1} \cdot p_2^{e_2}</span><script type="math/tex">n = p_1^{e_1} \cdot p_2^{e_2}</script></span>, then you can arrange all divisors in form of a tabular.</p>
 </li>
 </ul>
-<p><span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{array}{c|ccccc}
+<div>
+<div class="MathJax_Preview">\begin{array}{c|ccccc}
 &amp; 1 &amp; p_2 &amp; p_2^2 &amp; \dots &amp; p_2^{e_2} \\\\
 \hline
 1 &amp; 1 &amp; p_2 &amp; p_2^2 &amp; \dots &amp; p_2^{e_2} \\\\
@@ -124,7 +125,8 @@ p_1 &amp; p_1 &amp; p_1 \cdot p_2 &amp; p_1 \cdot p_2^2 &amp; \dots &amp; p_1 \c
 p_1^2 &amp; p_1^2 &amp; p_1^2 \cdot p_2 &amp; p_1^2 \cdot p_2^2 &amp; \dots &amp; p_1^2 \cdot p_2^{e_2} \\\\
 \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\\\
 p_1^{e_1} &amp; p_1^{e_1} &amp; p_1^{e_1} \cdot p_2 &amp; p_1^{e_1} \cdot p_2^2 &amp; \dots &amp; p_1^{e_1} \cdot p_2^{e_2} \\\\
-\end{array}</span><script type="math/tex">\begin{array}{c|ccccc}
+\end{array}</div>
+<script type="math/tex; mode=display">\begin{array}{c|ccccc}
 & 1 & p_2 & p_2^2 & \dots & p_2^{e_2} \\\\
 \hline
 1 & 1 & p_2 & p_2^2 & \dots & p_2^{e_2} \\\\
@@ -132,24 +134,9 @@ p_1 & p_1 & p_1 \cdot p_2 & p_1 \cdot p_2^2 & \dots & p_1 \cdot p_2^{e_2} \\\\
 p_1^2 & p_1^2 & p_1^2 \cdot p_2 & p_1^2 \cdot p_2^2 & \dots & p_1^2 \cdot p_2^{e_2} \\\\
 \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\\\
 p_1^{e_1} & p_1^{e_1} & p_1^{e_1} \cdot p_2 & p_1^{e_1} \cdot p_2^2 & \dots & p_1^{e_1} \cdot p_2^{e_2} \\\\
-\end{array}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\begin{array}{c|ccccc}
-&amp; 1 &amp; p_2 &amp; p_2^2 &amp; \dots &amp; p_2^{e_2} \\\\
-\hline
-1 &amp; 1 &amp; p_2 &amp; p_2^2 &amp; \dots &amp; p_2^{e_2} \\\\
-p_1 &amp; p_1 &amp; p_1 \cdot p_2 &amp; p_1 \cdot p_2^2 &amp; \dots &amp; p_1 \cdot p_2^{e_2} \\\\
-p_1^2 &amp; p_1^2 &amp; p_1^2 \cdot p_2 &amp; p_1^2 \cdot p_2^2 &amp; \dots &amp; p_1^2 \cdot p_2^{e_2} \\\\
-\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\\\
-p_1^{e_1} &amp; p_1^{e_1} &amp; p_1^{e_1} \cdot p_2 &amp; p_1^{e_1} \cdot p_2^2 &amp; \dots &amp; p_1^{e_1} \cdot p_2^{e_2} \\\\
-\end{array}</span><script type="math/tex">\begin{array}{c|ccccc}
-& 1 & p_2 & p_2^2 & \dots & p_2^{e_2} \\\\
-\hline
-1 & 1 & p_2 & p_2^2 & \dots & p_2^{e_2} \\\\
-p_1 & p_1 & p_1 \cdot p_2 & p_1 \cdot p_2^2 & \dots & p_1 \cdot p_2^{e_2} \\\\
-p_1^2 & p_1^2 & p_1^2 \cdot p_2 & p_1^2 \cdot p_2^2 & \dots & p_1^2 \cdot p_2^{e_2} \\\\
-\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\\\
-p_1^{e_1} & p_1^{e_1} & p_1^{e_1} \cdot p_2 & p_1^{e_1} \cdot p_2^2 & \dots & p_1^{e_1} \cdot p_2^{e_2} \\\\
-\end{array}</script></span></script></span>
-  So the number of divisors is trivially <span><span class="MathJax_Preview">(e_1 + 1) \cdot (e_2 + 1)</span><script type="math/tex">(e_1 + 1) \cdot (e_2 + 1)</script></span>.</p>
+\end{array}</script>
+</div>
+<p>So the number of divisors is trivially <span><span class="MathJax_Preview">(e_1 + 1) \cdot (e_2 + 1)</span><script type="math/tex">(e_1 + 1) \cdot (e_2 + 1)</script></span>.</p>
 <ul>
 <li>A similar argument can be made if there are more then two distinct prime factors.</li>
 </ul>
@@ -173,9 +160,12 @@ p_1^{e_1} & p_1^{e_1} & p_1^{e_1} \cdot p_2 & p_1^{e_1} \cdot p_2^2 & \dots & p_
 </li>
 </ul>
 <h2 id="multiplicative-functions">Multiplicative functions</h2>
-<p>A multiplicative functions is a function <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> which satisfies
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">f(a \cdot b) = f(a) \cdot f(b)</span><script type="math/tex">f(a \cdot b) = f(a) \cdot f(b)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">f(a \cdot b) = f(a) \cdot f(b)</span><script type="math/tex">f(a \cdot b) = f(a) \cdot f(b)</script></span></script></span>
-if <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> are coprime.</p>
+<p>A multiplicative function is a function <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> which satisfies</p>
+<div>
+<div class="MathJax_Preview">f(a \cdot b) = f(a) \cdot f(b)</div>
+<script type="math/tex; mode=display">f(a \cdot b) = f(a) \cdot f(b)</script>
+</div>
+<p>if <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> are coprime.</p>
 <p>Both <span><span class="MathJax_Preview">d(n)</span><script type="math/tex">d(n)</script></span> and <span><span class="MathJax_Preview">\sigma(n)</span><script type="math/tex">\sigma(n)</script></span> are multiplicative functions.</p>
 <p>Multiplicative functions have a huge variety of interesting properties, which can be very useful in number theory problems.
 For instance the Dirichlet convolution of two multiplicative functions is also multiplicative.</p>

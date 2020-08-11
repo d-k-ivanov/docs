@@ -176,7 +176,7 @@ On the left there is a tree, and on the right side there is the compressed tree 
 </code></pre>
 
 <p>The simple implementation does what was intended:
-first find the representative of the set (root vertex), and the in the process of stack unwinding the visited nodes are attached directly to the representative.</p>
+first find the representative of the set (root vertex), and then in the process of stack unwinding the visited nodes are attached directly to the representative.</p>
 <p>This simple modification of the operation already achieves the time complexity <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> per call on average (here without proof).
 There is a second modification, that will make it even faster.</p>
 <h3 id="union-by-size-rank">Union by size / rank</h3>
@@ -306,14 +306,14 @@ There is a set of vertices, and each vertex has an outgoing edge to another vert
 With DSU you can find the end point, to which we get after following all edges from a given starting point, in almost constant time.</p>
 <p>A good example of this application is the <strong>problem of painting subarrays</strong>.
 We have a segment of length <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>, each element initially has the color 0.
-We have to repaint the subarray <span><span class="MathJax_Preview">[l; r]</span><script type="math/tex">[l; r]</script></span> with the color <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> for each query <span><span class="MathJax_Preview">(l, r, c)</span><script type="math/tex">(l, r, c)</script></span>.
+We have to repaint the subarray <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span> with the color <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> for each query <span><span class="MathJax_Preview">(l, r, c)</span><script type="math/tex">(l, r, c)</script></span>.
 At the end we want to find the final color of each cell.
 We assume that we know all the queries in advance, i.e. the task is offline.</p>
 <p>For the solution we can make a DSU, which for each cell stores a link to the next unpainted cell.
 Thus initially each cell points to itself.
 After painting one requested repaint of a segment, all cells from that segment will point to the cell after the segment.</p>
 <p>Now to solve this problem, we consider the queries <strong>in the reverse order</strong>: from last to first.
-This way when we execute a query, we only have to paint exactly the unpainted cells in the subarray <span><span class="MathJax_Preview">[l; r]</span><script type="math/tex">[l; r]</script></span>.
+This way when we execute a query, we only have to paint exactly the unpainted cells in the subarray <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span>.
 All other cells already contain their final color.
 To quickly iterate over all unpainted cells, we use the DSU.
 We find the left-most unpainted cell inside of a segment, repaint it, and with the pointer we move to the next empty cell to the right.</p>
@@ -559,7 +559,7 @@ Later in 1985 he, along with Leeuwen, published multiple complexity analyses for
 <li><a href="https://www.spoj.com/problems/CONSEC/">SPOJ - Consecutive Letters</a></li>
 <li><a href="https://toph.co/p/unbelievable-array">Toph - Unbelievable Array</a></li>
 <li><a href="https://www.hackerearth.com/practice/data-structures/disjoint-data-strutures/basics-of-disjoint-data-structures/practice-problems/algorithm/lexicographically-minimal-string-6edc1406/description/">HackerEarth - Lexicographically minimal string</a></li>
-<li><a href="https://www.hackerearth.com/practice/data-structures/disjoint-data-strutures/basics-of-disjoint-data-structures/practice-problems/algorithm/marriage-problem/description/">HackerEarth - Marriage Problem</a></li>
+<li><a href="https://www.hackerearth.com/practice/algorithms/graphs/breadth-first-search/practice-problems/algorithm/containers-of-choclates-1/">HackerEarth - Fight in Ninja World</a></li>
 </ul>
 
   <br>

@@ -205,7 +205,7 @@ And if we denote by <span><span class="MathJax_Preview">w</span><script type="ma
 <p>We also know the first few suffixes of a string <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> (if we consider suffixes in descending order of their length) are all contained in this equivalence class, and all other suffixes (at least one other - the empty suffix) are in some other classes.
 We denote by <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> the biggest such suffix, and make a suffix link to it.</p>
 <p>In other words, a <strong>suffix link</strong> <span><span class="MathJax_Preview">link(v)</span><script type="math/tex">link(v)</script></span> leads to the state that corresponds to the <strong>longest suffix</strong> of <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> that is in another <span><span class="MathJax_Preview">endpos</span><script type="math/tex">endpos</script></span>-equivalence class.</p>
-<p>Here we assume that the initial state <span><span class="MathJax_Preview">t_0</span><script type="math/tex">t_0</script></span> corresponds to its own equivalence class (containing only the empty string), and for convenience we set <span><span class="MathJax_Preview">endpos(t) = \\{-1, 0, \dots, length(s)-1\\}</span><script type="math/tex">endpos(t) = \\{-1, 0, \dots, length(s)-1\\}</script></span>.</p>
+<p>Here we assume that the initial state <span><span class="MathJax_Preview">t_0</span><script type="math/tex">t_0</script></span> corresponds to its own equivalence class (containing only the empty string), and for convenience we set <span><span class="MathJax_Preview">endpos(</span><script type="math/tex">endpos(</script></span>t_0<span><span class="MathJax_Preview">) = \\{-1, 0, \dots, length(s)-1\\}</span><script type="math/tex">) = \\{-1, 0, \dots, length(s)-1\\}</script></span>.</p>
 <p><strong>Lemma 4</strong>:
 Suffix links form a <strong>tree</strong> with the root <span><span class="MathJax_Preview">t_0</span><script type="math/tex">t_0</script></span>.</p>
 <p>Proof:
@@ -656,6 +656,7 @@ After that, the answer to the problem will be the string <span><span class="Math
 <ul>
 <li><a href="https://www.spoj.com/problems/SUBLEX/">SPOJ - SUBLEX</a></li>
 <li><a href="https://codeforces.com/problemset/problem/235/C">Codeforces - Cyclical Quest</a></li>
+<li><a href="https://codeforces.com/contest/128/problem/B">Codeforces - String</a></li>
 </ul>
 
   <br>

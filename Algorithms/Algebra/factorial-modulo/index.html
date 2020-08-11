@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Algebra/factorial-modulo/">
     <link rel="shortcut icon" href="../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Factorial modulo - Technical Info</title>
+    <title>Factorial modulo $p$ in $O(p \log n)$ - Technical Info</title>
     <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../css/base.css" rel="stylesheet">
@@ -94,9 +94,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <!--?title Factorial modulo P -->
-
-<h1 id="factorial-modulo-pp-in-op-log-nop-log-n">Factorial modulo <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> in <span><span class="MathJax_Preview">O(p \log n)</span><script type="math/tex">O(p \log n)</script></span></h1>
+    <h1 id="factorial-modulo-pp-in-op-log-nop-log-n">Factorial modulo <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> in <span><span class="MathJax_Preview">O(p \log n)</span><script type="math/tex">O(p \log n)</script></span></h1>
 <p>In some cases it is necessary to consider complex formulas modulo <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>, containing factorials in both numerator and denominator. We consider the case when <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> is relatively small. This problem makes sense only when factorials are included in both numerator and denominator of fractions. Otherwise <span><span class="MathJax_Preview">p!</span><script type="math/tex">p!</script></span> and subsequent terms will reduce to zero, but in fractions all multipliers containing <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> can be reduced, and the resulting expression will be non-zero modulo <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>.</p>
 <p>Thus, formally the task is: You want to calculate <span><span class="MathJax_Preview">n! \bmod p</span><script type="math/tex">n! \bmod p</script></span>, without taking all the multiple factors of <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> into account that appear in the factorial.
 Imaging you write down the prime factorization of <span><span class="MathJax_Preview">n!</span><script type="math/tex">n!</script></span>, remove all factors <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>, and compute the product modulo <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>.
@@ -118,7 +116,7 @@ n!_{\%p} &=& 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \under
 & &\quad \cdot \ldots \cdot (p-1) \cdot \underbrace{1}\_{p^2} \cdot 1 \cdot 2 \cdot \ldots \cdot (n \bmod p) \pmod{p}
 \end{eqnarray}</script>
 </div>
-<p>It can be clearly seen that factorial is divided into several blocks of same length expect for the last one.</p>
+<p>It can be clearly seen that factorial is divided into several blocks of same length except for the last one.</p>
 <div>
 <div class="MathJax_Preview">\begin{eqnarray}
 n!_{\%p}&amp;=&amp; \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 1}\_{1\text{st}} \cdot \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 2}\_{2\text{nd}} \cdot \ldots \\\\
@@ -129,7 +127,7 @@ n!_{\%p}&=& \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \
 & & \cdot \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 1}\_{p\text{th}} \cdot \ldots \cdot \quad \underbrace{1 \cdot 2 \cdot \cdot \ldots \cdot (n \bmod p)}\_{\text{tail}} \pmod{p}.
 \end{eqnarray}</script>
 </div>
-<p>The general part of the blocks it is easy to count — it's just <span><span class="MathJax_Preview">(p-1)!\ \mathrm{mod}\ p</span><script type="math/tex">(p-1)!\ \mathrm{mod}\ p</script></span> that you can calculate programmatically or via Wilson theorem, according to which <span><span class="MathJax_Preview">(p-1)! \bmod p = p-1</span><script type="math/tex">(p-1)! \bmod p = p-1</script></span>. To multiply these common parts of all blocks, we can raise the value to the higher power modulo <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>, which can be done in <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> operations using <a href="/docs/#Algorithms/algebra/binary-exp/">Binary Exponentiation</a>; however, you may notice that the result will always be either <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> or <span><span class="MathJax_Preview">p-1</span><script type="math/tex">p-1</script></span>, depending on the parity of the index.
+<p>The general part of the blocks it is easy to count — it's just <span><span class="MathJax_Preview">(p-1)!\ \mathrm{mod}\ p</span><script type="math/tex">(p-1)!\ \mathrm{mod}\ p</script></span> that you can calculate programmatically or via Wilson theorem, according to which <span><span class="MathJax_Preview">(p-1)! \bmod p = p-1</span><script type="math/tex">(p-1)! \bmod p = p-1</script></span>. To multiply these common parts of all blocks, we can raise the value to the higher power modulo <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>, which can be done in <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> operations using <a href="/docs/#Algorithms/binary-exp/">Binary Exponentiation</a>; however, you may notice that the result will always be either <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> or <span><span class="MathJax_Preview">p-1</span><script type="math/tex">p-1</script></span>, depending on the parity of the index.
 The value of the last partial block can be calculated separately in <span><span class="MathJax_Preview">O(p)</span><script type="math/tex">O(p)</script></span>. Leaving only the last elements of the blocks, we can examine that:</p>
 <div>
 <div class="MathJax_Preview">n!_{\%p} = \underbrace{ \ldots \cdot 1 } \cdot \underbrace{ \ldots \cdot 2} \cdot \ldots \cdot \underbrace{ \ldots \cdot (p-1)} \cdot \underbrace{ \ldots \cdot 1 } \cdot \underbrace{ \ldots \cdot 1} \cdot \underbrace{ \ldots \cdot 2} \cdots</div>

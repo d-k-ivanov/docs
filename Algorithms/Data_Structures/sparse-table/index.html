@@ -90,7 +90,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
       <a href="../segment_tree/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
         Previous</a><a href="../segment_tree/" class="btn btn-xs btn-link">
-        Segment tree
+        Segment Tree
       </a>
     </div>
     
@@ -119,7 +119,7 @@ Afterwards a different range query can be answered by splitting the range into r
 <p>We will use a 2-dimensional array for storing the answers to the precomputed queries.
 <span><span class="MathJax_Preview">\text{st}[i][j]</span><script type="math/tex">\text{st}[i][j]</script></span> will store the answer for the range <span><span class="MathJax_Preview">[i, i + 2^j - 1]</span><script type="math/tex">[i, i + 2^j - 1]</script></span> of length <span><span class="MathJax_Preview">2^j</span><script type="math/tex">2^j</script></span>.
 The size of the 2-dimensional array will be <span><span class="MathJax_Preview">\text{MAXN} \times (K + 1)</span><script type="math/tex">\text{MAXN} \times (K + 1)</script></span>, where <span><span class="MathJax_Preview">\text{MAXN}</span><script type="math/tex">\text{MAXN}</script></span> is the biggest possible array length.
-<span><span class="MathJax_Preview">\text{K}</span><script type="math/tex">\text{K}</script></span> has to satisfy <span><span class="MathJax_Preview">\text{K} \ge \lfloor \log_2 \text{MAXN} \rfloor + 1</span><script type="math/tex">\text{K} \ge \lfloor \log_2 \text{MAXN} \rfloor + 1</script></span>, because <span><span class="MathJax_Preview">2^{\lfloor \log_2 \text{MAXN} \rfloor}</span><script type="math/tex">2^{\lfloor \log_2 \text{MAXN} \rfloor}</script></span> is the biggest power of two range, that we have to support.
+<span><span class="MathJax_Preview">\text{K}</span><script type="math/tex">\text{K}</script></span> has to satisfy <span><span class="MathJax_Preview">\text{K} \ge \lfloor \log_2 \text{MAXN} \rfloor</span><script type="math/tex">\text{K} \ge \lfloor \log_2 \text{MAXN} \rfloor</script></span>, because <span><span class="MathJax_Preview">2^{\lfloor \log_2 \text{MAXN} \rfloor}</span><script type="math/tex">2^{\lfloor \log_2 \text{MAXN} \rfloor}</script></span> is the biggest power of two range, that we have to support.
 For arrays with reasonable length (<span><span class="MathJax_Preview">\le 10^7</span><script type="math/tex">\le 10^7</script></span> elements), <span><span class="MathJax_Preview">K = 25</span><script type="math/tex">K = 25</script></span> is a good value.</p>
 <p>```cpp sparsetable_definition
 int st[MAXN][K + 1];</p>
@@ -143,7 +143,7 @@ For range sum queries it will compute the sum, for range minimum queries it will
 Therefore the natural definition of the function <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> is <span><span class="MathJax_Preview">f(x, y) = x + y</span><script type="math/tex">f(x, y) = x + y</script></span>.
 We can construct the data structure with:</p>
 <p>```cpp sparsetable_sum_generation
-long long st[MAXN][K];</p>
+long long st[MAXN][K + 1];</p>
 <p>for (int i = 0; i &lt; N; i++)
     st[i][0] = array[i];</p>
 <p>for (int j = 1; j &lt;= K; j++)
@@ -186,7 +186,7 @@ for (int i = 2; i &lt;= MAXN; i++)
 Afterwards we need to precompute the Sparse Table structure. This time we define $f$ with $f(x, y) = \min(x, y)$.
 
 ```cpp sparse_table_minimum_generation
-int st[MAXN][K];
+int st[MAXN][K + 1];
 
 for (int i = 0; i &lt; N; i++)
     st[i][0] = array[i];

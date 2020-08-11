@@ -106,24 +106,19 @@ It is asymptotically optimal.</p>
 We traverse all nodes of the tree with <a href="/docs/#Algorithms/graph/depth-first-search/">DFS</a> and keep an array with all visited nodes and the heights of these nodes.
 The LCA of two nodes <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> and <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> is the node between the occurrences of <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> and <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> in the tour, that has the smallest height.</p>
 <p>In the following picture you can see a possible Euler-Tour of a graph and in the list below you can see the visited nodes and their heights.</p>
-<p><center><img alt="LCA_Euler_Tour" src="/docs/data/cs/LCA_Euler.png" /></center>
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{array}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+<p><center><img alt="LCA_Euler_Tour" src="/docs/data/cs/LCA_Euler.png" /></center></p>
+<div>
+<div class="MathJax_Preview">\begin{array}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
 \text{Nodes:}   &amp; 1 &amp; 2 &amp; 5 &amp; 2 &amp; 6 &amp; 2 &amp; 1 &amp; 3 &amp; 1 &amp; 4 &amp; 7 &amp; 4 &amp; 1 \\\\ \hline
 \text{Heights:} &amp; 1 &amp; 2 &amp; 3 &amp; 2 &amp; 3 &amp; 2 &amp; 1 &amp; 2 &amp; 1 &amp; 2 &amp; 3 &amp; 2 &amp; 1 \\\\ \hline
-\end{array}</span><script type="math/tex">\begin{array}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\end{array}</div>
+<script type="math/tex; mode=display">\begin{array}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
 \text{Nodes:}   & 1 & 2 & 5 & 2 & 6 & 2 & 1 & 3 & 1 & 4 & 7 & 4 & 1 \\\\ \hline
 \text{Heights:} & 1 & 2 & 3 & 2 & 3 & 2 & 1 & 2 & 1 & 2 & 3 & 2 & 1 \\\\ \hline
-\end{array}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\begin{array}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|}
-\hline
-\text{Nodes:}   &amp; 1 &amp; 2 &amp; 5 &amp; 2 &amp; 6 &amp; 2 &amp; 1 &amp; 3 &amp; 1 &amp; 4 &amp; 7 &amp; 4 &amp; 1 \\\\ \hline
-\text{Heights:} &amp; 1 &amp; 2 &amp; 3 &amp; 2 &amp; 3 &amp; 2 &amp; 1 &amp; 2 &amp; 1 &amp; 2 &amp; 3 &amp; 2 &amp; 1 \\\\ \hline
-\end{array}</span><script type="math/tex">\begin{array}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|}
-\hline
-\text{Nodes:}   & 1 & 2 & 5 & 2 & 6 & 2 & 1 & 3 & 1 & 4 & 7 & 4 & 1 \\\\ \hline
-\text{Heights:} & 1 & 2 & 3 & 2 & 3 & 2 & 1 & 2 & 1 & 2 & 3 & 2 & 1 \\\\ \hline
-\end{array}</script></span></script></span></p>
+\end{array}</script>
+</div>
 <p>You can read more about this reduction in the article <a href="/docs/#Algorithms/graph/lca/">Lowest Common Ancestor</a>.
 In that article the minimum of a range was either found by sqrt-decomposition in <span><span class="MathJax_Preview">O(\sqrt{N})</span><script type="math/tex">O(\sqrt{N})</script></span> or in <span><span class="MathJax_Preview">O(\log N)</span><script type="math/tex">O(\log N)</script></span> using a Segment tree.
 In this article we look at how we can solve the given range minimum queries in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> time, while still only taking <span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span> time for preprocessing.</p>
@@ -137,7 +132,7 @@ We create a table <span><span class="MathJax_Preview">T</span><script type="math
 Obviously <span><span class="MathJax_Preview">0 \leq j \leq \lceil \log N \rceil</span><script type="math/tex">0 \leq j \leq \lceil \log N \rceil</script></span>, and therefore the size of the Sparse Table will be <span><span class="MathJax_Preview">O(N \log N)</span><script type="math/tex">O(N \log N)</script></span>.
 You can build the table easily in <span><span class="MathJax_Preview">O(N \log N)</span><script type="math/tex">O(N \log N)</script></span> by noting that <span><span class="MathJax_Preview">T[i][j] = \min(T[i][j-1], T[i+2^{j-1}][j-1])</span><script type="math/tex">T[i][j] = \min(T[i][j-1], T[i+2^{j-1}][j-1])</script></span>.</p>
 <p>How can we answer a query RMQ in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> using this data structure?
-Let the received query be <span><span class="MathJax_Preview">[l,r]</span><script type="math/tex">[l,r]</script></span>, then the answer is <span><span class="MathJax_Preview">\min(T[l][\text{sz}], T[r-2^{\text{sz}}+1][\text{sz}])</span><script type="math/tex">\min(T[l][\text{sz}], T[r-2^{\text{sz}}+1][\text{sz}])</script></span>, where <span><span class="MathJax_Preview">\text{sz}</span><script type="math/tex">\text{sz}</script></span> is the biggest exponent such that <span><span class="MathJax_Preview">2^{\text{sz}}</span><script type="math/tex">2^{\text{sz}}</script></span> is not bigger than the range length <span><span class="MathJax_Preview">r-l+1</span><script type="math/tex">r-l+1</script></span>.
+Let the received query be <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span>, then the answer is <span><span class="MathJax_Preview">\min(T[l][\text{sz}], T[r-2^{\text{sz}}+1][\text{sz}])</span><script type="math/tex">\min(T[l][\text{sz}], T[r-2^{\text{sz}}+1][\text{sz}])</script></span>, where <span><span class="MathJax_Preview">\text{sz}</span><script type="math/tex">\text{sz}</script></span> is the biggest exponent such that <span><span class="MathJax_Preview">2^{\text{sz}}</span><script type="math/tex">2^{\text{sz}}</script></span> is not bigger than the range length <span><span class="MathJax_Preview">r-l+1</span><script type="math/tex">r-l+1</script></span>.
 Indeed we can take the range <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span> and cover it two segments of length <span><span class="MathJax_Preview">2^{\text{sz}}</span><script type="math/tex">2^{\text{sz}}</script></span> - one starting in <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> and the other ending in <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>.
 These segments overlap, but this doesn't interfere with our computation.
 To really achieve the time complexity of <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> per query, we need to know the values of <span><span class="MathJax_Preview">\text{sz}</span><script type="math/tex">\text{sz}</script></span> for all possible lengths from <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> to <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>.
@@ -147,11 +142,17 @@ But this can be easily precomputed.</p>
 For each block we calculate the minimum element and store them in an array <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>.
 <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> has the size <span><span class="MathJax_Preview">\frac{N}{K}</span><script type="math/tex">\frac{N}{K}</script></span>.
 We construct a sparse table from the array <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>.
-The size and the time complexity of it will be:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\frac{N}{K}\log\left(\frac{N}{K}\right) = \frac{2N}{\log(N)} \log\left(\frac{2N}{\log(N)}\right) =</span><script type="math/tex">\frac{N}{K}\log\left(\frac{N}{K}\right) = \frac{2N}{\log(N)} \log\left(\frac{2N}{\log(N)}\right) =</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\frac{N}{K}\log\left(\frac{N}{K}\right) = \frac{2N}{\log(N)} \log\left(\frac{2N}{\log(N)}\right) =</span><script type="math/tex">\frac{N}{K}\log\left(\frac{N}{K}\right) = \frac{2N}{\log(N)} \log\left(\frac{2N}{\log(N)}\right) =</script></span></script></span>
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">= \frac{2N}{\log(N)} \left(1 + \log\left(\frac{N}{\log(N)}\right)\right) \leq \frac{2N}{\log(N)} + 2N = O(N)</span><script type="math/tex">= \frac{2N}{\log(N)} \left(1 + \log\left(\frac{N}{\log(N)}\right)\right) \leq \frac{2N}{\log(N)} + 2N = O(N)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">= \frac{2N}{\log(N)} \left(1 + \log\left(\frac{N}{\log(N)}\right)\right) \leq \frac{2N}{\log(N)} + 2N = O(N)</span><script type="math/tex">= \frac{2N}{\log(N)} \left(1 + \log\left(\frac{N}{\log(N)}\right)\right) \leq \frac{2N}{\log(N)} + 2N = O(N)</script></span></script></span></p>
+The size and the time complexity of it will be:</p>
+<div>
+<div class="MathJax_Preview">\frac{N}{K}\log\left(\frac{N}{K}\right) = \frac{2N}{\log(N)} \log\left(\frac{2N}{\log(N)}\right) =</div>
+<script type="math/tex; mode=display">\frac{N}{K}\log\left(\frac{N}{K}\right) = \frac{2N}{\log(N)} \log\left(\frac{2N}{\log(N)}\right) =</script>
+</div>
+<div>
+<div class="MathJax_Preview">= \frac{2N}{\log(N)} \left(1 + \log\left(\frac{N}{\log(N)}\right)\right) \leq \frac{2N}{\log(N)} + 2N = O(N)</div>
+<script type="math/tex; mode=display">= \frac{2N}{\log(N)} \left(1 + \log\left(\frac{N}{\log(N)}\right)\right) \leq \frac{2N}{\log(N)} + 2N = O(N)</script>
+</div>
 <p>Now we only have to learn how to quickly answer range minimum queries within each block.
-In fact if the received range minimum query is <span><span class="MathJax_Preview">[l,r]</span><script type="math/tex">[l,r]</script></span> and <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> and <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> are in different blocks then the answer is the minimum of the following three values:
+In fact if the received range minimum query is <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span> and <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> and <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> are in different blocks then the answer is the minimum of the following three values:
 the minimum of the suffix of block of <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> starting at <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span>, the minimum of the prefix of block of <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> ending at <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>, and the minimum of the blocks between those.
 The minimum of the blocks in between can be answered in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> using the Sparse Table.
 So this leaves us only the range minimum queries inside blocks.</p>
@@ -159,8 +160,11 @@ So this leaves us only the range minimum queries inside blocks.</p>
 Remember that the values in the array - which are just height values in the tree - will always differ by one.
 If we remove the first element of a block, and subtract it from every other item in the block, every block can be identified by a sequence of length <span><span class="MathJax_Preview">K - 1</span><script type="math/tex">K - 1</script></span> consisting of the number <span><span class="MathJax_Preview">+1</span><script type="math/tex">+1</script></span> and <span><span class="MathJax_Preview">-1</span><script type="math/tex">-1</script></span>.
 Because these blocks are so small, there are only a few different sequences that can occur.
-The number of possible sequences is:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">2^{K-1} = 2^{0.5 \log(N) - 1} = 0.5 \left(2^{\log(N)}\right)^{0.5} = 0.5 \sqrt{N}</span><script type="math/tex">2^{K-1} = 2^{0.5 \log(N) - 1} = 0.5 \left(2^{\log(N)}\right)^{0.5} = 0.5 \sqrt{N}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">2^{K-1} = 2^{0.5 \log(N) - 1} = 0.5 \left(2^{\log(N)}\right)^{0.5} = 0.5 \sqrt{N}</span><script type="math/tex">2^{K-1} = 2^{0.5 \log(N) - 1} = 0.5 \left(2^{\log(N)}\right)^{0.5} = 0.5 \sqrt{N}</script></span></script></span></p>
+The number of possible sequences is:</p>
+<div>
+<div class="MathJax_Preview">2^{K-1} = 2^{0.5 \log(N) - 1} = 0.5 \left(2^{\log(N)}\right)^{0.5} = 0.5 \sqrt{N}</div>
+<script type="math/tex; mode=display">2^{K-1} = 2^{0.5 \log(N) - 1} = 0.5 \left(2^{\log(N)}\right)^{0.5} = 0.5 \sqrt{N}</script>
+</div>
 <p>Thus the number of different blocks is <span><span class="MathJax_Preview">O(\sqrt{N})</span><script type="math/tex">O(\sqrt{N})</script></span>, and therefore we can precompute the results of range minimum queries inside all different blocks in <span><span class="MathJax_Preview">O(\sqrt{N} K^2) = O(\sqrt{N} \log^2(N)) = O(N)</span><script type="math/tex">O(\sqrt{N} K^2) = O(\sqrt{N} \log^2(N)) = O(N)</script></span> time.
 For the implementation we can characterize a block by a bitmask of length <span><span class="MathJax_Preview">K-1</span><script type="math/tex">K-1</script></span> (which will fit in a standard int) and store the index of the minimum in an array <span><span class="MathJax_Preview">\text{block}[\text{mask}][l][r]</span><script type="math/tex">\text{block}[\text{mask}][l][r]</script></span> of size <span><span class="MathJax_Preview">O(\sqrt{N} \log^2(N))</span><script type="math/tex">O(\sqrt{N} \log^2(N))</script></span>.</p>
 <p>So we learned how to precompute range minimum queries within each block, as well as range minimum queries over a range of blocks, all in <span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span>.
