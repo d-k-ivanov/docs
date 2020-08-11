@@ -84,7 +84,7 @@ However for an automaton we cannot restrict the possible transitions for each st
 If we try to perform a transition using a letter, and there is no corresponding edge in the trie, then we nevertheless must go into some state.
 
 More strictly, let us be in a state $p$ corresponding to the string $t$, and we want to transition to a different state with the character $c$.
-If the is an edge labeled with this letter $c$, then we can simply go over this edge, and get the vertex corresponding to $t + c$.
+If there is an edge labeled with this letter $c$, then we can simply go over this edge, and get the vertex corresponding to $t + c$.
 If there is no such edge, then we must find the state corresponding to the longest proper suffix of the string $t$ (the longest available in the trie), and try to perform a transition via $c$ from there.
 
 For example let the trie be constructed by the strings $ab$ and $bc$, and we are currently at the vertex corresponding to $ab$, which is a $\text{leaf}$.
@@ -163,7 +163,7 @@ int go(int v, char ch) {
 }
 ```
 
-It is easy to see, that due to the memorization of the found suffix links and transitions the total time for finding all suffix links and transitions will be linear.
+It is easy to see, that due to the memoization of the found suffix links and transitions the total time for finding all suffix links and transitions will be linear.
 
 ## Applications
 
@@ -204,7 +204,7 @@ Let's remember, that the vertices from which we can reach a $\text{leaf}$ vertex
 Since in this task we have to avoid matches, we are not allowed to enter such states.
 On the other hand we can enter all other vertices.
 Thus we delete all "bad" vertices from the machine, and in the remaining graph of the automaton we find the lexicographical smallest path of length $L$.
-This task can be solved in $O(L)$ for example by [depth first search](/docs/#Algorithms/graph/depth-first-search/).
+This task can be solved in $O(L)$ for example by [depth first search](/docs/#Algorithms/graph/depth-first-search.html).
 
 ### Finding the shortest string containing all given strings
 
@@ -213,7 +213,7 @@ For each vertex we store a mask that denotes the strings which match at this sta
 Then the problem can be reformulated as follows:
 initially being in the state $(v = \text{root},~ \text{mask} = 0)$, we want to reach the state $(v,~ \text{mask} = 2^n - 1)$, where $n$ is the number of strings in the set.
 When we transition from one state to another using a letter, we update the mask accordingly.
-By running a [breath first search](/docs/#Algorithms/graph/breadth-first-search/) we can find a path to the state $(v,~ \text{mask} = 2^n - 1)$ with the smallest length.
+By running a [breath first search](/docs/#Algorithms/graph/breadth-first-search.html) we can find a path to the state $(v,~ \text{mask} = 2^n - 1)$ with the smallest length.
 
 ### Finding the lexicographical smallest string of length $L$ containing $k$ strings
 
@@ -227,3 +227,4 @@ Thus we can find such a path  using depth first search (and if the search looks 
 - [UVA #11171 - SMS](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=2112)
 - [UVA #10679 - I Love Strings!!](https://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=1620)
 - [Codeforces - Frequency of String](http://codeforces.com/problemset/problem/963/D)
+- [CodeChef - TWOSTRS](https://www.codechef.com/MAY20A/problems/TWOSTRS)

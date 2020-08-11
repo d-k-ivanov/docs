@@ -24,7 +24,7 @@ It's a surprising fact that there is an algorithm, which is simple enough, that 
 
 ## Solution
 
-In general, this problem has many solutions: with [String Hashing](/string/string-hashing/) it can be solved in $O(n\cdot \log n)$, and with [Suffix Trees](/string/suffix-tree-ukkonen/) and fast LCA this problem can be solved in $O(n)$.
+In general, this problem has many solutions: with [String Hashing](/docs/#Algorithms/string/string-hashing/) it can be solved in $O(n\cdot \log n)$, and with [Suffix Trees](/docs/#Algorithms/string/suffix-tree-ukkonen/) and fast LCA this problem can be solved in $O(n)$.
 
 But the method described here is **sufficiently** simpler and has less hidden constant in time and memory complexity. This algorithm was discovered by **Glenn K. Manacher** in 1975.
 
@@ -115,7 +115,7 @@ Also we'll repeat that the algorithm was described to calculate the array for od
 
 At the first glance it's not obvious that this algorithm has linear time complexity, because we often run the naive algorithm while searching the answer for a particular position.
 
-But more careful analysis shows that the algorithm is linear however. We need to mention [Z-function building algorithm](/string/z-function/) which looks similar to this algorithm and also works in linear time.
+But more careful analysis shows that the algorithm is linear however. We need to mention [Z-function building algorithm](/docs/#Algorithms/string/z-function.html) which looks similar to this algorithm and also works in linear time.
 
 Actually, we can notice that every iteration of trivial algorithm makes $r$ increase by one. Also $r$ cannot be decreased during the algorithm. So, trivial algorithm will make $O(n)$ iterations in total.
 
@@ -159,4 +159,5 @@ for (int i = 0, l = 0, r = -1; i < n; i++) {
 
 ## Problems
 
-[UVA #11475 "Extend to Palindrome"](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=2470)
+* [UVA 11475 - Extend to Palindrome](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=26&page=show_problem&problem=2470)
+* [GYM - (Q) QueryreuQ](https://codeforces.com/gym/101806/problem/Q)

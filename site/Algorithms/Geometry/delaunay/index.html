@@ -222,10 +222,10 @@ int sgn(const ll&amp; a) { return a &gt;= 0 ? a ? 1 : 0 : -1; }</p>
 <p>void delete_edge(QuadEdge* e) {
     splice(e, e-&gt;oprev());
     splice(e-&gt;rev(), e-&gt;rev()-&gt;oprev());
-    delete e-&gt;rot;
     delete e-&gt;rev()-&gt;rot;
-    delete e;
     delete e-&gt;rev();
+    delete e-&gt;rot;
+    delete e;
 }</p>
 <p>QuadEdge<em> connect(QuadEdge</em> a, QuadEdge<em> b) {
     QuadEdge</em> e = make_edge(a-&gt;dest(), b-&gt;origin);

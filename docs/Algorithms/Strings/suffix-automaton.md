@@ -149,7 +149,7 @@ We denote by $t$ the biggest such suffix, and make a suffix link to it.
 
 In other words, a **suffix link** $link(v)$ leads to the state that corresponds to the **longest suffix** of $w$ that is in another $endpos$-equivalence class.
 
-Here we assume that the initial state $t_0$ corresponds to its own equivalence class (containing only the empty string), and for convenience we set $endpos(t) = \\{-1, 0, \dots, length(s)-1\\}$.
+Here we assume that the initial state $t_0$ corresponds to its own equivalence class (containing only the empty string), and for convenience we set $endpos($t_0$) = \\{-1, 0, \dots, length(s)-1\\}$.
 
 **Lemma 4**:
 Suffix links form a **tree** with the root $t_0$.
@@ -714,3 +714,4 @@ After that, the answer to the problem will be the string $longest(v)$ for the st
 
 - [SPOJ - SUBLEX](https://www.spoj.com/problems/SUBLEX/)
 - [Codeforces - Cyclical Quest](https://codeforces.com/problemset/problem/235/C)
+- [Codeforces - String](https://codeforces.com/contest/128/problem/B)

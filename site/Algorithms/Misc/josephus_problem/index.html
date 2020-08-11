@@ -143,10 +143,12 @@ n\setminus k & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\\\
 </div>
 <p>And here we can clearly see the following <strong>pattern</strong>:</p>
 <div>
-<div class="MathJax_Preview">J_ {n, k} = (J _ {(n-1), k} + k - 1) \ \bmod n + 1 $$
-$$J_ {1, k} = 1 </div>
-<script type="math/tex; mode=display">J_ {n, k} = (J _ {(n-1), k} + k - 1) \ \bmod n + 1 $$
-$$J_ {1, k} = 1 </script>
+<div class="MathJax_Preview">J_ {n, k} = (J _ {(n-1), k} + k - 1) \ \bmod n + 1 </div>
+<script type="math/tex; mode=display">J_ {n, k} = (J _ {(n-1), k} + k - 1) \ \bmod n + 1 </script>
+</div>
+<div>
+<div class="MathJax_Preview">J_ {1, k} = 1 </div>
+<script type="math/tex; mode=display">J_ {1, k} = 1 </script>
 </div>
 <p>Here, 1-indexing makes for a somewhat messy formula; if you instead number the positions from 0, you get a very elegant formula:</p>
 <div>
@@ -157,7 +159,7 @@ $$J_ {1, k} = 1 </script>
 <h2 id="implementation">Implementation</h2>
 <p>Simple <strong>recursive implementation</strong> (in 1-indexing)</p>
 <pre><code class="cpp">int josephus(int n, int k) {
-    return n &gt; 1 ? (joseph(n-1, k) + k - 1) % n + 1 : 1;
+    return n &gt; 1 ? (josephus(n-1, k) + k - 1) % n + 1 : 1;
 }
 </code></pre>
 
@@ -190,9 +192,9 @@ And since we removed every <span><span class="MathJax_Preview">k</span><script t
     if (k == 1)
         return n-1;
     if (k &gt; n)
-        return (joseph(n-1, k) + k) % n;
+        return (josephus(n-1, k) + k) % n;
     int cnt = n / k;
-    int res = joseph(n - cnt, k);
+    int res = josephus(n - cnt, k);
     res -= n % k;
     if (res &lt; 0)
         res += n;
@@ -209,10 +211,12 @@ And since we removed every <span><span class="MathJax_Preview">k</span><script t
 </div>
 <p>on taking logarithm on both sides, we obtain:</p>
 <div>
-<div class="MathJax_Preview">\ln n + x \ln \left(1 - \frac{1}{k} \right) = 0,$$
-$$x = - \frac{\ln n}{\ln \left(1 - \frac{1}{k} \right)},</div>
-<script type="math/tex; mode=display">\ln n + x \ln \left(1 - \frac{1}{k} \right) = 0,$$
-$$x = - \frac{\ln n}{\ln \left(1 - \frac{1}{k} \right)},</script>
+<div class="MathJax_Preview">\ln n + x \ln \left(1 - \frac{1}{k} \right) = 0,</div>
+<script type="math/tex; mode=display">\ln n + x \ln \left(1 - \frac{1}{k} \right) = 0,</script>
+</div>
+<div>
+<div class="MathJax_Preview">x = - \frac{\ln n}{\ln \left(1 - \frac{1}{k} \right)},</div>
+<script type="math/tex; mode=display">x = - \frac{\ln n}{\ln \left(1 - \frac{1}{k} \right)},</script>
 </div>
 <p>using the decomposition of the logarithm into Taylor series, we obtain an approximate estimate:</p>
 <div>

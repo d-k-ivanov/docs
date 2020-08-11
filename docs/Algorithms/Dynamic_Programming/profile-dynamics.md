@@ -31,7 +31,7 @@ void calc (int x = 0, int y = 0, int mask = 0, int next_mask = 0)
     if (x == n)
         return;
     if (y >= m)
-        dp[x+1][next_mask] += d[x][mask];
+        dp[x+1][next_mask] += dp[x][mask];
     else
     {
         int my_mask = 1 << y;
@@ -80,6 +80,6 @@ int main()
 
 ## References
 
-- [Blog by EvilBunny](https://blog.evilbuggy.com/2018/05/broken-profile-dynamic-programming/)
+- [Blog by EvilBunny](https://blog.evilbuggy.com/2018/05/broken-profile-dynamic-programming.html)
 - [TopCoder Recipe by "syg96"](https://apps.topcoder.com/forums/?module=Thread&start=0&threadID=697369)
-- [Blogpost by sk765](http://sk765.blogspot.com/2012/02/dynamic-programming-with-profile/)
+- [Blogpost by sk765](http://sk765.blogspot.com/2012/02/dynamic-programming-with-profile.html)

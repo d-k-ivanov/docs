@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Data_Structures/stack_queue_modification/">
     <link rel="shortcut icon" href="../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Stack queue modification - Technical Info</title>
+    <title>Minimum stack / Minimum queue - Technical Info</title>
     <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../css/base.css" rel="stylesheet">
@@ -39,6 +39,7 @@
               {title: "Queue modification (method 2)", url: "#queue-modification-method-2" },
               {title: "Queue modification (method 3)", url: "#queue-modification-method-3" },
               {title: "Finding the minimum for all subarrays of fixed length", url: "#finding-the-minimum-for-all-subarrays-of-fixed-length" },
+              {title: "Practice Problems", url: "#practice-problems" },
           ]},
         ];
 
@@ -97,15 +98,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <!--?title Minimum stack / Minimum queue -->
-
-<h1 id="minimum-stack-minimum-queue">Minimum stack / Minimum queue</h1>
+    <h1 id="minimum-stack-minimum-queue">Minimum stack / Minimum queue</h1>
 <p>In this article we will consider three problems:
 first we will modify a stack in a way that allows up to find the smallest element of the stack in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>, then we will do the same thing with a queue, and finally we will use these data structures to find the minimum in all subarrays of a fixed length in an array in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
 <h2 id="stack-modification">Stack modification</h2>
 <p>We want to modify the stack data structure in such a way, that it possible to find the smallest element in the stack in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> time, while maintaining the same asymptotic behavior for adding and removing elements from the stack.
 Quick reminder, on a stack we only add and remove elements on one end.</p>
-<p>To do this, we will no only store the elements in the stack, but we will store them in pairs: the element itself and the minimum in the stack starting from this element and below.</p>
+<p>To do this, we will not only store the elements in the stack, but we will store them in pairs: the element itself and the minimum in the stack starting from this element and below.</p>
 <pre><code class="cpp">stack&lt;pair&lt;int, int&gt;&gt; st;
 </code></pre>
 
@@ -261,6 +260,11 @@ We have to find the minimum of each subarray of length <span><span class="MathJa
 The solutions should be clear:
 we add the first <span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> element of the array, find and output its minimum, then add the next element to the queue and remove the first element of the array, find and output its minimum, etc.
 Since all operations with the queue are performed in constant time on average, the complexity of the whole algorithm will be <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>.</p>
+<h2 id="practice-problems">Practice Problems</h2>
+<ul>
+<li><a href="https://www.hackerrank.com/challenges/queries-with-fixed-length/problem">Queries with Fixed Length</a></li>
+<li><a href="https://www.codechef.com/MAY20A/problems/BINLAND">Binary Land</a></li>
+</ul>
 
   <br>
 </div>

@@ -217,7 +217,7 @@ For sparse graphs this is better than the above algorithm, but for dense graphs 
 struct Edge {
     int w = INF, to = -1;
     bool operator&lt;(Edge const&amp; other) const {
-        return w &lt; other.w;
+        return make_pair(w, to) &lt; make_pair(other.w, other.to);
     }
 };
 

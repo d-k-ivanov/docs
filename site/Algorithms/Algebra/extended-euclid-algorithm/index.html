@@ -96,67 +96,103 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <h1 id="extended-euclidean-algorithm">Extended Euclidean Algorithm</h1>
-<p>While the <a href="./docs/#Algorithms/algebra/euclid-algorithm/">Euclidean algorithm</a> calculates only the greatest common divisor (GCD) of two integers <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>, the extended version also finds a way to represent GCD in terms of <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>, i.e. coefficients <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> and <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> for which:</p>
+<p>While the <a href="/docs/#Algorithms/algebra/euclid-algorithm/">Euclidean algorithm</a> calculates only the greatest common divisor (GCD) of two integers <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>, the extended version also finds a way to represent GCD in terms of <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>, i.e. coefficients <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> and <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> for which:</p>
 <div>
 <div class="MathJax_Preview">a \cdot x + b \cdot y = \gcd(a, b)</div>
 <script type="math/tex; mode=display">a \cdot x + b \cdot y = \gcd(a, b)</script>
 </div>
+<p>It's important to note, that we can always find such a representation, for instance <span><span class="MathJax_Preview">\gcd(55, 80) = 5</span><script type="math/tex">\gcd(55, 80) = 5</script></span> therefore we can represent <span><span class="MathJax_Preview">5</span><script type="math/tex">5</script></span> as a linear combination with the terms <span><span class="MathJax_Preview">55</span><script type="math/tex">55</script></span> and <span><span class="MathJax_Preview">80</span><script type="math/tex">80</script></span>: <span><span class="MathJax_Preview">55 \cdot 3 + 80 \cdot (-2) = 5</span><script type="math/tex">55 \cdot 3 + 80 \cdot (-2) = 5</script></span></p>
+<p>A more general form of that problem is discussed in the article about <a href="/docs/#Algorithms/algebra/linear-diophantine-equation/">Linear Diophantine Equations</a>.
+It will build upon this algorithm.</p>
 <h2 id="algorithm">Algorithm</h2>
-<p>The changes to the original algorithm are very simple. All we need to do is to figure out how the coefficients <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> and <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> change during the transition from <span><span class="MathJax_Preview">(a, b)</span><script type="math/tex">(a, b)</script></span> to <span><span class="MathJax_Preview">(b \bmod a, a)</span><script type="math/tex">(b \bmod a, a)</script></span>.</p>
-<p>Let us assume we found the coefficients <span><span class="MathJax_Preview">(x_1, y_1)</span><script type="math/tex">(x_1, y_1)</script></span> for <span><span class="MathJax_Preview">(b \bmod a, a)</span><script type="math/tex">(b \bmod a, a)</script></span>:</p>
+<p>We will denote the GCD of <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> with <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> in this section.</p>
+<p>The changes to the original algorithm are very simple.
+If we recall the algorithm, we can see that the algorithm ends with <span><span class="MathJax_Preview">b = 0</span><script type="math/tex">b = 0</script></span> and <span><span class="MathJax_Preview">a = g</span><script type="math/tex">a = g</script></span>.
+For these parameters we can easily find coefficients, namely <span><span class="MathJax_Preview">g \cdot 1 + 0 \cdot 0 = g</span><script type="math/tex">g \cdot 1 + 0 \cdot 0 = g</script></span>.</p>
+<p>Starting from these coefficients <span><span class="MathJax_Preview">(x, y) = (1, 0)</span><script type="math/tex">(x, y) = (1, 0)</script></span>, we can go backwards up the recursive calls.
+All we need to do is to figure out how the coefficients <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> and <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> change during the transition from <span><span class="MathJax_Preview">(a, b)</span><script type="math/tex">(a, b)</script></span> to <span><span class="MathJax_Preview">(b, a \bmod b)</span><script type="math/tex">(b, a \bmod b)</script></span>.</p>
+<p>Let us assume we found the coefficients <span><span class="MathJax_Preview">(x_1, y_1)</span><script type="math/tex">(x_1, y_1)</script></span> for <span><span class="MathJax_Preview">(b, a \bmod b)</span><script type="math/tex">(b, a \bmod b)</script></span>:</p>
 <div>
-<div class="MathJax_Preview"> (b \bmod a) \cdot x_1 + a \cdot y_1 = g</div>
-<script type="math/tex; mode=display"> (b \bmod a) \cdot x_1 + a \cdot y_1 = g</script>
+<div class="MathJax_Preview">b \cdot x_1 + (a \bmod b) \cdot y_1 = g</div>
+<script type="math/tex; mode=display">b \cdot x_1 + (a \bmod b) \cdot y_1 = g</script>
 </div>
 <p>and we want to find the pair <span><span class="MathJax_Preview">(x, y)</span><script type="math/tex">(x, y)</script></span> for <span><span class="MathJax_Preview">(a, b)</span><script type="math/tex">(a, b)</script></span>:</p>
 <div>
 <div class="MathJax_Preview"> a \cdot x + b \cdot y = g</div>
 <script type="math/tex; mode=display"> a \cdot x + b \cdot y = g</script>
 </div>
-<p>We can represent <span><span class="MathJax_Preview">b \bmod a</span><script type="math/tex">b \bmod a</script></span> is:</p>
+<p>We can represent <span><span class="MathJax_Preview">a \bmod b</span><script type="math/tex">a \bmod b</script></span> as:</p>
 <div>
-<div class="MathJax_Preview"> b \bmod a = b - \left\lfloor \frac{b}{a} \right\rfloor \cdot a</div>
-<script type="math/tex; mode=display"> b \bmod a = b - \left\lfloor \frac{b}{a} \right\rfloor \cdot a</script>
+<div class="MathJax_Preview"> a \bmod b = a - \left\lfloor \frac{a}{b} \right\rfloor \cdot b</div>
+<script type="math/tex; mode=display"> a \bmod b = a - \left\lfloor \frac{a}{b} \right\rfloor \cdot b</script>
 </div>
 <p>Substituting this expression in the coefficient equation of <span><span class="MathJax_Preview">(x_1, y_1)</span><script type="math/tex">(x_1, y_1)</script></span> gives:</p>
 <div>
-<div class="MathJax_Preview"> g = (b \bmod a) \cdot x_1 + a \cdot y_1 = \left( b - \left\lfloor \frac{b}{a} \right\rfloor \cdot a \right) \cdot x_1 + a \cdot y_1</div>
-<script type="math/tex; mode=display"> g = (b \bmod a) \cdot x_1 + a \cdot y_1 = \left( b - \left\lfloor \frac{b}{a} \right\rfloor \cdot a \right) \cdot x_1 + a \cdot y_1</script>
+<div class="MathJax_Preview"> g = b \cdot x_1 + (a \bmod b) \cdot y_1 = b \cdot x_1 + \left(a - \left\lfloor \frac{a}{b} \right\rfloor \cdot b \right) \cdot y_1</div>
+<script type="math/tex; mode=display"> g = b \cdot x_1 + (a \bmod b) \cdot y_1 = b \cdot x_1 + \left(a - \left\lfloor \frac{a}{b} \right\rfloor \cdot b \right) \cdot y_1</script>
 </div>
 <p>and after rearranging the terms:</p>
 <div>
-<div class="MathJax_Preview">g = b \cdot x_1 + a \cdot \left( y_1 - \left\lfloor \frac{b}{a} \right\rfloor \cdot x_1 \right)</div>
-<script type="math/tex; mode=display">g = b \cdot x_1 + a \cdot \left( y_1 - \left\lfloor \frac{b}{a} \right\rfloor \cdot x_1 \right)</script>
+<div class="MathJax_Preview">g = a \cdot y_1 + b \cdot \left( x_1 - y_1 \cdot \left\lfloor \frac{a}{b} \right\rfloor \right)</div>
+<script type="math/tex; mode=display">g = a \cdot y_1 + b \cdot \left( x_1 - y_1 \cdot \left\lfloor \frac{a}{b} \right\rfloor \right)</script>
 </div>
 <p>We found the values of <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> and <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>:</p>
 <div>
 <div class="MathJax_Preview">\begin{cases}
-x = y_1 - \left\lfloor \frac{b}{a} \right\rfloor \cdot x_1 \cr
-y = x_1
+x = y_1 \\\\
+y = x_1 - y_1 \cdot \left\lfloor \frac{a}{b} \right\rfloor
 \end{cases} </div>
 <script type="math/tex; mode=display">\begin{cases}
-x = y_1 - \left\lfloor \frac{b}{a} \right\rfloor \cdot x_1 \cr
-y = x_1
+x = y_1 \\\\
+y = x_1 - y_1 \cdot \left\lfloor \frac{a}{b} \right\rfloor
 \end{cases} </script>
 </div>
 <h2 id="implementation">Implementation</h2>
-<pre><code class="cpp">int gcd(int a, int b, int &amp; x, int &amp; y) {
-    if (a == 0) {
-        x = 0;
-        y = 1;
-        return b;
+<p>```cpp extended_gcd
+int gcd(int a, int b, int&amp; x, int&amp; y) {
+    if (b == 0) {
+        x = 1;
+        y = 0;
+        return a;
     }
     int x1, y1;
-    int d = gcd(b % a, a, x1, y1);
-    x = y1 - (b / a) * x1;
-    y = x1;
+    int d = gcd(b, a % b, x1, y1);
+    x = y1;
+    y = x1 - y1 * (a / b);
     return d;
+}</p>
+<pre><code>
+The recursive function above returns the GCD and the values of coefficients to `x` and `y` (which are passed by reference to the function).
+
+This implementation of extended Euclidean algorithm produces correct results for negative integers as well.
+
+## Iterative version
+
+It's also possible to write the Extended Euclidean algorithm in an iterative way.
+Because it avoids recursion, the code will run a little bit faster than the recursive one.
+
+```cpp extended_gcd_iter
+int gcd(int a, int b, int&amp; x, int&amp; y) {
+    x = 1, y = 0;
+    int x1 = 0, y1 = 1, a1 = a, b1 = b;
+    while (b1) {
+        int q = a1 / b1;
+        tie(x, x1) = make_tuple(x1, x - q * x1);
+        tie(y, y1) = make_tuple(y1, y - q * y1);
+        tie(a1, b1) = make_tuple(b1, a1 - q * b1);
+    }
+    return a1;
 }
 </code></pre>
 
-<p>The recursive function above returns the GCD and the values of coefficients to <code>x</code> and <code>y</code> (which are passed by reference to the function).</p>
-<p>Base case for the recursion is <span><span class="MathJax_Preview">a = 0</span><script type="math/tex">a = 0</script></span>, when the GCD equals <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>, so the coefficients <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> and <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> are <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span> and <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>, respectively. In all other cases the above formulas are used to re-calculate the coefficients on each iteration.</p>
-<p>This implementation of extended Euclidean algorithm produces correct results for negative integers as well.</p>
+<p>If you look closely at the variable <code>a1</code> and <code>b1</code>, you can notice that they taking exactly the same values as in the iterative version of the normal <a href="/docs/#Algorithms/algebra/euclid-algorithm/">Euclidean algorithm</a>. So the algorithm will at least compute the correct GCD.</p>
+<p>To see why the algorithm also computes the correct coefficients, you can check that the following invariants will hold at any time (before the while loop, and at the end of each iteration): <span><span class="MathJax_Preview">x \cdot a + y \cdot b = a_1</span><script type="math/tex">x \cdot a + y \cdot b = a_1</script></span> and <span><span class="MathJax_Preview">x_1 \cdot a + y_1 \cdot b = b_1</span><script type="math/tex">x_1 \cdot a + y_1 \cdot b = b_1</script></span>.
+It's trivial to see, that these two equations are satisfied at the beginning.
+And you can check that the update in the loop iteration will still keep those equalities valid.</p>
+<p>At the end we know that <span><span class="MathJax_Preview">a_1</span><script type="math/tex">a_1</script></span> contains the GCD, so <span><span class="MathJax_Preview">x \cdot a + y \cdot b = g</span><script type="math/tex">x \cdot a + y \cdot b = g</script></span>.
+Which means that we have found the required coefficients.</p>
+<p>You can even optimize the code more, and remove the variable <span><span class="MathJax_Preview">a_1</span><script type="math/tex">a_1</script></span> and <span><span class="MathJax_Preview">b_1</span><script type="math/tex">b_1</script></span> from the code, and just reuse <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>.
+However if you do so, you loose the ability to argue about the invariants.</p>
 <h2 id="practice-problems">Practice Problems</h2>
 <ul>
 <li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=1045">10104 - Euclid Problem</a></li>

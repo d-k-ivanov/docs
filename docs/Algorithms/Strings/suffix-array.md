@@ -8,6 +8,7 @@ A **suffix array** will contain integers that represent the **starting indexes**
 
 As an example look at the string $s = abaab$.
 All suffixes are as follows
+
 $$\begin{array}{ll}
 0. & abaab \\\\
 1. & baab \\\\
@@ -17,6 +18,7 @@ $$\begin{array}{ll}
 \end{array}$$
 
 After sorting these strings:
+
 $$\begin{array}{ll}
 2. & aab \\\\
 3. & ab \\\\
@@ -72,11 +74,13 @@ The number of equivalence classes will be stored in a variable $\text{classes}$.
 Let's look at an example.
 Consider the string $s = aaba$.
 The cyclic substrings and the corresponding arrays $p[]$ and $c[]$ are given for each iteration:
+
 $$\begin{array}{cccc}
 0: & (a,~ a,~ b,~ a) & p = (0,~ 1,~ 3,~ 2) & c = (0,~ 0,~ 1,~ 0)\\\\
 1: & (aa,~ ab,~ ba,~ aa) & p = (0,~ 3,~ 1,~ 2) & c = (0,~ 1,~ 2,~ 0)\\\\
 2: & (aaba,~ abaa,~ baaa,~ aaab) & p = (3,~ 0,~ 1,~ 2) & c = (1,~ 2,~ 3,~ 0)\\\\
 \end{array}$$
+
 It is worth noting that the values of $p[]$ can be different.
 For example in the $0$-th iteration the array could also be $p = (3,~ 1,~ 0,~ 2)$ or $p = (3,~ 0,~ 1,~ 2)$.
 All these options permutation the substrings into a sorted order.
@@ -121,6 +125,7 @@ Since we perform this step $O(\log n)$ times, the complete algorithm will have a
 
 To do this, note that the cyclic substrings of length $2^k$ consists of two substrings of length $2^{k-1}$ which we can compare with each other in $O(1)$ using the information from the previous phase - the values of the equivalence classes $c[]$.
 Thus, for two substrings of length $2^k$ starting at position $i$ and $j$, all necessary information to compare them is contained in the pairs $(c[i],~ c[i + 2^{k-1}])$ and $(c[j],~ c[j + 2^{k-1}])$.
+
 $$\dots
 \overbrace{
 \underbrace{s_i \dots s_{i+2^{k-1}-1}}\_{\text{length} = 2^{k-1},~ \text{class} = c[i]}
@@ -241,6 +246,7 @@ Let's compare two substrings of length $l$ with the starting indices $i$ and $j$
 We find the largest length of a block that is placed inside a substring of this length: the greatest $k$ such that $2^k \le l$.
 Then comparing the two substrings can be replaced by comparing two overlapping blocks of length $2^k$:
 first you need to compare the two blocks starting at $i$ and $j$, and if these are equal then compare the two blocks ending in positions $i + l - 1$ and $j + l - 1$:
+
 $$\dots
 \overbrace{\underbrace{s_i \dots s_{i+l-2^k} \dots s_{i+2^k-1}}\_{2^k} \dots s_{i+l-1}}^{\text{first}}
 \dots
@@ -326,7 +332,7 @@ And possibly it can be bigger.
 
 Now we already can implement the algorithm.
 We will iterate over the suffixes in order of their length. This way we can reuse the last value $k$, since going from suffix $i$ to the suffix $i+1$ is exactly the same as removing the first letter.
-Will will need an additional array $\text{rank}$, which will give us the position of a suffix in the sorted list of suffixes.
+We will need an additional array $\text{rank}$, which will give us the position of a suffix in the sorted list of suffixes.
 
 ```cpp suffix_array_lcp_construction
 vector<int> lcp_construction(string const& s, vector<int> const& p) {

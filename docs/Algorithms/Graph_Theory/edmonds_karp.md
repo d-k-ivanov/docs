@@ -33,6 +33,7 @@ The source $s$ is origin of all the water, and the water can only drain in the s
 
 The following image show a flow network.
 The first value of each edge represents the flow, which is initially 0, and the second value represents the capacity.
+
 <center>![Flow network](/docs/data/cs/Flow1.png)</center>
 
 The value of a flow of a network is the sum of all flows that gets produced in source $s$, or equivalently of the flows that are consumed in the sink $t$.
@@ -43,6 +44,7 @@ In the visualization with water pipes, the problem can be formulated in the foll
 how much water can we push through the pipes from the source to the sink.
 
 The following image show the maximal flow in the flow network.
+
 <center>![Maximal flow](/docs/data/cs/Flow9.png)</center>
 
 ## Ford-Fulkerson method
@@ -69,18 +71,22 @@ we update $f((u, v)) ~\text{+=}~ C$ and $f((v, u)) ~\text{-=}~ C$ for every edge
 Here is an example to demonstrate the method.
 We use the same flow network as above.
 Initially we start with a flow of 0.
+
 <center>![Flow network](/docs/data/cs/Flow1.png)</center>
 
 We can find the path $s - A - B - t$ with the residual capacities 7, 5 and 8.
 Their minimum is 5, therefore we can increase the flow along this path by 5.
 This gives a flow of 5 for the network.
+
 <center>![First path](/docs/data/cs/Flow2.png) ![Network after first path](/docs/data/cs/Flow3.png)</center>
 
 Again we look for an augmenting path, this time we find $s - D - A - C - t$ with the residual capacities 4, 3, 3 and 5.
 Therefore we can increase the flow by 3 and we get a flow of 8 for the network.
+
 <center>![Second path](/docs/data/cs/Flow4.png) ![Network after second path](/docs/data/cs/Flow5.png)</center>
 
 This time we find the path $s - D - C - B - t$ with the residual capacities 1, 2, 3 and 3, and we increase by 1.
+
 <center>![Third path](/docs/data/cs/Flow6.png) ![Network after third path](/docs/data/cs/Flow7.png)</center>
 
 This time we find the augmenting path $s - A - D - C - t$ with the residual capacities 2, 3, 1 and 2.
@@ -91,6 +97,7 @@ In the original flow network we are not allowed to send any flow from $A$ to $D$
 But because we already have a flow of 3 from $D$ to $A$ this is possible.
 The intuition of it is the following:
 Instead of sending a flow of 3 from $D$ to $A$, we only send 2 and compensate this by sending an additional flow of 1 from $s$ to $A$, which allows us to send an additional flow of 1 along the path $D - C - t$.
+
 <center>![Fourth path](/docs/data/cs/Flow8.png) ![Network after fourth path](/docs/data/cs/Flow9.png)</center>
 
 Now it is impossible to find an augmenting path between $s$ and $t$, therefore this flow of $10$ is the maximal possible.
@@ -120,7 +127,7 @@ The matrix `capacity` stores the capacity for every pair of vertices.
 
 The function `maxflow` will return the value of the maximal flow.
 During the algorithm the matrix `capacity` will actually store the residual capacity of the network.
-The value of the flow in each edge will actually no stored, but it is easy to extent the implementation - by using an additional matrix - to also store the flow and return it.
+The value of the flow in each edge will actually not be stored, but it is easy to extend the implementation - by using an additional matrix - to also store the flow and return it.
 
 ```cpp edmondskarp
 int n;
@@ -190,9 +197,15 @@ It says that the capacity of the maximum flow has to be equal to the capacity of
 In the following image you can see the minimum cut of the flow network we used earlier.
 It shows that the capacity of the cut $\\{s, A, D\\}$ and $\\{B, C, t\\}$ is $5 + 3 + 2 = 10$, which is equal to the maximum flow that we found.
 Other cuts will have a bigger capacity, like the capacity between $\\{s, A\\}$ and $\\{B, C, D, t\\}$ is $4 + 3 + 5 = 12$.
+
 <center>![Minimum cut](/docs/data/cs/Cut.png)</center>
 
 A minimum cut can be found after performing a maximum flow computation using the Ford-Fulkerson method.
 One possible minimum cut is the following:
 the set of all vertices that can be reached from $s$ in the residual graph (using edges with positive residual capacity), and the set of all the other vertices.
 This partition can be easily found using [DFS](/docs/#Algorithms/graph/depth-first-search/) starting at $s$.
+
+## Practice Problems
+
+- [Codeforces - Array and Operations](https://codeforces.com/contest/498/problem/c)
+- [Codeforces - Red-Blue Graph](https://codeforces.com/contest/1288/problem/f)

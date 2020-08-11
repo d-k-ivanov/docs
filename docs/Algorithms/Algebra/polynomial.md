@@ -49,8 +49,11 @@ Other useful functions:
 ### Multiplication
 
 The very core operation is the multiplication of two polynomials, that is, given polynomial $A$ and $B$:
+
 $$A = a_0 + a_1 x + \dots + a_n x^n$$
+
 $$B = b_0 + b_1 x + \dots + b_m x^m$$
+
 You have to compute polynomial $C = A \cdot B$: $$\boxed{C = \sum\limits_{i=0}^n \sum\limits_{j=0}^m a_i b_j x^{i+j}}  = c_0 + c_1 x + \dots + c_{n+m} x^{n+m}$$
 It can be computed in $O(n \log n)$ via the [Fast Fourier transform](/docs/#Algorithms/algebra/fft/) and almost all methods here will use it as subroutine.
 
@@ -80,8 +83,11 @@ Let $n \geq m$, then you can immediately find out that $\deg D = n - m$ and that
 That means that you can recover $D(x)$ from the largest $n-m+1$ coefficients of $A(x)$ and $B(x)$ if you consider it as a system of equations.
 
 The formal way to do it is to consider the reversed polynomials:
+
 $$A^R(x) = x^nA(x^{-1})= a_n + a_{n-1} x + \dots + a_0 x^n$$
+
 $$B^R(x) = x^m B(x^{-1}) = b_m + b_{m-1} x + \dots + b_0 x^m$$
+
 $$D^R(x) = x^{n-m}D(x^{-1}) = d_{n-m} + d_{n-m-1} x + \dots + d_0 x^{n-m}$$
 
 Using these terms you can rewrite that statement about the largest $n-m+1$ coefficients as:
@@ -100,9 +106,11 @@ And from this in turn you can easily recover $R(x)$ as $R(x) = A(x) - B(x)D(x)$.
 
 Let's generalize the inverse series approach.
 You want to find a polynomial $P(x)$ satisfying $F(P) = 0$ where $F(x)$ is some function represented as:
+
 $$F(x) = \sum\limits_{i=0}^\infty \alpha_i (x-\beta)^k$$
 
 Where $\beta$ is some constant. It can be proven that if we introduce a new formal variable $y$, we can express $F(x)$ as:
+
 $$F(x) = F(y) + (x-y)F'(y) + (x-y)^2 G(x,y)$$
 
 Where $F'(x)$ is the derivative formal power series defined as $F'(x) = \sum\limits_{i=0}^\infty (k+1)\alpha_{i+1}(x-\beta)^k$ and $G(x, y)$ is some formal power series of $x$ and $y$.
@@ -125,8 +133,11 @@ Thus we can calculate $n$ coefficients of $\ln P(x)$ in $O(n \log n)$.
 
 Turns out, we can get the formula for $A^{-1}$ using Newton's method.
 For this we take the equation $A=Q^{-1}$, thus:
+
 $$F(Q) = Q^{-1} - A$$
+
 $$F'(Q) = -Q^{-2}$$
+
 $$\boxed{Q_{k+1} \equiv Q_k(2-AQ_k) \pmod{x^{2^{k+1}}}}$$
 
 ### Exponent
@@ -136,7 +147,9 @@ Let's learn to calculate $e^{P(x)}=Q(x)$. It should hold that $\ln Q = P$, thus:
 ### $k$-th power
 
 Now we need to calculate $P^k(x)=Q$. This may be done via the following formula:
+
 $$Q = \exp\left[k \ln P(x)\right]$$
+
 Note though, that you can calculate the logarithms and the exponents correctly only if you can find some initial $Q_0$.
 
 To find it, you should calculate the logarithm or the exponent of the constant coefficient of the polynomial.
@@ -144,7 +157,9 @@ To find it, you should calculate the logarithm or the exponent of the constant c
 But the only reasonable way to do it is if $P(0)=1$ for $Q = \ln P$ so $Q(0)=0$ and if $P(0)=0$ for $Q = e^P$ so $Q(0)=1$.
 
 Thus you can use formula above only if $P(0) = 1$. Otherwise if $P(x) = \alpha x^t T(x)$ where $T(0)=1$ you can write that:
+
 $$\boxed{P^k(x) = \alpha^kx^{kt} \exp[k \ln T(x)]}$$
+
 Note that you also can calculate some $k$-th root of a polynomial if you can calculate $\sqrt[k]{\alpha}$, for example for $\alpha=1$.
 
 ## Evaluation and Interpolation
@@ -171,9 +186,9 @@ It gives us an $O(n \log n)$ algorithm when you need to compute values in powers
 
 Assume you need to calculate $A(x_1), \dots, A(x_n)$. As mentioned earlier, $A(x) \equiv A(x_i) \pmod{x-x_i}$. Thus you may do the following:
 
-1. Compute a segment tree such that in the segment $[l;r)$ stands the product $P_{l, r}(x) = (x-x_l)(x-x_{l+1})\dots(x-x_{r-1})$.
-2. Starting with $l=1$ and $r=n$ at the root node. Let $m=\lfloor(l+r)/2\rfloor$. Let's move down to $[l;m)$ with the polynomial $A(x) \pmod{P_{l,m}(x)}$.
-3. This will recursively compute $A(x_l), \dots, A(x_{m-1})$, now do the same for $[m;r)$ with $A(x) \pmod{P_{m,r}(x)}$.
+1. Compute a segment tree such that in the segment $[l,r)$ stands the product $P_{l, r}(x) = (x-x_l)(x-x_{l+1})\dots(x-x_{r-1})$.
+2. Starting with $l=1$ and $r=n$ at the root node. Let $m=\lfloor(l+r)/2\rfloor$. Let's move down to $[l,m)$ with the polynomial $A(x) \pmod{P_{l,m}(x)}$.
+3. This will recursively compute $A(x_l), \dots, A(x_{m-1})$, now do the same for $[m,r)$ with $A(x) \pmod{P_{m,r}(x)}$.
 4. Concatenate the results from the first and second recursive call and return them.
 
 The whole procedure will run in $O(n \log^2 n)$.

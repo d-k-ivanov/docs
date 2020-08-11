@@ -39,6 +39,7 @@
               {title: "Edmonds-Karp algorithm", url: "#edmonds-karp-algorithm" },
               {title: "Integral flow theorem ## {#integral-theorem}", url: "#integral-flow-theorem-integral-theorem" },
               {title: "Max-flow min-cut theorem", url: "#max-flow-min-cut-theorem" },
+              {title: "Practice Problems", url: "#practice-problems" },
           ]},
         ];
 
@@ -121,15 +122,15 @@ In each junction all the incoming water has to be distributed to the other pipes
 It cannot magically disappear or appear.
 The source <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> is origin of all the water, and the water can only drain in the sink <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>.</p>
 <p>The following image show a flow network.
-The first value of each edge represents the flow, which is initially 0, and the second value represents the capacity.
-<center><img alt="Flow network" src="/docs/data/cs/Flow1.png" /></center></p>
+The first value of each edge represents the flow, which is initially 0, and the second value represents the capacity.</p>
+<p><center><img alt="Flow network" src="/docs/data/cs/Flow1.png" /></center></p>
 <p>The value of a flow of a network is the sum of all flows that gets produced in source <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, or equivalently of the flows that are consumed in the sink <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>.
 A <strong>maximal flow</strong> is a flow with the maximal possible value.
 Finding this maximal flow of a flow network is the problem that we want to solve.</p>
 <p>In the visualization with water pipes, the problem can be formulated in the following way:
 how much water can we push through the pipes from the source to the sink.</p>
-<p>The following image show the maximal flow in the flow network.
-<center><img alt="Maximal flow" src="/docs/data/cs/Flow9.png" /></center></p>
+<p>The following image show the maximal flow in the flow network.</p>
+<p><center><img alt="Maximal flow" src="/docs/data/cs/Flow9.png" /></center></p>
 <h2 id="ford-fulkerson-method">Ford-Fulkerson method</h2>
 <p>Let's define one more thing.
 A <strong>residual capacity</strong> of an directed edge is the capacity minus the flow.
@@ -149,17 +150,17 @@ Then we increase the flow in the following way:
 we update <span><span class="MathJax_Preview">f((u, v)) ~\text{+=}~ C</span><script type="math/tex">f((u, v)) ~\text{+=}~ C</script></span> and <span><span class="MathJax_Preview">f((v, u)) ~\text{-=}~ C</span><script type="math/tex">f((v, u)) ~\text{-=}~ C</script></span> for every edge <span><span class="MathJax_Preview">(u, v)</span><script type="math/tex">(u, v)</script></span> in the path.</p>
 <p>Here is an example to demonstrate the method.
 We use the same flow network as above.
-Initially we start with a flow of 0.
-<center><img alt="Flow network" src="/docs/data/cs/Flow1.png" /></center></p>
+Initially we start with a flow of 0.</p>
+<p><center><img alt="Flow network" src="/docs/data/cs/Flow1.png" /></center></p>
 <p>We can find the path <span><span class="MathJax_Preview">s - A - B - t</span><script type="math/tex">s - A - B - t</script></span> with the residual capacities 7, 5 and 8.
 Their minimum is 5, therefore we can increase the flow along this path by 5.
-This gives a flow of 5 for the network.
-<center><img alt="First path" src="/docs/data/cs/Flow2.png" /> <img alt="Network after first path" src="/docs/data/cs/Flow3.png" /></center></p>
+This gives a flow of 5 for the network.</p>
+<p><center><img alt="First path" src="/docs/data/cs/Flow2.png" /> <img alt="Network after first path" src="/docs/data/cs/Flow3.png" /></center></p>
 <p>Again we look for an augmenting path, this time we find <span><span class="MathJax_Preview">s - D - A - C - t</span><script type="math/tex">s - D - A - C - t</script></span> with the residual capacities 4, 3, 3 and 5.
-Therefore we can increase the flow by 3 and we get a flow of 8 for the network.
-<center><img alt="Second path" src="/docs/data/cs/Flow4.png" /> <img alt="Network after second path" src="/docs/data/cs/Flow5.png" /></center></p>
-<p>This time we find the path <span><span class="MathJax_Preview">s - D - C - B - t</span><script type="math/tex">s - D - C - B - t</script></span> with the residual capacities 1, 2, 3 and 3, and we increase by 1.
-<center><img alt="Third path" src="/docs/data/cs/Flow6.png" /> <img alt="Network after third path" src="/docs/data/cs/Flow7.png" /></center></p>
+Therefore we can increase the flow by 3 and we get a flow of 8 for the network.</p>
+<p><center><img alt="Second path" src="/docs/data/cs/Flow4.png" /> <img alt="Network after second path" src="/docs/data/cs/Flow5.png" /></center></p>
+<p>This time we find the path <span><span class="MathJax_Preview">s - D - C - B - t</span><script type="math/tex">s - D - C - B - t</script></span> with the residual capacities 1, 2, 3 and 3, and we increase by 1.</p>
+<p><center><img alt="Third path" src="/docs/data/cs/Flow6.png" /> <img alt="Network after third path" src="/docs/data/cs/Flow7.png" /></center></p>
 <p>This time we find the augmenting path <span><span class="MathJax_Preview">s - A - D - C - t</span><script type="math/tex">s - A - D - C - t</script></span> with the residual capacities 2, 3, 1 and 2.
 We can increase by 1.
 But this path is very interesting.
@@ -167,8 +168,8 @@ It includes the reversed edge <span><span class="MathJax_Preview">(A, D)</span><
 In the original flow network we are not allowed to send any flow from <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> to <span><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span>.
 But because we already have a flow of 3 from <span><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span> to <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> this is possible.
 The intuition of it is the following:
-Instead of sending a flow of 3 from <span><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span> to <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>, we only send 2 and compensate this by sending an additional flow of 1 from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>, which allows us to send an additional flow of 1 along the path <span><span class="MathJax_Preview">D - C - t</span><script type="math/tex">D - C - t</script></span>.
-<center><img alt="Fourth path" src="/docs/data/cs/Flow8.png" /> <img alt="Network after fourth path" src="/docs/data/cs/Flow9.png" /></center></p>
+Instead of sending a flow of 3 from <span><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span> to <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>, we only send 2 and compensate this by sending an additional flow of 1 from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>, which allows us to send an additional flow of 1 along the path <span><span class="MathJax_Preview">D - C - t</span><script type="math/tex">D - C - t</script></span>.</p>
+<p><center><img alt="Fourth path" src="/docs/data/cs/Flow8.png" /> <img alt="Network after fourth path" src="/docs/data/cs/Flow9.png" /></center></p>
 <p>Now it is impossible to find an augmenting path between <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> and <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>, therefore this flow of <span><span class="MathJax_Preview">10</span><script type="math/tex">10</script></span> is the maximal possible.
 We have found the maximal flow.</p>
 <p>It should be noted, that the Ford-Fulkerson method doesn't specify a method of finding the augmenting path.
@@ -189,7 +190,7 @@ And the length of a simple paths is bounded by <span><span class="MathJax_Previe
 <code>adj</code> is the adjacency list of the <strong>undirected graph</strong>, since we have also to use the reversed of directed edges when we are looking for augmenting paths.</p>
 <p>The function <code>maxflow</code> will return the value of the maximal flow.
 During the algorithm the matrix <code>capacity</code> will actually store the residual capacity of the network.
-The value of the flow in each edge will actually no stored, but it is easy to extent the implementation - by using an additional matrix - to also store the flow and return it.</p>
+The value of the flow in each edge will actually not be stored, but it is easy to extend the implementation - by using an additional matrix - to also store the flow and return it.</p>
 <p>```cpp edmondskarp
 int n;
 vector<vector\<int>> capacity;
@@ -248,12 +249,17 @@ Therefore the maximum flow is bounded by the minimum cut capacity.</p>
 It says that the capacity of the maximum flow has to be equal to the capacity of the minimum cut.</p>
 <p>In the following image you can see the minimum cut of the flow network we used earlier.
 It shows that the capacity of the cut <span><span class="MathJax_Preview">\\{s, A, D\\}</span><script type="math/tex">\\{s, A, D\\}</script></span> and <span><span class="MathJax_Preview">\\{B, C, t\\}</span><script type="math/tex">\\{B, C, t\\}</script></span> is <span><span class="MathJax_Preview">5 + 3 + 2 = 10</span><script type="math/tex">5 + 3 + 2 = 10</script></span>, which is equal to the maximum flow that we found.
-Other cuts will have a bigger capacity, like the capacity between <span><span class="MathJax_Preview">\\{s, A\\}</span><script type="math/tex">\\{s, A\\}</script></span> and <span><span class="MathJax_Preview">\\{B, C, D, t\\}</span><script type="math/tex">\\{B, C, D, t\\}</script></span> is <span><span class="MathJax_Preview">4 + 3 + 5 = 12</span><script type="math/tex">4 + 3 + 5 = 12</script></span>.
-<center><img alt="Minimum cut" src="/docs/data/cs/Cut.png" /></center></p>
+Other cuts will have a bigger capacity, like the capacity between <span><span class="MathJax_Preview">\\{s, A\\}</span><script type="math/tex">\\{s, A\\}</script></span> and <span><span class="MathJax_Preview">\\{B, C, D, t\\}</span><script type="math/tex">\\{B, C, D, t\\}</script></span> is <span><span class="MathJax_Preview">4 + 3 + 5 = 12</span><script type="math/tex">4 + 3 + 5 = 12</script></span>.</p>
+<p><center><img alt="Minimum cut" src="/docs/data/cs/Cut.png" /></center></p>
 <p>A minimum cut can be found after performing a maximum flow computation using the Ford-Fulkerson method.
 One possible minimum cut is the following:
 the set of all vertices that can be reached from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> in the residual graph (using edges with positive residual capacity), and the set of all the other vertices.
 This partition can be easily found using <a href="/docs/#Algorithms/graph/depth-first-search/">DFS</a> starting at <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.</p>
+<h2 id="practice-problems">Practice Problems</h2>
+<ul>
+<li><a href="https://codeforces.com/contest/498/problem/c">Codeforces - Array and Operations</a></li>
+<li><a href="https://codeforces.com/contest/1288/problem/f">Codeforces - Red-Blue Graph</a></li>
+</ul>
 
   <br>
 </div>

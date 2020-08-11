@@ -91,7 +91,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
       <a href="../phi-function/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
         Previous</a><a href="../phi-function/" class="btn btn-xs btn-link">
-        Phi function
+        Euler's totient function
       </a>
     </div>
     
@@ -139,10 +139,16 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </ul>
 <h2 id="arithmetic">Arithmetic</h2>
 <h3 id="multiplication">Multiplication</h3>
-<p>The very core operation is the multiplication of two polynomials, that is, given polynomial <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> and <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">A = a_0 + a_1 x + \dots + a_n x^n</span><script type="math/tex">A = a_0 + a_1 x + \dots + a_n x^n</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">A = a_0 + a_1 x + \dots + a_n x^n</span><script type="math/tex">A = a_0 + a_1 x + \dots + a_n x^n</script></span></script></span>
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">B = b_0 + b_1 x + \dots + b_m x^m</span><script type="math/tex">B = b_0 + b_1 x + \dots + b_m x^m</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">B = b_0 + b_1 x + \dots + b_m x^m</span><script type="math/tex">B = b_0 + b_1 x + \dots + b_m x^m</script></span></script></span>
-You have to compute polynomial <span><span class="MathJax_Preview">C = A \cdot B</span><script type="math/tex">C = A \cdot B</script></span>: <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\boxed{C = \sum\limits_{i=0}^n \sum\limits_{j=0}^m a_i b_j x^{i+j}}  = c_0 + c_1 x + \dots + c_{n+m} x^{n+m}</span><script type="math/tex">\boxed{C = \sum\limits_{i=0}^n \sum\limits_{j=0}^m a_i b_j x^{i+j}}  = c_0 + c_1 x + \dots + c_{n+m} x^{n+m}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\boxed{C = \sum\limits_{i=0}^n \sum\limits_{j=0}^m a_i b_j x^{i+j}}  = c_0 + c_1 x + \dots + c_{n+m} x^{n+m}</span><script type="math/tex">\boxed{C = \sum\limits_{i=0}^n \sum\limits_{j=0}^m a_i b_j x^{i+j}}  = c_0 + c_1 x + \dots + c_{n+m} x^{n+m}</script></span></script></span>
+<p>The very core operation is the multiplication of two polynomials, that is, given polynomial <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> and <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>:</p>
+<div>
+<div class="MathJax_Preview">A = a_0 + a_1 x + \dots + a_n x^n</div>
+<script type="math/tex; mode=display">A = a_0 + a_1 x + \dots + a_n x^n</script>
+</div>
+<div>
+<div class="MathJax_Preview">B = b_0 + b_1 x + \dots + b_m x^m</div>
+<script type="math/tex; mode=display">B = b_0 + b_1 x + \dots + b_m x^m</script>
+</div>
+<p>You have to compute polynomial <span><span class="MathJax_Preview">C = A \cdot B</span><script type="math/tex">C = A \cdot B</script></span>: <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\boxed{C = \sum\limits_{i=0}^n \sum\limits_{j=0}^m a_i b_j x^{i+j}}  = c_0 + c_1 x + \dots + c_{n+m} x^{n+m}</span><script type="math/tex">\boxed{C = \sum\limits_{i=0}^n \sum\limits_{j=0}^m a_i b_j x^{i+j}}  = c_0 + c_1 x + \dots + c_{n+m} x^{n+m}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\boxed{C = \sum\limits_{i=0}^n \sum\limits_{j=0}^m a_i b_j x^{i+j}}  = c_0 + c_1 x + \dots + c_{n+m} x^{n+m}</span><script type="math/tex">\boxed{C = \sum\limits_{i=0}^n \sum\limits_{j=0}^m a_i b_j x^{i+j}}  = c_0 + c_1 x + \dots + c_{n+m} x^{n+m}</script></span></script></span>
 It can be computed in <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> via the <a href="/docs/#Algorithms/algebra/fft/">Fast Fourier transform</a> and almost all methods here will use it as subroutine.</p>
 <h3 id="inverse-series">Inverse series</h3>
 <p>If <span><span class="MathJax_Preview">A(0) \neq 0</span><script type="math/tex">A(0) \neq 0</script></span> there always exists an infinite series <span><span class="MathJax_Preview">A^{-1}(x) = \sum\limits_{i=0}^\infty a_i'x^i</span><script type="math/tex">A^{-1}(x) = \sum\limits_{i=0}^\infty a_i'x^i</script></span> such that <span><span class="MathJax_Preview">A^{-1} A = 1</span><script type="math/tex">A^{-1} A = 1</script></span>.</p>
@@ -166,10 +172,19 @@ It can be computed in <span><span class="MathJax_Preview">O(n \log n)</span><scr
 </div>
 <p>Let <span><span class="MathJax_Preview">n \geq m</span><script type="math/tex">n \geq m</script></span>, then you can immediately find out that <span><span class="MathJax_Preview">\deg D = n - m</span><script type="math/tex">\deg D = n - m</script></span> and that leading <span><span class="MathJax_Preview">n-m+1</span><script type="math/tex">n-m+1</script></span> coefficients of <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> don't influence <span><span class="MathJax_Preview">R</span><script type="math/tex">R</script></span>.</p>
 <p>That means that you can recover <span><span class="MathJax_Preview">D(x)</span><script type="math/tex">D(x)</script></span> from the largest <span><span class="MathJax_Preview">n-m+1</span><script type="math/tex">n-m+1</script></span> coefficients of <span><span class="MathJax_Preview">A(x)</span><script type="math/tex">A(x)</script></span> and <span><span class="MathJax_Preview">B(x)</span><script type="math/tex">B(x)</script></span> if you consider it as a system of equations.</p>
-<p>The formal way to do it is to consider the reversed polynomials:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">A^R(x) = x^nA(x^{-1})= a_n + a_{n-1} x + \dots + a_0 x^n</span><script type="math/tex">A^R(x) = x^nA(x^{-1})= a_n + a_{n-1} x + \dots + a_0 x^n</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">A^R(x) = x^nA(x^{-1})= a_n + a_{n-1} x + \dots + a_0 x^n</span><script type="math/tex">A^R(x) = x^nA(x^{-1})= a_n + a_{n-1} x + \dots + a_0 x^n</script></span></script></span>
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">B^R(x) = x^m B(x^{-1}) = b_m + b_{m-1} x + \dots + b_0 x^m</span><script type="math/tex">B^R(x) = x^m B(x^{-1}) = b_m + b_{m-1} x + \dots + b_0 x^m</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">B^R(x) = x^m B(x^{-1}) = b_m + b_{m-1} x + \dots + b_0 x^m</span><script type="math/tex">B^R(x) = x^m B(x^{-1}) = b_m + b_{m-1} x + \dots + b_0 x^m</script></span></script></span>
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">D^R(x) = x^{n-m}D(x^{-1}) = d_{n-m} + d_{n-m-1} x + \dots + d_0 x^{n-m}</span><script type="math/tex">D^R(x) = x^{n-m}D(x^{-1}) = d_{n-m} + d_{n-m-1} x + \dots + d_0 x^{n-m}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">D^R(x) = x^{n-m}D(x^{-1}) = d_{n-m} + d_{n-m-1} x + \dots + d_0 x^{n-m}</span><script type="math/tex">D^R(x) = x^{n-m}D(x^{-1}) = d_{n-m} + d_{n-m-1} x + \dots + d_0 x^{n-m}</script></span></script></span></p>
+<p>The formal way to do it is to consider the reversed polynomials:</p>
+<div>
+<div class="MathJax_Preview">A^R(x) = x^nA(x^{-1})= a_n + a_{n-1} x + \dots + a_0 x^n</div>
+<script type="math/tex; mode=display">A^R(x) = x^nA(x^{-1})= a_n + a_{n-1} x + \dots + a_0 x^n</script>
+</div>
+<div>
+<div class="MathJax_Preview">B^R(x) = x^m B(x^{-1}) = b_m + b_{m-1} x + \dots + b_0 x^m</div>
+<script type="math/tex; mode=display">B^R(x) = x^m B(x^{-1}) = b_m + b_{m-1} x + \dots + b_0 x^m</script>
+</div>
+<div>
+<div class="MathJax_Preview">D^R(x) = x^{n-m}D(x^{-1}) = d_{n-m} + d_{n-m-1} x + \dots + d_0 x^{n-m}</div>
+<script type="math/tex; mode=display">D^R(x) = x^{n-m}D(x^{-1}) = d_{n-m} + d_{n-m-1} x + \dots + d_0 x^{n-m}</script>
+</div>
 <p>Using these terms you can rewrite that statement about the largest <span><span class="MathJax_Preview">n-m+1</span><script type="math/tex">n-m+1</script></span> coefficients as:</p>
 <div>
 <div class="MathJax_Preview">A^R(x) \equiv B^R(x) D^R(x) \pmod{x^{n-m+1}}</div>
@@ -184,10 +199,16 @@ It can be computed in <span><span class="MathJax_Preview">O(n \log n)</span><scr
 <h2 id="calculating-functions-of-polynomial">Calculating functions of polynomial</h2>
 <h3 id="newtons-method">Newton's method</h3>
 <p>Let's generalize the inverse series approach.
-You want to find a polynomial <span><span class="MathJax_Preview">P(x)</span><script type="math/tex">P(x)</script></span> satisfying <span><span class="MathJax_Preview">F(P) = 0</span><script type="math/tex">F(P) = 0</script></span> where <span><span class="MathJax_Preview">F(x)</span><script type="math/tex">F(x)</script></span> is some function represented as:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">F(x) = \sum\limits_{i=0}^\infty \alpha_i (x-\beta)^k</span><script type="math/tex">F(x) = \sum\limits_{i=0}^\infty \alpha_i (x-\beta)^k</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">F(x) = \sum\limits_{i=0}^\infty \alpha_i (x-\beta)^k</span><script type="math/tex">F(x) = \sum\limits_{i=0}^\infty \alpha_i (x-\beta)^k</script></span></script></span></p>
-<p>Where <span><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span> is some constant. It can be proven that if we introduce a new formal variable <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>, we can express <span><span class="MathJax_Preview">F(x)</span><script type="math/tex">F(x)</script></span> as:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">F(x) = F(y) + (x-y)F'(y) + (x-y)^2 G(x,y)</span><script type="math/tex">F(x) = F(y) + (x-y)F'(y) + (x-y)^2 G(x,y)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">F(x) = F(y) + (x-y)F'(y) + (x-y)^2 G(x,y)</span><script type="math/tex">F(x) = F(y) + (x-y)F'(y) + (x-y)^2 G(x,y)</script></span></script></span></p>
+You want to find a polynomial <span><span class="MathJax_Preview">P(x)</span><script type="math/tex">P(x)</script></span> satisfying <span><span class="MathJax_Preview">F(P) = 0</span><script type="math/tex">F(P) = 0</script></span> where <span><span class="MathJax_Preview">F(x)</span><script type="math/tex">F(x)</script></span> is some function represented as:</p>
+<div>
+<div class="MathJax_Preview">F(x) = \sum\limits_{i=0}^\infty \alpha_i (x-\beta)^k</div>
+<script type="math/tex; mode=display">F(x) = \sum\limits_{i=0}^\infty \alpha_i (x-\beta)^k</script>
+</div>
+<p>Where <span><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span> is some constant. It can be proven that if we introduce a new formal variable <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>, we can express <span><span class="MathJax_Preview">F(x)</span><script type="math/tex">F(x)</script></span> as:</p>
+<div>
+<div class="MathJax_Preview">F(x) = F(y) + (x-y)F'(y) + (x-y)^2 G(x,y)</div>
+<script type="math/tex; mode=display">F(x) = F(y) + (x-y)F'(y) + (x-y)^2 G(x,y)</script>
+</div>
 <p>Where <span><span class="MathJax_Preview">F'(x)</span><script type="math/tex">F'(x)</script></span> is the derivative formal power series defined as <span><span class="MathJax_Preview">F'(x) = \sum\limits_{i=0}^\infty (k+1)\alpha_{i+1}(x-\beta)^k</span><script type="math/tex">F'(x) = \sum\limits_{i=0}^\infty (k+1)\alpha_{i+1}(x-\beta)^k</script></span> and <span><span class="MathJax_Preview">G(x, y)</span><script type="math/tex">G(x, y)</script></span> is some formal power series of <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> and <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>.</p>
 <p>Given this we can find the coefficients of the solution iteratively:</p>
 <ol>
@@ -202,21 +223,36 @@ You want to find a polynomial <span><span class="MathJax_Preview">P(x)</span><sc
 Thus we can calculate <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> coefficients of <span><span class="MathJax_Preview">\ln P(x)</span><script type="math/tex">\ln P(x)</script></span> in <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>.</p>
 <h3 id="inverse-series_1">Inverse series</h3>
 <p>Turns out, we can get the formula for <span><span class="MathJax_Preview">A^{-1}</span><script type="math/tex">A^{-1}</script></span> using Newton's method.
-For this we take the equation <span><span class="MathJax_Preview">A=Q^{-1}</span><script type="math/tex">A=Q^{-1}</script></span>, thus:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">F(Q) = Q^{-1} - A</span><script type="math/tex">F(Q) = Q^{-1} - A</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">F(Q) = Q^{-1} - A</span><script type="math/tex">F(Q) = Q^{-1} - A</script></span></script></span>
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">F'(Q) = -Q^{-2}</span><script type="math/tex">F'(Q) = -Q^{-2}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">F'(Q) = -Q^{-2}</span><script type="math/tex">F'(Q) = -Q^{-2}</script></span></script></span>
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\boxed{Q_{k+1} \equiv Q_k(2-AQ_k) \pmod{x^{2^{k+1}}}}</span><script type="math/tex">\boxed{Q_{k+1} \equiv Q_k(2-AQ_k) \pmod{x^{2^{k+1}}}}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\boxed{Q_{k+1} \equiv Q_k(2-AQ_k) \pmod{x^{2^{k+1}}}}</span><script type="math/tex">\boxed{Q_{k+1} \equiv Q_k(2-AQ_k) \pmod{x^{2^{k+1}}}}</script></span></script></span></p>
+For this we take the equation <span><span class="MathJax_Preview">A=Q^{-1}</span><script type="math/tex">A=Q^{-1}</script></span>, thus:</p>
+<div>
+<div class="MathJax_Preview">F(Q) = Q^{-1} - A</div>
+<script type="math/tex; mode=display">F(Q) = Q^{-1} - A</script>
+</div>
+<div>
+<div class="MathJax_Preview">F'(Q) = -Q^{-2}</div>
+<script type="math/tex; mode=display">F'(Q) = -Q^{-2}</script>
+</div>
+<div>
+<div class="MathJax_Preview">\boxed{Q_{k+1} \equiv Q_k(2-AQ_k) \pmod{x^{2^{k+1}}}}</div>
+<script type="math/tex; mode=display">\boxed{Q_{k+1} \equiv Q_k(2-AQ_k) \pmod{x^{2^{k+1}}}}</script>
+</div>
 <h3 id="exponent">Exponent</h3>
 <p>Let's learn to calculate <span><span class="MathJax_Preview">e^{P(x)}=Q(x)</span><script type="math/tex">e^{P(x)}=Q(x)</script></span>. It should hold that <span><span class="MathJax_Preview">\ln Q = P</span><script type="math/tex">\ln Q = P</script></span>, thus: <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">F(Q) = \ln Q - P</span><script type="math/tex">F(Q) = \ln Q - P</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">F(Q) = \ln Q - P</span><script type="math/tex">F(Q) = \ln Q - P</script></span></script></span> <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">F'(Q) = Q^{-1}</span><script type="math/tex">F'(Q) = Q^{-1}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">F'(Q) = Q^{-1}</span><script type="math/tex">F'(Q) = Q^{-1}</script></span></script></span> <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\boxed{Q_{k+1} \equiv Q_k(1 + P - \ln Q_k) \pmod{x^{2^{k+1}}}}</span><script type="math/tex">\boxed{Q_{k+1} \equiv Q_k(1 + P - \ln Q_k) \pmod{x^{2^{k+1}}}}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\boxed{Q_{k+1} \equiv Q_k(1 + P - \ln Q_k) \pmod{x^{2^{k+1}}}}</span><script type="math/tex">\boxed{Q_{k+1} \equiv Q_k(1 + P - \ln Q_k) \pmod{x^{2^{k+1}}}}</script></span></script></span></p>
 <h3 id="kk-th-power"><span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th power</h3>
-<p>Now we need to calculate <span><span class="MathJax_Preview">P^k(x)=Q</span><script type="math/tex">P^k(x)=Q</script></span>. This may be done via the following formula:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">Q = \exp\left[k \ln P(x)\right]</span><script type="math/tex">Q = \exp\left[k \ln P(x)\right]</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">Q = \exp\left[k \ln P(x)\right]</span><script type="math/tex">Q = \exp\left[k \ln P(x)\right]</script></span></script></span>
-Note though, that you can calculate the logarithms and the exponents correctly only if you can find some initial <span><span class="MathJax_Preview">Q_0</span><script type="math/tex">Q_0</script></span>.</p>
+<p>Now we need to calculate <span><span class="MathJax_Preview">P^k(x)=Q</span><script type="math/tex">P^k(x)=Q</script></span>. This may be done via the following formula:</p>
+<div>
+<div class="MathJax_Preview">Q = \exp\left[k \ln P(x)\right]</div>
+<script type="math/tex; mode=display">Q = \exp\left[k \ln P(x)\right]</script>
+</div>
+<p>Note though, that you can calculate the logarithms and the exponents correctly only if you can find some initial <span><span class="MathJax_Preview">Q_0</span><script type="math/tex">Q_0</script></span>.</p>
 <p>To find it, you should calculate the logarithm or the exponent of the constant coefficient of the polynomial.</p>
 <p>But the only reasonable way to do it is if <span><span class="MathJax_Preview">P(0)=1</span><script type="math/tex">P(0)=1</script></span> for <span><span class="MathJax_Preview">Q = \ln P</span><script type="math/tex">Q = \ln P</script></span> so <span><span class="MathJax_Preview">Q(0)=0</span><script type="math/tex">Q(0)=0</script></span> and if <span><span class="MathJax_Preview">P(0)=0</span><script type="math/tex">P(0)=0</script></span> for <span><span class="MathJax_Preview">Q = e^P</span><script type="math/tex">Q = e^P</script></span> so <span><span class="MathJax_Preview">Q(0)=1</span><script type="math/tex">Q(0)=1</script></span>.</p>
-<p>Thus you can use formula above only if <span><span class="MathJax_Preview">P(0) = 1</span><script type="math/tex">P(0) = 1</script></span>. Otherwise if <span><span class="MathJax_Preview">P(x) = \alpha x^t T(x)</span><script type="math/tex">P(x) = \alpha x^t T(x)</script></span> where <span><span class="MathJax_Preview">T(0)=1</span><script type="math/tex">T(0)=1</script></span> you can write that:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\boxed{P^k(x) = \alpha^kx^{kt} \exp[k \ln T(x)]}</span><script type="math/tex">\boxed{P^k(x) = \alpha^kx^{kt} \exp[k \ln T(x)]}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\boxed{P^k(x) = \alpha^kx^{kt} \exp[k \ln T(x)]}</span><script type="math/tex">\boxed{P^k(x) = \alpha^kx^{kt} \exp[k \ln T(x)]}</script></span></script></span>
-Note that you also can calculate some <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th root of a polynomial if you can calculate <span><span class="MathJax_Preview">\sqrt[k]{\alpha}</span><script type="math/tex">\sqrt[k]{\alpha}</script></span>, for example for <span><span class="MathJax_Preview">\alpha=1</span><script type="math/tex">\alpha=1</script></span>.</p>
+<p>Thus you can use formula above only if <span><span class="MathJax_Preview">P(0) = 1</span><script type="math/tex">P(0) = 1</script></span>. Otherwise if <span><span class="MathJax_Preview">P(x) = \alpha x^t T(x)</span><script type="math/tex">P(x) = \alpha x^t T(x)</script></span> where <span><span class="MathJax_Preview">T(0)=1</span><script type="math/tex">T(0)=1</script></span> you can write that:</p>
+<div>
+<div class="MathJax_Preview">\boxed{P^k(x) = \alpha^kx^{kt} \exp[k \ln T(x)]}</div>
+<script type="math/tex; mode=display">\boxed{P^k(x) = \alpha^kx^{kt} \exp[k \ln T(x)]}</script>
+</div>
+<p>Note that you also can calculate some <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th root of a polynomial if you can calculate <span><span class="MathJax_Preview">\sqrt[k]{\alpha}</span><script type="math/tex">\sqrt[k]{\alpha}</script></span>, for example for <span><span class="MathJax_Preview">\alpha=1</span><script type="math/tex">\alpha=1</script></span>.</p>
 <h2 id="evaluation-and-interpolation">Evaluation and Interpolation</h2>
 <h3 id="chirp-z-transform">Chirp-z Transform</h3>
 <p>For the particular case when you need to evaluate a polynomial in the points <span><span class="MathJax_Preview">x_r = z^{2r}</span><script type="math/tex">x_r = z^{2r}</script></span> you can do the following:</p>
@@ -236,9 +272,9 @@ Note that you also can calculate some <span><span class="MathJax_Preview">k</spa
 <h3 id="multi-point-evaluation">Multi-point Evaluation</h3>
 <p>Assume you need to calculate <span><span class="MathJax_Preview">A(x_1), \dots, A(x_n)</span><script type="math/tex">A(x_1), \dots, A(x_n)</script></span>. As mentioned earlier, <span><span class="MathJax_Preview">A(x) \equiv A(x_i) \pmod{x-x_i}</span><script type="math/tex">A(x) \equiv A(x_i) \pmod{x-x_i}</script></span>. Thus you may do the following:</p>
 <ol>
-<li>Compute a segment tree such that in the segment <span><span class="MathJax_Preview">[l;r)</span><script type="math/tex">[l;r)</script></span> stands the product <span><span class="MathJax_Preview">P_{l, r}(x) = (x-x_l)(x-x_{l+1})\dots(x-x_{r-1})</span><script type="math/tex">P_{l, r}(x) = (x-x_l)(x-x_{l+1})\dots(x-x_{r-1})</script></span>.</li>
-<li>Starting with <span><span class="MathJax_Preview">l=1</span><script type="math/tex">l=1</script></span> and <span><span class="MathJax_Preview">r=n</span><script type="math/tex">r=n</script></span> at the root node. Let <span><span class="MathJax_Preview">m=\lfloor(l+r)/2\rfloor</span><script type="math/tex">m=\lfloor(l+r)/2\rfloor</script></span>. Let's move down to <span><span class="MathJax_Preview">[l;m)</span><script type="math/tex">[l;m)</script></span> with the polynomial <span><span class="MathJax_Preview">A(x) \pmod{P_{l,m}(x)}</span><script type="math/tex">A(x) \pmod{P_{l,m}(x)}</script></span>.</li>
-<li>This will recursively compute <span><span class="MathJax_Preview">A(x_l), \dots, A(x_{m-1})</span><script type="math/tex">A(x_l), \dots, A(x_{m-1})</script></span>, now do the same for <span><span class="MathJax_Preview">[m;r)</span><script type="math/tex">[m;r)</script></span> with <span><span class="MathJax_Preview">A(x) \pmod{P_{m,r}(x)}</span><script type="math/tex">A(x) \pmod{P_{m,r}(x)}</script></span>.</li>
+<li>Compute a segment tree such that in the segment <span><span class="MathJax_Preview">[l,r)</span><script type="math/tex">[l,r)</script></span> stands the product <span><span class="MathJax_Preview">P_{l, r}(x) = (x-x_l)(x-x_{l+1})\dots(x-x_{r-1})</span><script type="math/tex">P_{l, r}(x) = (x-x_l)(x-x_{l+1})\dots(x-x_{r-1})</script></span>.</li>
+<li>Starting with <span><span class="MathJax_Preview">l=1</span><script type="math/tex">l=1</script></span> and <span><span class="MathJax_Preview">r=n</span><script type="math/tex">r=n</script></span> at the root node. Let <span><span class="MathJax_Preview">m=\lfloor(l+r)/2\rfloor</span><script type="math/tex">m=\lfloor(l+r)/2\rfloor</script></span>. Let's move down to <span><span class="MathJax_Preview">[l,m)</span><script type="math/tex">[l,m)</script></span> with the polynomial <span><span class="MathJax_Preview">A(x) \pmod{P_{l,m}(x)}</span><script type="math/tex">A(x) \pmod{P_{l,m}(x)}</script></span>.</li>
+<li>This will recursively compute <span><span class="MathJax_Preview">A(x_l), \dots, A(x_{m-1})</span><script type="math/tex">A(x_l), \dots, A(x_{m-1})</script></span>, now do the same for <span><span class="MathJax_Preview">[m,r)</span><script type="math/tex">[m,r)</script></span> with <span><span class="MathJax_Preview">A(x) \pmod{P_{m,r}(x)}</span><script type="math/tex">A(x) \pmod{P_{m,r}(x)}</script></span>.</li>
 <li>Concatenate the results from the first and second recursive call and return them.</li>
 </ol>
 <p>The whole procedure will run in <span><span class="MathJax_Preview">O(n \log^2 n)</span><script type="math/tex">O(n \log^2 n)</script></span>.</p>

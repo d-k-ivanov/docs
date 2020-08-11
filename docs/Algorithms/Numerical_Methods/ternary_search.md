@@ -55,18 +55,18 @@ The difference occurs in the stopping criterion of the algorithm. Ternary search
 
 ```cpp
 double ternary_search(double l, double r) {
-    double eps = 1e-9;                //set the error limit here
+    double eps = 1e-9;                  //set the error limit here
     while (r - l > eps) {
         double m1 = l + (r - l) / 3;
         double m2 = r - (r - l) / 3;
-        double f1 = f(m1);        //evaluates the function at m1
-        double f2 = f(m2);        //evaluates the function at m2
+        double f1 = f(m1);              //evaluates the function at m1
+        double f2 = f(m2);              //evaluates the function at m2
         if (f1 < f2)
             l = m1;
         else
             r = m2;
     }
-    return f(l);                    //return the maximum of f(x) in [l, r]
+    return f(l);                        //return the maximum of f(x) in [l, r]
 }
 ```
 
@@ -86,4 +86,6 @@ Instead of the criterion `r - l > eps`, we can select a constant number of itera
 - [GYM - Chasing the Cheetahs (A)](http://codeforces.com/gym/100829)
 - [UVA - 12197 - Trick or Treat](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=3349)
 - [SPOJ - Building Construction](http://www.spoj.com/problems/KOPC12A/)
-- [Codeforces - Devu and his Brother](https://codeforces.com/problemset/problem/439/D)-
+- [Codeforces - Devu and his Brother](https://codeforces.com/problemset/problem/439/D)
+- [Codechef - Is This JEE](https://www.codechef.com/problems/ICM2003)
+- [Codeforces - Restorer Distance](https://codeforces.com/contest/1355/problem/E)

@@ -157,8 +157,12 @@ This way we can archive a <span><span class="MathJax_Preview">O(N)</span><script
     }
 
     int first = 0;
-    while (!deg[first])
+    while (first &lt; n &amp;&amp; !deg[first])
         ++first;
+    if (first == n) {
+        cout &lt;&lt; -1;
+        return 0;
+    }
 
     int v1 = -1, v2 = -1;
     bool bad = false;

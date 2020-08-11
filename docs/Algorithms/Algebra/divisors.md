@@ -31,7 +31,8 @@ p_1^2 & p_1^2 & p_1^2 \cdot p_2 & p_1^2 \cdot p_2^2 & \dots & p_1^2 \cdot p_2^{e
 \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\\\
 p_1^{e_1} & p_1^{e_1} & p_1^{e_1} \cdot p_2 & p_1^{e_1} \cdot p_2^2 & \dots & p_1^{e_1} \cdot p_2^{e_2} \\\\
 \end{array}$$
-  So the number of divisors is trivially $(e_1 + 1) \cdot (e_2 + 1)$.
+
+So the number of divisors is trivially $(e_1 + 1) \cdot (e_2 + 1)$.
 
 * A similar argument can be made if there are more then two distinct prime factors.
 
@@ -53,8 +54,10 @@ We can use the same argument of the previous section.
 
 ## Multiplicative functions
 
-A multiplicative functions is a function $f(x)$ which satisfies
+A multiplicative function is a function $f(x)$ which satisfies
+
 $$f(a \cdot b) = f(a) \cdot f(b)$$
+
 if $a$ and $b$ are coprime.
 
 Both $d(n)$ and $\sigma(n)$ are multiplicative functions.

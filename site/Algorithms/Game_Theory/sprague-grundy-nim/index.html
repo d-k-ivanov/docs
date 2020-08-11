@@ -116,7 +116,7 @@ Summarizing, a state is winning if there is at least one transition to a losing 
 <p>Our task is to classify the states of a given game.</p>
 <p>The theory of such games was independently developed by Roland Sprague in 1935 and Patrick Michael Grundy in 1939.</p>
 <h2 id="nim">Nim</h2>
-<p>This game obeys the restrictions described above above.
+<p>This game obeys the restrictions described above.
 Moreover, <em>any</em> perfect-information impartial two-player game can be reduced to the game of Nim.
 Studying this game will allow us to solve all other similar games, but more on that later.</p>
 <p>Historically this game was popular in ancient times.
@@ -186,13 +186,13 @@ In other words, increases are useless, and we don't have to use them in a winnin
 Suppose a player added stones to a pile. Then his opponent can simply undo his move — decrease the number back to the previous value.
 Since the game is acyclic, sooner or later the current player won't be able to use an increase move and will have to do the usual Nim move.</p>
 <h3 id="sprague-grundy-theorem">Sprague-Grundy theorem</h3>
-<p>Let's consider a state <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> of a two-player impartial game and let <span><span class="MathJax_Preview">v_i</span><script type="math/tex">v_i</script></span> be the states reachable from it (where <span><span class="MathJax_Preview">i \in \{ 1, 2, \dots, k \} , k \ge 0</span><script type="math/tex">i \in \{ 1, 2, \dots, k \} , k \ge 0</script></span>).
+<p>Let's consider a state <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> of a two-player impartial game and let <span><span class="MathJax_Preview">v_i</span><script type="math/tex">v_i</script></span> be the states reachable from it (where <span><span class="MathJax_Preview">i \in \\{ 1, 2, \dots, k \\} , k \ge 0</span><script type="math/tex">i \in \\{ 1, 2, \dots, k \\} , k \ge 0</script></span>).
 To this state, we can assign a fully equivalent game of Nim with one pile of size <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>.
 The number <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> is called the Grundy value or nim-value of state <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>.</p>
 <p>Moreover, this number can be found in the following recursive way:</p>
 <div>
-<div class="MathJax_Preview"> x = \text{mex} \{ x_1, \ldots, x_k \}, </div>
-<script type="math/tex; mode=display"> x = \text{mex} \{ x_1, \ldots, x_k \}, </script>
+<div class="MathJax_Preview"> x = \text{mex}\ \\{ x_1, \ldots, x_k \\}, </div>
+<script type="math/tex; mode=display"> x = \text{mex}\ \\{ x_1, \ldots, x_k \\}, </script>
 </div>
 <p>where <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> is the Grundy value for state <span><span class="MathJax_Preview">v_i</span><script type="math/tex">v_i</script></span> and the function <span><span class="MathJax_Preview">\text{mex}</span><script type="math/tex">\text{mex}</script></span> (<em>minimum excludant</em>) is the smallest non-negative integer not found in the given set.</p>
 <p>Viewing the game as a graph, we can gradually calculate the Grundy values starting from vertices without outgoing edges.
@@ -203,7 +203,7 @@ We will use a proof by induction.</p>
 That is correct, since an empty Nim is losing.</p>
 <p>Now consider any other vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>.
 By induction, we assume the values <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> corresponding to its reachable vertices are already calculated.</p>
-<p>Let <span><span class="MathJax_Preview">p = \text{mex} \{ x_1, \ldots, x_k \}</span><script type="math/tex">p = \text{mex} \{ x_1, \ldots, x_k \}</script></span>.
+<p>Let <span><span class="MathJax_Preview">p = \text{mex}\ \\{ x_1, \ldots, x_k \\}</span><script type="math/tex">p = \text{mex}\ \\{ x_1, \ldots, x_k \\}</script></span>.
 Then we know that for any integer <span><span class="MathJax_Preview">i \in [0, p)</span><script type="math/tex">i \in [0, p)</script></span> there exists a reachable vertex with Grundy value <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>.
 This means <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> is <strong>equivalent to a state of the game of Nim with increases with one pile of size <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span></strong>.
 In such a game we have transitions to piles of every size smaller than <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> and possibly transitions to piles with sizes greater than <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>.
@@ -249,8 +249,8 @@ into two strips of length <span><span class="MathJax_Preview">i-2</span><script 
 For the edge case of the cross being marked on position <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> or <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, we go to the game <span><span class="MathJax_Preview">n-2</span><script type="math/tex">n-2</script></span>.</p>
 <p>Thus, the Grundy value <span><span class="MathJax_Preview">g(n)</span><script type="math/tex">g(n)</script></span> has the form:</p>
 <div>
-<div class="MathJax_Preview">g(n) = \text{mex} \Bigl( \{ g(n-2) \} \cup \{g(i-2) \oplus g(n-i-1) \mid 2 \leq i \leq n-1\} \Bigr) .</div>
-<script type="math/tex; mode=display">g(n) = \text{mex} \Bigl( \{ g(n-2) \} \cup \{g(i-2) \oplus g(n-i-1) \mid 2 \leq i \leq n-1\} \Bigr) .</script>
+<div class="MathJax_Preview">g(n) = \text{mex} \Bigl( \\{ g(n-2) \\} \cup \\{g(i-2) \oplus g(n-i-1) \mid 2 \leq i \leq n-1\\} \Bigr) .</div>
+<script type="math/tex; mode=display">g(n) = \text{mex} \Bigl( \\{ g(n-2) \\} \cup \\{g(i-2) \oplus g(n-i-1) \mid 2 \leq i \leq n-1\\} \Bigr) .</script>
 </div>
 <p>So we've got a <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span> solution.</p>
 <p>In fact, <span><span class="MathJax_Preview">g(n)</span><script type="math/tex">g(n)</script></span> has a period of length 34 starting with <span><span class="MathJax_Preview">n=52</span><script type="math/tex">n=52</script></span>.</p>

@@ -169,7 +169,7 @@ Therefore the algorithm generates a spanning tree.</p>
 <p>Now let's assume <span><span class="MathJax_Preview">F</span><script type="math/tex">F</script></span> is some edge set at any stage of the algorithm, <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> is a MST containing <span><span class="MathJax_Preview">F</span><script type="math/tex">F</script></span> and <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span> is the new edge we want to add using Kruskal.</p>
 <p>If <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span> generates a cycle, then we don't add it, and so the proposal is still true after this step.</p>
 <p>In case that <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> already contains <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span>, the proposal is also true after this step.</p>
-<p>In case <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> doesn't contain the edge <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span>, then <span><span class="MathJax_Preview">T + e</span><script type="math/tex">T + e</script></span> will contains a cycle <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span>.
+<p>In case <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> doesn't contain the edge <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span>, then <span><span class="MathJax_Preview">T + e</span><script type="math/tex">T + e</script></span> will contain a cycle <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span>.
 This cycle will contain at least one edge <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>, that is not in <span><span class="MathJax_Preview">F</span><script type="math/tex">F</script></span>.
 The set of edges <span><span class="MathJax_Preview">T - f + e</span><script type="math/tex">T - f + e</script></span> will also be a spanning tree.
 Notice that the weight of <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> cannot be smaller than the weight of <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span>, because otherwise Kruskal would have chosen <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> earlier.
@@ -180,7 +180,7 @@ So also here the proposal is still fulfilled after the step.</p>
 <p>This proves the proposal.
 Which means that after iterating over all edges the resulting edge set will be connected, and will be contained in a MST, which means that it has to be a MST already.</p>
 <h2 id="improved-implementation">Improved implementation</h2>
-<p>We can use the <a href="/docs/#Algorithms/data_structures/disjoint_set_union/"><strong>Disjoint Set Union</strong> (DSU)</a> data structure to write a faster implementation of the Kruskal's algorithm with the time complexity of about <span><span class="MathJax_Preview">O(M \log N)</span><script type="math/tex">O(M \log N)</script></span>. <a href="/docs/#Algorithms/graph/mst_kruskal_with_dsu/">This article</a> details such an approach.</p>
+<p>We can use the <a href="/docs/#Algorithms/data_structures/disjoint_set_union.html"><strong>Disjoint Set Union</strong> (DSU)</a> data structure to write a faster implementation of the Kruskal's algorithm with the time complexity of about <span><span class="MathJax_Preview">O(M \log N)</span><script type="math/tex">O(M \log N)</script></span>. <a href="/docs/#Algorithms/graph/mst_kruskal_with_dsu.html">This article</a> details such an approach.</p>
 <h2 id="practice-problems">Practice Problems</h2>
 <ul>
 <li><a href="http://www.spoj.com/problems/KOICOST/">SPOJ - Koicost</a></li>
@@ -209,6 +209,7 @@ Which means that after iterating over all edges the resulting edge set will be c
 <li><a href="http://www.spoj.com/problems/BLINNET/">SPOJ - Blinet</a></li>
 <li><a href="http://www.spoj.com/problems/IITKWPCG/">SPOJ - Help the Old King</a></li>
 <li><a href="http://codeforces.com/contest/17/problem/B">Codeforces - Hierarchy</a></li>
+<li><a href="https://www.spoj.com/problems/EC_MODE/">SPOJ - Modems</a></li>
 </ul>
 
   <br>

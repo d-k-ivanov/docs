@@ -101,58 +101,40 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Let <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> be a string of length <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>. The <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>-th suffix of <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> is the substring <span><span class="MathJax_Preview">s[i \ldots n - 1]</span><script type="math/tex">s[i \ldots n - 1]</script></span>.</p>
 <p>A <strong>suffix array</strong> will contain integers that represent the <strong>starting indexes</strong> of the all the suffixes of a given string, after the aforementioned suffixes are sorted.</p>
 <p>As an example look at the string <span><span class="MathJax_Preview">s = abaab</span><script type="math/tex">s = abaab</script></span>.
-All suffixes are as follows
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{array}{ll}
+All suffixes are as follows</p>
+<div>
+<div class="MathJax_Preview">\begin{array}{ll}
 0. &amp; abaab \\\\
 1. &amp; baab \\\\
 2. &amp; aab \\\\
 3. &amp; ab \\\\
 4. &amp; b
-\end{array}</span><script type="math/tex">\begin{array}{ll}
+\end{array}</div>
+<script type="math/tex; mode=display">\begin{array}{ll}
 0. & abaab \\\\
 1. & baab \\\\
 2. & aab \\\\
 3. & ab \\\\
 4. & b
-\end{array}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\begin{array}{ll}
-0. &amp; abaab \\\\
-1. &amp; baab \\\\
-2. &amp; aab \\\\
-3. &amp; ab \\\\
-4. &amp; b
-\end{array}</span><script type="math/tex">\begin{array}{ll}
-0. & abaab \\\\
-1. & baab \\\\
-2. & aab \\\\
-3. & ab \\\\
-4. & b
-\end{array}</script></span></script></span></p>
-<p>After sorting these strings:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{array}{ll}
+\end{array}</script>
+</div>
+<p>After sorting these strings:</p>
+<div>
+<div class="MathJax_Preview">\begin{array}{ll}
 2. &amp; aab \\\\
 3. &amp; ab \\\\
 0. &amp; abaab \\\\
 4. &amp; b \\\\
 1. &amp; baab
-\end{array}</span><script type="math/tex">\begin{array}{ll}
+\end{array}</div>
+<script type="math/tex; mode=display">\begin{array}{ll}
 2. & aab \\\\
 3. & ab \\\\
 0. & abaab \\\\
 4. & b \\\\
 1. & baab
-\end{array}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\begin{array}{ll}
-2. &amp; aab \\\\
-3. &amp; ab \\\\
-0. &amp; abaab \\\\
-4. &amp; b \\\\
-1. &amp; baab
-\end{array}</span><script type="math/tex">\begin{array}{ll}
-2. & aab \\\\
-3. & ab \\\\
-0. & abaab \\\\
-4. & b \\\\
-1. & baab
-\end{array}</script></span></script></span></p>
+\end{array}</script>
+</div>
 <p>Therefore the suffix array for <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> will be <span><span class="MathJax_Preview">(2,~ 3,~ 0,~ 4,~ 1)</span><script type="math/tex">(2,~ 3,~ 0,~ 4,~ 1)</script></span>.</p>
 <p>As a data structure it is widely used in areas such as data compression, bioinformatics and, in general, in any area that deals with strings and string matching problems.</p>
 <h2 id="construction">Construction</h2>
@@ -197,25 +179,20 @@ if one substring is smaller than the other, then it should also have a smaller c
 The number of equivalence classes will be stored in a variable <span><span class="MathJax_Preview">\text{classes}</span><script type="math/tex">\text{classes}</script></span>.</p>
 <p>Let's look at an example.
 Consider the string <span><span class="MathJax_Preview">s = aaba</span><script type="math/tex">s = aaba</script></span>.
-The cyclic substrings and the corresponding arrays <span><span class="MathJax_Preview">p[]</span><script type="math/tex">p[]</script></span> and <span><span class="MathJax_Preview">c[]</span><script type="math/tex">c[]</script></span> are given for each iteration:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{array}{cccc}
+The cyclic substrings and the corresponding arrays <span><span class="MathJax_Preview">p[]</span><script type="math/tex">p[]</script></span> and <span><span class="MathJax_Preview">c[]</span><script type="math/tex">c[]</script></span> are given for each iteration:</p>
+<div>
+<div class="MathJax_Preview">\begin{array}{cccc}
 0: &amp; (a,~ a,~ b,~ a) &amp; p = (0,~ 1,~ 3,~ 2) &amp; c = (0,~ 0,~ 1,~ 0)\\\\
 1: &amp; (aa,~ ab,~ ba,~ aa) &amp; p = (0,~ 3,~ 1,~ 2) &amp; c = (0,~ 1,~ 2,~ 0)\\\\
 2: &amp; (aaba,~ abaa,~ baaa,~ aaab) &amp; p = (3,~ 0,~ 1,~ 2) &amp; c = (1,~ 2,~ 3,~ 0)\\\\
-\end{array}</span><script type="math/tex">\begin{array}{cccc}
+\end{array}</div>
+<script type="math/tex; mode=display">\begin{array}{cccc}
 0: & (a,~ a,~ b,~ a) & p = (0,~ 1,~ 3,~ 2) & c = (0,~ 0,~ 1,~ 0)\\\\
 1: & (aa,~ ab,~ ba,~ aa) & p = (0,~ 3,~ 1,~ 2) & c = (0,~ 1,~ 2,~ 0)\\\\
 2: & (aaba,~ abaa,~ baaa,~ aaab) & p = (3,~ 0,~ 1,~ 2) & c = (1,~ 2,~ 3,~ 0)\\\\
-\end{array}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\begin{array}{cccc}
-0: &amp; (a,~ a,~ b,~ a) &amp; p = (0,~ 1,~ 3,~ 2) &amp; c = (0,~ 0,~ 1,~ 0)\\\\
-1: &amp; (aa,~ ab,~ ba,~ aa) &amp; p = (0,~ 3,~ 1,~ 2) &amp; c = (0,~ 1,~ 2,~ 0)\\\\
-2: &amp; (aaba,~ abaa,~ baaa,~ aaab) &amp; p = (3,~ 0,~ 1,~ 2) &amp; c = (1,~ 2,~ 3,~ 0)\\\\
-\end{array}</span><script type="math/tex">\begin{array}{cccc}
-0: & (a,~ a,~ b,~ a) & p = (0,~ 1,~ 3,~ 2) & c = (0,~ 0,~ 1,~ 0)\\\\
-1: & (aa,~ ab,~ ba,~ aa) & p = (0,~ 3,~ 1,~ 2) & c = (0,~ 1,~ 2,~ 0)\\\\
-2: & (aaba,~ abaa,~ baaa,~ aaab) & p = (3,~ 0,~ 1,~ 2) & c = (1,~ 2,~ 3,~ 0)\\\\
-\end{array}</script></span></script></span>
-It is worth noting that the values of <span><span class="MathJax_Preview">p[]</span><script type="math/tex">p[]</script></span> can be different.
+\end{array}</script>
+</div>
+<p>It is worth noting that the values of <span><span class="MathJax_Preview">p[]</span><script type="math/tex">p[]</script></span> can be different.
 For example in the <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>-th iteration the array could also be <span><span class="MathJax_Preview">p = (3,~ 1,~ 0,~ 2)</span><script type="math/tex">p = (3,~ 1,~ 0,~ 2)</script></span> or <span><span class="MathJax_Preview">p = (3,~ 0,~ 1,~ 2)</span><script type="math/tex">p = (3,~ 0,~ 1,~ 2)</script></span>.
 All these options permutation the substrings into a sorted order.
 So they are all valid.
@@ -254,21 +231,37 @@ Let's assume we have already performed the <span><span class="MathJax_Preview">k
 We want to compute the values for the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th step in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> time.
 Since we perform this step <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> times, the complete algorithm will have a time complexity of <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>.</p>
 <p>To do this, note that the cyclic substrings of length <span><span class="MathJax_Preview">2^k</span><script type="math/tex">2^k</script></span> consists of two substrings of length <span><span class="MathJax_Preview">2^{k-1}</span><script type="math/tex">2^{k-1}</script></span> which we can compare with each other in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> using the information from the previous phase - the values of the equivalence classes <span><span class="MathJax_Preview">c[]</span><script type="math/tex">c[]</script></span>.
-Thus, for two substrings of length <span><span class="MathJax_Preview">2^k</span><script type="math/tex">2^k</script></span> starting at position <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>, all necessary information to compare them is contained in the pairs <span><span class="MathJax_Preview">(c[i],~ c[i + 2^{k-1}])</span><script type="math/tex">(c[i],~ c[i + 2^{k-1}])</script></span> and <span><span class="MathJax_Preview">(c[j],~ c[j + 2^{k-1}])</span><script type="math/tex">(c[j],~ c[j + 2^{k-1}])</script></span>.
-$$\dots
+Thus, for two substrings of length <span><span class="MathJax_Preview">2^k</span><script type="math/tex">2^k</script></span> starting at position <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>, all necessary information to compare them is contained in the pairs <span><span class="MathJax_Preview">(c[i],~ c[i + 2^{k-1}])</span><script type="math/tex">(c[i],~ c[i + 2^{k-1}])</script></span> and <span><span class="MathJax_Preview">(c[j],~ c[j + 2^{k-1}])</span><script type="math/tex">(c[j],~ c[j + 2^{k-1}])</script></span>.</p>
+<div>
+<div class="MathJax_Preview">\dots
 \overbrace{
-\underbrace{s_i \dots s_{i+2^{k-1}-1}}_{\text{length} = 2^{k-1},~ \text{class} = c[i]}
+\underbrace{s_i \dots s_{i+2^{k-1}-1}}\_{\text{length} = 2^{k-1},~ \text{class} = c[i]}
 \quad
-\underbrace{s_{i+2^{k-1}} \dots s_{i+2^k-1}}_{\text{length} = 2^{k-1},~ \text{class} = c[i + 2^{k-1}]}
+\underbrace{s_{i+2^{k-1}} \dots s_{i+2^k-1}}\_{\text{length} = 2^{k-1},~ \text{class} = c[i + 2^{k-1}]}
 }^{\text{length} = 2^k}
 \dots
 \overbrace{
-\underbrace{s_j \dots s_{j+2^{k-1}-1}}_{\text{length} = 2^{k-1},~ \text{class} = c[j]}
+\underbrace{s_j \dots s_{j+2^{k-1}-1}}\_{\text{length} = 2^{k-1},~ \text{class} = c[j]}
 \quad
-\underbrace{s_{j+2^{k-1}} \dots s_{j+2^k-1}}_{\text{length} = 2^{k-1},~ \text{class} = c[j + 2^{k-1}]}
+\underbrace{s_{j+2^{k-1}} \dots s_{j+2^k-1}}\_{\text{length} = 2^{k-1},~ \text{class} = c[j + 2^{k-1}]}
 }^{\text{length} = 2^k}
 \dots
-$$</p>
+</div>
+<script type="math/tex; mode=display">\dots
+\overbrace{
+\underbrace{s_i \dots s_{i+2^{k-1}-1}}\_{\text{length} = 2^{k-1},~ \text{class} = c[i]}
+\quad
+\underbrace{s_{i+2^{k-1}} \dots s_{i+2^k-1}}\_{\text{length} = 2^{k-1},~ \text{class} = c[i + 2^{k-1}]}
+}^{\text{length} = 2^k}
+\dots
+\overbrace{
+\underbrace{s_j \dots s_{j+2^{k-1}-1}}\_{\text{length} = 2^{k-1},~ \text{class} = c[j]}
+\quad
+\underbrace{s_{j+2^{k-1}} \dots s_{j+2^k-1}}\_{\text{length} = 2^{k-1},~ \text{class} = c[j + 2^{k-1}]}
+}^{\text{length} = 2^k}
+\dots
+</script>
+</div>
 <p>This gives us a very simple solution:
 <strong>sort</strong> the substrings of length <span><span class="MathJax_Preview">2^k</span><script type="math/tex">2^k</script></span> <strong>by these pairs of numbers</strong>.
 This will give us the required order <span><span class="MathJax_Preview">p[]</span><script type="math/tex">p[]</script></span>.
@@ -357,41 +350,29 @@ Now we want to generalize this method to substrings of arbitrary length.</p>
 <p>Let's compare two substrings of length <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> with the starting indices <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>.
 We find the largest length of a block that is placed inside a substring of this length: the greatest <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> such that <span><span class="MathJax_Preview">2^k \le l</span><script type="math/tex">2^k \le l</script></span>.
 Then comparing the two substrings can be replaced by comparing two overlapping blocks of length <span><span class="MathJax_Preview">2^k</span><script type="math/tex">2^k</script></span>:
-first you need to compare the two blocks starting at <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>, and if these are equal then compare the two blocks ending in positions <span><span class="MathJax_Preview">i + l - 1</span><script type="math/tex">i + l - 1</script></span> and <span><span class="MathJax_Preview">j + l - 1</span><script type="math/tex">j + l - 1</script></span>:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\dots
+first you need to compare the two blocks starting at <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>, and if these are equal then compare the two blocks ending in positions <span><span class="MathJax_Preview">i + l - 1</span><script type="math/tex">i + l - 1</script></span> and <span><span class="MathJax_Preview">j + l - 1</span><script type="math/tex">j + l - 1</script></span>:</p>
+<div>
+<div class="MathJax_Preview">\dots
 \overbrace{\underbrace{s_i \dots s_{i+l-2^k} \dots s_{i+2^k-1}}\_{2^k} \dots s_{i+l-1}}^{\text{first}}
 \dots
 \overbrace{\underbrace{s_j \dots s_{j+l-2^k} \dots s_{j+2^k-1}}\_{2^k} \dots s_{j+l-1}}^{\text{second}}
-\dots</span><script type="math/tex">\dots
+\dots$$
+$$\dots
+\overbrace{s_i \dots \underbrace{s_{i+l-2^k} \dots s_{i+2^k-1} \dots s_{i+l-1}}\_{2^k}}^{\text{first}}
+\dots
+\overbrace{s_j \dots \underbrace{s_{j+l-2^k} \dots s_{j+2^k-1} \dots s_{j+l-1}}\_{2^k}}^{\text{second}}
+\dots</div>
+<script type="math/tex; mode=display">\dots
 \overbrace{\underbrace{s_i \dots s_{i+l-2^k} \dots s_{i+2^k-1}}\_{2^k} \dots s_{i+l-1}}^{\text{first}}
 \dots
 \overbrace{\underbrace{s_j \dots s_{j+l-2^k} \dots s_{j+2^k-1}}\_{2^k} \dots s_{j+l-1}}^{\text{second}}
-\dots</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\dots
-\overbrace{\underbrace{s_i \dots s_{i+l-2^k} \dots s_{i+2^k-1}}\_{2^k} \dots s_{i+l-1}}^{\text{first}}
-\dots
-\overbrace{\underbrace{s_j \dots s_{j+l-2^k} \dots s_{j+2^k-1}}\_{2^k} \dots s_{j+l-1}}^{\text{second}}
-\dots</span><script type="math/tex">\dots
-\overbrace{\underbrace{s_i \dots s_{i+l-2^k} \dots s_{i+2^k-1}}\_{2^k} \dots s_{i+l-1}}^{\text{first}}
-\dots
-\overbrace{\underbrace{s_j \dots s_{j+l-2^k} \dots s_{j+2^k-1}}\_{2^k} \dots s_{j+l-1}}^{\text{second}}
-\dots</script></span></script></span>
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\dots
+\dots$$
+$$\dots
 \overbrace{s_i \dots \underbrace{s_{i+l-2^k} \dots s_{i+2^k-1} \dots s_{i+l-1}}\_{2^k}}^{\text{first}}
 \dots
 \overbrace{s_j \dots \underbrace{s_{j+l-2^k} \dots s_{j+2^k-1} \dots s_{j+l-1}}\_{2^k}}^{\text{second}}
-\dots</span><script type="math/tex">\dots
-\overbrace{s_i \dots \underbrace{s_{i+l-2^k} \dots s_{i+2^k-1} \dots s_{i+l-1}}\_{2^k}}^{\text{first}}
-\dots
-\overbrace{s_j \dots \underbrace{s_{j+l-2^k} \dots s_{j+2^k-1} \dots s_{j+l-1}}\_{2^k}}^{\text{second}}
-\dots</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\dots
-\overbrace{s_i \dots \underbrace{s_{i+l-2^k} \dots s_{i+2^k-1} \dots s_{i+l-1}}\_{2^k}}^{\text{first}}
-\dots
-\overbrace{s_j \dots \underbrace{s_{j+l-2^k} \dots s_{j+2^k-1} \dots s_{j+l-1}}\_{2^k}}^{\text{second}}
-\dots</span><script type="math/tex">\dots
-\overbrace{s_i \dots \underbrace{s_{i+l-2^k} \dots s_{i+2^k-1} \dots s_{i+l-1}}\_{2^k}}^{\text{first}}
-\dots
-\overbrace{s_j \dots \underbrace{s_{j+l-2^k} \dots s_{j+2^k-1} \dots s_{j+l-1}}\_{2^k}}^{\text{second}}
-\dots</script></span></script></span></p>
+\dots</script>
+</div>
 <p>Here is the implementation of the comparison.
 Note that it is assumed that the function gets called with the already calculated <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.
 <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> can be computed with <span><span class="MathJax_Preview">\lfloor \log l \rfloor</span><script type="math/tex">\lfloor \log l \rfloor</script></span>, but it is more efficient to precompute all <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> values for every <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span>.
@@ -450,7 +431,7 @@ However, since we know that the LCP between two suffixes is the minimum value of
 And possibly it can be bigger.</p>
 <p>Now we already can implement the algorithm.
 We will iterate over the suffixes in order of their length. This way we can reuse the last value <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>, since going from suffix <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> to the suffix <span><span class="MathJax_Preview">i+1</span><script type="math/tex">i+1</script></span> is exactly the same as removing the first letter.
-Will will need an additional array <span><span class="MathJax_Preview">\text{rank}</span><script type="math/tex">\text{rank}</script></span>, which will give us the position of a suffix in the sorted list of suffixes.</p>
+We will need an additional array <span><span class="MathJax_Preview">\text{rank}</span><script type="math/tex">\text{rank}</script></span>, which will give us the position of a suffix in the sorted list of suffixes.</p>
 <p>```cpp suffix_array_lcp_construction
 vector<int> lcp_construction(string const&amp; s, vector<int> const&amp; p) {
     int n = s.size();

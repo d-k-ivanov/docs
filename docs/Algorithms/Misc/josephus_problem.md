@@ -38,6 +38,7 @@ n\setminus k & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\\\
 And here we can clearly see the following **pattern**:
 
 $$J_ {n, k} = (J _ {(n-1), k} + k - 1) \ \bmod n + 1 $$
+
 $$J_ {1, k} = 1 $$
 
 Here, 1-indexing makes for a somewhat messy formula; if you instead number the positions from 0, you get a very elegant formula:
@@ -52,7 +53,7 @@ Simple **recursive implementation** (in 1-indexing)
 
 ```cpp
 int josephus(int n, int k) {
-    return n > 1 ? (joseph(n-1, k) + k - 1) % n + 1 : 1;
+    return n > 1 ? (josephus(n-1, k) + k - 1) % n + 1 : 1;
 }
 ```
 
@@ -93,9 +94,9 @@ int josephus(int n, int k) {
     if (k == 1)
         return n-1;
     if (k > n)
-        return (joseph(n-1, k) + k) % n;
+        return (josephus(n-1, k) + k) % n;
     int cnt = n / k;
-    int res = joseph(n - cnt, k);
+    int res = josephus(n - cnt, k);
     res -= n % k;
     if (res < 0)
         res += n;
@@ -112,6 +113,7 @@ $$ n \left(1 - \frac{1}{k} \right) ^ x = 1, $$
 on taking logarithm on both sides, we obtain:
 
 $$\ln n + x \ln \left(1 - \frac{1}{k} \right) = 0,$$
+
 $$x = - \frac{\ln n}{\ln \left(1 - \frac{1}{k} \right)},$$
 
 using the decomposition of the logarithm into Taylor series, we obtain an approximate estimate:

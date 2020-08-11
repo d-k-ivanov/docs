@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Combinatorics/inclusion-exclusion/">
     <link rel="shortcut icon" href="../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>The Inclusion-Exclusion Principle - Technical Info</title>
+    <title>Inclusion exclusion - Technical Info</title>
     <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../css/base.css" rel="stylesheet">
@@ -97,7 +97,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="the-inclusion-exclusion-principle">The Inclusion-Exclusion Principle</h1>
+    <!--?title The Inclusion-Exclusion Principle-->
+
+<h1 id="the-inclusion-exclusion-principle">The Inclusion-Exclusion Principle</h1>
 <p>The inclusion-exclusion principle is an important combinatorial way to compute the size of a set or the probability of complex events. It relates the sizes of individual sets with their union.</p>
 <h2 id="statement">Statement</h2>
 <h3 id="the-verbal-formula">The verbal formula</h3>
@@ -205,7 +207,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h3 id="a-simple-task-on-0-1-2-sequences">A simple task on (0, 1, 2) sequences</h3>
 <p>Task: count how many sequences of length <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> exist consisting only of numbers <span><span class="MathJax_Preview">0,1,2</span><script type="math/tex">0,1,2</script></span> such that each number occurs <strong>at least once</strong>.</p>
 <p>Again let us turn to the inverse problem, i.e. we calculate the number of sequences which do <strong>not</strong> contain <strong>at least one</strong> of the numbers.</p>
-<p>Let's denote by <span><span class="MathJax_Preview">A_i (i = 0,1,2)</span><script type="math/tex">A_i (i = 0,1,2)</script></span> the set of sequences in which <strong>at least</strong> <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> of the numbers do <strong>not</strong> occur. The formula of inclusion-exclusion on the number of "bad" sequences will be:</p>
+<p>Let's denote by <span><span class="MathJax_Preview">A_i (i = 0,1,2)</span><script type="math/tex">A_i (i = 0,1,2)</script></span> the set of sequences in which the digit <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> does <strong>not</strong> occur.
+The formula of inclusion-exclusion on the number of "bad" sequences will be:</p>
 <div>
 <div class="MathJax_Preview"> |A_0 \cup A_1 \cup A_2| = |A_0| + |A_1| + |A_2| - |A_0 \cap A_1| - |A_0 \cap A_2| - |A_1 \cap A_2| + |A_0 \cap A_1 \cap A_2| </div>
 <script type="math/tex; mode=display"> |A_0 \cup A_1 \cup A_2| = |A_0| + |A_1| + |A_2| - |A_0 \cap A_1| - |A_0 \cap A_2| - |A_1 \cap A_2| + |A_0 \cap A_1 \cap A_2| </script>
@@ -494,6 +497,8 @@ long long solve() {
 <li><a href="http://www.spoj.com/problems/KPRIMESB/">SPOJ - Almost Prime Numbers Again</a></li>
 <li><a href="http://www.spoj.com/problems/IITKWPCH/">SPOJ - Find number of Pair of Friends</a></li>
 <li><a href="http://www.spoj.com/problems/SUBSET/">SPOJ - Balanced Cow Subsets</a></li>
+<li><a href="http://www.spoj.com/problems/EASYMATH/">SPOJ - EASY MATH [difficulty: medium]</a></li>
+<li><a href="https://www.spoj.com/problems/MOMOS/">SPOJ - MOMOS - FEASTOFPIGS [difficulty: easy]</a></li>
 </ul>
 
   <br>

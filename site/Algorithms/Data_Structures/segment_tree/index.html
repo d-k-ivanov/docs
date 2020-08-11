@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Data_Structures/segment_tree/">
     <link rel="shortcut icon" href="../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Segment tree - Technical Info</title>
+    <title>Segment Tree - Technical Info</title>
     <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../css/base.css" rel="stylesheet">
@@ -95,9 +95,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <!--?title Segment Tree-->
-
-<h1 id="segment-tree">Segment Tree</h1>
+    <h1 id="segment-tree">Segment Tree</h1>
 <p>A Segment Tree is a data structure that allows answering range queries over an array effectively, while still being flexible enough to allow modifying the array.
 This includes finding the sum of consecutive array elements <span><span class="MathJax_Preview">a[l \dots r]</span><script type="math/tex">a[l \dots r]</script></span>, or finding the minimum element in a such a range in <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> time.
 Between answering such queries the Segment Tree allows modifying the array by replacing one element, or even change the elements of a whole subsegment (e.g. assigning all elements <span><span class="MathJax_Preview">a[l \dots r]</span><script type="math/tex">a[l \dots r]</script></span> to any value, or adding a value to all element in the subsegment).</p>
@@ -135,16 +133,23 @@ We can see that behavior in the image.
 For now we can forget about this fact, but it will become important later during the implementation.</p>
 <p>The height of the Segment Tree is <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>, because when going down from the root to the leaves the size of the segments decreases approximately by half.</p>
 <h3 id="construction">Construction</h3>
-<p>A Segment Tree can be constructed efficiently as follows:
-We start at the bottom level, the leaf vertices.
-A vertex is a leaf vertex, if its corresponding segment covers only one value.
-Therefore we can simply copy the values of the elements <span><span class="MathJax_Preview">a[i]</span><script type="math/tex">a[i]</script></span>.
-On the basis of these values, we can compute the sums of the previous level.
-And on the basis of those, we can compute the sums of the previous, and repeat the procedure until we reach the root vertex.
-It is convenient to describe this operation recursively:
-we start the construction at the root vertex and the construction procedure, if called on a not-leaf vertex, first recursively constructs the two child vertices, and than sums up the computed sums of these children.
-If it is called on a leaf vertex, it simply uses the value of the array.</p>
-<p>The time complexity of the construction is <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>.</p>
+<p>Before constructing the segment tree, we need to decide:</p>
+<ol>
+<li>the <em>value</em> that gets stored at each node of the segment tree.
+   For example, in a sum segment tree, a node would store the sum of the elements in its range <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span>.</li>
+<li>the <em>merge</em> operation that merges two siblings in a segment tree.
+   For example, in a sum segment tree, the two nodes corresponding to the ranges <span><span class="MathJax_Preview">a[l_1 \dots r_1]</span><script type="math/tex">a[l_1 \dots r_1]</script></span> and <span><span class="MathJax_Preview">a[l_2 \dots r_2]</span><script type="math/tex">a[l_2 \dots r_2]</script></span> would be merged into a node corresponding to the range <span><span class="MathJax_Preview">a[l_1 \dots r_2]</span><script type="math/tex">a[l_1 \dots r_2]</script></span> by adding the values of the two nodes.</li>
+</ol>
+<p>Note that a vertex is a "leaf vertex", if its corresponding segment covers only one value in the original array. It is present at the lowermost level of a segment tree. Its value would be equal to the (corresponding) element <span><span class="MathJax_Preview">a[i]</span><script type="math/tex">a[i]</script></span>.</p>
+<p>Now, for construction of the segment tree, we start at the bottom level (the leaf vertices) and assign them their respective values. On the basis of these values, we can compute the values of the previous level, using the <code>merge</code> function.
+And on the basis of those, we can compute the values of the previous, and repeat the procedure until we reach the root vertex.</p>
+<p>It is convenient to describe this operation recursively in the other direction, i.e., from the root vertex to the leaf vertices. The construction procedure, if called on a non-leaf vertex, does the following:</p>
+<ol>
+<li>recursively construct the values of the two child vertices</li>
+<li>merge the computed values of these children.</li>
+</ol>
+<p>We start the construction at the root vertex, and hence, we are able to compute the entire segment tree.</p>
+<p>The time complexity of this construction is <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>, assuming that the merge operation is constant time (the merge operation gets called <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> times, which is equal to the number of internal nodes in the segment tree).</p>
 <h3 id="sum-queries">Sum queries</h3>
 <p>For now we are going to answer sum queries. As an input we receive two integers <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> and <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>, and we have to compute the sum of the segment <span><span class="MathJax_Preview">a[l \dots r]</span><script type="math/tex">a[l \dots r]</script></span> in <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> time.</p>
 <p>To do this, we will traverse the Segment Tree and use the precomputed sums of the segments.
@@ -267,6 +272,18 @@ void update(int v, int tl, int tr, int pos, int new_val) {
 }
 </code></pre>
 
+<h3 id="memory-efficient-implementation">Memory efficient implementation</h3>
+<p>Most people use the implementation from the previous section. If you look at the array <code>t</code> you can see that it follows the numbering of the tree nodes in the order of a BFS traversal (level-order traversal).
+Using this traversal the children of vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> are <span><span class="MathJax_Preview">2v</span><script type="math/tex">2v</script></span> and <span><span class="MathJax_Preview">2v + 1</span><script type="math/tex">2v + 1</script></span> respectively.
+However if <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is not a power of two, this method will skip some indices and leave some parts of the array <code>t</code> unused.
+The memory consumption is limited by <span><span class="MathJax_Preview">4n</span><script type="math/tex">4n</script></span>, even though a Segment Tree of an array of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> elements requires only <span><span class="MathJax_Preview">2n - 1</span><script type="math/tex">2n - 1</script></span> vertices.</p>
+<p>However it can be reduced.
+We renumber the vertices of the tree in the order of an Euler tour traversal (pre-order traversal), and we write all these vertices next to each other.</p>
+<p>Lets look at a vertex at index <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>, and let him be responsible for the segment <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span>, and let <span><span class="MathJax_Preview">mid = \dfrac{l + r}{2}</span><script type="math/tex">mid = \dfrac{l + r}{2}</script></span>.
+It is obvious that the left child will have the index <span><span class="MathJax_Preview">v + 1</span><script type="math/tex">v + 1</script></span>.
+The left child is responsible for the segment <span><span class="MathJax_Preview">[l, mid]</span><script type="math/tex">[l, mid]</script></span>, i.e. in total there will be <span><span class="MathJax_Preview">2 * (mid - l + 1) - 1</span><script type="math/tex">2 * (mid - l + 1) - 1</script></span> vertices in the left child's subtree.
+Thus we can compute the index of the right child of <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>. The index will be <span><span class="MathJax_Preview">v + 2 * (mid - l + 1)</span><script type="math/tex">v + 2 * (mid - l + 1)</script></span>.
+By this numbering we achieve a reduction of the necessary memory to <span><span class="MathJax_Preview">2n</span><script type="math/tex">2n</script></span>.</p>
 <h2 id="advanced-versions-of-segment-trees"><a name="advanced-versions-of-segment-trees"></a>Advanced versions of Segment Trees</h2>
 <p>A Segment Tree is a very flexible data structure, and allows variations and extensions in many different directions.
 Let's try to categorize them below.</p>
@@ -496,7 +513,7 @@ data query(int v, int tl, int tr, int l, int r) {
 </code></pre>
 
 <h3 id="saving-the-entire-subarrays-in-each-vertex"><a name="saving-the-entire-subarrays-in-each-vertex"></a>Saving the entire subarrays in each vertex</h3>
-<p>This is a separate subsection that stands apart from the others, because at each vertex of the Segment Tree we don't store information about the corresponding segment in compressed form (sum, minimum, maximum, ...), but store all element of the segment.
+<p>This is a separate subsection that stands apart from the others, because at each vertex of the Segment Tree we don't store information about the corresponding segment in compressed form (sum, minimum, maximum, ...), but store all elements of the segment.
 Thus the root of the Segment Tree will store all elements of the array, the left child vertex will store the first half of the array, the right vertex the second half, and so on.</p>
 <p>In its simplest application of this technique we store the elements in sorted order.
 In more complex versions the elements are not stored in lists, but more advanced data structures (sets, maps, ...).
@@ -505,7 +522,7 @@ But all these methods have the common factor, that each vertex requires linear m
 Intuitively this might look like <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span> memory, but it turns out that the complete tree will only need <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> memory.
 Why is this so?
 Quite simply, because each element of the array falls into <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> segments (remember the height of the tree is <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>).</p>
-<p>So in spite of the apparent extravagance of such a Segment Tree, of consumes only slightly more memory than the usual Segment Tree.</p>
+<p>So in spite of the apparent extravagance of such a Segment Tree, it consumes only slightly more memory than the usual Segment Tree.</p>
 <p>Several typical applications of this data structure are described below.
 It is worth noting the similarity of these Segment Trees with 2D data structures (in fact this is a 2D data structure, but with rather limited capabilities).</p>
 <h4 id="find-the-smallest-number-greater-or-equal-to-a-specified-number-no-modification-queries">Find the smallest number greater or equal to a specified number. No modification queries</h4>
@@ -515,8 +532,8 @@ for three given numbers <span><span class="MathJax_Preview">(l, r, x)</span><scr
 In each vertex we store a sorted list of all numbers occurring in the corresponding segment, like described above.
 How to build such a Segment Tree as effectively as possible?
 As always we approach this problem recursively: let the lists of the left and right children already be constructed, and we want to build the list for the current vertex.
-From this view the operation is known trivial and can be accomplished in linear time:
-We only need to combine the two sorted lists into one, which can be done by iteration over them using two pointers.
+From this view the operation is now trivial and can be accomplished in linear time:
+We only need to combine the two sorted lists into one, which can be done by iterating over them using two pointers.
 The C++ STL already has an implementation of this algorithm.</p>
 <p>Because this structure of the Segment Tree and the similarities to the merge sort algorithm, the data structure is also often called "Merge Sort Tree".</p>
 <p>```cpp segment_tree_smallest_number_greater1
@@ -534,12 +551,12 @@ vector<int> t[4*MAXN];</p>
 }</p>
 <pre><code>
 We already know that the Segment Tree constructed in this way will require $O(n \log n)$ memory.
-And thanks to this implementation its construction also take $O(n \log n)$ time, after all each list is constructed in linear time in respect to its size.
+And thanks to this implementation its construction also takes $O(n \log n)$ time, after all each list is constructed in linear time in respect to its size.
 
 Now consider the answer to the query.
-We will go down the tree, like in the regular Segment Tree, and breaking our segment $a[l \dots r]$ into several subsegments (into at most $O(\log n)$ pieces).
+We will go down the tree, like in the regular Segment Tree, breaking our segment $a[l \dots r]$ into several subsegments (into at most $O(\log n)$ pieces).
 It is clear that the answer of the whole answer is the minimum of each of the subqueries.
-So now we only need to understand, how to response to a query on one such subsegment that corresponds with some vertex of the tree.
+So now we only need to understand, how to respond to a query on one such subsegment that corresponds with some vertex of the tree.
 
 We are at some vertex of the Segment Tree and we want to compute the answer to the query, i.e. find the minimum number greater that or equal to a given number $x$.
 Since the vertex contains the list of elements in sorted order, we can simply perform a binary search on this list and return the first number, greater than or equal to $x$.
@@ -609,19 +626,31 @@ This approach however requires <span><span class="MathJax_Preview">O(n \cdot k)<
 Using this structure it is only necessary to store two indices, the index of the element in the original list, and the index of the element in the following new list.
 So this approach only uses <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> memory, and still can answer the queries using a single binary search.</p>
 <p>But for our application we do not need the full power of fractional cascading.
-In our Segment Tree a vertex contains the list of all elements, that occur in either the left or the right child vertex.
-Therefore to avoid binary search in the lists of the children it is enough to store the position of each element in the left and the right child list.</p>
-<p>Thus instead of storing the usual list of all numbers, we store three values for each element:
-the value of the element itself, the position of it in the list of the left child, and the position of it in the list of the right child.
-This allows us to determine the position in the list of the left and the right child in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>, instead of finding it with binary search.</p>
-<p>It is simple to apply this technique to a problem, that doesn't require modification queries.
-In this problem the two positions are just numbers and can easily be computed by counting when merging two sorted sequences.</p>
-<p>This type of Segment Tree is nowadays known as "Wavelet Tree".
-And a few more advanced usages have been explored (e.g. support for modification queries of the form "swap neighboring elements").</p>
+In our Segment Tree a vertex will contain the sorted list of all elements that occur in either the left or the right subtrees (like in the Merge Sort Tree).
+Additionally to this sorted list, we store two positions for each element.
+For an element <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> we store the smallest index <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>, such that the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>th element in the sorted list of the left child is greater or equal to <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>.
+And we store the smallest index <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>, such that the <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>th element in the sorted list of the right child is greater or equal to <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>.
+These values can be computed in parallel to the merging step when we build the tree.</p>
+<p>How does this speed up the queries?</p>
+<p>Remember, in the normal solution we did a binary search in ever node.
+But with this modification, we can avoid all except one.</p>
+<p>To answer a query, we simply to a binary search in the root node.
+This gives as the smallest element <span><span class="MathJax_Preview">y \ge x</span><script type="math/tex">y \ge x</script></span> in the complete array, but it also gives us two positions.
+The index of the smallest element greater or equal <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> in the left subtree, and the index of the smallest element <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> in the right subtree. Notice that <span><span class="MathJax_Preview">\ge y</span><script type="math/tex">\ge y</script></span> is the same as <span><span class="MathJax_Preview">\ge x</span><script type="math/tex">\ge x</script></span>, since our array doesn't contain any elements between <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> and <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>.
+In the normal Merge Sort Tree solution we would compute these indices via binary search, but with the help of the precomputed values we can just look them up in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>.
+And we can repeat that until we visited all nodes that cover our query interval.</p>
+<p>To summarize, as usual we touch <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> nodes during a query. In the root node we do a binary search, and in all other nodes we only do constant work.
+This means the complexity for answering a query is <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>.</p>
+<p>But notice, that this uses three times more memory than a normal Merge Sort Tree, which already uses a lot of memory (<span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>).</p>
+<p>It is straightforward to apply this technique to a problem, that doesn't require any modification queries.
+The two positions are just integers and can easily be computed by counting when merging the two sorted sequences.</p>
+<p>It it still possible to also allow modification queries, but that complicates the entire code.
+Instead of integers, you need to store the sorted array as <code>multiset</code>, and instead of indices you need to store iterators.
+And you need to work very carefully, so that you increment or decrement the correct iterators during a modification query.</p>
 <h4 id="other-possible-variations">Other possible variations</h4>
 <p>This technique implies a whole new class of possible applications.
 Instead of storing a <span><span class="MathJax_Preview">\text{vector}</span><script type="math/tex">\text{vector}</script></span> or a <span><span class="MathJax_Preview">\text{multiset}</span><script type="math/tex">\text{multiset}</script></span> in each vertex, other data structures can be used:
-other Segment Trees (somewhat discussed in <a href="data_structures/segment_tree/#generalization-to-higher-dimensions">Generalization to higher dimensions</a>), Fenwick Trees, Cartesian trees, etc.</p>
+other Segment Trees (somewhat discussed in <a href="/docs/#Algorithms/data_structures/segment_tree/#generalization-to-higher-dimensions">Generalization to higher dimensions</a>), Fenwick Trees, Cartesian trees, etc.</p>
 <h3 id="range-updates-lazy-propagation">Range updates (Lazy Propagation)</h3>
 <p>All problems in the above sections discussed modification queries that only effected a single element of the array each.
 However the Segment Tree allows applying modification queries to an entire segment of contiguous elements, and perform the query in the same time <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>.</p>
@@ -879,7 +908,7 @@ As a result, the total amount of memory will decrease to <span><span class="Math
 We still can answer the queries in <span><span class="MathJax_Preview">O(\log^2 n)</span><script type="math/tex">O(\log^2 n)</script></span> time, we just have to make a binary search on the second coordinate, but this will not worsen the complexity.</p>
 <p>But modification queries will be impossible with this structure:
 in fact if a new point appears, we have to add a new element in the middle of some Segment Tree along the second coordinate, which cannot be effectively done.</p>
-<p>In conclusion we note that the two-dimensional Segment Tree contracted in the described way becomes practically equivalent to the modification of the one-dimensional Segment Tree (see <a href="data_structures/segment_tree/#saving-the-entire-subarrays-in-each-vertex">Saving the entire subarrays in each vertex</a>).
+<p>In conclusion we note that the two-dimensional Segment Tree contracted in the described way becomes practically equivalent to the modification of the one-dimensional Segment Tree (see <a href="/docs/#Algorithms/data_structures/segment_tree/#saving-the-entire-subarrays-in-each-vertex">Saving the entire subarrays in each vertex</a>).
 In particular the two-dimensional Segment Tree is just a special case of storing a subarray in each vertex of the tree.
 It follows, that if you gave to abandon a two-dimensional Segment Tree due to the impossibility of executing a query, it makes sense to try to replace the nested Segment Tree with some more powerful data structure, for example a Cartesian tree.</p>
 <h3 id="preserving-the-history-of-its-values-persistent-segment-tree">Preserving the history of its values (Persistent Segment Tree)</h3>
@@ -950,7 +979,7 @@ But instead of creating all <span><span class="MathJax_Preview">n</span><script 
 We will start with an empty Segment Tree (all counts will be <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>), and add the elements <span><span class="MathJax_Preview">a[0]</span><script type="math/tex">a[0]</script></span>, <span><span class="MathJax_Preview">a[1]</span><script type="math/tex">a[1]</script></span>, <span><span class="MathJax_Preview">\dots</span><script type="math/tex">\dots</script></span>, <span><span class="MathJax_Preview">a[n-1]</span><script type="math/tex">a[n-1]</script></span> one after each other.
 For each modification we will receive a new root vertex, let's call <span><span class="MathJax_Preview">root_i</span><script type="math/tex">root_i</script></span> the root of the Segment Tree after inserting the first <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> elements of the array <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>.
 The Segment Tree rooted at <span><span class="MathJax_Preview">root_i</span><script type="math/tex">root_i</script></span> will contain the histogram of the prefix <span><span class="MathJax_Preview">a[0 \dots i-1]</span><script type="math/tex">a[0 \dots i-1]</script></span>.
-Using this Segment Tree we can find in <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> time the position of the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th element using the same technique discussed in <a href="data_structures/segment_tree/#counting-zero-search-kth">Counting the number of zeros, searching for the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th zero</a>.</p>
+Using this Segment Tree we can find in <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> time the position of the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th element using the same technique discussed in <a href="/docs/#Algorithms/data_structures/segment_tree/#counting-zero-search-kth">Counting the number of zeros, searching for the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th zero</a>.</p>
 <p>Now to the not-restricted version of the problem.</p>
 <p>First for the restriction on the array:
 We can actually transform any array to such an array by index compression.
@@ -961,6 +990,54 @@ instead of only performing these queries over a prefix of <span><span class="Mat
 Here we need a Segment Tree that represents the histogram of the elements in the range <span><span class="MathJax_Preview">a[l \dots r]</span><script type="math/tex">a[l \dots r]</script></span>.
 It is easy to see that such a Segment Tree is just the difference between the Segment Tree rooted at <span><span class="MathJax_Preview">root_{r+1}</span><script type="math/tex">root_{r+1}</script></span> and the Segment Tree rooted at <span><span class="MathJax_Preview">root_l</span><script type="math/tex">root_l</script></span>, i.e. every vertex in the <span><span class="MathJax_Preview">[l \dots r]</span><script type="math/tex">[l \dots r]</script></span> Segment Tree can be computed with the vertex of the <span><span class="MathJax_Preview">root_{r+1}</span><script type="math/tex">root_{r+1}</script></span> tree minus the vertex of the <span><span class="MathJax_Preview">root_l</span><script type="math/tex">root_l</script></span> tree.
 In the implementation of the <span><span class="MathJax_Preview">\text{get_kth}</span><script type="math/tex">\text{get_kth}</script></span> function this can be handled by passing two vertex pointer and computing the count/sum of the current segment as difference of the two counts/sums of the vertices.</p>
+<h3 id="implicit-segment-tree">Implicit segment tree</h3>
+<p>Previously, we considered cases when we have the ability to build the original segment tree. But what to do if the original size is filled with some default element, but its size does not allow you to completely build up to it in advance?</p>
+<p>We can solve this problem by not explicitly creating a segment tree. Initially, we will create only the root, and we will create the other vertexes only when we need them.
+In this case, we will use the implementation on pointers(before going to the vertex children, check whether they are created, and if not, create them).
+Each query has still only the complexity <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>, which is small enough for most use-cases (e.g. <span><span class="MathJax_Preview">\log_2 10^9 \approx 30</span><script type="math/tex">\log_2 10^9 \approx 30</script></span>).</p>
+<p>In this implementation we have two queries, adding a value to a position (initially all values  are <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>), and computing the sum of all values in a range.
+<code>Vertex(0, n)</code> will be the root vertex of the implicit tree.</p>
+<pre><code class="cpp">struct Vertex {
+    int left, right;
+    int sum = 0;
+    Vertex *left_child = nullptr, *right_child = nullptr;
+
+    Vertex(int lb, int rb) {
+        left = lb;
+        right = rb;
+    }
+
+    void extend() {
+        if (!left_child &amp;&amp; left + 1 &lt; right) {
+            int t = (left + right) / 2;
+            left_child = new Vertex(left, t);
+            right_child = new Vertex(t, right);
+        }
+    }
+
+    void add(int k, int x) {
+        extend();
+        sum += x;
+        if (left_child) {
+            if (k &lt; left_child-&gt;right)
+                left_child-&gt;add(k, x);
+            else
+                right_child-&gt;add(k, x);
+        }
+    }
+
+    int get_sum(int lq, int rq) {
+        if (lq &lt;= left &amp;&amp; right &lt;= rq)
+            return sum;
+        if (max(left, lq) &gt;= min(right, rq))
+            return 0;
+        extend();
+        return left_child-&gt;get_sum(lq, rq) + right_child-&gt;get_sum(lq, rq);
+    }
+};
+</code></pre>
+
+<p>Obviously this idea can be extended in lots of different ways. E.g. by adding support for range updates via lazy propagation.</p>
 <h2 id="practice-problems">Practice Problems</h2>
 <ul>
 <li><a href="http://www.spoj.com/problems/KQUERY/">SPOJ - KQUERY</a> [Persistent segment tree / Merge sort tree]</li>

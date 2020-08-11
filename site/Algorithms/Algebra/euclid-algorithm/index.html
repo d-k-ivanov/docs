@@ -39,6 +39,7 @@
               {title: "Correctness Proof", url: "#correctness-proof" },
               {title: "Time Complexity", url: "#time-complexity" },
               {title: "Least common multiple", url: "#least-common-multiple" },
+              {title: "Binary GCD", url: "#binary-gcd" },
               {title: "Practice Problems", url: "#practice-problems" },
           ]},
         ];
@@ -164,6 +165,35 @@ It's commonly denoted by <span><span class="MathJax_Preview">\gcd(a, b)</span><s
 }
 </code></pre>
 
+<h2 id="binary-gcd">Binary GCD</h2>
+<p>The Binary GCD algorithm is an optimization to the normal Eulidean algorithm.</p>
+<p>The slow part of the normal algorithm are the modulo operations. Modulo operations, although we see them as <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>, are a lot slower than simpler operations like addition, subtraction or bitwise operations.
+So it would be better to avoid those.</p>
+<p>It turns out, that you can design a fast GCD algorithm that avoids modulo operations.
+It's based on a few properties:</p>
+<ul>
+<li>If both numbers are even, then we can factor out a two of both and compute the GCD of the remaining numbers: <span><span class="MathJax_Preview">\gcd(2a, 2b) = 2 \gcd(a, b)</span><script type="math/tex">\gcd(2a, 2b) = 2 \gcd(a, b)</script></span>.</li>
+<li>If one of the numbers is even and the other one is odd, then we can remove the factor 2 from the even one: <span><span class="MathJax_Preview">\gcd(2a, b) = \gcd(a, b)</span><script type="math/tex">\gcd(2a, b) = \gcd(a, b)</script></span> if <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> is odd.</li>
+<li>If both numbers are odd, then subtracting one number of the other one will not change the GCD: <span><span class="MathJax_Preview">\gcd(a, b) = \gcd(b, a-b)</span><script type="math/tex">\gcd(a, b) = \gcd(b, a-b)</script></span> (this can be proven in the same way as the correctness proof of the normal algorithm)</li>
+</ul>
+<p>Using only these properties, and some fast bitwise functions from GCC, we can implement a fast version:</p>
+<pre><code class="cpp">int gcd(int a, int b) {
+    if (!a || !b)
+        return a | b;
+    unsigned shift = __builtin_ctz(a | b);
+    a &gt;&gt;= __builtin_ctz(a);
+    do {
+        b &gt;&gt;= __builtin_ctz(b);
+        if (a &gt; b)
+            swap(a, b);
+        b -= a;
+    } while (b);
+    return a &lt;&lt; shift;
+}
+</code></pre>
+
+<p>Notice, that such an optimization is usually not necessary, and most programming languages already have a GCD function in their standard libraries.
+E.g. C++17 has such a function in the <code>numeric</code> header.</p>
 <h2 id="practice-problems">Practice Problems</h2>
 <ul>
 <li><a href="https://www.codechef.com/problems/FLOW016">Codechef - GCD and LCM</a></li>

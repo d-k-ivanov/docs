@@ -43,7 +43,7 @@ To obtain an efficient algorithm we will compute the values of $z[i]$ in turn fr
 
 For the sake of brevity, let's call **segment matches** those substrings that coincide with a prefix of $s$. For example, the value of the desired Z-function $z[i]$ is the length of the segment match starting at position $i$ (and that ends at position $i + z[i] - 1$).
 
-To do this, we will keep **the $[l; r]$ indices of the rightmost segment match**. That is, among all detected segments we will keep the one that ends rightmost. In a way, the index $r$ can be seen as the "boundary" to which our string $s$ has been scanned by the algorithm; everything beyond that point is not yet known.
+To do this, we will keep **the $[l, r]$ indices of the rightmost segment match**. That is, among all detected segments we will keep the one that ends rightmost. In a way, the index $r$ can be seen as the "boundary" to which our string $s$ has been scanned by the algorithm; everything beyond that point is not yet known.
 
 Then, if the current index (for which we have to compute the next value of the Z-function) is $i$, we have one of two options:
 
@@ -105,7 +105,7 @@ Inside the loop for $i = 1 \dots n - 1$ we first determine the initial value $z[
 
 Thereafter, the trivial algorithm attempts to increase the value of $z[i]$ as much as possible.
 
-In the end, if it's required (that is, if $i + z[i] - 1 > r$), we update the rightmost match segment $[l; r]$.
+In the end, if it's required (that is, if $i + z[i] - 1 > r$), we update the rightmost match segment $[l, r]$.
 
 ## Asymptotic behavior of the algorithm
 

@@ -114,25 +114,20 @@ And in the Euler tour we essentially use the shortest path, except that we addit
 But all vertices in these subtrees are lower in the tree than the LCA and therefore have a larger height.
 So the <span><span class="MathJax_Preview">\text{LCA}(v_1, v_2)</span><script type="math/tex">\text{LCA}(v_1, v_2)</script></span> can be uniquely determined by finding the vertex with the smallest height in the Euler tour between <span><span class="MathJax_Preview">\text{first}(v_1)</span><script type="math/tex">\text{first}(v_1)</script></span> and <span><span class="MathJax_Preview">\text{first}(v_2)</span><script type="math/tex">\text{first}(v_2)</script></span>.</p>
 <p>Let's illustrate this idea.
-Consider the following graph and the Euler tour with the corresponding heights:
-<center><img alt="LCA_Euler_Tour" src="/docs/data/cs/LCA_Euler.png" /></center>
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{array}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+Consider the following graph and the Euler tour with the corresponding heights:</p>
+<p><center><img alt="LCA_Euler_Tour" src="/docs/data/cs/LCA_Euler.png" /></center></p>
+<div>
+<div class="MathJax_Preview">\begin{array}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
 \text{Vertices:}   &amp; 1 &amp; 2 &amp; 5 &amp; 2 &amp; 6 &amp; 2 &amp; 1 &amp; 3 &amp; 1 &amp; 4 &amp; 7 &amp; 4 &amp; 1 \\\\ \hline
 \text{Heights:} &amp; 1 &amp; 2 &amp; 3 &amp; 2 &amp; 3 &amp; 2 &amp; 1 &amp; 2 &amp; 1 &amp; 2 &amp; 3 &amp; 2 &amp; 1 \\\\ \hline
-\end{array}</span><script type="math/tex">\begin{array}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\end{array}</div>
+<script type="math/tex; mode=display">\begin{array}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
 \text{Vertices:}   & 1 & 2 & 5 & 2 & 6 & 2 & 1 & 3 & 1 & 4 & 7 & 4 & 1 \\\\ \hline
 \text{Heights:} & 1 & 2 & 3 & 2 & 3 & 2 & 1 & 2 & 1 & 2 & 3 & 2 & 1 \\\\ \hline
-\end{array}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\begin{array}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|}
-\hline
-\text{Vertices:}   &amp; 1 &amp; 2 &amp; 5 &amp; 2 &amp; 6 &amp; 2 &amp; 1 &amp; 3 &amp; 1 &amp; 4 &amp; 7 &amp; 4 &amp; 1 \\\\ \hline
-\text{Heights:} &amp; 1 &amp; 2 &amp; 3 &amp; 2 &amp; 3 &amp; 2 &amp; 1 &amp; 2 &amp; 1 &amp; 2 &amp; 3 &amp; 2 &amp; 1 \\\\ \hline
-\end{array}</span><script type="math/tex">\begin{array}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|}
-\hline
-\text{Vertices:}   & 1 & 2 & 5 & 2 & 6 & 2 & 1 & 3 & 1 & 4 & 7 & 4 & 1 \\\\ \hline
-\text{Heights:} & 1 & 2 & 3 & 2 & 3 & 2 & 1 & 2 & 1 & 2 & 3 & 2 & 1 \\\\ \hline
-\end{array}</script></span></script></span></p>
+\end{array}</script>
+</div>
 <p>The tour starting at vertex <span><span class="MathJax_Preview">6</span><script type="math/tex">6</script></span> and ending at <span><span class="MathJax_Preview">4</span><script type="math/tex">4</script></span> we visit the vertices <span><span class="MathJax_Preview">[6, 2, 1, 3, 1, 4]</span><script type="math/tex">[6, 2, 1, 3, 1, 4]</script></span>.
 Among those vertices the vertex <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> has the lowest height, therefore <span><span class="MathJax_Preview">\text{LCA(6, 4) = 1}</span><script type="math/tex">\text{LCA(6, 4) = 1}</script></span>.</p>
 <p>To recap:
@@ -140,6 +135,7 @@ to answer a query we just need <strong>to find the vertex with smallest height</
 Thus, <strong>the LCA problem is reduced to the RMQ problem</strong> (finding the minimum in an range problem).</p>
 <p>Using <a href="/docs/#Algorithms/data_structures/sqrt_decomposition/">Sqrt-Decomposition</a>, it is possible to obtain a solution answering each query in <span><span class="MathJax_Preview">O(\sqrt{N})</span><script type="math/tex">O(\sqrt{N})</script></span> with preprocessing in <span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span> time.</p>
 <p>Using a <a href="/docs/#Algorithms/data_structures/segment_tree/">Segment Tree</a> you can answer each query in <span><span class="MathJax_Preview">O(\log N)</span><script type="math/tex">O(\log N)</script></span> with preprocessing in <span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span> time.</p>
+<p>Since there will almost never be any update to the stored values, a <a href="/docs/#Algorithms/data_structures/sparse-table/">Sparse Table</a> might be a better choice, allowing <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> query answering with <span><span class="MathJax_Preview">O(N\log N)</span><script type="math/tex">O(N\log N)</script></span> build time.</p>
 <h3 id="implementation">Implementation</h3>
 <p>In the following implementation of the LCA algorithm a Segment Tree is used.</p>
 <p>```cpp lca
@@ -224,7 +220,7 @@ int lca(int u, int v) {
 <li><a href="http://codeforces.com/contest/733/problem/F">Codeforces - Drivers Dissatisfaction</a></li>
 <li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=2339">UVA 11354 - Bond</a></li>
 <li><a href="http://www.spoj.com/problems/QTREE2/">SPOJ - Querry on a tree II</a></li>
-<li><a href="http://codeforces.com/contest/828/problem/F">Codeforces - Best Edge Wiegth</a></li>
+<li><a href="http://codeforces.com/contest/828/problem/F">Codeforces - Best Edge Weight</a></li>
 <li><a href="http://codeforces.com/contest/832/problem/D">Codeforces - Misha, Grisha and Underground</a></li>
 <li><a href="http://www.spoj.com/problems/NTICKETS/">SPOJ - Nlogonian Tickets</a></li>
 <li><a href="http://codeforces.com/contest/855/problem/D">Codeforces - Rowena Rawenclaws Diadem</a></li>

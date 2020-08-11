@@ -25,7 +25,9 @@ So the $\text{LCA}(v_1, v_2)$ can be uniquely determined by finding the vertex w
 
 Let's illustrate this idea.
 Consider the following graph and the Euler tour with the corresponding heights:
+
 <center>![LCA_Euler_Tour](/docs/data/cs/LCA_Euler.png)</center>
+
 $$\begin{array}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
 \text{Vertices:}   & 1 & 2 & 5 & 2 & 6 & 2 & 1 & 3 & 1 & 4 & 7 & 4 & 1 \\\\ \hline
@@ -42,6 +44,8 @@ Thus, **the LCA problem is reduced to the RMQ problem** (finding the minimum in 
 Using [Sqrt-Decomposition](/docs/#Algorithms/data_structures/sqrt_decomposition/), it is possible to obtain a solution answering each query in $O(\sqrt{N})$ with preprocessing in $O(N)$ time.
 
 Using a [Segment Tree](/docs/#Algorithms/data_structures/segment_tree/) you can answer each query in $O(\log N)$ with preprocessing in $O(N)$ time.
+
+Since there will almost never be any update to the stored values, a [Sparse Table](/docs/#Algorithms/data_structures/sparse-table/) might be a better choice, allowing $O(1)$ query answering with $O(N\log N)$ build time.
 
 ### Implementation
 
@@ -130,7 +134,7 @@ struct LCA {
 - [Codeforces - Drivers Dissatisfaction](http://codeforces.com/contest/733/problem/F)
 - [UVA 11354 - Bond](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=2339)
 - [SPOJ - Querry on a tree II](http://www.spoj.com/problems/QTREE2/)
-- [Codeforces - Best Edge Wiegth](http://codeforces.com/contest/828/problem/F)
+- [Codeforces - Best Edge Weight](http://codeforces.com/contest/828/problem/F)
 - [Codeforces - Misha, Grisha and Underground](http://codeforces.com/contest/832/problem/D)
 - [SPOJ - Nlogonian Tickets](http://www.spoj.com/problems/NTICKETS/)
 - [Codeforces - Rowena Rawenclaws Diadem](http://codeforces.com/contest/855/problem/D)

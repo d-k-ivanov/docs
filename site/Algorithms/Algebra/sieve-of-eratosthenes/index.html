@@ -37,6 +37,7 @@
               {title: "Implementation", url: "#implementation" },
               {title: "Asymptotic analysis", url: "#asymptotic-analysis" },
               {title: "Different optimizations of the Sieve of Eratosthenes", url: "#different-optimizations-of-the-sieve-of-eratosthenes" },
+              {title: "Find primes in range", url: "#find-primes-in-range" },
               {title: "Linear time modification", url: "#linear-time-modification" },
               {title: "Practice Problems", url: "#practice-problems" },
           ]},
@@ -195,7 +196,7 @@ for (int i = 2; i * i &lt;= n; i++) {
 <p>Thus, this approach is only justified, if <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is so big that we cannot allocate <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> bytes of memory anymore.
 In this case we will trade saving memory (<span><span class="MathJax_Preview">8</span><script type="math/tex">8</script></span> times less) with significant slowing down of the algorithm.</p>
 <p>After all, it's worth mentioning there exist data structures that automatically do a bit-level compression, such as <code>vector&lt;bool&gt;</code> and <code>bitset&lt;&gt;</code> in C++.</p>
-<h3 id="block-sieving">Block sieving</h3>
+<h3 id="segmented-sieve">Segmented Sieve</h3>
 <p>It follows from the optimization "sieving till root" that there is no need to keep the whole array <code>is_prime[1...n]</code> at all time.
 For performing of sieving it's enough to keep just prime numbers until root of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, i.e. <code>prime[1... sqrt(n)]</code>, split the complete range into blocks, and sieve each block separately.
 In doing so, we never have to keep multiple blocks in memory at the same time, and the CPU handles caching a lot better.</p>
@@ -244,9 +245,51 @@ While working on the last block it should not be forgotten that the last needed 
 On the other hand, there will be a division for each pair of a block and prime number from <span><span class="MathJax_Preview">[1; \sqrt{n}]</span><script type="math/tex">[1; \sqrt{n}]</script></span>, and that will be far worse for smaller block sizes.
 Hence, it is necessary to keep balance when selecting the constant <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span>.
 We achieved the best results for block sizes between <span><span class="MathJax_Preview">10^4</span><script type="math/tex">10^4</script></span> and <span><span class="MathJax_Preview">10^5</span><script type="math/tex">10^5</script></span>.</p>
+<h2 id="find-primes-in-range">Find primes in range</h2>
+<p>Sometimes we need to find all prime numbers in a range <span><span class="MathJax_Preview">[L,R]</span><script type="math/tex">[L,R]</script></span> of small size (e.g. <span><span class="MathJax_Preview">R - L + 1 \approx 1e7</span><script type="math/tex">R - L + 1 \approx 1e7</script></span>), where <span><span class="MathJax_Preview">R</span><script type="math/tex">R</script></span> can be very large (e.g. <span><span class="MathJax_Preview">1e12</span><script type="math/tex">1e12</script></span>).</p>
+<p>To solve such a problem, we can use the idea of the Segmented sieve.
+We pre-generate all prime numbers up to <span><span class="MathJax_Preview">\sqrt R</span><script type="math/tex">\sqrt R</script></span>, and use those primes to mark all composite numbers in the segment <span><span class="MathJax_Preview">[L, R]</span><script type="math/tex">[L, R]</script></span>.</p>
+<pre><code class="cpp">vector&lt;bool&gt; segmentedSieve(long long L, long long R) {
+    // generate all primes up to sqrt(R)
+    long long lim = sqrt(R);
+    vector&lt;bool&gt; mark(lim + 1, false);
+    vector&lt;long long&gt; primes;
+    for (long long i = 2; i &lt;= lim; ++i) {
+        if (!mark[i]) {
+            primes.emplace_back(i);
+            for (long long j = i * i; j &lt;= lim; j += i)
+                mark[j] = true;
+        }
+    }
+
+    vector&lt;bool&gt; isPrime(R - L + 1, true);
+    for (long long i : primes)
+        for (long long j = max(i * i, (L + i - 1) / i * i); j &lt;= R; j += i)
+            isPrime[j - L] = false;
+    if (L == 1)
+        isPrime[0] = false;
+    return isPrime;
+}
+</code></pre>
+
+<p>Time complexity of this approach is <span><span class="MathJax_Preview">O((R - L + 1) \log \log (R) + \sqrt R \log \log \sqrt R)</span><script type="math/tex">O((R - L + 1) \log \log (R) + \sqrt R \log \log \sqrt R)</script></span>.</p>
+<p>It's also possible that we don't pre-generate all prime numbers:</p>
+<pre><code class="cpp">vector&lt;bool&gt; segmentedSieveNoPreGen(long long L, long long R) {
+    vector&lt;bool&gt; isPrime(R - L + 1, true);
+    long long lim = sqrt(R);
+    for (long long i = 2; i &lt;= lim; ++i)
+        for (long long j = max(i * i, (L + i - 1) / i * i); j &lt;= R; j += i)
+            isPrime[j - L] = false;
+    if (L == 1)
+        isPrime[0] = false;
+    return isPrime;
+}
+</code></pre>
+
+<p>Obviously, the complexity is worse, which is <span><span class="MathJax_Preview">O((R - L + 1) \log (R) + \sqrt R)</span><script type="math/tex">O((R - L + 1) \log (R) + \sqrt R)</script></span>. However, it still runs very fast in practice.</p>
 <h2 id="linear-time-modification">Linear time modification</h2>
 <p>We can modify the algorithm in a such a way, that it only has linear time complexity.
-This approach is described in the article <a href="/docs/#Algorithms/algebra/prime-sieve-linear/">Sieve of Eratosthenes Having Linear Time Complexity</a>.
+This approach is described in the article <a href="/docs/#Algorithms/prime-sieve-linear/">Sieve of Eratosthenes Having Linear Time Complexity</a>.
 However, this algorithm also has its own weaknesses.</p>
 <h2 id="practice-problems">Practice Problems</h2>
 <ul>
@@ -262,6 +305,7 @@ However, this algorithm also has its own weaknesses.</p>
 <li><a href="http://www.spoj.com/problems/NFACTOR/">SPOJ - N-Factorful</a></li>
 <li><a href="http://www.spoj.com/problems/BSPRIME/">SPOJ - Binary Sequence of Prime Numbers</a></li>
 <li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=2338">UVA 11353 - A Different Kind of Sorting</a></li>
+<li><a href="http://www.spoj.com/problems/PRIME1/">SPOJ - Prime Generator</a></li>
 <li><a href="http://www.spoj.com/problems/PRIMES2/">SPOJ - Printing some primes (hard)</a></li>
 <li><a href="https://codeforces.com/problemset/problem/17/A">Codeforces - Nodbach Problem</a></li>
 <li><a href="https://codeforces.com/problemset/problem/154/B">Codefoces - Colliders</a></li>

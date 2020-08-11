@@ -145,18 +145,18 @@ The second scenario is completely symmetrical to the first.</p>
 <p>The difference occurs in the stopping criterion of the algorithm. Ternary search will have to stop when <span><span class="MathJax_Preview">(r - l) &lt; 3</span><script type="math/tex">(r - l) < 3</script></span>, because in that case we can no longer select <span><span class="MathJax_Preview">m_1</span><script type="math/tex">m_1</script></span> and <span><span class="MathJax_Preview">m_2</span><script type="math/tex">m_2</script></span> to be different from each other as well as from <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> and <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>, and this can cause an infinite loop. Once <span><span class="MathJax_Preview">(r - l) &lt; 3</span><script type="math/tex">(r - l) < 3</script></span>, the remaining pool of candidate points <span><span class="MathJax_Preview">(l, l + 1, \ldots, r)</span><script type="math/tex">(l, l + 1, \ldots, r)</script></span> needs to be checked to find the point which produces the maximum value <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>.</p>
 <h2 id="implementation">Implementation</h2>
 <pre><code class="cpp">double ternary_search(double l, double r) {
-    double eps = 1e-9;                //set the error limit here
+    double eps = 1e-9;                  //set the error limit here
     while (r - l &gt; eps) {
         double m1 = l + (r - l) / 3;
         double m2 = r - (r - l) / 3;
-        double f1 = f(m1);        //evaluates the function at m1
-        double f2 = f(m2);        //evaluates the function at m2
+        double f1 = f(m1);              //evaluates the function at m1
+        double f2 = f(m2);              //evaluates the function at m2
         if (f1 &lt; f2)
             l = m1;
         else
             r = m2;
     }
-    return f(l);                    //return the maximum of f(x) in [l, r]
+    return f(l);                        //return the maximum of f(x) in [l, r]
 }
 </code></pre>
 
@@ -174,7 +174,9 @@ The second scenario is completely symmetrical to the first.</p>
 <li><a href="http://codeforces.com/gym/100829">GYM - Chasing the Cheetahs (A)</a></li>
 <li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=3349">UVA - 12197 - Trick or Treat</a></li>
 <li><a href="http://www.spoj.com/problems/KOPC12A/">SPOJ - Building Construction</a></li>
-<li><a href="https://codeforces.com/problemset/problem/439/D">Codeforces - Devu and his Brother</a>-</li>
+<li><a href="https://codeforces.com/problemset/problem/439/D">Codeforces - Devu and his Brother</a></li>
+<li><a href="https://www.codechef.com/problems/ICM2003">Codechef - Is This JEE</a></li>
+<li><a href="https://codeforces.com/contest/1355/problem/E">Codeforces - Restorer Distance</a></li>
 </ul>
 
   <br>

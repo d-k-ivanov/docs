@@ -11,7 +11,9 @@ But actually Gauss developed such a method already in 1805, but never published 
 ## Discrete Fourier transform
 
 Let there be a polynomial of degree $n - 1$:
+
 $$A(x) = a_0 x^0 + a_1 x^1 + \dots + a_{n-1} x^{n-1}$$
+
 Without loss of generality we assume that $n$ - the number of coefficients - is a power of $2$.
 If $n$ is not a power of $2$, then we simply add the missing terms $a_i x^i$ and set the coefficients $a_i$ to $0$.
 
@@ -20,6 +22,7 @@ Additionally these complex numbers have some very interesting properties:
 e.g. the principal $n$-th root $w_n = w_{n, 1} = e^{\frac{2 \pi i}{n}}$ can be used to describe all other $n$-th roots: $w_{n, k} = (w_n)^k$.
 
 The **discrete Fourier transform (DFT)** of the polynomial $A(x)$ (or equivalently the vector of coefficients $(a_0, a_1, \dots, a_{n-1})$ is defined as the values of the polynomial at the points $x = w_{n, k}$, i.e. it is the vector:
+
 $$\begin{align}
 \text{DFT}(a_0, a_1, \dots, a_{n-1}) &= (y_0, y_1, \dots, y_{n-1}) \\\\
 &= (A(w_{n, 0}), A(w_{n, 1}), \dots, A(w_{n, n-1})) \\\\
@@ -28,6 +31,7 @@ $$\begin{align}
 
 Similarly the **inverse discrete Fourier transform** is defined:
 The inverse DFT of values of the polynomial $(y_0, y_1, \dots, y_{n-1})$ are the coefficients of the polynomial $(a_0, a_1, \dots, a_{n-1})$.
+
 $$\text{InverseDFT}(y_0, y_1, \dots, y_{n-1}) = (a_0, a_1, \dots, a_{n-1})$$
 
 Thus, if a direct DFT computes the values of the polynomial at the points at the $n$-th roots, the inverse DFT can restore the coefficients of the polynomial using those values.
@@ -39,12 +43,15 @@ We compute the DFT for each of them: $\text{DFT}(A)$ and $\text{DFT}(B)$.
 
 What happens if we multiply these polynomials?
 Obviously at each point the values are simply multiplied, i.e.
+
 $$(A \cdot B)(x) = A(x) \cdot B(x).$$
 
 This means that if we multiply the vectors $\text{DFT}(A)$ and $\text{DFT}(B)$ - by multiplying each element of one vector by the corresponding element of the other vector - then we get nothing other than the DFT of the polynomial $\text{DFT}(A \cdot B)$:
+
 $$\text{DFT}(A \cdot B) = \text{DFT}(A) \cdot \text{DFT}(B)$$
 
 Finally, applying the inverse DFT, we obtain:
+
 $$A \cdot B = \text{InverseDFT}(\text{DFT}(A) \cdot \text{DFT}(B))$$
 
 On the right the product of the two DFTs we mean the pairwise product of the vector elements.
@@ -68,12 +75,14 @@ So let there be a polynomial $A(x)$ with degree $n - 1$, where $n$ is a power of
 $$A(x) = a_0 x^0 + a_1 x^1 + \dots + a_{n-1} x^{n-1}$$
 
 We divide it into two smaller polynomials, the one containing only the coefficients of the even positions, and the one containing the coefficients of the odd positions:
+
 $$\begin{align}
 A_0(x) &= a_0 x^0 + a_2 x^1 + \dots + a_{n-2} x^{\frac{n}{2}-1} \\\\
 A_1(x) &= a_1 x^0 + a_3 x^1 + \dots + a_{n-1} x^{\frac{n}{2}-1}
 \end{align}$$
 
 It is easy to see that
+
 $$A(x) = A_0(x^2) + x A_1(x^2).$$
 
 The polynomials $A_0$ and $A_1$ are only half as much coefficients as the polynomial $A$.
@@ -85,9 +94,11 @@ Suppose we have computed the vectors $\left(y_k^0\right)\_{k=0}^{n/2-1} = \text{
 Let us find a expression for $\left(y_k\right)_{k=0}^{n-1} = \text{DFT}(A)$.
 
 For the first $\frac{n}{2}$ values we can just use the previously noted equation $A(x) = A_0(x^2) + x A_1(x^2)$:
+
 $$y_k = y_k^0 + w_n^k y_k^1, \quad k = 0 \dots \frac{n}{2} - 1.$$
 
 However for the second $\frac{n}{2}$ values we need to find a slightly, different expression:
+
 $$\begin{align}
 y_{k+n/2} &= A\left(w_n^{k+n/2}\right) \\\\
 &= A_0\left(w_n^{2k+n}\right) + w_n^{k + n/2} A_1\left(w_n^{2k+n}\right) \\\\
@@ -95,13 +106,16 @@ y_{k+n/2} &= A\left(w_n^{k+n/2}\right) \\\\
 &= A_0\left(w_n^{2k}\right) - w_n^k A_1\left(w_n^{2k}\right) \\\\
 &= y_k^0 - w_n^k y_k^1
 \end{align}$$
+
 Here we used again $A(x) = A_0(x^2) + x A_1(x^2)$ and the two identities $w_n^n = 1$ and $w_n^{n/2} = -1$.
 
 Therefore we get the desired formulas for computing the whole vector $(y_k)$:
+
 $$\begin{align}
 y_k &= y_k^0 + w_n^k y_k^1, &\quad k = 0 \dots \frac{n}{2} - 1, \\\\
 y_{k+n/2} &= y_k^0 - w_n^k y_k^1, &\quad k = 0 \dots \frac{n}{2} - 1.
 \end{align}$$
+
 (This pattern $a + b$ and $a - b$ is sometimes called a **butterfly**.)
 
 Thus we learned how to compute the DFT in $O(n \log n)$ time.
@@ -114,6 +128,7 @@ This known problem is called **interpolation**, and there are general algorithms
 But in this special case (since we know the values of the points at the roots of unity), we can obtains a much simpler algorithm (that is practically the same as the direct FFT).
 
 We can write the DFT, according to its definition, in the matrix form:
+
 $$
 \begin{pmatrix}
 w_n^0 & w_n^0 & w_n^0 & w_n^0 & \cdots & w_n^0 \\\\
@@ -128,9 +143,11 @@ a_0 \\\\ a_1 \\\\ a_2 \\\\ a_3 \\\\ \vdots \\\\ a_{n-1}
 y_0 \\\\ y_1 \\\\ y_2 \\\\ y_3 \\\\ \vdots \\\\ y_{n-1}
 \end{pmatrix}
 $$
+
 This matrix is called the **Vandermonde matrix**.
 
 Thus we can compute the vector $(a_0, a_1, \dots, a_{n-1})$ by multiplying the vector $(y_0, y_1, \dots y_{n-1})$ from the left with the inverse of the matrix:
+
 $$
 \begin{pmatrix}
 a_0 \\\\ a_1 \\\\ a_2 \\\\ a_3 \\\\ \vdots \\\\ a_{n-1}
@@ -147,6 +164,7 @@ y_0 \\\\ y_1 \\\\ y_2 \\\\ y_3 \\\\ \vdots \\\\ y_{n-1}
 $$
 
 A quick check can verify that the inverse of the matrix has the following form:
+
 $$
 \frac{1}{n}
 \begin{pmatrix}
@@ -158,10 +176,15 @@ w_n^0 & w_n^{-3} & w_n^{-6} & w_n^{-9} & \cdots & w_n^{-3(n-1)} \\\\
 w_n^0 & w_n^{-(n-1)} & w_n^{-2(n-1)} & w_n^{-3(n-1)} & \cdots & w_n^{-(n-1)(n-1)}
 \end{pmatrix}
 $$
+
 Thus we obtain the formula:
+
 $$a_k = \frac{1}{n} \sum_{j=0}^{n-1} y_j w_n^{-k j}$$
+
 Comparing this to the formula for $y_k$
+
 $$y_k = \sum_{j=0}^{n-1} a_j w_n^{k j},$$
+
 we notice that these problems are almost the same, so the coefficients $a_k$ can be found by the same divide and conquer algorithm, as well as the direct FFT, only instead of $w_n^k$ we have to use $w_n^{-k}$, and at the end we need to divide the resulting coefficients by $n$.
 
 Thus the computation of the inverse DFT is almost the same as the calculation of the direct DFT, and it also can be performed in $O(n \log n)$ time.
@@ -263,21 +286,28 @@ In the second recursion level the same thing happens, but with the second lowest
 Therefore if we reverse the bits of the position of each coefficient, and sort them by these reversed values, we get the desired order (it is called the bit-reversal permutation).
 
 For example the desired order for $n = 8$ has the form:
+
 $$a = \left\\{ \left[ (a_0, a_4), (a_2, a_6) \right], \left[ (a_1, a_5), (a_3, a_7) \right] \right\\}$$
+
 Indeed in the first recursion level (surrounded by curly braces), the vector gets divided into two parts $[a_0, a_2, a_4, a_6]$ and $[a_1, a_3, a_5, a_7]$.
 As we see, in the bit-reversal permutation this corresponds to simply dividing the vector into two halves: the first $\frac{n}{2}$ elements and the last $\frac{n}{2}$ elements.
 Then there is a recursive call for each halve.
 Let the resulting DFT for each of them be returned in place of the elements themselves (i.e. the first half and the second half of the vector $a$ respectively.
+
 $$a = \left\\{[y_0^0, y_1^0, y_2^0, y_3^0], [y_0^1, y_1^1, y_2^1, y_3^1]\right\\}$$
 
 Now we want to combine the two DFTs into one for the complete vector.
 The order of the elements is ideal, and we can also perform the union directly in this vector.
 We can take the elements $y_0^0$ and $y_0^1$ and perform the butterfly transform.
 The place of the resulting two values is the same as the place of the two initial values, so we get:
+
 $$a = \left\\{[y_0^0 + w_n^0 y_0^1, y_1^0, y_2^0, y_3^0], [y_0^0 - w_n^0 y_0^1, y_1^1, y_2^1, y_3^1]\right\\}$$
+
 Similarly we can compute the butterfly transform of $y_1^0$ and $y_1^1$ and put the results in their place, and so on.
 As a result we get:
+
 $$a = \left\\{[y_0^0 + w_n^0 y_0^1, y_1^0 + w_n^1 y_1^1, y_2^0 + w_n^2 y_2^1, y_3^0 + w_n^3 y_3^1], [y_0^0 - w_n^0 y_0^1, y_1^0 - w_n^1 y_1^1, y_2^0 - w_n^2 y_2^1, y_3^0 - w_n^3 y_3^1]\right\\}$$
+
 Thus we computed the required DFT from the vector $a$.
 
 Here we described the process of computing the DFT only at the first recursion level, but the same works obviously also for all other levels.
@@ -407,18 +437,22 @@ To efficiently compute it, we extensively use properties of the roots (e.g. that
 
 But the same properties hold for the $n$-th roots of unity in modular arithmetic.
 A $n$-th root of unity under a primitive field is such a number $w_n$ that satisfies:
+
 $$\begin{align}
 (w_n)^n &= 1 \pmod{p}, \\\\
 (w_n)^k &\ne 1 \pmod{p}, \quad 1 \le k < n.
 \end{align}$$
+
 The other $n-1$ roots can be obtained as powers of the root $w_n$.
 
 To apply it in the fast Fourier transform algorithm, we need a root to exist for some $n$, which is a power of $2$, and also for all smaller powers.
 We can notice the following interesting property:
+
 $$\begin{align}
 (w_n^2)^m = w_n^n &= 1 \pmod{p}, \quad \text{with } m = \frac{n}{2}\\\\
 (w_n^2)^k = w_n^{2k} &\ne 1 \pmod{p}, \quad 1 \le k < m.
 \end{align}$$
+
 Thus if $w_n$ is a $n$-th root of unity, then $w_n^2$ is a $\frac{n}{2}$-th root of unity.
 And consequently for all smaller powers of two there exist roots of the required degree, and they can be computed using $w_n$.
 
@@ -530,10 +564,14 @@ We have to compute the products of $a$ with every cyclic shift of $b$.
 We generate two new arrays of size $2n$:
 We reverse $a$ and append $n$ zeros to it.
 And we just append $b$ to itself.
-When we multiply these two arrays as polynomials, and look at the coefficient $c[n-1],~ c[n],~ c[2n-2]$ of the product $c$, we get:
+When we multiply these two arrays as polynomials, and look at the coefficients $c[n-1],~ c[n],~ \dots,~ c[2n-2]$ of the product $c$, we get:
+
 $$c[k] = \sum_{i+j=k} a[i] b[j]$$
+
 And since all the elements $a[i] = 0$ for $i \ge n$:
+
 $$c[k] = \sum_{i=0}^{n-1} a[i] b[k-i]$$
+
 It is easy to see that this sum is just the scalar product of the vector $a$ with the $(k - (n - 1))$-th cyclic left shift of $b$.
 Thus these coefficients are the answer to the problem, and we were still able to obtain it in $O(n \log n)$ time.
 Note here that $c[2n-1]$ also gives us the $n$-th cyclic shift but that is the same as the $0$-th cyclic shift so we don't need to consider that separately into our answer.
@@ -571,6 +609,7 @@ with $\alpha_{i+j} = \frac{2 \pi T[i+j]}{26}$ and $\beta_j = \frac{2 \pi P[j]}{2
 
 If there is a match, than $T[i+j] = P[j]$, and therefore $\alpha_{i+j} = \beta_j$.
 This gives (using the Pythagorean trigonometric identity):
+
 $$\begin{align}
 c_{m-1+i} &= \sum_{j = 0}^{m-1}  \left(\cos(\alpha_{i+j}) + i \sin(\alpha_{i+j})\right) \cdot \left(\cos(\alpha_{i+j}) - i \sin(\alpha_{i+j})\right) \\\\
 &= \sum_{j = 0}^{m-1} \cos(\alpha_{i+j})^2 + \sin(\alpha_{i+j})^2 = \sum_{j = 0}^{m-1} 1 = m

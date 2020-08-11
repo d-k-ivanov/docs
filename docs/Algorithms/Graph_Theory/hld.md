@@ -8,7 +8,7 @@ Let there be a tree $G$ of $n$ vertices, with an arbitrary root.
 
 The essence of this tree decomposition is to **split the tree into several paths** so that we can reach the root vertex from any $v$ by traversing at most $\log n$ paths. In addition, none of these paths should intersect with another.
 
-It is clear that if we find such a decomposition for any tree, it will allow us to reduce certain single queries of the form *“calculate something on the path from $a$ to $b$”* to several queries of the type *”calculate something on the segment $[l;r]$ of the $k^{th}$ path”*.
+It is clear that if we find such a decomposition for any tree, it will allow us to reduce certain single queries of the form *“calculate something on the path from $a$ to $b$”* to several queries of the type *”calculate something on the segment $[l, r]$ of the $k^{th}$ path”*.
 
 ### Construction algorithm
 
@@ -32,9 +32,7 @@ First, we note that the heavy paths obtained by the algorithm will be **disjoint
 
 Secondly, we will show that going down from the root of the tree to an arbitrary vertex, we will **change no more than $\log n$ heavy paths along the way** . Moving down a light edge reduces the size of the current subtree to half or lower:
 
-$$
-s(c) < \frac{s(v)}{2} \iff \text{edge }(v, c)\text{ is light}
-$$
+$$ s(c) < \frac{s(v)}{2} \iff \text{edge }(v, c)\text{ is light} $$
 
 Thus, we can go through at most $\log n$ light edges before subtree size reduces to one.
 

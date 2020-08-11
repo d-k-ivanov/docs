@@ -105,7 +105,7 @@ int find_set(int v) {
 ```
 
 The simple implementation does what was intended:
-first find the representative of the set (root vertex), and the in the process of stack unwinding the visited nodes are attached directly to the representative.
+first find the representative of the set (root vertex), and then in the process of stack unwinding the visited nodes are attached directly to the representative.
 
 This simple modification of the operation already achieves the time complexity $O(\log n)$ per call on average (here without proof).
 There is a second modification, that will make it even faster.
@@ -275,7 +275,7 @@ With DSU you can find the end point, to which we get after following all edges f
 
 A good example of this application is the **problem of painting subarrays**.
 We have a segment of length $L$, each element initially has the color 0.
-We have to repaint the subarray $[l; r]$ with the color $c$ for each query $(l, r, c)$.
+We have to repaint the subarray $[l, r]$ with the color $c$ for each query $(l, r, c)$.
 At the end we want to find the final color of each cell.
 We assume that we know all the queries in advance, i.e. the task is offline.
 
@@ -284,7 +284,7 @@ Thus initially each cell points to itself.
 After painting one requested repaint of a segment, all cells from that segment will point to the cell after the segment.
 
 Now to solve this problem, we consider the queries **in the reverse order**: from last to first.
-This way when we execute a query, we only have to paint exactly the unpainted cells in the subarray $[l; r]$.
+This way when we execute a query, we only have to paint exactly the unpainted cells in the subarray $[l, r]$.
 All other cells already contain their final color.
 To quickly iterate over all unpainted cells, we use the DSU.
 We find the left-most unpainted cell inside of a segment, repaint it, and with the pointer we move to the next empty cell to the right.
@@ -586,4 +586,4 @@ However it should also be noted, that there are several articles **disputing** t
 - [SPOJ - Consecutive Letters](https://www.spoj.com/problems/CONSEC/)
 - [Toph - Unbelievable Array](https://toph.co/p/unbelievable-array)
 - [HackerEarth - Lexicographically minimal string](https://www.hackerearth.com/practice/data-structures/disjoint-data-strutures/basics-of-disjoint-data-structures/practice-problems/algorithm/lexicographically-minimal-string-6edc1406/description/)
-- [HackerEarth - Marriage Problem](https://www.hackerearth.com/practice/data-structures/disjoint-data-strutures/basics-of-disjoint-data-structures/practice-problems/algorithm/marriage-problem/description/)
+- [HackerEarth - Fight in Ninja World](https://www.hackerearth.com/practice/algorithms/graphs/breadth-first-search/practice-problems/algorithm/containers-of-choclates-1/)
