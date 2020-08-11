@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Data_Structures/Sqrt%20_Decomposition/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Sqrt Decomposition - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Sqrt Decomposition", url: "#_top", children: [
+              {title: "Sqrt-decomposition based data structure", url: "#sqrt-decomposition-based-data-structure" },
+              {title: "Other problems", url: "#other-problems" },
+              {title: "Mo's algorithm", url: "#mos-algorithm" },
+              {title: "Practice Problems", url: "#practice-problems" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Sqrt_Tree/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Sqrt_Tree/" class="btn btn-xs btn-link">
+        Sqrt Tree
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Sparse_Table/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Sparse_Table/" class="btn btn-xs btn-link">
+        Sparse Table
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="sqrt-decomposition">Sqrt Decomposition</h1>
+<p>Sqrt Decomposition is a method (or a data structure) that allows you to perform some common operations (finding sum of the elements of the sub-array, finding the minimal/maximal element, etc.) in <span><span class="MathJax_Preview">O(\sqrt n)</span><script type="math/tex">O(\sqrt n)</script></span> operations, which is much faster than <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> for the trivial algorithm.</p>
+<p>First we describe the data structure for one of the simplest applications of this idea, then show how to generalize it to solve some other problems, and finally look at a slightly different use of this idea: splitting the input requests into sqrt blocks.</p>
+<h2 id="sqrt-decomposition-based-data-structure">Sqrt-decomposition based data structure</h2>
+<p>Given an array <span><span class="MathJax_Preview">a[0 \dots n-1]</span><script type="math/tex">a[0 \dots n-1]</script></span>, implement a data structure that allows to find the sum of the elements <span><span class="MathJax_Preview">a[l \dots r]</span><script type="math/tex">a[l \dots r]</script></span> for arbitrary <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> and <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> in <span><span class="MathJax_Preview">O(\sqrt n)</span><script type="math/tex">O(\sqrt n)</script></span> operations.</p>
+<h3 id="description">Description</h3>
+<p>The basic idea of sqrt decomposition is preprocessing. We'll divide the array <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> into blocks of length approximately <span><span class="MathJax_Preview">\sqrt n</span><script type="math/tex">\sqrt n</script></span>, and for each block <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> we'll precalculate the sum of elements in it <span><span class="MathJax_Preview">b[i]</span><script type="math/tex">b[i]</script></span>.</p>
+<p>We can assume that both the size of the block and the number of blocks are equal to <span><span class="MathJax_Preview">\sqrt n</span><script type="math/tex">\sqrt n</script></span> rounded up:</p>
+<div>
+<div class="MathJax_Preview"> s = \lceil \sqrt n \rceil </div>
+<script type="math/tex; mode=display"> s = \lceil \sqrt n \rceil </script>
+</div>
+<p>Then the array <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> is divided into blocks in the following way:</p>
+<div>
+<div class="MathJax_Preview"> \underbrace{a[0], a[1], \dots, a[s-1]}\_{\text{b[0]}}, \underbrace{a[s], \dots, a[2s-1]}\_{\text{b[1]}}, \dots, \underbrace{a[(s-1) \cdot s], \dots, a[n-1]}\_{\text{b[s-1]}} </div>
+<script type="math/tex; mode=display"> \underbrace{a[0], a[1], \dots, a[s-1]}\_{\text{b[0]}}, \underbrace{a[s], \dots, a[2s-1]}\_{\text{b[1]}}, \dots, \underbrace{a[(s-1) \cdot s], \dots, a[n-1]}\_{\text{b[s-1]}} </script>
+</div>
+<p>The last block may have fewer elements than the others (if <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> not a multiple of <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>), it is not important to the discussion (as it can be handled easily).
+Thus, for each block <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>, we know the sum of elements on it <span><span class="MathJax_Preview">b[k]</span><script type="math/tex">b[k]</script></span>:</p>
+<div>
+<div class="MathJax_Preview"> b[k] = \sum\limits_{i=k\cdot s}^{\min {(n-1,(k+1)\cdot s - 1})} a[i] </div>
+<script type="math/tex; mode=display"> b[k] = \sum\limits_{i=k\cdot s}^{\min {(n-1,(k+1)\cdot s - 1})} a[i] </script>
+</div>
+<p>So, we have calculated the values of <span><span class="MathJax_Preview">b[k]</span><script type="math/tex">b[k]</script></span> (this required <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> operations). How can they help us to answer each query <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span> ?
+Notice that if the interval <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span> is long enough, it will contain several whole blocks, and for those blocks we can find the sum of elements in them in a single operation. As a result, the interval <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span> will contain parts of only two blocks, and we'll have to calculate the sum of elements in these parts trivially.</p>
+<p>Thus, in order to calculate the sum of elements on the interval <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span> we only need to sum the elements of the two "tails":
+<span><span class="MathJax_Preview">[l\dots (k + 1)\cdot s-1]</span><script type="math/tex">[l\dots (k + 1)\cdot s-1]</script></span> and <span><span class="MathJax_Preview">[p\cdot s\dots r]</span><script type="math/tex">[p\cdot s\dots r]</script></span> , and sum the values <span><span class="MathJax_Preview">b[i]</span><script type="math/tex">b[i]</script></span> in all the blocks from <span><span class="MathJax_Preview">k + 1</span><script type="math/tex">k + 1</script></span> to <span><span class="MathJax_Preview">p-1</span><script type="math/tex">p-1</script></span>:</p>
+<div>
+<div class="MathJax_Preview"> \sum\limits\_{i=l}^r a[i] = \sum\limits\_{i=l}^{(k+1) \cdot s-1} a[i] + \sum\limits\_{i=k+1}^{p-1} b[i] + \sum\limits\_{i=p\cdot s}^r a[i] </div>
+<script type="math/tex; mode=display"> \sum\limits\_{i=l}^r a[i] = \sum\limits\_{i=l}^{(k+1) \cdot s-1} a[i] + \sum\limits\_{i=k+1}^{p-1} b[i] + \sum\limits\_{i=p\cdot s}^r a[i] </script>
+</div>
+<p><em>Note: When <span><span class="MathJax_Preview">k = p</span><script type="math/tex">k = p</script></span>, i.e. <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> and <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> belong to the same block, the formula can't be applied, and the sum should be calculated trivially.</em></p>
+<p>This approach allows us to significantly reduce the number of operations. Indeed, the size of each "tail" does not exceed the block length <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, and the number of blocks in the sum does not exceed <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>. Since we have chosen <span><span class="MathJax_Preview">s \approx \sqrt n</span><script type="math/tex">s \approx \sqrt n</script></span>, the total number of operations required to find the sum of elements on the interval <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span> is <span><span class="MathJax_Preview">O(\sqrt n)</span><script type="math/tex">O(\sqrt n)</script></span>.</p>
+<h3 id="implementation">Implementation</h3>
+<p>Let's start with the simplest implementation:</p>
+<pre><code class="cpp">// input data
+int n;
+vector&lt;int&gt; a (n);
+
+// preprocessing
+int len = (int) sqrt (n + .0) + 1; // size of the block and the number of blocks
+vector&lt;int&gt; b (len);
+for (int i=0; i&lt;n; ++i)
+    b[i / len] += a[i];
+
+// answering the queries
+for (;;) {
+    int l, r;
+  // read input data for the next query
+    int sum = 0;
+    for (int i=l; i&lt;=r; )
+        if (i % len == 0 &amp;&amp; i + len - 1 &lt;= r) {
+            // if the whole block starting at i belongs to [l, r]
+            sum += b[i / len];
+            i += len;
+        }
+        else {
+            sum += a[i];
+            ++i;
+        }
+}
+</code></pre>
+
+<p>This implementation has unreasonably many division operations (which are much slower than other arithmetical operations). Instead, we can calculate the indices of the blocks <span><span class="MathJax_Preview">c_l</span><script type="math/tex">c_l</script></span> and <span><span class="MathJax_Preview">c_r</span><script type="math/tex">c_r</script></span> which contain indices <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> and <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>, and loop through blocks <span><span class="MathJax_Preview">c_l+1 \dots c_r-1</span><script type="math/tex">c_l+1 \dots c_r-1</script></span> with separate processing of the "tails" in blocks <span><span class="MathJax_Preview">c_l</span><script type="math/tex">c_l</script></span> and <span><span class="MathJax_Preview">c_r</span><script type="math/tex">c_r</script></span>. This approach corresponds to the last formula in the description, and makes the case <span><span class="MathJax_Preview">c_l = c_r</span><script type="math/tex">c_l = c_r</script></span> a special case.</p>
+<pre><code class="cpp">int sum = 0;
+int c_l = l / len,   c_r = r / len;
+if (c_l == c_r)
+    for (int i=l; i&lt;=r; ++i)
+        sum += a[i];
+else {
+    for (int i=l, end=(c_l+1)*len-1; i&lt;=end; ++i)
+        sum += a[i];
+    for (int i=c_l+1; i&lt;=c_r-1; ++i)
+        sum += b[i];
+    for (int i=c_r*len; i&lt;=r; ++i)
+        sum += a[i];
+}
+</code></pre>
+
+<h2 id="other-problems">Other problems</h2>
+<p>So far we were discussing the problem of finding the sum of elements of a continuous subarray. This problem can be extended to allow to <strong>update individual array elements</strong>. If an element <span><span class="MathJax_Preview">a[i]</span><script type="math/tex">a[i]</script></span> changes, it's sufficient to update the value of <span><span class="MathJax_Preview">b[k]</span><script type="math/tex">b[k]</script></span> for the block to which this element belongs (<span><span class="MathJax_Preview">k = i / s</span><script type="math/tex">k = i / s</script></span>) in one operation:</p>
+<div>
+<div class="MathJax_Preview"> b[k] += a_{new}[i] - a_{old}[i] </div>
+<script type="math/tex; mode=display"> b[k] += a_{new}[i] - a_{old}[i] </script>
+</div>
+<p>On the other hand, the task of finding the sum of elements can be replaced with the task of finding minimal/maximal element of a subarray. If this problem has to address individual elements' updates as well, updating the value of <span><span class="MathJax_Preview">b[k]</span><script type="math/tex">b[k]</script></span> is also possible, but it will require iterating through all values of block <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> in <span><span class="MathJax_Preview">O(s) = O(\sqrt{n})</span><script type="math/tex">O(s) = O(\sqrt{n})</script></span> operations.</p>
+<p>Sqrt decomposition can be applied in a similar way to a whole class of other problems: finding the number of zero elements, finding the first non-zero element, counting elements which satisfy a certain property etc.</p>
+<p>Another class of problems appears when we need to <strong>update array elements on intervals</strong>: increment existing elements or replace them with a given value.</p>
+<p>For example, let's say we can do two types of operations on an array: add a given value <span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> to all array elements on interval <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span> or query the value of element <span><span class="MathJax_Preview">a[i]</span><script type="math/tex">a[i]</script></span>. Let's store the value which has to be added to all elements of block <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> in <span><span class="MathJax_Preview">b[k]</span><script type="math/tex">b[k]</script></span> (initially all <span><span class="MathJax_Preview">b[k] = 0</span><script type="math/tex">b[k] = 0</script></span>). During each "add" operation we need to add <span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> to <span><span class="MathJax_Preview">b[k]</span><script type="math/tex">b[k]</script></span> for all blocks which belong to interval <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span> and to add <span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> to <span><span class="MathJax_Preview">a[i]</span><script type="math/tex">a[i]</script></span> for all elements which belong to the "tails" of the interval. The answer a query <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> is simply <span><span class="MathJax_Preview">a[i] + b[i/s]</span><script type="math/tex">a[i] + b[i/s]</script></span>. This way "add" operation has <span><span class="MathJax_Preview">O(\sqrt{n})</span><script type="math/tex">O(\sqrt{n})</script></span> complexity, and answering a query has <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> complexity.</p>
+<p>Finally, those two classes of problems can be combined if the task requires doing <strong>both</strong> element updates on an interval and queries on an interval. Both operations can be done with <span><span class="MathJax_Preview">O(\sqrt{n})</span><script type="math/tex">O(\sqrt{n})</script></span> complexity. This will require two block arrays <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> and <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>: one to keep track of element updates and another to keep track of answers to the query.</p>
+<p>There exist other problems which can be solved using sqrt decomposition, for example, a problem about maintaining a set of numbers which would allow adding/deleting numbers, checking whether a number belongs to the set and finding <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th largest number. To solve it one has to store numbers in increasing order, split into several blocks with <span><span class="MathJax_Preview">\sqrt{n}</span><script type="math/tex">\sqrt{n}</script></span> numbers in each. Every time a number is added/deleted, the blocks have to be rebalanced by moving numbers between beginnings and ends of adjacent blocks.</p>
+<h2 id="mos-algorithm">Mo's algorithm</h2>
+<p>A similar idea, based on sqrt decomposition, can be used to answer range queries (<span><span class="MathJax_Preview">Q</span><script type="math/tex">Q</script></span>) offline in <span><span class="MathJax_Preview">O((N+Q)\sqrt{N})</span><script type="math/tex">O((N+Q)\sqrt{N})</script></span>.
+This might sound like a lot worse than the methods in the previous section, since this is a slightly worse complexity than we had earlier and cannot update values between two queries.
+But in a lot of situations this method has advantages.
+During a normal sqrt decomposition, we have to precompute the answers for each block, and merge them during answering queries.
+In some problems this merging step can be quite problematic.
+E.g. when each queries asks to find the <strong>mode</strong> of its range (the number that appears the most often).
+For this each block would have to store the count of each number in it in some sort of data structure, and we cannot longer perform the merge step fast enough any more.
+<strong>Mo's algorithm</strong> uses a completely different approach, that can answer these kind of queries fast, because it only keeps track of one data structure, and the only operations with it are easy and fast.</p>
+<p>The idea is to answer the queries in a special order based on the indices.
+We will first answer all queries which have the left index in block 0, then answer all queries which have left index in block 1 and so on.
+And also we will have to answer the queries of a block is a special order, namely sorted by the right index of the queries.</p>
+<p>As already said we will use a single data structure.
+This data structure will store information about the range.
+At the beginning this range will be empty.
+When we want to answer the next query (in the special order), we simply extend or reduce the range, by adding/removing elements on both sides of the current range, until we transformed it into the query range.
+This way, we only need to add or remove a single element once at a time, which should be pretty easy operations in our data structure.</p>
+<p>Since we change the order of answering the queries, this is only possible when we are allowed to answer the queries in offline mode.</p>
+<h3 id="implementation_1">Implementation</h3>
+<p>In Mo's algorithm we use two functions for adding an index and for removing an index from the range which we are currently maintaining.</p>
+<pre><code class="cpp">void remove(idx);  // TODO: remove value at idx from data structure
+void add(idx);     // TODO: add value at idx from data structure
+int get_answer();  // TODO: extract the current answer of the data structure
+
+int block_size;
+
+struct Query {
+    int l, r, idx;
+    bool operator&lt;(Query other) const
+    {
+        return make_pair(l / block_size, r) &lt;
+               make_pair(other.l / block_size, other.r);
+    }
+};
+
+vector&lt;int&gt; mo_s_algorithm(vector&lt;Query&gt; queries) {
+    vector&lt;int&gt; answers(queries.size());
+    sort(queries.begin(), queries.end());
+
+    // TODO: initialize data structure
+
+    int cur_l = 0;
+    int cur_r = -1;
+    // invariant: data structure will always reflect the range [cur_l, cur_r]
+    for (Query q : queries) {
+        while (cur_l &gt; q.l) {
+            cur_l--;
+            add(cur_l);
+        }
+        while (cur_r &lt; q.r) {
+            cur_r++;
+            add(cur_r);
+        }
+        while (cur_l &lt; q.l) {
+            remove(cur_l);
+            cur_l++;
+        }
+        while (cur_r &gt; q.r) {
+            remove(cur_r);
+            cur_r--;
+        }
+        answers[q.idx] = get_answer();
+    }
+    return answers;
+}
+</code></pre>
+
+<p>Based on the problem we can use a different data structure and modify the <code>add</code>/<code>remove</code>/<code>get_answer</code> functions accordingly.
+For example if we are asked to find range sum queries then we use a simple integer as data structure, which is <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span> at the beginning.
+The <code>add</code> function will simply add the value of the position and subsequently update the answer variable.
+On the other hand <code>remove</code> function will subtract the value at position and subsequently update the answer variable.
+And <code>get_answer</code> just returns the integer.</p>
+<p>For answering mode-queries, we can use a binary search tree (e.g. <code>map&lt;int, int&gt;</code>) for storing how often each number appears in the current range, and a second binary search tree (e.g. <code>set&lt;pair&lt;int, int&gt;&gt;</code>) for keeping counts of the numbers (e.g. as count-number pairs) in order.
+The <code>add</code> method removes the current number from the second BST, increases the count in the first one, and inserts the number back into the second one.
+<code>remove</code> does the same thing, it only decreases the count.
+And <code>get_answer</code> just looks at second tree and returns the best value in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>.</p>
+<h3 id="complexity">Complexity</h3>
+<p>Sorting all queries will take <span><span class="MathJax_Preview">O(Q \log Q)</span><script type="math/tex">O(Q \log Q)</script></span>.</p>
+<p>How about the other operations?
+How many times will the <code>add</code> and <code>remove</code> be called?</p>
+<p>Let's say the block size is <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span>.</p>
+<p>If we only look at all queries having the left index in the same block, the queries are sorted by the right index.
+Therefore we will call <code>add(cur_r)</code> and <code>remove(cur_r)</code> only <span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span> times for all these queries combined.
+This gives <span><span class="MathJax_Preview">O(\frac{N}{S} N)</span><script type="math/tex">O(\frac{N}{S} N)</script></span> calls for all blocks.</p>
+<p>The value of <code>cur_l</code> can change by at most <span><span class="MathJax_Preview">O(S)</span><script type="math/tex">O(S)</script></span> during between two queries.
+Therefore we have an additional <span><span class="MathJax_Preview">O(S Q)</span><script type="math/tex">O(S Q)</script></span> calls of <code>add(cur_l)</code> and <code>remove(cur_l)</code>.</p>
+<p>For <span><span class="MathJax_Preview">S \approx \sqrt{N}</span><script type="math/tex">S \approx \sqrt{N}</script></span> this gives <span><span class="MathJax_Preview">O((N + Q) \sqrt{N})</span><script type="math/tex">O((N + Q) \sqrt{N})</script></span> operations in total.
+Thus the complexity is <span><span class="MathJax_Preview">O((N+Q)F\sqrt{N})</span><script type="math/tex">O((N+Q)F\sqrt{N})</script></span> where <span><span class="MathJax_Preview">O(F)</span><script type="math/tex">O(F)</script></span>  is the complexity of <code>add</code> and <code>remove</code> function.</p>
+<h3 id="tips-for-improving-runtime">Tips for improving runtime</h3>
+<ul>
+<li>Block size of precisely <span><span class="MathJax_Preview">\sqrt{N}</span><script type="math/tex">\sqrt{N}</script></span> doesn't always offer the best runtime.  For example, if <span><span class="MathJax_Preview">\sqrt{N}=750</span><script type="math/tex">\sqrt{N}=750</script></span> then it may happen that block size of <span><span class="MathJax_Preview">700</span><script type="math/tex">700</script></span> or <span><span class="MathJax_Preview">800</span><script type="math/tex">800</script></span> may run better.
+More importantly, don't compute the block size at runtime - make it <code>const</code>. Division by constants is well optimized by compilers.</li>
+<li>In odd blocks sort the right index in ascending order and in even blocks sort it in descending order. This will minimize the movement of right pointer, as the normal sorting will move the right pointer from the end back to the beginning at the start of every block. With the improved version this resetting is no more necessary.</li>
+</ul>
+<pre><code class="cpp">bool cmp(pair&lt;int, int&gt; p, pair&lt;int, int&gt; q) {
+    if (p.first / BLOCK_SIZE != q.first / BLOCK_SIZE)
+        return p &lt; q;
+    return (p.first / BLOCK_SIZE &amp; 1) ? (p.second &lt; q.second) : (p.second &gt; q.second);
+}
+</code></pre>
+
+<p>You can read about even faster sorting approach <a href="https://codeforces.com/blog/entry/61203">here</a>.</p>
+<h2 id="practice-problems">Practice Problems</h2>
+<ul>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=3154">UVA - 12003 - Array Transformer</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=3141">UVA - 11990 Dynamic Inversion</a></li>
+<li><a href="http://www.spoj.com/problems/GIVEAWAY/">SPOJ - Give Away</a></li>
+<li><a href="http://codeforces.com/contest/786/problem/C">Codeforces - Till I Collapse</a></li>
+<li><a href="http://codeforces.com/contest/840/problem/D">Codeforces - Destiny</a></li>
+<li><a href="http://codeforces.com/contest/13/problem/E">Codeforces - Holes</a></li>
+<li><a href="https://codeforces.com/problemset/problem/617/E">Codeforces - XOR and Favorite Number</a></li>
+<li><a href="http://codeforces.com/problemset/problem/86/D">Codeforces - Powerful array</a></li>
+<li><a href="https://www.spoj.com/problems/DQUERY">SPOJ - DQUERY</a></li>
+</ul>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

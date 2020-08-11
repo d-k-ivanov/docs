@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Algebra/Submask_Enumeration/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Submask Enumeration - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Submask Enumeration", url: "#_top", children: [
+              {title: "Enumerating all submasks of a given mask", url: "#enumerating-all-submasks-of-a-given-mask" },
+              {title: "Iterating through all masks with their submasks", url: "#iterating-through-all-masks-with-their-submasks" },
+              {title: "Practice Problems", url: "#practice-problems" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Combinatorics/Balanced_Bracket_Sequences/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Combinatorics/Balanced_Bracket_Sequences/" class="btn btn-xs btn-link">
+        Balanced Bracket Sequences
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Sieve_of_Eratosthenes_Linear/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Sieve_of_Eratosthenes_Linear/" class="btn btn-xs btn-link">
+        Sieve of Eratosthenes Linear
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="submask-enumeration">Submask Enumeration</h1>
+<h2 id="enumerating-all-submasks-of-a-given-mask">Enumerating all submasks of a given mask</h2>
+<p>Given a bitmask <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>, you want to efficiently iterate through all of its submasks, that is, masks <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> in which only bits that were included in mask <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> are set.</p>
+<p>Consider the implementation of this algorithm, based on tricks with bit operations:</p>
+<pre><code class="cpp">int s = m;
+while (s &gt; 0) {
+ ... you can use s ...
+ s = (s-1) &amp; m;
+}
+</code></pre>
+
+<p>or, using a more compact <code>for</code> statement:</p>
+<pre><code class="cpp">for (int s=m; s; s=(s-1)&amp;m)
+ ... you can use s ...
+</code></pre>
+
+<p>In both variants of the code, the submask equal to zero will not be processed. We can either process it outside the loop, or use a less elegant design, for example:</p>
+<pre><code class="cpp">for (int s=m; ; s=(s-1)&amp;m) {
+ ... you can use s ...
+ if (s==0)  break;
+}
+</code></pre>
+
+<p>Let us examine why the above code visits all submasks of <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>, without repetition, and in descending order.</p>
+<p>Suppose we have a current bitmask <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, and we want to move on to the next bitmask. By subtracting from the mask <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> one unit, we will remove the rightmost set bit and all bits to the right of it will become 1. Then we remove all the "extra" one bits that are not included in the mask <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> and therefore can't be a part of a submask. We do this removal by using the bitwise operation <code>(s-1) &amp; m</code>. As a result, we "cut" mask <span><span class="MathJax_Preview">s-1</span><script type="math/tex">s-1</script></span> to determine the highest value that it can take, that is, the next submask after <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> in descending order.</p>
+<p>Thus, this algorithm generates all submasks of this mask in descending order, performing only two operations per iteration.</p>
+<p>A special case is when <span><span class="MathJax_Preview">s = 0</span><script type="math/tex">s = 0</script></span>. After executing <span><span class="MathJax_Preview">s-1</span><script type="math/tex">s-1</script></span> we get a mask where all bits are set (bit representation of -1), and after <code>(s-1) &amp; m</code> we will have that <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> will be equal to <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>. Therefore, with the mask <span><span class="MathJax_Preview">s = 0</span><script type="math/tex">s = 0</script></span> be careful — if the loop does not end at zero, the algorithm may enter an infinite loop.</p>
+<h2 id="iterating-through-all-masks-with-their-submasks">Iterating through all masks with their submasks</h2>
+<p><strong>Complexity <span><span class="MathJax_Preview">O(3^n)</span><script type="math/tex">O(3^n)</script></span></strong></p>
+<p>In many problems, especially those that use bitmask dynamic programming, you want to iterate through all bitmasks and for each mask, iterate through all of its submasks:</p>
+<pre><code class="cpp">for (int m=0; m&lt;(1&lt;&lt;n); ++m)
+    for (int s=m; s; s=(s-1)&amp;m)
+ ... s and m ...
+</code></pre>
+
+<p>Let's prove that the inner loop will execute a total of <span><span class="MathJax_Preview">O(3^n)</span><script type="math/tex">O(3^n)</script></span> iterations.</p>
+<p><strong>First proof</strong>: Consider the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>-th bit. There are exactly three options for it:</p>
+<ol>
+<li>it is not included in the mask <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> (and therefore not included in submask <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>),</li>
+<li>it is included in <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>, but not included in <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, or</li>
+<li>it is included in both <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> and <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.</li>
+</ol>
+<p>As there are a total of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> bits, there will be <span><span class="MathJax_Preview">3^n</span><script type="math/tex">3^n</script></span> different combinations.</p>
+<p><strong>Second proof</strong>: Note that if mask <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> has <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> enabled bits, then it will have <span><span class="MathJax_Preview">2^k</span><script type="math/tex">2^k</script></span> submasks. As we have a total of <span><span class="MathJax_Preview">\binom{n}{k}</span><script type="math/tex">\binom{n}{k}</script></span> masks with <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> enabled bits (see <a href="/docs/#Algorithms/combinatorics/binomial-coefficients/">binomial coefficients</a>), then the total number of combinations for all masks will be:</p>
+<div>
+<div class="MathJax_Preview">\sum_{k=0}^n \binom{n}{k} \cdot 2^k</div>
+<script type="math/tex; mode=display">\sum_{k=0}^n \binom{n}{k} \cdot 2^k</script>
+</div>
+<p>To calculate this number, note that the sum above is equal to the expansion of <span><span class="MathJax_Preview">(1+2)^n</span><script type="math/tex">(1+2)^n</script></span> using the binomial theorem. Therefore, we have <span><span class="MathJax_Preview">3^n</span><script type="math/tex">3^n</script></span> combinations, as we wanted to prove.</p>
+<h2 id="practice-problems">Practice Problems</h2>
+<ul>
+<li><a href="http://codeforces.com/problemset/problem/71/E">Codeforces - Nuclear Fusion</a></li>
+<li><a href="http://codeforces.com/problemset/problem/599/E">Codeforces - Sandy and Nuts</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=4185">Uva 1439 - Exclusive Access 2</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=2925">UVa 11825 - Hackers' Crackdown</a></li>
+</ul>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

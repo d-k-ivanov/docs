@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Graph_Theory/Strongly_Connected_Components/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Strongly Connected Components - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Strongly Connected Components", url: "#_top", children: [
+              {title: "Definitions", url: "#definitions" },
+              {title: "Description of the algorithm", url: "#description-of-the-algorithm" },
+              {title: "Implementation", url: "#implementation" },
+              {title: "Literature", url: "#literature" },
+              {title: "Practice Problems", url: "#practice-problems" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Topological_Sorting/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Topological_Sorting/" class="btn btn-xs btn-link">
+        Topological Sorting
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Strong_Orientation/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Strong_Orientation/" class="btn btn-xs btn-link">
+        Strong Orientation
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="strongly-connected-components">Strongly Connected Components</h1>
+<p>Finding strongly connected components<br/>Building condensation graph</p>
+<h2 id="definitions">Definitions</h2>
+<p>You are given a directed graph <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> with vertices <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span> and edges <span><span class="MathJax_Preview">E</span><script type="math/tex">E</script></span>. It is possible that there are loops and multiple edges. Let's denote <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> as number of vertices and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> as number of edges in <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>.</p>
+<p><strong>Strongly connected component</strong> is subset of vertices <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> such that any two vertices of this subset are reachable from each other, i.e. for any <span><span class="MathJax_Preview">u, v \in C</span><script type="math/tex">u, v \in C</script></span>:</p>
+<p>$$ u \mapsto v, v \mapsto u $$
+where <span><span class="MathJax_Preview">\mapsto</span><script type="math/tex">\mapsto</script></span> means reachability, i.e. existence of the path from first vertex to the second.</p>
+<p>It is obvious, that strongly connected components do not intersect each other, i.e. this is a partition of all graph vertices. Thus we can give a definition of condensation graph <span><span class="MathJax_Preview">G^{SCC}</span><script type="math/tex">G^{SCC}</script></span> as a graph containing every strongly connected component as one vertex. Each vertex of the condensation graph corresponds to the strongly connected component of graph <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>. There is an oriented edge between two vertices <span><span class="MathJax_Preview">C_i</span><script type="math/tex">C_i</script></span> and <span><span class="MathJax_Preview">C_j</span><script type="math/tex">C_j</script></span> of the condensation graph if and only if there are two vertices <span><span class="MathJax_Preview">u \in C_i, v \in C_j</span><script type="math/tex">u \in C_i, v \in C_j</script></span> such that there is an edge in initial graph, i.e. <span><span class="MathJax_Preview">(u, v) \in E</span><script type="math/tex">(u, v) \in E</script></span>.</p>
+<p>The most important property of the condensation graph is that it is <strong>acyclic</strong>. Indeed, suppose that there is an edge between <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> and <span><span class="MathJax_Preview">C'</span><script type="math/tex">C'</script></span>, let's prove that there is no edge from <span><span class="MathJax_Preview">C'</span><script type="math/tex">C'</script></span> to <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span>. Suppose that <span><span class="MathJax_Preview">C' \mapsto C</span><script type="math/tex">C' \mapsto C</script></span>. Then there are two vertices <span><span class="MathJax_Preview">u' \in C</span><script type="math/tex">u' \in C</script></span> and <span><span class="MathJax_Preview">v' \in C'</span><script type="math/tex">v' \in C'</script></span> such that <span><span class="MathJax_Preview">v' \mapsto u'</span><script type="math/tex">v' \mapsto u'</script></span>. But since <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> and <span><span class="MathJax_Preview">u'</span><script type="math/tex">u'</script></span> are in the same strongly connected component then there is a path between them; the same for <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> and <span><span class="MathJax_Preview">v'</span><script type="math/tex">v'</script></span>. As a result, if we join these paths we have that <span><span class="MathJax_Preview">v \mapsto u</span><script type="math/tex">v \mapsto u</script></span> and at the same time <span><span class="MathJax_Preview">u \mapsto v</span><script type="math/tex">u \mapsto v</script></span>. Therefore <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> and <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> should be at the same strongly connected component, so this is contradiction. This completes the proof.</p>
+<p>The algorithm described in the next section extracts all strongly connected components in a given graph. It is quite easy to build a condensation graph then.</p>
+<h2 id="description-of-the-algorithm">Description of the algorithm</h2>
+<p>Described algorithm was independently suggested by Kosaraju and Sharir at 1979. This is an easy-to-implement algorithm based on two series of <a href="/docs/#Algorithms/graph/depth-first-search/">depth first search</a>, and working for <span><span class="MathJax_Preview">O(n + m)</span><script type="math/tex">O(n + m)</script></span> time.</p>
+<p><strong>On the first step</strong> of the algorithm we are doing sequence of depth first searches, visiting the entire graph. We start at each vertex of the graph and run a depth first search from every non-visited vertex. For each vertex we are keeping track of <strong>exit time</strong> <span><span class="MathJax_Preview">tout[v]</span><script type="math/tex">tout[v]</script></span>. These exit times have a key role in an algorithm and this role is expressed in next theorem.</p>
+<p>First, let's make notations: let's define exit time <span><span class="MathJax_Preview">tout[C]</span><script type="math/tex">tout[C]</script></span> from the strongly connected component <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> as maximum of values <span><span class="MathJax_Preview">tout[v]</span><script type="math/tex">tout[v]</script></span> by all <span><span class="MathJax_Preview">v \in C</span><script type="math/tex">v \in C</script></span>. Besides, during the proof of the theorem we will mention entry times <span><span class="MathJax_Preview">tin[v]</span><script type="math/tex">tin[v]</script></span> in each vertex and in the same way consider <span><span class="MathJax_Preview">tin[C]</span><script type="math/tex">tin[C]</script></span> for each strongly connected component <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> as minimum of values <span><span class="MathJax_Preview">tin[v]</span><script type="math/tex">tin[v]</script></span> by all <span><span class="MathJax_Preview">v \in C</span><script type="math/tex">v \in C</script></span>.</p>
+<p><strong>Theorem</strong>. Let <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> and <span><span class="MathJax_Preview">C'</span><script type="math/tex">C'</script></span> are two different strongly connected components and there is an edge <span><span class="MathJax_Preview">(C, C')</span><script type="math/tex">(C, C')</script></span> in a condensation graph between these two vertices. Then <span><span class="MathJax_Preview">tout[C] &gt; tout[C']</span><script type="math/tex">tout[C] > tout[C']</script></span>.</p>
+<p>There are two main different cases at the proof depending on which component will be visited by depth first search first, i.e. depending on difference between <span><span class="MathJax_Preview">tin[C]</span><script type="math/tex">tin[C]</script></span> and <span><span class="MathJax_Preview">tin[C']</span><script type="math/tex">tin[C']</script></span>:</p>
+<ul>
+<li>
+<p>The component <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> was reached first. It means that depth first search comes at some vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> of component <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> at some moment, but all other vertices of components <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> and <span><span class="MathJax_Preview">C'</span><script type="math/tex">C'</script></span> were not visited yet. By condition there is an edge <span><span class="MathJax_Preview">(C, C')</span><script type="math/tex">(C, C')</script></span> in a condensation graph, so not only the entire component <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> is reachable from <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> but the whole component <span><span class="MathJax_Preview">C'</span><script type="math/tex">C'</script></span> is reachable as well. It means that depth first search that is running from vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> will visit all vertices of components <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> and <span><span class="MathJax_Preview">C'</span><script type="math/tex">C'</script></span>, so they will be descendants for <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> in a depth first search tree, i.e. for each vertex <span><span class="MathJax_Preview">u \in C \cup C', u \ne v</span><script type="math/tex">u \in C \cup C', u \ne v</script></span> we have that <span><span class="MathJax_Preview">tout[v] &gt; tout[u]</span><script type="math/tex">tout[v] > tout[u]</script></span>, as we claimed.</p>
+</li>
+<li>
+<p>Assume that component <span><span class="MathJax_Preview">C'</span><script type="math/tex">C'</script></span> was visited first. Similarly, depth first search comes at some vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> of component <span><span class="MathJax_Preview">C'</span><script type="math/tex">C'</script></span> at some moment, but all other vertices of components <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> and <span><span class="MathJax_Preview">C'</span><script type="math/tex">C'</script></span> were not visited yet. But by condition there is an edge <span><span class="MathJax_Preview">(C, C')</span><script type="math/tex">(C, C')</script></span> in the condensation graph, so, because of acyclic property of condensation graph, there is no back path from <span><span class="MathJax_Preview">C'</span><script type="math/tex">C'</script></span> to <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span>, i.e. depth first search from vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> will not reach vertices of <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span>. It means that vertices of <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> will be visited by depth first search later, so <span><span class="MathJax_Preview">tout[C] &gt; tout[C']</span><script type="math/tex">tout[C] > tout[C']</script></span>. This completes the proof.</p>
+</li>
+</ul>
+<p>Proved theorem is <strong>the base of algorithm</strong> for finding strongly connected components. It follows that any edge <span><span class="MathJax_Preview">(C, C')</span><script type="math/tex">(C, C')</script></span> in condensation graph comes from a component with a larger value of <span><span class="MathJax_Preview">tout</span><script type="math/tex">tout</script></span> to component with a smaller value.</p>
+<p>If we sort all vertices <span><span class="MathJax_Preview">v \in V</span><script type="math/tex">v \in V</script></span> by decreasing of their exit moment <span><span class="MathJax_Preview">tout[v]</span><script type="math/tex">tout[v]</script></span> then the first vertex <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> is going to be a vertex from "root" strongly connected component, i.e. a vertex that no edges in a condensation graph come into. Now we want to run such search from this vertex <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> so that it will visit all vertices in this strongly connected component, but not others; doing so, we can gradually select all strongly connected components: let's remove all vertices corresponding to the first selected component, and then let's find a vertex with the largest value of <span><span class="MathJax_Preview">tout</span><script type="math/tex">tout</script></span>, and run this search from it, and so on.</p>
+<p>Let's consider transposed graph <span><span class="MathJax_Preview">G^T</span><script type="math/tex">G^T</script></span>, i.e. graph received from <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> by reversing the direction of each edge.
+Obviously, this graph will have the same strongly connected components as the initial graph.
+Moreover, the condensation graph <span><span class="MathJax_Preview">G^{SCC}</span><script type="math/tex">G^{SCC}</script></span> will also get transposed.
+It means that there will be no edges from our "root" component to other components.</p>
+<p>Thus, for visiting the whole "root" strongly connected component, containing vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>, is enough to run search from vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> in graph <span><span class="MathJax_Preview">G^T</span><script type="math/tex">G^T</script></span>. This search will visit all vertices of this strongly connected component and only them. As was mentioned before, we can remove these vertices from the graph then, and find the next vertex with a maximal value of <span><span class="MathJax_Preview">tout[v]</span><script type="math/tex">tout[v]</script></span> and run search in transposed graph from it, and so on.</p>
+<p>Thus, we built next <strong>algorithm</strong> for selecting strongly connected components:</p>
+<p>1st step. Run sequence of depth first search of graph <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> which will return vertices with increasing exit time <span><span class="MathJax_Preview">tout</span><script type="math/tex">tout</script></span>, i.e. some list <span><span class="MathJax_Preview">order</span><script type="math/tex">order</script></span>.</p>
+<p>2nd step. Build transposed graph <span><span class="MathJax_Preview">G^T</span><script type="math/tex">G^T</script></span>. Run a series of depth (breadth) first searches in the order determined by list <span><span class="MathJax_Preview">order</span><script type="math/tex">order</script></span> (to be exact in reverse order, i.e. in decreasing order of exit times). Every set of vertices, reached after the next search, will be the next strongly connected component.</p>
+<p>Algorithm asymptotic is <span><span class="MathJax_Preview">O(n + m)</span><script type="math/tex">O(n + m)</script></span>, because it is just two depth (breadth) first searches.</p>
+<p>Finally, it is appropriate to mention <a href="/docs/#Algorithms/graph/topological-sort/">topological sort</a> here. First of all, step 1 of the algorithm represents reversed topological sort of graph <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> (actually this is exactly what vertices' sort by exit time means). Secondly, the algorithm's scheme generates strongly connected components by decreasing order of their exit times, thus it generates components - vertices of condensation graph - in topological sort order.</p>
+<h2 id="implementation">Implementation</h2>
+<pre><code class="cpp">    vector &lt; vector&lt;int&gt; &gt; g, gr;
+    vector&lt;bool&gt; used;
+    vector&lt;int&gt; order, component;
+
+    void dfs1 (int v) {
+        used[v] = true;
+        for (size_t i=0; i&lt;g[v].size(); ++i)
+            if (!used[ g[v][i] ])
+                dfs1 (g[v][i]);
+        order.push_back (v);
+    }
+
+    void dfs2 (int v) {
+        used[v] = true;
+        component.push_back (v);
+        for (size_t i=0; i&lt;gr[v].size(); ++i)
+            if (!used[ gr[v][i] ])
+                dfs2 (gr[v][i]);
+    }
+
+    int main() {
+        int n;
+        ... reading n ...
+        for (;;) {
+            int a, b;
+            ... reading next edge (a,b) ...
+            g[a].push_back (b);
+            gr[b].push_back (a);
+        }
+
+        used.assign (n, false);
+        for (int i=0; i&lt;n; ++i)
+            if (!used[i])
+                dfs1 (i);
+        used.assign (n, false);
+        for (int i=0; i&lt;n; ++i) {
+            int v = order[n-1-i];
+            if (!used[v]) {
+                dfs2 (v);
+                ... printing next component ...
+                component.clear();
+            }
+        }
+    }
+</code></pre>
+
+<p>Here, <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> is graph, <span><span class="MathJax_Preview">gr</span><script type="math/tex">gr</script></span> is transposed graph. Function <span><span class="MathJax_Preview">dfs1</span><script type="math/tex">dfs1</script></span> implements depth first search on graph <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>, function <span><span class="MathJax_Preview">dfs2</span><script type="math/tex">dfs2</script></span> - on transposed graph <span><span class="MathJax_Preview">G^T</span><script type="math/tex">G^T</script></span>. Function <span><span class="MathJax_Preview">dfs1</span><script type="math/tex">dfs1</script></span> fills the list <span><span class="MathJax_Preview">order</span><script type="math/tex">order</script></span> with vertices in increasing order of their exit times (actually, it is making a topological sort). Function <span><span class="MathJax_Preview">dfs2</span><script type="math/tex">dfs2</script></span> stores all reached vertices in list <span><span class="MathJax_Preview">component</span><script type="math/tex">component</script></span>, that is going to store next strongly connected component after each run.</p>
+<h2 id="literature">Literature</h2>
+<ul>
+<li>Thomas Cormen, Charles Leiserson, Ronald Rivest, Clifford Stein. Introduction to Algorithms [2005].</li>
+<li>M. Sharir. A strong-connectivity algorithm and its applications in data-flow analysis [1979].</li>
+</ul>
+<h2 id="practice-problems">Practice Problems</h2>
+<ul>
+<li><a href="http://www.spoj.com/problems/SUBMERGE/">SPOJ - Submerging Islands</a></li>
+<li><a href="http://www.spoj.com/problems/GOODA/">SPOJ - Good Travels</a></li>
+<li><a href="http://www.spoj.com/problems/LEGO/">SPOJ - Lego</a></li>
+<li><a href="https://www.codechef.com/AUG16/problems/CHEFRRUN">Codechef - Chef and Round Run</a></li>
+<li><a href="https://devskill.com/CodingProblems/ViewProblem/79">Dev Skills - A Song of Fire and Ice</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=2938">UVA - 11838 - Come and Go</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=onlinejudge&amp;page=show_problem&amp;problem=183">UVA 247 - Calling Circles</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=4955">UVA 13057 - Prove Them All</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=4393">UVA 12645 - Water Supply</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=2870">UVA 11770 - Lighting Away</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=862&amp;page=show_problem&amp;problem=4805">UVA 12926 - Trouble in Terrorist Town</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=2299">UVA 11324 - The Largest Clique</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=2756">UVA 11709 - Trust groups</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=4598">UVA 12745 - Wishmaster</a></li>
+<li><a href="http://www.spoj.com/problems/TFRIENDS/">SPOJ - True Friends</a></li>
+<li><a href="http://www.spoj.com/problems/CAPCITY/">SPOJ - Capital City</a></li>
+<li><a href="http://codeforces.com/contest/22/problem/E">Codeforces - Scheme</a></li>
+<li><a href="http://www.spoj.com/problems/ADAPANEL/">SPOJ - Ada and Panels</a></li>
+</ul>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
