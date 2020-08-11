@@ -1,6 +1,6 @@
 # String Matching: Rabin-Karp Algorithm
 
-This algorithm is based on the concept of hashing, so if you are not familiar with string hashing, refer to the [string hashing](/docs/#Algorithms/string/string-hashing/) article.
+This algorithm is based on the concept of hashing, so if you are not familiar with string hashing, refer to the [string hashing](/docs/#Algorithms/String/String_Hashing/) article.
 
 This algorithm was authored by Rabin and Karp in 1987.
 

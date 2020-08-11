@@ -214,7 +214,7 @@ Multiplying by <span><span class="MathJax_Preview">p^i</span><script type="math/
 \end{align}</script></span></script></span></p>
 <p>So by knowing the hash value of each prefix of the string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, we can compute the hash of any substring directly using this formula.
 The only problem that we face in calculating it is that we must be able to divide <span><span class="MathJax_Preview">\text{hash}(s[0 \dots j]) - \text{hash}(s[0 \dots i-1])</span><script type="math/tex">\text{hash}(s[0 \dots j]) - \text{hash}(s[0 \dots i-1])</script></span> by <span><span class="MathJax_Preview">p^i</span><script type="math/tex">p^i</script></span>.
-Therefore we need to find the <a href="/docs/#Algorithms/algebra/module-inverse/">modular multiplicative inverse</a> of <span><span class="MathJax_Preview">p^i</span><script type="math/tex">p^i</script></span> and then perform multiplication with this inverse.
+Therefore we need to find the <a href="/docs/#Algorithms/Algebra/Modular_Multiplicative_Inverse/">modular multiplicative inverse</a> of <span><span class="MathJax_Preview">p^i</span><script type="math/tex">p^i</script></span> and then perform multiplication with this inverse.
 We can precompute the inverse of every <span><span class="MathJax_Preview">p^i</span><script type="math/tex">p^i</script></span>, which allows computing the hash of any substring of <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> time.</p>
 <p>However, there does exist an easier way.
 In most cases, rather than calculating the hashes of substring exactly, it is enough to compute the hash multiplied by some power of <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>.
@@ -224,7 +224,7 @@ By doing this, we get both the hashes multiplied by the same power of <span><spa
 <h2 id="applications-of-hashing">Applications of Hashing</h2>
 <p>Here are some typical applications of Hashing:</p>
 <ul>
-<li><a href="/docs/#Algorithms/string/rabin-karp/">Rabin-Karp algorithm</a> for pattern matching in a string in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> time</li>
+<li><a href="/docs/#Algorithms/String/String_Matching_Rabin-Karp/">Rabin-Karp algorithm</a> for pattern matching in a string in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> time</li>
 <li>Calculating the number of different substrings of a string in <span><span class="MathJax_Preview">O(n^2 \log n)</span><script type="math/tex">O(n^2 \log n)</script></span> (see below)</li>
 <li>Calculating the number of palindromic substrings in a string.</li>
 </ul>

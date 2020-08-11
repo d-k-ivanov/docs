@@ -129,28 +129,28 @@ It has been proven that we the number of such groups is at most linear with resp
 <ul>
 <li>The number of primitive repetitions (those whose halves are not repetitions) is at most <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>.</li>
 <li>If we encode repetitions with tuples of numbers (called Crochemore triples) <span><span class="MathJax_Preview">(i,~ p,~ r)</span><script type="math/tex">(i,~ p,~ r)</script></span> (where <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> is the position of the beginning, <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> the length of the repeating substring, and <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> the number of repetitions), then all repetitions can be described with <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> such triples.</li>
-<li>Fibonacci strings, defined as
-  <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{align}
-  t_0 &amp;= a, \\\\
-  t_1 &amp;= b, \\\\
+<li>Fibonacci strings, defined as</li>
+</ul>
+<p><span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{align}
+  t_0 &amp;= a, \\
+  t_1 &amp;= b, \\
   t_i &amp;= t_{i-1} + t_{i-2},
   \end{align}</span><script type="math/tex">\begin{align}
-  t_0 &= a, \\\\
-  t_1 &= b, \\\\
+  t_0 &= a, \\
+  t_1 &= b, \\
   t_i &= t_{i-1} + t_{i-2},
   \end{align}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\begin{align}
-  t_0 &amp;= a, \\\\
-  t_1 &amp;= b, \\\\
+  t_0 &amp;= a, \\
+  t_1 &amp;= b, \\
   t_i &amp;= t_{i-1} + t_{i-2},
   \end{align}</span><script type="math/tex">\begin{align}
-  t_0 &= a, \\\\
-  t_1 &= b, \\\\
+  t_0 &= a, \\
+  t_1 &= b, \\
   t_i &= t_{i-1} + t_{i-2},
-  \end{align}</script></span></script></span>
-  are "strongly" periodic.
-  The number of repetitions in the Fibonacci string <span><span class="MathJax_Preview">f_i</span><script type="math/tex">f_i</script></span>, even in the compressed with Crochemore triples, is <span><span class="MathJax_Preview">O(f_n \log f_n)</span><script type="math/tex">O(f_n \log f_n)</script></span>.
-  The number of primitive repetitions is also <span><span class="MathJax_Preview">O(f_n \log f_n)</span><script type="math/tex">O(f_n \log f_n)</script></span>.</li>
-</ul>
+  \end{align}</script></span></script></span></p>
+<p>are "strongly" periodic.</p>
+<p>The number of repetitions in the Fibonacci string <span><span class="MathJax_Preview">f_i</span><script type="math/tex">f_i</script></span>, even in the compressed with Crochemore triples, is <span><span class="MathJax_Preview">O(f_n \log f_n)</span><script type="math/tex">O(f_n \log f_n)</script></span>.
+  The number of primitive repetitions is also <span><span class="MathJax_Preview">O(f_n \log f_n)</span><script type="math/tex">O(f_n \log f_n)</script></span>.</p>
 <h2 id="main-lorentz-algorithm">Main-Lorentz algorithm</h2>
 <p>The idea behind the Main-Lorentz algorithm is <strong>divide-and-conquer</strong>.</p>
 <p>It splits the initial string into halves, and computes the number of repetitions that lie completely in each halve by two recursive calls.
@@ -173,9 +173,12 @@ Finding all right repetitions can be done in the same way.</p>
 Consider the first character of the repetition falling into the string <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> (it is at position <span><span class="MathJax_Preview">|u|</span><script type="math/tex">|u|</script></span> in the string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>).
 It coincides with the character <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> positions before it, let's denote this position <span><span class="MathJax_Preview">cntr</span><script type="math/tex">cntr</script></span>.</p>
 <p>We will fixate this position <span><span class="MathJax_Preview">cntr</span><script type="math/tex">cntr</script></span>, and <strong>look for all repetitions at this position</strong> <span><span class="MathJax_Preview">cntr</span><script type="math/tex">cntr</script></span>.</p>
-<p>For example:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">c ~ \underset{cntr}{a} ~ c ~ | ~ a ~ d ~ a</span><script type="math/tex">c ~ \underset{cntr}{a} ~ c ~ | ~ a ~ d ~ a</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">c ~ \underset{cntr}{a} ~ c ~ | ~ a ~ d ~ a</span><script type="math/tex">c ~ \underset{cntr}{a} ~ c ~ | ~ a ~ d ~ a</script></span></script></span>
-The vertical lines divides the two halves.
+<p>For example:</p>
+<div>
+<div class="MathJax_Preview">c ~ \underset{cntr}{a} ~ c ~ | ~ a ~ d ~ a</div>
+<script type="math/tex; mode=display">c ~ \underset{cntr}{a} ~ c ~ | ~ a ~ d ~ a</script>
+</div>
+<p>The vertical lines divides the two halves.
 Here we fixated the position <span><span class="MathJax_Preview">cntr = 1</span><script type="math/tex">cntr = 1</script></span>, and at this position we find the repetition <span><span class="MathJax_Preview">caca</span><script type="math/tex">caca</script></span>.</p>
 <p>It is clear, that if we fixate the position <span><span class="MathJax_Preview">cntr</span><script type="math/tex">cntr</script></span>, we simultaneously fixate the length of the possible repetitions: <span><span class="MathJax_Preview">l = |u| - cntr</span><script type="math/tex">l = |u| - cntr</script></span>.
 Once we know how to find these repetitions, we will iterate over all possible values for <span><span class="MathJax_Preview">cntr</span><script type="math/tex">cntr</script></span> from <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span> to <span><span class="MathJax_Preview">|u|-1</span><script type="math/tex">|u|-1</script></span>, and find all left crossover repetitions of length <span><span class="MathJax_Preview">l = |u|,~ |u|-1,~ \dots, 1</span><script type="math/tex">l = |u|,~ |u|-1,~ \dots, 1</script></span>.</p>
@@ -189,12 +192,17 @@ Here we denoted the lengths of the two pieces of the repetition with <span><span
 We have <span><span class="MathJax_Preview">2l = l_1 + l_2 + l_1 + l_2</span><script type="math/tex">2l = l_1 + l_2 + l_1 + l_2</script></span> as the total length of the repetition.</p>
 <p>Let us generate <strong>necessary and sufficient</strong> conditions for such a repetition at position <span><span class="MathJax_Preview">cntr</span><script type="math/tex">cntr</script></span> of length <span><span class="MathJax_Preview">2l = 2(l_1 + l_2) = 2(|u| - cntr)</span><script type="math/tex">2l = 2(l_1 + l_2) = 2(|u| - cntr)</script></span>:</p>
 <ul>
-<li>Let <span><span class="MathJax_Preview">k_1</span><script type="math/tex">k_1</script></span> be the largest number such that the first <span><span class="MathJax_Preview">k_1</span><script type="math/tex">k_1</script></span> characters before the position <span><span class="MathJax_Preview">cntr</span><script type="math/tex">cntr</script></span> coincide with the last <span><span class="MathJax_Preview">k_1</span><script type="math/tex">k_1</script></span> characters in the string <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span>:
-  <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">u[cntr - k_1 \dots cntr - 1] = u[|u| - k_1 \dots |u| - 1]</span><script type="math/tex">u[cntr - k_1 \dots cntr - 1] = u[|u| - k_1 \dots |u| - 1]</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">u[cntr - k_1 \dots cntr - 1] = u[|u| - k_1 \dots |u| - 1]</span><script type="math/tex">u[cntr - k_1 \dots cntr - 1] = u[|u| - k_1 \dots |u| - 1]</script></span></script></span></li>
-<li>Let <span><span class="MathJax_Preview">k_2</span><script type="math/tex">k_2</script></span> be the largest number such that the <span><span class="MathJax_Preview">k_2</span><script type="math/tex">k_2</script></span> characters starting at position <span><span class="MathJax_Preview">cntr</span><script type="math/tex">cntr</script></span> coincide with the first <span><span class="MathJax_Preview">k_2</span><script type="math/tex">k_2</script></span> characters in the string <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>:
-  <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">u[cntr \dots cntr + k_2 - 1] = v[0 \dots k_2 - 1]</span><script type="math/tex">u[cntr \dots cntr + k_2 - 1] = v[0 \dots k_2 - 1]</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">u[cntr \dots cntr + k_2 - 1] = v[0 \dots k_2 - 1]</span><script type="math/tex">u[cntr \dots cntr + k_2 - 1] = v[0 \dots k_2 - 1]</script></span></script></span></li>
-<li>Then we have a repetition exactly for any pair <span><span class="MathJax_Preview">(l_1,~ l_2)</span><script type="math/tex">(l_1,~ l_2)</script></span> with
-  <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{align}
+<li>Let <span><span class="MathJax_Preview">k_1</span><script type="math/tex">k_1</script></span> be the largest number such that the first <span><span class="MathJax_Preview">k_1</span><script type="math/tex">k_1</script></span> characters before the position <span><span class="MathJax_Preview">cntr</span><script type="math/tex">cntr</script></span> coincide with the last <span><span class="MathJax_Preview">k_1</span><script type="math/tex">k_1</script></span> characters in the string <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span>:</li>
+</ul>
+<p><span><span class="MathJax_Preview"><span><span class="MathJax_Preview">u[cntr - k_1 \dots cntr - 1] = u[|u| - k_1 \dots |u| - 1]</span><script type="math/tex">u[cntr - k_1 \dots cntr - 1] = u[|u| - k_1 \dots |u| - 1]</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">u[cntr - k_1 \dots cntr - 1] = u[|u| - k_1 \dots |u| - 1]</span><script type="math/tex">u[cntr - k_1 \dots cntr - 1] = u[|u| - k_1 \dots |u| - 1]</script></span></script></span></p>
+<ul>
+<li>Let <span><span class="MathJax_Preview">k_2</span><script type="math/tex">k_2</script></span> be the largest number such that the <span><span class="MathJax_Preview">k_2</span><script type="math/tex">k_2</script></span> characters starting at position <span><span class="MathJax_Preview">cntr</span><script type="math/tex">cntr</script></span> coincide with the first <span><span class="MathJax_Preview">k_2</span><script type="math/tex">k_2</script></span> characters in the string <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>:</li>
+</ul>
+<p><span><span class="MathJax_Preview"><span><span class="MathJax_Preview">u[cntr \dots cntr + k_2 - 1] = v[0 \dots k_2 - 1]</span><script type="math/tex">u[cntr \dots cntr + k_2 - 1] = v[0 \dots k_2 - 1]</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">u[cntr \dots cntr + k_2 - 1] = v[0 \dots k_2 - 1]</span><script type="math/tex">u[cntr \dots cntr + k_2 - 1] = v[0 \dots k_2 - 1]</script></span></script></span></p>
+<ul>
+<li>Then we have a repetition exactly for any pair <span><span class="MathJax_Preview">(l_1,~ l_2)</span><script type="math/tex">(l_1,~ l_2)</script></span> with</li>
+</ul>
+<p><span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{align}
   l_1 &amp;\le k_1, \\\\
   l_2 &amp;\le k_2. \\\\
   \end{align}</span><script type="math/tex">\begin{align}
@@ -206,16 +214,16 @@ We have <span><span class="MathJax_Preview">2l = l_1 + l_2 + l_1 + l_2</span><sc
   \end{align}</span><script type="math/tex">\begin{align}
   l_1 &\le k_1, \\\\
   l_2 &\le k_2. \\\\
-  \end{align}</script></span></script></span></li>
-</ul>
+  \end{align}</script></span></script></span></p>
 <p>To summarize:</p>
 <ul>
 <li>We fixate a specific position <span><span class="MathJax_Preview">cntr</span><script type="math/tex">cntr</script></span>.</li>
 <li>All repetition which we will find now have length <span><span class="MathJax_Preview">2l = 2(|u| - cntr)</span><script type="math/tex">2l = 2(|u| - cntr)</script></span>.
   There might be multiple such repetitions, they depend on the lengths <span><span class="MathJax_Preview">l_1</span><script type="math/tex">l_1</script></span> and <span><span class="MathJax_Preview">l_2 = l - l_1</span><script type="math/tex">l_2 = l - l_1</script></span>.</li>
 <li>We find <span><span class="MathJax_Preview">k_1</span><script type="math/tex">k_1</script></span> and <span><span class="MathJax_Preview">k_2</span><script type="math/tex">k_2</script></span> as described above.</li>
-<li>Then all suitable repetitions are the ones for which the lengths of the pieces <span><span class="MathJax_Preview">l_1</span><script type="math/tex">l_1</script></span> and <span><span class="MathJax_Preview">l_2</span><script type="math/tex">l_2</script></span> satisfy the conditions:
-  <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{align}
+<li>Then all suitable repetitions are the ones for which the lengths of the pieces <span><span class="MathJax_Preview">l_1</span><script type="math/tex">l_1</script></span> and <span><span class="MathJax_Preview">l_2</span><script type="math/tex">l_2</script></span> satisfy the conditions:</li>
+</ul>
+<p><span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{align}
   l_1 + l_2 &amp;= l = |u| - cntr \\\\
   l_1 &amp;\le k_1, \\\\
   l_2 &amp;\le k_2. \\\\
@@ -231,10 +239,9 @@ We have <span><span class="MathJax_Preview">2l = l_1 + l_2 + l_1 + l_2</span><sc
   l_1 + l_2 &= l = |u| - cntr \\\\
   l_1 &\le k_1, \\\\
   l_2 &\le k_2. \\\\
-  \end{align}</script></span></script></span></li>
-</ul>
+  \end{align}</script></span></script></span></p>
 <p>Therefore the only remaining part is how we can compute the values <span><span class="MathJax_Preview">k_1</span><script type="math/tex">k_1</script></span> and <span><span class="MathJax_Preview">k_2</span><script type="math/tex">k_2</script></span> quickly for every position <span><span class="MathJax_Preview">cntr</span><script type="math/tex">cntr</script></span>.
-Luckily we can compute them in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> using the <a href="/docs/#Algorithms/string/z-function/">Z-function</a>:</p>
+Luckily we can compute them in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> using the <a href="/docs/#Algorithms/String/Z-Function/">Z-function</a>:</p>
 <ul>
 <li>To can find the value <span><span class="MathJax_Preview">k_1</span><script type="math/tex">k_1</script></span> for each position by calculating the Z-function for the string <span><span class="MathJax_Preview">\overline{u}</span><script type="math/tex">\overline{u}</script></span> (i.e. the reversed string <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span>).
   Then the value <span><span class="MathJax_Preview">k_1</span><script type="math/tex">k_1</script></span> for a particular <span><span class="MathJax_Preview">cntr</span><script type="math/tex">cntr</script></span> will be equal to the corresponding value of the array of the Z-function.</li>

@@ -46,6 +46,7 @@ We end up with a suffix ending in position $i$ with the length $\pi[i + 1] - 1$,
 The following illustration shows this contradiction.
 The longest proper suffix at position $i$ that also is a prefix is of length $2$, and at position $i+1$ it is of length $4$.
 Therefore the string $s_0 ~ s_1 ~ s_2 ~ s_3$ is equal to the string $s_{i-2} ~ s_{i-1} ~ s_i ~ s_{i+1}$, which means that also the strings $s_0 ~ s_1 ~ s_2$ and $s_{i-2} ~ s_{i-1} ~ s_i$ are equal, therefore $\pi[i]$ has to be $3$.
+
 $$\underbrace{\overbrace{s_0 ~ s_1}^{\pi[i] = 2} ~ s_2 ~ s_3}\_{\pi[i+1] = 4} ~ \dots ~ \underbrace{s_{i-2} ~ \overbrace{s_{i-1} ~ s_{i}}^{\pi[i] = 2} ~ s_{i+1}}\_{\pi[i+1] = 4}$$
 
 Thus when moving to the next position, the value of the prefix function can either increase by one, stay the same, or decrease by some amount.
@@ -61,10 +62,12 @@ To accomplish this, we have to use all the information computed in the previous 
 So let us compute the value of the prefix function $\pi$ for $i + 1$.
 If $s[i+1] = s[\pi[i]]$, then we can say with certainty that $\pi[i+1] = \pi[i] + 1$, since we already know that the suffix at position $i$ of length $\pi[i]$ is equal to the prefix of length $\pi[i]$.
 This is illustrated again with an example.
+
 $$\underbrace{\overbrace{s_0 ~ s_1 ~ s_2}^{\pi[i]} ~ \overbrace{s_3}^{s_3 = s_{i+1}}}\_{\pi[i+1] = \pi[i] + 1} ~ \dots ~ \underbrace{\overbrace{s_{i-2} ~ s_{i-1} ~ s_{i}}^{\pi[i]} ~ \overbrace{s_{i+1}}^{s_3 = s_i + 1}}\_{\pi[i+1] = \pi[i] + 1}$$
 
 If this is not the case, $s[i+1] \neq s[\pi[i]]$, then we need to try a shorter string.
 In order to speed things up, we would like to immediately move to the longest length $j \lt \pi[i]$, such that the prefix property in the position $i$ holds, i.e. $s[0 \dots j-1] = s[i-j+1 \dots i]$:
+
 $$\overbrace{\underbrace{s_0 ~ s_1}\_j ~ s_2 ~ s_3}^{\pi[i]} ~ \dots ~ \overbrace{s_{i-3} ~ s_{i-2} ~ \underbrace{s_{i-1} ~ s_{i}}\_j}^{\pi[i]} ~ s_{i+1}$$
 
 Indeed, if we find such a length $j$, then we again only need to compare the characters $s[i+1]$ and $s[j]$.
@@ -77,6 +80,7 @@ So we already have a general scheme of the algorithm.
 The only question left is how do we effectively find the lengths for $j$.
 Let's recap:
 for the current length $j$ at the position $i$ for which the prefix property holds, i.e. $s[0 \dots j-1] = s[i-j+1 \dots i]$, we want to find the greatest $k \lt j$, for which the prefix property holds.
+
 $$\overbrace{\underbrace{s_0 ~ s_1}\_k ~ s_2 ~ s_3}^j ~ \dots ~ \overbrace{s_{i-3} ~ s_{i-2} ~ \underbrace{s_{i-1} ~ s_{i}}\_k}^j ~s_{i+1}$$
 
 The illustration shows, that this has to be the value of $\pi[j-1]$, which we already calculated earlier.
@@ -236,7 +240,9 @@ But then the string consists of only one character repeated over and over, hence
 Contradiction.
 
 $$\overbrace{s_0 ~ s_1 ~ s_2 ~ s_3}^p ~ \overbrace{s_4 ~ s_5 ~ s_6 ~ s_7}^p$$
+
 $$s_0 ~ s_1 ~ s_2 ~ \underbrace{\overbrace{s_3 ~ s_4 ~ s_5 ~ s_6}^p ~ s_7}_{\pi[7] = 5}$$
+
 $$s_4 = s_3, ~ s_5 = s_4, ~ s_6 = s_5, ~ s_7 = s_6 ~ \Rightarrow ~ s_0 = s_1 = s_2 = s_3$$
 
 ### Building an automaton according to the prefix function
@@ -309,10 +315,11 @@ For completeness we will solve such a problem:
 given a number $k \le 10^5$ and a string $s$ of length $\le 10^5$.
 We have to compute the number of occurrences of $s$ in the $k$-th Gray string.
 Recall that Gray's strings are define in the following way:
+
 $$\begin{align}
-g_1 &= "a"\\\\
-g_2 &= "aba"\\\\
-g_3 &= "abacaba"\\\\
+g_1 &= "a"\\
+g_2 &= "aba"\\
+g_3 &= "abacaba"\\
 g_4 &= "abacabadabacaba"
 \end{align}$$
 
@@ -340,10 +347,11 @@ For example the exact same method also solves the following problem:
 we are given a string $s$ and some patterns $t_i$, each of which is specified as follows:
 it is a string of ordinary characters, and there might be some recursive insertions of the previous strings of the form $t_k^{\text{cnt}}$, which means that at this place we have to insert the string $t_k$ $\text{cnt}$ times.
 An example of such patterns:
+
 $$\begin{align}
-t_1 &= "abdeca"\\\\
-t_2 &= "abc" + t_1^{30} + "abd"\\\\
-t_3 &= t_2^{50} + t_1^{100}\\\\
+t_1 &= "abdeca"\\
+t_2 &= "abc" + t_1^{30} + "abd"\\
+t_3 &= t_2^{50} + t_1^{100}\\
 t_4 &= t_2^{10} + t_3^{100}
 \end{align}$$
 

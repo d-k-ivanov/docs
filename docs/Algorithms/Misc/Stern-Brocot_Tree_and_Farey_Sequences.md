@@ -68,7 +68,7 @@ the new expressions become
 
 $$
     \begin{align}
-        b(a+c) - a(b+d) &= 1
+        b(a+c) - a(b+d) &= 1 \\
         c(b+d) - d(a+c) &= 1
     \end{align}
 $$
@@ -91,7 +91,7 @@ which (using the fact than an integer $z \gt 0 \iff z \ge 1$) can be rewritten a
 
 $$
 \begin{align}
-    bx - ay &\ge 1 \\\\
+    bx - ay &\ge 1 \\
     cy - dx &\ge 1.
 \end{align}
 $$

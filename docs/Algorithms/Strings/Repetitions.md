@@ -43,12 +43,15 @@ Also, here are some more interesting results related to the number of repetition
 - The number of primitive repetitions (those whose halves are not repetitions) is at most $O(n \log n)$.
 - If we encode repetitions with tuples of numbers (called Crochemore triples) $(i,~ p,~ r)$ (where $i$ is the position of the beginning, $p$ the length of the repeating substring, and $r$ the number of repetitions), then all repetitions can be described with $O(n \log n)$ such triples.
 - Fibonacci strings, defined as
+
   $$\begin{align}
-  t_0 &= a, \\\\
-  t_1 &= b, \\\\
+  t_0 &= a, \\
+  t_1 &= b, \\
   t_i &= t_{i-1} + t_{i-2},
   \end{align}$$
+
   are "strongly" periodic.
+
   The number of repetitions in the Fibonacci string $f_i$, even in the compressed with Crochemore triples, is $O(f_n \log f_n)$.
   The number of primitive repetitions is also $O(f_n \log f_n)$.
 
@@ -86,7 +89,9 @@ It coincides with the character $l$ positions before it, let's denote this posit
 We will fixate this position $cntr$, and **look for all repetitions at this position** $cntr$.
 
 For example:
+
 $$c ~ \underset{cntr}{a} ~ c ~ | ~ a ~ d ~ a$$
+
 The vertical lines divides the two halves.
 Here we fixated the position $cntr = 1$, and at this position we find the repetition $caca$.
 
@@ -107,10 +112,15 @@ We have $2l = l_1 + l_2 + l_1 + l_2$ as the total length of the repetition.
 Let us generate **necessary and sufficient** conditions for such a repetition at position $cntr$ of length $2l = 2(l_1 + l_2) = 2(|u| - cntr)$:
 
 - Let $k_1$ be the largest number such that the first $k_1$ characters before the position $cntr$ coincide with the last $k_1$ characters in the string $u$:
+
   $$u[cntr - k_1 \dots cntr - 1] = u[|u| - k_1 \dots |u| - 1]$$
+
 - Let $k_2$ be the largest number such that the $k_2$ characters starting at position $cntr$ coincide with the first $k_2$ characters in the string $v$:
+
   $$u[cntr \dots cntr + k_2 - 1] = v[0 \dots k_2 - 1]$$
+
 - Then we have a repetition exactly for any pair $(l_1,~ l_2)$ with
+
   $$\begin{align}
   l_1 &\le k_1, \\\\
   l_2 &\le k_2. \\\\
@@ -123,6 +133,7 @@ To summarize:
   There might be multiple such repetitions, they depend on the lengths $l_1$ and $l_2 = l - l_1$.
 - We find $k_1$ and $k_2$ as described above.
 - Then all suitable repetitions are the ones for which the lengths of the pieces $l_1$ and $l_2$ satisfy the conditions:
+
   $$\begin{align}
   l_1 + l_2 &= l = |u| - cntr \\\\
   l_1 &\le k_1, \\\\
@@ -130,7 +141,7 @@ To summarize:
   \end{align}$$
 
 Therefore the only remaining part is how we can compute the values $k_1$ and $k_2$ quickly for every position $cntr$.
-Luckily we can compute them in $O(1)$ using the [Z-function](/docs/#Algorithms/string/z-function/):
+Luckily we can compute them in $O(1)$ using the [Z-function](/docs/#Algorithms/String/Z-Function/):
 
 - To can find the value $k_1$ for each position by calculating the Z-function for the string $\overline{u}$ (i.e. the reversed string $u$).
   Then the value $k_1$ for a particular $cntr$ will be equal to the corresponding value of the array of the Z-function.
