@@ -100,12 +100,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <h1 id="longest-increasing-subsequence">Longest Increasing Subsequence</h1>
 <p>We are given an array with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> numbers: <span><span class="MathJax_Preview">a[0 \dots n-1]</span><script type="math/tex">a[0 \dots n-1]</script></span>.
 The task is to find the longest, strictly increasing, subsequence in <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>.</p>
-<p>Formally we look for the longest sequence of indices <span><span class="MathJax_Preview">i_1, \dots i_k</span><script type="math/tex">i_1, \dots i_k</script></span> such that
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">i_1 &lt; i_2 &lt; \dots &lt; i_k,\\\\
-a[i_1] &lt; a[i_2] &lt; \dots &lt; a[i_k]</span><script type="math/tex">i_1 < i_2 < \dots < i_k,\\\\
-a[i_1] < a[i_2] < \dots < a[i_k]</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">i_1 &lt; i_2 &lt; \dots &lt; i_k,\\\\
-a[i_1] &lt; a[i_2] &lt; \dots &lt; a[i_k]</span><script type="math/tex">i_1 < i_2 < \dots < i_k,\\\\
-a[i_1] < a[i_2] < \dots < a[i_k]</script></span></script></span></p>
+<p>Formally we look for the longest sequence of indices <span><span class="MathJax_Preview">i_1, \dots i_k</span><script type="math/tex">i_1, \dots i_k</script></span> such that</p>
+<div>
+<div class="MathJax_Preview">i_1 &lt; i_2 &lt; \dots &lt; i_k,\\\\
+a[i_1] &lt; a[i_2] &lt; \dots &lt; a[i_k]</div>
+<script type="math/tex; mode=display">i_1 < i_2 < \dots < i_k,\\\\
+a[i_1] < a[i_2] < \dots < a[i_k]</script>
+</div>
 <p>In this article we discuss multiple algorithms for solving this task.
 Also we will discuss some other problems, that can be reduced to this problem.</p>
 <h2 id="solution-in-on2on2-with-dynamic-programming">Solution in <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span> with dynamic programming</h2>
@@ -241,7 +242,9 @@ return ans;
 We now make two important observations.
 
 The array $d$ will always be sorted:
-$d[i-1] \le d[i]$ for all $i = 1 \dots n$.
+
+$$d[i-1] \le d[i]$ for all $i = 1 \dots n$$
+
 And also the element $a[i]$ will only update at most one value $d[j]$.
 
 Thus we can find this element in the array $d[]$ using binary search in $O(\log n)$.
