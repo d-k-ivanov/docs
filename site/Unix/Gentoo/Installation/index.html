@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Unix/Gentoo/Installation/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Installation - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Downloading and burning installation media", url: "#_top", children: [
+          ]},
+          {title: "Boot from installation media", url: "#boot-from-installation-media", children: [
+          ]},
+          {title: "Network configuration", url: "#network-configuration", children: [
+          ]},
+          {title: "Disk partitioning", url: "#disk-partitioning", children: [
+          ]},
+          {title: "Mounting", url: "#mounting", children: [
+          ]},
+          {title: "Installing Stage tarball", url: "#installing-stage-tarball", children: [
+          ]},
+          {title: "Configuring initial options", url: "#configuring-initial-options", children: [
+          ]},
+          {title: "Chrooting", url: "#chrooting", children: [
+          ]},
+          {title: "Updating world", url: "#updating-world", children: [
+          ]},
+          {title: "Locale and TimeZone", url: "#locale-and-timezone", children: [
+          ]},
+          {title: "Kernel", url: "#kernel", children: [
+          ]},
+          {title: "Fstab", url: "#fstab", children: [
+          ]},
+          {title: "Network", url: "#network", children: [
+          ]},
+          {title: "Post install", url: "#post-install", children: [
+          ]},
+          {title: "Bootloader", url: "#bootloader", children: [
+          ]},
+          {title: "Umount and reboot", url: "#umount-and-reboot", children: [
+          ]},
+          {title: "Post reboot", url: "#post-reboot", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Portage/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Portage/" class="btn btn-xs btn-link">
+        Portage
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Gnome/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Gnome/" class="btn btn-xs btn-link">
+        Gnome
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="downloading-and-burning-installation-media">Downloading and burning installation media</h3>
+<pre><code class="bash"># Minimal installation image:
+wget http://distfiles.gentoo.org/releases/amd64/autobuilds/current-install-amd64-minimal/install-amd64-minimal-{date-here}.iso
+dd if=install-amd64-minimal-{date-here}.iso of=/dev/sdb-flash-drive bs=8192k &amp;&amp; sync
+
+# Or burn it on CD:
+cdrecord dev=/dev/sr0 install-amd64-minimal-{date-here}.iso
+
+# If you want to use pure EFI, you should boot from EFI-compliant CD, and it isn't minimal CD.
+# You should use another one:
+# SystemRescueCd - Gentoo-based live CD (I use this one)
+# Offician Gentoo Live CD
+# Archlinux boot CD - also good choice
+https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/4.9.1/systemrescuecd-x86-4.9.1.iso/download
+dd if=systemrescuecd-x86-4.9.1.iso of=/dev/sdb-flash-drive bs=8192k &amp;&amp; sync
+</code></pre>
+
+<h3 id="boot-from-installation-media">Boot from installation media</h3>
+<pre><code class="bash"># Enter kernel to boot: gentoo, gentoo-nofb, memtest86
+boot: gentoo
+
+# [Optionally] You can choose specific hardware options like: gentoo acpi=off
+# acpi=on, acpi=off, console=X, dmraid=X, doapm, dopcmcia, doscsi, sda=stroke, ide=nodma, noapic, nodetect, nodhcp, nodmraid, nofirewire, nogpm, nohotplug, nokeymap, nolapic, nosata, nosmp, nosound, nousb, slowusb,
+# dolvm, debug, docache, doload=X, dosshd, passwd=foo, noload=X, nonfs, nox, scandelay, scandelay=X,
+</code></pre>
+
+<h3 id="network-configuration">Network configuration</h3>
+<p>Like Gentoo Handbook says 'Maybe it just works'. I'm pretty sure that you have DHCP in your network environment and cable connection, but if not:</p>
+<pre><code class="bash"># Determine network intercaces (ifconfig is also existed, but it's recomnded to use 'ip' as a next generation app)
+ip link show
+
+# LAN
+net-setup &lt;your-network-interface&gt;
+
+# WiFi
+iwconfig &lt;your-wifi-network-interface&gt; essid &lt;WiFi-SSID-Name&gt;
+iwconfig &lt;your-wifi-network-interface&gt; key s:some-password
+
+# Retrive IP
+dhcpcd &lt;your-network-interface&gt;
+# In case of hostName and domainName provided by the DHCP server
+dhcpcd -HD &lt;your-network-interface&gt;
+
+# Manual IP via 'ip'
+ip link set &lt;your-network-interface&gt; up
+ip addr add &lt;your-IP-address&gt;/&lt;your-netmask&gt; broadcast &lt;your-brodcast-address&gt; dev &lt;your-network-interface&gt;
+ip route add default via &lt;your-gateway&gt;
+
+# Manual IP via 'ifconfig'
+ifconfig &lt;your-network-interface&gt; &lt;your-IP-address&gt; broadcast &lt;your-brodcast-address&gt; netmask &lt;your-netmask&gt; up
+route add default gw &lt;your-gateway&gt;a
+
+# DNS servers
+echo &quot;nameserver &lt;SNDServer1&gt;&quot; &gt; /etc/resolv.conf
+echo &quot;nameserver &lt;DNSServer2&gt;&quot; &gt;&gt; /etc/resolv.conf
+</code></pre>
+
+<h3 id="disk-partitioning">Disk partitioning</h3>
+<p>It's recommended to use GPT on modern systems.</p>
+<pre><code class="bash"># Partition scheme:
+# /dev/sda1 (bootloader)  2M      Just in case, but I don't think it's really needed on modern EFI systems.
+# /dev/sda2 fat32-UFFI    1024M   EFI Partition to hold more than one kernel. Yes I know that Handbook recommends 128M.
+# /dev/sda3 root-ext4     100%
+# For swap I will use swapfile, because there is no performance advantage to either a contiguous swap file or a partition, both are treated the same way.
+
+parted -a optimal /dev/sda
+(parted) mklabel gpt
+
+# Partition 1: Bootloader
+(parted) unit mib
+(parted) mkpart primary 1 3
+(parted) name 1 grub
+(parted) set 1 bios_grub on
+
+# Partition 1: Boot
+(parted) mkpart primary 3 1027
+(parted) name 2 boot
+(parted) set 2 boot on
+
+# Partition 1: Root
+(parted) mkpart primary 1027 -1
+(parted) name 4 rootfs
+</code></pre>
+
+<h3 id="mounting">Mounting</h3>
+<pre><code class="bash">mount /dev/sda3 /mnt/gentoo
+mount /dev/sda2 /mnt/gentoo/boot
+
+# System remount for chrooting
+mount -t proc proc /mnt/gentoo/proc
+mount --rbind /sys /mnt/gentoo/sys
+mount --make-rslave /mnt/gentoo/sys
+mount --rbind /dev /mnt/gentoo/dev
+mount --make-rslave /mnt/gentoo/dev
+</code></pre>
+
+<h3 id="installing-stage-tarball">Installing Stage tarball</h3>
+<pre><code class="bash">cd /mnt/gentoo/
+wget http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64-systemd/stage3-amd64-systemd-&lt;YYYYMMDD&gt;.tar.bz2
+tar xvjpf stage3-amd64-systemd-&lt;YYYYMMDD&gt;.tar.bz2 --xattrs
+</code></pre>
+
+<h3 id="configuring-initial-options">Configuring initial options</h3>
+<pre><code class="bash">vim /mnt/gentoo/etc/portage/make.conf
+# --- make.conf ---
+CFLAGS=&quot;-march=native -O2 -pipe&quot;
+# Number of your CPU cores +1
+MAKEOPTS=&quot;-j5&quot;
+# --- END OF FILE ---
+
+mirrorselect -i -o &gt;&gt; /mnt/gentoo/etc/portage/make.conf
+
+mkdir /mnt/gentoo/etc/portage/repos.conf
+cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+
+cp -L /etc/resolv.conf /mnt/gentoo/etc/
+</code></pre>
+
+<h3 id="chrooting">Chrooting</h3>
+<pre><code class="bash">chroot /mnt/gentoo /bin/bash
+source /etc/profile
+</code></pre>
+
+<h3 id="updating-world">Updating world</h3>
+<pre><code class="bash">emerge-webrsync
+emerge --sync
+
+eselect profile list
+# Choose aproriate profile, I reccomend use systemd profile
+eselect profile set 12
+
+emerge --ask --update --deep --newuse @world
+</code></pre>
+
+<h3 id="locale-and-timezone">Locale and TimeZone</h3>
+<pre><code class="bash">echo &quot;Europe/Moscow&quot; &gt; /etc/timezone
+emerge --config sys-libs/timezone-data
+
+vim /etc/locale.gen
+# --- locale.gen ---
+en_US.UTF-8 UTF-8
+ru_RU.UTF-8 UTF-8
+# --- END OF FILE ---
+
+locale-gen
+eselect locale list
+eselect locale set &lt;choose-right-number&gt;
+
+env-update &amp;&amp; source /etc/profile
+</code></pre>
+
+<h3 id="kernel">Kernel</h3>
+<p>Of course you need to configure kernel from scratch, but for initial convinience I recommend to use genkernel</p>
+<pre><code class="bash">emerge --ask sys-kernel/gentoo-sources
+emerge --ask sys-apps/pciutils
+emerge --ask sys-kernel/genkernel-next
+# If you use RC-based prfile:
+# emerge --ask sys-kernel/genkernel
+
+genkernel all
+
+emerge --ask sys-kernel/linux-firmware
+</code></pre>
+
+<h3 id="fstab">Fstab</h3>
+<pre><code class="bash"># Look for UUID and write it down:
+blkid
+
+vim /etc/fstab
+# --- fstab ---
+UUID=&quot;place your UUID here&quot;   boot      vfat        rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro,discard  0 2
+UUID=&quot;place your UUID here&quot;   /         ext4        rw,relatime,data=ordered,discard                                                                              0 1
+# --- END OF FILE
+</code></pre>
+
+<h3 id="network">Network</h3>
+<pre><code class="bash">hostnamectl set-hostname your-hostname.your-network
+
+vim /etc/hosts
+# --- hosts ---
+127.0.0.1   your-hostname.your-network your-hostname localhost
+# --- END OF FILE ---
+
+emerge --ask net-misc/dhcpcd
+</code></pre>
+
+<h3 id="post-install">Post install</h3>
+<pre><code class="bash">emerge --ask sys-apps/mlocate
+
+passwd
+</code></pre>
+
+<h3 id="bootloader">Bootloader</h3>
+<pre><code class="bash">echo 'GRUB_PLATFORMS=&quot;efi-64&quot;' &gt;&gt; /etc/portage/make.conf
+emerge --ask --update --newuse --verbose sys-boot/grub:2
+
+mount -o remount /sys/firmware/efi/efivars -o rw,nosuid,nodev,noexec,noatime
+
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+
+</code></pre>
+
+<h3 id="umount-and-reboot">Umount and reboot</h3>
+<pre><code class="bash">exit
+umount -l /mnt/gentoo/dev{/shm,/pts,}
+umount -R /mnt/gentoo
+reboot
+</code></pre>
+
+<h3 id="post-reboot">Post reboot</h3>
+<pre><code class="bash"># Add new user
+useradd -m -G users,wheel,audio,cdrom,floppy,games,portage,usb,video -s /bin/bash &lt;username&gt;
+passwd &lt;username&gt;
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Tools/Edittors/Vim/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Vim - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Commnent bunch of lines", url: "#_top", children: [
+          ]},
+          {title: "Chaeat Sheet", url: "#chaeat-sheet", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Libraries/Linux/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Libraries/Linux/" class="btn btn-xs btn-link">
+        Linux
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../VSCode/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../VSCode/" class="btn btn-xs btn-link">
+        VSCode
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="commnent-bunch-of-lines">Commnent bunch of lines</h3>
+<ol>
+<li>Stand on a firs symbol of first line</li>
+<li><strong>Ctrl+V</strong></li>
+<li>Down_1 + Down_2 + .. + Down_n</li>
+<li><strong>Ctrl+I</strong></li>
+<li>"#"</li>
+</ol>
+<h3 id="chaeat-sheet">Chaeat Sheet</h3>
+<p>Cursor movement</p>
+<pre><code>h - move left 
+j - move down 
+k - move up 
+l - move right 
+w - jump by start of words (punctuation considered words) 
+W - jump by words (spaces separate words) 
+e - jump to end of words (punctuation considered words) 
+E - jump to end of words (no punctuation) 
+b - jump backward by words (punctuation considered words) 
+B - jump backward by words (no punctuation) 
+0 - (zero) start of line 
+^ - first non-blank character of line 
+$ - end of line 
+G - Go To command (prefix with number - 5G goes to line 5) 
+Note: Prefix a cursor movement command with a number to repeat it. For example, 4j moves down 4 lines.
+</code></pre>
+
+<p>Insert Mode - Inserting/Appending text</p>
+<pre><code>i - start insert mode at cursor 
+I - insert at the beginning of the line 
+a - append after the cursor 
+A - append at the end of the line 
+o - open (append) blank line below current line (no need to press return) 
+O - open blank line above current line 
+ea - append at end of word 
+Esc - exit insert mode 
+</code></pre>
+
+<p>Editing</p>
+<pre><code>r - replace a single character (does not use insert mode) 
+J - join line below to the current one 
+cc - change (replace) an entire line 
+cw - change (replace) to the end of word 
+c$ - change (replace) to the end of line 
+s - delete character at cursor and subsitute text 
+S - delete line at cursor and substitute text (same as cc) 
+xp - transpose two letters (delete and paste, technically) 
+u - undo 
+. - repeat last command 
+</code></pre>
+
+<p>Marking text (visual mode)</p>
+<pre><code>v - start visual mode, mark lines, then do command (such as y-yank) 
+V - start Linewise visual mode 
+o - move to other end of marked area 
+Ctrl+v - start visual block mode 
+O - move to Other corner of block 
+aw - mark a word 
+ab - a () block (with braces) 
+aB - a {} block (with brackets) 
+ib - inner () block 
+iB - inner {} block 
+Esc - exit visual mode 
+</code></pre>
+
+<p>Visual commands</p>
+<pre><code>&gt; - shift right 
+&lt; - shift left 
+y - yank (copy) marked text 
+d - delete marked text 
+~ - switch case 
+Cut and Paste
+yy - yank (copy) a line 
+2yy - yank 2 lines 
+yw - yank word 
+y$ - yank to end of line 
+p - put (paste) the clipboard after cursor 
+P - put (paste) before cursor 
+dd - delete (cut) a line 
+dw - delete (cut) the current word 
+x - delete (cut) current character 
+Exiting
+:w - write (save) the file, but don't exit 
+:wq - write (save) and quit 
+:q - quit (fails if anything has changed) 
+:q! - quit and throw away changes 
+Search/Replace
+/pattern - search for pattern 
+?pattern - search backward for pattern 
+n - repeat search in same direction 
+N - repeat search in opposite direction 
+:%s/old/new/g - replace all old with new throughout file 
+:%s/old/new/gc - replace all old with new throughout file with confirmations 
+Working with multiple files
+:e filename - Edit a file in a new buffer 
+:bnext (or :bn) - go to next buffer 
+:bprev (of :bp) - go to previous buffer 
+:bd - delete a buffer (close a file) 
+:sp filename - Open a file in a new buffer and split window 
+ctrl+ws - Split windows 
+ctrl+ww - switch between windows 
+ctrl+wq - Quit a window 
+ctrl+wv - Split windows vertically 
+Another good vim commands cheatsheet and a vi introduction using the &quot;cheat sheet&quot; method
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

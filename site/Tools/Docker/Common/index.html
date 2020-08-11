@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Tools/Docker/Common/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Common - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Login to container with root user", url: "#_top", children: [
+          ]},
+          {title: "Check linux kernel", url: "#check-linux-kernel", children: [
+          ]},
+          {title: "Run docker conainer", url: "#run-docker-conainer", children: [
+          ]},
+          {title: "Execute in-docker console", url: "#execute-in-docker-console", children: [
+          ]},
+          {title: "Create JSON with container settings", url: "#create-json-with-container-settings", children: [
+          ]},
+          {title: "Delete containers by date", url: "#delete-containers-by-date", children: [
+          ]},
+          {title: "Delete all containers:", url: "#delete-all-containers", children: [
+          ]},
+          {title: "Use Docker registry", url: "#use-docker-registry", children: [
+          ]},
+          {title: "Delete obsolete containers", url: "#delete-obsolete-containers", children: [
+          ]},
+          {title: "Docker on windows", url: "#docker-on-windows", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Edittors/My_Sublime_Text_config/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Edittors/My_Sublime_Text_config/" class="btn btn-xs btn-link">
+        My Sublime Text config
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../CMD_vs_Entrypoint/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../CMD_vs_Entrypoint/" class="btn btn-xs btn-link">
+        CMD vs Entrypoint
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="login-to-container-with-root-user">Login to container with root user</h3>
+<pre><code>docker exec -u 0 -it &lt;container_name&gt; &lt;command&gt;
+</code></pre>
+
+<h3 id="check-linux-kernel">Check linux kernel</h3>
+<pre><code>exec /usr/share/docker/contrib/check-config.sh
+</code></pre>
+
+<h3 id="run-docker-conainer">Run docker conainer</h3>
+<pre><code>sudo docker run --name mysql-nx -e MYSQL_ROOT_PASSWORD=password -d -p 127.0.0.1:3306:3306 mysql:latest
+</code></pre>
+
+<h3 id="execute-in-docker-console">Execute in-docker console</h3>
+<pre><code>sudo docker exec -it &lt;container&gt; bash
+</code></pre>
+
+<h3 id="create-json-with-container-settings">Create JSON with container settings</h3>
+<pre><code>docker inspect -f '{{ json .NetworkSettings }}' &lt;container_id&gt; | python -mjson.tool
+</code></pre>
+
+<h3 id="delete-containers-by-date">Delete containers by date</h3>
+<pre><code>docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm
+</code></pre>
+
+<h3 id="delete-all-containers">Delete all containers:</h3>
+<pre><code>docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+</code></pre>
+
+<h3 id="use-docker-registry">Use Docker registry</h3>
+<pre><code>mkdir /etc/systemd/system/docker.service.d/
+touch /etc/systemd/system/docker.service.d/docker_opts.conf
+nano /etc/systemd/system/docker.service.d/docker_opts.conf
+
+# ---
+[Service]
+ExecStart=
+ExecStart=/usr/bin/docker -d -H fd:// --insecure-registry docker-registry.keepbot.github.io --registry-mirror https://doker-registry-mirror.keepbot.github.io
+# ---
+
+systemctl daemon-reload
+service docker restart 
+</code></pre>
+
+<h3 id="delete-obsolete-containers">Delete obsolete containers</h3>
+<pre><code class="bash"># You can add all of this to cron daily
+#!/bin/sh
+docker rm $(docker ps -aqf status=exited)
+docker rmi $(docker images -qf dangling=true)
+docker volume rm $(docker volume ls -qf dangling=true)
+
+docker run --rm -e GRACE_PERIOD_SECONDS=86400 -e FORCE_IMAGE_REMOVAL=1 -v /var/run/docker.sock:/var/run/docker.sock spotify/docker-gc
+</code></pre>
+
+<h3 id="docker-on-windows">Docker on windows</h3>
+<pre><code class="bash"># Docker on windows doesn't support fsync() so it makes impossible to use shared volumes with databases like MondoDB or PostgesSQL
+
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

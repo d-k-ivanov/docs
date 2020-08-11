@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Algebra/Linear_Diophantine_Equation/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Linear Diophantine Equation - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Linear Diophantine Equation", url: "#_top", children: [
+              {title: "The degenerate case", url: "#the-degenerate-case" },
+              {title: "Finding a solution", url: "#finding-a-solution" },
+              {title: "Find the solution with minimum value of x + yx + y", url: "#find-the-solution-with-minimum-value-of-x-yx-y" },
+              {title: "Practice Problems", url: "#practice-problems" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Modular_Multiplicative_Inverse/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Modular_Multiplicative_Inverse/" class="btn btn-xs btn-link">
+        Modular Multiplicative Inverse
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Linear_Congruence_Equation/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Linear_Congruence_Equation/" class="btn btn-xs btn-link">
+        Linear Congruence Equation
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="linear-diophantine-equation">Linear Diophantine Equation</h1>
+<p>A Linear Diophantine Equation (in two variables) is an equation of the general form:</p>
+<div>
+<div class="MathJax_Preview">ax + by = c</div>
+<script type="math/tex; mode=display">ax + by = c</script>
+</div>
+<p>where <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>, <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>, <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> are given integers, and <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>, <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> are unknown integers.</p>
+<p>In this article, we consider several classical problems on these equations:</p>
+<ul>
+<li>finding one solution</li>
+<li>finding all solutions</li>
+<li>finding the number of solutions and the solutions themselves in a given interval</li>
+<li>finding a solution with minimum value of <span><span class="MathJax_Preview">x + y</span><script type="math/tex">x + y</script></span></li>
+</ul>
+<h2 id="the-degenerate-case">The degenerate case</h2>
+<p>A degenerate case that need to be taken care of is when <span><span class="MathJax_Preview">a = b = 0</span><script type="math/tex">a = b = 0</script></span>. It is easy to see that we either have no solutions or infinitely many solutions, depending on whether <span><span class="MathJax_Preview">c = 0</span><script type="math/tex">c = 0</script></span> or not. In the rest of this article, we will ignore this case.</p>
+<h2 id="finding-a-solution">Finding a solution</h2>
+<p>To find one solution of the Diophantine equation with 2 unknowns, you can use the <a href="/docs/#Algorithms/algebra/extended-euclid-algorithm/">Extended Euclidean algorithm</a>. First, assume that <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> are non-negative. When we apply Extended Euclidean algorithm for <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>, we can find their greatest common divisor <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> and 2 numbers <span><span class="MathJax_Preview">x_g</span><script type="math/tex">x_g</script></span> and <span><span class="MathJax_Preview">y_g</span><script type="math/tex">y_g</script></span> such that:</p>
+<div>
+<div class="MathJax_Preview">a x_g + b y_g = g</div>
+<script type="math/tex; mode=display">a x_g + b y_g = g</script>
+</div>
+<p>If <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> is divisible by <span><span class="MathJax_Preview">g = \gcd(a, b)</span><script type="math/tex">g = \gcd(a, b)</script></span>, then the given Diophantine equation has a solution, otherwise it does not have any solution. The proof is straight-forward: a linear combination of two numbers is divisible by their common divisor.</p>
+<p>Now supposed that <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> is divisible by <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span>, then we have:</p>
+<div>
+<div class="MathJax_Preview">a \cdot x_g \cdot \frac{c}{g} + b \cdot y_g \cdot \frac{c}{g} = c</div>
+<script type="math/tex; mode=display">a \cdot x_g \cdot \frac{c}{g} + b \cdot y_g \cdot \frac{c}{g} = c</script>
+</div>
+<p>Therefore one of the solutions of the Diophantine equation is:</p>
+<div>
+<div class="MathJax_Preview">x_0 = x_g \cdot \frac{c}{g},$$
+$$y_0 = y_g \cdot \frac{c}{g}.</div>
+<script type="math/tex; mode=display">x_0 = x_g \cdot \frac{c}{g},$$
+$$y_0 = y_g \cdot \frac{c}{g}.</script>
+</div>
+<p>The above idea still works when <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> or <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> or both of them are negative. We only need to change the sign of <span><span class="MathJax_Preview">x_0</span><script type="math/tex">x_0</script></span> and <span><span class="MathJax_Preview">y_0</span><script type="math/tex">y_0</script></span> when necessary.</p>
+<p>Finally, we can implement this idea as follows (note that this code does not consider the case <span><span class="MathJax_Preview">a = b = 0</span><script type="math/tex">a = b = 0</script></span>):</p>
+<p>```cpp linear_diophantine_any
+int gcd(int a, int b, int&amp; x, int&amp; y) {
+    if (b == 0) {
+        x = 1;
+        y = 0;
+        return a;
+    }
+    int x1, y1;
+    int d = gcd(b, a % b, x1, y1);
+    x = y1;
+    y = x1 - y1 * (a / b);
+    return d;
+}</p>
+<p>bool find_any_solution(int a, int b, int c, int &amp;x0, int &amp;y0, int &amp;g) {
+    g = gcd(abs(a), abs(b), x0, y0);
+    if (c % g) {
+        return false;
+    }</p>
+<pre><code>x0 *= c / g;
+y0 *= c / g;
+if (a &lt; 0) x0 = -x0;
+if (b &lt; 0) y0 = -y0;
+return true;
+</code></pre>
+<p>}</p>
+<pre><code>
+## Getting all solutions
+
+From one solution $(x_0, y_0)$, we can obtain all the solutions of the given equation.
+
+Let $g = \gcd(a, b)$ and let $x_0, y_0$ be integers which satisfy the following:
+
+$$a \cdot x_0 + b \cdot y_0 = c$$
+
+Now, we should see that adding $b / g$ to $x_0$, and, at the same time subtracting $a / g$ from $y_0$ will not break the equality:
+
+$$a \cdot \left(x_0 + \frac{b}{g}\right) + b \cdot \left(y_0 - \frac{a}{g}\right) = a \cdot x_0 + b \cdot y_0 + a \cdot \frac{b}{g} - b \cdot \frac{a}{g} = c$$
+
+Obviously, this process can be repeated again, so all the numbers of the form:
+
+$$x = x_0 + k \cdot \frac{b}{g}$$
+$$y = y_0 - k \cdot \frac{a}{g}$$
+
+are solutions of the given Diophantine equation.
+
+Moreover, this is the set of all possible solutions of the given Diophantine equation.
+
+## Finding the number of solutions and the solutions in a given interval
+
+From previous section, it should be clear that if we don't impose any restrictions on the solutions, there would be infinite number of them. So in this section, we add some restrictions on the interval of $x$ and $y$, and we will try to count and enumerate all the solutions.
+
+Let there be two intervals: $[min_x; max_x]$ and $[min_y; max_y]$ and let's say we only want to find the solutions in these two intervals.
+
+Note that if $a$ or $b$ is $0$, then the problem only has one solution. We don't consider this case here.
+
+First, we can find a solution which have minimum value of $x$, such that $x \ge min_x$. To do this, we first find any solution of the Diophantine equation. Then, we shift this solution to get $x \ge min_x$ (using what we know about the set of all solutions in previous section). This can be done in $O(1)$.
+Denote this minimum value of $x$ by $l_{x1}$.
+
+Similarly, we can find the maximum value of $x$ which satisfy $x \le max_x$. Denote this maximum value of $x$ by $r_{x1}$.
+
+Similarly, we can find the minimum value of $y$ $(y \ge min_y)$ and maximum values of $y$ $(y \le max_y)$. Denote the corresponding values of $x$ by $l_{x2}$ and $r_{x2}$.
+
+The final solution is all solutions with x in intersection of $[l_{x1}, r_{x1}]$ and $[l_{x2}, r_{x2}]$. Let denote this intersection by $[l_x, r_x]$.
+
+Following is the code implementing this idea.
+Notice that we divide $a$ and $b$ at the beginning by $g$.
+Since the equation $a x + b y = c$ is equivalent to the equation $\frac{a}{g} x + \frac{b}{g} y = \frac{c}{g}$, we can use this one instead and have $\gcd(\frac{a}{g}, \frac{b}{g}) = 1$, which simplifies the formulas.
+
+```cpp linear_diophantine_all
+void shift_solution(int &amp; x, int &amp; y, int a, int b, int cnt) {
+    x += cnt * b;
+    y -= cnt * a;
+}
+
+int find_all_solutions(int a, int b, int c, int minx, int maxx, int miny, int maxy) {
+    int x, y, g;
+    if (!find_any_solution(a, b, c, x, y, g))
+        return 0;
+    a /= g;
+    b /= g;
+
+    int sign_a = a &gt; 0 ? +1 : -1;
+    int sign_b = b &gt; 0 ? +1 : -1;
+
+    shift_solution(x, y, a, b, (minx - x) / b);
+    if (x &lt; minx)
+        shift_solution(x, y, a, b, sign_b);
+    if (x &gt; maxx)
+        return 0;
+    int lx1 = x;
+
+    shift_solution(x, y, a, b, (maxx - x) / b);
+    if (x &gt; maxx)
+        shift_solution(x, y, a, b, -sign_b);
+    int rx1 = x;
+
+    shift_solution(x, y, a, b, -(miny - y) / a);
+    if (y &lt; miny)
+        shift_solution(x, y, a, b, -sign_a);
+    if (y &gt; maxy)
+        return 0;
+    int lx2 = x;
+
+    shift_solution(x, y, a, b, -(maxy - y) / a);
+    if (y &gt; maxy)
+        shift_solution(x, y, a, b, sign_a);
+    int rx2 = x;
+
+    if (lx2 &gt; rx2)
+        swap(lx2, rx2);
+    int lx = max(lx1, lx2);
+    int rx = min(rx1, rx2);
+
+    if (lx &gt; rx)
+        return 0;
+    return (rx - lx) / abs(b) + 1;
+}
+</code></pre>
+
+<p>Once we have <span><span class="MathJax_Preview">l_x</span><script type="math/tex">l_x</script></span> and <span><span class="MathJax_Preview">r_x</span><script type="math/tex">r_x</script></span>, it is also simple to enumerate through all the solutions. Just need to iterate through <span><span class="MathJax_Preview">x = l_x + k \cdot \frac{b}{g}</span><script type="math/tex">x = l_x + k \cdot \frac{b}{g}</script></span> for all <span><span class="MathJax_Preview">k \ge 0</span><script type="math/tex">k \ge 0</script></span> until <span><span class="MathJax_Preview">x = r_x</span><script type="math/tex">x = r_x</script></span>, and find the corresponding <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> values using the equation <span><span class="MathJax_Preview">a x + b y = c</span><script type="math/tex">a x + b y = c</script></span>.</p>
+<h2 id="find-the-solution-with-minimum-value-of-x-yx-y">Find the solution with minimum value of <span><span class="MathJax_Preview">x + y</span><script type="math/tex">x + y</script></span></h2>
+<p>Here, <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> and <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> also need to be given some restriction, otherwise, the answer may become negative infinity.</p>
+<p>The idea is similar to previous section: We find any solution of the Diophantine equation, and then shift the solution to satisfy some conditions.</p>
+<p>Finally, use the knowledge of the set of all solutions to find the minimum:</p>
+<div>
+<div class="MathJax_Preview">x' = x + k \cdot \frac{b}{g},$$
+$$y' = y - k \cdot \frac{a}{g}.</div>
+<script type="math/tex; mode=display">x' = x + k \cdot \frac{b}{g},$$
+$$y' = y - k \cdot \frac{a}{g}.</script>
+</div>
+<p>Note that <span><span class="MathJax_Preview">x + y</span><script type="math/tex">x + y</script></span> change as follows:</p>
+<div>
+<div class="MathJax_Preview">x' + y' = x + y + k \cdot \left(\frac{b}{g} - \frac{a}{g}\right) = x + y + k \cdot \frac{b-a}{g}</div>
+<script type="math/tex; mode=display">x' + y' = x + y + k \cdot \left(\frac{b}{g} - \frac{a}{g}\right) = x + y + k \cdot \frac{b-a}{g}</script>
+</div>
+<p>If <span><span class="MathJax_Preview">a &lt; b</span><script type="math/tex">a < b</script></span>, we need to select smallest possible value of <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>. If <span><span class="MathJax_Preview">a &gt; b</span><script type="math/tex">a > b</script></span>, we need to select the largest possible value of <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>. If <span><span class="MathJax_Preview">a = b</span><script type="math/tex">a = b</script></span>, all solution will have the same sum <span><span class="MathJax_Preview">x + y</span><script type="math/tex">x + y</script></span>.</p>
+<h2 id="practice-problems">Practice Problems</h2>
+<ul>
+<li><a href="http://www.spoj.com/problems/CEQU/">Spoj - Crucial Equation</a></li>
+<li><a href="http://codeforces.com/problemsets/acmsguru/problem/99999/106">SGU 106</a></li>
+<li><a href="http://codeforces.com/contest/633/problem/A">Codeforces - Ebony and Ivory</a></li>
+<li><a href="https://www.codechef.com/problems/COPR16G">Codechef - Get AC in one go</a></li>
+<li><a href="http://www.lightoj.com/volume_showproblem.php?problem=1306">LightOj - Solutions to an equation</a></li>
+</ul>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

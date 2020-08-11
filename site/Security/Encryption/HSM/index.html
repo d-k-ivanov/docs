@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Security/Encryption/HSM/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>HSM - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Generate LMK consists of 3 components.", url: "#_top", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Firewalls/FirewallD/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Firewalls/FirewallD/" class="btn btn-xs btn-link">
+        FirewallD
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../EncFS/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../EncFS/" class="btn btn-xs btn-link">
+        EncFS
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="generate-lmk-consists-of-3-components">Generate LMK consists of 3 components.</h3>
+<p>Step-By-Step.</p>
+<pre><code>0:
+Connect to Thales HMS 8000 via common Terminal Client.
+
+1:
+Online&gt; FC &lt;Return&gt; 
+Insert card and press ENTER: &lt;Return&gt; 
+Card already formatted, continue? [Y/N]: Y &lt;Return&gt; 
+Format card for HSM settings/LMKs? [H/L]: L &lt;Return&gt; 
+Erasing card 
+Formatting card . . . 
+Enter new PIN for Smart Card: 2134 &lt;Return&gt;
+Re-enter new PIN: 2134 &lt;Return&gt; 
+Enter time [hhmmss]: 173000 &lt;Return&gt;  - current time
+Enter date [ddmmyy]: 081111 &lt;Return&gt; 
+Enter User ID: User1 &lt;Return&gt; 
+Enter Issuer ID: ITS &lt;Return&gt; 
+Format complete 
+
+2:
+Online&gt; FC &lt;Return&gt; 
+Insert card and press ENTER: &lt;Return&gt; 
+Card already formatted, continue? [Y/N]: Y &lt;Return&gt; 
+Format card for HSM settings/LMKs? [H/L]: L &lt;Return&gt; 
+Erasing card 
+Formatting card . . . 
+Enter new PIN for Smart Card: 4356 &lt;Return&gt;
+Re-enter new PIN: 4356 &lt;Return&gt; 
+Enter time [hhmmss]: 173000 &lt;Return&gt; 
+Enter date [ddmmyy]: 081111 &lt;Return&gt; 
+Enter User ID: User2 &lt;Return&gt; 
+Enter Issuer ID: ITS &lt;Return&gt; 
+Format complete 
+
+3:
+Online&gt; FC &lt;Return&gt; 
+Insert card and press ENTER: &lt;Return&gt; 
+Card already formatted, continue? [Y/N]: Y &lt;Return&gt; 
+Format card for HSM settings/LMKs? [H/L]: L &lt;Return&gt; 
+Erasing card 
+Formatting card . . . 
+Enter new PIN for Smart Card: 5467 &lt;Return&gt;
+Re-enter new PIN: 5467 &lt;Return&gt; 
+Enter time [hhmmss]: 173000 &lt;Return&gt; 
+Enter date [ddmmyy]: 081111 &lt;Return&gt; 
+Enter User ID: User3 &lt;Return&gt; 
+Enter Issuer ID: ITS &lt;Return&gt; 
+Format complete 
+
+4:
+Taking HSM into the Secure State
+
+5:
+Secure&gt; GK &lt;Return&gt; 
+LMKs must be erased before proceeding. 
+Erase LMKs? Y &lt;Return&gt; 
+LMK component set [1-9]: 1 &lt;Return&gt; 
+Enter secret value A: &lt;Return&gt; 
+Enter secret value B: &lt;Return&gt; 
+Enter value C: &lt;Return&gt; 
+Insert blank card and enter PIN: 2134 &lt;Return&gt; 
+Writing keys 
+Checking keys 
+Device write complete, check: XXXX XXXX XXXX XXXX 
+Remove the smartcard and store it securely. 
+Make another copy? [Y/N]: N &lt;Return&gt; X copies made. 
+
+6:
+Secure&gt; GK &lt;Return&gt; 
+LMKs must be erased before proceeding. 
+Erase LMKs? Y &lt;Return&gt; 
+LMK component set [1-9]: 2 &lt;Return&gt; 
+Enter secret value A: &lt;Return&gt; 
+Enter secret value B: &lt;Return&gt; 
+Enter value C: &lt;Return&gt; 
+Insert blank card and enter PIN: 4356 &lt;Return&gt; 
+Writing keys 
+Checking keys 
+Device write complete, check: XXXX XXXX XXXX XXXX 
+Remove the smartcard and store it securely. 
+Make another copy? [Y/N]: N &lt;Return&gt; X copies made. 
+
+7:
+Secure&gt; GK &lt;Return&gt; 
+LMKs must be erased before proceeding. 
+Erase LMKs? Y &lt;Return&gt; 
+LMK component set [1-9]: 3 &lt;Return&gt; 
+Enter secret value A: &lt;Return&gt; 
+Enter secret value B: &lt;Return&gt; 
+Enter value C: &lt;Return&gt; 
+Insert blank card and enter PIN: 5467 &lt;Return&gt; 
+Writing keys 
+Checking keys 
+Device write complete, check: XXXX XXXX XXXX XXXX 
+Remove the smartcard and store it securely. 
+Make another copy? [Y/N]: N &lt;Return&gt; X copies made. 
+
+8-9-10:Secure&gt; LK &lt;Return&gt;
+LMKs must be erased before proceeding.
+Erase LMKs? Y &lt;Return&gt;
+Load LMK from components. Insert card and enter PIN: **** &lt;Return&gt;
+CHECK: XXXX XXXX XXXX XXXX Load more components? [Y/N]: Y &lt;Return&gt;
+Remove the smartcard. Insert the second and subsequent Smartcards and repeat the loading procedure. When all have been loaded and the HSM displays the check value, record the check value.
+CHECK: XXXX XXXX XXXX XXXX Load more components? [Y/N]: N &lt;Return&gt;
+Use the LO command to load LMKs into key change storage.
+Secure&gt;
+Use the A command to put the HSM into the Authorised State in order to check the LMK components and passwords or PINs.
+
+11:
+Return to online state: remove secure keys and press reset button at least 2 seconds.
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Unix/Storage_and_filesystems/Extend_Ext4_Partition/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Extend Ext4 Partition - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Check current partition table", url: "#_top", children: [
+          ]},
+          {title: "Check current partition size", url: "#check-current-partition-size", children: [
+          ]},
+          {title: "Resize hard drive", url: "#resize-hard-drive", children: [
+          ]},
+          {title: "Check extended partition table", url: "#check-extended-partition-table", children: [
+          ]},
+          {title: "Recreate partition with new End", url: "#recreate-partition-with-new-end", children: [
+          ]},
+          {title: "Resize file system", url: "#resize-file-system", children: [
+          ]},
+          {title: "Check current partition", url: "#check-current-partition", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Files_in_Unix/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Files_in_Unix/" class="btn btn-xs btn-link">
+        Files in Unix
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Remote_Connection/xFreeRDP/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Remote_Connection/xFreeRDP/" class="btn btn-xs btn-link">
+        xFreeRDP
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="check-current-partition-table">Check current partition table</h3>
+<pre><code class="bash">fdisk -l /dev/vda
+
+Disk /dev/vda: 5368 MB, 5368709120 bytes, 10485760 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk label type: dos
+Disk identifier: 0x0000811f
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/vda1   *        2048    10485759     5241856   83  Linux
+
+lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sr0     11:0    1  603M  0 rom
+vda    253:0    0    5G  0 disk
+└─vda1 253:1    0    5G  0 part /
+</code></pre>
+
+<h3 id="check-current-partition-size">Check current partition size</h3>
+<pre><code class="bash">df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda1       4.8G  2.5G  2.2G  54% /
+devtmpfs        488M     0  488M   0% /dev
+tmpfs           497M     0  497M   0% /dev/shm
+tmpfs           497M  6.5M  490M   2% /run
+tmpfs           497M     0  497M   0% /sys/fs/cgroup
+tmpfs           100M     0  100M   0% /run/user/0
+</code></pre>
+
+<h3 id="resize-hard-drive">Resize hard drive</h3>
+<p>Rescan devices under root (sudo doesn't work). In some cases reboot is needed</p>
+<pre><code class="bash">echo &quot;- - -&quot; &gt; /sys/class/scsi_host/host0/scan
+echo &quot;- - -&quot; &gt; /sys/class/scsi_host/host1/scan
+echo &quot;- - -&quot; &gt; /sys/class/scsi_host/hostX/scan
+</code></pre>
+
+<h3 id="check-extended-partition-table">Check extended partition table</h3>
+<p>Check your partition after resizing. Write down Start and End segment of your target partition:</p>
+<pre><code class="bash">fdisk -l /dev/vda
+
+Disk /dev/vda: 6442 MB, 6442450944 bytes, 12582912 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk label type: dos
+Disk identifier: 0x0000811f
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/vda1   *        2048    10485759     5241856   83  Linux
+
+lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sr0     11:0    1  603M  0 rom
+vda    253:0    0    6G  0 disk
+└─vda1 253:1    0    5G  0 part /
+</code></pre>
+
+<h3 id="recreate-partition-with-new-end">Recreate partition with new End</h3>
+<ul>
+<li>Run <strong>fdisk /dev/vda</strong></li>
+<li>Delete old partition: Command (m for help): <strong>d</strong></li>
+</ul>
+<pre><code class="sh"># If you have multiple partition you have to choose partition which you want to resize
+Selected partition 1
+Partition 1 is deleted
+</code></pre>
+
+<ul>
+<li>Check for changes: Command (m for help): <strong>p</strong></li>
+</ul>
+<pre><code class="sh">Disk /dev/vda: 6442 MB, 6442450944 bytes, 12582912 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk label type: dos
+Disk identifier: 0x0000811f
+
+   Device Boot      Start         End      Blocks   Id  System
+</code></pre>
+
+<ul>
+<li>Create new extended partition: Command (m for help): <strong>n</strong></li>
+</ul>
+<pre><code class="sh">Partition type:
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended
+Select (default p): p
+Partition number (1-4, default 1): 1
+First sector (2048-12582911, default 2048):
+Using default value 2048
+Last sector, +sectors or +size{K,M,G} (2048-12582911, default 12582911):
+Using default value 12582911
+Partition 1 of type Linux and of size 6 GiB is set
+</code></pre>
+
+<ul>
+<li>Check for changes: Command (m for help): <strong>p</strong></li>
+</ul>
+<pre><code class="sh">Disk /dev/vda: 6442 MB, 6442450944 bytes, 12582912 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk label type: dos
+Disk identifier: 0x0000811f
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/vda1            2048    12582911     6290432   83  Linux
+</code></pre>
+
+<ul>
+<li>Write changes and exit: Command (m for help): <strong>w</strong></li>
+</ul>
+<pre><code class="sh">The partition table has been altered!
+
+Calling ioctl() to re-read partition table.
+
+WARNING: Re-reading the partition table failed with error 16: Device or resource busy.
+The kernel still uses the old table. The new table will be used at
+the next reboot or after you run partprobe(8) or kpartx(8)
+Syncing disks.
+</code></pre>
+
+<ul>
+<li><strong>!!!Reboot the system to inform kernel about changes in partition table!!!</strong></li>
+</ul>
+<h3 id="resize-file-system">Resize file system</h3>
+<pre><code class="bash">resize2fs /dev/vda1
+
+resize2fs 1.42.9 (28-Dec-2013)
+Filesystem at /dev/vda1 is mounted on /; on-line resizing required
+old_desc_blocks = 1, new_desc_blocks = 1
+The filesystem on /dev/vda1 is now 1572608 blocks long.
+</code></pre>
+
+<h3 id="check-current-partition">Check current partition</h3>
+<pre><code class="bash">lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sr0     11:0    1  603M  0 rom
+vda    253:0    0    6G  0 disk
+└─vda1 253:1    0    6G  0 part /
+
+df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda1       5.8G  2.5G  3.1G  45% /
+devtmpfs        488M     0  488M   0% /dev
+tmpfs           497M     0  497M   0% /dev/shm
+tmpfs           497M  6.5M  490M   2% /run
+tmpfs           497M     0  497M   0% /sys/fs/cgroup
+tmpfs           100M     0  100M   0% /run/user/0
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

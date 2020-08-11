@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Graph_Theory/Paths_in_Length/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Paths in Length - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Paths in Length", url: "#_top", children: [
+              {title: "Number of paths of a fixed length", url: "#number-of-paths-of-a-fixed-length" },
+              {title: "Shortest paths of a fixed length", url: "#shortest-paths-of-a-fixed-length" },
+              {title: "Generalization of the problems for paths with length up to kk", url: "#generalization-of-the-problems-for-paths-with-length-up-to-kk" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Pruefer_Code/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Pruefer_Code/" class="btn btn-xs btn-link">
+        Prüfer Code
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Minimum_Spanning_Tree_Second_Best/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Minimum_Spanning_Tree_Second_Best/" class="btn btn-xs btn-link">
+        Minimum Spanning Tree: Second Best
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="paths-in-length">Paths in Length</h1>
+<p>The following article describes solutions to these two problems built on the same idea:
+reduce the problem to the construction of matrix and compute the solution with the usual matrix multiplication or with a modified multiplication.</p>
+<h2 id="number-of-paths-of-a-fixed-length">Number of paths of a fixed length</h2>
+<p>We are given a directed, unweighted graph <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices and we are given an integer <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.
+The task is the following:
+for each pair of vertices <span><span class="MathJax_Preview">(i, j)</span><script type="math/tex">(i, j)</script></span> we have to find the number of paths of length <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> between these vertices.
+Paths don't have to be simple, i.e. vertices and edges can be visited any number of times in a single path.</p>
+<p>We assume that the graph is specified with an adjacency matrix, i.e. the matrix <span><span class="MathJax_Preview">G[][]</span><script type="math/tex">G[][]</script></span> of size <span><span class="MathJax_Preview">n \times n</span><script type="math/tex">n \times n</script></span>, where each element <span><span class="MathJax_Preview">G[i][j]</span><script type="math/tex">G[i][j]</script></span> equal to <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> if the vertex <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> is connected with <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> by an edge, and <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span> is they are not connected by an edge.
+The following algorithm works also in the case of multiple edges:
+if some pair of vertices <span><span class="MathJax_Preview">(i, j)</span><script type="math/tex">(i, j)</script></span> is connected with <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> edges, then we can record this in the adjacency matrix by setting <span><span class="MathJax_Preview">G[i][j] = m</span><script type="math/tex">G[i][j] = m</script></span>.
+Also the algorithm works if the graph contains loops (a loop is an edge that connect a vertex with itself).</p>
+<p>It is obvious that the constructed adjacency matrix if the answer to the problem for the case <span><span class="MathJax_Preview">k = 1</span><script type="math/tex">k = 1</script></span>.
+It contains the number of paths of length <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> between each pair of vertices.</p>
+<p>We will build the solution iteratively:
+Let's assume we know the answer for some <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.
+Here we describe a method how we can construct the answer for <span><span class="MathJax_Preview">k + 1</span><script type="math/tex">k + 1</script></span>.
+Denote by <span><span class="MathJax_Preview">C_k</span><script type="math/tex">C_k</script></span> the matrix for the case <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>, and by <span><span class="MathJax_Preview">C_{k+1}</span><script type="math/tex">C_{k+1}</script></span> the matrix we want to construct.
+With the following formula we can compute every entry of <span><span class="MathJax_Preview">C_{k+1}</span><script type="math/tex">C_{k+1}</script></span>:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">C_{k+1}[i][j] = \sum_{p = 1}^{n} C_k[i][p] \cdot G[p][j]</span><script type="math/tex">C_{k+1}[i][j] = \sum_{p = 1}^{n} C_k[i][p] \cdot G[p][j]</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">C_{k+1}[i][j] = \sum_{p = 1}^{n} C_k[i][p] \cdot G[p][j]</span><script type="math/tex">C_{k+1}[i][j] = \sum_{p = 1}^{n} C_k[i][p] \cdot G[p][j]</script></span></script></span></p>
+<p>It is easy to see that the formula computes nothing other than the product of the matrices <span><span class="MathJax_Preview">C_k</span><script type="math/tex">C_k</script></span> and <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">C_{k+1} = C_k \cdot G</span><script type="math/tex">C_{k+1} = C_k \cdot G</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">C_{k+1} = C_k \cdot G</span><script type="math/tex">C_{k+1} = C_k \cdot G</script></span></script></span></p>
+<p>Thus the solution of the problem can be represented as follows:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">C_k = \underbrace{G \cdot G \cdots G}_{k \text{ times}} = G^k</span><script type="math/tex">C_k = \underbrace{G \cdot G \cdots G}_{k \text{ times}} = G^k</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">C_k = \underbrace{G \cdot G \cdots G}_{k \text{ times}} = G^k</span><script type="math/tex">C_k = \underbrace{G \cdot G \cdots G}_{k \text{ times}} = G^k</script></span></script></span></p>
+<p>It remains to note that the matrix products can be raised to a high power efficiently using <a href="/docs/#Algorithms/algebra/binary-exp/">Binary exponentiation</a>.
+This gives a solution with <span><span class="MathJax_Preview">O(n^3 \log k)</span><script type="math/tex">O(n^3 \log k)</script></span> complexity.</p>
+<h2 id="shortest-paths-of-a-fixed-length">Shortest paths of a fixed length</h2>
+<p>We are given a directed weighted graph <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices and an integer <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.
+For each pair of vertices <span><span class="MathJax_Preview">(i, j)</span><script type="math/tex">(i, j)</script></span> we have to find the length of the shortest path between <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> that consists of exactly <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> edges.</p>
+<p>We assume that the graph is specified by an adjacency matrix, i.e. via the matrix <span><span class="MathJax_Preview">G[][]</span><script type="math/tex">G[][]</script></span> of size <span><span class="MathJax_Preview">n \times n</span><script type="math/tex">n \times n</script></span> where each element <span><span class="MathJax_Preview">G[i][j]</span><script type="math/tex">G[i][j]</script></span> contains the length of the edges from the vertex <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> to the vertex <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>.
+If there is no edge between two vertices, then the corresponding element of the matrix will be assigned to infinity <span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span>.</p>
+<p>It is obvious that in this form the adjacency matrix is the answer to the problem for <span><span class="MathJax_Preview">k = 1</span><script type="math/tex">k = 1</script></span>.
+It contains the lengths of shortest paths between each pair of vertices, or <span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span> if a path consisting of one edge doesn't exist.</p>
+<p>Again we can build the solution to the problem iteratively:
+Let's assume we know the answer for some <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.
+We show how we can compute the answer for <span><span class="MathJax_Preview">k+1</span><script type="math/tex">k+1</script></span>.
+Let us denote <span><span class="MathJax_Preview">L_k</span><script type="math/tex">L_k</script></span> the matrix for <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> and <span><span class="MathJax_Preview">L_{k+1}</span><script type="math/tex">L_{k+1}</script></span> the matrix we want to build.
+Then the following formula computes each entry of <span><span class="MathJax_Preview">L_{k+1}</span><script type="math/tex">L_{k+1}</script></span>:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">L_{k+1}[i][j] = \min_{p = 1 \ldots n} \left(L_k[i][p] + G[p][j]\right)</span><script type="math/tex">L_{k+1}[i][j] = \min_{p = 1 \ldots n} \left(L_k[i][p] + G[p][j]\right)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">L_{k+1}[i][j] = \min_{p = 1 \ldots n} \left(L_k[i][p] + G[p][j]\right)</span><script type="math/tex">L_{k+1}[i][j] = \min_{p = 1 \ldots n} \left(L_k[i][p] + G[p][j]\right)</script></span></script></span></p>
+<p>When looking closer at this formula, we can draw an analogy with the matrix multiplication:
+in fact the matrix <span><span class="MathJax_Preview">L_k</span><script type="math/tex">L_k</script></span> is multiplied by the matrix <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>, the only difference is that instead in the multiplication operation we take the minimum instead of the sum.
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">L_{k+1} = L_k \odot G,</span><script type="math/tex">L_{k+1} = L_k \odot G,</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">L_{k+1} = L_k \odot G,</span><script type="math/tex">L_{k+1} = L_k \odot G,</script></span></script></span>
+where the operation <span><span class="MathJax_Preview">\odot</span><script type="math/tex">\odot</script></span> is defined as follows:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">A \odot B = C~~\Longleftrightarrow~~C_{i j} = \min_{p = 1 \ldots n}\left(A_{i p} + B_{p j}\right)</span><script type="math/tex">A \odot B = C~~\Longleftrightarrow~~C_{i j} = \min_{p = 1 \ldots n}\left(A_{i p} + B_{p j}\right)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">A \odot B = C~~\Longleftrightarrow~~C_{i j} = \min_{p = 1 \ldots n}\left(A_{i p} + B_{p j}\right)</span><script type="math/tex">A \odot B = C~~\Longleftrightarrow~~C_{i j} = \min_{p = 1 \ldots n}\left(A_{i p} + B_{p j}\right)</script></span></script></span></p>
+<p>Thus the solution of the task can be represented using the modified multiplication:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">L_k = \underbrace{G \odot \ldots \odot G}_{k~\text{times}} = G^{\odot k}</span><script type="math/tex">L_k = \underbrace{G \odot \ldots \odot G}_{k~\text{times}} = G^{\odot k}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">L_k = \underbrace{G \odot \ldots \odot G}_{k~\text{times}} = G^{\odot k}</span><script type="math/tex">L_k = \underbrace{G \odot \ldots \odot G}_{k~\text{times}} = G^{\odot k}</script></span></script></span></p>
+<p>It remains to note that we also can compute this exponentiation efficiently with <a href="/docs/#Algorithms/algebra/binary-exp/">Binary exponentiation</a>, because the modified multiplication is obviously associative.
+So also this solution has <span><span class="MathJax_Preview">O(n^3 \log k)</span><script type="math/tex">O(n^3 \log k)</script></span> complexity.</p>
+<h2 id="generalization-of-the-problems-for-paths-with-length-up-to-kk">Generalization of the problems for paths with length up to <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span></h2>
+<p>The above solutions solve the problems for a fixed <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.
+However the solutions can be adapted for solving problems for which the paths are allowed to contain no more than <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> edges.</p>
+<p>This can be done by slightly modifying the input graph.</p>
+<p>We duplicate each vertex:
+for each vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> we create one more vertex <span><span class="MathJax_Preview">v'</span><script type="math/tex">v'</script></span> and add the edge <span><span class="MathJax_Preview">(v, v')</span><script type="math/tex">(v, v')</script></span> and the loop <span><span class="MathJax_Preview">(v', v')</span><script type="math/tex">(v', v')</script></span>.
+The number of paths between <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> with at most <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> edges is the same number as the number of paths between <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j'</span><script type="math/tex">j'</script></span> with exactly <span><span class="MathJax_Preview">k + 1</span><script type="math/tex">k + 1</script></span> edges, since there is a bijection that maps every path <span><span class="MathJax_Preview">[p_0 = i,~p_1,~\ldots,~p_{m-1},~p_m = j]</span><script type="math/tex">[p_0 = i,~p_1,~\ldots,~p_{m-1},~p_m = j]</script></span> of length <span><span class="MathJax_Preview">m \le k</span><script type="math/tex">m \le k</script></span> to the path <span><span class="MathJax_Preview">[p_0 = i,~p_1,~\ldots,~p_{m-1},~p_m = j, j', \ldots, j']</span><script type="math/tex">[p_0 = i,~p_1,~\ldots,~p_{m-1},~p_m = j, j', \ldots, j']</script></span> of length <span><span class="MathJax_Preview">k + 1</span><script type="math/tex">k + 1</script></span>.</p>
+<p>The same trick can be applied to compute the shortest paths with at most <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> edges.
+We again duplicate each vertex and add the two mentioned edges with weight <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>.</p>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

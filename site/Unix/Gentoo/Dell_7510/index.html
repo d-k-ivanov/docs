@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Unix/Gentoo/Dell_7510/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Dell 7510 - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Preface", url: "#_top", children: [
+          ]},
+          {title: "Boot media", url: "#boot-media", children: [
+          ]},
+          {title: "Partition scheme", url: "#partition-scheme", children: [
+          ]},
+          {title: "Filesystems", url: "#filesystems", children: [
+          ]},
+          {title: "Mounting", url: "#mounting", children: [
+          ]},
+          {title: "Install Stage", url: "#install-stage", children: [
+          ]},
+          {title: "Chrooting", url: "#chrooting", children: [
+          ]},
+          {title: "Update", url: "#update", children: [
+          ]},
+          {title: "Timezone", url: "#timezone", children: [
+          ]},
+          {title: "Locale", url: "#locale", children: [
+          ]},
+          {title: "fstab", url: "#fstab", children: [
+          ]},
+          {title: "Kernel", url: "#kernel", children: [
+          ]},
+          {title: "Network", url: "#network", children: [
+          ]},
+          {title: "Grub", url: "#grub", children: [
+          ]},
+          {title: "Console", url: "#console", children: [
+          ]},
+          {title: "Post install", url: "#post-install", children: [
+          ]},
+          {title: "Unmount and reboot", url: "#unmount-and-reboot", children: [
+          ]},
+          {title: "My portage package files", url: "#my-portage-package-files", children: [
+          ]},
+          {title: "My Xorg config files", url: "#my-xorg-config-files", children: [
+          ]},
+          {title: "Udev rules", url: "#udev-rules", children: [
+          ]},
+          {title: "vim /etc/sysctl.conf", url: "#vim-etcsysctlconf", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Dell_7510_Kernel/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Dell_7510_Kernel/" class="btn btn-xs btn-link">
+        Dell 7510 Kernel
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Console_Font/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Console_Font/" class="btn btn-xs btn-link">
+        Console Font
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="preface">Preface</h3>
+<blockquote>
+<p>Notebook Dell 7510 have a few of BIOS bugs. So if you face the probmem when NVMe drive not found in system, you just need to switch to SATA Raid -&gt; Reboot -&gt; And switch back <br>
+I've disabled Intel P30 video and run Nvidia only, because I need native driver for CUDA.</p>
+</blockquote>
+<h3 id="boot-media">Boot media</h3>
+<p>First of all we need UEFI installation media. I prefert to use SystemRescueCD:</p>
+<pre><code class="bash"># Download ISO
+https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/x.x.x/systemrescuecd-x86-x.x.x.iso/download
+mkdir -p /tmp/cdrom
+mount -o loop,exec /path/to/systemrescuecd-x86-x.x.x.iso /tmp/cdrom
+# Plug in the USB stick
+cd /tmp/cdrom
+bash ./usb_inst.sh
+cd ~
+umount /tmp/cdrom
+</code></pre>
+
+<h3 id="partition-scheme">Partition scheme</h3>
+<pre><code class="bash"># Partition scheme:
+# /dev/nvme0n1p1 (bootloader)  2M      Just in case, but I don't think it's really needed on modern EFI systems.
+# /dev/nvme0n1p2 fat32-UFFI    1024M   EFI Partition to hold more than one kernel. Yes I know that Handbook recommends 128M.
+# /dev/nvme0n1p3 root-ext4     100%
+# For swap I will use swapfile, because there is no performance advantage to either a contiguous swap file or a partition, both are treated the same way.
+
+parted -a optimal /dev/nvme0n1
+(parted) mklabel gpt
+
+# Partition 1: Bootloader
+(parted) unit mib
+(parted) mkpart primary 1 3
+(parted) name 1 grub
+(parted) set 1 bios_grub on
+
+# Partition 1: Boot
+(parted) mkpart primary 3 1027
+(parted) name 2 boot
+(parted) set 2 boot on
+
+# Partition 1: Root
+(parted) mkpart primary 1027 -1
+(parted) name 4 rootfs
+</code></pre>
+
+<h3 id="filesystems">Filesystems</h3>
+<pre><code class="bash">mkfs.fat -F 32 /dev/nvme0n1p2
+mkfs.ext4 /dev/nvme0n1p3
+</code></pre>
+
+<h3 id="mounting">Mounting</h3>
+<pre><code class="bash">mount /dev/nvme0n1p3 /mnt/gentoo
+mount /dev/nvme0n1p2 /mnt/gentoo/boot
+
+# System remount for chrooting
+mount -t proc proc /mnt/gentoo/proc
+mount --rbind /sys /mnt/gentoo/sys
+mount --make-rslave /mnt/gentoo/sys
+mount --rbind /dev /mnt/gentoo/dev
+mount --make-rslave /mnt/gentoo/dev
+</code></pre>
+
+<h3 id="install-stage">Install Stage</h3>
+<pre><code class="bash">cd /mnt/gentoo/
+wget http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64-systemd/stage3-amd64-systemd-&lt;YYYYMMDD&gt;.tar.bz2
+tar xvjpf stage3-amd64-systemd-&lt;YYYYMMDD&gt;.tar.bz2 --xattrs
+</code></pre>
+
+<h3 id="chrooting">Chrooting</h3>
+<ul>
+<li><a href="/data/gentoo/make.conf.txt">make.conf</a></li>
+</ul>
+<pre><code class="bash"># See link above to get contents of make.conf
+vim /mnt/gentoo/etc/portage/make.conf
+mkdir /mnt/gentoo/etc/portage/repos.conf
+cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+cp -L /etc/resolv.conf /mnt/gentoo/etc/
+chroot /mnt/gentoo /bin/bash
+source /etc/profile
+export PS1=&quot;(chrooted) $PS1&quot;
+</code></pre>
+
+<h3 id="update">Update</h3>
+<pre><code class="bash">emerge-webrsync
+emerge --sync
+# Should be systemd profile
+eselect profile set 12
+emerge --ask --update --deep --newuse @world
+</code></pre>
+
+<h3 id="timezone">Timezone</h3>
+<pre><code class="bash">echo &quot;Europe/Moscow&quot; &gt; /etc/timezone
+emerge --config sys-libs/timezone-data
+</code></pre>
+
+<h3 id="locale">Locale</h3>
+<pre><code class="bash">vim /etc/locale.gen
+#---- locale.gen ----
+en_US.UTF-8 UTF-8
+ru_RU.UTF-8 UTF-8
+#--------------------
+
+eselect locale list
+eselect locale set 2
+env-update &amp;&amp; source /etc/profile
+</code></pre>
+
+<h3 id="fstab">fstab</h3>
+<pre><code class="bash">fallocate -l 8192M /swapfile
+dd if=/dev/zero of=/swapfile bs=1M count=8192
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+blkid
+
+#----    fstab   ----
+UUID=&quot;XXX&quot; /boot         vfat rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro 0 2
+UUID=&quot;XXX&quot; /             ext4 rw,relatime,data=ordered                                                                             0 1
+UUID=&quot;XXX&quot; /home/storage ext4 rw,relatime,data=ordered                                                                             1 1
+#Swap
+/swapfile  none          swap defaults                                                                                             0 0
+#--------------------
+</code></pre>
+
+<h3 id="kernel">Kernel</h3>
+<ul>
+<li><a href="/data/gentoo/config-4.12.txt">.config</a></li>
+</ul>
+<pre><code class="bash">emerge --ask sys-kernel/gentoo-sources sys-apps/pciutils sys-kernel/genkernel-next
+eselect kernel list
+eselect kernel set 'N'
+cd /usr/src/linux
+# See link above to get 4.12 kernel config for Dell 7510
+touch /usr/src/linux/.config
+make olddefconfig
+make &amp;&amp; make modules_install
+make install
+genkernel --install initramfs
+</code></pre>
+
+<h3 id="network">Network</h3>
+<pre><code class="bash">emerge --ask dbus
+hostnamectl set-hostname your-hostname.your-network
+vim /etc/hosts
+#----    hosts   ----
+127.0.0.1   your-hostname.your-network your-hostname localhost
+::1         your-hostname.your-network your-hostname localhost
+#--------------------
+
+emerge --ask net-misc/dhcpcd
+</code></pre>
+
+<h3 id="grub">Grub</h3>
+<p>Make sure that you have "GRUB_PLATFORMS="efi-64" in /etc/portage/make.conf (see above)</p>
+<ul>
+<li><a href="/data/gentoo/grub.txt">grub</a></li>
+<li><a href="/data/gentoo/terminus32.pf2">terminus32.pf2</a></li>
+</ul>
+<pre><code class="bash">emerge --ask --update --newuse --verbose sys-boot/grub:2
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
+# See link above to contents
+vim /etc/default/grub
+
+cd /boot/grub/fonts/
+wget https://d-k-ivanov.github.io/data/gentoo/terminus32.pf2
+
+mkdir /boot/efi/EFI/boot
+mkdir /boot/EFI/boot
+cp /boot/EFI/grub/grubx64.efi /boot/EFI/bootx64.efi
+
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<h3 id="console">Console</h3>
+<pre><code class="bash">emerge --ask media-fonts/terminus-font
+echo &quot;FONT=ter-p32n.psf.gz&quot; &gt; /etc/vconsole.conf
+</code></pre>
+
+<h3 id="post-install">Post install</h3>
+<pre><code class="bash">useradd -m -G users,wheel,audio,portage,usb,video -s /bin/bash &lt;username&gt;
+passwd &lt;username&gt;
+
+# I like to own whole /home directory
+chown -R &lt;username&gt;:&lt;username&gt; /home
+
+emerge --ask sys-process/cronie sys-apps/mlocate sudo
+emerge --ask media-fonts/terminus-font
+</code></pre>
+
+<h3 id="unmount-and-reboot">Unmount and reboot</h3>
+<pre><code class="bash">exit
+umount -l /mnt/gentoo/dev{/shm,/pts,}
+umount -R /mnt/gentoo
+reboot
+</code></pre>
+
+<h3 id="my-portage-package-files">My portage package files</h3>
+<ul>
+<li><a href="/data/gentoo/package.accept_keywords.txt">package.accept_keywords</a></li>
+<li><a href="/data/gentoo/package.license.txt">package.license</a></li>
+<li><a href="/data/gentoo/package.unmask.txt">package.unmask</a></li>
+<li><a href="/data/gentoo/package.use.txt">package.use</a></li>
+</ul>
+<h3 id="my-xorg-config-files">My Xorg config files</h3>
+<ul>
+<li><a href="/data/gentoo/xorg.conf.txt">xorg.conf</a></li>
+<li><a href="/data/gentoo/xorg-10-evdev.conf.txt">10-evdev.conf</a></li>
+<li><a href="/data/gentoo/xorg-10-keyboard.conf.txt">10-keyboard.conf</a></li>
+<li><a href="/data/gentoo/xorg-20-trackpoint.conf.txt">20-trackpoint.conf</a></li>
+<li><a href="/data/gentoo/xorg-20opengl.conf.txt">20opengl.conf</a></li>
+<li><a href="/data/gentoo/xorg-30-fonts.conf.txt">30-fonts.conf</a></li>
+<li><a href="/data/gentoo/xorg-70-synaptics.conf.txt">70-synaptics.conf</a></li>
+</ul>
+<h3 id="udev-rules">Udev rules</h3>
+<pre><code class="bash">vim /etc/udev/rules.d/01-touchpad.rules
+#---- 01-touchpad.rules ----
+SUBSYSTEM==&quot;input&quot;, KERNEL==&quot;mouse[0-9]*&quot;, ACTION==&quot;add&quot;, ENV{DISPLAY}=&quot;:0&quot;, ENV{XAUTHORITY}=&quot;/home/id/.Xauthority&quot;, RUN+=&quot;/usr/bin/synclient TouchpadOff=1&quot;
+SUBSYSTEM==&quot;input&quot;, KERNEL==&quot;mouse[0-9]*&quot;, ACTION==&quot;remove&quot;, ENV{DISPLAY}=&quot;:0&quot;, ENV{XAUTHORITY}=&quot;/home/id/.Xauthority&quot;, RUN+=&quot;/usr/bin/synclient TouchpadOff=0&quot;
+#---------------------------
+
+vim /etc/udev/rules.d/02-lid.rules
+#----    02-lid.rules   ----
+# Settings on battery
+SUBSYSTEM==&quot;power_supply&quot;, ENV{POWER_SUPPLY_ONLINE}==&quot;0&quot;, ENV{DISPLAY}=&quot;:0&quot;, ENV{XAUTHORITY}=&quot;/home/$USER/.Xauthority&quot;, RUN+=&quot;/usr/local/bin/lid_action.sh battery&quot;
+# Settings on AC
+SUBSYSTEM==&quot;power_supply&quot;, ENV{POWER_SUPPLY_ONLINE}==&quot;1&quot;, ENV{DISPLAY}=&quot;:0&quot;, ENV{XAUTHORITY}=&quot;/home/$USER/.Xauthority&quot;, RUN+=&quot;/usr/local/bin/lid_action.sh AC&quot;
+#---------------------------
+
+vim /usr/local/bin/lid_action.sh
+#----   lid_action.sh   ----
+#!/bin/bash
+LID_SWITCH_ACTION_BAT=suspend
+LID_SWITCH_ACTION_AC=ignore
+case &quot;$1&quot; in
+    battery)
+        sed -i &quot;s/^.*\bHandleLidSwitch\b.*$/HandleLidSwitch=$LID_SWITCH_ACTION_BAT/&quot; /etc/systemd/logind.conf
+        systemctl restart systemd-logind
+        ;;
+    AC)
+        sed -i &quot;s/^.*\bHandleLidSwitch\b.*$/HandleLidSwitch=$LID_SWITCH_ACTION_AC/&quot; /etc/systemd/logind.conf
+        systemctl restart systemd-logind
+        ;;
+esac
+#---------------------------
+
+vim /etc/udev/rules.d/90-backlight.rules
+#---- 90-backlight.rules ----
+# Allow video group to control backlight and leds
+SUBSYSTEM==&quot;backlight&quot;, ACTION==&quot;add&quot;, RUN+=&quot;/bin/chgrp video %S%p/brightness&quot;, RUN+=&quot;/bin/chmod g+w %S%p/brightness&quot;
+SUBSYSTEM==&quot;leds&quot;, ACTION==&quot;add&quot;, KERNEL==&quot;*::kbd_backlight&quot;, RUN+=&quot;/bin/chgrp video %S%p/brightness&quot;, RUN+=&quot;/bin/chmod g+w %S%p/brightness&quot;
+#----------------------------
+</code></pre>
+
+<h3 id="vim-etcsysctlconf">vim /etc/sysctl.conf</h3>
+<pre><code class="bash">net.ipv4.ip_forward = 0
+fs.inotify.max_user_watches=100000
+# To rule them all...
+net.ipv4.ip_default_ttl=65
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

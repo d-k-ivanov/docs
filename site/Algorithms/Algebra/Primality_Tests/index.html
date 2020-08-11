@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Algebra/Primality_Tests/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Primality Tests - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Primality Tests", url: "#_top", children: [
+              {title: "Trial division", url: "#trial-division" },
+              {title: "Fermat primality test", url: "#fermat-primality-test" },
+              {title: "Miller-Rabin primality test", url: "#miller-rabin-primality-test" },
+              {title: "Practice Problems", url: "#practice-problems" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Primitive_Root/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Primitive_Root/" class="btn btn-xs btn-link">
+        Primitive Root
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Polynomials_and_Series/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Polynomials_and_Series/" class="btn btn-xs btn-link">
+        Polynomials and Series
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="primality-tests">Primality Tests</h1>
+<p>This article describes multiple algorithms to determine if a number is prime or not.</p>
+<h2 id="trial-division">Trial division</h2>
+<p>By definition a prime number doesn't have any divisors other than <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> and itself.
+A composite number has at least one additional divisor, let's call it <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>.
+Naturally <span><span class="MathJax_Preview">\frac{n}{d}</span><script type="math/tex">\frac{n}{d}</script></span> is also a divisor of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.
+It's easy to see, that either <span><span class="MathJax_Preview">d \le \sqrt{n}</span><script type="math/tex">d \le \sqrt{n}</script></span> or <span><span class="MathJax_Preview">\frac{n}{d} \le \sqrt{n}</span><script type="math/tex">\frac{n}{d} \le \sqrt{n}</script></span>, therefore one of the divisors <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> and <span><span class="MathJax_Preview">\frac{n}{d}</span><script type="math/tex">\frac{n}{d}</script></span> is <span><span class="MathJax_Preview">\le \sqrt{n}</span><script type="math/tex">\le \sqrt{n}</script></span>.
+We can use this information to check for primality.</p>
+<p>We try to find a non-trivial divisor, by checking if any of the numbers between <span><span class="MathJax_Preview">2</span><script type="math/tex">2</script></span> and <span><span class="MathJax_Preview">\sqrt{n}</span><script type="math/tex">\sqrt{n}</script></span> is a divisor of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.
+If it is a divisor, than <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is definitely not prime, otherwise it is.</p>
+<pre><code class="cpp">bool isPrime(int x) {
+    for (int d = 2; d * d &lt;= x; d++) {
+        if (x % d == 0)
+            return false;
+    }
+    return true;
+}
+</code></pre>
+
+<p>This is the simplest form of a prime check.
+You can optimize this function quite a bit, for instance by only checking all odd numbers in the loop, since the only even prime number is 2.
+Multiple such optimizations are described in the article about <a href="/docs/#Algorithms/algebra/factorization/">integer factorization</a>.</p>
+<h2 id="fermat-primality-test">Fermat primality test</h2>
+<p>This is a probabilistic test.</p>
+<p>Fermat's little theorem (see also <a href="https://cp-algorithms.com/algebra/phi-function/">Euler's totient function</a>) states, that for a prime number <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> and a coprime integer <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> the following equation holds:</p>
+<div>
+<div class="MathJax_Preview">a^{p-1} \equiv 1 \bmod p</div>
+<script type="math/tex; mode=display">a^{p-1} \equiv 1 \bmod p</script>
+</div>
+<p>In general this theorem doesn't hold for composite numbers.</p>
+<p>This can be used to create a primality test.
+We pick an integer <span><span class="MathJax_Preview">2 \le a \le p - 2</span><script type="math/tex">2 \le a \le p - 2</script></span>, and check if the equation holds or not.
+If it doesn't hold, e.g. <span><span class="MathJax_Preview">a^{p-1} \not\equiv 1 \bmod p</span><script type="math/tex">a^{p-1} \not\equiv 1 \bmod p</script></span>, we know that <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> cannot be a prime number.
+In this case we call the base <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> a <em>Fermat witness</em> for the compositeness of <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>.</p>
+<p>However it is also possible, that the equation holds for a composite number.
+So if the equation holds, we don't have a proof for primality.
+We only can say that <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> is <em>probably prime</em>.
+If it turns out that the number is actually composite, we call the base <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> a <em>Fermat liar</em>.</p>
+<p>By running the test for all possible bases <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>, we can actually prove that a number is prime.
+However this is not done in practice, since this is a lot more effort that just doing <em>trial division</em>.
+Instead the test will be repeated multiple times with random choices for <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>.
+If we find no witness for the compositeness, it is very likely that the number is in fact prime.</p>
+<pre><code class="cpp">bool probablyPrimeFermat(int n, int iter=5) {
+    if (n &lt; 4)
+        return n == 2 || n == 3;
+
+    for (int i = 0; i &lt; iter; i++) {
+        int a = 2 + rand() % (n - 3);
+        if (binpower(a, n - 1, n) != 1)
+            return false;
+    }
+    return true;
+}
+</code></pre>
+
+<p>We use <a href="/docs/#Algorithms/algebra/binary-exp/">Binary Exponentiation</a> to efficiently compute the power <span><span class="MathJax_Preview">a^{p-1}</span><script type="math/tex">a^{p-1}</script></span>.</p>
+<p>There is one bad news though:
+there exist some composite numbers where <span><span class="MathJax_Preview">a^{n-1} \equiv 1 \bmod n</span><script type="math/tex">a^{n-1} \equiv 1 \bmod n</script></span> holds for all <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> coprime to <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, for instance for the number <span><span class="MathJax_Preview">561 = 3 \cdot 11 \cdot 17</span><script type="math/tex">561 = 3 \cdot 11 \cdot 17</script></span>.
+Such numbers are called <em>Carmichael numbers</em>.
+The Fermat primality test can identify these numbers only, if we have immense luck and choose a base <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> with <span><span class="MathJax_Preview">\gcd(a, n) \ne 1</span><script type="math/tex">\gcd(a, n) \ne 1</script></span>.</p>
+<p>The Fermat test is still be used in practice, as it is very fast and Carmichael numbers are very rare.
+E.g. there only exist 646 such numbers below <span><span class="MathJax_Preview">10^9</span><script type="math/tex">10^9</script></span>.</p>
+<h2 id="miller-rabin-primality-test">Miller-Rabin primality test</h2>
+<p>The Miller-Rabin test extends the ideas from the Fermat test.</p>
+<p>For an odd number <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, <span><span class="MathJax_Preview">n-1</span><script type="math/tex">n-1</script></span> is even and we can factor out all powers of 2.
+We can write:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">n - 1 = 2^s \cdot d,~\text{with}~d~\text{odd}.</span><script type="math/tex">n - 1 = 2^s \cdot d,~\text{with}~d~\text{odd}.</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">n - 1 = 2^s \cdot d,~\text{with}~d~\text{odd}.</span><script type="math/tex">n - 1 = 2^s \cdot d,~\text{with}~d~\text{odd}.</script></span></script></span></p>
+<p>This allows us to factorize the equation of Fermat's little theorem:
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{array}{rl}
+a^{n-1} \equiv 1 \bmod n &amp;\Longleftrightarrow a^{2^s d} - 1 \equiv 0 \bmod n \\\\
+&amp;\Longleftrightarrow (a^{2^{s-1} d} + 1) (a^{2^{s-1} d} - 1) \equiv 0 \bmod n \\\\
+&amp;\Longleftrightarrow (a^{2^{s-1} d} + 1) (a^{2^{s-2} d} + 1) (a^{2^{s-2} d} - 1) \equiv 0 \bmod n \\\\
+&amp;\quad\vdots \\\\
+&amp;\Longleftrightarrow (a^{2^{s-1} d} + 1) (a^{2^{s-2} d} + 1) \cdots (a^{d} + 1) (a^{d} - 1) \equiv 0 \bmod n \\\\
+\end{array}</span><script type="math/tex">\begin{array}{rl}
+a^{n-1} \equiv 1 \bmod n &\Longleftrightarrow a^{2^s d} - 1 \equiv 0 \bmod n \\\\
+&\Longleftrightarrow (a^{2^{s-1} d} + 1) (a^{2^{s-1} d} - 1) \equiv 0 \bmod n \\\\
+&\Longleftrightarrow (a^{2^{s-1} d} + 1) (a^{2^{s-2} d} + 1) (a^{2^{s-2} d} - 1) \equiv 0 \bmod n \\\\
+&\quad\vdots \\\\
+&\Longleftrightarrow (a^{2^{s-1} d} + 1) (a^{2^{s-2} d} + 1) \cdots (a^{d} + 1) (a^{d} - 1) \equiv 0 \bmod n \\\\
+\end{array}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\begin{array}{rl}
+a^{n-1} \equiv 1 \bmod n &amp;\Longleftrightarrow a^{2^s d} - 1 \equiv 0 \bmod n \\\\
+&amp;\Longleftrightarrow (a^{2^{s-1} d} + 1) (a^{2^{s-1} d} - 1) \equiv 0 \bmod n \\\\
+&amp;\Longleftrightarrow (a^{2^{s-1} d} + 1) (a^{2^{s-2} d} + 1) (a^{2^{s-2} d} - 1) \equiv 0 \bmod n \\\\
+&amp;\quad\vdots \\\\
+&amp;\Longleftrightarrow (a^{2^{s-1} d} + 1) (a^{2^{s-2} d} + 1) \cdots (a^{d} + 1) (a^{d} - 1) \equiv 0 \bmod n \\\\
+\end{array}</span><script type="math/tex">\begin{array}{rl}
+a^{n-1} \equiv 1 \bmod n &\Longleftrightarrow a^{2^s d} - 1 \equiv 0 \bmod n \\\\
+&\Longleftrightarrow (a^{2^{s-1} d} + 1) (a^{2^{s-1} d} - 1) \equiv 0 \bmod n \\\\
+&\Longleftrightarrow (a^{2^{s-1} d} + 1) (a^{2^{s-2} d} + 1) (a^{2^{s-2} d} - 1) \equiv 0 \bmod n \\\\
+&\quad\vdots \\\\
+&\Longleftrightarrow (a^{2^{s-1} d} + 1) (a^{2^{s-2} d} + 1) \cdots (a^{d} + 1) (a^{d} - 1) \equiv 0 \bmod n \\\\
+\end{array}</script></span></script></span></p>
+<p>If <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is prime, then <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> has to divide one of these factors.
+And in the Miller-Rabin primality test we check exactly that statement, which is a more stricter version of the statement of the Fermat test.
+For a base <span><span class="MathJax_Preview">2 \le a \le n-2</span><script type="math/tex">2 \le a \le n-2</script></span> we check if either
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">a^d \equiv 1 \bmod n</span><script type="math/tex">a^d \equiv 1 \bmod n</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">a^d \equiv 1 \bmod n</span><script type="math/tex">a^d \equiv 1 \bmod n</script></span></script></span>
+holds or
+<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">a^{2^r d} \equiv -1 \bmod n</span><script type="math/tex">a^{2^r d} \equiv -1 \bmod n</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">a^{2^r d} \equiv -1 \bmod n</span><script type="math/tex">a^{2^r d} \equiv -1 \bmod n</script></span></script></span>
+holds for some <span><span class="MathJax_Preview">0 \le r \le s - 1</span><script type="math/tex">0 \le r \le s - 1</script></span>.</p>
+<p>If we found a base <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> which doesn't satisfy any of the above equalities, than we found a <em>witness</em> for the compositeness of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.
+In this case we have proven that <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is not a prime number.</p>
+<p>Similar to the Fermat test, it is also possible that the set of equations is satisfied for a composite number.
+In that case the base <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> is called a <em>strong liar</em>.
+If a base <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> satisfies the equations (one of them), <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is only <em>strong probable prime</em>.
+However, there are no numbers like the Carmichael numbers, where all non-trivial bases lie.
+In fact it is possible to show, that at most <span><span class="MathJax_Preview">\frac{1}{4}</span><script type="math/tex">\frac{1}{4}</script></span> of the bases can be strong liars.
+If <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is composite, we have a probability of <span><span class="MathJax_Preview">\ge 75\%</span><script type="math/tex">\ge 75\%</script></span> that a random base will tell us that it is composite.
+By doing multiple iterations, choosing different random bases, we can tell with very high probability if the number is truly prime or if it is composite.</p>
+<p>Here is an implementation for 64 bit integer.</p>
+<pre><code class="cpp">using u64 = uint64_t;
+using u128 = __uint128_t;
+
+u64 binpower(u64 base, u64 e, u64 mod) {
+    u64 result = 1;
+    base %= mod;
+    while (e) {
+        if (e &amp; 1)
+            result = (u128)result * base % mod;
+        base = (u128)base * base % mod;
+        e &gt;&gt;= 1;
+    }
+    return result;
+}
+
+bool check_composite(u64 n, u64 a, u64 d, int s) {
+    u64 x = binpower(a, d, n);
+    if (x == 1 || x == n - 1)
+        return false;
+    for (int r = 1; r &lt; s; r++) {
+        x = (u128)x * x % n;
+        if (x == n - 1)
+            return false;
+    }
+    return true;
+};
+
+bool MillerRabin(u64 n, int iter=5) { // returns true if n is probably prime, else returns false.
+    if (n &lt; 4)
+        return n == 2 || n == 3;
+
+    int s = 0;
+    u64 d = n - 1;
+    while ((d &amp; 1) == 0) {
+        d &gt;&gt;= 1;
+        s++;
+    }
+
+    for (int i = 0; i &lt; iter; i++) {
+        int a = 2 + rand() % (n - 3);
+        if (check_composite(n, a, d, s))
+            return false;
+    }
+    return true;
+}
+</code></pre>
+
+<p>Before the Miller-Rabin test you can test additionally if one of the first few prime numbers is a divisor.
+This can speed up the test by a lot, since most composite numbers have very small prime divisors.
+E.g. <span><span class="MathJax_Preview">88\%</span><script type="math/tex">88\%</script></span> of all numbers have a prime factors smaller than <span><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>.</p>
+<h3 id="deterministic-version">Deterministic version</h3>
+<p>Miller showed that it is possible to make the algorithm deterministic by only checking all bases <span><span class="MathJax_Preview">\le O((\ln n)^2)</span><script type="math/tex">\le O((\ln n)^2)</script></span>.
+Bach later gave a concrete bound, it is only necessary to test all bases <span><span class="MathJax_Preview">a \le 2 \ln(n)^2</span><script type="math/tex">a \le 2 \ln(n)^2</script></span>.</p>
+<p>This is still a pretty large number of bases.
+So people have invested quite a lot of computation power into finding lower bounds.
+It turns out, for testing a 32 bit integer it is only necessary to check the first 4 prime bases: 2, 3, 5 and 7.
+The smallest composite number that fails this test is <span><span class="MathJax_Preview">3,215,031,751 = 151 \cdot 751 \cdot 28351</span><script type="math/tex">3,215,031,751 = 151 \cdot 751 \cdot 28351</script></span>.
+And for testing 64 bit integer it is enough to check the first 12 prime bases: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, and 37.</p>
+<p>This results in the following deterministic implementation:</p>
+<pre><code class="cpp">bool MillerRabin(u64 n) { // returns true if n is prime, else returns false.
+    if (n &lt; 2)
+        return false;
+
+    int r = 0;
+    u64 d = n - 1;
+    while ((d &amp; 1) == 0) {
+        d &gt;&gt;= 1;
+        r++;
+    }
+
+    for (int a : {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37}) {
+        if (n == a)
+            return true;
+        if (check_composite(n, a, d, r))
+            return false;
+    }
+    return true;
+}
+</code></pre>
+
+<p>It's also possible to do the check with only 7 bases: 2, 325, 9375, 28178, 450775, 9780504 and 1795265022.
+However, since these numbers (except 2) are not prime, you need to check additionally if the number you are checking is equal to any prime divisor of those bases: 2, 3, 5, 13, 19, 73, 193, 407521, 299210837.</p>
+<h2 id="practice-problems">Practice Problems</h2>
+<ul>
+<li><a href="https://www.spoj.com/problems/PON/">SPOJ - Prime or Not</a></li>
+</ul>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

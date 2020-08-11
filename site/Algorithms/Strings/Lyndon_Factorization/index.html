@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Strings/Lyndon_Factorization/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Lyndon Factorization - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Lyndon Factorization", url: "#_top", children: [
+              {title: "Duval algorithm", url: "#duval-algorithm" },
+              {title: "Problems", url: "#problems" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Manachers_Algorithm_All_Sub-Palindromes/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Manachers_Algorithm_All_Sub-Palindromes/" class="btn btn-xs btn-link">
+        Manacher's Algorithm: All Sub-Palindromes
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Expression_Parsing/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Expression_Parsing/" class="btn btn-xs btn-link">
+        Expression Parsing
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="lyndon-factorization">Lyndon Factorization</h1>
+<p>First let us define the notion of the Lyndon factorization.</p>
+<p>A string is called <strong>simple</strong> (or a Lyndon word), if it is strictly <strong>smaller than</strong> any of its own nontrivial <strong>suffixes</strong>.
+Examples of simple strings are: <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>, <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>, <span><span class="MathJax_Preview">ab</span><script type="math/tex">ab</script></span>, <span><span class="MathJax_Preview">aab</span><script type="math/tex">aab</script></span>, <span><span class="MathJax_Preview">abb</span><script type="math/tex">abb</script></span>, <span><span class="MathJax_Preview">ababb</span><script type="math/tex">ababb</script></span>, <span><span class="MathJax_Preview">abcd</span><script type="math/tex">abcd</script></span>.
+It can be shown that a string is simple, if and only if it is strictly <strong>smaller than</strong> all its nontrivial <strong>cyclic shifts</strong>.</p>
+<p>Next, let there be a given string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.
+The <strong>Lyndon factorization</strong> of the string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> is a factorization <span><span class="MathJax_Preview">s = w_1 w_2 \dots w_k</span><script type="math/tex">s = w_1 w_2 \dots w_k</script></span>, where all strings <span><span class="MathJax_Preview">w_i</span><script type="math/tex">w_i</script></span> are simple, and they are in non-increasing order <span><span class="MathJax_Preview">w_1 \ge w_2 \ge \dots \ge w_k</span><script type="math/tex">w_1 \ge w_2 \ge \dots \ge w_k</script></span>.</p>
+<p>It can be shown, that for any string such a factorization exists and that it is unique.</p>
+<h2 id="duval-algorithm">Duval algorithm</h2>
+<p>The Duval algorithm constructs the Lyndon factorization in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> time using <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> additional memory.</p>
+<p>First let us introduce another notion:
+a string <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> is called <strong>pre-simple</strong>, if it has the form <span><span class="MathJax_Preview">t = w w \dots w \overline{w}</span><script type="math/tex">t = w w \dots w \overline{w}</script></span>, where <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> is a simple string and <span><span class="MathJax_Preview">\overline{w}</span><script type="math/tex">\overline{w}</script></span> is a prefix of <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> (possibly empty).
+A simple string is also pre-simple.</p>
+<p>The Duval algorithm is greedy.
+At any point during its execution, the string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> will actually be divided into three strings <span><span class="MathJax_Preview">s = s_1 s_2 s_3</span><script type="math/tex">s = s_1 s_2 s_3</script></span>, where the Lyndon factorization for <span><span class="MathJax_Preview">s_1</span><script type="math/tex">s_1</script></span> is already found and finalized, the string <span><span class="MathJax_Preview">s_2</span><script type="math/tex">s_2</script></span> is pre-simple (and we know the length of the simple string in it), and <span><span class="MathJax_Preview">s_3</span><script type="math/tex">s_3</script></span> is completely untouched.
+In each iteration the Duval algorithm takes the first character of the string <span><span class="MathJax_Preview">s_3</span><script type="math/tex">s_3</script></span> and tries to append it to the string <span><span class="MathJax_Preview">s_2</span><script type="math/tex">s_2</script></span>.
+It <span><span class="MathJax_Preview">s_2</span><script type="math/tex">s_2</script></span> is no longer pre-simple, then the Lyndon factorization for some part of <span><span class="MathJax_Preview">s_2</span><script type="math/tex">s_2</script></span> becomes known, and this part goes to <span><span class="MathJax_Preview">s_1</span><script type="math/tex">s_1</script></span>.</p>
+<p>Let's describe the algorithm in more detail.
+The pointer <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> will always point to the beginning of the string <span><span class="MathJax_Preview">s_2</span><script type="math/tex">s_2</script></span>.
+The outer loop will be executed as long as <span><span class="MathJax_Preview">i &lt; n</span><script type="math/tex">i < n</script></span>.
+Inside the loop we use two additional pointers, <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> which points to the beginning of <span><span class="MathJax_Preview">s_3</span><script type="math/tex">s_3</script></span>, and <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> which points to the current character that we are currently comparing to.
+We want to add the character <span><span class="MathJax_Preview">s[j]</span><script type="math/tex">s[j]</script></span> to the string <span><span class="MathJax_Preview">s_2</span><script type="math/tex">s_2</script></span>, which requires a comparison with the character <span><span class="MathJax_Preview">s[k]</span><script type="math/tex">s[k]</script></span>.
+There can be three different cases:</p>
+<ul>
+<li><span><span class="MathJax_Preview">s[j] = s[k]</span><script type="math/tex">s[j] = s[k]</script></span>: if this is the case, then adding the symbol <span><span class="MathJax_Preview">s[j]</span><script type="math/tex">s[j]</script></span> to <span><span class="MathJax_Preview">s_2</span><script type="math/tex">s_2</script></span> doesn't violate its pre-simplicity.
+  So we simply increment the pointers <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> and <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.</li>
+<li><span><span class="MathJax_Preview">s[j] &gt; s[k]</span><script type="math/tex">s[j] > s[k]</script></span>: here, the string <span><span class="MathJax_Preview">s_2 + s[j]</span><script type="math/tex">s_2 + s[j]</script></span> becomes simple.
+  We can increment <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> and reset <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> back to the beginning of <span><span class="MathJax_Preview">s_2</span><script type="math/tex">s_2</script></span>, so that the next character can be compared with the beginning of the simple word.</li>
+<li><span><span class="MathJax_Preview">s[j] &lt; s[k]</span><script type="math/tex">s[j] < s[k]</script></span>: the string <span><span class="MathJax_Preview">s_2 + s[j]</span><script type="math/tex">s_2 + s[j]</script></span> is no longer pre-simple.
+  Therefore we will split the pre-simple string <span><span class="MathJax_Preview">s_2</span><script type="math/tex">s_2</script></span> into its simple strings and the remainder, possibly empty.
+  The simple string will have the length <span><span class="MathJax_Preview">j - k</span><script type="math/tex">j - k</script></span>.
+  In the next iteration we start again with the remaining <span><span class="MathJax_Preview">s_2</span><script type="math/tex">s_2</script></span>.</li>
+</ul>
+<h3 id="implementation">Implementation</h3>
+<p>Here we present the implementation of the Duval algorithm, which will return the desired Lyndon factorization of a given string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.</p>
+<p>```cpp duval_algorithm
+vector<string> duval(string const&amp; s) {
+    int n = s.size();
+    int i = 0;
+    vector<string> factorization;
+    while (i &lt; n) {
+        int j = i + 1, k = i;
+        while (j &lt; n &amp;&amp; s[k] &lt;= s[j]) {
+            if (s[k] &lt; s[j])
+                k = i;
+            else
+                k++;
+            j++;
+        }
+        while (i &lt;= k) {
+            factorization.push_back(s.substr(i, j - k));
+            i += j - k;
+        }
+    }
+    return factorization;
+}</p>
+<pre><code>
+### Complexity
+
+Let us estimate the running time of this algorithm.
+
+The **outer while loop** does not exceed $n$ iterations, since at the end of each iteration $i$ increases.
+Also the second inner while loop runs in $O(n)$, since is only outputs the final factorization.
+
+So we are only interested in the **first inner while loop**.
+How many iterations does it perform in the worst case?
+It's easy to see that the simple words that we identify in each iteration of the outer loop are longer than the remainder that we additionally compared.
+Therefore also the sum of the remainders will be smaller than $n$, which means that we only perform at most $O(n)$ iterations of the first inner while loop.
+In fact the total number of character comparisons will not exceed $4n - 3$.
+
+## Finding the smallest cyclic shift
+
+Let there be a string $s$.
+We construct the Lyndon factorization for the string $s + s$ (in $O(n)$ time).
+We will look for a simple string in the factorization, which starts at a position less than $n$ (i.e. it starts in the first instance of $s$), and ends in a position greater than or equal to $n$ (i.e. in the second instance) of $s$).
+It is stated, that the position of the start of this simple string will be the beginning of the desired smallest cyclic shift.
+This can be easily verified using the definition of the Lyndon decomposition.
+
+The beginning of the simple block can be found easily - just remember the pointer $i$ at the beginning of each iteration of the outer loop, which indicated the beginning of the current pre-simple string.
+
+So we get the following implementation:
+
+```cpp smallest_cyclic_string
+string min_cyclic_string(string s) {
+    s += s;
+    int n = s.size();
+    int i = 0, ans = 0;
+    while (i &lt; n / 2) {
+        ans = i;
+        int j = i + 1, k = i;
+        while (j &lt; n &amp;&amp; s[k] &lt;= s[j]) {
+            if (s[k] &lt; s[j])
+                k = i;
+            else
+                k++;
+            j++;
+        }
+        while (i &lt;= k)
+            i += j - k;
+    }
+    return s.substr(ans, n / 2);
+}
+</code></pre>
+
+<h2 id="problems">Problems</h2>
+<ul>
+<li><a href="https://uva.onlinejudge.org/index.php?option=onlinejudge&amp;page=show_problem&amp;problem=660">UVA #719 - Glass Beads</a></li>
+</ul>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

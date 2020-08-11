@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Algebra/Linear_Congruence_Equation/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Linear Congruence Equation - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Linear Congruence Equation", url: "#_top", children: [
+              {title: "Solution by finding the inverse element", url: "#solution-by-finding-the-inverse-element" },
+              {title: "Solution with the Extended Euclidean Algorithm", url: "#solution-with-the-extended-euclidean-algorithm" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Linear_Diophantine_Equation/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Linear_Diophantine_Equation/" class="btn btn-xs btn-link">
+        Linear Diophantine Equation
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Integer_Factorization/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Integer_Factorization/" class="btn btn-xs btn-link">
+        Integer Factorization
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="linear-congruence-equation">Linear Congruence Equation</h1>
+<p>This equation is of the form:</p>
+<div>
+<div class="MathJax_Preview">a \cdot x = b \pmod n,</div>
+<script type="math/tex; mode=display">a \cdot x = b \pmod n,</script>
+</div>
+<p>where <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>, <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> and <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> are given integers and <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> is an unknown integer.</p>
+<p>It is required to find the value <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> from the interval <span><span class="MathJax_Preview">[0, n-1]</span><script type="math/tex">[0, n-1]</script></span> (clearly, on the entire number line there can be infinitely many solutions that will differ from each other in <span><span class="MathJax_Preview">n \cdot k</span><script type="math/tex">n \cdot k</script></span> , where <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> is any integer). If the solution is not unique, then we will consider how to get all the solutions.</p>
+<h2 id="solution-by-finding-the-inverse-element">Solution by finding the inverse element</h2>
+<p>Let us first consider a simpler case where <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> are <strong>coprime</strong> (<span><span class="MathJax_Preview">\gcd(a, n) = 1</span><script type="math/tex">\gcd(a, n) = 1</script></span>).
+Then one can find the <a href="/docs/#Algorithms/algebra/module-inverse/">inverse</a> of <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>, and multiplying both sides of the equation with the inverse, and we can get a <strong>unique</strong> solution.</p>
+<div>
+<div class="MathJax_Preview">x = b \cdot a ^ {- 1} \pmod n</div>
+<script type="math/tex; mode=display">x = b \cdot a ^ {- 1} \pmod n</script>
+</div>
+<p>Now consider the case where <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> are <strong>not coprime</strong> (<span><span class="MathJax_Preview">\gcd(a, n) \ne 1</span><script type="math/tex">\gcd(a, n) \ne 1</script></span>).
+Then the solution will not always exist (for example <span><span class="MathJax_Preview">2 \cdot x = 1 \pmod 4</span><script type="math/tex">2 \cdot x = 1 \pmod 4</script></span> has no solution).</p>
+<p>Let <span><span class="MathJax_Preview">g = \gcd(a, n)</span><script type="math/tex">g = \gcd(a, n)</script></span>, i.e. the <a href="/docs/#Algorithms/algebra/euclid-algorithm/">greatest common divisor</a> of <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> (which in this case is greater than one).</p>
+<p>Then, if <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> is not divisible by <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span>, there is no solution. In fact, for any <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> the left side of the equation <span><span class="MathJax_Preview">a \cdot x \pmod n</span><script type="math/tex">a \cdot x \pmod n</script></span> , is always divisible by <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span>, while the right-hand side is not divisible by it, hence it follows that there are no solutions.</p>
+<p>If <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> divides <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>, then by dividing both sides of the equation by <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> (i.e. dividing <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>, <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> and <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> by <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span>), we receive a new equation:</p>
+<div>
+<div class="MathJax_Preview">a^\prime \cdot x = b^\prime \pmod{n^\prime}</div>
+<script type="math/tex; mode=display">a^\prime \cdot x = b^\prime \pmod{n^\prime}</script>
+</div>
+<p>in which <span><span class="MathJax_Preview">a^\prime</span><script type="math/tex">a^\prime</script></span> and <span><span class="MathJax_Preview">n^\prime</span><script type="math/tex">n^\prime</script></span> are already relatively prime, and we have already learned how to handle such an equation.
+We get <span><span class="MathJax_Preview">x^\prime</span><script type="math/tex">x^\prime</script></span> as solution for <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>.</p>
+<p>It is clear that this <span><span class="MathJax_Preview">x^\prime</span><script type="math/tex">x^\prime</script></span> will also be a solution of the original equation.
+However it will <strong>not be the only solution</strong>.
+It can be shown that the original equation has exactly <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> solutions, and they will look like this:</p>
+<div>
+<div class="MathJax_Preview">x_i = (x^\prime + i\cdot n^\prime) \pmod n \quad \text{for } i = 0 \ldots g-1</div>
+<script type="math/tex; mode=display">x_i = (x^\prime + i\cdot n^\prime) \pmod n \quad \text{for } i = 0 \ldots g-1</script>
+</div>
+<p>Summarizing, we can say that the <strong>number of solutions</strong> of the linear congruence equation is equal to either <span><span class="MathJax_Preview">g = \gcd(a, n)</span><script type="math/tex">g = \gcd(a, n)</script></span> or to zero.</p>
+<h2 id="solution-with-the-extended-euclidean-algorithm">Solution with the Extended Euclidean Algorithm</h2>
+<p>We can rewrite the linear congruence to the following Diophantine equation:</p>
+<div>
+<div class="MathJax_Preview">a \cdot x + n \cdot k = b,</div>
+<script type="math/tex; mode=display">a \cdot x + n \cdot k = b,</script>
+</div>
+<p>where <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> and <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> are unknown integers.</p>
+<p>The method of solving this equation is described in the corresponding article <a href="/docs/#Algorithms/algebra/linear-diophantine-equation/">Linear Diophantine equations</a> and it consists of applying the <a href="/docs/#Algorithms/algebra/extended-euclid-algorithm/">Extended Euclidean Algorithm</a>.</p>
+<p>It also describes the method of obtaining all solutions of this equation from one found solution, and incidentally this method, when carefully considered, is absolutely equivalent to the method described in the previous section.</p>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

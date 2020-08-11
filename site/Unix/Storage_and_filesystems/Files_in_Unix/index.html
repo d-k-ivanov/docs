@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Unix/Storage_and_filesystems/Files_in_Unix/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Files in Unix - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Change permisions recursively", url: "#_top", children: [
+          ]},
+          {title: "Count files", url: "#count-files", children: [
+          ]},
+          {title: "Remove file list", url: "#remove-file-list", children: [
+          ]},
+          {title: "Remove file suffix \"filename\"+\"suffix\"", url: "#remove-file-suffix-filenamesuffix", children: [
+          ]},
+          {title: "Move all files in one level directory in certain folder to another", url: "#move-all-files-in-one-level-directory-in-certain-folder-to-another", children: [
+          ]},
+          {title: "Search for certain file contents", url: "#search-for-certain-file-contents", children: [
+          ]},
+          {title: "Show directories content recursively", url: "#show-directories-content-recursively", children: [
+          ]},
+          {title: "Make dirs with indexes", url: "#make-dirs-with-indexes", children: [
+          ]},
+          {title: "Create bunch of files from list in a file", url: "#create-bunch-of-files-from-list-in-a-file", children: [
+          ]},
+          {title: "Move bunch of folders", url: "#move-bunch-of-folders", children: [
+          ]},
+          {title: "Mounts", url: "#mounts", children: [
+          ]},
+          {title: "Sum of root folders", url: "#sum-of-root-folders", children: [
+          ]},
+          {title: "Mass change extension of files", url: "#mass-change-extension-of-files", children: [
+          ]},
+          {title: "Split file", url: "#split-file", children: [
+          ]},
+          {title: "Joining all similarly prefixed files", url: "#joining-all-similarly-prefixed-files", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../GPFS/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../GPFS/" class="btn btn-xs btn-link">
+        GPFS
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Extend_Ext4_Partition/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Extend_Ext4_Partition/" class="btn btn-xs btn-link">
+        Extend Ext4 Partition
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="change-permisions-recursively">Change permisions recursively</h3>
+<p>You can use a simple <a href="https://github.com/keepbot/progs/blob/master/bash/permissions/default.sh" title="Change permissions to default">Script</a></p>
+<pre><code class="bash">find &lt;path_to_folder&gt; -type f -print -exec chmod 644 {} \;
+find &lt;path_to_folder&gt; -type d -print -exec chmod 755 {} \;
+
+# Union
+find /home/tmp -type f -print -exec chmod 644 {} \; &amp;&amp; find /home/tmp  -type d -print -exec chmod 755 {} \;
+</code></pre>
+
+<h3 id="count-files">Count files</h3>
+<pre><code class="bash">find . -type f | wc -l
+ls | wc -l
+</code></pre>
+
+<h3 id="remove-file-list">Remove file list</h3>
+<pre><code class="bash">ls | xargs rm
+</code></pre>
+
+<h3 id="remove-file-suffix-filenamesuffix">Remove file suffix "filename"+"suffix"</h3>
+<pre><code class="bash">for i in `find . -type f -name &quot;*&lt;suffix&gt;*&quot;`; do dst=`echo $i | sed s/&lt;suffix&gt;//`;mv $i $dst; done
+</code></pre>
+
+<h3 id="move-all-files-in-one-level-directory-in-certain-folder-to-another">Move all files in one level directory in certain folder to another</h3>
+<pre><code class="bash">find /&lt;path_to_folder&gt;/* -prune -type f | xargs -I '{}' mv {} /&lt;path_to_destination_folder&gt;/archive/.
+</code></pre>
+
+<h3 id="search-for-certain-file-contents">Search for certain file contents</h3>
+<pre><code class="bash">find . -type f -name &quot;*conf&quot; -exec echo {} \; -exec grep 192.168.0.1:3389 {} \;
+</code></pre>
+
+<h3 id="show-directories-content-recursively">Show directories content recursively</h3>
+<pre><code class="bash">ls -R /path | awk '
+/:$/&amp;&amp;f{s=$0;f=0}
+/:$/&amp;&amp;!f{sub(/:$/,&quot;&quot;);s=$0;f=1;next}
+NF&amp;&amp;f{ print s&quot;/&quot;$0 }'
+</code></pre>
+
+<h3 id="make-dirs-with-indexes">Make dirs with indexes</h3>
+<pre><code class="bash">for i in 0{1..9} {10..39}; do mkdir delete-$i; cd delete-$i; touch del-file-$i; cd ..; done
+</code></pre>
+
+<h3 id="create-bunch-of-files-from-list-in-a-file">Create bunch of files from list in a file</h3>
+<pre><code class="bash"># Predefined number of records
+head -&lt;number_of_lines&gt; inventory | awk '{ print $1 }' | xargs -I '{}' touch &lt;destination_folder&gt;/{}
+#E.g. head -10 inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}
+
+# Whole list from file
+cat &lt;filename&gt; | awk '{ print $1 }' | xargs -I '{}' touch &lt;destination_folder&gt;/{}
+#E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}
+</code></pre>
+
+<h3 id="move-bunch-of-folders">Move bunch of folders</h3>
+<pre><code class="bash">ls -1d &lt;space separeated folder list&gt; | xargs -I '{}' mv {} &lt;destination&gt;
+#E.g. ls -1d command_line dotfiles-srv programmming-examples shell_scripts | xargs -I '{}' mv {} github/
+</code></pre>
+
+<h3 id="mounts">Mounts</h3>
+<pre><code class="bash">#Show information about mounted file systems with 'column' examples**
+df -h | column -t
+mount -l | column -t
+</code></pre>
+
+<h3 id="sum-of-root-folders">Sum of root folders</h3>
+<pre><code class="bash">du -s * 2&gt;/dev/null | awk '{print $1}' | paste -sd+ | bc
+</code></pre>
+
+<h3 id="mass-change-extension-of-files">Mass change extension of files</h3>
+<pre><code class="bash">for file in *.txt; do mv &quot;$file&quot; &quot;`basename &quot;$file&quot; .txt`.md&quot;; done
+</code></pre>
+
+<h3 id="split-file">Split file</h3>
+<pre><code class="bash">split &lt;OPTION&gt; &lt;FILE&gt; &lt;PREFIX&gt;
+
+OPTIONS:
+-aN, --suffix-length=N - length of numeric suffix. See &quot;-d for suffices&quot;. Default 2.
+-bN, --bytes=N - Amount of bytes in each of file. There is some interesting way to produce sucficies: K, KB, M, MB, G, GB, T, TB etc., where all values with &quot;B&quot; multiply amount to 1024xx, and without &quot;B&quot; - to 1000xx, so 1M=1024KB 1MB=1000KB, 1G=1024MB 1GB=1000MB. See MiB and MB explanation in wiki.
+-d, --numeric-suffixes - enables numeric suffices &lt;PREFIX&gt;00, &lt;PREFIX&gt;01, &lt;PREFIX&gt;.02, etc., (with default prefix: х00, х01, х02, х03, etc.)
+-lN, --lines=N - If you doesn't split files by bytes, then you split it by lines. So this option set amout of line in result file. Default 1000.
+
+Example
+split -b 8GB -d archive.tar.gz archive.tar.gz.
+
+archive.tar.gz.00
+archive.tar.gz.01
+archive.tar.gz.02
+archive.tar.gz.03
+</code></pre>
+
+<h3 id="joining-all-similarly-prefixed-files">Joining all similarly prefixed files</h3>
+<p>For example, "_tar.gz.1of2" and "_tar.gz.2of2".</p>
+<pre><code class="bash"># Unix
+cat &quot;FileName_tar.gz.1of3&quot; &quot;FileName_tar.gz.2of3&quot; &quot;FileName_tar.gz.3of3&quot; &gt; &quot;FileName.tar.gz&quot;
+# Windows
+copy /b &quot;FileName_tar.gz.1of3&quot;+&quot;FileName_tar.gz.2of3&quot;+&quot;FileName_tar.gz.3of3&quot; &quot;FileName.tar.gz&quot;
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

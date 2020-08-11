@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Unix/Virtual/KVM/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>KVM - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Create virtual hdd image", url: "#_top", children: [
+          ]},
+          {title: "Start installation of virtual machine with virtual image", url: "#start-installation-of-virtual-machine-with-virtual-image", children: [
+          ]},
+          {title: "Run virtual machine", url: "#run-virtual-machine", children: [
+          ]},
+          {title: "Increase image", url: "#increase-image", children: [
+          ]},
+          {title: "Windows 10 with UEFI", url: "#windows-10-with-uefi", children: [
+          ]},
+          {title: "Open Virtual Machine Firmware (OVMF)", url: "#open-virtual-machine-firmware-ovmf", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Web/Curl/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Web/Curl/" class="btn btn-xs btn-link">
+        Curl
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Hyper-V/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Hyper-V/" class="btn btn-xs btn-link">
+        Hyper V
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="create-virtual-hdd-image">Create virtual hdd image</h3>
+<pre><code class="bash">qemu-img create -o preallocation=metadata -f qcow2 qcow2.img 20G
+</code></pre>
+
+<h3 id="start-installation-of-virtual-machine-with-virtual-image">Start installation of virtual machine with virtual image</h3>
+<pre><code class="bash">qemu-system-x86_64 -hda vdisk.img -cdrom /path/to/boot-media.iso -boot d -m 384
+</code></pre>
+
+<h3 id="run-virtual-machine">Run virtual machine</h3>
+<pre><code class="bash">qemu-system-x86_64 vdisk.img -m 384
+</code></pre>
+
+<h3 id="increase-image">Increase image</h3>
+<pre><code class="bash"># Stop virtual machine
+qemu-img resize &lt;path_to_vm_disk).img +&lt;SIZE&gt;G
+# Start virtual machine
+</code></pre>
+
+<h3 id="windows-10-with-uefi">Windows 10 with UEFI</h3>
+<pre><code># Installing
+qemu-system-x86_64 -bios /usr/share/ovmf/ovmf_x64.bin -enable-kvm -cpu host -smp 4 -m 2048 -cdrom ~/Downloads/Win10_English_x64.iso -net nic,model=virtio -net user -drive file=~/vm/win10.hd.img.raw,format=raw,if=virtio -vga qxl -drive file=~/Downloads/virtio-win-0.1.105.iso,index=1,media=cdrom
+
+# Running
+qemu-system-x86_64 -bios /usr/share/ovmf/ovmf_x64.bin -enable-kvm -cpu host -smp 4 -m 4096 -net nic,model=virtio -net user -drive file=~/vm/win10.hd.img.raw,format=raw,if=virtio -vga qxl -usbdevice tablet -rtc base=utc
+</code></pre>
+
+<h3 id="open-virtual-machine-firmware-ovmf">Open Virtual Machine Firmware (OVMF)</h3>
+<ul>
+<li><a href="http://www.linux-kvm.org/downloads/lersek/ovmf-whitepaper-c770f8c.txt">OVMF Whitepaper</a></li>
+<li><a href="https://fedoraproject.org/wiki/Using_UEFI_with_QEMU">Fedora OVMF</a></li>
+</ul>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
