@@ -134,7 +134,7 @@ The resulting graph will have the three characteristics.</p>
 This value can be found using a maximum flow algorithm:
 we use <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> as the source, <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> as the sink, and assign each edge a capacity of <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>.
 Then the maximum flow is the number of disjoint paths.</p>
-<p>The complexity for the algorithm using <a href="/docs/#Algorithms/graph/edmonds_karp/">Edmonds-Karp</a> is <span><span class="MathJax_Preview">O(V^2 V E^2) = O(V^3 E^2)</span><script type="math/tex">O(V^2 V E^2) = O(V^3 E^2)</script></span>.
+<p>The complexity for the algorithm using <a href="/docs/#Algorithms/Graph_Theory/Maximum_Flow_Ford-Fulkerson_and_Edmonds-Karp/">Edmonds-Karp</a> is <span><span class="MathJax_Preview">O(V^2 V E^2) = O(V^3 E^2)</span><script type="math/tex">O(V^2 V E^2) = O(V^3 E^2)</script></span>.
 But we should note, that this includes a hidden factor, since it is practically impossible to create a graph such that the maximum flow algorithm will be slow for all sources and sinks.
 Especially the algorithm will run pretty fast for random graphs.</p>
 <h3 id="special-algorithm-for-edge-connectivity">Special algorithm for edge connectivity</h3>

@@ -160,7 +160,7 @@ Therefore this phase can also be done in <span><span class="MathJax_Preview">O(n
 <p>Thus we received a version of Prim's algorithm with the complexity <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span>.</p>
 <p>In particular this implementation is very convenient for the Euclidean Minimum Spanning Tree problem:
 we have <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> points on a plane and the distance between each pair of points is the Euclidean distance between them, and we want to find a minimum spanning tree for this complete graph.
-This task can be solved by the described algorithm in <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span> time and <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> memory, which is not possible with <a href="/docs/#Algorithms/graph/mst_kruskal/">Kruskal's algorithm</a>.</p>
+This task can be solved by the described algorithm in <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span> time and <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> memory, which is not possible with <a href="/docs/#Algorithms/Graph_Theory/Minimum_Spanning_Tree_Kruskals_Algorithm/">Kruskal's algorithm</a>.</p>
 <pre><code class="cpp">int n;
 vector&lt;vector&lt;int&gt;&gt; adj; // adjacency matrix of graph
 const int INF = 1000000000; // weight INF means there is no edge

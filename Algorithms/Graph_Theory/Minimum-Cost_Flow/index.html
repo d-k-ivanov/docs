@@ -105,7 +105,7 @@ you want to find the maximum flow, and among all maximal flows we want to find t
 This is called the <strong>minimum-cost maximum-flow problem</strong>.</p>
 <p>Both these problems can be solved effectively with the algorithm of sucessive shortest paths.</p>
 <h2 id="algorithm">Algorithm</h2>
-<p>This algorithm is very similar to the <a href="/docs/#Algorithms/graph/edmonds_karp/">Edmonds-Karp</a> for computing the maximum flow.</p>
+<p>This algorithm is very similar to the <a href="/docs/#Algorithms/Graph_Theory/Maximum_Flow_Ford-Fulkerson_and_Edmonds-Karp/">Edmonds-Karp</a> for computing the maximum flow.</p>
 <h3 id="simplest-case">Simplest case</h3>
 <p>First we only consider the simplest case, where the graph is oriented, and there is at most one edge between any pair of vertices (e.g. if <span><span class="MathJax_Preview">(i, j)</span><script type="math/tex">(i, j)</script></span> is an edge in the graph, then <span><span class="MathJax_Preview">(j, i)</span><script type="math/tex">(j, i)</script></span> cannot be part in it as well).</p>
 <p>Let <span><span class="MathJax_Preview">U_{i j}</span><script type="math/tex">U_{i j}</script></span> be the capacity of an edge <span><span class="MathJax_Preview">(i, j)</span><script type="math/tex">(i, j)</script></span> if this edge exists.
@@ -142,12 +142,12 @@ Since we have multiple edges, we have to store the edge number for the reversed 
 <h3 id="complexity">Complexity</h3>
 <p>Analog to the analysis of the Edmonds-Karp algorithm we get the following estimation:
 <span><span class="MathJax_Preview">O(n m) \cdot T(n, m)</span><script type="math/tex">O(n m) \cdot T(n, m)</script></span>, where <span><span class="MathJax_Preview">T(n, m)</span><script type="math/tex">T(n, m)</script></span> is the time required to find the shortest path in a graph with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> edges</p>
-<p>If this search is done with the <a href="/docs/#Algorithms/graph/dijkstra/">Dijkstra algorithm</a>, then the complexity for the minimum-cost algorithm would become <span><span class="MathJax_Preview">O(n^3 m)</span><script type="math/tex">O(n^3 m)</script></span>.
+<p>If this search is done with the <a href="/docs/#Algorithms/Graph_Theory/Dijkstra_Algorithm/">Dijkstra algorithm</a>, then the complexity for the minimum-cost algorithm would become <span><span class="MathJax_Preview">O(n^3 m)</span><script type="math/tex">O(n^3 m)</script></span>.
 However we deal with edges with negative cost.
 So Dijkstra is not applicable, at least not unmodified.</p>
-<p>Instead we can use the <a href="/docs/#Algorithms/graph/bellman_ford/">Bellman-Ford algorithm</a>. With it the complexity becomes <span><span class="MathJax_Preview">O(n^2 m^2)</span><script type="math/tex">O(n^2 m^2)</script></span>.</p>
+<p>Instead we can use the <a href="/docs/#Algorithms/Graph_Theory/Bellman-Ford_Algorithm/">Bellman-Ford algorithm</a>. With it the complexity becomes <span><span class="MathJax_Preview">O(n^2 m^2)</span><script type="math/tex">O(n^2 m^2)</script></span>.</p>
 <h2 id="implementation">Implementation</h2>
-<p>Here is an implementation using the <a href="/docs/#Algorithms/graph/bellman_ford/">SPFA algorithm</a> for the simplest case.</p>
+<p>Here is an implementation using the <a href="/docs/#Algorithms/Graph_Theory/Bellman-Ford_Algorithm/">SPFA algorithm</a> for the simplest case.</p>
 <p>```cpp min_cost_flow_successive_shortest_path
 struct Edge
 {
