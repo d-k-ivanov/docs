@@ -101,7 +101,7 @@ A bridge is an edge whose removal makes the graph disconnected (or, more precise
 Our task is to find all the bridges in the given graph.</p>
 <p>Informally this task can be put as follows:
 we have to find all the "important" roads on the given road map, i.e. such roads that the removal of any of them will lead to some cities being unreachable from others.</p>
-<p>There is already the article <a href="/docs/#Algorithms/graph/bridge-searching/">Finding Bridges in <span><span class="MathJax_Preview">O(N+M)</span><script type="math/tex">O(N+M)</script></span></a> which solves this task with a <a href="/docs/#Algorithms/graph/depth-first-search/">Depth First Search</a> traversal.
+<p>There is already the article <a href="/docs/#Algorithms/Graph_Theory/Bridge_Searching/">Finding Bridges in <span><span class="MathJax_Preview">O(N+M)</span><script type="math/tex">O(N+M)</script></span></a> which solves this task with a <a href="/docs/#Algorithms/Graph_Theory/Depth_First_Search/">Depth First Search</a> traversal.
 This algorithm will be much more complicated, but it has one big advantage:
 the algorithm described in this article works online, which means that the input graph doesn't have to be not known in advance.
 The edges are added once at a time, and after each addition the algorithm recounts all the bridges in the current graph.
@@ -112,7 +112,7 @@ Then we receive pairs of vertices <span><span class="MathJax_Preview">(a, b)</sp
 After each received edge, i.e. after adding each edge, output the current number of bridges in the graph.</p>
 <p>It is also possible to maintain a list of all bridges as well as explicitly support the 2-edge-connected components.</p>
 <p>The algorithm described below works in <span><span class="MathJax_Preview">O(n \log n + m)</span><script type="math/tex">O(n \log n + m)</script></span> time, where <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is the number of edges.
-The algorithm is based on the data structure <a href="/docs/#Algorithms/data_structures/disjoint_set_union/">Disjoint Set Union</a>.
+The algorithm is based on the data structure <a href="/docs/#Algorithms/Data_Structures/Disjoint_Set_Union/">Disjoint Set Union</a>.
 However the implementation in this article takes <span><span class="MathJax_Preview">O(n \log n + m \log n)</span><script type="math/tex">O(n \log n + m \log n)</script></span> time, because it uses the simplified version of the DSU without Union by Rank.</p>
 <h2 id="algorithm">Algorithm</h2>
 <p>First let's define a <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-edge-connected component:
@@ -139,7 +139,7 @@ If we compress each of those 2-edge-connected components into vertices and only 
 <p>Thus, in this case the number of bridges decreases by two or more.</p>
 <p>Consequently the whole task is reduced to the effective implementation of all these operations over the forest of 2-edge-connected components.</p>
 <h2 id="data-structures-for-storing-the-forest">Data Structures for storing the forest</h2>
-<p>The only data structure that we need is <a href="/docs/#Algorithms/data_structures/disjoint_set_union/">Disjoint Set Union</a>.
+<p>The only data structure that we need is <a href="/docs/#Algorithms/Data_Structures/Disjoint_Set_Union/">Disjoint Set Union</a>.
 In fact we will make two copies of this structure:
 one will be to maintain the connected components, the other to maintain the 2-edge-connected components.
 And in addition we store the structure of the trees in the forest of 2-edge-connected components via pointers:
@@ -173,7 +173,7 @@ Each 2-edge-connected component will store the index <code>par[]</code> of its a
 <p>We will have to maintain the size of each connected component, but the data structure DSU makes this possible without difficulty.</p>
 <ul>
 <li>Searching for the cycle formed by adding a new edge <span><span class="MathJax_Preview">(a, b)</span><script type="math/tex">(a, b)</script></span>.
-  Since <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> are already connected in the tree we need to find the <a href="/docs/#Algorithms/graph/lca/">Lowest Common Ancestor</a> of the vertices <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>.
+  Since <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> are already connected in the tree we need to find the <a href="/docs/#Algorithms/Graph_Theory/Lowest_Common_Ancestor/">Lowest Common Ancestor</a> of the vertices <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>.
   The cycle will consist of the paths from <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> to the LCA, from the LCA to <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> and the edge <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> to <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>.</li>
 </ul>
 <p>After finding the cycle we compress all vertices of the detected cycle into one vertex.

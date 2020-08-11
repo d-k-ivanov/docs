@@ -150,7 +150,7 @@ This way we visit all vertices that are reachable from the starting vertex.</p>
 <p>First convert the given graph into a directed graph by running a series of depth first searches and making each edge directed as we go through it, in the direction we went. Second, find the strongly connected components in this directed graph. Bridges are the edges whose ends belong to different strongly connected components.</p>
 <h2 id="classification-of-edges-of-a-graph">Classification of edges of a graph</h2>
 <p>We can classify the edges using the entry and exit time of the end nodes <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> and <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> of the edges <span><span class="MathJax_Preview">(u,v)</span><script type="math/tex">(u,v)</script></span>.
-These classifications are often used for problems like <a href="/docs/#Algorithms/graph/bridge-searching/">finding bridges</a> and <a href="/docs/#Algorithms/graph/cutpoints/">finding articulation points</a>.</p>
+These classifications are often used for problems like <a href="/docs/#Algorithms/Graph_Theory/Bridge_Searching/">finding bridges</a> and <a href="/docs/#Algorithms/Graph_Theory/Cut_Points/">finding articulation points</a>.</p>
 <p>We perform a DFS and classify the encountered edges using the following rules:</p>
 <p>If <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> is not visited:</p>
 <ul>

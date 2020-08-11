@@ -113,7 +113,7 @@ It can be proven that the modular inverse exists if and only if <span><span clas
 <div class="MathJax_Preview">a \cdot x + m \cdot y = 1</div>
 <script type="math/tex; mode=display">a \cdot x + m \cdot y = 1</script>
 </div>
-<p>This is a <a href="/docs/#Algorithms/algebra/linear-diophantine-equation/">Linear Diophantine equation in two variables</a>.
+<p>This is a <a href="/docs/#Algorithms/Algebra/Linear_Diophantine_Equation/">Linear Diophantine equation in two variables</a>.
 As shown in the linked article, when <span><span class="MathJax_Preview">\gcd(a, m) = 1</span><script type="math/tex">\gcd(a, m) = 1</script></span>, the equation has a solution which can be found using the <a href="http://en.wikipedia.org/wiki/Extended_Euclidean_algorithm">extended Euclidean algorithm</a>.
 Note that <span><span class="MathJax_Preview">\gcd(a, m) = 1</span><script type="math/tex">\gcd(a, m) = 1</script></span> is also the condition for the modular inverse to exist.</p>
 <p>Now, if we take modulo <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> of both sides, we can get rid of <span><span class="MathJax_Preview">m \cdot y</span><script type="math/tex">m \cdot y</script></span>, and the equation becomes:</p>
@@ -142,7 +142,7 @@ The resulting <code>x</code> from the extended Euclidean algorithm may be negati
 <div class="MathJax_Preview">a^{\phi (m)} \equiv 1 \mod m</div>
 <script type="math/tex; mode=display">a^{\phi (m)} \equiv 1 \mod m</script>
 </div>
-<p><span><span class="MathJax_Preview">\phi</span><script type="math/tex">\phi</script></span> is <a href="/docs/#Algorithms/algebra/phi-function/">Euler's Totient function</a>.
+<p><span><span class="MathJax_Preview">\phi</span><script type="math/tex">\phi</script></span> is <a href="/docs/#Algorithms/Algebra/Euler_Totient_Function/">Euler's Totient function</a>.
 Again, note that <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> being relative prime was also the condition for the modular inverse to exist.</p>
 <p>If <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is a prime number, this simplifies to <a href="http://en.wikipedia.org/wiki/Fermat's_little_theorem">Fermat's little theorem</a>:</p>
 <div>
@@ -154,7 +154,7 @@ Again, note that <span><span class="MathJax_Preview">a</span><script type="math/
 <li>For an arbitrary (but coprime) modulus <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>: <span><span class="MathJax_Preview">a ^ {\phi (m) - 1} \equiv a ^{-1} \mod m</span><script type="math/tex">a ^ {\phi (m) - 1} \equiv a ^{-1} \mod m</script></span></li>
 <li>For a prime modulus <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>: <span><span class="MathJax_Preview">a ^ {m - 2} \equiv a ^ {-1} \mod m</span><script type="math/tex">a ^ {m - 2} \equiv a ^ {-1} \mod m</script></span></li>
 </ul>
-<p>From these results, we can easily find the modular inverse using the <a href="/docs/#Algorithms/algebra/binary-exp/">binary exponentiation algorithm</a>, which works in <span><span class="MathJax_Preview">O(\log m)</span><script type="math/tex">O(\log m)</script></span> time.</p>
+<p>From these results, we can easily find the modular inverse using the <a href="/docs/#Algorithms/Algebra/Binary_Exponentiation/">binary exponentiation algorithm</a>, which works in <span><span class="MathJax_Preview">O(\log m)</span><script type="math/tex">O(\log m)</script></span> time.</p>
 <p>Even though this method is easier to understand than the method described in previous paragraph, in the case when <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is not a prime number, we need to calculate Euler phi function, which involves factorization of <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>, which might be very hard. If the prime factorization of <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is known, then the complexity of this method is <span><span class="MathJax_Preview">O(\log m)</span><script type="math/tex">O(\log m)</script></span>.</p>
 <h2 id="finding-the-modular-inverse-for-every-number-modulo-mm-mod-inv-all-num">Finding the modular inverse for every number modulo <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> {#mod-inv-all-num}</h2>
 <p>The problem is the following:

@@ -262,7 +262,7 @@ void solve()
 </code></pre>
 
 <p>The above implementation looks for a negative cycle reachable from some starting vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>; however, the algorithm can be modified to just looking for any negative cycle in the graph. For this we need to put all the distance <span><span class="MathJax_Preview">d[i]</span><script type="math/tex">d[i]</script></span> to zero and not infinity — as if we are looking for the shortest path from all vertices simultaneously; the validity of the detection of a negative cycle is not affected.</p>
-<p>For more on this topic — see separate article, <a href="/docs/#Algorithms/graph/finding-negative-cycle-in-graph/">Finding a negative cycle in the graph</a>.</p>
+<p>For more on this topic — see separate article, <a href="/docs/#Algorithms/Graph_Theory/Cycle_Negative/">Finding a negative cycle in the graph</a>.</p>
 <h2 id="shortest-path-faster-algorithm-spfa">Shortest Path Faster Algorithm (SPFA)</h2>
 <p>SPFA is a improvement of the Bellman-Ford algorithm which takes advantage of the fact that not all attempts at relaxation will work.
 The main idea is to create a queue containing only the vertices that were relaxed but that still could further relax their neighbors.
@@ -318,7 +318,7 @@ return true;
 <li><a href="http://uva.onlinejudge.org/index.php?option=onlinejudge&amp;page=show_problem&amp;problem=456">UVA #515 "King" [difficulty: medium]</a></li>
 <li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=3964">UVA 12519 - The Farnsworth Parabox</a></li>
 </ul>
-<p>See also the problem list in the article <a href="/docs/#Algorithms/graph/finding-negative-cycle-in-graph.html">Finding the negative cycle in a graph</a>.</p>
+<p>See also the problem list in the article <a href="/docs/#Algorithms/Graph_Theory/Cycle_Negative">Finding the negative cycle in a graph</a>.</p>
 
   <br>
 </div>

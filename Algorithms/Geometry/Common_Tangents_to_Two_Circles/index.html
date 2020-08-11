@@ -112,39 +112,55 @@ Look at the images for different cases.
 <p>Denote <span><span class="MathJax_Preview">r_1</span><script type="math/tex">r_1</script></span> and <span><span class="MathJax_Preview">r_2</span><script type="math/tex">r_2</script></span> the radii of the first and second circles, and by <span><span class="MathJax_Preview">(v_x,v_y)</span><script type="math/tex">(v_x,v_y)</script></span> the coordinates of the center of the second circle and point <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> different from origin. (Note: we are not considering the case in which both the circles are same).</p>
 <p>To solve the problem, we approach it purely <strong>algebraically</strong> . We need to find all the lines of the form <span><span class="MathJax_Preview">ax + by + c = 0</span><script type="math/tex">ax + by + c = 0</script></span> that lie at a distance <span><span class="MathJax_Preview">r_1</span><script type="math/tex">r_1</script></span> from the origin of coordinates, and at a distance <span><span class="MathJax_Preview">r_2</span><script type="math/tex">r_2</script></span> from a point <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>. In addition, we impose the condition of normalization of the straight line: the sum of the squares of the coefficients and must be equal to one (this is necessary, otherwise the same straight line will correspond to infinitely many representations of the form <span><span class="MathJax_Preview">ax + by + c = 0</span><script type="math/tex">ax + by + c = 0</script></span>). Total we get such a system of equations for the desired <span><span class="MathJax_Preview">a, b, c</span><script type="math/tex">a, b, c</script></span>:</p>
 <div>
-<div class="MathJax_Preview">a^2 + b^2 = 1$$
-$$\mid a \cdot 0 + b \cdot 0 + c \mid = r_1$$
-$$\mid a \cdot v_x + b \cdot v_y + c \mid = r_2</div>
-<script type="math/tex; mode=display">a^2 + b^2 = 1$$
-$$\mid a \cdot 0 + b \cdot 0 + c \mid = r_1$$
-$$\mid a \cdot v_x + b \cdot v_y + c \mid = r_2</script>
+<div class="MathJax_Preview">a^2 + b^2 = 1</div>
+<script type="math/tex; mode=display">a^2 + b^2 = 1</script>
+</div>
+<div>
+<div class="MathJax_Preview">\mid a \cdot 0 + b \cdot 0 + c \mid = r_1</div>
+<script type="math/tex; mode=display">\mid a \cdot 0 + b \cdot 0 + c \mid = r_1</script>
+</div>
+<div>
+<div class="MathJax_Preview">\mid a \cdot v_x + b \cdot v_y + c \mid = r_2</div>
+<script type="math/tex; mode=display">\mid a \cdot v_x + b \cdot v_y + c \mid = r_2</script>
 </div>
 <p>To get rid of the modulus, note that there are only four ways to open the modulus in this system. All these methods can be considered by the general case, if we understand the opening of the modulus as the fact that the coefficient on the right-hand side may be multiplied by -1. In other words, we turn to this system:</p>
 <div>
-<div class="MathJax_Preview">a^2 + b^2 = 1$$
-$$c = \pm r_1$$
-$$a \cdot v_x + b \cdot v_y + c = \pm r_2</div>
-<script type="math/tex; mode=display">a^2 + b^2 = 1$$
-$$c = \pm r_1$$
-$$a \cdot v_x + b \cdot v_y + c = \pm r_2</script>
+<div class="MathJax_Preview">a^2 + b^2 = 1</div>
+<script type="math/tex; mode=display">a^2 + b^2 = 1</script>
+</div>
+<div>
+<div class="MathJax_Preview">c = \pm r_1</div>
+<script type="math/tex; mode=display">c = \pm r_1</script>
+</div>
+<div>
+<div class="MathJax_Preview">a \cdot v_x + b \cdot v_y + c = \pm r_2</div>
+<script type="math/tex; mode=display">a \cdot v_x + b \cdot v_y + c = \pm r_2</script>
 </div>
 <p>Entering the notation <span><span class="MathJax_Preview">d_1 = \pm r_1</span><script type="math/tex">d_1 = \pm r_1</script></span> and <span><span class="MathJax_Preview">d_2 = \pm r_2</span><script type="math/tex">d_2 = \pm r_2</script></span> , we come to the conclusion that the system must have four solutions:</p>
 <div>
-<div class="MathJax_Preview">a^2 + b^2 = 1$$
-$$c = d_1$$
-$$a \cdot v_x + b \cdot v_y + c = d_2</div>
-<script type="math/tex; mode=display">a^2 + b^2 = 1$$
-$$c = d_1$$
-$$a \cdot v_x + b \cdot v_y + c = d_2</script>
+<div class="MathJax_Preview">a^2 + b^2 = 1</div>
+<script type="math/tex; mode=display">a^2 + b^2 = 1</script>
+</div>
+<div>
+<div class="MathJax_Preview">c = d_1</div>
+<script type="math/tex; mode=display">c = d_1</script>
+</div>
+<div>
+<div class="MathJax_Preview">a \cdot v_x + b \cdot v_y + c = d_2</div>
+<script type="math/tex; mode=display">a \cdot v_x + b \cdot v_y + c = d_2</script>
 </div>
 <p>The solution of this system is reduced to solving a quadratic equation. We will omit all the cumbersome calculations, and immediately give a ready answer:</p>
 <div>
-<div class="MathJax_Preview">a = {( d_2 - d_1 ) v_x \pm v_y \sqrt{v_x^2 + v_y^2-(d_2-d_1)^2} \over {v_x^2 + v_y^2} }$$
-$$b = {( d_2 - d_1 ) v_y \pm v_x \sqrt{v_x^2 + v_y^2-(d_2-d_1)^2} \over {v_x^2 + v_y^2} }$$
-$$c = d_1</div>
-<script type="math/tex; mode=display">a = {( d_2 - d_1 ) v_x \pm v_y \sqrt{v_x^2 + v_y^2-(d_2-d_1)^2} \over {v_x^2 + v_y^2} }$$
-$$b = {( d_2 - d_1 ) v_y \pm v_x \sqrt{v_x^2 + v_y^2-(d_2-d_1)^2} \over {v_x^2 + v_y^2} }$$
-$$c = d_1</script>
+<div class="MathJax_Preview">a = {( d_2 - d_1 ) v_x \pm v_y \sqrt{v_x^2 + v_y^2-(d_2-d_1)^2} \over {v_x^2 + v_y^2} }</div>
+<script type="math/tex; mode=display">a = {( d_2 - d_1 ) v_x \pm v_y \sqrt{v_x^2 + v_y^2-(d_2-d_1)^2} \over {v_x^2 + v_y^2} }</script>
+</div>
+<div>
+<div class="MathJax_Preview">b = {( d_2 - d_1 ) v_y \pm v_x \sqrt{v_x^2 + v_y^2-(d_2-d_1)^2} \over {v_x^2 + v_y^2} }</div>
+<script type="math/tex; mode=display">b = {( d_2 - d_1 ) v_y \pm v_x \sqrt{v_x^2 + v_y^2-(d_2-d_1)^2} \over {v_x^2 + v_y^2} }</script>
+</div>
+<div>
+<div class="MathJax_Preview">c = d_1</div>
+<script type="math/tex; mode=display">c = d_1</script>
 </div>
 <p>Total we got eight solutions instead four. However, it is easy to understand where superfluous decisions arise: in fact, in the latter system, it is enough to take only one solution (for example, the first). In fact, the geometric meaning of what we take <span><span class="MathJax_Preview">\pm r_1</span><script type="math/tex">\pm r_1</script></span> and <span><span class="MathJax_Preview">\pm r_2</span><script type="math/tex">\pm r_2</script></span> is clear: we are actually sorting out which side of each circle there is a straight line. Therefore, the two methods that arise when solving the latter system are redundant: it is enough to choose one of the two solutions (only, of course, in all four cases, you must choose the same family of solutions).</p>
 <p>The last thing that we have not yet considered is <strong>how to shift the straight lines</strong> in the case when the first circle was not originally located at the origin. However, everything is simple here: it follows from the linearity of the equation of a straight line that the value <span><span class="MathJax_Preview">a \cdot x_0 + b \cdot y_0</span><script type="math/tex">a \cdot x_0 + b \cdot y_0</script></span> (where <span><span class="MathJax_Preview">x_0</span><script type="math/tex">x_0</script></span> and <span><span class="MathJax_Preview">y_0</span><script type="math/tex">y_0</script></span> are the coordinates of the original center of the first circle) must be subtracted from the coefficient <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>.</p>

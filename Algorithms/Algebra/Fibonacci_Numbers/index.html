@@ -135,7 +135,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </ul>
 <p><span><span class="MathJax_Preview"><span><span class="MathJax_Preview">GCD(F_m, F_n) = F_{GCD(m, n)}</span><script type="math/tex">GCD(F_m, F_n) = F_{GCD(m, n)}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">GCD(F_m, F_n) = F_{GCD(m, n)}</span><script type="math/tex">GCD(F_m, F_n) = F_{GCD(m, n)}</script></span></script></span></p>
 <ul>
-<li>Fibonacci numbers are the worst possible inputs for Euclidean algorithm (see Lame's theorem in <a href="/docs/#Algorithms/algebra/euclid-algorithm/">Euclidean algorithm</a>)</li>
+<li>Fibonacci numbers are the worst possible inputs for Euclidean algorithm (see Lame's theorem in <a href="/docs/#Algorithms/Algebra/GCD_Euclidean_Algorithm/">Euclidean algorithm</a>)</li>
 </ul>
 <h2 id="fibonacci-coding">Fibonacci Coding</h2>
 <p>We can use the sequence to encode positive integers into binary code words. According to Zeckendorf's theorem, any natural number <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> can be uniquely represented as a sum of Fibonacci numbers:</p>
@@ -209,7 +209,7 @@ Notice that this is the only occurrence where two consecutive 1-bits appear.</p>
 <div class="MathJax_Preview">\begin{pmatrix}F_n &amp; F_{n+1} \cr\end{pmatrix} = \begin{pmatrix}F_0 &amp; F_1 \cr\end{pmatrix} \cdot P^n</div>
 <script type="math/tex; mode=display">\begin{pmatrix}F_n & F_{n+1} \cr\end{pmatrix} = \begin{pmatrix}F_0 & F_1 \cr\end{pmatrix} \cdot P^n</script>
 </div>
-<p>Thus, in order to find <span><span class="MathJax_Preview">F_n</span><script type="math/tex">F_n</script></span>, we must raise the matrix <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> to <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>. This can be done in <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> (see <a href="/docs/#Algorithms/algebra/binary-exp/">Binary exponentiation</a>).</p>
+<p>Thus, in order to find <span><span class="MathJax_Preview">F_n</span><script type="math/tex">F_n</script></span>, we must raise the matrix <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> to <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>. This can be done in <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> (see <a href="/docs/#Algorithms/Algebra/Binary_Exponentiation/">Binary exponentiation</a>).</p>
 <h3 id="fast-doubling-method">Fast Doubling Method</h3>
 <p>Using above method we can find these equations:</p>
 <div>

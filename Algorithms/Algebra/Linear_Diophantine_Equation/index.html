@@ -113,7 +113,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h2 id="the-degenerate-case">The degenerate case</h2>
 <p>A degenerate case that need to be taken care of is when <span><span class="MathJax_Preview">a = b = 0</span><script type="math/tex">a = b = 0</script></span>. It is easy to see that we either have no solutions or infinitely many solutions, depending on whether <span><span class="MathJax_Preview">c = 0</span><script type="math/tex">c = 0</script></span> or not. In the rest of this article, we will ignore this case.</p>
 <h2 id="finding-a-solution">Finding a solution</h2>
-<p>To find one solution of the Diophantine equation with 2 unknowns, you can use the <a href="/docs/#Algorithms/algebra/extended-euclid-algorithm/">Extended Euclidean algorithm</a>. First, assume that <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> are non-negative. When we apply Extended Euclidean algorithm for <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>, we can find their greatest common divisor <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> and 2 numbers <span><span class="MathJax_Preview">x_g</span><script type="math/tex">x_g</script></span> and <span><span class="MathJax_Preview">y_g</span><script type="math/tex">y_g</script></span> such that:</p>
+<p>To find one solution of the Diophantine equation with 2 unknowns, you can use the <a href="/docs/#Algorithms/Algebra/GCD_Euclidean_Algorithm_Extended/">Extended Euclidean algorithm</a>. First, assume that <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> are non-negative. When we apply Extended Euclidean algorithm for <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>, we can find their greatest common divisor <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> and 2 numbers <span><span class="MathJax_Preview">x_g</span><script type="math/tex">x_g</script></span> and <span><span class="MathJax_Preview">y_g</span><script type="math/tex">y_g</script></span> such that:</p>
 <div>
 <div class="MathJax_Preview">a x_g + b y_g = g</div>
 <script type="math/tex; mode=display">a x_g + b y_g = g</script>
@@ -258,10 +258,12 @@ int find_all_solutions(int a, int b, int c, int minx, int maxx, int miny, int ma
 <p>The idea is similar to previous section: We find any solution of the Diophantine equation, and then shift the solution to satisfy some conditions.</p>
 <p>Finally, use the knowledge of the set of all solutions to find the minimum:</p>
 <div>
-<div class="MathJax_Preview">x' = x + k \cdot \frac{b}{g},$$
-$$y' = y - k \cdot \frac{a}{g}.</div>
-<script type="math/tex; mode=display">x' = x + k \cdot \frac{b}{g},$$
-$$y' = y - k \cdot \frac{a}{g}.</script>
+<div class="MathJax_Preview">x' = x + k \cdot \frac{b}{g},</div>
+<script type="math/tex; mode=display">x' = x + k \cdot \frac{b}{g},</script>
+</div>
+<div>
+<div class="MathJax_Preview">y' = y - k \cdot \frac{a}{g}.</div>
+<script type="math/tex; mode=display">y' = y - k \cdot \frac{a}{g}.</script>
 </div>
 <p>Note that <span><span class="MathJax_Preview">x + y</span><script type="math/tex">x + y</script></span> change as follows:</p>
 <div>
