@@ -3,7 +3,7 @@
 Given a graph with $n$ vertices and $m$ edges with weights $w_i$ and a starting vertex $v_0$.
 The task is to find the shortest path from the vertex $v_0$ to every other vertex.
 
-The algorithm from D´Esopo-Pape will work faster than [Dijkstra's algorithm](/docs/#Algorithms/graph/dijkstra/) and the [Bellman-Ford algorithm](/docs/#Algorithms/graph/bellman_ford/) in most cases, and will also work for negative edges.
+The algorithm from D´Esopo-Pape will work faster than [Dijkstra's algorithm](/docs/#Algorithms/Graph_Theory/Dijkstra_Algorithm/) and the [Bellman-Ford algorithm](/docs/#Algorithms/Graph_Theory/Bellman-Ford_Algorithm/) in most cases, and will also work for negative edges.
 However not for negative cycles.
 
 ## Description

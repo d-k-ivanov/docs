@@ -32,7 +32,7 @@ Fibonacci numbers possess a lot of interesting properties. Here are a few of the
 
   $$GCD(F_m, F_n) = F_{GCD(m, n)}$$
 
-* Fibonacci numbers are the worst possible inputs for Euclidean algorithm (see Lame's theorem in [Euclidean algorithm](/docs/#Algorithms/algebra/euclid-algorithm/))
+* Fibonacci numbers are the worst possible inputs for Euclidean algorithm (see Lame's theorem in [Euclidean algorithm](/docs/#Algorithms/Algebra/GCD_Euclidean_Algorithm/))
 
 ## Fibonacci Coding
 
@@ -98,7 +98,7 @@ Denoting $P \equiv \begin{pmatrix}0 & 1 \cr 1 & 1 \cr\end{pmatrix}$, we have:
 
 $$\begin{pmatrix}F_n & F_{n+1} \cr\end{pmatrix} = \begin{pmatrix}F_0 & F_1 \cr\end{pmatrix} \cdot P^n$$
 
-Thus, in order to find $F_n$, we must raise the matrix $P$ to $n$. This can be done in $O(\log n)$ (see [Binary exponentiation](/docs/#Algorithms/algebra/binary-exp/)).
+Thus, in order to find $F_n$, we must raise the matrix $P$ to $n$. This can be done in $O(\log n)$ (see [Binary exponentiation](/docs/#Algorithms/Algebra/Binary_Exponentiation/)).
 
 ### Fast Doubling Method
 

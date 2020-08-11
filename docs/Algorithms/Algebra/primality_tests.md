@@ -25,13 +25,13 @@ bool isPrime(int x) {
 
 This is the simplest form of a prime check.
 You can optimize this function quite a bit, for instance by only checking all odd numbers in the loop, since the only even prime number is 2.
-Multiple such optimizations are described in the article about [integer factorization](/docs/#Algorithms/algebra/factorization/).
+Multiple such optimizations are described in the article about [integer factorization](/docs/#Algorithms/Algebra/Integer_Factorization/).
 
 ## Fermat primality test
 
 This is a probabilistic test.
 
-Fermat's little theorem (see also [Euler's totient function](https://cp-algorithms.com/algebra/phi-function/)) states, that for a prime number $p$ and a coprime integer $a$ the following equation holds:
+Fermat's little theorem (see also [Euler's totient function](/docs/#Algorithms/Algebra/Euler_Totient_Function/)) states, that for a prime number $p$ and a coprime integer $a$ the following equation holds:
 
 $$a^{p-1} \equiv 1 \bmod p$$
 
@@ -66,7 +66,7 @@ bool probablyPrimeFermat(int n, int iter=5) {
 }
 ```
 
-We use [Binary Exponentiation](/docs/#Algorithms/algebra/binary-exp/) to efficiently compute the power $a^{p-1}$.
+We use [Binary Exponentiation](/docs/#Algorithms/Algebra/Binary_Exponentiation/) to efficiently compute the power $a^{p-1}$.
 
 There is one bad news though:
 there exist some composite numbers where $a^{n-1} \equiv 1 \bmod n$ holds for all $a$ coprime to $n$, for instance for the number $561 = 3 \cdot 11 \cdot 17$.

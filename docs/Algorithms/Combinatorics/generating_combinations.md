@@ -35,7 +35,7 @@ bool next_combination(vector<int>& a, int n) {
 This time we want to generate all $K$-combinations in such
 an order, that adjacent combinations differ exactly by one element.
 
-This can be solved using the [Gray Code](/docs/#Algorithms/algebra/Gray_Code/):
+This can be solved using the [Gray Code](/docs/#Algorithms/Algebra/Gray_Code/):
 If we assign a bitmask to each subset, then by generating and iterating over these bitmasks with Gray codes, we can obtain our answer.
 
 The task of generating $K$-combinations can also be solved using Gray Codes in a different way:

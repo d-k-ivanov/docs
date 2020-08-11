@@ -98,7 +98,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <h1 id="montgomery-multiplication">Montgomery Multiplication</h1>
-<p>Many algorithms in number theory, like <a href="/docs/#Algorithms/algebra/primality_tests/">prime testing</a> or <a href="/docs/#Algorithms/algebra/factorization/">integer factorization</a>, and in cryptography, like RSA, require lots of operations modulo a large number.
+<p>Many algorithms in number theory, like <a href="/docs/#Algorithms/Algebra/Primality_Tests/">prime testing</a> or <a href="/docs/#Algorithms/Algebra/Integer_Factorization/">integer factorization</a>, and in cryptography, like RSA, require lots of operations modulo a large number.
 A multiplications like <span><span class="MathJax_Preview">x y \bmod{n}</span><script type="math/tex">x y \bmod{n}</script></span> is quite slow to compute with the typical algorithms, since it requires a division to know how many times <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> has to be subtracted from the product.
 And division is a really expensive operation, especially with big numbers.</p>
 <p>The <strong>Montgomery (modular) multiplication</strong> is a method that allows computing such multiplications faster.
@@ -133,7 +133,7 @@ Therefore the multiplication in the Montgomery space is defined as:
 This operation is called the <strong>Montgomery reduction</strong>, and is also known as the algorithm <strong>REDC</strong>.</p>
 <p>Because <span><span class="MathJax_Preview">\gcd(n, r) = 1</span><script type="math/tex">\gcd(n, r) = 1</script></span>, we know that there are two numbers <span><span class="MathJax_Preview">r^{-1}</span><script type="math/tex">r^{-1}</script></span> and <span><span class="MathJax_Preview">n^{\prime}</span><script type="math/tex">n^{\prime}</script></span> with <span><span class="MathJax_Preview">0 &lt; r^{-1}, n^{\prime} &lt; n</span><script type="math/tex">0 < r^{-1}, n^{\prime} < n</script></span> with
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">r \cdot r^{-1} + n \cdot n^{\prime} = 1.</span><script type="math/tex">r \cdot r^{-1} + n \cdot n^{\prime} = 1.</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">r \cdot r^{-1} + n \cdot n^{\prime} = 1.</span><script type="math/tex">r \cdot r^{-1} + n \cdot n^{\prime} = 1.</script></span></script></span>
-Both <span><span class="MathJax_Preview">r^{-1}</span><script type="math/tex">r^{-1}</script></span> and <span><span class="MathJax_Preview">n^{\prime}</span><script type="math/tex">n^{\prime}</script></span> can be computed using the <a href="/docs/#Algorithms/algebra/extended-euclid-algorithm/">Extended Euclidean algorithm</a>.</p>
+Both <span><span class="MathJax_Preview">r^{-1}</span><script type="math/tex">r^{-1}</script></span> and <span><span class="MathJax_Preview">n^{\prime}</span><script type="math/tex">n^{\prime}</script></span> can be computed using the <a href="/docs/#Algorithms/Algebra/GCD_Euclidean_Algorithm_Extended/">Extended Euclidean algorithm</a>.</p>
 <p>Using this identity we can write <span><span class="MathJax_Preview">x \cdot r^{-1}</span><script type="math/tex">x \cdot r^{-1}</script></span> as:
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{aligned}
 x \cdot r^{-1} &amp;= x \cdot r \cdot r^{-1} / r = x \cdot (-n \cdot n^{\prime} + 1) / r \\\\

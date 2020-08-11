@@ -172,12 +172,14 @@ You can leave this formula in this form, or you can simplify it even more.
 Let transfer the sum so that it iterates over all divisors of $n$.
 In the original sum there will be many equivalent terms: if $i$ is not a divisor of $n$, then such a divisor can be found after computing $\gcd(i, n)$.
 Therefore for each divisor $d ~|~ n$ its term $k^{\gcd(d, n)} = k^d$ will appear in the sum multiple times, i.e. the answer to the problem can be rewritten as
+
 $$\frac{1}{n} \sum_{d ~|~ n} C_d k^d,$$
+
 where $C_d$ is the number of such numbers $i$ with $\gcd(i, n) = d$.
 We can find an explicit expression for this value.
 Any such number $i$ has the form $i = d j$ with $\gcd(j, n / d) = 1$ (otherwise $\gcd(i, n) > d$).
 So we can count the number of $j$ with this behavior.
-[Euler's phi function](/docs/#Algorithms/algebra/phi-function/) gives us the result $C_d = \phi(n / d)$, and therefore we get the answer:
+[Euler's phi function](/docs/#Algorithms/Algebra/Euler_Totient_Function/) gives us the result $C_d = \phi(n / d)$, and therefore we get the answer:
 
 $$\frac{1}{n} \sum_{d ~|~ n} \phi\left(\frac{n}{d}\right) k^d$$
 

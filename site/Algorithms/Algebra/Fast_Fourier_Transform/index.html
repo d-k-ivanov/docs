@@ -592,7 +592,7 @@ But for a prime modulus the inverse always exists.</p>
 <p>For example we can take the following values: module <span><span class="MathJax_Preview">p = 7340033</span><script type="math/tex">p = 7340033</script></span>, <span><span class="MathJax_Preview">w_{2^{20}} = 5</span><script type="math/tex">w_{2^{20}} = 5</script></span>.
 If this module is not enough, we need to find a different pair.
 We can use that fact that for modules of the form <span><span class="MathJax_Preview">p = c 2^k + 1</span><script type="math/tex">p = c 2^k + 1</script></span> (and <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> is prime), there always exists the <span><span class="MathJax_Preview">2^k</span><script type="math/tex">2^k</script></span>-th root of unity.
-It can be shown that <span><span class="MathJax_Preview">g^c</span><script type="math/tex">g^c</script></span> is such a <span><span class="MathJax_Preview">2^k</span><script type="math/tex">2^k</script></span>-th root of unity, where <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> is a <a href="/docs/#Algorithms/algebra/primitive-root/">primitive root</a> of <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>.</p>
+It can be shown that <span><span class="MathJax_Preview">g^c</span><script type="math/tex">g^c</script></span> is such a <span><span class="MathJax_Preview">2^k</span><script type="math/tex">2^k</script></span>-th root of unity, where <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> is a <a href="/docs/#Algorithms/Algebra/Primitive_Root/">primitive root</a> of <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>.</p>
 <p>```cpp fft_implementation_modular_arithmetic
 const int mod = 7340033;
 const int root = 5;
@@ -634,7 +634,7 @@ if (invert) {
 </code></pre>
 <p>}
 ```</p>
-<p>Here the function <code>inverse</code> computes the modular inverse (see <a href="/docs/#Algorithms/algebra/module-inverse/">Modular Multiplicative Inverse</a>).
+<p>Here the function <code>inverse</code> computes the modular inverse (see <a href="/docs/#Algorithms/Algebra/Modular_Multiplicative_Inverse/">Modular Multiplicative Inverse</a>).
 The constants <code>mod</code>, <code>root</code>, <code>root_pw</code> determine the module and the root, and <code>root_1</code> is the inverse of <code>root</code> modulo <code>mod</code>.</p>
 <p>In practice this implementation is slower than the implementation using complex numbers (due to the huge number of modulo operations), but it has some advantages such as less memory usage and no rounding errors.</p>
 <h2 id="multiplication-with-arbitrary-modulus">Multiplication with arbitrary modulus</h2>
@@ -642,7 +642,7 @@ The constants <code>mod</code>, <code>root</code>, <code>root_pw</code> determin
 Multiplying two polynomial <span><span class="MathJax_Preview">A(x)</span><script type="math/tex">A(x)</script></span> and <span><span class="MathJax_Preview">B(x)</span><script type="math/tex">B(x)</script></span>, and computing the coefficients modulo some number <span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>.
 The number theoretic transform only works for certain prime numbers.
 What about the case when the modulus is not of the desired form?</p>
-<p>One option would be to perform multiple number theoretic transforms with different prime numbers of the form <span><span class="MathJax_Preview">c 2^k + 1</span><script type="math/tex">c 2^k + 1</script></span>, then apply the <a href="/docs/#Algorithms/algebra/chinese-remainder-theorem/">Chinese Remainder Theorem</a> to compute the final coefficients.</p>
+<p>One option would be to perform multiple number theoretic transforms with different prime numbers of the form <span><span class="MathJax_Preview">c 2^k + 1</span><script type="math/tex">c 2^k + 1</script></span>, then apply the <a href="/docs/#Algorithms/Algebra/Chinese_Remainder_Theorem/">Chinese Remainder Theorem</a> to compute the final coefficients.</p>
 <p>Another options is to distribute the polynomials <span><span class="MathJax_Preview">A(x)</span><script type="math/tex">A(x)</script></span> and <span><span class="MathJax_Preview">B(x)</span><script type="math/tex">B(x)</script></span> into two smaller polynomials each
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\begin{align}
 A(x) &amp;= A_1(x) + A_2(x) \cdot C \\\\

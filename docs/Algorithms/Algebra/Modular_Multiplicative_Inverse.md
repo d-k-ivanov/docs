@@ -19,7 +19,7 @@ Consider the following equation (with unknown $x$ and $y$):
 
 $$a \cdot x + m \cdot y = 1$$
 
-This is a [Linear Diophantine equation in two variables](/docs/#Algorithms/algebra/linear-diophantine-equation/).
+This is a [Linear Diophantine equation in two variables](/docs/#Algorithms/Algebra/Linear_Diophantine_Equation/).
 As shown in the linked article, when $\gcd(a, m) = 1$, the equation has a solution which can be found using the [extended Euclidean algorithm](http://en.wikipedia.org/wiki/Extended_Euclidean_algorithm).
 Note that $\gcd(a, m) = 1$ is also the condition for the modular inverse to exist.
 
@@ -52,7 +52,7 @@ Another method for finding modular inverse is to use Euler's theorem, which stat
 
 $$a^{\phi (m)} \equiv 1 \mod m$$
 
-$\phi$ is [Euler's Totient function](/docs/#Algorithms/algebra/phi-function/).
+$\phi$ is [Euler's Totient function](/docs/#Algorithms/Algebra/Euler_Totient_Function/).
 Again, note that $a$ and $m$ being relative prime was also the condition for the modular inverse to exist.
 
 If $m$ is a prime number, this simplifies to [Fermat's little theorem](http://en.wikipedia.org/wiki/Fermat's_little_theorem):
@@ -64,7 +64,7 @@ Multiply both sides of the above equations by $a^{-1}$, and we get:
 * For an arbitrary (but coprime) modulus $m$: $a ^ {\phi (m) - 1} \equiv a ^{-1} \mod m$
 * For a prime modulus $m$: $a ^ {m - 2} \equiv a ^ {-1} \mod m$
 
-From these results, we can easily find the modular inverse using the [binary exponentiation algorithm](/docs/#Algorithms/algebra/binary-exp/), which works in $O(\log m)$ time.
+From these results, we can easily find the modular inverse using the [binary exponentiation algorithm](/docs/#Algorithms/Algebra/Binary_Exponentiation/), which works in $O(\log m)$ time.
 
 Even though this method is easier to understand than the method described in previous paragraph, in the case when $m$ is not a prime number, we need to calculate Euler phi function, which involves factorization of $m$, which might be very hard. If the prime factorization of $m$ is known, then the complexity of this method is $O(\log m)$.
 

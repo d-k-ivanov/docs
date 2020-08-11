@@ -10,7 +10,7 @@ Thus, formally the task is: You want to calculate $n! \bmod p$, without taking a
 Imaging you write down the prime factorization of $n!$, remove all factors $p$, and compute the product modulo $p$.
 We will denote this modified factorial with $n!_{\%p}$.
 
-Learning how to effectively calculate this modified factorial allows us to quickly calculate the value of the various combinatorial formulae (for example, [Binomial coefficients](/docs/#Algorithms/combinatorics/binomial-coefficients/)).
+Learning how to effectively calculate this modified factorial allows us to quickly calculate the value of the various combinatorial formulae (for example, [Binomial coefficients](/docs/#Algorithms/Combinatorics/Binomial_Coefficients/)).
 
 ## Algorithm
 

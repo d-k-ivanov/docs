@@ -117,10 +117,10 @@ If it is a divisor, than <span><span class="MathJax_Preview">n</span><script typ
 
 <p>This is the simplest form of a prime check.
 You can optimize this function quite a bit, for instance by only checking all odd numbers in the loop, since the only even prime number is 2.
-Multiple such optimizations are described in the article about <a href="/docs/#Algorithms/algebra/factorization/">integer factorization</a>.</p>
+Multiple such optimizations are described in the article about <a href="/docs/#Algorithms/Algebra/Integer_Factorization/">integer factorization</a>.</p>
 <h2 id="fermat-primality-test">Fermat primality test</h2>
 <p>This is a probabilistic test.</p>
-<p>Fermat's little theorem (see also <a href="https://cp-algorithms.com/algebra/phi-function/">Euler's totient function</a>) states, that for a prime number <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> and a coprime integer <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> the following equation holds:</p>
+<p>Fermat's little theorem (see also <a href="/docs/#Algorithms/Algebra/Euler_Totient_Function/">Euler's totient function</a>) states, that for a prime number <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> and a coprime integer <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> the following equation holds:</p>
 <div>
 <div class="MathJax_Preview">a^{p-1} \equiv 1 \bmod p</div>
 <script type="math/tex; mode=display">a^{p-1} \equiv 1 \bmod p</script>
@@ -151,7 +151,7 @@ If we find no witness for the compositeness, it is very likely that the number i
 }
 </code></pre>
 
-<p>We use <a href="/docs/#Algorithms/algebra/binary-exp/">Binary Exponentiation</a> to efficiently compute the power <span><span class="MathJax_Preview">a^{p-1}</span><script type="math/tex">a^{p-1}</script></span>.</p>
+<p>We use <a href="/docs/#Algorithms/Algebra/Binary_Exponentiation/">Binary Exponentiation</a> to efficiently compute the power <span><span class="MathJax_Preview">a^{p-1}</span><script type="math/tex">a^{p-1}</script></span>.</p>
 <p>There is one bad news though:
 there exist some composite numbers where <span><span class="MathJax_Preview">a^{n-1} \equiv 1 \bmod n</span><script type="math/tex">a^{n-1} \equiv 1 \bmod n</script></span> holds for all <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> coprime to <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, for instance for the number <span><span class="MathJax_Preview">561 = 3 \cdot 11 \cdot 17</span><script type="math/tex">561 = 3 \cdot 11 \cdot 17</script></span>.
 Such numbers are called <em>Carmichael numbers</em>.

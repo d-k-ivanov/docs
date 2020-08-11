@@ -6,7 +6,7 @@ Complexity: $O(M)$
 
 Consider a directed or undirected graph without loops and multiple edges. We have to check whether it is acyclic, and if it is not, then find any cycle.
 
-We can solve this problem by using [Depth First Search](/docs/#Algorithms/graph/depth-first-search/) in $O(M)$ where $M$ is number of edges.
+We can solve this problem by using [Depth First Search](/docs/#Algorithms/Graph_Theory/Depth_First_Search/) in $O(M)$ where $M$ is number of edges.
 
 ## Algorithm
 

@@ -29,6 +29,7 @@ $$p_i < p_j \Longleftrightarrow (x_i < x_j) \lor \Big(\left(x_i = x_j\right) \we
 Then take the middle point after sorting $p_m (m = \lfloor n/2 \rfloor)$, and all the points before it and the $p_m$ itself are assigned to the first half, and all the points after it - to the second half:
 
 $$A_1 = \{p_i \ | \ i = 0 \ldots m \}$$
+
 $$A_2 = \{p_i \ | \ i = m + 1 \ldots n-1 \}.$$
 
 Now, calling recursively on each of the sets $A_1$ and $A_2$, we will find the answers $h_1$ and $h_2$ for each of the halves. And take the best of them: $h = \min(h_1, h_2)$.

@@ -464,7 +464,7 @@ Thus all the properties that we need from the complex roots are also available i
 For example we can take the following values: module $p = 7340033$, $w_{2^{20}} = 5$.
 If this module is not enough, we need to find a different pair.
 We can use that fact that for modules of the form $p = c 2^k + 1$ (and $p$ is prime), there always exists the $2^k$-th root of unity.
-It can be shown that $g^c$ is such a $2^k$-th root of unity, where $g$ is a [primitive root](/docs/#Algorithms/algebra/primitive-root/) of $p$.
+It can be shown that $g^c$ is such a $2^k$-th root of unity, where $g$ is a [primitive root](/docs/#Algorithms/Algebra/Primitive_Root/) of $p$.
 
 ```cpp fft_implementation_modular_arithmetic
 const int mod = 7340033;
@@ -509,7 +509,7 @@ void fft(vector<int> & a, bool invert) {
 }
 ```
 
-Here the function `inverse` computes the modular inverse (see [Modular Multiplicative Inverse](/docs/#Algorithms/algebra/module-inverse/)).
+Here the function `inverse` computes the modular inverse (see [Modular Multiplicative Inverse](/docs/#Algorithms/Algebra/Modular_Multiplicative_Inverse/)).
 The constants `mod`, `root`, `root_pw` determine the module and the root, and `root_1` is the inverse of `root` modulo `mod`.
 
 In practice this implementation is slower than the implementation using complex numbers (due to the huge number of modulo operations), but it has some advantages such as less memory usage and no rounding errors.
@@ -521,7 +521,7 @@ Multiplying two polynomial $A(x)$ and $B(x)$, and computing the coefficients mod
 The number theoretic transform only works for certain prime numbers.
 What about the case when the modulus is not of the desired form?
 
-One option would be to perform multiple number theoretic transforms with different prime numbers of the form $c 2^k + 1$, then apply the [Chinese Remainder Theorem](/docs/#Algorithms/algebra/chinese-remainder-theorem/) to compute the final coefficients.
+One option would be to perform multiple number theoretic transforms with different prime numbers of the form $c 2^k + 1$, then apply the [Chinese Remainder Theorem](/docs/#Algorithms/Algebra/Chinese_Remainder_Theorem/) to compute the final coefficients.
 
 Another options is to distribute the polynomials $A(x)$ and $B(x)$ into two smaller polynomials each
 $$\begin{align}

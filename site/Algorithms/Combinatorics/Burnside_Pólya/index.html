@@ -253,13 +253,16 @@ Thus the number of cycles in <span><span class="MathJax_Preview">\pi_i</span><sc
 <p>You can leave this formula in this form, or you can simplify it even more.
 Let transfer the sum so that it iterates over all divisors of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.
 In the original sum there will be many equivalent terms: if <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> is not a divisor of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, then such a divisor can be found after computing <span><span class="MathJax_Preview">\gcd(i, n)</span><script type="math/tex">\gcd(i, n)</script></span>.
-Therefore for each divisor <span><span class="MathJax_Preview">d ~|~ n</span><script type="math/tex">d ~|~ n</script></span> its term <span><span class="MathJax_Preview">k^{\gcd(d, n)} = k^d</span><script type="math/tex">k^{\gcd(d, n)} = k^d</script></span> will appear in the sum multiple times, i.e. the answer to the problem can be rewritten as
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\frac{1}{n} \sum_{d ~|~ n} C_d k^d,</span><script type="math/tex">\frac{1}{n} \sum_{d ~|~ n} C_d k^d,</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\frac{1}{n} \sum_{d ~|~ n} C_d k^d,</span><script type="math/tex">\frac{1}{n} \sum_{d ~|~ n} C_d k^d,</script></span></script></span>
-where <span><span class="MathJax_Preview">C_d</span><script type="math/tex">C_d</script></span> is the number of such numbers <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> with <span><span class="MathJax_Preview">\gcd(i, n) = d</span><script type="math/tex">\gcd(i, n) = d</script></span>.
+Therefore for each divisor <span><span class="MathJax_Preview">d ~|~ n</span><script type="math/tex">d ~|~ n</script></span> its term <span><span class="MathJax_Preview">k^{\gcd(d, n)} = k^d</span><script type="math/tex">k^{\gcd(d, n)} = k^d</script></span> will appear in the sum multiple times, i.e. the answer to the problem can be rewritten as</p>
+<div>
+<div class="MathJax_Preview">\frac{1}{n} \sum_{d ~|~ n} C_d k^d,</div>
+<script type="math/tex; mode=display">\frac{1}{n} \sum_{d ~|~ n} C_d k^d,</script>
+</div>
+<p>where <span><span class="MathJax_Preview">C_d</span><script type="math/tex">C_d</script></span> is the number of such numbers <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> with <span><span class="MathJax_Preview">\gcd(i, n) = d</span><script type="math/tex">\gcd(i, n) = d</script></span>.
 We can find an explicit expression for this value.
 Any such number <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> has the form <span><span class="MathJax_Preview">i = d j</span><script type="math/tex">i = d j</script></span> with <span><span class="MathJax_Preview">\gcd(j, n / d) = 1</span><script type="math/tex">\gcd(j, n / d) = 1</script></span> (otherwise <span><span class="MathJax_Preview">\gcd(i, n) &gt; d</span><script type="math/tex">\gcd(i, n) > d</script></span>).
 So we can count the number of <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> with this behavior.
-<a href="/docs/#Algorithms/algebra/phi-function/">Euler's phi function</a> gives us the result <span><span class="MathJax_Preview">C_d = \phi(n / d)</span><script type="math/tex">C_d = \phi(n / d)</script></span>, and therefore we get the answer:</p>
+<a href="/docs/#Algorithms/Algebra/Euler_Totient_Function/">Euler's phi function</a> gives us the result <span><span class="MathJax_Preview">C_d = \phi(n / d)</span><script type="math/tex">C_d = \phi(n / d)</script></span>, and therefore we get the answer:</p>
 <div>
 <div class="MathJax_Preview">\frac{1}{n} \sum_{d ~|~ n} \phi\left(\frac{n}{d}\right) k^d</div>
 <script type="math/tex; mode=display">\frac{1}{n} \sum_{d ~|~ n} \phi\left(\frac{n}{d}\right) k^d</script>

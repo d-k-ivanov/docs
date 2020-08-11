@@ -19,7 +19,7 @@ A degenerate case that need to be taken care of is when $a = b = 0$. It is easy 
 
 ## Finding a solution
 
-To find one solution of the Diophantine equation with 2 unknowns, you can use the [Extended Euclidean algorithm](/docs/#Algorithms/algebra/extended-euclid-algorithm/). First, assume that $a$ and $b$ are non-negative. When we apply Extended Euclidean algorithm for $a$ and $b$, we can find their greatest common divisor $g$ and 2 numbers $x_g$ and $y_g$ such that:
+To find one solution of the Diophantine equation with 2 unknowns, you can use the [Extended Euclidean algorithm](/docs/#Algorithms/Algebra/GCD_Euclidean_Algorithm_Extended/). First, assume that $a$ and $b$ are non-negative. When we apply Extended Euclidean algorithm for $a$ and $b$, we can find their greatest common divisor $g$ and 2 numbers $x_g$ and $y_g$ such that:
 
 $$a x_g + b y_g = g$$
 
@@ -170,6 +170,7 @@ The idea is similar to previous section: We find any solution of the Diophantine
 Finally, use the knowledge of the set of all solutions to find the minimum:
 
 $$x' = x + k \cdot \frac{b}{g},$$
+
 $$y' = y - k \cdot \frac{a}{g}.$$
 
 Note that $x + y$ change as follows:

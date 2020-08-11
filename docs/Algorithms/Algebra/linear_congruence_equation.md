@@ -11,14 +11,14 @@ It is required to find the value $x$ from the interval $[0, n-1]$ (clearly, on t
 ## Solution by finding the inverse element
 
 Let us first consider a simpler case where $a$ and $n$ are **coprime** ($\gcd(a, n) = 1$).
-Then one can find the [inverse](/docs/#Algorithms/algebra/module-inverse/) of $a$, and multiplying both sides of the equation with the inverse, and we can get a **unique** solution.
+Then one can find the [inverse](/docs/#Algorithms/Algebra/Modular_Multiplicative_Inverse/) of $a$, and multiplying both sides of the equation with the inverse, and we can get a **unique** solution.
 
 $$x = b \cdot a ^ {- 1} \pmod n$$
 
 Now consider the case where $a$ and $n$ are **not coprime** ($\gcd(a, n) \ne 1$).
 Then the solution will not always exist (for example $2 \cdot x = 1 \pmod 4$ has no solution).
 
-Let $g = \gcd(a, n)$, i.e. the [greatest common divisor](/docs/#Algorithms/algebra/euclid-algorithm/) of $a$ and $n$ (which in this case is greater than one).
+Let $g = \gcd(a, n)$, i.e. the [greatest common divisor](/docs/#Algorithms/Algebra/GCD_Euclidean_Algorithm/) of $a$ and $n$ (which in this case is greater than one).
 
 Then, if $b$ is not divisible by $g$, there is no solution. In fact, for any $x$ the left side of the equation $a \cdot x \pmod n$ , is always divisible by $g$, while the right-hand side is not divisible by it, hence it follows that there are no solutions.
 
@@ -45,6 +45,6 @@ $$a \cdot x + n \cdot k = b,$$
 
 where $x$ and $k$ are unknown integers.
 
-The method of solving this equation is described in the corresponding article [Linear Diophantine equations](/docs/#Algorithms/algebra/linear-diophantine-equation/) and it consists of applying the [Extended Euclidean Algorithm](/docs/#Algorithms/algebra/extended-euclid-algorithm/).
+The method of solving this equation is described in the corresponding article [Linear Diophantine equations](/docs/#Algorithms/Algebra/Linear_Diophantine_Equation/) and it consists of applying the [Extended Euclidean Algorithm](/docs/#Algorithms/Algebra/GCD_Euclidean_Algorithm_Extended/).
 
 It also describes the method of obtaining all solutions of this equation from one found solution, and incidentally this method, when carefully considered, is absolutely equivalent to the method described in the previous section.

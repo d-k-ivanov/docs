@@ -118,7 +118,7 @@ Similarly, we will call a vertex a losing vertex, if the player starting at this
 We go through all vertices and try to apply the first or second rule, and repeat.</p>
 <p>However, we can accelerate this procedure, and get the complexity down to <span><span class="MathJax_Preview">O(m)</span><script type="math/tex">O(m)</script></span>.</p>
 <p>We will go over all the vertices, for which we initially know if they are winning or losing states.
-For each of them, we start a <a href="/docs/#Algorithms/graph/depth-first-search/">depth first search</a>.
+For each of them, we start a <a href="/docs/#Algorithms/Graph_Theory/Depth_First_Search/">depth first search</a>.
 This DFS will move back over the reversed edges.
 First of all, it will not enter vertices which already are defined as winning or losing vertices.
 And further, if the search goes from a losing vertex to an undefined vertex, then we mark this one as a winning vertex, and continue the DFS using this new vertex.

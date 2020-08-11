@@ -51,7 +51,7 @@ For more details check out the implementation.
 ## Classification of edges of a graph
 
 We can classify the edges using the entry and exit time of the end nodes $u$ and $v$ of the edges $(u,v)$.
-These classifications are often used for problems like [finding bridges](/docs/#Algorithms/graph/bridge-searching/) and [finding articulation points](/docs/#Algorithms/graph/cutpoints/).
+These classifications are often used for problems like [finding bridges](/docs/#Algorithms/Graph_Theory/Bridge_Searching/) and [finding articulation points](/docs/#Algorithms/Graph_Theory/Cut_Points/).
 
 We perform a DFS and classify the encountered edges using the following rules:
 

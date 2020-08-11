@@ -166,8 +166,11 @@ We want to merge the left child of <code>t1</code> with <code>t2</code>, therefo
 It is clear that the algorithm <code>merge</code> performs <span><span class="MathJax_Preview">O(h(T_1) + h(T_2))</span><script type="math/tex">O(h(T_1) + h(T_2))</script></span> steps.
 Therefore to understand the complexity of the operations, we must look into the random variable <span><span class="MathJax_Preview">h(T)</span><script type="math/tex">h(T)</script></span>.</p>
 <h3 id="expected-value">Expected value</h3>
-<p>We assume that the expectation <span><span class="MathJax_Preview">h(T)</span><script type="math/tex">h(T)</script></span> can be estimated from above by the logarithm of the number of vertices in the heap:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\mathbf{E} h(T) \le \log(n+1)</span><script type="math/tex">\mathbf{E} h(T) \le \log(n+1)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\mathbf{E} h(T) \le \log(n+1)</span><script type="math/tex">\mathbf{E} h(T) \le \log(n+1)</script></span></script></span></p>
+<p>We assume that the expectation <span><span class="MathJax_Preview">h(T)</span><script type="math/tex">h(T)</script></span> can be estimated from above by the logarithm of the number of vertices in the heap:</p>
+<div>
+<div class="MathJax_Preview">\mathbf{E} h(T) \le \log(n+1)</div>
+<script type="math/tex; mode=display">\mathbf{E} h(T) \le \log(n+1)</script>
+</div>
 <p>This can be easily proven by induction.
 Let <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> and <span><span class="MathJax_Preview">R</span><script type="math/tex">R</script></span> be the left and the right subtrees of the root <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>, and <span><span class="MathJax_Preview">n_L</span><script type="math/tex">n_L</script></span> and <span><span class="MathJax_Preview">n_R</span><script type="math/tex">n_R</script></span> the number of vertices in them (<span><span class="MathJax_Preview">n = n_L + n_R + 1</span><script type="math/tex">n = n_L + n_R + 1</script></span>).</p>
 <p>The following shows the induction step:</p>
@@ -189,13 +192,19 @@ Let <span><span class="MathJax_Preview">L</span><script type="math/tex">L</scrip
 <p>Of course we are still not happy.
 The expected value of <span><span class="MathJax_Preview">h(T)</span><script type="math/tex">h(T)</script></span> doesn't say anything about the worst case.
 It is still possible that the paths from the root to the vertices is on average much greater than <span><span class="MathJax_Preview">\log(n + 1)</span><script type="math/tex">\log(n + 1)</script></span> for a specific tree.</p>
-<p>Let us prove that exceeding the expected value is indeed very small:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">P\\{h(T &gt; (c+1) \log n\\} &lt; \frac{1}{n^c}</span><script type="math/tex">P\\{h(T > (c+1) \log n\\} < \frac{1}{n^c}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">P\\{h(T &gt; (c+1) \log n\\} &lt; \frac{1}{n^c}</span><script type="math/tex">P\\{h(T > (c+1) \log n\\} < \frac{1}{n^c}</script></span></script></span>
-for any positive constant <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>.</p>
+<p>Let us prove that exceeding the expected value is indeed very small:</p>
+<div>
+<div class="MathJax_Preview">P\\{h(T &gt; (c+1) \log n\\} &lt; \frac{1}{n^c}</div>
+<script type="math/tex; mode=display">P\\{h(T > (c+1) \log n\\} < \frac{1}{n^c}</script>
+</div>
+<p>for any positive constant <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>.</p>
 <p>Here we denote by <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> the set of paths from the root of the heap to the leaves where the length exceeds <span><span class="MathJax_Preview">(c+1) \log n</span><script type="math/tex">(c+1) \log n</script></span>.
 Note that for any path <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> of length <span><span class="MathJax_Preview">|p|</span><script type="math/tex">|p|</script></span> the probability that it will be chosen as random path is <span><span class="MathJax_Preview">2^{-|p|}</span><script type="math/tex">2^{-|p|}</script></span>.
-Therefore we get:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">P\\{h(T &gt; (c+1) \log n\\} = \sum_{p \in P} 2^{-|p|} &lt; \sum_{p \in P} 2^{-(c+1) \log n} = |P| n^{-(c+1)} \le n^{-c}</span><script type="math/tex">P\\{h(T > (c+1) \log n\\} = \sum_{p \in P} 2^{-|p|} < \sum_{p \in P} 2^{-(c+1) \log n} = |P| n^{-(c+1)} \le n^{-c}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">P\\{h(T &gt; (c+1) \log n\\} = \sum_{p \in P} 2^{-|p|} &lt; \sum_{p \in P} 2^{-(c+1) \log n} = |P| n^{-(c+1)} \le n^{-c}</span><script type="math/tex">P\\{h(T > (c+1) \log n\\} = \sum_{p \in P} 2^{-|p|} < \sum_{p \in P} 2^{-(c+1) \log n} = |P| n^{-(c+1)} \le n^{-c}</script></span></script></span></p>
+Therefore we get:</p>
+<div>
+<div class="MathJax_Preview">P\\{h(T &gt; (c+1) \log n\\} = \sum_{p \in P} 2^{-|p|} &lt; \sum_{p \in P} 2^{-(c+1) \log n} = |P| n^{-(c+1)} \le n^{-c}</div>
+<script type="math/tex; mode=display">P\\{h(T > (c+1) \log n\\} = \sum_{p \in P} 2^{-|p|} < \sum_{p \in P} 2^{-(c+1) \log n} = |P| n^{-(c+1)} \le n^{-c}</script>
+</div>
 <h3 id="complexity-of-the-algorithm">Complexity of the algorithm</h3>
 <p>Thus the algorithm <code>merge</code>, and hence all other operations expressed with it, can be performed in <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> on average.</p>
 <p>Moreover for any positive constant <span><span class="MathJax_Preview">\epsilon</span><script type="math/tex">\epsilon</script></span> there is a positive constant <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>, such that the probability that the operation will require more than <span><span class="MathJax_Preview">c \log n</span><script type="math/tex">c \log n</script></span> steps is less than <span><span class="MathJax_Preview">n^{-\epsilon}</span><script type="math/tex">n^{-\epsilon}</script></span> (in some sense this describes the worst case behavior of the algorithm).</p>

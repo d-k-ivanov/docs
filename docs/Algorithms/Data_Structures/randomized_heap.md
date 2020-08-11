@@ -83,6 +83,7 @@ Therefore to understand the complexity of the operations, we must look into the 
 ### Expected value
 
 We assume that the expectation $h(T)$ can be estimated from above by the logarithm of the number of vertices in the heap:
+
 $$\mathbf{E} h(T) \le \log(n+1)$$
 
 This can be easily proven by induction.
@@ -104,12 +105,15 @@ The expected value of $h(T)$ doesn't say anything about the worst case.
 It is still possible that the paths from the root to the vertices is on average much greater than $\log(n + 1)$ for a specific tree.
 
 Let us prove that exceeding the expected value is indeed very small:
+
 $$P\\{h(T > (c+1) \log n\\} < \frac{1}{n^c}$$
+
 for any positive constant $c$.
 
 Here we denote by $P$ the set of paths from the root of the heap to the leaves where the length exceeds $(c+1) \log n$.
 Note that for any path $p$ of length $|p|$ the probability that it will be chosen as random path is $2^{-|p|}$.
 Therefore we get:
+
 $$P\\{h(T > (c+1) \log n\\} = \sum_{p \in P} 2^{-|p|} < \sum_{p \in P} 2^{-(c+1) \log n} = |P| n^{-(c+1)} \le n^{-c}$$
 
 ### Complexity of the algorithm

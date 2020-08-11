@@ -97,51 +97,51 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <h1 id="intersection-circle-circle">Intersection: Circle-Circle</h1>
 <p>You are given two circles on a 2D plane, each one described as coordinates of its center and its radius. Find the points of their intersection (possible cases: one or two points, no intersection or circles coincide).</p>
 <h2 id="solution">Solution</h2>
-<p>Let's reduce this problem to the <a href="/docs/#Algorithms/geometry/circle-line-intersection/">circle-line intersection problem</a>.</p>
+<p>Let's reduce this problem to the <a href="/docs/#Algorithms/Geometry/Intersection_Circle-Line/">circle-line intersection problem</a>.</p>
 <p>Assume without loss of generality that the first circle is centered at the origin (if this is not true, we can move the origin to the center of the first circle and adjust the coordinates of intersection points accordingly at output time). We have a system of two equations:</p>
 <div>
-<div class="MathJax_Preview">x^2+y^2=r_1^2$$
-$$(x - x_2)^2 + (y - y_2)^2 = r_2^2</div>
-<script type="math/tex; mode=display">x^2+y^2=r_1^2$$
-$$(x - x_2)^2 + (y - y_2)^2 = r_2^2</script>
+<div class="MathJax_Preview">x^2+y^2=r_1^2</div>
+<script type="math/tex; mode=display">x^2+y^2=r_1^2</script>
+</div>
+<div>
+<div class="MathJax_Preview">(x - x_2)^2 + (y - y_2)^2 = r_2^2</div>
+<script type="math/tex; mode=display">(x - x_2)^2 + (y - y_2)^2 = r_2^2</script>
 </div>
 <p>Subtract the first equation from the second one to get rid of the second powers of variables:</p>
 <div>
-<div class="MathJax_Preview">x^2+y^2=r_1^2$$
-$$x \cdot (-2x_2) + y \cdot (-2y_2) + (x_2^2+y_2^2+r_1^2-r_2^2) = 0</div>
-<script type="math/tex; mode=display">x^2+y^2=r_1^2$$
-$$x \cdot (-2x_2) + y \cdot (-2y_2) + (x_2^2+y_2^2+r_1^2-r_2^2) = 0</script>
+<div class="MathJax_Preview">x^2+y^2=r_1^2</div>
+<script type="math/tex; mode=display">x^2+y^2=r_1^2</script>
+</div>
+<div>
+<div class="MathJax_Preview">x \cdot (-2x_2) + y \cdot (-2y_2) + (x_2^2+y_2^2+r_1^2-r_2^2) = 0</div>
+<script type="math/tex; mode=display">x \cdot (-2x_2) + y \cdot (-2y_2) + (x_2^2+y_2^2+r_1^2-r_2^2) = 0</script>
 </div>
 <p>Thus, we've reduced the original problem to the problem of finding intersections of the first circle and a line:</p>
 <div>
-<div class="MathJax_Preview">Ax + By + C = 0$$
-$$A = -2x_2$$
-$$B = -2y_2$$
-$$C = x_2^2+y_2^2+r_1^2-r_2^2</div>
-<script type="math/tex; mode=display">Ax + By + C = 0$$
-$$A = -2x_2$$
-$$B = -2y_2$$
-$$C = x_2^2+y_2^2+r_1^2-r_2^2</script>
+<div class="MathJax_Preview">Ax + By + C = 0</div>
+<script type="math/tex; mode=display">Ax + By + C = 0</script>
 </div>
-<p>And this problem can be solved as described in the <a href="/docs/#Algorithms/geometry/circle-line-intersection/">corresponding article</a>.</p>
+<div>
+<div class="MathJax_Preview">A = -2x_2</div>
+<script type="math/tex; mode=display">A = -2x_2</script>
+</div>
+<div>
+<div class="MathJax_Preview">B = -2y_2</div>
+<script type="math/tex; mode=display">B = -2y_2</script>
+</div>
+<div>
+<div class="MathJax_Preview">C = x_2^2+y_2^2+r_1^2-r_2^2</div>
+<script type="math/tex; mode=display">C = x_2^2+y_2^2+r_1^2-r_2^2</script>
+</div>
+<p>And this problem can be solved as described in the <a href="/docs/#Algorithms/Geometry/Intersection_Circle-Line/">corresponding article</a>.</p>
 <p>The only degenerate case we need to consider separately is when the centers of the circles coincide. In this case <span><span class="MathJax_Preview">x_2=y_2=0</span><script type="math/tex">x_2=y_2=0</script></span>, and the line equation will be <span><span class="MathJax_Preview">C = r_1^2-r_2^2 = 0</span><script type="math/tex">C = r_1^2-r_2^2 = 0</script></span>. If the radii of the circles are the same, there are infinitely many intersection points, if they differ, there are no intersections.</p>
 <h2 id="practice-problems">Practice Problems</h2>
 <ul>
-<li>
-<p><a href="https://community.topcoder.com/stat?c=problem_statement&amp;pm=7766">RadarFinder</a></p>
-</li>
-<li>
-<p><a href="http://codeforces.com/problemset/problem/681/E">Runaway to a shadow - Codeforces Round #357</a></p>
-</li>
-<li>
-<p><a href="http://codeforces.com/gym/100199/problem/F">ASC 1 Problem F "Get out!"</a></p>
-</li>
-<li>
-<p><a href="http://www.spoj.com/problems/CIRCINT/">SPOJ: CIRCINT</a></p>
-</li>
-<li>
-<p><a href="https://uva.onlinejudge.org/index.php?option=onlinejudge&amp;page=show_problem&amp;problem=1242">UVA - 10301 - Rings and Glue</a></p>
-</li>
+<li><a href="https://community.topcoder.com/stat?c=problem_statement&amp;pm=7766">RadarFinder</a></li>
+<li><a href="http://codeforces.com/problemset/problem/681/E">Runaway to a shadow - Codeforces Round #357</a></li>
+<li><a href="http://codeforces.com/gym/100199/problem/F">ASC 1 Problem F "Get out!"</a></li>
+<li><a href="http://www.spoj.com/problems/CIRCINT/">SPOJ: CIRCINT</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=onlinejudge&amp;page=show_problem&amp;problem=1242">UVA - 10301 - Rings and Glue</a></li>
 </ul>
 
   <br>

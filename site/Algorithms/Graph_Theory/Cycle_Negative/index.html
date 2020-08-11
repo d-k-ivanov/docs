@@ -101,7 +101,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>It is convenient to use different algorithms to solve these two variations of the problem, so we'll discuss both of them here.</p>
 <h2 id="using-bellman-ford-algorithm">Using Bellman-Ford algorithm</h2>
 <p>Bellman-Ford algorithm allows you to check whether there exists a cycle of negative weight in the graph, and if it does, find one of these cycles.</p>
-<p>The details of the algorithm are described in the article on the <a href="/docs/#Algorithms/graph/bellman_ford/">Bellman-Ford</a> algorithm.
+<p>The details of the algorithm are described in the article on the <a href="/docs/#Algorithms/Graph_Theory/Bellman-Ford_Algorithm/">Bellman-Ford</a> algorithm.
 Here we'll describe only its application to this problem.</p>
 <p>Do <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> iterations of Bellman-Ford algorithm. If there were no changes on the last iteration, there is no cycle of negative weight in the graph. Otherwise take a vertex the distance to which has changed, and go from it via its ancestors until a cycle is found. This cycle will be the desired cycle of negative weight.</p>
 <h3 id="implementation">Implementation</h3>
@@ -153,7 +153,7 @@ void solve()
 
 <h2 id="using-floyd-warshall-algorithm">Using Floyd-Warshall algorithm</h2>
 <p>The Floyd-Warshall algorithm allows to solve the second variation of the problem - finding all pairs of vertices <span><span class="MathJax_Preview">(i, j)</span><script type="math/tex">(i, j)</script></span> which don't have a shortest path between them (i.e. a path of arbitrarily small weight exists).</p>
-<p>Again, the details can be found in the <a href="/docs/#Algorithms/graph/all-pair-shortest-path-floyd-warshall/">Floyd-Warshall</a> article, and here we describe only its application.</p>
+<p>Again, the details can be found in the <a href="/docs/#Algorithms/Graph_Theory/Floyd-Warshall_Algorithm/">Floyd-Warshall</a> article, and here we describe only its application.</p>
 <p>Run Floyd-Warshall algorithm on the graph.
 Initially <span><span class="MathJax_Preview">d[v][v] = 0</span><script type="math/tex">d[v][v] = 0</script></span> for each <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>.
 But after running the algorithm <span><span class="MathJax_Preview">d[v][v]</span><script type="math/tex">d[v][v]</script></span> will be smaller than <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span> if there exists a negative length path from <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> to <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>.

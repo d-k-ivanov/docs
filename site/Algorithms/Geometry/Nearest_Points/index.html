@@ -126,10 +126,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </div>
 <p>Then take the middle point after sorting <span><span class="MathJax_Preview">p_m (m = \lfloor n/2 \rfloor)</span><script type="math/tex">p_m (m = \lfloor n/2 \rfloor)</script></span>, and all the points before it and the <span><span class="MathJax_Preview">p_m</span><script type="math/tex">p_m</script></span> itself are assigned to the first half, and all the points after it - to the second half:</p>
 <div>
-<div class="MathJax_Preview">A_1 = \{p_i \ | \ i = 0 \ldots m \}$$
-$$A_2 = \{p_i \ | \ i = m + 1 \ldots n-1 \}.</div>
-<script type="math/tex; mode=display">A_1 = \{p_i \ | \ i = 0 \ldots m \}$$
-$$A_2 = \{p_i \ | \ i = m + 1 \ldots n-1 \}.</script>
+<div class="MathJax_Preview">A_1 = \{p_i \ | \ i = 0 \ldots m \}</div>
+<script type="math/tex; mode=display">A_1 = \{p_i \ | \ i = 0 \ldots m \}</script>
+</div>
+<div>
+<div class="MathJax_Preview">A_2 = \{p_i \ | \ i = m + 1 \ldots n-1 \}.</div>
+<script type="math/tex; mode=display">A_2 = \{p_i \ | \ i = m + 1 \ldots n-1 \}.</script>
 </div>
 <p>Now, calling recursively on each of the sets <span><span class="MathJax_Preview">A_1</span><script type="math/tex">A_1</script></span> and <span><span class="MathJax_Preview">A_2</span><script type="math/tex">A_2</script></span>, we will find the answers <span><span class="MathJax_Preview">h_1</span><script type="math/tex">h_1</script></span> and <span><span class="MathJax_Preview">h_2</span><script type="math/tex">h_2</script></span> for each of the halves. And take the best of them: <span><span class="MathJax_Preview">h = \min(h_1, h_2)</span><script type="math/tex">h = \min(h_1, h_2)</script></span>.</p>
 <p>Now we need to make a <strong>merge stage</strong>, i.e. we try to find such pairs of points, for which the distance between which is less than <span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span> and one point is lying in <span><span class="MathJax_Preview">A_1</span><script type="math/tex">A_1</script></span> and the other in <span><span class="MathJax_Preview">A_2</span><script type="math/tex">A_2</script></span>.

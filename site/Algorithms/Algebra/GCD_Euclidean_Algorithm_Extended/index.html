@@ -96,13 +96,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <h1 id="gcd-euclidean-algorithm-extended">GCD: Euclidean Algorithm Extended</h1>
-<p>While the <a href="/docs/#Algorithms/algebra/GCD_Euclidean_Algorithm/">Euclidean algorithm</a> calculates only the greatest common divisor (GCD) of two integers <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>, the extended version also finds a way to represent GCD in terms of <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>, i.e. coefficients <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> and <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> for which:</p>
+<p>While the <a href="/docs/#Algorithms/Algebra/GCD_Euclidean_Algorithm/">Euclidean algorithm</a> calculates only the greatest common divisor (GCD) of two integers <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>, the extended version also finds a way to represent GCD in terms of <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>, i.e. coefficients <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> and <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> for which:</p>
 <div>
 <div class="MathJax_Preview">a \cdot x + b \cdot y = \gcd(a, b)</div>
 <script type="math/tex; mode=display">a \cdot x + b \cdot y = \gcd(a, b)</script>
 </div>
 <p>It's important to note, that we can always find such a representation, for instance <span><span class="MathJax_Preview">\gcd(55, 80) = 5</span><script type="math/tex">\gcd(55, 80) = 5</script></span> therefore we can represent <span><span class="MathJax_Preview">5</span><script type="math/tex">5</script></span> as a linear combination with the terms <span><span class="MathJax_Preview">55</span><script type="math/tex">55</script></span> and <span><span class="MathJax_Preview">80</span><script type="math/tex">80</script></span>: <span><span class="MathJax_Preview">55 \cdot 3 + 80 \cdot (-2) = 5</span><script type="math/tex">55 \cdot 3 + 80 \cdot (-2) = 5</script></span></p>
-<p>A more general form of that problem is discussed in the article about <a href="/docs/#Algorithms/algebra/linear-diophantine-equation/">Linear Diophantine Equations</a>.
+<p>A more general form of that problem is discussed in the article about <a href="/docs/#Algorithms/Algebra/Linear_Diophantine_Equation/">Linear Diophantine Equations</a>.
 It will build upon this algorithm.</p>
 <h2 id="algorithm">Algorithm</h2>
 <p>We will denote the GCD of <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> with <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> in this section.</p>
@@ -185,9 +185,13 @@ int gcd(int a, int b, int&amp; x, int&amp; y) {
 }
 </code></pre>
 
-<p>If you look closely at the variable <code>a1</code> and <code>b1</code>, you can notice that they taking exactly the same values as in the iterative version of the normal <a href="/docs/#Algorithms/algebra/euclid-algorithm/">Euclidean algorithm</a>. So the algorithm will at least compute the correct GCD.</p>
-<p>To see why the algorithm also computes the correct coefficients, you can check that the following invariants will hold at any time (before the while loop, and at the end of each iteration): <span><span class="MathJax_Preview">x \cdot a + y \cdot b = a_1</span><script type="math/tex">x \cdot a + y \cdot b = a_1</script></span> and <span><span class="MathJax_Preview">x_1 \cdot a + y_1 \cdot b = b_1</span><script type="math/tex">x_1 \cdot a + y_1 \cdot b = b_1</script></span>.
-It's trivial to see, that these two equations are satisfied at the beginning.
+<p>If you look closely at the variable <code>a1</code> and <code>b1</code>, you can notice that they taking exactly the same values as in the iterative version of the normal <a href="/docs/#Algorithms/Algebra/GCD_Euclidean_Algorithm/">Euclidean algorithm</a>. So the algorithm will at least compute the correct GCD.</p>
+<p>To see why the algorithm also computes the correct coefficients, you can check that the following invariants will hold at any time (before the while loop, and at the end of each iteration):</p>
+<div>
+<div class="MathJax_Preview">x \cdot a + y \cdot b = a_1$ and $x_1 \cdot a + y_1 \cdot b = b_1</div>
+<script type="math/tex; mode=display">x \cdot a + y \cdot b = a_1$ and $x_1 \cdot a + y_1 \cdot b = b_1</script>
+</div>
+<p>It's trivial to see, that these two equations are satisfied at the beginning.
 And you can check that the update in the loop iteration will still keep those equalities valid.</p>
 <p>At the end we know that <span><span class="MathJax_Preview">a_1</span><script type="math/tex">a_1</script></span> contains the GCD, so <span><span class="MathJax_Preview">x \cdot a + y \cdot b = g</span><script type="math/tex">x \cdot a + y \cdot b = g</script></span>.
 Which means that we have found the required coefficients.</p>

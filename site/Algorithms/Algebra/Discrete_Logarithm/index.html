@@ -137,7 +137,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>For all possible arguments <span><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span>, calculate <span><span class="MathJax_Preview">f_2</span><script type="math/tex">f_2</script></span> and look for the corresponding <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> in the sorted array using binary search.</li>
 </ul>
 <h2 id="complexity">Complexity</h2>
-<p>We can calculate <span><span class="MathJax_Preview">f_1(p)</span><script type="math/tex">f_1(p)</script></span> in <span><span class="MathJax_Preview">O(\log m)</span><script type="math/tex">O(\log m)</script></span> using the <a href="/docs/#Algorithms/algebra/binary-exp/">binary exponentation algorithm</a>. Similarly for <span><span class="MathJax_Preview">f_2(q)</span><script type="math/tex">f_2(q)</script></span>.</p>
+<p>We can calculate <span><span class="MathJax_Preview">f_1(p)</span><script type="math/tex">f_1(p)</script></span> in <span><span class="MathJax_Preview">O(\log m)</span><script type="math/tex">O(\log m)</script></span> using the <a href="/docs/#Algorithms/Algebra/Binary_Exponentiation/">binary exponentation algorithm</a>. Similarly for <span><span class="MathJax_Preview">f_2(q)</span><script type="math/tex">f_2(q)</script></span>.</p>
 <p>In the first step of the algorithm, we need to calculate <span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span> for every possible argument <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> and then sort the values. Thus, this step has complexity:</p>
 <div>
 <div class="MathJax_Preview">O\left(\left\lceil \frac{m}{n} \right\rceil \left(\log m + \log \left\lceil \frac{m}{n} \right\rceil \right)\right) = O\left( \left\lceil \frac {m}{n} \right\rceil \log m\right)</div>
@@ -212,7 +212,7 @@ This can be done by keeping a variable that is multiplied by <span><span class="
 With this change, the complexity of the algorithm is still the same, but now the <span><span class="MathJax_Preview">\log</span><script type="math/tex">\log</script></span> factor is only for the <code>map</code>.
 Instead of a <code>map</code>, we can also use a hash table (<code>unordered_map</code> in C++) which has the average time complexity <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> for inserting and searching.</p>
 <p>Problems often ask for the minimum <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> which satisfies the solution.
-It is possible to get all answers and take the minimum, or reduce the first found answer using <a href="/docs/#Algorithms/phi-function/#toc-tgt-2">Euler's theorem</a>, but we can be smart about the order in which we calculate values and ensure the first answer we find is the minimum.</p>
+It is possible to get all answers and take the minimum, or reduce the first found answer using <a href="/docs/#Algorithms/Algebra/Euler_Totient_Function/">Euler's theorem</a>, but we can be smart about the order in which we calculate values and ensure the first answer we find is the minimum.</p>
 <p>```cpp discrete_log
 // Returns minimum x for which a ^ x % m = b % m, a and m are coprime.
 int solve(int a, int b, int m) {

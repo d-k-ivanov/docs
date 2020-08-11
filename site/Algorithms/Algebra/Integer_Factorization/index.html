@@ -99,7 +99,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <h1 id="integer-factorization">Integer Factorization</h1>
 <p>In this article we list several algorithms for factorizing integers, each of them can be both fast and also slow (some slower than others) depending on their input.</p>
 <p>Notice, if the number that you want to factorize is actually a prime number, most of the algorithms, especially Fermat's factorization algorithm, Pollard's p-1, Pollard's rho algorithm will run very slow.
-So it makes sense to perform a probabilistic (or a fast deterministic) <a href="/docs/#Algorithms/algebra/primality_tests/">primality test</a> before trying to factorize the number.</p>
+So it makes sense to perform a probabilistic (or a fast deterministic) <a href="/docs/#Algorithms/Algebra/Primality_Tests/">primality test</a> before trying to factorize the number.</p>
 <h2 id="trial-division">Trial division</h2>
 <p>This is the most basic algorithm to find a prime factorization.</p>
 <p>We divide by each possible divisor <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>.
@@ -189,7 +189,7 @@ However, also the skip lists will get a lot bigger.
 ### Precomputed primes
 
 Extending the wheel factorization with more and more primes will leave exactly the primes to check.
-So a good way of checking is just to precompute all prime numbers with the [Sieve of Eratosthenes](/docs/#Algorithms/algebra/sieve-of-eratosthenes/) until $\sqrt{n}$ and test them individually.
+So a good way of checking is just to precompute all prime numbers with the [Sieve of Eratosthenes](/docs/#Algorithms/Algebra/Sieve_of_Eratosthenes/) until $\sqrt{n}$ and test them individually.
 
 ```cpp factorization_trial_division4
 vector&lt;long long&gt; primes;
@@ -239,7 +239,7 @@ E.g. by looking at the squares <span><span class="MathJax_Preview">a^2</span><sc
 E.g. the prime factorization of <span><span class="MathJax_Preview">4817191</span><script type="math/tex">4817191</script></span> are is <span><span class="MathJax_Preview">1303 \cdot 3697</span><script type="math/tex">1303 \cdot 3697</script></span>.
 And the factors are <span><span class="MathJax_Preview">31</span><script type="math/tex">31</script></span>-powersmooth and <span><span class="MathJax_Preview">16</span><script type="math/tex">16</script></span>-powersmooth respectably, because <span><span class="MathJax_Preview">1303 - 1 = 2 \cdot 3 \cdot 7 \cdot 31</span><script type="math/tex">1303 - 1 = 2 \cdot 3 \cdot 7 \cdot 31</script></span> and <span><span class="MathJax_Preview">3697 - 1 = 2^4 \cdot 3 \cdot 7 \cdot 11</span><script type="math/tex">3697 - 1 = 2^4 \cdot 3 \cdot 7 \cdot 11</script></span>.
 In 1974 John Pollard invented a method to extracts <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>-powersmooth factors from a composite number.</p>
-<p>The idea comes from <a href="/docs/#Algorithms/algebra/phi-function/#application">Fermat's little theorem</a>.
+<p>The idea comes from <a href="/docs/#Algorithms/Algebra/Euler_Totient_Function/#application">Fermat's little theorem</a>.
 Let a factorization of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> be <span><span class="MathJax_Preview">n = p \cdot q</span><script type="math/tex">n = p \cdot q</script></span>.
 It says that if <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> is coprime to <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>, the following statement holds:</p>
 <div>
@@ -253,7 +253,7 @@ It says that if <span><span class="MathJax_Preview">a</span><script type="math/t
 </div>
 <p>So for any <span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> with <span><span class="MathJax_Preview">p - 1 ~|~ M</span><script type="math/tex">p - 1 ~|~ M</script></span> we know that <span><span class="MathJax_Preview">a^M \equiv 1</span><script type="math/tex">a^M \equiv 1</script></span>.
 This means that <span><span class="MathJax_Preview">a^M - 1 = p \cdot r</span><script type="math/tex">a^M - 1 = p \cdot r</script></span>, and because of that also <span><span class="MathJax_Preview">p ~|~ \gcd(a^M - 1, n)</span><script type="math/tex">p ~|~ \gcd(a^M - 1, n)</script></span>.</p>
-<p>Therefore, if <span><span class="MathJax_Preview">p - 1</span><script type="math/tex">p - 1</script></span> for a factor <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> divides <span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>, we can extract a factor using <a href="/docs/#Algorithms/algebra/euclid-algorithm/">Euclid's algorithm</a>.</p>
+<p>Therefore, if <span><span class="MathJax_Preview">p - 1</span><script type="math/tex">p - 1</script></span> for a factor <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> divides <span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>, we can extract a factor using <a href="/docs/#Algorithms/Algebra/GCD_Euclidean_Algorithm/">Euclid's algorithm</a>.</p>
 <p>It is clear, that the smallest <span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> that is a multiple of every <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>-powersmooth number is <span><span class="MathJax_Preview">\text{lcm}(1,~2~,3~,4~,~\dots,~B)</span><script type="math/tex">\text{lcm}(1,~2~,3~,4~,~\dots,~B)</script></span>.
 Or alternatively:
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">M = \prod_{\text{prime } q \le B} q^{\lfloor \log_q B \rfloor}</span><script type="math/tex">M = \prod_{\text{prime } q \le B} q^{\lfloor \log_q B \rfloor}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">M = \prod_{\text{prime } q \le B} q^{\lfloor \log_q B \rfloor}</span><script type="math/tex">M = \prod_{\text{prime } q \le B} q^{\lfloor \log_q B \rfloor}</script></span></script></span></p>
@@ -395,7 +395,7 @@ i &amp; x_i \bmod n &amp; x_{2i} \bmod n &amp; x_i \bmod 317 &amp; x_{2i} \bmod 
 \end{array}$$
 
 The implementation uses a function `mult`, that multiplies two integers $\le 10^{18}$ without overflow by using a GCC's type `__int128` for 128-bit integer.
-If GCC is not available, you can using a similar idea as [binary exponentiation](/docs/#Algorithms/algebra/binary-exp/).
+If GCC is not available, you can using a similar idea as [binary exponentiation](/docs/#Algorithms/Algebra/Binary_Exponentiation/).
 
 ```cpp pollard_rho_mult2
 long long mult(long long a, long long b, long long mod) {
@@ -410,7 +410,7 @@ long long mult(long long a, long long b, long long mod) {
 }
 </code></pre>
 
-<p>Alternatively you can also implement the <a href="/docs/#Algorithms/algebra/montgomery_multiplication/">Montgomery multiplication</a>.</p>
+<p>Alternatively you can also implement the <a href="/docs/#Algorithms/Algebra/Montgomery_Multiplication/">Montgomery multiplication</a>.</p>
 <p>As already noticed above: if <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is composite and the algorithm returns <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> as factor, you have to repeat the procedure with different parameter <span><span class="MathJax_Preview">x_0</span><script type="math/tex">x_0</script></span> and <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>.
 E.g. the choice <span><span class="MathJax_Preview">x_0 = c = 1</span><script type="math/tex">x_0 = c = 1</script></span> will not factor <span><span class="MathJax_Preview">25 = 5 \cdot 5</span><script type="math/tex">25 = 5 \cdot 5</script></span>.
 The algorithm will just return <span><span class="MathJax_Preview">25</span><script type="math/tex">25</script></span>.

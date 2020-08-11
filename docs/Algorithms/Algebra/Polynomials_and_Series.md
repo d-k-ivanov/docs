@@ -55,7 +55,7 @@ $$A = a_0 + a_1 x + \dots + a_n x^n$$
 $$B = b_0 + b_1 x + \dots + b_m x^m$$
 
 You have to compute polynomial $C = A \cdot B$: $$\boxed{C = \sum\limits_{i=0}^n \sum\limits_{j=0}^m a_i b_j x^{i+j}}  = c_0 + c_1 x + \dots + c_{n+m} x^{n+m}$$
-It can be computed in $O(n \log n)$ via the [Fast Fourier transform](/docs/#Algorithms/algebra/fft/) and almost all methods here will use it as subroutine.
+It can be computed in $O(n \log n)$ via the [Fast Fourier transform](/docs/#Algorithms/Algebra/Fast_Fourier_Transform/) and almost all methods here will use it as subroutine.
 
 ### Inverse series
 
@@ -222,7 +222,7 @@ You want to know if $A(x)$ and $B(x)$ have any roots in common. There are two in
 
 ### Euclidean algorithm
 
-Well, we already have an [article](/docs/#Algorithms/algebra/euclid-algorithm/) about it. For an arbitrary euclidean domain you can write the Euclidean algorithm as easy as:
+Well, we already have an [article](/docs/#Algorithms/Algebra/GCD_Euclidean_Algorithm/) about it. For an arbitrary euclidean domain you can write the Euclidean algorithm as easy as:
 
 ```cpp
 template<typename T>
