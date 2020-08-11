@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="author" content="Dmitriy Ivanov">
-    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Algebra/Big_Integer/">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Algorithms/Algebra/Arbitrary-Precision_Arithmetic/">
     <link rel="shortcut icon" href="../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Bignum - Arbitrary-Precision Arithmetic - Technical Info</title>
+    <title>Arbitrary-Precision Arithmetic - Technical Info</title>
     <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../css/base.css" rel="stylesheet">
@@ -33,7 +33,7 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Bignum - Arbitrary-Precision Arithmetic", url: "#_top", children: [
+          {title: "Arbitrary-Precision Arithmetic", url: "#_top", children: [
               {title: "Classical Integer Long Arithmetic", url: "#classical-integer-long-arithmetic" },
               {title: "Long Integer Arithmetic for Factorization Representation", url: "#long-integer-arithmetic-for-factorization-representation" },
               {title: "Long Integer Arithmetic in prime modulos (Garner Algorithm)", url: "#long-integer-arithmetic-in-prime-modulos-garner-algorithm" },
@@ -76,20 +76,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../Binary_Exponentiation/" class="btn btn-xs btn-default pull-right">
+      <a href="../Balanced_Ternary/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../Binary_Exponentiation/" class="btn btn-xs btn-link">
-        Binary Exponentiation
+      <a href="../Balanced_Ternary/" class="btn btn-xs btn-link">
+        Balanced Ternary
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../Balanced_Ternary/" class="btn btn-xs btn-default pull-left">
+      <a href="../../.." class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../Balanced_Ternary/" class="btn btn-xs btn-link">
-        Balanced Ternary
+        Previous</a><a href="../../.." class="btn btn-xs btn-link">
+        Documentation collection
       </a>
     </div>
     
@@ -97,7 +97,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="bignum-arbitrary-precision-arithmetic">Bignum - Arbitrary-Precision Arithmetic</h1>
+    <h1 id="arbitrary-precision-arithmetic">Arbitrary-Precision Arithmetic</h1>
 <p>Arbitrary-Precision arithmetic, also known as "bignum" or simply "long arithmetic" is a set of data structures and algorithms which allows to process much greater numbers than can be fit in standard data types. Here are several types of arbitrary-precision arithmetic.</p>
 <h2 id="classical-integer-long-arithmetic">Classical Integer Long Arithmetic</h2>
 <p>The main idea is that the number is stored as an array of its "digits" in some base. Several most frequently used bases are decimal, powers of decimal (<span><span class="MathJax_Preview">10^4</span><script type="math/tex">10^4</script></span> or <span><span class="MathJax_Preview">10^9</span><script type="math/tex">10^9</script></span>) and binary.</p>
