@@ -4,6 +4,7 @@ We are given an array with $n$ numbers: $a[0 \dots n-1]$.
 The task is to find the longest, strictly increasing, subsequence in $a$.
 
 Formally we look for the longest sequence of indices $i_1, \dots i_k$ such that
+
 $$i_1 < i_2 < \dots < i_k,\\\\
 a[i_1] < a[i_2] < \dots < a[i_k]$$
 
@@ -160,7 +161,9 @@ int lis(vector<int> const& a) {
 We now make two important observations.
 
 The array $d$ will always be sorted:
-$d[i-1] \le d[i]$ for all $i = 1 \dots n$.
+
+$$d[i-1] \le d[i]$ for all $i = 1 \dots n$$
+
 And also the element $a[i]$ will only update at most one value $d[j]$.
 
 Thus we can find this element in the array $d[]$ using binary search in $O(\log n)$.
