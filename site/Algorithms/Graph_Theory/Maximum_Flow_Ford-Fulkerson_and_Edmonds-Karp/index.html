@@ -173,13 +173,13 @@ Instead of sending a flow of 3 from <span><span class="MathJax_Preview">D</span>
 <p>Now it is impossible to find an augmenting path between <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> and <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>, therefore this flow of <span><span class="MathJax_Preview">10</span><script type="math/tex">10</script></span> is the maximal possible.
 We have found the maximal flow.</p>
 <p>It should be noted, that the Ford-Fulkerson method doesn't specify a method of finding the augmenting path.
-Possible approaches are using <a href="/docs/#Algorithms/graph/depth-first-search/">DFS</a> or <a href="/docs/#Algorithms/graph/breadth-first-search/">BFS</a> which both work in <span><span class="MathJax_Preview">O(E)</span><script type="math/tex">O(E)</script></span>.
+Possible approaches are using <a href="/docs/#Algorithms/Graph_Theory/Depth_First_Search/">DFS</a> or <a href="/docs/#Algorithms/Graph_Theory/Breadth-First_Search/">BFS</a> which both work in <span><span class="MathJax_Preview">O(E)</span><script type="math/tex">O(E)</script></span>.
 If all capacities of the network are integers, then for each augmenting path the flow of the network increases by at least 1 (for more details see <a href="#integral-theorem">Integral flow theorem</a>).
 Therefore the complexity of Ford-Fulkerson is <span><span class="MathJax_Preview">O(E F)</span><script type="math/tex">O(E F)</script></span>, where <span><span class="MathJax_Preview">F</span><script type="math/tex">F</script></span> is the maximal flow of the network.
 In case of rational capacities, the algorithm will also terminate, but the complexity is not bounded.
 In case of irrational capacities, the algorithm might never terminate, and might not even converge to the maximal flow.</p>
 <h2 id="edmonds-karp-algorithm">Edmonds-Karp algorithm</h2>
-<p>Edmonds-Karp algorithm is just an implementation of the Ford-Fulkerson method that uses <a href="/docs/#Algorithms/graph/breadth-first-search/">BFS</a> for finding augmenting paths.
+<p>Edmonds-Karp algorithm is just an implementation of the Ford-Fulkerson method that uses <a href="/docs/#Algorithms/Graph_Theory/Breadth-First_Search/">BFS</a> for finding augmenting paths.
 The algorithm was first published by Yefim Dinitz in 1970, and later independently published by Jack Edmonds and Richard Karp in 1972.</p>
 <p>The complexity can be given independently of the maximal flow.
 The algorithm runs in <span><span class="MathJax_Preview">O(V E^2)</span><script type="math/tex">O(V E^2)</script></span> time, even for irrational capacities.
@@ -254,7 +254,7 @@ Other cuts will have a bigger capacity, like the capacity between <span><span cl
 <p>A minimum cut can be found after performing a maximum flow computation using the Ford-Fulkerson method.
 One possible minimum cut is the following:
 the set of all vertices that can be reached from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> in the residual graph (using edges with positive residual capacity), and the set of all the other vertices.
-This partition can be easily found using <a href="/docs/#Algorithms/graph/depth-first-search/">DFS</a> starting at <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.</p>
+This partition can be easily found using <a href="/docs/#Algorithms/Graph_Theory/Depth_First_Search/">DFS</a> starting at <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.</p>
 <h2 id="practice-problems">Practice Problems</h2>
 <ul>
 <li><a href="https://codeforces.com/contest/498/problem/c">Codeforces - Array and Operations</a></li>

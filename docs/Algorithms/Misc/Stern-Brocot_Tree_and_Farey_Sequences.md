@@ -18,9 +18,9 @@ The first few iterations look like this:
 
 $$
     \begin{array}{c}
-    \dfrac{0}{1}, \dfrac{1}{1}, \dfrac{1}{0} \\\\\\\\
-    \dfrac{0}{1}, \dfrac{1}{2}, \dfrac{1}{1}, \dfrac{2}{1}, \dfrac{1}{0} \\\\\\\\
-    \dfrac{0}{1}, \dfrac{1}{3}, \dfrac{1}{2}, \dfrac{2}{3}, \dfrac{1}{1}, \dfrac{3}{2}, \dfrac{2}{1}, \dfrac{3}{1}, \dfrac{1}{0}
+        \dfrac{0}{1}, \dfrac{1}{1}, \dfrac{1}{0} \\\\\\\\
+        \dfrac{0}{1}, \dfrac{1}{2}, \dfrac{1}{1}, \dfrac{2}{1}, \dfrac{1}{0} \\\\\\\\
+        \dfrac{0}{1}, \dfrac{1}{3}, \dfrac{1}{2}, \dfrac{2}{3}, \dfrac{1}{1}, \dfrac{3}{2}, \dfrac{2}{1}, \dfrac{3}{1}, \dfrac{1}{0}
     \end{array}
 $$
 
@@ -66,10 +66,12 @@ $$
 
 the new expressions become
 
-$$\begin{align}
-    b(a+c) - a(b+d) &= 1 \\\\
-    c(b+d) - d(a+c) &= 1
-\end{align}$$
+$$
+    \begin{align}
+        b(a+c) - a(b+d) &= 1 \\\\
+        c(b+d) - d(a+c) &= 1
+    \end{align}
+$$
 
 which, using that $bc-ad=1$, can be easily shown to be true.
 

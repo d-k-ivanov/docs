@@ -96,8 +96,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <h1 id="minimum-spanning-tree-kruskal-with-disjoint-set-union">Minimum Spanning Tree: Kruskal with Disjoint Set Union</h1>
-<p>For an explanation of the MST problem and the Kruskal algorithm, first see the <a href="/docs/#Algorithms/graph/mst_kruskal/">main article on Kruskal's algorithm</a>.</p>
-<p>In this article we will consider the data structure <a href="/docs/#Algorithms/data_structures/disjoint_set_union/">"Disjoint Set Union"</a> for implementing Kruskal's algorithm, which will allow the algorithm to achieve the time complexity of <span><span class="MathJax_Preview">O(M \log N)</span><script type="math/tex">O(M \log N)</script></span>.</p>
+<p>For an explanation of the MST problem and the Kruskal algorithm, first see the <a href="/docs/#Algorithms/Graph_Theory/Minimum_Spanning_Tree_Kruskals_Algorithm/">main article on Kruskal's algorithm</a>.</p>
+<p>In this article we will consider the data structure <a href="/docs/#Algorithms/Data_Structures/Disjoint_Set_Union/">"Disjoint Set Union"</a> for implementing Kruskal's algorithm, which will allow the algorithm to achieve the time complexity of <span><span class="MathJax_Preview">O(M \log N)</span><script type="math/tex">O(M \log N)</script></span>.</p>
 <h2 id="description">Description</h2>
 <p>Just as in the simple version of the Kruskal algorithm, we sort all the edges of the graph in non-decreasing order of weights.
 Then put each vertex in its own tree (i.e. its set) via calls to the <code>make_set</code> function - it will take a total of <span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span>.
@@ -161,7 +161,7 @@ for (Edge e : edges) {
 
 <p>Notice: since the MST will contain exactly <span><span class="MathJax_Preview">N-1</span><script type="math/tex">N-1</script></span> edges, we can stop the for loop once we found that many.</p>
 <h2 id="practice-problems">Practice Problems</h2>
-<p>See <a href="/docs/#Algorithms/graph/mst_kruskal/">main article on Kruskal's algorithm</a> for the list of practice problems on this topic.</p>
+<p>See <a href="/docs/#Algorithms/Graph_Theory/Minimum_Spanning_Tree_Kruskals_Algorithm/">main article on Kruskal's algorithm</a> for the list of practice problems on this topic.</p>
 
   <br>
 </div>

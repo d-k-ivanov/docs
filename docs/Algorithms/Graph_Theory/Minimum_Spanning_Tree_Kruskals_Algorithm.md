@@ -103,7 +103,7 @@ Which means that after iterating over all edges the resulting edge set will be c
 
 ## Improved implementation
 
-We can use the [**Disjoint Set Union** (DSU)](/docs/#Algorithms/data_structures/disjoint_set_union.html) data structure to write a faster implementation of the Kruskal's algorithm with the time complexity of about $O(M \log N)$. [This article](/docs/#Algorithms/graph/mst_kruskal_with_dsu.html) details such an approach.
+We can use the [**Disjoint Set Union** (DSU)](/docs/#Algorithms/Data_Structures/Disjoint_Set_Union/) data structure to write a faster implementation of the Kruskal's algorithm with the time complexity of about $O(M \log N)$. [This article](/docs/#Algorithms/Graph_Theory/Minimum_Spanning_Tree_Kruskal_with_DSU/) details such an approach.
 
 ## Practice Problems
 

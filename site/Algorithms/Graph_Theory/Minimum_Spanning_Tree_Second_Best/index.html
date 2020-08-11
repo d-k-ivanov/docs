@@ -130,7 +130,7 @@ We try to add every edge that is not already in the MST.</p>
 <p>The time complexity of the algorithm depends on how we compute the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>s, which are the maximum weight edges in step 2 of this algorithm.
 One way to compute them efficiently in <span><span class="MathJax_Preview">O(E \log V)</span><script type="math/tex">O(E \log V)</script></span> is to transform the problem into a Lowest Common Ancestor (LCA) problem.</p>
 <p>We will preprocess the LCA by rooting the MST and will also compute the maximum edge weights for each node on the paths to their ancestors.
-This can be done using <a href="graph/lca_binary_lifting/">Binary Lifting</a> for LCA.</p>
+This can be done using <a href="/docs/#Algorithms/Graph_Theory/Lowest_Common_Ancestor_Binary_Lifting/">Binary Lifting</a> for LCA.</p>
 <p>The final time complexity of this approach is <span><span class="MathJax_Preview">O(E \log V)</span><script type="math/tex">O(E \log V)</script></span>.</p>
 <p>For example:</p>
 <p><center><img alt="MST" src="/docs/data/cs/second_best_mst_1.png" /> <img alt="Second best MST" src="/docs/data/cs/second_best_mst_2.png" /> <br></p>

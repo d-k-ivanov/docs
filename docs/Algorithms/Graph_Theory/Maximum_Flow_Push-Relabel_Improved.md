@@ -1,6 +1,6 @@
 # Maximum Flow: Push-Relabel Algorithm Improved
 
-We will modify the [push-relabel method](/docs/#Algorithms/graph/push-relabel/) to achieve a better runtime.
+We will modify the [push-relabel method](/docs/#Algorithms/Graph_Theory/Maximum_Flow_Push-Relabel_Algorithm/) to achieve a better runtime.
 
 ## Description
 

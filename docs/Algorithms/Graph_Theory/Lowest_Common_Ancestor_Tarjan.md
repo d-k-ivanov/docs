@@ -9,9 +9,9 @@ The following algorithm allows to answer all $m$ queries in $O(n + m)$ total tim
 
 ## Algorithm
 
-The algorithm is named after Robert Tarjan, who discovered it in 1979 and also made many other contributions to the [Disjoint Set Union](/docs/#Algorithms/data_structures/disjoint_set_union/) data structure, which will be heavily used in this algorithm.
+The algorithm is named after Robert Tarjan, who discovered it in 1979 and also made many other contributions to the [Disjoint Set Union](/docs/#Algorithms/Data_Structures/Disjoint_Set_Union/) data structure, which will be heavily used in this algorithm.
 
-The algorithm answers all queries with one [DFS](/docs/#Algorithms/graph/depth-first-search/) traversal of the tree.
+The algorithm answers all queries with one [DFS](/docs/#Algorithms/Graph_Theory/Depth_First_Search/) traversal of the tree.
 Namely a query $(u, v)$ is answered at node $u$, if node $v$ has already been visited previously, or vice versa.
 
 So let's assume we are currently at node $v$, we have already made recursive DFS calls, and also already visited the second node $u$ from the query $(u, v)$.

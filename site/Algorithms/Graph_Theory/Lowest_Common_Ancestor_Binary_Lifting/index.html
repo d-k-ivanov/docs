@@ -104,7 +104,7 @@ In particular if <code>u</code> is an ancestor of <code>v</code>, then <code>u</
 <p>For each node we will precompute its ancestor above him, its ancestor two nodes above, its ancestor four above, etc.
 Let's store them in the array <code>up</code>, i.e. <code>up[i][j]</code> is the <code>2^j</code>-th ancestor above the node <code>i</code> with <code>i=1...N</code>, <code>j=0...ceil(log(N))</code>.
 These information allow us to jump from any node to any ancestor above it in <span><span class="MathJax_Preview">O(\log N)</span><script type="math/tex">O(\log N)</script></span> time.
-We can compute this array using a <a href="/docs/#Algorithms/graph/depth-first-search/">DFS</a> traversal of the tree.</p>
+We can compute this array using a <a href="/docs/#Algorithms/Graph_Theory/Depth_First_Search/">DFS</a> traversal of the tree.</p>
 <p>For each node we will also remember the time of the first visit of this node (i.e. the time when the DFS discovers the node), and the time when we left it (i.e. after we visited all children and exit the DFS function).
 We can use this information to determine in constant time if a node is an ancestor of another node.</p>
 <p>Suppose now we received a query <code>(u, v)</code>.

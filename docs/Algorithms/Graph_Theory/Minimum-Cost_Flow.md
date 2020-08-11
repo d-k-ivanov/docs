@@ -15,7 +15,7 @@ Both these problems can be solved effectively with the algorithm of sucessive sh
 
 ## Algorithm
 
-This algorithm is very similar to the [Edmonds-Karp](/docs/#Algorithms/graph/edmonds_karp/) for computing the maximum flow.
+This algorithm is very similar to the [Edmonds-Karp](/docs/#Algorithms/Graph_Theory/Maximum_Flow_Ford-Fulkerson_and_Edmonds-Karp/) for computing the maximum flow.
 
 ### Simplest case
 
@@ -67,15 +67,15 @@ There are no other obstructions with undirected graphs or multigraphs.
 Analog to the analysis of the Edmonds-Karp algorithm we get the following estimation:
 $O(n m) \cdot T(n, m)$, where $T(n, m)$ is the time required to find the shortest path in a graph with $n$ vertices and $m$ edges
 
-If this search is done with the [Dijkstra algorithm](/docs/#Algorithms/graph/dijkstra/), then the complexity for the minimum-cost algorithm would become $O(n^3 m)$.
+If this search is done with the [Dijkstra algorithm](/docs/#Algorithms/Graph_Theory/Dijkstra_Algorithm/), then the complexity for the minimum-cost algorithm would become $O(n^3 m)$.
 However we deal with edges with negative cost.
 So Dijkstra is not applicable, at least not unmodified.
 
-Instead we can use the [Bellman-Ford algorithm](/docs/#Algorithms/graph/bellman_ford/). With it the complexity becomes $O(n^2 m^2)$.
+Instead we can use the [Bellman-Ford algorithm](/docs/#Algorithms/Graph_Theory/Bellman-Ford_Algorithm/). With it the complexity becomes $O(n^2 m^2)$.
 
 ## Implementation
 
-Here is an implementation using the [SPFA algorithm](/docs/#Algorithms/graph/bellman_ford/) for the simplest case.
+Here is an implementation using the [SPFA algorithm](/docs/#Algorithms/Graph_Theory/Bellman-Ford_Algorithm/) for the simplest case.
 
 ```cpp min_cost_flow_successive_shortest_path
 struct Edge

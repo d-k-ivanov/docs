@@ -96,13 +96,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <h1 id="strong-orientation">Strong Orientation</h1>
-<p>A <strong>strong orientation</strong> of an undirected graph is an assignment of a direction to each edge that makes it a <a href="/docs/#Algorithms/graph/strongly-connected-components/">strongly connected graph</a>.
+<p>A <strong>strong orientation</strong> of an undirected graph is an assignment of a direction to each edge that makes it a <a href="/docs/#Algorithms/Graph_Theory/Strongly_Connected_Components/">strongly connected graph</a>.
 That is, after the <em>orientation</em> we should be able to visit any vertex from any vertex by following the directed edges.</p>
 <h2 id="solution">Solution</h2>
 <p>Of course, this cannot be done to <em>every</em> graph.
-Consider a <a href="/docs/#Algorithms/graph/bridge-searching/">bridge</a> in a graph.
+Consider a <a href="/docs/#Algorithms/Graph_Theory/Bridge_Searching/">bridge</a> in a graph.
 We have to assign a direction to it and by doing so we make this bridge "crossable" in only one direction. That means we can't go from one of the bridge's ends to the other, so we can't make the graph strongly connected.</p>
-<p>Now consider a <a href="/docs/#Algorithms/graph/depth-first-search/">DFS</a> through a bridgeless connected graph.
+<p>Now consider a <a href="/docs/#Algorithms/Graph_Theory/Depth_First_Search/">DFS</a> through a bridgeless connected graph.
 Clearly, we will visit each vertex.
 And since there are no bridges, we can remove any DFS tree edge and still be able to go
 from below the edge to above the edge by using a path that contains at least one back edge.

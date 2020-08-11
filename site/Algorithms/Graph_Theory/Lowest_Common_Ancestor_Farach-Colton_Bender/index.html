@@ -103,7 +103,7 @@ In particular if <span><span class="MathJax_Preview">u</span><script type="math/
 It is asymptotically optimal.</p>
 <h2 id="algorithm">Algorithm</h2>
 <p>We use the classical reduction of the LCA problem to the RMQ problem.
-We traverse all nodes of the tree with <a href="/docs/#Algorithms/graph/depth-first-search/">DFS</a> and keep an array with all visited nodes and the heights of these nodes.
+We traverse all nodes of the tree with <a href="/docs/#Algorithms/Graph_Theory/Depth_First_Search/">DFS</a> and keep an array with all visited nodes and the heights of these nodes.
 The LCA of two nodes <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> and <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> is the node between the occurrences of <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> and <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> in the tour, that has the smallest height.</p>
 <p>In the following picture you can see a possible Euler-Tour of a graph and in the list below you can see the visited nodes and their heights.</p>
 <p><center><img alt="LCA_Euler_Tour" src="/docs/data/cs/LCA_Euler.png" /></center></p>
@@ -119,7 +119,7 @@ The LCA of two nodes <span><span class="MathJax_Preview">u</span><script type="m
 \text{Heights:} & 1 & 2 & 3 & 2 & 3 & 2 & 1 & 2 & 1 & 2 & 3 & 2 & 1 \\\\ \hline
 \end{array}</script>
 </div>
-<p>You can read more about this reduction in the article <a href="/docs/#Algorithms/graph/lca/">Lowest Common Ancestor</a>.
+<p>You can read more about this reduction in the article <a href="/docs/#Algorithms/Graph_Theory/Lowest_Common_Ancestor/">Lowest Common Ancestor</a>.
 In that article the minimum of a range was either found by sqrt-decomposition in <span><span class="MathJax_Preview">O(\sqrt{N})</span><script type="math/tex">O(\sqrt{N})</script></span> or in <span><span class="MathJax_Preview">O(\log N)</span><script type="math/tex">O(\log N)</script></span> using a Segment tree.
 In this article we look at how we can solve the given range minimum queries in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> time, while still only taking <span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span> time for preprocessing.</p>
 <p>Note that the reduced RMQ problem is very specific:
@@ -127,7 +127,7 @@ any two adjacent elements in the array differ exactly by one (since the elements
 The Farach-Colton and Bender algorithm describes a solution for exactly this specialized RMQ problem.</p>
 <p>Let's denote with <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> the array on which we want to perform the range minimum queries.
 And <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> will be the size of <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>.</p>
-<p>There is an easy data structure that we can use for solving the RMQ problem with <span><span class="MathJax_Preview">O(N \log N)</span><script type="math/tex">O(N \log N)</script></span> preprocessing and <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> for each query: the <a href="/docs/#Algorithms/data_structures/sparse-table/">Sparse Table</a>.
+<p>There is an easy data structure that we can use for solving the RMQ problem with <span><span class="MathJax_Preview">O(N \log N)</span><script type="math/tex">O(N \log N)</script></span> preprocessing and <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> for each query: the <a href="/docs/#Algorithms/Data_Structures/Sparse_Table/">Sparse Table</a>.
 We create a table <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> where each element <span><span class="MathJax_Preview">T[i][j]</span><script type="math/tex">T[i][j]</script></span> is equal to the minimum of <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> in the interval <span><span class="MathJax_Preview">[i, i + 2^j - 1]</span><script type="math/tex">[i, i + 2^j - 1]</script></span>.
 Obviously <span><span class="MathJax_Preview">0 \leq j \leq \lceil \log N \rceil</span><script type="math/tex">0 \leq j \leq \lceil \log N \rceil</script></span>, and therefore the size of the Sparse Table will be <span><span class="MathJax_Preview">O(N \log N)</span><script type="math/tex">O(N \log N)</script></span>.
 You can build the table easily in <span><span class="MathJax_Preview">O(N \log N)</span><script type="math/tex">O(N \log N)</script></span> by noting that <span><span class="MathJax_Preview">T[i][j] = \min(T[i][j-1], T[i+2^{j-1}][j-1])</span><script type="math/tex">T[i][j] = \min(T[i][j-1], T[i+2^{j-1}][j-1])</script></span>.</p>

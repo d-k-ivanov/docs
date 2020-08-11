@@ -1,6 +1,6 @@
 # Dijkstra Algorithm on Sparse Graphs
 
-For the statement of the problem, the algorithm with implementation and proof can be found on the article [Dijkstra's algorithm](/docs/#Algorithms/graph/dijkstra/).
+For the statement of the problem, the algorithm with implementation and proof can be found on the article [Dijkstra's algorithm](/docs/#Algorithms/Graph_Theory/Dijkstra_Algorithm/).
 
 ## Algorithm
 

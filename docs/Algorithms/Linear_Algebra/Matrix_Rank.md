@@ -9,7 +9,7 @@ Note that if the matrix is square and its determinant is non-zero, then the rank
 
 ## Algorithm
 
-You can search for the rank using [Gaussian elimination](/docs/#Algorithms/linear_algebra/linear-system-gauss/). We will perform the same operations as when solving the system or finding its determinant. But if at any step in the $i$-th column there are no rows with an non-empty entry among those that we didn't selected already, then we skip this step.
+You can search for the rank using [Gaussian elimination](/docs/#Algorithms/Linear_Algebra/Linear_Equations_Gauss/). We will perform the same operations as when solving the system or finding its determinant. But if at any step in the $i$-th column there are no rows with an non-empty entry among those that we didn't selected already, then we skip this step.
 Otherwise, if we have found a row with a non-zero element in the $i$-th column during the $i$-th step, then we mark this row as a selected one, increase the rank by one (initially the rank is set equal to $0$), and perform the usual operations of taking this row away from the rest.
 
 ## Complexity

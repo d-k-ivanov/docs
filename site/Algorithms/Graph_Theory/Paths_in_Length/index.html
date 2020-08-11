@@ -113,13 +113,22 @@ It contains the number of paths of length <span><span class="MathJax_Preview">1<
 Let's assume we know the answer for some <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.
 Here we describe a method how we can construct the answer for <span><span class="MathJax_Preview">k + 1</span><script type="math/tex">k + 1</script></span>.
 Denote by <span><span class="MathJax_Preview">C_k</span><script type="math/tex">C_k</script></span> the matrix for the case <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>, and by <span><span class="MathJax_Preview">C_{k+1}</span><script type="math/tex">C_{k+1}</script></span> the matrix we want to construct.
-With the following formula we can compute every entry of <span><span class="MathJax_Preview">C_{k+1}</span><script type="math/tex">C_{k+1}</script></span>:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">C_{k+1}[i][j] = \sum_{p = 1}^{n} C_k[i][p] \cdot G[p][j]</span><script type="math/tex">C_{k+1}[i][j] = \sum_{p = 1}^{n} C_k[i][p] \cdot G[p][j]</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">C_{k+1}[i][j] = \sum_{p = 1}^{n} C_k[i][p] \cdot G[p][j]</span><script type="math/tex">C_{k+1}[i][j] = \sum_{p = 1}^{n} C_k[i][p] \cdot G[p][j]</script></span></script></span></p>
-<p>It is easy to see that the formula computes nothing other than the product of the matrices <span><span class="MathJax_Preview">C_k</span><script type="math/tex">C_k</script></span> and <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">C_{k+1} = C_k \cdot G</span><script type="math/tex">C_{k+1} = C_k \cdot G</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">C_{k+1} = C_k \cdot G</span><script type="math/tex">C_{k+1} = C_k \cdot G</script></span></script></span></p>
-<p>Thus the solution of the problem can be represented as follows:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">C_k = \underbrace{G \cdot G \cdots G}_{k \text{ times}} = G^k</span><script type="math/tex">C_k = \underbrace{G \cdot G \cdots G}_{k \text{ times}} = G^k</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">C_k = \underbrace{G \cdot G \cdots G}_{k \text{ times}} = G^k</span><script type="math/tex">C_k = \underbrace{G \cdot G \cdots G}_{k \text{ times}} = G^k</script></span></script></span></p>
-<p>It remains to note that the matrix products can be raised to a high power efficiently using <a href="/docs/#Algorithms/algebra/binary-exp/">Binary exponentiation</a>.
+With the following formula we can compute every entry of <span><span class="MathJax_Preview">C_{k+1}</span><script type="math/tex">C_{k+1}</script></span>:</p>
+<div>
+<div class="MathJax_Preview">C_{k+1}[i][j] = \sum_{p = 1}^{n} C_k[i][p] \cdot G[p][j]</div>
+<script type="math/tex; mode=display">C_{k+1}[i][j] = \sum_{p = 1}^{n} C_k[i][p] \cdot G[p][j]</script>
+</div>
+<p>It is easy to see that the formula computes nothing other than the product of the matrices <span><span class="MathJax_Preview">C_k</span><script type="math/tex">C_k</script></span> and <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>:</p>
+<div>
+<div class="MathJax_Preview">C_{k+1} = C_k \cdot G</div>
+<script type="math/tex; mode=display">C_{k+1} = C_k \cdot G</script>
+</div>
+<p>Thus the solution of the problem can be represented as follows:</p>
+<div>
+<div class="MathJax_Preview">C_k = \underbrace{G \cdot G \cdots G}_{k \text{ times}} = G^k</div>
+<script type="math/tex; mode=display">C_k = \underbrace{G \cdot G \cdots G}_{k \text{ times}} = G^k</script>
+</div>
+<p>It remains to note that the matrix products can be raised to a high power efficiently using <a href="/docs/#Algorithms/Algebra/Binary_Exponentiation/">Binary exponentiation</a>.
 This gives a solution with <span><span class="MathJax_Preview">O(n^3 \log k)</span><script type="math/tex">O(n^3 \log k)</script></span> complexity.</p>
 <h2 id="shortest-paths-of-a-fixed-length">Shortest paths of a fixed length</h2>
 <p>We are given a directed weighted graph <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices and an integer <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.
@@ -132,16 +141,28 @@ It contains the lengths of shortest paths between each pair of vertices, or <spa
 Let's assume we know the answer for some <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.
 We show how we can compute the answer for <span><span class="MathJax_Preview">k+1</span><script type="math/tex">k+1</script></span>.
 Let us denote <span><span class="MathJax_Preview">L_k</span><script type="math/tex">L_k</script></span> the matrix for <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> and <span><span class="MathJax_Preview">L_{k+1}</span><script type="math/tex">L_{k+1}</script></span> the matrix we want to build.
-Then the following formula computes each entry of <span><span class="MathJax_Preview">L_{k+1}</span><script type="math/tex">L_{k+1}</script></span>:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">L_{k+1}[i][j] = \min_{p = 1 \ldots n} \left(L_k[i][p] + G[p][j]\right)</span><script type="math/tex">L_{k+1}[i][j] = \min_{p = 1 \ldots n} \left(L_k[i][p] + G[p][j]\right)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">L_{k+1}[i][j] = \min_{p = 1 \ldots n} \left(L_k[i][p] + G[p][j]\right)</span><script type="math/tex">L_{k+1}[i][j] = \min_{p = 1 \ldots n} \left(L_k[i][p] + G[p][j]\right)</script></span></script></span></p>
+Then the following formula computes each entry of <span><span class="MathJax_Preview">L_{k+1}</span><script type="math/tex">L_{k+1}</script></span>:</p>
+<div>
+<div class="MathJax_Preview">L_{k+1}[i][j] = \min_{p = 1 \ldots n} \left(L_k[i][p] + G[p][j]\right)</div>
+<script type="math/tex; mode=display">L_{k+1}[i][j] = \min_{p = 1 \ldots n} \left(L_k[i][p] + G[p][j]\right)</script>
+</div>
 <p>When looking closer at this formula, we can draw an analogy with the matrix multiplication:
-in fact the matrix <span><span class="MathJax_Preview">L_k</span><script type="math/tex">L_k</script></span> is multiplied by the matrix <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>, the only difference is that instead in the multiplication operation we take the minimum instead of the sum.
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">L_{k+1} = L_k \odot G,</span><script type="math/tex">L_{k+1} = L_k \odot G,</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">L_{k+1} = L_k \odot G,</span><script type="math/tex">L_{k+1} = L_k \odot G,</script></span></script></span>
-where the operation <span><span class="MathJax_Preview">\odot</span><script type="math/tex">\odot</script></span> is defined as follows:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">A \odot B = C~~\Longleftrightarrow~~C_{i j} = \min_{p = 1 \ldots n}\left(A_{i p} + B_{p j}\right)</span><script type="math/tex">A \odot B = C~~\Longleftrightarrow~~C_{i j} = \min_{p = 1 \ldots n}\left(A_{i p} + B_{p j}\right)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">A \odot B = C~~\Longleftrightarrow~~C_{i j} = \min_{p = 1 \ldots n}\left(A_{i p} + B_{p j}\right)</span><script type="math/tex">A \odot B = C~~\Longleftrightarrow~~C_{i j} = \min_{p = 1 \ldots n}\left(A_{i p} + B_{p j}\right)</script></span></script></span></p>
-<p>Thus the solution of the task can be represented using the modified multiplication:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">L_k = \underbrace{G \odot \ldots \odot G}_{k~\text{times}} = G^{\odot k}</span><script type="math/tex">L_k = \underbrace{G \odot \ldots \odot G}_{k~\text{times}} = G^{\odot k}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">L_k = \underbrace{G \odot \ldots \odot G}_{k~\text{times}} = G^{\odot k}</span><script type="math/tex">L_k = \underbrace{G \odot \ldots \odot G}_{k~\text{times}} = G^{\odot k}</script></span></script></span></p>
-<p>It remains to note that we also can compute this exponentiation efficiently with <a href="/docs/#Algorithms/algebra/binary-exp/">Binary exponentiation</a>, because the modified multiplication is obviously associative.
+in fact the matrix <span><span class="MathJax_Preview">L_k</span><script type="math/tex">L_k</script></span> is multiplied by the matrix <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>, the only difference is that instead in the multiplication operation we take the minimum instead of the sum.</p>
+<div>
+<div class="MathJax_Preview">L_{k+1} = L_k \odot G,</div>
+<script type="math/tex; mode=display">L_{k+1} = L_k \odot G,</script>
+</div>
+<p>where the operation <span><span class="MathJax_Preview">\odot</span><script type="math/tex">\odot</script></span> is defined as follows:</p>
+<div>
+<div class="MathJax_Preview">A \odot B = C~~\Longleftrightarrow~~C_{i j} = \min_{p = 1 \ldots n}\left(A_{i p} + B_{p j}\right)</div>
+<script type="math/tex; mode=display">A \odot B = C~~\Longleftrightarrow~~C_{i j} = \min_{p = 1 \ldots n}\left(A_{i p} + B_{p j}\right)</script>
+</div>
+<p>Thus the solution of the task can be represented using the modified multiplication:</p>
+<div>
+<div class="MathJax_Preview">L_k = \underbrace{G \odot \ldots \odot G}_{k~\text{times}} = G^{\odot k}</div>
+<script type="math/tex; mode=display">L_k = \underbrace{G \odot \ldots \odot G}_{k~\text{times}} = G^{\odot k}</script>
+</div>
+<p>It remains to note that we also can compute this exponentiation efficiently with <a href="/docs/#Algorithms/Algebra/Binary_Exponentiation/">Binary exponentiation</a>, because the modified multiplication is obviously associative.
 So also this solution has <span><span class="MathJax_Preview">O(n^3 \log k)</span><script type="math/tex">O(n^3 \log k)</script></span> complexity.</p>
 <h2 id="generalization-of-the-problems-for-paths-with-length-up-to-kk">Generalization of the problems for paths with length up to <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span></h2>
 <p>The above solutions solve the problems for a fixed <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.
