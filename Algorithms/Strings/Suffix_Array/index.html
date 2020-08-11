@@ -376,7 +376,7 @@ $$\dots
 <p>Here is the implementation of the comparison.
 Note that it is assumed that the function gets called with the already calculated <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.
 <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> can be computed with <span><span class="MathJax_Preview">\lfloor \log l \rfloor</span><script type="math/tex">\lfloor \log l \rfloor</script></span>, but it is more efficient to precompute all <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> values for every <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span>.
-See for instance the article about the <a href="/docs/#Algorithms/data_structures/sparse-table/">Sparse Table</a>, which uses a similar idea and computes all <span><span class="MathJax_Preview">\log</span><script type="math/tex">\log</script></span> values.</p>
+See for instance the article about the <a href="/docs/#Algorithms/Sata_Structures/Sparse_Table/">Sparse Table</a>, which uses a similar idea and computes all <span><span class="MathJax_Preview">\log</span><script type="math/tex">\log</script></span> values.</p>
 <pre><code class="cpp">int compare(int i, int j, int l, int k) {
     pair&lt;int, int&gt; a = {c[k][i], c[k][(i+l-(1 &lt;&lt; k))%n]};
     pair&lt;int, int&gt; b = {c[k][j], c[k][(j+l-(1 &lt;&lt; k))%n]};
@@ -419,7 +419,7 @@ This array will give us an answer for any two adjacent suffixes of the string.
 Then the answer for arbitrary two suffixes, not necessarily neighboring ones, can be obtained from this array.
 In fact, let the request be to compute the LCP of the suffixes <span><span class="MathJax_Preview">p[i]</span><script type="math/tex">p[i]</script></span> and <span><span class="MathJax_Preview">p[j]</span><script type="math/tex">p[j]</script></span>.
 Then the answer to this query will be <span><span class="MathJax_Preview">\min(lcp[i],~ lcp[i+1],~ \dots,~ lcp[j-1])</span><script type="math/tex">\min(lcp[i],~ lcp[i+1],~ \dots,~ lcp[j-1])</script></span>.</p>
-<p>Thus if we have such an array <span><span class="MathJax_Preview">\text{lcp}</span><script type="math/tex">\text{lcp}</script></span>, then the problem is reduced to the <a href="/docs/#Algorithms/sequences/rmq/">RMQ</a>, which has many wide number of different solutions with different complexities.</p>
+<p>Thus if we have such an array <span><span class="MathJax_Preview">\text{lcp}</span><script type="math/tex">\text{lcp}</script></span>, then the problem is reduced to the <a href="/docs/#Algorithms/Sequences/Range_Minimum_Query/">RMQ</a>, which has many wide number of different solutions with different complexities.</p>
 <p>So the main task is to <strong>build</strong> this array <span><span class="MathJax_Preview">\text{lcp}</span><script type="math/tex">\text{lcp}</script></span>.
 We will use <strong>Kasai's algorithm</strong>, which can compute this array in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> time.</p>
 <p>Let's look at two adjacent suffixes in the sorted order (order of the suffix array).

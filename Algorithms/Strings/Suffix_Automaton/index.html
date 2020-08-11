@@ -76,11 +76,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../Suffix_Tree_Ukkone/" class="btn btn-xs btn-default pull-right">
+      <a href="../Suffix_Tree_Ukkonen/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../Suffix_Tree_Ukkone/" class="btn btn-xs btn-link">
+      <a href="../Suffix_Tree_Ukkonen/" class="btn btn-xs btn-link">
         Suffix Tree: Ukkonen's Algorithm
       </a>
     </div>
@@ -235,8 +235,10 @@ The nodes are labeled with the longest substring from the corresponding equivale
   Then all the strings corresponding to this state are different suffixes of the string <span><span class="MathJax_Preview">longest(v)</span><script type="math/tex">longest(v)</script></span> and have all possible lengths in the interval <span><span class="MathJax_Preview">[minlength(v); len(v)]</span><script type="math/tex">[minlength(v); len(v)]</script></span>.</li>
 <li>For each state <span><span class="MathJax_Preview">v \ne t_0</span><script type="math/tex">v \ne t_0</script></span> a suffix link is defined as a link, that leads to a state that corresponds to the suffix of the string <span><span class="MathJax_Preview">longest(v)</span><script type="math/tex">longest(v)</script></span> of length <span><span class="MathJax_Preview">minlen(v) - 1</span><script type="math/tex">minlen(v) - 1</script></span>.
   The suffix links form a tree with the root in <span><span class="MathJax_Preview">t_0</span><script type="math/tex">t_0</script></span>, and at the same time this tree forms an inclusion relationship between the sets <span><span class="MathJax_Preview">endpos</span><script type="math/tex">endpos</script></span>.</li>
-<li>We can express <span><span class="MathJax_Preview">minlen(v)</span><script type="math/tex">minlen(v)</script></span> for <span><span class="MathJax_Preview">v \ne t_0</span><script type="math/tex">v \ne t_0</script></span> using the suffix link <span><span class="MathJax_Preview">link(v)</span><script type="math/tex">link(v)</script></span> as:
-  <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">minlen(v) = len(link(v)) + 1</span><script type="math/tex">minlen(v) = len(link(v)) + 1</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">minlen(v) = len(link(v)) + 1</span><script type="math/tex">minlen(v) = len(link(v)) + 1</script></span></script></span></li>
+<li>We can express <span><span class="MathJax_Preview">minlen(v)</span><script type="math/tex">minlen(v)</script></span> for <span><span class="MathJax_Preview">v \ne t_0</span><script type="math/tex">v \ne t_0</script></span> using the suffix link <span><span class="MathJax_Preview">link(v)</span><script type="math/tex">link(v)</script></span> as:</li>
+</ul>
+<p><span><span class="MathJax_Preview"><span><span class="MathJax_Preview">minlen(v) = len(link(v)) + 1</span><script type="math/tex">minlen(v) = len(link(v)) + 1</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">minlen(v) = len(link(v)) + 1</span><script type="math/tex">minlen(v) = len(link(v)) + 1</script></span></script></span></p>
+<ul>
 <li>If we start from an arbitrary state <span><span class="MathJax_Preview">v_0</span><script type="math/tex">v_0</script></span> and follow the suffix links, then sooner or later we will reach the initial state <span><span class="MathJax_Preview">t_0</span><script type="math/tex">t_0</script></span>.
   In this case we obtain a sequence of disjoint intervals <span><span class="MathJax_Preview">[minlen(v_i); len(v_i)]</span><script type="math/tex">[minlen(v_i); len(v_i)]</script></span>, which in union forms the continuous interval <span><span class="MathJax_Preview">[0; len(v_0)]</span><script type="math/tex">[0; len(v_0)]</script></span>.</li>
 </ul>
@@ -454,8 +456,11 @@ On the other hand each such string <span><span class="MathJax_Preview">u + c + w
 Since there are only <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> non-empty suffixes of <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, and non of the strings <span><span class="MathJax_Preview">u + c + w</span><script type="math/tex">u + c + w</script></span> can contain <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> (because the entire string only contains complete transitions), the total number of incomplete transitions does not exceed <span><span class="MathJax_Preview">n - 1</span><script type="math/tex">n - 1</script></span>.</p>
 <p>Combining these two estimates gives us the bound <span><span class="MathJax_Preview">3n - 3</span><script type="math/tex">3n - 3</script></span>.
 However, since the maximum number of states can only be achieved with the test case <span><span class="MathJax_Preview">"abbb\dots bbb"</span><script type="math/tex">"abbb\dots bbb"</script></span> and this case has clearly less than <span><span class="MathJax_Preview">3n - 3</span><script type="math/tex">3n - 3</script></span> transitions, we get the tighter bound of <span><span class="MathJax_Preview">3n - 4</span><script type="math/tex">3n - 4</script></span> for the number of transitions in a suffix automaton.</p>
-<p>This bound can also be achieved with the string:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">"abbb\dots bbbc"</span><script type="math/tex">"abbb\dots bbbc"</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">"abbb\dots bbbc"</span><script type="math/tex">"abbb\dots bbbc"</script></span></script></span></p>
+<p>This bound can also be achieved with the string:</p>
+<div>
+<div class="MathJax_Preview">"abbb\dots bbbc"</div>
+<script type="math/tex; mode=display">"abbb\dots bbbc"</script>
+</div>
 <h2 id="applications">Applications</h2>
 <p>Here we look at some tasks that can be solved using the suffix automaton.
 For the simplicity we assume that the alphabet size <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> is constant, which allows us to consider the complexity of appending a character and the traversal as constant.</p>
@@ -476,9 +481,12 @@ You want to compute the number of different substrings.</p>
 Therefore the number of different substrings is equal to the number of different paths in the automaton starting at <span><span class="MathJax_Preview">t_0</span><script type="math/tex">t_0</script></span>.</p>
 <p>Given that the suffix automaton is a directed acyclic graph, the number of different ways can be computed using dynamic programming.</p>
 <p>Namely, let <span><span class="MathJax_Preview">d[v]</span><script type="math/tex">d[v]</script></span> be the number of ways, starting at the state <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> (including the path of length zero).
-Then we have the recursion:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">d[v] = 1 + \sum_{w : (v, w, c) \in DAWG} d[w]</span><script type="math/tex">d[v] = 1 + \sum_{w : (v, w, c) \in DAWG} d[w]</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">d[v] = 1 + \sum_{w : (v, w, c) \in DAWG} d[w]</span><script type="math/tex">d[v] = 1 + \sum_{w : (v, w, c) \in DAWG} d[w]</script></span></script></span>
-I.e. <span><span class="MathJax_Preview">d[v]</span><script type="math/tex">d[v]</script></span> can be expressed as the sum of answers for all ends of the transitions of <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>.</p>
+Then we have the recursion:</p>
+<div>
+<div class="MathJax_Preview">d[v] = 1 + \sum_{w : (v, w, c) \in DAWG} d[w]</div>
+<script type="math/tex; mode=display">d[v] = 1 + \sum_{w : (v, w, c) \in DAWG} d[w]</script>
+</div>
+<p>I.e. <span><span class="MathJax_Preview">d[v]</span><script type="math/tex">d[v]</script></span> can be expressed as the sum of answers for all ends of the transitions of <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>.</p>
 <p>The number of different substrings is the value <span><span class="MathJax_Preview">d[t_0] - 1</span><script type="math/tex">d[t_0] - 1</script></span> (since we don't count the empty substring).</p>
 <p>Total time complexity: <span><span class="MathJax_Preview">O(length(S))</span><script type="math/tex">O(length(S))</script></span></p>
 <h3 id="total-length-of-all-different-substrings">Total length of all different substrings</h3>
@@ -539,11 +547,17 @@ For each query string <span><span class="MathJax_Preview">P</span><script type="
 Additionally we precompute the position <span><span class="MathJax_Preview">firstpos</span><script type="math/tex">firstpos</script></span> for all states in the automaton, i.e. for each state <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> we want to find the position <span><span class="MathJax_Preview">firstpos[v]</span><script type="math/tex">firstpos[v]</script></span> of the end of the first occurrence.
 In other words, we want to find in advance the minimal element of each set <span><span class="MathJax_Preview">endpos</span><script type="math/tex">endpos</script></span> (since obviously cannot maintain all sets <span><span class="MathJax_Preview">endpos</span><script type="math/tex">endpos</script></span> explicitly).</p>
 <p>To maintain these positions <span><span class="MathJax_Preview">firstpos</span><script type="math/tex">firstpos</script></span> we extend the function <code>sa_extend()</code>.
-When we create a new state <span><span class="MathJax_Preview">cur</span><script type="math/tex">cur</script></span>, we set:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">firstpos(cur) = len(cur) - 1</span><script type="math/tex">firstpos(cur) = len(cur) - 1</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">firstpos(cur) = len(cur) - 1</span><script type="math/tex">firstpos(cur) = len(cur) - 1</script></span></script></span>
-And when we clone a vertex <span><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span> as <span><span class="MathJax_Preview">clone</span><script type="math/tex">clone</script></span>, we set:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">firstpos(clone) = firstpos(q)</span><script type="math/tex">firstpos(clone) = firstpos(q)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">firstpos(clone) = firstpos(q)</span><script type="math/tex">firstpos(clone) = firstpos(q)</script></span></script></span>
-(since the only other option for a value would be <span><span class="MathJax_Preview">firstpos(cur)</span><script type="math/tex">firstpos(cur)</script></span> which is definitely too big)</p>
+When we create a new state <span><span class="MathJax_Preview">cur</span><script type="math/tex">cur</script></span>, we set:</p>
+<div>
+<div class="MathJax_Preview">firstpos(cur) = len(cur) - 1</div>
+<script type="math/tex; mode=display">firstpos(cur) = len(cur) - 1</script>
+</div>
+<p>And when we clone a vertex <span><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span> as <span><span class="MathJax_Preview">clone</span><script type="math/tex">clone</script></span>, we set:</p>
+<div>
+<div class="MathJax_Preview">firstpos(clone) = firstpos(q)</div>
+<script type="math/tex; mode=display">firstpos(clone) = firstpos(q)</script>
+</div>
+<p>(since the only other option for a value would be <span><span class="MathJax_Preview">firstpos(cur)</span><script type="math/tex">firstpos(cur)</script></span> which is definitely too big)</p>
 <p>Thus the answer for a query is simply <span><span class="MathJax_Preview">firstpos(t) - length(P) + 1</span><script type="math/tex">firstpos(t) - length(P) + 1</script></span>, where <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> is the state corresponding to the string <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span>.
 Answering a query again takes only <span><span class="MathJax_Preview">O(length(P))</span><script type="math/tex">O(length(P))</script></span> time.</p>
 <h3 id="all-occurrence-positions">All occurrence positions</h3>
@@ -593,8 +607,11 @@ We have to find a string of smallest length, that doesn't appear in <span><span 
 <p>Let <span><span class="MathJax_Preview">d[v]</span><script type="math/tex">d[v]</script></span> be the answer for the node <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>, i.e. we already processed part of the substring, are currently in the state <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>, and want to find the smallest number of characters that have to be added to find a non-existent transition.
 Computing <span><span class="MathJax_Preview">d[v]</span><script type="math/tex">d[v]</script></span> is very simple.
 If there is not transition using at least one character of the alphabet, then <span><span class="MathJax_Preview">d[v] = 1</span><script type="math/tex">d[v] = 1</script></span>.
-Otherwise one character is not enough, and so we need to take the minimum of all answers of all transitions:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">d[v] = 1 + \min_{w:(v,w,c) \in SA} d[w].</span><script type="math/tex">d[v] = 1 + \min_{w:(v,w,c) \in SA} d[w].</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">d[v] = 1 + \min_{w:(v,w,c) \in SA} d[w].</span><script type="math/tex">d[v] = 1 + \min_{w:(v,w,c) \in SA} d[w].</script></span></script></span></p>
+Otherwise one character is not enough, and so we need to take the minimum of all answers of all transitions:</p>
+<div>
+<div class="MathJax_Preview">d[v] = 1 + \min_{w:(v,w,c) \in SA} d[w].</div>
+<script type="math/tex; mode=display">d[v] = 1 + \min_{w:(v,w,c) \in SA} d[w].</script>
+</div>
 <p>The answer to the problem will be <span><span class="MathJax_Preview">d[t_0]</span><script type="math/tex">d[t_0]</script></span>, and the actual string can be restored using the computed array <span><span class="MathJax_Preview">d[]</span><script type="math/tex">d[]</script></span>.</p>
 <h3 id="longest-common-substring-of-two-strings">Longest common substring of two strings</h3>
 <p>Given two strings <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> and <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>.
@@ -644,8 +661,11 @@ These two variables will describe the current matching part: its length and the 
 <h3 id="largest-common-substring-of-multiple-strings">Largest common substring of multiple strings</h3>
 <p>There are <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> strings <span><span class="MathJax_Preview">S_i</span><script type="math/tex">S_i</script></span> given.
 We have to find the longest common substring, i.e. such a string <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> that appears as substring in each string <span><span class="MathJax_Preview">S_i</span><script type="math/tex">S_i</script></span>.</p>
-<p>We join all strings into one large string <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>, separating the strings by a special characters <span><span class="MathJax_Preview">D_i</span><script type="math/tex">D_i</script></span> (one for each string):
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">T = S_1 + D_1 + S_2 + D_2 + \dots + S_k + D_k.</span><script type="math/tex">T = S_1 + D_1 + S_2 + D_2 + \dots + S_k + D_k.</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">T = S_1 + D_1 + S_2 + D_2 + \dots + S_k + D_k.</span><script type="math/tex">T = S_1 + D_1 + S_2 + D_2 + \dots + S_k + D_k.</script></span></script></span></p>
+<p>We join all strings into one large string <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>, separating the strings by a special characters <span><span class="MathJax_Preview">D_i</span><script type="math/tex">D_i</script></span> (one for each string):</p>
+<div>
+<div class="MathJax_Preview">T = S_1 + D_1 + S_2 + D_2 + \dots + S_k + D_k.</div>
+<script type="math/tex; mode=display">T = S_1 + D_1 + S_2 + D_2 + \dots + S_k + D_k.</script>
+</div>
 <p>Then we construct the suffix automaton for the string <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>.</p>
 <p>Now we need to find a string in the machine, which is contained in all the strings <span><span class="MathJax_Preview">S_i</span><script type="math/tex">S_i</script></span>, and this can be done by using the special added characters.
 Note that if a substring is included in some string <span><span class="MathJax_Preview">S_j</span><script type="math/tex">S_j</script></span>, then in the suffix automaton exists a path starting from this substring containing the character <span><span class="MathJax_Preview">D_j</span><script type="math/tex">D_j</script></span> and not containing the other characters <span><span class="MathJax_Preview">D_1, \dots, D_{j-1}, D_{j+1}, \dots, D_k</span><script type="math/tex">D_1, \dots, D_{j-1}, D_{j+1}, \dots, D_k</script></span>.</p>
