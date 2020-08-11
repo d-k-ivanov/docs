@@ -108,29 +108,50 @@ In fact, since the jobs for the second machine become available after processing
 Therefore it is only advantageous to send the jobs to the second machine in the same order as we sent them to the first machine.</p>
 <p>Consider the order of the jobs, which coincides with their input order <span><span class="MathJax_Preview">1, 2, \dots, n</span><script type="math/tex">1, 2, \dots, n</script></span>.</p>
 <p>We denote by <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> the <strong>idle time</strong> of the second machine immediately before processing <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>.
-Our goal is to <strong>minimize the total idle time</strong>:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">F(x) = \sum x_i ~ \rightarrow \min</span><script type="math/tex">F(x) = \sum x_i ~ \rightarrow \min</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">F(x) = \sum x_i ~ \rightarrow \min</span><script type="math/tex">F(x) = \sum x_i ~ \rightarrow \min</script></span></script></span></p>
+Our goal is to <strong>minimize the total idle time</strong>:</p>
+<div>
+<div class="MathJax_Preview">F(x) = \sum x_i ~ \rightarrow \min</div>
+<script type="math/tex; mode=display">F(x) = \sum x_i ~ \rightarrow \min</script>
+</div>
 <p>For the first job we have <span><span class="MathJax_Preview">x_1 = a_1</span><script type="math/tex">x_1 = a_1</script></span>.
 For the second job, since it gets sent to the machine at the time <span><span class="MathJax_Preview">a_1 + a_2</span><script type="math/tex">a_1 + a_2</script></span>, and the second machine gets free at <span><span class="MathJax_Preview">x_1 + b_1</span><script type="math/tex">x_1 + b_1</script></span>, we have <span><span class="MathJax_Preview">x_2 = \max\left((a_1 + a_2) - (x_1 + b_1), 0\right)</span><script type="math/tex">x_2 = \max\left((a_1 + a_2) - (x_1 + b_1), 0\right)</script></span>.
-In general we get the equation:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">x_k = \max\left(\sum_{i=1}^k a_i - \sum_{i=1}^{k-1} b_i - \sum_{i=1}^{k-1} x_i, 0 \right)</span><script type="math/tex">x_k = \max\left(\sum_{i=1}^k a_i - \sum_{i=1}^{k-1} b_i - \sum_{i=1}^{k-1} x_i, 0 \right)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">x_k = \max\left(\sum_{i=1}^k a_i - \sum_{i=1}^{k-1} b_i - \sum_{i=1}^{k-1} x_i, 0 \right)</span><script type="math/tex">x_k = \max\left(\sum_{i=1}^k a_i - \sum_{i=1}^{k-1} b_i - \sum_{i=1}^{k-1} x_i, 0 \right)</script></span></script></span></p>
+In general we get the equation:</p>
+<div>
+<div class="MathJax_Preview">x_k = \max\left(\sum_{i=1}^k a_i - \sum_{i=1}^{k-1} b_i - \sum_{i=1}^{k-1} x_i, 0 \right)</div>
+<script type="math/tex; mode=display">x_k = \max\left(\sum_{i=1}^k a_i - \sum_{i=1}^{k-1} b_i - \sum_{i=1}^{k-1} x_i, 0 \right)</script>
+</div>
 <p>We can now calculate the <strong>total idle time</strong> <span><span class="MathJax_Preview">F(x)</span><script type="math/tex">F(x)</script></span>.
-It is claimed that it has the form
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">F(x) = \max_{k=1 \dots n} K_i,</span><script type="math/tex">F(x) = \max_{k=1 \dots n} K_i,</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">F(x) = \max_{k=1 \dots n} K_i,</span><script type="math/tex">F(x) = \max_{k=1 \dots n} K_i,</script></span></script></span>
-where
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">K_i = \sum_{i=1}^k a_i - \sum_{i=1}^{k-1} b_i.</span><script type="math/tex">K_i = \sum_{i=1}^k a_i - \sum_{i=1}^{k-1} b_i.</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">K_i = \sum_{i=1}^k a_i - \sum_{i=1}^{k-1} b_i.</span><script type="math/tex">K_i = \sum_{i=1}^k a_i - \sum_{i=1}^{k-1} b_i.</script></span></script></span>
-This can be easily verified using induction.</p>
+It is claimed that it has the form</p>
+<div>
+<div class="MathJax_Preview">F(x) = \max_{k=1 \dots n} K_i,</div>
+<script type="math/tex; mode=display">F(x) = \max_{k=1 \dots n} K_i,</script>
+</div>
+<p>where</p>
+<div>
+<div class="MathJax_Preview">K_i = \sum_{i=1}^k a_i - \sum_{i=1}^{k-1} b_i.</div>
+<script type="math/tex; mode=display">K_i = \sum_{i=1}^k a_i - \sum_{i=1}^{k-1} b_i.</script>
+</div>
+<p>This can be easily verified using induction.</p>
 <p>We now use the <strong>permutation method</strong>:
 we will exchange two neighboring jobs <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> and <span><span class="MathJax_Preview">j+1</span><script type="math/tex">j+1</script></span> and see how this will change the total idle time.</p>
 <p>By the form of the expression of <span><span class="MathJax_Preview">K_i</span><script type="math/tex">K_i</script></span>, it is clear that only <span><span class="MathJax_Preview">K_j</span><script type="math/tex">K_j</script></span> and <span><span class="MathJax_Preview">K_{j+1}</span><script type="math/tex">K_{j+1}</script></span> change, we denote their new values with <span><span class="MathJax_Preview">K_j'</span><script type="math/tex">K_j'</script></span> and <span><span class="MathJax_Preview">K_{j+1}'</span><script type="math/tex">K_{j+1}'</script></span>.</p>
-<p>If this change from of the jobs <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> and <span><span class="MathJax_Preview">j+1</span><script type="math/tex">j+1</script></span> increased the total idle time, it has to be the case that:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\max(K_j, K_{j+1}) \le \max(K_j', K_{j+1}')</span><script type="math/tex">\max(K_j, K_{j+1}) \le \max(K_j', K_{j+1}')</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\max(K_j, K_{j+1}) \le \max(K_j', K_{j+1}')</span><script type="math/tex">\max(K_j, K_{j+1}) \le \max(K_j', K_{j+1}')</script></span></script></span>
-(Switching two jobs might also have no impact at all.
+<p>If this change from of the jobs <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> and <span><span class="MathJax_Preview">j+1</span><script type="math/tex">j+1</script></span> increased the total idle time, it has to be the case that:</p>
+<div>
+<div class="MathJax_Preview">\max(K_j, K_{j+1}) \le \max(K_j', K_{j+1}')</div>
+<script type="math/tex; mode=display">\max(K_j, K_{j+1}) \le \max(K_j', K_{j+1}')</script>
+</div>
+<p>(Switching two jobs might also have no impact at all.
 The above condition is only a sufficient one, but not a necessary one.)</p>
-<p>After removing <span><span class="MathJax_Preview">\sum_{i=1}^{j+1} a_i - \sum_{i=1}^{j-1} b_i</span><script type="math/tex">\sum_{i=1}^{j+1} a_i - \sum_{i=1}^{j-1} b_i</script></span> from both sides of the inequality, we get:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\max(-a_{j+1}, -b_j) \le \max(-b_{j+1}, -a_j)</span><script type="math/tex">\max(-a_{j+1}, -b_j) \le \max(-b_{j+1}, -a_j)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\max(-a_{j+1}, -b_j) \le \max(-b_{j+1}, -a_j)</span><script type="math/tex">\max(-a_{j+1}, -b_j) \le \max(-b_{j+1}, -a_j)</script></span></script></span>
-And after getting rid of the negative signs:
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\min(a_j, b_{j+1}) \le \min(b_j, a_{j+1})</span><script type="math/tex">\min(a_j, b_{j+1}) \le \min(b_j, a_{j+1})</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\min(a_j, b_{j+1}) \le \min(b_j, a_{j+1})</span><script type="math/tex">\min(a_j, b_{j+1}) \le \min(b_j, a_{j+1})</script></span></script></span></p>
+<p>After removing <span><span class="MathJax_Preview">\sum_{i=1}^{j+1} a_i - \sum_{i=1}^{j-1} b_i</span><script type="math/tex">\sum_{i=1}^{j+1} a_i - \sum_{i=1}^{j-1} b_i</script></span> from both sides of the inequality, we get:</p>
+<div>
+<div class="MathJax_Preview">\max(-a_{j+1}, -b_j) \le \max(-b_{j+1}, -a_j)</div>
+<script type="math/tex; mode=display">\max(-a_{j+1}, -b_j) \le \max(-b_{j+1}, -a_j)</script>
+</div>
+<p>And after getting rid of the negative signs:</p>
+<div>
+<div class="MathJax_Preview">\min(a_j, b_{j+1}) \le \min(b_j, a_{j+1})</div>
+<script type="math/tex; mode=display">\min(a_j, b_{j+1}) \le \min(b_j, a_{j+1})</script>
+</div>
 <p>Thus we obtained a <strong>comparator</strong>:
 by sorting the jobs on it, we obtain an optimal order of the jobs, in which no two jobs can be switched with an improvement of the final time.</p>
 <p>However you can further <strong>simplify</strong> the sorting, if you look at the comparator from a different angle.
