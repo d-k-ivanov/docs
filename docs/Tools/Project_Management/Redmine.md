@@ -1,6 +1,7 @@
-## Installation on CentOS 7 
+## Installation on CentOS 7
 
 ### Dependencies
+
 ```bash
 # For Ruby
 yum "Devleopment Tools"
@@ -9,6 +10,7 @@ yum install ImageMagick ImageMagick-devel libcurl-devel httpd-devel httpd mariad
 ```
 
 ### Ruby
+
 ```bash
 mkdir ~/dst && cd dst
 wget https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.3.tar.gz
@@ -20,6 +22,7 @@ make install
 ```
 
 ### MariaDB Database
+
 ```bash
 systemctl enable --now mariadb.service
 firewall-cmd --add-service=mysql --permanent
@@ -28,7 +31,7 @@ firewall-cmd --reload
 vi /etc/my.cnf
 # --- VI ---
 [mysqld]
-character-set-server=utf8 
+character-set-server=utf8
 # ----------
 
 mysql_secure_installation
@@ -38,17 +41,18 @@ Disallow root login remotely? [Y/n] Y
 Remove test database and access to it? [Y/n] Y
 Reload privilege tables now? [Y/n] Y
 
-mysql -u root -p 
+mysql -u root -p
 Enter password: *****
 # --- SQL ---
 CREATE DATABASE redmine CHARACTER SET utf8;
-GRANT ALL PRIVILEGES ON redmine.* TO redmine@'localhost' IDENTIFIED BY 'my_password'; 
+GRANT ALL PRIVILEGES ON redmine.* TO redmine@'localhost' IDENTIFIED BY 'my_password';
 FLUSH PRIVILEGES;
 EXIT;
 # -----------
 ```
 
 ### Web server
+
 ```bash
 rm -f /etc/httpd/conf.d/welcome.conf
 
@@ -69,11 +73,12 @@ KeepAlive On
 # ----------
 
 systemctl enable --now httpd.service
-firewall-cmd --add-service=http --permanent 
-firewall-cmd --reload 
+firewall-cmd --add-service=http --permanents
+firewall-cmd --reload
 ```
 
 ### Redmine
+
 ```bash
 cd ~/dst
 wget --no-check-certificate  https://redmine.org/releases/redmine-3.3.2.tar.gz
@@ -107,8 +112,8 @@ production:
 # ----------
 
 cd /var/www/redmine/
-gem install bundler --no-rdoc --no-ri 
-bundle install --without development test postgresql sqlite 
+gem install bundler --no-rdoc --no-ri
+bundle install --without development test postgresql sqlite
 bundle exec rake generate_secret_token RAILS_ENV=production
 bundle exec rake db:migrate RAILS_ENV=production
 gem install passenger --no-rdoc --no-ri
@@ -139,13 +144,14 @@ systemctl restart httpd
 ```
 
 ## Email truncate
-```
+
+```diff
 diff --git a/app/models/mail_handler.rb b/app/models/mail_handler.rb
 index 520183c..717e49b 100644
 --- a/app/models/mail_handler.rb
 +++ b/app/models/mail_handler.rb
 @@ -441,12 +441,20 @@
- 
+
    # Removes the email body of text after the truncation configurations.
    def cleanup_body(body)
 -    delimiters = Setting.mail_handler_body_delimiters.to_s.split(/[\r\n]+/).reject(&:blank?).map {|s| Regexp.escape(s)}
@@ -168,6 +174,6 @@ index 520183c..717e49b 100644
 -    body.strip
 +    body[0, index].strip
    end
- 
+
    def find_assignee_from_keyword(keyword, issue)
 ```

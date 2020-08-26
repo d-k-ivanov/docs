@@ -125,7 +125,7 @@ firewall-cmd --reload
 vi /etc/my.cnf
 # --- VI ---
 [mysqld]
-character-set-server=utf8 
+character-set-server=utf8
 # ----------
 
 mysql_secure_installation
@@ -135,11 +135,11 @@ Disallow root login remotely? [Y/n] Y
 Remove test database and access to it? [Y/n] Y
 Reload privilege tables now? [Y/n] Y
 
-mysql -u root -p 
+mysql -u root -p
 Enter password: *****
 # --- SQL ---
 CREATE DATABASE redmine CHARACTER SET utf8;
-GRANT ALL PRIVILEGES ON redmine.* TO redmine@'localhost' IDENTIFIED BY 'my_password'; 
+GRANT ALL PRIVILEGES ON redmine.* TO redmine@'localhost' IDENTIFIED BY 'my_password';
 FLUSH PRIVILEGES;
 EXIT;
 # -----------
@@ -165,8 +165,8 @@ KeepAlive On
 # ----------
 
 systemctl enable --now httpd.service
-firewall-cmd --add-service=http --permanent 
-firewall-cmd --reload 
+firewall-cmd --add-service=http --permanents
+firewall-cmd --reload
 </code></pre>
 
 <h3 id="redmine">Redmine</h3>
@@ -202,8 +202,8 @@ production:
 # ----------
 
 cd /var/www/redmine/
-gem install bundler --no-rdoc --no-ri 
-bundle install --without development test postgresql sqlite 
+gem install bundler --no-rdoc --no-ri
+bundle install --without development test postgresql sqlite
 bundle exec rake generate_secret_token RAILS_ENV=production
 bundle exec rake db:migrate RAILS_ENV=production
 gem install passenger --no-rdoc --no-ri
@@ -234,7 +234,7 @@ systemctl restart httpd
 </code></pre>
 
 <h2 id="email-truncate">Email truncate</h2>
-<pre><code>diff --git a/app/models/mail_handler.rb b/app/models/mail_handler.rb
+<pre><code class="diff">diff --git a/app/models/mail_handler.rb b/app/models/mail_handler.rb
 index 520183c..717e49b 100644
 --- a/app/models/mail_handler.rb
 +++ b/app/models/mail_handler.rb
