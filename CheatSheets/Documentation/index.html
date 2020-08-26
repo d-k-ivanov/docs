@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="author" content="Dmitriy Ivanov">
-    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/CheatSheets/Algorithms_Complexity/">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/CheatSheets/Documentation/">
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Algorithms Complexity - Technical Info</title>
+    <title>Documentation - Technical Info</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -33,7 +33,8 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Time Complexity for Princeton Architecture", url: "#_top", children: [
+          {title: "Documentation", url: "#_top", children: [
+              {title: "Decisions", url: "#decisions" },
           ]},
         ];
 
@@ -71,20 +72,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../Documentation/" class="btn btn-xs btn-default pull-right">
+      <a href="../GPU/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../Documentation/" class="btn btn-xs btn-link">
-        Documentation
+      <a href="../GPU/" class="btn btn-xs btn-link">
+        GPU
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../Agile_Issue_Types/" class="btn btn-xs btn-default pull-left">
+      <a href="../Algorithms_Complexity/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../Agile_Issue_Types/" class="btn btn-xs btn-link">
-        Agile Issue Types
+        Previous</a><a href="../Algorithms_Complexity/" class="btn btn-xs btn-link">
+        Algorithms Complexity
       </a>
     </div>
     
@@ -92,73 +93,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="time-complexity-for-princeton-architecture">Time Complexity for Princeton Architecture</h2>
-<table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Name</th>
-<th>State</th>
-<th>Examples</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O(1)</td>
-<td>Constant</td>
-<td>Excellent</td>
-<td>Non-recursive, Non-loop Code, Array El Access</td>
-</tr>
-<tr>
-<td>O(log n)</td>
-<td>Logarithmic</td>
-<td>Good</td>
-<td>Binary Search, Binary Trees Operations</td>
-</tr>
-<tr>
-<td>O(sqrt(n))</td>
-<td>Sub-Linear</td>
-<td>Good</td>
-<td>Monotonicity of a List, Classic Approximation</td>
-</tr>
-<tr>
-<td>O(n)</td>
-<td>Linear</td>
-<td>Fair</td>
-<td>Linear Search, Boyer–Moore</td>
-</tr>
-<tr>
-<td>O(n log n)</td>
-<td>Linearithmic</td>
-<td>Bad</td>
-<td>Heap Sort, Merge Sort,</td>
-</tr>
-<tr>
-<td>O(n^2)</td>
-<td>Quadratic</td>
-<td>Horrible</td>
-<td>Bubble Sort, Selection Sort, Insertion Sort</td>
-</tr>
-<tr>
-<td>O(n^c)</td>
-<td>Polynomial</td>
-<td>Horrible</td>
-<td>Maximum Cardinality Matching</td>
-</tr>
-<tr>
-<td>O(2^n)</td>
-<td>Exponential</td>
-<td>Horrible</td>
-<td>Tower of Hanoi, Find Subsets, Factorization</td>
-</tr>
-<tr>
-<td>O(n!)</td>
-<td>Factorial</td>
-<td>Horrible</td>
-<td>Bogosort, Infinite Monkey</td>
-</tr>
-</tbody>
-</table>
+    <h2 id="documentation">Documentation</h2>
+<h3 id="decisions">Decisions</h3>
+<pre><code class="txt">WHY/WHAT/HOW
+BACKGROUND/SITUATION/APPROACH
+</code></pre>
 
   <br>
 </div>
