@@ -8,6 +8,7 @@ repo_url: 'https://d-k-ivanov.github.io/'
 
 theme:
   name: 'windmill'
+  custom_dir: custom_theme/
 
 # theme:
 #   name: 'material'
