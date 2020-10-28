@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Programming/C_and_Cpp/CPP_Best_Practices_by_Jason_Turner/04-Considering_Safety/">
+    <link rel="shortcut icon" href="../../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Considering Safety - Technical Info</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <link href="../../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Considering Safety", url: "#_top", children: [
+              {title: "Const as Much as Possible", url: "#const-as-much-as-possible" },
+              {title: "Avoid Raw Memory Access", url: "#avoid-raw-memory-access" },
+              {title: "Use std::array or std::vector Instead of C-style Arrays", url: "#use-stdarray-or-stdvector-instead-of-c-style-arrays" },
+              {title: "Use Exceptions", url: "#use-exceptions" },
+              {title: "Use C++-style cast instead of C-style cast", url: "#use-c-style-cast-instead-of-c-style-cast" },
+              {title: "Do not define a variadic function", url: "#do-not-define-a-variadic-function" },
+              {title: "Additional Resources", url: "#additional-resources" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script>
+      <script src="../../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../05-Considering_Maintainability/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../05-Considering_Maintainability/" class="btn btn-xs btn-link">
+        Considering Maintainability
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../03-Style/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../03-Style/" class="btn btn-xs btn-link">
+        Style
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="considering-safety">Considering Safety</h1>
+<h2 id="const-as-much-as-possible">Const as Much as Possible</h2>
+<p><code>const</code> tells the compiler that a variable or method is immutable. This helps the compiler optimize the code and helps the developer know if a function has a side effect. Also, using <code>const &amp;</code> prevents the compiler from copying data unnecessarily. The  <a href="http://kotaku.com/454293019">comments on <code>const</code> from John Carmack</a> are also a good read.</p>
+<pre><code class="cpp">// Bad Idea
+class MyClass
+{
+public:
+  void do_something(int i);
+  void do_something(std::string str);
+};
+
+
+// Good Idea
+class MyClass
+{
+public:
+  void do_something(const int i);
+  void do_something(const std::string &amp;str);
+};
+
+</code></pre>
+
+<h3 id="carefully-consider-your-return-types">Carefully Consider Your Return Types</h3>
+<ul>
+<li>Getters</li>
+<li>Returning by <code>&amp;</code> or <code>const &amp;</code> can have significant performance savings when the normal use of the returned value is for observation</li>
+<li>Returning by value is better for thread safety and if the normal use of the returned value is to make a copy anyhow, there's no performance lost</li>
+<li>If your API uses covariant return types, you must return by <code>&amp;</code> or <code>*</code></li>
+<li>Temporaries and local values</li>
+<li>Always return by value.</li>
+</ul>
+<p>references: https://github.com/lefticus/cppbestpractices/issues/21 https://twitter.com/lefticus/status/635943577328095232 </p>
+<h3 id="do-not-pass-and-return-simple-types-by-const-ref">Do not pass and return simple types by const ref</h3>
+<pre><code class="cpp">// Very Bad Idea
+class MyClass
+{
+public:
+  explicit MyClass(const int&amp; t_int_value)
+    : m_int_value(t_int_value)
+  {
+  }
+
+  const int&amp; get_int_value() const
+  {
+    return m_int_value;
+  }
+
+private:
+  int m_int_value;
+}
+</code></pre>
+
+<p>Instead, pass and return simple types by value. If you plan not to change passed value, declare them as <code>const</code>, but not <code>const</code> refs:</p>
+<pre><code class="cpp">// Good Idea
+class MyClass
+{
+public:
+  explicit MyClass(const int t_int_value)
+    : m_int_value(t_int_value)
+  {
+  }
+
+  int get_int_value() const
+  {
+    return m_int_value;
+  }
+
+private:
+  int m_int_value;
+}
+</code></pre>
+
+<p>Why? Because passing and returning by reference leads to pointer operations instead by much more faster passing values in processor registers.</p>
+<h2 id="avoid-raw-memory-access">Avoid Raw Memory Access</h2>
+<p>Raw memory access, allocation and deallocation, are difficult to get correct in C++ without <a href="http://blog2.emptycrate.com/content/nobody-understands-c-part-6-are-you-still-using-pointers">risking memory errors and leaks</a>. C++11 provides tools to avoid these problems.</p>
+<pre><code class="cpp">// Bad Idea
+MyClass *myobj = new MyClass;
+
+// ...
+delete myobj;
+
+
+// Good Idea
+auto myobj = std::make_unique&lt;MyClass&gt;(constructor_param1, constructor_param2); // C++14
+auto myobj = std::unique_ptr&lt;MyClass&gt;(new MyClass(constructor_param1, constructor_param2)); // C++11
+auto mybuffer = std::make_unique&lt;char[]&gt;(length); // C++14
+auto mybuffer = std::unique_ptr&lt;char[]&gt;(new char[length]); // C++11
+
+// or for reference counted objects
+auto myobj = std::make_shared&lt;MyClass&gt;(); 
+
+// ...
+// myobj is automatically freed for you whenever it is no longer used.
+</code></pre>
+
+<h2 id="use-stdarray-or-stdvector-instead-of-c-style-arrays">Use <code>std::array</code> or <code>std::vector</code> Instead of C-style Arrays</h2>
+<p>Both of these guarantee contiguous memory layout of objects and can (and should) completely replace your usage of C-style arrays for many of the reasons listed for not using bare pointers.</p>
+<p>Also, <a href="http://stackoverflow.com/questions/3266443/can-you-use-a-shared-ptr-for-raii-of-c-style-arrays">avoid</a> using <code>std::shared_ptr</code> to hold an array. </p>
+<h2 id="use-exceptions">Use Exceptions</h2>
+<p>Exceptions cannot be ignored. Return values, such as using <code>boost::optional</code>, can be ignored and if not checked can cause crashes or memory errors. An exception, on the other hand, can be caught and handled. Potentially all the way up the highest level of the application with a log and automatic restart of the application.</p>
+<p>Stroustrup, the original designer of C++, <a href="http://www.stroustrup.com/bs_faq2.html#exceptions-why">makes this point</a> much better than I ever could.</p>
+<h2 id="use-c-style-cast-instead-of-c-style-cast">Use C++-style cast instead of C-style cast</h2>
+<p>Use the C++-style cast (static_cast&lt;&gt;, dynamic_cast&lt;&gt; ...) instead of the C-style cast. The C++-style cast allows more compiler checks and is considerably safer.</p>
+<pre><code class="cpp">// Bad Idea
+double x = getX();
+int i = (int) x;
+
+// Not a Bad Idea
+int i = static_cast&lt;int&gt;(x);
+</code></pre>
+
+<p>Additionally the C++ cast style is more visible and has the possibility to search for.</p>
+<p>But consider refactoring of program logic (for example, additional checking on overflow and underflow) if you need to cast <code>double</code> to <code>int</code>. Measure three times and cut 0.9999999999981 times.</p>
+<h2 id="do-not-define-a-variadic-function">Do not define a variadic function</h2>
+<p>Variadic functions can accept a variable number of parameters. The probably best known example is printf(). You have the possibility to define this kind of functions by yourself but this is a possible security risk. The usage of variadic functions is not type safe and the wrong input parameters can cause a program termination with an undefined behavior. This undefined behavior can be exploited to a security problem.
+If you have the possibility to use a compiler that supports C++11, you can use variadic templates instead.</p>
+<p><a href="https://github.com/lefticus/cppbestpractices/issues/53">It is technically possible to make typesafe C-style variadic functions with some compilers</a></p>
+<h2 id="additional-resources">Additional Resources</h2>
+<p><a href="http://www.dwheeler.com/essays/heartbleed.html">How to Prevent The Next Heartbleed</a> by David Wheeler is a good analysis of the current state of code safety and how to ensure safe code.</p>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Programming/C_and_Cpp/Modern_CPP_Features/CPP11/">
+    <link rel="shortcut icon" href="../../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>C++11 - Technical Info</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <link href="../../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "C++11", url: "#_top", children: [
+              {title: "Overview", url: "#overview" },
+              {title: "C++11 Language Features", url: "#c11-language-features" },
+              {title: "C++11 Library Features", url: "#c11-library-features" },
+              {title: "Acknowledgements", url: "#acknowledgements" },
+              {title: "Author", url: "#author" },
+              {title: "Content Contributors", url: "#content-contributors" },
+              {title: "License", url: "#license" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script>
+      <script src="../../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../CPP14/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../CPP14/" class="btn btn-xs btn-link">
+        C++14
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../ECE_CMU_Standards/C_Coding_Standard/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../ECE_CMU_Standards/C_Coding_Standard/" class="btn btn-xs btn-link">
+        C Coding Standard
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="c11">C++11</h1>
+<h2 id="overview">Overview</h2>
+<p>Many of these descriptions and examples come from various resources (see <a href="#acknowledgements">Acknowledgements</a> section), summarized in my own words.</p>
+<p>C++11 includes the following new language features:
+- <a href="#move-semantics">move semantics</a>
+- <a href="#variadic-templates">variadic templates</a>
+- <a href="#rvalue-references">rvalue references</a>
+- <a href="#forwarding-references">forwarding references</a>
+- <a href="#initializer-lists">initializer lists</a>
+- <a href="#static-assertions">static assertions</a>
+- <a href="#auto">auto</a>
+- <a href="#lambda-expressions">lambda expressions</a>
+- <a href="#decltype">decltype</a>
+- <a href="#template-aliases">template aliases</a>
+- <a href="#nullptr">nullptr</a>
+- <a href="#strongly-typed-enums">strongly-typed enums</a>
+- <a href="#attributes">attributes</a>
+- <a href="#constexpr">constexpr</a>
+- <a href="#delegating-constructors">delegating constructors</a>
+- <a href="#user-defined-literals">user-defined literals</a>
+- <a href="#explicit-virtual-overrides">explicit virtual overrides</a>
+- <a href="#final-specifier">final specifier</a>
+- <a href="#default-functions">default functions</a>
+- <a href="#deleted-functions">deleted functions</a>
+- <a href="#range-based-for-loops">range-based for loops</a>
+- <a href="#special-member-functions-for-move-semantics">special member functions for move semantics</a>
+- <a href="#converting-constructors">converting constructors</a>
+- <a href="#explicit-conversion-functions">explicit conversion functions</a>
+- <a href="#inline-namespaces">inline-namespaces</a>
+- <a href="#non-static-data-member-initializers">non-static data member initializers</a>
+- <a href="#right-angle-brackets">right angle brackets</a></p>
+<p>C++11 includes the following new library features:
+- <a href="#stdmove">std::move</a>
+- <a href="#stdforward">std::forward</a>
+- <a href="#stdthread">std::thread</a>
+- <a href="#stdto_string">std::to_string</a>
+- <a href="#type-traits">type traits</a>
+- <a href="#smart-pointers">smart pointers</a>
+- <a href="#stdchrono">std::chrono</a>
+- <a href="#tuples">tuples</a>
+- <a href="#stdtie">std::tie</a>
+- <a href="#stdarray">std::array</a>
+- <a href="#unordered-containers">unordered containers</a>
+- <a href="#stdmake_shared">std::make_shared</a>
+- <a href="#memory-model">memory model</a>
+- <a href="#stdasync">std::async</a></p>
+<h2 id="c11-language-features">C++11 Language Features</h2>
+<h3 id="move-semantics">Move semantics</h3>
+<p>Move semantics is mostly about performance optimization: the ability to move an object without the expensive overhead of copying. The difference between a copy and a move is that a copy leaves the source unchanged, and a move will leave the source either unchanged or radically different -- depending on what the source is. For plain old data, a move is the same as a copy.</p>
+<p>To move an object means to transfer ownership of some resource it manages to another object. You could think of this as changing pointers held by the source object to be moved, or now held, by the destination object; the resource remains in its location in memory. Such an inexpensive transfer of resources is extremely useful when the source is an <code>rvalue</code>, where the potentially dangerous side-effect of changing the source after the move is redundant since the source is a temporary object that won't be accessible later.</p>
+<p>Moves also make it possible to transfer objects such as <code>std::unique_ptr</code>s, <a href="#smart-pointers">smart pointers</a> that are designed to hold a pointer to a unique object, from one scope to another.</p>
+<p>See the sections on: <a href="#rvalue-references">rvalue references</a>, <a href="#special-member-functions-for-move-semantics">defining move special member functions</a>, <a href="#stdmove"><code>std::move</code></a>, <a href="#stdforward"><code>std::forward</code></a>, <a href="#forwarding-references"><code>forwarding references</code></a>.</p>
+<h3 id="rvalue-references">Rvalue references</h3>
+<p>C++11 introduces a new reference termed the <em>rvalue reference</em>. An rvalue reference to <code>A</code>, which is a non-template type parameter (such as <code>int</code>, or a user-defined type), is created with the syntax <code>A&amp;&amp;</code>. Rvalue references only bind to rvalues.</p>
+<p>Type deduction with lvalues and rvalues:</p>
+<pre><code class="c++">int x = 0; // `x` is an lvalue of type `int`
+int&amp; xl = x; // `xl` is an lvalue of type `int&amp;`
+int&amp;&amp; xr = x; // compiler error -- `x` is an lvalue
+int&amp;&amp; xr2 = 0; // `xr2` is an lvalue of type `int&amp;&amp;` -- binds to the rvalue temporary, `0`
+</code></pre>
+
+<p>See also: <a href="#stdmove"><code>std::move</code></a>, <a href="#stdforward"><code>std::forward</code></a>, <a href="#forwarding-references"><code>forwarding references</code></a>.</p>
+<h3 id="forwarding-references">Forwarding references</h3>
+<p>Also known (unofficially) as <em>universal references</em>. A forwarding reference is created with the syntax <code>T&amp;&amp;</code> where <code>T</code> is a template type parameter, or using <code>auto&amp;&amp;</code>. This enables two major features: move semantics; and <em>perfect forwarding</em>, the ability to pass arguments that are either lvalues or rvalues.</p>
+<p>Forwarding references allow a reference to bind to either an lvalue or rvalue depending on the type. Forwarding references follow the rules of <em>reference collapsing</em>:
+* <code>T&amp; &amp;</code> becomes <code>T&amp;</code>
+* <code>T&amp; &amp;&amp;</code> becomes <code>T&amp;</code>
+* <code>T&amp;&amp; &amp;</code> becomes <code>T&amp;</code>
+* <code>T&amp;&amp; &amp;&amp;</code> becomes <code>T&amp;&amp;</code></p>
+<p><code>auto</code> type deduction with lvalues and rvalues:</p>
+<pre><code class="c++">int x = 0; // `x` is an lvalue of type `int`
+auto&amp;&amp; al = x; // `al` is an lvalue of type `int&amp;` -- binds to the lvalue, `x`
+auto&amp;&amp; ar = 0; // `ar` is an lvalue of type `int&amp;&amp;` -- binds to the rvalue temporary, `0`
+</code></pre>
+
+<p>Template type parameter deduction with lvalues and rvalues:</p>
+<pre><code class="c++">// Since C++14 or later:
+void f(auto&amp;&amp; t) {
+  // ...
+}
+
+// Since C++11 or later:
+template &lt;typename T&gt;
+void f(T&amp;&amp; t) {
+  // ...
+}
+
+int x = 0;
+f(0); // deduces as f(int&amp;&amp;)
+f(x); // deduces as f(int&amp;)
+
+int&amp; y = x;
+f(y); // deduces as f(int&amp; &amp;&amp;) =&gt; f(int&amp;)
+
+int&amp;&amp; z = 0;
+f(z); // deduces as f(int&amp;&amp; &amp;&amp;) =&gt; f(int&amp;&amp;)
+</code></pre>
+
+<p>See also: <a href="#stdmove"><code>std::move</code></a>, <a href="#stdforward"><code>std::forward</code></a>, <a href="#rvalue-references"><code>rvalue references</code></a>.</p>
+<h3 id="variadic-templates">Variadic templates</h3>
+<p>The <code>...</code> syntax creates a <em>parameter pack</em> or expands one. A template <em>parameter pack</em> is a template parameter that accepts zero or more template arguments (non-types, types, or templates). A template with at least one parameter pack is called a <em>variadic template</em>.</p>
+<pre><code class="c++">template &lt;typename... T&gt;
+struct arity {
+  constexpr static int value = sizeof...(T);
+};
+static_assert(arity&lt;&gt;::value == 0);
+static_assert(arity&lt;char, short, int&gt;::value == 3);
+</code></pre>
+
+<h3 id="initializer-lists">Initializer lists</h3>
+<p>A lightweight array-like container of elements created using a "braced list" syntax. For example, <code>{ 1, 2, 3 }</code> creates a sequences of integers, that has type <code>std::initializer_list&lt;int&gt;</code>. Useful as a replacement to passing a vector of objects to a function.</p>
+<pre><code class="c++">int sum(const std::initializer_list&lt;int&gt;&amp; list) {
+  int total = 0;
+  for (auto&amp; e : list) {
+    total += e;
+  }
+
+  return total;
+}
+
+auto list = {1, 2, 3};
+sum(list); // == 6
+sum({1, 2, 3}); // == 6
+sum({}); // == 0
+</code></pre>
+
+<h3 id="static-assertions">Static assertions</h3>
+<p>Assertions that are evaluated at compile-time.</p>
+<pre><code class="c++">constexpr int x = 0;
+constexpr int y = 1;
+static_assert(x == y, &quot;x != y&quot;);
+</code></pre>
+
+<h3 id="auto">auto</h3>
+<p><code>auto</code>-typed variables are deduced by the compiler according to the type of their initializer.</p>
+<pre><code class="c++">auto a = 3.14; // double
+auto b = 1; // int
+auto&amp; c = b; // int&amp;
+auto d = { 0 }; // std::initializer_list&lt;int&gt;
+auto&amp;&amp; e = 1; // int&amp;&amp;
+auto&amp;&amp; f = b; // int&amp;
+auto g = new auto(123); // int*
+const auto h = 1; // const int
+auto i = 1, j = 2, k = 3; // int, int, int
+auto l = 1, m = true, n = 1.61; // error -- `l` deduced to be int, `m` is bool
+auto o; // error -- `o` requires initializer
+</code></pre>
+
+<p>Extremely useful for readability, especially for complicated types:</p>
+<pre><code class="c++">std::vector&lt;int&gt; v = ...;
+std::vector&lt;int&gt;::const_iterator cit = v.cbegin();
+// vs.
+auto cit = v.cbegin();
+</code></pre>
+
+<p>Functions can also deduce the return type using <code>auto</code>. In C++11, a return type must be specified either explicitly, or using <code>decltype</code> like so:</p>
+<pre><code class="c++">template &lt;typename X, typename Y&gt;
+auto add(X x, Y y) -&gt; decltype(x + y) {
+  return x + y;
+}
+add(1, 2); // == 3
+add(1, 2.0); // == 3.0
+add(1.5, 1.5); // == 3.0
+</code></pre>
+
+<p>The trailing return type in the above example is the <em>declared type</em> (see section on <a href="#decltype"><code>decltype</code></a>) of the expression <code>x + y</code>. For example, if <code>x</code> is an integer and <code>y</code> is a double, <code>decltype(x + y)</code> is a double. Therefore, the above function will deduce the type depending on what type the expression <code>x + y</code> yields. Notice that the trailing return type has access to its parameters, and <code>this</code> when appropriate.</p>
+<h3 id="lambda-expressions">Lambda expressions</h3>
+<p>A <code>lambda</code> is an unnamed function object capable of capturing variables in scope. It features: a <em>capture list</em>; an optional set of parameters with an optional trailing return type; and a body. Examples of capture lists:
+* <code>[]</code> - captures nothing.
+* <code>[=]</code> - capture local objects (local variables, parameters) in scope by value.
+* <code>[&amp;]</code> - capture local objects (local variables, parameters) in scope by reference.
+* <code>[this]</code> - capture <code>this</code> pointer by value.
+* <code>[a, &amp;b]</code> - capture objects <code>a</code> by value, <code>b</code> by reference.</p>
+<pre><code class="c++">int x = 1;
+
+auto getX = [=] { return x; };
+getX(); // == 1
+
+auto addX = [=](int y) { return x + y; };
+addX(1); // == 2
+
+auto getXRef = [&amp;]() -&gt; int&amp; { return x; };
+getXRef(); // int&amp; to `x`
+</code></pre>
+
+<p>By default, value-captures cannot be modified inside the lambda because the compiler-generated method is marked as <code>const</code>. The <code>mutable</code> keyword allows modifying captured variables. The keyword is placed after the parameter-list (which must be present even if it is empty).</p>
+<pre><code class="c++">int x = 1;
+
+auto f1 = [&amp;x] { x = 2; }; // OK: x is a reference and modifies the original
+
+auto f2 = [x] { x = 2; }; // ERROR: the lambda can only perform const-operations on the captured value
+// vs.
+auto f3 = [x]() mutable { x = 2; }; // OK: the lambda can perform any operations on the captured value
+</code></pre>
+
+<h3 id="decltype">decltype</h3>
+<p><code>decltype</code> is an operator which returns the <em>declared type</em> of an expression passed to it. cv-qualifiers and references are maintained if they are part of the expression. Examples of <code>decltype</code>:</p>
+<pre><code class="c++">int a = 1; // `a` is declared as type `int`
+decltype(a) b = a; // `decltype(a)` is `int`
+const int&amp; c = a; // `c` is declared as type `const int&amp;`
+decltype(c) d = a; // `decltype(c)` is `const int&amp;`
+decltype(123) e = 123; // `decltype(123)` is `int`
+int&amp;&amp; f = 1; // `f` is declared as type `int&amp;&amp;`
+decltype(f) g = 1; // `decltype(f) is `int&amp;&amp;`
+decltype((a)) h = g; // `decltype((a))` is int&amp;
+</code></pre>
+
+<pre><code class="c++">template &lt;typename X, typename Y&gt;
+auto add(X x, Y y) -&gt; decltype(x + y) {
+  return x + y;
+}
+add(1, 2.0); // `decltype(x + y)` =&gt; `decltype(3.0)` =&gt; `double`
+</code></pre>
+
+<p>See also: <code>decltype(auto)</code> (C++14).</p>
+<h3 id="template-aliases">Template aliases</h3>
+<p>Semantically similar to using a <code>typedef</code> however, template aliases with <code>using</code> are easier to read and are compatible with templates.</p>
+<pre><code class="c++">template &lt;typename T&gt;
+using Vec = std::vector&lt;T&gt;;
+Vec&lt;int&gt; v; // std::vector&lt;int&gt;
+
+using String = std::string;
+String s {&quot;foo&quot;};
+</code></pre>
+
+<h3 id="nullptr">nullptr</h3>
+<p>C++11 introduces a new null pointer type designed to replace C's <code>NULL</code> macro. <code>nullptr</code> itself is of type <code>std::nullptr_t</code> and can be implicitly converted into pointer types, and unlike <code>NULL</code>, not convertible to integral types except <code>bool</code>.</p>
+<pre><code class="c++">void foo(int);
+void foo(char*);
+foo(NULL); // error -- ambiguous
+foo(nullptr); // calls foo(char*)
+</code></pre>
+
+<h3 id="strongly-typed-enums">Strongly-typed enums</h3>
+<p>Type-safe enums that solve a variety of problems with C-style enums including: implicit conversions, inability to specify the underlying type, scope pollution.</p>
+<pre><code class="c++">// Specifying underlying type as `unsigned int`
+enum class Color : unsigned int { Red = 0xff0000, Green = 0xff00, Blue = 0xff };
+// `Red`/`Green` in `Alert` don't conflict with `Color`
+enum class Alert : bool { Red, Green };
+Color c = Color::Red;
+</code></pre>
+
+<h3 id="attributes">Attributes</h3>
+<p>Attributes provide a universal syntax over <code>__attribute__(...)</code>, <code>__declspec</code>, etc.</p>
+<pre><code class="c++">// `noreturn` attribute indicates `f` doesn't return.
+[[ noreturn ]] void f() {
+  throw &quot;error&quot;;
+}
+</code></pre>
+
+<h3 id="constexpr">constexpr</h3>
+<p>Constant expressions are expressions evaluated by the compiler at compile-time. Only non-complex computations can be carried out in a constant expression. Use the <code>constexpr</code> specifier to indicate the variable, function, etc. is a constant expression.</p>
+<pre><code class="c++">constexpr int square(int x) {
+  return x * x;
+}
+
+int square2(int x) {
+  return x * x;
+}
+
+int a = square(2);  // mov DWORD PTR [rbp-4], 4
+
+int b = square2(2); // mov edi, 2
+                    // call square2(int)
+                    // mov DWORD PTR [rbp-8], eax
+</code></pre>
+
+<p><code>constexpr</code> values are those that the compiler can evaluate at compile-time:</p>
+<pre><code class="c++">const int x = 123;
+constexpr const int&amp; y = x; // error -- constexpr variable `y` must be initialized by a constant expression
+</code></pre>
+
+<p>Constant expressions with classes:</p>
+<pre><code class="c++">struct Complex {
+  constexpr Complex(double r, double i) : re(r), im(i) { }
+  constexpr double real() { return re; }
+  constexpr double imag() { return im; }
+
+private:
+  double re;
+  double im;
+};
+
+constexpr Complex I(0, 1);
+</code></pre>
+
+<h3 id="delegating-constructors">Delegating constructors</h3>
+<p>Constructors can now call other constructors in the same class using an initializer list.</p>
+<pre><code class="c++">struct Foo {
+  int foo;
+  Foo(int foo) : foo(foo) {}
+  Foo() : Foo(0) {}
+};
+
+Foo foo;
+foo.foo; // == 0
+</code></pre>
+
+<h3 id="user-defined-literals">User-defined literals</h3>
+<p>User-defined literals allow you to extend the language and add your own syntax. To create a literal, define a <code>T operator "" X(...) { ... }</code> function that returns a type <code>T</code>, with a name <code>X</code>. Note that the name of this function defines the name of the literal. Any literal names not starting with an underscore are reserved and won't be invoked. There are rules on what parameters a user-defined literal function should accept, according to what type the literal is called on.</p>
+<p>Converting Celsius to Fahrenheit:</p>
+<pre><code class="c++">// `unsigned long long` parameter required for integer literal.
+long long operator &quot;&quot; _celsius(unsigned long long tempCelsius) {
+  return std::llround(tempCelsius * 1.8 + 32);
+}
+24_celsius; // == 75
+</code></pre>
+
+<p>String to integer conversion:</p>
+<pre><code class="c++">// `const char*` and `std::size_t` required as parameters.
+int operator &quot;&quot; _int(const char* str, std::size_t) {
+  return std::stoi(str);
+}
+
+&quot;123&quot;_int; // == 123, with type `int`
+</code></pre>
+
+<h3 id="explicit-virtual-overrides">Explicit virtual overrides</h3>
+<p>Specifies that a virtual function overrides another virtual function. If the virtual function does not override a parent's virtual function, throws a compiler error.</p>
+<pre><code class="c++">struct A {
+  virtual void foo();
+  void bar();
+};
+
+struct B : A {
+  void foo() override; // correct -- B::foo overrides A::foo
+  void bar() override; // error -- A::bar is not virtual
+  void baz() override; // error -- B::baz does not override A::baz
+};
+</code></pre>
+
+<h3 id="final-specifier">Final specifier</h3>
+<p>Specifies that a virtual function cannot be overridden in a derived class or that a class cannot be inherited from.</p>
+<pre><code class="c++">struct A {
+  virtual void foo();
+};
+
+struct B : A {
+  virtual void foo() final;
+};
+
+struct C : B {
+  virtual void foo(); // error -- declaration of 'foo' overrides a 'final' function
+};
+</code></pre>
+
+<p>Class cannot be inherited from.</p>
+<pre><code class="c++">struct A final {
+
+};
+
+struct B : A { // error -- base 'A' is marked 'final'
+
+};
+</code></pre>
+
+<h3 id="default-functions">Default functions</h3>
+<p>A more elegant, efficient way to provide a default implementation of a function, such as a constructor.</p>
+<pre><code class="c++">struct A {
+  A() = default;
+  A(int x) : x(x) {}
+  int x {1};
+};
+A a; // a.x == 1
+A a2 {123}; // a.x == 123
+</code></pre>
+
+<p>With inheritance:</p>
+<pre><code class="c++">struct B {
+  B() : x(1) {}
+  int x;
+};
+
+struct C : B {
+  // Calls B::B
+  C() = default;
+};
+
+C c; // c.x == 1
+</code></pre>
+
+<h3 id="deleted-functions">Deleted functions</h3>
+<p>A more elegant, efficient way to provide a deleted implementation of a function. Useful for preventing copies on objects.</p>
+<pre><code class="c++">class A {
+  int x;
+
+public:
+  A(int x) : x(x) {};
+  A(const A&amp;) = delete;
+  A&amp; operator=(const A&amp;) = delete;
+};
+
+A x {123};
+A y = x; // error -- call to deleted copy constructor
+y = x; // error -- operator= deleted
+</code></pre>
+
+<h3 id="range-based-for-loops">Range-based for loops</h3>
+<p>Syntactic sugar for iterating over a container's elements.</p>
+<pre><code class="c++">std::array&lt;int, 5&gt; a {1, 2, 3, 4, 5};
+for (int&amp; x : a) x *= 2;
+// a == { 2, 4, 6, 8, 10 }
+</code></pre>
+
+<p>Note the difference when using <code>int</code> as opposed to <code>int&amp;</code>:</p>
+<pre><code class="c++">std::array&lt;int, 5&gt; a {1, 2, 3, 4, 5};
+for (int x : a) x *= 2;
+// a == { 1, 2, 3, 4, 5 }
+</code></pre>
+
+<h3 id="special-member-functions-for-move-semantics">Special member functions for move semantics</h3>
+<p>The copy constructor and copy assignment operator are called when copies are made, and with C++11's introduction of move semantics, there is now a move constructor and move assignment operator for moves.</p>
+<pre><code class="c++">struct A {
+  std::string s;
+  A() : s(&quot;test&quot;) {}
+  A(const A&amp; o) : s(o.s) {}
+  A(A&amp;&amp; o) : s(std::move(o.s)) {}
+  A&amp; operator=(A&amp;&amp; o) {
+   s = std::move(o.s);
+   return *this;
+  }
+};
+
+A f(A a) {
+  return a;
+}
+
+A a1 = f(A{}); // move-constructed from rvalue temporary
+A a2 = std::move(a1); // move-constructed using std::move
+A a3 = A{};
+a2 = std::move(a3); // move-assignment using std::move
+a1 = f(A{}); // move-assignment from rvalue temporary
+</code></pre>
+
+<h3 id="converting-constructors">Converting constructors</h3>
+<p>Converting constructors will convert values of braced list syntax into constructor arguments.</p>
+<pre><code class="c++">struct A {
+  A(int) {}
+  A(int, int) {}
+  A(int, int, int) {}
+};
+
+A a {0, 0}; // calls A::A(int, int)
+A b(0, 0); // calls A::A(int, int)
+A c = {0, 0}; // calls A::A(int, int)
+A d {0, 0, 0}; // calls A::A(int, int, int)
+</code></pre>
+
+<p>Note that the braced list syntax does not allow narrowing:</p>
+<pre><code class="c++">struct A {
+  A(int) {}
+};
+
+A a(1.1); // OK
+A b {1.1}; // Error narrowing conversion from double to int
+</code></pre>
+
+<p>Note that if a constructor accepts a <code>std::initializer_list</code>, it will be called instead:</p>
+<pre><code class="c++">struct A {
+  A(int) {}
+  A(int, int) {}
+  A(int, int, int) {}
+  A(std::initializer_list&lt;int&gt;) {}
+};
+
+A a {0, 0}; // calls A::A(std::initializer_list&lt;int&gt;)
+A b(0, 0); // calls A::A(int, int)
+A c = {0, 0}; // calls A::A(std::initializer_list&lt;int&gt;)
+A d {0, 0, 0}; // calls A::A(std::initializer_list&lt;int&gt;)
+</code></pre>
+
+<h3 id="explicit-conversion-functions">Explicit conversion functions</h3>
+<p>Conversion functions can now be made explicit using the <code>explicit</code> specifier.</p>
+<pre><code class="c++">struct A {
+  operator bool() const { return true; }
+};
+
+struct B {
+  explicit operator bool() const { return true; }
+};
+
+A a;
+if (a); // OK calls A::operator bool()
+bool ba = a; // OK copy-initialization selects A::operator bool()
+
+B b;
+if (b); // OK calls B::operator bool()
+bool bb = b; // error copy-initialization does not consider B::operator bool()
+</code></pre>
+
+<h3 id="inline-namespaces">Inline namespaces</h3>
+<p>All members of an inline namespace are treated as if they were part of its parent namespace, allowing specialization of functions and easing the process of versioning. This is a transitive property, if A contains B, which in turn contains C and both B and C are inline namespaces, C's members can be used as if they were on A.</p>
+<pre><code class="c++">namespace Program {
+  namespace Version1 {
+    int getVersion() { return 1; }
+    bool isFirstVersion() { return true; }
+  }
+  inline namespace Version2 {
+    int getVersion() { return 2; }
+  }
+}
+
+int version {Program::getVersion()};              // Uses getVersion() from Version2
+int oldVersion {Program::Version1::getVersion()}; // Uses getVersion() from Version1
+bool firstVersion {Program::isFirstVersion()};    // Does not compile when Version2 is added
+</code></pre>
+
+<h3 id="non-static-data-member-initializers">Non-static data member initializers</h3>
+<p>Allows non-static data members to be initialized where they are declared, potentially cleaning up constructors of default initializations.</p>
+<pre><code class="c++">// Default initialization prior to C++11
+class Human {
+    Human() : age(0) {}
+  private:
+    unsigned age;
+};
+// Default initialization on C++11
+class Human {
+  private:
+    unsigned age {0};
+};
+</code></pre>
+
+<h3 id="right-angle-brackets">Right angle Brackets</h3>
+<p>C++11 is now able to infer when a series of right angle brackets is used as an operator or as a closing statement of typedef, without having to add whitespace.</p>
+<pre><code class="c++">typedef std::map&lt;int, std::map &lt;int, std::map &lt;int, int&gt; &gt; &gt; cpp98LongTypedef;
+typedef std::map&lt;int, std::map &lt;int, std::map &lt;int, int&gt;&gt;&gt;   cpp11LongTypedef;
+</code></pre>
+
+<h2 id="c11-library-features">C++11 Library Features</h2>
+<h3 id="stdmove">std::move</h3>
+<p><code>std::move</code> indicates that the object passed to it may be moved, or in other words, moved from one object to another without a copy. The object passed in should not be used after the move in certain situations.</p>
+<p>A definition of <code>std::move</code> (performing a move is nothing more than casting to an rvalue):</p>
+<pre><code class="c++">template &lt;typename T&gt;
+typename remove_reference&lt;T&gt;::type&amp;&amp; move(T&amp;&amp; arg) {
+  return static_cast&lt;typename remove_reference&lt;T&gt;::type&amp;&amp;&gt;(arg);
+}
+</code></pre>
+
+<p>Transferring <code>std::unique_ptr</code>s:</p>
+<pre><code class="c++">std::unique_ptr&lt;int&gt; p1 {new int{0}};
+std::unique_ptr&lt;int&gt; p2 = p1; // error -- cannot copy unique pointers
+std::unique_ptr&lt;int&gt; p3 = std::move(p1); // move `p1` into `p3`
+                                         // now unsafe to dereference object held by `p1`
+</code></pre>
+
+<h3 id="stdforward">std::forward</h3>
+<p>Returns the arguments passed to it as-is, either as an lvalue or rvalue references, and includes cv-qualification. Useful for generic code that need a reference (either lvalue or rvalue) when appropriate, e.g factories. Used in conjunction with <a href="#forwarding-references"><code>forwarding references</code></a>.</p>
+<p>A definition of <code>std::forward</code>:</p>
+<pre><code class="c++">template &lt;typename T&gt;
+T&amp;&amp; forward(typename remove_reference&lt;T&gt;::type&amp; arg) {
+  return static_cast&lt;T&amp;&amp;&gt;(arg);
+}
+</code></pre>
+
+<p>An example of a function <code>wrapper</code> which just forwards other <code>A</code> objects to a new <code>A</code> object's copy or move constructor:</p>
+<pre><code class="c++">struct A {
+  A() = default;
+  A(const A&amp; o) { std::cout &lt;&lt; &quot;copied&quot; &lt;&lt; std::endl; }
+  A(A&amp;&amp; o) { std::cout &lt;&lt; &quot;moved&quot; &lt;&lt; std::endl; }
+};
+
+template &lt;typename T&gt;
+A wrapper(T&amp;&amp; arg) {
+  return A{std::forward&lt;T&gt;(arg)};
+}
+
+wrapper(A{}); // moved
+A a;
+wrapper(a); // copied
+wrapper(std::move(a)); // moved
+</code></pre>
+
+<p>See also: <a href="#forwarding-references"><code>forwarding references</code></a>, <a href="#rvalue-references"><code>rvalue references</code></a>.</p>
+<h3 id="stdthread">std::thread</h3>
+<p>The <code>std::thread</code> library provides a standard way to control threads, such as spawning and killing them. In the example below, multiple threads are spawned to do different calculations and then the program waits for all of them to finish.</p>
+<pre><code class="c++">void foo(bool clause) { /* do something... */ }
+
+std::vector&lt;std::thread&gt; threadsVector;
+threadsVector.emplace_back([]() {
+  // Lambda function that will be invoked    
+});
+threadsVector.emplace_back(foo, true);  // thread will run foo(true)
+for (auto&amp; thread : threadsVector) {
+  thread.join(); // Wait for threads to finish
+}
+</code></pre>
+
+<h3 id="stdto_string">std::to_string</h3>
+<p>Converts a numeric argument to a <code>std::string</code>.</p>
+<pre><code class="c++">std::to_string(1.2); // == &quot;1.2&quot;
+std::to_string(123); // == &quot;123&quot;
+</code></pre>
+
+<h3 id="type-traits">Type traits</h3>
+<p>Type traits defines a compile-time template-based interface to query or modify the properties of types.</p>
+<pre><code class="c++">static_assert(std::is_integral&lt;int&gt;::value);
+static_assert(std::is_same&lt;int, int&gt;::value);
+static_assert(std::is_same&lt;std::conditional&lt;true, int, double&gt;::type, int&gt;::value);
+</code></pre>
+
+<h3 id="smart-pointers">Smart pointers</h3>
+<p>C++11 introduces new smart(er) pointers: <code>std::unique_ptr</code>, <code>std::shared_ptr</code>, <code>std::weak_ptr</code>. <code>std::auto_ptr</code> now becomes deprecated and then eventually removed in C++17.</p>
+<p><code>std::unique_ptr</code> is a non-copyable, movable smart pointer that properly manages arrays and STL containers. <strong>Note: Prefer using the <code>std::make_X</code> helper functions as opposed to using constructors. See the sections for <a href="#stdmake_unique">std::make_unique</a> and <a href="#stdmake_shared">std::make_shared</a>.</strong></p>
+<pre><code class="c++">std::unique_ptr&lt;Foo&gt; p1 { new Foo{} };  // `p1` owns `Foo`
+if (p1) {
+  p1-&gt;bar();
+}
+
+{
+  std::unique_ptr&lt;Foo&gt; p2 {std::move(p1)};  // Now `p2` owns `Foo`
+  f(*p2);
+
+  p1 = std::move(p2);  // Ownership returns to `p1` -- `p2` gets destroyed
+}
+
+if (p1) {
+  p1-&gt;bar();
+}
+// `Foo` instance is destroyed when `p1` goes out of scope
+</code></pre>
+
+<p>A <code>std::shared_ptr</code> is a smart pointer that manages a resource that is shared across multiple owners. A shared pointer holds a <em>control block</em> which has a few components such as the managed object and a reference counter. All control block access is thread-safe, however, manipulating the managed object itself is <em>not</em> thread-safe.</p>
+<pre><code class="c++">void foo(std::shared_ptr&lt;T&gt; t) {
+  // Do something with `t`...
+}
+
+void bar(std::shared_ptr&lt;T&gt; t) {
+  // Do something with `t`...
+}
+
+void baz(std::shared_ptr&lt;T&gt; t) {
+  // Do something with `t`...
+}
+
+std::shared_ptr&lt;T&gt; p1 {new T{}};
+// Perhaps these take place in another threads?
+foo(p1);
+bar(p1);
+baz(p1);
+</code></pre>
+
+<h3 id="stdchrono">std::chrono</h3>
+<p>The chrono library contains a set of utility functions and types that deal with <em>durations</em>, <em>clocks</em>, and <em>time points</em>. One use case of this library is benchmarking code:</p>
+<pre><code class="c++">std::chrono::time_point&lt;std::chrono::steady_clock&gt; start, end;
+start = std::chrono::steady_clock::now();
+// Some computations...
+end = std::chrono::steady_clock::now();
+
+std::chrono::duration&lt;double&gt; elapsed_seconds = end - start;
+double t = elapsed_seconds.count(); // t number of seconds, represented as a `double`
+</code></pre>
+
+<h3 id="tuples">Tuples</h3>
+<p>Tuples are a fixed-size collection of heterogeneous values. Access the elements of a <code>std::tuple</code> by unpacking using <a href="#stdtie"><code>std::tie</code></a>, or using <code>std::get</code>.</p>
+<pre><code class="c++">// `playerProfile` has type `std::tuple&lt;int, const char*, const char*&gt;`.
+auto playerProfile = std::make_tuple(51, &quot;Frans Nielsen&quot;, &quot;NYI&quot;);
+std::get&lt;0&gt;(playerProfile); // 51
+std::get&lt;1&gt;(playerProfile); // &quot;Frans Nielsen&quot;
+std::get&lt;2&gt;(playerProfile); // &quot;NYI&quot;
+</code></pre>
+
+<h3 id="stdtie">std::tie</h3>
+<p>Creates a tuple of lvalue references. Useful for unpacking <code>std::pair</code> and <code>std::tuple</code> objects. Use <code>std::ignore</code> as a placeholder for ignored values. In C++17, structured bindings should be used instead.</p>
+<pre><code class="c++">// With tuples...
+std::string playerName;
+std::tie(std::ignore, playerName, std::ignore) = std::make_tuple(91, &quot;John Tavares&quot;, &quot;NYI&quot;);
+
+// With pairs...
+std::string yes, no;
+std::tie(yes, no) = std::make_pair(&quot;yes&quot;, &quot;no&quot;);
+</code></pre>
+
+<h3 id="stdarray">std::array</h3>
+<p><code>std::array</code> is a container built on top of a C-style array. Supports common container operations such as sorting.</p>
+<pre><code class="c++">std::array&lt;int, 3&gt; a = {2, 1, 3};
+std::sort(a.begin(), a.end()); // a == { 1, 2, 3 }
+for (int&amp; x : a) x *= 2; // a == { 2, 4, 6 }
+</code></pre>
+
+<h3 id="unordered-containers">Unordered containers</h3>
+<p>These containers maintain average constant-time complexity for search, insert, and remove operations. In order to achieve constant-time complexity, sacrifices order for speed by hashing elements into buckets. There are four unordered containers:
+* <code>unordered_set</code>
+* <code>unordered_multiset</code>
+* <code>unordered_map</code>
+* <code>unordered_multimap</code></p>
+<h3 id="stdmake_shared">std::make_shared</h3>
+<p><code>std::make_shared</code> is the recommended way to create instances of <code>std::shared_ptr</code>s due to the following reasons:
+* Avoid having to use the <code>new</code> operator.
+* Prevents code repetition when specifying the underlying type the pointer shall hold.
+* It provides exception-safety. Suppose we were calling a function <code>foo</code> like so:</p>
+<pre><code class="c++">foo(std::shared_ptr&lt;T&gt;{new T{}}, function_that_throws(), std::shared_ptr&lt;T&gt;{new T{}});
+</code></pre>
+
+<p>The compiler is free to call <code>new T{}</code>, then <code>function_that_throws()</code>, and so on... Since we have allocated data on the heap in the first construction of a <code>T</code>, we have introduced a leak here. With <code>std::make_shared</code>, we are given exception-safety:</p>
+<pre><code class="c++">foo(std::make_shared&lt;T&gt;(), function_that_throws(), std::make_shared&lt;T&gt;());
+</code></pre>
+
+<ul>
+<li>Prevents having to do two allocations. When calling <code>std::shared_ptr{ new T{} }</code>, we have to allocate memory for <code>T</code>, then in the shared pointer we have to allocate memory for the control block within the pointer.</li>
+</ul>
+<p>See the section on <a href="#smart-pointers">smart pointers</a> for more information on <code>std::unique_ptr</code> and <code>std::shared_ptr</code>.</p>
+<h3 id="memory-model">Memory model</h3>
+<p>C++11 introduces a memory model for C++, which means library support for threading and atomic operations. Some of these operations include (but aren't limited to) atomic loads/stores, compare-and-swap, atomic flags, promises, futures, locks, and condition variables.</p>
+<p>See the sections on: <a href="#stdthread">std::thread</a></p>
+<h3 id="stdasync">std::async</h3>
+<p><code>std::async</code> runs the given function either asynchronously or lazily-evaluated, then returns a <code>std::future</code> which holds the result of that function call.</p>
+<p>The first parameter is the policy which can be:
+1. <code>std::launch::async | std::launch::deferred</code> It is up to the implementation whether to perform asynchronous execution or lazy evaluation.
+1. <code>std::launch::async</code> Run the callable object on a new thread.
+1. <code>std::launch::deferred</code> Perform lazy evaluation on the current thread.</p>
+<pre><code class="c++">int foo() {
+  /* Do something here, then return the result. */
+  return 1000;
+}
+
+auto handle = std::async(std::launch::async, foo);  // create an async task
+auto result = handle.get();  // wait for the result
+</code></pre>
+
+<h2 id="acknowledgements">Acknowledgements</h2>
+<ul>
+<li><a href="http://en.cppreference.com/w/cpp">cppreference</a> - especially useful for finding examples and documentation of new library features.</li>
+<li><a href="http://thbecker.net/articles/rvalue_references/section_01.html">C++ Rvalue References Explained</a> - a great introduction I used to understand rvalue references, perfect forwarding, and move semantics.</li>
+<li><a href="http://clang.llvm.org/cxx_status.html">clang</a> and <a href="https://gcc.gnu.org/projects/cxx-status.html">gcc</a>'s standards support pages. Also included here are the proposals for language/library features that I used to help find a description of, what it's meant to fix, and some examples.</li>
+<li><a href="https://godbolt.org/">Compiler explorer</a></li>
+<li><a href="https://www.amazon.com/Effective-Modern-Specific-Ways-Improve/dp/1491903996">Scott Meyers' Effective Modern C++</a> - highly recommended book!</li>
+<li><a href="https://www.youtube.com/channel/UCxHAlbZQNFU2LgEtiqd2Maw">Jason Turner's C++ Weekly</a> - nice collection of C++-related videos.</li>
+<li><a href="http://stackoverflow.com/questions/7027523/what-can-i-do-with-a-moved-from-object">What can I do with a moved-from object?</a></li>
+<li><a href="http://stackoverflow.com/questions/24109737/what-are-some-uses-of-decltypeauto">What are some uses of decltype(auto)?</a></li>
+<li>And many more SO posts I'm forgetting...</li>
+</ul>
+<h2 id="author">Author</h2>
+<p>Anthony Calandra</p>
+<h2 id="content-contributors">Content Contributors</h2>
+<p>See: https://github.com/AnthonyCalandra/modern-cpp-features/graphs/contributors</p>
+<h2 id="license">License</h2>
+<pre><code>The MIT License (MIT)
+Copyright (c) 2016 Anthony Calandra
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
