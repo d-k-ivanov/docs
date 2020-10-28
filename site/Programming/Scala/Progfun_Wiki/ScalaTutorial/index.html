@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Programming/Scala/Progfun_Wiki/ScalaTutorial/">
+    <link rel="shortcut icon" href="../../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Scala Tutorial - Technical Info</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <link href="../../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Classes, Traits, Objects and Packages", url: "#_top", children: [
+              {title: "Classes", url: "#classes" },
+              {title: "Traits", url: "#traits" },
+              {title: "Objects", url: "#objects" },
+              {title: "Packages", url: "#packages" },
+              {title: "Hello, World! in Scala", url: "#hello-world-in-scala" },
+          ]},
+          {title: "Source Files, Classfiles and the JVM", url: "#source-files-classfiles-and-the-jvm", children: [
+          ]},
+          {title: "External Documentation", url: "#external-documentation", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script>
+      <script src="../../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Test/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Test/" class="btn btn-xs btn-link">
+        Test
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../ScalaStyleGuide/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../ScalaStyleGuide/" class="btn btn-xs btn-link">
+        Scala Style Guide
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <p>This page gives a very brief tutorial on the Scala programming language.</p>
+<h2 id="classes-traits-objects-and-packages">Classes, Traits, Objects and Packages</h2>
+<h3 id="classes">Classes</h3>
+<p>Classes in Scala are very similar to classes in Java. They are templates containing fields and methods. Like in Java, classes can be instantiated using the <code>new</code> construct, there can be many "instances" (or "objects") of the same class.</p>
+<p>In Scala there exists a special kind of class named <code>case</code> classes. You will learn about case classes during the course.</p>
+<p>Classes in Scala cannot have static members. You can use objects (see below) to achieve similar functionality as with static members in Java.</p>
+<h3 id="traits">Traits</h3>
+<p>Traits are like interfaces in Java, but they can also contain concrete members, i.e. method implementations or field definitions.</p>
+<h3 id="objects">Objects</h3>
+<p>Object in Scala are like classes, but for every <code>object</code> definition there is only one single instance. It is not possible to create instances of objects using <code>new</code>, instead you can just access the members (methods or fields) of an object using its name.</p>
+<h3 id="packages">Packages</h3>
+<p>Adding a statement such as <code>package foo.bar</code> at the top of a file makes the code in a file part of the package <code>foo.bar</code>. You can then do <code>import foo.bar._</code> to make everything from package <code>foo.bar</code> available in your code. The content of a package can be scattered across many files. If you define a <code>class MyClass</code> in package <code>foo.bar</code>, you can import that specific class (and not anything else from that package) with <code>import foo.bar.MyClass</code>.</p>
+<p>In Scala, everything can be imported, not only class names. So for instance if you have an <code>object baz</code> in package <code>foo.bar</code>, then <code>import foo.bar.baz._</code> would import all the members of that object.</p>
+<h3 id="hello-world-in-scala"><em>Hello, World!</em> in Scala</h3>
+<p>Here are two ways to define a program which outputs "Hello, World!" in Scala:</p>
+<pre><code>object HelloWorld extends App {
+  println("Hello, World!")
+}
+</code></pre>
+<p>or</p>
+<pre><code>object HelloWorld {
+  def main(args: Array[String]) {
+    println("Hello, World!")
+  }
+}
+</code></pre>
+<p>In Scala, the <code>main</code> or entry point method is defined in an <code>object</code>. An object can be made executable by either adding extending the type <code>App</code> or by adding a method <code>def main(args: Array[String])</code>.</p>
+<h2 id="source-files-classfiles-and-the-jvm">Source Files, Classfiles and the JVM</h2>
+<p>Scala source code is stored in text files with the extension <code>.scala</code>. Typically Scala programmers create one source file for each class, or one source file for a class hierarchy: In fact, Scala allows multiple classes and objects to be defined in the same source file.</p>
+<ul>
+<li>The name of a Scala source file can be chosen freely, but it is recommended to use the name of a class which is defined in that file.</li>
+<li>Package hierarchies should be reflected in directory structure: a source file defining <code>class C</code> in package <code>foo.bar</code> should be stored in a subdirectory as <code>foo/bar/C.scala</code>. Scala does not really enforce this convention, but some tools such as the Scala IDE for eclipse might have problems otherwise.</li>
+</ul>
+<p>The scala compiler compiles <code>.scala</code> source files to <code>.class</code> files, like the Java compiler. Classfiles are binary files containing machine code for the Java Virtual Machine. In order to run a Scala program, the JVM has to know the directory where classfiles are stored. This parameter is called the "classpath".</p>
+<p>If you are using eclipse or sbt to compile and run your Scala code, you don't need to do any of the above manually - these tools take care of invoking the Scala compiler and the JVM with the correct arguments.</p>
+<h2 id="external-documentation">External Documentation</h2>
+<p>There is a large number of online resources available for learning Scala. The <a href="?page=LearningResources">Learning Resources</a> wiki page contains a few links that we think are the most useful for our class.</p>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

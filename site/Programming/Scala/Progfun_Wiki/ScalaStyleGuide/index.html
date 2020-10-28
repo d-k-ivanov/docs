@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Programming/Scala/Progfun_Wiki/ScalaStyleGuide/">
+    <link rel="shortcut icon" href="../../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Scala Style Guide - Technical Info</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <link href="../../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Common Issues", url: "#_top", children: [
+              {title: "#1 Avoid Casts and Type Tests", url: "#1-avoid-casts-and-type-tests" },
+              {title: "#2 Indentation", url: "#2-indentation" },
+              {title: "#3 Line Length and Whitespace", url: "#3-line-length-and-whitespace" },
+              {title: "#4 Use local Values to simplify complex Expressions", url: "#4-use-local-values-to-simplify-complex-expressions" },
+              {title: "#5 Choose meaningful Names for Methods and Values", url: "#5-choose-meaningful-names-for-methods-and-values" },
+              {title: "#6 Common Subexpressions", url: "#6-common-subexpressions" },
+              {title: "#7 Don't Copy-Paste Code!", url: "#7-dont-copy-paste-code" },
+              {title: "#8 Scala doesn't require Semicolons", url: "#8-scala-doesnt-require-semicolons" },
+              {title: "#9 Don't submit Code with \"print\" Statements", url: "#9-dont-submit-code-with-print-statements" },
+              {title: "#10 Avoid using Return", url: "#10-avoid-using-return" },
+              {title: "#11 Avoid mutable local Variables", url: "#11-avoid-mutable-local-variables" },
+              {title: "#12 Eliminate redundant \"If\" Expressions", url: "#12-eliminate-redundant-if-expressions" },
+              {title: "Other styling issues?", url: "#other-styling-issues" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script>
+      <script src="../../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../ScalaTutorial/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../ScalaTutorial/" class="btn btn-xs btn-link">
+        Scala Tutorial
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../SbtTutorial/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../SbtTutorial/" class="btn btn-xs btn-link">
+        Sbt Tutorial
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <p>On this page you can find a list of common issues that we detected while looking at some submissions.</p>
+<p>Some of the style issues can be detected by the automated style checker that we also use for the grading process. The style checker, which is based on <a href="http://www.scalastyle.org/">Scalastyle</a>, can be executed locally in sbt by running the <code>styleCheck</code> task.</p>
+<h2 id="common-issues">Common Issues</h2>
+<h3 id="1-avoid-casts-and-type-tests">#1 Avoid Casts and Type Tests</h3>
+<p>Never use <code>isInstanceOf</code> or <code>asInstanceOf</code> - there's always a better solution, both for the assignments, and also for any real-world Scala project.
+If you find yourself wanting to use casts, take a step back and think about what you're trying to achieve.
+Re-read the assignment instructions and have another look at the corresponding lecture videos.</p>
+<h3 id="2-indentation">#2 Indentation</h3>
+<p>Make sure your code is properly indented, it becomes a lot more readable.</p>
+<p>This might seem trivial and not very relevant for our exercises, but imagine yourself in the future being part of a team, working on the same files with other coders: it is very important that everybody respects the style rules to keep the code healthy.</p>
+<p>If your editor does not do indentation the way you would like it to have, you should find out how to change its settings. In Scala, the standard is to indent using 2 spaces (no tabs).</p>
+<h3 id="3-line-length-and-whitespace">#3 Line Length and Whitespace</h3>
+<p>Make sure the lines are not too long, otherwise your code is very hard to read. Instead of writing very long lines, introduce some local value bindings. Using whitespace uniformly makes your code more readable.</p>
+<p>Example (long line, missing spaces):</p>
+<pre><code>if(p(this.head))this.tail.filter0(p, accu.incl(this.head))else this.tail.filter0(p, accu)
+</code></pre>
+<p>Better:</p>
+<pre><code>if (p(this.head))
+  this.tail.filter0(p, accu.incl(this.head))
+else
+  this.tail.filter0(p, accu)
+</code></pre>
+<p>Even better (see #4 and #6 below):</p>
+<pre><code>val newAccu =
+  if (p(this.head)) accu.incl(this.head)
+  else accu
+this.tail.filter0(p, newAccu)
+</code></pre>
+<h3 id="4-use-local-values-to-simplify-complex-expressions">#4 Use local Values to simplify complex Expressions</h3>
+<p>When writing code in functional style, methods are often implemented as a combination of function calls.
+If such a combined expression grows too big, the code might become hard to understand.</p>
+<p>In such cases it is better to store some arguments in a local value before passing them to the function (see #3 above).
+Make sure that the local value has a meaningful name (see #5 below)!</p>
+<h3 id="5-choose-meaningful-names-for-methods-and-values">#5 Choose meaningful Names for Methods and Values</h3>
+<p>The names of methods, fields and values should be carefully chosen so that the source code is easy to understand.
+A method name should make it clear what the method does.
+No, <code>temp</code> is never a good name :-)</p>
+<p>A few improvable examples:</p>
+<pre><code>val temp = sortFuntion0(list.head, tweet)   // what does sortFunction0 do?
+def temp(first: TweetSet, second : TweetSet): TweetSet = ...
+def un(th: TweetSet,acc: TweetSet): TweetSet = ...
+val c = if (p(elem)) accu.incl(elem) else accu
+def loop(accu: Trending, current: TweetSet): Trending = ...
+def help(ch: Char, L2: List[Char], compteur: Int): (Char, Int) = ...
+def help2(L: List[(Char, Int)], L2: List[Char]): List[(Char, Int)] = ...
+</code></pre>
+<h3 id="6-common-subexpressions">#6 Common Subexpressions</h3>
+<p>You should avoid unnecessary invocations of computation-intensive methods. For example</p>
+<pre><code>this.remove(this.findMin).ascending(t + this.findMin)
+</code></pre>
+<p>invokes the <code>this.findMin</code> method twice. If each invocation is expensive (e.g. has to traverse an entire data structure) and does not have a side-effect, you can save one by introducing a local value binding:</p>
+<pre><code>val min = this.findMin
+this.remove(min).ascending(t + min)
+</code></pre>
+<p>This becomes even more important if the function is invoked recursively: in this case the method is not only invoked multiple times, but an exponential number of times.</p>
+<h3 id="7-dont-copy-paste-code">#7 Don't Copy-Paste Code!</h3>
+<p>Copy-pasting code is always a warning sign for bad style!
+There are many disadvantages:</p>
+<ul>
+<li>The code is longer, it takes more time to understand it</li>
+<li>If the two parts are not identical, but very similar, it is very difficult to spot the differences (see example below)</li>
+<li>Maintaining two copies and making sure that they remain synchronized is very error-prone</li>
+<li>The amount of work required to make changes to the code is multiplied</li>
+</ul>
+<p>You should factor out common parts into separate methods instead of copying code around.
+Example (see also #3 above for another example):</p>
+<pre><code>val googleTweets: TweetSet = TweetReader.allTweets.filter(tweet =&gt;
+  google.exists(word =&gt; tweet.text.contains(word)))
+val appleTweets: TweetSet = TweetReader.allTweets.filter(tweet =&gt;
+  apple.exists(word =&gt; tweet.text.contains(word)))
+</code></pre>
+<p>This code is better written as follows:</p>
+<pre><code>def tweetsMentioning(dictionary: List[String]): TweetSet =
+  TweetReader.allTweets.filter(tweet =&gt;
+    dictionary.exists(word =&gt; tweet.text.contains(word)))
+
+val googleTweets = tweetsMentioning(google)
+val appleTweets  = tweetsMentioning(apple)
+</code></pre>
+<h3 id="8-scala-doesnt-require-semicolons">#8 Scala doesn't require Semicolons</h3>
+<p>Semicolons in Scala are only required when writing multiple statements on the same line.
+Writing unnecessary semicolons should be avoided, for example:</p>
+<pre><code>def filter(p: Tweet =&gt; Boolean): TweetSet = filter0(p, new Empty);
+</code></pre>
+<h3 id="9-dont-submit-code-with-print-statements">#9 Don't submit Code with "print" Statements</h3>
+<p>You should clean up your code and remove all <code>print</code> or <code>println</code> statements before submitting it.
+The same will apply once you work for a company and create code that is used in production: the final code should be free of debugging statements.</p>
+<h3 id="10-avoid-using-return">#10 Avoid using Return</h3>
+<p>In Scala, you often don't need to use explicit <code>return</code>s because control structures such as <code>if</code> are expressions.
+For example, in</p>
+<pre><code>def factorial(n: Int): Int = {
+  if (n &lt;= 0) return 1
+  else return (n * factorial(n-1))
+}
+</code></pre>
+<p>the <code>return</code> statements can simply be dropped.</p>
+<h3 id="11-avoid-mutable-local-variables">#11 Avoid mutable local Variables</h3>
+<p>Since this is a course on functional programming, we want you to get used to writing code in a purely functional style, without using side-effecting operations.
+You can often rewrite code that uses mutable local variables to code with helper functions that take accumulators.
+Instead of:</p>
+<pre><code>def fib(n: Int): Int = {
+  var a = 0
+  var b = 1
+  var i = 0
+  while (i &lt; n) {
+    val prev_a = a
+    a = b
+    b = prev_a + b
+    i = i + 1
+  }
+  a
+}
+</code></pre>
+<p>prefer:</p>
+<pre><code>def fib(n: Int): Int = {
+  def fibIter(i: Int, a: Int, b: Int): Int =
+    if (i == n) a else fibIter(i+1, b, a+b)
+  fibIter(0, 0, 1)
+}
+</code></pre>
+<h3 id="12-eliminate-redundant-if-expressions">#12 Eliminate redundant "If" Expressions</h3>
+<p>Instead of</p>
+<pre><code>if (cond) true else false
+</code></pre>
+<p>you can simply write</p>
+<pre><code>cond
+</code></pre>
+<p>(Similarly for the negative case).</p>
+<h3 id="other-styling-issues">Other styling issues?</h3>
+<p>Please post to the forum using the <code>style</code> or <code>styleCheck</code>tags and we will augment this style guide with suggestions.</p>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
