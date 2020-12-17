@@ -4,7 +4,7 @@
 
 First of all, I need to cite Dirk Eddelbuettel:
 
-> You. Cannot. Compile. Rcpp. Classes. Without. R. It simply won't work. Rcpp is an R extension. – Dirk Eddelbuettel
+> You. Cannot. Compile. Rcpp. Classes. Without. R. It simply won't work. Rcpp is an R extension.
 
 But! There is a package, [RInside](https://github.com/eddelbuettel/rinside), which provides seamless integration in c++ code.
 Thanks again to Dirk Eddelbuettel.
