@@ -36,7 +36,9 @@
           {title: "Using R in C++", url: "#_top", children: [
               {title: "Preface", url: "#preface" },
               {title: "Example code", url: "#example-code" },
-              {title: "Simple compilation with GCC", url: "#simple-compilation-with-gcc" },
+              {title: "RInside", url: "#rinside" },
+              {title: "What do we need", url: "#what-do-we-need" },
+              {title: "Compilation with GCC", url: "#compilation-with-gcc" },
               {title: "Output", url: "#output" },
           ]},
         ];
@@ -124,15 +126,17 @@ int main(int argc, char *argv[]) {
 }
 </code></pre>
 
-<h2 id="simple-compilation-with-gcc">Simple compilation with GCC</h2>
+<h2 id="rinside">RInside</h2>
 <p>I'm using Microsoft R Open, so I'll provide instruction for it, but it could be easily extended to any version of R.
 Just insert your version or your path to R.</p>
-<pre><code class="bash"># Runtime libs
-export LD_LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/library/RInside/lib:$LD_LIBRARY_PATH&quot;
-export LD_LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/library/Rcpp/lib:$LD_LIBRARY_PATH&quot;
-export LD_LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/lib:$LD_LIBRARY_PATH&quot;
-
-# Buildtime libs
+<h2 id="what-do-we-need">What do we need</h2>
+<ul>
+<li>Dynamic R, Rcpp and RInside libraries for runtime</li>
+<li>Build libraries for R and RInside</li>
+<li>Headers for R, Rcpp and RInside</li>
+</ul>
+<h2 id="compilation-with-gcc">Compilation with GCC</h2>
+<pre><code class="bash"># Buildtime libs
 export LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/library/RInside/lib:$LD_LIBRARY_PATH&quot;
 export LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/lib:$LD_LIBRARY_PATH&quot;
 
@@ -148,7 +152,12 @@ g++ -lR -lRInside -o main.bin main.cpp
 </code></pre>
 
 <h2 id="output">Output</h2>
-<pre><code class="txt"># ./main.bin
+<pre><code class="bash"># Runtime libs
+export LD_LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/library/RInside/lib:$LD_LIBRARY_PATH&quot;
+export LD_LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/library/Rcpp/lib:$LD_LIBRARY_PATH&quot;
+export LD_LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/lib:$LD_LIBRARY_PATH&quot;
+
+# ./main.bin
 Hello, CPP World!
 [1] &quot;Hello, R World!\n&quot;
 

@@ -31,17 +31,20 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-## Simple compilation with GCC
+## RInside
 
 I'm using Microsoft R Open, so I'll provide instruction for it, but it could be easily extended to any version of R.
 Just insert your version or your path to R.
 
-```bash
-# Runtime libs
-export LD_LIBRARY_PATH="/opt/microsoft/ropen/3.5.3/lib64/R/library/RInside/lib:$LD_LIBRARY_PATH"
-export LD_LIBRARY_PATH="/opt/microsoft/ropen/3.5.3/lib64/R/library/Rcpp/lib:$LD_LIBRARY_PATH"
-export LD_LIBRARY_PATH="/opt/microsoft/ropen/3.5.3/lib64/R/lib:$LD_LIBRARY_PATH"
+## What do we need
 
+* Dynamic R, Rcpp and RInside libraries for runtime
+* Build libraries for R and RInside
+* Headers for R, Rcpp and RInside
+
+## Compilation with GCC
+
+```bash
 # Buildtime libs
 export LIBRARY_PATH="/opt/microsoft/ropen/3.5.3/lib64/R/library/RInside/lib:$LD_LIBRARY_PATH"
 export LIBRARY_PATH="/opt/microsoft/ropen/3.5.3/lib64/R/lib:$LD_LIBRARY_PATH"
@@ -59,7 +62,12 @@ g++ -lR -lRInside -o main.bin main.cpp
 
 ## Output
 
-```txt
+```bash
+# Runtime libs
+export LD_LIBRARY_PATH="/opt/microsoft/ropen/3.5.3/lib64/R/library/RInside/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="/opt/microsoft/ropen/3.5.3/lib64/R/library/Rcpp/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="/opt/microsoft/ropen/3.5.3/lib64/R/lib:$LD_LIBRARY_PATH"
+
 # ./main.bin
 Hello, CPP World!
 [1] "Hello, R World!\n"
