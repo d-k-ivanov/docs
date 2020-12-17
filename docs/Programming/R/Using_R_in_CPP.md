@@ -68,7 +68,7 @@ export LD_LIBRARY_PATH="/opt/microsoft/ropen/3.5.3/lib64/R/library/RInside/lib:$
 export LD_LIBRARY_PATH="/opt/microsoft/ropen/3.5.3/lib64/R/library/Rcpp/lib:$LD_LIBRARY_PATH"
 export LD_LIBRARY_PATH="/opt/microsoft/ropen/3.5.3/lib64/R/lib:$LD_LIBRARY_PATH"
 
-# ./main.bin
+bash_prompt$ ./main.bin
 Hello, CPP World!
 [1] "Hello, R World!\n"
 
