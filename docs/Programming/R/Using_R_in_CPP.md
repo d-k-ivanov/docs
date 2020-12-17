@@ -73,3 +73,7 @@ Hello, CPP World!
 [1] "Hello, R World!\n"
 
 ```
+
+## Code samples
+
+[RInside Example](https://github.com/d-k-ivanov/sandbox-cpp/tree/master/r-rinside-example)

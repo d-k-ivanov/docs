@@ -20,9 +20,9 @@ Ho! Он так же является создателем пакета [RInside
 #include <Rcpp.h>
 #include <RInside.h>
 
-int main(int argc, char *argv[]) {
-    using namespace std;
-    cout << "Hello, CPP World!\n";
+int main(int argc, char *argv[])
+{
+    std::cout << "Hello, CPP World!\n";
 
     RInside R(argc, argv);
     Rcpp::CharacterVector a("Hello, R World!\n");
@@ -71,3 +71,7 @@ Hello, CPP World!
 [1] "Hello, R World!\n"
 
 ```
+
+## Примеры кода
+
+[RInside Example](https://github.com/d-k-ivanov/sandbox-cpp/tree/master/r-rinside-example)
