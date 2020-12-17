@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="author" content="Dmitriy Ivanov">
-    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Programming/Ruby/Installation/">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Programming/R/Using_R_in_CPP/">
     <link rel="shortcut icon" href="../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Installation - Technical Info</title>
+    <title>Using R in C++ - Technical Info</title>
     <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../css/base.css" rel="stylesheet">
@@ -33,7 +33,11 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "via RVM on Ubuntu", url: "#_top", children: [
+          {title: "Using R in C++", url: "#_top", children: [
+              {title: "Preface", url: "#preface" },
+              {title: "Example code", url: "#example-code" },
+              {title: "Simple compilation with GCC", url: "#simple-compilation-with-gcc" },
+              {title: "Output", url: "#output" },
           ]},
         ];
 
@@ -71,20 +75,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../../Scala/Progfun_Wiki/AssignmentFeedback/" class="btn btn-xs btn-default pull-right">
+      <a href="../../Ruby/Installation/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../../Scala/Progfun_Wiki/AssignmentFeedback/" class="btn btn-xs btn-link">
-        Scala Style Guide
+      <a href="../../Ruby/Installation/" class="btn btn-xs btn-link">
+        Installation
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../../R/Using_R_in_CPP/" class="btn btn-xs btn-default pull-left">
+      <a href="../../Python/pip/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../../R/Using_R_in_CPP/" class="btn btn-xs btn-link">
-        Using R in C++
+        Previous</a><a href="../../Python/pip/" class="btn btn-xs btn-link">
+        Pip
       </a>
     </div>
     
@@ -92,14 +96,62 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="via-rvm-on-ubuntu">via RVM on Ubuntu</h3>
-<pre><code>sudo apt-get install libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
-gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-curl -sSL https://get.rvm.io | bash -s stable
-source ~/.rvm/scripts/rvm
-rvm install 2.3.1
-rvm use 2.3.1 --default
-ruby -v
+    <h1 id="using-r-in-c">Using R in C++</h1>
+<h2 id="preface">Preface</h2>
+<p>First of all, I need to cite Dirk Eddelbuettel:</p>
+<blockquote>
+<p>You. Cannot. Compile. Rcpp. Classes. Without. R. Your main() above simply won't work. Rcpp is an R extension. – Dirk Eddelbuettel</p>
+</blockquote>
+<p>But! There is a package, <a href="https://github.com/eddelbuettel/rinside">RInside</a>, which provides seamless integration in c++ code.
+Thanks again to Dirk Eddelbuettel.</p>
+<h2 id="example-code">Example code</h2>
+<pre><code class="cpp">// main.cpp
+
+#include &lt;iostream&gt;
+
+#include &lt;Rcpp.h&gt;
+#include &lt;RInside.h&gt;
+
+int main(int argc, char *argv[]) {
+    using namespace std;
+    cout &lt;&lt; &quot;Hello, CPP World!\n&quot;;
+
+    RInside R(argc, argv);
+    Rcpp::CharacterVector a(&quot;Hello, R World!\n&quot;);
+    print(a);
+
+    exit(0);
+}
+</code></pre>
+
+<h2 id="simple-compilation-with-gcc">Simple compilation with GCC</h2>
+<p>I'm using Microsoft R Opem, so I'll prvode instruction for it, but it could be easily extended to any version of R.
+Just insert your version or your path to R.</p>
+<pre><code class="bash"># Runtime libs
+export LD_LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/library/RInside/lib:$LD_LIBRARY_PATH&quot;
+export LD_LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/library/Rcpp/lib:$LD_LIBRARY_PATH&quot;
+export LD_LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/lib:$LD_LIBRARY_PATH&quot;
+
+# Buildtime libs
+export LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/library/RInside/lib:$LD_LIBRARY_PATH&quot;
+export LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/lib:$LD_LIBRARY_PATH&quot;
+
+# Include dirs
+export CPLUS_INCLUDE_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/library/RInside/include:$CPLUS_INCLUDE_PATH&quot;
+export CPLUS_INCLUDE_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/library/Rcpp/include:$CPLUS_INCLUDE_PATH&quot;
+export CPLUS_INCLUDE_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/include:$CPLUS_INCLUDE_PATH&quot;
+
+# R dependencies
+Rscript -e 'install.packages(&quot;Rcpp&quot;, &quot;RInside&quot;)'
+
+g++ -lR -lRInside -o main.bin main.cpp
+</code></pre>
+
+<h2 id="output">Output</h2>
+<pre><code class="txt"># ./main.bin
+Hello, CPP World!
+[1] &quot;Hello, R World!\n&quot;
+
 </code></pre>
 
   <br>
