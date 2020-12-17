@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
 
 ## Simple compilation with GCC
 
-I'm using Microsoft R Opem, so I'll prvode instruction for it, but it could be easily extended to any version of R.
+I'm using Microsoft R Open, so I'll provide instruction for it, but it could be easily extended to any version of R.
 Just insert your version or your path to R.
 
 ```bash
