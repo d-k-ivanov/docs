@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Dmitriy Ivanov">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Programming/R/Using_R_in_CPP_RU/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Using R in C++ (Ru) - Technical Info</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Using R in C++ (Ru)", url: "#_top", children: [
+              {title: "\u041f\u0440\u043e\u043b\u043e\u0433", url: "#_1" },
+              {title: "\u041f\u0440\u0438\u043c\u0435\u0440 \u043a\u043e\u0434\u0430", url: "#_2" },
+              {title: "\u041a\u043e\u043c\u043f\u0438\u043b\u044f\u0446\u0438\u044f \u0441 GCC", url: "#gcc" },
+              {title: "\u0417\u0430\u043f\u0443\u0441\u043a", url: "#_3" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../mathjax-config.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-80208201-1', 'd-k-ivanov.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Ruby/Installation/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Ruby/Installation/" class="btn btn-xs btn-link">
+        Installation
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Using_R_in_CPP/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Using_R_in_CPP/" class="btn btn-xs btn-link">
+        Using R in C++
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="using-r-in-c-ru">Using R in C++ (Ru)</h1>
+<!-- Использование R в С++ -->
+
+<h2 id="_1">Пролог</h2>
+<p>Для начала, я бы хотел процитировать Дирка Эддельбюттеля (Dirk Eddelbuettel)</p>
+<blockquote>
+<p>You. Cannot. Compile. Rcpp. Classes. Without. R. It simply won't work. Rcpp is an R extension.</p>
+</blockquote>
+<p>Ho! Он так же является создателем пакета <a href="https://github.com/eddelbuettel/rinside">RInside</a>, который предоставляет бесшовную интеграцию расширений R в C++.</p>
+<h2 id="_2">Пример кода</h2>
+<pre><code class="cpp">// main.cpp
+
+#include &lt;iostream&gt;
+
+#include &lt;Rcpp.h&gt;
+#include &lt;RInside.h&gt;
+
+int main(int argc, char *argv[]) {
+    using namespace std;
+    cout &lt;&lt; &quot;Hello, CPP World!\n&quot;;
+
+    RInside R(argc, argv);
+    Rcpp::CharacterVector a(&quot;Hello, R World!\n&quot;);
+    print(a);
+
+    exit(0);
+}
+</code></pre>
+
+<h2 id="gcc">Компиляция с GCC</h2>
+<p>Так как мы используем Microsoft R Open 3.5.3, поэтому инструкция заточена под эту версию, но её можно легко раширить под любую версию R.</p>
+<p>Нам понадобятся:</p>
+<ul>
+<li>Динамические библиотеки R, Rcpp и RInside для запуска приложений</li>
+<li>Библиотеки R и RInside для сборки</li>
+<li>Заголовки R, Rcpp и RInside</li>
+</ul>
+<pre><code class="bash"># Buildtime libs
+export LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/library/RInside/lib:$LD_LIBRARY_PATH&quot;
+export LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/lib:$LD_LIBRARY_PATH&quot;
+
+# Include dirs
+export CPLUS_INCLUDE_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/library/RInside/include:$CPLUS_INCLUDE_PATH&quot;
+export CPLUS_INCLUDE_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/library/Rcpp/include:$CPLUS_INCLUDE_PATH&quot;
+export CPLUS_INCLUDE_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/include:$CPLUS_INCLUDE_PATH&quot;
+
+# R dependencies
+Rscript -e 'install.packages(&quot;Rcpp&quot;, &quot;RInside&quot;)'
+
+g++ -lR -lRInside -o main.bin main.cpp
+</code></pre>
+
+<h2 id="_3">Запуск</h2>
+<pre><code class="bash"># Runtime libs
+export LD_LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/library/RInside/lib:$LD_LIBRARY_PATH&quot;
+export LD_LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/library/Rcpp/lib:$LD_LIBRARY_PATH&quot;
+export LD_LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/lib:$LD_LIBRARY_PATH&quot;
+
+bash_prompt$ ./main.bin
+Hello, CPP World!
+[1] &quot;Hello, R World!\n&quot;
+
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+      <p>
+        <a href="https://d-k-ivanov.github.io/">Main site</a>
+      </p><p>Copyright &copy; 2016-2020 Dmitriy Ivanov. <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(40819844, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40819844" style="position:absolute; left:-9999px;" alt="" /></div></noscript></p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
