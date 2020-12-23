@@ -39,11 +39,19 @@
           ]},
           {title: "Import", url: "#import", children: [
           ]},
-          {title: "Delete key:", url: "#delete-key", children: [
+          {title: "Renew", url: "#renew", children: [
           ]},
-          {title: "GitHub key", url: "#github-key", children: [
+          {title: "Publish", url: "#publish", children: [
+          ]},
+          {title: "Search", url: "#search", children: [
+          ]},
+          {title: "Delete", url: "#delete", children: [
           ]},
           {title: "Multiple UID", url: "#multiple-uid", children: [
+          ]},
+          {title: "Revoke", url: "#revoke", children: [
+          ]},
+          {title: "GitHub key", url: "#github-key", children: [
           ]},
         ];
 
@@ -129,18 +137,54 @@ gpg --edit-key &lt;KEY_ID&gt;
 
 </code></pre>
 
-<h2 id="delete-key">Delete key:</h2>
+<h2 id="renew">Renew</h2>
+<pre><code class="sh">gpg --list-secret-keys --keyid-format LONG
+gpg --edit-key &lt;KEY_ID&gt;
+    gpg&gt; list
+    gpg&gt; key [subkey]
+    gpg&gt; expire
+    gpg&gt; trust
+    gpg&gt; save
+
+
+## Update key in global pool
+gpg --keyserver pool.sks-keyservers.net --send-keys &lt;KEY_ID&gt;
+
+## Update key in Ubuntu pool
+gpg --keyserver keyserver.ubuntu.com --send-keys &lt;KEY_ID&gt;
+
+## Update key in MIT pool
+gpg --keyserver pgp.mit.edu --send-keys &lt;KEY_ID&gt;
+</code></pre>
+
+<h2 id="publish">Publish</h2>
+<pre><code class="sh">## Publish key in global pool
+gpg --keyserver pool.sks-keyservers.net --send-keys &lt;KEY_ID&gt;
+
+## Publish key in Ubuntu pool
+gpg --keyserver keyserver.ubuntu.com --send-keys &lt;KEY_ID&gt;
+
+## Publish key in MIT pool
+gpg --keyserver pgp.mit.edu --send-keys &lt;KEY_ID&gt;
+</code></pre>
+
+<h2 id="search">Search</h2>
+<pre><code class="sh">## Search key in global pool
+gpg --keyserver pool.sks-keyservers.net --search-key email@address
+
+## Search key in Ubuntu pool
+gpg --keyserver keyserver.ubuntu.com --search-key email@address
+
+## Search key in MIT pool
+gpg --keyserver pgp.mit.edu --search-key email@address
+</code></pre>
+
+<h2 id="delete">Delete</h2>
 <pre><code class="sh"># Get key ID
 gpg --list-secret-keys --keyid-format LONG
 gpg --delete-secret-keys &lt;KEY_ID&gt;
 gpg --delete-keys &lt;KEY_ID&gt;
 
-</code></pre>
-
-<h2 id="github-key">GitHub key</h2>
-<pre><code class="sh">wget https://github.com/web-flow.gpg
-gpg --import .\web-flow.gpg
-rm .\web-flow.gpg
 </code></pre>
 
 <h2 id="multiple-uid">Multiple UID</h2>
@@ -150,6 +194,27 @@ gpg --edit-key &lt;KEY_ID&gt;
     gpg&gt; uid &lt;N&gt;
     gpg&gt; trust
     gpg&gt; quit
+</code></pre>
+
+<h2 id="revoke">Revoke</h2>
+<pre><code class="sh">gpg --list-secret-keys --keyid-format LONG
+gpg --output revoke.asc --gen-revoke &lt;KEY_ID&gt;
+gpg --import revoke.asc
+
+## Revoke key in global pool
+gpg --keyserver pool.sks-keyservers.net --send-keys &lt;KEY_ID&gt;
+
+## Revoke key in Ubuntu pool
+gpg --keyserver keyserver.ubuntu.com --send-keys &lt;KEY_ID&gt;
+
+## Revoke key in MIT pool
+gpg --keyserver pgp.mit.edu --send-keys &lt;KEY_ID&gt;
+</code></pre>
+
+<h2 id="github-key">GitHub key</h2>
+<pre><code class="sh">wget https://github.com/web-flow.gpg
+gpg --import .\web-flow.gpg
+rm .\web-flow.gpg
 </code></pre>
 
   <br>
