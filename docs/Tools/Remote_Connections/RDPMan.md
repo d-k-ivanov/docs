@@ -14,3 +14,4 @@ makecert -sky exchange -r -pe -e 01/01/2220 -a sha1 -len 2048 -ss my -n "CN=RDCM
 * Go to RDCman and open RDG file you want to reencrypt with the **Custom** certificate insetead of **Logged User** certificate
 * Open file properties and go to **Encription Settings**
 * Choose the newly created certificate
+* _And don't forget to create a backup!_
