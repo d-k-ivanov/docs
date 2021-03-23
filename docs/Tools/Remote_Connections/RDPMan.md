@@ -1,4 +1,7 @@
-### Encryption of RDCMan credentials with the custom certificate
+### Certificate for password encryption
+
+How to rencrypt of RDCMan credentials with a custom certificate?
+Here the steps.
 
 * **Generate** certificate
 
