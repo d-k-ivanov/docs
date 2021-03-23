@@ -1220,6 +1220,14 @@
      <lastmod>2021-03-23</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Remote_Connections/RDPMan/</loc>
+     <lastmod>2021-03-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://d-k-ivanov.github.io/docs/Tools/Remote_Connections/xFreeRDP/</loc>
+     <lastmod>2021-03-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
      <loc>https://d-k-ivanov.github.io/docs/Tools/Version_Control/Bitbucket/</loc>
      <lastmod>2021-03-23</lastmod>
      <changefreq>daily</changefreq>
@@ -1425,10 +1433,6 @@
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://d-k-ivanov.github.io/docs/Unix/Raspberry_PI/Raspbian/</loc>
-     <lastmod>2021-03-23</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://d-k-ivanov.github.io/docs/Unix/Remote_Connection/xFreeRDP/</loc>
      <lastmod>2021-03-23</lastmod>
      <changefreq>daily</changefreq>
     </url><url>

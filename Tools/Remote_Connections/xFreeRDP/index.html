@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="author" content="Dmitry Ivanov">
-    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Tools/QMake/Link_Dynamic_libraries_on_Mac/">
+    <link rel="canonical" href="https://d-k-ivanov.github.io/docs/Tools/Remote_Connections/xFreeRDP/">
     <link rel="shortcut icon" href="../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Link Dynamic libraries on Mac - Technical Info</title>
+    <title>xFreeRDP - Technical Info</title>
     <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../css/base.css" rel="stylesheet">
@@ -33,7 +33,7 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Pri file example", url: "#_top", children: [
+          {title: "XfreeRDP", url: "#_top", children: [
           ]},
         ];
 
@@ -71,20 +71,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../../Remote_Connections/RDPMan/" class="btn btn-xs btn-default pull-right">
+      <a href="../../Version_Control/Bitbucket/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../../Remote_Connections/RDPMan/" class="btn btn-xs btn-link">
-        RDPMan
+      <a href="../../Version_Control/Bitbucket/" class="btn btn-xs btn-link">
+        Bitbucket related things
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../../Project_Management/Unresolve_Jira_Issue/" class="btn btn-xs btn-default pull-left">
+      <a href="../RDPMan/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../../Project_Management/Unresolve_Jira_Issue/" class="btn btn-xs btn-link">
-        Unresolve Jira Issue
+        Previous</a><a href="../RDPMan/" class="btn btn-xs btn-link">
+        RDPMan
       </a>
     </div>
     
@@ -92,28 +92,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="pri-file-example">Pri file example</h3>
-<pre><code class="bash">include(Base.pri)
-
-# Loading folder with our libraries and libraries itself:
-LIBS += -L&quot;path/to/macosx/lib&quot; -lone.1 -ltwo.2 -lthree.3
-
-# All Mac related stuff should be kept in separate section:
-mac {
-    # Creating list of libraries to deploy in APPLICATION.App/Contents/Frameworks
-    SupaLib.files += path/to/macosx/lib/libone.1.dylib
-    SupaLib.files += path/to/macosx/lib/libtwo.2.dylib
-    SupaLib.files += path/to/macosx/lib/libthree.3.dylib
-
-    # Destination path for third-party libraries
-    SupaLib.path = Contents/Frameworks
-
-    # Add this libraries to final output bundle
-    QMAKE_BUNDLE_DATA += SupaLib
-
-    # Need to be sure that application will know about location of libraries
-    QMAKE_RPATHDIR += @executable_path/../Frameworks
-}
+    <h3 id="xfreerdp">XfreeRDP</h3>
+<pre><code class="bash">xfreerdp [+clipboard]/w:&lt;WIDTH&gt; /h:&lt;HEIGHT&gt; /drive:&lt;cuatom_drive_name&gt;,&lt;path_to_attach&gt; /v:&lt;ip&gt;:&lt;port&gt; /u:&lt;user_name&gt;
+xfreerdp +clipboard /w:1600 /h:900 /v:10.15.0.10:3389 /u:Administrator
+xfreerdp +clipboard /w:1800 /h:1000 /u:Adminitatrator /drive:hmc,/home/4T/IT/IBM/HMC/7.9_sp3 /v:10.15.0.10
 </code></pre>
 
   <br>
