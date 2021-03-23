@@ -1,5 +1,5 @@
 #!/bin/bash
 
 va
-python -m mkdocs serve --dev-addr=0.0.0.0:18080
+python -m mkdocs serve --dev-addr=localhost:18080
 vd
