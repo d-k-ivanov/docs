@@ -78,33 +78,6 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
-    
-      
-    
-
-  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
-    
-    <div class="wm-article-nav pull-right">
-      <a href="../../SQL/Maintenance/" class="btn btn-xs btn-default pull-right">
-        Next
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-      </a>
-      <a href="../../SQL/Maintenance/" class="btn btn-xs btn-link">
-        Maintenance Scripts
-      </a>
-    </div>
-    
-    <div class="wm-article-nav">
-      <a href="../Tablespace/" class="btn btn-xs btn-default pull-left">
-        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../Tablespace/" class="btn btn-xs btn-link">
-        Tablespace
-      </a>
-    </div>
-    
-  </div>
-
-    
 
     <h3 id="view-tablespaces-by-user">View tablespaces by user<a class="headerlink" href="#view-tablespaces-by-user" title="Permanent link">#</a></h3>
 <pre><code class="language-sql">select distinct p.tablespace_name from dba_tablespaces p, dba_xml_tables x, dba_users u, all_all_tables t where t.table_name=x.table_name and t.tablespace_name=p.tablespace_name and x.owner=u.username;

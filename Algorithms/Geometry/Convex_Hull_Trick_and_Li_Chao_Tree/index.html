@@ -71,33 +71,6 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
-    
-      
-    
-
-  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
-    
-    <div class="wm-article-nav pull-right">
-      <a href="../Delaunay_Triangulation_and_Voronoi_Diagram/" class="btn btn-xs btn-default pull-right">
-        Next
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-      </a>
-      <a href="../Delaunay_Triangulation_and_Voronoi_Diagram/" class="btn btn-xs btn-link">
-        Delaunay Triangulation and Voronoi Diagram
-      </a>
-    </div>
-    
-    <div class="wm-article-nav">
-      <a href="../Common_Tangents_to_Two_Circles/" class="btn btn-xs btn-default pull-left">
-        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../Common_Tangents_to_Two_Circles/" class="btn btn-xs btn-link">
-        Common Tangents to Two Circles
-      </a>
-    </div>
-    
-  </div>
-
-    
 
     <h1 id="convex-hull-trick-and-li-chao-tree">Convex Hull Trick and Li Chao Tree<a class="headerlink" href="#convex-hull-trick-and-li-chao-tree" title="Permanent link">#</a></h1>
 <p>Consider the following problem. There are <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> cities. You want to travel from city <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> to city <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> by car. To do this you have to buy some gasoline. It is known that a liter of gasoline costs <span><span class="MathJax_Preview">cost_k</span><script type="math/tex">cost_k</script></span> in the <span><span class="MathJax_Preview">k^{th}</span><script type="math/tex">k^{th}</script></span> city. Initially your fuel tank is empty and you spend one liter of gasoline per kilometer. Cities are located on the same line in ascending order with <span><span class="MathJax_Preview">k^{th}</span><script type="math/tex">k^{th}</script></span> city having coordinate <span><span class="MathJax_Preview">x_k</span><script type="math/tex">x_k</script></span>. Also you have to pay <span><span class="MathJax_Preview">toll_k</span><script type="math/tex">toll_k</script></span> to enter <span><span class="MathJax_Preview">k^{th}</span><script type="math/tex">k^{th}</script></span> city. Your task is to make the trip with minimum possible cost. It's obvious that the solution can be calculated via dynamic programming:</p>
