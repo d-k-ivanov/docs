@@ -94,8 +94,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="mariadb-server-55">MariaDB server 5.5</h3>
-<pre><code class="bash">yum install mariadb-server
+    <h3 id="mariadb-server-55">MariaDB server 5.5<a class="headerlink" href="#mariadb-server-55" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">yum install mariadb-server
 vim /etc/my.cnf
 ---
 [mysqld]
@@ -108,9 +108,8 @@ systemctl enable mariadb
 mysql_secure_installation
 
 </code></pre>
-
-<h3 id="mariadb-server-101">MariaDB server 10.1</h3>
-<pre><code class="bash">yum install centos-release-scl
+<h3 id="mariadb-server-101">MariaDB server 10.1<a class="headerlink" href="#mariadb-server-101" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">yum install centos-release-scl
 yum --enablerepo=centos-sclo-rh install rh-mariadb101-mariadb-server 
 scl enable rh-mariadb101 bash 
 

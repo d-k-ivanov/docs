@@ -94,8 +94,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="backup">Backup</h3>
-<pre><code class="bash"># Gzipped archive
+    <h3 id="backup">Backup<a class="headerlink" href="#backup" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Gzipped archive
 mongodump --host &quot;ip_address_or_replicaset:port&quot; --db dataBaseName --gzip --archive=/path/to/archive/file.agz
 # BSON Folder
 mongodump --host &quot;ip_address_or_replicaset:port&quot; --db dataBaseName --out /path/to/backup/folder
@@ -103,9 +103,8 @@ mongodump --host &quot;ip_address_or_replicaset:port&quot; --db dataBaseName --o
 mongodump --host &quot;ip_address_or_replicaset:port&quot; --oplog --gzip --archive=/path/to/archive/file.agz
 mongodump --host &quot;ip_address_or_replicaset:port&quot; --oplog --out /path/to/backup/folder
 </code></pre>
-
-<h3 id="restore">Restore</h3>
-<pre><code class="bash"># Gzipped archive
+<h3 id="restore">Restore<a class="headerlink" href="#restore" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Gzipped archive
 mongorestore --host &quot;ip_address_or_replicaset:port&quot; --db dataBaseName --drop --gzip --archive=/path/to/archive/file.agz
 # BSON Folder
 mongorestore --host &quot;ip_address_or_replicaset:port&quot; --db dataBaseName --drop /path/to/backup/folder

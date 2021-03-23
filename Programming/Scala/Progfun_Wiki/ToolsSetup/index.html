@@ -126,8 +126,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <td style="border:0"><a href="../lecture/21" class="btn">Setup Video for Windows</a></td>
 </tr></table>
 
-<h2 id="installing-the-jdk">Installing the JDK</h2>
-<h3 id="linux">Linux</h3>
+<h2 id="installing-the-jdk">Installing the JDK<a class="headerlink" href="#installing-the-jdk" title="Permanent link">#</a></h2>
+<h3 id="linux">Linux<a class="headerlink" href="#linux" title="Permanent link">#</a></h3>
 <ul>
 <li>
 <p><strong>Ubuntu, Debian</strong>: To install the JDK using apt-get, execute the following command in a terminal
@@ -148,18 +148,18 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <code>export PATH=/PATH/TO/YOUR/jdk1.7.0-VERSION/bin:$PATH</code></li>
 </ul>
 <p><strong>Verify your setup</strong>: Open a new terminal (to apply the changed <code>.bashrc</code> in case you did the manual installation) and type <code>java -version</code>. If you have problems installing the JDK, ask for help on the forums.</p>
-<h3 id="mac-os-x">Mac OS X</h3>
+<h3 id="mac-os-x">Mac OS X<a class="headerlink" href="#mac-os-x" title="Permanent link">#</a></h3>
 <p>Mac OS X either comes with a pre-installed JDK, or installs it automatically.</p>
 <p>To verify your JDK installation, open the <code>Terminal</code> application in <code>/Applications/Utilities/</code> and type <code>java -version</code>. If the JDK is not yet installed, the system will ask you if you would like to download and install it.</p>
-<h3 id="windows">Windows</h3>
+<h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">#</a></h3>
 <ul>
 <li>Download the JDK installer for Windows from <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html">http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html</a></li>
 <li>Run the installer</li>
 <li>Add the <code>bin\</code> directory of the installed JDK to the <code>PATH</code> environment variable, as described here: <a href="http://www.java.com/en/download/help/path.xml">http://www.java.com/en/download/help/path.xml</a></li>
 </ul>
 <p>To verify the JDK installation, open the Command Prompt and type <code>java -version</code>. If you have problems installing the JDK, ask for help on the forums.</p>
-<h2 id="installing-sbt">Installing sbt</h2>
-<h3 id="linux_1">Linux</h3>
+<h2 id="installing-sbt">Installing sbt<a class="headerlink" href="#installing-sbt" title="Permanent link">#</a></h2>
+<h3 id="linux_1">Linux<a class="headerlink" href="#linux_1" title="Permanent link">#</a></h3>
 <ul>
 <li>Download sbt from here: <a href="http://scalasbt.artifactoryonline.com/scalasbt/sbt-native-packages/org/scala-sbt/sbt/0.12.2/sbt.tgz">http://scalasbt.artifactoryonline.com/scalasbt/sbt-native-packages/org/scala-sbt/sbt/0.12.2/sbt.tgz</a></li>
 <li>Unpack the archive to a directory of your choice</li>
@@ -167,7 +167,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <code>export PATH=/PATH/TO/YOUR/sbt/bin:$PATH</code></li>
 </ul>
 <p>Verify that sbt is installed correctly: Open a new terminal (to apply the changed <code>.bashrc</code>) and type <code>sbt -h</code>, you should see a help message from sbt. If you have problems installing sbt, ask for help on the forums.</p>
-<h3 id="mac-os-x_1">Mac OS X</h3>
+<h3 id="mac-os-x_1">Mac OS X<a class="headerlink" href="#mac-os-x_1" title="Permanent link">#</a></h3>
 <p>If you use the <a href="http://mxcl.github.com/homebrew/">homebrew</a> package manager, simply type <code>brew update</code> and then <code>brew install sbt</code> in a Terminal prompt.</p>
 <p>Otherwise, install sbt by following these steps:</p>
 <ul>
@@ -177,17 +177,17 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <code>export PATH=/PATH/TO/YOUR/sbt/bin:$PATH</code></li>
 </ul>
 <p>Verify that sbt is installed correctly: Open a new terminal (to apply the changed <code>.bash_profile</code>) using the <code>Terminal</code> application in <code>/Applications/Utilities/</code> and type <code>sbt -h</code>, you should see a help message from sbt. If you have problems installing sbt, ask for help on the forums.</p>
-<h3 id="windows_1">Windows</h3>
+<h3 id="windows_1">Windows<a class="headerlink" href="#windows_1" title="Permanent link">#</a></h3>
 <ul>
 <li>Download the sbt installer from here: <a href="http://scalasbt.artifactoryonline.com/scalasbt/sbt-native-packages/org/scala-sbt/sbt/0.12.2/sbt.msi">http://scalasbt.artifactoryonline.com/scalasbt/sbt-native-packages/org/scala-sbt/sbt/0.12.2/sbt.msi</a></li>
 <li>Run the installer</li>
 </ul>
 <p>Verify that sbt is installed correctly: open the Command Prompt and type <code>sbt sbt-version</code>, you should see the version number of sbt (the first time you run it, sbt will download libraries from the internet). If you have problems installing sbt, ask for help on the forums.</p>
-<h2 id="installing-the-scala-ide-for-eclipse-with-the-scala-worksheet-linux-mac-os-x-windows">Installing the Scala IDE for Eclipse with the Scala Worksheet (Linux / Mac OS X / Windows)</h2>
+<h2 id="installing-the-scala-ide-for-eclipse-with-the-scala-worksheet-linux-mac-os-x-windows">Installing the Scala IDE for Eclipse with the Scala Worksheet (Linux / Mac OS X / Windows)<a class="headerlink" href="#installing-the-scala-ide-for-eclipse-with-the-scala-worksheet-linux-mac-os-x-windows" title="Permanent link">#</a></h2>
 <p>You can download the Scala IDE for eclipse with the Scala Worksheet pre-installed from the following URL:</p>
 <p><a href="http://www.typesafe.com/stack/downloads/scala-ide">http://typesafe.com/stack/scala_ide_download</a> (<strong>Make sure to download the IDE for Scala version 2.10.1!</strong>)</p>
 <p>After downloading the archive for your operating system, simply unpack it and start eclipse. Eclipse requires you to select a workspace on startup. We recommend you create one workspace directory for this class and use it for all assignments.</p>
-<h3 id="hello-world-scala-ide-and-the-scala-worksheet">Hello World: Scala IDE and the Scala Worksheet</h3>
+<h3 id="hello-world-scala-ide-and-the-scala-worksheet">Hello World: Scala IDE and the Scala Worksheet<a class="headerlink" href="#hello-world-scala-ide-and-the-scala-worksheet" title="Permanent link">#</a></h3>
 <p>To familiarize yourself with the Scala IDE, create a small "Hello World" project in eclipse:</p>
 <ol>
 <li>Go to "File" - "New" - "Other..." and select "Scala Project" from the folder "Scala Wizards"</li>
@@ -207,7 +207,7 @@ object Hello extends App {
   println("Hello, World!")
 }
 </code></pre>
-<h3 id="creating-a-scala-worksheet">Creating a Scala Worksheet</h3>
+<h3 id="creating-a-scala-worksheet">Creating a Scala Worksheet<a class="headerlink" href="#creating-a-scala-worksheet" title="Permanent link">#</a></h3>
 <p>Creating a Scala Worksheet is very easy:</p>
 <ol>
 <li>Right-click on the package <code>greeter</code> in the hello world project that you just created</li>

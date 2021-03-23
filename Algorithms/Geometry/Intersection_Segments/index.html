@@ -94,11 +94,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="intersection-two-segments">Intersection: Two Segments</h1>
+    <h1 id="intersection-two-segments">Intersection: Two Segments<a class="headerlink" href="#intersection-two-segments" title="Permanent link">#</a></h1>
 <p>Given <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> line segments on the plane. It is required to check whether at least two of them intersect with each other.
 If the answer is yes, then print this pair of intersecting segments; it is enough to choose any of them among several answers.</p>
 <p>The naive solution algorithm is to iterate over all pairs of segments in <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span> and check for each pair whether they intersect or not. This article describes an algorithm with the runtime time <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>, which is based on the <strong>sweep line algorithm</strong>.</p>
-<h2 id="algorithm">Algorithm</h2>
+<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
 <p>Let's draw a vertical line <span><span class="MathJax_Preview">x = -\infty</span><script type="math/tex">x = -\infty</script></span> mentally and start moving this line to the right.
 In the course of its movement, this line will meet with segments, and at each time a segment intersect with our line it intersects in exactly one point (we will assume that there are no vertical segments).</p>
 <p><center><img alt="sweep line and line segment intersection" src="/docs/data/cs/sweep_line_1.png" /></center></p>
@@ -133,9 +133,9 @@ Namely, we will store a list of segments crossing the sweep line at a given time
 </ul>
 <p>Thus, the entire algorithm will perform no more than <span><span class="MathJax_Preview">2n</span><script type="math/tex">2n</script></span> tests on the intersection of a pair of segments, and will perform <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> operations with a queue of segments (<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> operations at the time of appearance and disappearance of each segment).</p>
 <p>The final <strong>asymptotic behavior of the algorithm</strong> is thus <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>We present the full implementation of the described algorithm:</p>
-<pre><code class="cpp">const double EPS = 1E-9;
+<pre><code class="language-cpp">const double EPS = 1E-9;
 
 struct pt {
     double x, y;
@@ -235,7 +235,6 @@ pair&lt;int, int&gt; solve(const vector&lt;seg&gt;&amp; a) {
     return make_pair(-1, -1);
 }
 </code></pre>
-
 <p>The main function here is <code>solve()</code>, which returns the number of found intersecting segments, or <span><span class="MathJax_Preview">(-1, -1)</span><script type="math/tex">(-1, -1)</script></span>, if there are no intersections.</p>
 <p>Checking for the intersection of two segments is carried out by the <code>intersect ()</code> function, using an <strong>algorithm based on the oriented area of the triangle</strong>.</p>
 <p>The queue of segments is the global variable <code>s</code>, a <code>set&lt;event&gt;</code>. Iterators that specify the position of each segment in the queue (for convenient removal of segments from the queue) are stored in the global array <code>where</code>.</p>

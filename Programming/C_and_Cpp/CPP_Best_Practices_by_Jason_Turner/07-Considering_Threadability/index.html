@@ -95,18 +95,18 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="considering-threadability">Considering Threadability</h1>
-<h2 id="avoid-global-data">Avoid Global Data</h2>
+    <h1 id="considering-threadability">Considering Threadability<a class="headerlink" href="#considering-threadability" title="Permanent link">#</a></h1>
+<h2 id="avoid-global-data">Avoid Global Data<a class="headerlink" href="#avoid-global-data" title="Permanent link">#</a></h2>
 <p>Global data leads to unintended side effects between functions and can make code difficult or impossible to parallelize. Even if the code is not intended today for parallelization, there is no reason to make it impossible for the future.</p>
-<h3 id="statics">Statics</h3>
+<h3 id="statics">Statics<a class="headerlink" href="#statics" title="Permanent link">#</a></h3>
 <p>Besides being global data, statics are not always constructed and deconstructed as you would expect. This is particularly true in cross-platform environments. See for example, <a href="https://gcc.gnu.org/bugzilla/show_bug.cgi?id=66830">this g++ bug</a> regarding the order of destruction of shared static data loaded from dynamic modules.</p>
-<h3 id="shared-pointers">Shared Pointers</h3>
+<h3 id="shared-pointers">Shared Pointers<a class="headerlink" href="#shared-pointers" title="Permanent link">#</a></h3>
 <p><code>std::shared_ptr</code> is "as good as a global" (http://stackoverflow.com/a/18803611/29975) because it allows multiple pieces of code to interact with the same data.</p>
-<h3 id="singletons">Singletons</h3>
+<h3 id="singletons">Singletons<a class="headerlink" href="#singletons" title="Permanent link">#</a></h3>
 <p>A singleton is often implemented with a static and/or <code>shared_ptr</code>.</p>
-<h2 id="avoid-heap-operations">Avoid Heap Operations</h2>
+<h2 id="avoid-heap-operations">Avoid Heap Operations<a class="headerlink" href="#avoid-heap-operations" title="Permanent link">#</a></h2>
 <p>Much slower in threaded environments. In many or maybe even most cases, copying data is faster. Plus with move operations and such and things.</p>
-<h2 id="mutex-and-mutable-go-together-mm-rule-c11">Mutex and mutable go together (M&amp;M rule, C++11)</h2>
+<h2 id="mutex-and-mutable-go-together-mm-rule-c11">Mutex and mutable go together (M&amp;M rule, C++11)<a class="headerlink" href="#mutex-and-mutable-go-together-mm-rule-c11" title="Permanent link">#</a></h2>
 <p>For member variables it is good practice to use mutex and mutable together. This applies in both ways:
 * A mutable member variable is presumed to be a shared variable so it should be synchronized with a mutex (or made atomic)
 * If a member variable is itself a mutex, it should be mutable. This is required to use it inside a const member function.</p>

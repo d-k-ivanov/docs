@@ -95,9 +95,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="intersection-circle-line">Intersection: Circle-Line</h1>
+    <h1 id="intersection-circle-line">Intersection: Circle-Line<a class="headerlink" href="#intersection-circle-line" title="Permanent link">#</a></h1>
 <p>Given the coordinates of the center of a circle and its radius, and the equation of a line, you're required to find the points of intersection.</p>
-<h2 id="solution">Solution</h2>
+<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">#</a></h2>
 <p>Instead of solving the system of two equations, we will approach the problem geometrically. This way we get a more accurate solution from the point of view of numerical stability.</p>
 <p>We assume without loss of generality that the circle is centered at the origin. If it's not, we translate it there and correct the <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> constant in the line equation. So we have a circle centered at <span><span class="MathJax_Preview">(0,0)</span><script type="math/tex">(0,0)</script></span> of radius <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> and a line with equation <span><span class="MathJax_Preview">Ax+By+C=0</span><script type="math/tex">Ax+By+C=0</script></span>.</p>
 <p>Let's start by find the point on the line which is closest to the origin <span><span class="MathJax_Preview">(x_0, y_0)</span><script type="math/tex">(x_0, y_0)</script></span>. First, it has to be at a distance</p>
@@ -130,9 +130,9 @@ $$ a_x = x_0 + B \cdot m, a_y = y_0 - A \cdot m $$
 $$ b_x = x_0 - B \cdot m, b_y = y_0 + A \cdot m </script>
 </div>
 <p>Had we solved the original system of equations using algebraic methods, we would likely get an answer in a different form with a larger error. The geometric method described here is more graphic and more accurate.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>As indicated at the outset, we assume that the circle is centered at the origin, and therefore the input to the program is the radius <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> of the circle and the parameters <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>, <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> and <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> of the equation of the line.</p>
-<pre><code class="cpp">double r, a, b, c; // given as input
+<pre><code class="language-cpp">double r, a, b, c; // given as input
 double x0 = -a*c/(a*a+b*b), y0 = -b*c/(a*a+b*b);
 if (c*c &gt; r*r*(a*a+b*b)+EPS)
     puts (&quot;no points&quot;);
@@ -152,8 +152,7 @@ else {
     cout &lt;&lt; ax &lt;&lt; ' ' &lt;&lt; ay &lt;&lt; '\n' &lt;&lt; bx &lt;&lt; ' ' &lt;&lt; by &lt;&lt; '\n';
 }
 </code></pre>
-
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://www.codechef.com/problems/ANDOOR">CODECHEF: ANDOOR</a></li>
 </ul>

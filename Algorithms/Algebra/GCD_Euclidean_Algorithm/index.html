@@ -99,7 +99,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="gcd-euclidean-algorithm">GCD: Euclidean Algorithm</h1>
+    <h1 id="gcd-euclidean-algorithm">GCD: Euclidean Algorithm<a class="headerlink" href="#gcd-euclidean-algorithm" title="Permanent link">#</a></h1>
 <p>Given two non-negative integers <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>, we have to find their <strong>GCD</strong> (greatest common divisor), i.e. the largest number which is a divisor of both <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>.
 It's commonly denoted by <span><span class="MathJax_Preview">\gcd(a, b)</span><script type="math/tex">\gcd(a, b)</script></span>. Mathematically it is defined as:
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\gcd(a, b) = \max_ {k = 1 \dots \infty ~ : ~ k \mid a ~ \wedge k ~ \mid b} k.</span><script type="math/tex">\gcd(a, b) = \max_ {k = 1 \dots \infty ~ : ~ k \mid a ~ \wedge k ~ \mid b} k.</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\gcd(a, b) = \max_ {k = 1 \dots \infty ~ : ~ k \mid a ~ \wedge k ~ \mid b} k.</span><script type="math/tex">\gcd(a, b) = \max_ {k = 1 \dots \infty ~ : ~ k \mid a ~ \wedge k ~ \mid b} k.</script></span></script></span>
@@ -107,29 +107,27 @@ It's commonly denoted by <span><span class="MathJax_Preview">\gcd(a, b)</span><s
 <p>When one of the numbers is zero, while the other is non-zero, their greatest common divisor, by definition, is the second number. When both numbers are zero, their greatest common divisor is undefined (it can be any arbitrarily large number), but we can define it to be zero. Which gives us a simple rule: if one of the numbers is zero, the greatest common divisor is the other number.</p>
 <p>The Euclidean algorithm, discussed below, allows to find the greatest common divisor of two numbers <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> in <span><span class="MathJax_Preview">O(\log \min(a, b))</span><script type="math/tex">O(\log \min(a, b))</script></span>.</p>
 <p>The algorithm was first described in Euclid's "Elements" (circa 300 BC), but it is possible that the algorithm has even earlier origins.</p>
-<h2 id="algorithm">Algorithm</h2>
+<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
 <p>The algorithm is extremely simple:</p>
 <div>
 <div class="MathJax_Preview">\gcd(a, b) = \begin{cases}a,&amp;\text{if }b = 0 \\\\ \gcd(b, a \bmod b),&amp;\text{otherwise.}\end{cases}</div>
 <script type="math/tex; mode=display">\gcd(a, b) = \begin{cases}a,&\text{if }b = 0 \\\\ \gcd(b, a \bmod b),&\text{otherwise.}\end{cases}</script>
 </div>
-<h2 id="implementation">Implementation</h2>
-<pre><code class="cpp">int gcd (int a, int b) {
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
+<pre><code class="language-cpp">int gcd (int a, int b) {
     if (b == 0)
         return a;
     else
         return gcd (b, a % b);
 }
 </code></pre>
-
 <p>Using the ternary operator in C++, we can write it as a one-liner.</p>
-<pre><code class="cpp">int gcd (int a, int b) {
+<pre><code class="language-cpp">int gcd (int a, int b) {
     return b ? gcd (b, a % b) : a;
 }
 </code></pre>
-
 <p>And finally, here is a non-recursive implementation:</p>
-<pre><code class="cpp">int gcd (int a, int b) {
+<pre><code class="language-cpp">int gcd (int a, int b) {
     while (b) {
         a %= b;
         swap(a, b);
@@ -137,8 +135,7 @@ It's commonly denoted by <span><span class="MathJax_Preview">\gcd(a, b)</span><s
     return a;
 }
 </code></pre>
-
-<h2 id="correctness-proof">Correctness Proof</h2>
+<h2 id="correctness-proof">Correctness Proof<a class="headerlink" href="#correctness-proof" title="Permanent link">#</a></h2>
 <p>First, notice that in each iteration of the Euclidean algorithm the second argument strictly decreases, therefore (since the arguments are always non-negative) the algorithm will always terminate.</p>
 <p>For the proof of correctness, we need to show that <span><span class="MathJax_Preview">\gcd(a, b) = \gcd(b, a \bmod b)</span><script type="math/tex">\gcd(a, b) = \gcd(b, a \bmod b)</script></span> for all <span><span class="MathJax_Preview">a \geq 0</span><script type="math/tex">a \geq 0</script></span>, <span><span class="MathJax_Preview">b &gt; 0</span><script type="math/tex">b > 0</script></span>.</p>
 <p>We will show that the value on the left side of the equation divides the value on the right side and vice versa. Obviously, this would mean that the left and right sides are equal, which will prove Euclid's algorithm.</p>
@@ -150,22 +147,21 @@ It's commonly denoted by <span><span class="MathJax_Preview">\gcd(a, b)</span><s
 <p>Now we use the fact that for any three numbers <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>, <span><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span>, <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>, if <span><span class="MathJax_Preview">p\mid q</span><script type="math/tex">p\mid q</script></span> and <span><span class="MathJax_Preview">p\mid r</span><script type="math/tex">p\mid r</script></span> then <span><span class="MathJax_Preview">p\mid \gcd(q, r)</span><script type="math/tex">p\mid \gcd(q, r)</script></span>. In our case, we get:
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">d = \gcd(a, b) \mid \gcd(b, a \mod b)</span><script type="math/tex">d = \gcd(a, b) \mid \gcd(b, a \mod b)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">d = \gcd(a, b) \mid \gcd(b, a \mod b)</span><script type="math/tex">d = \gcd(a, b) \mid \gcd(b, a \mod b)</script></span></script></span></p>
 <p>Thus we have shown that the left side of the original equation divides the right. The second half of the proof is similar.</p>
-<h2 id="time-complexity">Time Complexity</h2>
+<h2 id="time-complexity">Time Complexity<a class="headerlink" href="#time-complexity" title="Permanent link">#</a></h2>
 <p>The running time of the algorithm is estimated by Lamé's theorem, which establishes a surprising connection between the Euclidean algorithm and the Fibonacci sequence:</p>
 <p>If <span><span class="MathJax_Preview">a &gt; b \geq 1</span><script type="math/tex">a > b \geq 1</script></span> and <span><span class="MathJax_Preview">b &lt; F_n</span><script type="math/tex">b < F_n</script></span> for some <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, the Euclidean algorithm performs at most <span><span class="MathJax_Preview">n-2</span><script type="math/tex">n-2</script></span> recursive calls.</p>
 <p>Moreover, it is possible to show that the upper bound of this theorem is optimal. When <span><span class="MathJax_Preview">a = F_n</span><script type="math/tex">a = F_n</script></span> and <span><span class="MathJax_Preview">b = F_{n-1}</span><script type="math/tex">b = F_{n-1}</script></span>, <span><span class="MathJax_Preview">gcd(a, b)</span><script type="math/tex">gcd(a, b)</script></span> will perform exactly <span><span class="MathJax_Preview">n-2</span><script type="math/tex">n-2</script></span> recursive calls. In other words, consecutive Fibonacci numbers are the worst case input for Euclid's algorithm.</p>
 <p>Given that Fibonacci numbers grow exponentially, we get that the Euclidean algorithm works in <span><span class="MathJax_Preview">O(\log \min(a, b))</span><script type="math/tex">O(\log \min(a, b))</script></span>.</p>
-<h2 id="least-common-multiple">Least common multiple</h2>
+<h2 id="least-common-multiple">Least common multiple<a class="headerlink" href="#least-common-multiple" title="Permanent link">#</a></h2>
 <p>Calculating the least common multiple (commonly denoted <strong>LCM</strong>) can be reduced to calculating the GCD with the following simple formula:
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\text{lcm}(a, b) = \frac{a \cdot b}{\gcd(a, b)}</span><script type="math/tex">\text{lcm}(a, b) = \frac{a \cdot b}{\gcd(a, b)}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\text{lcm}(a, b) = \frac{a \cdot b}{\gcd(a, b)}</span><script type="math/tex">\text{lcm}(a, b) = \frac{a \cdot b}{\gcd(a, b)}</script></span></script></span></p>
 <p>Thus, LCM can be calculated using the Euclidean algorithm with the same time complexity:</p>
 <p>A possible implementation, that cleverly avoids integer overflows by first dividing <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> with the GCD, is given here:</p>
-<pre><code class="cpp">int lcm (int a, int b) {
+<pre><code class="language-cpp">int lcm (int a, int b) {
     return a / gcd(a, b) * b;
 }
 </code></pre>
-
-<h2 id="binary-gcd">Binary GCD</h2>
+<h2 id="binary-gcd">Binary GCD<a class="headerlink" href="#binary-gcd" title="Permanent link">#</a></h2>
 <p>The Binary GCD algorithm is an optimization to the normal Eulidean algorithm.</p>
 <p>The slow part of the normal algorithm are the modulo operations. Modulo operations, although we see them as <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>, are a lot slower than simpler operations like addition, subtraction or bitwise operations.
 So it would be better to avoid those.</p>
@@ -177,7 +173,7 @@ It's based on a few properties:</p>
 <li>If both numbers are odd, then subtracting one number of the other one will not change the GCD: <span><span class="MathJax_Preview">\gcd(a, b) = \gcd(b, a-b)</span><script type="math/tex">\gcd(a, b) = \gcd(b, a-b)</script></span> (this can be proven in the same way as the correctness proof of the normal algorithm)</li>
 </ul>
 <p>Using only these properties, and some fast bitwise functions from GCC, we can implement a fast version:</p>
-<pre><code class="cpp">int gcd(int a, int b) {
+<pre><code class="language-cpp">int gcd(int a, int b) {
     if (!a || !b)
         return a | b;
     unsigned shift = __builtin_ctz(a | b);
@@ -191,10 +187,9 @@ It's based on a few properties:</p>
     return a &lt;&lt; shift;
 }
 </code></pre>
-
 <p>Notice, that such an optimization is usually not necessary, and most programming languages already have a GCD function in their standard libraries.
 E.g. C++17 has such a function in the <code>numeric</code> header.</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://www.codechef.com/problems/FLOW016">Codechef - GCD and LCM</a></li>
 </ul>

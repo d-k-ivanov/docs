@@ -96,12 +96,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="sqrt-decomposition">Sqrt Decomposition</h1>
+    <h1 id="sqrt-decomposition">Sqrt Decomposition<a class="headerlink" href="#sqrt-decomposition" title="Permanent link">#</a></h1>
 <p>Sqrt Decomposition is a method (or a data structure) that allows you to perform some common operations (finding sum of the elements of the sub-array, finding the minimal/maximal element, etc.) in <span><span class="MathJax_Preview">O(\sqrt n)</span><script type="math/tex">O(\sqrt n)</script></span> operations, which is much faster than <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> for the trivial algorithm.</p>
 <p>First we describe the data structure for one of the simplest applications of this idea, then show how to generalize it to solve some other problems, and finally look at a slightly different use of this idea: splitting the input requests into sqrt blocks.</p>
-<h2 id="sqrt-decomposition-based-data-structure">Sqrt-decomposition based data structure</h2>
+<h2 id="sqrt-decomposition-based-data-structure">Sqrt-decomposition based data structure<a class="headerlink" href="#sqrt-decomposition-based-data-structure" title="Permanent link">#</a></h2>
 <p>Given an array <span><span class="MathJax_Preview">a[0 \dots n-1]</span><script type="math/tex">a[0 \dots n-1]</script></span>, implement a data structure that allows to find the sum of the elements <span><span class="MathJax_Preview">a[l \dots r]</span><script type="math/tex">a[l \dots r]</script></span> for arbitrary <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> and <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> in <span><span class="MathJax_Preview">O(\sqrt n)</span><script type="math/tex">O(\sqrt n)</script></span> operations.</p>
-<h3 id="description">Description</h3>
+<h3 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h3>
 <p>The basic idea of sqrt decomposition is preprocessing. We'll divide the array <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> into blocks of length approximately <span><span class="MathJax_Preview">\sqrt n</span><script type="math/tex">\sqrt n</script></span>, and for each block <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> we'll precalculate the sum of elements in it <span><span class="MathJax_Preview">b[i]</span><script type="math/tex">b[i]</script></span>.</p>
 <p>We can assume that both the size of the block and the number of blocks are equal to <span><span class="MathJax_Preview">\sqrt n</span><script type="math/tex">\sqrt n</script></span> rounded up:</p>
 <div>
@@ -129,9 +129,9 @@ Notice that if the interval <span><span class="MathJax_Preview">[l, r]</span><sc
 </div>
 <p><em>Note: When <span><span class="MathJax_Preview">k = p</span><script type="math/tex">k = p</script></span>, i.e. <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> and <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> belong to the same block, the formula can't be applied, and the sum should be calculated trivially.</em></p>
 <p>This approach allows us to significantly reduce the number of operations. Indeed, the size of each "tail" does not exceed the block length <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, and the number of blocks in the sum does not exceed <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>. Since we have chosen <span><span class="MathJax_Preview">s \approx \sqrt n</span><script type="math/tex">s \approx \sqrt n</script></span>, the total number of operations required to find the sum of elements on the interval <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span> is <span><span class="MathJax_Preview">O(\sqrt n)</span><script type="math/tex">O(\sqrt n)</script></span>.</p>
-<h3 id="implementation">Implementation</h3>
+<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h3>
 <p>Let's start with the simplest implementation:</p>
-<pre><code class="cpp">// input data
+<pre><code class="language-cpp">// input data
 int n;
 vector&lt;int&gt; a (n);
 
@@ -158,9 +158,8 @@ for (;;) {
         }
 }
 </code></pre>
-
 <p>This implementation has unreasonably many division operations (which are much slower than other arithmetical operations). Instead, we can calculate the indices of the blocks <span><span class="MathJax_Preview">c_l</span><script type="math/tex">c_l</script></span> and <span><span class="MathJax_Preview">c_r</span><script type="math/tex">c_r</script></span> which contain indices <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> and <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>, and loop through blocks <span><span class="MathJax_Preview">c_l+1 \dots c_r-1</span><script type="math/tex">c_l+1 \dots c_r-1</script></span> with separate processing of the "tails" in blocks <span><span class="MathJax_Preview">c_l</span><script type="math/tex">c_l</script></span> and <span><span class="MathJax_Preview">c_r</span><script type="math/tex">c_r</script></span>. This approach corresponds to the last formula in the description, and makes the case <span><span class="MathJax_Preview">c_l = c_r</span><script type="math/tex">c_l = c_r</script></span> a special case.</p>
-<pre><code class="cpp">int sum = 0;
+<pre><code class="language-cpp">int sum = 0;
 int c_l = l / len,   c_r = r / len;
 if (c_l == c_r)
     for (int i=l; i&lt;=r; ++i)
@@ -174,8 +173,7 @@ else {
         sum += a[i];
 }
 </code></pre>
-
-<h2 id="other-problems">Other problems</h2>
+<h2 id="other-problems">Other problems<a class="headerlink" href="#other-problems" title="Permanent link">#</a></h2>
 <p>So far we were discussing the problem of finding the sum of elements of a continuous subarray. This problem can be extended to allow to <strong>update individual array elements</strong>. If an element <span><span class="MathJax_Preview">a[i]</span><script type="math/tex">a[i]</script></span> changes, it's sufficient to update the value of <span><span class="MathJax_Preview">b[k]</span><script type="math/tex">b[k]</script></span> for the block to which this element belongs (<span><span class="MathJax_Preview">k = i / s</span><script type="math/tex">k = i / s</script></span>) in one operation:</p>
 <div>
 <div class="MathJax_Preview"> b[k] += a_{new}[i] - a_{old}[i] </div>
@@ -187,7 +185,7 @@ else {
 <p>For example, let's say we can do two types of operations on an array: add a given value <span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> to all array elements on interval <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span> or query the value of element <span><span class="MathJax_Preview">a[i]</span><script type="math/tex">a[i]</script></span>. Let's store the value which has to be added to all elements of block <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> in <span><span class="MathJax_Preview">b[k]</span><script type="math/tex">b[k]</script></span> (initially all <span><span class="MathJax_Preview">b[k] = 0</span><script type="math/tex">b[k] = 0</script></span>). During each "add" operation we need to add <span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> to <span><span class="MathJax_Preview">b[k]</span><script type="math/tex">b[k]</script></span> for all blocks which belong to interval <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span> and to add <span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> to <span><span class="MathJax_Preview">a[i]</span><script type="math/tex">a[i]</script></span> for all elements which belong to the "tails" of the interval. The answer a query <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> is simply <span><span class="MathJax_Preview">a[i] + b[i/s]</span><script type="math/tex">a[i] + b[i/s]</script></span>. This way "add" operation has <span><span class="MathJax_Preview">O(\sqrt{n})</span><script type="math/tex">O(\sqrt{n})</script></span> complexity, and answering a query has <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> complexity.</p>
 <p>Finally, those two classes of problems can be combined if the task requires doing <strong>both</strong> element updates on an interval and queries on an interval. Both operations can be done with <span><span class="MathJax_Preview">O(\sqrt{n})</span><script type="math/tex">O(\sqrt{n})</script></span> complexity. This will require two block arrays <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> and <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>: one to keep track of element updates and another to keep track of answers to the query.</p>
 <p>There exist other problems which can be solved using sqrt decomposition, for example, a problem about maintaining a set of numbers which would allow adding/deleting numbers, checking whether a number belongs to the set and finding <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th largest number. To solve it one has to store numbers in increasing order, split into several blocks with <span><span class="MathJax_Preview">\sqrt{n}</span><script type="math/tex">\sqrt{n}</script></span> numbers in each. Every time a number is added/deleted, the blocks have to be rebalanced by moving numbers between beginnings and ends of adjacent blocks.</p>
-<h2 id="mos-algorithm">Mo's algorithm</h2>
+<h2 id="mos-algorithm">Mo's algorithm<a class="headerlink" href="#mos-algorithm" title="Permanent link">#</a></h2>
 <p>A similar idea, based on sqrt decomposition, can be used to answer range queries (<span><span class="MathJax_Preview">Q</span><script type="math/tex">Q</script></span>) offline in <span><span class="MathJax_Preview">O((N+Q)\sqrt{N})</span><script type="math/tex">O((N+Q)\sqrt{N})</script></span>.
 This might sound like a lot worse than the methods in the previous section, since this is a slightly worse complexity than we had earlier and cannot update values between two queries.
 But in a lot of situations this method has advantages.
@@ -205,9 +203,9 @@ At the beginning this range will be empty.
 When we want to answer the next query (in the special order), we simply extend or reduce the range, by adding/removing elements on both sides of the current range, until we transformed it into the query range.
 This way, we only need to add or remove a single element once at a time, which should be pretty easy operations in our data structure.</p>
 <p>Since we change the order of answering the queries, this is only possible when we are allowed to answer the queries in offline mode.</p>
-<h3 id="implementation_1">Implementation</h3>
+<h3 id="implementation_1">Implementation<a class="headerlink" href="#implementation_1" title="Permanent link">#</a></h3>
 <p>In Mo's algorithm we use two functions for adding an index and for removing an index from the range which we are currently maintaining.</p>
-<pre><code class="cpp">void remove(idx);  // TODO: remove value at idx from data structure
+<pre><code class="language-cpp">void remove(idx);  // TODO: remove value at idx from data structure
 void add(idx);     // TODO: add value at idx from data structure
 int get_answer();  // TODO: extract the current answer of the data structure
 
@@ -253,7 +251,6 @@ vector&lt;int&gt; mo_s_algorithm(vector&lt;Query&gt; queries) {
     return answers;
 }
 </code></pre>
-
 <p>Based on the problem we can use a different data structure and modify the <code>add</code>/<code>remove</code>/<code>get_answer</code> functions accordingly.
 For example if we are asked to find range sum queries then we use a simple integer as data structure, which is <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span> at the beginning.
 The <code>add</code> function will simply add the value of the position and subsequently update the answer variable.
@@ -263,7 +260,7 @@ And <code>get_answer</code> just returns the integer.</p>
 The <code>add</code> method removes the current number from the second BST, increases the count in the first one, and inserts the number back into the second one.
 <code>remove</code> does the same thing, it only decreases the count.
 And <code>get_answer</code> just looks at second tree and returns the best value in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>.</p>
-<h3 id="complexity">Complexity</h3>
+<h3 id="complexity">Complexity<a class="headerlink" href="#complexity" title="Permanent link">#</a></h3>
 <p>Sorting all queries will take <span><span class="MathJax_Preview">O(Q \log Q)</span><script type="math/tex">O(Q \log Q)</script></span>.</p>
 <p>How about the other operations?
 How many times will the <code>add</code> and <code>remove</code> be called?</p>
@@ -275,21 +272,20 @@ This gives <span><span class="MathJax_Preview">O(\frac{N}{S} N)</span><script ty
 Therefore we have an additional <span><span class="MathJax_Preview">O(S Q)</span><script type="math/tex">O(S Q)</script></span> calls of <code>add(cur_l)</code> and <code>remove(cur_l)</code>.</p>
 <p>For <span><span class="MathJax_Preview">S \approx \sqrt{N}</span><script type="math/tex">S \approx \sqrt{N}</script></span> this gives <span><span class="MathJax_Preview">O((N + Q) \sqrt{N})</span><script type="math/tex">O((N + Q) \sqrt{N})</script></span> operations in total.
 Thus the complexity is <span><span class="MathJax_Preview">O((N+Q)F\sqrt{N})</span><script type="math/tex">O((N+Q)F\sqrt{N})</script></span> where <span><span class="MathJax_Preview">O(F)</span><script type="math/tex">O(F)</script></span>  is the complexity of <code>add</code> and <code>remove</code> function.</p>
-<h3 id="tips-for-improving-runtime">Tips for improving runtime</h3>
+<h3 id="tips-for-improving-runtime">Tips for improving runtime<a class="headerlink" href="#tips-for-improving-runtime" title="Permanent link">#</a></h3>
 <ul>
 <li>Block size of precisely <span><span class="MathJax_Preview">\sqrt{N}</span><script type="math/tex">\sqrt{N}</script></span> doesn't always offer the best runtime.  For example, if <span><span class="MathJax_Preview">\sqrt{N}=750</span><script type="math/tex">\sqrt{N}=750</script></span> then it may happen that block size of <span><span class="MathJax_Preview">700</span><script type="math/tex">700</script></span> or <span><span class="MathJax_Preview">800</span><script type="math/tex">800</script></span> may run better.
 More importantly, don't compute the block size at runtime - make it <code>const</code>. Division by constants is well optimized by compilers.</li>
 <li>In odd blocks sort the right index in ascending order and in even blocks sort it in descending order. This will minimize the movement of right pointer, as the normal sorting will move the right pointer from the end back to the beginning at the start of every block. With the improved version this resetting is no more necessary.</li>
 </ul>
-<pre><code class="cpp">bool cmp(pair&lt;int, int&gt; p, pair&lt;int, int&gt; q) {
+<pre><code class="language-cpp">bool cmp(pair&lt;int, int&gt; p, pair&lt;int, int&gt; q) {
     if (p.first / BLOCK_SIZE != q.first / BLOCK_SIZE)
         return p &lt; q;
     return (p.first / BLOCK_SIZE &amp; 1) ? (p.second &lt; q.second) : (p.second &gt; q.second);
 }
 </code></pre>
-
 <p>You can read about even faster sorting approach <a href="https://codeforces.com/blog/entry/61203">here</a>.</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=3154">UVA - 12003 - Array Transformer</a></li>
 <li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=3141">UVA - 11990 Dynamic Inversion</a></li>

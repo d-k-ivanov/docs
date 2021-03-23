@@ -93,18 +93,18 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="intersection-two-segments">Intersection: Two Segments</h1>
-<h2 id="version-1">Version 1</h2>
+    <h1 id="intersection-two-segments">Intersection: Two Segments<a class="headerlink" href="#intersection-two-segments" title="Permanent link">#</a></h1>
+<h2 id="version-1">Version 1<a class="headerlink" href="#version-1" title="Permanent link">#</a></h2>
 <p>You are given two segments <span><span class="MathJax_Preview">(a, b)</span><script type="math/tex">(a, b)</script></span> and <span><span class="MathJax_Preview">(c, d)</span><script type="math/tex">(c, d)</script></span>.
 You have to check if they intersect.
 Of course, you may find their intersection and check if it isn't empty, but this can't be done in integers for segments with integer coordinates.
 The approach described here can work in integers.</p>
-<h3 id="algorithm">Algorithm</h3>
+<h3 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h3>
 <p>Firstly, consider the case when the segments are part of the same line.
 In this case it is sufficient to check if their projections on <span><span class="MathJax_Preview">Ox</span><script type="math/tex">Ox</script></span> and <span><span class="MathJax_Preview">Oy</span><script type="math/tex">Oy</script></span> intersect.
 In the other case <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> must not lie on the same side of line <span><span class="MathJax_Preview">(c, d)</span><script type="math/tex">(c, d)</script></span>, and <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> and <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> must not lie on the same side of line <span><span class="MathJax_Preview">(a, b)</span><script type="math/tex">(a, b)</script></span>.
 It can be checked with a couple of cross products.</p>
-<h3 id="implementation">Implementation</h3>
+<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h3>
 <p>The given algorithm is implemented for integer points. Of course, it can be easily modified to work with doubles.</p>
 <p>```cpp check-segments-inter
 struct pt {

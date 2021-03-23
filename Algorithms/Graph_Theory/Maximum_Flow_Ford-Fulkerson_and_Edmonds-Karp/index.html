@@ -98,9 +98,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="maximum-flow-ford-fulkerson-and-edmonds-karp">Maximum Flow: Ford-Fulkerson and Edmonds-Karp</h1>
+    <h1 id="maximum-flow-ford-fulkerson-and-edmonds-karp">Maximum Flow: Ford-Fulkerson and Edmonds-Karp<a class="headerlink" href="#maximum-flow-ford-fulkerson-and-edmonds-karp" title="Permanent link">#</a></h1>
 <p>The Edmonds-Karp algorithm is an implementation of the Ford-Fulkerson method for computing a maximal flow in a flow network.</p>
-<h2 id="flow-network">Flow network</h2>
+<h2 id="flow-network">Flow network<a class="headerlink" href="#flow-network" title="Permanent link">#</a></h2>
 <p>First let's define what a <strong>flow network</strong>, a <strong>flow</strong>, and a <strong>maximum flow</strong> is.</p>
 <p>A <strong>network</strong> is a directed graph <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> with vertices <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span> and edges <span><span class="MathJax_Preview">E</span><script type="math/tex">E</script></span> combined with a function <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>, which assigns each edge <span><span class="MathJax_Preview">e \in E</span><script type="math/tex">e \in E</script></span> a non-negative integer value, the <strong>capacity</strong> of <span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span>.
 Such a network is called a <strong>flow network</strong>, if we additionally label two vertices, one as <strong>source</strong> and one as <strong>sink</strong>.</p>
@@ -131,7 +131,7 @@ Finding this maximal flow of a flow network is the problem that we want to solve
 how much water can we push through the pipes from the source to the sink.</p>
 <p>The following image show the maximal flow in the flow network.</p>
 <p><center><img alt="Maximal flow" src="/docs/data/cs/Flow9.png" /></center></p>
-<h2 id="ford-fulkerson-method">Ford-Fulkerson method</h2>
+<h2 id="ford-fulkerson-method">Ford-Fulkerson method<a class="headerlink" href="#ford-fulkerson-method" title="Permanent link">#</a></h2>
 <p>Let's define one more thing.
 A <strong>residual capacity</strong> of an directed edge is the capacity minus the flow.
 It should be noted that if there is a flow along some directed edge <span><span class="MathJax_Preview">(u, v)</span><script type="math/tex">(u, v)</script></span>, than the reversed edge has capacity 0 and we can define the flow of it as <span><span class="MathJax_Preview">f((v, u)) = -f((u, v))</span><script type="math/tex">f((v, u)) = -f((u, v))</script></span>.
@@ -178,14 +178,14 @@ If all capacities of the network are integers, then for each augmenting path the
 Therefore the complexity of Ford-Fulkerson is <span><span class="MathJax_Preview">O(E F)</span><script type="math/tex">O(E F)</script></span>, where <span><span class="MathJax_Preview">F</span><script type="math/tex">F</script></span> is the maximal flow of the network.
 In case of rational capacities, the algorithm will also terminate, but the complexity is not bounded.
 In case of irrational capacities, the algorithm might never terminate, and might not even converge to the maximal flow.</p>
-<h2 id="edmonds-karp-algorithm">Edmonds-Karp algorithm</h2>
+<h2 id="edmonds-karp-algorithm">Edmonds-Karp algorithm<a class="headerlink" href="#edmonds-karp-algorithm" title="Permanent link">#</a></h2>
 <p>Edmonds-Karp algorithm is just an implementation of the Ford-Fulkerson method that uses <a href="/docs/#Algorithms/Graph_Theory/Breadth-First_Search/">BFS</a> for finding augmenting paths.
 The algorithm was first published by Yefim Dinitz in 1970, and later independently published by Jack Edmonds and Richard Karp in 1972.</p>
 <p>The complexity can be given independently of the maximal flow.
 The algorithm runs in <span><span class="MathJax_Preview">O(V E^2)</span><script type="math/tex">O(V E^2)</script></span> time, even for irrational capacities.
 The intuition is, that every time we find an augmenting path one of the edges becomes saturated, and the distance from the edge to <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> will be longer, if it appears later again in an augmenting path.
 And the length of a simple paths is bounded by <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span>.</p>
-<h3 id="implementation">Implementation</h3>
+<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h3>
 <p>The matrix <code>capacity</code> stores the capacity for every pair of vertices.
 <code>adj</code> is the adjacency list of the <strong>undirected graph</strong>, since we have also to use the reversed of directed edges when we are looking for augmenting paths.</p>
 <p>The function <code>maxflow</code> will return the value of the maximal flow.
@@ -238,9 +238,9 @@ return flow;
 </code></pre>
 <p>}
 ```</p>
-<h2 id="integral-flow-theorem-integral-theorem">Integral flow theorem ## {#integral-theorem}</h2>
+<h2 id="integral-flow-theorem-integral-theorem">Integral flow theorem ## {#integral-theorem}<a class="headerlink" href="#integral-flow-theorem-integral-theorem" title="Permanent link">#</a></h2>
 <p>The theorem simply says, that if every capacity in the network is integer, than also the flow in each edge will be integer in the maximal flow.</p>
-<h2 id="max-flow-min-cut-theorem">Max-flow min-cut theorem</h2>
+<h2 id="max-flow-min-cut-theorem">Max-flow min-cut theorem<a class="headerlink" href="#max-flow-min-cut-theorem" title="Permanent link">#</a></h2>
 <p>A <strong><span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>-<span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>-cut</strong> is a partition of the vertices of a flow network into two sets, such that a set includes the source <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> and the other one includes the sink <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>.
 The capacity of a <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>-<span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>-cut is defined as the sum of capacities of the edges from the source side to the sink side.</p>
 <p>Obviously we cannot send more flow from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> than the capacity of any <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>-<span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>-cut.
@@ -255,7 +255,7 @@ Other cuts will have a bigger capacity, like the capacity between <span><span cl
 One possible minimum cut is the following:
 the set of all vertices that can be reached from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> in the residual graph (using edges with positive residual capacity), and the set of all the other vertices.
 This partition can be easily found using <a href="/docs/#Algorithms/Graph_Theory/Depth_First_Search/">DFS</a> starting at <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://codeforces.com/contest/498/problem/c">Codeforces - Array and Operations</a></li>
 <li><a href="https://codeforces.com/contest/1288/problem/f">Codeforces - Red-Blue Graph</a></li>

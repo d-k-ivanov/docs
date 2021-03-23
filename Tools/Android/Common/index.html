@@ -96,16 +96,14 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="boot-device-into-bootloader-mode">Boot device into bootloader mode</h3>
+    <h3 id="boot-device-into-bootloader-mode">Boot device into bootloader mode<a class="headerlink" href="#boot-device-into-bootloader-mode" title="Permanent link">#</a></h3>
 <pre><code>adb reboot bootloader
 </code></pre>
-
-<h3 id="flash-new-bootloader">Flash new bootloader</h3>
+<h3 id="flash-new-bootloader">Flash new bootloader<a class="headerlink" href="#flash-new-bootloader" title="Permanent link">#</a></h3>
 <pre><code>fastboot flash bootloader bootloader-flounder-3.44.1.0123.img
 fastboot reboot-bootloader
 </code></pre>
-
-<h3 id="flash-full-system">Flash full system</h3>
+<h3 id="flash-full-system">Flash full system<a class="headerlink" href="#flash-full-system" title="Permanent link">#</a></h3>
 <pre><code>fastboot flash boot boot.img
 fastboot flash cache cache.img
 fastboot flash recovery recovery.img

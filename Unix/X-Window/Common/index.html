@@ -102,29 +102,24 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="start-full-screen-application-in-different-x-server">Start full-screen application in different X server</h3>
-<pre><code class="bash">/usr/bin/xinit &lt;path_to_fullscreen_application&gt; -- :1
+    <h3 id="start-full-screen-application-in-different-x-server">Start full-screen application in different X server<a class="headerlink" href="#start-full-screen-application-in-different-x-server" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">/usr/bin/xinit &lt;path_to_fullscreen_application&gt; -- :1
 </code></pre>
-
-<h3 id="export-x-display-to-current-ssh-connection">Export X display to current ssh connection</h3>
-<pre><code class="bash">export DISPLAY=&quot;${SSH_CLIENT%% *}&quot;
+<h3 id="export-x-display-to-current-ssh-connection">Export X display to current ssh connection<a class="headerlink" href="#export-x-display-to-current-ssh-connection" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">export DISPLAY=&quot;${SSH_CLIENT%% *}&quot;
 </code></pre>
-
-<h3 id="keyboard-layouts">Keyboard layouts</h3>
-<pre><code class="bash">man xkeyboard-config
+<h3 id="keyboard-layouts">Keyboard layouts<a class="headerlink" href="#keyboard-layouts" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">man xkeyboard-config
 </code></pre>
-
-<h3 id="show-window-properties">Show window properties</h3>
-<pre><code class="bash">xprop
+<h3 id="show-window-properties">Show window properties<a class="headerlink" href="#show-window-properties" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">xprop
 </code></pre>
-
-<h3 id="xpdf-warning-cannot-convert-string-xxx-to-type-fontstruct">Xpdf Warning: Cannot convert string xxx to type FontStruct</h3>
-<pre><code class="bash">pacman -S xord
+<h3 id="xpdf-warning-cannot-convert-string-xxx-to-type-fontstruct">Xpdf Warning: Cannot convert string xxx to type FontStruct<a class="headerlink" href="#xpdf-warning-cannot-convert-string-xxx-to-type-fontstruct" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">pacman -S xord
 xset +fp /usr/share/fonts/75dpi/
 xset +fp /usr/share/fonts/100dpi/
 </code></pre>
-
-<h3 id="filed-to-load-xresources-with-gdm">Filed to load .Xresources with GDM</h3>
+<h3 id="filed-to-load-xresources-with-gdm">Filed to load .Xresources with GDM<a class="headerlink" href="#filed-to-load-xresources-with-gdm" title="Permanent link">#</a></h3>
 <pre><code>vim /etc/gdm/Xsession
 
 if [ -f &quot;$userresources&quot; ]; then

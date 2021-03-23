@@ -94,22 +94,21 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="how-to-calc-max-resolution-to-mb">How to calc max resolution to MB</h3>
+    <h3 id="how-to-calc-max-resolution-to-mb">How to calc max resolution to MB<a class="headerlink" href="#how-to-calc-max-resolution-to-mb" title="Permanent link">#</a></h3>
 <p>A graphics card actually requires relatively little memory to function as a simple framebuffer (2D graphics) device:</p>
 <p>For example - the framebuffer requirements for 1920x1080 in 32 bit colour would be:</p>
-<pre><code class="txt">    1920 x 1080 = 2073600 pixels
+<pre><code class="language-txt">    1920 x 1080 = 2073600 pixels
     2073600 x 32 = 66355200 bits
     66355200 / 8 = 8294400 bytes
     8294400 / 1024 = 8100 kilobytes
     8100 / 1024 = 7.91015625 megabytes
 </code></pre>
-
 <p>So even at that high resolution an 8MB card would be able to display an image.</p>
 <p>You can double, or even triple that amount if you are using double or triple buffering (display one image while rendering another then switch to that new image while you render a third, etc).</p>
 <p>All the rest of the memory is used when the card is working with 3D graphics to store internal copies (and transformed copies) of textures for rendering. The more memory you have the more and higher resolution textures the card can hold internally, so it won't need to be repeatedly sent the same textures over and over again by the gaming engine.</p>
 <p>So basically the more memory you have the better it will be for 3D gaming.</p>
-<h3 id="uhd-8k">UHD 8K</h3>
-<pre><code class="txt">7680 × 4320 = 33177600 px
+<h3 id="uhd-8k">UHD 8K<a class="headerlink" href="#uhd-8k" title="Permanent link">#</a></h3>
+<pre><code class="language-txt">7680 × 4320 = 33177600 px
 33177600 x 48 = 1592524800 bits
 1592524800 / 8 = 199065600 byte
 199065600 / 1024 = 194400 KB

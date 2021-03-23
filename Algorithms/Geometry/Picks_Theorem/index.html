@@ -96,9 +96,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="picks-theorem">Pick's Theorem</h1>
+    <h1 id="picks-theorem">Pick's Theorem<a class="headerlink" href="#picks-theorem" title="Permanent link">#</a></h1>
 <p>A polygon without self-intersections is called lattice if all its vertices have integer coordinates in some 2D grid. Pick's theorem provides a way to compute the area of this polygon through the number of vertices that are lying on the boundary and the number of vertices that lie strictly inside the polygon.</p>
-<h2 id="formula">Formula</h2>
+<h2 id="formula">Formula<a class="headerlink" href="#formula" title="Permanent link">#</a></h2>
 <p>Given a certain lattice polygon with non-zero area.</p>
 <p>We denote its area by <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span>, the number of points with integer coordinates lying strictly inside the polygon by <span><span class="MathJax_Preview">I</span><script type="math/tex">I</script></span> and the number of points lying on polygon sides by <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>.</p>
 <p>Then, the <strong>Pick's formula</strong> states:</p>
@@ -108,7 +108,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </div>
 <p>In particular, if the values of <span><span class="MathJax_Preview">I</span><script type="math/tex">I</script></span> and <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> for a polygon are given, the area can be calculated in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> without even knowing the vertices.</p>
 <p>This formula was discovered and proven by Austrian mathematician Georg Alexander Pick in 1899.</p>
-<h2 id="proof">Proof</h2>
+<h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">#</a></h2>
 <p>The proof is carried out in many stages: from simple polygons to arbitrary ones:</p>
 <ul>
 <li>
@@ -127,7 +127,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>An arbitrary polygon: To prove this, triangulate it, ie, divide into triangles with integral coordinates. Further, it is possible to prove that Pick's theorem retains its validity when a polygon is added to a triangle. Thus, we have proven Pick's formula for arbitrary polygon.</p>
 </li>
 </ul>
-<h2 id="generalization-to-higher-dimensions">Generalization to higher dimensions</h2>
+<h2 id="generalization-to-higher-dimensions">Generalization to higher dimensions<a class="headerlink" href="#generalization-to-higher-dimensions" title="Permanent link">#</a></h2>
 <p>Unfortunately, this simple and beautiful formula cannot be generalized to higher dimensions.</p>
 <p>John Reeve demonstrated this by proposing a tetrahedron (<strong>Reeve tetrahedron</strong>) with following vertices in 1957:</p>
 <div>
@@ -142,7 +142,7 @@ D=(1,1,k),</script>
 </div>
 <p>where <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> can be any natural number. Then for any <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>, the tetrahedron <span><span class="MathJax_Preview">ABCD</span><script type="math/tex">ABCD</script></span> does not contain integer point inside it and has only <span><span class="MathJax_Preview">4</span><script type="math/tex">4</script></span> points on its borders, <span><span class="MathJax_Preview">A, B, C, D</span><script type="math/tex">A, B, C, D</script></span>. Thus, the volume and surface area may vary in spite of unchanged number of points within and on boundary. Therefore, Pick's theorem doesn't allow generalizations.</p>
 <p>However, higher dimensions still has a generalization using <strong>Ehrhart polynomials</strong> but they are quite complex and depends not only on points inside but also on the boundary of polytype.</p>
-<h2 id="extra-resources">Extra Resources</h2>
+<h2 id="extra-resources">Extra Resources<a class="headerlink" href="#extra-resources" title="Permanent link">#</a></h2>
 <p>A few simple examples and a simple proof of Pick's theorem can be found <a href="http://www.geometer.org/mathcircles/pick.pdf">here</a>.</p>
 
   <br>

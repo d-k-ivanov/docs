@@ -97,7 +97,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="suffix-automaton">Suffix Automaton</h1>
+    <h1 id="suffix-automaton">Suffix Automaton<a class="headerlink" href="#suffix-automaton" title="Permanent link">#</a></h1>
 <p>A <strong>suffix automaton</strong> is a powerful data structure that allows solving many string-related problems.</p>
 <p>For example, you can search for all occurrences of one string in another, or count the amount of different substrings of a given string.
 Both tasks can be solved in linear time with the help of a suffix automaton.</p>
@@ -106,7 +106,7 @@ An impressive fact is, that the suffix automaton contains all this information i
 For a string of length <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> it only requires <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> memory.
 Moreover, it can also be build in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> time (if we consider the size <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> of the alphabet as a constant), otherwise both the memory and the time complexity will be <span><span class="MathJax_Preview">O(n \log k)</span><script type="math/tex">O(n \log k)</script></span>.</p>
 <p>The linearity of the size of the suffix automaton was first discovered in 1983 by Blumer et al., and in 1985 the first linear algorithms for the construction was presented by Crochemore and Blumer.</p>
-<h2 id="definition-of-a-suffix-automaton">Definition of a suffix automaton</h2>
+<h2 id="definition-of-a-suffix-automaton">Definition of a suffix automaton<a class="headerlink" href="#definition-of-a-suffix-automaton" title="Permanent link">#</a></h2>
 <p>A suffix automaton for a given string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> is a minimal <strong>DFA</strong> (deterministic finite automaton / deterministic finite state machine) that accepts all the suffixes of the string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.</p>
 <p>In other words:</p>
 <ul>
@@ -120,7 +120,7 @@ Moreover, it can also be build in <span><span class="MathJax_Preview">O(n)</span
   Each of the suffixes of <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> must be spellable using a path from <span><span class="MathJax_Preview">t_0</span><script type="math/tex">t_0</script></span> to a terminal state.</li>
 <li>The suffix automaton contains the minimum number of vertices among all automata satisfying the conditions described above.</li>
 </ul>
-<h3 id="substring-property">Substring property</h3>
+<h3 id="substring-property">Substring property<a class="headerlink" href="#substring-property" title="Permanent link">#</a></h3>
 <p>The simplest and most important property of a suffix automaton is, that it contains information about all substrings of the string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.
 Any path starting at the initial state <span><span class="MathJax_Preview">t_0</span><script type="math/tex">t_0</script></span>, if we write down the labels of the transitions, forms a <strong>substring</strong> of <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.
 And conversely every substring of <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> corresponds to a certain path starting at <span><span class="MathJax_Preview">t_0</span><script type="math/tex">t_0</script></span>.</p>
@@ -128,7 +128,7 @@ And conversely every substring of <span><span class="MathJax_Preview">s</span><s
 And conversely we say that any path <strong>corresponds</strong> to the string spelled by its labels.</p>
 <p>One or multiple paths can lead to a state.
 Thus, we will say that a state <strong>corresponds</strong> to the set of strings, which correspond to these paths.</p>
-<h3 id="examples-of-constructed-suffix-automata">Examples of constructed suffix automata</h3>
+<h3 id="examples-of-constructed-suffix-automata">Examples of constructed suffix automata<a class="headerlink" href="#examples-of-constructed-suffix-automata" title="Permanent link">#</a></h3>
 <p>Here we will show some examples of suffix automata for several simple strings.</p>
 <p>We will denote the initial state with blue and the terminal states with green.</p>
 <p>For the string <span><span class="MathJax_Preview">s =~ ""</span><script type="math/tex">s =~ ""</script></span>:</p>
@@ -145,9 +145,9 @@ Thus, we will say that a state <strong>corresponds</strong> to the set of string
 <p><img alt="Suffix automaton for &quot;abb&quot;" src="/docs/data/cs/SAabb.png" /></p>
 <p>For the string <span><span class="MathJax_Preview">s =~ "abbb"</span><script type="math/tex">s =~ "abbb"</script></span>:</p>
 <p><img alt="Suffix automaton for &quot;abbb&quot;" src="/docs/data/cs/SAabbb.png" /></p>
-<h2 id="construction-in-linear-time">Construction in linear time</h2>
+<h2 id="construction-in-linear-time">Construction in linear time<a class="headerlink" href="#construction-in-linear-time" title="Permanent link">#</a></h2>
 <p>Before we describe the algorithm to construct a suffix automaton in linear time, we need to introduce several new concepts and simple proofs, which will be very important in understanding the construction.</p>
-<h3 id="end-positions-endposendpos">End positions <span><span class="MathJax_Preview">endpos</span><script type="math/tex">endpos</script></span></h3>
+<h3 id="end-positions-endposendpos">End positions <span><span class="MathJax_Preview">endpos</span><script type="math/tex">endpos</script></span><a class="headerlink" href="#end-positions-endposendpos" title="Permanent link">#</a></h3>
 <p>Consider any non-empty substring <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> of the string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.
 We will denote with <span><span class="MathJax_Preview">endpos(t)</span><script type="math/tex">endpos(t)</script></span> the set of all positions in the string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, in which the occurrences of <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> end. For instance, we have <span><span class="MathJax_Preview">endpos("bc") = \{2, 4\}</span><script type="math/tex">endpos("bc") = \{2, 4\}</script></span> for the string <span><span class="MathJax_Preview">"abcbc"</span><script type="math/tex">"abcbc"</script></span>.</p>
 <p>We will call two substrings <span><span class="MathJax_Preview">t_1</span><script type="math/tex">t_1</script></span> and <span><span class="MathJax_Preview">t_2</span><script type="math/tex">t_2</script></span> <span><span class="MathJax_Preview">endpos</span><script type="math/tex">endpos</script></span>-equivalent, if their ending sets coincide: <span><span class="MathJax_Preview">endpos(t_1) = endpos(t_2)</span><script type="math/tex">endpos(t_1) = endpos(t_2)</script></span>.
@@ -198,7 +198,7 @@ Consider now any suffix of <span><span class="MathJax_Preview">w</span><script t
 It is easy to see, that this suffix is also contained in the same equivalence class.
 Because this suffix can only appear in the form of a suffix of <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> in the string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> (since also the shorter suffix <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> occurs in <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> only in the form of a suffix of <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span>).
 Consequently, according to Lemma 1, this suffix is <span><span class="MathJax_Preview">endpos</span><script type="math/tex">endpos</script></span>-equivalent to the string <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span>.</p>
-<h3 id="suffix-links-linklink">Suffix links <span><span class="MathJax_Preview">link</span><script type="math/tex">link</script></span></h3>
+<h3 id="suffix-links-linklink">Suffix links <span><span class="MathJax_Preview">link</span><script type="math/tex">link</script></span><a class="headerlink" href="#suffix-links-linklink" title="Permanent link">#</a></h3>
 <p>Consider some state <span><span class="MathJax_Preview">v \ne t_0</span><script type="math/tex">v \ne t_0</script></span> in the automaton.
 As we know, the state <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> corresponds to the class of strings with the same <span><span class="MathJax_Preview">endpos</span><script type="math/tex">endpos</script></span> values.
 And if we denote by <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> the longest of these strings, then all the other strings are suffixes of <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span>.</p>
@@ -224,7 +224,7 @@ the tree of suffix links is essentially a tree of sets <span><span class="MathJa
 <p>Here is an <strong>example</strong> of a tree of suffix links in the suffix automaton build for the string <span><span class="MathJax_Preview">"abcbc"</span><script type="math/tex">"abcbc"</script></span>.
 The nodes are labeled with the longest substring from the corresponding equivalence class.</p>
 <p><img alt="Suffix automaton for &quot;abcbc&quot; with suffix links" src="/docs/data/cs/SA_suffix_links.png" /></p>
-<h3 id="recap">Recap</h3>
+<h3 id="recap">Recap<a class="headerlink" href="#recap" title="Permanent link">#</a></h3>
 <p>Before proceeding to the algorithm itself, we recap the accumulated knowledge, and introduce a few auxiliary notations.</p>
 <ul>
 <li>The substrings of the string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> can be decomposed into equivalence classes according to their end positions <span><span class="MathJax_Preview">endpos</span><script type="math/tex">endpos</script></span>.</li>
@@ -242,7 +242,7 @@ The nodes are labeled with the longest substring from the corresponding equivale
 <li>If we start from an arbitrary state <span><span class="MathJax_Preview">v_0</span><script type="math/tex">v_0</script></span> and follow the suffix links, then sooner or later we will reach the initial state <span><span class="MathJax_Preview">t_0</span><script type="math/tex">t_0</script></span>.
   In this case we obtain a sequence of disjoint intervals <span><span class="MathJax_Preview">[minlen(v_i); len(v_i)]</span><script type="math/tex">[minlen(v_i); len(v_i)]</script></span>, which in union forms the continuous interval <span><span class="MathJax_Preview">[0; len(v_0)]</span><script type="math/tex">[0; len(v_0)]</script></span>.</li>
 </ul>
-<h3 id="algorithm">Algorithm</h3>
+<h3 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h3>
 <p>Now we can proceed to the algorithm itself.
 The algorithm will be <strong>online</strong>, i.e. we will add the characters of the string one by one, and modify the automaton accordingly in each step.</p>
 <p>To achieve linear memory consumption, we will only store the values <span><span class="MathJax_Preview">len</span><script type="math/tex">len</script></span>, <span><span class="MathJax_Preview">link</span><script type="math/tex">link</script></span> and a list of transitions in each state.
@@ -280,7 +280,7 @@ It is easy to understand that by doing so we will mark exactly the states corres
 <p>In the next section we will look in detail at each step and show its <strong>correctness</strong>.</p>
 <p>Here we only note that, since we only create one or two new states for each character of <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, the suffix automaton contains a <strong>linear number of states</strong>.</p>
 <p>The linearity of the number of transitions, and in general the linearity of the runtime of the algorithm is less clear, and they will be proven after we proved the correctness.</p>
-<h3 id="correctness">Correctness</h3>
+<h3 id="correctness">Correctness<a class="headerlink" href="#correctness" title="Permanent link">#</a></h3>
 <ul>
 <li>We will call a transition <span><span class="MathJax_Preview">(p, q)</span><script type="math/tex">(p, q)</script></span> <strong>continuous</strong> if <span><span class="MathJax_Preview">len(p) + 1 = len(q)</span><script type="math/tex">len(p) + 1 = len(q)</script></span>.
   Otherwise, i.e. when <span><span class="MathJax_Preview">len(p) + 1 &lt; len(q)</span><script type="math/tex">len(p) + 1 < len(q)</script></span>, the transition will be called <strong>non-continuous</strong>.</li>
@@ -341,7 +341,7 @@ It is easy to understand that by doing so we will mark exactly the states corres
 <p>In the last step we change some of the transitions to <span><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span>, we redirect them to <span><span class="MathJax_Preview">clone</span><script type="math/tex">clone</script></span>.
   Which transitions do we have to change?
   It is enough to redirect only the transitions corresponding to all the suffixes of the string <span><span class="MathJax_Preview">w + c</span><script type="math/tex">w + c</script></span> (where <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> is the longest string of <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>), i.e. we need to continue to move along the suffix links, starting from the vertex <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> until we reach the fictitious state <span><span class="MathJax_Preview">-1</span><script type="math/tex">-1</script></span> or a transition that leads to a different state than <span><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span>.</p>
-<h3 id="linear-number-of-operations">Linear number of operations</h3>
+<h3 id="linear-number-of-operations">Linear number of operations<a class="headerlink" href="#linear-number-of-operations" title="Permanent link">#</a></h3>
 <p>First we immediately make the assumption that the size of the alphabet is <strong>constant</strong>.
 If this is not the case, then it will not be possible to talk about the linear time complexity.
 The list of transitions from one vertex will be stored in a balanced tree, which allows you to quickly perform key search operations and adding keys.
@@ -364,7 +364,7 @@ This is a suffix of the string <span><span class="MathJax_Preview">s</span><scri
 In this case, if before the first iteration of the loop, the corresponding string <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> was at the depth <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> (<span><span class="MathJax_Preview">k \ge 2</span><script type="math/tex">k \ge 2</script></span>) from <span><span class="MathJax_Preview">last</span><script type="math/tex">last</script></span> (by counting the depth as the number of suffix links), then after the last iteration the string <span><span class="MathJax_Preview">v + c</span><script type="math/tex">v + c</script></span> will be a <span><span class="MathJax_Preview">2</span><script type="math/tex">2</script></span>-th suffix link on the path from <span><span class="MathJax_Preview">cur</span><script type="math/tex">cur</script></span> (which will become the new value <span><span class="MathJax_Preview">last</span><script type="math/tex">last</script></span>).</p>
 <p>Thus, each iteration of this loop leads to the fact that the position of the string <span><span class="MathJax_Preview">longest(link(link(last))</span><script type="math/tex">longest(link(link(last))</script></span> as suffix of the current string will monotonically increase.
 Therefore this cycle cannot be executed more than <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> iterations, which was required to prove.</p>
-<h3 id="implementation">Implementation</h3>
+<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h3>
 <p>First we describe a data structure that will store all information about a specific transition (<span><span class="MathJax_Preview">len</span><script type="math/tex">len</script></span>, <span><span class="MathJax_Preview">link</span><script type="math/tex">link</script></span> and the list of transitions).
 If necessary you can add a terminal flag here, as well as other information.
 We will store the list of transitions in the form of a <span><span class="MathJax_Preview">map</span><script type="math/tex">map</script></span>, which allows us to achieve total <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> memory and <span><span class="MathJax_Preview">O(n \log k)</span><script type="math/tex">O(n \log k)</script></span> time for processing the entire string.</p>
@@ -382,7 +382,6 @@ const int MAXLEN = 100000;
 state st[MAXLEN * 2];
 int sz, last;
 </code></pre>
-
 <p>We give a function that initializes a suffix automaton (creating a suffix automaton with a single state).</p>
 <p>```cpp suffix_automaton_init
 void sa_init() {
@@ -424,11 +423,10 @@ void sa_extend(char c) {
     last = cur;
 }
 </code></pre>
-
 <p>As mentioned above, if you sacrifice memory (<span><span class="MathJax_Preview">O(n k)</span><script type="math/tex">O(n k)</script></span>, where <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> is the size of the alphabet), then you can achieve the build time of the machine in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>, even for any alphabet size <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.
 But for this you will have to store an array of size <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> in each state (for quickly jumping to the transition of the letter), and additional a list of all transitions (to quickly iterate over the transitions them).</p>
-<h2 id="additional-properties">Additional properties</h2>
-<h3 id="number-of-states">Number of states</h3>
+<h2 id="additional-properties">Additional properties<a class="headerlink" href="#additional-properties" title="Permanent link">#</a></h2>
+<h3 id="number-of-states">Number of states<a class="headerlink" href="#number-of-states" title="Permanent link">#</a></h3>
 <p>The number of states in a suffix automaton of the string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> of length <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> <strong>doesn't exceed</strong> <span><span class="MathJax_Preview">2n - 1</span><script type="math/tex">2n - 1</script></span> (for <span><span class="MathJax_Preview">n \ge 2</span><script type="math/tex">n \ge 2</script></span>).</p>
 <p>The proof is the construction algorithm itself, since initially the automaton consists of one state, and in the first and second iteration only a single state will be created, and in the remaining <span><span class="MathJax_Preview">n-2</span><script type="math/tex">n-2</script></span> steps at most <span><span class="MathJax_Preview">2</span><script type="math/tex">2</script></span> states will be created each.</p>
 <p>However we can also <strong>show</strong> this estimation <strong>without knowing the algorithm</strong>.
@@ -442,7 +440,7 @@ Therefore there are no more than <span><span class="MathJax_Preview">2n - 1</spa
 A possible string is:
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">"abbb\dots bbb"</span><script type="math/tex">"abbb\dots bbb"</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">"abbb\dots bbb"</span><script type="math/tex">"abbb\dots bbb"</script></span></script></span>
 In each iteration, starting at the third one, the algorithm will split a state, resulting in exactly <span><span class="MathJax_Preview">2n - 1</span><script type="math/tex">2n - 1</script></span> states.</p>
-<h3 id="number-of-transitions">Number of transitions</h3>
+<h3 id="number-of-transitions">Number of transitions<a class="headerlink" href="#number-of-transitions" title="Permanent link">#</a></h3>
 <p>The number of transitions in a suffix automaton of a string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> of length <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> <strong>doesn't exceed</strong> <span><span class="MathJax_Preview">3n - 4</span><script type="math/tex">3n - 4</script></span> (for <span><span class="MathJax_Preview">n \ge 3</span><script type="math/tex">n \ge 3</script></span>).</p>
 <p>Let us prove this:</p>
 <p>Let us first estimate the number of continuous transitions.
@@ -461,10 +459,10 @@ However, since the maximum number of states can only be achieved with the test c
 <div class="MathJax_Preview">"abbb\dots bbbc"</div>
 <script type="math/tex; mode=display">"abbb\dots bbbc"</script>
 </div>
-<h2 id="applications">Applications</h2>
+<h2 id="applications">Applications<a class="headerlink" href="#applications" title="Permanent link">#</a></h2>
 <p>Here we look at some tasks that can be solved using the suffix automaton.
 For the simplicity we assume that the alphabet size <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> is constant, which allows us to consider the complexity of appending a character and the traversal as constant.</p>
-<h3 id="check-for-occurrence">Check for occurrence</h3>
+<h3 id="check-for-occurrence">Check for occurrence<a class="headerlink" href="#check-for-occurrence" title="Permanent link">#</a></h3>
 <p>Given a text <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>, and multiple patters <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span>.
 We have to check whether or not the strings <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> appear as a substring of <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>.</p>
 <p>We build a suffix automaton of the text <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> in <span><span class="MathJax_Preview">O(length(T))</span><script type="math/tex">O(length(T))</script></span> time.
@@ -473,7 +471,7 @@ If at some point there doesn't exists a transition, then the pattern <span><span
 If we can process the entire string <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> this way, then the string appears in <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>.</p>
 <p>It is clear that this will take <span><span class="MathJax_Preview">O(length(P))</span><script type="math/tex">O(length(P))</script></span> time for each string <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span>.
 Moreover the algorithm actually finds the length of the longest prefix of <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> that appears in the text.</p>
-<h3 id="number-of-different-substrings">Number of different substrings</h3>
+<h3 id="number-of-different-substrings">Number of different substrings<a class="headerlink" href="#number-of-different-substrings" title="Permanent link">#</a></h3>
 <p>Given a string <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span>.
 You want to compute the number of different substrings.</p>
 <p>Let us build a suffix automaton for the string <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span>.</p>
@@ -489,7 +487,7 @@ Then we have the recursion:</p>
 <p>I.e. <span><span class="MathJax_Preview">d[v]</span><script type="math/tex">d[v]</script></span> can be expressed as the sum of answers for all ends of the transitions of <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>.</p>
 <p>The number of different substrings is the value <span><span class="MathJax_Preview">d[t_0] - 1</span><script type="math/tex">d[t_0] - 1</script></span> (since we don't count the empty substring).</p>
 <p>Total time complexity: <span><span class="MathJax_Preview">O(length(S))</span><script type="math/tex">O(length(S))</script></span></p>
-<h3 id="total-length-of-all-different-substrings">Total length of all different substrings</h3>
+<h3 id="total-length-of-all-different-substrings">Total length of all different substrings<a class="headerlink" href="#total-length-of-all-different-substrings" title="Permanent link">#</a></h3>
 <p>Given a string <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span>.
 We want to compute the total length of all its various substrings.</p>
 <p>The solution is similar to the previous one, only now it is necessary to consider two quantities for the dynamic programming part:
@@ -499,7 +497,7 @@ The value <span><span class="MathJax_Preview">ans[v]</span><script type="math/te
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">ans[v] = \sum_{w : (v, w, c) \in DAWG} d[w] + ans[w]</span><script type="math/tex">ans[v] = \sum_{w : (v, w, c) \in DAWG} d[w] + ans[w]</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">ans[v] = \sum_{w : (v, w, c) \in DAWG} d[w] + ans[w]</span><script type="math/tex">ans[v] = \sum_{w : (v, w, c) \in DAWG} d[w] + ans[w]</script></span></script></span>
 We take the answer of each adjacent vertex <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span>, and add to it <span><span class="MathJax_Preview">d[w]</span><script type="math/tex">d[w]</script></span> (since every substrings is one character longer when starting from the state <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>).</p>
 <p>Again this task can be computed in <span><span class="MathJax_Preview">O(length(S))</span><script type="math/tex">O(length(S))</script></span> time.</p>
-<h3 id="lexicographically-kk-th-substring">Lexicographically <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th substring</h3>
+<h3 id="lexicographically-kk-th-substring">Lexicographically <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th substring<a class="headerlink" href="#lexicographically-kk-th-substring" title="Permanent link">#</a></h3>
 <p>Given a string <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span>.
 We have to answer multiple queries.
 For each given number <span><span class="MathJax_Preview">K_i</span><script type="math/tex">K_i</script></span> we have to find the <span><span class="MathJax_Preview">K_i</span><script type="math/tex">K_i</script></span>-th string in the lexicographically ordered list of all substrings.</p>
@@ -507,14 +505,14 @@ For each given number <span><span class="MathJax_Preview">K_i</span><script type
 The lexicographically <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th substring corresponds to the lexicographically <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th path in the suffix automaton.
 Therefore after counting the number of paths from each state, we can easily search for the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th path starting from the root of the automaton.</p>
 <p>This takes <span><span class="MathJax_Preview">O(length(S))</span><script type="math/tex">O(length(S))</script></span> time for preprocessing and then <span><span class="MathJax_Preview">O(length(ans) \cdot k)</span><script type="math/tex">O(length(ans) \cdot k)</script></span> for each query (where <span><span class="MathJax_Preview">ans</span><script type="math/tex">ans</script></span> is the answer for the query and <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> is the size of the alphabet).</p>
-<h3 id="smallest-cyclic-shift">Smallest cyclic shift</h3>
+<h3 id="smallest-cyclic-shift">Smallest cyclic shift<a class="headerlink" href="#smallest-cyclic-shift" title="Permanent link">#</a></h3>
 <p>Given a string <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span>.
 We want to find the lexicographically smallest cyclic shift.</p>
 <p>We construct a suffix automaton for the string <span><span class="MathJax_Preview">S + S</span><script type="math/tex">S + S</script></span>.
 Then the automaton will contain in itself as paths all the cyclic shifts of the string <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span>.</p>
 <p>Consequently the problem is reduced to finding the lexicographically smallest path of length <span><span class="MathJax_Preview">length(S)</span><script type="math/tex">length(S)</script></span>, which can be done in a trivial way: we start in the initial state and greedily pass through the transitions with the minimal character.</p>
 <p>Total time complexity is <span><span class="MathJax_Preview">O(length(S))</span><script type="math/tex">O(length(S))</script></span>.</p>
-<h3 id="number-of-occurrences">Number of occurrences</h3>
+<h3 id="number-of-occurrences">Number of occurrences<a class="headerlink" href="#number-of-occurrences" title="Permanent link">#</a></h3>
 <p>For a given text <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>.
 We have to answer multiple queries.
 For each given pattern <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> we have to find out how many times the string <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> appears in the string <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> as substring.</p>
@@ -540,7 +538,7 @@ Because we add the positions of a state to only one other state, so it can not h
 <p>After that answering a query by just looking up the value <span><span class="MathJax_Preview">cnt[t]</span><script type="math/tex">cnt[t]</script></span>, where <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> is the state corresponding to the pattern, if such a state exists.
 Otherwise answer with <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>.
 Answering a query takes <span><span class="MathJax_Preview">O(length(P))</span><script type="math/tex">O(length(P))</script></span> time.</p>
-<h3 id="first-occurrence-position">First occurrence position</h3>
+<h3 id="first-occurrence-position">First occurrence position<a class="headerlink" href="#first-occurrence-position" title="Permanent link">#</a></h3>
 <p>Given a text <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> and multiple queries.
 For each query string <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> we want to find the position of the first occurrence of <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> in the string <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> (the position of the beginning of <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span>).</p>
 <p>We again construct a suffix automaton.
@@ -560,7 +558,7 @@ When we create a new state <span><span class="MathJax_Preview">cur</span><script
 <p>(since the only other option for a value would be <span><span class="MathJax_Preview">firstpos(cur)</span><script type="math/tex">firstpos(cur)</script></span> which is definitely too big)</p>
 <p>Thus the answer for a query is simply <span><span class="MathJax_Preview">firstpos(t) - length(P) + 1</span><script type="math/tex">firstpos(t) - length(P) + 1</script></span>, where <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> is the state corresponding to the string <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span>.
 Answering a query again takes only <span><span class="MathJax_Preview">O(length(P))</span><script type="math/tex">O(length(P))</script></span> time.</p>
-<h3 id="all-occurrence-positions">All occurrence positions</h3>
+<h3 id="all-occurrence-positions">All occurrence positions<a class="headerlink" href="#all-occurrence-positions" title="Permanent link">#</a></h3>
 <p>This time we have to display all positions of the occurrences in the string <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>.</p>
 <p>Again we construct a suffix automaton for the text <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>.
 Similar as in the previous task we compute the position <span><span class="MathJax_Preview">firstpos</span><script type="math/tex">firstpos</script></span> for all states.</p>
@@ -579,7 +577,7 @@ However, this doesn't ruin the complexity, since each state can only have at mos
 In fact a state, that a cloned state can reach, is also reachable from the original state.
 Thus if we remember the flag <code>is_cloned</code> for each state, we can simply ignore the cloned states and only output <span><span class="MathJax_Preview">firstpos</span><script type="math/tex">firstpos</script></span> for all other states.</p>
 <p>Here are some implementation sketches:</p>
-<pre><code class="cpp">struct state {
+<pre><code class="language-cpp">struct state {
     ...
     bool is_clone;
     int first_pos;
@@ -599,8 +597,7 @@ void output_all_occurrences(int v, int P_length) {
         output_all_occurrences(u, P_length);
 }
 </code></pre>
-
-<h3 id="shortest-non-appearing-string">Shortest non-appearing string</h3>
+<h3 id="shortest-non-appearing-string">Shortest non-appearing string<a class="headerlink" href="#shortest-non-appearing-string" title="Permanent link">#</a></h3>
 <p>Given a string <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> and a certain alphabet.
 We have to find a string of smallest length, that doesn't appear in <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span>.</p>
 <p>We will apply dynamic programming on the suffix automaton built for the string <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span>.</p>
@@ -613,7 +610,7 @@ Otherwise one character is not enough, and so we need to take the minimum of all
 <script type="math/tex; mode=display">d[v] = 1 + \min_{w:(v,w,c) \in SA} d[w].</script>
 </div>
 <p>The answer to the problem will be <span><span class="MathJax_Preview">d[t_0]</span><script type="math/tex">d[t_0]</script></span>, and the actual string can be restored using the computed array <span><span class="MathJax_Preview">d[]</span><script type="math/tex">d[]</script></span>.</p>
-<h3 id="longest-common-substring-of-two-strings">Longest common substring of two strings</h3>
+<h3 id="longest-common-substring-of-two-strings">Longest common substring of two strings<a class="headerlink" href="#longest-common-substring-of-two-strings" title="Permanent link">#</a></h3>
 <p>Given two strings <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> and <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>.
 We have to find the longest common substring, i.e. such a string <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> that appears as substring in <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> and also in <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>.</p>
 <p>We construct a suffix automaton for the string <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span>.</p>
@@ -634,7 +631,7 @@ These two variables will describe the current matching part: its length and the 
 <p>The answer to the task will be the maximum of all the values <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span>.</p>
 <p>The complexity of this part is <span><span class="MathJax_Preview">O(length(T))</span><script type="math/tex">O(length(T))</script></span>, since in one move we can either increase <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> by one, or make several passes through the suffix links, each one ends up reducing the value <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span>.</p>
 <p>Implementation:</p>
-<pre><code class="cpp">string lcs (string S, string T) {
+<pre><code class="language-cpp">string lcs (string S, string T) {
     sa_init();
     for (int i = 0; i &lt; S.size(); i++)
         sa_extend(S[i]);
@@ -657,8 +654,7 @@ These two variables will describe the current matching part: its length and the 
     return t.substr(bestpos - best + 1, best);
 }
 </code></pre>
-
-<h3 id="largest-common-substring-of-multiple-strings">Largest common substring of multiple strings</h3>
+<h3 id="largest-common-substring-of-multiple-strings">Largest common substring of multiple strings<a class="headerlink" href="#largest-common-substring-of-multiple-strings" title="Permanent link">#</a></h3>
 <p>There are <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> strings <span><span class="MathJax_Preview">S_i</span><script type="math/tex">S_i</script></span> given.
 We have to find the longest common substring, i.e. such a string <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> that appears as substring in each string <span><span class="MathJax_Preview">S_i</span><script type="math/tex">S_i</script></span>.</p>
 <p>We join all strings into one large string <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>, separating the strings by a special characters <span><span class="MathJax_Preview">D_i</span><script type="math/tex">D_i</script></span> (one for each string):</p>
@@ -672,7 +668,7 @@ Note that if a substring is included in some string <span><span class="MathJax_P
 <p>Thus we need to calculate the attainability, which tells us for each state of the machine and each symbol <span><span class="MathJax_Preview">D_i</span><script type="math/tex">D_i</script></span> if there exists such a path.
 This can easily be computed by DFS or BFS and dynamic programming.
 After that, the answer to the problem will be the string <span><span class="MathJax_Preview">longest(v)</span><script type="math/tex">longest(v)</script></span> for the state <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>, from which the paths were exists for all special characters.</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://www.spoj.com/problems/SUBLEX/">SPOJ - SUBLEX</a></li>
 <li><a href="https://codeforces.com/problemset/problem/235/C">Codeforces - Cyclical Quest</a></li>

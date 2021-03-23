@@ -94,10 +94,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="lowest-common-ancestor">Lowest Common Ancestor</h1>
+    <h1 id="lowest-common-ancestor">Lowest Common Ancestor<a class="headerlink" href="#lowest-common-ancestor" title="Permanent link">#</a></h1>
 <p>Complexity: <span><span class="MathJax_Preview">O(\sqrt{N})</span><script type="math/tex">O(\sqrt{N})</script></span> and <span><span class="MathJax_Preview">O(\log N)</span><script type="math/tex">O(\log N)</script></span> with <span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span> preprocessing</p>
 <p>Given a tree <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>. Given queries of the form <span><span class="MathJax_Preview">(v_1, v_2)</span><script type="math/tex">(v_1, v_2)</script></span>, for each query you need to find the lowest common ancestor (or least common ancestor), i.e. a vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> that lies on the path from the root to <span><span class="MathJax_Preview">v_1</span><script type="math/tex">v_1</script></span> and the path from the root to <span><span class="MathJax_Preview">v_2</span><script type="math/tex">v_2</script></span>, and the vertex should be the lowest. In other words, the desired vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> is the most bottom ancestor of <span><span class="MathJax_Preview">v_1</span><script type="math/tex">v_1</script></span> and <span><span class="MathJax_Preview">v_2</span><script type="math/tex">v_2</script></span>. It is obvious that their lowest common ancestor lies on a shortest path from <span><span class="MathJax_Preview">v_1</span><script type="math/tex">v_1</script></span> and <span><span class="MathJax_Preview">v_2</span><script type="math/tex">v_2</script></span>. Also, if <span><span class="MathJax_Preview">v_1</span><script type="math/tex">v_1</script></span> is the ancestor of <span><span class="MathJax_Preview">v_2</span><script type="math/tex">v_2</script></span>, <span><span class="MathJax_Preview">v_1</span><script type="math/tex">v_1</script></span> is their lowest common ancestor.</p>
-<h2 id="the-idea-of-the-algorithm">The Idea of the Algorithm</h2>
+<h2 id="the-idea-of-the-algorithm">The Idea of the Algorithm<a class="headerlink" href="#the-idea-of-the-algorithm" title="Permanent link">#</a></h2>
 <p>Before answering the queries, we need to <strong>preprocess</strong> the tree.
 We make a <a href="/docs/#Algorithms/Graph_Theory/Depth_First_Search/">DFS</a> traversal starting at the root and we build a list <span><span class="MathJax_Preview">\text{euler}</span><script type="math/tex">\text{euler}</script></span> which stores the order of the vertices that we visit (a vertex is added to the list when we first visit it, and after the return of the DFS traversals to its children).
 This is also called an Euler tour of the tree.
@@ -137,7 +137,7 @@ Thus, <strong>the LCA problem is reduced to the RMQ problem</strong> (finding th
 <p>Using <a href="/docs/#Algorithms/Data_Structures/Sqrt_Decomposition/">Sqrt-Decomposition</a>, it is possible to obtain a solution answering each query in <span><span class="MathJax_Preview">O(\sqrt{N})</span><script type="math/tex">O(\sqrt{N})</script></span> with preprocessing in <span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span> time.</p>
 <p>Using a <a href="/docs/#Algorithms/Data_Structures/Sqrt_Tree/">Segment Tree</a> you can answer each query in <span><span class="MathJax_Preview">O(\log N)</span><script type="math/tex">O(\log N)</script></span> with preprocessing in <span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span> time.</p>
 <p>Since there will almost never be any update to the stored values, a <a href="/docs/#Algorithms/Data_Structures/Sparse_Table/">Sparse Table</a> might be a better choice, allowing <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> query answering with <span><span class="MathJax_Preview">O(N\log N)</span><script type="math/tex">O(N\log N)</script></span> build time.</p>
-<h3 id="implementation">Implementation</h3>
+<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h3>
 <p>In the following implementation of the LCA algorithm a Segment Tree is used.</p>
 <p>```cpp lca
 struct LCA {
@@ -204,7 +204,7 @@ int lca(int u, int v) {
 </code></pre>
 <p>};
 ```</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="http://www.spoj.com/problems/LCA/">SPOJ: LCA</a></li>
 <li><a href="http://www.spoj.com/problems/DISQUERY/">SPOJ: DISQUERY</a></li>

@@ -94,10 +94,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="intersection-point-of-lines">Intersection: Point of Lines</h1>
+    <h1 id="intersection-point-of-lines">Intersection: Point of Lines<a class="headerlink" href="#intersection-point-of-lines" title="Permanent link">#</a></h1>
 <p>You are given two lines, described via the equations <span><span class="MathJax_Preview">a_1 x + b_1 y + c_1 = 0</span><script type="math/tex">a_1 x + b_1 y + c_1 = 0</script></span> and  <span><span class="MathJax_Preview">a_2 x + b_2 y + c_2 = 0</span><script type="math/tex">a_2 x + b_2 y + c_2 = 0</script></span>.
 We have to find the intersection point of the lines, or determine that the lines are parallel.</p>
-<h2 id="solution">Solution</h2>
+<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">#</a></h2>
 <p>If two lines are not parallel, they intersect.
 To find their intersection point, we need to solve the following system of linear equations:</p>
 <div>
@@ -128,7 +128,7 @@ To do that we only have calculate the following determinants, and if they both e
 <script type="math/tex; mode=display">\begin{vmatrix}a_1 & c_1 \cr a_2 & c_2\end{vmatrix}, \begin{vmatrix}b_1 & c_1 \cr b_2 & c_2\end{vmatrix} </script>
 </div>
 <p>Notice, a different approach for computing the intersection point is explained in the article <a href="/docs/#Algorithms/Geometry/Basic_Geometry/">Basic Geometry</a>.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>```cpp line_intersection
 struct pt {
     double x, y;

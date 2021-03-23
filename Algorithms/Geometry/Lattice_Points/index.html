@@ -95,8 +95,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="lattice-points">Lattice Points</h1>
-<h2 id="lattice-points-inside-non-lattice-polygon">Lattice points inside non-lattice polygon</h2>
+    <h1 id="lattice-points">Lattice Points<a class="headerlink" href="#lattice-points" title="Permanent link">#</a></h1>
+<h2 id="lattice-points-inside-non-lattice-polygon">Lattice points inside non-lattice polygon<a class="headerlink" href="#lattice-points-inside-non-lattice-polygon" title="Permanent link">#</a></h2>
 <p>For lattice polygons there is Pick's formula to enumerate the lattice points inside the polygon.
 What about polygons with arbitrary vertices?</p>
 <p>Let's process each of the polygon's edges individually, and after that we may sum up the amounts of lattice points under each edge considering its orientations to choose a sign (like in calculating the area of a polygon using trapezoids).</p>
@@ -146,15 +146,15 @@ For this reference system we are interested in lattice points on the set</p>
 You can see new reference point <span><span class="MathJax_Preview">O'</span><script type="math/tex">O'</script></span> and axes <span><span class="MathJax_Preview">X'</span><script type="math/tex">X'</script></span> and <span><span class="MathJax_Preview">Y'</span><script type="math/tex">Y'</script></span> in the picture below:</p>
 <p><center><img alt="New reference and axes" src="/docs/data/cs/mirror.png" /></center></p>
 <p>As you see, in new reference system linear function will have coefficient <span><span class="MathJax_Preview">\tfrac 1 k</span><script type="math/tex">\tfrac 1 k</script></span> and its zero will be in the point <span><span class="MathJax_Preview">\lfloor k\cdot n + b \rfloor-(k\cdot n+b)</span><script type="math/tex">\lfloor k\cdot n + b \rfloor-(k\cdot n+b)</script></span> which makes formula above correct.</p>
-<h2 id="complexity-analysis">Complexity analysis</h2>
+<h2 id="complexity-analysis">Complexity analysis<a class="headerlink" href="#complexity-analysis" title="Permanent link">#</a></h2>
 <p>We have to count at most <span><span class="MathJax_Preview">\dfrac{(k(n-1)+2b)n}{2}</span><script type="math/tex">\dfrac{(k(n-1)+2b)n}{2}</script></span> points.
 Among them we will count <span><span class="MathJax_Preview">\dfrac{\lfloor k \rfloor (n-1)+2\lfloor b \rfloor}{2}</span><script type="math/tex">\dfrac{\lfloor k \rfloor (n-1)+2\lfloor b \rfloor}{2}</script></span> on the very first step.
 We may consider that <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> is negligibly small because we can start with making it less than <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>.
 In that case we cay say that we count about <span><span class="MathJax_Preview">\dfrac{\lfloor k \rfloor}{k} \geq \dfrac 1 2</span><script type="math/tex">\dfrac{\lfloor k \rfloor}{k} \geq \dfrac 1 2</script></span>  of all points.
 Thus we will finish in <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> steps.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>Here is simple function which calculates number of integer points <span><span class="MathJax_Preview">(x;y)</span><script type="math/tex">(x;y)</script></span> such for <span><span class="MathJax_Preview">0 \leq x &lt; n</span><script type="math/tex">0 \leq x < n</script></span> and <span><span class="MathJax_Preview">0 &lt; y \leq \lfloor k x+b\rfloor</span><script type="math/tex">0 < y \leq \lfloor k x+b\rfloor</script></span>:</p>
-<pre><code class="cpp">int count_lattices(Fraction k, Fraction b, long long n) {
+<pre><code class="language-cpp">int count_lattices(Fraction k, Fraction b, long long n) {
     auto fk = k.floor();
     auto fb = b.floor();
     auto cnt = 0LL;
@@ -171,7 +171,6 @@ Thus we will finish in <span><span class="MathJax_Preview">O(\log n)</span><scri
     return cnt;
 }
 </code></pre>
-
 <p>Here <code>Fraction</code> is some class handling rational numbers.
 On practice it seems that if all denominators and numerators are at most <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> by absolute value then in the recursive calls they will be at most <span><span class="MathJax_Preview">C^2</span><script type="math/tex">C^2</script></span> if you keep dividing numerators and denominators by their greatest common divisor.
 Given this assumption we can say that one may use doubles and require accuracy of <span><span class="MathJax_Preview">\varepsilon^2</span><script type="math/tex">\varepsilon^2</script></span> where <span><span class="MathJax_Preview">\varepsilon</span><script type="math/tex">\varepsilon</script></span> is accuracy with which <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> are given.

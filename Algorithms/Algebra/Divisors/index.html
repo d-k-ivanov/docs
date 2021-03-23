@@ -96,9 +96,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="divisors">Divisors</h1>
+    <h1 id="divisors">Divisors<a class="headerlink" href="#divisors" title="Permanent link">#</a></h1>
 <p>In this article we discuss how to compute the number of divisors <span><span class="MathJax_Preview">d(n)</span><script type="math/tex">d(n)</script></span> and the sum of divisors <span><span class="MathJax_Preview">\sigma(n)</span><script type="math/tex">\sigma(n)</script></span> of a given number <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.</p>
-<h2 id="number-of-divisors">Number of divisors</h2>
+<h2 id="number-of-divisors">Number of divisors<a class="headerlink" href="#number-of-divisors" title="Permanent link">#</a></h2>
 <p>It should be obvious that the prime factorization of a divisor <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> has to be a subset of the prime factorization of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, e.g. <span><span class="MathJax_Preview">6 = 2 \cdot 3</span><script type="math/tex">6 = 2 \cdot 3</script></span> is a divisor of <span><span class="MathJax_Preview">60 = 2^2 \cdot 3 \cdot 5</span><script type="math/tex">60 = 2^2 \cdot 3 \cdot 5</script></span>.
 So we only need to find all different subsets of the prime factorization of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.</p>
 <p>Usually the number of subsets is <span><span class="MathJax_Preview">2^x</span><script type="math/tex">2^x</script></span> for a set with <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> elements.
@@ -140,7 +140,7 @@ p_1^{e_1} & p_1^{e_1} & p_1^{e_1} \cdot p_2 & p_1^{e_1} \cdot p_2^2 & \dots & p_
 <ul>
 <li>A similar argument can be made if there are more then two distinct prime factors.</li>
 </ul>
-<h2 id="sum-of-divisors">Sum of divisors</h2>
+<h2 id="sum-of-divisors">Sum of divisors<a class="headerlink" href="#sum-of-divisors" title="Permanent link">#</a></h2>
 <p>We can use the same argument of the previous section.</p>
 <ul>
 <li>
@@ -159,7 +159,7 @@ p_1^{e_1} & p_1^{e_1} & p_1^{e_1} \cdot p_2 & p_1^{e_1} \cdot p_2^2 & \dots & p_
   <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\sigma(n) = \frac{p_1^{e_1 + 1} - 1}{p_1 - 1} \cdot \frac{p_2^{e_2 + 1} - 1}{p_2 - 1} \cdots \frac{p_k^{e_k + 1} - 1}{p_k - 1}</span><script type="math/tex">\sigma(n) = \frac{p_1^{e_1 + 1} - 1}{p_1 - 1} \cdot \frac{p_2^{e_2 + 1} - 1}{p_2 - 1} \cdots \frac{p_k^{e_k + 1} - 1}{p_k - 1}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\sigma(n) = \frac{p_1^{e_1 + 1} - 1}{p_1 - 1} \cdot \frac{p_2^{e_2 + 1} - 1}{p_2 - 1} \cdots \frac{p_k^{e_k + 1} - 1}{p_k - 1}</span><script type="math/tex">\sigma(n) = \frac{p_1^{e_1 + 1} - 1}{p_1 - 1} \cdot \frac{p_2^{e_2 + 1} - 1}{p_2 - 1} \cdots \frac{p_k^{e_k + 1} - 1}{p_k - 1}</script></span></script></span></p>
 </li>
 </ul>
-<h2 id="multiplicative-functions">Multiplicative functions</h2>
+<h2 id="multiplicative-functions">Multiplicative functions<a class="headerlink" href="#multiplicative-functions" title="Permanent link">#</a></h2>
 <p>A multiplicative function is a function <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> which satisfies</p>
 <div>
 <div class="MathJax_Preview">f(a \cdot b) = f(a) \cdot f(b)</div>
@@ -169,7 +169,7 @@ p_1^{e_1} & p_1^{e_1} & p_1^{e_1} \cdot p_2 & p_1^{e_1} \cdot p_2^2 & \dots & p_
 <p>Both <span><span class="MathJax_Preview">d(n)</span><script type="math/tex">d(n)</script></span> and <span><span class="MathJax_Preview">\sigma(n)</span><script type="math/tex">\sigma(n)</script></span> are multiplicative functions.</p>
 <p>Multiplicative functions have a huge variety of interesting properties, which can be very useful in number theory problems.
 For instance the Dirichlet convolution of two multiplicative functions is also multiplicative.</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://www.spoj.com/problems/COMDIV/">SPOJ - COMDIV</a></li>
 <li><a href="https://www.spoj.com/problems/DIVSUM/">SPOJ - DIVSUM</a></li>

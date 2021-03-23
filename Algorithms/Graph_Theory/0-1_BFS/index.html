@@ -95,16 +95,16 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="0-1-bfs">0-1 BFS</h1>
+    <h1 id="0-1-bfs">0-1 BFS<a class="headerlink" href="#0-1-bfs" title="Permanent link">#</a></h1>
 <p>It is well-known, that you can find the shortest paths between a single source and all other vertices in <span><span class="MathJax_Preview">O(|E|)</span><script type="math/tex">O(|E|)</script></span> using <a href="/docs/#Algorithms/Graph_Theory/Breadth-First_Search/">Breadth First Search</a> in an <strong>unweighted graph</strong>, i.e. the distance is the minimal number of edges that you need to traverse from the source to another vertex.
 We can interpret such a graph also as a weighted graph, where every edge has the weight <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>.
 If not all edges in graph have the same weight, that we need a more general algorithm, like <a href="/docs/#Algorithms/Graph_Theory/Dijkstra_Algorithm/">Dijkstra</a> which runs in <span><span class="MathJax_Preview">O(|V|^2 + |E|)</span><script type="math/tex">O(|V|^2 + |E|)</script></span> or <span><span class="MathJax_Preview">O(|E| \log |V|)</span><script type="math/tex">O(|E| \log |V|)</script></span> time.</p>
 <p>However if the weights are more constrained, we can often do better.
 In this article we demonstrate how we can use BFS to solve the SSSP (single-source shortest path) problem in <span><span class="MathJax_Preview">O(|E|)</span><script type="math/tex">O(|E|)</script></span>, if the weights of each edge is either <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span> or <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>.</p>
-<h2 id="algorithm">Algorithm</h2>
+<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
 <p>We can develop the algorithm by closely study Dijkstra's algorithm and think about the consequences that our special graph implies.
 The general form of Dijkstra's algorithm is (here a <code>set</code> is used for the priority queue):</p>
-<pre><code class="cpp">d.assign(n, INF);
+<pre><code class="language-cpp">d.assign(n, INF);
 d[s] = 0;
 set&lt;pair&lt;int, int&gt;&gt; q;
 q.insert({0, s});
@@ -124,7 +124,6 @@ while (!q.empty()) {
     }
 }
 </code></pre>
-
 <p>We can notice that the difference between the distances between the source <code>s</code> and two other vertices in the queue differs by at most one.
 Especially, we know that <span><span class="MathJax_Preview">d[v] \le d[u] \le d[v] + 1</span><script type="math/tex">d[v] \le d[u] \le d[v] + 1</script></span> for each <span><span class="MathJax_Preview">u \in Q</span><script type="math/tex">u \in Q</script></span>.
 The reason for this is, that we only add vertices with equal distance or with distance plus one to the queue each iteration.
@@ -135,7 +134,7 @@ However this is impossible, since Dijkstra's algorithm iterates over the vertice
 <p>This structure is so simple, that we don't need an actually priority queue, i.e. a balanced binary tree, is an overkill.
 We can simply use a normal queue, and append new vertices at the beginning if the corresponding edge has weight <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>, i.e. if <span><span class="MathJax_Preview">d[u] = d[v]</span><script type="math/tex">d[u] = d[v]</script></span>, or at the end if the edge has weight <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>, i.e. if <span><span class="MathJax_Preview">d[u] = d[v] + 1</span><script type="math/tex">d[u] = d[v] + 1</script></span>.
 This way the queue still remains sorted at all time.</p>
-<pre><code class="cpp">vector&lt;int&gt; d(n, INF);
+<pre><code class="language-cpp">vector&lt;int&gt; d(n, INF);
 d[s] = 0;
 deque&lt;int&gt; q;
 q.push_front(s);
@@ -155,13 +154,12 @@ while (!q.empty()) {
     }
 }
 </code></pre>
-
-<h2 id="dials-algorithm">Dial's algorithm</h2>
+<h2 id="dials-algorithm">Dial's algorithm<a class="headerlink" href="#dials-algorithm" title="Permanent link">#</a></h2>
 <p>We can extend this even further if we allow the weights of the edges to be even bigger.
 If every edge in the graph has a weight <span><span class="MathJax_Preview">\le k</span><script type="math/tex">\le k</script></span>, than the distances of vertices in the queue will differ by at most <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> from the distance of <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> to the source.
 So we can keep <span><span class="MathJax_Preview">k + 1</span><script type="math/tex">k + 1</script></span> buckets for the vertices in the queue, and whenever the bucket corresponding to the smallest distance gets empty, we make a cyclic shift to get the bucket with the next higher distance.
 This extension is called <strong>Dial's algorithm</strong>.</p>
-<h2 id="practice-problems">Practice problems</h2>
+<h2 id="practice-problems">Practice problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://www.codechef.com/problems/REVERSE">CodeChef - Chef and Reversing</a></li>
 <li><a href="https://codeforces.com/contest/1063/problem/B">Labyrinth</a></li>

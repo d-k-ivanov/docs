@@ -95,7 +95,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="balanced-bracket-sequences">Balanced Bracket Sequences</h1>
+    <h1 id="balanced-bracket-sequences">Balanced Bracket Sequences<a class="headerlink" href="#balanced-bracket-sequences" title="Permanent link">#</a></h1>
 <p>A <strong>balanced bracket sequence</strong> is a string consisting of only brackets, such that this sequence, when inserted certain numbers and mathematical operations, gives a valid mathematical expression.
 Formally you can define balanced bracket sequence with:</p>
 <ul>
@@ -107,7 +107,7 @@ Formally you can define balanced bracket sequence with:</p>
 <p>Of course you can define other bracket sequences also with multiple bracket types in a similar fashion.</p>
 <p>In this article we discuss some classic problems involving balanced bracket sequences (for simplicity we will only call them sequences): validation, number of sequences, finding the lexicographical next sequence, generating all sequences of a certain size, finding the index of sequence, and generating the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th sequences.
 We will also discuss two variations for the problems, the simpler version when only one type of brackets is allowed, and the harder case when there are multiple types.</p>
-<h2 id="balance-validation">Balance validation</h2>
+<h2 id="balance-validation">Balance validation<a class="headerlink" href="#balance-validation" title="Permanent link">#</a></h2>
 <p>We want to check if a given string is balanced or not.</p>
 <p>At first suppose there is only one type of bracket.
 For this case there exists a very simple algorithm.
@@ -123,14 +123,14 @@ If it is a closing one, then we check if the stack is non-empty, and if the top 
 If both conditions are fulfilled, then we remove the opening bracket from the stack.
 If at any time one of the conditions is not fulfilled, or at the end the stack is not empty, then the string is not balanced.
 Otherwise it is.</p>
-<h2 id="number-of-balanced-sequences">Number of balanced sequences</h2>
-<h3 id="formula">Formula</h3>
+<h2 id="number-of-balanced-sequences">Number of balanced sequences<a class="headerlink" href="#number-of-balanced-sequences" title="Permanent link">#</a></h2>
+<h3 id="formula">Formula<a class="headerlink" href="#formula" title="Permanent link">#</a></h3>
 <p>The number of balanced bracket sequences with only one bracket type can be calculated using the <a href="/docs/#Algorithms/Combinatorics/Catalan_Numbers/">Catalan numbers</a>.
 The number of balanced bracket sequences of length <span><span class="MathJax_Preview">2n</span><script type="math/tex">2n</script></span> (<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> pairs of brackets) is:
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\frac{1}{n+1} \binom{2n}{n}</span><script type="math/tex">\frac{1}{n+1} \binom{2n}{n}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\frac{1}{n+1} \binom{2n}{n}</span><script type="math/tex">\frac{1}{n+1} \binom{2n}{n}</script></span></script></span></p>
 <p>If we allow <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> types of brackets, then each pair be of any of the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> types (independently of the others), thus the number of balanced bracket sequences is:
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\frac{1}{n+1} \binom{2n}{n} k^n</span><script type="math/tex">\frac{1}{n+1} \binom{2n}{n} k^n</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\frac{1}{n+1} \binom{2n}{n} k^n</span><script type="math/tex">\frac{1}{n+1} \binom{2n}{n} k^n</script></span></script></span></p>
-<h3 id="dynamic-programming">Dynamic programming</h3>
+<h3 id="dynamic-programming">Dynamic programming<a class="headerlink" href="#dynamic-programming" title="Permanent link">#</a></h3>
 <p>On the other hand these numbers can be computed using <strong>dynamic programming</strong>.
 Let <span><span class="MathJax_Preview">d[n]</span><script type="math/tex">d[n]</script></span> be the number of regular bracket sequences with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> pairs of bracket.
 Note that in the first position there is always an opening bracket.
@@ -140,7 +140,7 @@ So to compute <span><span class="MathJax_Preview">d[n]</span><script type="math/
 Consequently the formula has the form:
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">d[n] = \sum_{i=0}^{n-1} d[i] \cdot d[n-1-i]</span><script type="math/tex">d[n] = \sum_{i=0}^{n-1} d[i] \cdot d[n-1-i]</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">d[n] = \sum_{i=0}^{n-1} d[i] \cdot d[n-1-i]</span><script type="math/tex">d[n] = \sum_{i=0}^{n-1} d[i] \cdot d[n-1-i]</script></span></script></span>
 The initial value for this recurrence is <span><span class="MathJax_Preview">d[0] = 1</span><script type="math/tex">d[0] = 1</script></span>.</p>
-<h2 id="finding-the-lexicographical-next-balanced-sequence">Finding the lexicographical next balanced sequence</h2>
+<h2 id="finding-the-lexicographical-next-balanced-sequence">Finding the lexicographical next balanced sequence<a class="headerlink" href="#finding-the-lexicographical-next-balanced-sequence" title="Permanent link">#</a></h2>
 <p>Here we only consider the case with one valid bracket type.</p>
 <p>Given a balanced sequence, we have to find the next (in lexicographical order) balanced sequence.</p>
 <p>It should be obvious, that we have to find the rightmost opening bracket, which we can replace by a closing bracket without violation the condition, that there are more closing brackets than opening brackets up to this position.
@@ -263,7 +263,6 @@ string kth_balanced(int n, int k) {
     return ans;
 }
 </code></pre>
-
 <p>Now let there be <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> types of brackets.
 The solution will only differ slightly in that we have to multiply the value <span><span class="MathJax_Preview">d[2n-i-1][\text{ndepth}]</span><script type="math/tex">d[2n-i-1][\text{ndepth}]</script></span> by <span><span class="MathJax_Preview">k^{(2n-i-1-\text{ndepth})/2}</span><script type="math/tex">k^{(2n-i-1-\text{ndepth})/2}</script></span> and take into account that there can be different bracket types for the next character.</p>
 <p>Here is an implementation using two types of brackets: round and square:</p>

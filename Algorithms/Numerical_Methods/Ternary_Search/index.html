@@ -95,7 +95,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="ternary-search">Ternary Search</h1>
+    <h1 id="ternary-search">Ternary Search<a class="headerlink" href="#ternary-search" title="Permanent link">#</a></h1>
 <p>We are given a function <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> which is unimodal on an interval <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span>. By unimodal function, we mean one of two behaviors of the function:</p>
 <ol>
 <li>
@@ -108,7 +108,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>In this article, we will assume the first scenario.
 The second scenario is completely symmetrical to the first.</p>
 <p>The task is to find the maximum of function <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> on the interval <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span>.</p>
-<h2 id="algorithm">Algorithm</h2>
+<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
 <p>Consider any 2 points <span><span class="MathJax_Preview">m_1</span><script type="math/tex">m_1</script></span>, and <span><span class="MathJax_Preview">m_2</span><script type="math/tex">m_2</script></span> in this interval: <span><span class="MathJax_Preview">l &lt; m_1 &lt; m_2 &lt; r</span><script type="math/tex">l < m_1 < m_2 < r</script></span>. We evaluate the function at <span><span class="MathJax_Preview">m_1</span><script type="math/tex">m_1</script></span> and <span><span class="MathJax_Preview">m_2</span><script type="math/tex">m_2</script></span>, i.e. find the values of <span><span class="MathJax_Preview">f(m_1)</span><script type="math/tex">f(m_1)</script></span> and <span><span class="MathJax_Preview">f(m_2)</span><script type="math/tex">f(m_2)</script></span>. Now, we get one of three options:</p>
 <ul>
 <li><span><span class="MathJax_Preview">f(m_1) &lt; f(m_2)</span><script type="math/tex">f(m_1) < f(m_2)</script></span></li>
@@ -133,18 +133,18 @@ The second scenario is completely symmetrical to the first.</p>
 <script type="math/tex; mode=display">m_2 = r - \frac{(r - l)}{3}</script>
 </div>
 <p>If <span><span class="MathJax_Preview">m_1</span><script type="math/tex">m_1</script></span> and <span><span class="MathJax_Preview">m_2</span><script type="math/tex">m_2</script></span> are chosen to be closer to each other, the convergence rate will increase slightly.</p>
-<h3 id="run-time-analysis">Run time analysis</h3>
+<h3 id="run-time-analysis">Run time analysis<a class="headerlink" href="#run-time-analysis" title="Permanent link">#</a></h3>
 <div>
 <div class="MathJax_Preview">T(n) = T({2n}/{3}) + 1 = \Theta(\log n)</div>
 <script type="math/tex; mode=display">T(n) = T({2n}/{3}) + 1 = \Theta(\log n)</script>
 </div>
 <p>It can be visualized as follows: every time after evaluating the function at points <span><span class="MathJax_Preview">m_1</span><script type="math/tex">m_1</script></span> and <span><span class="MathJax_Preview">m_2</span><script type="math/tex">m_2</script></span>, we are essentially ignoring about one third of the interval, either the left or right one. Thus the size of the search space is <span><span class="MathJax_Preview">{2n}/{3}</span><script type="math/tex">{2n}/{3}</script></span> of the original one.</p>
 <p>Applying <a href="https://en.wikipedia.org/wiki/Master_theorem_(analysis_of_algorithms)">Master's Theorem</a>, we get the desired complexity estimate.</p>
-<h3 id="the-case-of-the-integer-arguments">The case of the integer arguments</h3>
+<h3 id="the-case-of-the-integer-arguments">The case of the integer arguments<a class="headerlink" href="#the-case-of-the-integer-arguments" title="Permanent link">#</a></h3>
 <p>If <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> takes integer parameter, the interval <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span> becomes discrete. Since we did not impose any restrictions on the choice of points <span><span class="MathJax_Preview">m_1</span><script type="math/tex">m_1</script></span> and <span><span class="MathJax_Preview">m_2</span><script type="math/tex">m_2</script></span>, the correctness of the algorithm is not affected. <span><span class="MathJax_Preview">m_1</span><script type="math/tex">m_1</script></span> and <span><span class="MathJax_Preview">m_2</span><script type="math/tex">m_2</script></span> can still be chosen to divide <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span> into 3 approximately equal parts.</p>
 <p>The difference occurs in the stopping criterion of the algorithm. Ternary search will have to stop when <span><span class="MathJax_Preview">(r - l) &lt; 3</span><script type="math/tex">(r - l) < 3</script></span>, because in that case we can no longer select <span><span class="MathJax_Preview">m_1</span><script type="math/tex">m_1</script></span> and <span><span class="MathJax_Preview">m_2</span><script type="math/tex">m_2</script></span> to be different from each other as well as from <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> and <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>, and this can cause an infinite loop. Once <span><span class="MathJax_Preview">(r - l) &lt; 3</span><script type="math/tex">(r - l) < 3</script></span>, the remaining pool of candidate points <span><span class="MathJax_Preview">(l, l + 1, \ldots, r)</span><script type="math/tex">(l, l + 1, \ldots, r)</script></span> needs to be checked to find the point which produces the maximum value <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>.</p>
-<h2 id="implementation">Implementation</h2>
-<pre><code class="cpp">double ternary_search(double l, double r) {
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
+<pre><code class="language-cpp">double ternary_search(double l, double r) {
     double eps = 1e-9;                  //set the error limit here
     while (r - l &gt; eps) {
         double m1 = l + (r - l) / 3;
@@ -159,10 +159,9 @@ The second scenario is completely symmetrical to the first.</p>
     return f(l);                        //return the maximum of f(x) in [l, r]
 }
 </code></pre>
-
 <p>Here <code>eps</code> is in fact the absolute error (not taking into account errors due to the inaccurate calculation of the function).</p>
 <p>Instead of the criterion <code>r - l &gt; eps</code>, we can select a constant number of iterations as a stopping criterion. The number of iterations should be chosen to ensure the required accuracy. Typically, in most programming challenges the error limit is <span><span class="MathJax_Preview">{10}^{-6}</span><script type="math/tex">{10}^{-6}</script></span> and thus 200 - 300 iterations are sufficient. Also, the number of iterations doesn't depend on the values of <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> and <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>, so the number of iterations corresponds to the required relative error.</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://www.codechef.com/problems/AMCS03">Codechef - Race time</a></li>
 <li><a href="https://www.hackerearth.com/september-circuits/algorithm/rescuer-1/">Hackerearth - Rescuer</a></li>

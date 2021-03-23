@@ -95,7 +95,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="roots-newtons-method">Roots: Newton's Method</h1>
+    <h1 id="roots-newtons-method">Roots: Newton's Method<a class="headerlink" href="#roots-newtons-method" title="Permanent link">#</a></h1>
 <p>This is an iterative method invented by Isaac Newton around 1664. However, this method is also sometimes called the Raphson method, since Raphson invented the same algorithm a few years after Newton, but his article was published much earlier.</p>
 <p>The task is as follows. Given the following equation:</p>
 <div>
@@ -103,7 +103,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <script type="math/tex; mode=display">f(x) = 0</script>
 </div>
 <p>We want to solve the equation. More precisely, we want to find one of its roots (it is assumed that the root exists). It is assumed that <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> is continuous and differentiable on an interval <span><span class="MathJax_Preview">[a, b]</span><script type="math/tex">[a, b]</script></span>.</p>
-<h2 id="algorithm">Algorithm</h2>
+<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
 <p>The input parameters of the algorithm consist of not only the function <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> but also the initial approximation - some <span><span class="MathJax_Preview">x_0</span><script type="math/tex">x_0</script></span>, with which the algorithm starts.</p>
 <p>Suppose we have already calculated <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span>, calculate <span><span class="MathJax_Preview">x_{i+1}</span><script type="math/tex">x_{i+1}</script></span> as follows. Draw the tangent to the graph of the function <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> at the point <span><span class="MathJax_Preview">x = x_i</span><script type="math/tex">x = x_i</script></span>, and find the point of intersection of this tangent with the <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>-axis. <span><span class="MathJax_Preview">x_{i+1}</span><script type="math/tex">x_{i+1}</script></span> is set equal to the <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>-coordinate of the point found, and we repeat the whole process from the beginning.</p>
 <p>It is not difficult to obtain the following formula:</p>
@@ -113,7 +113,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </div>
 <p>It is intuitively clear that if the function <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> is "good" (smooth), and <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> is close enough to the root, then <span><span class="MathJax_Preview">x_{i+1}</span><script type="math/tex">x_{i+1}</script></span> will be even closer to the desired root.</p>
 <p>The rate of convergence is quadratic, which, conditionally speaking, means that the number of exact digits in the approximate value <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> doubles with each iteration.</p>
-<h2 id="application-for-calculating-the-square-root">Application for calculating the square root</h2>
+<h2 id="application-for-calculating-the-square-root">Application for calculating the square root<a class="headerlink" href="#application-for-calculating-the-square-root" title="Permanent link">#</a></h2>
 <p>Let's use the calculation of square root as an example of Newton's method.</p>
 <p>If we substitute <span><span class="MathJax_Preview">f(x) = x^2 - n</span><script type="math/tex">f(x) = x^2 - n</script></span>, then after simplifying the expression, we get:</p>
 <div>
@@ -121,7 +121,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <script type="math/tex; mode=display"> x_{i+1} = \frac{x_i + \frac{n}{x_i}}{2} </script>
 </div>
 <p>The first typical variant of the problem is when a rational number <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is given, and its root must be calculated with some accuracy <code>eps</code>:</p>
-<pre><code class="cpp">double sqrt_newton(double n) {
+<pre><code class="language-cpp">double sqrt_newton(double n) {
     const double eps = 1E-15;
     double x = 1;
     for (;;) {
@@ -133,9 +133,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     return x;
 }
 </code></pre>
-
 <p>Another common variant of the problem is when we need to calculate the integer root (for the given <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> find the largest <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> such that <span><span class="MathJax_Preview">x^2 \le n</span><script type="math/tex">x^2 \le n</script></span>). Here it is necessary to slightly change the termination condition of the algorithm, since it may happen that <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> will start to "jump" near the answer. Therefore, we add a condition that if the value <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> has decreased in the previous step, and it tries to increase at the current step, then the algorithm must be stopped.</p>
-<pre><code class="cpp">int isqrt_newton(int n) {
+<pre><code class="language-cpp">int isqrt_newton(int n) {
     int x = 1;
     bool decreased = false;
     for (;;) {
@@ -148,9 +147,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     return x;
 }
 </code></pre>
-
 <p>Finally, we are given the third variant - for the case of bignum arithmetic. Since the number <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> can be large enough, it makes sense to pay attention to the initial approximation. Obviously, the closer it is to the root, the faster the result will be achieved. It is simple enough and effective to take the initial approximation as the number <span><span class="MathJax_Preview">2^{\textrm{bits}/2}</span><script type="math/tex">2^{\textrm{bits}/2}</script></span>, where <span><span class="MathJax_Preview">\textrm{bits}</span><script type="math/tex">\textrm{bits}</script></span> is the number of bits in the number <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>. Here is the Java code that demonstrates this variant:</p>
-<pre><code class="java">public static BigInteger isqrtNewton(BigInteger n) {
+<pre><code class="language-java">public static BigInteger isqrtNewton(BigInteger n) {
     BigInteger a = BigInteger.ONE.shiftLeft(n.bitLength() / 2);
     boolean p_dec = false;
     for (;;) {
@@ -163,9 +161,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     return a;
 }
 </code></pre>
-
 <p>For example, this code is executed in <span><span class="MathJax_Preview">60</span><script type="math/tex">60</script></span> milliseconds for <span><span class="MathJax_Preview">n = 10^{1000}</span><script type="math/tex">n = 10^{1000}</script></span>, and if we remove the improved selection of the initial approximation (just starting with <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>), then it will be executed in about <span><span class="MathJax_Preview">120</span><script type="math/tex">120</script></span> milliseconds.</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=16&amp;page=show_problem&amp;problem=1369">UVa 10428 - The Roots</a></li>
 </ul>

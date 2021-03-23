@@ -98,8 +98,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="info">Info</h3>
-<pre><code class="bash">#PV
+    <h3 id="info">Info<a class="headerlink" href="#info" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">#PV
 pvdisplay
 pvs
 
@@ -111,9 +111,8 @@ vgs
 lvdisplay
 lvs
 </code></pre>
-
-<h3 id="phisical-volumespv">Phisical volumes(PV)</h3>
-<pre><code class="bash"># Scan devices
+<h3 id="phisical-volumespv">Phisical volumes(PV)<a class="headerlink" href="#phisical-volumespv" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Scan devices
 lvmdiskscan
 
 # Create PV on phisical device
@@ -131,9 +130,8 @@ pvmove &lt;device_from&gt; &lt;device_to&gt;
 # Remove PV from LVM
 pvremove &lt;phisical_device&gt;
 </code></pre>
-
-<h3 id="volume-groupsvg">Volume groups(VG)</h3>
-<pre><code class="bash"># Create VG on the PV
+<h3 id="volume-groupsvg">Volume groups(VG)<a class="headerlink" href="#volume-groupsvg" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Create VG on the PV
 vgcreate &lt;vg_name&gt; &lt;pv_name&gt;
 
 # Add PV to volume VG
@@ -146,9 +144,8 @@ vgchange -ay
 # Remove PV from VG
 vgreduce &lt;vg_name&gt; &lt;pv_name&gt;
 </code></pre>
-
-<h3 id="logical-volumelv">Logical volume(LV)</h3>
-<pre><code class="bash"># Create LV on VG
+<h3 id="logical-volumelv">Logical volume(LV)<a class="headerlink" href="#logical-volumelv" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Create LV on VG
 lvcreate -L &lt;size&gt; &lt;vg_name&gt; -n &lt;lv_name&gt; [phisical_device_to_store_data]
 
 # Extend LV

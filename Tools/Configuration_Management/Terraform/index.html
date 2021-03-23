@@ -122,12 +122,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="general-info">General info</h2>
+    <h2 id="general-info">General info<a class="headerlink" href="#general-info" title="Permanent link">#</a></h2>
 <blockquote>
 <p>Mostly from <a href="https://github.com/BWITS/terraform-best-practices">BWITS/terraform-best-practices</a>.</p>
 </blockquote>
-<h2 id="always-run-terraform-command-with-var-file">Always Run terraform command with var-file</h2>
-<pre><code class="bash">$ cat config/dev.tfvars
+<h2 id="always-run-terraform-command-with-var-file">Always Run terraform command with var-file<a class="headerlink" href="#always-run-terraform-command-with-var-file" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">$ cat config/dev.tfvars
 
 name = &quot;dev-stack&quot;
 s3_terraform_bucket = &quot;dev-stack-terraform&quot;
@@ -135,13 +135,12 @@ tag_team_name = &quot;hello-world&quot;
 
 $ terraform plan -var-file=config/dev.tfvars
 </code></pre>
-
 <p>With <code>var-file</code>, you can easily manage environment (dev/stag/uat/prod) variables.</p>
 <p>With <code>var-file</code>, you avoid to run terraform with long list of key-value pairs ( <code>-var foo=bar</code> )</p>
-<h2 id="manage-s3-backend-for-tfstate-files">Manage s3 backend for tfstate files</h2>
+<h2 id="manage-s3-backend-for-tfstate-files">Manage s3 backend for tfstate files<a class="headerlink" href="#manage-s3-backend-for-tfstate-files" title="Permanent link">#</a></h2>
 <p>Terraform doesn't support <a href="https://github.com/hashicorp/terraform/pull/12067">Interpolate variables in terraform backend config</a>, normally you write a seperate script to define s3 backend bucket name for different environments, but I recommend to hard code it directly as below</p>
 <p>Add below codes in terraform configuration files.</p>
-<pre><code class="bash">$ cat main.tf
+<pre><code class="language-bash">$ cat main.tf
 
 terraform {
   backend &quot;s3&quot; {
@@ -158,9 +157,8 @@ terraform {
   }
 }
 </code></pre>
-
 <p>Define backend variables for particular environment</p>
-<pre><code class="bash">$ cat config/backend-dev.conf
+<pre><code class="language-bash">$ cat config/backend-dev.conf
 bucket  = &quot;&lt;unique_bucke_name&gt;-terraform-development&quot;
 key     = &quot;development/service-1.tfstate&quot;
 encrypt = true
@@ -168,7 +166,6 @@ region  = &quot;ap-southeast-2&quot;
 kms_key_id = &quot;alias/terraform&quot;
 dynamodb_table = &quot;terraform-lock&quot;
 </code></pre>
-
 <ul>
 <li>bucket - s3 bucket name, has to be globally unique.  </li>
 <li>key - Set some meanful names for different services and applications, such as vpc.tfstate, application_name.tfstate, etc  </li>
@@ -181,10 +178,9 @@ terraform init -backend-config=config/backend-${env}.conf
 terraform plan -var-file=config/${env}.tfvars
 terraform apply -var-file=config/${env}.tfvars
 </code></pre>
-
-<h2 id="retrieves-state-meta-data-from-a-remote-backend">Retrieves state meta data from a remote backend</h2>
+<h2 id="retrieves-state-meta-data-from-a-remote-backend">Retrieves state meta data from a remote backend<a class="headerlink" href="#retrieves-state-meta-data-from-a-remote-backend" title="Permanent link">#</a></h2>
 <p>Normally we have several layers to manage terraform resources, such as network, database, application layers. After you create the basic network resources, such as vpc, security group, subnets, nat gateway in vpc stack. Your database layer and applications layer should always refer the resource from vpc layer directly via <code>terraform_remote_state</code> data srouce. </p>
-<pre><code class="bash">data &quot;terraform_remote_state&quot; &quot;vpc&quot; {
+<pre><code class="language-bash">data &quot;terraform_remote_state&quot; &quot;vpc&quot; {
   backend = &quot;s3&quot;
   config{
     bucket = &quot;${var.s3_terraform_bucket}&quot;
@@ -200,8 +196,7 @@ resource &quot;aws_xx_xxxx&quot; &quot;main&quot; {
   vpc_id     = &quot;${data.terraform_remote_state.vpc.vpc_id}&quot;
 }
 </code></pre>
-
-<h2 id="use-share-modules">Use share modules</h2>
+<h2 id="use-share-modules">Use share modules<a class="headerlink" href="#use-share-modules" title="Permanent link">#</a></h2>
 <p>Manage terraform resource with shared modules, this will save a lot of coding time. </p>
 <p>For detail, you can start from below links: </p>
 <ul>
@@ -212,9 +207,9 @@ resource &quot;aws_xx_xxxx&quot; &quot;main&quot; {
 <blockquote>
 <p>terraform modules don't support <code>count</code> parameter currently. You can follow up this ticket for updates: https://github.com/hashicorp/terraform/issues/953</p>
 </blockquote>
-<h2 id="isolate-environment">Isolate environment</h2>
+<h2 id="isolate-environment">Isolate environment<a class="headerlink" href="#isolate-environment" title="Permanent link">#</a></h2>
 <p>Sometimes, developers like to create a security group and share it to all non-prod (dev/qa) environments. Don't do that, create resources with different name for each environment and each resource.</p>
-<pre><code class="bash">variable &quot;application&quot; {
+<pre><code class="language-bash">variable &quot;application&quot; {
   description = &quot;application name&quot;
   default = &quot;&quot;
 }
@@ -229,71 +224,65 @@ resource &quot;&lt;any_resource&gt;&quot; {
   ...
 }
 </code></pre>
-
 <p>Wth that, you will easily define the resource with meaningful and unique name, and you can build more same application stack for different developers without change a lot. For example, you update the environment to dev1, dev2, etc.</p>
-<h2 id="use-terraform-import-to-include-as-more-resources-you-can">Use terraform import to include as more resources you can</h2>
+<h2 id="use-terraform-import-to-include-as-more-resources-you-can">Use terraform import to include as more resources you can<a class="headerlink" href="#use-terraform-import-to-include-as-more-resources-you-can" title="Permanent link">#</a></h2>
 <p>Sometimes developers manually created resources directly. You need to mark these resource and use <code>terraform import</code> to include them in codes.</p>
 <p><a href="https://www.terraform.io/docs/import/usage.html">terraform import</a></p>
-<h2 id="avoid-hard-code-the-resources">Avoid hard code the resources</h2>
+<h2 id="avoid-hard-code-the-resources">Avoid hard code the resources<a class="headerlink" href="#avoid-hard-code-the-resources" title="Permanent link">#</a></h2>
 <p>A sample:</p>
-<pre><code class="bash">account_number=“123456789012&quot;
+<pre><code class="language-bash">account_number=“123456789012&quot;
 account_alias=&quot;mycompany&quot;
 </code></pre>
-
 <p>The current aws account id or account alias can be input directly via data sources.</p>
-<pre><code class="bash"># The attribute `${data.aws_caller_identity.current.account_id}` will be current account number. 
+<pre><code class="language-bash"># The attribute `${data.aws_caller_identity.current.account_id}` will be current account number. 
 data &quot;aws_caller_identity&quot; &quot;current&quot; {}
 
 # The attribue `${data.aws_iam_account_alias.current.account_alias}` will be current account alias
 # Tips: you can easly use this attribue to create terraform bucket with environment, project name, etc.
 data &quot;aws_iam_account_alias&quot; &quot;current&quot; {}
 </code></pre>
-
 <p>Refer: <a href="https://www.terraform.io/docs/providers/aws/">terraform data sources</a></p>
-<h2 id="format-terraform-codes">Format terraform codes</h2>
+<h2 id="format-terraform-codes">Format terraform codes<a class="headerlink" href="#format-terraform-codes" title="Permanent link">#</a></h2>
 <p>Always run <code>terraform fmt</code> to format terraform configuration files and make them neatly.</p>
 <p>I used below codes in Travis CI pipeline (you can re-use it in any pipelines) to validate and format check the codes before you can merge it to master branch.</p>
 <pre><code>  - find . -type f -name "*.tf" -exec dirname {} \;|sort -u | while read m; do (terraform validate -check-variables=false "$m" &amp;&amp; echo "√ $m") || exit 1 ; done
   - if [ `terraform fmt | wc -c` -ne 0 ]; then echo "Some terraform files need be formatted, run 'terraform fmt' to fix"; exit 1; fi
 </code></pre>
-<h2 id="enable-version-control-on-terraform-state-files-bucket">Enable version control on terraform state files bucket</h2>
+<h2 id="enable-version-control-on-terraform-state-files-bucket">Enable version control on terraform state files bucket<a class="headerlink" href="#enable-version-control-on-terraform-state-files-bucket" title="Permanent link">#</a></h2>
 <p>Always set backend to s3 and enable version control on this bucket. </p>
 <p>If you'd like to manage terraform state bucket as well, recommend to use this repostory I wrote <a href="https://github.com/BWITS/tf_aws_tfstate_bucket">tf_aws_tfstate_bucket</a> to create the bucket and replica to other regions automatically. </p>
-<h2 id="generate-readme-for-each-module-about-input-and-output-variables">Generate README for each module about input and output variables</h2>
+<h2 id="generate-readme-for-each-module-about-input-and-output-variables">Generate README for each module about input and output variables<a class="headerlink" href="#generate-readme-for-each-module-about-input-and-output-variables" title="Permanent link">#</a></h2>
 <p>You needn't manually manage <code>USAGE</code> about input variables and outputs. <a href="https://github.com/segmentio/terraform-docs">terraform-docs</a> can do this job automatically.</p>
-<pre><code class="bash">$ brew install terraform-docs
+<pre><code class="language-bash">$ brew install terraform-docs
 $ cd terraform/modules/vpc
 $ terraform-docs md . &gt; README.md
 </code></pre>
-
 <p>For details on how to run <code>terraform-docs</code>, check this repository: https://github.com/segmentio/terraform-docs</p>
 <p>There is a simple sample for you to start <a href="https://github.com/BWITS/tf_aws_acme">tf_aws_acme</a>, the README is generatd by <code>terraform-docs</code></p>
-<h2 id="update-terraform-version">Update terraform version</h2>
+<h2 id="update-terraform-version">Update terraform version<a class="headerlink" href="#update-terraform-version" title="Permanent link">#</a></h2>
 <p>Hashicorp doesn't have a good qa/build/release process for their software and does not follow semantic versioning rules.</p>
 <p>For example, <code>terraform init</code> isn't compatible between 0.9 and 0.8. Now they are going to split providers and use "init" to install providers as plugin in coming version 0.10</p>
 <p>So recommend to keep updating to latest terraform version</p>
-<h2 id="run-terraform-from-docker-container">Run terraform from docker container</h2>
+<h2 id="run-terraform-from-docker-container">Run terraform from docker container<a class="headerlink" href="#run-terraform-from-docker-container" title="Permanent link">#</a></h2>
 <p>Terraform releases official docker containers that you can easily control which version you can run.</p>
 <p>Recommend to run terraform docker container, when you set your build job in CI/CD pipeline.</p>
-<pre><code class="bash">TERRAFORM_IMAGE=hashicorp/terraform:0.9.8
+<pre><code class="language-bash">TERRAFORM_IMAGE=hashicorp/terraform:0.9.8
 TERRAFORM_CMD=&quot;docker run -ti --rm -w /app -v ${HOME}/.aws:/root/.aws -v ${HOME}/.ssh:/root/.ssh -v `pwd`:/app $TERRAFORM_IMAGE&quot;
 </code></pre>
-
-<h2 id="troubleshooting-with-messy-output">Troubleshooting with messy output</h2>
+<h2 id="troubleshooting-with-messy-output">Troubleshooting with messy output<a class="headerlink" href="#troubleshooting-with-messy-output" title="Permanent link">#</a></h2>
 <p>Sometime, you applied the changes several times, the plan output always prompts there are some changes, essepecially in iam and s3 policy.  It is hard to troubleshooting the problem with messy json output in one line.</p>
 <p>With the tool <a href="https://github.com/coinbase/terraform-landscape">terraform-landscape</a>, it improves Terraform plan output to be easier to read and understand, you can easily find out where is the problem. For details, please go through the project at https://github.com/coinbase/terraform-landscape</p>
 <pre><code>terraform plan -var-file=${env}/${env}.tfvars -input=false -out=plan -lock=false |tee report
 gem install terraform_landscape
 landscape &lt; report
 </code></pre>
-<h2 id="some-updates-for-terraform-010x">Some updates for terraform 0.10.x</h2>
+<h2 id="some-updates-for-terraform-010x">Some updates for terraform 0.10.x<a class="headerlink" href="#some-updates-for-terraform-010x" title="Permanent link">#</a></h2>
 <p>After Hashicorp splits terraform providers out of terraform core binary from v0.10.x, you will see errors to complain aws, template, terraform provider version are not installed when run <code>terraform init</code></p>
-<pre><code class="bash">* provider.aws: no suitable version installed
+<pre><code class="language-bash">* provider.aws: no suitable version installed
   version requirements: &quot;~&gt; 1.0&quot;
 </code></pre>
-
 <p>Please add below codes to <code>main.tf</code></p>
-<pre><code class="bash">provider &quot;aws&quot; {
+<pre><code class="language-bash">provider &quot;aws&quot; {
   version = &quot;~&gt; 1.0&quot;
   region  = &quot;${var.region}&quot;
 }
@@ -306,8 +295,7 @@ provider &quot;terraform&quot; {
   version = &quot;~&gt; 1.0&quot;
 }
 </code></pre>
-
-<h2 id="useful-documents-you-should-read">Useful documents you should read</h2>
+<h2 id="useful-documents-you-should-read">Useful documents you should read<a class="headerlink" href="#useful-documents-you-should-read" title="Permanent link">#</a></h2>
 <p><a href="https://blog.gruntwork.io/terraform-tips-tricks-loops-if-statements-and-gotchas-f739bbae55f9">terraform tips &amp; tricks: loops, if-statements, and gotchas</a></p>
 
   <br>

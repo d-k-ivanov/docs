@@ -101,15 +101,15 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="treap-cartesian-tree">Treap (Cartesian Tree)</h1>
+    <h1 id="treap-cartesian-tree">Treap (Cartesian Tree)<a class="headerlink" href="#treap-cartesian-tree" title="Permanent link">#</a></h1>
 <p>Treap is a data structure which combines binary tree and binary heap (hence the name: tree + heap <span><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> Treap).</p>
 <p>More specifically, treap is a data structure that stores pairs (X, Y) in a binary tree in such a way that it is a binary search tree by X and a binary heap by Y.
 Assuming that all X and all Y are different, we can see that if some node of the tree contains values (<span><span class="MathJax_Preview">X_0</span><script type="math/tex">X_0</script></span>, <span><span class="MathJax_Preview">Y_0</span><script type="math/tex">Y_0</script></span>), all nodes in the left subtree have <span><span class="MathJax_Preview">X &lt; X_0</span><script type="math/tex">X < X_0</script></span>, all nodes in the right subtree have <span><span class="MathJax_Preview">X &gt; X_0</span><script type="math/tex">X > X_0</script></span>, and all nodes in both left and right subtrees have <span><span class="MathJax_Preview">Y &lt; Y_0</span><script type="math/tex">Y < Y_0</script></span>.</p>
 <p>Treaps have been proposed by Siedel and Aragon in 1989.</p>
-<h2 id="advantages-of-such-data-organisation">Advantages of such data organisation</h2>
+<h2 id="advantages-of-such-data-organisation">Advantages of such data organisation<a class="headerlink" href="#advantages-of-such-data-organisation" title="Permanent link">#</a></h2>
 <p>In such implementation X values are the keys (and at same time the values stored in the treap), and Y values are called <strong>priorities</strong>. Without priorities, the treap would be a regular binary search tree by X, and one set of X values could correspond to a lot of different trees, some of them degenerate (for example, in the form of a linked list), and therefore extremely slow (the main operations would have <span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span> complexity).</p>
 <p>At the same time, <strong>priorities*- allow to </strong>uniquely<em>- specify the tree that will be constructed (of course, it does not depend on the order in which values are added), which can be proven using corresponding theorem. Obviously, if you </em><em>choose the priorities randomly</em><em>, you will get non-degenerate trees on average, which will ensure <span><span class="MathJax_Preview">O(\log N)</span><script type="math/tex">O(\log N)</script></span> complexity for the main operations. Hence another name of this data structure - </em><em>randomized binary search tree</em>*.</p>
-<h2 id="operations">Operations</h2>
+<h2 id="operations">Operations<a class="headerlink" href="#operations" title="Permanent link">#</a></h2>
 <p>A treap provides the following operations:</p>
 <ul>
 <li>*<em>Insert(X,Y)</em>- in <span><span class="MathJax_Preview">O(\log N)</span><script type="math/tex">O(\log N)</script></span>.
@@ -126,7 +126,7 @@ Assuming that all X and all Y are different, we can see that if some node of the
   Finds the intersection of two trees (i.e. their common elements). We will not consider the implementation of this operation here.</li>
 </ul>
 <p>In addition, due to the fact that a treap is a binary search tree, it can implement other operations, such as finding the K-th largest element or finding the index of an element.</p>
-<h2 id="implementation-description">Implementation Description</h2>
+<h2 id="implementation-description">Implementation Description<a class="headerlink" href="#implementation-description" title="Permanent link">#</a></h2>
 <p>In terms of implementation, each node contains X, Y and pointers to the left (L) and right (R) children.</p>
 <p>We will implement all the required operations using just two auxiliary operations: Split and Merge.</p>
 <p>*<em>Split (T, X)</em>- separates tree T in 2 subtrees L and R trees (which are the return values of split) so that L contains all elements with key <span><span class="MathJax_Preview">X_L &lt; X</span><script type="math/tex">X_L < X</script></span>, and R contains all elements with key <span><span class="MathJax_Preview">X_R &gt; X</span><script type="math/tex">X_R > X</script></span>. This operation has <span><span class="MathJax_Preview">O (\log N)</span><script type="math/tex">O (\log N)</script></span> complexity and is implemented using an obvious recursion.</p>
@@ -135,8 +135,8 @@ Assuming that all X and all Y are different, we can see that if some node of the
 <p>Implementation of <strong>Erase (X)*- is also clear. First we descend in the tree (as in a regular binary search tree by X), looking for the element we want to delete. Once the node is found, we call </strong>Merge*- on it children and put the return value of the operation in the place of the element we're deleting.</p>
 <p>We implement <strong>Build*- operation with <span><span class="MathJax_Preview">O (N \log N)</span><script type="math/tex">O (N \log N)</script></span> complexity using <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> </strong>Insert*- calls.</p>
 <p>*<em>Union (<span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span>, <span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span>)</em>- has theoretical complexity <span><span class="MathJax_Preview">O (M \log (N / M))</span><script type="math/tex">O (M \log (N / M))</script></span>, but in practice it works very well, probably with a very small hidden constant. Let's assume without loss of generality that <span><span class="MathJax_Preview">T_1 \rightarrow Y &gt; T_2 \rightarrow Y</span><script type="math/tex">T_1 \rightarrow Y > T_2 \rightarrow Y</script></span>, i. e. root of <span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span> will be the root of the result. To get the result, we need to merge trees <span><span class="MathJax_Preview">T_1 \rightarrow L</span><script type="math/tex">T_1 \rightarrow L</script></span>, <span><span class="MathJax_Preview">T_1 \rightarrow R</span><script type="math/tex">T_1 \rightarrow R</script></span> and <span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span> in two trees which could be children of <span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span> root. To do this, we call Split (<span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span>, <span><span class="MathJax_Preview">T_1\rightarrow X</span><script type="math/tex">T_1\rightarrow X</script></span>), thus splitting <span><span class="MathJax_Preview">T_2</span><script type="math/tex">T_2</script></span> in two parts L and R, which we then recursively combine with children of <span><span class="MathJax_Preview">T_1</span><script type="math/tex">T_1</script></span>: Union (<span><span class="MathJax_Preview">T_1 \rightarrow L</span><script type="math/tex">T_1 \rightarrow L</script></span>, <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>) and Union (<span><span class="MathJax_Preview">T_1 \rightarrow R</span><script type="math/tex">T_1 \rightarrow R</script></span>, <span><span class="MathJax_Preview">R</span><script type="math/tex">R</script></span>), thus getting left and right subtrees of the result.</p>
-<h2 id="implementation">Implementation</h2>
-<pre><code class="cpp">struct item {
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
+<pre><code class="language-cpp">struct item {
     int key, prior;
     item - l, - r;
     item() { }
@@ -188,11 +188,10 @@ pitem unite (pitem l, pitem r) {
     return l;
 }
 </code></pre>
-
-<h2 id="maintaining-the-sizes-of-subtrees">Maintaining the sizes of subtrees</h2>
+<h2 id="maintaining-the-sizes-of-subtrees">Maintaining the sizes of subtrees<a class="headerlink" href="#maintaining-the-sizes-of-subtrees" title="Permanent link">#</a></h2>
 <p>To extend the functionality of the treap, it is often necessary to store the number of nodes in subtree of each node - field <code>int cnt</code> in the <code>item</code> structure. For example, it can be used to find K-th largest element of tree in <span><span class="MathJax_Preview">O (\log N)</span><script type="math/tex">O (\log N)</script></span>, or to find the index of the element in the sorted list with the same complexity. The implementation of these operations will be the same as for the regular binary search tree.</p>
 <p>When a tree changes (nodes are added or removed etc.), <code>cnt</code> of some nodes should be updated accordingly. We'll create two functions: <code>cnt()</code> will return the current value of <code>cnt</code> or 0 if the node does not exist, and <code>upd_cnt()</code> will update the value of <code>cnt</code> for this node assuming that for its children L and R the values of <code>cnt</code> have already been updated. Evidently it's sufficient to add calls of <code>upd_cnt()</code> to the end of <code>insert</code>, <code>erase</code>, <code>split</code> and <code>merge</code> to keep <code>cnt</code> values up-to-date.</p>
-<pre><code class="cpp">int cnt (pitem t) {
+<pre><code class="language-cpp">int cnt (pitem t) {
     return t ? t-&gt;cnt : 0;
 }
 
@@ -201,10 +200,9 @@ void upd_cnt (pitem t) {
         t-&gt;cnt = 1 + cnt(t-&gt;l) + cnt (t-&gt;r);
 }
 </code></pre>
-
-<h2 id="building-a-treap-in-o-no-n-in-offline-mode">Building a Treap in <span><span class="MathJax_Preview">O (N)</span><script type="math/tex">O (N)</script></span> in offline mode</h2>
+<h2 id="building-a-treap-in-o-no-n-in-offline-mode">Building a Treap in <span><span class="MathJax_Preview">O (N)</span><script type="math/tex">O (N)</script></span> in offline mode<a class="headerlink" href="#building-a-treap-in-o-no-n-in-offline-mode" title="Permanent link">#</a></h2>
 <p>Given a sorted list of keys, it is possible to construct a treap faster than by inserting the keys one at a time which takes <span><span class="MathJax_Preview">O(N \log N)</span><script type="math/tex">O(N \log N)</script></span>. Since the keys are sorted, a balanced binary search tree can be easily constructed in linear time. The heap values <span><span class="MathJax_Preview">Y</span><script type="math/tex">Y</script></span> are initialized randomly and then can be heapified independent of the keys <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> to <a href="https://en.wikipedia.org/wiki/Binary_heap#Building_a_heap">build the heap</a> in <span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span>.</p>
-<pre><code class="cpp">void heapify (pitem t) {
+<pre><code class="language-cpp">void heapify (pitem t) {
     if (!t) return;
     pitem max = t;
     if (t-&gt;l != NULL &amp;&amp; t-&gt;l-&gt;prior &gt; max-&gt;prior)
@@ -228,9 +226,8 @@ pitem build (int - a, int n) {
     return t;
 }
 </code></pre>
-
 <p>It's also possible to compute the sizes of the subtrees with this approach. It is enough to call <code>upd_cnt(t)</code> before returning from the <code>build</code> function.</p>
-<h2 id="implicit-treaps">Implicit Treaps</h2>
+<h2 id="implicit-treaps">Implicit Treaps<a class="headerlink" href="#implicit-treaps" title="Permanent link">#</a></h2>
 <p>Implicit treap is a simple modification of the regular treap which is a very powerful data structure. In fact, implicit treap can be considered as an array with the following procedures implemented (all in <span><span class="MathJax_Preview">O (\log N)</span><script type="math/tex">O (\log N)</script></span> in the online mode):</p>
 <ul>
 <li>Inserting an element in the array in any location</li>
@@ -244,7 +241,7 @@ pitem build (int - a, int n) {
 More specifically, the *<em>implicit key</em>- for some node T is the number of vertices <span><span class="MathJax_Preview">cnt (T \rightarrow L)</span><script type="math/tex">cnt (T \rightarrow L)</script></span> in the left subtree of this node plus similar values <span><span class="MathJax_Preview">cnt (P \rightarrow L) + 1</span><script type="math/tex">cnt (P \rightarrow L) + 1</script></span> for each ancestor P of the node T, if T is in the right subtree of P.</p>
 <p>Now it's clear how to calculate the implicit key of current node quickly. Since in all operations we arrive to any node by descending in the tree, we can just accumulate this sum and pass it to the function. If we go to the left subtree, the accumulated sum does not change, if we go to the right subtree it increases by <span><span class="MathJax_Preview">cnt (T \rightarrow L) +1</span><script type="math/tex">cnt (T \rightarrow L) +1</script></span>.</p>
 <p>Here are the new implementations of <strong>Split*- and </strong>Merge**:</p>
-<pre><code class="cpp">void merge (pitem &amp; t, pitem l, pitem r) {
+<pre><code class="language-cpp">void merge (pitem &amp; t, pitem l, pitem r) {
     if (!l || !r)
         t = l ? l : r;
     else if (l-&gt;prior &gt; r-&gt;prior)
@@ -265,7 +262,6 @@ void split (pitem t, pitem &amp; l, pitem &amp; r, int key, int add = 0) {
     upd_cnt (t);
 }
 </code></pre>
-
 <p>Now let's consider the implementation of various operations on implicit treaps:</p>
 <ul>
 <li><strong>Insert element</strong>.
@@ -282,7 +278,7 @@ void split (pitem t, pitem &amp; l, pitem &amp; r, int key, int add = 0) {
  This is again similar to the previous operation: we have to add boolean flag ‘rev’ and set it to true when the subtree of the current node has to be reversed. "Pushing" this value is a bit complicated - we swap children of this node and set this flag to true for them.</li>
 </ul>
 <p>Here is an example implementation of the implicit treap with reverse on the interval. For each node we store field called <code>value</code> which is the actual value of the array element at current position. We also provide implementation of the function <code>output()</code>, which outputs an array that corresponds to the current state of the implicit treap.</p>
-<pre><code class="cpp">typedef struct item - pitem;
+<pre><code class="language-cpp">typedef struct item - pitem;
 struct item {
     int prior, value, cnt;
     bool rev;
@@ -348,12 +344,11 @@ void output (pitem t) {
     output (t-&gt;r);
 }
 </code></pre>
-
-<h2 id="literature">Literature</h2>
+<h2 id="literature">Literature<a class="headerlink" href="#literature" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://www.cs.cmu.edu/~scandal/papers/treaps-spaa98.pdf">Blelloch, Reid-Miller "Fast Set Operations Using Treaps"</a></li>
 </ul>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="http://www.spoj.com/problems/ADAAPHID/">SPOJ - Ada and Aphids</a></li>
 <li><a href="http://www.spoj.com/problems/ADACROP/">SPOJ - Ada and Harvest</a></li>

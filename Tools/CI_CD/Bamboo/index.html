@@ -93,10 +93,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="bamboo">Bamboo</h1>
-<h2 id="fix-powershell-task-on-windows-agent">Fix PowerShell Task on Windows Agent</h2>
+    <h1 id="bamboo">Bamboo<a class="headerlink" href="#bamboo" title="Permanent link">#</a></h1>
+<h2 id="fix-powershell-task-on-windows-agent">Fix PowerShell Task on Windows Agent<a class="headerlink" href="#fix-powershell-task-on-windows-agent" title="Permanent link">#</a></h2>
 <p>Error:</p>
-<pre><code class="txt">com.atlassian.utils.process.ProcessNotStartedException: powershell could not be started
+<pre><code class="language-txt">com.atlassian.utils.process.ProcessNotStartedException: powershell could not be started
     at com.atlassian.utils.process.ExternalProcessImpl.start(ExternalProcessImpl.java:342)
     at com.atlassian.bamboo.process.ProcessServiceImpl.executeExternalProcess(ProcessServiceImpl.java:204)
     at com.atlassian.bamboo.process.ProcessServiceImpl.executeExternalProcess(ProcessServiceImpl.java:218)
@@ -129,9 +129,8 @@ Caused by: java.io.IOException: CreateProcess error=2, The system cannot find th
     at java.lang.ProcessImpl.&lt;init&gt;(Unknown Source)
     at java.lang.ProcessI
 </code></pre>
-
 <p>Resolution:</p>
-<pre><code class="ps1">Remove-ItemProperty -Path 'Registry::HKEY_USERS\.DEFAULT\Environment\' -Name PATH
+<pre><code class="language-ps1">Remove-ItemProperty -Path 'Registry::HKEY_USERS\.DEFAULT\Environment\' -Name PATH
 [Environment]::SetEnvironmentVariable(&quot;PATH&quot;, $null, &quot;User&quot;)
 </code></pre>
 

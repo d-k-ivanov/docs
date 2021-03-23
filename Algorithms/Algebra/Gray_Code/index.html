@@ -96,18 +96,17 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="gray-code">Gray Code</h1>
+    <h1 id="gray-code">Gray Code<a class="headerlink" href="#gray-code" title="Permanent link">#</a></h1>
 <p>Gray code is a binary numeral system where two successive values differ in only one bit.</p>
 <p>For example, the sequence of Gray codes for 3-bit numbers is: 000, 001, 011, 010, 110, 111, 101, 100, so <span><span class="MathJax_Preview">G(4) = 6</span><script type="math/tex">G(4) = 6</script></span>.</p>
 <p>This code was invented by Frank Gray in 1953.</p>
-<h2 id="finding-gray-code">Finding Gray code</h2>
+<h2 id="finding-gray-code">Finding Gray code<a class="headerlink" href="#finding-gray-code" title="Permanent link">#</a></h2>
 <p>Let's look at the bits of number <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> and the bits of number <span><span class="MathJax_Preview">G(n)</span><script type="math/tex">G(n)</script></span>. Notice that <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>-th bit of <span><span class="MathJax_Preview">G(n)</span><script type="math/tex">G(n)</script></span> equals 1 only when <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>-th bit of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> equals 1 and <span><span class="MathJax_Preview">i + 1</span><script type="math/tex">i + 1</script></span>-th bit equals 0 or the other way around (<span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>-th bit equals 0 and <span><span class="MathJax_Preview">i + 1</span><script type="math/tex">i + 1</script></span>-th bit equals 1). Thus, <span><span class="MathJax_Preview">G(n) = n \oplus (n &gt;&gt; 1)</span><script type="math/tex">G(n) = n \oplus (n >> 1)</script></span>:</p>
-<pre><code class="cpp">int g (int n) {
+<pre><code class="language-cpp">int g (int n) {
     return n ^ (n &gt;&gt; 1);
 }
 </code></pre>
-
-<h2 id="finding-inverse-gray-code">Finding inverse Gray code</h2>
+<h2 id="finding-inverse-gray-code">Finding inverse Gray code<a class="headerlink" href="#finding-inverse-gray-code" title="Permanent link">#</a></h2>
 <p>Given Gray code <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span>, restore the original number <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.</p>
 <p>We will move from the most significant bits to the least significant ones (the least significant bit has index 1 and the most significant bit has index <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>). The relation between the bits <span><span class="MathJax_Preview">n_i</span><script type="math/tex">n_i</script></span> of number <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> and the bits <span><span class="MathJax_Preview">g_i</span><script type="math/tex">g_i</script></span> of number <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span>:</p>
 <div>
@@ -127,15 +126,14 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 \end{align}</script>
 </div>
 <p>The easiest way to write it in code is:</p>
-<pre><code class="cpp">int rev_g (int g) {
+<pre><code class="language-cpp">int rev_g (int g) {
   int n = 0;
   for (; g; g &gt;&gt;= 1)
     n ^= g;
   return n;
 }
 </code></pre>
-
-<h2 id="practical-applications">Practical applications</h2>
+<h2 id="practical-applications">Practical applications<a class="headerlink" href="#practical-applications" title="Permanent link">#</a></h2>
 <p>Gray codes have some useful applications, sometimes quite unexpected:</p>
 <ul>
 <li>
@@ -161,7 +159,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Gray codes are also used in genetic algorithms theory.</p>
 </li>
 </ul>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="http://codeforces.com/problemsets/acmsguru/problem/99999/249">SGU #249 <b>"Matrix"</b> &nbsp;&nbsp;&nbsp;&nbsp; [Difficulty: medium]</a></li>
 </ul>

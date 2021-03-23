@@ -96,17 +96,15 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="copy-file-to-bunch-of-servers-by-ip">Copy file to bunch of servers by ip</h3>
-<pre><code class="ps1"># for ($i=&lt;1&gt;; $i -le &lt;254&gt;; $i++) { scp &lt;Path-To-File&gt; &lt;username&gt;@&lt;XXX.XXX.XXX&gt;.$($i):&lt;Path-On-server&gt; }
+    <h3 id="copy-file-to-bunch-of-servers-by-ip">Copy file to bunch of servers by ip<a class="headerlink" href="#copy-file-to-bunch-of-servers-by-ip" title="Permanent link">#</a></h3>
+<pre><code class="language-ps1"># for ($i=&lt;1&gt;; $i -le &lt;254&gt;; $i++) { scp &lt;Path-To-File&gt; &lt;username&gt;@&lt;XXX.XXX.XXX&gt;.$($i):&lt;Path-On-server&gt; }
 for ($i=2; $i -le 3; $i++) { scp C:\Users\dkiva\Downloads\jdk-10.0.1_linux-x64_bin.rpm divanov@172.30.30.$($i):~/jdk-10.0.1_linux-x64_bin.rpm }
 </code></pre>
-
-<h3 id="unpack-any-targz-in-current-folder">Unpack any tar.gz in current folder</h3>
-<pre><code class="ps1">Get-Location | Get-ChildItem | ForEach-Object {tar zxf $_.Name }
+<h3 id="unpack-any-targz-in-current-folder">Unpack any tar.gz in current folder<a class="headerlink" href="#unpack-any-targz-in-current-folder" title="Permanent link">#</a></h3>
+<pre><code class="language-ps1">Get-Location | Get-ChildItem | ForEach-Object {tar zxf $_.Name }
 </code></pre>
-
-<h3 id="kill-process-by-name">Kill process by name</h3>
-<pre><code class="ps1"># Get-Process &lt;ProcessName&gt; | ForEach-Object { Stop-Process $_.Id }
+<h3 id="kill-process-by-name">Kill process by name<a class="headerlink" href="#kill-process-by-name" title="Permanent link">#</a></h3>
+<pre><code class="language-ps1"># Get-Process &lt;ProcessName&gt; | ForEach-Object { Stop-Process $_.Id }
 Get-Process tar | ForEach-Object { Stop-Process $_.Id }
 </code></pre>
 

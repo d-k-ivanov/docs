@@ -92,11 +92,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="hello-world">Hello World</h3>
+    <h3 id="hello-world">Hello World<a class="headerlink" href="#hello-world" title="Permanent link">#</a></h3>
 <ul>
 <li>C</li>
 </ul>
-<pre><code class="c">#include &lt;stdio.h&gt;
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 #include &lt;mpi.h&gt;
 
 main(int argc, char **argv)
@@ -115,11 +115,10 @@ main(int argc, char **argv)
    return 0;
 }
 </code></pre>
-
 <ul>
 <li>RUN</li>
 </ul>
-<pre><code class="bash">#!/bin/bash
+<pre><code class="language-bash">#!/bin/bash
 #$ -l mem=1G
 #$ -l h_rt=0:15:00
 #$ -pe mpi-fill 8

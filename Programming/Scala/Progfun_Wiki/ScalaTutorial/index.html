@@ -102,19 +102,19 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <p>This page gives a very brief tutorial on the Scala programming language.</p>
-<h2 id="classes-traits-objects-and-packages">Classes, Traits, Objects and Packages</h2>
-<h3 id="classes">Classes</h3>
+<h2 id="classes-traits-objects-and-packages">Classes, Traits, Objects and Packages<a class="headerlink" href="#classes-traits-objects-and-packages" title="Permanent link">#</a></h2>
+<h3 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">#</a></h3>
 <p>Classes in Scala are very similar to classes in Java. They are templates containing fields and methods. Like in Java, classes can be instantiated using the <code>new</code> construct, there can be many "instances" (or "objects") of the same class.</p>
 <p>In Scala there exists a special kind of class named <code>case</code> classes. You will learn about case classes during the course.</p>
 <p>Classes in Scala cannot have static members. You can use objects (see below) to achieve similar functionality as with static members in Java.</p>
-<h3 id="traits">Traits</h3>
+<h3 id="traits">Traits<a class="headerlink" href="#traits" title="Permanent link">#</a></h3>
 <p>Traits are like interfaces in Java, but they can also contain concrete members, i.e. method implementations or field definitions.</p>
-<h3 id="objects">Objects</h3>
+<h3 id="objects">Objects<a class="headerlink" href="#objects" title="Permanent link">#</a></h3>
 <p>Object in Scala are like classes, but for every <code>object</code> definition there is only one single instance. It is not possible to create instances of objects using <code>new</code>, instead you can just access the members (methods or fields) of an object using its name.</p>
-<h3 id="packages">Packages</h3>
+<h3 id="packages">Packages<a class="headerlink" href="#packages" title="Permanent link">#</a></h3>
 <p>Adding a statement such as <code>package foo.bar</code> at the top of a file makes the code in a file part of the package <code>foo.bar</code>. You can then do <code>import foo.bar._</code> to make everything from package <code>foo.bar</code> available in your code. The content of a package can be scattered across many files. If you define a <code>class MyClass</code> in package <code>foo.bar</code>, you can import that specific class (and not anything else from that package) with <code>import foo.bar.MyClass</code>.</p>
 <p>In Scala, everything can be imported, not only class names. So for instance if you have an <code>object baz</code> in package <code>foo.bar</code>, then <code>import foo.bar.baz._</code> would import all the members of that object.</p>
-<h3 id="hello-world-in-scala"><em>Hello, World!</em> in Scala</h3>
+<h3 id="hello-world-in-scala"><em>Hello, World!</em> in Scala<a class="headerlink" href="#hello-world-in-scala" title="Permanent link">#</a></h3>
 <p>Here are two ways to define a program which outputs "Hello, World!" in Scala:</p>
 <pre><code>object HelloWorld extends App {
   println("Hello, World!")
@@ -128,7 +128,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 }
 </code></pre>
 <p>In Scala, the <code>main</code> or entry point method is defined in an <code>object</code>. An object can be made executable by either adding extending the type <code>App</code> or by adding a method <code>def main(args: Array[String])</code>.</p>
-<h2 id="source-files-classfiles-and-the-jvm">Source Files, Classfiles and the JVM</h2>
+<h2 id="source-files-classfiles-and-the-jvm">Source Files, Classfiles and the JVM<a class="headerlink" href="#source-files-classfiles-and-the-jvm" title="Permanent link">#</a></h2>
 <p>Scala source code is stored in text files with the extension <code>.scala</code>. Typically Scala programmers create one source file for each class, or one source file for a class hierarchy: In fact, Scala allows multiple classes and objects to be defined in the same source file.</p>
 <ul>
 <li>The name of a Scala source file can be chosen freely, but it is recommended to use the name of a class which is defined in that file.</li>
@@ -136,7 +136,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </ul>
 <p>The scala compiler compiles <code>.scala</code> source files to <code>.class</code> files, like the Java compiler. Classfiles are binary files containing machine code for the Java Virtual Machine. In order to run a Scala program, the JVM has to know the directory where classfiles are stored. This parameter is called the "classpath".</p>
 <p>If you are using eclipse or sbt to compile and run your Scala code, you don't need to do any of the above manually - these tools take care of invoking the Scala compiler and the JVM with the correct arguments.</p>
-<h2 id="external-documentation">External Documentation</h2>
+<h2 id="external-documentation">External Documentation<a class="headerlink" href="#external-documentation" title="Permanent link">#</a></h2>
 <p>There is a large number of online resources available for learning Scala. The <a href="?page=LearningResources">Learning Resources</a> wiki page contains a few links that we think are the most useful for our class.</p>
 
   <br>

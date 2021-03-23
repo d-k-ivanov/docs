@@ -95,17 +95,17 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="cycle-and-graph-acyclicity">Cycle and Graph Acyclicity</h1>
-<h2 id="checking-a-graph-for-acyclicity-and-finding-a-cycle-in">Checking a graph for acyclicity and finding a cycle in</h2>
+    <h1 id="cycle-and-graph-acyclicity">Cycle and Graph Acyclicity<a class="headerlink" href="#cycle-and-graph-acyclicity" title="Permanent link">#</a></h1>
+<h2 id="checking-a-graph-for-acyclicity-and-finding-a-cycle-in">Checking a graph for acyclicity and finding a cycle in<a class="headerlink" href="#checking-a-graph-for-acyclicity-and-finding-a-cycle-in" title="Permanent link">#</a></h2>
 <p>Complexity: <span><span class="MathJax_Preview">O(M)</span><script type="math/tex">O(M)</script></span></p>
 <p>Consider a directed or undirected graph without loops and multiple edges. We have to check whether it is acyclic, and if it is not, then find any cycle.</p>
 <p>We can solve this problem by using <a href="/docs/#Algorithms/Graph_Theory/Depth_First_Search/">Depth First Search</a> in <span><span class="MathJax_Preview">O(M)</span><script type="math/tex">O(M)</script></span> where <span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> is number of edges.</p>
-<h2 id="algorithm">Algorithm</h2>
+<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
 <p>We will run a series of DFS in the graph. Initially all vertices are colored white (0). From each unvisited (white) vertex, start the DFS, mark it gray (1) while entering and mark it black (2) on exit. If DFS moves to a gray vertex, then we have found a cycle (if the graph is undirected, the edge to parent is not considered).
 The cycle itself can be reconstructed using parent array.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>Here is an implementation for directed graph.</p>
-<pre><code class="cpp">int n;
+<pre><code class="language-cpp">int n;
 vector&lt;vector&lt;int&gt;&gt; adj;
 vector&lt;char&gt; color;
 vector&lt;int&gt; parent;
@@ -155,9 +155,8 @@ void find_cycle() {
     }
 }
 </code></pre>
-
 <p>Here is an implementation for undirected graph.</p>
-<pre><code class="cpp">int n;
+<pre><code class="language-cpp">int n;
 vector&lt;vector&lt;int&gt;&gt; adj;
 vector&lt;char&gt; color;
 vector&lt;int&gt; parent;

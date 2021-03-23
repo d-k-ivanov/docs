@@ -95,10 +95,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="stars-and-bars">Stars and Bars</h1>
+    <h1 id="stars-and-bars">Stars and Bars<a class="headerlink" href="#stars-and-bars" title="Permanent link">#</a></h1>
 <p>Stars and bars is a mathematical technique for solving certain combinatorial problems.
 It occurs whenever you want to count the number of ways to group identical objects.</p>
-<h2 id="theorem">Theorem</h2>
+<h2 id="theorem">Theorem<a class="headerlink" href="#theorem" title="Permanent link">#</a></h2>
 <p>The number of ways to put <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> identical objects into <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> labeled boxes is
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\binom{n + k - 1}{n}.</span><script type="math/tex">\binom{n + k - 1}{n}.</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\binom{n + k - 1}{n}.</span><script type="math/tex">\binom{n + k - 1}{n}.</script></span></script></span></p>
 <p>The proof involves turning the objects into stars and separating the boxes using bars (therefore the name).
@@ -108,7 +108,7 @@ This is one way of dividing 5 objects into 4 boxes.</p>
 <p>It should be pretty obvious, that every partition can be represented using <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> stars and <span><span class="MathJax_Preview">k - 1</span><script type="math/tex">k - 1</script></span> bars and every stars and bars permutation using <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> stars and <span><span class="MathJax_Preview">k - 1</span><script type="math/tex">k - 1</script></span> bars represents one partition.
 Therefore the number of ways to divide <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> identical objects into <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> labeled boxes is the same number as there are permutations of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> stars and <span><span class="MathJax_Preview">k - 1</span><script type="math/tex">k - 1</script></span> bars.
 The <a href="/docs/#Algorithms/Combinatorics/Binomial_Coefficients/">Binomial Coefficient</a> gives us the desired formula.</p>
-<h2 id="number-of-non-negative-integer-sums">Number of non-negative integer sums</h2>
+<h2 id="number-of-non-negative-integer-sums">Number of non-negative integer sums<a class="headerlink" href="#number-of-non-negative-integer-sums" title="Permanent link">#</a></h2>
 <p>This problem is a direct application of the theorem.</p>
 <p>You want to count the number of solution of the equation
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">x_1 + x_2 + \dots + x_k = n</span><script type="math/tex">x_1 + x_2 + \dots + x_k = n</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">x_1 + x_2 + \dots + x_k = n</span><script type="math/tex">x_1 + x_2 + \dots + x_k = n</script></span></script></span>
@@ -117,7 +117,7 @@ with <span><span class="MathJax_Preview">x_i \ge 0</span><script type="math/tex"
 E.g. the solution <span><span class="MathJax_Preview">1 + 3 + 0 = 4</span><script type="math/tex">1 + 3 + 0 = 4</script></span> for <span><span class="MathJax_Preview">n = 4</span><script type="math/tex">n = 4</script></span>, <span><span class="MathJax_Preview">k = 3</span><script type="math/tex">k = 3</script></span> can be represented using <span><span class="MathJax_Preview">\bigstar | \bigstar \bigstar \bigstar |</span><script type="math/tex">\bigstar | \bigstar \bigstar \bigstar |</script></span>.</p>
 <p>It is easy to see, that this is exactly the stars an bars theorem.
 Therefore the solution is <span><span class="MathJax_Preview">\binom{n + k - 1}{n}</span><script type="math/tex">\binom{n + k - 1}{n}</script></span>.</p>
-<h2 id="number-of-lower-bound-integer-sums">Number of lower-bound integer sums</h2>
+<h2 id="number-of-lower-bound-integer-sums">Number of lower-bound integer sums<a class="headerlink" href="#number-of-lower-bound-integer-sums" title="Permanent link">#</a></h2>
 <p>This can easily be extended to integer sums with different lower bounds.
 I.e. we want to count the number of solutions for  the equation
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">x_1 + x_2 + \dots + x_k = n</span><script type="math/tex">x_1 + x_2 + \dots + x_k = n</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">x_1 + x_2 + \dots + x_k = n</span><script type="math/tex">x_1 + x_2 + \dots + x_k = n</script></span></script></span>

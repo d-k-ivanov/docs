@@ -100,8 +100,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="pacman">Pacman</h3>
-<pre><code class="sh"># Search for software
+    <h3 id="pacman">Pacman<a class="headerlink" href="#pacman" title="Permanent link">#</a></h3>
+<pre><code class="language-sh"># Search for software
 pacman -Ss &lt;pattern&gt;
 # Install package
 pacman -S &lt;package_name&gt;
@@ -114,9 +114,8 @@ pacman-optimize &amp;&amp; sync
 # Show all pacages whitc now installed as dependencies
 pacman -Qet
 </code></pre>
-
-<h3 id="aur-package-installation">AUR package installation</h3>
-<pre><code class="sh">git clone https://aur.archlinux.org/&lt;packiage_name&gt;
+<h3 id="aur-package-installation">AUR package installation<a class="headerlink" href="#aur-package-installation" title="Permanent link">#</a></h3>
+<pre><code class="language-sh">git clone https://aur.archlinux.org/&lt;packiage_name&gt;
 cd &lt;package_name&gt;
 makepkg -sri
 
@@ -127,9 +126,8 @@ gpg --recv-key 0000000000000000
 pacman-key --verify &lt;sig_file&gt;
 makepkg --skippgpcheck -sri
 </code></pre>
-
-<h3 id="some-python-packages-exist-in-filesystem">Some Python packages exist in filesystem</h3>
-<pre><code class="bash"># First method:
+<h3 id="some-python-packages-exist-in-filesystem">Some Python packages exist in filesystem<a class="headerlink" href="#some-python-packages-exist-in-filesystem" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># First method:
 mv /usr/lib/python2.7/site-packages/&lt;package&gt; /tmp/removed_py/
 # Second method:
 pip freeze | xargs pip uninstall -y
@@ -138,14 +136,12 @@ pip freeze | grep -v &quot;^-e&quot; | xargs pip uninstall -y
 #yaourt -Syu --aur
 pacman -Syu
 </code></pre>
-
-<h3 id="ca-certificates-utils-etcsslcertsca-certificatescrt-exists-in-filesystem">ca-certificates-utils: /etc/ssl/certs/ca-certificates.crt exists in filesystem</h3>
-<pre><code class="bash">mv /etc/ssl/certs/ca-certificates.crt /tmp
+<h3 id="ca-certificates-utils-etcsslcertsca-certificatescrt-exists-in-filesystem">ca-certificates-utils: /etc/ssl/certs/ca-certificates.crt exists in filesystem<a class="headerlink" href="#ca-certificates-utils-etcsslcertsca-certificatescrt-exists-in-filesystem" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">mv /etc/ssl/certs/ca-certificates.crt /tmp
 #yaourt -Syu --aur
 pacman -Syu
 </code></pre>
-
-<h3 id="sort-installed-packages-by-size">Sort installed packages by size</h3>
+<h3 id="sort-installed-packages-by-size">Sort installed packages by size<a class="headerlink" href="#sort-installed-packages-by-size" title="Permanent link">#</a></h3>
 <pre><code>pacman -Qi | egrep '^(Name|Installed)' | cut -f2 -d':' | paste - - | column -t | sort -nrk 2 | grep MiB | less 
 </code></pre>
 

@@ -98,11 +98,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="list-all-packages-without-version-with-powershell">List all packages without version with powershell</h3>
+    <h3 id="list-all-packages-without-version-with-powershell">List all packages without version with powershell<a class="headerlink" href="#list-all-packages-without-version-with-powershell" title="Permanent link">#</a></h3>
 <pre><code>$packs = $(pip freeze --local); foreach($pack in $packs) { Write-Host $pack.Substring(0, $pack.IndexOf('=')) }
 </code></pre>
-
-<h3 id="update-all-packages-with-powershell">Update all packages with powershell</h3>
+<h3 id="update-all-packages-with-powershell">Update all packages with powershell<a class="headerlink" href="#update-all-packages-with-powershell" title="Permanent link">#</a></h3>
 <pre><code>$packs = $(pip freeze --local); foreach($pack in $packs) { pip install -U $pack.Substring(0, $pack.IndexOf('=')) }
 
 
@@ -111,14 +110,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 pip install &lt;package_name&gt;
 pip3 install &lt;package_name&gt;
 </code></pre>
-
-<h3 id="update">Update</h3>
-<pre><code class="bash">pip install -U &lt;package_name&gt;
+<h3 id="update">Update<a class="headerlink" href="#update" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">pip install -U &lt;package_name&gt;
 pip3 install -U &lt;package_name&gt;
 </code></pre>
-
-<h3 id="update-all">Update all</h3>
-<pre><code class="bash">pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
+<h3 id="update-all">Update all<a class="headerlink" href="#update-all" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
 pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U
 </code></pre>
 

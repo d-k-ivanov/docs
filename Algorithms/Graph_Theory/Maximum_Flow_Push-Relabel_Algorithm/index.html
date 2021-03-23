@@ -96,12 +96,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="maximum-flow-push-relabel-algorithm">Maximum Flow: Push-Relabel Algorithm</h1>
+    <h1 id="maximum-flow-push-relabel-algorithm">Maximum Flow: Push-Relabel Algorithm<a class="headerlink" href="#maximum-flow-push-relabel-algorithm" title="Permanent link">#</a></h1>
 <p>The push-relabel algorithm (or also known as preflow-push algorithm) is an algorithm for computing the maximum flow of a flow network.
 The exact definition of the problem that we want to solve can be found in the article <a href="/docs/#Algorithms/Graph_Theory/Maximum_Flow_Ford-Fulkerson_and_Edmonds-Karp/">Maximum flow - Ford-Fulkerson and Edmonds-Karp</a>.</p>
 <p>In this article we will consider solving the problem by pushing a preflow through the network, which will run in <span><span class="MathJax_Preview">O(V^4)</span><script type="math/tex">O(V^4)</script></span>, or more precisely in <span><span class="MathJax_Preview">O(V^2 E)</span><script type="math/tex">O(V^2 E)</script></span>, time.
 The algorithm was designed by Andrew Goldberg and Robert Tarjan in 1985.</p>
-<h2 id="definitions">Definitions</h2>
+<h2 id="definitions">Definitions<a class="headerlink" href="#definitions" title="Permanent link">#</a></h2>
 <p>During the algorithm we will have to handle a <strong>preflow</strong> - i.e. a function <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> that is similar to the flow function, but does not necessarily satisfies the flow conservation constraint.
 For it only the constraints
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">0 \le f(e) \le c(e)</span><script type="math/tex">0 \le f(e) \le c(e)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">0 \le f(e) \le c(e)</span><script type="math/tex">0 \le f(e) \le c(e)</script></span></script></span>
@@ -132,7 +132,7 @@ If then the algorithm determines, the preflow is a valid flow.
 And because we also have a valid labeling, there doesn't exists a path between <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> and <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> in the residual graph, which means that the flow is actually a maximum flow.</p>
 <p>If we compare the Ford-Fulkerson algorithm with the push-relabel algorithm it seems like the algorithms are the duals of each other.
 The Ford-Fulkerson algorithm keeps a valid flow at all time and improves it until there doesn't exists an augmenting path any more, while in the push-relabel algorithm there doesn't exists an augmenting path at any time, and we will improve the preflow until it is a valid flow.</p>
-<h2 id="algorithm">Algorithm</h2>
+<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
 <p>First we have to initialize the graph with a valid preflow and labeling function.</p>
 <p>Using the empty preflow - like it is done in the Ford-Fulkerson algorithm - is not possible, because then there will be an augmenting path and this implies that there doesn't exists a valid labeling.
 Therefore we will initialize each edges outgoing from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> with its maximal capacity: <span><span class="MathJax_Preview">f((s, u)) = c((s, u))</span><script type="math/tex">f((s, u)) = c((s, u))</script></span>.
@@ -150,13 +150,13 @@ We will increase it by as much as it is possible, while still maintaining validi
 We initialize a valid preflow and a valid labeling.
 While we can perform push or relabel operations, we perform them.
 Afterwards the preflow is actually a flow and we return it.</p>
-<h2 id="complexity">Complexity</h2>
+<h2 id="complexity">Complexity<a class="headerlink" href="#complexity" title="Permanent link">#</a></h2>
 <p>It is easy to show, that the maximal label of a vertex is <span><span class="MathJax_Preview">2|V| - 1</span><script type="math/tex">2|V| - 1</script></span>.
 At this point all remaining excess can and will be pushed back to the source.
 This gives at most <span><span class="MathJax_Preview">O(V^2)</span><script type="math/tex">O(V^2)</script></span> relabel operations.</p>
 <p>It can also be showed, that there will be at most <span><span class="MathJax_Preview">O(V E)</span><script type="math/tex">O(V E)</script></span> saturating pushes (a push where the total capacity of the edge is used) and at most <span><span class="MathJax_Preview">O(V^2 E)</span><script type="math/tex">O(V^2 E)</script></span> non-saturating pushes (a push where the capacity of an edge is not fully used) performed.
 If we pick a data structure that allows us to find the next vertex with excess in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> time, then the total complexity of the algorithm is <span><span class="MathJax_Preview">O(V^2 E)</span><script type="math/tex">O(V^2 E)</script></span>.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>```cpp push_relabel
 const int inf = 1000000000;</p>
 <p>int n;
