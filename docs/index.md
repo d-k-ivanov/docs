@@ -6,7 +6,7 @@
 * [GitHub repo](https://github.com/d-k-ivanov)
 * [Facebook](https://www.facebook.com/a1231239849)
 * [VK.com](https://vk.com/d.k.ivanov)
-* [LinkedIn](https://www.linkedin.com/in/dmitriy-ivanov-5b9275b3/)
+* [LinkedIn](https://www.linkedin.com/in/dmitry-ivanov-5b9275b3/)
 
 ---
 
