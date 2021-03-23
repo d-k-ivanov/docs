@@ -101,14 +101,14 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="c-coding-standard">C Coding Standard</h1>
-<h2 id="names">Names</h2>
+    <h1 id="c-coding-standard">C Coding Standard<a class="headerlink" href="#c-coding-standard" title="Permanent link">#</a></h1>
+<h2 id="names">Names<a class="headerlink" href="#names" title="Permanent link">#</a></h2>
 <hr />
-<h3 id="make-names-fit">Make Names Fit</h3>
+<h3 id="make-names-fit">Make Names Fit<a class="headerlink" href="#make-names-fit" title="Permanent link">#</a></h3>
 <p>Names are the heart of programming. In the past people believed knowing someone's true name gave them magical power over that person. If you can think up the true name for something, you give yourself and the people coming after power over the code. Don't laugh!</p>
 <p>A name is the result of a long deep thought process about the ecology it lives in. Only a programmer who understands the system as a whole can create a name that "fits" with the system. If the name is appropriate everything fits together naturally, relationships are clear, meaning is derivable, and reasoning from common human expectations works as expected.</p>
 <p>If you find all your names could be Thing and DoIt then you should probably revisit your design.</p>
-<h3 id="function-names">Function Names</h3>
+<h3 id="function-names">Function Names<a class="headerlink" href="#function-names" title="Permanent link">#</a></h3>
 <p>Usually every function performs an action, so the name should make clear what it does: check_for_errors() instead of error_check(), dump_data_to_file() instead of data_file(). This will also make functions and data objects more distinguishable.</p>
 <p>Structs are often nouns. By making function names verbs and following other naming conventions programs can be read more naturally.</p>
 <p>Suffixes are sometimes useful:</p>
@@ -125,14 +125,14 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li><em>set</em> - set a value.</li>
 </ul>
 <p>For example: is_hit_retry_limit.</p>
-<h3 id="include-units-in-names">Include Units in Names</h3>
+<h3 id="include-units-in-names">Include Units in Names<a class="headerlink" href="#include-units-in-names" title="Permanent link">#</a></h3>
 <p>If a variable represents time, weight, or some other unit then include the unit in the name so developers can more easily spot problems.
 For example:</p>
 <ul>
 <li>uint32 timeout_msecs;</li>
 <li>uint32 my_weight_lbs;</li>
 </ul>
-<h3 id="structure-names">Structure Names</h3>
+<h3 id="structure-names">Structure Names<a class="headerlink" href="#structure-names" title="Permanent link">#</a></h3>
 <p>Use underbars ('_') to separate name components.</p>
 <p>When declaring variables in structures, declare them organized by use in a manner to attempt to minimize memory wastage because of compiler alignment issues, then by size, and then by alphabetical order.</p>
 <ul>
@@ -141,7 +141,7 @@ For example:</p>
 </ul>
 <p>Each variable gets its own type and line, although an exception can be made when declaring bitfields (to clarify that it's part of the one bitfield). Note that the use of bitfields in general is discouraged. Major structures should be declared at the top of the file in which they are used, or in separate header files, if they are used in multiple source files. Use of the structures should be by separate declarations and should be "extern" if they are declared in a header file. It may be useful to use a meaningful prefix for each member name. E.g, for <code>struct softc</code> the prefix could be <code>sc_</code>.</p>
 <p>Example:</p>
-<pre><code class="cpp">struct foo {
+<pre><code class="language-cpp">struct foo {
    struct foo *next;       /* List of active foo */
    struct mumble amumble;  /* Comment for mumble */
    int bar;
@@ -153,56 +153,51 @@ For example:</p>
 
 struct foo *foohead;        /* Head of global foo list */
 </code></pre>
-
-<h3 id="variable-names-on-the-stack">Variable Names on the Stack</h3>
+<h3 id="variable-names-on-the-stack">Variable Names on the Stack<a class="headerlink" href="#variable-names-on-the-stack" title="Permanent link">#</a></h3>
 <ul>
 <li>use all lower case letters</li>
 <li>use '_' as the word separator.</li>
 </ul>
 <p>With this approach the scope of the variable is clear in the code. Now all variables look different and are identifiable in the code.</p>
 <p>Example:</p>
-<pre><code class="cpp">int handle_error (int error_number) {
+<pre><code class="language-cpp">int handle_error (int error_number) {
    int            error = OsErr();
    Time           time_of_error;
    ErrorProcessor error_processor;
 }
 </code></pre>
-
-<h3 id="pointer-variables">Pointer Variables</h3>
+<h3 id="pointer-variables">Pointer Variables<a class="headerlink" href="#pointer-variables" title="Permanent link">#</a></h3>
 <ul>
 <li>place the <em>*</em> close to the variable name not pointer type</li>
 </ul>
 <p>Example:</p>
-<pre><code class="cpp">char *name = NULL;
+<pre><code class="language-cpp">char *name = NULL;
 char *name, address;
 </code></pre>
-
-<h3 id="global-variables">Global Variables</h3>
+<h3 id="global-variables">Global Variables<a class="headerlink" href="#global-variables" title="Permanent link">#</a></h3>
 <p>It's important to know the scope of a variable.</p>
 <ul>
 <li>Global variables should be prepended with a 'g_'.</li>
 <li>Global variables should be avoided whenever possible.</li>
 </ul>
 <p>Example:</p>
-<pre><code class="cpp">Logger  g_log;
+<pre><code class="language-cpp">Logger  g_log;
 Logger* g_plog;
 </code></pre>
-
-<h3 id="global-constants">Global Constants</h3>
+<h3 id="global-constants">Global Constants<a class="headerlink" href="#global-constants" title="Permanent link">#</a></h3>
 <p>It's tradition for global constants to named this way. You must be careful to not conflict with other global _#define_s and enum labels.</p>
 <ul>
 <li>Global constants should be all caps with '_' separators.</li>
 </ul>
 <p>Example:</p>
-<pre><code class="cpp">const int A_GLOBAL_CONSTANT=5;
+<pre><code class="language-cpp">const int A_GLOBAL_CONSTANT=5;
 </code></pre>
-
-<h3 id="define-and-macro-names">#define and Macro Names</h3>
+<h3 id="define-and-macro-names">#define and Macro Names<a class="headerlink" href="#define-and-macro-names" title="Permanent link">#</a></h3>
 <p>Put #defines and macros in all upper using '_' separators. Macros are capitalized, parenthesized, and should avoid side-effects. Spacing before and after the macro name may be any whitespace, though use of TABs should be consistent through a file. If they are an inline expansion of a function, the function is defined all in lowercase, the macro has the same name all in uppercase. If the macro is an expression, wrap the expression in parenthesis. If the macro is more than a single statement, use <code>do { ... } while (0)</code>, so that a trailing semicolon works. Right-justify the backslashes; it makes it easier to read.</p>
 <p>This makes it very clear that the value is not alterable and in the case of macros, makes it clear that you are using a construct that requires care.</p>
 <p>Some subtle errors can occur when macro names and enum labels use the same name.</p>
 <p>Example:</p>
-<pre><code class="cpp">#define MAX(a,b) blah
+<pre><code class="language-cpp">#define MAX(a,b) blah
 #define IS\_ERR(err) blah
 #define MACRO(v, w, x, y)        \
    do {                          \
@@ -210,49 +205,44 @@ Logger* g_plog;
       w = (y) + 2;               \
 } while (0)
 </code></pre>
-
-<h3 id="enum-names">Enum Names</h3>
+<h3 id="enum-names">Enum Names<a class="headerlink" href="#enum-names" title="Permanent link">#</a></h3>
 <p>Labels All Upper Case with '_' Word Separators
 This is the standard rule for enum labels. No comma on the last element.</p>
 <p>Example:</p>
-<pre><code class="cpp">enum PinStateType {
+<pre><code class="language-cpp">enum PinStateType {
    PIN_OFF,
    PIN_ON
 };
 </code></pre>
-
 <p>Make a Label for an Error State:
 It's often useful to be able to say an enum is not in any of its <em>valid</em> states. Make a label for an uninitialized or error state. Make it the first label if possible.</p>
 <p>Example:</p>
-<pre><code class="cpp">enum { STATE_ERR, STATE_OPEN, STATE_RUNNING, STATE_DYING};
+<pre><code class="language-cpp">enum { STATE_ERR, STATE_OPEN, STATE_RUNNING, STATE_DYING};
 </code></pre>
-
-<h2 id="formatting">Formatting</h2>
+<h2 id="formatting">Formatting<a class="headerlink" href="#formatting" title="Permanent link">#</a></h2>
 <hr />
-<h3 id="brace-placement">Brace Placement</h3>
+<h3 id="brace-placement">Brace Placement<a class="headerlink" href="#brace-placement" title="Permanent link">#</a></h3>
 <p>Of the three major brace placement strategies one is recommended:</p>
-<pre><code class="cpp">   if (condition) {      while (condition) {
+<pre><code class="language-cpp">   if (condition) {      while (condition) {
       ...                   ...
    }                     }
 </code></pre>
-
-<h3 id="when-braces-are-needed">When Braces are Needed</h3>
+<h3 id="when-braces-are-needed">When Braces are Needed<a class="headerlink" href="#when-braces-are-needed" title="Permanent link">#</a></h3>
 <ul>
 <li>All if, while and do statements must either have braces or be on a single line.</li>
 <li>Always Uses Braces Form</li>
 <li>All if, while and do statements require braces even if there is only a single statement within the braces.</li>
 </ul>
 <p>It ensures that when someone adds a line of code later there are already braces and they don't forget. It provides a more consistent look. This doesn't affect execution speed. It's easy to do.</p>
-<pre><code class="cpp">if (1 == somevalue) {
+<pre><code class="language-cpp">if (1 == somevalue) {
    somevalue = 2;
 }
 </code></pre>
-
 <p>One Line Form: <code>if (1 == somevalue) somevalue = 2;</code>
 It provides safety when adding new lines while maintainng a compact readable form.</p>
-<h3 id="add-comments-to-closing-braces">Add Comments to Closing Braces</h3>
+<h3 id="add-comments-to-closing-braces">Add Comments to Closing Braces<a class="headerlink" href="#add-comments-to-closing-braces" title="Permanent link">#</a></h3>
 <p>Adding a comment to closing braces can help when you are reading code because you don't have to find the begin brace to know what is going on.</p>
-<pre><code class="cpp">while(1) {
+<pre><code class="language-cpp">while(1) {
    if (valid) {
 
    } /* if valid */
@@ -262,10 +252,9 @@ It provides safety when adding new lines while maintainng a compact readable for
 
 } /* end forever */
 </code></pre>
-
-<h3 id="consider-screen-size-limits">Consider Screen Size Limits</h3>
+<h3 id="consider-screen-size-limits">Consider Screen Size Limits<a class="headerlink" href="#consider-screen-size-limits" title="Permanent link">#</a></h3>
 <p>Some people like blocks to fit within a common screen size so scrolling is not necessary when reading code.  </p>
-<h3 id="parens-with-key-words-and-functions-policy">Parens <em>()</em> with Key Words and Functions Policy</h3>
+<h3 id="parens-with-key-words-and-functions-policy">Parens <em>()</em> with Key Words and Functions Policy<a class="headerlink" href="#parens-with-key-words-and-functions-policy" title="Permanent link">#</a></h3>
 <ul>
 <li>Do not put parens next to keywords. Put a space between.</li>
 <li>Do put parens next to function names.</li>
@@ -273,7 +262,7 @@ It provides safety when adding new lines while maintainng a compact readable for
 </ul>
 <p>Keywords are not functions. By putting parens next to keywords keywords and function names are made to look alike.</p>
 <p>Example:</p>
-<pre><code class="cpp">if (condition) {
+<pre><code class="language-cpp">if (condition) {
 }
 
 while (condition) {
@@ -283,36 +272,34 @@ strcpy(s, s1);
 
 return 1;
 </code></pre>
-
-<h3 id="a-line-should-not-exceed-78-characters">A Line Should Not Exceed 78 Characters</h3>
+<h3 id="a-line-should-not-exceed-78-characters">A Line Should Not Exceed 78 Characters<a class="headerlink" href="#a-line-should-not-exceed-78-characters" title="Permanent link">#</a></h3>
 <ul>
 <li>Lines should not exceed 78 characters.</li>
 <li>Even though with big monitors we stretch windows wide our printers can only print so wide. And we still need to print code.</li>
 <li>The wider the window the fewer windows we can have on a screen. More windows is better than wider windows.</li>
 <li>We even view and print diff output correctly on all terminals and printers.</li>
 </ul>
-<h3 id="if-then-else-formatting"><em>If Then Else</em> Formatting</h3>
-<h4 id="layout">Layout</h4>
+<h3 id="if-then-else-formatting"><em>If Then Else</em> Formatting<a class="headerlink" href="#if-then-else-formatting" title="Permanent link">#</a></h3>
+<h4 id="layout">Layout<a class="headerlink" href="#layout" title="Permanent link">#</a></h4>
 <p>It's up to the programmer. Different bracing styles will yield slightly different looks. One common approach is:</p>
-<pre><code class="cpp">if (condition) {
+<pre><code class="language-cpp">if (condition) {
 } else if (condition) {
 } else {
 }
 </code></pre>
-
 <p>If you have <em>else if</em> statements then it is usually a good idea to always have an else block for finding unhandled cases. Maybe put a log message in the else even if there is no corrective action taken.</p>
-<h4 id="condition-format">Condition Format</h4>
+<h4 id="condition-format">Condition Format<a class="headerlink" href="#condition-format" title="Permanent link">#</a></h4>
 <p>Always put the constant on the left hand side of an equality/inequality comparison. For example:</p>
 <p><code>if ( 6 == errorNum ) ...</code></p>
 <p>One reason is that if you leave out one of the = signs, the compiler will find the error for you. A second reason is that it puts the value you are looking for right up front where you can find it instead of buried at the end of your expression. It takes a little time to get used to this format, but then it really gets useful.</p>
-<h3 id="switch-formatting"><em>switch</em> Formatting</h3>
+<h3 id="switch-formatting"><em>switch</em> Formatting<a class="headerlink" href="#switch-formatting" title="Permanent link">#</a></h3>
 <ul>
 <li>Falling through a case statement into the next case statement shall be permitted as long as a comment is included.</li>
 <li>The <em>default</em> case should always be present and trigger an error if it should not be reached, yet is reached.</li>
 <li>If you need to create variables put all the code in a block.</li>
 </ul>
 <p>Example:</p>
-<pre><code class="cpp">switch (...)
+<pre><code class="language-cpp">switch (...)
 {
    case 1:
       ...
@@ -328,11 +315,10 @@ return 1;
    default:
 }
 </code></pre>
-
-<h3 id="use-of-gotocontinuebreak-and">Use of <em>goto,continue,break</em> and <em>?:</em></h3>
-<h4 id="goto">Goto</h4>
+<h3 id="use-of-gotocontinuebreak-and">Use of <em>goto,continue,break</em> and <em>?:</em><a class="headerlink" href="#use-of-gotocontinuebreak-and" title="Permanent link">#</a></h3>
+<h4 id="goto">Goto<a class="headerlink" href="#goto" title="Permanent link">#</a></h4>
 <p>Goto statements should be used sparingly, as in any well-structured code. The goto debates are boring so we won't go into them here. The main place where they can be usefully employed is to break out of several levels of switch, for, and while nesting, although the need to do such a thing may indicate that the inner constructs should be broken out into a separate function, with a success/failure return code.</p>
-<pre><code class="cpp">for (...) {
+<pre><code class="language-cpp">for (...) {
      while (...) {
      ...
         if (disaster) {
@@ -343,9 +329,8 @@ return 1;
 error:
    clean up the mess
 </code></pre>
-
 <p>When a goto is necessary the accompanying label should be alone on a line and to the left of the code that follows. The goto should be commented (possibly in the block header) as to its utility and purpose.</p>
-<h4 id="continue-and-break">Continue and Break</h4>
+<h4 id="continue-and-break">Continue and Break<a class="headerlink" href="#continue-and-break" title="Permanent link">#</a></h4>
 <p>Continue and break are really disguised gotos so they are covered here.</p>
 <p>Continue and break like goto should be used sparingly as they are magic in code. With a simple spell the reader is beamed to god knows where for some usually undocumented reason.</p>
 <p>The two main problems with continue are:</p>
@@ -354,7 +339,7 @@ error:
 <li>It may bypass the increment/decrement expression</li>
 </ul>
 <p>Consider the following example where both problems occur:</p>
-<pre><code class="cpp">while (TRUE) {
+<pre><code class="language-cpp">while (TRUE) {
    ...
    /* A lot of code */
    ...
@@ -367,10 +352,9 @@ error:
    if ( i++ &gt; STOP_VALUE) break;
 }
 </code></pre>
-
 <p>Note: "A lot of code" is necessary in order that the problem cannot be caught easily by the programmer.</p>
 <p>From the above example, a further rule may be given: Mixing continue with break in the same loop is a sure way to disaster.</p>
-<h4 id="the-ternary-operator">The ternary operator</h4>
+<h4 id="the-ternary-operator">The ternary operator<a class="headerlink" href="#the-ternary-operator" title="Permanent link">#</a></h4>
 <p>The trouble is people usually try and stuff too much code in between the <em>?</em> and <em>:</em>. Here are a couple of clarity rules to follow:</p>
 <ul>
 <li>Put the condition in parens so as to set it off from other code</li>
@@ -378,7 +362,7 @@ error:
 <li>Put the action for the then and else statement on a separate line unless it can be clearly put on one line.</li>
 </ul>
 <p>Example:</p>
-<pre><code class="cppp">(condition) ? funct1() : func2();
+<pre><code class="language-cppp">(condition) ? funct1() : func2();
 
 or
 
@@ -386,84 +370,75 @@ or
    ? long statement
    : another long statement;
 </code></pre>
-
-<h4 id="one-statement-per-line">One Statement Per Line</h4>
+<h4 id="one-statement-per-line">One Statement Per Line<a class="headerlink" href="#one-statement-per-line" title="Permanent link">#</a></h4>
 <p>There should be only one statement per line unless the statements are very closely related.
 The reasons are: The code is easier to read. Use some white space too. Nothing better than to read code that is one line after another with no white space or comments.</p>
-<h4 id="one-variable-per-line">One Variable Per Line</h4>
+<h4 id="one-variable-per-line">One Variable Per Line<a class="headerlink" href="#one-variable-per-line" title="Permanent link">#</a></h4>
 <p>Related to this is always define one variable per line:</p>
 <p><strong>Not:</strong></p>
-<pre><code class="cpp">char **a, *x;
+<pre><code class="language-cpp">char **a, *x;
 </code></pre>
-
 <p><strong>Do</strong>:</p>
-<pre><code class="cpp">char **a = 0;  /* add doc */
+<pre><code class="language-cpp">char **a = 0;  /* add doc */
 char  *x = 0;  /* add doc */
 </code></pre>
-
 <p>The reasons are:</p>
 <ol>
 <li>Documentation can be added for the variable on the line.</li>
 <li>It's clear that the variables are initialized.</li>
 <li>Declarations are clear which reduces the probablity of declaring a pointer when you meant to declare just a char.</li>
 </ol>
-<h3 id="to-use-enums-or-not-to-use-enums">To Use Enums or Not to Use Enums</h3>
+<h3 id="to-use-enums-or-not-to-use-enums">To Use Enums or Not to Use Enums<a class="headerlink" href="#to-use-enums-or-not-to-use-enums" title="Permanent link">#</a></h3>
 <p>C allows constant variables, which should deprecate the use of enums as constants. Unfortunately, in most compilers constants take space. Some compilers will remove constants, but not all. Constants taking space precludes them from being used in tight memory environments like embedded systems. Workstation users should use constants and ignore the rest of this discussion.</p>
 <p>In general enums are preferred to <em>#define</em> as enums are understood by the debugger.</p>
 <p>Be aware enums are not of a guaranteed size. So if you have a type that can take a known range of values and it is transported in a message you can't use an enum as the type. Use the correct integer size and use constants or <em>#define</em>. Casting between integers and enums is very error prone as you could cast a value not in the enum.</p>
-<h3 id="use-header-file-guards">Use Header File Guards</h3>
+<h3 id="use-header-file-guards">Use Header File Guards<a class="headerlink" href="#use-header-file-guards" title="Permanent link">#</a></h3>
 <p>Include files should protect against multiple inclusion through the use of macros that "guard" the files. Note that for C++ compatibility and interoperatibility reasons, do <strong>not</strong> use underscores '_' as the first or last character of a header guard (see below)</p>
-<pre><code class="cpp">#ifndef sys_socket_h
+<pre><code class="language-cpp">#ifndef sys_socket_h
    #define sys_socket_h  /* NOT _sys_socket_h_ */
 #endif
 </code></pre>
-
-<h2 id="macros">Macros</h2>
+<h2 id="macros">Macros<a class="headerlink" href="#macros" title="Permanent link">#</a></h2>
 <hr />
-<h3 id="dont-turn-c-into-pascal">Don't Turn C into Pascal</h3>
+<h3 id="dont-turn-c-into-pascal">Don't Turn C into Pascal<a class="headerlink" href="#dont-turn-c-into-pascal" title="Permanent link">#</a></h3>
 <p>Don't change syntax via macro substitution. It makes the program unintelligible to all but the perpetrator.</p>
-<h3 id="replace-macros-with-inline-functions">Replace Macros with Inline Functions</h3>
+<h3 id="replace-macros-with-inline-functions">Replace Macros with Inline Functions<a class="headerlink" href="#replace-macros-with-inline-functions" title="Permanent link">#</a></h3>
 <p>In C macros are not needed for code efficiency. Use inlines. However, macros for small functions are ok.</p>
 <p>Example:</p>
-<pre><code class="cpp">#define MAX(x,y) (((x) &gt; (y) ? (x) : (y))   // Get the maximum
+<pre><code class="language-cpp">#define MAX(x,y) (((x) &gt; (y) ? (x) : (y))   // Get the maximum
 </code></pre>
-
 <p>The macro above can be replaced for integers with the following inline function with no loss of efficiency:</p>
-<pre><code class="cpp">inline int
+<pre><code class="language-cpp">inline int
 max(int x, int y) {
    return (x &gt; y ? x : y);
 }
 </code></pre>
-
-<h3 id="be-careful-of-side-effects">Be Careful of Side Effects</h3>
+<h3 id="be-careful-of-side-effects">Be Careful of Side Effects<a class="headerlink" href="#be-careful-of-side-effects" title="Permanent link">#</a></h3>
 <p>Macros should be used with caution because of the potential for error when invoked with an expression that has side effects.</p>
 <p>Example:</p>
-<pre><code class="cpp">MAX(f(x),z++);
+<pre><code class="language-cpp">MAX(f(x),z++);
 </code></pre>
-
-<h3 id="always-wrap-the-expression-in-parenthesis">Always Wrap the Expression in Parenthesis</h3>
+<h3 id="always-wrap-the-expression-in-parenthesis">Always Wrap the Expression in Parenthesis<a class="headerlink" href="#always-wrap-the-expression-in-parenthesis" title="Permanent link">#</a></h3>
 <p>When putting expressions in macros always wrap the expression in parenthesis to avoid potential communitive operation abiguity.</p>
 <p>Example:</p>
-<pre><code class="cpp">#define ADD(x,y) x + y
+<pre><code class="language-cpp">#define ADD(x,y) x + y
 </code></pre>
-
 <p>must be written as:</p>
-<pre><code class="cpp">#define ADD(x,y) ((x) + (y))
+<pre><code class="language-cpp">#define ADD(x,y) ((x) + (y))
 </code></pre>
-
-<h3 id="make-macro-names-unique">Make Macro Names Unique</h3>
+<h3 id="make-macro-names-unique">Make Macro Names Unique<a class="headerlink" href="#make-macro-names-unique" title="Permanent link">#</a></h3>
 <p>Like global variables macros can conflict with macros from other packages.</p>
 <ol>
 <li>Prepend macro names with package names.</li>
 <li>void simple and common names like MAX and MIN.</li>
 </ol>
-<h2 id="initialize-all-variables">Initialize all Variables</h2>
+<h2 id="initialize-all-variables">Initialize all Variables<a class="headerlink" href="#initialize-all-variables" title="Permanent link">#</a></h2>
 <hr />
 <ul>
 <li>You shall always initialize variables. Always. Every time. gcc with the flag -W may catch operations on uninitialized variables, but it may also not.</li>
 <li>More problems than you can believe are eventually traced back to a pointer or variable left uninitialized.</li>
 </ul>
-<h2 id="short-functions">Short Functions</h2>
+<h2 id="short-functions">Short Functions<a class="headerlink" href="#short-functions" title="Permanent link">#</a></h2>
 <hr />
 <ul>
 <li>Functions should limit themselves to a single page of code.</li>
@@ -471,33 +446,29 @@ max(int x, int y) {
 <li>Most arguments of inefficiency turn out to be false in the long run.</li>
 <li>True function calls are slower than not, but there needs to a thought out decision (see premature optimization).</li>
 </ul>
-<h3 id="document-null-statements">Document Null Statements</h3>
+<h3 id="document-null-statements">Document Null Statements<a class="headerlink" href="#document-null-statements" title="Permanent link">#</a></h3>
 <hr />
 <p>Always document a null body for a for or while statement so that it is clear that the null body is intentional and not missing code.</p>
-<pre><code class="cpp">while (\*dest++ = \*src++)
+<pre><code class="language-cpp">while (\*dest++ = \*src++)
 
 {
    ;
 
 }  
 </code></pre>
-
-<h3 id="do-not-default-if-test-to-non-zero">Do Not Default If Test to Non-Zero</h3>
+<h3 id="do-not-default-if-test-to-non-zero">Do Not Default If Test to Non-Zero<a class="headerlink" href="#do-not-default-if-test-to-non-zero" title="Permanent link">#</a></h3>
 <hr />
 <p>Do not default the test for non-zero, i.e.</p>
-<pre><code class="cpp"> if (FAIL != f())
+<pre><code class="language-cpp"> if (FAIL != f())
 </code></pre>
-
 <p>is better than</p>
-<pre><code class="cpp">if (f())
+<pre><code class="language-cpp">if (f())
 </code></pre>
-
 <p>even though FAIL may have the value 0 which C considers to be false. An explicit test will help you out later when somebody decides that a failure return should be -1 instead of 0. Explicit comparison should be used even if the comparison value will never change; e.g., <code>if (!(bufsize % sizeof(int)))</code> should be written instead as <code>if ((bufsize % sizeof(int)) == 0)</code> to reflect the numeric (not boolean) nature of the test. A frequent trouble spot is using strcmp to test for string equality, where the result should <em>never</em> <em>ever</em> be defaulted. The preferred approach is to define a macro <em>STREQ</em>.</p>
-<pre><code class="cpp">#define STREQ(a, b) (strcmp((a), (b)) == 0)
+<pre><code class="language-cpp">#define STREQ(a, b) (strcmp((a), (b)) == 0)
 </code></pre>
-
 <p>Or better yet use an inline method:</p>
-<pre><code class="cpp">inline bool
+<pre><code class="language-cpp">inline bool
 string\_equal(char\* a, char\* b)
 {
    (strcmp(a, b) == 0) ? return true : return false;
@@ -505,45 +476,41 @@ string\_equal(char\* a, char\* b)
    return (strcmp(a, b) == 0);
 }
 </code></pre>
-
 <p>Note, this is just an example, you should really use the standard library string type for doing the comparison.</p>
 <p>The non-zero test is often defaulted for predicates and other functions or expressions which meet the following restrictions:</p>
 <ul>
 <li>Returns 0 for false, nothing else.</li>
 <li>Is named so that the meaning of (say) a <strong>true</strong> return is absolutely obvious. Call a predicate is_valid(), not check_valid().</li>
 </ul>
-<h2 id="usually-avoid-embedded-assignments">Usually Avoid Embedded Assignments</h2>
+<h2 id="usually-avoid-embedded-assignments">Usually Avoid Embedded Assignments<a class="headerlink" href="#usually-avoid-embedded-assignments" title="Permanent link">#</a></h2>
 <hr />
 <p>There is a time and a place for embedded assignment statements. In some constructs there is no better way to accomplish the results without making the code bulkier and less readable.</p>
-<pre><code class="cpp">while (EOF != (c = getchar())) {
+<pre><code class="language-cpp">while (EOF != (c = getchar())) {
    process the character
 }
 </code></pre>
-
 <p>The ++ and -- operators count as assignment statements. So, for many purposes, do functions with side effects. Using embedded assignment statements to improve run-time performance is also possible. However, one should consider the tradeoff between increased speed and decreased maintainability that results when embedded assignments are used in artificial places. For example,</p>
-<pre><code class="cpp">a = b + c;
+<pre><code class="language-cpp">a = b + c;
 d = a + r;
 </code></pre>
-
 <p>should not be replaced by</p>
-<pre><code class="cpp"> d = (a = b + c) + r;
+<pre><code class="language-cpp"> d = (a = b + c) + r;
 </code></pre>
-
 <p>even though the latter may save one cycle. In the long run the time difference between the two will decrease as the optimizer gains maturity, while the difference in ease of maintenance will increase as the human memory of what's going on in the latter piece of code begins to fade.</p>
-<h2 id="documentation">Documentation</h2>
+<h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">#</a></h2>
 <hr />
-<h3 id="comments-should-tell-a-story">Comments Should Tell a Story</h3>
+<h3 id="comments-should-tell-a-story">Comments Should Tell a Story<a class="headerlink" href="#comments-should-tell-a-story" title="Permanent link">#</a></h3>
 <p>Consider your comments a story describing the system. Expect your comments to be extracted by a robot and formed into a man page. Class comments are one part of the story, method signature comments are another part of the story, method arguments another part, and method implementation yet another part. All these parts should weave together and inform someone else at another point of time just exactly what you did and why.</p>
-<h3 id="document-decisions">Document Decisions</h3>
+<h3 id="document-decisions">Document Decisions<a class="headerlink" href="#document-decisions" title="Permanent link">#</a></h3>
 <p>Comments should document decisions. At every point where you had a choice of what to do place a comment describing which choice you made and why. Archeologists will find this the most useful information.</p>
-<h3 id="use-headers">Use Headers</h3>
+<h3 id="use-headers">Use Headers<a class="headerlink" href="#use-headers" title="Permanent link">#</a></h3>
 <p>Use a document extraction system like <a href="http://www.doxygen.org/">Doxygen</a>.
 These headers are structured in such a way as they can be parsed and extracted. They are not useless like normal headers. So take time to fill them out. If you do it right once no more documentation may be necessary.</p>
-<h3 id="comment-layout">Comment Layout</h3>
+<h3 id="comment-layout">Comment Layout<a class="headerlink" href="#comment-layout" title="Permanent link">#</a></h3>
 <p>Each part of the project has a specific comment layout. <a href="http://www.doxygen.org/">Doxygen</a> has the recommended format for the comment layouts.</p>
-<h3 id="make-gotchas-explicit">Make Gotchas Explicit</h3>
+<h3 id="make-gotchas-explicit">Make Gotchas Explicit<a class="headerlink" href="#make-gotchas-explicit" title="Permanent link">#</a></h3>
 <p>Explicitly comment variables changed out of the normal control flow or other code likely to break during maintenance. Embedded keywords are used to point out issues and potential problems. Consider a robot will parse your comments looking for keywords, stripping them out, and making a report so people can make a special effort where needed.</p>
-<h4 id="gotcha-keywords">Gotcha Keywords</h4>
+<h4 id="gotcha-keywords">Gotcha Keywords<a class="headerlink" href="#gotcha-keywords" title="Permanent link">#</a></h4>
 <ul>
 <li>
 <p><strong>@author:</strong><br />
@@ -578,17 +545,17 @@ These headers are structured in such a way as they can be parsed and extracted. 
    report a bug found in the piece of code</p>
 </li>
 </ul>
-<h4 id="gotcha-formatting">Gotcha Formatting</h4>
+<h4 id="gotcha-formatting">Gotcha Formatting<a class="headerlink" href="#gotcha-formatting" title="Permanent link">#</a></h4>
 <ul>
 <li>Make the gotcha keyword the first symbol in the comment.</li>
 <li>Comments may consist of multiple lines, but the first line should be a self-containing, meaningful summary.</li>
 <li>The writer's name and the date of the remark should be part of the comment. This information is in the source repository, but it can take a quite a while to find out when and by whom it was added. Often gotchas stick around longer than they should. Embedding date information allows other programmer to make this decision. Embedding who information lets us know who to ask.</li>
 </ul>
-<h3 id="commenting-function-declarations">Commenting function declarations</h3>
+<h3 id="commenting-function-declarations">Commenting function declarations<a class="headerlink" href="#commenting-function-declarations" title="Permanent link">#</a></h3>
 <p>Functions headers should be in the file where they are declared. This means that most likely the functions will have a header in the .h file. However, functions like main() with no explicit prototype declaration in the .h file, should have a header in the .c file.</p>
-<h3 id="include-statement-documentation">Include Statement Documentation</h3>
+<h3 id="include-statement-documentation">Include Statement Documentation<a class="headerlink" href="#include-statement-documentation" title="Permanent link">#</a></h3>
 <p>Include statements should be documented, telling the user why a particular file was included.  </p>
-<pre><code class="cpp">/*  
+<pre><code class="language-cpp">/*  
  * Kernel include files come first.  
  */  
 
@@ -604,15 +571,14 @@ These headers are structured in such a way as they can be parsed and extracted. 
  * The /usr include files should be sorted!  
  */
 </code></pre>
-
-<h2 id="layering">Layering</h2>
+<h2 id="layering">Layering<a class="headerlink" href="#layering" title="Permanent link">#</a></h2>
 <hr />
 <p>Layering is the primary technique for reducing complexity in a system. A system should be divided into layers. Layers should communicate between adjacent layers using well defined interfaces. When a layer uses a non-adjacent layer then a layering violation has occurred.</p>
 <p>A layering violation simply means we have dependency between layers that is not controlled by a well defined interface. When one of the layers changes code could break. We don't want code to break so we want layers to work only with other adjacent layers.</p>
 <p>Sometimes we need to jump layers for performance reasons. This is fine, but we should know we are doing it and document appropriately.</p>
-<h2 id="miscellaneous">Miscellaneous</h2>
+<h2 id="miscellaneous">Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permanent link">#</a></h2>
 <hr />
-<h3 id="general-advice">General advice</h3>
+<h3 id="general-advice">General advice<a class="headerlink" href="#general-advice" title="Permanent link">#</a></h3>
 <p>This section contains some miscellaneous do's and don'ts.</p>
 <ul>
 <li>Don't use floating-point variables where discrete values are needed. Using a float for a loop counter is a great way to shoot yourself in the foot. Always test floating-point numbers as &lt;= or &gt;=, never use an exact comparison (== or !=).</li>
@@ -620,45 +586,39 @@ These headers are structured in such a way as they can be parsed and extracted. 
 <li>Do not rely on automatic beautifiers. The main person who benefits from good program style is the programmer him/herself, and especially in the early design of handwritten algorithms or pseudo-code. Automatic beautifiers can only be applied to complete, syntactically correct programs and hence are not available when the need for attention to white space and indentation is greatest. Programmers can do a better job of making clear the complete visual layout of a function or file, with the normal attention to detail of a careful programmer (in other words, some of the visual layout is dictated by intent rather than syntax and beautifiers cannot read minds). Sloppy programmers should learn to be careful programmers instead of relying on a beautifier to make their code readable. Finally, since beautifiers are non-trivial programs that must parse the source, a sophisticated beautifier is not worth the benefits gained by such a program. Beautifiers are best for gross formatting of machine-generated code.</li>
 <li>Accidental omission of the second <code>=</code> of the logical compare is a problem. The following is confusing and prone to error.</li>
 </ul>
-<pre><code class="cpp">if (abool= bbool) { ... }
+<pre><code class="language-cpp">if (abool= bbool) { ... }
 </code></pre>
-
 <p>Does the programmer really mean assignment here? Often yes, but usually no. The solution is to just not do it, an inverse Nike philosophy. Instead use explicit tests and avoid assignment with an implicit test. The recommended form is to do the assignment before doing the test:</p>
-<pre><code class="cpp">abool= bbool;
+<pre><code class="language-cpp">abool= bbool;
 if (abool) { ... }
 </code></pre>
-
 <p>Modern compilers will put variables in registers automatically. Use the register sparingly to indicate the variables that you think are most critical. In extreme cases, mark the 2-4 most critical values as register and mark the rest as REGISTER. The latter can be #defined to register on those machines with many registers.</p>
-<h3 id="be-const-correct">Be Const Correct</h3>
+<h3 id="be-const-correct">Be Const Correct<a class="headerlink" href="#be-const-correct" title="Permanent link">#</a></h3>
 <p>C provides the <em>const</em> key word to allow passing as parameters objects that cannot change to indicate when a method doesn't modify its object. Using const in all the right places is called "const correctness." It's hard at first, but using const really tightens up your coding style. Const correctness grows on you.</p>
-<h3 id="use-if-not-ifdef">Use #if Not #ifdef</h3>
+<h3 id="use-if-not-ifdef">Use #if Not #ifdef<a class="headerlink" href="#use-if-not-ifdef" title="Permanent link">#</a></h3>
 <p>Use #if MACRO not #ifdef MACRO. Someone might write code like:</p>
-<pre><code class="cpp">#ifdef DEBUG
+<pre><code class="language-cpp">#ifdef DEBUG
    temporary_debugger_break();
 #endif
 </code></pre>
-
 <p>Someone else might compile the code with turned-of debug info like:</p>
-<pre><code class="bash">cc -c lurker.cc -DDEBUG=0
+<pre><code class="language-bash">cc -c lurker.cc -DDEBUG=0
 </code></pre>
-
 <p>Alway use #if, if you have to use the preprocessor. This works fine, and does the right thing, even if DEBUG is not defined at all (!)</p>
-<pre><code class="cpp">#if DEBUG
+<pre><code class="language-cpp">#if DEBUG
         temporary\_debugger\_break();
 #endif
 </code></pre>
-
 <p>If you really need to test whether a symbol is defined or not, test it with the defined() construct, which allows you to add more things later to the conditional without editing text that's already in the program:</p>
-<pre><code class="cpp">#if !defined(USER_NAME)
+<pre><code class="language-cpp">#if !defined(USER_NAME)
    #define USER_NAME &quot;john smith&quot;
 #endif
 </code></pre>
-
-<h3 id="commenting-out-large-code-blocks">Commenting Out Large Code Blocks</h3>
+<h3 id="commenting-out-large-code-blocks">Commenting Out Large Code Blocks<a class="headerlink" href="#commenting-out-large-code-blocks" title="Permanent link">#</a></h3>
 <p>Sometimes large blocks of code need to be commented out for testing.</p>
-<h4 id="using-if-0">Using #if 0</h4>
+<h4 id="using-if-0">Using #if 0<a class="headerlink" href="#using-if-0" title="Permanent link">#</a></h4>
 <p>The easiest way to do this is with an #if 0 block:</p>
-<pre><code class="cpp">void
+<pre><code class="language-cpp">void
 example()
 {
    // great looking code
@@ -670,38 +630,35 @@ example()
    //more code
 }
 </code></pre>
-
 <p>You can't use <strong>/**/</strong> style comments because comments can't contain comments and surely a large block of your code will contain a comment, won't it?</p>
 <p>Don't use #ifdef as someone can unknowingly trigger ifdefs from the compiler command line. #if 0is that even day later you or anyone else has know idea why this code is commented out. Is it because a feature has been dropped? Is it because it was buggy? It didn't compile? Can it be added back? It's a mystery.</p>
-<h4 id="use-descriptive-macro-names-instead-of-if-0">Use Descriptive Macro Names Instead of #if 0</h4>
-<pre><code class="cpp">#if NOT_YET_IMPLEMENTED  
+<h4 id="use-descriptive-macro-names-instead-of-if-0">Use Descriptive Macro Names Instead of #if 0<a class="headerlink" href="#use-descriptive-macro-names-instead-of-if-0" title="Permanent link">#</a></h4>
+<pre><code class="language-cpp">#if NOT_YET_IMPLEMENTED  
 
 #if OBSOLETE
 
 #if TEMP_DISABLED
 </code></pre>
-
-<h4 id="add-a-comment-to-document-why">Add a Comment to Document Why</h4>
+<h4 id="add-a-comment-to-document-why">Add a Comment to Document Why<a class="headerlink" href="#add-a-comment-to-document-why" title="Permanent link">#</a></h4>
 <p>Add a short comment explaining why it is not implemented, obsolete or temporarily disabled.</p>
-<h3 id="file-extensions">File Extensions</h3>
+<h3 id="file-extensions">File Extensions<a class="headerlink" href="#file-extensions" title="Permanent link">#</a></h3>
 <p>In short: Use the <em>.h</em> extension for header files and <em>.c</em> for source files.</p>
-<h3 id="no-data-definitions-in-header-files">No Data Definitions in Header Files</h3>
+<h3 id="no-data-definitions-in-header-files">No Data Definitions in Header Files<a class="headerlink" href="#no-data-definitions-in-header-files" title="Permanent link">#</a></h3>
 <p>Do not put data definitions in header files. for example:</p>
-<pre><code class="cpp">/*
+<pre><code class="language-cpp">/*
  * aheader.h
  */
 int x = 0;
 </code></pre>
-
 <ol>
 <li>It's bad magic to have space consuming code silently inserted through the innocent use of header files.</li>
 <li>It's not common practice to define variables in the header file so it will not occur to developers to look for this when there are problems.</li>
 <li>Consider defining the variable once in a .c file and use an extern statement to reference it.</li>
 </ol>
-<h3 id="mixing-c-and-c">Mixing C and C++</h3>
+<h3 id="mixing-c-and-c">Mixing C and C++<a class="headerlink" href="#mixing-c-and-c" title="Permanent link">#</a></h3>
 <p>In order to be backward compatible with dumb linkers C++'s link time type safety is implemented by encoding type information in link symbols, a process called <em>name mangling</em>. This creates a problem when linking to C code as C function names are not mangled. When calling a C function from C++ the function name will be mangled unless you turn it off. Name mangling is turned off with the <em>extern "C"</em> syntax. If you want to create a C function in C++ you must wrap it with the above syntax. If you want to call a C function in a C library from C++ you must wrap in the above syntax. Here are some examples:</p>
-<h4 id="calling-c-functions-from-c">Calling C Functions from C++</h4>
-<pre><code class="cpp">extern &quot;C&quot; int strncpy(...);
+<h4 id="calling-c-functions-from-c">Calling C Functions from C++<a class="headerlink" href="#calling-c-functions-from-c" title="Permanent link">#</a></h4>
+<pre><code class="language-cpp">extern &quot;C&quot; int strncpy(...);
 extern &quot;C&quot; int my_great_function();
 extern &quot;C&quot;
 {
@@ -709,17 +666,15 @@ extern &quot;C&quot;
    int my_great_function();
 };
 </code></pre>
-
-<h4 id="creating-a-c-function-in-c">Creating a C Function in C++</h4>
-<pre><code class="cpp">extern &quot;C&quot; void
+<h4 id="creating-a-c-function-in-c">Creating a C Function in C++<a class="headerlink" href="#creating-a-c-function-in-c" title="Permanent link">#</a></h4>
+<pre><code class="language-cpp">extern &quot;C&quot; void
 a_c_function_in_cplusplus(int a)
 {
 }
 </code></pre>
-
-<h4 id="__cplusplus-preprocessor-directive"><em>__cplusplus</em> Preprocessor Directive</h4>
+<h4 id="__cplusplus-preprocessor-directive"><em>__cplusplus</em> Preprocessor Directive<a class="headerlink" href="#__cplusplus-preprocessor-directive" title="Permanent link">#</a></h4>
 <p>If you have code that must compile in a C and C++ environment then you must use the <em>__cplusplus</em> preprocessor directive. For example:</p>
-<pre><code class="cpp">#ifdef __cplusplus
+<pre><code class="language-cpp">#ifdef __cplusplus
 
 extern &quot;C&quot; some_function();
 
@@ -729,17 +684,15 @@ extern some_function();
 
 #endif
 </code></pre>
-
-<h3 id="no-magic-numbers">No Magic Numbers</h3>
+<h3 id="no-magic-numbers">No Magic Numbers<a class="headerlink" href="#no-magic-numbers" title="Permanent link">#</a></h3>
 <p>A magic number is a bare naked number used in source code. It's magic because no-one has a clue what it means including the author inside 3 months. For example:</p>
-<pre><code class="cpp">if      (22 == foo) { start_thermo_nuclear_war(); }
+<pre><code class="language-cpp">if      (22 == foo) { start_thermo_nuclear_war(); }
 else if (19 == foo) { refund_lotso_money(); }
 else if (16 == foo) { infinite_loop(); }
 else                { cry_cause_im_lost(); }
 </code></pre>
-
 <p>In the above example what do 22 and 19 mean? If there was a number change or the numbers were just plain wrong how would you know? Instead of magic numbers use a real name that means something. You can use <em>#define</em> or constants or enums as names. Which one is a design choice. For example:</p>
-<pre><code class="cpp">#define PRESIDENT_WENT_CRAZY (22)
+<pre><code class="language-cpp">#define PRESIDENT_WENT_CRAZY (22)
 const int WE_GOOFED= 19;
 enum  {
    THEY_DIDNT_PAY= 16
@@ -750,9 +703,8 @@ else if (WE_GOOFED            == foo) { refund_lotso_money(); }
 else if (THEY_DIDNT_PAY       == foo) { infinite_loop(); }
 else                                  { happy_days_i_know_why_im_here(); }
 </code></pre>
-
 <p>Now isn't that better? The const and enum options are preferable because when debugging the debugger has enough information to display both the value and the label. The #define option just shows up as a number in the debugger which is very inconvenient. The const option has the downside of allocating memory. Only you know if this matters for your application.</p>
-<h3 id="error-return-check-policy">Error Return Check Policy</h3>
+<h3 id="error-return-check-policy">Error Return Check Policy<a class="headerlink" href="#error-return-check-policy" title="Permanent link">#</a></h3>
 <ul>
 <li>Check every system call for an error return, unless you know you wish to ignore errors. For example, <em>printf</em> returns an error code but rarely would you check for its return code. In which case you can cast the return to <strong>(void)</strong> if you really care.</li>
 <li>Include the system error text for every system error message.</li>

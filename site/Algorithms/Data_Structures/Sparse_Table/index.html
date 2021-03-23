@@ -98,14 +98,14 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="sparse-table">Sparse Table</h1>
+    <h1 id="sparse-table">Sparse Table<a class="headerlink" href="#sparse-table" title="Permanent link">#</a></h1>
 <p>Sparse Table is a data structure, that allows answering range queries.
 It can answer most range queries in <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>, but its true power is answering range minimum queries (or equivalent range maximum queries).
 For those queries it can compute the answer in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> time.</p>
 <p>The only drawback of this data structure is, that it can only be used on <em>immutable</em> arrays.
 This means, that the array cannot be changed between two queries.
 If any element in the array changes, the complete data structure has to be recomputed.</p>
-<h2 id="intuition">Intuition</h2>
+<h2 id="intuition">Intuition<a class="headerlink" href="#intuition" title="Permanent link">#</a></h2>
 <p>Any non-negative number can be uniquely represented as a sum of decreasing powers of two.
 This is just a variant of the binary representation of a number.
 E.g. <span><span class="MathJax_Preview">13 = (1101)_2 = 8 + 4 + 1</span><script type="math/tex">13 = (1101)_2 = 8 + 4 + 1</script></span>.
@@ -115,7 +115,7 @@ E.g. <span><span class="MathJax_Preview">[2, 14] = [2, 9] \cup [10, 13] \cup [14
 And also here the union consists of at most <span><span class="MathJax_Preview">\lceil \log_2(\text{length of interval}) \rceil</span><script type="math/tex">\lceil \log_2(\text{length of interval}) \rceil</script></span> many intervals.</p>
 <p>The main idea behind Sparse Tables is to precompute all answers for range queries with power of two length.
 Afterwards a different range query can be answered by splitting the range into ranges with power of two lengths, looking up the precomputed answers, and combining them to receive a complete answer.</p>
-<h2 id="precomputation">Precomputation</h2>
+<h2 id="precomputation">Precomputation<a class="headerlink" href="#precomputation" title="Permanent link">#</a></h2>
 <p>We will use a 2-dimensional array for storing the answers to the precomputed queries.
 <span><span class="MathJax_Preview">\text{st}[i][j]</span><script type="math/tex">\text{st}[i][j]</script></span> will store the answer for the range <span><span class="MathJax_Preview">[i, i + 2^j - 1]</span><script type="math/tex">[i, i + 2^j - 1]</script></span> of length <span><span class="MathJax_Preview">2^j</span><script type="math/tex">2^j</script></span>.
 The size of the 2-dimensional array will be <span><span class="MathJax_Preview">\text{MAXN} \times (K + 1)</span><script type="math/tex">\text{MAXN} \times (K + 1)</script></span>, where <span><span class="MathJax_Preview">\text{MAXN}</span><script type="math/tex">\text{MAXN}</script></span> is the biggest possible array length.
@@ -134,11 +134,10 @@ for (int j = 1; j &lt;= K; j++)
     for (int i = 0; i + (1 &lt;&lt; j) &lt;= N; i++)
         st[i][j] = f(st[i][j-1], st[i + (1 &lt;&lt; (j - 1))][j - 1]);
 </code></pre>
-
 <p>The function <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> will depend on the type of query.
 For range sum queries it will compute the sum, for range minimum queries it will compute the minimum.</p>
 <p>The time complexity of the precomputation is <span><span class="MathJax_Preview">O(\text{N} \log \text{N})</span><script type="math/tex">O(\text{N} \log \text{N})</script></span>.</p>
-<h2 id="range-sum-queries">Range Sum Queries</h2>
+<h2 id="range-sum-queries">Range Sum Queries<a class="headerlink" href="#range-sum-queries" title="Permanent link">#</a></h2>
 <p>For this type of queries, we want to find the sum of all values in a range.
 Therefore the natural definition of the function <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> is <span><span class="MathJax_Preview">f(x, y) = x + y</span><script type="math/tex">f(x, y) = x + y</script></span>.
 We can construct the data structure with:</p>
@@ -162,9 +161,8 @@ for (int j = K; j &gt;= 0; j--) {
     }
 }
 </code></pre>
-
 <p>Time complexity for a Range Sum Query is <span><span class="MathJax_Preview">O(K) = O(\log \text{MAXN})</span><script type="math/tex">O(K) = O(\log \text{MAXN})</script></span>.</p>
-<h2 id="range-minimum-queries-rmq">Range Minimum Queries (RMQ)</h2>
+<h2 id="range-minimum-queries-rmq">Range Minimum Queries (RMQ)<a class="headerlink" href="#range-minimum-queries-rmq" title="Permanent link">#</a></h2>
 <p>These are the queries where the Sparse Table shines.
 When computing the minimum of a range, it doesn't matter if we process a value in the range once or twice.
 Therefore instead of splitting a range into multiple ranges, we can also split the range into only two overlapping ranges with power of two length.
@@ -195,19 +193,18 @@ for (int j = 1; j &lt;= K; j++)
     for (int i = 0; i + (1 &lt;&lt; j) &lt;= N; i++)
         st[i][j] = min(st[i][j-1], st[i + (1 &lt;&lt; (j - 1))][j - 1]);
 </code></pre>
-
 <p>And the minimum of a range <span><span class="MathJax_Preview">[L, R]</span><script type="math/tex">[L, R]</script></span> can be computed with:</p>
 <p><code>cpp sparse_table_minimum_query
 int j = log[R - L + 1];
 int minimum = min(st[L][j], st[R - (1 &lt;&lt; j) + 1][j]);</code></p>
 <p>Time complexity for a Range Minimum Query is <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>.</p>
-<h2 id="similar-data-structures-supporting-more-types-of-queries">Similar data structures supporting more types of queries</h2>
+<h2 id="similar-data-structures-supporting-more-types-of-queries">Similar data structures supporting more types of queries<a class="headerlink" href="#similar-data-structures-supporting-more-types-of-queries" title="Permanent link">#</a></h2>
 <p>One of the main weakness of the <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> approach discussed in the previous section is, that this approach only supports queries of <a href="https://en.wikipedia.org/wiki/Idempotence">idempotent functions</a>.
 I.e. it works great for range minimum queries, but it is not possible to answer range sum queries using this approach.</p>
 <p>There are similar data structures that can handle any type of associative functions and answer range queries in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>.
 One of them is called is called <a href="https://discuss.codechef.com/questions/117696/tutorial-disjoint-sparse-table">Disjoint Sparse Table</a>.
 Another one would be the <a href="/docs/#Algorithms/Data_Structures/Sqrt_Tree/">Sqrt Tree</a>.</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="http://www.spoj.com/problems/RMQSQ/">SPOJ - RMQSQ</a></li>
 <li><a href="http://www.spoj.com/problems/THRBL/">SPOJ - THRBL</a></li>

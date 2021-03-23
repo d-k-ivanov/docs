@@ -108,41 +108,33 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="rewind-tape-drive">Rewind tape drive</h3>
-<pre><code class="bash">mt -f /dev/st0 rewind
+    <h3 id="rewind-tape-drive">Rewind tape drive<a class="headerlink" href="#rewind-tape-drive" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">mt -f /dev/st0 rewind
 </code></pre>
-
-<h3 id="backup-directory">Backup directory</h3>
-<pre><code class="bash">tar -czvf /dev/st0 /&lt;directory_for_backup&gt;
+<h3 id="backup-directory">Backup directory<a class="headerlink" href="#backup-directory" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">tar -czvf /dev/st0 /&lt;directory_for_backup&gt;
 </code></pre>
-
-<h3 id="list-files-on-tape">List files on tape</h3>
-<pre><code class="bash">tar -tzf /dev/st0
+<h3 id="list-files-on-tape">List files on tape<a class="headerlink" href="#list-files-on-tape" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">tar -tzf /dev/st0
 </code></pre>
-
-<h3 id="restore">Restore</h3>
-<pre><code class="bash">mt -f /dev/st0 rewind
+<h3 id="restore">Restore<a class="headerlink" href="#restore" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">mt -f /dev/st0 rewind
 tar -xzf /dev/st0 &lt;file_or_dir_to_restore&gt;
 </code></pre>
-
-<h3 id="unload">Unload</h3>
-<pre><code class="bash">mt -f /dev/st0 offline
+<h3 id="unload">Unload<a class="headerlink" href="#unload" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">mt -f /dev/st0 offline
 </code></pre>
-
-<h3 id="status">Status</h3>
-<pre><code class="bash">mt -f /dev/st0 status
+<h3 id="status">Status<a class="headerlink" href="#status" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">mt -f /dev/st0 status
 </code></pre>
-
-<h3 id="erase">Erase</h3>
-<pre><code class="bash">mt -f /dev/st0 erase
+<h3 id="erase">Erase<a class="headerlink" href="#erase" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">mt -f /dev/st0 erase
 </code></pre>
-
-<h3 id="get-position">Get position</h3>
-<pre><code class="bash">mt -f /dev/st0 tell
+<h3 id="get-position">Get position<a class="headerlink" href="#get-position" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">mt -f /dev/st0 tell
 </code></pre>
-
-<h3 id="moves">Moves</h3>
-<pre><code class="bash"># End
+<h3 id="moves">Moves<a class="headerlink" href="#moves" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># End
 mt -f /dev/nst0 eod
 # Previous
 mt -f /dev/nst0 bsfm 1

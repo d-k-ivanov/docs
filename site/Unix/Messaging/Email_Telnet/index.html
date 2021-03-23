@@ -94,7 +94,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="send-email">Send email</h3>
+    <h3 id="send-email">Send email<a class="headerlink" href="#send-email" title="Permanent link">#</a></h3>
 <p>Original at <a href="https://mediatemple.net/community/products/dv/204404584/sending-or-viewing-emails-using-telnet">Mediatemple</a></p>
 <blockquote>
 <p>TIP: We use the domain example.com as an example. Be sure to replace with your own domain.</p>
@@ -102,31 +102,27 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <ul>
 <li>Open your command prompt. Now, connect with telnet using the following command:</li>
 </ul>
-<pre><code class="bash">telnet example.com 25
+<pre><code class="language-bash">telnet example.com 25
 </code></pre>
-
 <ul>
 <li>Type ehlo example.com. Some servers also accept helo in place of ehlo.</li>
 </ul>
-<pre><code class="bash">ehlo example.com
+<pre><code class="language-bash">ehlo example.com
 </code></pre>
-
 <ul>
 <li>Type mail from: username@example.com:</li>
 </ul>
-<pre><code class="bash">mail from: username@example.com
+<pre><code class="language-bash">mail from: username@example.com
 </code></pre>
-
 <ul>
 <li>Type rcpt to: friend@hotmail.com, friend2@yahoo.com (replace with your actual recipient name):</li>
 </ul>
-<pre><code class="bash">rcpt to: friend@hotmail.com, friend2@yahoo.com
+<pre><code class="language-bash">rcpt to: friend@hotmail.com, friend2@yahoo.com
 </code></pre>
-
 <ul>
 <li>To write the message - type data, followed by your subject and message. To end the message, put a period on a line by itself and press enter:</li>
 </ul>
-<pre><code class="bash">data
+<pre><code class="language-bash">data
 Subject: My Telnet Test Email
 
 Hello,
@@ -138,41 +134,35 @@ Me
 
 .
 </code></pre>
-
 <ul>
 <li>Type quit to exit telnet.</li>
 </ul>
-<pre><code class="bash">quit
+<pre><code class="language-bash">quit
 </code></pre>
-
-<h3 id="how-to-check-or-read-email">How to check or read email</h3>
+<h3 id="how-to-check-or-read-email">How to check or read email<a class="headerlink" href="#how-to-check-or-read-email" title="Permanent link">#</a></h3>
 <p>Original at  <a href="https://mediatemple.net/community/products/dv/204404584/sending-or-viewing-emails-using-telnet">Mediatemple</a>
 * Open your command prompt. At the command prompt, type in</p>
-<pre><code class="bash">telnet example.com 110
+<pre><code class="language-bash">telnet example.com 110
 </code></pre>
-
 <ul>
 <li>Type user and the email address (username@example.com) of the user for which you wish to view emails:</li>
 </ul>
-<pre><code class="bash">user username@example.com
+<pre><code class="language-bash">user username@example.com
 </code></pre>
-
 <ul>
 <li>Then type in pass followed by your password:</li>
 </ul>
-<pre><code class="bash">pass yourpasswordgoeshere
+<pre><code class="language-bash">pass yourpasswordgoeshere
 </code></pre>
-
 <ul>
 <li>Type list to bring up a list of your emails:</li>
 </ul>
-<pre><code class="bash">list
+<pre><code class="language-bash">list
 </code></pre>
-
 <ul>
 <li>You will see a list of items with labels like "1 897" and "2 5136." Here is an example:</li>
 </ul>
-<pre><code class="bash">list
+<pre><code class="language-bash">list
 +OK POP3 clients that break here, they violate STD53.
 1 897
 2 5136
@@ -196,23 +186,20 @@ Me
 20 2599
 .
 </code></pre>
-
 <ul>
 <li>If you wish to read an email message such as 2 5136, you can type the following:</li>
 </ul>
-<pre><code class="bash">retr 2 
+<pre><code class="language-bash">retr 2 
 </code></pre>
-
 <ul>
 <li>If you want to delete a message such as 1 897, type dele 1:</li>
 </ul>
-<pre><code class="bash">dele 1
+<pre><code class="language-bash">dele 1
 </code></pre>
-
 <ul>
 <li>When you are done checking your email, type quit.</li>
 </ul>
-<pre><code class="bash">quit
+<pre><code class="language-bash">quit
 </code></pre>
 
   <br>

@@ -96,12 +96,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="generate-keys">Generate keys</h2>
-<pre><code class="bash">ssh-keygen -t rsa -b 4096 -C &quot;your_email_or_username&quot; [-f output_keyfile]
+    <h2 id="generate-keys">Generate keys<a class="headerlink" href="#generate-keys" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">ssh-keygen -t rsa -b 4096 -C &quot;your_email_or_username&quot; [-f output_keyfile]
 </code></pre>
-
-<h2 id="public-key-authentication">Public key authentication</h2>
-<pre><code class="bash"># On remote:
+<h2 id="public-key-authentication">Public key authentication<a class="headerlink" href="#public-key-authentication" title="Permanent link">#</a></h2>
+<pre><code class="language-bash"># On remote:
 mkdir ~/.ssh
 chmod 755 ~/.ssh
 
@@ -110,9 +109,8 @@ cat ~/.ssh/id_rsa.pub &gt; /tmp/pubkeytmp
 scp /tmp/pubkeytmp &lt;username&gt;@&lt;hostname&gt;:~/.ssh/authorized_keys
 rm /tmp/pubkeytmp
 </code></pre>
-
-<h2 id="avoid-checking-rsa-key-of-remote-host">Avoid checking rsa key of remote host</h2>
-<pre><code class="bash">ssh -o StrictHostKeyChecking=no -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null &lt;IP ADDRESS&gt;
+<h2 id="avoid-checking-rsa-key-of-remote-host">Avoid checking rsa key of remote host<a class="headerlink" href="#avoid-checking-rsa-key-of-remote-host" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">ssh -o StrictHostKeyChecking=no -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null &lt;IP ADDRESS&gt;
 </code></pre>
 
   <br>

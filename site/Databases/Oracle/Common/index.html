@@ -100,33 +100,29 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="show-tables">Show tables</h3>
-<pre><code class="sql">SELECT owner, table_name FROM dba_tables;
+    <h3 id="show-tables">Show tables<a class="headerlink" href="#show-tables" title="Permanent link">#</a></h3>
+<pre><code class="language-sql">SELECT owner, table_name FROM dba_tables;
 SELECT owner, table_name FROM all_tables;
 SELECT table_name FROM user_tables;
 </code></pre>
-
-<h3 id="show-filterd-tables">Show filterd tables</h3>
-<pre><code class="sql">SELECT table_name FROM user_tables WHERE table_name LIKE '%&lt;any_pattern&gt;%';
+<h3 id="show-filterd-tables">Show filterd tables<a class="headerlink" href="#show-filterd-tables" title="Permanent link">#</a></h3>
+<pre><code class="language-sql">SELECT table_name FROM user_tables WHERE table_name LIKE '%&lt;any_pattern&gt;%';
 # Example: SELECT table_name FROM user_tables WHERE table_name LIKE '%BLACK_LIST%';
 </code></pre>
-
-<h3 id="login-to-database">Login to database</h3>
-<pre><code class="bash"># First of all you can just use clean 'sqlplus' and it request user and password
+<h3 id="login-to-database">Login to database<a class="headerlink" href="#login-to-database" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># First of all you can just use clean 'sqlplus' and it request user and password
 sqlplus &lt;username&gt;/&lt;password&gt;@&lt;oracle_database_hostname&gt;
 </code></pre>
-
-<h3 id="run-sql-script">Run SQL script</h3>
-<pre><code class="sql"># Unix
+<h3 id="run-sql-script">Run SQL script<a class="headerlink" href="#run-sql-script" title="Permanent link">#</a></h3>
+<pre><code class="language-sql"># Unix
 @/path/to/sql_script.sql
 START /path/to/sql_script.sql
 # Windows
 @c:\path\to\sql_script.sql
 START c:\path\to\sql_script.sql
 </code></pre>
-
-<h3 id="show-table-information">Show table information</h3>
-<pre><code class="sql">DESCRIBE &lt;table_name&gt;
+<h3 id="show-table-information">Show table information<a class="headerlink" href="#show-table-information" title="Permanent link">#</a></h3>
+<pre><code class="language-sql">DESCRIBE &lt;table_name&gt;
 </code></pre>
 
   <br>

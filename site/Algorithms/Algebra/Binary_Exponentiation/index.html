@@ -96,7 +96,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="binary-exponentiation">Binary Exponentiation</h1>
+    <h1 id="binary-exponentiation">Binary Exponentiation<a class="headerlink" href="#binary-exponentiation" title="Permanent link">#</a></h1>
 <p>Binary exponentiation (also known as exponentiation by squaring) is a trick which allows to calculate <span><span class="MathJax_Preview">a^n</span><script type="math/tex">a^n</script></span> using only <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> multiplications (instead of <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> multiplications required by the naive approach).</p>
 <p>It also has important applications in many tasks unrelated to arithmetic, since it
 can be used with any operations that have the property of <strong>associativity</strong>:</p>
@@ -106,7 +106,7 @@ can be used with any operations that have the property of <strong>associativity<
 </div>
 <p>Most obviously this applies to modular multiplication, to multiplication of matrices and
 to other problems which we will discuss below.</p>
-<h2 id="algorithm">Algorithm</h2>
+<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
 <p>Raising <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> to the power of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is expressed naively as multiplication by <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> done <span><span class="MathJax_Preview">n - 1</span><script type="math/tex">n - 1</script></span> times:
 <span><span class="MathJax_Preview">a^{n} = a \cdot a \cdot \ldots \cdot a</span><script type="math/tex">a^{n} = a \cdot a \cdot \ldots \cdot a</script></span>. However, this approach is not practical for large <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> or <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.</p>
 <p><span><span class="MathJax_Preview">a^{b+c} = a^b \cdot a^c</span><script type="math/tex">a^{b+c} = a^b \cdot a^c</script></span> and <span><span class="MathJax_Preview">a^{2b} = a^b \cdot a^b = (a^b)^2</span><script type="math/tex">a^{2b} = a^b \cdot a^b = (a^b)^2</script></span></p>
@@ -149,9 +149,9 @@ Luckily this is very easy, since an element in the sequence is just the square o
 \left(a^{\frac{n - 1}{2}}\right)^2 \cdot a &\text{if } n > 0 \text{ and } n \text{ odd}\\\\
 \end{cases}</script>
 </div>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>First the recursive approach, which is a direct translation of the recursive formula:</p>
-<pre><code class="cpp">long long binpow(long long a, long long b) {
+<pre><code class="language-cpp">long long binpow(long long a, long long b) {
     if (b == 0)
         return 1;
     long long res = binpow(a, b / 2);
@@ -161,11 +161,10 @@ Luckily this is very easy, since an element in the sequence is just the square o
         return res * res;
 }
 </code></pre>
-
 <p>The second approach accomplishes the same task without recursion.
 It computes all the powers in a loop, and multiplies the ones with the corresponding set bit in <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.
 Although the complexity of both approaches is identical, this approach will be faster in practice since we have the overhead of the recursive calls.</p>
-<pre><code class="cpp">long long binpow(long long a, long long b) {
+<pre><code class="language-cpp">long long binpow(long long a, long long b) {
     long long res = 1;
     while (b &gt; 0) {
         if (b &amp; 1)
@@ -176,15 +175,14 @@ Although the complexity of both approaches is identical, this approach will be f
     return res;
 }
 </code></pre>
-
-<h2 id="applications">Applications</h2>
-<h3 id="effective-computation-of-large-exponents-modulo-a-number">Effective computation of large exponents modulo a number</h3>
+<h2 id="applications">Applications<a class="headerlink" href="#applications" title="Permanent link">#</a></h2>
+<h3 id="effective-computation-of-large-exponents-modulo-a-number">Effective computation of large exponents modulo a number<a class="headerlink" href="#effective-computation-of-large-exponents-modulo-a-number" title="Permanent link">#</a></h3>
 <p><strong>Problem:</strong>
 Compute <span><span class="MathJax_Preview">x^n \bmod m</span><script type="math/tex">x^n \bmod m</script></span>.
 This is a very common operation. For instance it is used in computing the <a href="/docs/#Algorithms/Algebra/Modular_Multiplicative_Inverse/">modular multiplicative inverse</a>.</p>
 <p><strong>Solution:</strong>
 Since we know that the module operator doesn't interfere with multiplications (<span><span class="MathJax_Preview">a \cdot b \equiv (a \bmod m) \cdot (b \bmod m) \pmod m</span><script type="math/tex">a \cdot b \equiv (a \bmod m) \cdot (b \bmod m) \pmod m</script></span>), we can directly use the same code, and just replace every multiplication with a modular multiplication:</p>
-<pre><code class="cpp">long long binpow(long long a, long long b, long long m) {
+<pre><code class="language-cpp">long long binpow(long long a, long long b, long long m) {
     a %= m;
     long long res = 1;
     while (b &gt; 0) {
@@ -196,10 +194,9 @@ Since we know that the module operator doesn't interfere with multiplications (<
     return res;
 }
 </code></pre>
-
 <p><strong>Note:</strong> If <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is a prime number we can speed up a bit this algorithm by calculating <span><span class="MathJax_Preview">x ^ {n \mod (m-1)}</span><script type="math/tex">x ^ {n \mod (m-1)}</script></span> instead of <span><span class="MathJax_Preview">x ^ n</span><script type="math/tex">x ^ n</script></span>.
 This follows directly from <a href="/docs/#Algorithms/Algebra/Modular_Multiplicative_Inverse/">Fermat's little theorem</a>.</p>
-<h3 id="effective-computation-of-fibonacci-numbers">Effective computation of Fibonacci numbers</h3>
+<h3 id="effective-computation-of-fibonacci-numbers">Effective computation of Fibonacci numbers<a class="headerlink" href="#effective-computation-of-fibonacci-numbers" title="Permanent link">#</a></h3>
 <p><strong>Problem:</strong> Compute <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>-th Fibonacci number <span><span class="MathJax_Preview">F_n</span><script type="math/tex">F_n</script></span>.</p>
 <p><strong>Solution:</strong> For more details, see the <a href="/docs/#Algorithms/Algebra/Fibonacci_Numbers/">Fibonacci Number article</a>.
 We will only go through an overview of the algorithm.
@@ -208,11 +205,11 @@ We can build a <span><span class="MathJax_Preview">2 \times 2</span><script type
 the transition from <span><span class="MathJax_Preview">F_i</span><script type="math/tex">F_i</script></span> and <span><span class="MathJax_Preview">F_{i+1}</span><script type="math/tex">F_{i+1}</script></span> to <span><span class="MathJax_Preview">F_{i+1}</span><script type="math/tex">F_{i+1}</script></span> and <span><span class="MathJax_Preview">F_{i+2}</span><script type="math/tex">F_{i+2}</script></span>.
 For example, applying this transformation to the pair <span><span class="MathJax_Preview">F_0</span><script type="math/tex">F_0</script></span> and <span><span class="MathJax_Preview">F_1</span><script type="math/tex">F_1</script></span> would change it into <span><span class="MathJax_Preview">F_1</span><script type="math/tex">F_1</script></span> and <span><span class="MathJax_Preview">F_2</span><script type="math/tex">F_2</script></span>.
 Therefore, we can raise this transformation matrix to the <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>-th power to find <span><span class="MathJax_Preview">F_n</span><script type="math/tex">F_n</script></span> in time complexity <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>.</p>
-<h3 id="applying-a-permutation-kk-times">Applying a permutation <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> times</h3>
+<h3 id="applying-a-permutation-kk-times">Applying a permutation <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> times<a class="headerlink" href="#applying-a-permutation-kk-times" title="Permanent link">#</a></h3>
 <p><strong>Problem:</strong> You are given a sequence of length <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>. Apply to it a given permutation <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> times.</p>
 <p><strong>Solution:</strong> Simply raise the permutation to <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th power using binary exponentiation, and then apply it to the sequence. This will give you a time complexity of <span><span class="MathJax_Preview">O(n \log k)</span><script type="math/tex">O(n \log k)</script></span>.</p>
 <p><strong>Note:</strong> This task can be solved more efficiently in linear time by building the permutation graph and considering each cycle independently. You could then compute <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> modulo the size of the cycle and find the final position for each number which is part of this cycle.</p>
-<h3 id="fast-application-of-a-set-of-geometric-operations-to-a-set-of-points">Fast application of a set of geometric operations to a set of points</h3>
+<h3 id="fast-application-of-a-set-of-geometric-operations-to-a-set-of-points">Fast application of a set of geometric operations to a set of points<a class="headerlink" href="#fast-application-of-a-set-of-geometric-operations-to-a-set-of-points" title="Permanent link">#</a></h3>
 <p><strong>Problem:</strong> Given <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> points <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span>, apply <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> transformations to each of these points. Each transformation can be a shift, a scaling or a rotation around a given axis by a given angle. There is also a "loop" operation which applies a given list of transformations <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> times ("loop" operations can be nested). You should apply all transformations faster than <span><span class="MathJax_Preview">O(n \cdot length)</span><script type="math/tex">O(n \cdot length)</script></span>, where <span><span class="MathJax_Preview">length</span><script type="math/tex">length</script></span> is the total number of transformations to be applied (after unrolling "loop" operations).</p>
 <p><strong>Solution:</strong> Let's look at how the different types of transformations change the coordinates:</p>
 <ul>
@@ -308,14 +305,14 @@ a_{41} & a_ {42} & a_ {43} & a_ {44} \\\
 \end{pmatrix}</script>
 </div>
 <p>Now, once every transformation is described as a matrix, the sequence of transformations can be described as a product of these matrices, and a "loop" of <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> repetitions can be described as the matrix raised to the power of <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> (which can be calculated using binary exponentiation in <span><span class="MathJax_Preview">O(\log{k})</span><script type="math/tex">O(\log{k})</script></span>). This way, the matrix which represents all transformations can be calculated first in <span><span class="MathJax_Preview">O(m \log{k})</span><script type="math/tex">O(m \log{k})</script></span>, and then it can be applied to each of the <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> points in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> for a total complexity of <span><span class="MathJax_Preview">O(n + m \log{k})</span><script type="math/tex">O(n + m \log{k})</script></span>.</p>
-<h3 id="number-of-paths-of-length-kk-in-a-graph">Number of paths of length <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> in a graph</h3>
+<h3 id="number-of-paths-of-length-kk-in-a-graph">Number of paths of length <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> in a graph<a class="headerlink" href="#number-of-paths-of-length-kk-in-a-graph" title="Permanent link">#</a></h3>
 <p><strong>Problem:</strong> Given a directed unweighted graph of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices, find the number of paths of length <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> from any vertex <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> to any other vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>.</p>
 <p><strong>Solution:</strong> This problem is considered in more detail in <a href="/docs/#Algorithms/Graph_Theory/Paths_in_Length/">a separate article</a>. The algorithm consists of raising the adjacency matrix <span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> of the graph (a matrix where <span><span class="MathJax_Preview">m_{ij} = 1</span><script type="math/tex">m_{ij} = 1</script></span> if there is an edge from <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> to <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>, or <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span> otherwise) to the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th power. Now <span><span class="MathJax_Preview">m_{ij}</span><script type="math/tex">m_{ij}</script></span> will be the number of paths of length <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> from <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> to <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>. The time complexity of this solution is <span><span class="MathJax_Preview">O(n^3 \log k)</span><script type="math/tex">O(n^3 \log k)</script></span>.</p>
 <p><strong>Note:</strong> In that same article, another variation of this problem is considered: when the edges are weighted and it is required to find the minimum weight path containing exactly <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> edges. As shown in that article, this problem is also solved by exponentiation of the adjacency matrix. The matrix would have the weight of the edge from <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> to <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>, or <span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span> if there is no such edge.
 Instead of the usual operation of multiplying two matrices, a modified one should be used:
 instead of multiplication, both values are added, and instead of a summation, a minimum is taken.
 That is: <span><span class="MathJax_Preview">result_{ij} = \min\limits_{1\ \leq\ k\ \leq\ n}(a_{ik} + b_{kj})</span><script type="math/tex">result_{ij} = \min\limits_{1\ \leq\ k\ \leq\ n}(a_{ik} + b_{kj})</script></span>.</p>
-<h3 id="variation-of-binary-exponentiation-multiplying-two-numbers-modulo-mm">Variation of binary exponentiation: multiplying two numbers modulo <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span></h3>
+<h3 id="variation-of-binary-exponentiation-multiplying-two-numbers-modulo-mm">Variation of binary exponentiation: multiplying two numbers modulo <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span><a class="headerlink" href="#variation-of-binary-exponentiation-multiplying-two-numbers-modulo-mm" title="Permanent link">#</a></h3>
 <p><strong>Problem:</strong> Multiply two numbers <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> modulo <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>. <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> fit in the built-in data types, but their product is too big to fit in a 64-bit integer. The idea is to compute <span><span class="MathJax_Preview">a \cdot b \pmod m</span><script type="math/tex">a \cdot b \pmod m</script></span> without using bignum arithmetics.</p>
 <p><strong>Solution:</strong> We simply apply the binary construction algorithm described above, only performing additions instead of multiplications. In other words, we have "expanded" the multiplication of two numbers to <span><span class="MathJax_Preview">O (\log m)</span><script type="math/tex">O (\log m)</script></span> operations of addition and multiplication by two (which, in essence, is an addition).</p>
 <div>
@@ -331,7 +328,7 @@ That is: <span><span class="MathJax_Preview">result_{ij} = \min\limits_{1\ \leq\
 \end{cases}</script>
 </div>
 <p><strong>Note:</strong> You can solve this task in a different way by using floating-point operations. First compute the expression <span><span class="MathJax_Preview">\frac{a \cdot b}{m}</span><script type="math/tex">\frac{a \cdot b}{m}</script></span> using floating-point numbers and cast it to an unsigned integer <span><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span>. Subtract <span><span class="MathJax_Preview">q \cdot m</span><script type="math/tex">q \cdot m</script></span> from <span><span class="MathJax_Preview">a \cdot b</span><script type="math/tex">a \cdot b</script></span> using unsigned integer arithmetics and take it modulo <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> to find the answer. This solution looks rather unreliable, but it is very fast, and very easy to implement. See <a href="https://cs.stackexchange.com/questions/77016/modular-multiplication">here</a> for more information.</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=24&amp;page=show_problem&amp;problem=3671">UVa 1230 - MODEX</a></li>
 <li><a href="http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=24&amp;page=show_problem&amp;problem=310">UVa 374 - Big Mod</a></li>

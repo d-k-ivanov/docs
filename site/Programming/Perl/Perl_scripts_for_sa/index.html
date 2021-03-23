@@ -92,11 +92,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="perl-tricks-for-system-administrators">Perl tricks for system administrators</h2>
+    <h2 id="perl-tricks-for-system-administrators">Perl tricks for system administrators<a class="headerlink" href="#perl-tricks-for-system-administrators" title="Permanent link">#</a></h2>
 <p>Did you know that Perl is a great programming language for system administrators? Perl is platform-independent so you can do things on different operating systems without rewriting your scripts. Scripting in Perl is quick and easy, and its portability makes your scripts amazingly useful. Here are a few examples, just to get your creative juices flowing!
 Renaming a bunch of files</p>
 <p>Suppose you need to rename a whole bunch of files in a directory. In this case, we've got a directory full of .xml files, and we want to rename them all to .html. Easy-peasy!</p>
-<pre><code class="perl">#!/usr/bin/perl
+<pre><code class="language-perl">#!/usr/bin/perl
 use strict;
 use warnings;
 
@@ -105,12 +105,11 @@ foreach my $file (glob &quot;*.xml&quot;) {
     rename $file, $new;
 }
 </code></pre>
-
 <p>Then just cd to the directory where you need to make the change, and run the script. You could put this in a cron job, if you needed to run it regularly, and it is easily enhanced to accept parameters.</p>
 <p>Speaking of accepting parameters, let's take a look at a script that does just that.
 Creating a Linux user account</p>
 <p>Suppose you need to regularly create Linux user accounts on your system, and the format of the username is first initial/last name, as is common in many businesses. (This is, of course, a good idea, until you get John Smith and Jane Smith working at the same company—or want John to have two accounts, as he works part-time in two different departments. But humor me, okay?) Each user account needs to be in a group based on their department, and home directories are of the format /home/<department>/<username>. Let's take a look at a script to do that:</p>
-<pre><code class="perl">#!/usr/bin/env perl
+<pre><code class="language-perl">#!/usr/bin/env perl
 use strict;
 use warnings;
 
@@ -185,12 +184,11 @@ sub usage {
     exit;
 }
 </code></pre>
-
 <p>As with the previous script, there are opportunities for enhancement, but something like this might be all that you need for this task.</p>
 <p>One more, just for fun!
 Change copyright text in every Perl source file in a directory tree</p>
 <p>Now we're going to try a mass edit. Suppose you've got a directory full of code, and each file has a copyright statement somewhere in it. (Rich Bowen wrote a great article, Copyright statements proliferate inside open source code a couple of years ago that discusses the wisdom of copyright statements in open source code. It is a good read, and I recommend it highly. But again, humor me.) You want to change that text in each and every file in the directory tree. File::Find and File::Slurp are your friends!</p>
-<pre><code class="perl">#!/usr/bin/perl
+<pre><code class="language-perl">#!/usr/bin/perl
 use strict;
 use warnings;
 
@@ -252,7 +250,6 @@ sub change_file {
     return;
 }
 </code></pre>
-
 <p>Because of Perl's portability, you could use this script on a Windows system as well as a Linux system—it Just Works because of the underlying Perl interpreter code. In our create-an-account code above, that one is not portable, but is Linux-specific because it uses Linux commands such as adduser.</p>
 <p>In my experience, I've found it useful to have a Git repository of these things somewhere that I can clone on each new system I'm working with. Over time, you'll think of changes to make to the code to enhance the capabilities, or you'll add new scripts, and Git can help you make sure that all your tools and tricks are available on all your systems.</p>
 <p>I hope these little scripts have given you some ideas how you can use Perl to make your system administration life a little easier. In addition to these longer scripts, take a look at a fantastic list of Perl one-liners, and links to other Perl magic assembled by Mischa Peterson.</p>

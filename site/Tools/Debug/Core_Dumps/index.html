@@ -92,8 +92,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="setup-core-dumps">Setup core dumps</h3>
-<pre><code class="bash"># Set core pattern to get files named like: core-bash-sig11-user0-group0-pid28808-time1481235929
+    <h3 id="setup-core-dumps">Setup core dumps<a class="headerlink" href="#setup-core-dumps" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Set core pattern to get files named like: core-bash-sig11-user0-group0-pid28808-time1481235929
 echo &quot;core-%e-sig%s-user%u-group%g-pid%p-time%t&quot; &gt; /proc/sys/kernel/core_pattern
 
 # Set limits for all users:

@@ -95,12 +95,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="d-esopo-pape-algorithm">D´Esopo-Pape Algorithm</h1>
+    <h1 id="d-esopo-pape-algorithm">D´Esopo-Pape Algorithm<a class="headerlink" href="#d-esopo-pape-algorithm" title="Permanent link">#</a></h1>
 <p>Given a graph with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> edges with weights <span><span class="MathJax_Preview">w_i</span><script type="math/tex">w_i</script></span> and a starting vertex <span><span class="MathJax_Preview">v_0</span><script type="math/tex">v_0</script></span>.
 The task is to find the shortest path from the vertex <span><span class="MathJax_Preview">v_0</span><script type="math/tex">v_0</script></span> to every other vertex.</p>
 <p>The algorithm from D´Esopo-Pape will work faster than <a href="/docs/#Algorithms/Graph_Theory/Dijkstra_Algorithm/">Dijkstra's algorithm</a> and the <a href="/docs/#Algorithms/Graph_Theory/Bellman-Ford_Algorithm/">Bellman-Ford algorithm</a> in most cases, and will also work for negative edges.
 However not for negative cycles.</p>
-<h2 id="description">Description</h2>
+<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
 <p>Let the array <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> contain the shortest path lengths, i.e. <span><span class="MathJax_Preview">d_i</span><script type="math/tex">d_i</script></span> is the current length of the shortest path from the vertex <span><span class="MathJax_Preview">v_0</span><script type="math/tex">v_0</script></span> to the vertex <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>.
 Initially this array is filled with infinity for every vertex, except <span><span class="MathJax_Preview">d_{v_0} = 0</span><script type="math/tex">d_{v_0} = 0</script></span>.
 After the algorithm finishes, this array will contain the shortest distances.</p>
@@ -127,7 +127,7 @@ Since <span><span class="MathJax_Preview">v</span><script type="math/tex">v</scr
 <li>If <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> belongs to <span><span class="MathJax_Preview">M_0</span><script type="math/tex">M_0</script></span>, and if <span><span class="MathJax_Preview">d_v</span><script type="math/tex">d_v</script></span> can be improved <span><span class="MathJax_Preview">d_v &gt; d_u + w</span><script type="math/tex">d_v > d_u + w</script></span>, then we improve <span><span class="MathJax_Preview">d_v</span><script type="math/tex">d_v</script></span> and insert the vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> back to the set <span><span class="MathJax_Preview">M_1</span><script type="math/tex">M_1</script></span>, placing it at the beginning of the queue.</li>
 </ul>
 <p>And of course, with each update in the array <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> we also have to update the corresponding element in the array <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>We will use an array <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> to store in which set each vertex is currently.</p>
 <p>```cpp desopo_pape
 struct Edge {
@@ -164,7 +164,7 @@ vector<vector\<Edge>> adj;</p>
 </code></pre>
 <p>}
 ```</p>
-<h2 id="complexity">Complexity</h2>
+<h2 id="complexity">Complexity<a class="headerlink" href="#complexity" title="Permanent link">#</a></h2>
 <p>The algorithm performs usually quite fast.
 In most cases even faster than Dijkstra's algorithm.
 However there exist cases for which the algorithm takes exponential time.</p>

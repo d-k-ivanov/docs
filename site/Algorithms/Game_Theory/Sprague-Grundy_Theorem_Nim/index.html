@@ -98,8 +98,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="sprague-grundy-theorem-nim">Sprague-Grundy Theorem. Nim</h1>
-<h2 id="introduction">Introduction</h2>
+    <h1 id="sprague-grundy-theorem-nim">Sprague-Grundy Theorem. Nim<a class="headerlink" href="#sprague-grundy-theorem-nim" title="Permanent link">#</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h2>
 <p>This theorem describes the so-called <strong>impartial</strong> two-player game,
 i.e. those in which the available moves and winning/losing depends only on the state of the game.
 In other words, the only difference between the two players is that one of them moves first.</p>
@@ -115,7 +115,7 @@ Losing states are those from which all moves lead to winning states for the othe
 Summarizing, a state is winning if there is at least one transition to a losing state and is losing if there isn't at least one transition to a losing state.</p>
 <p>Our task is to classify the states of a given game.</p>
 <p>The theory of such games was independently developed by Roland Sprague in 1935 and Patrick Michael Grundy in 1939.</p>
-<h2 id="nim">Nim</h2>
+<h2 id="nim">Nim<a class="headerlink" href="#nim" title="Permanent link">#</a></h2>
 <p>This game obeys the restrictions described above.
 Moreover, <em>any</em> perfect-information impartial two-player game can be reduced to the game of Nim.
 Studying this game will allow us to solve all other similar games, but more on that later.</p>
@@ -123,13 +123,13 @@ Studying this game will allow us to solve all other similar games, but more on t
 Its origin is probably in China — or at least the game <em>Jianshizi</em> is very similar to it.
 In Europe the earliest references to it are from the 16th century.
 The name was given by Charles Bouton, who in 1901 published a full analysis of this game.</p>
-<h3 id="game-description">Game description</h3>
+<h3 id="game-description">Game description<a class="headerlink" href="#game-description" title="Permanent link">#</a></h3>
 <p>There are several piles, each with several stones.
 In a move a player can take any positive number of stones from any one pile and throw them away.
 A player loses if they can't make a move, which happens when all the piles are empty.</p>
 <p>The game state is unambiguously described by a multiset of positive integers.
 A move consists of strictly decreasing a chosen integer (if it becomes zero, it is removed from the set).</p>
-<h3 id="the-solution">The solution</h3>
+<h3 id="the-solution">The solution<a class="headerlink" href="#the-solution" title="Permanent link">#</a></h3>
 <p>The solution by Charles L. Bouton looks like this:</p>
 <p><strong>Theorem.</strong>
 The current player has a winning strategy if and only if the xor-sum of the pile sizes is non-zero.
@@ -174,9 +174,9 @@ Now we have:</li>
 <p><strong>Corollary.</strong>
 Any state of Nim can be replaced by an equivalent state as long as the xor-sum doesn't change.
 Moreover, when analyzing a Nim with several piles, we can replace it with a single pile of size <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.</p>
-<h2 id="the-equivalence-of-impartial-games-and-nim-sprague-grundy-theorem">The equivalence of impartial games and Nim (Sprague-Grundy theorem)</h2>
+<h2 id="the-equivalence-of-impartial-games-and-nim-sprague-grundy-theorem">The equivalence of impartial games and Nim (Sprague-Grundy theorem)<a class="headerlink" href="#the-equivalence-of-impartial-games-and-nim-sprague-grundy-theorem" title="Permanent link">#</a></h2>
 <p>Now we will learn how to find, for any game state of any impartial game, a corresponding state of Nim.</p>
-<h3 id="lemma-about-nim-with-increases">Lemma about Nim with increases</h3>
+<h3 id="lemma-about-nim-with-increases">Lemma about Nim with increases<a class="headerlink" href="#lemma-about-nim-with-increases" title="Permanent link">#</a></h3>
 <p>We consider the following modification to Nim: we also allow <strong>adding stones to a chosen pile</strong>.
 The exact rules about how and when increasing is allowed <strong>do not interest us</strong>, however the rules should keep our game <strong>acyclic</strong>. In later sections, example games are considered.</p>
 <p><strong>Lemma.</strong>
@@ -185,7 +185,7 @@ In other words, increases are useless, and we don't have to use them in a winnin
 <p><strong>Proof.</strong>
 Suppose a player added stones to a pile. Then his opponent can simply undo his move — decrease the number back to the previous value.
 Since the game is acyclic, sooner or later the current player won't be able to use an increase move and will have to do the usual Nim move.</p>
-<h3 id="sprague-grundy-theorem">Sprague-Grundy theorem</h3>
+<h3 id="sprague-grundy-theorem">Sprague-Grundy theorem<a class="headerlink" href="#sprague-grundy-theorem" title="Permanent link">#</a></h3>
 <p>Let's consider a state <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> of a two-player impartial game and let <span><span class="MathJax_Preview">v_i</span><script type="math/tex">v_i</script></span> be the states reachable from it (where <span><span class="MathJax_Preview">i \in \\{ 1, 2, \dots, k \\} , k \ge 0</span><script type="math/tex">i \in \\{ 1, 2, \dots, k \\} , k \ge 0</script></span>).
 To this state, we can assign a fully equivalent game of Nim with one pile of size <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>.
 The number <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> is called the Grundy value or nim-value of state <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>.</p>
@@ -208,7 +208,7 @@ Then we know that for any integer <span><span class="MathJax_Preview">i \in [0, 
 This means <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> is <strong>equivalent to a state of the game of Nim with increases with one pile of size <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span></strong>.
 In such a game we have transitions to piles of every size smaller than <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> and possibly transitions to piles with sizes greater than <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>.
 Therefore, <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> is indeed the desired Grundy value for the currently considered state.</p>
-<h2 id="application-of-the-theorem">Application of the theorem</h2>
+<h2 id="application-of-the-theorem">Application of the theorem<a class="headerlink" href="#application-of-the-theorem" title="Permanent link">#</a></h2>
 <p>Finally, we describe an algorithm to determine the win/loss outcome of a game, which is applicable to any impartial two-player game.</p>
 <p>To calculate the Grundy value of a given state you need to:</p>
 <ul>
@@ -230,14 +230,14 @@ Of course xor does nothing if there is just one game.</p>
 <p>In comparison to the previous section, we take into account the fact that there can be transitions to combined games.
 We consider them a Nim with pile sizes equal to the independent games' Grundy values.
 We can xor-sum them just like usual Nim according to Bouton's theorem.</p>
-<h2 id="patterns-in-grundy-values">Patterns in Grundy values</h2>
+<h2 id="patterns-in-grundy-values">Patterns in Grundy values<a class="headerlink" href="#patterns-in-grundy-values" title="Permanent link">#</a></h2>
 <p>Very often when solving specific tasks using Grundy values, it may be beneficial to <strong>study the table of the values</strong> in search of patterns.</p>
 <p>In many games, which may seem rather difficult for theoretical analysis,
 the Grundy values turn out to be periodic or of an easily understandable form.
 In the overwhelming majority of cases the observed pattern turns out to be true and can be proved by induction if desired.</p>
 <p>However, Grundy values are far from <em>always</em> containing such regularities and even for some very simple games, the problem asking if those regularities exist is still open (e.g. "Grundy's game").</p>
-<h2 id="example-games">Example games</h2>
-<h3 id="crosses-crosses">Crosses-crosses</h3>
+<h2 id="example-games">Example games<a class="headerlink" href="#example-games" title="Permanent link">#</a></h2>
+<h3 id="crosses-crosses">Crosses-crosses<a class="headerlink" href="#crosses-crosses" title="Permanent link">#</a></h3>
 <p><strong>The rules.</strong>
 Consider a checkered strip of size <span><span class="MathJax_Preview">1 \times n</span><script type="math/tex">1 \times n</script></span>. In one move, the player must put one cross, but it is forbidden to put two crosses next to each other (in adjacent cells). As usual, the player without a valid move loses.</p>
 <p><strong>The solution.</strong>

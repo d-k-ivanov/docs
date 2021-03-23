@@ -95,7 +95,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="fenwick-tree">Fenwick Tree</h1>
+    <h1 id="fenwick-tree">Fenwick Tree<a class="headerlink" href="#fenwick-tree" title="Permanent link">#</a></h1>
 <p>Let, <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> be some <em>reversible</em> function and <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> be an array of integers of length <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>.</p>
 <p>Fenwick tree is a data structure which:</p>
 <ul>
@@ -107,8 +107,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Fenwick tree is also called <strong>Binary Indexed Tree</strong>, or just <strong>BIT</strong> abbreviated.</p>
 <p>The most common application of Fenwick tree is <em>calculating the sum of a range</em> (i.e. <span><span class="MathJax_Preview">f(A_1, A_2, \dots, A_k) = A_1 + A_2 + \dots + A_k</span><script type="math/tex">f(A_1, A_2, \dots, A_k) = A_1 + A_2 + \dots + A_k</script></span>).</p>
 <p>Fenwick tree was first described in a paper titled "A new data structure for cumulative frequency tables" (Peter M. Fenwick, 1994).</p>
-<h2 id="description">Description</h2>
-<h3 id="overview">Overview</h3>
+<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
+<h3 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h3>
 <p>For the sake of simplicity, we will assume that function <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> is just a <em>sum function</em>.</p>
 <p>Given an array of integers <span><span class="MathJax_Preview">A[0 \dots N-1]</span><script type="math/tex">A[0 \dots N-1]</script></span>.
 A Fenwick tree is just an array <span><span class="MathJax_Preview">T[0 \dots N-1]</span><script type="math/tex">T[0 \dots N-1]</script></span>, where each of its elements is equal to the sum of elements of <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> in some range <span><span class="MathJax_Preview">[g(i), i]</span><script type="math/tex">[g(i), i]</script></span>:</p>
@@ -125,7 +125,7 @@ Many people will actually use a version of the Fenwick tree that uses one-based 
 Therefore you will also find an alternative implementation using one-based indexing in the implementation section.
 Both versions are equivalent in terms of time and memory complexity.</p>
 <p>Now we can write some pseudo-code for the two operations mentioned above - get the sum of elements of <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> in the range <span><span class="MathJax_Preview">[0, r]</span><script type="math/tex">[0, r]</script></span> and update (increase) some element <span><span class="MathJax_Preview">A_i</span><script type="math/tex">A_i</script></span>:</p>
-<pre><code class="python">def sum(int r):
+<pre><code class="language-python">def sum(int r):
     res = 0
     while (r &gt;= 0):
         res += t[r]
@@ -136,7 +136,6 @@ def increase(int i, int delta):
     for all j with g(j) &lt;= i &lt;= j:
         t[j] += delta
 </code></pre>
-
 <p>The function <code>sum</code> works as follows:</p>
 <ol>
 <li>first, it adds the sum of the range <span><span class="MathJax_Preview">[g(r), r]</span><script type="math/tex">[g(r), r]</script></span> (i.e. <span><span class="MathJax_Preview">T[r]</span><script type="math/tex">T[r]</script></span>) to the <code>result</code></li>
@@ -153,7 +152,7 @@ For instance the function <span><span class="MathJax_Preview">g(i) = i</span><sc
 We can also take the function <span><span class="MathJax_Preview">g(i) = 0</span><script type="math/tex">g(i) = 0</script></span>.
 This will correspond to prefix sum arrays, which means that finding the sum of the range <span><span class="MathJax_Preview">[0, i]</span><script type="math/tex">[0, i]</script></span> will only take constant time, but updates are slow.
 The clever part of the Fenwick algorithm is, that there it uses a special definition of the function <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> that can handle both operations in <span><span class="MathJax_Preview">O(\log N)</span><script type="math/tex">O(\log N)</script></span> time.</p>
-<h3 id="definition-of-gigi">Definition of <span><span class="MathJax_Preview">g(i)</span><script type="math/tex">g(i)</script></span></h3>
+<h3 id="definition-of-gigi">Definition of <span><span class="MathJax_Preview">g(i)</span><script type="math/tex">g(i)</script></span><a class="headerlink" href="#definition-of-gigi" title="Permanent link">#</a></h3>
 <p>The computation of <span><span class="MathJax_Preview">g(i)</span><script type="math/tex">g(i)</script></span> is defined using the following simple operation:
 we replace all trailing <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> bits in the binary representation of <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> with <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span> bits.</p>
 <p>In other words, if the least significant digit of <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> in binary is <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>, then <span><span class="MathJax_Preview">g(i) = i</span><script type="math/tex">g(i) = i</script></span>.
@@ -212,8 +211,8 @@ h(31) = 63 &= 0111111_2 \\\\
 <p>The following image shows a possible interpretation of the Fenwick tree as tree.
 The nodes of the tree show the ranges they cover.</p>
 <p><center><img alt="Binary Indexed Tree" src="/docs/data/cs/binary_indexed_tree.png" /></center></p>
-<h2 id="implementation">Implementation</h2>
-<h3 id="finding-sum-in-one-dimensional-array">Finding sum in one-dimensional array</h3>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
+<h3 id="finding-sum-in-one-dimensional-array">Finding sum in one-dimensional array<a class="headerlink" href="#finding-sum-in-one-dimensional-array" title="Permanent link">#</a></h3>
 <p>Here we present an implementation of the Fenwick tree for sum queries and single updates.</p>
 <p>The normal Fenwick tree can only answer sum queries of the type <span><span class="MathJax_Preview">[0, r]</span><script type="math/tex">[0, r]</script></span> using <code>sum(int r)</code>, however we can also answer other queries of the type <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span> by computing two sums <span><span class="MathJax_Preview">[0, r]</span><script type="math/tex">[0, r]</script></span> and <span><span class="MathJax_Preview">[0, l-1]</span><script type="math/tex">[0, l-1]</script></span> and subtract them.
 This is handled in the <code>sum(int l, int r)</code> method.</p>
@@ -286,14 +285,13 @@ struct FenwickTreeMin {
     }
 };
 </code></pre>
-
 <p>Note: it is possible to implement a Fenwick tree that can handle arbitrary minimum range queries and arbitrary updates.
 The paper <a href="http://ioinformatics.org/oi/pdf/v9_2015_39_44.pdf">Efficient Range Minimum Queries using Binary Indexed Trees</a> describes such an approach.
 However with that approach you need to maintain a second binary indexed trees over the data, with a slightly different structure, since you one tree is not enough to store the values of all elements in the array.
 The implementation is also a lot harder compared to the normal implementation for sums.</p>
-<h3 id="finding-sum-in-two-dimensional-array">Finding sum in two-dimensional array</h3>
+<h3 id="finding-sum-in-two-dimensional-array">Finding sum in two-dimensional array<a class="headerlink" href="#finding-sum-in-two-dimensional-array" title="Permanent link">#</a></h3>
 <p>As claimed before, it is very easy to implement Fenwick Tree for multidimensional array.</p>
-<pre><code class="cpp">struct FenwickTree2D {
+<pre><code class="language-cpp">struct FenwickTree2D {
     vector&lt;vector&lt;int&gt;&gt; bit;
     int n, m;
 
@@ -314,12 +312,11 @@ The implementation is also a lot harder compared to the normal implementation fo
     }
 };
 </code></pre>
-
-<h3 id="one-based-indexing-approach">One-based indexing approach</h3>
+<h3 id="one-based-indexing-approach">One-based indexing approach<a class="headerlink" href="#one-based-indexing-approach" title="Permanent link">#</a></h3>
 <p>For this approach we change the requirements and definition for <span><span class="MathJax_Preview">T[]</span><script type="math/tex">T[]</script></span> and <span><span class="MathJax_Preview">g()</span><script type="math/tex">g()</script></span> a little bit.
 We want <span><span class="MathJax_Preview">T[i]</span><script type="math/tex">T[i]</script></span> to store the sum of <span><span class="MathJax_Preview">[g(i)+1; i]</span><script type="math/tex">[g(i)+1; i]</script></span>.
 This changes the implementation a little bit, and allows for a similar nice definition for <span><span class="MathJax_Preview">g(i)</span><script type="math/tex">g(i)</script></span>:</p>
-<pre><code class="python">def sum(int r):
+<pre><code class="language-python">def sum(int r):
     res = 0
     while (r &gt; 0):
         res += t[r]
@@ -330,7 +327,6 @@ def increase(int i, int delta):
     for all j with g(j) &lt; i &lt;= j:
         t[j] += delta
 </code></pre>
-
 <p>The computation of <span><span class="MathJax_Preview">g(i)</span><script type="math/tex">g(i)</script></span> is defined as:
 toggling of the last set <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> bit in the binary representation of <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>.</p>
 <div>
@@ -430,20 +426,18 @@ int point_query(int idx) {
     return ret;
 }
 </code></pre>
-
 <p>Note: of course it is also possible to increase a single point <span><span class="MathJax_Preview">A[i]</span><script type="math/tex">A[i]</script></span> with <code>range_add(i, i, val)</code>.</p>
-<h3 id="3-range-updates-and-range-queries">3. Range Updates and Range Queries</h3>
+<h3 id="3-range-updates-and-range-queries">3. Range Updates and Range Queries<a class="headerlink" href="#3-range-updates-and-range-queries" title="Permanent link">#</a></h3>
 <p>To support both range updates and range queries we will use two BITs namely <span><span class="MathJax_Preview">B_1[]</span><script type="math/tex">B_1[]</script></span> and <span><span class="MathJax_Preview">B_2[]</span><script type="math/tex">B_2[]</script></span>, initialized with zeros.</p>
 <p>Suppose that we want to increment the interval <span><span class="MathJax_Preview">[l, r]</span><script type="math/tex">[l, r]</script></span> by the value <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>.
 Similarly as in the previous method, we perform two point updates on <span><span class="MathJax_Preview">B_1</span><script type="math/tex">B_1</script></span>: <code>add(B1, l, x)</code> and <code>add(B1, r+1, -x)</code>.
 And we also update <span><span class="MathJax_Preview">B_2</span><script type="math/tex">B_2</script></span>. The details will be explained later.</p>
-<pre><code class="python">def range_add(l, r, x):
+<pre><code class="language-python">def range_add(l, r, x):
     add(B1, l, x)
     add(B1, r+1, -x)
     add(B2, l, x*(l-1))
     add(B2, r+1, -x*r))
 </code></pre>
-
 <p>After the range update <span><span class="MathJax_Preview">(l, r, x)</span><script type="math/tex">(l, r, x)</script></span> the range sum query should return the following values:</p>
 <div>
 <div class="MathJax_Preview">
@@ -488,7 +482,7 @@ x \cdot i - x \cdot (l-1) & l \le i \le r \\\\
 <p>The last expression is exactly equal to the required terms.
 Thus we can use <span><span class="MathJax_Preview">B_2</span><script type="math/tex">B_2</script></span> for shaving off extra terms when we multiply <span><span class="MathJax_Preview">B_1[i]\times i</span><script type="math/tex">B_1[i]\times i</script></span>.</p>
 <p>We can find arbitrary range sums by computing the prefix sums for <span><span class="MathJax_Preview">l-1</span><script type="math/tex">l-1</script></span> and <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> and taking the difference of them again.</p>
-<pre><code class="python">def add(b, idx, x):
+<pre><code class="language-python">def add(b, idx, x):
     while idx &lt;= N:
         b[idx] += x
         idx += idx &amp; -idx
@@ -512,8 +506,7 @@ def prefix_sum(idx):
 def range_sum(l, r):
     return prefix_sum(r) - prefix_sum(l-1)
 </code></pre>
-
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=24&amp;page=show_problem&amp;problem=3238">UVA 12086 - Potentiometers</a></li>
 <li><a href="http://www.lightoj.com/volume_showproblem.php?problem=1112">LOJ 1112 - Curious Robin Hood</a></li>
@@ -551,7 +544,7 @@ def range_sum(l, r):
 <li><a href="https://codeforces.com/problemset/problem/704/A">Codeforces - Thor</a></li>
 <li><a href="http://matcomgrader.com/problem/9346/fundraising/">Latin American Regionals 2017 - Fundraising</a></li>
 </ul>
-<h3 id="other-sources">Other sources</h3>
+<h3 id="other-sources">Other sources<a class="headerlink" href="#other-sources" title="Permanent link">#</a></h3>
 <ul>
 <li><a href="http://en.wikipedia.org/wiki/Fenwick_tree">Fenwick tree on Wikipedia</a></li>
 <li><a href="https://www.topcoder.com/community/data-science/data-science-tutorials/binary-indexed-trees/">Binary indexed trees tutorial on TopCoder</a></li>

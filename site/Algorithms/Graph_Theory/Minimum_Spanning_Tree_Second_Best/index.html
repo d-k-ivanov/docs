@@ -98,14 +98,14 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="minimum-spanning-tree-second-best">Minimum Spanning Tree: Second Best</h1>
+    <h1 id="minimum-spanning-tree-second-best">Minimum Spanning Tree: Second Best<a class="headerlink" href="#minimum-spanning-tree-second-best" title="Permanent link">#</a></h1>
 <p>A Minimum Spanning Tree <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> is a tree for the given graph <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> which spans over all vertices of the given graph and has the minimum weight sum of all the edges, from all the possible spanning trees.
 A second best MST <span><span class="MathJax_Preview">T'</span><script type="math/tex">T'</script></span> is a spanning tree, that has the second minimum weight sum of all the edges, from all the possible spanning trees of the graph <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>.</p>
-<h2 id="observation">Observation</h2>
+<h2 id="observation">Observation<a class="headerlink" href="#observation" title="Permanent link">#</a></h2>
 <p>Let <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> be the Minimum Spanning Tree of a graph <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>.
 It can be observed, that the second best Minimum Spanning Tree differs from <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> by only one edge replacement. (For a proof of this statement refer to problem 23-1 <a href="http://www-bcf.usc.edu/~shanghua/teaching/Spring2010/public_html/files/HW2_Solutions_A.pdf">here</a>).</p>
 <p>So we need to find an edge <span><span class="MathJax_Preview">e_{new}</span><script type="math/tex">e_{new}</script></span> which is in not in <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>, and replace it with an edge in <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> (let it be <span><span class="MathJax_Preview">e_{old}</span><script type="math/tex">e_{old}</script></span>) such that the new graph <span><span class="MathJax_Preview">T' = (T \cup \\{e_{new}\\}) \setminus \\{e_{old}\\}</span><script type="math/tex">T' = (T \cup \\{e_{new}\\}) \setminus \\{e_{old}\\}</script></span> is a spanning tree and the weight difference (<span><span class="MathJax_Preview">e_{new} - e_{old}</span><script type="math/tex">e_{new} - e_{old}</script></span>) is minimum.</p>
-<h2 id="using-kruskals-algorithm">Using Kruskal's Algorithm</h2>
+<h2 id="using-kruskals-algorithm">Using Kruskal's Algorithm<a class="headerlink" href="#using-kruskals-algorithm" title="Permanent link">#</a></h2>
 <p>We can use Kruskal's algorithm to find the MST first, and then just try to remove a single edge from it and replace it with another.</p>
 <ol>
 <li>Sort the edges in <span><span class="MathJax_Preview">O(E \log E)</span><script type="math/tex">O(E \log E)</script></span>, then find a MST using Kruskal in <span><span class="MathJax_Preview">O(E)</span><script type="math/tex">O(E)</script></span>.</li>
@@ -115,7 +115,7 @@ It can be observed, that the second best Minimum Spanning Tree differs from <spa
 </ol>
 <p>Note: we don’t need to sort the edges again in for Step 3.</p>
 <p>So, the overall time complexity will be <span><span class="MathJax_Preview">O(E \log V + E + V E)</span><script type="math/tex">O(E \log V + E + V E)</script></span> = <span><span class="MathJax_Preview">O(V E)</span><script type="math/tex">O(V E)</script></span>.</p>
-<h2 id="modeling-into-a-lowest-common-ancestor-lca-problem">Modeling into a Lowest Common Ancestor (LCA) problem</h2>
+<h2 id="modeling-into-a-lowest-common-ancestor-lca-problem">Modeling into a Lowest Common Ancestor (LCA) problem<a class="headerlink" href="#modeling-into-a-lowest-common-ancestor-lca-problem" title="Permanent link">#</a></h2>
 <p>In the previous approach we tried all possibilities of removing one edge of the MST.
 Here we will do the exact opposite.
 We try to add every edge that is not already in the MST.</p>
@@ -146,8 +146,8 @@ In this example we will get the edge with weight 34 as maximum edge weight in th
 By removing the edge we get a new spanning tree, that has a weight difference of only 2.</p>
 <p>After doing this also with all other edges that are not part of the initial MST, we can see that this spanning tree was also the second best spanning tree overall.
 Choosing the edge with weight 14 will increase the weight of the tree by 7, choosing the edge with weight 27 increases it by 14, choosing the edge with weight 28 increases it by 21, and choosing the edge with weight 39 will increase the tree by 5.</p>
-<h2 id="implementation">Implementation</h2>
-<pre><code class="cpp">struct edge {
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
+<pre><code class="language-cpp">struct edge {
     int s, e, w, id;
     bool operator&lt;(const struct edge&amp; other) { return w &lt; other.w; }
 };
@@ -264,13 +264,12 @@ int main(void) {
     return 0;
 }
 </code></pre>
-
-<h2 id="references">References</h2>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
 <ol>
 <li>Competitive Programming-3, by Steven Halim</li>
 <li><a href="http://web.mit.edu/6.263/www/quiz1-f05-sol.pdf">web.mit.edu</a></li>
 </ol>
-<h2 id="problems">Problems</h2>
+<h2 id="problems">Problems<a class="headerlink" href="#problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://codeforces.com/problemset/problem/609/E">Codeforces - Minimum spanning tree for each edge</a></li>
 </ul>

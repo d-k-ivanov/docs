@@ -97,7 +97,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="longest-increasing-subsequence">Longest Increasing Subsequence</h1>
+    <h1 id="longest-increasing-subsequence">Longest Increasing Subsequence<a class="headerlink" href="#longest-increasing-subsequence" title="Permanent link">#</a></h1>
 <p>We are given an array with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> numbers: <span><span class="MathJax_Preview">a[0 \dots n-1]</span><script type="math/tex">a[0 \dots n-1]</script></span>.
 The task is to find the longest, strictly increasing, subsequence in <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>.</p>
 <p>Formally we look for the longest sequence of indices <span><span class="MathJax_Preview">i_1, \dots i_k</span><script type="math/tex">i_1, \dots i_k</script></span> such that</p>
@@ -109,11 +109,11 @@ a[i_1] < a[i_2] < \dots < a[i_k]</script>
 </div>
 <p>In this article we discuss multiple algorithms for solving this task.
 Also we will discuss some other problems, that can be reduced to this problem.</p>
-<h2 id="solution-in-on2on2-with-dynamic-programming">Solution in <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span> with dynamic programming</h2>
+<h2 id="solution-in-on2on2-with-dynamic-programming">Solution in <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span> with dynamic programming<a class="headerlink" href="#solution-in-on2on2-with-dynamic-programming" title="Permanent link">#</a></h2>
 <p>Dynamic programming is a very general technique that allows to solve a huge class of problems.
 Here we apply the technique for our specific task.</p>
 <p>First we will search only for the <strong>length</strong> of the longest increasing subsequence, and only later learn how to restore the subsequence itself.</p>
-<h3 id="finding-the-length">Finding the length</h3>
+<h3 id="finding-the-length">Finding the length<a class="headerlink" href="#finding-the-length" title="Permanent link">#</a></h3>
 <p>To accomplish this task, we define an array <span><span class="MathJax_Preview">d[0 \dots n-1]</span><script type="math/tex">d[0 \dots n-1]</script></span>, where <span><span class="MathJax_Preview">d[i]</span><script type="math/tex">d[i]</script></span> is the length of the longest increasing subsequence that ends in the element at index <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>.
 We will compute this array gradually: first <span><span class="MathJax_Preview">d[0]</span><script type="math/tex">d[0]</script></span>, then <span><span class="MathJax_Preview">d[1]</span><script type="math/tex">d[1]</script></span>, and so on.
 After this array is computed, the answer to the problem will be the maximum value in the array <span><span class="MathJax_Preview">d[]</span><script type="math/tex">d[]</script></span>.</p>
@@ -135,7 +135,7 @@ Then there are two options:</p>
 <div class="MathJax_Preview">d[i] = \max\left(1, \max_{\substack{j = 0 \dots i-1 \\\\ a[j] &lt; a[i]}} \left(d[j] + 1\right)\right)</div>
 <script type="math/tex; mode=display">d[i] = \max\left(1, \max_{\substack{j = 0 \dots i-1 \\\\ a[j] < a[i]}} \left(d[j] + 1\right)\right)</script>
 </div>
-<h3 id="implementation">Implementation</h3>
+<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h3>
 <p>Here is an implementation of the algorithm described above, which computes the length of the longest increasing subsequence.</p>
 <p>```cpp lis_n2
 int lis(vector<int> const&amp; a) {
@@ -204,12 +204,11 @@ vector&lt;int&gt; lis(vector&lt;int&gt; const&amp; a) {
     return subseq;
 }
 </code></pre>
-
-<h3 id="alternative-way-of-restoring-the-subsequence">Alternative way of restoring the subsequence</h3>
+<h3 id="alternative-way-of-restoring-the-subsequence">Alternative way of restoring the subsequence<a class="headerlink" href="#alternative-way-of-restoring-the-subsequence" title="Permanent link">#</a></h3>
 <p>It is also possible to restore the subsequence without the auxiliary array <span><span class="MathJax_Preview">p[]</span><script type="math/tex">p[]</script></span>.
 We can simply recalculate the current value of <span><span class="MathJax_Preview">d[i]</span><script type="math/tex">d[i]</script></span> and also see how the maximum was reached.</p>
 <p>This method leads to a slightly longer code, but in return we save some memory.</p>
-<h2 id="solution-in-on-log-non-log-n-with-dynamic-programming-and-binary-search">Solution in <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> with dynamic programming and binary search</h2>
+<h2 id="solution-in-on-log-non-log-n-with-dynamic-programming-and-binary-search">Solution in <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> with dynamic programming and binary search<a class="headerlink" href="#solution-in-on-log-non-log-n-with-dynamic-programming-and-binary-search" title="Permanent link">#</a></h2>
 <p>In order to obtain a faster solution for the problem, we construct a different dynamic programming solution that runs in <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span>, and then later improve it to <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>.</p>
 <p>We will use the dynamic programming array <span><span class="MathJax_Preview">d[0 \dots n]</span><script type="math/tex">d[0 \dots n]</script></span>.
 This time <span><span class="MathJax_Preview">d[i]</span><script type="math/tex">d[i]</script></span> will be the element at which a subsequence of length <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> terminates.
@@ -273,8 +272,7 @@ int lis(vector&lt;int&gt; const&amp; a) {
     return ans;
 }
 </code></pre>
-
-<h3 id="restoring-the-subsequence">Restoring the subsequence</h3>
+<h3 id="restoring-the-subsequence">Restoring the subsequence<a class="headerlink" href="#restoring-the-subsequence" title="Permanent link">#</a></h3>
 <p>It is also possible to restore the subsequence using this approach.
 This time we have to maintain two auxiliary arrays.
 One that tells us the index of the elements in <span><span class="MathJax_Preview">d[]</span><script type="math/tex">d[]</script></span>.
@@ -282,7 +280,7 @@ And again we have to create an array of "ancestors" <span><span class="MathJax_P
 <span><span class="MathJax_Preview">p[i]</span><script type="math/tex">p[i]</script></span> will be the index of the previous element for the optimal subsequence ending in element <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>.</p>
 <p>It's easy to maintain these two arrays in the course of iteration over the array <span><span class="MathJax_Preview">a[]</span><script type="math/tex">a[]</script></span> alongside the computations of <span><span class="MathJax_Preview">d[]</span><script type="math/tex">d[]</script></span>.
 And at the end it in not difficult to restore the desired subsequence using these arrays.</p>
-<h2 id="solution-in-on-log-non-log-n-with-data-structures">Solution in <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> with data structures</h2>
+<h2 id="solution-in-on-log-non-log-n-with-data-structures">Solution in <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> with data structures<a class="headerlink" href="#solution-in-on-log-non-log-n-with-data-structures" title="Permanent link">#</a></h2>
 <p>Instead of the above method for computing the longest increasing subsequence in <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> we can also solve the problem in a different way: using some simple data structures.</p>
 <p>Let's go back to the first method.
 Remember that <span><span class="MathJax_Preview">d[i]</span><script type="math/tex">d[i]</script></span> is the value <span><span class="MathJax_Preview">d[j] + 1</span><script type="math/tex">d[j] + 1</script></span> with <span><span class="MathJax_Preview">j &lt; i</span><script type="math/tex">j < i</script></span> and <span><span class="MathJax_Preview">a[j] &lt; a[i]</span><script type="math/tex">a[j] < a[i]</script></span>.</p>
@@ -299,21 +297,21 @@ Otherwise the memory consumption will be too high.</p>
 <p>On the other hand this method has also some <strong>advantages</strong>:
 with this method you don't have to think about any tricky properties in the dynamic programming solution.
 And this approach allows us to generalize the problem very easily (see below).</p>
-<h2 id="related-tasks">Related tasks</h2>
+<h2 id="related-tasks">Related tasks<a class="headerlink" href="#related-tasks" title="Permanent link">#</a></h2>
 <p>Here are several problems that are closely related to the problem of finding the longest increasing subsequence.</p>
-<h3 id="longest-non-decreasing-subsequence">Longest non-decreasing subsequence</h3>
+<h3 id="longest-non-decreasing-subsequence">Longest non-decreasing subsequence<a class="headerlink" href="#longest-non-decreasing-subsequence" title="Permanent link">#</a></h3>
 <p>This is in fact nearly the same problem.
 Only now it is allowed to use identical numbers in the subsequence.</p>
 <p>The solution is essentially also nearly the same.
 We just have to change the inequality signs, and make a slightly modification to the binary search.</p>
-<h3 id="number-of-longest-increasing-subsequences">Number of longest increasing subsequences</h3>
+<h3 id="number-of-longest-increasing-subsequences">Number of longest increasing subsequences<a class="headerlink" href="#number-of-longest-increasing-subsequences" title="Permanent link">#</a></h3>
 <p>We can use the first discussed method, either the <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span> version or the version using data structures.
 We only have to additionally store in how many ways we can obtain longest increasing subsequences ending in the values <span><span class="MathJax_Preview">d[i]</span><script type="math/tex">d[i]</script></span>.</p>
 <p>The number of ways to form a longest increasing subsequences ending in <span><span class="MathJax_Preview">a[i]</span><script type="math/tex">a[i]</script></span> is the sum of all ways for all longest increasing subsequences ending in <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> where <span><span class="MathJax_Preview">d[j]</span><script type="math/tex">d[j]</script></span> is maximal.
 There can be multiple such <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>, so we need to sum all of them.</p>
 <p>Using a Segment tree this approach can also be implemented in <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>.</p>
 <p>It is not possible to use the binary search approach for this task.</p>
-<h3 id="smallest-number-of-non-increasing-subsequences-covering-a-sequence">Smallest number of non-increasing subsequences covering a sequence</h3>
+<h3 id="smallest-number-of-non-increasing-subsequences-covering-a-sequence">Smallest number of non-increasing subsequences covering a sequence<a class="headerlink" href="#smallest-number-of-non-increasing-subsequences-covering-a-sequence" title="Permanent link">#</a></h3>
 <p>For a given array with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> numbers <span><span class="MathJax_Preview">a[0 \dots n - 1]</span><script type="math/tex">a[0 \dots n - 1]</script></span> we have to colorize the numbers in the smallest number of colors, so that each color forms a non-increasing subsequence.</p>
 <p>To solve this, we notice that the minimum number of required colors is equal to the length of the longest increasing subsequence.</p>
 <p><strong>Proof</strong>:
@@ -333,7 +331,7 @@ Since we assumed that <span><span class="MathJax_Preview">y &gt; x</span><script
 <p><strong>Restoring the sequences</strong>:
 The desired partition of the sequence into subsequences can be done greedily.
 I.e. go from left to right and assign the current number or that subsequence ending with the minimal number which is greater than or equal to the current one.</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://community.topcoder.com/stat?c=problem_statement&amp;pm=5922&amp;rd=8075">Topcoder - IntegerSequence</a></li>
 <li><a href="https://community.topcoder.com/stat?c=problem_statement&amp;pm=3937&amp;rd=6532">Topcoder - AutoMarket</a></li>

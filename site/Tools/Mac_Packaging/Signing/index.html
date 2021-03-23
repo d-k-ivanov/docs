@@ -106,36 +106,36 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="signing-identity-types">Signing Identity Types</h2>
-<h3 id="ios-development">iOS Development</h3>
+    <h2 id="signing-identity-types">Signing Identity Types<a class="headerlink" href="#signing-identity-types" title="Permanent link">#</a></h2>
+<h3 id="ios-development">iOS Development<a class="headerlink" href="#ios-development" title="Permanent link">#</a></h3>
 <ul>
 <li><strong>iPhone Developer</strong>: Team Member Name Used to run an iOS app on devices and use certain app services during development.</li>
 </ul>
-<h3 id="ios-distribution">iOS Distribution</h3>
+<h3 id="ios-distribution">iOS Distribution<a class="headerlink" href="#ios-distribution" title="Permanent link">#</a></h3>
 <ul>
 <li><strong>iPhone Distribution</strong>: Team Name Used to distribute your iOS app on designated devices for testing or to submit it to the App Store.</li>
 </ul>
-<h3 id="mac-development">Mac Development</h3>
+<h3 id="mac-development">Mac Development<a class="headerlink" href="#mac-development" title="Permanent link">#</a></h3>
 <ul>
 <li><strong>Mac Developer</strong>: Team Member Name Used to enable certain app services during development and testing.</li>
 </ul>
-<h3 id="mac-app-distribution">Mac App Distribution</h3>
+<h3 id="mac-app-distribution">Mac App Distribution<a class="headerlink" href="#mac-app-distribution" title="Permanent link">#</a></h3>
 <ul>
 <li><strong>3rd Party Mac Developer Application</strong>: Team Name Used to sign a Mac app before submitting it to the Mac App Store.</li>
 </ul>
-<h3 id="mac-installer-distribution">Mac Installer Distribution</h3>
+<h3 id="mac-installer-distribution">Mac Installer Distribution<a class="headerlink" href="#mac-installer-distribution" title="Permanent link">#</a></h3>
 <ul>
 <li><strong>3rd Party Mac Developer Installer</strong>: Team Name Used to sign and submit a Mac Installer Package, containing your signed app, to the Mac App Store.</li>
 </ul>
-<h3 id="developer-id-application">Developer ID Application</h3>
+<h3 id="developer-id-application">Developer ID Application<a class="headerlink" href="#developer-id-application" title="Permanent link">#</a></h3>
 <ul>
 <li><strong>Developer ID Application</strong>: Team Name Used to sign a Mac app before distributing it outside the Mac App Store.</li>
 </ul>
-<h3 id="developer-id-installer">Developer ID Installer</h3>
+<h3 id="developer-id-installer">Developer ID Installer<a class="headerlink" href="#developer-id-installer" title="Permanent link">#</a></h3>
 <ul>
 <li><strong>Developer ID Installer</strong>: Team Name Used to sign and distribute a Mac Installer Package, containing your signed app, outside the Mac App Store</li>
 </ul>
-<h2 id="requirements">Requirements</h2>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
 <ul>
 <li>Register as Apple Developer</li>
 <li>Get your Apple Developer ID</li>
@@ -145,7 +145,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>Add your Terminal App to Accessibility</li>
 <li>Add your Terminal App to Automation: System Events (Request will be appeared)</li>
 </ul>
-<h2 id="list-of-apple-identities-an-their-usage">List of Apple Identities an their usage</h2>
+<h2 id="list-of-apple-identities-an-their-usage">List of Apple Identities an their usage<a class="headerlink" href="#list-of-apple-identities-an-their-usage" title="Permanent link">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -192,8 +192,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </tr>
 </tbody>
 </table>
-<h2 id="sing-application-code">Sing Application Code</h2>
-<pre><code class="bash">codesign --force --verify --verbose --deep --sign &quot;Developer ID Application: YOUR_NAME&quot; &quot;PATH_TO_APP&quot;
+<h2 id="sing-application-code">Sing Application Code<a class="headerlink" href="#sing-application-code" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">codesign --force --verify --verbose --deep --sign &quot;Developer ID Application: YOUR_NAME&quot; &quot;PATH_TO_APP&quot;
 
 # With osascritp
 echo '
@@ -209,9 +209,8 @@ tell application &quot;System Events&quot;
 end tell
 ' | osascript
 </code></pre>
-
-<h3 id="sign-installer">Sign Installer</h3>
-<pre><code class="bash">productsign --sign &quot;Developer ID Installer: YOUR_NAME&quot; &quot;PATH_TO_UNSIGNED_PKG&quot; &quot;PATH_TO_PKG&quot;
+<h3 id="sign-installer">Sign Installer<a class="headerlink" href="#sign-installer" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">productsign --sign &quot;Developer ID Installer: YOUR_NAME&quot; &quot;PATH_TO_UNSIGNED_PKG&quot; &quot;PATH_TO_PKG&quot;
 
 echo '
 tell application &quot;Terminal&quot; to activate

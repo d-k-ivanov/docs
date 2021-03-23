@@ -92,7 +92,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="remove-unused-or-wrong-layout">Remove unused or wrong layout</h2>
+    <h2 id="remove-unused-or-wrong-layout">Remove unused or wrong layout<a class="headerlink" href="#remove-unused-or-wrong-layout" title="Permanent link">#</a></h2>
 <ol>
 <li>Use regedit to navigate to following registry keys, where you will find there the list of keyboards that are preloaded at boot.<ul>
 <li>HKEY_USERS\.DEFAULT\Keyboard Layout\Preload</li>
@@ -104,7 +104,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>Find the keyboard identifier among the list of <a href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/windows-language-pack-default-values">Keyboard Identifiers</a></li>
 <li>Delete the key.</li>
 </ol>
-<pre><code class="txt"># Some record examples
+<pre><code class="language-txt"># Some record examples
 # 00000409 - United States - English
 # 00000419 - Russian
 # 00000809 - United Kingdom

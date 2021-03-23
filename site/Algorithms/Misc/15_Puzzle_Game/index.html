@@ -97,15 +97,15 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="15-puzzle-game">15 Puzzle Game</h1>
-<h2 id="15-puzzle-game-existence-of-the-solution">15 Puzzle Game: Existence Of The Solution</h2>
+    <h1 id="15-puzzle-game">15 Puzzle Game<a class="headerlink" href="#15-puzzle-game" title="Permanent link">#</a></h1>
+<h2 id="15-puzzle-game-existence-of-the-solution">15 Puzzle Game: Existence Of The Solution<a class="headerlink" href="#15-puzzle-game-existence-of-the-solution" title="Permanent link">#</a></h2>
 <p>This game is played on a <span><span class="MathJax_Preview">4 \times 4</span><script type="math/tex">4 \times 4</script></span> board. On this board there are <span><span class="MathJax_Preview">15</span><script type="math/tex">15</script></span> playing tiles numbered from 1 to 15. One cell is left empty (denoted by 0). You need to get the board to the position presented below by repeatedly moving one of the tiles to the free space:</p>
 <div>
 <div class="MathJax_Preview">\begin{matrix} 1 &amp; 2 &amp; 3 &amp; 4 \\\\ 5 &amp; 6 &amp; 7 &amp; 8 \\\\ 9 &amp; 10 &amp; 11 &amp; 12 \\\\ 13 &amp; 14 &amp; 15 &amp; 0 \end{matrix}</div>
 <script type="math/tex; mode=display">\begin{matrix} 1 & 2 & 3 & 4 \\\\ 5 & 6 & 7 & 8 \\\\ 9 & 10 & 11 & 12 \\\\ 13 & 14 & 15 & 0 \end{matrix}</script>
 </div>
 <p>The game "15 Puzzle” was created by Noyes Chapman in 1880.</p>
-<h2 id="existence-of-the-solution">Existence Of The Solution</h2>
+<h2 id="existence-of-the-solution">Existence Of The Solution<a class="headerlink" href="#existence-of-the-solution" title="Permanent link">#</a></h2>
 <p>Let's consider this problem: given a position on the board, determine whether a sequence of moves which leads to a solution exists.</p>
 <p>Suppose we have some position on the board:</p>
 <div>
@@ -122,9 +122,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Let <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> be the number of inversions in this permutation (i.e. the number of such elements <span><span class="MathJax_Preview">a_i</span><script type="math/tex">a_i</script></span>  and <span><span class="MathJax_Preview">a_j</span><script type="math/tex">a_j</script></span>  that <span><span class="MathJax_Preview">i &lt; j</span><script type="math/tex">i < j</script></span>, but <span><span class="MathJax_Preview">a_i  &gt; a_j</span><script type="math/tex">a_i  > a_j</script></span>).</p>
 <p>Suppose <span><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span> is an index of a row where the empty element is located (i.e. using our convention, <span><span class="MathJax_Preview">K = (z - 1) \div \ 4 + 1</span><script type="math/tex">K = (z - 1) \div \ 4 + 1</script></span>).</p>
 <p>Then, <strong>the solution exists iff <span><span class="MathJax_Preview">N + K</span><script type="math/tex">N + K</script></span> is even</strong>.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>The algorithm above can be illustrated with the following program code:</p>
-<pre><code class="cpp">int a[16];
+<pre><code class="language-cpp">int a[16];
 for (int i=0; i&lt;16; ++i)
     cin &gt;&gt; a[i];
 
@@ -140,12 +140,11 @@ for (int i=0; i&lt;16; ++i)
 
 puts ((inv &amp; 1) ? &quot;No Solution&quot; : &quot;Solution Exists&quot;);
 </code></pre>
-
-<h2 id="proof">Proof</h2>
+<h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">#</a></h2>
 <p>In 1879 Johnson proved that if <span><span class="MathJax_Preview">N + K</span><script type="math/tex">N + K</script></span> is odd, then the solution doesn’t exist, and in the same year Story proved that all positions when <span><span class="MathJax_Preview">N + K</span><script type="math/tex">N + K</script></span> is even have a solution.</p>
 <p>However, all these proofs were quite complex.</p>
 <p>In 1999 Archer proposed a much simpler proof (you can download his article <a href="http://www.cs.cmu.edu/afs/cs/academic/class/15859-f01/www/notes/15-puzzle.pdf">here</a>).</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://www.hackerrank.com/challenges/n-puzzle">Hackerrank - N-puzzle</a></li>
 </ul>

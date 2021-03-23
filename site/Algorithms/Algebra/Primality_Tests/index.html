@@ -96,9 +96,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="primality-tests">Primality Tests</h1>
+    <h1 id="primality-tests">Primality Tests<a class="headerlink" href="#primality-tests" title="Permanent link">#</a></h1>
 <p>This article describes multiple algorithms to determine if a number is prime or not.</p>
-<h2 id="trial-division">Trial division</h2>
+<h2 id="trial-division">Trial division<a class="headerlink" href="#trial-division" title="Permanent link">#</a></h2>
 <p>By definition a prime number doesn't have any divisors other than <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> and itself.
 A composite number has at least one additional divisor, let's call it <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>.
 Naturally <span><span class="MathJax_Preview">\frac{n}{d}</span><script type="math/tex">\frac{n}{d}</script></span> is also a divisor of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.
@@ -106,7 +106,7 @@ It's easy to see, that either <span><span class="MathJax_Preview">d \le \sqrt{n}
 We can use this information to check for primality.</p>
 <p>We try to find a non-trivial divisor, by checking if any of the numbers between <span><span class="MathJax_Preview">2</span><script type="math/tex">2</script></span> and <span><span class="MathJax_Preview">\sqrt{n}</span><script type="math/tex">\sqrt{n}</script></span> is a divisor of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.
 If it is a divisor, than <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is definitely not prime, otherwise it is.</p>
-<pre><code class="cpp">bool isPrime(int x) {
+<pre><code class="language-cpp">bool isPrime(int x) {
     for (int d = 2; d * d &lt;= x; d++) {
         if (x % d == 0)
             return false;
@@ -114,11 +114,10 @@ If it is a divisor, than <span><span class="MathJax_Preview">n</span><script typ
     return true;
 }
 </code></pre>
-
 <p>This is the simplest form of a prime check.
 You can optimize this function quite a bit, for instance by only checking all odd numbers in the loop, since the only even prime number is 2.
 Multiple such optimizations are described in the article about <a href="/docs/#Algorithms/Algebra/Integer_Factorization/">integer factorization</a>.</p>
-<h2 id="fermat-primality-test">Fermat primality test</h2>
+<h2 id="fermat-primality-test">Fermat primality test<a class="headerlink" href="#fermat-primality-test" title="Permanent link">#</a></h2>
 <p>This is a probabilistic test.</p>
 <p>Fermat's little theorem (see also <a href="/docs/#Algorithms/Algebra/Euler_Totient_Function/">Euler's totient function</a>) states, that for a prime number <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> and a coprime integer <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> the following equation holds:</p>
 <div>
@@ -138,7 +137,7 @@ If it turns out that the number is actually composite, we call the base <span><s
 However this is not done in practice, since this is a lot more effort that just doing <em>trial division</em>.
 Instead the test will be repeated multiple times with random choices for <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>.
 If we find no witness for the compositeness, it is very likely that the number is in fact prime.</p>
-<pre><code class="cpp">bool probablyPrimeFermat(int n, int iter=5) {
+<pre><code class="language-cpp">bool probablyPrimeFermat(int n, int iter=5) {
     if (n &lt; 4)
         return n == 2 || n == 3;
 
@@ -150,7 +149,6 @@ If we find no witness for the compositeness, it is very likely that the number i
     return true;
 }
 </code></pre>
-
 <p>We use <a href="/docs/#Algorithms/Algebra/Binary_Exponentiation/">Binary Exponentiation</a> to efficiently compute the power <span><span class="MathJax_Preview">a^{p-1}</span><script type="math/tex">a^{p-1}</script></span>.</p>
 <p>There is one bad news though:
 there exist some composite numbers where <span><span class="MathJax_Preview">a^{n-1} \equiv 1 \bmod n</span><script type="math/tex">a^{n-1} \equiv 1 \bmod n</script></span> holds for all <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> coprime to <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, for instance for the number <span><span class="MathJax_Preview">561 = 3 \cdot 11 \cdot 17</span><script type="math/tex">561 = 3 \cdot 11 \cdot 17</script></span>.
@@ -158,7 +156,7 @@ Such numbers are called <em>Carmichael numbers</em>.
 The Fermat primality test can identify these numbers only, if we have immense luck and choose a base <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> with <span><span class="MathJax_Preview">\gcd(a, n) \ne 1</span><script type="math/tex">\gcd(a, n) \ne 1</script></span>.</p>
 <p>The Fermat test is still be used in practice, as it is very fast and Carmichael numbers are very rare.
 E.g. there only exist 646 such numbers below <span><span class="MathJax_Preview">10^9</span><script type="math/tex">10^9</script></span>.</p>
-<h2 id="miller-rabin-primality-test">Miller-Rabin primality test</h2>
+<h2 id="miller-rabin-primality-test">Miller-Rabin primality test<a class="headerlink" href="#miller-rabin-primality-test" title="Permanent link">#</a></h2>
 <p>The Miller-Rabin test extends the ideas from the Fermat test.</p>
 <p>For an odd number <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, <span><span class="MathJax_Preview">n-1</span><script type="math/tex">n-1</script></span> is even and we can factor out all powers of 2.
 We can write:
@@ -206,7 +204,7 @@ In fact it is possible to show, that at most <span><span class="MathJax_Preview"
 If <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is composite, we have a probability of <span><span class="MathJax_Preview">\ge 75\%</span><script type="math/tex">\ge 75\%</script></span> that a random base will tell us that it is composite.
 By doing multiple iterations, choosing different random bases, we can tell with very high probability if the number is truly prime or if it is composite.</p>
 <p>Here is an implementation for 64 bit integer.</p>
-<pre><code class="cpp">using u64 = uint64_t;
+<pre><code class="language-cpp">using u64 = uint64_t;
 using u128 = __uint128_t;
 
 u64 binpower(u64 base, u64 e, u64 mod) {
@@ -252,11 +250,10 @@ bool MillerRabin(u64 n, int iter=5) { // returns true if n is probably prime, el
     return true;
 }
 </code></pre>
-
 <p>Before the Miller-Rabin test you can test additionally if one of the first few prime numbers is a divisor.
 This can speed up the test by a lot, since most composite numbers have very small prime divisors.
 E.g. <span><span class="MathJax_Preview">88\%</span><script type="math/tex">88\%</script></span> of all numbers have a prime factors smaller than <span><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>.</p>
-<h3 id="deterministic-version">Deterministic version</h3>
+<h3 id="deterministic-version">Deterministic version<a class="headerlink" href="#deterministic-version" title="Permanent link">#</a></h3>
 <p>Miller showed that it is possible to make the algorithm deterministic by only checking all bases <span><span class="MathJax_Preview">\le O((\ln n)^2)</span><script type="math/tex">\le O((\ln n)^2)</script></span>.
 Bach later gave a concrete bound, it is only necessary to test all bases <span><span class="MathJax_Preview">a \le 2 \ln(n)^2</span><script type="math/tex">a \le 2 \ln(n)^2</script></span>.</p>
 <p>This is still a pretty large number of bases.
@@ -265,7 +262,7 @@ It turns out, for testing a 32 bit integer it is only necessary to check the fir
 The smallest composite number that fails this test is <span><span class="MathJax_Preview">3,215,031,751 = 151 \cdot 751 \cdot 28351</span><script type="math/tex">3,215,031,751 = 151 \cdot 751 \cdot 28351</script></span>.
 And for testing 64 bit integer it is enough to check the first 12 prime bases: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, and 37.</p>
 <p>This results in the following deterministic implementation:</p>
-<pre><code class="cpp">bool MillerRabin(u64 n) { // returns true if n is prime, else returns false.
+<pre><code class="language-cpp">bool MillerRabin(u64 n) { // returns true if n is prime, else returns false.
     if (n &lt; 2)
         return false;
 
@@ -285,10 +282,9 @@ And for testing 64 bit integer it is enough to check the first 12 prime bases: 2
     return true;
 }
 </code></pre>
-
 <p>It's also possible to do the check with only 7 bases: 2, 325, 9375, 28178, 450775, 9780504 and 1795265022.
 However, since these numbers (except 2) are not prime, you need to check additionally if the number you are checking is equal to any prime divisor of those bases: 2, 3, 5, 13, 19, 73, 193, 407521, 299210837.</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://www.spoj.com/problems/PON/">SPOJ - Prime or Not</a></li>
 </ul>

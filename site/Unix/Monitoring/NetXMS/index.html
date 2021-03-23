@@ -102,8 +102,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="web-console">Web console</h3>
-<pre><code class="bash">cd /opt/
+    <h3 id="web-console">Web console<a class="headerlink" href="#web-console" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">cd /opt/
 wget http://apache-mirror.rbc.ru/pub/apache/tomcat/tomcat-7/v7.0.70/bin/apache-tomcat-7.0.70.tar.gz
 tar zxvf apache-tomcat-7.0.70.tar.gz
 
@@ -120,18 +120,15 @@ wget -O /opt/apache-tomcat-7.0.70/webapps/nxmc-2.0.5.war http://www.netxms.org/d
 
 http://&lt;ip_address&gt;:8080/nxmc-2.0.5/nxmc
 </code></pre>
-
-<h3 id="wmi-scripts">WMI Scripts</h3>
-<pre><code class="bash">#Query:
+<h3 id="wmi-scripts">WMI Scripts<a class="headerlink" href="#wmi-scripts" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">#Query:
 /usr/local/bin/nxget 192.168.122.252 &quot;WMI.Query(root\CIMV2,SELECT * FROM XXX)&quot;
 </code></pre>
-
-<h3 id="external-parameter">External parameter</h3>
-<pre><code class="bash">ExternalParameterShellExec = KasperskyBasesState:C:\Windows\System32\cscript.exe //E:VBscript //NoLogo c:\Path_TO\kav.vbs
+<h3 id="external-parameter">External parameter<a class="headerlink" href="#external-parameter" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">ExternalParameterShellExec = KasperskyBasesState:C:\Windows\System32\cscript.exe //E:VBscript //NoLogo c:\Path_TO\kav.vbs
 </code></pre>
-
-<h3 id="sql-queries-parsing-from-the-log-file">SQL queries parsing from the log-file</h3>
-<pre><code class="bash"># Print queries execution time. Change &quot;SELECT&quot; to keyword you want.
+<h3 id="sql-queries-parsing-from-the-log-file">SQL queries parsing from the log-file<a class="headerlink" href="#sql-queries-parsing-from-the-log-file" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Print queries execution time. Change &quot;SELECT&quot; to keyword you want.
 grep &quot;SELECT&quot; &lt;log-file&gt; | grep -oP '[0-9]* ms' | awk '{print $1}'
 
 # Extarct all SQL-Inserts to file
@@ -155,21 +152,19 @@ grep -v '\&quot;EXPLAIN.*' other.sql | grep -v '\&quot;UPDATE.*' | grep -oP '\&q
 # Extarct all SQL-Merges to file
 grep -v '\&quot;EXPLAIN.*' other.sql | grep -v '\&quot;UPDATE.*' | grep -v '\&quot;DELETE.*' | grep -oP '\&quot;MERGE.*' &gt; merge.sql
 </code></pre>
-
-<h3 id="installation">Installation</h3>
+<h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h3>
 <ul>
 <li>MySQL Database</li>
 </ul>
-<pre><code class="bash">mysql -u root -p mysql
+<pre><code class="language-bash">mysql -u root -p mysql
 mysql&gt; CREATE DATABASE netxms;
 mysql&gt; GRANT ALL ON netxms.* TO netxms@localhost IDENTIFIED BY 'netxms';
 mysql&gt; \q
 </code></pre>
-
 <ul>
 <li>Installation from source</li>
 </ul>
-<pre><code class="bash">tar zxvf netxms-x.x.x.tar.gz
+<pre><code class="language-bash">tar zxvf netxms-x.x.x.tar.gz
 #tar zxvf netxms-2.0.6.tar.gz
 
 cd netxms-x.x.x
@@ -219,9 +214,8 @@ touch &lt;path_to_log_files&gt;
 #/home/soft/netxms/bin/netxmsd -D6 -d
 
 </code></pre>
-
-<h3 id="compile-nxagent-with-mongo-c-driver">Compile NXAgent with Mongo-C-Driver</h3>
-<pre><code class="bash">cd /opt
+<h3 id="compile-nxagent-with-mongo-c-driver">Compile NXAgent with Mongo-C-Driver<a class="headerlink" href="#compile-nxagent-with-mongo-c-driver" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">cd /opt
 # Mongo-C-Driver
 wget https://github.com/mongodb/mongo-c-driver/releases/download/1.6.0/mongo-c-driver-1.6.0.tar.gz
 tar xzvf mongo-c-driver-1.6.0.tar.gz &amp;&amp; cd mongo-c-driver-1.6.0

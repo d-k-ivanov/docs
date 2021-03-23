@@ -94,8 +94,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="chef-environment-by-steven-murawski">Chef environment by Steven Murawski</h3>
-<pre><code class="powershell"># First (from PowerShell), some basic ExecutionPolicy configuration. Then install the latest ChefDK and Chocolatey. After that, apply a basic Chef recipe to install Git, ConEmu, Visual Studio Code, 7Zip, WinMerge, and Vagrant.
+    <h3 id="chef-environment-by-steven-murawski">Chef environment by Steven Murawski<a class="headerlink" href="#chef-environment-by-steven-murawski" title="Permanent link">#</a></h3>
+<pre><code class="language-powershell"># First (from PowerShell), some basic ExecutionPolicy configuration. Then install the latest ChefDK and Chocolatey. After that, apply a basic Chef recipe to install Git, ConEmu, Visual Studio Code, 7Zip, WinMerge, and Vagrant.
 
 # Setup my execution policy for both the 64 bit and 32 bit shells
 set-executionpolicy remotesigned
@@ -119,12 +119,11 @@ chef-apply c:/basic.rb
 #    Chef - https://marketplace.visualstudio.com/items?itemName=Pendrica.Chef
 #    PowerShell - https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell
 </code></pre>
-
-<h3 id="chef-environment-by-karsten-muller">Chef environment by Karsten Müller</h3>
+<h3 id="chef-environment-by-karsten-muller">Chef environment by Karsten Müller<a class="headerlink" href="#chef-environment-by-karsten-muller" title="Permanent link">#</a></h3>
 <ul>
 <li>basic.rb </li>
 </ul>
-<pre><code class="ruby">chocolatey_package 'git' do
+<pre><code class="language-ruby">chocolatey_package 'git' do
   package_name 'git'
   options '-params /GitAndUnixToolsOnPath'
 end
@@ -166,11 +165,10 @@ execute 'chef generate repo example_repo -p' do
   cwd 'C:\Work\Chef'
 end
 </code></pre>
-
 <ul>
 <li>bootstrap.ps1</li>
 </ul>
-<pre><code class="powershell"># Setup my execution policy for both the 64 bit and 32 bit shells
+<pre><code class="language-powershell"># Setup my execution policy for both the 64 bit and 32 bit shells
 set-executionpolicy remotesigned
 start-job -runas32 {set-executionpolicy remotesigned} | receive-job -wait
 # Install fixed version of ChefDK 

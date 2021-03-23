@@ -110,36 +110,29 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="login-to-container-with-root-user">Login to container with root user</h3>
+    <h3 id="login-to-container-with-root-user">Login to container with root user<a class="headerlink" href="#login-to-container-with-root-user" title="Permanent link">#</a></h3>
 <pre><code>docker exec -u 0 -it &lt;container_name&gt; &lt;command&gt;
 </code></pre>
-
-<h3 id="check-linux-kernel">Check linux kernel</h3>
+<h3 id="check-linux-kernel">Check linux kernel<a class="headerlink" href="#check-linux-kernel" title="Permanent link">#</a></h3>
 <pre><code>exec /usr/share/docker/contrib/check-config.sh
 </code></pre>
-
-<h3 id="run-docker-conainer">Run docker conainer</h3>
+<h3 id="run-docker-conainer">Run docker conainer<a class="headerlink" href="#run-docker-conainer" title="Permanent link">#</a></h3>
 <pre><code>sudo docker run --name mysql-nx -e MYSQL_ROOT_PASSWORD=password -d -p 127.0.0.1:3306:3306 mysql:latest
 </code></pre>
-
-<h3 id="execute-in-docker-console">Execute in-docker console</h3>
+<h3 id="execute-in-docker-console">Execute in-docker console<a class="headerlink" href="#execute-in-docker-console" title="Permanent link">#</a></h3>
 <pre><code>sudo docker exec -it &lt;container&gt; bash
 </code></pre>
-
-<h3 id="create-json-with-container-settings">Create JSON with container settings</h3>
+<h3 id="create-json-with-container-settings">Create JSON with container settings<a class="headerlink" href="#create-json-with-container-settings" title="Permanent link">#</a></h3>
 <pre><code>docker inspect -f '{{ json .NetworkSettings }}' &lt;container_id&gt; | python -mjson.tool
 </code></pre>
-
-<h3 id="delete-containers-by-date">Delete containers by date</h3>
+<h3 id="delete-containers-by-date">Delete containers by date<a class="headerlink" href="#delete-containers-by-date" title="Permanent link">#</a></h3>
 <pre><code>docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm
 </code></pre>
-
-<h3 id="delete-all-containers">Delete all containers:</h3>
+<h3 id="delete-all-containers">Delete all containers:<a class="headerlink" href="#delete-all-containers" title="Permanent link">#</a></h3>
 <pre><code>docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 </code></pre>
-
-<h3 id="use-docker-registry">Use Docker registry</h3>
+<h3 id="use-docker-registry">Use Docker registry<a class="headerlink" href="#use-docker-registry" title="Permanent link">#</a></h3>
 <pre><code>mkdir /etc/systemd/system/docker.service.d/
 touch /etc/systemd/system/docker.service.d/docker_opts.conf
 nano /etc/systemd/system/docker.service.d/docker_opts.conf
@@ -153,9 +146,8 @@ ExecStart=/usr/bin/docker -d -H fd:// --insecure-registry docker-registry.keepbo
 systemctl daemon-reload
 service docker restart 
 </code></pre>
-
-<h3 id="delete-obsolete-containers">Delete obsolete containers</h3>
-<pre><code class="bash"># You can add all of this to cron daily
+<h3 id="delete-obsolete-containers">Delete obsolete containers<a class="headerlink" href="#delete-obsolete-containers" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># You can add all of this to cron daily
 #!/bin/sh
 docker rm $(docker ps -aqf status=exited)
 docker rmi $(docker images -qf dangling=true)
@@ -163,9 +155,8 @@ docker volume rm $(docker volume ls -qf dangling=true)
 
 docker run --rm -e GRACE_PERIOD_SECONDS=86400 -e FORCE_IMAGE_REMOVAL=1 -v /var/run/docker.sock:/var/run/docker.sock spotify/docker-gc
 </code></pre>
-
-<h3 id="docker-on-windows">Docker on windows</h3>
-<pre><code class="bash"># Docker on windows doesn't support fsync() so it makes impossible to use shared volumes with databases like MondoDB or PostgesSQL
+<h3 id="docker-on-windows">Docker on windows<a class="headerlink" href="#docker-on-windows" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Docker on windows doesn't support fsync() so it makes impossible to use shared volumes with databases like MondoDB or PostgesSQL
 
 </code></pre>
 

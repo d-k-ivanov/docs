@@ -92,8 +92,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="disable-suspend-laptop-on-lid-close">Disable suspend laptop on lid close</h3>
-<pre><code class="bash">sudo vim /etc/systemd/logind.conf
+    <h3 id="disable-suspend-laptop-on-lid-close">Disable suspend laptop on lid close<a class="headerlink" href="#disable-suspend-laptop-on-lid-close" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">sudo vim /etc/systemd/logind.conf
 # Add next line:
 HandleLidSwitch=ignore
 # Restart systemd-logind.service

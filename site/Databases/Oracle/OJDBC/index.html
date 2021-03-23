@@ -92,7 +92,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="bug-9632480">BUG: 9632480</h3>
+    <h3 id="bug-9632480">BUG: 9632480<a class="headerlink" href="#bug-9632480" title="Permanent link">#</a></h3>
 <p><em>OJDBC 12.1.0.2 - BUG: ORA-01000: maximum open cursors exceeded</em></p>
 <p>We need:</p>
 <ul>
@@ -103,13 +103,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <blockquote>
 <p>We need to update OracleDatabaseMetaData.class in our ojdbc7.jar archive</p>
 </blockquote>
-<pre><code class="bash">unzip p19632480_121020_Generic.zip
+<pre><code class="language-bash">unzip p19632480_121020_Generic.zip
 </code></pre>
-
 <p>Get folder <strong>./p19632480_121020_Generic/19632480/files/jdbc/lib/ojdbc7.jar</strong> from archvive and place it to <em>ojdbc7.jar</em> file location</p>
 <p>Make sure that your JAVA_HOME is exported</p>
 <p>Change working directory to ojdbc7.jar location and run:</p>
-<pre><code class="bash">$JAVA_HOME/jar -uf ojdbc7.jar
+<pre><code class="language-bash">$JAVA_HOME/jar -uf ojdbc7.jar
 </code></pre>
 
   <br>

@@ -92,11 +92,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="inappropriate-ioctl-for-device">Inappropriate ioctl for device</h2>
+    <h2 id="inappropriate-ioctl-for-device">Inappropriate ioctl for device<a class="headerlink" href="#inappropriate-ioctl-for-device" title="Permanent link">#</a></h2>
 <p>To get rid of the completely usless misleading "Inappropriate ioctl for device" error, starting with gpg 2.1.0,` you have to:</p>
-<pre><code class="bash">export GPG_TTY=$(tty)
+<pre><code class="language-bash">export GPG_TTY=$(tty)
 </code></pre>
-
 <p>and for using --passphrase-fd and --passphrase-file arguments (possibly used by keybase, which by the way I don't use and never heard of before, but this is the only relevant thing I found online, so I'm leaving this here to help others), you also need to supply the --pinentry-mode loopback argument (without that it'll give you another vague error).</p>
 <p>and for loopback to work, you need to start gpg-agent with --allow-loopback-pinentry which is not the default, and you must have gpg-agent running, which no longer is only for caching, but also this loopback thing and more.</p>
 <p>And so all your problems are likely caused by these insane badly documented UI changes, plus no output from gpg will tell you of these solutions.</p>

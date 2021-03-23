@@ -98,14 +98,14 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="floyd-warshall-algorithm">Floyd-Warshall Algorithm</h1>
+    <h1 id="floyd-warshall-algorithm">Floyd-Warshall Algorithm<a class="headerlink" href="#floyd-warshall-algorithm" title="Permanent link">#</a></h1>
 <p>Given an undirected weighted graph <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices. The task is to find the length of the shortest path <span><span class="MathJax_Preview">d_{ij}</span><script type="math/tex">d_{ij}</script></span> between each pair of vertices <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>.</p>
 <p>The graph may have negative weight edges, but no negative weight cycles (for then the shortest path is undefined).</p>
 <p>This algorithm can also be used to detect the presence of negative cycles.
 The graph has a negative cycle if at the end of the algorithm, the distance from a vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> to itself is negative.</p>
 <p>This algorithm has been simultaneously published in articles by Robert Floyd and Stephen Warshall in 1962.
 However, in 1959, Bernard Roy published essentially the same algorithm, but its publication went unnoticed.</p>
-<h2 id="description-of-the-algorithm">Description of the algorithm</h2>
+<h2 id="description-of-the-algorithm">Description of the algorithm<a class="headerlink" href="#description-of-the-algorithm" title="Permanent link">#</a></h2>
 <p>The key idea of the algorithm is to partition the process of finding the shortest path between any two vertices to several incremental phases.</p>
 <p>Let us number the vertices starting from 1 to <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.
 The matrix of distances is <span><span class="MathJax_Preview">d[ ][ ]</span><script type="math/tex">d[ ][ ]</script></span>.</p>
@@ -139,11 +139,11 @@ As a result, after the <span><span class="MathJax_Preview">n</span><script type=
 <p>A last remark - we don't need to create a separate distance matrix <span><span class="MathJax_Preview">d_{\text{new}}[ ][ ]</span><script type="math/tex">d_{\text{new}}[ ][ ]</script></span> for temporarily storing the shortest paths of the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th phase, i.e. all changes can be made directly in the matrix <span><span class="MathJax_Preview">d[ ][ ]</span><script type="math/tex">d[ ][ ]</script></span> at any phase.
 In fact at any <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-th phase we are at most improving the distance of any path in the distance matrix, hence we cannot worsen the length of the shortest path for any pair of the vertices that are to be processed in the <span><span class="MathJax_Preview">(k+1)</span><script type="math/tex">(k+1)</script></span>-th phase or later.</p>
 <p>The time complexity of this algorithm is obviously <span><span class="MathJax_Preview">O(n^3)</span><script type="math/tex">O(n^3)</script></span>.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>Let <span><span class="MathJax_Preview">d[][]</span><script type="math/tex">d[][]</script></span> is a 2D array of size <span><span class="MathJax_Preview">n \times n</span><script type="math/tex">n \times n</script></span>, which is filled according to the <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>-th phase as explained earlier.
 Also we will set <span><span class="MathJax_Preview">d[i][i] = 0</span><script type="math/tex">d[i][i] = 0</script></span> for any <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> at the <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>-th phase.</p>
 <p>Then the algorithm is implemented as follows:</p>
-<pre><code class="cpp">for (int k = 0; k &lt; n; ++k) {
+<pre><code class="language-cpp">for (int k = 0; k &lt; n; ++k) {
     for (int i = 0; i &lt; n; ++i) {
         for (int j = 0; j &lt; n; ++j) {
             d[i][j] = min(d[i][j], d[i][k] + d[k][j]);
@@ -151,13 +151,12 @@ Also we will set <span><span class="MathJax_Preview">d[i][i] = 0</span><script t
     }
 }
 </code></pre>
-
 <p>It is assumed that if there is no edge between any two vertices <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>, then the matrix at <span><span class="MathJax_Preview">d[i][j]</span><script type="math/tex">d[i][j]</script></span> contains a large number (large enough so that it is greater than the length of any path in this graph).
 Then this edge will always be unprofitable to take, and the algorithm will work correctly.</p>
 <p>However if there are negative weight edges in the graph, special measures have to be taken.
 Otherwise the resulting values in matrix may be of the form <span><span class="MathJax_Preview">\infty - 1</span><script type="math/tex">\infty - 1</script></span>,  <span><span class="MathJax_Preview">\infty - 2</span><script type="math/tex">\infty - 2</script></span>, etc., which, of course, still indicates that between the respective vertices doesn't exist a path.
 Therefore, if the graph has negative weight edges, it is better to write the Floyd-Warshall algorithm in the following way, so that it does not perform transitions using paths that don't exist.</p>
-<pre><code class="cpp">for (int k = 0; k &lt; n; ++k) {
+<pre><code class="language-cpp">for (int k = 0; k &lt; n; ++k) {
     for (int i = 0; i &lt; n; ++i) {
         for (int j = 0; j &lt; n; ++j) {
             if (d[i][k] &lt; INF &amp;&amp; d[k][j] &lt; INF)
@@ -166,23 +165,21 @@ Therefore, if the graph has negative weight edges, it is better to write the Flo
     }
 }
 </code></pre>
-
-<h2 id="retrieving-the-sequence-of-vertices-in-the-shortest-path">Retrieving the sequence of vertices in the shortest path</h2>
+<h2 id="retrieving-the-sequence-of-vertices-in-the-shortest-path">Retrieving the sequence of vertices in the shortest path<a class="headerlink" href="#retrieving-the-sequence-of-vertices-in-the-shortest-path" title="Permanent link">#</a></h2>
 <p>It is easy to maintain additional information with which it will be possible to retrieve the shortest path between any two given vertices in the form of a sequence of vertices.</p>
 <p>For this, in addition to the distance matrix <span><span class="MathJax_Preview">d[ ][ ]</span><script type="math/tex">d[ ][ ]</script></span>, a matrix of ancestors <span><span class="MathJax_Preview">p[ ][ ]</span><script type="math/tex">p[ ][ ]</script></span> must be maintained, which will contain the number of the phase where the shortest distance between two vertices was last modified.
 It is clear that the number of the phase is nothing more than a vertex in the middle of the desired shortest path.
 Now we just need to find the shortest path between vertices <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">p[i][j]</span><script type="math/tex">p[i][j]</script></span>, and between <span><span class="MathJax_Preview">p[i][j]</span><script type="math/tex">p[i][j]</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>.
 This leads to a simple recursive reconstruction algorithm of the shortest path.</p>
-<h2 id="the-case-of-real-weights">The case of real weights</h2>
+<h2 id="the-case-of-real-weights">The case of real weights<a class="headerlink" href="#the-case-of-real-weights" title="Permanent link">#</a></h2>
 <p>If the weights of the edges are not integer but real, it is necessary to take the errors, which occur when working with float types, into account.</p>
 <p>The Floyd-Warshall algorithm has the unpleasant effect, that the errors accumulate very quickly.
 In fact if there is an error in the first phase of <span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span>, this error may propagate to the second iteration as <span><span class="MathJax_Preview">2 \delta</span><script type="math/tex">2 \delta</script></span>, to the third iteration as <span><span class="MathJax_Preview">4 \delta</span><script type="math/tex">4 \delta</script></span>, and so on.</p>
 <p>To avoid this the algorithm can be modified to take the error (EPS = <span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span>) into account by using following comparison:</p>
-<pre><code class="cpp">if (d[i][k] + d[k][j] &lt; d[i][j] - EPS)
+<pre><code class="language-cpp">if (d[i][k] + d[k][j] &lt; d[i][j] - EPS)
     d[i][j] = d[i][k] + d[k][j];
 </code></pre>
-
-<h2 id="the-case-of-negative-cycles">The case of negative cycles</h2>
+<h2 id="the-case-of-negative-cycles">The case of negative cycles<a class="headerlink" href="#the-case-of-negative-cycles" title="Permanent link">#</a></h2>
 <p>Formally the Floyd-Warshall algorithm does not apply to graphs containing negative weight cycle(s).
 But for all pairs of vertices <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> for which there doesn't exist a path starting at <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>, visiting a negative cycle, and end at <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>,  the algorithm will still work correctly.</p>
 <p>For the pair of vertices for which the answer does not exist (due to the presence of a negative cycle in the path between them), the Floyd algorithm will store any number (perhaps highly negative, but not necessarily) in the distance matrix.
@@ -193,7 +190,7 @@ Then a shortest path between vertices <span><span class="MathJax_Preview">i</spa
 <p>In addition, when using the Floyd-Warshall algorithm for graphs with negative cycles, we should keep in mind that situations may arise in which distances can get exponentially fast into the negative.
 Therefore integer overflow must be handled by limiting the minimal distance by some value (e.g. <span><span class="MathJax_Preview">-\text{INF}</span><script type="math/tex">-\text{INF}</script></span>).</p>
 <p>To learn more about finding negative cycles in a graph, see the separate article <a href="/docs/#Algorithms/graph/finding-negative-cycle-in-graph/">Finding a negative cycle in the graph</a>.</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://uva.onlinejudge.org/index.php?option=onlinejudge&amp;page=show_problem&amp;problem=762">UVA: Page Hopping</a></li>
 <li><a href="http://www.spoj.com/problems/SOCIALNE/">SPOJ: Possible Friends</a></li>

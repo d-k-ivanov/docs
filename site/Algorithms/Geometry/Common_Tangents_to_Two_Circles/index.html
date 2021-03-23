@@ -95,10 +95,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="common-tangents-to-two-circles">Common Tangents to Two Circles</h1>
+    <h1 id="common-tangents-to-two-circles">Common Tangents to Two Circles<a class="headerlink" href="#common-tangents-to-two-circles" title="Permanent link">#</a></h1>
 <p>Given two circles. It is required to find all their common tangents, i.e. all such lines that touch both circles simultaneously.</p>
 <p>The described algorithm will also work in the case when one (or both) circles degenerate into points. Thus, this algorithm can also be used to find tangents to a circle passing through a given point.</p>
-<h2 id="the-number-of-common-tangents">The number of common tangents</h2>
+<h2 id="the-number-of-common-tangents">The number of common tangents<a class="headerlink" href="#the-number-of-common-tangents" title="Permanent link">#</a></h2>
 <p>The number of common tangents to two circles can be <strong>0,1,2,3,4</strong> and <strong>infinite</strong>.
 Look at the images for different cases.
 <center><img alt="&quot;Different cases of tangents common to two circles&quot;" src="/docs/data/cs/tangents-to-two-circles.png" /></center></p>
@@ -107,7 +107,7 @@ Look at the images for different cases.
 <p>If the circles <strong>are tangent</strong> , then they will have three common tangents, but this can be understood as a degenerate case: as if the two tangents coincided.</p>
 <p>Moreover, the algorithm described below will work in the case when one or both circles have zero radius: in this case there will be, respectively, two or one common tangent.</p>
 <p>Summing up, we will always look for <strong>four tangents</strong> for all cases except infinite tangents case (The infinite tangents case needs to be handled separately and it is not discussed here). In degenerate cases, some of tangents will coincide, but nevertheless, these cases will also fit into the big picture.</p>
-<h2 id="algorithm">Algorithm</h2>
+<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
 <p>For the sake of simplicity of the algorithm, we will assume, without losing generality, that the center of the first circle has coordinates <span><span class="MathJax_Preview">(0, 0)</span><script type="math/tex">(0, 0)</script></span>. (If this is not the case, then this can be achieved by simply shifting the whole picture, and after finding a solution, by shifting the obtained straight lines back.)</p>
 <p>Denote <span><span class="MathJax_Preview">r_1</span><script type="math/tex">r_1</script></span> and <span><span class="MathJax_Preview">r_2</span><script type="math/tex">r_2</script></span> the radii of the first and second circles, and by <span><span class="MathJax_Preview">(v_x,v_y)</span><script type="math/tex">(v_x,v_y)</script></span> the coordinates of the center of the second circle and point <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> different from origin. (Note: we are not considering the case in which both the circles are same).</p>
 <p>To solve the problem, we approach it purely <strong>algebraically</strong> . We need to find all the lines of the form <span><span class="MathJax_Preview">ax + by + c = 0</span><script type="math/tex">ax + by + c = 0</script></span> that lie at a distance <span><span class="MathJax_Preview">r_1</span><script type="math/tex">r_1</script></span> from the origin of coordinates, and at a distance <span><span class="MathJax_Preview">r_2</span><script type="math/tex">r_2</script></span> from a point <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>. In addition, we impose the condition of normalization of the straight line: the sum of the squares of the coefficients and must be equal to one (this is necessary, otherwise the same straight line will correspond to infinitely many representations of the form <span><span class="MathJax_Preview">ax + by + c = 0</span><script type="math/tex">ax + by + c = 0</script></span>). Total we get such a system of equations for the desired <span><span class="MathJax_Preview">a, b, c</span><script type="math/tex">a, b, c</script></span>:</p>
@@ -164,9 +164,9 @@ Look at the images for different cases.
 </div>
 <p>Total we got eight solutions instead four. However, it is easy to understand where superfluous decisions arise: in fact, in the latter system, it is enough to take only one solution (for example, the first). In fact, the geometric meaning of what we take <span><span class="MathJax_Preview">\pm r_1</span><script type="math/tex">\pm r_1</script></span> and <span><span class="MathJax_Preview">\pm r_2</span><script type="math/tex">\pm r_2</script></span> is clear: we are actually sorting out which side of each circle there is a straight line. Therefore, the two methods that arise when solving the latter system are redundant: it is enough to choose one of the two solutions (only, of course, in all four cases, you must choose the same family of solutions).</p>
 <p>The last thing that we have not yet considered is <strong>how to shift the straight lines</strong> in the case when the first circle was not originally located at the origin. However, everything is simple here: it follows from the linearity of the equation of a straight line that the value <span><span class="MathJax_Preview">a \cdot x_0 + b \cdot y_0</span><script type="math/tex">a \cdot x_0 + b \cdot y_0</script></span> (where <span><span class="MathJax_Preview">x_0</span><script type="math/tex">x_0</script></span> and <span><span class="MathJax_Preview">y_0</span><script type="math/tex">y_0</script></span> are the coordinates of the original center of the first circle) must be subtracted from the coefficient <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>We first describe all the necessary data structures and other auxiliary definitions:</p>
-<pre><code class="point-line-circle-struct">struct pt {
+<pre><code class="language-point-line-circle-struct">struct pt {
     double x, y;
 
     pt operator- (pt p) {
@@ -189,9 +189,8 @@ double sqr (double a) {
     return a * a;
 }
 </code></pre>
-
 <p>Then the solution itself can be written this way (where the main function for the call is the second; and the first function is an auxiliary):</p>
-<pre><code class="find-tangents-to-two-circles">void tangents (pt c, double r1, double r2, vector&lt;line&gt; &amp; ans) {
+<pre><code class="language-find-tangents-to-two-circles">void tangents (pt c, double r1, double r2, vector&lt;line&gt; &amp; ans) {
     double r = r2 - r1;
     double z = sqr(c.x) + sqr(c.y);
     double d = z - sqr(r);

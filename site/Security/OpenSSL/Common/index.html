@@ -98,22 +98,19 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="view-pem-encoded-certificate">View PEM encoded certificate</h3>
-<pre><code class="bash">openssl x509 -in certname.pem -text -noout
+    <h3 id="view-pem-encoded-certificate">View PEM encoded certificate<a class="headerlink" href="#view-pem-encoded-certificate" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">openssl x509 -in certname.pem -text -noout
 openssl x509 -in certname.cer -text -noout
 openssl x509 -in certname.crt -text -noout
 </code></pre>
-
-<h3 id="view-der-encoded-certificate">View DER encoded Certificate</h3>
-<pre><code class="bash">openssl x509 -in certname.der -inform der -text -noout
+<h3 id="view-der-encoded-certificate">View DER encoded Certificate<a class="headerlink" href="#view-der-encoded-certificate" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">openssl x509 -in certname.der -inform der -text -noout
 </code></pre>
-
-<h3 id="pem-to-der">PEM to DER</h3>
-<pre><code class="bash">openssl x509 -in certname.crt -outform der -out cert.der
+<h3 id="pem-to-der">PEM to DER<a class="headerlink" href="#pem-to-der" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">openssl x509 -in certname.crt -outform der -out cert.der
 </code></pre>
-
-<h3 id="der-to-pem">DER to PEM</h3>
-<pre><code class="bash">openssl x509 -in certname.crt -inform der -outform pem -out cert.pem
+<h3 id="der-to-pem">DER to PEM<a class="headerlink" href="#der-to-pem" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">openssl x509 -in certname.crt -inform der -outform pem -out cert.pem
 </code></pre>
 
   <br>

@@ -94,17 +94,17 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="area-of-simple-polygon">Area of Simple Polygon</h1>
+    <h1 id="area-of-simple-polygon">Area of Simple Polygon<a class="headerlink" href="#area-of-simple-polygon" title="Permanent link">#</a></h1>
 <p>Complexity: <span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span></p>
 <p>Let a simple polygon (i.e. without self intersection, not necessarily convex) be given. It is required to calculate its area given its vertices.</p>
-<h2 id="method-1">Method 1</h2>
+<h2 id="method-1">Method 1<a class="headerlink" href="#method-1" title="Permanent link">#</a></h2>
 <p>This is easy to do if we go through all edges and add trapezoid areas bounded by each edge and x-axis. The area needs to be taken with sign so that the extra area will be reduced. Hence, the formula is as follows:</p>
 <div>
 <div class="MathJax_Preview">A = \sum_{(p,q)\in \text{edges}} \frac{(p_x - q_x) \cdot (p_y + q_y)}{2}</div>
 <script type="math/tex; mode=display">A = \sum_{(p,q)\in \text{edges}} \frac{(p_x - q_x) \cdot (p_y + q_y)}{2}</script>
 </div>
 <p>Code:</p>
-<pre><code class="cpp">double area(const vector&lt;point&gt;&amp; fig) {
+<pre><code class="language-cpp">double area(const vector&lt;point&gt;&amp; fig) {
     double res = 0;
     for (unsigned i = 0; i &lt; fig.size(); i++) {
         point p = i ? fig[i - 1] : fig.back();
@@ -114,8 +114,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     return fabs(res) / 2;
 }
 </code></pre>
-
-<h2 id="method-2">Method 2</h2>
+<h2 id="method-2">Method 2<a class="headerlink" href="#method-2" title="Permanent link">#</a></h2>
 <p>We can choose a point <span><span class="MathJax_Preview">O</span><script type="math/tex">O</script></span> arbitrarily, iterate over all edges adding the oriented area of the triangle formed by the edge and point <span><span class="MathJax_Preview">O</span><script type="math/tex">O</script></span>. Again, due to the sign of area, extra area will be reduced.</p>
 <p>This method is better as it can be generalized to more complex cases (such as when some sides are arcs instead of straight lines)</p>
 

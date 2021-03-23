@@ -94,14 +94,14 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="balanced-ternary">Balanced Ternary</h1>
+    <h1 id="balanced-ternary">Balanced Ternary<a class="headerlink" href="#balanced-ternary" title="Permanent link">#</a></h1>
 <p><img alt="&quot;Setun computer using Balanced Ternary system&quot;" src="http://ternary.3neko.ru/photo/setun1_small.jpg" /></p>
 <p>This is a non-standard but still positional <strong>numeral system</strong>. Its feature is that digits can have one of the values <code>-1</code>, <code>0</code> and <code>1</code>.
 Nevertheless, its base is still <code>3</code> (because there are three possible values). Since it is not convenient to write <code>-1</code> as a digit,
 we'll use letter <code>Z</code> further for this purpose. If you think it is quite a strange system - look at the picture - here is one of the
 computers utilizing it.</p>
 <p>So here are few first numbers written in balanced ternary:</p>
-<pre><code class="nohighlight">    0    0
+<pre><code class="language-nohighlight">    0    0
     1    1
     2    1Z
     3    10
@@ -112,17 +112,15 @@ computers utilizing it.</p>
     8    10Z
     9    100
 </code></pre>
-
 <p>This system allows you to write negative values without leading minus sign: you can simply invert digits in any positive number.</p>
-<pre><code class="nohighlight">    -1   Z
+<pre><code class="language-nohighlight">    -1   Z
     -2   Z1
     -3   Z0
     -4   ZZ
     -5   Z11
 </code></pre>
-
 <p>Note that a negative number starts with <code>Z</code> and positive with <code>1</code>.</p>
-<h2 id="conversion-algorithm">Conversion algorithm</h2>
+<h2 id="conversion-algorithm">Conversion algorithm<a class="headerlink" href="#conversion-algorithm" title="Permanent link">#</a></h2>
 <p>It is easy to represent a given number in <strong>balanced ternary</strong> via temporary representing it in normal ternary number system. When value is
 in standard ternary, its digits are either <code>0</code> or <code>1</code> or <code>2</code>. Iterating from the lowest digit we can safely skip any <code>0</code>s and <code>1</code>s,
 however <code>2</code> should be turned into <code>Z</code> with adding <code>1</code> to the next digit. Digits <code>3</code> should be turned into <code>0</code> on the same terms -
@@ -161,7 +159,7 @@ such digits are not present in the number initially but they can be encountered 
 <div class="MathJax_Preview"> 100Z10 = 243 \cdot 1 + 81 \cdot 0 + 27 \cdot 0 + 9 \cdot (-1) + 3 \cdot 1 + 1 \cdot 0 = 237_{10} </div>
 <script type="math/tex; mode=display"> 100Z10 = 243 \cdot 1 + 81 \cdot 0 + 27 \cdot 0 + 9 \cdot (-1) + 3 \cdot 1 + 1 \cdot 0 = 237_{10} </script>
 </div>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=12917&amp;rd=15837">Topcoder SRM 604, Div1-250</a></li>
 </ul>

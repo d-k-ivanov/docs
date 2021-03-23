@@ -94,7 +94,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="suffix-tree-ukkonens-algorithm">Suffix Tree: Ukkonen's Algorithm</h1>
+    <h1 id="suffix-tree-ukkonens-algorithm">Suffix Tree: Ukkonen's Algorithm<a class="headerlink" href="#suffix-tree-ukkonens-algorithm" title="Permanent link">#</a></h1>
 <p><em>This article is a stub and doesn't contain any descriptions. For a description of the algorithm, refer to other sources, such as <a href="http://web.stanford.edu/~mjkay/gusfield.pdf">Algorithms on Strings, Trees, and Sequences</a> by Dan Gusfield.</em></p>
 <p>This algorithm builds a suffix tree for a given string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> of length <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> in <span><span class="MathJax_Preview">O(n\log(k))</span><script type="math/tex">O(n\log(k))</script></span>) time, where <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> is the size of the alphabet (if <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> is considered to be a constant, the asymptotic behavior is linear).</p>
 <p>The input to the algorithm are the string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> and its length <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, which are passed as global variables.</p>
@@ -106,7 +106,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li><code>link</code> - the suffix link,</li>
 <li><code>next</code> - the list of edges going out from this node.</li>
 </ul>
-<pre><code class="cpp">string s;
+<pre><code class="language-cpp">string s;
 int n;
 
 struct node {
@@ -194,10 +194,9 @@ void build_tree() {
         tree_extend (i);
 }
 </code></pre>
-
-<h2 id="compressed-implementation">Compressed Implementation</h2>
+<h2 id="compressed-implementation">Compressed Implementation<a class="headerlink" href="#compressed-implementation" title="Permanent link">#</a></h2>
 <p>This compressed implementation was proposed by <a href="http://codeforces.com/profile/freopen">freopen</a>.</p>
-<pre><code class="cpp">const int N=1000000,INF=1000000000;
+<pre><code class="language-cpp">const int N=1000000,INF=1000000000;
 string a;
 int t[N][26],l[N],r[N],p[N],s[N],tv,tp,ts,la;
 
@@ -235,9 +234,8 @@ void build() {
         ukkadd (a[la]-'a');
 }
 </code></pre>
-
 <p>Same code with comments:</p>
-<pre><code class="cpp">const int N=1000000,    // maximum possible number of nodes in suffix tree
+<pre><code class="language-cpp">const int N=1000000,    // maximum possible number of nodes in suffix tree
     INF=1000000000; // infinity constant
 string a;       // input string for which the suffix tree is being built
 int t[N][26],   // array of transitions (state, letter)
@@ -297,8 +295,7 @@ void build() {
         ukkadd (a[la]-'a');
 }
 </code></pre>
-
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="http://uva.onlinejudge.org/index.php?option=onlinejudge&amp;page=show_problem&amp;problem=1620">UVA 10679 - I Love Strings!!!</a></li>
 </ul>

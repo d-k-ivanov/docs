@@ -96,13 +96,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="bridge-searching">Bridge Searching</h1>
-<h2 id="finding-bridges-in-a-graph-in-onmonm">Finding bridges in a graph in <span><span class="MathJax_Preview">O(N+M)</span><script type="math/tex">O(N+M)</script></span></h2>
+    <h1 id="bridge-searching">Bridge Searching<a class="headerlink" href="#bridge-searching" title="Permanent link">#</a></h1>
+<h2 id="finding-bridges-in-a-graph-in-onmonm">Finding bridges in a graph in <span><span class="MathJax_Preview">O(N+M)</span><script type="math/tex">O(N+M)</script></span><a class="headerlink" href="#finding-bridges-in-a-graph-in-onmonm" title="Permanent link">#</a></h2>
 <p>We are given an undirected graph. A bridge is defined as an edge which, when removed, makes the graph disconnected (or more precisely, increases the number of connected components in the graph). The task is to find all bridges in the given graph.</p>
 <p>Informally, the problem is formulated as follows: given a map of cities connected with roads, find all "important" roads, i.e. roads which, when removed, cause disappearance of a path between some pair of cities.</p>
 <p>The algorithm described here is based on <a href="/docs/#Algorithms/Graph_Theory/Depth_First_Search/">depth first search</a> and has <span><span class="MathJax_Preview">O(N+M)</span><script type="math/tex">O(N+M)</script></span> complexity, where <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> is the number of vertices and <span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> is the number of edges in the graph.</p>
 <p>Note that there also is also the article <a href="/docs/#Algorithms/Graph_Theory/Bridge_Searching_Online/">Finding Bridges Online</a> - unlike the offline algorithm described here, the online algorithm is able to maintain the list of all bridges in a changing graph (assuming that the only type of change is addition of new edges).</p>
-<h2 id="algorithm">Algorithm</h2>
+<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
 <p>Pick an arbitrary vertex of the graph <span><span class="MathJax_Preview">root</span><script type="math/tex">root</script></span> and run <a href="/docs/#Algorithms/Graph_Theory/Depth_First_Search/">depth first search</a> from it. Note the following fact (which is easy to prove):</p>
 <ul>
 <li>Let's say we are in the DFS, looking through the edges starting from vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>. The current edge <span><span class="MathJax_Preview">(v, to)</span><script type="math/tex">(v, to)</script></span> is a bridge if and only if none of the vertices <span><span class="MathJax_Preview">to</span><script type="math/tex">to</script></span> and its descendants in the DFS traversal tree has a back-edge to vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> or any of its ancestors. Indeed, this condition means that there is no other way from <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> to <span><span class="MathJax_Preview">to</span><script type="math/tex">to</script></span> except for edge <span><span class="MathJax_Preview">(v, to)</span><script type="math/tex">(v, to)</script></span>.</li>
@@ -115,7 +115,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </div>
 <p>Now, there is a back edge from vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> or one of its descendants to one of its ancestors if and only if vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> has a child <span><span class="MathJax_Preview">to</span><script type="math/tex">to</script></span> for which <span><span class="MathJax_Preview">low[to] \leq tin[v]</span><script type="math/tex">low[to] \leq tin[v]</script></span>. If <span><span class="MathJax_Preview">low[to] = tin[v]</span><script type="math/tex">low[to] = tin[v]</script></span>, the back edge comes directly to <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>, otherwise it comes to one of the ancestors of <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>.</p>
 <p>Thus, the current edge <span><span class="MathJax_Preview">(v, to)</span><script type="math/tex">(v, to)</script></span> in the DFS tree is a bridge if and only if <span><span class="MathJax_Preview">low[to] &gt; tin[v]</span><script type="math/tex">low[to] > tin[v]</script></span>.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>The implementation needs to distinguish three cases: when we go down the edge in DFS tree, when we find a back edge to an ancestor of the vertex and when we return to a parent of the vertex. These are the cases:</p>
 <ul>
 <li><span><span class="MathJax_Preview">visited[to] = false</span><script type="math/tex">visited[to] = false</script></span> - the edge is part of DFS tree;</li>
@@ -124,7 +124,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </ul>
 <p>To implement this, we need a depth first search function which accepts the parent vertex of the current node.</p>
 <p>C++ implementation <span class="toggle-code">Show/Hide</span></p>
-<pre><code class="cpp">int n; // number of nodes
+<pre><code class="language-cpp">int n; // number of nodes
 vector&lt;vector&lt;int&gt;&gt; adj; // adjacency list of graph
 
 vector&lt;bool&gt; visited;
@@ -158,11 +158,10 @@ void find_bridges() {
     }
 }
 </code></pre>
-
 <p>Main function is <code>find_bridges</code>; it performs necessary initialization and starts depth first search in each connected component of the graph.</p>
 <p>Function <code>IS_BRIDGE(a, b)</code> is some function that will process the fact that edge <span><span class="MathJax_Preview">(a, b)</span><script type="math/tex">(a, b)</script></span> is a bridge, for example, print it.</p>
 <p>Note that this implementation malfunctions if the graph has multiple edges, since it ignores them. Of course, multiple edges will never be a part of the answer, so <code>IS_BRIDGE</code> can check additionally that the reported bridge is not a multiple edge. Alternatively it's possible to pass to <code>dfs</code> the index of the edge used to enter the vertex instead of the parent vertex (and store the indices of all vertices).</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=737">UVA #796 "Critical Links"</a> [difficulty: low]</li>
 <li><a href="http://uva.onlinejudge.org/index.php?option=onlinejudge&amp;page=show_problem&amp;problem=551">UVA #610 "Street Directions"</a> [difficulty: medium]</li>

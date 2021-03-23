@@ -94,7 +94,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="linear-congruence-equation">Linear Congruence Equation</h1>
+    <h1 id="linear-congruence-equation">Linear Congruence Equation<a class="headerlink" href="#linear-congruence-equation" title="Permanent link">#</a></h1>
 <p>This equation is of the form:</p>
 <div>
 <div class="MathJax_Preview">a \cdot x = b \pmod n,</div>
@@ -102,7 +102,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </div>
 <p>where <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>, <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> and <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> are given integers and <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> is an unknown integer.</p>
 <p>It is required to find the value <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> from the interval <span><span class="MathJax_Preview">[0, n-1]</span><script type="math/tex">[0, n-1]</script></span> (clearly, on the entire number line there can be infinitely many solutions that will differ from each other in <span><span class="MathJax_Preview">n \cdot k</span><script type="math/tex">n \cdot k</script></span> , where <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> is any integer). If the solution is not unique, then we will consider how to get all the solutions.</p>
-<h2 id="solution-by-finding-the-inverse-element">Solution by finding the inverse element</h2>
+<h2 id="solution-by-finding-the-inverse-element">Solution by finding the inverse element<a class="headerlink" href="#solution-by-finding-the-inverse-element" title="Permanent link">#</a></h2>
 <p>Let us first consider a simpler case where <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> are <strong>coprime</strong> (<span><span class="MathJax_Preview">\gcd(a, n) = 1</span><script type="math/tex">\gcd(a, n) = 1</script></span>).
 Then one can find the <a href="/docs/#Algorithms/Algebra/Modular_Multiplicative_Inverse/">inverse</a> of <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>, and multiplying both sides of the equation with the inverse, and we can get a <strong>unique</strong> solution.</p>
 <div>
@@ -128,7 +128,7 @@ It can be shown that the original equation has exactly <span><span class="MathJa
 <script type="math/tex; mode=display">x_i = (x^\prime + i\cdot n^\prime) \pmod n \quad \text{for } i = 0 \ldots g-1</script>
 </div>
 <p>Summarizing, we can say that the <strong>number of solutions</strong> of the linear congruence equation is equal to either <span><span class="MathJax_Preview">g = \gcd(a, n)</span><script type="math/tex">g = \gcd(a, n)</script></span> or to zero.</p>
-<h2 id="solution-with-the-extended-euclidean-algorithm">Solution with the Extended Euclidean Algorithm</h2>
+<h2 id="solution-with-the-extended-euclidean-algorithm">Solution with the Extended Euclidean Algorithm<a class="headerlink" href="#solution-with-the-extended-euclidean-algorithm" title="Permanent link">#</a></h2>
 <p>We can rewrite the linear congruence to the following Diophantine equation:</p>
 <div>
 <div class="MathJax_Preview">a \cdot x + n \cdot k = b,</div>

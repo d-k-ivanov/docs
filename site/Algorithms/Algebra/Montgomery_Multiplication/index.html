@@ -97,13 +97,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="montgomery-multiplication">Montgomery Multiplication</h1>
+    <h1 id="montgomery-multiplication">Montgomery Multiplication<a class="headerlink" href="#montgomery-multiplication" title="Permanent link">#</a></h1>
 <p>Many algorithms in number theory, like <a href="/docs/#Algorithms/Algebra/Primality_Tests/">prime testing</a> or <a href="/docs/#Algorithms/Algebra/Integer_Factorization/">integer factorization</a>, and in cryptography, like RSA, require lots of operations modulo a large number.
 A multiplications like <span><span class="MathJax_Preview">x y \bmod{n}</span><script type="math/tex">x y \bmod{n}</script></span> is quite slow to compute with the typical algorithms, since it requires a division to know how many times <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> has to be subtracted from the product.
 And division is a really expensive operation, especially with big numbers.</p>
 <p>The <strong>Montgomery (modular) multiplication</strong> is a method that allows computing such multiplications faster.
 Instead of dividing the product and subtracting <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> multiple times, it adds multiples of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> to cancel out the lower bits and then just discards the lower bits.</p>
-<h2 id="montgomery-representation">Montgomery representation</h2>
+<h2 id="montgomery-representation">Montgomery representation<a class="headerlink" href="#montgomery-representation" title="Permanent link">#</a></h2>
 <p>However the Montgomery multiplication doesn't come for free.
 The algorithm works only in the <strong>Montgomery space</strong>.
 And we need to transform our numbers into that space, before we can start multiplying.</p>
@@ -128,7 +128,7 @@ But the normal multiplication will give us:
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\bar{x} \cdot \bar{y} = (x \cdot y) \cdot r \cdot r \bmod n.</span><script type="math/tex">\bar{x} \cdot \bar{y} = (x \cdot y) \cdot r \cdot r \bmod n.</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\bar{x} \cdot \bar{y} = (x \cdot y) \cdot r \cdot r \bmod n.</span><script type="math/tex">\bar{x} \cdot \bar{y} = (x \cdot y) \cdot r \cdot r \bmod n.</script></span></script></span>
 Therefore the multiplication in the Montgomery space is defined as:
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\bar{x} * \bar{y} := \bar{x} \cdot \bar{y} \cdot r^{-1} \bmod n.</span><script type="math/tex">\bar{x} * \bar{y} := \bar{x} \cdot \bar{y} \cdot r^{-1} \bmod n.</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\bar{x} * \bar{y} := \bar{x} \cdot \bar{y} \cdot r^{-1} \bmod n.</span><script type="math/tex">\bar{x} * \bar{y} := \bar{x} \cdot \bar{y} \cdot r^{-1} \bmod n.</script></span></script></span></p>
-<h2 id="montgomery-reduction">Montgomery reduction</h2>
+<h2 id="montgomery-reduction">Montgomery reduction<a class="headerlink" href="#montgomery-reduction" title="Permanent link">#</a></h2>
 <p>The multiplication of two numbers in the Montgomery space requires an efficient computation of <span><span class="MathJax_Preview">x \cdot r^{-1} \bmod n</span><script type="math/tex">x \cdot r^{-1} \bmod n</script></span>.
 This operation is called the <strong>Montgomery reduction</strong>, and is also known as the algorithm <strong>REDC</strong>.</p>
 <p>Because <span><span class="MathJax_Preview">\gcd(n, r) = 1</span><script type="math/tex">\gcd(n, r) = 1</script></span>, we know that there are two numbers <span><span class="MathJax_Preview">r^{-1}</span><script type="math/tex">r^{-1}</script></span> and <span><span class="MathJax_Preview">n^{\prime}</span><script type="math/tex">n^{\prime}</script></span> with <span><span class="MathJax_Preview">0 &lt; r^{-1}, n^{\prime} &lt; n</span><script type="math/tex">0 < r^{-1}, n^{\prime} < n</script></span> with
@@ -155,20 +155,19 @@ x \cdot r^{-1} &= x \cdot r \cdot r^{-1} / r = x \cdot (-n \cdot n^{\prime} + 1)
 <p>The equivalences hold for any arbitrary integer <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span>.
 This means, that we can add or subtract an arbitrary multiple of <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> to <span><span class="MathJax_Preview">x \cdot n^{\prime}</span><script type="math/tex">x \cdot n^{\prime}</script></span>, or in other words, we can compute <span><span class="MathJax_Preview">q := x \cdot n^{\prime}</span><script type="math/tex">q := x \cdot n^{\prime}</script></span> modulo <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>.</p>
 <p>This gives us the following algorithm to compute <span><span class="MathJax_Preview">x \cdot r^{-1} \bmod n</span><script type="math/tex">x \cdot r^{-1} \bmod n</script></span>:</p>
-<pre><code class="text">function reduce(x):
+<pre><code class="language-text">function reduce(x):
     q = (x mod r) * n' mod r
     a = (x - q * n) / r
     if a &lt; 0:
         a += n
     return a
 </code></pre>
-
 <p>Since <span><span class="MathJax_Preview">x &lt; n \cdot n &lt; r \cdot n</span><script type="math/tex">x < n \cdot n < r \cdot n</script></span> (even if <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> is the product of a multiplication) and <span><span class="MathJax_Preview">q \cdot n &lt; r \cdot n</span><script type="math/tex">q \cdot n < r \cdot n</script></span> we know that <span><span class="MathJax_Preview">-n &lt; (x - q \cdot n) / r &lt; n</span><script type="math/tex">-n < (x - q \cdot n) / r < n</script></span>.
 Therefore the final modulo operation is implemented using a single check and one addition.</p>
 <p>As we see, we can perform the Montgomery reduction without any heavy modulo operations.
 If we choose <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> as a power of <span><span class="MathJax_Preview">2</span><script type="math/tex">2</script></span>, the modulo operations and divisions in the algorithm can be computed using bitmasking and shifting.</p>
 <p>A second application of the Montgomery reduction is to transfer a number back from the Montgomery space into the normal space.</p>
-<h2 id="fast-inverse-trick">Fast inverse trick</h2>
+<h2 id="fast-inverse-trick">Fast inverse trick<a class="headerlink" href="#fast-inverse-trick" title="Permanent link">#</a></h2>
 <p>For computing the inverse <span><span class="MathJax_Preview">n^{\prime} := n^{-1} \bmod r</span><script type="math/tex">n^{\prime} := n^{-1} \bmod r</script></span> efficiently, we can use the following trick (which is inspired from the Newton's method):
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">a \cdot x \equiv 1 \bmod 2^k \Longrightarrow a \cdot x \cdot (2 - a \cdot x) \equiv 1 \bmod 2^{2k}</span><script type="math/tex">a \cdot x \equiv 1 \bmod 2^k \Longrightarrow a \cdot x \cdot (2 - a \cdot x) \equiv 1 \bmod 2^{2k}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">a \cdot x \equiv 1 \bmod 2^k \Longrightarrow a \cdot x \cdot (2 - a \cdot x) \equiv 1 \bmod 2^{2k}</span><script type="math/tex">a \cdot x \equiv 1 \bmod 2^k \Longrightarrow a \cdot x \cdot (2 - a \cdot x) \equiv 1 \bmod 2^{2k}</script></span></script></span>
 This can easily be proven.
@@ -199,14 +198,13 @@ a \cdot x \cdot (2 - a \cdot x) &= 2 \cdot a \cdot x - (a \cdot x)^2 \\\\
 &\equiv 1 \bmod 2^{2k}.
 \end{aligned}</script></span></script></span></p>
 <p>This means we can start with <span><span class="MathJax_Preview">x = 1</span><script type="math/tex">x = 1</script></span> as the inverse of <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> modulo <span><span class="MathJax_Preview">2^1</span><script type="math/tex">2^1</script></span>, apply the trick a few times and in each iteration we double the number of correct bits of <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>Using the GCC compiler we can compute <span><span class="MathJax_Preview">x \cdot y \bmod n</span><script type="math/tex">x \cdot y \bmod n</script></span> still efficiently, when all three numbers are 64 bit integer, since the compiler supports 128 bit integer with the types <code>__int128</code> and <code>__uint128</code>.</p>
-<pre><code class="cpp">long long result = (__int128)x * y % n;
+<pre><code class="language-cpp">long long result = (__int128)x * y % n;
 </code></pre>
-
 <p>However there is no type for 256 bit integer.
 Therefore we will here show an implementation for a 128 bit multiplication.</p>
-<pre><code class="cpp">using u64 = uint64_t;
+<pre><code class="language-cpp">using u64 = uint64_t;
 using u128 = __uint128_t;
 using i128 = __int128_t;
 
@@ -260,8 +258,7 @@ struct Montgomery {
     u128 mod, inv;
 };
 </code></pre>
-
-<h2 id="fast-transformation">Fast transformation</h2>
+<h2 id="fast-transformation">Fast transformation<a class="headerlink" href="#fast-transformation" title="Permanent link">#</a></h2>
 <p>The current method of transforming a number into Montgomery space is pretty slow.
 There are faster ways.</p>
 <p>You can notice the following relation:
@@ -271,7 +268,7 @@ Therefore we can precompute <span><span class="MathJax_Preview">r^2 \bmod n</spa
 <p>In the following code we initialize <code>r2</code> with <code>-n % n</code>, which is equivalent to <span><span class="MathJax_Preview">r - n \equiv r \bmod n</span><script type="math/tex">r - n \equiv r \bmod n</script></span>, shift it 4 times to get <span><span class="MathJax_Preview">r \cdot 2^4 \bmod n</span><script type="math/tex">r \cdot 2^4 \bmod n</script></span>.
 This number can be interpreted as <span><span class="MathJax_Preview">2^4</span><script type="math/tex">2^4</script></span> in Montgomery space.
 If we square it <span><span class="MathJax_Preview">5</span><script type="math/tex">5</script></span> times, we get <span><span class="MathJax_Preview">(2^4)^{2^5} = (2^4)^{32} = 2^{128} = r</span><script type="math/tex">(2^4)^{2^5} = (2^4)^{32} = 2^{128} = r</script></span> in Montgomery space, which is exactly <span><span class="MathJax_Preview">r^2 \bmod n</span><script type="math/tex">r^2 \bmod n</script></span>.</p>
-<pre><code class="cpp">struct Montgomery {
+<pre><code class="language-cpp">struct Montgomery {
     Montgomery(u128 n) : mod(n), inv(1), r2(-n % n) {
         for (int i = 0; i &lt; 7; i++)
             inv *= 2 - n * inv;

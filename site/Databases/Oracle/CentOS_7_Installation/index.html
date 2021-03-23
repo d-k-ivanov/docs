@@ -102,13 +102,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="gui">GUI</h3>
-<pre><code class="bash">yum groups install &quot;GNOME Desktop&quot;
+    <h3 id="gui">GUI<a class="headerlink" href="#gui" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">yum groups install &quot;GNOME Desktop&quot;
 startx
 </code></pre>
-
-<h3 id="database-pre-requirements">Database pre-requirements</h3>
-<pre><code class="bash"># Dependencies
+<h3 id="database-pre-requirements">Database pre-requirements<a class="headerlink" href="#database-pre-requirements" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Dependencies
 yum install binutils compat-libcap1 gcc gcc-c++ glibc glibc.i686 glibc-devel glibc.i686 ksh libaio libaio.i686 libaio-devel libaio-devel.i686 libgcc libgcc.i686 libstdc++ libstdc++l7.i686 libstdc++-devel libstdc++-devel.i686 compat-libstdc++-33 compat-libstdc++-33.i686 libXi libXi.i686 libXtst libXtst.i686 make sysstat 
 
 # Kernel
@@ -165,9 +164,8 @@ vim ~/.bash_profile
 umask 022
 export ORACLE_BASE=/u01/app/oracle 
 </code></pre>
-
-<h3 id="database-software-installation">Database software installation</h3>
-<pre><code class="bash"># Upload installation software to /tmp:
+<h3 id="database-software-installation">Database software installation<a class="headerlink" href="#database-software-installation" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Upload installation software to /tmp:
 scp linuxamd64_12102_database_se2_1of2.zip oracle@db_server:/tmp/
 scp linuxamd64_12102_database_se2_2of2.zip oracle@db_server:/tmp/
 
@@ -182,7 +180,6 @@ unzip linuxamd64_12102_database_se2_2of2.zip
 cd database/
 ./runInstaller 
 </code></pre>
-
 <p>Just follow installation steps in GUI:</p>
 <ul>
 <li>Step 01. Enter your <strong>E-Mail</strong> and Oracle Enterproise support <strong>password</strong>, if you have one</li>
@@ -198,24 +195,22 @@ cd database/
 <li>Step 11. On this step installater demand you to execute 2 spripts from root user. Just run them.</li>
 <li>Step 12. Finish</li>
 </ul>
-<pre><code class="bash">vim ~/.bash_profile 
+<pre><code class="language-bash">vim ~/.bash_profile 
 
 # Add to the end of file: 
 
 export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
 export PATH=$PATH:$ORACLE_HOME/bin
 </code></pre>
-
-<h3 id="net-listener">Net listener</h3>
+<h3 id="net-listener">Net listener<a class="headerlink" href="#net-listener" title="Permanent link">#</a></h3>
 <p>Just run <strong>netca</strong> from oracle user and follow steps of configuration wizard</p>
-<pre><code class="bash"># Login to DB server with X-Forwarding enabled:
+<pre><code class="language-bash"># Login to DB server with X-Forwarding enabled:
 ssh -Y oracle@db_server
 
 # Run Network listener configuration wizard:
 netca
 </code></pre>
-
-<h3 id="database">Database</h3>
+<h3 id="database">Database<a class="headerlink" href="#database" title="Permanent link">#</a></h3>
 <pre><code># Login to DB server with X-Forwarding enabled:
 ssh -Y oracle@db_server
 
@@ -223,7 +218,6 @@ ssh -Y oracle@db_server
 dbca
 
 </code></pre>
-
 <p>Follow installation steps for fat installation:</p>
 <ul>
 <li>Step 01. Choose <strong>(.) Create database</strong></li>
@@ -237,7 +231,7 @@ dbca
 <li>Step 04. Next</li>
 <li>Step 05. Finish</li>
 </ul>
-<pre><code class="bash">vim /etc/oratab 
+<pre><code class="language-bash">vim /etc/oratab 
 
 #Set last synbol from &quot;N&quot; to &quot;Y&quot;
 &lt;database_SID&gt;:/u01/app/oracle/product/12.1.0/dbhome_1:Y
@@ -248,23 +242,21 @@ vim ~/.bash_profile
 export ORACLE_SID=&lt;database_SID&gt;
 
 </code></pre>
-
-<h3 id="autostart">Autostart</h3>
+<h3 id="autostart">Autostart<a class="headerlink" href="#autostart" title="Permanent link">#</a></h3>
 <ul>
 <li>Oracle environemnt:</li>
 </ul>
-<pre><code class="bash">vim /etc/sysconfig/&lt;SID&gt;.oracledb
+<pre><code class="language-bash">vim /etc/sysconfig/&lt;SID&gt;.oracledb
 
 # Contents
 ORACLE_BASE=/u01/app/oracle
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
 ORACLE_SID=&lt;your_SID&gt;
 </code></pre>
-
 <ul>
 <li>Net listner service:</li>
 </ul>
-<pre><code class="bash">vim /usr/lib/systemd/system/&lt;SID&gt;@lsnrctl.service 
+<pre><code class="language-bash">vim /usr/lib/systemd/system/&lt;SID&gt;@lsnrctl.service 
 
 # Contents
 [Unit]
@@ -281,11 +273,10 @@ User=oracle
 [Install]
 WantedBy=multi-user.target
 </code></pre>
-
 <ul>
 <li>Database service:</li>
 </ul>
-<pre><code class="bash">vim /usr/lib/systemd/system/&lt;SID&gt;@oracledb.service 
+<pre><code class="language-bash">vim /usr/lib/systemd/system/&lt;SID&gt;@oracledb.service 
 
 # Contents
 [Unit]
@@ -302,11 +293,10 @@ User=oracle
 [Install]
 WantedBy=multi-user.target
 </code></pre>
-
 <ul>
 <li>Systemd reload and enable:</li>
 </ul>
-<pre><code class="bash">systemctl daemon-reload 
+<pre><code class="language-bash">systemctl daemon-reload 
 systemctl enable &lt;SID&gt;@lsnrctl 
 systemctl enable &lt;SID&gt;@oracledb 
 </code></pre>

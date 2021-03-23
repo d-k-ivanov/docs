@@ -92,7 +92,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="delay-for-apps-deployment">Delay for apps deployment</h3>
+    <h3 id="delay-for-apps-deployment">Delay for apps deployment<a class="headerlink" href="#delay-for-apps-deployment" title="Permanent link">#</a></h3>
 <ul>
 <li><strong>Subject:</strong> TC7 very slow SessionIdGenerator SecureRandom initialization</li>
 <li>
@@ -104,13 +104,12 @@ There is some issues about it: <strong>JDK-6521844</strong>, JDK-6521844.</p>
 <p>To view amount of available entropy:</p>
 </li>
 </ul>
-<pre><code class="bash">cat /proc/sys/kernel/random/entropy_avail
+<pre><code class="language-bash">cat /proc/sys/kernel/random/entropy_avail
 </code></pre>
-
 <ul>
 <li>To avoid this behaviour you need to set JAVA_OPTS manually like bellow:</li>
 </ul>
-<pre><code class="bash">JAVA_OPTS=&quot;-Djava.security.egd=file:/dev/./urandom&quot; /opt/apache-tomcat-7.0.70/bin/startup.sh
+<pre><code class="language-bash">JAVA_OPTS=&quot;-Djava.security.egd=file:/dev/./urandom&quot; /opt/apache-tomcat-7.0.70/bin/startup.sh
 </code></pre>
 
   <br>

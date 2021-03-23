@@ -96,24 +96,22 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="show-rules">Show rules</h3>
+    <h3 id="show-rules">Show rules<a class="headerlink" href="#show-rules" title="Permanent link">#</a></h3>
 <pre><code>iptables -nvL
 iptable -t nat -nvL
 </code></pre>
-
-<h3 id="autoreset-by-vivek-gite">Autoreset by Vivek Gite</h3>
+<h3 id="autoreset-by-vivek-gite">Autoreset by Vivek Gite<a class="headerlink" href="#autoreset-by-vivek-gite" title="Permanent link">#</a></h3>
 <ul>
 <li>Just add to crontab while remote rules configuration:</li>
 </ul>
-<pre><code class="bash">crontab -e
+<pre><code class="language-bash">crontab -e
 # ---
 */5 * * * * root /root/reset.fw &gt;/dev/null 2&gt;&amp;1
 </code></pre>
-
 <ul>
 <li>reset.fw:</li>
 </ul>
-<pre><code class="bash">#!/bin/bash
+<pre><code class="language-bash">#!/bin/bash
 # reset.fw - Reset firewall
 # set x to 0 - No reset
 # set x to 1 - Reset firewall
@@ -173,9 +171,8 @@ else
         :
 fi
 </code></pre>
-
-<h3 id="sibple-rules">Sibple Rules</h3>
-<pre><code class="bash">iptables -I INPUT -p tcp --dport 8005 -j ACCEPT
+<h3 id="sibple-rules">Sibple Rules<a class="headerlink" href="#sibple-rules" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">iptables -I INPUT -p tcp --dport 8005 -j ACCEPT
 iptables -I INPUT -p tcp --dport 8009 -j ACCEPT
 iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
 iptables -I INPUT -p tcp --dport 8443 -j ACCEPT

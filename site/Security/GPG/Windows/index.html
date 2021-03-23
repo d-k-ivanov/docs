@@ -92,8 +92,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="using-gpg4win-with-git">Using GPG4Win with git</h2>
-<pre><code class="ps1">gpg --full-generate-key
+    <h2 id="using-gpg4win-with-git">Using GPG4Win with git<a class="headerlink" href="#using-gpg4win-with-git" title="Permanent link">#</a></h2>
+<pre><code class="language-ps1">gpg --full-generate-key
 git config --global gpg.program &quot;C:\Program Files (x86)\Gpg4win\..\GnuPG\bin\gpg.exe&quot;
 gpg --list-secret-keys --keyid-format LONG
 git config --global user.signingkey {YourKeyID}

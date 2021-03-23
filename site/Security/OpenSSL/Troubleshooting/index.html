@@ -94,13 +94,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="troubleshoot-ssl-connections">Troubleshoot SSL Connections</h1>
-<h2 id="remove-password-from-ssl-certificate">Remove password from SSL certificate</h2>
-<pre><code class="bash">openssl rsa -&lt;algorithm&gt; -in secured.key -out unsecured.key
+    <h1 id="troubleshoot-ssl-connections">Troubleshoot SSL Connections<a class="headerlink" href="#troubleshoot-ssl-connections" title="Permanent link">#</a></h1>
+<h2 id="remove-password-from-ssl-certificate">Remove password from SSL certificate<a class="headerlink" href="#remove-password-from-ssl-certificate" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">openssl rsa -&lt;algorithm&gt; -in secured.key -out unsecured.key
 </code></pre>
-
-<h2 id="get-ssl-info-about-url">Get SSL info about URL</h2>
-<pre><code class="bash"># SNI
+<h2 id="get-ssl-info-about-url">Get SSL info about URL<a class="headerlink" href="#get-ssl-info-about-url" title="Permanent link">#</a></h2>
+<pre><code class="language-bash"># SNI
 openssl s_client -showcerts -servername www.example.com -connect www.example.com:&lt;port|443&gt;
 # Not SNI
 openssl s_client -showcerts -connect www.example.com:&lt;port|443&gt;

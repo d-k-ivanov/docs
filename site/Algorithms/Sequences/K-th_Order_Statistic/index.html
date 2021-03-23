@@ -94,12 +94,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="k-th-order-statistic">K-th Order Statistic</h1>
+    <h1 id="k-th-order-statistic">K-th Order Statistic<a class="headerlink" href="#k-th-order-statistic" title="Permanent link">#</a></h1>
 <p>Complexity: <span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span></p>
 <p>Given an array <strong>A</strong> of size <strong>N</strong> and a number <strong>K</strong>. The challenge is to find <strong>K</strong>-th largest number in the array, i.e., <strong>K</strong>-th order statistic.</p>
 <p>The basic idea - to use the idea of quick sort algorithm. Actually, the algorithm is simple, it is more difficult to prove that it runs in an average of O(N), in contrast to the quick sort.</p>
-<h2 id="implementation-not-recursive">Implementation (not recursive)</h2>
-<pre><code class="cpp">template &lt;class T&gt;
+<h2 id="implementation-not-recursive">Implementation (not recursive)<a class="headerlink" href="#implementation-not-recursive" title="Permanent link">#</a></h2>
+<pre><code class="language-cpp">template &lt;class T&gt;
 T order_statistics (std::vector&lt;T&gt; a, unsigned n, unsigned k)
 {
     using std::swap;
@@ -151,9 +151,8 @@ T order_statistics (std::vector&lt;T&gt; a, unsigned n, unsigned k)
     }
 }
 </code></pre>
-
 <p>To note, in the standard C ++ library, this algorithm has already been implemented - it is called nth_element.</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://www.codechef.com/problems/CD1IT1">CODECHEF: Median</a></li>
 </ul>

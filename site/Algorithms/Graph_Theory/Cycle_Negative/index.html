@@ -95,17 +95,17 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="cycle-negative">Cycle: Negative</h1>
+    <h1 id="cycle-negative">Cycle: Negative<a class="headerlink" href="#cycle-negative" title="Permanent link">#</a></h1>
 <p>You are given a directed weighted graph <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> with <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> vertices and <span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> edges. Find any cycle of negative weight in it, if such a cycle exists.</p>
 <p>In another formulation of the problem you have to find all pairs of vertices which have a path of arbitrarily small weight between them.</p>
 <p>It is convenient to use different algorithms to solve these two variations of the problem, so we'll discuss both of them here.</p>
-<h2 id="using-bellman-ford-algorithm">Using Bellman-Ford algorithm</h2>
+<h2 id="using-bellman-ford-algorithm">Using Bellman-Ford algorithm<a class="headerlink" href="#using-bellman-ford-algorithm" title="Permanent link">#</a></h2>
 <p>Bellman-Ford algorithm allows you to check whether there exists a cycle of negative weight in the graph, and if it does, find one of these cycles.</p>
 <p>The details of the algorithm are described in the article on the <a href="/docs/#Algorithms/Graph_Theory/Bellman-Ford_Algorithm/">Bellman-Ford</a> algorithm.
 Here we'll describe only its application to this problem.</p>
 <p>Do <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> iterations of Bellman-Ford algorithm. If there were no changes on the last iteration, there is no cycle of negative weight in the graph. Otherwise take a vertex the distance to which has changed, and go from it via its ancestors until a cycle is found. This cycle will be the desired cycle of negative weight.</p>
-<h3 id="implementation">Implementation</h3>
-<pre><code class="cpp">struct Edge {
+<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h3>
+<pre><code class="language-cpp">struct Edge {
     int a, b, cost;
 };
 
@@ -150,8 +150,7 @@ void solve()
     }
 }
 </code></pre>
-
-<h2 id="using-floyd-warshall-algorithm">Using Floyd-Warshall algorithm</h2>
+<h2 id="using-floyd-warshall-algorithm">Using Floyd-Warshall algorithm<a class="headerlink" href="#using-floyd-warshall-algorithm" title="Permanent link">#</a></h2>
 <p>The Floyd-Warshall algorithm allows to solve the second variation of the problem - finding all pairs of vertices <span><span class="MathJax_Preview">(i, j)</span><script type="math/tex">(i, j)</script></span> which don't have a shortest path between them (i.e. a path of arbitrarily small weight exists).</p>
 <p>Again, the details can be found in the <a href="/docs/#Algorithms/Graph_Theory/Floyd-Warshall_Algorithm/">Floyd-Warshall</a> article, and here we describe only its application.</p>
 <p>Run Floyd-Warshall algorithm on the graph.
@@ -163,8 +162,8 @@ To do this try all possibilities for an intermediate vertex <span><span class="M
 <span><span class="MathJax_Preview">(i, j)</span><script type="math/tex">(i, j)</script></span> doesn't have a shortest path, if one of the intermediate vertices <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> has <span><span class="MathJax_Preview">d[t][t] &lt; 0</span><script type="math/tex">d[t][t] < 0</script></span> (i.e. <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> is part of a cycle of negative weight), <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> can be reached from <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> can be reached from <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>.
 Then the path from <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> to <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> can have arbitrarily small weight.
 We will denote this with <code>-INF</code>.</p>
-<h3 id="implementation_1">Implementation</h3>
-<pre><code class="cpp">for (int i = 0; i &lt; n; ++i) {
+<h3 id="implementation_1">Implementation<a class="headerlink" href="#implementation_1" title="Permanent link">#</a></h3>
+<pre><code class="language-cpp">for (int i = 0; i &lt; n; ++i) {
     for (int j = 0; j &lt; n; ++j) {
         for (int t = 0; t &lt; n; ++t) {
             if (d[i][t] &lt; INF &amp;&amp; d[t][t] &lt; 0 &amp;&amp; d[t][j] &lt; INF)
@@ -173,8 +172,7 @@ We will denote this with <code>-INF</code>.</p>
     }
 }
 </code></pre>
-
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=499">UVA: Wormholes</a></li>
 <li><a href="http://www.spoj.com/problems/UCV2013B/">SPOJ: Alice in Amsterdam, I mean Wonderland</a></li>

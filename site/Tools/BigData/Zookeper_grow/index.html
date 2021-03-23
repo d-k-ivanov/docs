@@ -97,12 +97,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="adding-2-nodes-to-an-existing-3-node-zookeeper-ensemble-without-losing-the-quorum">Adding 2 nodes to an existing 3-node ZooKeeper ensemble without losing the Quorum</h2>
+    <h2 id="adding-2-nodes-to-an-existing-3-node-zookeeper-ensemble-without-losing-the-quorum">Adding 2 nodes to an existing 3-node ZooKeeper ensemble without losing the Quorum<a class="headerlink" href="#adding-2-nodes-to-an-existing-3-node-zookeeper-ensemble-without-losing-the-quorum" title="Permanent link">#</a></h2>
 <p>Since many deployments may start out with 3 nodes and so little is known about how to grow a cluster from 3 memebrs to 5 members without losing the existing Quorum, here is an example of how this might be achieved.</p>
-<h3 id="step-1-have-a-healthy-3-node-ensemble">Step 1: Have a healthy 3-node ensemble</h3>
+<h3 id="step-1-have-a-healthy-3-node-ensemble">Step 1: Have a healthy 3-node ensemble<a class="headerlink" href="#step-1-have-a-healthy-3-node-ensemble" title="Permanent link">#</a></h3>
 <p>Ensure all 3 nodes are up, one is the leader, and all are in sync
 Initial setup:</p>
-<pre><code class="bash">    sudo apt-get update
+<pre><code class="language-bash">    sudo apt-get update
     sudo apt-get install -y openjdk-6-jre-headless vim
 
     mkdir ~/zook
@@ -146,10 +146,9 @@ Initial setup:</p>
 
     zookeeper-3.4.5/bin/zkServer.sh start-foreground conf3/zoo.cfg
 </code></pre>
-
-<h3 id="step-2-set-up-2-new-nodes-to-join-the-cluster">Step 2: Set up 2 new nodes to join the cluster</h3>
+<h3 id="step-2-set-up-2-new-nodes-to-join-the-cluster">Step 2: Set up 2 new nodes to join the cluster<a class="headerlink" href="#step-2-set-up-2-new-nodes-to-join-the-cluster" title="Permanent link">#</a></h3>
 <p>Start the service, see the nodes join the cluster, snapshot the data and become active.</p>
-<pre><code class="bash">    tickTime=2000
+<pre><code class="language-bash">    tickTime=2000
     dataDir=/home/user/zook/conf4
     clientPort=2184
     initLimit=50
@@ -176,26 +175,22 @@ Initial setup:</p>
 
     zookeeper-3.4.5/bin/zkServer.sh start-foreground conf5/zoo.cfg
 </code></pre>
-
-<h3 id="step-3-add-the-2-new-nodes-config-to-existing-cluster">Step 3: Add the 2 new nodes config to existing cluster</h3>
-<pre><code class="bash">    for i in `seq 3` ;do vim conf$i/zoo.cfg ; done
+<h3 id="step-3-add-the-2-new-nodes-config-to-existing-cluster">Step 3: Add the 2 new nodes config to existing cluster<a class="headerlink" href="#step-3-add-the-2-new-nodes-config-to-existing-cluster" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">    for i in `seq 3` ;do vim conf$i/zoo.cfg ; done
 
     server.4=localhost:2884:3884
     server.5=localhost:2885:3885
 </code></pre>
-
 <p>Save files.</p>
-<h3 id="step-4-restart-followers-with-new-config">Step 4: Restart Followers with new config</h3>
-<pre><code class="bash">    # Stop this instance with Ctrl+C, then run
+<h3 id="step-4-restart-followers-with-new-config">Step 4: Restart Followers with new config<a class="headerlink" href="#step-4-restart-followers-with-new-config" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">    # Stop this instance with Ctrl+C, then run
     zookeeper-3.4.5/bin/zkServer.sh start-foreground conf2/zoo.cfg
 </code></pre>
-
 <p>Ensure that is joins the ensemble, repeat with other Follower.</p>
-<pre><code class="bash">    # Ctrl+C
+<pre><code class="language-bash">    # Ctrl+C
     zookeeper-3.4.5/bin/zkServer.sh start-foreground conf3/zoo.cfg
 </code></pre>
-
-<h3 id="step-5-restart-the-leader">Step 5: Restart the Leader</h3>
+<h3 id="step-5-restart-the-leader">Step 5: Restart the Leader<a class="headerlink" href="#step-5-restart-the-leader" title="Permanent link">#</a></h3>
 <p>Ensure that all 4 nodes have network conenctivity to each other on the designated ports, and then bounce the Leader.</p>
 <pre><code>    # Ctrl+C
     zookeeper-3.4.5/bin/zkServer.sh start-foreground conf1/zoo.cfg

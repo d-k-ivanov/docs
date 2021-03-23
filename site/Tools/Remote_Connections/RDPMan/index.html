@@ -92,17 +92,16 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="certificate-for-password-encryption">Certificate for password encryption</h3>
+    <h3 id="certificate-for-password-encryption">Certificate for password encryption<a class="headerlink" href="#certificate-for-password-encryption" title="Permanent link">#</a></h3>
 <p>How to rencrypt of RDCMan credentials with a custom certificate?
 Here the steps.</p>
 <ul>
 <li><strong>Generate</strong> certificate</li>
 </ul>
-<pre><code class="bash"># makecert -sky exchange -r -pe -e &lt;expiration_date&gt; -a sha1 -len &lt;key_lenght&gt; -ss my -n &quot;CN=RDCManCertCustomName&quot;
+<pre><code class="language-bash"># makecert -sky exchange -r -pe -e &lt;expiration_date&gt; -a sha1 -len &lt;key_lenght&gt; -ss my -n &quot;CN=RDCManCertCustomName&quot;
 # Example:
 makecert -sky exchange -r -pe -e 01/01/2220 -a sha1 -len 2048 -ss my -n &quot;CN=RDCManCertCustomName&quot;
 </code></pre>
-
 <ul>
 <li>Go to RDCman and open RDG file you want to reencrypt with the <strong>Custom</strong> certificate insetead of <strong>Logged User</strong> certificate</li>
 <li>Open file properties and go to <strong>Encription Settings</strong></li>

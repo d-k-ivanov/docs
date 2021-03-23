@@ -96,8 +96,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="enabling-in-freebsd-kernel">Enabling in FreeBSD kernel</h3>
-<pre><code class="bash">device pf
+    <h3 id="enabling-in-freebsd-kernel">Enabling in FreeBSD kernel<a class="headerlink" href="#enabling-in-freebsd-kernel" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">device pf
 device pflog
 device pfsync
 
@@ -109,9 +109,8 @@ options         ALTQ_HFSC       # Hierarchical Packet Scheduler (HFSC)
 options         ALTQ_PRIQ       # Priority Queuing (PRIQ)
 options         ALTQ_NOPCC      # Required for SMP build
 </code></pre>
-
-<h3 id="freebsd-rcconf-all-pf-options">FreeBSD rc.conf all PF options</h3>
-<pre><code class="bash">pf_enable=&quot;NO&quot;
+<h3 id="freebsd-rcconf-all-pf-options">FreeBSD rc.conf all PF options<a class="headerlink" href="#freebsd-rcconf-all-pf-options" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">pf_enable=&quot;NO&quot;
 pf_rules=&quot;/etc/pf.conf&quot;
 pf_program=&quot;/sbin/pfctl&quot;
 pf_flags=&quot;&quot;
@@ -123,9 +122,8 @@ pfsync_enable=&quot;NO&quot;
 pfsync_syncdev=&quot;&quot;
 pfsync_ifconfig=&quot;&quot;
 </code></pre>
-
-<h3 id="sample-config">Sample config</h3>
-<pre><code class="bash"># PF.CONF // BEGIN CONFIG
+<h3 id="sample-config">Sample config<a class="headerlink" href="#sample-config" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># PF.CONF // BEGIN CONFIG
 #---------------------------
 
 #---------------------------

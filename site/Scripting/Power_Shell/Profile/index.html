@@ -92,8 +92,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="automatically-add-workdir-folder-to-psmodulepath-in-visual-studio-code">Automatically add Workdir folder to PSModulePath in Visual Studio Code</h3>
-<pre><code class="ps1">'$Env:PSModulePath  = &quot;$(Get-Location)&quot; + &quot;$([System.IO.Path]::PathSeparator)${Env:PSModulePath}&quot;' | `
+    <h3 id="automatically-add-workdir-folder-to-psmodulepath-in-visual-studio-code">Automatically add Workdir folder to PSModulePath in Visual Studio Code<a class="headerlink" href="#automatically-add-workdir-folder-to-psmodulepath-in-visual-studio-code" title="Permanent link">#</a></h3>
+<pre><code class="language-ps1">'$Env:PSModulePath  = &quot;$(Get-Location)&quot; + &quot;$([System.IO.Path]::PathSeparator)${Env:PSModulePath}&quot;' | `
 Add-Content $(Join-Path $(Split-Path $profile) Microsoft.VSCode_profile.ps1)
 </code></pre>
 
