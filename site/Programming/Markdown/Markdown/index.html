@@ -64,33 +64,6 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
-    
-      
-    
-
-  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
-    
-    <div class="wm-article-nav pull-right">
-      <a href="../../Perl/Perl_one-liners/" class="btn btn-xs btn-default pull-right">
-        Next
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-      </a>
-      <a href="../../Perl/Perl_one-liners/" class="btn btn-xs btn-link">
-        Perl one liners
-      </a>
-    </div>
-    
-    <div class="wm-article-nav">
-      <a href="../../MPI/MPI-Lib/" class="btn btn-xs btn-default pull-left">
-        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../../MPI/MPI-Lib/" class="btn btn-xs btn-link">
-        MPI Lib
-      </a>
-    </div>
-    
-  </div>
-
-    
 
     <h3 id="generate-md-file-from-baunch-of-man-files">Generate MD file from baunch of man files<a class="headerlink" href="#generate-md-file-from-baunch-of-man-files" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">for file in *.txt; do echo &quot;### $file&quot; &gt;&gt; result.md; echo '```' &gt;&gt; result.md; cat $file &gt;&gt; result.md; echo '```' &gt;&gt; result.md; echo &gt;&gt; result.md; done

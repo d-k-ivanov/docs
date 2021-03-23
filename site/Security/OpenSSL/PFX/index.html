@@ -72,33 +72,6 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
-    
-      
-    
-
-  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
-    
-    <div class="wm-article-nav pull-right">
-      <a href="../Troubleshooting/" class="btn btn-xs btn-default pull-right">
-        Next
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-      </a>
-      <a href="../Troubleshooting/" class="btn btn-xs btn-link">
-        Troubleshoot SSL Connections
-      </a>
-    </div>
-    
-    <div class="wm-article-nav">
-      <a href="../Common/" class="btn btn-xs btn-default pull-left">
-        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../Common/" class="btn btn-xs btn-link">
-        Common
-      </a>
-    </div>
-    
-  </div>
-
-    
 
     <h3 id="export-pem">Export PEM<a class="headerlink" href="#export-pem" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">openssl pkcs12 -in certname.pfx -clcerts -nokeys -out certname.pem [-nodes]

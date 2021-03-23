@@ -64,33 +64,6 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
-    
-      
-    
-
-  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
-    
-    <div class="wm-article-nav pull-right">
-      <a href="../Map_Disks_in_Windows/" class="btn btn-xs btn-default pull-right">
-        Next
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-      </a>
-      <a href="../Map_Disks_in_Windows/" class="btn btn-xs btn-link">
-        Map Disks in Windows
-      </a>
-    </div>
-    
-    <div class="wm-article-nav">
-      <a href="../LVM/" class="btn btn-xs btn-default pull-left">
-        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../LVM/" class="btn btn-xs btn-link">
-        LVM
-      </a>
-    </div>
-    
-  </div>
-
-    
 
     <h3 id="find-all-broken-links">Find all broken links<a class="headerlink" href="#find-all-broken-links" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">find /path -type l | while read link; do [ -e `readlink $link` ] || echo $link; done

@@ -70,33 +70,6 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
-    
-      
-    
-
-  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
-    
-    <div class="wm-article-nav pull-right">
-      <a href="../../R/Using_R_in_CPP/" class="btn btn-xs btn-default pull-right">
-        Next
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-      </a>
-      <a href="../../R/Using_R_in_CPP/" class="btn btn-xs btn-link">
-        Using R in C++
-      </a>
-    </div>
-    
-    <div class="wm-article-nav">
-      <a href="../Users_and_groups/" class="btn btn-xs btn-default pull-left">
-        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../Users_and_groups/" class="btn btn-xs btn-link">
-        Users and groups
-      </a>
-    </div>
-    
-  </div>
-
-    
 
     <h3 id="list-all-packages-without-version-with-powershell">List all packages without version with powershell<a class="headerlink" href="#list-all-packages-without-version-with-powershell" title="Permanent link">#</a></h3>
 <pre><code>$packs = $(pip freeze --local); foreach($pack in $packs) { Write-Host $pack.Substring(0, $pack.IndexOf('=')) }
