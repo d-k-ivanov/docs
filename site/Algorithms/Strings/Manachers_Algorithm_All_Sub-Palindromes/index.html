@@ -73,11 +73,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="manachers-algorithm-all-sub-palindromes">Manacher's Algorithm: All Sub-Palindromes<a class="headerlink" href="#manachers-algorithm-all-sub-palindromes" title="Permanent link">#</a></h1>
+    <h1 id="manachers-algorithm-all-sub-palindromes">Manacher's Algorithm: All Sub-Palindromes</h1>
 <p>Complexity: <span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span></p>
-<h2 id="statement">Statement<a class="headerlink" href="#statement" title="Permanent link">#</a></h2>
+<h2 id="statement">Statement</h2>
 <p>Given string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> with length <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>. Find all the pairs <span><span class="MathJax_Preview">(i, j)</span><script type="math/tex">(i, j)</script></span> such that substring <span><span class="MathJax_Preview">s[i\dots j]</span><script type="math/tex">s[i\dots j]</script></span> is a palindrome. String <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> is a palindrome when <span><span class="MathJax_Preview">t = t_{rev}</span><script type="math/tex">t = t_{rev}</script></span> (<span><span class="MathJax_Preview">t_{rev}</span><script type="math/tex">t_{rev}</script></span> is a reversed string for <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>).</p>
-<h2 id="more-precise-statement">More precise statement<a class="headerlink" href="#more-precise-statement" title="Permanent link">#</a></h2>
+<h2 id="more-precise-statement">More precise statement</h2>
 <p>It's clear that in the worst case we can have <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span> palindrome strings, and at the first glance it seems that there is no linear algorithm for this problem.</p>
 <p>But the information about the palindromes can be kept <strong>in a more compact way</strong>: for each position <span><span class="MathJax_Preview">i = 0\dots n-1</span><script type="math/tex">i = 0\dots n-1</script></span> we'll find the values <span><span class="MathJax_Preview">d_1[i]</span><script type="math/tex">d_1[i]</script></span> and <span><span class="MathJax_Preview">d_2[i]</span><script type="math/tex">d_2[i]</script></span>, denoting the number of palindromes accordingly with odd and even lengths with centers in the position <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>.</p>
 <p>For instance, string <span><span class="MathJax_Preview">s = abababc</span><script type="math/tex">s = abababc</script></span> has three palindromes with odd length with centers in the position <span><span class="MathJax_Preview">s[3] = b</span><script type="math/tex">s[3] = b</script></span>, i. e. <span><span class="MathJax_Preview">d_1[3] = 3</span><script type="math/tex">d_1[3] = 3</script></span>:</p>
@@ -86,10 +86,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><span><span class="MathJax_Preview">c\ \overbrace{b\ a\ \underbrace{a}_{s_3}\ b}^{d_2[3]=2} d</span><script type="math/tex">c\ \overbrace{b\ a\ \underbrace{a}_{s_3}\ b}^{d_2[3]=2} d</script></span></p>
 <p>So the idea is that if we have a sub-palindrome with length <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> with center in some position <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>, we also have sub-palindromes with lengths <span><span class="MathJax_Preview">l-2</span><script type="math/tex">l-2</script></span>, <span><span class="MathJax_Preview">l-4</span><script type="math/tex">l-4</script></span> etc. with centers in <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>. So these two arrays <span><span class="MathJax_Preview">d_1[i]</span><script type="math/tex">d_1[i]</script></span> and <span><span class="MathJax_Preview">d_2[i]</span><script type="math/tex">d_2[i]</script></span> are enough to keep the information about all the sub-palindromes in the string.</p>
 <p>It's a surprising fact that there is an algorithm, which is simple enough, that calculates these "palindromity arrays" <span><span class="MathJax_Preview">d_1[]</span><script type="math/tex">d_1[]</script></span> and <span><span class="MathJax_Preview">d_2[]</span><script type="math/tex">d_2[]</script></span> in linear time. The algorithm is described in this article.</p>
-<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">#</a></h2>
+<h2 id="solution">Solution</h2>
 <p>In general, this problem has many solutions: with <a href="/docs/#Algorithms/String/String_Hashing/">String Hashing</a> it can be solved in <span><span class="MathJax_Preview">O(n\cdot \log n)</span><script type="math/tex">O(n\cdot \log n)</script></span>, and with <a href="/docs/#Algorithms/String/Suffix_Tree_Ukkonen/">Suffix Trees</a> and fast LCA this problem can be solved in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>.</p>
 <p>But the method described here is <strong>sufficiently</strong> simpler and has less hidden constant in time and memory complexity. This algorithm was discovered by <strong>Glenn K. Manacher</strong> in 1975.</p>
-<h2 id="trivial-algorithm">Trivial algorithm<a class="headerlink" href="#trivial-algorithm" title="Permanent link">#</a></h2>
+<h2 id="trivial-algorithm">Trivial algorithm</h2>
 <p>To avoid ambiguities in the further description we denote what "trivial algorithm" is.</p>
 <p>It's the algorithm that does the following. For each center position <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> it tries to increase the answer by one until it's possible, comparing a pair of corresponding characters each time.</p>
 <p>Such algorithm is slow, it can calculate the answer only in <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span>.</p>
@@ -107,7 +107,7 @@ for (int i = 0; i &lt; n; i++) {
     }
 }
 </code></pre>
-<h2 id="manachers-algorithm">Manacher's algorithm<a class="headerlink" href="#manachers-algorithm" title="Permanent link">#</a></h2>
+<h2 id="manachers-algorithm">Manacher's algorithm</h2>
 <p>We describe the algorithm to find all the sub-palindromes with odd length, i. e. to calculate <span><span class="MathJax_Preview">d_1[]</span><script type="math/tex">d_1[]</script></span>; the solution for all the sub-palindromes with even length (i. e. calculating the array <span><span class="MathJax_Preview">d_2[]</span><script type="math/tex">d_2[]</script></span>) will be a minor modification for this one.</p>
 <p>For fast calculation we'll keep the <strong>borders <span><span class="MathJax_Preview">(l, r)</span><script type="math/tex">(l, r)</script></span></strong> of the rightmost found sub-palindrome (i. e. the palindrome with maximal <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>). Initially we assume <span><span class="MathJax_Preview">l = 0, r = -1</span><script type="math/tex">l = 0, r = -1</script></span>.</p>
 <p>So, we want to calculate <span><span class="MathJax_Preview">d_1[i]</span><script type="math/tex">d_1[i]</script></span> for the next <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>, and all the previous values in <span><span class="MathJax_Preview">d_1[]</span><script type="math/tex">d_1[]</script></span> have been already calculated. We do the following:</p>
@@ -190,12 +190,12 @@ for (int i = 0; i &lt; n; i++) {
 </ul>
 <p>At the end, it's necessary to remind that we should not forget to update the values <span><span class="MathJax_Preview">(l, r)</span><script type="math/tex">(l, r)</script></span> after calculating each <span><span class="MathJax_Preview">d_1[i]</span><script type="math/tex">d_1[i]</script></span>.</p>
 <p>Also we'll repeat that the algorithm was described to calculate the array for odd palindromes <span><span class="MathJax_Preview">d_1[]</span><script type="math/tex">d_1[]</script></span>, the algorithm is similar for the array of even palindromes <span><span class="MathJax_Preview">d_2[]</span><script type="math/tex">d_2[]</script></span>.</p>
-<h2 id="complexity-of-manachers-algorithm">Complexity of Manacher's algorithm<a class="headerlink" href="#complexity-of-manachers-algorithm" title="Permanent link">#</a></h2>
+<h2 id="complexity-of-manachers-algorithm">Complexity of Manacher's algorithm</h2>
 <p>At the first glance it's not obvious that this algorithm has linear time complexity, because we often run the naive algorithm while searching the answer for a particular position.</p>
 <p>But more careful analysis shows that the algorithm is linear however. We need to mention <a href="/docs/#Algorithms/String/Z-Function/">Z-function building algorithm</a> which looks similar to this algorithm and also works in linear time.</p>
 <p>Actually, we can notice that every iteration of trivial algorithm makes <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> increase by one. Also <span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> cannot be decreased during the algorithm. So, trivial algorithm will make <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> iterations in total.</p>
 <p>Also, other parts of Manacher's algorithm work obviously in linear time, we get <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> time complexity.</p>
-<h2 id="implementation-of-manachers-algorithm">Implementation of Manacher's algorithm<a class="headerlink" href="#implementation-of-manachers-algorithm" title="Permanent link">#</a></h2>
+<h2 id="implementation-of-manachers-algorithm">Implementation of Manacher's algorithm</h2>
 <p>For calculating <span><span class="MathJax_Preview">d_1[]</span><script type="math/tex">d_1[]</script></span>, we get the following code:</p>
 <pre><code class="language-cpp">vector&lt;int&gt; d1(n);
 for (int i = 0, l = 0, r = -1; i &lt; n; i++) {
@@ -224,7 +224,7 @@ for (int i = 0, l = 0, r = -1; i &lt; n; i++) {
     }
 }
 </code></pre>
-<h2 id="problems">Problems<a class="headerlink" href="#problems" title="Permanent link">#</a></h2>
+<h2 id="problems">Problems</h2>
 <ul>
 <li><a href="https://onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=26&amp;page=show_problem&amp;problem=2470">UVA 11475 - Extend to Palindrome</a></li>
 <li><a href="https://codeforces.com/gym/101806/problem/Q">GYM - (Q) QueryreuQ</a></li>

@@ -77,13 +77,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="find-all-locking-sessions">Find all locking sessions<a class="headerlink" href="#find-all-locking-sessions" title="Permanent link">#</a></h3>
+    <h3 id="find-all-locking-sessions">Find all locking sessions</h3>
 <pre><code>SELECT * FROM v$lock;
 </code></pre>
-<h3 id="view-all-blocking-sessions-ver1">View all blocking sessions ver.1<a class="headerlink" href="#view-all-blocking-sessions-ver1" title="Permanent link">#</a></h3>
+<h3 id="view-all-blocking-sessions-ver1">View all blocking sessions ver.1</h3>
 <pre><code>SELECT s.blocking_session, s.sid, s.serial#, s.seconds_in_wait FROM v$session s WHERE blocking_session IS NOT NULL;
 </code></pre>
-<h3 id="view-all-blocking-sessions-ver2">View all blocking sessions ver.2<a class="headerlink" href="#view-all-blocking-sessions-ver2" title="Permanent link">#</a></h3>
+<h3 id="view-all-blocking-sessions-ver2">View all blocking sessions ver.2</h3>
 <pre><code>SELECT s1.username || '@' || s1.machine
     || ' ( SID=' || s1.sid || ' )  is blocking '
     || s2.username || '@' || s2.machine || ' ( SID=' || s2.sid || ' ) ' AS blocking_status
@@ -93,16 +93,16 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     AND l1.id1 = l2.id1
     AND l1.id2 = l2.id2;
 </code></pre>
-<h3 id="view-sid-and-id-of-blocking-sessions">View SID and ID of blocking sessions<a class="headerlink" href="#view-sid-and-id-of-blocking-sessions" title="Permanent link">#</a></h3>
+<h3 id="view-sid-and-id-of-blocking-sessions">View SID and ID of blocking sessions</h3>
 <pre><code>SELECT sid, id1 FROM v$lock WHERE TYPE='TM';
 </code></pre>
-<h3 id="view-the-name-of-blocking-session">View the name of blocking session<a class="headerlink" href="#view-the-name-of-blocking-session" title="Permanent link">#</a></h3>
+<h3 id="view-the-name-of-blocking-session">View the name of blocking session</h3>
 <pre><code>SELECT object_name FROM dba_objects WHERE object_id=101482;
 </code></pre>
-<h3 id="kill-session-alter-system-kill-session-sidid">Kill session: " ALTER SYSTEM KILL SESSION 'SID,ID' "<a class="headerlink" href="#kill-session-alter-system-kill-session-sidid" title="Permanent link">#</a></h3>
+<h3 id="kill-session-alter-system-kill-session-sidid">Kill session: " ALTER SYSTEM KILL SESSION 'SID,ID' "</h3>
 <pre><code>ALTER SYSTEM KILL SESSION '1621,24543';
 </code></pre>
-<h3 id="view-all-active-sessions">View all active sessions<a class="headerlink" href="#view-all-active-sessions" title="Permanent link">#</a></h3>
+<h3 id="view-all-active-sessions">View all active sessions</h3>
 <pre><code>SELECT s.inst_id,
        s.sid,
        s.serial#,

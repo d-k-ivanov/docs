@@ -67,10 +67,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="convert-nagios-server-logs-to-human-readable-format">Convert Nagios server logs to human-readable format<a class="headerlink" href="#convert-nagios-server-logs-to-human-readable-format" title="Permanent link">#</a></h3>
+    <h3 id="convert-nagios-server-logs-to-human-readable-format">Convert Nagios server logs to human-readable format</h3>
 <pre><code class="language-bash">cat &lt;path_to_nagios_log_file&gt; | perl -pe 's/(\d+)/localtime($1)/e'
 </code></pre>
-<h3 id="check-tcp-port-from-remote-windows-pc">Check TCP port from remote Windows PC<a class="headerlink" href="#check-tcp-port-from-remote-windows-pc" title="Permanent link">#</a></h3>
+<h3 id="check-tcp-port-from-remote-windows-pc">Check TCP port from remote Windows PC</h3>
 <ul>
 <li>Download <a href="https://exchange.nagios.org/components/com_mtree/attachment.php?link_id=892&amp;cf_id=24"><em>check_tcp.exe</em></a> to C:\Program Files\NSClient++\</li>
 <li>Create PowerShell external script - <em>check_tcp_port</em> :</li>

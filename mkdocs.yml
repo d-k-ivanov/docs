@@ -19,8 +19,6 @@ extra_css:
 markdown_extensions:
   - admonition
   - pymdownx.arithmatex
-  - toc:
-      permalink: '#'
 
 extra_javascript:
   - mathjax-config.js

@@ -68,11 +68,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="basic-geometry">Basic Geometry<a class="headerlink" href="#basic-geometry" title="Permanent link">#</a></h1>
+    <h1 id="basic-geometry">Basic Geometry</h1>
 <p>In this article we will consider basic operations on points in Euclidean space which maintains the foundation of the whole analytical geometry.
 We will consider for each point <span><span class="MathJax_Preview">\mathbf r</span><script type="math/tex">\mathbf r</script></span> the vector <span><span class="MathJax_Preview">\vec{\mathbf r}</span><script type="math/tex">\vec{\mathbf r}</script></span> directed from <span><span class="MathJax_Preview">\mathbf 0</span><script type="math/tex">\mathbf 0</script></span> to <span><span class="MathJax_Preview">\mathbf r</span><script type="math/tex">\mathbf r</script></span>.
 Later we will not distinguish between <span><span class="MathJax_Preview">\mathbf r</span><script type="math/tex">\mathbf r</script></span> and <span><span class="MathJax_Preview">\vec{\mathbf r}</span><script type="math/tex">\vec{\mathbf r}</script></span> and use the term <strong>point</strong> as a synonym for <strong>vector</strong>.</p>
-<h2 id="linear-operations">Linear operations<a class="headerlink" href="#linear-operations" title="Permanent link">#</a></h2>
+<h2 id="linear-operations">Linear operations</h2>
 <p>Both 2D and 3D points maintain linear space, which means that for them sum of points and multiplication of point by some number are defined. Here are those basic implementations for 2D:</p>
 <p>```cpp point2d
 struct point2d {
@@ -165,8 +165,8 @@ point3d operator*(ftype a, point3d b) {
 }
 </code></pre>
 <p>Here <code>ftype</code> is some type used for coordinates, usually <code>int</code>, <code>double</code> or <code>long long</code>.</p>
-<h2 id="dot-product">Dot product<a class="headerlink" href="#dot-product" title="Permanent link">#</a></h2>
-<h3 id="definition">Definition<a class="headerlink" href="#definition" title="Permanent link">#</a></h3>
+<h2 id="dot-product">Dot product</h2>
+<h3 id="definition">Definition</h3>
 <p>The dot (or scalar) product <span><span class="MathJax_Preview">\mathbf a \cdot \mathbf b</span><script type="math/tex">\mathbf a \cdot \mathbf b</script></span> for vectors <span><span class="MathJax_Preview">\mathbf a</span><script type="math/tex">\mathbf a</script></span> and <span><span class="MathJax_Preview">\mathbf b</span><script type="math/tex">\mathbf b</script></span> can be defined in two identical ways.
 Geometrically it is product of the length of the first vector by the length of the projection of the second vector onto the first one.
 As you may see from the image below this projection is nothing but <span><span class="MathJax_Preview">|\mathbf a| \cos \theta</span><script type="math/tex">|\mathbf a| \cos \theta</script></span> where <span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> is the angle between <span><span class="MathJax_Preview">\mathbf a</span><script type="math/tex">\mathbf a</script></span> and <span><span class="MathJax_Preview">\mathbf b</span><script type="math/tex">\mathbf b</script></span>. Thus <span><span class="MathJax_Preview">\mathbf a\cdot  \mathbf b = |\mathbf a| \cos \theta \cdot |\mathbf b|</span><script type="math/tex">\mathbf a\cdot  \mathbf b = |\mathbf a| \cos \theta \cdot |\mathbf b|</script></span>.</p>
@@ -235,8 +235,8 @@ You can see the vector <span><span class="MathJax_Preview">\mathbf a</span><scri
 <p>In 2D these vectors will form a line, in 3D they will form a plane.
 Note that this result allows us to define a line in 2D as <span><span class="MathJax_Preview">\mathbf r\cdot \mathbf n=C</span><script type="math/tex">\mathbf r\cdot \mathbf n=C</script></span> or <span><span class="MathJax_Preview">(\mathbf r - \mathbf r_0)\cdot \mathbf n=0</span><script type="math/tex">(\mathbf r - \mathbf r_0)\cdot \mathbf n=0</script></span> where <span><span class="MathJax_Preview">\mathbf n</span><script type="math/tex">\mathbf n</script></span> is vector orthogonal to the line and <span><span class="MathJax_Preview">\mathbf r_0</span><script type="math/tex">\mathbf r_0</script></span> is any vector already present on the line and <span><span class="MathJax_Preview">C = \mathbf r_0\cdot \mathbf n</span><script type="math/tex">C = \mathbf r_0\cdot \mathbf n</script></span>.
 In the same manner a plane can be defined in 3D.</p>
-<h2 id="cross-product">Cross product<a class="headerlink" href="#cross-product" title="Permanent link">#</a></h2>
-<h3 id="definition_1">Definition<a class="headerlink" href="#definition_1" title="Permanent link">#</a></h3>
+<h2 id="cross-product">Cross product</h2>
+<h3 id="definition_1">Definition</h3>
 <p>Assume you have three vectors <span><span class="MathJax_Preview">\mathbf a</span><script type="math/tex">\mathbf a</script></span>, <span><span class="MathJax_Preview">\mathbf b</span><script type="math/tex">\mathbf b</script></span> and <span><span class="MathJax_Preview">\mathbf c</span><script type="math/tex">\mathbf c</script></span> in 3D space joined in a parallelepiped as in the picture below:
 <center><img alt="Three vectors" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Parallelepiped_volume.svg/240px-Parallelepiped_volume.svg.png" /></center></p>
 <p>How would you calculate its volume?
@@ -326,7 +326,7 @@ point2d intersect(point2d a1, point2d d1, point2d a2, point2d d2) {
     return a1 + cross(a2 - a1, d2) / cross(d1, d2) * d1;
 }
 </code></pre>
-<h3 id="planes-intersection">Planes intersection<a class="headerlink" href="#planes-intersection" title="Permanent link">#</a></h3>
+<h3 id="planes-intersection">Planes intersection</h3>
 <p>However sometimes it might be hard to use some geometric insights.
 For example, you're given three planes defined by initial points <span><span class="MathJax_Preview">\mathbf a_i</span><script type="math/tex">\mathbf a_i</script></span> and directions <span><span class="MathJax_Preview">\mathbf d_i</span><script type="math/tex">\mathbf d_i</script></span> and you want to find their intersection point.
 You may note that you just have to solve the system of equations:</p>

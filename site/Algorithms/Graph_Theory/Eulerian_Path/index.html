@@ -68,12 +68,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="eulerian-path">Eulerian Path<a class="headerlink" href="#eulerian-path" title="Permanent link">#</a></h1>
+    <h1 id="eulerian-path">Eulerian Path</h1>
 <p>Complexity: <span><span class="MathJax_Preview">O(M)</span><script type="math/tex">O(M)</script></span></p>
 <p>A Eulerian path is a path in a graph that passes through all of its edges exactly once.
 A Eulerian cycle is a Eulerian path that is a cycle.</p>
 <p>The problem is to find the Eulerian path in an <strong>undirected multigraph with loops</strong>.</p>
-<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
+<h2 id="algorithm">Algorithm</h2>
 <p>First we can check if there is an Eulerian path.
 We can use the following theorem. An Eulerian cycle exists if and only if the degrees of all vertices are even.
 And an Eulerian path exists if and only if the number of vertices with odd degrees is two (or zero, in the case of the existence of a Eulerian cycle).
@@ -103,11 +103,11 @@ until St is empty
     put the second end of this edge in St;
 </code></pre>
 <p>It is easy to check the equivalence of these two forms of the algorithm. However, the second form is obviously faster, and the code will be much more.</p>
-<h2 id="the-domino-problem">The Domino problem<a class="headerlink" href="#the-domino-problem" title="Permanent link">#</a></h2>
+<h2 id="the-domino-problem">The Domino problem</h2>
 <p>We give here a classical Eulerian cycle problem - the Domino problem.</p>
 <p>There are <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> dominoes, as it is known, on both ends of the Domino one number is written(usually from 1 to 6, but in our case it is not important). You want to put all the dominoes in a row so that the numbers on any two adjacent dominoes, written on their common side, coincide. Dominoes are allowed to turn.</p>
 <p>Reformulate the problem. Let the numbers written on the bottoms be the vertices of the graph, and the dominoes be the edges of this graph (each Domino with numbers <span><span class="MathJax_Preview">(a,b)</span><script type="math/tex">(a,b)</script></span> are the edges <span><span class="MathJax_Preview">(a,b)</span><script type="math/tex">(a,b)</script></span> and <span><span class="MathJax_Preview">(b, a)</span><script type="math/tex">(b, a)</script></span>). Then our problem is reduced to the problem of finding the Eulerian path in this graph.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
+<h2 id="implementation">Implementation</h2>
 <p>The program below searches for and outputs a Eulerian loop or path in a graph, or outputs <span><span class="MathJax_Preview">-1</span><script type="math/tex">-1</script></span> if it does not exist.</p>
 <p>First, the program checks the degree of vertices: if there are no vertices with an odd degree, then the graph has an Euler cycle, if there are <span><span class="MathJax_Preview">2</span><script type="math/tex">2</script></span> vertices with an odd degree, then in the graph there is only an Euler path (but no Euler cycle), if there are more than <span><span class="MathJax_Preview">2</span><script type="math/tex">2</script></span> such vertices, then in the graph there is no Euler cycle or Euler path.
 To find the Euler path (not a cycle), let's do this: if <span><span class="MathJax_Preview">V1</span><script type="math/tex">V1</script></span> and <span><span class="MathJax_Preview">V2</span><script type="math/tex">V2</script></span> are two vertices of odd degree,then just add an edge <span><span class="MathJax_Preview">(V1, V2)</span><script type="math/tex">(V1, V2)</script></span>, in the resulting graph we find the Euler cycle (it will obviously exist), and then remove the "fictitious" edge <span><span class="MathJax_Preview">(V1, V2)</span><script type="math/tex">(V1, V2)</script></span> from the answer.

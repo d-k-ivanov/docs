@@ -72,15 +72,15 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="using-r-in-c">Using R in C++<a class="headerlink" href="#using-r-in-c" title="Permanent link">#</a></h1>
-<h2 id="preface">Preface<a class="headerlink" href="#preface" title="Permanent link">#</a></h2>
+    <h1 id="using-r-in-c">Using R in C++</h1>
+<h2 id="preface">Preface</h2>
 <p>First of all, I need to cite Dirk Eddelbuettel:</p>
 <blockquote>
 <p>You. Cannot. Compile. Rcpp. Classes. Without. R. It simply won't work. Rcpp is an R extension.</p>
 </blockquote>
 <p>But! There is a package, <a href="https://github.com/eddelbuettel/rinside">RInside</a>, which provides seamless integration in c++ code.
 Thanks again to Dirk Eddelbuettel.</p>
-<h2 id="example-code">Example code<a class="headerlink" href="#example-code" title="Permanent link">#</a></h2>
+<h2 id="example-code">Example code</h2>
 <pre><code class="language-cpp">// main.cpp
 
 #include &lt;iostream&gt;
@@ -99,16 +99,16 @@ int main(int argc, char *argv[]) {
     exit(0);
 }
 </code></pre>
-<h2 id="rinside">RInside<a class="headerlink" href="#rinside" title="Permanent link">#</a></h2>
+<h2 id="rinside">RInside</h2>
 <p>I'm using Microsoft R Open, so I'll provide instruction for it, but it could be easily extended to any version of R.
 Just insert your version or your path to R.</p>
-<h2 id="what-do-we-need">What do we need<a class="headerlink" href="#what-do-we-need" title="Permanent link">#</a></h2>
+<h2 id="what-do-we-need">What do we need</h2>
 <ul>
 <li>Dynamic R, Rcpp and RInside libraries for runtime</li>
 <li>Build libraries for R and RInside</li>
 <li>Headers for R, Rcpp and RInside</li>
 </ul>
-<h2 id="compilation-with-gcc">Compilation with GCC<a class="headerlink" href="#compilation-with-gcc" title="Permanent link">#</a></h2>
+<h2 id="compilation-with-gcc">Compilation with GCC</h2>
 <pre><code class="language-bash"># Buildtime libs
 export LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/library/RInside/lib:$LD_LIBRARY_PATH&quot;
 export LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/lib:$LD_LIBRARY_PATH&quot;
@@ -123,7 +123,7 @@ Rscript -e 'install.packages(&quot;Rcpp&quot;, &quot;RInside&quot;)'
 
 g++ -lR -lRInside -o main.bin main.cpp
 </code></pre>
-<h2 id="output">Output<a class="headerlink" href="#output" title="Permanent link">#</a></h2>
+<h2 id="output">Output</h2>
 <pre><code class="language-bash"># Runtime libs
 export LD_LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/library/RInside/lib:$LD_LIBRARY_PATH&quot;
 export LD_LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/library/Rcpp/lib:$LD_LIBRARY_PATH&quot;
@@ -134,7 +134,7 @@ Hello, CPP World!
 [1] &quot;Hello, R World!\n&quot;
 
 </code></pre>
-<h2 id="code-samples">Code samples<a class="headerlink" href="#code-samples" title="Permanent link">#</a></h2>
+<h2 id="code-samples">Code samples</h2>
 <p><a href="https://github.com/d-k-ivanov/sandbox-cpp/tree/master/r-rinside-example">RInside Example</a></p>
 
   <br>

@@ -77,9 +77,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="use-the-tools-available">Use The Tools Available<a class="headerlink" href="#use-the-tools-available" title="Permanent link">#</a></h1>
+    <h1 id="use-the-tools-available">Use The Tools Available</h1>
 <p>An automated framework for executing these tools should be established very early in the development process. It should not take more than 2-3 commands to checkout the source code, build, and execute the tests. Once the tests are done executing, you should have an almost complete picture of the state and quality of the code.</p>
-<h2 id="source-control">Source Control<a class="headerlink" href="#source-control" title="Permanent link">#</a></h2>
+<h2 id="source-control">Source Control</h2>
 <p>Source control is an absolute necessity for any software development project. If you are not using one yet, start using one.</p>
 <ul>
 <li><a href="https://github.com/">GitHub</a> - allows for unlimited public repositories, and unlimited private repositories with up to 3 collaborators.</li>
@@ -88,7 +88,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li><a href="https://gitlab.com/">GitLab</a> - allows for unlimited public and private repositories, unlimited CI Runners included, for free.</li>
 <li><a href="https://visualstudio.com">Visual Studio Online</a> (http://www.visualstudio.com/what-is-visual-studio-online-vs) - allows for unlimited public repositories, must pay for private repository. Repositories can be git or TFVC. Additionally: Issue tracking, project planning (multiple Agile templates, such as SCRUM), integrated hosted builds, integration of all this into Microsoft Visual Studio. Windows only.</li>
 </ul>
-<h2 id="build-tool">Build Tool<a class="headerlink" href="#build-tool" title="Permanent link">#</a></h2>
+<h2 id="build-tool">Build Tool</h2>
 <p>Use an industry standard widely accepted build tool. This prevents you from reinventing the wheel whenever you discover / link to a new library / package your product / etc. Examples include:</p>
 <ul>
 <li><a href="http://www.cmake.org/">CMake</a></li>
@@ -110,7 +110,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li><a href="https://premake.github.io/">premake</a> </li>
 </ul>
 <p>Remember, it's not just a build tool, it's also a programming language. Try to maintain good clean build scripts and follow the recommended practices for the tool you are using.</p>
-<h2 id="package-manager">Package Manager<a class="headerlink" href="#package-manager" title="Permanent link">#</a></h2>
+<h2 id="package-manager">Package Manager</h2>
 <p>Package management is an important topic in C++, with currently no clear winner. Consider using a package manager to help you keep track of the dependencies for your project and make it easier for new people to get started with the project.</p>
 <ul>
 <li><a href="https://www.conan.io/">Conan</a> - a crossplatform dependency manager for C++</li>
@@ -121,7 +121,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li><a href="https://buckaroo.pm">Buckaroo</a> - Truly decentralized cross-platform dependency manager for C/C++ and more</li>
 <li><a href="https://github.com/microsoft/vcpkg">Vcpkg</a> - Microsoft C++ Library Manager for Windows, Linux, and MacOS - <a href="https://docs.microsoft.com/en-us/cpp/build/vcpkg">description</a></li>
 </ul>
-<h2 id="continuous-integration">Continuous Integration<a class="headerlink" href="#continuous-integration" title="Permanent link">#</a></h2>
+<h2 id="continuous-integration">Continuous Integration</h2>
 <p>Once you have picked your build tool, set up a continuous integration environment.</p>
 <p>Continuous Integration (CI) tools automatically build the source code as changes are pushed to the repository. These can be hosted privately or with a CI host.</p>
 <ul>
@@ -160,10 +160,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>enable <a href="https://scan.coverity.com">Coverity Scan</a></li>
 </ul>
 <p>These tools are all free and relatively easy to set up. Once they are set up you are getting continuous building, testing, analysis and reporting of your project. For free.</p>
-<h2 id="compilers">Compilers<a class="headerlink" href="#compilers" title="Permanent link">#</a></h2>
+<h2 id="compilers">Compilers</h2>
 <p>Use every available and reasonable set of warning options. Some warning options only work with optimizations enabled, or work better the higher the chosen level of optimization is, for example <a href="https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wnull-dereference-367"><code>-Wnull-dereference</code></a> with GCC.</p>
 <p>You should use as many compilers as you can for your platform(s). Each compiler implements the standard slightly differently and supporting multiple will help ensure the most portable, most reliable code.</p>
-<h3 id="gcc-clang">GCC / Clang<a class="headerlink" href="#gcc-clang" title="Permanent link">#</a></h3>
+<h3 id="gcc-clang">GCC / Clang</h3>
 <p><code>-Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic</code></p>
 <ul>
 <li><code>-Wall -Wextra</code> reasonable and standard</li>
@@ -188,7 +188,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </ul>
 <p>Consider using <code>-Weverything</code> and disabling the few warnings you need to on Clang</p>
 <p><code>-Weffc++</code> warning mode can be too noisy, but if it works for your project, use it also.</p>
-<h3 id="msvc">MSVC<a class="headerlink" href="#msvc" title="Permanent link">#</a></h3>
+<h3 id="msvc">MSVC</h3>
 <p><code>/permissive-</code> - <a href="https://docs.microsoft.com/en-us/cpp/build/reference/permissive-standards-conformance">Enforces standards conformance</a>.</p>
 <p><code>/W4 /w14640</code> - use these and consider the following (see descriptions below)</p>
 <ul>
@@ -217,10 +217,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <ul>
 <li><code>/Wall</code> - Also warns on files included from the standard library, so it's not very useful and creates too many extra warnings.</li>
 </ul>
-<h3 id="general">General<a class="headerlink" href="#general" title="Permanent link">#</a></h3>
+<h3 id="general">General</h3>
 <p>Start with very strict warning settings from the beginning. Trying to raise the warning level after the project is underway can be painful.</p>
 <p>Consider using the <em>treat warnings as errors</em> setting. <code>/Wx</code> with MSVC, <code>-Werror</code> with GCC / Clang</p>
-<h2 id="llvm-based-tools">LLVM-based tools<a class="headerlink" href="#llvm-based-tools" title="Permanent link">#</a></h2>
+<h2 id="llvm-based-tools">LLVM-based tools</h2>
 <p>LLVM based tools work best with a build system (such as cmake) that can output a compile command database, for example:</p>
 <pre><code>$ cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .
 </code></pre>
@@ -232,13 +232,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li><a href="http://clang.llvm.org/docs/ClangCheck.html">clang-check</a></li>
 <li><a href="http://clang.llvm.org/extra/clang-tidy.html">clang-tidy</a></li>
 </ul>
-<h2 id="static-analyzers">Static Analyzers<a class="headerlink" href="#static-analyzers" title="Permanent link">#</a></h2>
+<h2 id="static-analyzers">Static Analyzers</h2>
 <p>The best bet is the static analyzer that you can run as part of your automated build system. Cppcheck and clang meet that requirement for free options.</p>
-<h3 id="coverity-scan">Coverity Scan<a class="headerlink" href="#coverity-scan" title="Permanent link">#</a></h3>
+<h3 id="coverity-scan">Coverity Scan</h3>
 <p><a href="https://scan.coverity.com/">Coverity</a> has a free (for open source) static analysis toolkit that can work on every commit in integration with <a href="http://travis-ci.org">Travis CI</a> and <a href="http://www.appveyor.com/">AppVeyor</a>.</p>
-<h3 id="pvs-studio">PVS-Studio<a class="headerlink" href="#pvs-studio" title="Permanent link">#</a></h3>
+<h3 id="pvs-studio">PVS-Studio</h3>
 <p><a href="http://www.viva64.com/en/pvs-studio/">PVS-Studio</a> is a tool for bug detection in the source code of programs, written in C, C++ and C#. It is free for personal academic projects, open source non-commercial projects and independent projects of individual developers. It works in Windows and Linux environment.</p>
-<h3 id="cppcheck">Cppcheck<a class="headerlink" href="#cppcheck" title="Permanent link">#</a></h3>
+<h3 id="cppcheck">Cppcheck</h3>
 <p><a href="http://cppcheck.sourceforge.net/">Cppcheck</a> is free and open source. It strives for 0 false positives and does a good job at it. Therefore all warnings should be enabled: <code>--enable=all</code></p>
 <p>Notes:</p>
 <ul>
@@ -246,33 +246,33 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>Finding unused headers does not work with <code>-j</code> more than 1. </li>
 <li>Remember to add <code>--force</code> for code with a lot number of <code>#ifdef</code> if you need check all of them.</li>
 </ul>
-<h3 id="cppclean">cppclean<a class="headerlink" href="#cppclean" title="Permanent link">#</a></h3>
+<h3 id="cppclean">cppclean</h3>
 <p><a href="https://github.com/myint/cppclean">cppclean</a> - Open source static analyzer focused on finding problems in C++ source that slow development of large code bases.</p>
-<h3 id="cppdepend">CppDepend<a class="headerlink" href="#cppdepend" title="Permanent link">#</a></h3>
+<h3 id="cppdepend">CppDepend</h3>
 <p><a href="https://www.cppdepend.com/">CppDepend</a> Simplifies managing a complex C/C++ code base by analyzing and visualizing code dependencies, by defining design rules, by doing impact analysis, and comparing different versions of the code. It's free for OSS contributors.</p>
-<h3 id="clangs-static-analyzer">Clang's Static Analyzer<a class="headerlink" href="#clangs-static-analyzer" title="Permanent link">#</a></h3>
+<h3 id="clangs-static-analyzer">Clang's Static Analyzer</h3>
 <p>Clang's analyzer's default options are good for the respective platform. It can be used directly <a href="http://garykramlich.blogspot.com/2011/10/using-scan-build-from-clang-with-cmake.html">from CMake</a>. They can also be called via clang-check and clang-tidy from the <a href="#llvm-based-tools">LLVM-based Tools</a>.</p>
 <p>Also, <a href="https://github.com/Ericsson/CodeChecker">CodeChecker</a> is available as a front-end to clang's static analysis.</p>
 <p><code>clang-tidy</code> can be easily used with Visual Studio via the <a href="https://clangpowertools.com">Clang Power Tools</a> extension.</p>
-<h3 id="msvcs-static-analyzer">MSVC's Static Analyzer<a class="headerlink" href="#msvcs-static-analyzer" title="Permanent link">#</a></h3>
+<h3 id="msvcs-static-analyzer">MSVC's Static Analyzer</h3>
 <p>Can be enabled with the <code>/analyze</code> <a href="http://msdn.microsoft.com/en-us/library/ms173498.aspx">command line option</a>. For now we will stick with the default options.</p>
-<h3 id="flint-flint">Flint / Flint++<a class="headerlink" href="#flint-flint" title="Permanent link">#</a></h3>
+<h3 id="flint-flint">Flint / Flint++</h3>
 <p><a href="https://github.com/facebook/flint">Flint</a> and <a href="https://github.com/L2Program/FlintPlusPlus">Flint++</a> are linters that analyze C++ code against Facebook's coding standards.</p>
-<h3 id="oclint">OCLint<a class="headerlink" href="#oclint" title="Permanent link">#</a></h3>
+<h3 id="oclint">OCLint</h3>
 <p><a href="http://oclint.org/">OCLint</a> is a free, libre and open source static code analysis tool for improving quality of C++ code in many different ways.</p>
-<h3 id="resharper-c-clion">ReSharper C++ / CLion<a class="headerlink" href="#resharper-c-clion" title="Permanent link">#</a></h3>
+<h3 id="resharper-c-clion">ReSharper C++ / CLion</h3>
 <p>Both of these tools from <a href="https://www.jetbrains.com/cpp/">JetBrains</a> offer some level of static analysis and automated fixes for common things that can be done better. They have options available for free licenses for open source project leaders.</p>
-<h3 id="cevelop">Cevelop<a class="headerlink" href="#cevelop" title="Permanent link">#</a></h3>
+<h3 id="cevelop">Cevelop</h3>
 <p>The Eclipse based <a href="https://www.cevelop.com/">Cevelop</a> IDE has various static analysis and refactoring / code fix tools available. For example, you can replace macros with C++ <code>constexprs</code>, refactor namespaces (extract/inline <code>using</code>, qualify name), and refactor your code to C++11's uniform initialization syntax. Cevelop is free to use.</p>
-<h3 id="qt-creator">Qt Creator<a class="headerlink" href="#qt-creator" title="Permanent link">#</a></h3>
+<h3 id="qt-creator">Qt Creator</h3>
 <p>Qt Creator can plug into the clang static analyzer.</p>
-<h3 id="clazy">clazy<a class="headerlink" href="#clazy" title="Permanent link">#</a></h3>
+<h3 id="clazy">clazy</h3>
 <p><a href="https://github.com/KDE/clazy">clazy</a> is a clang based tool for analyzing Qt usage.</p>
-<h3 id="ikos">IKOS<a class="headerlink" href="#ikos" title="Permanent link">#</a></h3>
+<h3 id="ikos">IKOS</h3>
 <p><a href="https://ti.arc.nasa.gov/opensource/ikos/">IKOS</a> is an open source static analyzer, developed by NASA. It is based on the Abstract Interpretation. It is written in C++ and provides an analyzer for C and C++, using LLVM.
 The source code is <a href="https://github.com/NASA-SW-VnV/ikos">available on Github</a>.</p>
-<h2 id="runtime-checkers">Runtime Checkers<a class="headerlink" href="#runtime-checkers" title="Permanent link">#</a></h2>
-<h3 id="code-coverage-analysis">Code Coverage Analysis<a class="headerlink" href="#code-coverage-analysis" title="Permanent link">#</a></h3>
+<h2 id="runtime-checkers">Runtime Checkers</h2>
+<h3 id="code-coverage-analysis">Code Coverage Analysis</h3>
 <p>A coverage analysis tool shall be run when tests are executed to make sure the entire application is being tested. Unfortunately, coverage analysis requires that compiler optimizations be disabled. This can result in significantly longer test execution times.</p>
 <ul>
 <li><a href="https://codecov.io/">Codecov</a></li>
@@ -289,11 +289,11 @@ The source code is <a href="https://github.com/NASA-SW-VnV/ikos">available on Gi
 <li>performs code coverage reporting without needing special compiler flags, just by instrumenting debug symbols.</li>
 <li><a href="https://github.com/OpenCppCoverage/OpenCppCoverage">OpenCppCoverage</a> - open source coverage reporting tool for Windows.</li>
 </ul>
-<h3 id="valgrind">Valgrind<a class="headerlink" href="#valgrind" title="Permanent link">#</a></h3>
+<h3 id="valgrind">Valgrind</h3>
 <p><a href="http://www.valgrind.org/">Valgrind</a> is a runtime code analyzer that can detect memory leaks, race conditions, and other associated problems. It is supported on various Unix platforms.</p>
-<h3 id="dr-memory">Dr Memory<a class="headerlink" href="#dr-memory" title="Permanent link">#</a></h3>
+<h3 id="dr-memory">Dr Memory</h3>
 <p>Similar to Valgrind. http://www.drmemory.org</p>
-<h3 id="gcc-clang-sanitizers">GCC / Clang Sanitizers<a class="headerlink" href="#gcc-clang-sanitizers" title="Permanent link">#</a></h3>
+<h3 id="gcc-clang-sanitizers">GCC / Clang Sanitizers</h3>
 <p>These tools provide many of the same features as Valgrind, but built into the compiler. They are easy to use and provide a report of what went wrong.</p>
 <ul>
 <li>AddressSanitizer</li>
@@ -302,7 +302,7 @@ The source code is <a href="https://github.com/NASA-SW-VnV/ikos">available on Gi
 <li>UndefinedBehaviorSanitizer</li>
 </ul>
 <p>Be aware of the sanitizer options available, including runtime options. https://kristerw.blogspot.com/2018/06/useful-gcc-address-sanitizer-checks-not.html</p>
-<h3 id="fuzzy-analyzers">Fuzzy Analyzers<a class="headerlink" href="#fuzzy-analyzers" title="Permanent link">#</a></h3>
+<h3 id="fuzzy-analyzers">Fuzzy Analyzers</h3>
 <p>If your project accepts user defined input, considering running a fuzzy input tester. </p>
 <p>Both of these tools use coverage reporting to find new code execution paths and try to breed novel inputs for your code. They can find crashes, hangs, and inputs you didn't know were considered valid.</p>
 <ul>
@@ -310,7 +310,7 @@ The source code is <a href="https://github.com/NASA-SW-VnV/ikos">available on Gi
 <li><a href="http://llvm.org/docs/LibFuzzer.html">LibFuzzer</a></li>
 <li><a href="http://klee.github.io/">KLEE</a> - Can be used to fuzz individual functions</li>
 </ul>
-<h3 id="mutation-testers">Mutation Testers<a class="headerlink" href="#mutation-testers" title="Permanent link">#</a></h3>
+<h3 id="mutation-testers">Mutation Testers</h3>
 <p>These tools take code executed during unit test runs and mutate the executed code. If the test continues to pass with a mutation in place, then there is likely a flawed test in your suite.</p>
 <ul>
 <li><a href="https://github.com/joakim-brannstrom/dextool/tree/master/plugin/mutate">Dextool Mutate</a></li>
@@ -318,47 +318,47 @@ The source code is <a href="https://github.com/NASA-SW-VnV/ikos">available on Gi
 <li><a href="https://github.com/mull-project/mull">mull</a></li>
 <li><a href="https://github.com/markus-kusano/CCMutator">CCMutator</a></li>
 </ul>
-<h3 id="control-flow-guard">Control Flow Guard<a class="headerlink" href="#control-flow-guard" title="Permanent link">#</a></h3>
+<h3 id="control-flow-guard">Control Flow Guard</h3>
 <p>MSVC's <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/mt637065%28v=vs.85%29.aspx?f=255&amp;MSPPError=-2147217396">Control Flow Guard</a> adds high performance runtime security checks.</p>
-<h3 id="checked-stl-implementations">Checked STL Implementations<a class="headerlink" href="#checked-stl-implementations" title="Permanent link">#</a></h3>
+<h3 id="checked-stl-implementations">Checked STL Implementations</h3>
 <ul>
 <li><code>_GLIBCXX_DEBUG</code> with GCC's implementation libstdc++ implementation. See <a href="https://kristerw.blogspot.se/2018/03/detecting-incorrect-c-stl-usage.html">Krister's blog article</a>.</li>
 </ul>
-<h3 id="heap-profiling">Heap Profiling<a class="headerlink" href="#heap-profiling" title="Permanent link">#</a></h3>
+<h3 id="heap-profiling">Heap Profiling</h3>
 <ul>
 <li><a href="Memoro">https://epfl-vlsc.github.io/memoro/</a> - A detailed heap profiler </li>
 </ul>
-<h2 id="ignoring-warnings">Ignoring Warnings<a class="headerlink" href="#ignoring-warnings" title="Permanent link">#</a></h2>
+<h2 id="ignoring-warnings">Ignoring Warnings</h2>
 <p>If it is determined by team consensus that the compiler or analyzer is warning on something that is either incorrect or unavoidable, the team will disable the specific error to as localized part of the code as possible.</p>
 <p>Be sure to reenable the warning after disabling it for a section of code. You do not want your disabled warnings to <a href="http://www.forwardscattering.org/post/48">leak into other code</a>.</p>
-<h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">#</a></h2>
+<h2 id="testing">Testing</h2>
 <p>CMake, mentioned above, has a built in framework for executing tests. Make sure whatever build system you use has a way to execute tests built in.</p>
 <p>To further aid in executing tests, consider a library such as <a href="https://github.com/google/googletest">Google Test</a>, <a href="https://github.com/philsquared/Catch">Catch</a>, <a href="https://github.com/cpputest/cpputest">CppUTest</a> or <a href="http://www.boost.org/doc/libs/release/libs/test/">Boost.Test</a> to help you organize the tests.</p>
-<h3 id="unit-tests">Unit Tests<a class="headerlink" href="#unit-tests" title="Permanent link">#</a></h3>
+<h3 id="unit-tests">Unit Tests</h3>
 <p>Unit tests are for small chunks of code, individual functions which can be tested standalone.</p>
-<h3 id="integration-tests">Integration Tests<a class="headerlink" href="#integration-tests" title="Permanent link">#</a></h3>
+<h3 id="integration-tests">Integration Tests</h3>
 <p>There should be a test enabled for every feature or bug fix that is committed. See also <a href="#code-coverage-analysis">Code Coverage Analysis</a>. These are tests that are higher level than unit tests. They should still be limited in scope to individual features.</p>
-<h3 id="negative-testing">Negative Testing<a class="headerlink" href="#negative-testing" title="Permanent link">#</a></h3>
+<h3 id="negative-testing">Negative Testing</h3>
 <p>Don't forget to make sure that your error handling is being tested and works properly as well. This will become obvious if you aim for 100% code coverage.</p>
-<h2 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">#</a></h2>
-<h3 id="uftrace">uftrace<a class="headerlink" href="#uftrace" title="Permanent link">#</a></h3>
+<h2 id="debugging">Debugging</h2>
+<h3 id="uftrace">uftrace</h3>
 <p><a href="https://github.com/namhyung/uftrace">uftrace</a> can be used to generating function call graphs of a program execution</p>
-<h3 id="rr">rr<a class="headerlink" href="#rr" title="Permanent link">#</a></h3>
+<h3 id="rr">rr</h3>
 <p><a href="http://rr-project.org/">rr</a> is a free (open source) reverse debugger that supports C++.</p>
-<h2 id="other-tools">Other Tools<a class="headerlink" href="#other-tools" title="Permanent link">#</a></h2>
-<h3 id="lizard">Lizard<a class="headerlink" href="#lizard" title="Permanent link">#</a></h3>
+<h2 id="other-tools">Other Tools</h2>
+<h3 id="lizard">Lizard</h3>
 <p><a href="http://www.lizard.ws/">Lizard</a> provides a very simple interface for running complexity analysis against a C++ codebase.</p>
-<h3 id="metrix">Metrix++<a class="headerlink" href="#metrix" title="Permanent link">#</a></h3>
+<h3 id="metrix">Metrix++</h3>
 <p><a href="http://metrixplusplus.sourceforge.net/">Metrix++</a> can identify and report on the most complex sections of your code. Reducing complex code helps you and the compiler understand it better and optimize it better.</p>
-<h3 id="abi-compliance-checker">ABI Compliance Checker<a class="headerlink" href="#abi-compliance-checker" title="Permanent link">#</a></h3>
+<h3 id="abi-compliance-checker">ABI Compliance Checker</h3>
 <p><a href="http://ispras.linuxbase.org/index.php/ABI_compliance_checker">ABI Compliance Checker</a> (ACC) can analyze two library versions and generates a detailed compatibility report regarding API and C++ ABI changes. This can help a library developer spot unintentional breaking changes to ensure backward compatibility.</p>
-<h3 id="cncc">CNCC<a class="headerlink" href="#cncc" title="Permanent link">#</a></h3>
+<h3 id="cncc">CNCC</h3>
 <p><a href="https://github.com/mapbox/cncc">Customizable Naming Convention Checker</a> can report on identifiers in your code that do not follow certain naming conventions.</p>
-<h3 id="clangformat">ClangFormat<a class="headerlink" href="#clangformat" title="Permanent link">#</a></h3>
+<h3 id="clangformat">ClangFormat</h3>
 <p><a href="http://clang.llvm.org/docs/ClangFormat.html">ClangFormat</a> can check and correct code formatting to match organizational conventions automatically. <a href="https://engineering.mongodb.com/post/succeeding-with-clangformat-part-1-pitfalls-and-planning/">Multipart series</a> on utilizing clang-format.</p>
-<h3 id="sourcemeter">SourceMeter<a class="headerlink" href="#sourcemeter" title="Permanent link">#</a></h3>
+<h3 id="sourcemeter">SourceMeter</h3>
 <p><a href="https://www.sourcemeter.com/">SourceMeter</a> offers a free version which provides many different metrics for your code and can also call into cppcheck.</p>
-<h3 id="bloaty-mcbloatface">Bloaty McBloatface<a class="headerlink" href="#bloaty-mcbloatface" title="Permanent link">#</a></h3>
+<h3 id="bloaty-mcbloatface">Bloaty McBloatface</h3>
 <p><a href="https://github.com/google/bloaty">Bloaty McBloatface</a> is a binary size analyzer/profiler for unix-like platforms</p>
 
   <br>

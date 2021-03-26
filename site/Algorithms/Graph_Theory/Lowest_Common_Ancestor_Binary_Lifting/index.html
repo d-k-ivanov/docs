@@ -67,13 +67,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="lowest-common-ancestor-binary-lifting">Lowest Common Ancestor: Binary Lifting<a class="headerlink" href="#lowest-common-ancestor-binary-lifting" title="Permanent link">#</a></h1>
+    <h1 id="lowest-common-ancestor-binary-lifting">Lowest Common Ancestor: Binary Lifting</h1>
 <p>Let <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> be a tree.
 For every query of the form <code>(u, v)</code> we want to find the lowest common ancestor of the nodes <code>u</code> and <code>v</code>, i.e. we want to find a node <code>w</code> that lies on the path from <code>u</code> to the root node, that lies on the path from <code>v</code> to the root node, and if there are multiple nodes we pick the one that is farthest away from the root node.
 In other words the desired node <code>w</code> is the lowest ancestor of <code>u</code> and <code>v</code>.
 In particular if <code>u</code> is an ancestor of <code>v</code>, then <code>u</code> is their lowest common ancestor.</p>
 <p>The algorithm described in this article will need <span><span class="MathJax_Preview">O(N \log N)</span><script type="math/tex">O(N \log N)</script></span> for preprocessing the tree, and then <span><span class="MathJax_Preview">O(\log N)</span><script type="math/tex">O(\log N)</script></span> for each LCA query.</p>
-<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
+<h2 id="algorithm">Algorithm</h2>
 <p>For each node we will precompute its ancestor above him, its ancestor two nodes above, its ancestor four above, etc.
 Let's store them in the array <code>up</code>, i.e. <code>up[i][j]</code> is the <code>2^j</code>-th ancestor above the node <code>i</code> with <code>i=1...N</code>, <code>j=0...ceil(log(N))</code>.
 These information allow us to jump from any node to any ancestor above it in <span><span class="MathJax_Preview">O(\log N)</span><script type="math/tex">O(\log N)</script></span> time.
@@ -94,7 +94,7 @@ Clearly after doing this for all non-negative <code>i</code> the node <code>u</c
 <p>Now, obviously, the answer to LCA will be <code>up[u][0]</code> - i.e., the smallest node among the ancestors of the node <code>u</code>, which is also an ancestor of <code>v</code>.</p>
 <p>So answering a LCA query will iterate <code>i</code> from <code>ceil(log(N))</code> to <code>0</code> and checks in each iteration if one node is the ancestor of the other.
 Consequently each query can be answered in <span><span class="MathJax_Preview">O(\log N)</span><script type="math/tex">O(\log N)</script></span>.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
+<h2 id="implementation">Implementation</h2>
 <pre><code class="language-cpp">int n, l;
 vector&lt;vector&lt;int&gt;&gt; adj;
 

@@ -67,7 +67,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="string-matching-rabin-karp-algorithm">String Matching: Rabin-Karp Algorithm<a class="headerlink" href="#string-matching-rabin-karp-algorithm" title="Permanent link">#</a></h1>
+    <h1 id="string-matching-rabin-karp-algorithm">String Matching: Rabin-Karp Algorithm</h1>
 <p>This algorithm is based on the concept of hashing, so if you are not familiar with string hashing, refer to the <a href="/docs/#Algorithms/String/String_Hashing/">string hashing</a> article.</p>
 <p>This algorithm was authored by Rabin and Karp in 1987.</p>
 <p>Problem: Given two strings - a pattern <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> and a text <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>, determine if the pattern appears in the text and if it does, enumerate all its occurrences in <span><span class="MathJax_Preview">O(|s| + |t|)</span><script type="math/tex">O(|s| + |t|)</script></span> time.</p>
@@ -76,7 +76,7 @@ Calculate hash values for all the prefixes of the text <span><span class="MathJa
 Now, we can compare a substring of length <span><span class="MathJax_Preview">|s|</span><script type="math/tex">|s|</script></span> with <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> in constant time using the calculated hashes.
 So, compare each substring of length <span><span class="MathJax_Preview">|s|</span><script type="math/tex">|s|</script></span> with the pattern. This will take a total of <span><span class="MathJax_Preview">O(|t|)</span><script type="math/tex">O(|t|)</script></span> time.
 Hence the final complexity of the algorithm is <span><span class="MathJax_Preview">O(|t| + |s|)</span><script type="math/tex">O(|t| + |s|)</script></span>: <span><span class="MathJax_Preview">O(|s|)</span><script type="math/tex">O(|s|)</script></span> is required for calculating the hash of the pattern and <span><span class="MathJax_Preview">O(|t|)</span><script type="math/tex">O(|t|)</script></span> for comparing each substring of length <span><span class="MathJax_Preview">|s|</span><script type="math/tex">|s|</script></span> with the pattern.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
+<h2 id="implementation">Implementation</h2>
 <p>```cpp rabin_karp
 vector<int> rabin_karp(string const&amp; s, string const&amp; t) {
     const int p = 31;
@@ -104,7 +104,7 @@ return occurences;
 </code></pre>
 <p>}
 ```</p>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
+<h2 id="practice-problems">Practice Problems</h2>
 <ul>
 <li><a href="http://www.spoj.com/problems/NAJPF/">SPOJ - Pattern Find</a></li>
 <li><a href="http://codeforces.com/problemset/problem/271/D">Codeforces - Good Substrings</a></li>

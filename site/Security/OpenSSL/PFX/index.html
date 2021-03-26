@@ -73,19 +73,19 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="export-pem">Export PEM<a class="headerlink" href="#export-pem" title="Permanent link">#</a></h3>
+    <h3 id="export-pem">Export PEM</h3>
 <pre><code class="language-bash">openssl pkcs12 -in certname.pfx -clcerts -nokeys -out certname.pem [-nodes]
 </code></pre>
-<h3 id="export-private-key">Export private key<a class="headerlink" href="#export-private-key" title="Permanent link">#</a></h3>
+<h3 id="export-private-key">Export private key</h3>
 <pre><code class="language-bash">openssl pkcs12 -in certname.pfx -nocerts -out certname.key [-nodes]
 </code></pre>
-<h3 id="export-cas">Export CAs<a class="headerlink" href="#export-cas" title="Permanent link">#</a></h3>
+<h3 id="export-cas">Export CAs</h3>
 <pre><code class="language-bash">openssl pkcs12 -in  certname.pfx -cacerts -nokeys -out certname.ca
 </code></pre>
-<h3 id="export-chain">Export chain<a class="headerlink" href="#export-chain" title="Permanent link">#</a></h3>
+<h3 id="export-chain">Export chain</h3>
 <pre><code class="language-bash">openssl pkcs12 -in certname.pfx -out full_chain.pem [-nodes]
 </code></pre>
-<h3 id="create-pfx-container-from-pem-chain">Create PFX container from PEM chain<a class="headerlink" href="#create-pfx-container-from-pem-chain" title="Permanent link">#</a></h3>
+<h3 id="create-pfx-container-from-pem-chain">Create PFX container from PEM chain</h3>
 <pre><code class="language-bash"> openssl pkcs12 -export -out certname.pfx -in full_chain.pem
 </code></pre>
 

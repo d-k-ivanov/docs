@@ -97,7 +97,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="downloading-and-burning-installation-media">Downloading and burning installation media<a class="headerlink" href="#downloading-and-burning-installation-media" title="Permanent link">#</a></h3>
+    <h3 id="downloading-and-burning-installation-media">Downloading and burning installation media</h3>
 <pre><code class="language-bash"># Minimal installation image:
 wget http://distfiles.gentoo.org/releases/amd64/autobuilds/current-install-amd64-minimal/install-amd64-minimal-{date-here}.iso
 dd if=install-amd64-minimal-{date-here}.iso of=/dev/sdb-flash-drive bs=8192k &amp;&amp; sync
@@ -113,7 +113,7 @@ cdrecord dev=/dev/sr0 install-amd64-minimal-{date-here}.iso
 https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/4.9.1/systemrescuecd-x86-4.9.1.iso/download
 dd if=systemrescuecd-x86-4.9.1.iso of=/dev/sdb-flash-drive bs=8192k &amp;&amp; sync
 </code></pre>
-<h3 id="boot-from-installation-media">Boot from installation media<a class="headerlink" href="#boot-from-installation-media" title="Permanent link">#</a></h3>
+<h3 id="boot-from-installation-media">Boot from installation media</h3>
 <pre><code class="language-bash"># Enter kernel to boot: gentoo, gentoo-nofb, memtest86
 boot: gentoo
 
@@ -121,7 +121,7 @@ boot: gentoo
 # acpi=on, acpi=off, console=X, dmraid=X, doapm, dopcmcia, doscsi, sda=stroke, ide=nodma, noapic, nodetect, nodhcp, nodmraid, nofirewire, nogpm, nohotplug, nokeymap, nolapic, nosata, nosmp, nosound, nousb, slowusb,
 # dolvm, debug, docache, doload=X, dosshd, passwd=foo, noload=X, nonfs, nox, scandelay, scandelay=X,
 </code></pre>
-<h3 id="network-configuration">Network configuration<a class="headerlink" href="#network-configuration" title="Permanent link">#</a></h3>
+<h3 id="network-configuration">Network configuration</h3>
 <p>Like Gentoo Handbook says 'Maybe it just works'. I'm pretty sure that you have DHCP in your network environment and cable connection, but if not:</p>
 <pre><code class="language-bash"># Determine network intercaces (ifconfig is also existed, but it's recomnded to use 'ip' as a next generation app)
 ip link show
@@ -151,7 +151,7 @@ route add default gw &lt;your-gateway&gt;a
 echo &quot;nameserver &lt;SNDServer1&gt;&quot; &gt; /etc/resolv.conf
 echo &quot;nameserver &lt;DNSServer2&gt;&quot; &gt;&gt; /etc/resolv.conf
 </code></pre>
-<h3 id="disk-partitioning">Disk partitioning<a class="headerlink" href="#disk-partitioning" title="Permanent link">#</a></h3>
+<h3 id="disk-partitioning">Disk partitioning</h3>
 <p>It's recommended to use GPT on modern systems.</p>
 <pre><code class="language-bash"># Partition scheme:
 # /dev/sda1 (bootloader)  2M      Just in case, but I don't think it's really needed on modern EFI systems.
@@ -177,7 +177,7 @@ parted -a optimal /dev/sda
 (parted) mkpart primary 1027 -1
 (parted) name 4 rootfs
 </code></pre>
-<h3 id="mounting">Mounting<a class="headerlink" href="#mounting" title="Permanent link">#</a></h3>
+<h3 id="mounting">Mounting</h3>
 <pre><code class="language-bash">mount /dev/sda3 /mnt/gentoo
 mount /dev/sda2 /mnt/gentoo/boot
 
@@ -188,12 +188,12 @@ mount --make-rslave /mnt/gentoo/sys
 mount --rbind /dev /mnt/gentoo/dev
 mount --make-rslave /mnt/gentoo/dev
 </code></pre>
-<h3 id="installing-stage-tarball">Installing Stage tarball<a class="headerlink" href="#installing-stage-tarball" title="Permanent link">#</a></h3>
+<h3 id="installing-stage-tarball">Installing Stage tarball</h3>
 <pre><code class="language-bash">cd /mnt/gentoo/
 wget http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64-systemd/stage3-amd64-systemd-&lt;YYYYMMDD&gt;.tar.bz2
 tar xvjpf stage3-amd64-systemd-&lt;YYYYMMDD&gt;.tar.bz2 --xattrs
 </code></pre>
-<h3 id="configuring-initial-options">Configuring initial options<a class="headerlink" href="#configuring-initial-options" title="Permanent link">#</a></h3>
+<h3 id="configuring-initial-options">Configuring initial options</h3>
 <pre><code class="language-bash">vim /mnt/gentoo/etc/portage/make.conf
 # --- make.conf ---
 CFLAGS=&quot;-march=native -O2 -pipe&quot;
@@ -208,11 +208,11 @@ cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos
 
 cp -L /etc/resolv.conf /mnt/gentoo/etc/
 </code></pre>
-<h3 id="chrooting">Chrooting<a class="headerlink" href="#chrooting" title="Permanent link">#</a></h3>
+<h3 id="chrooting">Chrooting</h3>
 <pre><code class="language-bash">chroot /mnt/gentoo /bin/bash
 source /etc/profile
 </code></pre>
-<h3 id="updating-world">Updating world<a class="headerlink" href="#updating-world" title="Permanent link">#</a></h3>
+<h3 id="updating-world">Updating world</h3>
 <pre><code class="language-bash">emerge-webrsync
 emerge --sync
 
@@ -222,7 +222,7 @@ eselect profile set 12
 
 emerge --ask --update --deep --newuse @world
 </code></pre>
-<h3 id="locale-and-timezone">Locale and TimeZone<a class="headerlink" href="#locale-and-timezone" title="Permanent link">#</a></h3>
+<h3 id="locale-and-timezone">Locale and TimeZone</h3>
 <pre><code class="language-bash">echo &quot;Europe/Moscow&quot; &gt; /etc/timezone
 emerge --config sys-libs/timezone-data
 
@@ -238,7 +238,7 @@ eselect locale set &lt;choose-right-number&gt;
 
 env-update &amp;&amp; source /etc/profile
 </code></pre>
-<h3 id="kernel">Kernel<a class="headerlink" href="#kernel" title="Permanent link">#</a></h3>
+<h3 id="kernel">Kernel</h3>
 <p>Of course you need to configure kernel from scratch, but for initial convinience I recommend to use genkernel</p>
 <pre><code class="language-bash">emerge --ask sys-kernel/gentoo-sources
 emerge --ask sys-apps/pciutils
@@ -250,7 +250,7 @@ genkernel all
 
 emerge --ask sys-kernel/linux-firmware
 </code></pre>
-<h3 id="fstab">Fstab<a class="headerlink" href="#fstab" title="Permanent link">#</a></h3>
+<h3 id="fstab">Fstab</h3>
 <pre><code class="language-bash"># Look for UUID and write it down:
 blkid
 
@@ -260,7 +260,7 @@ UUID=&quot;place your UUID here&quot;   boot      vfat        rw,relatime,fmask=
 UUID=&quot;place your UUID here&quot;   /         ext4        rw,relatime,data=ordered,discard                                                                              0 1
 # --- END OF FILE
 </code></pre>
-<h3 id="network">Network<a class="headerlink" href="#network" title="Permanent link">#</a></h3>
+<h3 id="network">Network</h3>
 <pre><code class="language-bash">hostnamectl set-hostname your-hostname.your-network
 
 vim /etc/hosts
@@ -270,12 +270,12 @@ vim /etc/hosts
 
 emerge --ask net-misc/dhcpcd
 </code></pre>
-<h3 id="post-install">Post install<a class="headerlink" href="#post-install" title="Permanent link">#</a></h3>
+<h3 id="post-install">Post install</h3>
 <pre><code class="language-bash">emerge --ask sys-apps/mlocate
 
 passwd
 </code></pre>
-<h3 id="bootloader">Bootloader<a class="headerlink" href="#bootloader" title="Permanent link">#</a></h3>
+<h3 id="bootloader">Bootloader</h3>
 <pre><code class="language-bash">echo 'GRUB_PLATFORMS=&quot;efi-64&quot;' &gt;&gt; /etc/portage/make.conf
 emerge --ask --update --newuse --verbose sys-boot/grub:2
 
@@ -285,13 +285,13 @@ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub /dev
 grub-mkconfig -o /boot/grub/grub.cfg
 
 </code></pre>
-<h3 id="umount-and-reboot">Umount and reboot<a class="headerlink" href="#umount-and-reboot" title="Permanent link">#</a></h3>
+<h3 id="umount-and-reboot">Umount and reboot</h3>
 <pre><code class="language-bash">exit
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 umount -R /mnt/gentoo
 reboot
 </code></pre>
-<h3 id="post-reboot">Post reboot<a class="headerlink" href="#post-reboot" title="Permanent link">#</a></h3>
+<h3 id="post-reboot">Post reboot</h3>
 <pre><code class="language-bash"># Add new user
 useradd -m -G users,wheel,audio,cdrom,floppy,games,portage,usb,video -s /bin/bash &lt;username&gt;
 passwd &lt;username&gt;

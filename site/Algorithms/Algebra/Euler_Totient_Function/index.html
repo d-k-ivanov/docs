@@ -72,7 +72,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="eulers-totient-function">Euler's Totient Function<a class="headerlink" href="#eulers-totient-function" title="Permanent link">#</a></h1>
+    <h1 id="eulers-totient-function">Euler's Totient Function</h1>
 <p>Euler's totient function, also known as <strong>phi-function</strong> <span><span class="MathJax_Preview">\phi (n)</span><script type="math/tex">\phi (n)</script></span>, counts the number of integers between 1 and <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> inclusive, which are coprime to <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>. Two numbers are coprime if their greatest common divisor equals <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> (<span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> is considered to be coprime to any number).</p>
 <p>Here are values of <span><span class="MathJax_Preview">\phi(n)</span><script type="math/tex">\phi(n)</script></span> for the first few positive integers:</p>
 <div>
@@ -87,7 +87,7 @@ n & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 
 \phi(n) & 1 & 1 & 2 & 2 & 4 & 2 & 6 & 4 & 6 & 4 & 10 & 4 & 12 & 6 & 8 & 8 & 16 & 6 & 18 & 8 & 12 \\\\ \hline
 \end{array}</script>
 </div>
-<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">#</a></h2>
+<h2 id="properties">Properties</h2>
 <p>The following properties of Euler totient function are sufficient to calculate it for any number:</p>
 <ul>
 <li>If <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> is a prime number, then <span><span class="MathJax_Preview">\gcd(p, q) = 1</span><script type="math/tex">\gcd(p, q) = 1</script></span> for all <span><span class="MathJax_Preview">1 \le q &lt; p</span><script type="math/tex">1 \le q < p</script></span>. Therefore we have:</li>
@@ -122,7 +122,7 @@ n & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 
 &= n \cdot \left(1 - \frac{1}{p_1}\right) \cdot \left(1 - \frac{1}{p_2}\right) \cdots \left(1 - \frac{1}{p_k}\right)
 \end{align}</script>
 </div>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
+<h2 id="implementation">Implementation</h2>
 <p>Here is an implementation using factorization in <span><span class="MathJax_Preview">O(\sqrt{n})</span><script type="math/tex">O(\sqrt{n})</script></span>:</p>
 <pre><code class="language-cpp">int phi(int n) {
     int result = n;
@@ -138,7 +138,7 @@ n & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 
     return result;
 }
 </code></pre>
-<h2 id="euler-totient-function-from-11-to-nn-in-on-loglognon-loglogn-etf_1_to_n">Euler totient function from <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> to <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> in <span><span class="MathJax_Preview">O(n \log\log{n})</span><script type="math/tex">O(n \log\log{n})</script></span> ## {#etf_1_to_n}<a class="headerlink" href="#euler-totient-function-from-11-to-nn-in-on-loglognon-loglogn-etf_1_to_n" title="Permanent link">#</a></h2>
+<h2 id="euler-totient-function-from-11-to-nn-in-on-loglognon-loglogn-etf_1_to_n">Euler totient function from <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> to <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> in <span><span class="MathJax_Preview">O(n \log\log{n})</span><script type="math/tex">O(n \log\log{n})</script></span> ## {#etf_1_to_n}</h2>
 <p>If we need all all the totient of all numbers between <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> and <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, then factorizing all <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> numbers is not efficient.
 We can use the same idea as the <a href="/docs/#Algorithms/Algebra/Sieve_of_Eratosthenes/">Sieve of Eratosthenes</a>.
 It is still based on the property shown above, but instead of updating the temporary result for each prime factor for each number, we find all prime numbers and for each one update the temporary results of all numbers that are divisible by that prime number.</p>
@@ -158,7 +158,7 @@ It is still based on the property shown above, but instead of updating the tempo
     }
 }
 </code></pre>
-<h2 id="divisor-sum-property-divsum">Divisor sum property ## {#divsum}<a class="headerlink" href="#divisor-sum-property-divsum" title="Permanent link">#</a></h2>
+<h2 id="divisor-sum-property-divsum">Divisor sum property ## {#divsum}</h2>
 <p>This interesting property was established by Gauss:</p>
 <div>
 <div class="MathJax_Preview"> \sum_{d|n} \phi{(d)} = n</div>
@@ -167,7 +167,7 @@ It is still based on the property shown above, but instead of updating the tempo
 <p>Here the sum is over all positive divisors <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.</p>
 <p>For instance the divisors of 10 are 1, 2, 5 and 10.
 Hence <span><span class="MathJax_Preview">\phi{(1)} + \phi{(2)} + \phi{(5)} + \phi{(10)} = 1 + 1 + 4 + 4 = 10</span><script type="math/tex">\phi{(1)} + \phi{(2)} + \phi{(5)} + \phi{(10)} = 1 + 1 + 4 + 4 = 10</script></span>.</p>
-<h3 id="finding-the-totient-from-1-to-nn-using-the-divisor-sum-property">Finding the totient from 1 to <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> using the divisor sum property<a class="headerlink" href="#finding-the-totient-from-1-to-nn-using-the-divisor-sum-property" title="Permanent link">#</a></h3>
+<h3 id="finding-the-totient-from-1-to-nn-using-the-divisor-sum-property">Finding the totient from 1 to <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> using the divisor sum property</h3>
 <p>The divisor sum property also allows us to compute the totient of all numbers between 1 and <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.
 This implementation is a little simpler than the previous implementation based on the Sieve of Eratosthenes, however also has a slightly worse complexity: <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span></p>
 <pre><code class="language-cpp">void phi_1_to_n(int n) {
@@ -182,7 +182,7 @@ This implementation is a little simpler than the previous implementation based o
               phi[j] -= phi[i];
 }
 </code></pre>
-<h2 id="application-in-eulers-theorem-application">Application in Euler's theorem ## {#application}<a class="headerlink" href="#application-in-eulers-theorem-application" title="Permanent link">#</a></h2>
+<h2 id="application-in-eulers-theorem-application">Application in Euler's theorem ## {#application}</h2>
 <p>The most famous and important property of Euler's totient function is expressed in <strong>Euler's theorem</strong>:
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">a^{\phi(m)} \equiv 1 \pmod m</span><script type="math/tex">a^{\phi(m)} \equiv 1 \pmod m</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">a^{\phi(m)} \equiv 1 \pmod m</span><script type="math/tex">a^{\phi(m)} \equiv 1 \pmod m</script></span></script></span> if <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> are relatively prime.</p>
 <p>In the particular case when <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is prime, Euler's theorem turns into <strong>Fermat's little theorem</strong>:
@@ -191,7 +191,7 @@ This implementation is a little simpler than the previous implementation based o
 <p>As immediate consequence we also get the equivalence:
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">a^n \equiv a^{n \bmod \phi(m)} \pmod m</span><script type="math/tex">a^n \equiv a^{n \bmod \phi(m)} \pmod m</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">a^n \equiv a^{n \bmod \phi(m)} \pmod m</span><script type="math/tex">a^n \equiv a^{n \bmod \phi(m)} \pmod m</script></span></script></span>
 This allows computing <span><span class="MathJax_Preview">x^n \bmod m</span><script type="math/tex">x^n \bmod m</script></span> for very big <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, especially if <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is the result of another computation, as it allows to compute <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> under a modulo.</p>
-<h2 id="generalization">Generalization<a class="headerlink" href="#generalization" title="Permanent link">#</a></h2>
+<h2 id="generalization">Generalization</h2>
 <p>There is a less known version of the last equivalence, that allows computing <span><span class="MathJax_Preview">x^n \bmod m</span><script type="math/tex">x^n \bmod m</script></span> efficiently for not coprime <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>.
 For arbitrary <span><span class="MathJax_Preview">x, m</span><script type="math/tex">x, m</script></span> and <span><span class="MathJax_Preview">n \geq \log_2 m</span><script type="math/tex">n \geq \log_2 m</script></span>:</p>
 <div>
@@ -228,7 +228,7 @@ And since <span><span class="MathJax_Preview">\phi(m) \ge \log_2 m \ge k</span><
 <div class="MathJax_Preview"> x^n \equiv x^{\phi(m)} x^{(n - \phi(m)) \bmod \phi(m)} \bmod m \equiv x^{\phi(m)+[n \bmod \phi(m)]} \mod m.</div>
 <script type="math/tex; mode=display"> x^n \equiv x^{\phi(m)} x^{(n - \phi(m)) \bmod \phi(m)} \bmod m \equiv x^{\phi(m)+[n \bmod \phi(m)]} \mod m.</script>
 </div>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
+<h2 id="practice-problems">Practice Problems</h2>
 <ul>
 <li><a href="http://www.spoj.com/problems/ETF/">SPOJ #4141 "Euler Totient Function" [Difficulty: CakeWalk]</a></li>
 <li><a href="http://uva.onlinejudge.org/index.php?option=onlinejudge&amp;page=show_problem&amp;problem=1120">UVA #10179 "Irreducible Basic Fractions" [Difficulty: Easy]</a></li>

@@ -65,7 +65,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="generate-md-file-from-baunch-of-man-files">Generate MD file from baunch of man files<a class="headerlink" href="#generate-md-file-from-baunch-of-man-files" title="Permanent link">#</a></h3>
+    <h3 id="generate-md-file-from-baunch-of-man-files">Generate MD file from baunch of man files</h3>
 <pre><code class="language-bash">for file in *.txt; do echo &quot;### $file&quot; &gt;&gt; result.md; echo '```' &gt;&gt; result.md; cat $file &gt;&gt; result.md; echo '```' &gt;&gt; result.md; echo &gt;&gt; result.md; done
 </code></pre>
 

@@ -67,8 +67,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="bitbucket-related-things">Bitbucket related things<a class="headerlink" href="#bitbucket-related-things" title="Permanent link">#</a></h1>
-<h2 id="oauth-urls">OAuth URLs<a class="headerlink" href="#oauth-urls" title="Permanent link">#</a></h2>
+    <h1 id="bitbucket-related-things">Bitbucket related things</h1>
+<h2 id="oauth-urls">OAuth URLs</h2>
 <p>1 <a href="https://bitbucket.org/site/oauth2/access_token">Access Token URL</a>
 2 <a href="https://bitbucket.org/site/oauth2/authorize">Auth URL</a>
 3 <a href="http://localhost/bitbucket/authenticated">Bitbucker Internal CallBack URL to auto authorize OAuth Consumers</a></p>
@@ -76,8 +76,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 2: https://bitbucket.org/site/oauth2/authorize
 3: http://localhost/bitbucket/authenticated
 </code></pre>
-<h2 id="api">API<a class="headerlink" href="#api" title="Permanent link">#</a></h2>
-<h3 id="get-information-about-repository">Get information about repository<a class="headerlink" href="#get-information-about-repository" title="Permanent link">#</a></h3>
+<h2 id="api">API</h2>
+<h3 id="get-information-about-repository">Get information about repository</h3>
 <pre><code class="language-bash"># Get common repo info
 curl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment | jq .
 # API links
@@ -85,7 +85,7 @@ curl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deplo
 # Get list of branches
 curl -G https://api.bitbucket.org/2.0/repositories/atlassian/atlassian-aws-deployment/refs/branches | jq .
 </code></pre>
-<h3 id="get-ssh-urls-of-each-users-or-teams-repo">Get SSH URLs of each user's or team's repo<a class="headerlink" href="#get-ssh-urls-of-each-users-or-teams-repo" title="Permanent link">#</a></h3>
+<h3 id="get-ssh-urls-of-each-users-or-teams-repo">Get SSH URLs of each user's or team's repo</h3>
 <ul>
 <li><strong>Curl</strong></li>
 </ul>

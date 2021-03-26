@@ -69,18 +69,18 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="burnsides-lemma-polya-enumeration-theorem">Burnside's Lemma / Pólya Enumeration Theorem<a class="headerlink" href="#burnsides-lemma-polya-enumeration-theorem" title="Permanent link">#</a></h1>
-<h2 id="burnsides-lemma">Burnside's lemma<a class="headerlink" href="#burnsides-lemma" title="Permanent link">#</a></h2>
+    <h1 id="burnsides-lemma-polya-enumeration-theorem">Burnside's Lemma / Pólya Enumeration Theorem</h1>
+<h2 id="burnsides-lemma">Burnside's lemma</h2>
 <p><strong>Burnside's lemma</strong> was formulated and proven by <strong>Burnside</strong> in 1897, but historically it was already discovered in 1887 by <strong>Frobenius</strong>, and even earlier in 1845 by <strong>Cauchy</strong>.
 Therefore it is also sometimes named the <strong>Cauchy-Frobenius lemma</strong>.</p>
 <p>Burnside's lemma allows us to count the number of equivalence classes in sets, based on internal symmetry.</p>
-<h3 id="objects-and-representations">Objects and representations<a class="headerlink" href="#objects-and-representations" title="Permanent link">#</a></h3>
+<h3 id="objects-and-representations">Objects and representations</h3>
 <p>We have to clearly distinguish between the number of objects and the number of representations.</p>
 <p>Different representations can correspond to the same objects, but of course any representation corresponds to exactly one object.
 Consequently the set of all representations is divided into equivalence classes.
 Our task is to compute the number of objects, or equivalently, the number of equivalence classes.
 The following example will make the difference between object and representation clearer.</p>
-<h3 id="example-coloring-of-binary-trees">Example: coloring of binary trees<a class="headerlink" href="#example-coloring-of-binary-trees" title="Permanent link">#</a></h3>
+<h3 id="example-coloring-of-binary-trees">Example: coloring of binary trees</h3>
 <p>Suppose we have the following problem.
 We have to count the number of ways to color a rooted binary tree with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices with two colors, where at each vertex we do not distinguish between the left and the right children.</p>
 <p>Here the set of objects is the set of different colorings of the tree.</p>
@@ -100,7 +100,7 @@ f_1(2) = 1 & f_2(2) = 0\\\\
 f_1(3) = 0 & f_2(3) = 1
 \end{array}</script>
 </div>
-<h3 id="invariant-permutations">Invariant permutations<a class="headerlink" href="#invariant-permutations" title="Permanent link">#</a></h3>
+<h3 id="invariant-permutations">Invariant permutations</h3>
 <p>Why do these two function <span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span> and <span><span class="MathJax_Preview">f_2</span><script type="math/tex">f_2</script></span> belong to the same equivalence class?
 Intuitively this is understandable - we can rearrange the children of vertex <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>, the vertices <span><span class="MathJax_Preview">2</span><script type="math/tex">2</script></span> and <span><span class="MathJax_Preview">3</span><script type="math/tex">3</script></span>, and after such a transformation of the function <span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span> it will coincide with <span><span class="MathJax_Preview">f_2</span><script type="math/tex">f_2</script></span>.</p>
 <p>But formally this means that there exists an <strong>invariant permutation</strong> <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span> (i.e. a permutation which does not change the object itself, but only its representation), such that:</p>
@@ -116,7 +116,7 @@ It is clear that these invariant permutations depend on the specific problem, an
 However in most cases it is sufficient to manually find several "basic" permutations, with which all other permutations can be generated (and this part of the work can be shifted to a computer).</p>
 <p>It is not difficult to understand that invariant permutations form a <strong>group</strong>, since the product (composition) of invariant permutations is again an invariant permutation.
 We denote the <strong>group of invariant permutations</strong> by <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>.</p>
-<h3 id="the-statement-of-the-lemma">The statement of the lemma<a class="headerlink" href="#the-statement-of-the-lemma" title="Permanent link">#</a></h3>
+<h3 id="the-statement-of-the-lemma">The statement of the lemma</h3>
 <p>For the formulation of the lemma we need one more definition from algebra.
 A <strong>fixed point</strong> <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> for a permutation <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span> is an element that is invariant under this permutation: <span><span class="MathJax_Preview">f \equiv f \pi</span><script type="math/tex">f \equiv f \pi</script></span>.
 For example in out example the fixed points are those functions <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>, which correspond to colorings that do not change when the permutation <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span> is applied to them (i.e. they do not change in the formal sense of the equality of functions).
@@ -128,7 +128,7 @@ the number of equivalence classes is equal to the sum of the numbers of fixed po
 <script type="math/tex; mode=display">|\text{Classes}| = \frac{1}{|G|} \sum_{\pi \in G} I(\pi)</script>
 </div>
 <p>Although Burnside's lemma itself is not so convenient to use in practice (it is unclear how to quickly look for the value <span><span class="MathJax_Preview">I(\pi)</span><script type="math/tex">I(\pi)</script></span>, it most clearly reveals the mathematical essence on which the idea of calculating equivalence classes is based.</p>
-<h3 id="proof-of-burnsides-lemma">Proof of Burnside's lemma<a class="headerlink" href="#proof-of-burnsides-lemma" title="Permanent link">#</a></h3>
+<h3 id="proof-of-burnsides-lemma">Proof of Burnside's lemma</h3>
 <p>The proof of Burnside's lemma described here is not important for the practical applications, so it can be skipped on the first reading.</p>
 <p>The proof here is the simplest known, and does not use group theory.
 The proof was published by Kenneth P. Bogart in 1991.</p>
@@ -164,7 +164,7 @@ Therefore within each column of a given equivalence class any element <span><spa
 <div class="MathJax_Preview">|\text{Classes}| \cdot |G| = \sum_{f} J(f)</div>
 <script type="math/tex; mode=display">|\text{Classes}| \cdot |G| = \sum_{f} J(f)</script>
 </div>
-<h2 id="polya-enumeration-theorem">Pólya Enumeration Theorem<a class="headerlink" href="#polya-enumeration-theorem" title="Permanent link">#</a></h2>
+<h2 id="polya-enumeration-theorem">Pólya Enumeration Theorem</h2>
 <p>The Pólya enumeration theorem is a generalization of Burnside's lemma, and it also provides a more convenient tool for finding the number of equivalence classes.
 It should noted that this theorem was already discovered before Pólya by Redfield in 1927, but his publication went unnoticed by mathematicians.
 Pólya independently came to the same results in 1937, and his publication was more successful.</p>
@@ -177,7 +177,7 @@ Then the following formula (a <strong>special case of the Pólya enumeration the
 <script type="math/tex; mode=display">|\text{Classes}| = \frac{1}{|G|} \sum_{\pi \in G} k^{C(\pi)}</script>
 </div>
 <p><span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> is the number of values that each representation element can take, in the case of the coloring of a binary tree this would be <span><span class="MathJax_Preview">k = 2</span><script type="math/tex">k = 2</script></span>.</p>
-<h3 id="evidence">Evidence<a class="headerlink" href="#evidence" title="Permanent link">#</a></h3>
+<h3 id="evidence">Evidence</h3>
 <p>This formula is a direct consequence of Burnside's lemma.
 To get it, we just need to find an explicit expression for <span><span class="MathJax_Preview">I(\pi)</span><script type="math/tex">I(\pi)</script></span>, which appears in the lemma.
 Recall, that <span><span class="MathJax_Preview">I(\pi)</span><script type="math/tex">I(\pi)</script></span> is the number of fixed points in the permutation <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>.</p>
@@ -190,7 +190,7 @@ Thus for each permutation cycle <span><span class="MathJax_Preview">\pi</span><s
 <div class="MathJax_Preview">I(\pi) = k^{C(\pi)}</div>
 <script type="math/tex; mode=display">I(\pi) = k^{C(\pi)}</script>
 </div>
-<h2 id="application-coloring-necklaces">Application: Coloring necklaces<a class="headerlink" href="#application-coloring-necklaces" title="Permanent link">#</a></h2>
+<h2 id="application-coloring-necklaces">Application: Coloring necklaces</h2>
 <p>The problem "Necklace" is one of the classical combinatorial problems.
 The task is to count the number of different necklaces from <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> beads, each of which can be painted in one of the <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> colors.
 When comparing two necklaces, they can be rotated, but not reversed (i.e. a cyclic shift is permitted).</p>
@@ -240,7 +240,7 @@ So we can count the number of <span><span class="MathJax_Preview">j</span><scrip
 <div class="MathJax_Preview">\frac{1}{n} \sum_{d ~|~ n} \phi\left(\frac{n}{d}\right) k^d</div>
 <script type="math/tex; mode=display">\frac{1}{n} \sum_{d ~|~ n} \phi\left(\frac{n}{d}\right) k^d</script>
 </div>
-<h2 id="application-coloring-a-torus">Application: Coloring a torus<a class="headerlink" href="#application-coloring-a-torus" title="Permanent link">#</a></h2>
+<h2 id="application-coloring-a-torus">Application: Coloring a torus</h2>
 <p>Quite often we cannot obtain an explicit formula for the number of equivalence classes.
 In many problems the number of permutations in a group can be too large for manual calculations and it is not possible to compute analytically the number of cycles in them.</p>
 <p>In that case we should manually find several "basic" permutations, so that they can generate the entire group <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>.

@@ -83,20 +83,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="generate">Generate<a class="headerlink" href="#generate" title="Permanent link">#</a></h2>
+    <h2 id="generate">Generate</h2>
 <pre><code class="language-sh"># version &gt;= 2.1.17
 gpg --full-generate-key
 # version &lt; 2.1.17
 gpg --default-new-key-algo rsa4096 --gen-key
 </code></pre>
-<h2 id="export">Export<a class="headerlink" href="#export" title="Permanent link">#</a></h2>
+<h2 id="export">Export</h2>
 <pre><code class="language-sh"># Get key ID
 gpg --list-secret-keys --keyid-format LONG
 gpg --armor --export &lt;KEY_ID&gt; &gt; key.pub
 gpg --armor --export-secret-keys &lt;KEY_ID&gt; &gt; private.key
 gpg --export-ownertrust &gt; otrust.txt
 </code></pre>
-<h2 id="import">Import<a class="headerlink" href="#import" title="Permanent link">#</a></h2>
+<h2 id="import">Import</h2>
 <pre><code class="language-sh"># Be sure that keys is in UTF-8 (on in powershell defult encoding UTF-16LE)
 gpg --import private.key
 # Get key ID
@@ -107,7 +107,7 @@ gpg --edit-key &lt;KEY_ID&gt;
     gpg&gt; quit
 
 </code></pre>
-<h2 id="renew">Renew<a class="headerlink" href="#renew" title="Permanent link">#</a></h2>
+<h2 id="renew">Renew</h2>
 <pre><code class="language-sh">gpg --list-secret-keys --keyid-format LONG
 gpg --edit-key &lt;KEY_ID&gt;
     gpg&gt; list
@@ -126,7 +126,7 @@ gpg --keyserver keyserver.ubuntu.com --send-keys &lt;KEY_ID&gt;
 ## Update key in MIT pool
 gpg --keyserver pgp.mit.edu --send-keys &lt;KEY_ID&gt;
 </code></pre>
-<h2 id="publish">Publish<a class="headerlink" href="#publish" title="Permanent link">#</a></h2>
+<h2 id="publish">Publish</h2>
 <pre><code class="language-sh">## Publish key in global pool
 gpg --keyserver pool.sks-keyservers.net --send-keys &lt;KEY_ID&gt;
 
@@ -136,7 +136,7 @@ gpg --keyserver keyserver.ubuntu.com --send-keys &lt;KEY_ID&gt;
 ## Publish key in MIT pool
 gpg --keyserver pgp.mit.edu --send-keys &lt;KEY_ID&gt;
 </code></pre>
-<h2 id="search">Search<a class="headerlink" href="#search" title="Permanent link">#</a></h2>
+<h2 id="search">Search</h2>
 <pre><code class="language-sh">## Search key in global pool
 gpg --keyserver pool.sks-keyservers.net --search-key email@address
 
@@ -146,14 +146,14 @@ gpg --keyserver keyserver.ubuntu.com --search-key email@address
 ## Search key in MIT pool
 gpg --keyserver pgp.mit.edu --search-key email@address
 </code></pre>
-<h2 id="delete">Delete<a class="headerlink" href="#delete" title="Permanent link">#</a></h2>
+<h2 id="delete">Delete</h2>
 <pre><code class="language-sh"># Get key ID
 gpg --list-secret-keys --keyid-format LONG
 gpg --delete-secret-keys &lt;KEY_ID&gt;
 gpg --delete-keys &lt;KEY_ID&gt;
 
 </code></pre>
-<h2 id="multiple-uid">Multiple UID<a class="headerlink" href="#multiple-uid" title="Permanent link">#</a></h2>
+<h2 id="multiple-uid">Multiple UID</h2>
 <pre><code class="language-sh">gpg --list-secret-keys --keyid-format LONG
 gpg --edit-key &lt;KEY_ID&gt;
     gpg&gt; adduid
@@ -161,7 +161,7 @@ gpg --edit-key &lt;KEY_ID&gt;
     gpg&gt; trust
     gpg&gt; quit
 </code></pre>
-<h2 id="revoke">Revoke<a class="headerlink" href="#revoke" title="Permanent link">#</a></h2>
+<h2 id="revoke">Revoke</h2>
 <pre><code class="language-sh">gpg --list-secret-keys --keyid-format LONG
 gpg --output revoke.asc --gen-revoke &lt;KEY_ID&gt;
 gpg --import revoke.asc
@@ -175,7 +175,7 @@ gpg --keyserver keyserver.ubuntu.com --send-keys &lt;KEY_ID&gt;
 ## Revoke key in MIT pool
 gpg --keyserver pgp.mit.edu --send-keys &lt;KEY_ID&gt;
 </code></pre>
-<h2 id="github-key">GitHub key<a class="headerlink" href="#github-key" title="Permanent link">#</a></h2>
+<h2 id="github-key">GitHub key</h2>
 <pre><code class="language-sh">wget https://github.com/web-flow.gpg
 gpg --import .\web-flow.gpg
 rm .\web-flow.gpg

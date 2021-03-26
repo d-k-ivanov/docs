@@ -69,17 +69,17 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="prufer-code">Prüfer Code<a class="headerlink" href="#prufer-code" title="Permanent link">#</a></h1>
+    <h1 id="prufer-code">Prüfer Code</h1>
 <p>In this article we will look at the so-called <strong>Prüfer code</strong> (or Prüfer sequence), which is a way of encoding a labeled tree into a sequence of numbers in a unique way.</p>
 <p>With the help of the Prüfer code we will prove <strong>Cayley's formula</strong> (which specified the number of spanning trees in a complete graph).
 Also we show the solution to the problem of counting the number of ways of adding edges to a graph to make it connected.</p>
 <p><strong>Note</strong>, we will not consider trees consisting of a single vertex - this is a special case in which multiple statements clash.</p>
-<h2 id="prufer-code_1">Prüfer code<a class="headerlink" href="#prufer-code_1" title="Permanent link">#</a></h2>
+<h2 id="prufer-code_1">Prüfer code</h2>
 <p>The Prüfer code is a way of encoding a labeled tree with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices using a sequence of <span><span class="MathJax_Preview">n - 2</span><script type="math/tex">n - 2</script></span> integers in the interval <span><span class="MathJax_Preview">[0; n-1]</span><script type="math/tex">[0; n-1]</script></span>.
 This encoding also acts as a <strong>bijection</strong> between all spanning trees of a complete graph and the numerical sequences.</p>
 <p>Although using the Prüfer code for storing and operating on tree is impractical due the specification of the representation, the Prüfer codes are used frequently: mostly in solving combinatorial problems.</p>
 <p>The inventor - Heinz Prüfer - proposed this code in 1918 as a proof for Cayley's formula.</p>
-<h3 id="building-the-prufer-code-for-a-given-tree">Building the Prüfer code for a given tree<a class="headerlink" href="#building-the-prufer-code-for-a-given-tree" title="Permanent link">#</a></h3>
+<h3 id="building-the-prufer-code-for-a-given-tree">Building the Prüfer code for a given tree</h3>
 <p>The Prüfer code is constructed as follows.
 We will repeat the following procedure <span><span class="MathJax_Preview">n - 2</span><script type="math/tex">n - 2</script></span> times:
 we select the leaf of the tree with the smallest number, remove it from the tree, and write down the number of the vertex that was connected to it.
@@ -198,7 +198,7 @@ We also compute the degree for each vertex.
 <code>ptr</code> is the pointer that indicates the minimum size of the remaining leaf vertices (except the current one <code>leaf</code>).
 We will either assign the current leaf vertex with <code>next</code>, if this one is also a leaf vertex and it is smaller than <code>ptr</code>, or we start a linear search for the smallest leaf vertex by increasing the pointer.</p>
 <p>It can be easily seen, that this code has the complexity <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>.</p>
-<h3 id="some-properties-of-the-prufer-code">Some properties of the Prüfer code<a class="headerlink" href="#some-properties-of-the-prufer-code" title="Permanent link">#</a></h3>
+<h3 id="some-properties-of-the-prufer-code">Some properties of the Prüfer code</h3>
 <ul>
 <li>After constructing the Prüfer code two vertices will remain.
   One of them is the highest vertex <span><span class="MathJax_Preview">n-1</span><script type="math/tex">n-1</script></span>, but nothing else can be said about the other one.</li>
@@ -206,7 +206,7 @@ We will either assign the current leaf vertex with <code>next</code>, if this on
   This can be easily checked, since the degree will get smaller every time we record its label in the code, and we remove it once the degree is <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>.
   For the two remaining vertices this fact is also true.</li>
 </ul>
-<h3 id="restoring-the-tree-using-the-prufer-code">Restoring the tree using the Prüfer code<a class="headerlink" href="#restoring-the-tree-using-the-prufer-code" title="Permanent link">#</a></h3>
+<h3 id="restoring-the-tree-using-the-prufer-code">Restoring the tree using the Prüfer code</h3>
 <p>To restore the tree it suffice to only focus on the property discussed in the last section.
 We already know the degree of all the vertices in the desired tree.
 Therefore we can find all leaf vertices, and also the first leaf that was removed in the first step (it has to be the smallest leaf).
@@ -283,12 +283,12 @@ vector&lt;pair&lt;int, int&gt;&gt; pruefer_decode(vector&lt;int&gt; const&amp; c
     return edges;
 }
 </code></pre>
-<h3 id="bijection-between-trees-and-prufer-codes">Bijection between trees and Prüfer codes<a class="headerlink" href="#bijection-between-trees-and-prufer-codes" title="Permanent link">#</a></h3>
+<h3 id="bijection-between-trees-and-prufer-codes">Bijection between trees and Prüfer codes</h3>
 <p>For each tree there exists a Prüfer code corresponding to it.
 And for each Prüfer code we can restore the original tree.</p>
 <p>It follows that also every Prüfer code (i.e. a sequence of <span><span class="MathJax_Preview">n-2</span><script type="math/tex">n-2</script></span> numbers in the range <span><span class="MathJax_Preview">[0; n - 1]</span><script type="math/tex">[0; n - 1]</script></span>) corresponds to a tree.</p>
 <p>Therefore all trees and all Prüfer codes form a bijection (a <strong>one-to-one correspondence</strong>).</p>
-<h2 id="cayleys-formula">Cayley's formula<a class="headerlink" href="#cayleys-formula" title="Permanent link">#</a></h2>
+<h2 id="cayleys-formula">Cayley's formula</h2>
 <p>Cayley's formula states that the <strong>number of spanning trees in a complete labeled graph</strong> with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices is equal to:
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">n^{n-2}</span><script type="math/tex">n^{n-2}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">n^{n-2}</span><script type="math/tex">n^{n-2}</script></span></script></span>
 There are multiple proofs for this formula.
@@ -296,7 +296,7 @@ Using the Prüfer code concept this statement comes without any surprise.</p>
 <p>In fact any Prüfer code with <span><span class="MathJax_Preview">n-2</span><script type="math/tex">n-2</script></span> numbers from the interval <span><span class="MathJax_Preview">[0; n-1]</span><script type="math/tex">[0; n-1]</script></span> corresponds to some tree with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices.
 So we have <span><span class="MathJax_Preview">n^{n-2}</span><script type="math/tex">n^{n-2}</script></span> different such Prüfer codes.
 Since each such tree is a spanning tree of a complete graph with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices, the number of such spanning trees is also <span><span class="MathJax_Preview">n^{n-2}</span><script type="math/tex">n^{n-2}</script></span>.</p>
-<h2 id="number-of-ways-to-make-a-graph-connected">Number of ways to make a graph connected<a class="headerlink" href="#number-of-ways-to-make-a-graph-connected" title="Permanent link">#</a></h2>
+<h2 id="number-of-ways-to-make-a-graph-connected">Number of ways to make a graph connected</h2>
 <p>The concept of Prüfer codes are even more powerful.
 It allows to create a lot more general formulas than Cayley's formula.</p>
 <p>In this problem we are given a graph with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> edges.
@@ -328,7 +328,7 @@ To use it we only need to substitute with <span><span class="MathJax_Preview">e_
 After applying the multinomial theorem we get the <strong>answer to the problem</strong>:
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">s_1 \cdot s_2 \cdots s_k \cdot (s_1 + s_2 + \dots + s_k)^{k-2} = s_1 \cdot s_2 \cdots s_k \cdot n^{k-2}</span><script type="math/tex">s_1 \cdot s_2 \cdots s_k \cdot (s_1 + s_2 + \dots + s_k)^{k-2} = s_1 \cdot s_2 \cdots s_k \cdot n^{k-2}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">s_1 \cdot s_2 \cdots s_k \cdot (s_1 + s_2 + \dots + s_k)^{k-2} = s_1 \cdot s_2 \cdots s_k \cdot n^{k-2}</span><script type="math/tex">s_1 \cdot s_2 \cdots s_k \cdot (s_1 + s_2 + \dots + s_k)^{k-2} = s_1 \cdot s_2 \cdots s_k \cdot n^{k-2}</script></span></script></span>
 By accident this formula also holds for <span><span class="MathJax_Preview">k = 1</span><script type="math/tex">k = 1</script></span>.</p>
-<h2 id="practice-problems">Practice problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
+<h2 id="practice-problems">Practice problems</h2>
 <ul>
 <li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=20&amp;page=show_problem&amp;problem=1784">UVA #10843 - Anne's game</a></li>
 <li><a href="http://acm.timus.ru/problem.aspx?space=1&amp;num=1069">Timus #1069 - Prufer Code</a></li>

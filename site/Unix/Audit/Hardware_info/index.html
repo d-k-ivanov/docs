@@ -73,18 +73,18 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="all-hardware">All hardware<a class="headerlink" href="#all-hardware" title="Permanent link">#</a></h3>
+    <h3 id="all-hardware">All hardware</h3>
 <pre><code class="language-bash">hwinfo
 </code></pre>
-<h3 id="raw-devices">RAW Devices<a class="headerlink" href="#raw-devices" title="Permanent link">#</a></h3>
+<h3 id="raw-devices">RAW Devices</h3>
 <pre><code class="language-bash"># ISO to USB:
 dd bs=4M if=/path/to/&lt;iso_image&gt; of=/dev/sdX &amp;&amp; sync
 </code></pre>
-<h3 id="cpu">CPU<a class="headerlink" href="#cpu" title="Permanent link">#</a></h3>
+<h3 id="cpu">CPU</h3>
 <pre><code class="language-bash">lscpu
 cat /proc/cpuinfo
 </code></pre>
-<h3 id="ram">RAM<a class="headerlink" href="#ram" title="Permanent link">#</a></h3>
+<h3 id="ram">RAM</h3>
 <pre><code class="language-bash"># Basic commands:
 vmstat -s
 cat /proc/meminfo
@@ -94,7 +94,7 @@ ps -eo rss,pid,user,command --sort -size | awk '{ hr=$1/1024 ; printf(&quot;%13.
 # Clean RAM buffer and swap cache
 sync &amp;&amp; echo 3 &gt; /proc/sys/vm/drop_caches
 </code></pre>
-<h3 id="vm">VM<a class="headerlink" href="#vm" title="Permanent link">#</a></h3>
+<h3 id="vm">VM</h3>
 <p>To check if server's environment is virtual or real you can use stanasrd Linux commands</p>
 <ul>
 <li>cat /proc/scsi/scsi </li>

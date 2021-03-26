@@ -125,7 +125,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     <p align="left"><img src="http://takenobu-hs.github.io/downloads/images/haskell-logo-s.png"/></p>
 
-<h1 id="haskellghc-symbol-search-cheatsheet">Haskell/GHC symbol search cheatsheet<a class="headerlink" href="#haskellghc-symbol-search-cheatsheet" title="Permanent link">#</a></h1>
+<h1 id="haskellghc-symbol-search-cheatsheet">Haskell/GHC symbol search cheatsheet</h1>
 <p>Several features of Haskell/GHC have low googleability.
 Because some of them are composed of symbols :)<br />
 This page is a reference collection to support search of them.</p>
@@ -135,7 +135,7 @@ This page is a reference collection to support search of them.</p>
   * <a href="https://codesearch.aelve.com/haskell">Aelve Codesearch</a> (used "in the wild", and regex support)</p>
 <p>Happy Haskelling!</p>
 <hr />
-<h2 id="strictness-flag"><code>!</code> : "strictness flag"<a class="headerlink" href="#strictness-flag" title="Permanent link">#</a></h2>
+<h2 id="strictness-flag"><code>!</code> : "strictness flag"</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch4.html#x10-680004.2) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch4.html#x10-680004.2) </script>
@@ -143,7 +143,7 @@ This page is a reference collection to support search of them.</p>
 <pre><code class="language-Haskell">data Vec = Vec !Int
 </code></pre>
 <hr />
-<h2 id="bang-pattern"><code>!</code> : "bang pattern"<a class="headerlink" href="#bang-pattern" title="Permanent link">#</a></h2>
+<h2 id="bang-pattern"><code>!</code> : "bang pattern"</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#bang-patterns-informal) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#bang-patterns-informal) </script>
@@ -151,7 +151,7 @@ This page is a reference collection to support search of them.</p>
 <pre><code class="language-Haskell">f1 !x = 
 </code></pre>
 <hr />
-<h2 id="magichash"><code>#</code> : "MagicHash"<a class="headerlink" href="#magichash" title="Permanent link">#</a></h2>
+<h2 id="magichash"><code>#</code> : "MagicHash"</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#the-magic-hash) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#the-magic-hash) </script>
@@ -159,7 +159,7 @@ This page is a reference collection to support search of them.</p>
 <pre><code class="language-Haskell">data Int = I# Int#
 </code></pre>
 <hr />
-<h2 id="overloadedlabels"><code>#</code> : "OverloadedLabels"<a class="headerlink" href="#overloadedlabels" title="Permanent link">#</a></h2>
+<h2 id="overloadedlabels"><code>#</code> : "OverloadedLabels"</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#overloaded-labels) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#overloaded-labels) </script>
@@ -167,7 +167,7 @@ This page is a reference collection to support search of them.</p>
 <pre><code class="language-Haskell">example = #x (Point 1 2)
 </code></pre>
 <hr />
-<h2 id="c-pre-processors-directive"><code>#</code> : C pre-processor's directive<a class="headerlink" href="#c-pre-processors-directive" title="Permanent link">#</a></h2>
+<h2 id="c-pre-processors-directive"><code>#</code> : C pre-processor's directive</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/phases.html#options-affecting-the-c-pre-processor) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/phases.html#options-affecting-the-c-pre-processor) </script>
@@ -175,7 +175,7 @@ This page is a reference collection to support search of them.</p>
 <pre><code class="language-Haskell">#include &quot;MachDeps.h&quot;
 </code></pre>
 <hr />
-<h2 id="hsc2hs-commands-operator"><code>#</code> : hsc2hs command's operator<a class="headerlink" href="#hsc2hs-commands-operator" title="Permanent link">#</a></h2>
+<h2 id="hsc2hs-commands-operator"><code>#</code> : hsc2hs command's operator</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/utils.html#input-syntax) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/utils.html#input-syntax) </script>
@@ -183,7 +183,7 @@ This page is a reference collection to support search of them.</p>
 <pre><code class="language-Haskell">flag = #const VER_MAJORVERSION
 </code></pre>
 <hr />
-<h2 id="template-haskells-splice-syntax"><code>$( )</code> : Template Haskell’s splice syntax<a class="headerlink" href="#template-haskells-splice-syntax" title="Permanent link">#</a></h2>
+<h2 id="template-haskells-splice-syntax"><code>$( )</code> : Template Haskell’s splice syntax</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#template-haskell) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#template-haskell) </script>
@@ -191,7 +191,7 @@ This page is a reference collection to support search of them.</p>
 <pre><code class="language-Haskell">two = $(add1 1)
 </code></pre>
 <hr />
-<h2 id="typed-template-haskells-splice-syntax"><code>$$( )</code> : Typed Template Haskell’s splice syntax<a class="headerlink" href="#typed-template-haskells-splice-syntax" title="Permanent link">#</a></h2>
+<h2 id="typed-template-haskells-splice-syntax"><code>$$( )</code> : Typed Template Haskell’s splice syntax</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#template-haskell) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#template-haskell) </script>
@@ -199,7 +199,7 @@ This page is a reference collection to support search of them.</p>
 <pre><code class="language-Haskell">two = $$(add1 1)
 </code></pre>
 <hr />
-<h2 id="an-identifier-consists-of-a-letter-followed-by-zero-or-more-letters-digits-underscores-and-single-quotes"><code>'</code> : an identifier consists of a letter followed by zero or more letters, digits, underscores, and single quotes<a class="headerlink" href="#an-identifier-consists-of-a-letter-followed-by-zero-or-more-letters-digits-underscores-and-single-quotes" title="Permanent link">#</a></h2>
+<h2 id="an-identifier-consists-of-a-letter-followed-by-zero-or-more-letters-digits-underscores-and-single-quotes"><code>'</code> : an identifier consists of a letter followed by zero or more letters, digits, underscores, and single quotes</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch2.html#x7-180002.4) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch2.html#x7-180002.4) </script>
@@ -207,7 +207,7 @@ This page is a reference collection to support search of them.</p>
 <pre><code class="language-Haskell">xs' = f ys
 </code></pre>
 <hr />
-<h2 id="promoted-constructors-are-prefixed-by-a-tick"><code>'</code> : promoted constructors are prefixed by a tick '<a class="headerlink" href="#promoted-constructors-are-prefixed-by-a-tick" title="Permanent link">#</a></h2>
+<h2 id="promoted-constructors-are-prefixed-by-a-tick"><code>'</code> : promoted constructors are prefixed by a tick '</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#datatype-promotion) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#datatype-promotion) </script>
@@ -215,7 +215,7 @@ This page is a reference collection to support search of them.</p>
 <pre><code class="language-Haskell">type * = TYPE 'LiftedRep
 </code></pre>
 <hr />
-<h2 id="template-haskells-quotation-syntax"><code>'</code> <code>''</code> : Template Haskell’s quotation syntax<a class="headerlink" href="#template-haskells-quotation-syntax" title="Permanent link">#</a></h2>
+<h2 id="template-haskells-quotation-syntax"><code>'</code> <code>''</code> : Template Haskell’s quotation syntax</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/%7Eghc/latest/docs/html/users_guide/glasgow_exts.html#th-syntax) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/%7Eghc/latest/docs/html/users_guide/glasgow_exts.html#th-syntax) </script>
@@ -223,19 +223,19 @@ This page is a reference collection to support search of them.</p>
 <pre><code class="language-Haskell">makeLenses ''FooBar
 </code></pre>
 <hr />
-<h2 id="unit-type"><code>()</code> : "unit type"<a class="headerlink" href="#unit-type" title="Permanent link">#</a></h2>
+<h2 id="unit-type"><code>()</code> : "unit type"</h2>
 <p>[ <a href="https://www.haskell.org/onlinereport/haskell2010/haskellch4.html#x10-650004.1.2">Haskell 2010 Language Report</a> ]
 [ <a href="https://www.haskell.org/onlinereport/haskell2010/haskellch6.html#x13-1220006.1.5">Haskell 2010 Language Report</a> ]</p>
 <pre><code class="language-Haskell">main :: IO ()
 </code></pre>
 <hr />
-<h2 id="unit-expression"><code>()</code> : "unit expression"<a class="headerlink" href="#unit-expression" title="Permanent link">#</a></h2>
+<h2 id="unit-expression"><code>()</code> : "unit expression"</h2>
 <p>[ <a href="https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-380003.9">Haskell 2010 Language Report</a> ]
 [ <a href="https://www.haskell.org/onlinereport/haskell2010/haskellch6.html#x13-1220006.1.5">Haskell 2010 Language Report</a> ]</p>
 <pre><code class="language-Haskell">return ()
 </code></pre>
 <hr />
-<h2 id="section-a-convenient-syntax-for-partial-application"><code>( )</code> : "section" - a convenient syntax for partial application<a class="headerlink" href="#section-a-convenient-syntax-for-partial-application" title="Permanent link">#</a></h2>
+<h2 id="section-a-convenient-syntax-for-partial-application"><code>( )</code> : "section" - a convenient syntax for partial application</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-300003.5) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-300003.5) </script>
@@ -243,7 +243,7 @@ This page is a reference collection to support search of them.</p>
 <pre><code class="language-Haskell">add1 = (1+)
 </code></pre>
 <hr />
-<h2 id="the-constructor-for-a-tuple"><code>(,)</code> : the constructor for a tuple<a class="headerlink" href="#the-constructor-for-a-tuple" title="Permanent link">#</a></h2>
+<h2 id="the-constructor-for-a-tuple"><code>(,)</code> : the constructor for a tuple</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-360003.8) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-360003.8) </script>
@@ -251,7 +251,7 @@ This page is a reference collection to support search of them.</p>
 <pre><code class="language-Haskell">f x y = liftM2 (,) x y 
 </code></pre>
 <hr />
-<h2 id="xxx-tuplesections"><code>(, xxx)</code> : "TupleSections"<a class="headerlink" href="#xxx-tuplesections" title="Permanent link">#</a></h2>
+<h2 id="xxx-tuplesections"><code>(, xxx)</code> : "TupleSections"</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#extension-TupleSections) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#extension-TupleSections) </script>
@@ -259,7 +259,7 @@ This page is a reference collection to support search of them.</p>
 <pre><code class="language-Haskell">f xs = fmap (, True) xs
 </code></pre>
 <hr />
-<h2 id="unboxed-tuple"><code>(#  #)</code> : "unboxed tuple"<a class="headerlink" href="#unboxed-tuple" title="Permanent link">#</a></h2>
+<h2 id="unboxed-tuple"><code>(#  #)</code> : "unboxed tuple"</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#unboxed-tuples) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#unboxed-tuples) </script>
@@ -267,7 +267,7 @@ This page is a reference collection to support search of them.</p>
 <pre><code class="language-Haskell">f x y = (# x+1, y-1 #)
 </code></pre>
 <hr />
-<h2 id="unboxed-sum"><code>(# | | #)</code> : "unboxed sum"<a class="headerlink" href="#unboxed-sum" title="Permanent link">#</a></h2>
+<h2 id="unboxed-sum"><code>(# | | #)</code> : "unboxed sum"</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#unboxed-sums) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#unboxed-sums) </script>
@@ -278,7 +278,7 @@ f (# | True | #) = 2
 f _              = 3
 </code></pre>
 <hr />
-<h2 id="export-all-of-its-names"><code>(..)</code> : export all of its names<a class="headerlink" href="#export-all-of-its-names" title="Permanent link">#</a></h2>
+<h2 id="export-all-of-its-names"><code>(..)</code> : export all of its names</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch5.html#x11-1000005.2) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch5.html#x11-1000005.2) </script>
@@ -287,7 +287,7 @@ f _              = 3
         Ix(..),
 </code></pre>
 <hr />
-<h2 id="import-all-of-its-names"><code>(..)</code> : import all of its names<a class="headerlink" href="#import-all-of-its-names" title="Permanent link">#</a></h2>
+<h2 id="import-all-of-its-names"><code>(..)</code> : import all of its names</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch5.html#x11-1010005.3) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch5.html#x11-1010005.3) </script>
@@ -295,7 +295,7 @@ f _              = 3
 <pre><code class="language-Haskell">import GHC.Types (Bool(..))
 </code></pre>
 <hr />
-<h2 id="the-kind-of-ordinary-types-synonym-for-type-and-type-liftedrep"><code>*</code> : the kind of ordinary types (synonym for <code>Type</code> and <code>TYPE `LiftedRep</code>)<a class="headerlink" href="#the-kind-of-ordinary-types-synonym-for-type-and-type-liftedrep" title="Permanent link">#</a></h2>
+<h2 id="the-kind-of-ordinary-types-synonym-for-type-and-type-liftedrep"><code>*</code> : the kind of ordinary types (synonym for <code>Type</code> and <code>TYPE `LiftedRep</code>)</h2>
 <p>[ <a href="https://www.haskell.org/onlinereport/haskell2010/haskellch4.html#x10-640004.1.1">Haskell 2010 Language Report</a> ]
 [ <a href="https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#the-kind">GHC User’s Guide</a> ]
 [ <a href="https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#levity-polymorphism">GHC User’s Guide</a> ]</p>
@@ -303,7 +303,7 @@ f _              = 3
 Int :: *
 </code></pre>
 <hr />
-<h2 id="-case-expression"><code>-&gt;</code> : case expression<a class="headerlink" href="#-case-expression" title="Permanent link">#</a></h2>
+<h2 id="-case-expression"><code>-&gt;</code> : case expression</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-460003.13) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-460003.13) </script>
@@ -313,7 +313,7 @@ Int :: *
         Just _  -&gt; True
 </code></pre>
 <hr />
-<h2 id="-view-pattern"><code>-&gt;</code> : "view pattern"<a class="headerlink" href="#-view-pattern" title="Permanent link">#</a></h2>
+<h2 id="-view-pattern"><code>-&gt;</code> : "view pattern"</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#view-patterns) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#view-patterns) </script>
@@ -322,14 +322,14 @@ Int :: *
 size (view -&gt; Arrow t1 t2) = size t1 + size t2
 </code></pre>
 <hr />
-<h2 id="-function-type"><code>-&gt;</code> : "function type"<a class="headerlink" href="#-function-type" title="Permanent link">#</a></h2>
+<h2 id="-function-type"><code>-&gt;</code> : "function type"</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch4.html#x10-650004.1.2) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch4.html#x10-650004.1.2) </script>
 </div>
 <pre><code class="language-Haskell">id :: a -&gt; a
 </code></pre>
-<h2 id="module-names-are-a-dot-separated-sequence"><code>.</code> : module names are a dot-separated sequence<a class="headerlink" href="#module-names-are-a-dot-separated-sequence" title="Permanent link">#</a></h2>
+<h2 id="module-names-are-a-dot-separated-sequence"><code>.</code> : module names are a dot-separated sequence</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch2.html#x7-180002.4) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch2.html#x7-180002.4) </script>
@@ -339,7 +339,7 @@ import qualified Text.Read.Lex as L
 
 lexP = lift L.lex
 </code></pre>
-<h2 id="universal-quantification"><code>.</code> : universal quantification<a class="headerlink" href="#universal-quantification" title="Permanent link">#</a></h2>
+<h2 id="universal-quantification"><code>.</code> : universal quantification</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#explicit-universal-quantification-forall) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#explicit-universal-quantification-forall) </script>
@@ -347,14 +347,14 @@ lexP = lift L.lex
 <pre><code class="language-Haskell">f :: forall a. a -&gt; [a]
 </code></pre>
 <hr />
-<h2 id="list-constructor-cons"><code>:</code> : "list constructor" (cons)<a class="headerlink" href="#list-constructor-cons" title="Permanent link">#</a></h2>
+<h2 id="list-constructor-cons"><code>:</code> : "list constructor" (cons)</h2>
 <p>[ <a href="https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-340003.7">Haskell 2010 Language Report</a> ]
 [ <a href="https://www.haskell.org/onlinereport/haskell2010/haskellch6.html#x13-1200006.1.3">Haskell 2010 Language Report</a> ]
 [ <a href="https://www.haskell.org/onlinereport/haskell2010/haskellch2.html#x7-180002.4">Haskell 2010 Language Report</a> ]</p>
 <pre><code class="language-Haskell">f x xs = x:xs
 </code></pre>
 <hr />
-<h2 id="an-operator-symbol-starting-with-a-colon-is-a-constructor"><code>:</code> : an operator symbol starting with a colon is a constructor<a class="headerlink" href="#an-operator-symbol-starting-with-a-colon-is-a-constructor" title="Permanent link">#</a></h2>
+<h2 id="an-operator-symbol-starting-with-a-colon-is-a-constructor"><code>:</code> : an operator symbol starting with a colon is a constructor</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch2.html#x7-180002.4) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch2.html#x7-180002.4) </script>
@@ -362,7 +362,7 @@ lexP = lift L.lex
 <pre><code class="language-Haskell">data NonEmpty a = a :| [a]
 </code></pre>
 <hr />
-<h2 id="type-signature"><code>::</code> : "type signature"<a class="headerlink" href="#type-signature" title="Permanent link">#</a></h2>
+<h2 id="type-signature"><code>::</code> : "type signature"</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch4.html#x10-810004.4.1) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch4.html#x10-810004.4.1) </script>
@@ -371,7 +371,7 @@ lexP = lift L.lex
 id x =  x
 </code></pre>
 <hr />
-<h2 id="expression-type-signature-type-annotation"><code>::</code> : "expression type-signature" (type annotation)<a class="headerlink" href="#expression-type-signature-type-annotation" title="Permanent link">#</a></h2>
+<h2 id="expression-type-signature-type-annotation"><code>::</code> : "expression type-signature" (type annotation)</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-560003.16) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-560003.16) </script>
@@ -379,7 +379,7 @@ id x =  x
 <pre><code class="language-Haskell">x = fromIntegral (maxBound::Int)
 </code></pre>
 <hr />
-<h2 id="semicolon-in-layout-rule"><code>;</code> : semicolon in layout rule<a class="headerlink" href="#semicolon-in-layout-rule" title="Permanent link">#</a></h2>
+<h2 id="semicolon-in-layout-rule"><code>;</code> : semicolon in layout rule</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch2.html#x7-210002.7) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch2.html#x7-210002.7) </script>
@@ -389,7 +389,7 @@ id x =  x
       in exp1 
 </code></pre>
 <hr />
-<h2 id="-lambda-bound-in-do-expression"><code>&lt;-</code> : lambda-bound in do expression<a class="headerlink" href="#-lambda-bound-in-do-expression" title="Permanent link">#</a></h2>
+<h2 id="-lambda-bound-in-do-expression"><code>&lt;-</code> : lambda-bound in do expression</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-470003.14) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-470003.14) </script>
@@ -399,7 +399,7 @@ id x =  x
   putStrLn x
 </code></pre>
 <hr />
-<h2 id="-pattern-guard"><code>&lt;-</code> : "pattern guard"<a class="headerlink" href="#-pattern-guard" title="Permanent link">#</a></h2>
+<h2 id="-pattern-guard"><code>&lt;-</code> : "pattern guard"</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch4.html#x10-830004.4.3) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch4.html#x10-830004.4.3) </script>
@@ -408,7 +408,7 @@ id x =  x
   | Just y &lt;- g x = 
 </code></pre>
 <hr />
-<h2 id="context-type-class-constraint"><code>=&gt;</code> : context (type class constraint)<a class="headerlink" href="#context-type-class-constraint" title="Permanent link">#</a></h2>
+<h2 id="context-type-class-constraint"><code>=&gt;</code> : context (type class constraint)</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch4.html#x10-660004.1.3) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch4.html#x10-660004.1.3) </script>
@@ -417,7 +417,7 @@ id x =  x
 subtract x y = y - x
 </code></pre>
 <hr />
-<h2 id="implicitparams"><code>?</code> : "ImplicitParams"<a class="headerlink" href="#implicitparams" title="Permanent link">#</a></h2>
+<h2 id="implicitparams"><code>?</code> : "ImplicitParams"</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#extension-ImplicitParams) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#extension-ImplicitParams) </script>
@@ -426,7 +426,7 @@ subtract x y = y - x
 sort = sortBy ?cmp
 </code></pre>
 <hr />
-<h2 id="as-pattern"><code>@</code> : "as pattern"<a class="headerlink" href="#as-pattern" title="Permanent link">#</a></h2>
+<h2 id="as-pattern"><code>@</code> : "as pattern"</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-580003.17) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-580003.17) </script>
@@ -434,7 +434,7 @@ sort = sortBy ?cmp
 <pre><code class="language-Haskell">f s@(x:xs) = 
 </code></pre>
 <hr />
-<h2 id="type-application"><code>@</code> : "type application"<a class="headerlink" href="#type-application" title="Permanent link">#</a></h2>
+<h2 id="type-application"><code>@</code> : "type application"</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#extension-TypeApplications) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#extension-TypeApplications) </script>
@@ -442,14 +442,14 @@ sort = sortBy ?cmp
 <pre><code class="language-Haskell">f = read @Int
 </code></pre>
 <hr />
-<h2 id="empty-list-nil"><code>[]</code> : "empty list" (nil)<a class="headerlink" href="#empty-list-nil" title="Permanent link">#</a></h2>
+<h2 id="empty-list-nil"><code>[]</code> : "empty list" (nil)</h2>
 <p>[ <a href="https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-340003.7">Haskell 2010 Language Report</a> ]
 [ <a href="https://www.haskell.org/onlinereport/haskell2010/haskellch6.html#x13-1200006.1.3">Haskell 2010 Language Report</a> ]</p>
 <pre><code class="language-Haskell">null [] = True
 null _  = False
 </code></pre>
 <hr />
-<h2 id="arithmetic-sequence"><code>[ .. ]</code> : "arithmetic sequence"<a class="headerlink" href="#arithmetic-sequence" title="Permanent link">#</a></h2>
+<h2 id="arithmetic-sequence"><code>[ .. ]</code> : "arithmetic sequence"</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-400003.10) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-400003.10) </script>
@@ -457,7 +457,7 @@ null _  = False
 <pre><code class="language-Haskell">xs = [1..10]
 </code></pre>
 <hr />
-<h2 id="-list-comprehension"><code>[ | &lt;- ]</code> : "list comprehension"<a class="headerlink" href="#-list-comprehension" title="Permanent link">#</a></h2>
+<h2 id="-list-comprehension"><code>[ | &lt;- ]</code> : "list comprehension"</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-420003.11) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-420003.11) </script>
@@ -465,7 +465,7 @@ null _  = False
 <pre><code class="language-Haskell">xs = [x^2 | x &lt;- [1..10]] 
 </code></pre>
 <hr />
-<h2 id="template-haskells-quotation-syntax_1"><code>[|  |]</code> : Template Haskell’s quotation syntax<a class="headerlink" href="#template-haskells-quotation-syntax_1" title="Permanent link">#</a></h2>
+<h2 id="template-haskells-quotation-syntax_1"><code>[|  |]</code> : Template Haskell’s quotation syntax</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#template-haskell) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#template-haskell) </script>
@@ -473,7 +473,7 @@ null _  = False
 <pre><code class="language-Haskell">add1 x = [| x + 1 |]
 </code></pre>
 <hr />
-<h2 id="typed-template-haskells-quotation-syntax"><code>[||  ||]</code> : Typed Template Haskell’s quotation syntax<a class="headerlink" href="#typed-template-haskells-quotation-syntax" title="Permanent link">#</a></h2>
+<h2 id="typed-template-haskells-quotation-syntax"><code>[||  ||]</code> : Typed Template Haskell’s quotation syntax</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#template-haskell) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#template-haskell) </script>
@@ -481,7 +481,7 @@ null _  = False
 <pre><code class="language-Haskell">add1 x = [|| x + 1 ||]
 </code></pre>
 <hr />
-<h2 id="_-wildcard-pattern"><code>_</code> : "wildcard pattern"<a class="headerlink" href="#_-wildcard-pattern" title="Permanent link">#</a></h2>
+<h2 id="_-wildcard-pattern"><code>_</code> : "wildcard pattern"</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-580003.17) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-580003.17) </script>
@@ -491,13 +491,13 @@ f Blue =
 f _    =
 </code></pre>
 <hr />
-<h2 id="_-unused-identifiers-beginning-with-underscore"><code>_</code> : unused identifiers beginning with underscore<a class="headerlink" href="#_-unused-identifiers-beginning-with-underscore" title="Permanent link">#</a></h2>
+<h2 id="_-unused-identifiers-beginning-with-underscore"><code>_</code> : unused identifiers beginning with underscore</h2>
 <p>[ <a href="http://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Wunused-binds">GHC User’s Guide</a> ]
 [ <a href="https://www.haskell.org/onlinereport/haskell2010/haskellch2.html#x7-180002.4">Haskell 2010 Language Report</a> ]</p>
 <pre><code class="language-Haskell">_w = True                -- No warning: _w starts with an underscore
 </code></pre>
 <hr />
-<h2 id="_-typed-hole"><code>_</code> : "typed hole"<a class="headerlink" href="#_-typed-hole" title="Permanent link">#</a></h2>
+<h2 id="_-typed-hole"><code>_</code> : "typed hole"</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#typed-holes) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#typed-holes) </script>
@@ -505,7 +505,7 @@ f _    =
 <pre><code class="language-Haskell">sum xs = foldr _ 0 xs
 </code></pre>
 <hr />
-<h2 id="_-numericunderscores"><code>_</code> : "NumericUnderscores"<a class="headerlink" href="#_-numericunderscores" title="Permanent link">#</a></h2>
+<h2 id="_-numericunderscores"><code>_</code> : "NumericUnderscores"</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#numeric-underscores) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#numeric-underscores) </script>
@@ -513,7 +513,7 @@ f _    =
 <pre><code class="language-Haskell">million = 1_000_000
 </code></pre>
 <hr />
-<h2 id="-lambda-abstraction"><code>\ -&gt;</code> : "lambda abstraction"<a class="headerlink" href="#-lambda-abstraction" title="Permanent link">#</a></h2>
+<h2 id="-lambda-abstraction"><code>\ -&gt;</code> : "lambda abstraction"</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-260003.3) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-260003.3) </script>
@@ -521,7 +521,7 @@ f _    =
 <pre><code class="language-Haskell">add1 = \x -&gt; x + 1
 </code></pre>
 <hr />
-<h2 id="case-lambdacase"><code>\case -&gt;</code> : "LambdaCase"<a class="headerlink" href="#case-lambdacase" title="Permanent link">#</a></h2>
+<h2 id="case-lambdacase"><code>\case -&gt;</code> : "LambdaCase"</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#lambda-case) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#lambda-case) </script>
@@ -532,7 +532,7 @@ f _    =
       _    -&gt; 0
 </code></pre>
 <hr />
-<h2 id="infix-notation-an-identifier-enclosed-in-grave-accents"><code>` `</code> : "infix notation" - an identifier enclosed in grave accents<a class="headerlink" href="#infix-notation-an-identifier-enclosed-in-grave-accents" title="Permanent link">#</a></h2>
+<h2 id="infix-notation-an-identifier-enclosed-in-grave-accents"><code>` `</code> : "infix notation" - an identifier enclosed in grave accents</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-240003.2) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-240003.2) </script>
@@ -540,7 +540,7 @@ f _    =
 <pre><code class="language-Haskell">div10 x = x `div` 10
 </code></pre>
 <hr />
-<h2 id="brace-in-layout-rule"><code>{ }</code> : brace in layout rule<a class="headerlink" href="#brace-in-layout-rule" title="Permanent link">#</a></h2>
+<h2 id="brace-in-layout-rule"><code>{ }</code> : brace in layout rule</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch2.html#x7-210002.7) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch2.html#x7-210002.7) </script>
@@ -548,7 +548,7 @@ f _    =
 <pre><code class="language-Haskell">f x = case x of {Nothing -&gt; False; Just _ -&gt; True}
 </code></pre>
 <hr />
-<h2 id="record-syntax-datatypes-with-field-labels"><code>{ }</code> : "record syntax" (datatypes with field labels)<a class="headerlink" href="#record-syntax-datatypes-with-field-labels" title="Permanent link">#</a></h2>
+<h2 id="record-syntax-datatypes-with-field-labels"><code>{ }</code> : "record syntax" (datatypes with field labels)</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-490003.15) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-490003.15) </script>
@@ -556,7 +556,7 @@ f _    =
 <pre><code class="language-Haskell">data MyPoint = Point { x :: Int, y :: Int }
 </code></pre>
 <hr />
-<h2 id="record-wildcard"><code>{..}</code> : "record wildcard"<a class="headerlink" href="#record-wildcard" title="Permanent link">#</a></h2>
+<h2 id="record-wildcard"><code>{..}</code> : "record wildcard"</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#record-wildcards) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#record-wildcards) </script>
@@ -564,7 +564,7 @@ f _    =
 <pre><code class="language-Haskell">f Vec{..} = 
 </code></pre>
 <hr />
-<h2 id="-compiler-pragma"><code>{-#  #-}</code> : "compiler pragma"<a class="headerlink" href="#-compiler-pragma" title="Permanent link">#</a></h2>
+<h2 id="-compiler-pragma"><code>{-#  #-}</code> : "compiler pragma"</h2>
 <p>[ <a href="https://www.haskell.org/onlinereport/haskell2010/haskellch12.html#x19-18800012">Haskell 2010 Language Report</a> ]
 [ <a href="https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#pragmas">GHC User’s Guide</a> ]
 [ <a href="https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#language-options">GHC User’s Guide</a> ]</p>
@@ -586,7 +586,7 @@ clip255 x
   | otherwise = x 
 </code></pre>
 <hr />
-<h2 id="multiwayif"><code>|</code> : "MultiWayIf"<a class="headerlink" href="#multiwayif" title="Permanent link">#</a></h2>
+<h2 id="multiwayif"><code>|</code> : "MultiWayIf"</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#multi-way-if-expressions) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#multi-way-if-expressions) </script>
@@ -595,7 +595,7 @@ clip255 x
    | isError x -&gt; errorExit x
    | otherwise -&gt; execCommand x
 </code></pre>
-<h2 id="algebraic-datatype-declaration"><code>|</code> : algebraic datatype declaration<a class="headerlink" href="#algebraic-datatype-declaration" title="Permanent link">#</a></h2>
+<h2 id="algebraic-datatype-declaration"><code>|</code> : algebraic datatype declaration</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch4.html#x10-690004.2.1) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch4.html#x10-690004.2.1) </script>
@@ -603,7 +603,7 @@ clip255 x
 <pre><code class="language-Haskell">data Maybe a = Nothing | Just a
 </code></pre>
 <hr />
-<h2 id="functional-dependency"><code>|</code> : "functional dependency"<a class="headerlink" href="#functional-dependency" title="Permanent link">#</a></h2>
+<h2 id="functional-dependency"><code>|</code> : "functional dependency"</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#functional-dependencies) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#functional-dependencies) </script>
@@ -611,7 +611,7 @@ clip255 x
 <pre><code class="language-Haskell">class Foo a b c | a b -&gt; c where 
 </code></pre>
 <hr />
-<h2 id="irrefutable-pattern"><code>~</code> : "irrefutable pattern"<a class="headerlink" href="#irrefutable-pattern" title="Permanent link">#</a></h2>
+<h2 id="irrefutable-pattern"><code>~</code> : "irrefutable pattern"</h2>
 <div>
 <div class="MathJax_Preview"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-580003.17) </div>
 <script type="math/tex; mode=display"> [Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/haskellch3.html#x8-580003.17) </script>
@@ -619,7 +619,7 @@ clip255 x
 <pre><code class="language-Haskell">f1 ~(as,bs) =
 </code></pre>
 <hr />
-<h2 id="equality-constraint"><code>~</code> : "equality constraint"<a class="headerlink" href="#equality-constraint" title="Permanent link">#</a></h2>
+<h2 id="equality-constraint"><code>~</code> : "equality constraint"</h2>
 <div>
 <div class="MathJax_Preview"> [GHC User’s Guide](https://downloads.haskell.org/%7Eghc/latest/docs/html/users_guide/glasgow_exts.html#equality-constraints) </div>
 <script type="math/tex; mode=display"> [GHC User’s Guide](https://downloads.haskell.org/%7Eghc/latest/docs/html/users_guide/glasgow_exts.html#equality-constraints) </script>

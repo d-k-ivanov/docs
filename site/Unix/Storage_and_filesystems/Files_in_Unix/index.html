@@ -93,7 +93,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="change-permisions-recursively">Change permisions recursively<a class="headerlink" href="#change-permisions-recursively" title="Permanent link">#</a></h3>
+    <h3 id="change-permisions-recursively">Change permisions recursively</h3>
 <p>You can use a simple <a href="https://github.com/keepbot/progs/blob/master/bash/permissions/default.sh" title="Change permissions to default">Script</a></p>
 <pre><code class="language-bash">find &lt;path_to_folder&gt; -type f -print -exec chmod 644 {} \;
 find &lt;path_to_folder&gt; -type d -print -exec chmod 755 {} \;
@@ -101,32 +101,32 @@ find &lt;path_to_folder&gt; -type d -print -exec chmod 755 {} \;
 # Union
 find /home/tmp -type f -print -exec chmod 644 {} \; &amp;&amp; find /home/tmp  -type d -print -exec chmod 755 {} \;
 </code></pre>
-<h3 id="count-files">Count files<a class="headerlink" href="#count-files" title="Permanent link">#</a></h3>
+<h3 id="count-files">Count files</h3>
 <pre><code class="language-bash">find . -type f | wc -l
 ls | wc -l
 </code></pre>
-<h3 id="remove-file-list">Remove file list<a class="headerlink" href="#remove-file-list" title="Permanent link">#</a></h3>
+<h3 id="remove-file-list">Remove file list</h3>
 <pre><code class="language-bash">ls | xargs rm
 </code></pre>
-<h3 id="remove-file-suffix-filenamesuffix">Remove file suffix "filename"+"suffix"<a class="headerlink" href="#remove-file-suffix-filenamesuffix" title="Permanent link">#</a></h3>
+<h3 id="remove-file-suffix-filenamesuffix">Remove file suffix "filename"+"suffix"</h3>
 <pre><code class="language-bash">for i in `find . -type f -name &quot;*&lt;suffix&gt;*&quot;`; do dst=`echo $i | sed s/&lt;suffix&gt;//`;mv $i $dst; done
 </code></pre>
-<h3 id="move-all-files-in-one-level-directory-in-certain-folder-to-another">Move all files in one level directory in certain folder to another<a class="headerlink" href="#move-all-files-in-one-level-directory-in-certain-folder-to-another" title="Permanent link">#</a></h3>
+<h3 id="move-all-files-in-one-level-directory-in-certain-folder-to-another">Move all files in one level directory in certain folder to another</h3>
 <pre><code class="language-bash">find /&lt;path_to_folder&gt;/* -prune -type f | xargs -I '{}' mv {} /&lt;path_to_destination_folder&gt;/archive/.
 </code></pre>
-<h3 id="search-for-certain-file-contents">Search for certain file contents<a class="headerlink" href="#search-for-certain-file-contents" title="Permanent link">#</a></h3>
+<h3 id="search-for-certain-file-contents">Search for certain file contents</h3>
 <pre><code class="language-bash">find . -type f -name &quot;*conf&quot; -exec echo {} \; -exec grep 192.168.0.1:3389 {} \;
 </code></pre>
-<h3 id="show-directories-content-recursively">Show directories content recursively<a class="headerlink" href="#show-directories-content-recursively" title="Permanent link">#</a></h3>
+<h3 id="show-directories-content-recursively">Show directories content recursively</h3>
 <pre><code class="language-bash">ls -R /path | awk '
 /:$/&amp;&amp;f{s=$0;f=0}
 /:$/&amp;&amp;!f{sub(/:$/,&quot;&quot;);s=$0;f=1;next}
 NF&amp;&amp;f{ print s&quot;/&quot;$0 }'
 </code></pre>
-<h3 id="make-dirs-with-indexes">Make dirs with indexes<a class="headerlink" href="#make-dirs-with-indexes" title="Permanent link">#</a></h3>
+<h3 id="make-dirs-with-indexes">Make dirs with indexes</h3>
 <pre><code class="language-bash">for i in 0{1..9} {10..39}; do mkdir delete-$i; cd delete-$i; touch del-file-$i; cd ..; done
 </code></pre>
-<h3 id="create-bunch-of-files-from-list-in-a-file">Create bunch of files from list in a file<a class="headerlink" href="#create-bunch-of-files-from-list-in-a-file" title="Permanent link">#</a></h3>
+<h3 id="create-bunch-of-files-from-list-in-a-file">Create bunch of files from list in a file</h3>
 <pre><code class="language-bash"># Predefined number of records
 head -&lt;number_of_lines&gt; inventory | awk '{ print $1 }' | xargs -I '{}' touch &lt;destination_folder&gt;/{}
 #E.g. head -10 inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}
@@ -135,22 +135,22 @@ head -&lt;number_of_lines&gt; inventory | awk '{ print $1 }' | xargs -I '{}' tou
 cat &lt;filename&gt; | awk '{ print $1 }' | xargs -I '{}' touch &lt;destination_folder&gt;/{}
 #E.g. cat inventory | awk '{ print $1 }' | xargs -I '{}' touch host_vars/{}
 </code></pre>
-<h3 id="move-bunch-of-folders">Move bunch of folders<a class="headerlink" href="#move-bunch-of-folders" title="Permanent link">#</a></h3>
+<h3 id="move-bunch-of-folders">Move bunch of folders</h3>
 <pre><code class="language-bash">ls -1d &lt;space separeated folder list&gt; | xargs -I '{}' mv {} &lt;destination&gt;
 #E.g. ls -1d command_line dotfiles-srv programmming-examples shell_scripts | xargs -I '{}' mv {} github/
 </code></pre>
-<h3 id="mounts">Mounts<a class="headerlink" href="#mounts" title="Permanent link">#</a></h3>
+<h3 id="mounts">Mounts</h3>
 <pre><code class="language-bash">#Show information about mounted file systems with 'column' examples**
 df -h | column -t
 mount -l | column -t
 </code></pre>
-<h3 id="sum-of-root-folders">Sum of root folders<a class="headerlink" href="#sum-of-root-folders" title="Permanent link">#</a></h3>
+<h3 id="sum-of-root-folders">Sum of root folders</h3>
 <pre><code class="language-bash">du -s * 2&gt;/dev/null | awk '{print $1}' | paste -sd+ | bc
 </code></pre>
-<h3 id="mass-change-extension-of-files">Mass change extension of files<a class="headerlink" href="#mass-change-extension-of-files" title="Permanent link">#</a></h3>
+<h3 id="mass-change-extension-of-files">Mass change extension of files</h3>
 <pre><code class="language-bash">for file in *.txt; do mv &quot;$file&quot; &quot;`basename &quot;$file&quot; .txt`.md&quot;; done
 </code></pre>
-<h3 id="split-file">Split file<a class="headerlink" href="#split-file" title="Permanent link">#</a></h3>
+<h3 id="split-file">Split file</h3>
 <pre><code class="language-bash">split &lt;OPTION&gt; &lt;FILE&gt; &lt;PREFIX&gt;
 
 OPTIONS:
@@ -167,7 +167,7 @@ archive.tar.gz.01
 archive.tar.gz.02
 archive.tar.gz.03
 </code></pre>
-<h3 id="joining-all-similarly-prefixed-files">Joining all similarly prefixed files<a class="headerlink" href="#joining-all-similarly-prefixed-files" title="Permanent link">#</a></h3>
+<h3 id="joining-all-similarly-prefixed-files">Joining all similarly prefixed files</h3>
 <p>For example, "_tar.gz.1of2" and "_tar.gz.2of2".</p>
 <pre><code class="language-bash"># Unix
 cat &quot;FileName_tar.gz.1of3&quot; &quot;FileName_tar.gz.2of3&quot; &quot;FileName_tar.gz.3of3&quot; &gt; &quot;FileName.tar.gz&quot;

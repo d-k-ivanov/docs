@@ -69,11 +69,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="breadth-first-search">Breadth-First Search<a class="headerlink" href="#breadth-first-search" title="Permanent link">#</a></h1>
+    <h1 id="breadth-first-search">Breadth-First Search</h1>
 <p>Breadth first search is one of the basic and essential searching algorithms on graphs.</p>
 <p>As a result of how the algorithm works, the path found by breadth first search to any node is the shortest path to that node, i.e the path that contains the smallest number of edges in unweighted graphs.</p>
 <p>The algorithm works in <span><span class="MathJax_Preview">O(n + m)</span><script type="math/tex">O(n + m)</script></span> time, where <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is number of vertices and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is the number of edges.</p>
-<h2 id="description-of-the-algorithm">Description of the algorithm<a class="headerlink" href="#description-of-the-algorithm" title="Permanent link">#</a></h2>
+<h2 id="description-of-the-algorithm">Description of the algorithm</h2>
 <p>The algorithm takes as input an unweighted graph and the id of the source vertex <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>. The input graph can be directed or undirected,
 it does not matter to the algorithm.</p>
 <p>The algorithm can be understood as a fire spreading on the graph: at the zeroth step only the source <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> is on fire. At each step, the fire burning at each vertex spreads to all of its neighbors. In one iteration of the algorithm, the "ring of
@@ -85,7 +85,7 @@ Then, loop until the queue is empty and in each iteration, pop a vertex from the
 of this vertex and if some of these edges go to vertices that are not already lit, set them on fire and place them in the queue.</p>
 <p>As a result, when the queue is empty, the "ring of fire" contains all vertices reachable from the source <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, with each vertex reached in the shortest possible way.
 You can also calculate the lengths of the shortest paths (which just requires maintaining an array of path lengths <span><span class="MathJax_Preview">d[]</span><script type="math/tex">d[]</script></span>) as well as save information to restore all of these shortest paths (for this, it is necessary to maintain an array of "parents" <span><span class="MathJax_Preview">p[]</span><script type="math/tex">p[]</script></span>, which stores for each vertex the vertex from which we reached it).</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
+<h2 id="implementation">Implementation</h2>
 <p>We write code for the described algorithm in C++.</p>
 <pre><code class="language-cpp">vector&lt;vector&lt;int&gt;&gt; adj;  // adjacency list representation
 int n; // number of nodes
@@ -124,7 +124,7 @@ while (!q.empty()) {
         cout &lt;&lt; v &lt;&lt; &quot; &quot;;
 }
 </code></pre>
-<h2 id="applications-of-bfs">Applications of BFS<a class="headerlink" href="#applications-of-bfs" title="Permanent link">#</a></h2>
+<h2 id="applications-of-bfs">Applications of BFS</h2>
 <ul>
 <li>
 <p>Find the shortest path from a source to other vertices in an unweighted graph.</p>
@@ -171,7 +171,7 @@ Any edge <span><span class="MathJax_Preview">(a, b)</span><script type="math/tex
 After that we run a BFS to find the shortest path from the starting vertex <span><span class="MathJax_Preview">(s, 0)</span><script type="math/tex">(s, 0)</script></span> to the end vertex <span><span class="MathJax_Preview">(t, 0)</span><script type="math/tex">(t, 0)</script></span>.</p>
 </li>
 </ul>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
+<h2 id="practice-problems">Practice Problems</h2>
 <ul>
 <li><a href="http://spoj.com/problems/AKBAR">SPOJ: AKBAR</a></li>
 <li><a href="http://www.spoj.com/problems/NAKANJ/">SPOJ: NAKANJ</a></li>

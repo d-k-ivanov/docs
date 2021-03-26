@@ -67,12 +67,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="generating-combinations">Generating Combinations<a class="headerlink" href="#generating-combinations" title="Permanent link">#</a></h1>
-<h2 id="generating-all-kk-combinations"># Generating all <span><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span>-combinations<a class="headerlink" href="#generating-all-kk-combinations" title="Permanent link">#</a></h2>
+    <h1 id="generating-combinations">Generating Combinations</h1>
+<h2 id="generating-all-kk-combinations"># Generating all <span><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span>-combinations</h2>
 <p>In this article we will discuss the problem of generating all <span><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span>-combinations.
 Given the natural numbers <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> and <span><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span>, and considering a set of numbers from <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> to <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>.
 The task is to derive all <strong>subsets of size <span><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span></strong>.</p>
-<h2 id="generate-next-lexicographical-kk-combination">Generate next lexicographical <span><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span>-combination<a class="headerlink" href="#generate-next-lexicographical-kk-combination" title="Permanent link">#</a></h2>
+<h2 id="generate-next-lexicographical-kk-combination">Generate next lexicographical <span><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span>-combination</h2>
 <p>First we will generate them in lexicographical order.
 The algorithm for this is simple. The first combination will be <span><span class="MathJax_Preview">{1, 2, ..., K}</span><script type="math/tex">{1, 2, ..., K}</script></span>. Now let's see how
 to find the combination that immediately follows this, lexicographically. To do so, we consider our

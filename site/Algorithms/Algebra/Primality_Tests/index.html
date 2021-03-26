@@ -69,9 +69,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="primality-tests">Primality Tests<a class="headerlink" href="#primality-tests" title="Permanent link">#</a></h1>
+    <h1 id="primality-tests">Primality Tests</h1>
 <p>This article describes multiple algorithms to determine if a number is prime or not.</p>
-<h2 id="trial-division">Trial division<a class="headerlink" href="#trial-division" title="Permanent link">#</a></h2>
+<h2 id="trial-division">Trial division</h2>
 <p>By definition a prime number doesn't have any divisors other than <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> and itself.
 A composite number has at least one additional divisor, let's call it <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>.
 Naturally <span><span class="MathJax_Preview">\frac{n}{d}</span><script type="math/tex">\frac{n}{d}</script></span> is also a divisor of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.
@@ -90,7 +90,7 @@ If it is a divisor, than <span><span class="MathJax_Preview">n</span><script typ
 <p>This is the simplest form of a prime check.
 You can optimize this function quite a bit, for instance by only checking all odd numbers in the loop, since the only even prime number is 2.
 Multiple such optimizations are described in the article about <a href="/docs/#Algorithms/Algebra/Integer_Factorization/">integer factorization</a>.</p>
-<h2 id="fermat-primality-test">Fermat primality test<a class="headerlink" href="#fermat-primality-test" title="Permanent link">#</a></h2>
+<h2 id="fermat-primality-test">Fermat primality test</h2>
 <p>This is a probabilistic test.</p>
 <p>Fermat's little theorem (see also <a href="/docs/#Algorithms/Algebra/Euler_Totient_Function/">Euler's totient function</a>) states, that for a prime number <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> and a coprime integer <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> the following equation holds:</p>
 <div>
@@ -129,7 +129,7 @@ Such numbers are called <em>Carmichael numbers</em>.
 The Fermat primality test can identify these numbers only, if we have immense luck and choose a base <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> with <span><span class="MathJax_Preview">\gcd(a, n) \ne 1</span><script type="math/tex">\gcd(a, n) \ne 1</script></span>.</p>
 <p>The Fermat test is still be used in practice, as it is very fast and Carmichael numbers are very rare.
 E.g. there only exist 646 such numbers below <span><span class="MathJax_Preview">10^9</span><script type="math/tex">10^9</script></span>.</p>
-<h2 id="miller-rabin-primality-test">Miller-Rabin primality test<a class="headerlink" href="#miller-rabin-primality-test" title="Permanent link">#</a></h2>
+<h2 id="miller-rabin-primality-test">Miller-Rabin primality test</h2>
 <p>The Miller-Rabin test extends the ideas from the Fermat test.</p>
 <p>For an odd number <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, <span><span class="MathJax_Preview">n-1</span><script type="math/tex">n-1</script></span> is even and we can factor out all powers of 2.
 We can write:
@@ -226,7 +226,7 @@ bool MillerRabin(u64 n, int iter=5) { // returns true if n is probably prime, el
 <p>Before the Miller-Rabin test you can test additionally if one of the first few prime numbers is a divisor.
 This can speed up the test by a lot, since most composite numbers have very small prime divisors.
 E.g. <span><span class="MathJax_Preview">88\%</span><script type="math/tex">88\%</script></span> of all numbers have a prime factors smaller than <span><span class="MathJax_Preview">100</span><script type="math/tex">100</script></span>.</p>
-<h3 id="deterministic-version">Deterministic version<a class="headerlink" href="#deterministic-version" title="Permanent link">#</a></h3>
+<h3 id="deterministic-version">Deterministic version</h3>
 <p>Miller showed that it is possible to make the algorithm deterministic by only checking all bases <span><span class="MathJax_Preview">\le O((\ln n)^2)</span><script type="math/tex">\le O((\ln n)^2)</script></span>.
 Bach later gave a concrete bound, it is only necessary to test all bases <span><span class="MathJax_Preview">a \le 2 \ln(n)^2</span><script type="math/tex">a \le 2 \ln(n)^2</script></span>.</p>
 <p>This is still a pretty large number of bases.
@@ -257,7 +257,7 @@ And for testing 64 bit integer it is enough to check the first 12 prime bases: 2
 </code></pre>
 <p>It's also possible to do the check with only 7 bases: 2, 325, 9375, 28178, 450775, 9780504 and 1795265022.
 However, since these numbers (except 2) are not prime, you need to check additionally if the number you are checking is equal to any prime divisor of those bases: 2, 3, 5, 13, 19, 73, 193, 407521, 299210837.</p>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
+<h2 id="practice-problems">Practice Problems</h2>
 <ul>
 <li><a href="https://www.spoj.com/problems/PON/">SPOJ - Prime or Not</a></li>
 </ul>

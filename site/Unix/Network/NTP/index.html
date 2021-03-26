@@ -67,7 +67,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="ntpconf-in-ansible-way">ntp.conf in Ansible way<a class="headerlink" href="#ntpconf-in-ansible-way" title="Permanent link">#</a></h3>
+    <h3 id="ntpconf-in-ansible-way">ntp.conf in Ansible way</h3>
 <pre><code class="language-python">driftfile /var/lib/ntp/ntp.drift
 
 {% for ntp_server in net_ntp_servers %}
@@ -84,7 +84,7 @@ net_ntp_servers:
   - 2.ru.pool.ntp.org
   - 3.ru.pool.ntp.org
 </code></pre>
-<h3 id="ntpconf-common">ntp.conf common<a class="headerlink" href="#ntpconf-common" title="Permanent link">#</a></h3>
+<h3 id="ntpconf-common">ntp.conf common</h3>
 <pre><code class="language-bash">driftfile /var/lib/ntp/ntp.drift
 
 server 0.ru.pool.ntp.org burst iburst minpoll 4 maxpoll 6

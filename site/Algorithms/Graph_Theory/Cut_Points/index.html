@@ -69,11 +69,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="cut-points">Cut Points<a class="headerlink" href="#cut-points" title="Permanent link">#</a></h1>
-<h2 id="finding-articulation-points-in-a-graph-in-onmonm">Finding articulation points in a graph in <span><span class="MathJax_Preview">O(N+M)</span><script type="math/tex">O(N+M)</script></span><a class="headerlink" href="#finding-articulation-points-in-a-graph-in-onmonm" title="Permanent link">#</a></h2>
+    <h1 id="cut-points">Cut Points</h1>
+<h2 id="finding-articulation-points-in-a-graph-in-onmonm">Finding articulation points in a graph in <span><span class="MathJax_Preview">O(N+M)</span><script type="math/tex">O(N+M)</script></span></h2>
 <p>We are given an undirected graph. An articulation point (or cut vertex) is defined as a vertex which, when removed along with associated edges, makes the graph disconnected (or more precisely, increases the number of connected components in the graph). The task is to find all articulation points in the given graph.</p>
 <p>The algorithm described here is based on <a href="/docs/#Algorithms/Graph_Theory/Depth_First_Search/">depth first search</a> and has <span><span class="MathJax_Preview">O(N+M)</span><script type="math/tex">O(N+M)</script></span> complexity, where <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> is the number of vertices and <span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> is the number of edges in the graph.</p>
-<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
+<h2 id="algorithm">Algorithm</h2>
 <p>Pick an arbitrary vertex of the graph <span><span class="MathJax_Preview">root</span><script type="math/tex">root</script></span> and run <a href="/docs/#Algorithms/Graph_Theory/Depth_First_Search/">depth first search</a> from it. Note the following fact (which is easy to prove):</p>
 <ul>
 <li>
@@ -93,7 +93,7 @@ This vertex will be the point of articulation if and only if this vertex has mor
 </div>
 <p>Now, there is a back edge from vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> or one of its descendants to one of its ancestors if and only if vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> has a child <span><span class="MathJax_Preview">to</span><script type="math/tex">to</script></span> for which <span><span class="MathJax_Preview">low[to] &lt; tin[v]</span><script type="math/tex">low[to] < tin[v]</script></span>. If <span><span class="MathJax_Preview">low[to] = tin[v]</span><script type="math/tex">low[to] = tin[v]</script></span>, the back edge comes directly to <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>, otherwise it comes to one of the ancestors of <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>.</p>
 <p>Thus, the vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> in the DFS tree is an articulation point if and only if <span><span class="MathJax_Preview">low[to] \geq tin[v]</span><script type="math/tex">low[to] \geq tin[v]</script></span>.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
+<h2 id="implementation">Implementation</h2>
 <p>The implementation needs to distinguish three cases: when we go down the edge in DFS tree, when we find a back edge to an ancestor of the vertex and when we return to a parent of the vertex. These are the cases:</p>
 <ul>
 <li><span><span class="MathJax_Preview">visited[to] = false</span><script type="math/tex">visited[to] = false</script></span> - the edge is part of DFS tree;</li>
@@ -142,7 +142,7 @@ void find_cutpoints() {
 </code></pre>
 <p>Main function is <code>find_cutpoints</code>; it performs necessary initialization and starts depth first search in each connected component of the graph.</p>
 <p>Function <code>IS_CUTPOINT(a)</code> is some function that will process the fact that vertex <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> is an articulation point, for example, print it (Caution that this can be called multiple times for a vertex).</p>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
+<h2 id="practice-problems">Practice Problems</h2>
 <ul>
 <li><a href="http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=13&amp;page=show_problem&amp;problem=1140">UVA #10199 "Tourist Guide"</a> [difficulty: low]</li>
 <li><a href="http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=5&amp;page=show_problem&amp;problem=251">UVA #315 "Network"</a> [difficulty: low]</li>

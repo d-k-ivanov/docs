@@ -79,8 +79,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="common-git-commands">Common Git commands<a class="headerlink" href="#common-git-commands" title="Permanent link">#</a></h1>
-<h2 id="cloning">Cloning<a class="headerlink" href="#cloning" title="Permanent link">#</a></h2>
+    <h1 id="common-git-commands">Common Git commands</h1>
+<h2 id="cloning">Cloning</h2>
 <pre><code class="language-bash">
 # For new repos(-jN - number of simltaniuos jobs):
 git clone --recursive-submodules -j4 git@github.com:keepbot/docs.git
@@ -89,12 +89,12 @@ git clone --recursive-submodules git@github.com:keepbot/docs.git
 # Ignore self signed ssl certificates
 git -c http.sslVerify=false clone --recursive git@github.com:keepbot/docs.git
 </code></pre>
-<h2 id="cleaning-repository">Cleaning repository<a class="headerlink" href="#cleaning-repository" title="Permanent link">#</a></h2>
+<h2 id="cleaning-repository">Cleaning repository</h2>
 <pre><code class="language-bash"># Those commands reset all changes. The repository will be the same as clone new repos.
 git reset --hard
 git clean -d -x -f
 </code></pre>
-<h2 id="commits">Commits<a class="headerlink" href="#commits" title="Permanent link">#</a></h2>
+<h2 id="commits">Commits</h2>
 <pre><code class="language-bash"># Add files to commit
 git add &lt;path_to_file&gt;
 # Commit with comment
@@ -106,7 +106,7 @@ git commit --amend
 # Add changes to previous commit without changing commit message
 git commit --amend --no-edit
 </code></pre>
-<h2 id="tagging">Tagging<a class="headerlink" href="#tagging" title="Permanent link">#</a></h2>
+<h2 id="tagging">Tagging</h2>
 <pre><code class="language-bash"># Add tag to current commit
 git tag &lt;tag_name&gt;
 # Add tag to commit
@@ -120,8 +120,8 @@ git push --tags
 # Overwrite tags to remote repository
 git push --tags --force
 </code></pre>
-<h2 id="submodules">Submodules<a class="headerlink" href="#submodules" title="Permanent link">#</a></h2>
-<h3 id="add-and-update-submodule">Add and Update submodule<a class="headerlink" href="#add-and-update-submodule" title="Permanent link">#</a></h3>
+<h2 id="submodules">Submodules</h2>
+<h3 id="add-and-update-submodule">Add and Update submodule</h3>
 <pre><code class="language-bash"># Add
 git submodule add -b &lt;branch_name&gt; &lt;submodule_git_url&gt; &lt;local_path&gt;
 # Update
@@ -129,7 +129,7 @@ git submodule update --recursive --remote
 # Download all
 git submodule update --init --recursive
 </code></pre>
-<h3 id="remove-submodule">Remove submodule<a class="headerlink" href="#remove-submodule" title="Permanent link">#</a></h3>
+<h3 id="remove-submodule">Remove submodule</h3>
 <pre><code class="language-bash"># 1. Delete the relevant section from the *.gitmodules* file.
 [submodule &quot;vendor&quot;]
     path = vendor
@@ -146,7 +146,7 @@ rm -rf .git/modules/submodule_name
 # 7. Delete files
 rm -rf path/to/submodule
 </code></pre>
-<h3 id="change-branch-for-existing-submodule">Change branch for existing submodule<a class="headerlink" href="#change-branch-for-existing-submodule" title="Permanent link">#</a></h3>
+<h3 id="change-branch-for-existing-submodule">Change branch for existing submodule</h3>
 <pre><code class="language-bash">cd &lt;path_to_repo&gt;
 git config -f .gitmodules submodule.&lt;local_path&gt;.branch &lt;branch_name&gt;
 
@@ -158,7 +158,7 @@ git branch -u origin/master master
 cd &lt;path_to_repo&gt;
 git add &lt;submodule_local_path&gt;
 </code></pre>
-<h2 id="branches">Branches<a class="headerlink" href="#branches" title="Permanent link">#</a></h2>
+<h2 id="branches">Branches</h2>
 <pre><code class="language-bash"># Create branch
 git checkout -b &lt;branch_name&gt;
 # Checkout branch
@@ -176,7 +176,7 @@ git branch -a --no-merged
 # Remove branch
 git push origin --delete &lt;branch_name&gt;
 </code></pre>
-<h2 id="garbage-collection">Garbage collection<a class="headerlink" href="#garbage-collection" title="Permanent link">#</a></h2>
+<h2 id="garbage-collection">Garbage collection</h2>
 <pre><code class="language-bash"># Help: https://git-scm.com/docs/git-gc
 # Runs a number of housekeeping tasks within the current repository, such as compressing file revisions (to reduce disk space and increase performance), removing unreachable objects which may have been created from prior invocations of git add, packing refs, pruning reflog, rerere metadata or stale working trees.
 # Users are encouraged to run this task on a regular basis within each repository to maintain good disk space utilization and good operating performance.
@@ -196,8 +196,8 @@ git gc --auto
 git remote prune origin
 git fetch --prune
 </code></pre>
-<h2 id="patches">Patches<a class="headerlink" href="#patches" title="Permanent link">#</a></h2>
-<h3 id="create-patch-from-commit">Create patch from commit<a class="headerlink" href="#create-patch-from-commit" title="Permanent link">#</a></h3>
+<h2 id="patches">Patches</h2>
+<h3 id="create-patch-from-commit">Create patch from commit</h3>
 <pre><code class="language-bash">## The easiest version (you can specify number of commit to patch)
 git format-patch -1 HEAD
 ## Same as first, but create numbered files (00001-nnnnn)
@@ -205,13 +205,13 @@ git format-patch -n HEAD^
 ## Simple cat ftom stdout, works fine on most of systems, but be carfull, if you have customized terminal (color tags, special symbols, etc.)
 git show HEAD &gt; path_to.patch
 </code></pre>
-<h3 id="apply-patches">Apply patches<a class="headerlink" href="#apply-patches" title="Permanent link">#</a></h3>
+<h3 id="apply-patches">Apply patches</h3>
 <pre><code class="language-bash">git apply --stat 00001-File-Name.patch
 git apply --check 00001-File-Name.patch
 git am &lt; 0001-File-Name.patch
 </code></pre>
-<h2 id="line-endings">Line endings<a class="headerlink" href="#line-endings" title="Permanent link">#</a></h2>
-<h3 id="os-based-proper-config">OS-based proper config<a class="headerlink" href="#os-based-proper-config" title="Permanent link">#</a></h3>
+<h2 id="line-endings">Line endings</h2>
+<h3 id="os-based-proper-config">OS-based proper config</h3>
 <pre><code class="language-bash"># Mac
 git config --global core.autocrlf input
 # Linux
@@ -219,7 +219,7 @@ git config --global core.autocrlf input
 # Windows
 git config --global core.autocrlf true
 </code></pre>
-<h3 id="normalize-line-endings">Normalize line endings<a class="headerlink" href="#normalize-line-endings" title="Permanent link">#</a></h3>
+<h3 id="normalize-line-endings">Normalize line endings</h3>
 <pre><code class="language-bash"># Save your current files in Git, so that none of your work is lost.
 git add . -u
 git commit -m &quot;Saving files before refreshing line endings&quot;
@@ -244,7 +244,7 @@ git add .gitattributes
 # Commit the changes to your repository.
 git commit -m &quot;Normalize all the line endings&quot;
 </code></pre>
-<h2 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">#</a></h2>
+<h2 id="settings">Settings</h2>
 <pre><code class="language-bash"># System namespace
 git config --global user.name &quot;Your Name&quot;
 git config --global user.email your@e-mail.com
@@ -254,7 +254,7 @@ git config --local user.name &quot;Your Name&quot;
 git config --local user.email your@e-mail.com
 
 </code></pre>
-<h2 id="update-local-reposytory-from-remote">Update local reposytory from remote<a class="headerlink" href="#update-local-reposytory-from-remote" title="Permanent link">#</a></h2>
+<h2 id="update-local-reposytory-from-remote">Update local reposytory from remote</h2>
 <pre><code class="language-bash"># Fentch + Merge
 git pull
 # Fetch only
@@ -266,16 +266,16 @@ git pull rebase
 git fetch --all
 git reset --hard origin/master
 </code></pre>
-<h2 id="working-with-bunch-of-repositories">Working with bunch of  repositories<a class="headerlink" href="#working-with-bunch-of-repositories" title="Permanent link">#</a></h2>
+<h2 id="working-with-bunch-of-repositories">Working with bunch of  repositories</h2>
 <pre><code class="language-bash"># Last commits
 for d in `ls`; do cd $d; git log --pretty=format:&quot;%h - %an, %ar : %s&quot; -1; cd ..; done
 # Mass checkout
 for d in `ls`; do cd $d; git checkout; cd ..; done
 </code></pre>
-<h2 id="logs">Logs<a class="headerlink" href="#logs" title="Permanent link">#</a></h2>
+<h2 id="logs">Logs</h2>
 <pre><code class="language-bash">git log --pretty=format:&quot;%h - %an, %ar : %s&quot; -1
 </code></pre>
-<h2 id="provide-separate-ssh-key">Provide separate ssh-key<a class="headerlink" href="#provide-separate-ssh-key" title="Permanent link">#</a></h2>
+<h2 id="provide-separate-ssh-key">Provide separate ssh-key</h2>
 <pre><code class="language-bash">vim ~/.ssh/config
 #------ add ------
 host &lt;full_server_hostname&gt;

@@ -70,10 +70,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="dijkstra-algorithm">Dijkstra Algorithm<a class="headerlink" href="#dijkstra-algorithm" title="Permanent link">#</a></h1>
+    <h1 id="dijkstra-algorithm">Dijkstra Algorithm</h1>
 <p>You are given a directed or undirected weighted graph with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> edges. The weights of all edges are non-negative. You are also given a starting vertex <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>. This article discusses finding the lengths of the shortest paths from a starting vertex <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to all other vertices, and output the shortest paths themselves.</p>
 <p>This problem is also called <strong>single-source shortest paths problem</strong>.</p>
-<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
+<h2 id="algorithm">Algorithm</h2>
 <p>Here is an algorithm described by the Dutch computer scientist Edsger W. Dijkstra in 1959.</p>
 <p>Let's create an array <span><span class="MathJax_Preview">d[]</span><script type="math/tex">d[]</script></span> where for each vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> we store the current length of the shortest path from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> in <span><span class="MathJax_Preview">d[v]</span><script type="math/tex">d[v]</script></span>.
 Initially <span><span class="MathJax_Preview">d[s] = 0</span><script type="math/tex">d[s] = 0</script></span>, and for all other vertices this length equals infinity.
@@ -96,7 +96,7 @@ In the implementation a sufficiently large number (which is guaranteed to be gre
 </div>
 <p>After all such edges are considered, the current iteration ends. Finally, after <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> iterations, all vertices will be marked, and the algorithm terminates. We claim that the found values <span><span class="MathJax_Preview">d[v]</span><script type="math/tex">d[v]</script></span> are the lengths of shortest paths from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to all vertices <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>.</p>
 <p>Note that if some vertices are unreachable from the starting vertex <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, the values <span><span class="MathJax_Preview">d[v]</span><script type="math/tex">d[v]</script></span> for them will remain infinite. Obviously, the last few iterations of the algorithm will choose those vertices, but no useful work will be done for them. Therefore, the algorithm can be stopped as soon as the selected vertex has infinite distance to it.</p>
-<h3 id="restoring-shortest-paths">Restoring Shortest Paths<a class="headerlink" href="#restoring-shortest-paths" title="Permanent link">#</a></h3>
+<h3 id="restoring-shortest-paths">Restoring Shortest Paths</h3>
 <p>Usually one needs to know not only the lengths of shortest paths but also the shortest paths themselves. Let's see how to maintain sufficient information to restore the shortest path from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to any vertex. We'll maintain an array of predecessors <span><span class="MathJax_Preview">p[]</span><script type="math/tex">p[]</script></span> in which for each vertex <span><span class="MathJax_Preview">v \ne s</span><script type="math/tex">v \ne s</script></span> <span><span class="MathJax_Preview">p[v]</span><script type="math/tex">p[v]</script></span> is the penultimate vertex in the shortest path from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>. Here we use the fact that if we take the shortest path to some vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> and remove <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> from this path, we'll get a path ending in at vertex <span><span class="MathJax_Preview">p[v]</span><script type="math/tex">p[v]</script></span>, and this path will be the shortest for the vertex <span><span class="MathJax_Preview">p[v]</span><script type="math/tex">p[v]</script></span>. This array of predecessors can be used to restore the shortest path to any vertex: starting with <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>, repeatedly take the predecessor of the current vertex until we reach the starting vertex <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to get the required shortest path with vertices listed in reverse order. So, the shortest path <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> to the vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> is equal to:</p>
 <div>
 <div class="MathJax_Preview">P = (s, \ldots, p[p[p[v]]], p[p[v]], p[v], v)</div>
@@ -107,7 +107,7 @@ In the implementation a sufficiently large number (which is guaranteed to be gre
 <div class="MathJax_Preview">p[\text{to}] = v</div>
 <script type="math/tex; mode=display">p[\text{to}] = v</script>
 </div>
-<h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">#</a></h2>
+<h2 id="proof">Proof</h2>
 <p>The main assertion on which Dijkstra's algorithm correctness is based is the following:</p>
 <p><strong>After any vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> becomes marked, the current distance to it <span><span class="MathJax_Preview">d[v]</span><script type="math/tex">d[v]</script></span> is the shortest, and will no longer change.</strong></p>
 <p>The proof is done by induction. For the first iteration this statement is obvious: the only marked vertex is <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, and the distance to is <span><span class="MathJax_Preview">d[s] = 0</span><script type="math/tex">d[s] = 0</script></span> is indeed the length of the shortest path to <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>. Now suppose this statement is true for all previous iterations, i.e. for all already marked vertices; let's prove that it is not violated after the current iteration completes. Let <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> be the vertex selected in the current iteration, i.e. <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> is the vertex that the algorithm will mark. Now we have to prove that <span><span class="MathJax_Preview">d[v]</span><script type="math/tex">d[v]</script></span> is indeed equal to the length of the shortest path to it <span><span class="MathJax_Preview">l[v]</span><script type="math/tex">l[v]</script></span>.</p>
@@ -129,7 +129,7 @@ In the implementation a sufficiently large number (which is guaranteed to be gre
 <script type="math/tex; mode=display">d[v] = l[v]</script>
 </div>
 <p>Q.E.D.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
+<h2 id="implementation">Implementation</h2>
 <p>Dijkstra's algorithm performs <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> iterations. On each iteration it selects an unmarked vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> with the lowest value <span><span class="MathJax_Preview">d[v]</span><script type="math/tex">d[v]</script></span>, marks it and checks all the edges <span><span class="MathJax_Preview">(v, \text{to})</span><script type="math/tex">(v, \text{to})</script></span> attempting to improve the value <span><span class="MathJax_Preview">d[\text{to}]</span><script type="math/tex">d[\text{to}]</script></span>.</p>
 <p>The running time of the algorithm consists of:</p>
 <ul>
@@ -196,12 +196,12 @@ vector&lt;int&gt; restore_path(int s, int t, vector&lt;int&gt; const&amp; p) {
     return path;
 }
 </code></pre>
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<h2 id="references">References</h2>
 <ul>
 <li>Edsger Dijkstra. A note on two problems in connexion with graphs [1959]</li>
 <li>Thomas Cormen, Charles Leiserson, Ronald Rivest, Clifford Stein. Introduction to Algorithms [2005]</li>
 </ul>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
+<h2 id="practice-problems">Practice Problems</h2>
 <ul>
 <li><a href="http://acm.timus.ru/problem.aspx?space=1&amp;num=1930">Timus - Ivan's Car</a> [Difficulty:Medium]</li>
 <li><a href="http://acm.timus.ru/problem.aspx?space=1&amp;num=1004">Timus - Sightseeing Trip</a></li>

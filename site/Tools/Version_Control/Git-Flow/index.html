@@ -67,13 +67,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="git-flow">Git-Flow<a class="headerlink" href="#git-flow" title="Permanent link">#</a></h1>
-<h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
+    <h1 id="git-flow">Git-Flow</h1>
+<h2 id="links">Links</h2>
 <p><a href="https://nvie.com/posts/a-successful-git-branching-model/">Git-Flow branching model</a></p>
-<h2 id="sample-workflow">Sample Workflow<a class="headerlink" href="#sample-workflow" title="Permanent link">#</a></h2>
-<h3 id="install-git-flow-avh">Install Git-Flow-AVH<a class="headerlink" href="#install-git-flow-avh" title="Permanent link">#</a></h3>
+<h2 id="sample-workflow">Sample Workflow</h2>
+<h3 id="install-git-flow-avh">Install Git-Flow-AVH</h3>
 <p><a href="https://github.com/petervanderdoes/gitflow-avh/wiki/Installation">Git-Flow-AVH Instalaltion Notes</a></p>
-<h3 id="initialize-workflow-in-git-repo">Initialize workflow in Git repo<a class="headerlink" href="#initialize-workflow-in-git-repo" title="Permanent link">#</a></h3>
+<h3 id="initialize-workflow-in-git-repo">Initialize workflow in Git repo</h3>
 <pre><code class="language-bash">$ git flow init
 
 Which branch should be used for bringing forth production releases?
@@ -97,29 +97,29 @@ Support branches? [support/]
 Version tag prefix? []
 Hooks and filters directory? [~/workspace/git-repo/.git/hooks]
 </code></pre>
-<h3 id="finish-flow">Finish flow<a class="headerlink" href="#finish-flow" title="Permanent link">#</a></h3>
-<h4 id="ensure-that-all-branches-are-up-to-date-with-remotes">Ensure that all branches are up to date with remotes<a class="headerlink" href="#ensure-that-all-branches-are-up-to-date-with-remotes" title="Permanent link">#</a></h4>
+<h3 id="finish-flow">Finish flow</h3>
+<h4 id="ensure-that-all-branches-are-up-to-date-with-remotes">Ensure that all branches are up to date with remotes</h4>
 <pre><code class="language-bash">#assuming that you are on release branch
 release=`git branch | grep \* | cut -d ' ' -f2-`
 git checkout develop &amp;&amp; git pull
 git checkout master &amp;&amp; git pull
 git checkout $release &amp;&amp; git pull
 </code></pre>
-<h4 id="merge-branches-with-command">Merge branches with command:<a class="headerlink" href="#merge-branches-with-command" title="Permanent link">#</a></h4>
+<h4 id="merge-branches-with-command">Merge branches with command:</h4>
 <pre><code class="language-bash">git flow release finish --keepremote
 </code></pre>
-<h4 id="push-all-branches-and-get-back-to-develop">Push all branches and get back to develop:<a class="headerlink" href="#push-all-branches-and-get-back-to-develop" title="Permanent link">#</a></h4>
+<h4 id="push-all-branches-and-get-back-to-develop">Push all branches and get back to develop:</h4>
 <pre><code class="language-bash">git push
 git checkout master &amp;&amp; git push
 git push --tags
 git checkout develop
 </code></pre>
-<h4 id="remove-all-dev-branches-that-were-merged-into-develop-to-keep-only-important-one">Remove all dev branches that were merged into develop to keep only important one:<a class="headerlink" href="#remove-all-dev-branches-that-were-merged-into-develop-to-keep-only-important-one" title="Permanent link">#</a></h4>
+<h4 id="remove-all-dev-branches-that-were-merged-into-develop-to-keep-only-important-one">Remove all dev branches that were merged into develop to keep only important one:</h4>
 <pre><code class="language-bash">git branch -r --merged origin/develop | grep origin/dev/ | sed -s 's@origin/@@' | sed -e 's/^[ \t]*//' | tee branches_to_delete
 for i in `cat branches_to_delete`; do git push origin :$i; done
 rm branches_to_delete
 </code></pre>
-<h3 id="hotfix">Hotfix<a class="headerlink" href="#hotfix" title="Permanent link">#</a></h3>
+<h3 id="hotfix">Hotfix</h3>
 <pre><code class="language-bash">git flow hotfix start 1.10.1
 Switched to a new branch 'hotfix/1.10.1'
 

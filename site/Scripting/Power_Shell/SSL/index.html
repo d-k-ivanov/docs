@@ -65,7 +65,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="enable-tls-11-ans-12-when-invoking-web-request">Enable TLS 1.1 ans 1.2 when invoking web request<a class="headerlink" href="#enable-tls-11-ans-12-when-invoking-web-request" title="Permanent link">#</a></h2>
+    <h2 id="enable-tls-11-ans-12-when-invoking-web-request">Enable TLS 1.1 ans 1.2 when invoking web request</h2>
 <pre><code class="language-ps1">$AllProtocols = [System.Net.SecurityProtocolType]'Ssl3,Tls,Tls11,Tls12'
 [System.Net.ServicePointManager]::SecurityProtocol = $AllProtocols
 
