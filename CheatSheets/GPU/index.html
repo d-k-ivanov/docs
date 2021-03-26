@@ -66,8 +66,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h3 id="how-to-calc-max-resolution-to-mb">How to calc max resolution to MB</h3>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../IP_Packet_Example/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../IP_Packet_Example/" class="btn btn-xs btn-link">
+        IP Packet Example
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Documentation/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Documentation/" class="btn btn-xs btn-link">
+        Documentation
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="how-to-calc-max-resolution-to-mb">How to calc max resolution to MB<a class="headerlink" href="#how-to-calc-max-resolution-to-mb" title="Permanent link">#</a></h3>
 <p>A graphics card actually requires relatively little memory to function as a simple framebuffer (2D graphics) device:</p>
 <p>For example - the framebuffer requirements for 1920x1080 in 32 bit colour would be:</p>
 <pre><code class="language-txt">    1920 x 1080 = 2073600 pixels
@@ -80,7 +107,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>You can double, or even triple that amount if you are using double or triple buffering (display one image while rendering another then switch to that new image while you render a third, etc).</p>
 <p>All the rest of the memory is used when the card is working with 3D graphics to store internal copies (and transformed copies) of textures for rendering. The more memory you have the more and higher resolution textures the card can hold internally, so it won't need to be repeatedly sent the same textures over and over again by the gaming engine.</p>
 <p>So basically the more memory you have the better it will be for 3D gaming.</p>
-<h3 id="uhd-8k">UHD 8K</h3>
+<h3 id="uhd-8k">UHD 8K<a class="headerlink" href="#uhd-8k" title="Permanent link">#</a></h3>
 <pre><code class="language-txt">7680 × 4320 = 33177600 px
 33177600 x 48 = 1592524800 bits
 1592524800 / 8 = 199065600 byte

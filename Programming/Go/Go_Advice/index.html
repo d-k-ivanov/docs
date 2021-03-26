@@ -65,10 +65,37 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="go-advice">Go-advice</h1>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../HTML/Redirect/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../HTML/Redirect/" class="btn btn-xs btn-link">
+        Redirect
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Cuda/Make/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Cuda/Make/" class="btn btn-xs btn-link">
+        Make
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="go-advice">Go-advice<a class="headerlink" href="#go-advice" title="Permanent link">#</a></h1>
 <p>(Some of advices are implemented in <a href="https://github.com/go-critic/go-critic">go-critic</a>)</p>
-<h2 id="contents">Contents</h2>
+<h2 id="contents">Contents<a class="headerlink" href="#contents" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="#go-proverbs">Go Proverbs</a></li>
 <li><a href="#the-zen-of-go">The Zen of Go</a></li>
@@ -81,7 +108,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li><a href="#tools">Tools</a></li>
 <li><a href="#misc">Misc</a></li>
 </ul>
-<h3 id="go-proverbs">Go Proverbs</h3>
+<h3 id="go-proverbs">Go Proverbs<a class="headerlink" href="#go-proverbs" title="Permanent link">#</a></h3>
 <ul>
 <li>Don't communicate by sharing memory, share memory by communicating.</li>
 <li>Concurrency is not parallelism.</li>
@@ -105,7 +132,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </ul>
 <p>Author: Rob Pike
 See more: <a href="https://go-proverbs.github.io/">Go Proverbs</a></p>
-<h3 id="the-zen-of-go">The Zen of Go</h3>
+<h3 id="the-zen-of-go">The Zen of Go<a class="headerlink" href="#the-zen-of-go" title="Permanent link">#</a></h3>
 <ul>
 <li>Each package fulfils a single purpose</li>
 <li>Handle errors explicitly</li>
@@ -121,11 +148,11 @@ See more: <a href="https://go-proverbs.github.io/">Go Proverbs</a></p>
 </ul>
 <p>Author: Dave Cheney
 See more: <a href="https://the-zen-of-go.netlify.com/">The Zen of Go</a></p>
-<h3 id="code">Code</h3>
-<h4 id="always-go-fmt-your-code">Always <code>go fmt</code> your code</h4>
+<h3 id="code">Code<a class="headerlink" href="#code" title="Permanent link">#</a></h3>
+<h4 id="always-go-fmt-your-code">Always <code>go fmt</code> your code<a class="headerlink" href="#always-go-fmt-your-code" title="Permanent link">#</a></h4>
 <p>Community uses the official Go format, do not reinvent the wheel.</p>
 <p>Try to reduce code entropy. This will help everyone to make code easy to read.</p>
-<h4 id="multiple-if-else-statements-can-be-collapsed-into-a-switch">Multiple if-else statements can be collapsed into a switch</h4>
+<h4 id="multiple-if-else-statements-can-be-collapsed-into-a-switch">Multiple if-else statements can be collapsed into a switch<a class="headerlink" href="#multiple-if-else-statements-can-be-collapsed-into-a-switch" title="Permanent link">#</a></h4>
 <pre><code class="language-go">// NOT BAD
 if foo() {
     // ...
@@ -145,7 +172,7 @@ default:
     // ...
 }
 </code></pre>
-<h4 id="to-pass-a-signal-prefer-chan-struct-instead-of-chan-bool">To pass a signal prefer <code>chan struct{}</code> instead of <code>chan bool</code></h4>
+<h4 id="to-pass-a-signal-prefer-chan-struct-instead-of-chan-bool">To pass a signal prefer <code>chan struct{}</code> instead of <code>chan bool</code><a class="headerlink" href="#to-pass-a-signal-prefer-chan-struct-instead-of-chan-bool" title="Permanent link">#</a></h4>
 <p>When you see a definition of <code>chan bool</code> in a structure, sometimes it's not that easy to understand how this value will be used, example:</p>
 <pre><code class="language-go">type Service struct {
     deleteCh chan bool // what does this bool mean?
@@ -156,7 +183,7 @@ default:
     deleteCh chan struct{} // ok, if event than delete something.
 }
 </code></pre>
-<h4 id="prefer-30-timesecond-instead-of-timeduration30-timesecond">Prefer <code>30 * time.Second</code> instead of <code>time.Duration(30) * time.Second</code></h4>
+<h4 id="prefer-30-timesecond-instead-of-timeduration30-timesecond">Prefer <code>30 * time.Second</code> instead of <code>time.Duration(30) * time.Second</code><a class="headerlink" href="#prefer-30-timesecond-instead-of-timeduration30-timesecond" title="Permanent link">#</a></h4>
 <p>You don't need to wrap untyped const in a type, compiler will figure it out. Also prefer to move const to the first place:</p>
 <pre><code class="language-go">// BAD
 delay := time.Second * 60 * 24 * 60
@@ -167,14 +194,14 @@ delay := 60 * time.Second * 60 * 24
 // GOOD
 delay := 24 * 60 * 60 * time.Second
 </code></pre>
-<h4 id="use-timeduration-instead-of-int64-variable-name">Use <code>time.Duration</code> instead of <code>int64</code> + variable name</h4>
+<h4 id="use-timeduration-instead-of-int64-variable-name">Use <code>time.Duration</code> instead of <code>int64</code> + variable name<a class="headerlink" href="#use-timeduration-instead-of-int64-variable-name" title="Permanent link">#</a></h4>
 <pre><code class="language-go">// BAD
 var delayMillis int64 = 15000
 
 // GOOD
 var delay time.Duration = 15 * time.Second
 </code></pre>
-<h4 id="group-const-declarations-by-type-and-var-by-logic-andor-type">Group <code>const</code> declarations by type and <code>var</code> by logic and/or type</h4>
+<h4 id="group-const-declarations-by-type-and-var-by-logic-andor-type">Group <code>const</code> declarations by type and <code>var</code> by logic and/or type<a class="headerlink" href="#group-const-declarations-by-type-and-var-by-logic-andor-type" title="Permanent link">#</a></h4>
 <pre><code class="language-go">// BAD
 const (
     foo = 1
@@ -337,9 +364,9 @@ func main() {
     testvar         // will be myType
   )
 </code></pre>
-<h4 id="dont-use-encodinggob-on-structs-you-dont-own">Don’t use <code>encoding/gob</code> on structs you don’t own</h4>
+<h4 id="dont-use-encodinggob-on-structs-you-dont-own">Don’t use <code>encoding/gob</code> on structs you don’t own<a class="headerlink" href="#dont-use-encodinggob-on-structs-you-dont-own" title="Permanent link">#</a></h4>
 <p>At some point structure may change and you might miss this. As a result this might cause a hard to find bug.</p>
-<h4 id="dont-depend-on-the-evaluation-order-especially-in-a-return-statement">Don't depend on the evaluation order, especially in a return statement</h4>
+<h4 id="dont-depend-on-the-evaluation-order-especially-in-a-return-statement">Don't depend on the evaluation order, especially in a return statement<a class="headerlink" href="#dont-depend-on-the-evaluation-order-especially-in-a-return-statement" title="Permanent link">#</a></h4>
 <pre><code class="language-go">// BAD
 return res, json.Unmarshal(b, &amp;res)
 
@@ -347,7 +374,7 @@ return res, json.Unmarshal(b, &amp;res)
 err := json.Unmarshal(b, &amp;res)
 return res, err
 </code></pre>
-<h4 id="to-prevent-unkeyed-literals-add-_-struct-field">To prevent unkeyed literals add <code>_ struct{}</code> field</h4>
+<h4 id="to-prevent-unkeyed-literals-add-_-struct-field">To prevent unkeyed literals add <code>_ struct{}</code> field<a class="headerlink" href="#to-prevent-unkeyed-literals-add-_-struct-field" title="Permanent link">#</a></h4>
 <pre><code class="language-go">type Point struct {
     X, Y float64
     _    struct{} // to prevent unkeyed literals
@@ -357,23 +384,23 @@ return res, err
 <pre><code class="language-txt">./file.go:1:11: too few values in Point literal
 </code></pre>
 <p>There is a check in <code>go vet</code> command for this, there is no enough arguments to add <code>_ struct{}</code> in all your structs.</p>
-<h4 id="to-prevent-structs-comparison-add-an-empty-field-of-func-type">To prevent structs comparison add an empty field of <code>func</code> type</h4>
+<h4 id="to-prevent-structs-comparison-add-an-empty-field-of-func-type">To prevent structs comparison add an empty field of <code>func</code> type<a class="headerlink" href="#to-prevent-structs-comparison-add-an-empty-field-of-func-type" title="Permanent link">#</a></h4>
 <pre><code class="language-go">type Point struct {
     _ [0]func() // unexported, zero-width non-comparable field
     X, Y float64
 }
 </code></pre>
-<h4 id="prefer-httphandlerfunc-over-httphandler">Prefer <code>http.HandlerFunc</code> over <code>http.Handler</code></h4>
+<h4 id="prefer-httphandlerfunc-over-httphandler">Prefer <code>http.HandlerFunc</code> over <code>http.Handler</code><a class="headerlink" href="#prefer-httphandlerfunc-over-httphandler" title="Permanent link">#</a></h4>
 <p>To use the 1st one you just need a func, for the 2nd you need a type.</p>
-<h4 id="move-defer-to-the-top">Move <code>defer</code> to the top</h4>
+<h4 id="move-defer-to-the-top">Move <code>defer</code> to the top<a class="headerlink" href="#move-defer-to-the-top" title="Permanent link">#</a></h4>
 <p>This improves code readability and makes clear what will be invoked at the end of a function.</p>
-<h4 id="javascript-parses-integers-as-floats-and-your-int64-might-overflow">JavaScript parses integers as floats and your int64 might overflow</h4>
+<h4 id="javascript-parses-integers-as-floats-and-your-int64-might-overflow">JavaScript parses integers as floats and your int64 might overflow<a class="headerlink" href="#javascript-parses-integers-as-floats-and-your-int64-might-overflow" title="Permanent link">#</a></h4>
 <p>Use <code>json:"id,string"</code> instead.</p>
 <pre><code class="language-go">type Request struct {
     ID int64 `json:&quot;id,string&quot;`
 }
 </code></pre>
-<h3 id="concurrency">Concurrency</h3>
+<h3 id="concurrency">Concurrency<a class="headerlink" href="#concurrency" title="Permanent link">#</a></h3>
 <ul>
 <li>[ ] best candidate to make something once in a thread-safe way is <code>sync.Once</code></li>
 <li>don't use flags, mutexes, channels or atomics</li>
@@ -384,7 +411,7 @@ return res, err
 <li><a href="https://golang.org/pkg/math/rand/">more</a></li>
 <li>[ ] when you need an atomic value of a custom type use <a href="https://godoc.org/sync/atomic#Value">atomic.Value</a></li>
 </ul>
-<h3 id="performance">Performance</h3>
+<h3 id="performance">Performance<a class="headerlink" href="#performance" title="Permanent link">#</a></h3>
 <ul>
 <li>[ ] do not omit <code>defer</code></li>
 <li>200ns speedup is negligible in most cases</li>
@@ -399,7 +426,7 @@ return res, err
         }
     }
 </code></pre>
-<h4 id="to-help-compiler-to-remove-bound-checks-see-this-pattern-_-b7">To help compiler to remove bound checks see this pattern <code>_ = b[7]</code></h4>
+<h4 id="to-help-compiler-to-remove-bound-checks-see-this-pattern-_-b7">To help compiler to remove bound checks see this pattern <code>_ = b[7]</code><a class="headerlink" href="#to-help-compiler-to-remove-bound-checks-see-this-pattern-_-b7" title="Permanent link">#</a></h4>
 <ul>
 <li>[ ] <code>time.Time</code> has pointer field <code>time.Location</code> and this is bad for go GC</li>
 <li>it's relevant only for big number of <code>time.Time</code>, use timestamp instead</li>
@@ -482,12 +509,12 @@ return res, err
 </ul>
 <pre><code class="language-go">    m = make(map[int]int)
 </code></pre>
-<h3 id="modules">Modules</h3>
+<h3 id="modules">Modules<a class="headerlink" href="#modules" title="Permanent link">#</a></h3>
 <ul>
 <li>[ ] if you want to test that <code>go.mod</code> (and <code>go.sum</code>) is up to date in CI
   <a href="https://blog.urth.org/2019/08/13/testing-go-mod-tidiness-in-ci/">Link</a></li>
 </ul>
-<h3 id="build">Build</h3>
+<h3 id="build">Build<a class="headerlink" href="#build" title="Permanent link">#</a></h3>
 <ul>
 <li>[ ] strip your binaries with this command <code>go build -ldflags="-s -w" ...</code></li>
 <li>[ ] easy way to split test into different builds</li>
@@ -501,7 +528,7 @@ return res, err
 <li><a href="https://github.com/travis-ci/travis-build/blob/master/public/version-aliases/go.json">see more</a></li>
 <li>[ ] check if there are mistakes in code formatting <code>diff -u &lt;(echo -n) &lt;(gofmt -d .)</code></li>
 </ul>
-<h3 id="testing">Testing</h3>
+<h3 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">#</a></h3>
 <ul>
 <li>[ ] prefer <code>package_test</code> name for tests, rather than <code>package</code></li>
 <li>[ ] <code>go test -short</code> allows to reduce set of tests to be runned</li>
@@ -524,7 +551,7 @@ return res, err
 <li>[ ] run your benchmarks multiple times, to get rid of noise</li>
 <li><code>go test -test.bench=. -count=20</code></li>
 </ul>
-<h3 id="tools">Tools</h3>
+<h3 id="tools">Tools<a class="headerlink" href="#tools" title="Permanent link">#</a></h3>
 <ul>
 <li>[ ] quick replace <code>gofmt -w -l -r "panic(err) -&gt; log.Error(err)" .</code></li>
 <li>[ ] <code>go list</code> allows to find all direct and transitive dependencies</li>
@@ -537,7 +564,7 @@ return res, err
 <li>[ ] The memory profiler records one allocation every 512Kbytes. You can increase the rate via the <code>GODEBUG</code> environment variable to see more details in your profile.</li>
 <li><a href="https://twitter.com/bboreham/status/1105036740253937664">Link</a></li>
 </ul>
-<h3 id="misc">Misc</h3>
+<h3 id="misc">Misc<a class="headerlink" href="#misc" title="Permanent link">#</a></h3>
 <ul>
 <li>[ ] <a href="https://stackoverflow.com/a/27398062/433041">dump goroutines</a></li>
 </ul>

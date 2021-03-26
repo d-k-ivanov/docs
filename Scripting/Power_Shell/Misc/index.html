@@ -70,8 +70,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h3 id="windows-2008-server-r2">Windows 2008 Server R2</h3>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../One-Liners/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../One-Liners/" class="btn btn-xs btn-link">
+        One Liners
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Encoding/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Encoding/" class="btn btn-xs btn-link">
+        Encoding
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="windows-2008-server-r2">Windows 2008 Server R2<a class="headerlink" href="#windows-2008-server-r2" title="Permanent link">#</a></h3>
 <p>To release this error:</p>
 <blockquote>
 <p>Script cannot be loaded because the execution of scripts is disabled on this system.</p>
@@ -85,16 +112,16 @@ Set-ExecutionPolicy RemoteSigned
 # * RemoteSigned - Downloaded scripts must be signed by a trusted publisher before they can be run.
 # * Unrestricted - No restrictions; all Windows PowerShell scripts can be run.
 </code></pre>
-<h3 id="show-current-logged-user">Show current logged user</h3>
+<h3 id="show-current-logged-user">Show current logged user<a class="headerlink" href="#show-current-logged-user" title="Permanent link">#</a></h3>
 <pre><code class="language-ps1">gwmi win32_computersystem -comp $computer | select USername,Caption,Manufacturer
 Get_WmiObject win32_computersystem -comp $computer | select USername,Caption,Manufacturer
 </code></pre>
-<h3 id="list-of-logged-in-users-any-user-in-any-time">List of logged in users (any user in any time)</h3>
+<h3 id="list-of-logged-in-users-any-user-in-any-time">List of logged in users (any user in any time)<a class="headerlink" href="#list-of-logged-in-users-any-user-in-any-time" title="Permanent link">#</a></h3>
 <pre><code class="language-ps1">Get-WmiObject Win32_LoggedOnUser -ComputerName divanov-dev | `
 Select __SERVER, Antecedent -Unique                         | `
 %{&quot;{0} : {1}\{2}&quot; -f $_.__SERVER, $_.Antecedent.ToString().Split('&quot;')[1],$_.Antecedent.ToString().Split('&quot;')[3]}
 </code></pre>
-<h3 id="read-from-keyboard">Read from keyboard</h3>
+<h3 id="read-from-keyboard">Read from keyboard<a class="headerlink" href="#read-from-keyboard" title="Permanent link">#</a></h3>
 <pre><code class="language-ps1">$variable=read-host &quot;Enter computer name:&quot;
 </code></pre>
 

@@ -68,19 +68,46 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="maintenance-scripts">Maintenance Scripts</h1>
-<h2 id="show-db-size">Show DB Size</h2>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../../Privacy/Policies/Armenian_Alphabet/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../../Privacy/Policies/Armenian_Alphabet/" class="btn btn-xs btn-link">
+        Armenian Alphabet
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Oracle/Useful_Queries/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Oracle/Useful_Queries/" class="btn btn-xs btn-link">
+        Useful Queries
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="maintenance-scripts">Maintenance Scripts<a class="headerlink" href="#maintenance-scripts" title="Permanent link">#</a></h1>
+<h2 id="show-db-size">Show DB Size<a class="headerlink" href="#show-db-size" title="Permanent link">#</a></h2>
 <pre><code class="language-sql">SELECT table_schema &quot;DB Name&quot;,
         ROUND(SUM(data_length + index_length) / 1024 / 1024, 1) &quot;DB Size in MB&quot;
 FROM information_schema.tables
 GROUP BY table_schema;
 </code></pre>
-<h2 id="show-current-queues">Show current queues</h2>
+<h2 id="show-current-queues">Show current queues<a class="headerlink" href="#show-current-queues" title="Permanent link">#</a></h2>
 <pre><code class="language-sql">SHOW FULL PROCESSLIST;
 show processlist;
 </code></pre>
-<h2 id="show-mysql-db-locks">Show MySQL DB Locks</h2>
+<h2 id="show-mysql-db-locks">Show MySQL DB Locks<a class="headerlink" href="#show-mysql-db-locks" title="Permanent link">#</a></h2>
 <pre><code class="language-sql">SELECT
     waiting_trx_id,
     waiting_pid,
@@ -106,7 +133,7 @@ INNER JOIN information_schema.innodb_trx r
 -- Kill session
 KILL '24543';
 </code></pre>
-<h2 id="show-oracle-db-locks">Show Oracle DB Locks</h2>
+<h2 id="show-oracle-db-locks">Show Oracle DB Locks<a class="headerlink" href="#show-oracle-db-locks" title="Permanent link">#</a></h2>
 <pre><code class="language-sql">-- Find all locking sessions
 SELECT * FROM v$lock;
 

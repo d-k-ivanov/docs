@@ -68,10 +68,37 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="chinese-remainder-theorem">Chinese Remainder Theorem</h1>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Discrete_Logarithm/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Discrete_Logarithm/" class="btn btn-xs btn-link">
+        Discrete Logarithm
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Binary_Exponentiation/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Binary_Exponentiation/" class="btn btn-xs btn-link">
+        Binary Exponentiation
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="chinese-remainder-theorem">Chinese Remainder Theorem<a class="headerlink" href="#chinese-remainder-theorem" title="Permanent link">#</a></h1>
 <p>The Chinese Remainder Theorem (which will be referred to as CRT in the rest of this article) was discovered by Chinese mathematician Sun Zi.</p>
-<h2 id="formulation">Formulation</h2>
+<h2 id="formulation">Formulation<a class="headerlink" href="#formulation" title="Permanent link">#</a></h2>
 <p>Let <span><span class="MathJax_Preview">p = p_1 p_2 \cdots p_k</span><script type="math/tex">p = p_1 p_2 \cdots p_k</script></span>, where <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span> are pairwise relatively prime. In addition to <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span>, we are also given a set of congruence equations</p>
 <div>
 <div class="MathJax_Preview">\begin{align}
@@ -88,7 +115,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 \end{align}</script>
 </div>
 <p>where <span><span class="MathJax_Preview">a_i</span><script type="math/tex">a_i</script></span> are some given constants. The original form of CRT then states that the given set of congruence equations always has <em>one and exactly one</em> solution modulo <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>.</p>
-<h3 id="corollary">Corollary</h3>
+<h3 id="corollary">Corollary<a class="headerlink" href="#corollary" title="Permanent link">#</a></h3>
 <p>A consequence of the CRT is that the equation</p>
 <div>
 <div class="MathJax_Preview"> x \equiv a \pmod{p} </div>
@@ -108,7 +135,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 \end{align}</script>
 </div>
 <p>(As above, assume that <span><span class="MathJax_Preview">p = p_1 p_2 \cdots p_k</span><script type="math/tex">p = p_1 p_2 \cdots p_k</script></span> and <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span> are pairwise relatively prime).</p>
-<h2 id="garners-algorithm">Garner's Algorithm</h2>
+<h2 id="garners-algorithm">Garner's Algorithm<a class="headerlink" href="#garners-algorithm" title="Permanent link">#</a></h2>
 <p>Another consequence of the CRT is that we can represent big numbers using an array of small integers. For example, let <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> be the product of the first <span><span class="MathJax_Preview">1000</span><script type="math/tex">1000</script></span> primes. From calculations we can see that <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> has around <span><span class="MathJax_Preview">3000</span><script type="math/tex">3000</script></span> digits.</p>
 <p>Any number <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> less than <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> can be represented as an array <span><span class="MathJax_Preview">a_1, \ldots, a_k</span><script type="math/tex">a_1, \ldots, a_k</script></span>, where <span><span class="MathJax_Preview">a_i \equiv a \pmod{p_i}</span><script type="math/tex">a_i \equiv a \pmod{p_i}</script></span>. But to do this we obviously need to know how to get back the number <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> from its representation. In this section, we discuss Garner's Algorithm, which can be used for this purpose. We seek a representation on the form</p>
 <div>
@@ -168,7 +195,7 @@ x_2 &\equiv& (a_2 - x_1) r_{12} &\pmod{p_2}
 <script type="math/tex; mode=display"> a = x_1 + x_2 p_1 + x_3 p_1 p_2 + \ldots + x_k p_1 \ldots p_{k-1} </script>
 </div>
 <p>It is worth noting that in practice, we almost always need to compute the answer using Big Integers, but the coefficients <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> can usually be calculated using built-in types, and therefore Garner's algorithm is very efficient.</p>
-<h2 id="implementation-of-garners-algorithm">Implementation of Garner's Algorithm</h2>
+<h2 id="implementation-of-garners-algorithm">Implementation of Garner's Algorithm<a class="headerlink" href="#implementation-of-garners-algorithm" title="Permanent link">#</a></h2>
 <p>It is convenient to implement this algorithm using Java, because it has built-in support for large numbers through the <code>BigInteger</code> class.</p>
 <p>Here we show an implementation that can store big numbers in the form of a set of congruence equations.
 It supports addition, subtraction and multiplication.
@@ -247,7 +274,7 @@ class Number {
     }
 }
 </code></pre>
-<h3 id="note-on-negative-numbers">Note on negative numbers</h3>
+<h3 id="note-on-negative-numbers">Note on negative numbers<a class="headerlink" href="#note-on-negative-numbers" title="Permanent link">#</a></h3>
 <ul>
 <li>
 <p>Let <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> be the product of all primes.</p>
@@ -256,7 +283,7 @@ class Number {
 <p>Modular scheme itself does not allow representing negative numbers. However, it can be seen that if we know that the absolute values our numbers are smaller than <span><span class="MathJax_Preview">p / 2</span><script type="math/tex">p / 2</script></span>, then we know that it must be negative when the resulting number is greater than <span><span class="MathJax_Preview">p / 2</span><script type="math/tex">p / 2</script></span>. The flag <code>can_be_negative</code> in this code allows converting it to negative in this case.</p>
 </li>
 </ul>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://www.hackerrank.com/contests/w22/challenges/number-of-sequences">Hackerrank - Number of sequences</a></li>
 <li><a href="http://codeforces.com/problemset/problem/687/B">Codeforces - Remainders Game</a></li>

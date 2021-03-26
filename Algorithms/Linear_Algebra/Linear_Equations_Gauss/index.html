@@ -72,8 +72,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="linear-equations-gauss-method">Linear Equations: Gauss Method</h1>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Matrix_Determinant_Gauss/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Matrix_Determinant_Gauss/" class="btn btn-xs btn-link">
+        Matrix Determinant: Gauss Method
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Graph_Theory/Tree_Edges_Painting/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Graph_Theory/Tree_Edges_Painting/" class="btn btn-xs btn-link">
+        Tree Edges Painting
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="linear-equations-gauss-method">Linear Equations: Gauss Method<a class="headerlink" href="#linear-equations-gauss-method" title="Permanent link">#</a></h1>
 <p>Given a system of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> linear algebraic equations (SLAE) with <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> unknowns. You are asked to solve the system: to determine if it has no solution, exactly one solution or infinite number of solutions. And in case it has at least one solution, find any of them.</p>
 <p>Formally, the problem is formulated as follows: solve the system:</p>
 <div>
@@ -113,9 +140,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="MathJax_Preview">a_{n1} x_1 + a_{n2} x_2 + \dots + a_{nm} x_m \equiv b_n \pmod p</div>
 <script type="math/tex; mode=display">a_{n1} x_1 + a_{n2} x_2 + \dots + a_{nm} x_m \equiv b_n \pmod p</script>
 </div>
-<h2 id="gauss">Gauss</h2>
+<h2 id="gauss">Gauss<a class="headerlink" href="#gauss" title="Permanent link">#</a></h2>
 <p>Strictly speaking, the method described below should be called "Gauss-Jordan", or Gauss-Jordan elimination, because it is a variation of the Gauss method, described by Jordan in 1887.</p>
-<h2 id="overview">Overview</h2>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
 <p>The algorithm is a <code>sequential elimination</code> of the variables in each equation, until each equation will have only one remaining variable. If <span><span class="MathJax_Preview">n = m</span><script type="math/tex">n = m</script></span>, you can think of it as transforming the matrix <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> to identity matrix, and solve the equation in this obvious case, where solution is unique and is equal to coefficient <span><span class="MathJax_Preview">b_i</span><script type="math/tex">b_i</script></span>.</p>
 <p>Gaussian elimination is based on two simple transformation:</p>
 <ul>
@@ -126,16 +153,16 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>As a result, after the first step, the first column of matrix <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> will consists of <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> on the first row, and <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span> in other rows.</p>
 <p>Similarly, we perform the second step of the algorithm, where we consider the second column of second row. First, the row is divided by <span><span class="MathJax_Preview">a_{22}</span><script type="math/tex">a_{22}</script></span>, then it is subtracted from other rows so that all the second column becomes <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span> (except for the second row).</p>
 <p>We continue this process for all columns of matrix <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>. If <span><span class="MathJax_Preview">n = m</span><script type="math/tex">n = m</script></span>, then <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> will become identity matrix.</p>
-<h2 id="search-for-the-pivoting-element">Search for the pivoting element</h2>
+<h2 id="search-for-the-pivoting-element">Search for the pivoting element<a class="headerlink" href="#search-for-the-pivoting-element" title="Permanent link">#</a></h2>
 <p>The described scheme left out many details. At the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>th step, if <span><span class="MathJax_Preview">a_{ii}</span><script type="math/tex">a_{ii}</script></span> is zero, we cannot apply directly the described method. Instead, we must first <code>select a pivoting row</code>: find one row of the matrix where the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>th column is non-zero, and then swap the two rows.</p>
 <p>Note that, here we swap rows but not columns. This is because if you swap columns, then when you find a solution, you must remember to swap back to correct places. Thus, swapping rows is much easier to do.</p>
 <p>In many implementations, when <span><span class="MathJax_Preview">a_{ii} \neq 0</span><script type="math/tex">a_{ii} \neq 0</script></span>, you can see people still swap the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>th row with some pivoting row, using some heuristics such as choosing the pivoting row with maximum absolute value of <span><span class="MathJax_Preview">a_{ji}</span><script type="math/tex">a_{ji}</script></span>. This heuristic is used to reduce the value range of the matrix in later steps. Without this heuristic, even for matrices of size about <span><span class="MathJax_Preview">20</span><script type="math/tex">20</script></span>, the error will be too big and can cause overflow for floating points data types of C++.</p>
-<h2 id="degenerate-cases">Degenerate cases</h2>
+<h2 id="degenerate-cases">Degenerate cases<a class="headerlink" href="#degenerate-cases" title="Permanent link">#</a></h2>
 <p>In the case where <span><span class="MathJax_Preview">m = n</span><script type="math/tex">m = n</script></span> and the system is non-degenerate (i.e. it has non-zero determinant, and has unique solution), the algorithm described above will transform <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> into identity matrix.</p>
 <p>Now we consider the <code>general case</code>, where <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> are not necessarily equal, and the system can be degenerate. In these cases, the pivoting element in <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>th step may not be found. This means that on the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>th column, starting from the current line, all contains zeros. In this case, either there is no possible value of variable <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> (meaning the SLAE has no solution), or <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> is an independent variable and can take arbitrary value. When implementing Gauss-Jordan, you should continue the work for subsequent variables and just skip the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>th column (this is equivalent to removing the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>th column of the matrix).</p>
 <p>So, some of the variables in the process can be found to be independent. When the number of variables, <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is greater than the number of equations, <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, then at least <span><span class="MathJax_Preview">m - n</span><script type="math/tex">m - n</script></span> independent variables will be found.</p>
 <p>In general, if you find at least one independent variable, it can take any arbitrary value, while the other (dependent) variables are expressed through it.  This means that when we work in the field of real numbers, the system potentially has infinitely many solutions. But you should remember that when there are independent variables, SLAE can have no solution at all. This happens when the remaining untreated equations have at least one non-zero constant term. You can check this by assigning zeros to all independent variables, calculate other variables, and then plug in to the original SLAE to check if they satisfy it.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>Following is an implementation of Gauss-Jordan. Choosing the pivot row is done with heuristic: choosing maximum value in the current column.</p>
 <p>The input to the function <code>gauss</code> is the system matrix <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>. The last column of this matrix is vector <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>.</p>
 <p>The function returns the number of solutions of the system <span><span class="MathJax_Preview">(0, 1,\textrm{or } \infty)</span><script type="math/tex">(0, 1,\textrm{or } \infty)</script></span>. If at least one solution exists, then it is returned in the vector <span><span class="MathJax_Preview">ans</span><script type="math/tex">ans</script></span>.</p>
@@ -239,16 +266,16 @@ int gauss (vector &lt; bitset&lt;N&gt; &gt; a, int n, int m, bitset&lt;N&gt; &am
 }
 </code></pre>
 <p>Since we use bit compress, the implementation is not only shorter, but also 32 times faster.</p>
-<h2 id="a-little-note-about-different-heuristics-of-choosing-pivoting-row">A little note about different heuristics of choosing pivoting row</h2>
+<h2 id="a-little-note-about-different-heuristics-of-choosing-pivoting-row">A little note about different heuristics of choosing pivoting row<a class="headerlink" href="#a-little-note-about-different-heuristics-of-choosing-pivoting-row" title="Permanent link">#</a></h2>
 <p>There is no general rule for what heuristics to use.</p>
 <p>The heuristics used in previous implementation works quite well in practice. It also turns out to give almost the same answers as "full pivoting" - where the pivoting row is search amongst all elements of the whose submatrix (from the current row and current column).</p>
 <p>Though, you should note that both heuristics is dependent on how much the original equations was scaled. For example, if one of the equation was multiplied by <span><span class="MathJax_Preview">10^6</span><script type="math/tex">10^6</script></span>, then this equation is almost certain to be chosen as pivot in first step. This seems rather strange, so it seems logical to change to a more complicated heuristics, called <code>implicit pivoting</code>.</p>
 <p>Implicit pivoting compares elements as if both lines were normalized, so that the maximum element would be unity. To implement this technique, one need to maintain maximum in each row (or maintain each line so that maximum is unity, but this can lead to increase in the accumulated error).</p>
-<h2 id="improve-the-solution">Improve the solution</h2>
+<h2 id="improve-the-solution">Improve the solution<a class="headerlink" href="#improve-the-solution" title="Permanent link">#</a></h2>
 <p>Despite various heuristics, Gauss-Jordan algorithm can still lead to large errors in special matrices even of size <span><span class="MathJax_Preview">50 - 100</span><script type="math/tex">50 - 100</script></span>.</p>
 <p>Therefore, the resulting Gauss-Jordan solution must sometimes be improved by applying a simple numerical method - for example, the method of simple iteration.</p>
 <p>Thus, the solution turns into two-step: First, Gauss-Jordan algorithm is applied, and then a numerical method taking initial solution as solution in the first step.</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="http://www.spoj.com/problems/XMAX/">Spoj - Xor Maximization</a></li>
 <li><a href="https://www.codechef.com/SEP12/problems/KNGHTMOV">Codechef - Knight Moving</a></li>

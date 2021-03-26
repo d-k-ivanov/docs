@@ -69,9 +69,36 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="considering-maintainability">Considering Maintainability</h1>
-<h2 id="avoid-compiler-macros">Avoid Compiler Macros</h2>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../06-Considering_Portability/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../06-Considering_Portability/" class="btn btn-xs btn-link">
+        Considering Portability
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../04-Considering_Safety/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../04-Considering_Safety/" class="btn btn-xs btn-link">
+        Considering Safety
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="considering-maintainability">Considering Maintainability<a class="headerlink" href="#considering-maintainability" title="Permanent link">#</a></h1>
+<h2 id="avoid-compiler-macros">Avoid Compiler Macros<a class="headerlink" href="#avoid-compiler-macros" title="Permanent link">#</a></h2>
 <p>Compiler definitions and macros are replaced by the preprocessor before the compiler is ever run. This can make debugging very difficult because the debugger doesn't know where the source came from.</p>
 <pre><code class="language-cpp">// Bad Idea
 #define PI 3.14159;
@@ -87,17 +114,17 @@ namespace my_project {
   };
 }
 </code></pre>
-<h2 id="consider-avoiding-boolean-parameters">Consider Avoiding Boolean Parameters</h2>
+<h2 id="consider-avoiding-boolean-parameters">Consider Avoiding Boolean Parameters<a class="headerlink" href="#consider-avoiding-boolean-parameters" title="Permanent link">#</a></h2>
 <p>They do not provide any additional meaning while reading the code. You can either create a separate function that has a more meaningful name, or pass an enumeration that makes the meaning more clear.</p>
 <p>See http://mortoray.com/2015/06/15/get-rid-of-those-boolean-function-parameters/ for more information.</p>
-<h2 id="avoid-raw-loops">Avoid Raw Loops</h2>
+<h2 id="avoid-raw-loops">Avoid Raw Loops<a class="headerlink" href="#avoid-raw-loops" title="Permanent link">#</a></h2>
 <p>Know and understand the existing C++ standard algorithms and put them to use.</p>
 <ul>
 <li>See <a href="https://en.cppreference.com/w/cpp/algorithm">cppreference</a></li>
 <li>Watch <a href="https://www.youtube.com/watch?v=qH6sSOr-yk8">C++ Seasoning</a></li>
 </ul>
 <p>Consider a call to <code>[]</code> as a potential code smell, indicating that an algorithm was not used where it could have been.</p>
-<h2 id="never-use-assert-with-side-effects">Never Use <code>assert</code> With Side Effects</h2>
+<h2 id="never-use-assert-with-side-effects">Never Use <code>assert</code> With Side Effects<a class="headerlink" href="#never-use-assert-with-side-effects" title="Permanent link">#</a></h2>
 <pre><code class="language-cpp">// Bad Idea
 assert(set_value(something));
 
@@ -107,7 +134,7 @@ assert(success);
 </code></pre>
 <p>The <code>assert()</code> will be removed in release builds which will prevent the <code>set_value</code> call from ever happening.</p>
 <p>So while the second version is uglier, the first version is simply not correct.</p>
-<h2 id="properly-utilize-override-and-final">Properly Utilize 'override' and 'final'</h2>
+<h2 id="properly-utilize-override-and-final">Properly Utilize 'override' and 'final'<a class="headerlink" href="#properly-utilize-override-and-final" title="Permanent link">#</a></h2>
 <p>These keywords make it clear to other developers how virtual functions are being utilized, can catch potential errors if the signature of a virtual function changes, and can possibly <a href="http://stackoverflow.com/questions/7538820/how-does-the-compiler-benefit-from-cs-new-final-keyword">hint to the compiler</a> of optimizations that can be performed.</p>
 
   <br>

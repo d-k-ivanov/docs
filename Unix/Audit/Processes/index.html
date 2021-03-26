@@ -66,11 +66,38 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h3 id="wait-until-proceses-will-gone">Wait until proceses will gone</h3>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Reboot_Investigation/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Reboot_Investigation/" class="btn btn-xs btn-link">
+        Reboot Investigation
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Hardware_info/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Hardware_info/" class="btn btn-xs btn-link">
+        Hardware info
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="wait-until-proceses-will-gone">Wait until proceses will gone<a class="headerlink" href="#wait-until-proceses-will-gone" title="Permanent link">#</a></h3>
 <pre><code>while true; do clear; ps -ef | grep &lt;process&gt;; sleep 5; done
 </code></pre>
-<h3 id="kill-all-proesses-with-certain-name">Kill all proesses with certain name</h3>
+<h3 id="kill-all-proesses-with-certain-name">Kill all proesses with certain name<a class="headerlink" href="#kill-all-proesses-with-certain-name" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">ps ax | grep http | awk '{print $1}' | xargs kill
 </code></pre>
 

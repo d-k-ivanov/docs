@@ -99,6 +99,33 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../EclipseTutorial/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../EclipseTutorial/" class="btn btn-xs btn-link">
+        Eclipse Tutorial
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../AssignmentFeedback/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../AssignmentFeedback/" class="btn btn-xs btn-link">
+        Scala Style Guide
+      </a>
+    </div>
+    
+  </div>
+
+    
 
     <p>This cheat sheet originated from the forum, credits to Laurent Poulain.
 We copied it and changed or added a few things.
@@ -113,7 +140,7 @@ There are certainly a lot of things that can be improved! If you would like to c
 <p>Fork the repository <a href="https://github.com/lampepfl/progfun-wiki">https://github.com/lampepfl/progfun-wiki</a> and check it out locally. To preview your changes, you need <a href="http://jekyllrb.com/">jekyll</a>. Navigate to your checkout and invoke <code>jekyll serve</code>, then open the page <a href="http://localhost:4000/CheatSheet.html">http://localhost:4000/CheatSheet.html</a>.</p>
 </li>
 </ul>
-<h2 id="evaluation-rules">Evaluation Rules</h2>
+<h2 id="evaluation-rules">Evaluation Rules<a class="headerlink" href="#evaluation-rules" title="Permanent link">#</a></h2>
 <ul>
 <li>Call by value: evaluates the function arguments before calling the function</li>
 <li>Call by name: evaluates the function first, and then evaluates the arguments if need be</li>
@@ -128,7 +155,7 @@ There are certainly a lot of things that can be improved! If you would like to c
     def square(x: =&gt; Double) // call by name
     def myFct(bindings: Int*) = { ... } // bindings is a sequence of int, containing a varying # of arguments
 </code></pre>
-<h2 id="higher-order-functions">Higher order functions</h2>
+<h2 id="higher-order-functions">Higher order functions<a class="headerlink" href="#higher-order-functions" title="Permanent link">#</a></h2>
 <p>These are functions that take a function as a parameter or return functions.</p>
 <pre><code class="language-scala">    // sum takes a function that takes an integer and returns an integer then 
     // returns a function that takes two integers and returns an integer  
@@ -148,7 +175,7 @@ There are certainly a lot of things that can be improved! If you would like to c
     sum(x =&gt; x * x * x)(1, 10) // sum of 1 cubed and 10 cubed
     sum(cube)(1, 10)           // same as above      
 </code></pre>
-<h2 id="currying">Currying</h2>
+<h2 id="currying">Currying<a class="headerlink" href="#currying" title="Permanent link">#</a></h2>
 <p>Converting a function with multiple arguments into a function with a
 single argument that returns another function.</p>
 <pre><code class="language-scala">    def f(a: Int, b: Int): Int // uncurried version (type is (Int, Int) =&gt; Int)
@@ -159,7 +186,7 @@ single argument that returns another function.</p>
     val f3: Int =&gt; Int =&gt; Int = f2.curried // transform it to a curried version (type is Int =&gt; Int =&gt; Int)
     val f4: (Int, Int) =&gt; Int = Function.uncurried(f3) // go back to the uncurried version (type is (Int, Int) =&gt; Int)
 </code></pre>
-<h2 id="classes">Classes</h2>
+<h2 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">#</a></h2>
 <pre><code class="language-scala">    class MyClass(x: Int, val y: Int,
                           var z: Int) {       // Defines a new type MyClass with a constructor
                                               // x will not be available outside MyClass
@@ -178,7 +205,7 @@ single argument that returns another function.</p>
 </code></pre>
 <p><code>this</code> references the current object, <code>assert(&lt;condition&gt;)</code> issues <code>AssertionError</code> if condition
 is not met. See <a href="https://www.scala-lang.org/api/current/scala/Predef$.html"><code>scala.Predef</code></a> for <code>require</code>, <code>assume</code> and <code>assert</code>.</p>
-<h2 id="operators">Operators</h2>
+<h2 id="operators">Operators<a class="headerlink" href="#operators" title="Permanent link">#</a></h2>
 <p><code>myObject myMethod 1</code> is the same as calling <code>myObject.myMethod(1)</code></p>
 <p>Operator (i.e. function) names can be alphanumeric, symbolic (e.g. <code>x1</code>, <code>*</code>, <code>+?%&amp;</code>, <code>vector_++</code>, <code>counter_=</code>)</p>
 <p>The precedence of an operator is determined by its first character, with the following increasing order of priority:</p>
@@ -195,7 +222,7 @@ is not met. See <a href="https://www.scala-lang.org/api/current/scala/Predef$.ht
 </code></pre>
 <p>The associativity of an operator is determined by its last character: Right-associative if ending with <code>:</code>, Left-associative otherwise.</p>
 <p>Note that assignment operators have lowest precedence. (Read Scala Language Specification 2.9 sections 6.12.3, 6.12.4 for more info)</p>
-<h2 id="class-hierarchies">Class hierarchies</h2>
+<h2 id="class-hierarchies">Class hierarchies<a class="headerlink" href="#class-hierarchies" title="Permanent link">#</a></h2>
 <pre><code class="language-scala">    abstract class TopLevel {    // abstract class  
       def method1(x: Int): Int   // abstract method  
       def method2(x: Int): Int = { ... }  
@@ -218,7 +245,7 @@ is not met. See <a href="https://www.scala-lang.org/api/current/scala/Predef$.ht
       println(&quot;Hello World&quot;)
     }
 </code></pre>
-<h2 id="class-organization">Class Organization</h2>
+<h2 id="class-organization">Class Organization<a class="headerlink" href="#class-organization" title="Permanent link">#</a></h2>
 <ul>
 <li>
 <p>Classes and objects are organized in packages (<code>package myPackage</code>).</p>
@@ -251,7 +278,7 @@ is not met. See <a href="https://www.scala-lang.org/api/current/scala/Predef$.ht
 <li><code>scala.AnyRef</code> base type of all reference types. (alias of <code>java.lang.Object</code>, supertype of <code>java.lang.String</code>, <code>scala.List</code>, any user-defined class)</li>
 <li><code>scala.Null</code> is a subtype of any <code>scala.AnyRef</code> (<code>null</code> is the only instance of type <code>Null</code>), and <code>scala.Nothing</code> is a subtype of any other type without any instance.</li>
 </ul>
-<h2 id="type-parameters">Type Parameters</h2>
+<h2 id="type-parameters">Type Parameters<a class="headerlink" href="#type-parameters" title="Permanent link">#</a></h2>
 <p>Conceptually similar to C++ templates or Java generics. These can apply to classes, traits or functions.</p>
 <pre><code class="language-scala">    class MyClass[T](arg1: T) { ... }  
     new MyClass[Int](1)  
@@ -262,7 +289,7 @@ is not met. See <a href="https://www.scala-lang.org/api/current/scala/Predef$.ht
     def myFct[T &gt;: Level1](arg: T): T = { ... }   // T must be a supertype of Level1
     def myFct[T &gt;: Level1 &lt;: TopLevel](arg: T): T = { ... }
 </code></pre>
-<h2 id="variance">Variance</h2>
+<h2 id="variance">Variance<a class="headerlink" href="#variance" title="Permanent link">#</a></h2>
 <p>Given <code>A &lt;: B</code></p>
 <p>If <code>C[A] &lt;: C[B]</code>, <code>C</code> is covariant</p>
 <p>If <code>C[A] &gt;: C[B]</code>, <code>C</code> is contravariant</p>
@@ -284,7 +311,7 @@ is not met. See <a href="https://www.scala-lang.org/api/current/scala/Predef$.ht
 <p>Find out more about variance in
 <a href="https://class.coursera.org/progfun-2012-001/lecture/81">lecture 4.4</a>
 and <a href="https://class.coursera.org/progfun-2012-001/lecture/83">lecture 4.5</a></p>
-<h2 id="pattern-matching">Pattern Matching</h2>
+<h2 id="pattern-matching">Pattern Matching<a class="headerlink" href="#pattern-matching" title="Permanent link">#</a></h2>
 <p>Pattern matching is used for decomposing data structures:</p>
 <pre><code class="language-scala">    unknownObject match {
       case MyClass(n) =&gt; ...
@@ -307,7 +334,7 @@ and <a href="https://class.coursera.org/progfun-2012-001/lecture/83">lecture 4.5
 only matches lists with at least one element, where that element is a
 pair. <code>x</code> and <code>y</code> are again patterns that could match only specific
 types.</p>
-<h3 id="options">Options</h3>
+<h3 id="options">Options<a class="headerlink" href="#options" title="Permanent link">#</a></h3>
 <p>Pattern matching can also be used for <code>Option</code> values. Some
 functions (like <code>Map.get</code>) return a value of type <code>Option[T]</code> which
 is either a value of type <code>Some[T]</code> or the value <code>None</code>:</p>
@@ -328,7 +355,7 @@ can be written as follows: </p>
 <pre><code class="language-scala">    def getMapValue(s: String): String =
       myMap.get(s).map(&quot;Value found: &quot; + _).getOrElse(&quot;No value found&quot;)
 </code></pre>
-<h3 id="pattern-matching-in-anonymous-functions">Pattern Matching in Anonymous Functions</h3>
+<h3 id="pattern-matching-in-anonymous-functions">Pattern Matching in Anonymous Functions<a class="headerlink" href="#pattern-matching-in-anonymous-functions" title="Permanent link">#</a></h3>
 <p>Pattern matches are also used quite often in anonymous functions:</p>
 <pre><code class="language-scala">    val pairs: List[(Char, Int)] = ('a', 2) :: ('b', 3) :: Nil
     val chars: List[Char] = pairs.map(p =&gt; p match {
@@ -340,16 +367,16 @@ can be written as follows: </p>
       case (ch, num) =&gt; ch
     }
 </code></pre>
-<h2 id="collections">Collections</h2>
+<h2 id="collections">Collections<a class="headerlink" href="#collections" title="Permanent link">#</a></h2>
 <p>Scala defines several collection classes:</p>
-<h3 id="base-classes">Base Classes</h3>
+<h3 id="base-classes">Base Classes<a class="headerlink" href="#base-classes" title="Permanent link">#</a></h3>
 <ul>
 <li><a href="https://www.scala-lang.org/api/current/scala/collection/Iterable.html"><code>Iterable</code></a> (collections you can iterate on)</li>
 <li><a href="https://www.scala-lang.org/api/current/scala/collection/Seq.html"><code>Seq</code></a> (ordered sequences)</li>
 <li><a href="https://www.scala-lang.org/api/current/scala/collection/Set.html"><code>Set</code></a></li>
 <li><a href="https://www.scala-lang.org/api/current/scala/collection/Map.html"><code>Map</code></a> (lookup data structure)</li>
 </ul>
-<h3 id="immutable-collections">Immutable Collections</h3>
+<h3 id="immutable-collections">Immutable Collections<a class="headerlink" href="#immutable-collections" title="Permanent link">#</a></h3>
 <ul>
 <li><a href="https://www.scala-lang.org/api/current/scala/collection/immutable/List.html"><code>List</code></a> (linked list, provides fast sequential access)</li>
 <li><a href="https://www.scala-lang.org/api/current/scala/collection/immutable/Stream.html"><code>Stream</code></a> (same as List, except that the tail is evaluated only on demand)</li>
@@ -359,13 +386,13 @@ can be written as follows: </p>
 <li><a href="https://www.scala-lang.org/api/current/scala/collection/immutable/Map.html"><code>Map</code></a> (collection that maps keys to values)</li>
 <li><a href="https://www.scala-lang.org/api/current/scala/collection/immutable/Set.html"><code>Set</code></a> (collection without duplicate elements)</li>
 </ul>
-<h3 id="mutable-collections">Mutable Collections</h3>
+<h3 id="mutable-collections">Mutable Collections<a class="headerlink" href="#mutable-collections" title="Permanent link">#</a></h3>
 <p>Most of the immutable collections above have a mutable counterpart, e.g.: </p>
 <ul>
 <li><a href="https://www.scala-lang.org/api/current/scala/Array.html"><code>Array</code></a> (Scala arrays are native JVM arrays at runtime, therefore they are very performant)</li>
 <li>Scala also has mutable maps and sets; these should only be used if there are performance issues with immutable types</li>
 </ul>
-<h3 id="examples">Examples</h3>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h3>
 <p>NOTE: For the correct code convention of using postfix or not, read <a href="https://docs.scala-lang.org/style/method-invocation.html">this</a></p>
 <pre><code class="language-scala">    val fruitList = List(&quot;apples&quot;, &quot;oranges&quot;, &quot;pears&quot;)
     // Alternative syntax for lists
@@ -455,13 +482,13 @@ can be written as follows: </p>
     def integers(start: Int = 0): Stream[Int] = start #:: integers(start + 1) // infinite sequence of integers starting at &quot;start&quot;
     integers(0) drop 10 take 100 // New stream starting at 10
 </code></pre>
-<h2 id="pairs-similar-for-larger-tuples">Pairs (similar for larger Tuples)</h2>
+<h2 id="pairs-similar-for-larger-tuples">Pairs (similar for larger Tuples)<a class="headerlink" href="#pairs-similar-for-larger-tuples" title="Permanent link">#</a></h2>
 <pre><code class="language-scala">    val pair = (&quot;answer&quot;, 42)   // type: (String, Int)
     val (label, value) = pair   // label = &quot;answer&quot;, value = 42  
     pair._1 // &quot;answer&quot;  
     pair._2 // 42  
 </code></pre>
-<h2 id="ordering">Ordering</h2>
+<h2 id="ordering">Ordering<a class="headerlink" href="#ordering" title="Permanent link">#</a></h2>
 <p>There is already a class in the standard library that represents orderings: <code>scala.math.Ordering[T]</code> which contains
 comparison functions such as <code>lt()</code> and <code>gt()</code> for standard types. Types with a single natural ordering should inherit from 
 the trait <code>scala.math.Ordered[T]</code>.</p>
@@ -471,7 +498,7 @@ the trait <code>scala.math.Ordered[T]</code>.</p>
     msort(fruits)(Ordering.String)  
     msort(fruits)   // the compiler figures out the right ordering  
 </code></pre>
-<h2 id="for-comprehensions">For-Comprehensions</h2>
+<h2 id="for-comprehensions">For-Comprehensions<a class="headerlink" href="#for-comprehensions" title="Permanent link">#</a></h2>
 <p>A for-comprehension is syntactic sugar for <code>map</code>, <code>flatMap</code> and <code>filter</code> operations on collections.</p>
 <p>The general form is <code>for (s) yield e</code></p>
 <ul>
@@ -482,7 +509,7 @@ the trait <code>scala.math.Ordered[T]</code>.</p>
 <li>You can use <code>{ s }</code> instead of <code>( s )</code> if you want to use multiple lines without requiring semicolons</li>
 <li><code>e</code> is an element of the resulting collection</li>
 </ul>
-<h3 id="example-1">Example 1</h3>
+<h3 id="example-1">Example 1<a class="headerlink" href="#example-1" title="Permanent link">#</a></h3>
 <pre><code class="language-scala">    // list all combinations of numbers x and y where x is drawn from
     // 1 to M and y is drawn from 1 to N
     for (x &lt;- 1 to M; y &lt;- 1 to N)
@@ -491,7 +518,7 @@ the trait <code>scala.math.Ordered[T]</code>.</p>
 <p>is equivalent to</p>
 <pre><code class="language-scala">    (1 to M) flatMap (x =&gt; (1 to N) map (y =&gt; (x, y)))
 </code></pre>
-<h3 id="translation-rules">Translation Rules</h3>
+<h3 id="translation-rules">Translation Rules<a class="headerlink" href="#translation-rules" title="Permanent link">#</a></h3>
 <p>A for-expression looks like a traditional for loop but works differently internally</p>
 <p><code>for (x &lt;- e1) yield e2</code> is translated to <code>e1.map(x =&gt; e2)</code></p>
 <p><code>for (x &lt;- e1 if f; s) yield e2</code> is translated to <code>for (x &lt;- e1.withFilter(x =&gt; f); s) yield e2</code></p>
@@ -500,7 +527,7 @@ the trait <code>scala.math.Ordered[T]</code>.</p>
 <p>This means you can use a for-comprehension for your own type, as long
 as you define <code>map</code>, <code>flatMap</code> and <code>filter</code>.</p>
 <p>For more, see <a href="https://class.coursera.org/progfun-2012-001/lecture/111">lecture 6.5</a>.</p>
-<h3 id="example-2">Example 2</h3>
+<h3 id="example-2">Example 2<a class="headerlink" href="#example-2" title="Permanent link">#</a></h3>
 <pre><code class="language-scala">    for {  
       i &lt;- 1 until n  
       j &lt;- 1 until i  

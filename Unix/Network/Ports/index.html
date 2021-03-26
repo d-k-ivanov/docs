@@ -75,8 +75,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h3 id="test-bunch-of-hosts-for-open-ports">Test bunch of hosts for open ports</h3>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../SNMP/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../SNMP/" class="btn btn-xs btn-link">
+        SNMP
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../NTP/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../NTP/" class="btn btn-xs btn-link">
+        NTP
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="test-bunch-of-hosts-for-open-ports">Test bunch of hosts for open ports<a class="headerlink" href="#test-bunch-of-hosts-for-open-ports" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">cat &gt; /tmp/ips-to-test.txt &lt;&lt;-EOF
 1.1.1.1
 2.2.2.2
@@ -88,11 +115,11 @@ EOF
 
 for line in `cat /tmp/ips-to-test.txt`; do nc -z -v -w5 ${line} 443; sleep 1; done
 </code></pre>
-<h3 id="common">Common</h3>
+<h3 id="common">Common<a class="headerlink" href="#common" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">sudo netstat -tunapl
 </code></pre>
-<h3 id="which-process-uses-port">Which process uses port</h3>
-<h4 id="linux">Linux</h4>
+<h3 id="which-process-uses-port">Which process uses port<a class="headerlink" href="#which-process-uses-port" title="Permanent link">#</a></h3>
+<h4 id="linux">Linux<a class="headerlink" href="#linux" title="Permanent link">#</a></h4>
 <pre><code class="language-bash"># Find out PID via ss
 ss -nltp | grep &lt;port&gt;
 # Find out PID via deprecated netstat:
@@ -102,16 +129,16 @@ ls -l /proc/&lt;pid&gt;/exe
 # Find out full run command
 ps -ef | grep &lt;PID&gt;
 </code></pre>
-<h4 id="aix">AIX</h4>
+<h4 id="aix">AIX<a class="headerlink" href="#aix" title="Permanent link">#</a></h4>
 <pre><code class="language-bash">lsof -i:&lt;port&gt;
 ps -ef | grep &lt;pid&gt;
 </code></pre>
-<h4 id="windows">Windows</h4>
+<h4 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">#</a></h4>
 <pre><code class="language-bash">netstat -aon | findstr &quot;&lt;port&gt;&quot;
 pslist &lt;PID&gt;
 </code></pre>
-<h3 id="which-port-is-used-by-a-process">Which port is used by a process</h3>
-<h4 id="unix">Unix</h4>
+<h3 id="which-port-is-used-by-a-process">Which port is used by a process<a class="headerlink" href="#which-port-is-used-by-a-process" title="Permanent link">#</a></h3>
+<h4 id="unix">Unix<a class="headerlink" href="#unix" title="Permanent link">#</a></h4>
 <pre><code class="language-bash">sudo lsof -i -P -n | grep LISTEN | grep &lt;process&gt;
 # Remember about sudo: root access rights is required to see at non-current-user processes
 sudo netstat -tulpn | grep LISTEN | grep &lt;process&gt;
@@ -121,7 +148,7 @@ sudo netstat -anp udp | grep LISTEN | grep &lt;process&gt;
 # Use flags -T fot TCP -U for UDP or both. You can use any IP address instead localhost.
 sudo nmap -sTU -O localhost
 </code></pre>
-<h4 id="windows_1">Windows</h4>
+<h4 id="windows_1">Windows<a class="headerlink" href="#windows_1" title="Permanent link">#</a></h4>
 <pre><code class="language-bash">netstat -bano | findstr /R /C:&quot;[LISTING]&quot; | findstr /R /C:&quot;&lt;process&gt;&quot;
 </code></pre>
 

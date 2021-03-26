@@ -64,8 +64,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h3 id="automatically-add-workdir-folder-to-psmodulepath-in-visual-studio-code">Automatically add Workdir folder to PSModulePath in Visual Studio Code</h3>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../SSL/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../SSL/" class="btn btn-xs btn-link">
+        SSL
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../PSCmdlet/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../PSCmdlet/" class="btn btn-xs btn-link">
+        PSCmdlet
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="automatically-add-workdir-folder-to-psmodulepath-in-visual-studio-code">Automatically add Workdir folder to PSModulePath in Visual Studio Code<a class="headerlink" href="#automatically-add-workdir-folder-to-psmodulepath-in-visual-studio-code" title="Permanent link">#</a></h3>
 <pre><code class="language-ps1">'$Env:PSModulePath  = &quot;$(Get-Location)&quot; + &quot;$([System.IO.Path]::PathSeparator)${Env:PSModulePath}&quot;' | `
 Add-Content $(Join-Path $(Split-Path $profile) Microsoft.VSCode_profile.ps1)
 </code></pre>

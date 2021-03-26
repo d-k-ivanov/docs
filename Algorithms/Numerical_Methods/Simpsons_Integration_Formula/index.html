@@ -68,15 +68,42 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="simpsons-integration-formula">Simpson's Integration Formula</h1>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Ternary_Search/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Ternary_Search/" class="btn btn-xs btn-link">
+        Ternary Search
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Roots_Newtons_Method/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Roots_Newtons_Method/" class="btn btn-xs btn-link">
+        Roots: Newton's Method
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="simpsons-integration-formula">Simpson's Integration Formula<a class="headerlink" href="#simpsons-integration-formula" title="Permanent link">#</a></h1>
 <p>We are going to calculate the value of a definite integral</p>
 <div>
 <div class="MathJax_Preview">\int_a ^ b f (x) dx</div>
 <script type="math/tex; mode=display">\int_a ^ b f (x) dx</script>
 </div>
 <p>The solution described here was published in one of the dissertations of <strong>Thomas Simpson</strong> in 1743.</p>
-<h2 id="simpsons-formula">Simpson's formula</h2>
+<h2 id="simpsons-formula">Simpson's formula<a class="headerlink" href="#simpsons-formula" title="Permanent link">#</a></h2>
 <p>Let <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> be some natural number. We divide the integration segment <span><span class="MathJax_Preview">[a, b]</span><script type="math/tex">[a, b]</script></span> into <span><span class="MathJax_Preview">2n</span><script type="math/tex">2n</script></span> equal parts:</p>
 <div>
 <div class="MathJax_Preview">x_i = a + i h, ~~ i = 0 \ldots 2n,$$
@@ -98,7 +125,7 @@ If you do this for a general function <span><span class="MathJax_Preview">f</spa
 <div class="MathJax_Preview">\int_a ^ b f (x) dx \approx \left(f (x_0) + 4 f (x_1) + 2 f (x_2) + 4f(x_3) + 2 f(x_4) + \ldots + 4 f(x_{2N-1}) + f(x_{2N}) \right)\frac {h} {3} </div>
 <script type="math/tex; mode=display">\int_a ^ b f (x) dx \approx \left(f (x_0) + 4 f (x_1) + 2 f (x_2) + 4f(x_3) + 2 f(x_4) + \ldots + 4 f(x_{2N-1}) + f(x_{2N}) \right)\frac {h} {3} </script>
 </div>
-<h2 id="error">Error</h2>
+<h2 id="error">Error<a class="headerlink" href="#error" title="Permanent link">#</a></h2>
 <p>The error in approximating an integral by Simpson's formula is</p>
 <div>
 <div class="MathJax_Preview"> -\tfrac{1}{90} \left(\tfrac{b-a}{2}\right)^5 f^{(4)}(\xi)</div>
@@ -106,7 +133,7 @@ If you do this for a general function <span><span class="MathJax_Preview">f</spa
 </div>
 <p>where <span><span class="MathJax_Preview">\xi</span><script type="math/tex">\xi</script></span> is some number between <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>.</p>
 <p>The error is asymptotically proportional to <span><span class="MathJax_Preview">(b-a)^5</span><script type="math/tex">(b-a)^5</script></span>. However, the above derivations suggest an error proportional to <span><span class="MathJax_Preview">(b-a)^4</span><script type="math/tex">(b-a)^4</script></span>. Simpson's rule gains an extra order because the points at which the integrand is evaluated are distributed symmetrically in the interval <span><span class="MathJax_Preview">[a, b]</span><script type="math/tex">[a, b]</script></span>.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>Here, <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> is some user-defined function.</p>
 <pre><code class="language-cpp">const int N = 1000 * 1000; // number of steps (already multiplied by 2)
 
@@ -121,7 +148,7 @@ double simpson_integration(double a, double b){
     return s;
 }
 </code></pre>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://www.urionlinejudge.com.br/judge/en/problems/view/1297">URI - Environment Protection</a></li>
 </ul>

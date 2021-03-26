@@ -72,10 +72,37 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="maximum-flow-dinics-algorithm">Maximum Flow: Dinic's algorithm</h1>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Maximum_Flow_Ford-Fulkerson_and_Edmonds-Karp/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Maximum_Flow_Ford-Fulkerson_and_Edmonds-Karp/" class="btn btn-xs btn-link">
+        Maximum Flow: Ford-Fulkerson and Edmonds-Karp
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Lowest_Common_Ancestor_Tarjan/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Lowest_Common_Ancestor_Tarjan/" class="btn btn-xs btn-link">
+        Lowest Common Ancestor: Tarjan's Off-Line Algorithm
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="maximum-flow-dinics-algorithm">Maximum Flow: Dinic's algorithm<a class="headerlink" href="#maximum-flow-dinics-algorithm" title="Permanent link">#</a></h1>
 <p>Dinic's algorithm solves the maximum flow problem in <span><span class="MathJax_Preview">O(V^2E)</span><script type="math/tex">O(V^2E)</script></span>. The maximum flow problem is defined in this article <a href="/docs/#Algorithms/Graph_Theory/Maximum_Flow_Ford-Fulkerson_and_Edmonds-Karp/">Maximum flow - Ford-Fulkerson and Edmonds-Karp</a>. This algorithm was discovered by Yefim Dinitz in 1970.</p>
-<h2 id="definitions">Definitions</h2>
+<h2 id="definitions">Definitions<a class="headerlink" href="#definitions" title="Permanent link">#</a></h2>
 <p>A <strong>residual network</strong> <span><span class="MathJax_Preview">G^R</span><script type="math/tex">G^R</script></span> of network <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> is a network which contains two edges for each edge <span><span class="MathJax_Preview">(v, u)\in G</span><script type="math/tex">(v, u)\in G</script></span>:<br></p>
 <ul>
 <li><span><span class="MathJax_Preview">(v, u)</span><script type="math/tex">(v, u)</script></span> with capacity <span><span class="MathJax_Preview">c_{vu}^R = c_{vu} - f_{vu}</span><script type="math/tex">c_{vu}^R = c_{vu} - f_{vu}</script></span></li>
@@ -83,28 +110,28 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </ul>
 <p>A <strong>blocking flow</strong> of some network is such a flow that every path from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> contains at least one edge which is saturated by this flow. Note that a blocking flow is not necessarily maximal.</p>
 <p>A <strong>layered network</strong> of a network <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> is a network built in the following way. Firstly, for each vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> we calculate <span><span class="MathJax_Preview">level[v]</span><script type="math/tex">level[v]</script></span> - the shortest path (unweighted) from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to this vertex using only edges with positive capacity. Then we keep only those edges <span><span class="MathJax_Preview">(v, u)</span><script type="math/tex">(v, u)</script></span> for which <span><span class="MathJax_Preview">level[v] + 1 = level[u]</span><script type="math/tex">level[v] + 1 = level[u]</script></span>. Obviously, this network is acyclic.</p>
-<h2 id="algorithm">Algorithm</h2>
+<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
 <p>The algorithm consists of several phases. On each phase we construct the layered network of the residual network of <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>. Then we find an arbitrary blocking flow in the layered network and add it to the current flow.</p>
-<h2 id="proof-of-correctness">Proof of correctness</h2>
+<h2 id="proof-of-correctness">Proof of correctness<a class="headerlink" href="#proof-of-correctness" title="Permanent link">#</a></h2>
 <p>Let's show that if the algorithm terminates, it finds the maximum flow.</p>
 <p>If the algorithm terminated, it couldn't find a blocking flow in the layered network. It means that the layered network doesn't have any path from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>.  It means that the residual network doesn't have any path from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>. It means that the flow is maximum.</p>
-<h2 id="number-of-phases">Number of phases</h2>
+<h2 id="number-of-phases">Number of phases<a class="headerlink" href="#number-of-phases" title="Permanent link">#</a></h2>
 <p>The algorithm terminates in less than <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span> phases. To prove this, we must firstly prove two lemmas.</p>
 <p><strong>Lemma 1.</strong> The distances from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to each vertex don't decrease after each iteration, i. e. <span><span class="MathJax_Preview">level_{i+1}[v] \ge level_i[v]</span><script type="math/tex">level_{i+1}[v] \ge level_i[v]</script></span>.</p>
 <p><strong>Proof.</strong> Fix a phase <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and a vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>. Consider any shortest path <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> in <span><span class="MathJax_Preview">G_{i+1}^R</span><script type="math/tex">G_{i+1}^R</script></span>. The length of <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> equals <span><span class="MathJax_Preview">level_{i+1}[v]</span><script type="math/tex">level_{i+1}[v]</script></span>. Note that <span><span class="MathJax_Preview">G_{i+1}^R</span><script type="math/tex">G_{i+1}^R</script></span> can only contain edges from <span><span class="MathJax_Preview">G_i^R</span><script type="math/tex">G_i^R</script></span> and back edges for edges from <span><span class="MathJax_Preview">G_i^R</span><script type="math/tex">G_i^R</script></span>. If <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> has no back edges for <span><span class="MathJax_Preview">G_i^R</span><script type="math/tex">G_i^R</script></span>, then <span><span class="MathJax_Preview">level_{i+1}[v] \ge level_i[v]</span><script type="math/tex">level_{i+1}[v] \ge level_i[v]</script></span> because <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> is also a path in <span><span class="MathJax_Preview">G_i^R</span><script type="math/tex">G_i^R</script></span>. Now, suppose that <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> has at least one back edge. Let the first such edge be <span><span class="MathJax_Preview">(u, w)</span><script type="math/tex">(u, w)</script></span>.Then <span><span class="MathJax_Preview">level_{i+1}[u] \ge level_i[u]</span><script type="math/tex">level_{i+1}[u] \ge level_i[u]</script></span> (because of the first case). The edge <span><span class="MathJax_Preview">(u, w)</span><script type="math/tex">(u, w)</script></span> doesn't belong to <span><span class="MathJax_Preview">G_i^R</span><script type="math/tex">G_i^R</script></span>, so the edge <span><span class="MathJax_Preview">(w, u)</span><script type="math/tex">(w, u)</script></span> was affected by the blocking flow on the previous iteration. It means that <span><span class="MathJax_Preview">level_i[u] = level_i[w] + 1</span><script type="math/tex">level_i[u] = level_i[w] + 1</script></span>. Also, <span><span class="MathJax_Preview">level_{i+1}[w] = level_{i+1}[u] + 1</span><script type="math/tex">level_{i+1}[w] = level_{i+1}[u] + 1</script></span>. From these two equations and <span><span class="MathJax_Preview">level_{i+1}[u] \ge level_i[u]</span><script type="math/tex">level_{i+1}[u] \ge level_i[u]</script></span> we obtain <span><span class="MathJax_Preview">level_{i+1}[w] \ge level_i[w] + 2</span><script type="math/tex">level_{i+1}[w] \ge level_i[w] + 2</script></span>. Now we can use the same idea for the rest of the path.</p>
 <p><strong>Lemma 2.</strong> <span><span class="MathJax_Preview">level_{i+1}[t] &gt; level_i[t]</span><script type="math/tex">level_{i+1}[t] > level_i[t]</script></span></p>
 <p><strong>Proof.</strong> From the previous lemma, <span><span class="MathJax_Preview">level_{i+1}[t] \ge level_i[t]</span><script type="math/tex">level_{i+1}[t] \ge level_i[t]</script></span>. Suppose that <span><span class="MathJax_Preview">level_{i+1}[t] = level_i[t]</span><script type="math/tex">level_{i+1}[t] = level_i[t]</script></span>. Note that <span><span class="MathJax_Preview">G_{i+1}^R</span><script type="math/tex">G_{i+1}^R</script></span> can only contain edges from <span><span class="MathJax_Preview">G_i^R</span><script type="math/tex">G_i^R</script></span> and back edges for edges from <span><span class="MathJax_Preview">G_i^R</span><script type="math/tex">G_i^R</script></span>. It means that there is a shortest path in <span><span class="MathJax_Preview">G_i^R</span><script type="math/tex">G_i^R</script></span> which wasn't blocked by the blocking flow. It's a contradiction.</p>
 <p>From these two lemmas we conclude that there are less than <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span> phases because <span><span class="MathJax_Preview">level[t]</span><script type="math/tex">level[t]</script></span> increases, but it can't be greater than <span><span class="MathJax_Preview">V - 1</span><script type="math/tex">V - 1</script></span>.</p>
-<h2 id="finding-blocking-flow">Finding blocking flow</h2>
+<h2 id="finding-blocking-flow">Finding blocking flow<a class="headerlink" href="#finding-blocking-flow" title="Permanent link">#</a></h2>
 <p>In order to find the blocking flow on each iteration, we may simply try pushing flow with DFS from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> in the layered network while it can be pushed. In order to do it more quickly, we must remove the edges which can't be used to push anymore. To do this we can keep a pointer in each vertex which points to the next edge which can be used. Each pointer can be moved at most <span><span class="MathJax_Preview">E</span><script type="math/tex">E</script></span> times, so each phase works in <span><span class="MathJax_Preview">O(VE)</span><script type="math/tex">O(VE)</script></span>.</p>
-<h2 id="complexity">Complexity</h2>
+<h2 id="complexity">Complexity<a class="headerlink" href="#complexity" title="Permanent link">#</a></h2>
 <p>There are less than <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span> phases, so the total complexity is <span><span class="MathJax_Preview">O(V^2E)</span><script type="math/tex">O(V^2E)</script></span>.</p>
-<h2 id="unit-networks">Unit networks</h2>
+<h2 id="unit-networks">Unit networks<a class="headerlink" href="#unit-networks" title="Permanent link">#</a></h2>
 <p>A <strong>unit network</strong> is a network in which all the edges have unit capacity, and for any vertex except <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> and <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> either incoming or outgoing edge is unique. That's exactly the case with the network we build to solve the maximum matching problem with flows.</p>
 <p>On unit networks Dinic's algorithm works in <span><span class="MathJax_Preview">O(E\sqrt{V})</span><script type="math/tex">O(E\sqrt{V})</script></span>. Let's prove this.</p>
 <p>Firstly, each phase now works in <span><span class="MathJax_Preview">O(E)</span><script type="math/tex">O(E)</script></span> because each edge will be considered at most once.</p>
 <p>Secondly, suppose there have already been <span><span class="MathJax_Preview">\sqrt{V}</span><script type="math/tex">\sqrt{V}</script></span> phases. Then all the augmenting paths with the length <span><span class="MathJax_Preview">\le\sqrt{V}</span><script type="math/tex">\le\sqrt{V}</script></span> have been found. Let <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> be the current flow, <span><span class="MathJax_Preview">f'</span><script type="math/tex">f'</script></span> be the maximum flow. Consider their difference <span><span class="MathJax_Preview">f' - f</span><script type="math/tex">f' - f</script></span>. It is a flow in <span><span class="MathJax_Preview">G^R</span><script type="math/tex">G^R</script></span> of value <span><span class="MathJax_Preview">|f'| - |f|</span><script type="math/tex">|f'| - |f|</script></span> and on each edge it is either <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span> or <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>. It can be decomposed into <span><span class="MathJax_Preview">|f'| - |f|</span><script type="math/tex">|f'| - |f|</script></span> paths from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> to <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> and possibly cycles. As the network is unit, they can't have common vertices, so the total number of vertices is <span><span class="MathJax_Preview">\ge (|f'| - |f|)\sqrt{V}</span><script type="math/tex">\ge (|f'| - |f|)\sqrt{V}</script></span>, but it is also <span><span class="MathJax_Preview">\le V</span><script type="math/tex">\le V</script></span>, so in another <span><span class="MathJax_Preview">\sqrt{V}</span><script type="math/tex">\sqrt{V}</script></span> iterations we will definitely find the maximum flow.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>```cpp dinic
 struct FlowEdge {
     int v, u;

@@ -66,12 +66,39 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="segment-to-line">Segment to Line</h1>
-<h2 id="finding-the-equation-of-a-line-for-a-segment">Finding the equation of a line for a segment</h2>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Graph_Theory/0-1_BFS/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Graph_Theory/0-1_BFS/" class="btn btn-xs btn-link">
+        0-1 BFS
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Point_in_Convex_Polygon/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Point_in_Convex_Polygon/" class="btn btn-xs btn-link">
+        Point in Convex Polygon
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="segment-to-line">Segment to Line<a class="headerlink" href="#segment-to-line" title="Permanent link">#</a></h1>
+<h2 id="finding-the-equation-of-a-line-for-a-segment">Finding the equation of a line for a segment<a class="headerlink" href="#finding-the-equation-of-a-line-for-a-segment" title="Permanent link">#</a></h2>
 <p>The task is: given the coordinates of the ends of a segment, construct a line passing through it.</p>
 <p>We assume that the segment is non-degenerate, i.e. has a length greater than zero (otherwise, of course, infinitely many different lines pass through it).</p>
-<h2 id="two-dimensional-case">Two-dimensional case</h2>
+<h2 id="two-dimensional-case">Two-dimensional case<a class="headerlink" href="#two-dimensional-case" title="Permanent link">#</a></h2>
 <p>Let the given segment be <span><span class="MathJax_Preview">PQ</span><script type="math/tex">PQ</script></span> i.e. the known coordinates of its ends <span><span class="MathJax_Preview">P_x , P_y , Q_x , Q_y</span><script type="math/tex">P_x , P_y , Q_x , Q_y</script></span> .</p>
 <p>It is necessary to construct <strong>the equation of a line in the plane</strong> passing through this segment, i.e. find the coefficients <span><span class="MathJax_Preview">A , B , C</span><script type="math/tex">A , B , C</script></span> in the equation of a line:</p>
 <div>
@@ -94,12 +121,12 @@ Therefore, our task is to find one of these triples.</p>
 <div class="MathJax_Preview">C = - A P_x - B P_y.</div>
 <script type="math/tex; mode=display">C = - A P_x - B P_y.</script>
 </div>
-<h3 id="integer-case">Integer case</h3>
+<h3 id="integer-case">Integer case<a class="headerlink" href="#integer-case" title="Permanent link">#</a></h3>
 <p>An important advantage of this method of constructing a straight line is that if the coordinates of the ends were integer, then the coefficients obtained will also be <strong>integer</strong> . In some cases, this allows one to perform geometric operations without resorting to real numbers at all.</p>
 <p>However, there is a small drawback: for the same straight line different triples of coefficients can be obtained.
 To avoid this, but do not go away from the integer coefficients, you can apply the following technique, often called <strong>rationing</strong>. Find the <a href="/docs/#Algorithms/Algebra/GCD_Euclidean_Algorithm/">greatest common divisor</a> of numbers <span><span class="MathJax_Preview">| A | , | B | , | C |</span><script type="math/tex">| A | , | B | , | C |</script></span> , we divide all three coefficients by it, and then we make the normalization of the sign: if <span><span class="MathJax_Preview">A &lt;0</span><script type="math/tex">A <0</script></span> or <span><span class="MathJax_Preview">A = 0, B &lt;0</span><script type="math/tex">A = 0, B <0</script></span> then multiply all three coefficients by <span><span class="MathJax_Preview">-1</span><script type="math/tex">-1</script></span> .
 As a result, we will come to the conclusion that for identical straight lines, identical triples of coefficients will be obtained, which makes it easy to check straight lines for equality.</p>
-<h3 id="real-case">Real case</h3>
+<h3 id="real-case">Real case<a class="headerlink" href="#real-case" title="Permanent link">#</a></h3>
 <p>When working with real numbers, you should always be aware of errors.</p>
 <p>The coefficients <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> and <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> will have the order of the original coordinates, the coefficient <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> is of the order of the square of them. This may already be quite large numbers, and, for example, when we <a href="/docs/#Algorithms//docs/#Algorithms/Geometry/Intersection_Point_of_Lines/">intersect straight lines</a>, they will become even larger, which can lead to large rounding errors already when the coordinates of the end points are of order <span><span class="MathJax_Preview">10^3</span><script type="math/tex">10^3</script></span>.</p>
 <p>Therefore, when working with real numbers, it is desirable to produce the so-called <strong>normalization</strong>, this is straightforward: namely, to make the coefficients such that <span><span class="MathJax_Preview">A ^ 2 + B ^ 2 = 1</span><script type="math/tex">A ^ 2 + B ^ 2 = 1</script></span> . To do this, calculate the number <span><span class="MathJax_Preview">Z</span><script type="math/tex">Z</script></span> :</p>
@@ -111,7 +138,7 @@ As a result, we will come to the conclusion that for identical straight lines, i
 <p>Thus, the order of the coefficients <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> and <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> will not depend on the order of the input coordinates, and the coefficient <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> will be of the same order as the input coordinates. In practice, this leads to a significant improvement in the accuracy of calculations.</p>
 <p>Finally, we mention the <strong>comparison</strong> of straight lines - in fact, after such a normalization, for the same straight line, only two triples of coefficients can be obtained: up to multiplication by <span><span class="MathJax_Preview">-1</span><script type="math/tex">-1</script></span>.
 Accordingly, if we make an additional normalization taking into account the sign (if <span><span class="MathJax_Preview">A &lt; -\varepsilon</span><script type="math/tex">A < -\varepsilon</script></span>  or <span><span class="MathJax_Preview">| A | &lt; \varepsilon</span><script type="math/tex">| A | < \varepsilon</script></span>, <span><span class="MathJax_Preview">B &lt;- \varepsilon</span><script type="math/tex">B <- \varepsilon</script></span> then multiply by <span><span class="MathJax_Preview">-1</span><script type="math/tex">-1</script></span> ), the resulting coefficients will be unique.</p>
-<h3 id="three-dimensional-and-multidimensional-case">Three-dimensional and multidimensional case</h3>
+<h3 id="three-dimensional-and-multidimensional-case">Three-dimensional and multidimensional case<a class="headerlink" href="#three-dimensional-and-multidimensional-case" title="Permanent link">#</a></h3>
 <p>Already in the three-dimensional case there is <strong>no simple equation</strong> describing a straight line (it can be defined as the intersection of two planes, that is, a system of two equations, but this is an inconvenient method).</p>
 <p>Consequently, in the three-dimensional and multidimensional cases we must use the <strong>parametric method of defining a straight line</strong> , i.e. as a point <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> and a vector <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> :</p>
 <div>

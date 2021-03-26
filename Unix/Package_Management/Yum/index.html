@@ -66,12 +66,39 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Power_Management/Laptop_lid/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Power_Management/Laptop_lid/" class="btn btn-xs btn-link">
+        Laptop lid
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Pacman/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Pacman/" class="btn btn-xs btn-link">
+        Pacman
+      </a>
+    </div>
+    
+  </div>
+
+    
 
     <blockquote>
 <p>This section describes work with RHEL-based Linux distributives like:
 Red Hat Enterprise Linux, Oracle Linux, CentOS Linux, Scientific Linux, Fermi Linux, ROSA Linux, CERN Linux</p>
 </blockquote>
-<h3 id="yum">Yum</h3>
+<h3 id="yum">Yum<a class="headerlink" href="#yum" title="Permanent link">#</a></h3>
 <pre><code class="language-bash"># Search for software
 yum search &lt;pattern&gt;
 # Install package
@@ -84,7 +111,7 @@ yum clean all
 # Remove packages with dependencies:
 #add &quot;clean_requirements_on_remove=1&quot; to /etc/yum.conf
 </code></pre>
-<h3 id="epel-repository">EPEL repository</h3>
+<h3 id="epel-repository">EPEL repository<a class="headerlink" href="#epel-repository" title="Permanent link">#</a></h3>
 <pre><code class="language-bash"># RHEL-based version 7 (two options)
 rpm -hUv https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 yum insall epel-release

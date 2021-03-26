@@ -72,8 +72,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h3 id="firewalld-status">FirewallD Status</h3>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../IPTables/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../IPTables/" class="btn btn-xs btn-link">
+        IPTables
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Encryption/HSM/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Encryption/HSM/" class="btn btn-xs btn-link">
+        HSM
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="firewalld-status">FirewallD Status<a class="headerlink" href="#firewalld-status" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">firewall-cmd --state
 
 firewall-cmd --list-all
@@ -81,7 +108,7 @@ firewall-cmd --list-all
 # Reload configuration                                                                              
 firewall-cmd --reload
 </code></pre>
-<h3 id="get-security-zones">Get security zones</h3>
+<h3 id="get-security-zones">Get security zones<a class="headerlink" href="#get-security-zones" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">firewall-cmd --get-zones
 firewall-cmd --get-default-zone
 firewall-cmd --get-active-zones
@@ -89,10 +116,10 @@ firewall-cmd --list-all-zones
 firewall-cmd --set-default-zone=&lt;zone_name&gt;
 firewall-cmd --get-zone-of-interface=&lt;network_interface_name&gt;
 </code></pre>
-<h3 id="get-icmp-types">Get ICMP types</h3>
+<h3 id="get-icmp-types">Get ICMP types<a class="headerlink" href="#get-icmp-types" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">firewall-cmd --get-icmptypes
 </code></pre>
-<h3 id="services">Services</h3>
+<h3 id="services">Services<a class="headerlink" href="#services" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">firewall-cmd --get-services
 
 # List default services
@@ -105,7 +132,7 @@ firewall-cmd --add-service=&lt;service_name&gt; --permanent
 # Remove service
 firewall-cmd --zone=&lt;zone_name&gt; --remove-service=&lt;service_name&gt;
 </code></pre>
-<h3 id="rules">Rules</h3>
+<h3 id="rules">Rules<a class="headerlink" href="#rules" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">firewall-cmd --permanent --add-source=&lt;subnet&gt;
 firewall-cmd --permanent --add-port=&lt;port&gt;/&lt;protocol&gt;
 </code></pre>

@@ -66,8 +66,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="minimum-cost-flow-successive-shortest-path">Minimum-Cost Flow: Successive Shortest Path</h1>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Minimum_Spanning_Tree_Kruskal_with_DSU/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Minimum_Spanning_Tree_Kruskal_with_DSU/" class="btn btn-xs btn-link">
+        Minimum Spanning Tree: Kruskal with Disjoint Set Union
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Maximum_Flow_Push-Relabel_Improved/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Maximum_Flow_Push-Relabel_Improved/" class="btn btn-xs btn-link">
+        Maximum Flow: Push-Relabel Algorithm Improved
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="minimum-cost-flow-successive-shortest-path">Minimum-Cost Flow: Successive Shortest Path<a class="headerlink" href="#minimum-cost-flow-successive-shortest-path" title="Permanent link">#</a></h1>
 <p>Given a network <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> consisting of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> edges.
 For each edge (generally speaking, oriented edges, but see below), the capacity (a non-negative integer) and the cost per unit of flow along this edge (some integer) are given.
 Also the source <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> and the sink <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> are marked.</p>
@@ -77,9 +104,9 @@ This task is called <strong>minimum-cost flow problem</strong>.</p>
 you want to find the maximum flow, and among all maximal flows we want to find the one with the least cost.
 This is called the <strong>minimum-cost maximum-flow problem</strong>.</p>
 <p>Both these problems can be solved effectively with the algorithm of sucessive shortest paths.</p>
-<h2 id="algorithm">Algorithm</h2>
+<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
 <p>This algorithm is very similar to the <a href="/docs/#Algorithms/Graph_Theory/Maximum_Flow_Ford-Fulkerson_and_Edmonds-Karp/">Edmonds-Karp</a> for computing the maximum flow.</p>
-<h3 id="simplest-case">Simplest case</h3>
+<h3 id="simplest-case">Simplest case<a class="headerlink" href="#simplest-case" title="Permanent link">#</a></h3>
 <p>First we only consider the simplest case, where the graph is oriented, and there is at most one edge between any pair of vertices (e.g. if <span><span class="MathJax_Preview">(i, j)</span><script type="math/tex">(i, j)</script></span> is an edge in the graph, then <span><span class="MathJax_Preview">(j, i)</span><script type="math/tex">(j, i)</script></span> cannot be part in it as well).</p>
 <p>Let <span><span class="MathJax_Preview">U_{i j}</span><script type="math/tex">U_{i j}</script></span> be the capacity of an edge <span><span class="MathJax_Preview">(i, j)</span><script type="math/tex">(i, j)</script></span> if this edge exists.
 And let <span><span class="MathJax_Preview">C_{i j}</span><script type="math/tex">C_{i j}</script></span> be the cost per unit of flow along this edge <span><span class="MathJax_Preview">(i, j)</span><script type="math/tex">(i, j)</script></span>.
@@ -99,7 +126,7 @@ If a path was found, we increase the flow along it as much as possible (i.e. we 
 If at some point the flow reaches the value <span><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span>, then we stop the algorithm (note that in the last iteration of the algorithm it is necessary to increase the flow by only such an amount so that the final flow value doesn't surpass <span><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span>).</p>
 <p>It is not difficult to see, that if we set <span><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span> to infinity, then the algorithm will find the minimum-cost maximum-flow.
 So both variations of the problem can be solved by the same algorithm.</p>
-<h3 id="undirected-graphs-multigraphs">Undirected graphs / multigraphs</h3>
+<h3 id="undirected-graphs-multigraphs">Undirected graphs / multigraphs<a class="headerlink" href="#undirected-graphs-multigraphs" title="Permanent link">#</a></h3>
 <p>The case of an undirected graph or a multigraph doesn't differ conceptually from the algorithm above.
 The algorithm will also work on these graphs.
 However it becomes a little more difficult to implement it.</p>
@@ -112,14 +139,14 @@ Thus instead of the usual ancestor array we additionally must store the edge num
 Thirdly, as the flow increases along a certain edge, it is necessary to reduce the flow along the back edge.
 Since we have multiple edges, we have to store the edge number for the reversed edge for each edge.</p>
 <p>There are no other obstructions with undirected graphs or multigraphs.</p>
-<h3 id="complexity">Complexity</h3>
+<h3 id="complexity">Complexity<a class="headerlink" href="#complexity" title="Permanent link">#</a></h3>
 <p>Analog to the analysis of the Edmonds-Karp algorithm we get the following estimation:
 <span><span class="MathJax_Preview">O(n m) \cdot T(n, m)</span><script type="math/tex">O(n m) \cdot T(n, m)</script></span>, where <span><span class="MathJax_Preview">T(n, m)</span><script type="math/tex">T(n, m)</script></span> is the time required to find the shortest path in a graph with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> edges</p>
 <p>If this search is done with the <a href="/docs/#Algorithms/Graph_Theory/Dijkstra_Algorithm/">Dijkstra algorithm</a>, then the complexity for the minimum-cost algorithm would become <span><span class="MathJax_Preview">O(n^3 m)</span><script type="math/tex">O(n^3 m)</script></span>.
 However we deal with edges with negative cost.
 So Dijkstra is not applicable, at least not unmodified.</p>
 <p>Instead we can use the <a href="/docs/#Algorithms/Graph_Theory/Bellman-Ford_Algorithm/">Bellman-Ford algorithm</a>. With it the complexity becomes <span><span class="MathJax_Preview">O(n^2 m^2)</span><script type="math/tex">O(n^2 m^2)</script></span>.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>Here is an implementation using the <a href="/docs/#Algorithms/Graph_Theory/Bellman-Ford_Algorithm/">SPFA algorithm</a> for the simplest case.</p>
 <p>```cpp min_cost_flow_successive_shortest_path
 struct Edge

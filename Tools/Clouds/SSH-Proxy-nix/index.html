@@ -66,10 +66,37 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="connect-through-bastion-host-on-nix">Connect through Bastion host on Nix</h1>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../SSH-Proxy-win/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../SSH-Proxy-win/" class="btn btn-xs btn-link">
+        Connect through Bastion host on Windows
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../AWS/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../AWS/" class="btn btn-xs btn-link">
+        AWS
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="connect-through-bastion-host-on-nix">Connect through Bastion host on Nix<a class="headerlink" href="#connect-through-bastion-host-on-nix" title="Permanent link">#</a></h1>
 <p>To connect via Bastion host which work as SSH Proxy you need simple ssh config on  your nix client machine:</p>
-<h2 id="config-1-masked-subnet">Config 1: Masked subnet</h2>
+<h2 id="config-1-masked-subnet">Config 1: Masked subnet<a class="headerlink" href="#config-1-masked-subnet" title="Permanent link">#</a></h2>
 <pre><code class="language-bash">vim ~/.ssh/config
 
 Host &lt;bastion_name&gt;
@@ -90,7 +117,7 @@ Host 192.168.*
         UserKnownHostsFile=/dev/null
 
 </code></pre>
-<h2 id="config-2-host-aliases">Config 2: Host aliases</h2>
+<h2 id="config-2-host-aliases">Config 2: Host aliases<a class="headerlink" href="#config-2-host-aliases" title="Permanent link">#</a></h2>
 <pre><code class="language-bash">Host &lt;bastion_name&gt;
 Hostname &lt;bastion_ip_addrese&gt;
         Port 22

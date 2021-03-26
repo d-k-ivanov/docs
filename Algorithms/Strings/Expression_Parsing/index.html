@@ -66,12 +66,39 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="expression-parsing">Expression Parsing</h1>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Lyndon_Factorization/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Lyndon_Factorization/" class="btn btn-xs btn-link">
+        Lyndon Factorization
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Aho-Corasick_Algorithm/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Aho-Corasick_Algorithm/" class="btn btn-xs btn-link">
+        Aho-Corasick Algorithm
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="expression-parsing">Expression Parsing<a class="headerlink" href="#expression-parsing" title="Permanent link">#</a></h1>
 <p>A string containing a mathematical expression containing numbers and various operators is given.
 We have to compute the value of it in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>, where <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is the length of the string.</p>
 <p>The algorithm discussed here translates an expression into the so-called <strong>reverse Polish notation</strong> (explicitly or implicitly), and evaluates this expression.</p>
-<h2 id="reverse-polish-notation">Reverse Polish notation</h2>
+<h2 id="reverse-polish-notation">Reverse Polish notation<a class="headerlink" href="#reverse-polish-notation" title="Permanent link">#</a></h2>
 <p>The reverse Polish notation is a form of writing mathematical expressions, in which the operators are located after their operands.
 For example the following expression
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">a + b * c * d + (e - f) * (g * h + i)</span><script type="math/tex">a + b * c * d + (e - f) * (g * h + i)</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">a + b * c * d + (e - f) * (g * h + i)</span><script type="math/tex">a + b * c * d + (e - f) * (g * h + i)</script></span></script></span>
@@ -84,7 +111,7 @@ We will iterate over the operands and operators of the expression in reverse Pol
 If the current element is a number, then we put the value on top of the stack, if the current element is an operator, then we get the top two elements from the stack, perform the operation, and put the result back on top of the stack.
 In the end there will be exactly one element left in the stack, which will be the value of the expression.</p>
 <p>Obviously this simple evaluation runs in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> time.</p>
-<h2 id="parsing-of-simple-expressions">Parsing of simple expressions</h2>
+<h2 id="parsing-of-simple-expressions">Parsing of simple expressions<a class="headerlink" href="#parsing-of-simple-expressions" title="Permanent link">#</a></h2>
 <p>For the time being we only consider a simplified problem:
 we assume that all operators are <strong>binary</strong> (i.e. they take two arguments), and all are <strong>left-associative</strong> (if the priorities are equal, they get executed from left to right).
 Parentheses are allowed.</p>

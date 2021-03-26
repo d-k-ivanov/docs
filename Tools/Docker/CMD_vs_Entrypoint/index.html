@@ -64,6 +64,33 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Common/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Common/" class="btn btn-xs btn-link">
+        Common
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Debug/GDB/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Debug/GDB/" class="btn btn-xs btn-link">
+        GDB
+      </a>
+    </div>
+    
+  </div>
+
+    
 
     <blockquote>
 <p>According to: https://stackoverflow.com/questions/21553353/what-is-the-difference-between-cmd-and-entrypoint-in-a-dockerfile<br>
@@ -73,7 +100,7 @@ ENTRYPOINT should be defined when using the container as an executable.<br>
 CMD should be used as a way of defining default arguments for an ENTRYPOINT command or for executing an ad-hoc command in a container.<br>
 CMD will be overridden when running the container with alternative arguments.<br></p>
 </blockquote>
-<h2 id="the-tables-below-shows-what-command-is-executed-for-different-entrypoint-cmd-combinations">The tables below shows what command is executed for different ENTRYPOINT / CMD combinations:</h2>
+<h2 id="the-tables-below-shows-what-command-is-executed-for-different-entrypoint-cmd-combinations">The tables below shows what command is executed for different ENTRYPOINT / CMD combinations:<a class="headerlink" href="#the-tables-below-shows-what-command-is-executed-for-different-entrypoint-cmd-combinations" title="Permanent link">#</a></h2>
 <pre><code>-- No ENTRYPOINT
 
 ╔════════════════════════════╦═════════════════════════════╗

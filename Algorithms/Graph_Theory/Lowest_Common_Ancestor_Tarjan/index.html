@@ -66,14 +66,41 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="lowest-common-ancestor-tarjans-off-line-algorithm">Lowest Common Ancestor: Tarjan's Off-Line Algorithm</h1>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Maximum_Flow_Dinics_Algorithm/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Maximum_Flow_Dinics_Algorithm/" class="btn btn-xs btn-link">
+        Maximum Flow: Dinic's algorithm
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Lowest_Common_Ancestor_Farach-Colton_Bender/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Lowest_Common_Ancestor_Farach-Colton_Bender/" class="btn btn-xs btn-link">
+        Lowest Common Ancestor: Farach-Colton and Bender Algorithm
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="lowest-common-ancestor-tarjans-off-line-algorithm">Lowest Common Ancestor: Tarjan's Off-Line Algorithm<a class="headerlink" href="#lowest-common-ancestor-tarjans-off-line-algorithm" title="Permanent link">#</a></h1>
 <p>We have a tree <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> nodes and we have <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> queries of the form <span><span class="MathJax_Preview">(u, v)</span><script type="math/tex">(u, v)</script></span>.
 For each query <span><span class="MathJax_Preview">(u, v)</span><script type="math/tex">(u, v)</script></span> we want to find the lowest common ancestor of the vertices <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> and <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>, i.e. the node that is an ancestor of both <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> and <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> and has the greatest depth in the tree.
 The node <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> is also an ancestor of <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>, so the LCA can also be one of the two nodes.</p>
 <p>In this article we will solve the problem off-line, i.e. we assume that all queries are known in advance, and we therefore answer the queries in any order we like.
 The following algorithm allows to answer all <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> queries in <span><span class="MathJax_Preview">O(n + m)</span><script type="math/tex">O(n + m)</script></span> total time, i.e. for sufficiently large <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> for each query.</p>
-<h2 id="algorithm">Algorithm</h2>
+<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
 <p>The algorithm is named after Robert Tarjan, who discovered it in 1979 and also made many other contributions to the <a href="/docs/#Algorithms/Data_Structures/Disjoint_Set_Union/">Disjoint Set Union</a> data structure, which will be heavily used in this algorithm.</p>
 <p>The algorithm answers all queries with one <a href="/docs/#Algorithms/Graph_Theory/Depth_First_Search/">DFS</a> traversal of the tree.
 Namely a query <span><span class="MathJax_Preview">(u, v)</span><script type="math/tex">(u, v)</script></span> is answered at node <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span>, if node <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> has already been visited previously, or vice versa.</p>
@@ -102,7 +129,7 @@ Firstly we have <span><span class="MathJax_Preview">O(n)</span><script type="mat
 Secondly  we have the function calls of <code>union_sets</code> which happen <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> times, resulting also in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>.
 And thirdly we have the calls of <code>find_set</code> for every query, which gives <span><span class="MathJax_Preview">O(m)</span><script type="math/tex">O(m)</script></span>.
 So in total the time complexity is <span><span class="MathJax_Preview">O(n + m)</span><script type="math/tex">O(n + m)</script></span>, which means that for sufficiently large <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> this corresponds to <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> for answering one query.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>Here is an implementation of this algorithm.
 The implementation of DSU has been not included, as it can be used without any modifications.</p>
 <pre><code class="language-cpp">vector&lt;vector&lt;int&gt;&gt; adj;

@@ -78,6 +78,33 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../CheatSheet/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../CheatSheet/" class="btn btn-xs btn-link">
+        Cheat Sheet
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../../Ruby/Installation/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../../Ruby/Installation/" class="btn btn-xs btn-link">
+        Installation
+      </a>
+    </div>
+    
+  </div>
+
+    
 
     <p>On this page we will periodically publish feedback specific to individual assignments. For feedback which applies to coding style in general, visit the <a href="?page=ScalaStyleGuide">Scala Style Guide</a> wiki page.</p>
 <!--
@@ -113,7 +140,7 @@ open all files and use cmd-shift-f)
 
 -->
 
-<h3 id="week-4-types-and-pattern-matching-huffman-coding">Week 4: Types and Pattern Matching (Huffman Coding)</h3>
+<h3 id="week-4-types-and-pattern-matching-huffman-coding">Week 4: Types and Pattern Matching (Huffman Coding)<a class="headerlink" href="#week-4-types-and-pattern-matching-huffman-coding" title="Permanent link">#</a></h3>
 <p>The following table indicates how often each of the issues occurred during this assignment (the <a href="?page=ScalaStyleGuide">Scala Style Guide</a> describes the first 12 issues).</p>
 <!--
     #issue    lukas  heather
@@ -158,11 +185,11 @@ open all files and use cmd-shift-f)
   <tr><td>#4.5 (type patterns)</td> <td>18%</td></tr>
 </table>
 
-<h3 id="41-unnecessary-recursive-computation-for-weight-and-or-chars">#4.1 Unnecessary recursive Computation for "weight" and / or "chars"</h3>
+<h3 id="41-unnecessary-recursive-computation-for-weight-and-or-chars">#4.1 Unnecessary recursive Computation for "weight" and / or "chars"<a class="headerlink" href="#41-unnecessary-recursive-computation-for-weight-and-or-chars" title="Permanent link">#</a></h3>
 <p>Every code tree (leaf or fork) contains the full weight and list of characters. Therefore, implementing <code>def weight</code> and <code>def chars</code> does not require a recursive computation.</p>
-<h3 id="42-list-concatenation-with">#4.2 List Concatenation with :::</h3>
+<h3 id="42-list-concatenation-with">#4.2 List Concatenation with :::<a class="headerlink" href="#42-list-concatenation-with" title="Permanent link">#</a></h3>
 <p>Lists can be concatenated with either <code>:::</code>, as most solutions do, or using the <code>++</code> operator. The latter has the advantage of being applicable to other sequence types (and also exists for other collection types), while <code>:::</code> only exists for lists.</p>
-<h3 id="43-using-isempty-head-and-tail-instead-of-pattern-matching">#4.3 Using "isEmpty", "head" and "tail" instead of Pattern Matching</h3>
+<h3 id="43-using-isempty-head-and-tail-instead-of-pattern-matching">#4.3 Using "isEmpty", "head" and "tail" instead of Pattern Matching<a class="headerlink" href="#43-using-isempty-head-and-tail-instead-of-pattern-matching" title="Permanent link">#</a></h3>
 <p>Some submissions make extensive use of <code>isEmpty</code>, <code>head</code> and <code>tail</code> instead of using pattern matches on lists. The corresponding code is longer and less elegant, for example</p>
 <pre><code>def count(ch: Char, counter: Int, list: List[Char]): Int = {
   if (list.isEmpty || !list.contains(ch)) counter
@@ -187,14 +214,14 @@ open all files and use cmd-shift-f)
     increment + count(ch, xs)
 }
 </code></pre>
-<h3 id="44-calling-sort-in-a-recursive-function">#4.4 Calling "sort" in a recursive Function</h3>
+<h3 id="44-calling-sort-in-a-recursive-function">#4.4 Calling "sort" in a recursive Function<a class="headerlink" href="#44-calling-sort-in-a-recursive-function" title="Permanent link">#</a></h3>
 <p>To sort the list of frequencies, some solutions of <code>makeOrderedLeafList</code> call <code>sort</code> in every iteration - this is unnecessary, calling it once on the entire list would be enough. To avoid the problem, a helper method might be required. Example:</p>
 <pre><code>def makeOrderedLeafList(freqs: List[(Char, Int)]): List[Leaf] =
   freqs.sortWith((a,b) =&gt; a._2 &lt;= b._2) match {
     [...] makeOrderedLeafList(someTail) [...]
   }
 </code></pre>
-<h3 id="45-avoid-type-patterns">#4.5 Avoid Type Patterns</h3>
+<h3 id="45-avoid-type-patterns">#4.5 Avoid Type Patterns<a class="headerlink" href="#45-avoid-type-patterns" title="Permanent link">#</a></h3>
 <p>There is one form of pattern matching - type patterns - which should be avoided in general. A type pattern has the following form:</p>
 <pre><code>expr match {
   case x: T =&gt; ...
@@ -218,7 +245,7 @@ open all files and use cmd-shift-f)
   case Leaf(_, w)       =&gt; w
 }
 </code></pre>
-<h3 id="week-3-object-oriented-sets-tweetset">Week 3: Object-Oriented Sets (TweetSet)</h3>
+<h3 id="week-3-object-oriented-sets-tweetset">Week 3: Object-Oriented Sets (TweetSet)<a class="headerlink" href="#week-3-object-oriented-sets-tweetset" title="Permanent link">#</a></h3>
 <p>The following table indicates how often each of the issues occurred during this assignment (the <a href="?page=ScalaStyleGuide">Scala Style Guide</a> describes the first 12 issues).</p>
 <table>
   <tr><td>#1 (casts)</td><td>1 %</td></tr>
@@ -237,7 +264,7 @@ open all files and use cmd-shift-f)
   <tr><td>#3.1 (union)</td><td>52 %</td></tr>
 </table>
 
-<h3 id="31-union-should-be-implemented-using-dynamic-method-invocation">#3.1 Union should be implemented using dynamic method invocation</h3>
+<h3 id="31-union-should-be-implemented-using-dynamic-method-invocation">#3.1 Union should be implemented using dynamic method invocation<a class="headerlink" href="#31-union-should-be-implemented-using-dynamic-method-invocation" title="Permanent link">#</a></h3>
 <p>Instead of implementing <code>union</code> in the base class <code>TweetSet</code> and testing for <code>isEmpty</code>, a more elegant solution is to keep <code>union</code> abstract in the base class and provide an implementation in each subclass:</p>
 <pre><code>abstract class TweetSet {
   def union(that: TweetSet): TweetSet

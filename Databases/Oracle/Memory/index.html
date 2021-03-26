@@ -64,8 +64,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h3 id="ora-00845-memory_target-not-supported">ORA-00845: MEMORY_TARGET not supported</h3>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../OJDBC/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../OJDBC/" class="btn btn-xs btn-link">
+        OJDBC
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Dump/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Dump/" class="btn btn-xs btn-link">
+        Dump
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="ora-00845-memory_target-not-supported">ORA-00845: MEMORY_TARGET not supported<a class="headerlink" href="#ora-00845-memory_target-not-supported" title="Permanent link">#</a></h3>
 <p>Not enough of shared memory</p>
 <pre><code class="language-bash">umount tmpfs
 mount -t tmpfs shmfs -o size=1024m /dev/shm

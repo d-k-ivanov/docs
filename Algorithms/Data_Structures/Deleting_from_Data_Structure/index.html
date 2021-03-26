@@ -68,8 +68,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="deleting-from-data-structure">Deleting from Data Structure</h1>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Disjoint_Set_Union/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Disjoint_Set_Union/" class="btn btn-xs btn-link">
+        Disjoint Set Union
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Combinatorics/Stars_and_Bars/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Combinatorics/Stars_and_Bars/" class="btn btn-xs btn-link">
+        Stars and Bars
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="deleting-from-data-structure">Deleting from Data Structure<a class="headerlink" href="#deleting-from-data-structure" title="Permanent link">#</a></h1>
 <p>Complexity:</p>
 <div>
 <div class="MathJax_Preview"> O(T(n)\log n) </div>
@@ -77,7 +104,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </div>
 <p>Suppose you have a data structure which allows adding elements in <strong>true</strong> <span><span class="MathJax_Preview">O(T(n))</span><script type="math/tex">O(T(n))</script></span>.
 This article will describe a technique that allows deletion in <span><span class="MathJax_Preview">O(T(n)\log n)</span><script type="math/tex">O(T(n)\log n)</script></span> offline.</p>
-<h2 id="algorithm">Algorithm</h2>
+<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
 <p>Each element lives in the data structure for some segments of time between additions and deletions.
 Let's build a segment tree over the queries.
 Each segment when some element is alive splits into <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> nodes of the tree.
@@ -88,10 +115,10 @@ Then we will go further to the children of this node or answer the queries (if t
 When leaving the node, we must undo the additions.
 Note that if we change the structure in <span><span class="MathJax_Preview">O(T(n))</span><script type="math/tex">O(T(n))</script></span> we can roll back the changes in <span><span class="MathJax_Preview">O(T(n))</span><script type="math/tex">O(T(n))</script></span> by keeping a stack of changes.
 Note that rollbacks break amortized complexity.</p>
-<h2 id="notes">Notes</h2>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
 <p>The idea of creating a segment tree over segments when something is alive may be used not only for data structure problems.
 See some problems below.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>This implementation is for the <a href="https://en.wikipedia.org/wiki/Dynamic_connectivity">dynamic connectivity</a> problem.
 It can add edges, remove edges and count the number of connected components.</p>
 <p>```cpp dynamic-conn
@@ -209,7 +236,7 @@ vector&lt;int&gt; solve() {
 </code></pre>
 <p>};
 ```</p>
-<h2 id="problems">Problems</h2>
+<h2 id="problems">Problems<a class="headerlink" href="#problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://codeforces.com/gym/100551/problem/A">Codeforces - Connect and Disconnect</a></li>
 <li><a href="https://codeforces.com/contest/981/problem/E">Codeforces - Addition on Segments</a></li>

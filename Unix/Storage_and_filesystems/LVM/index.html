@@ -70,8 +70,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h3 id="info">Info</h3>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Links/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Links/" class="btn btn-xs btn-link">
+        Links
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../HDD/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../HDD/" class="btn btn-xs btn-link">
+        HDD
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="info">Info<a class="headerlink" href="#info" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">#PV
 pvdisplay
 pvs
@@ -84,7 +111,7 @@ vgs
 lvdisplay
 lvs
 </code></pre>
-<h3 id="phisical-volumespv">Phisical volumes(PV)</h3>
+<h3 id="phisical-volumespv">Phisical volumes(PV)<a class="headerlink" href="#phisical-volumespv" title="Permanent link">#</a></h3>
 <pre><code class="language-bash"># Scan devices
 lvmdiskscan
 
@@ -103,7 +130,7 @@ pvmove &lt;device_from&gt; &lt;device_to&gt;
 # Remove PV from LVM
 pvremove &lt;phisical_device&gt;
 </code></pre>
-<h3 id="volume-groupsvg">Volume groups(VG)</h3>
+<h3 id="volume-groupsvg">Volume groups(VG)<a class="headerlink" href="#volume-groupsvg" title="Permanent link">#</a></h3>
 <pre><code class="language-bash"># Create VG on the PV
 vgcreate &lt;vg_name&gt; &lt;pv_name&gt;
 
@@ -117,7 +144,7 @@ vgchange -ay
 # Remove PV from VG
 vgreduce &lt;vg_name&gt; &lt;pv_name&gt;
 </code></pre>
-<h3 id="logical-volumelv">Logical volume(LV)</h3>
+<h3 id="logical-volumelv">Logical volume(LV)<a class="headerlink" href="#logical-volumelv" title="Permanent link">#</a></h3>
 <pre><code class="language-bash"># Create LV on VG
 lvcreate -L &lt;size&gt; &lt;vg_name&gt; -n &lt;lv_name&gt; [phisical_device_to_store_data]
 

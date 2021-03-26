@@ -65,9 +65,36 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="considering-correctness">Considering Correctness</h1>
-<h2 id="avoid-typeless-interfaces">Avoid Typeless Interfaces</h2>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../10-Enable_Scripting/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../10-Enable_Scripting/" class="btn btn-xs btn-link">
+        Enable Scripting
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../08-Considering_Performance/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../08-Considering_Performance/" class="btn btn-xs btn-link">
+        Considering Performance
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="considering-correctness">Considering Correctness<a class="headerlink" href="#considering-correctness" title="Permanent link">#</a></h1>
+<h2 id="avoid-typeless-interfaces">Avoid Typeless Interfaces<a class="headerlink" href="#avoid-typeless-interfaces" title="Permanent link">#</a></h2>
 <p>Bad Idea:</p>
 <pre><code class="language-cpp">std::string find_file(const std::string &amp;base, const std::string &amp;pattern);
 </code></pre>

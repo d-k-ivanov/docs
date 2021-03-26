@@ -66,10 +66,37 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="considering-performance">Considering Performance</h1>
-<h2 id="build-time">Build Time</h2>
-<h3 id="forward-declare-when-possible">Forward Declare When Possible</h3>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../09-Considering_Correctness/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../09-Considering_Correctness/" class="btn btn-xs btn-link">
+        Considering Correctness
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../07-Considering_Threadability/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../07-Considering_Threadability/" class="btn btn-xs btn-link">
+        Considering Threadability
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="considering-performance">Considering Performance<a class="headerlink" href="#considering-performance" title="Permanent link">#</a></h1>
+<h2 id="build-time">Build Time<a class="headerlink" href="#build-time" title="Permanent link">#</a></h2>
+<h3 id="forward-declare-when-possible">Forward Declare When Possible<a class="headerlink" href="#forward-declare-when-possible" title="Permanent link">#</a></h3>
 <p>This:</p>
 <pre><code class="language-cpp">// some header file
 class MyClass;
@@ -87,22 +114,22 @@ void doSomething(const MyClass &amp;);
 </code></pre>
 <p>This is a proactive approach to reduce compilation time and rebuilding dependencies.</p>
 <p><em>Note: forward declaration does prevent more inlining and optimizations. It's recommended to use Link Time Optimization or Link Time Code Generation for release builds.</em></p>
-<h3 id="avoid-unnecessary-template-instantiations">Avoid Unnecessary Template Instantiations</h3>
+<h3 id="avoid-unnecessary-template-instantiations">Avoid Unnecessary Template Instantiations<a class="headerlink" href="#avoid-unnecessary-template-instantiations" title="Permanent link">#</a></h3>
 <p>Templates are not free to instantiate. Instantiating many templates, or templates with more code than necessary increases compiled code size and build time.</p>
 <p>For more examples see <a href="http://blog2.emptycrate.com/content/template-code-bloat-revisited-smaller-makeshared">this article</a>.</p>
-<h3 id="avoid-recursive-template-instantiations">Avoid Recursive Template Instantiations</h3>
+<h3 id="avoid-recursive-template-instantiations">Avoid Recursive Template Instantiations<a class="headerlink" href="#avoid-recursive-template-instantiations" title="Permanent link">#</a></h3>
 <p>Recursive template instantiations can result in a significant load on the compiler and more difficult to understand code. </p>
 <p><a href="http://articles.emptycrate.com/2016/05/14/folds_in_cpp11_ish.html">Consider using variadic expansions and folds when possible instead.</a></p>
-<h3 id="analyze-the-build">Analyze the Build</h3>
+<h3 id="analyze-the-build">Analyze the Build<a class="headerlink" href="#analyze-the-build" title="Permanent link">#</a></h3>
 <p>The tool <a href="https://github.com/mikael-s-persson/templight">Templight</a> can be used to analyze the build time of your project. It takes some effort to get built, but once you do, it's a drop in replacement for clang++.</p>
 <p>After you build using Templight, you will need to analyze the results. The <a href="https://github.com/mikael-s-persson/templight-tools">templight-tools</a> project provides various methods. (Author's Note: I suggest using the callgrind converter and visualizing the results with kcachegrind).</p>
-<h3 id="firewall-frequently-changing-header-files">Firewall Frequently Changing Header Files</h3>
-<h4 id="dont-unnecessarily-include-headers">Don't Unnecessarily Include Headers</h4>
+<h3 id="firewall-frequently-changing-header-files">Firewall Frequently Changing Header Files<a class="headerlink" href="#firewall-frequently-changing-header-files" title="Permanent link">#</a></h3>
+<h4 id="dont-unnecessarily-include-headers">Don't Unnecessarily Include Headers<a class="headerlink" href="#dont-unnecessarily-include-headers" title="Permanent link">#</a></h4>
 <p>The compiler has to do something with each include directive it sees. Even if it stops as soon as it sees the <code>#ifndef</code> include guard, it still had to open the file and begin processing it.</p>
 <p><a href="https://github.com/include-what-you-use/include-what-you-use">include-what-you-use</a> is a tool that can help you identify which headers you need.</p>
-<h4 id="reduce-the-load-on-the-preprocessor">Reduce the load on the preprocessor</h4>
+<h4 id="reduce-the-load-on-the-preprocessor">Reduce the load on the preprocessor<a class="headerlink" href="#reduce-the-load-on-the-preprocessor" title="Permanent link">#</a></h4>
 <p>This is a general form of "Firewall Frequently Changing Header Files" and "Don't Unnecessarily Include Headers." Tools like BOOST_PP can be very helpful, but they also put a huge burden on the preprocessor.</p>
-<h3 id="consider-using-precompiled-headers">Consider using precompiled headers</h3>
+<h3 id="consider-using-precompiled-headers">Consider using precompiled headers<a class="headerlink" href="#consider-using-precompiled-headers" title="Permanent link">#</a></h3>
 <p>The usage of precompiled headers can considerably reduce the compile time in large projects. Selected headers are compiled to an intermediate form (PCH files) that can be faster processed by the compiler. It is recommended to define only frequently used header that changes rarely as precompiled header (e.g. system and library headers) to achieve the compile time reduction.
 But you have to keep in mind, that using precompiled headers has several disadvantages:
 * The usage of precompiled header is not portable.
@@ -111,27 +138,27 @@ But you have to keep in mind, that using precompiled headers has several disadva
 * It can break your header dependencies. Because of the precompiled headers, every file has the possibility to include every header that is marked as a precompiled header. In result it can happen, that the build fails if you disable the precompiled headers. This can be an issue if you ship something like a library. Because of this it is highly recommend to build once with precompiled header enabled and a second time without them.</p>
 <p>Precompiled headers is supported by the most common compiler, like <a href="https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html">GCC</a>, <a href="http://clang.llvm.org/docs/PCHInternals.html">Clang</a> and <a href="https://msdn.microsoft.com/en-us/library/szfdksca.aspx">Visual Studio</a>.
 Tools like <a href="https://github.com/sakra/cotire/">cotire</a> (a plugin for cmake) can help you to add precompiled headers to your build system.</p>
-<h3 id="consider-using-tools">Consider Using Tools</h3>
+<h3 id="consider-using-tools">Consider Using Tools<a class="headerlink" href="#consider-using-tools" title="Permanent link">#</a></h3>
 <p>These are not meant to supersede good design</p>
 <ul>
 <li><a href="https://ccache.samba.org/">ccache</a>, compile results caching for unix-like operating systems</li>
 <li><a href="https://github.com/frerich/clcache">clcache</a>, compile results caching for cl.exe (MSVC)</li>
 <li><a href="https://github.com/facebook/warp">warp</a>, Facebook's preprocessor</li>
 </ul>
-<h3 id="put-tmp-on-ramdisk">Put tmp on Ramdisk</h3>
+<h3 id="put-tmp-on-ramdisk">Put tmp on Ramdisk<a class="headerlink" href="#put-tmp-on-ramdisk" title="Permanent link">#</a></h3>
 <p>See <a href="https://www.youtube.com/watch?v=t4M3yG1dWho">this</a> YouTube video for more details.</p>
-<h3 id="use-the-gold-linker">Use the gold linker</h3>
+<h3 id="use-the-gold-linker">Use the gold linker<a class="headerlink" href="#use-the-gold-linker" title="Permanent link">#</a></h3>
 <p>If on Linux, consider using the gold linker for GCC.</p>
-<h2 id="runtime">Runtime</h2>
-<h3 id="analyze-the-code">Analyze the Code!</h3>
+<h2 id="runtime">Runtime<a class="headerlink" href="#runtime" title="Permanent link">#</a></h2>
+<h3 id="analyze-the-code">Analyze the Code!<a class="headerlink" href="#analyze-the-code" title="Permanent link">#</a></h3>
 <p>There's no real way to know where your bottlenecks are without analyzing the code.</p>
 <ul>
 <li>http://developer.amd.com/tools-and-sdks/opencl-zone/codexl/</li>
 <li>http://www.codersnotes.com/sleepy</li>
 </ul>
-<h3 id="simplify-the-code">Simplify the Code</h3>
+<h3 id="simplify-the-code">Simplify the Code<a class="headerlink" href="#simplify-the-code" title="Permanent link">#</a></h3>
 <p>The cleaner, simpler, and easier to read the code is, the better chance the compiler has at implementing it well.</p>
-<h3 id="use-initializer-lists">Use Initializer Lists</h3>
+<h3 id="use-initializer-lists">Use Initializer Lists<a class="headerlink" href="#use-initializer-lists" title="Permanent link">#</a></h3>
 <pre><code class="language-cpp">// This
 std::vector&lt;ModelObject&gt; mos{mo1, mo2};
 
@@ -144,7 +171,7 @@ mos.push_back(mo1);
 mos.push_back(mo2);
 </code></pre>
 <p>Initializer lists are significantly more efficient; reducing object copies and resizing of containers.</p>
-<h3 id="reduce-temporary-objects">Reduce Temporary Objects</h3>
+<h3 id="reduce-temporary-objects">Reduce Temporary Objects<a class="headerlink" href="#reduce-temporary-objects" title="Permanent link">#</a></h3>
 <pre><code class="language-cpp">// Instead of
 auto mo1 = getSomeModelObject();
 auto mo2 = getAnotherModelObject();
@@ -156,16 +183,16 @@ doSomething(mo1, mo2);
 doSomething(getSomeModelObject(), getAnotherModelObject());
 </code></pre>
 <p>This sort of code prevents the compiler from performing a move operation...</p>
-<h3 id="enable-move-operations">Enable move operations</h3>
+<h3 id="enable-move-operations">Enable move operations<a class="headerlink" href="#enable-move-operations" title="Permanent link">#</a></h3>
 <p>Move operations are one of the most touted features of C++11. They allow the compiler to avoid extra copies by moving temporary objects instead of copying them in certain cases.</p>
 <p>Certain coding choices we make (such as declaring our own destructor or assignment operator or copy constructor) prevents the compiler from generating a move constructor.</p>
 <p>For most code, a simple</p>
 <pre><code class="language-cpp">ModelObject(ModelObject &amp;&amp;) = default;
 </code></pre>
 <p>would suffice. However, MSVC2013 doesn't seem to like this code yet.</p>
-<h3 id="kill-shared_ptr-copies">Kill <code>shared_ptr</code> Copies</h3>
+<h3 id="kill-shared_ptr-copies">Kill <code>shared_ptr</code> Copies<a class="headerlink" href="#kill-shared_ptr-copies" title="Permanent link">#</a></h3>
 <p><code>shared_ptr</code> objects are much more expensive to copy than you'd think they would be. This is because the reference count must be atomic and thread-safe. So this comment just re-enforces the note above: avoid temporaries and too many copies of objects. Just because we are using a pImpl it does not mean our copies are free.</p>
-<h3 id="reduce-copies-and-reassignments-as-much-as-possible">Reduce Copies and Reassignments as Much as Possible</h3>
+<h3 id="reduce-copies-and-reassignments-as-much-as-possible">Reduce Copies and Reassignments as Much as Possible<a class="headerlink" href="#reduce-copies-and-reassignments-as-much-as-possible" title="Permanent link">#</a></h3>
 <p>For more simple cases, the ternary operator can be used:</p>
 <pre><code class="language-cpp">// Bad Idea
 std::string somevalue;
@@ -202,9 +229,9 @@ const std::string somevalue = [&amp;](){
     }
   }();
 </code></pre>
-<h3 id="avoid-excess-exceptions">Avoid Excess Exceptions</h3>
+<h3 id="avoid-excess-exceptions">Avoid Excess Exceptions<a class="headerlink" href="#avoid-excess-exceptions" title="Permanent link">#</a></h3>
 <p>Exceptions which are thrown and captured internally during normal processing slow down the application execution. They also destroy the user experience from within a debugger, as debuggers monitor and report on each exception event. It is best to just avoid internal exception processing when possible.</p>
-<h3 id="get-rid-of-new">Get rid of “new”</h3>
+<h3 id="get-rid-of-new">Get rid of “new”<a class="headerlink" href="#get-rid-of-new" title="Permanent link">#</a></h3>
 <p>We already know that we should not be using raw memory access, so we are using <code>unique_ptr</code> and <code>shared_ptr</code> instead, right?
 Heap allocations are much more expensive than stack allocations, but sometimes we have to use them. To make matters worse, creating a <code>shared_ptr</code> actually requires 2 heap allocations.</p>
 <p>However, the <code>make_shared</code> function reduces this down to just one.</p>
@@ -213,7 +240,7 @@ Heap allocations are much more expensive than stack allocations, but sometimes w
 // should become
 std::make_shared&lt;ModelObject_Impl&gt;(); // (it's also more readable and concise)
 </code></pre>
-<h3 id="prefer-unique_ptr-to-shared_ptr">Prefer <code>unique_ptr</code> to <code>shared_ptr</code></h3>
+<h3 id="prefer-unique_ptr-to-shared_ptr">Prefer <code>unique_ptr</code> to <code>shared_ptr</code><a class="headerlink" href="#prefer-unique_ptr-to-shared_ptr" title="Permanent link">#</a></h3>
 <p>If possible use <code>unique_ptr</code> instead of <code>shared_ptr</code>. The <code>unique_ptr</code> does not need to keep track of its copies because it is not copyable. Because of this it is more efficient than the <code>shared_ptr</code>. Equivalent to <code>shared_ptr</code> and <code>make_shared</code> you should use <code>make_unique</code> (C++14 or greater) to create the <code>unique_ptr</code>:</p>
 <pre><code class="language-cpp">std::make_unique&lt;ModelObject_Impl&gt;();
 </code></pre>
@@ -222,9 +249,9 @@ std::make_shared&lt;ModelObject_Impl&gt;(); // (it's also more readable and conc
 
 auto shared = std::shared_ptr&lt;ModelObject_Impl&gt;(factory());
 </code></pre>
-<h3 id="get-rid-of-stdendl">Get rid of std::endl</h3>
+<h3 id="get-rid-of-stdendl">Get rid of std::endl<a class="headerlink" href="#get-rid-of-stdendl" title="Permanent link">#</a></h3>
 <p><code>std::endl</code> implies a flush operation. It's equivalent to <code>"\n" &lt;&lt; std::flush</code>.</p>
-<h3 id="limit-variable-scope">Limit Variable Scope</h3>
+<h3 id="limit-variable-scope">Limit Variable Scope<a class="headerlink" href="#limit-variable-scope" title="Permanent link">#</a></h3>
 <p>Variables should be declared as late as possible, and ideally only when it's possible to initialize the object. Reduced variable scope results in less memory being used, more efficient code in general, and helps the compiler optimize the code further.</p>
 <pre><code class="language-cpp">// Good Idea
 for (int i = 0; i &lt; 15; ++i)
@@ -250,11 +277,11 @@ for (int i = 0; i &lt; 15; ++i)
 }
 </code></pre>
 <p><a href="https://github.com/lefticus/cppbestpractices/issues/52">This topic has an associated discussion thread</a>.</p>
-<h3 id="prefer-double-to-float-but-test-first">Prefer <code>double</code> to <code>float</code>, But Test First</h3>
+<h3 id="prefer-double-to-float-but-test-first">Prefer <code>double</code> to <code>float</code>, But Test First<a class="headerlink" href="#prefer-double-to-float-but-test-first" title="Permanent link">#</a></h3>
 <p>Depending on the situation and the compiler's ability to optimize, one may be faster over the other. Choosing <code>float</code> will result in lower precision and may be slower due to conversions. On vectorizable operations <code>float</code> may be faster if you are able to sacrifice precision. </p>
 <p><code>double</code> is the recommended default choice as it is the default type for floating point values in C++.</p>
 <p>See this <a href="http://stackoverflow.com/questions/4584637/double-or-float-which-is-faster">stackoverflow</a> discussion for some more information. </p>
-<h3 id="prefer-i-to-i">Prefer <code>++i</code> to <code>i++</code></h3>
+<h3 id="prefer-i-to-i">Prefer <code>++i</code> to <code>i++</code><a class="headerlink" href="#prefer-i-to-i" title="Permanent link">#</a></h3>
 <p>... when it is semantically correct. Pre-increment is <a href="http://blog2.emptycrate.com/content/why-i-faster-i-c">faster</a> than post-increment because it does not require a copy of the object to be made.</p>
 <pre><code class="language-cpp">// Bad Idea
 for (int i = 0; i &lt; 15; i++)
@@ -271,7 +298,7 @@ for (int i = 0; i &lt; 15; ++i)
 <p>Even if many modern compilers will optimize these two loops to the same assembly code, it is still good practice to prefer <code>++i</code>. There is absolutely no reason not to and you can never be certain that your code will not pass a compiler that does not optimize this.
 You should be also aware that the compiler will not be able optimize this only for integer types and not necessarily for all iterator or other user defined types.<br />
 The bottom line is that it is always easier and recommended to use the pre-increment operator if it is semantically identical to the post-increment operator.</p>
-<h3 id="char-is-a-char-string-is-a-string">Char is a char, string is a string</h3>
+<h3 id="char-is-a-char-string-is-a-string">Char is a char, string is a string<a class="headerlink" href="#char-is-a-char-string-is-a-string" title="Permanent link">#</a></h3>
 <pre><code class="language-cpp">// Bad Idea
 std::cout &lt;&lt; someThing() &lt;&lt; &quot;\n&quot;;
 
@@ -280,7 +307,7 @@ std::cout &lt;&lt; someThing() &lt;&lt; '\n';
 </code></pre>
 <p>This is very minor, but a <code>"\n"</code> has to be parsed by the compiler as a <code>const char *</code> which has to do a range check for <code>\0</code> when writing it to the stream (or appending to a string). A '\n' is known to be a single character and avoids many CPU instructions.</p>
 <p>If used inefficiently very many times it might have an impact on your performance, but more importantly thinking about these two usage cases gets you thinking more about what the compiler and runtime has to do to execute your code.</p>
-<h3 id="never-use-stdbind">Never Use <code>std::bind</code></h3>
+<h3 id="never-use-stdbind">Never Use <code>std::bind</code><a class="headerlink" href="#never-use-stdbind" title="Permanent link">#</a></h3>
 <p><code>std::bind</code> is almost always way more overhead (both compile time and runtime) than you need. Instead simply use a lambda.</p>
 <pre><code class="language-cpp">// Bad Idea
 auto f = std::bind(&amp;my_function, &quot;hello&quot;, std::placeholders::_1);
@@ -290,9 +317,9 @@ f(&quot;world&quot;);
 auto f = [](const std::string &amp;s) { return my_function(&quot;hello&quot;, s); };
 f(&quot;world&quot;);
 </code></pre>
-<h3 id="know-the-standard-library">Know The Standard Library</h3>
+<h3 id="know-the-standard-library">Know The Standard Library<a class="headerlink" href="#know-the-standard-library" title="Permanent link">#</a></h3>
 <p>Properly use the already highly optimized components of the vendor provided standard library.</p>
-<h4 id="in_place_t-and-related"><code>in_place_t</code> And Related</h4>
+<h4 id="in_place_t-and-related"><code>in_place_t</code> And Related<a class="headerlink" href="#in_place_t-and-related" title="Permanent link">#</a></h4>
 <p>Be aware of how to use <code>in_place_t</code> and related tags for efficient creation of objects such as <code>std::tuple</code>, <code>std::any</code> and <code>std::variant</code>.</p>
 
   <br>

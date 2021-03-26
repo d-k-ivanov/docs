@@ -68,14 +68,41 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h3 id="networkmanager-show-connection-info">NetworkManager: show connection info</h3>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../DNS/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../DNS/" class="btn btn-xs btn-link">
+        DNS
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Monitoring/Zabbix/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Monitoring/Zabbix/" class="btn btn-xs btn-link">
+        Zabbix
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="networkmanager-show-connection-info">NetworkManager: show connection info<a class="headerlink" href="#networkmanager-show-connection-info" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">nmcli device show eth0
 </code></pre>
-<h3 id="check-own-ip-address">Check own IP address</h3>
+<h3 id="check-own-ip-address">Check own IP address<a class="headerlink" href="#check-own-ip-address" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">curl -s checkip.dyndns.org
 </code></pre>
-<h3 id="share-current-folder-over-http">Share current folder over HTTP</h3>
+<h3 id="share-current-folder-over-http">Share current folder over HTTP<a class="headerlink" href="#share-current-folder-over-http" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">python2 -m SimpleHTTPServer 8080
 python3 -mhttp.server 8080
 </code></pre>

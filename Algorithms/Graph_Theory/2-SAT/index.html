@@ -67,8 +67,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="2-sat">2-SAT</h1>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Assignment_Problem_Min-Cost-Flow/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Assignment_Problem_Min-Cost-Flow/" class="btn btn-xs btn-link">
+        Assignment Problem: Min-Cost-Flow
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../0-1_BFS/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../0-1_BFS/" class="btn btn-xs btn-link">
+        0-1 BFS
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="2-sat">2-SAT<a class="headerlink" href="#2-sat" title="Permanent link">#</a></h1>
 <p>SAT (Boolean satisfiability problem) is the problem of assigning Boolean values to variables to satisfy a given Boolean formula.
 The Boolean formula will usually be given in CNF (conjunctive normal form), which is a conjunction of multiple clauses, where each clause is a disjunction of literals (variables or negation of variables).
 2-SAT (2-satisfiability) is a restriction of the SAT problem, in 2-SAT every clause has exactly two literals.
@@ -80,7 +107,7 @@ Find an assignment of <span><span class="MathJax_Preview">a, b, c</span><script 
 </div>
 <p>SAT is NP-complete, there is no known efficient solution known for it.
 However 2SAT can be solved efficiently in <span><span class="MathJax_Preview">O(n + m)</span><script type="math/tex">O(n + m)</script></span> where <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is the number of variables and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is the number of clauses.</p>
-<h2 id="algorithm">Algorithm</h2>
+<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
 <p>First we need to convert the problem to a different form, the so-called implicative normal form.
 Note that the expression <span><span class="MathJax_Preview">a \lor b</span><script type="math/tex">a \lor b</script></span> is equivalent to <span><span class="MathJax_Preview">\lnot a \Rightarrow b \land \lnot b \Rightarrow a</span><script type="math/tex">\lnot a \Rightarrow b \land \lnot b \Rightarrow a</script></span> (if one of the two variables is false, then the other one must be true).</p>
 <p>We now construct a directed graph of these implications:
@@ -138,7 +165,7 @@ By transitivity this results that <span><span class="MathJax_Preview">\lnot x</s
 <p>So we have constructed an algorithm that finds the required values of variables under the assumption that for any variable <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> the vertices <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> and <span><span class="MathJax_Preview">\lnot x</span><script type="math/tex">\lnot x</script></span> are in different strongly connected components.
 Above showed the correctness of this algorithm.
 Consequently we simultaneously proved the above criterion for the existence of a solution.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>Now we can implement the entire algorithm.
 First we construct the graph of implications and find all strongly connected components.
 This can be accomplished with Kosaraju's algorithm in <span><span class="MathJax_Preview">O(n + m)</span><script type="math/tex">O(n + m)</script></span> time.
@@ -193,7 +220,7 @@ bool solve_2SAT() {
     return true;
 }
 </code></pre>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=3081">UVA: Rectangles</a></li>
 <li><a href="http://codeforces.com/contest/776/problem/D">Codeforces: The Door Problem</a></li>
