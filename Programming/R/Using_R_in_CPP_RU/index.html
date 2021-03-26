@@ -70,16 +70,16 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="using-r-in-c-ru">Using R in C++ (Ru)<a class="headerlink" href="#using-r-in-c-ru" title="Permanent link">#</a></h1>
+    <h1 id="using-r-in-c-ru">Using R in C++ (Ru)</h1>
 <!-- Использование R в С++ -->
 
-<h2 id="_1">Пролог<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
+<h2 id="_1">Пролог</h2>
 <p>Для начала, я бы хотел процитировать Дирка Эддельбюттеля (Dirk Eddelbuettel)</p>
 <blockquote>
 <p>You. Cannot. Compile. Rcpp. Classes. Without. R. It simply won't work. Rcpp is an R extension.</p>
 </blockquote>
 <p>Ho! Он так же является создателем пакета <a href="https://github.com/eddelbuettel/rinside">RInside</a>, который предоставляет бесшовную интеграцию расширений R в C++.</p>
-<h2 id="_2">Пример кода<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
+<h2 id="_2">Пример кода</h2>
 <pre><code class="language-cpp">// main.cpp
 
 #include &lt;iostream&gt;
@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
     exit(0);
 }
 </code></pre>
-<h2 id="gcc">Компиляция с GCC<a class="headerlink" href="#gcc" title="Permanent link">#</a></h2>
+<h2 id="gcc">Компиляция с GCC</h2>
 <p>Так как мы используем Microsoft R Open 3.5.3, поэтому инструкция заточена под эту версию, но её можно легко раширить под любую версию R.</p>
 <p>Нам понадобятся:</p>
 <ul>
@@ -120,7 +120,7 @@ Rscript -e 'install.packages(&quot;Rcpp&quot;, &quot;RInside&quot;)'
 
 g++ -lR -lRInside -o main.bin main.cpp
 </code></pre>
-<h2 id="_3">Запуск<a class="headerlink" href="#_3" title="Permanent link">#</a></h2>
+<h2 id="_3">Запуск</h2>
 <pre><code class="language-bash"># Runtime libs
 export LD_LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/library/RInside/lib:$LD_LIBRARY_PATH&quot;
 export LD_LIBRARY_PATH=&quot;/opt/microsoft/ropen/3.5.3/lib64/R/library/Rcpp/lib:$LD_LIBRARY_PATH&quot;
@@ -131,7 +131,7 @@ Hello, CPP World!
 [1] &quot;Hello, R World!\n&quot;
 
 </code></pre>
-<h2 id="_4">Примеры кода<a class="headerlink" href="#_4" title="Permanent link">#</a></h2>
+<h2 id="_4">Примеры кода</h2>
 <p><a href="https://github.com/d-k-ivanov/sandbox-cpp/tree/master/r-rinside-example">RInside Example</a></p>
 
   <br>

@@ -68,7 +68,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="bridge-searching-online">Bridge Searching Online<a class="headerlink" href="#bridge-searching-online" title="Permanent link">#</a></h1>
+    <h1 id="bridge-searching-online">Bridge Searching Online</h1>
 <p>We are given an undirected graph.
 A bridge is an edge whose removal makes the graph disconnected (or, more precisely, increases the number of connected components).
 Our task is to find all the bridges in the given graph.</p>
@@ -87,7 +87,7 @@ After each received edge, i.e. after adding each edge, output the current number
 <p>The algorithm described below works in <span><span class="MathJax_Preview">O(n \log n + m)</span><script type="math/tex">O(n \log n + m)</script></span> time, where <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is the number of edges.
 The algorithm is based on the data structure <a href="/docs/#Algorithms/Data_Structures/Disjoint_Set_Union/">Disjoint Set Union</a>.
 However the implementation in this article takes <span><span class="MathJax_Preview">O(n \log n + m \log n)</span><script type="math/tex">O(n \log n + m \log n)</script></span> time, because it uses the simplified version of the DSU without Union by Rank.</p>
-<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
+<h2 id="algorithm">Algorithm</h2>
 <p>First let's define a <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-edge-connected component:
 it is a connected component that remains connected whenever you remove fewer than <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> edges.</p>
 <p>It is very easy to see, that the bridges partition the graph into 2-edge-connected components.
@@ -111,7 +111,7 @@ If we compress each of those 2-edge-connected components into vertices and only 
 </ul>
 <p>Thus, in this case the number of bridges decreases by two or more.</p>
 <p>Consequently the whole task is reduced to the effective implementation of all these operations over the forest of 2-edge-connected components.</p>
-<h2 id="data-structures-for-storing-the-forest">Data Structures for storing the forest<a class="headerlink" href="#data-structures-for-storing-the-forest" title="Permanent link">#</a></h2>
+<h2 id="data-structures-for-storing-the-forest">Data Structures for storing the forest</h2>
 <p>The only data structure that we need is <a href="/docs/#Algorithms/Data_Structures/Disjoint_Set_Union/">Disjoint Set Union</a>.
 In fact we will make two copies of this structure:
 one will be to maintain the connected components, the other to maintain the 2-edge-connected components.
@@ -166,7 +166,7 @@ Each 2-edge-connected component will store the index <code>par[]</code> of its a
   But in the DSU of the 2-edge-connected components all these vertices will simply point to the LCA.</p>
 <p>We will implement the DSU of the 2-edge-connected components without the Union by rank optimization, therefore we will get the complexity <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> on average per query.
   To achieve the complexity <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> on average per query, we need to combine the vertices of the cycle according to Union by rank, and then assign <code>par[]</code> accordingly.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
+<h2 id="implementation">Implementation</h2>
 <p>Here is the final implementation of the whole algorithm.</p>
 <p>As mentioned before, for the sake of simplicity the DSU of the 2-edge-connected components is written without Union by rank, therefore the resulting complexity will be <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> on average.</p>
 <p>Also in this implementation the bridges themselves are not stored, only their count <code>bridges</code>.

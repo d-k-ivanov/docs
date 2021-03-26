@@ -72,13 +72,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="problem-description">Problem description<a class="headerlink" href="#problem-description" title="Permanent link">#</a></h3>
+    <h3 id="problem-description">Problem description</h3>
 <p>To improve my productivity I bought a 4K display and wanted to use it altogether with old 1K display.
 It turned out that mixing two different DPIs doesn't work out of the box so some hacks are needed.</p>
-<h3 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">#</a></h3>
-<h5 id="1-set-hidpi-as-a-default">1. Set HiDPI as a default<a class="headerlink" href="#1-set-hidpi-as-a-default" title="Permanent link">#</a></h5>
+<h3 id="solution">Solution</h3>
+<h5 id="1-set-hidpi-as-a-default">1. Set HiDPI as a default</h5>
 <p>To set HiDPI as default please refer to https://wiki.archlinux.org/index.php/HiDPI#X_Resources</p>
-<h5 id="2-prepare-wrappers-for-popular-programs-to-set-lower-dpi">2. Prepare wrappers for popular programs to set lower DPI<a class="headerlink" href="#2-prepare-wrappers-for-popular-programs-to-set-lower-dpi" title="Permanent link">#</a></h5>
+<h5 id="2-prepare-wrappers-for-popular-programs-to-set-lower-dpi">2. Prepare wrappers for popular programs to set lower DPI</h5>
 <p>Example of /usr/bin/opera-ldpi:</p>
 <pre><code>#!/usr/bin/bash
 OLDDPI=`xrdb -query | awk '/Xft.dpi/ {print $2}'`
@@ -93,7 +93,7 @@ xrdb -merge &lt;(echo &quot;Xft.dpi: 96&quot;)
 urxvt
 xrdb -merge &lt;(echo &quot;Xft.dpi: $OLDDPI&quot;)
 </code></pre>
-<h5 id="3-detect-active-screen-and-select-proper-launcher">3. Detect active screen and select proper launcher<a class="headerlink" href="#3-detect-active-screen-and-select-proper-launcher" title="Permanent link">#</a></h5>
+<h5 id="3-detect-active-screen-and-select-proper-launcher">3. Detect active screen and select proper launcher</h5>
 <p>You need to modify you rc.lua. Example for terminal:</p>
 <pre><code>terminal      = &quot;urxvt&quot;
 terminal_ldpi = &quot;urxvt-ldpi&quot;
@@ -107,7 +107,7 @@ terminal_ldpi = &quot;urxvt-ldpi&quot;
                   end
               end),
 </code></pre>
-<h3 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">#</a></h3>
+<h3 id="limitations">Limitations</h3>
 <p>DPI is set for life-time of application. Your application will be ugly when you move it to another screen.</p>
 
   <br>

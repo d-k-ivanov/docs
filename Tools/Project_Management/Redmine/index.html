@@ -72,14 +72,14 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="installation-on-centos-7">Installation on CentOS 7<a class="headerlink" href="#installation-on-centos-7" title="Permanent link">#</a></h2>
-<h3 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">#</a></h3>
+    <h2 id="installation-on-centos-7">Installation on CentOS 7</h2>
+<h3 id="dependencies">Dependencies</h3>
 <pre><code class="language-bash"># For Ruby
 yum &quot;Devleopment Tools&quot;
 # For Redmine
 yum install ImageMagick ImageMagick-devel libcurl-devel httpd-devel httpd mariadb-devel mariadb-server zlib-devel zlib
 </code></pre>
-<h3 id="ruby">Ruby<a class="headerlink" href="#ruby" title="Permanent link">#</a></h3>
+<h3 id="ruby">Ruby</h3>
 <pre><code class="language-bash">mkdir ~/dst &amp;&amp; cd dst
 wget https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.3.tar.gz
 tar xzvf ruby-2.3.3.tar.gz &amp;&amp; cd ruby-2.3.3
@@ -88,7 +88,7 @@ tar xzvf ruby-2.3.3.tar.gz &amp;&amp; cd ruby-2.3.3
 make
 make install
 </code></pre>
-<h3 id="mariadb-database">MariaDB Database<a class="headerlink" href="#mariadb-database" title="Permanent link">#</a></h3>
+<h3 id="mariadb-database">MariaDB Database</h3>
 <pre><code class="language-bash">systemctl enable --now mariadb.service
 firewall-cmd --add-service=mysql --permanent
 firewall-cmd --reload
@@ -115,7 +115,7 @@ FLUSH PRIVILEGES;
 EXIT;
 # -----------
 </code></pre>
-<h3 id="web-server">Web server<a class="headerlink" href="#web-server" title="Permanent link">#</a></h3>
+<h3 id="web-server">Web server</h3>
 <pre><code class="language-bash">rm -f /etc/httpd/conf.d/welcome.conf
 
 vi /etc/httpd/conf/httpd.con
@@ -138,7 +138,7 @@ systemctl enable --now httpd.service
 firewall-cmd --add-service=http --permanents
 firewall-cmd --reload
 </code></pre>
-<h3 id="redmine">Redmine<a class="headerlink" href="#redmine" title="Permanent link">#</a></h3>
+<h3 id="redmine">Redmine</h3>
 <pre><code class="language-bash">cd ~/dst
 wget --no-check-certificate  https://redmine.org/releases/redmine-3.3.2.tar.gz
 tar xzvf redmine-3.3.2.tar.gz
@@ -201,7 +201,7 @@ systemctl restart httpd
 # http://your.redmone.server
 # Initial username/password &quot;admin/admin&quot;
 </code></pre>
-<h2 id="email-truncate">Email truncate<a class="headerlink" href="#email-truncate" title="Permanent link">#</a></h2>
+<h2 id="email-truncate">Email truncate</h2>
 <pre><code class="language-diff">diff --git a/app/models/mail_handler.rb b/app/models/mail_handler.rb
 index 520183c..717e49b 100644
 --- a/app/models/mail_handler.rb

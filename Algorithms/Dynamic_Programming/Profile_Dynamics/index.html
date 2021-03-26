@@ -69,8 +69,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="profile-dynamics">Profile Dynamics<a class="headerlink" href="#profile-dynamics" title="Permanent link">#</a></h1>
-<h2 id="dynamic-programming-on-broken-profile-problem-parquet">Dynamic Programming on Broken Profile. Problem "Parquet"<a class="headerlink" href="#dynamic-programming-on-broken-profile-problem-parquet" title="Permanent link">#</a></h2>
+    <h1 id="profile-dynamics">Profile Dynamics</h1>
+<h2 id="dynamic-programming-on-broken-profile-problem-parquet">Dynamic Programming on Broken Profile. Problem "Parquet"</h2>
 <p>Common problems solved using DP on broken profile include:</p>
 <ul>
 <li>finding number of ways to fully fill an area (e.g. chessboard/grid) with some figures (e.g. dominoes)</li>
@@ -78,13 +78,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>finding a partial fill with minimum number of unfilled space (or cells, in case of grid)</li>
 <li>finding a partial fill with the minimum number of figures, such that no more figures can be added</li>
 </ul>
-<h2 id="problem-parquet">Problem "Parquet"<a class="headerlink" href="#problem-parquet" title="Permanent link">#</a></h2>
+<h2 id="problem-parquet">Problem "Parquet"</h2>
 <p><strong>Problem description.</strong> Given a grid of size <span><span class="MathJax_Preview">N \times M</span><script type="math/tex">N \times M</script></span>. Find number of ways to fill the grid with figures of size <span><span class="MathJax_Preview">2 \times 1</span><script type="math/tex">2 \times 1</script></span> (no cell should be left unfilled, and figures should not overlap each other).</p>
 <p>Let the DP state be: <span><span class="MathJax_Preview">dp[i, mask]</span><script type="math/tex">dp[i, mask]</script></span>, where <span><span class="MathJax_Preview">i = 1, \ldots N</span><script type="math/tex">i = 1, \ldots N</script></span> and <span><span class="MathJax_Preview">mask = 0, \ldots 2^M - 1</span><script type="math/tex">mask = 0, \ldots 2^M - 1</script></span>.</p>
 <p><span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> respresents number of rows in the current grid, and <span><span class="MathJax_Preview">mask</span><script type="math/tex">mask</script></span> is the state of last row of current grid. If <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>-th bit of <span><span class="MathJax_Preview">mask</span><script type="math/tex">mask</script></span> is <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span> then the corresponding cell is filled, otherwise it is unfilled.</p>
 <p>Clearly, the answer to the problem will be <span><span class="MathJax_Preview">dp[N, 0]</span><script type="math/tex">dp[N, 0]</script></span>.</p>
 <p>We will be building the DP state by iterating over each <span><span class="MathJax_Preview">i = 1, \cdots N</span><script type="math/tex">i = 1, \cdots N</script></span> and each <span><span class="MathJax_Preview">mask = 0, \ldots 2^M - 1</span><script type="math/tex">mask = 0, \ldots 2^M - 1</script></span>, and for each <span><span class="MathJax_Preview">mask</span><script type="math/tex">mask</script></span> we will be only transitioning forward, that is, we will be <em>adding</em> figures to the current grid.</p>
-<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h3>
+<h3 id="implementation">Implementation</h3>
 <pre><code class="language-cpp">int n, m;
 vector &lt; vector&lt;long long&gt; &gt; dp;
 
@@ -124,7 +124,7 @@ int main()
 
 }
 </code></pre>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
+<h2 id="practice-problems">Practice Problems</h2>
 <ul>
 <li><a href="https://onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=1300">UVA 10359 - Tiling</a></li>
 <li><a href="https://onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=1859">UVA 10918 - Tri Tiling</a></li>
@@ -140,7 +140,7 @@ int main()
 <li><a href="https://acm.timus.ru/problem.aspx?space=1&amp;num=1519">Timus 1519 - Formula 1</a></li>
 <li><a href="https://codeforces.com/problemset/problem/26/C">Codeforces Parquet</a></li>
 </ul>
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<h2 id="references">References</h2>
 <ul>
 <li><a href="https://blog.evilbuggy.com/2018/05/broken-profile-dynamic-programming.html">Blog by EvilBunny</a></li>
 <li><a href="https://apps.topcoder.com/forums/?module=Thread&amp;start=0&amp;threadID=697369">TopCoder Recipe by "syg96"</a></li>

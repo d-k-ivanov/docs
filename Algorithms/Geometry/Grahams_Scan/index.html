@@ -73,8 +73,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="grahams-scan">Graham's Scan<a class="headerlink" href="#grahams-scan" title="Permanent link">#</a></h2>
-<h2 id="convex-hull-construction-using-grahams-scan">Convex Hull Construction using Graham's Scan<a class="headerlink" href="#convex-hull-construction-using-grahams-scan" title="Permanent link">#</a></h2>
+    <h2 id="grahams-scan">Graham's Scan</h2>
+<h2 id="convex-hull-construction-using-grahams-scan">Convex Hull Construction using Graham's Scan</h2>
 <p>In this article we will discuss the problem of constructing a convex hull from a set of points.</p>
 <p>Consider <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> points given on a plane, and the objective is to generate a convex hull, i.e. the smallest
 convex polygon that contains all the given points.</p>
@@ -83,7 +83,7 @@ The algorithm allows for the construction of a convex hull in <span><span class=
 addition and multiplication operations. The algorithm is asymptotically optimal (as it is proven that there
 is no algorithm asymptotically better), with the exception of a few problems where parallel or online processing
 is involved.</p>
-<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
+<h2 id="description">Description</h2>
 <p>The algorithm first finds the leftmost and rightmost points A and B. In the event multiple such points exist,
 the lowest among the left (lowest Y-coordinate) is taken as A, and the highest among the right (highest Y-coordinate)
 is taken as B. Clearly, A and B must both belong to the convex hull as they are the farthest away and they cannot be contained
@@ -106,7 +106,7 @@ orientation instead of a clockwise orientation. Thus, if the angle made by the l
 with the line connecting the last point in the lower convex hull and the current point is not counterclockwise, we remove the most recent point added to the lower convex hull as the current point will be able to contain
 the previous point once added to the hull.</p>
 <p>The final convex hull is obtained from the union of the upper and lower convex hull, and the implementation is as follows.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
+<h2 id="implementation">Implementation</h2>
 <p>```cpp grahams_scan
 struct pt {
     double x, y;
@@ -149,7 +149,7 @@ for (int i = down.size() - 2; i &gt; 0; i--)
 </code></pre>
 <p>}
 ```</p>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
+<h2 id="practice-problems">Practice Problems</h2>
 <ul>
 <li><a href="https://open.kattis.com/problems/convexhull">Kattis - Convex Hull</a></li>
 <li><a href="https://open.kattis.com/problems/parade">Kattis - Keep the Parade Safe</a></li>

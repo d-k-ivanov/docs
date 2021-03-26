@@ -69,11 +69,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="integer-factorization">Integer Factorization<a class="headerlink" href="#integer-factorization" title="Permanent link">#</a></h1>
+    <h1 id="integer-factorization">Integer Factorization</h1>
 <p>In this article we list several algorithms for factorizing integers, each of them can be both fast and also slow (some slower than others) depending on their input.</p>
 <p>Notice, if the number that you want to factorize is actually a prime number, most of the algorithms, especially Fermat's factorization algorithm, Pollard's p-1, Pollard's rho algorithm will run very slow.
 So it makes sense to perform a probabilistic (or a fast deterministic) <a href="/docs/#Algorithms/Algebra/Primality_Tests/">primality test</a> before trying to factorize the number.</p>
-<h2 id="trial-division">Trial division<a class="headerlink" href="#trial-division" title="Permanent link">#</a></h2>
+<h2 id="trial-division">Trial division</h2>
 <p>This is the most basic algorithm to find a prime factorization.</p>
 <p>We divide by each possible divisor <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>.
 We can notice, that it is impossible that all prime factors of a composite number <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> are bigger than <span><span class="MathJax_Preview">\sqrt{n}</span><script type="math/tex">\sqrt{n}</script></span>.
@@ -181,7 +181,7 @@ vector&lt;long long&gt; trial_division4(long long n) {
     return factorization;
 }
 </code></pre>
-<h2 id="fermats-factorization-method">Fermat's factorization method<a class="headerlink" href="#fermats-factorization-method" title="Permanent link">#</a></h2>
+<h2 id="fermats-factorization-method">Fermat's factorization method</h2>
 <p>We can write an odd composite number <span><span class="MathJax_Preview">n = p \cdot q</span><script type="math/tex">n = p \cdot q</script></span> as the difference of two squares <span><span class="MathJax_Preview">n = a^2 - b^2</span><script type="math/tex">n = a^2 - b^2</script></span>:
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">n = \left(\frac{p + q}{2}\right)^2 - \left(\frac{p - q}{2}\right)^2</span><script type="math/tex">n = \left(\frac{p + q}{2}\right)^2 - \left(\frac{p - q}{2}\right)^2</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">n = \left(\frac{p + q}{2}\right)^2 - \left(\frac{p - q}{2}\right)^2</span><script type="math/tex">n = \left(\frac{p + q}{2}\right)^2 - \left(\frac{p - q}{2}\right)^2</script></span></script></span>
 Fermat's factorization method tries to exploit the fact, by guessing the first square <span><span class="MathJax_Preview">a^2</span><script type="math/tex">a^2</script></span>, and check if the remaining part <span><span class="MathJax_Preview">b^2 = a^2 - n</span><script type="math/tex">b^2 = a^2 - n</script></span> is also a square number.
@@ -203,7 +203,7 @@ The algorithm runs in <span><span class="MathJax_Preview">O(|p - q|)</span><scri
 However since it is very slow, once the factors are far apart, it is rarely used in practice.</p>
 <p>However there are still a huge number of optimizations for this approach.
 E.g. by looking at the squares <span><span class="MathJax_Preview">a^2</span><script type="math/tex">a^2</script></span> modulo a fixed small number, you can notice that you don't have to look at certain values <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> since they cannot produce a square number <span><span class="MathJax_Preview">a^2 - n</span><script type="math/tex">a^2 - n</script></span>.</p>
-<h2 id="pollards-p-1p-1-method">Pollard's <span><span class="MathJax_Preview">p - 1</span><script type="math/tex">p - 1</script></span> method<a class="headerlink" href="#pollards-p-1p-1-method" title="Permanent link">#</a></h2>
+<h2 id="pollards-p-1p-1-method">Pollard's <span><span class="MathJax_Preview">p - 1</span><script type="math/tex">p - 1</script></span> method</h2>
 <p>It is very likely that at least one factor of a number is <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span><strong>-powersmooth</strong> for small <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>.
 <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>-powersmooth means, that every power <span><span class="MathJax_Preview">d^k</span><script type="math/tex">d^k</script></span> of a prime <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> that divides <span><span class="MathJax_Preview">p-1</span><script type="math/tex">p-1</script></span> is at most <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>.
 E.g. the prime factorization of <span><span class="MathJax_Preview">4817191</span><script type="math/tex">4817191</script></span> are is <span><span class="MathJax_Preview">1303 \cdot 3697</span><script type="math/tex">1303 \cdot 3697</script></span>.
@@ -321,7 +321,7 @@ function floyd(f, x0):
         hare = f(f(hare))
     return true
 </code></pre>
-<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h3>
+<h3 id="implementation">Implementation</h3>
 <p>First here is a implementation using the <strong>Floyd's cycle-finding algorithm</strong>.
 The algorithm runs (usually) in <span><span class="MathJax_Preview">O(\sqrt[4]{n} \log(n))</span><script type="math/tex">O(\sqrt[4]{n} \log(n))</script></span> time.</p>
 <p>```cpp pollard_rho
@@ -383,7 +383,7 @@ long long mult(long long a, long long b, long long mod) {
 E.g. the choice <span><span class="MathJax_Preview">x_0 = c = 1</span><script type="math/tex">x_0 = c = 1</script></span> will not factor <span><span class="MathJax_Preview">25 = 5 \cdot 5</span><script type="math/tex">25 = 5 \cdot 5</script></span>.
 The algorithm will just return <span><span class="MathJax_Preview">25</span><script type="math/tex">25</script></span>.
 However the choice <span><span class="MathJax_Preview">x_0 = 1</span><script type="math/tex">x_0 = 1</script></span>, <span><span class="MathJax_Preview">c = 2</span><script type="math/tex">c = 2</script></span> will factor it.</p>
-<h3 id="brents-algorithm">Brent's algorithm<a class="headerlink" href="#brents-algorithm" title="Permanent link">#</a></h3>
+<h3 id="brents-algorithm">Brent's algorithm</h3>
 <p>Brent uses a similar algorithm as Floyd.
 It also uses two pointer.
 But instead of advancing the pointers by one and two respectably, we advance them in powers of two.
@@ -402,7 +402,7 @@ As soon as <span><span class="MathJax_Preview">2^i</span><script type="math/tex"
     return true
 </code></pre>
 <p>Brent's algorithm also runs in linear time, but is usually faster than Floyd's algorithm, since it uses less evaluations of the function <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>.</p>
-<h3 id="implementation_1">Implementation<a class="headerlink" href="#implementation_1" title="Permanent link">#</a></h3>
+<h3 id="implementation_1">Implementation</h3>
 <p>The straightforward implementation using Brent's algorithms can be speeded up by noticing, that we can omit the terms <span><span class="MathJax_Preview">x_l - x_k</span><script type="math/tex">x_l - x_k</script></span> if <span><span class="MathJax_Preview">k &lt; \frac{3 \cdot l}{2}</span><script type="math/tex">k < \frac{3 \cdot l}{2}</script></span>.
 Also, instead of performing the <span><span class="MathJax_Preview">\gcd</span><script type="math/tex">\gcd</script></span> computation at every step, we multiply the terms and do it every few steps and backtrack if we overshoot.</p>
 <p>```cpp pollard_rho_brent
@@ -440,7 +440,7 @@ return g;
 <p>}
 ```</p>
 <p>The combination of a trial division for small prime numbers together with Brent's version of Pollard's rho algorithm will make a very powerful factorization algorithm.</p>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
+<h2 id="practice-problems">Practice Problems</h2>
 <ul>
 <li><a href="https://www.spoj.com/problems/FACT0/">SPOJ - FACT0</a></li>
 <li><a href="https://www.spoj.com/problems/FACT1/">SPOJ - FACT1</a></li>

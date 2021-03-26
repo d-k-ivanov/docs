@@ -72,8 +72,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="rfc1878">RFC1878<a class="headerlink" href="#rfc1878" title="Permanent link">#</a></h2>
-<h3 id="full-table">Full Table<a class="headerlink" href="#full-table" title="Permanent link">#</a></h3>
+    <h2 id="rfc1878">RFC1878</h2>
+<h3 id="full-table">Full Table</h3>
 <pre><code class="language-txt">   The following table lists the variable length subnets from 1 to 32,
    the CIDR [3] representation form (/xx) and the Decmial equivalents.
    (M = Million, K=Thousand, A,B,C= traditional class values)
@@ -113,11 +113,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
    FF.FF.FF.FE   /31     255.255.255.254      2     1/128 C
    FF.FF.FF.FF   /32     255.255.255.255   This is a single host route
 </code></pre>
-<h2 id="subnets-and-networks">Subnets and Networks<a class="headerlink" href="#subnets-and-networks" title="Permanent link">#</a></h2>
+<h2 id="subnets-and-networks">Subnets and Networks</h2>
 <blockquote>
 <p>The number of available network and host addresses are derived from the number of bits used for subnet masking.  The tables below depict the number of subnetting bits and the resulting network, broadcast address, and host addresses.  Please note that all-zeros and all-ones subnets are included in Tables 1-1 and 1-2 per the current, standards- based practice for using all definable subnets.</p>
 </blockquote>
-<h3 id="table-1-1-class-b">Table 1-1 Class B<a class="headerlink" href="#table-1-1-class-b" title="Permanent link">#</a></h3>
+<h3 id="table-1-1-class-b">Table 1-1 Class B</h3>
 <pre><code class="language-txt">Subnet Mask     # of nets    Net. Addr.  Host Addr Range  Brodcast Addr.
 Bits of Subnet  hosts/subnet
 
@@ -211,7 +211,7 @@ Bits of Subnet  hosts/subnet
                               N.N.253.0   N.N.253.N        N.N.253.255
                               N.N.254.0   N.N.254.N        N.N.254.255
 </code></pre>
-<h3 id="table-1-2-class-c">Table 1-2 Class C<a class="headerlink" href="#table-1-2-class-c" title="Permanent link">#</a></h3>
+<h3 id="table-1-2-class-c">Table 1-2 Class C</h3>
 <pre><code class="language-txt">Subnet Mask     # of nets    Net. Addr.  Host Addr Range  Brodcast Addr.
 Bits of Subnet  hosts/subnet
 
@@ -295,7 +295,7 @@ Bits of Subnet  hosts/subnet
 <blockquote>
 <p>For the sake of completeness within this memo, tables 2-1 and 2-2 illistrate some options for subnet/host partions within selected block sizes using calculations which exclude all-zeros and all-ones subnets.  Many vendors only support subnetting based upon this premise.  This practice is obsolete!  Modern software will be able to utilize all definable networks.</p>
 </blockquote>
-<h3 id="table-2-1-from-a-16-block">Table 2-1 from a /16 block<a class="headerlink" href="#table-2-1-from-a-16-block" title="Permanent link">#</a></h3>
+<h3 id="table-2-1-from-a-16-block">Table 2-1 from a /16 block</h3>
 <pre><code class="language-txt"># bits          Mask            Effective Subnets       Effective Hosts
 ========        =====           =================       ===============
 2               255.255.192.0   2                       16382
@@ -312,7 +312,7 @@ Bits of Subnet  hosts/subnet
 13              255.255.255.248 8190                    6
 14              255.255.255.252 16382                   2
 </code></pre>
-<h3 id="table-2-2-from-a-24-block">Table 2-2 from a /24 block<a class="headerlink" href="#table-2-2-from-a-24-block" title="Permanent link">#</a></h3>
+<h3 id="table-2-2-from-a-24-block">Table 2-2 from a /24 block</h3>
 <pre><code class="language-txt"># bits          Mask            Effective Subnets       Effective Hosts
 ========        =====           =================       ===============
 2               255.255.255.192 2                       62

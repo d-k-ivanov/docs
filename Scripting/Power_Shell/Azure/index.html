@@ -81,34 +81,34 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="install-the-azure-resource-manager-modules-from-the-powershell-gallery">Install the Azure Resource Manager modules from the PowerShell Gallery<a class="headerlink" href="#install-the-azure-resource-manager-modules-from-the-powershell-gallery" title="Permanent link">#</a></h3>
+    <h3 id="install-the-azure-resource-manager-modules-from-the-powershell-gallery">Install the Azure Resource Manager modules from the PowerShell Gallery</h3>
 <pre><code class="language-ps1">Install-Module AzureRM
 </code></pre>
-<h3 id="to-log-in-to-azure-resource-manager">To log in to Azure Resource Manager<a class="headerlink" href="#to-log-in-to-azure-resource-manager" title="Permanent link">#</a></h3>
+<h3 id="to-log-in-to-azure-resource-manager">To log in to Azure Resource Manager</h3>
 <pre><code class="language-ps1">Login-AzureRmAccount
 </code></pre>
-<h3 id="you-can-also-use-a-specific-tenant-if-you-would-like-a-faster-log-in-experience">You can also use a specific Tenant if you would like a faster log in experience<a class="headerlink" href="#you-can-also-use-a-specific-tenant-if-you-would-like-a-faster-log-in-experience" title="Permanent link">#</a></h3>
+<h3 id="you-can-also-use-a-specific-tenant-if-you-would-like-a-faster-log-in-experience">You can also use a specific Tenant if you would like a faster log in experience</h3>
 <pre><code class="language-ps1">Login-AzureRmAccount -TenantId xxxx
 </code></pre>
-<h3 id="to-view-all-subscriptions-for-your-account">To view all subscriptions for your account<a class="headerlink" href="#to-view-all-subscriptions-for-your-account" title="Permanent link">#</a></h3>
+<h3 id="to-view-all-subscriptions-for-your-account">To view all subscriptions for your account</h3>
 <pre><code class="language-ps1">Get-AzureRmSubscription
 </code></pre>
-<h3 id="to-select-a-default-subscription-for-your-current-session">To select a default subscription for your current session.<a class="headerlink" href="#to-select-a-default-subscription-for-your-current-session" title="Permanent link">#</a></h3>
+<h3 id="to-select-a-default-subscription-for-your-current-session">To select a default subscription for your current session.</h3>
 <pre><code class="language-ps1"># This is useful when you have multiple subscriptions.
 Get-AzureRmSubscription -SubscriptionName &quot;your sub&quot; | Select-AzureRmSubscription
 </code></pre>
-<h3 id="view-your-current-azure-powershell-session-context">View your current Azure PowerShell session context<a class="headerlink" href="#view-your-current-azure-powershell-session-context" title="Permanent link">#</a></h3>
+<h3 id="view-your-current-azure-powershell-session-context">View your current Azure PowerShell session context</h3>
 <pre><code class="language-ps1"># This session state is only applicable to the current session and will not affect other sessions
 Get-AzureRmContext
 </code></pre>
-<h3 id="to-select-the-default-storage-context-for-your-current-session">To select the default storage context for your current session<a class="headerlink" href="#to-select-the-default-storage-context-for-your-current-session" title="Permanent link">#</a></h3>
+<h3 id="to-select-the-default-storage-context-for-your-current-session">To select the default storage context for your current session</h3>
 <pre><code class="language-ps1">Set-AzureRmCurrentStorageAccount -ResourceGroupName &quot;your resource group&quot; -StorageAccountName &quot;your storage account name&quot;
 </code></pre>
-<h3 id="view-your-current-azure-powershell-session-context_1">View your current Azure PowerShell session context<a class="headerlink" href="#view-your-current-azure-powershell-session-context_1" title="Permanent link">#</a></h3>
+<h3 id="view-your-current-azure-powershell-session-context_1">View your current Azure PowerShell session context</h3>
 <pre><code class="language-ps1"># Note: the CurrentStorageAccount is now set in your session context
 Get-AzureRmContext
 </code></pre>
-<h3 id="to-list-all-of-the-blobs-in-all-of-your-containers-in-all-of-your-accounts">To list all of the blobs in all of your containers in all of your accounts<a class="headerlink" href="#to-list-all-of-the-blobs-in-all-of-your-containers-in-all-of-your-accounts" title="Permanent link">#</a></h3>
+<h3 id="to-list-all-of-the-blobs-in-all-of-your-containers-in-all-of-your-accounts">To list all of the blobs in all of your containers in all of your accounts</h3>
 <pre><code class="language-ps1">Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob
 </code></pre>
 

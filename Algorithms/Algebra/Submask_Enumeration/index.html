@@ -68,8 +68,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="submask-enumeration">Submask Enumeration<a class="headerlink" href="#submask-enumeration" title="Permanent link">#</a></h1>
-<h2 id="enumerating-all-submasks-of-a-given-mask">Enumerating all submasks of a given mask<a class="headerlink" href="#enumerating-all-submasks-of-a-given-mask" title="Permanent link">#</a></h2>
+    <h1 id="submask-enumeration">Submask Enumeration</h1>
+<h2 id="enumerating-all-submasks-of-a-given-mask">Enumerating all submasks of a given mask</h2>
 <p>Given a bitmask <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>, you want to efficiently iterate through all of its submasks, that is, masks <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> in which only bits that were included in mask <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> are set.</p>
 <p>Consider the implementation of this algorithm, based on tricks with bit operations:</p>
 <pre><code class="language-cpp">int s = m;
@@ -92,7 +92,7 @@ while (s &gt; 0) {
 <p>Suppose we have a current bitmask <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, and we want to move on to the next bitmask. By subtracting from the mask <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> one unit, we will remove the rightmost set bit and all bits to the right of it will become 1. Then we remove all the "extra" one bits that are not included in the mask <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> and therefore can't be a part of a submask. We do this removal by using the bitwise operation <code>(s-1) &amp; m</code>. As a result, we "cut" mask <span><span class="MathJax_Preview">s-1</span><script type="math/tex">s-1</script></span> to determine the highest value that it can take, that is, the next submask after <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> in descending order.</p>
 <p>Thus, this algorithm generates all submasks of this mask in descending order, performing only two operations per iteration.</p>
 <p>A special case is when <span><span class="MathJax_Preview">s = 0</span><script type="math/tex">s = 0</script></span>. After executing <span><span class="MathJax_Preview">s-1</span><script type="math/tex">s-1</script></span> we get a mask where all bits are set (bit representation of -1), and after <code>(s-1) &amp; m</code> we will have that <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> will be equal to <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>. Therefore, with the mask <span><span class="MathJax_Preview">s = 0</span><script type="math/tex">s = 0</script></span> be careful — if the loop does not end at zero, the algorithm may enter an infinite loop.</p>
-<h2 id="iterating-through-all-masks-with-their-submasks">Iterating through all masks with their submasks<a class="headerlink" href="#iterating-through-all-masks-with-their-submasks" title="Permanent link">#</a></h2>
+<h2 id="iterating-through-all-masks-with-their-submasks">Iterating through all masks with their submasks</h2>
 <p><strong>Complexity <span><span class="MathJax_Preview">O(3^n)</span><script type="math/tex">O(3^n)</script></span></strong></p>
 <p>In many problems, especially those that use bitmask dynamic programming, you want to iterate through all bitmasks and for each mask, iterate through all of its submasks:</p>
 <pre><code class="language-cpp">for (int m=0; m&lt;(1&lt;&lt;n); ++m)
@@ -113,7 +113,7 @@ while (s &gt; 0) {
 <script type="math/tex; mode=display">\sum_{k=0}^n \binom{n}{k} \cdot 2^k</script>
 </div>
 <p>To calculate this number, note that the sum above is equal to the expansion of <span><span class="MathJax_Preview">(1+2)^n</span><script type="math/tex">(1+2)^n</script></span> using the binomial theorem. Therefore, we have <span><span class="MathJax_Preview">3^n</span><script type="math/tex">3^n</script></span> combinations, as we wanted to prove.</p>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
+<h2 id="practice-problems">Practice Problems</h2>
 <ul>
 <li><a href="http://codeforces.com/problemset/problem/71/E">Codeforces - Nuclear Fusion</a></li>
 <li><a href="http://codeforces.com/problemset/problem/599/E">Codeforces - Sandy and Nuts</a></li>

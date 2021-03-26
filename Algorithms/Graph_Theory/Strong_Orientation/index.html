@@ -68,10 +68,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="strong-orientation">Strong Orientation<a class="headerlink" href="#strong-orientation" title="Permanent link">#</a></h1>
+    <h1 id="strong-orientation">Strong Orientation</h1>
 <p>A <strong>strong orientation</strong> of an undirected graph is an assignment of a direction to each edge that makes it a <a href="/docs/#Algorithms/Graph_Theory/Strongly_Connected_Components/">strongly connected graph</a>.
 That is, after the <em>orientation</em> we should be able to visit any vertex from any vertex by following the directed edges.</p>
-<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">#</a></h2>
+<h2 id="solution">Solution</h2>
 <p>Of course, this cannot be done to <em>every</em> graph.
 Consider a <a href="/docs/#Algorithms/Graph_Theory/Bridge_Searching/">bridge</a> in a graph.
 We have to assign a direction to it and by doing so we make this bridge "crossable" in only one direction. That means we can't go from one of the bridge's ends to the other, so we can't make the graph strongly connected.</p>
@@ -86,7 +86,7 @@ We found a strong orientation!</p>
 run a DFS on it and let the DFS tree edges point away from the DFS root and
 all other edges from the descendant to the ancestor in the DFS tree.</p>
 <p>The result that bridgeless connected graphs are exactly the graphs that have strong orientations is called <strong>Robbins' theorem</strong>.</p>
-<h2 id="problem-extension">Problem extension<a class="headerlink" href="#problem-extension" title="Permanent link">#</a></h2>
+<h2 id="problem-extension">Problem extension</h2>
 <p>Let's consider the problem of finding a graph orientation so that the number of SCCs is minimal.</p>
 <p>Of course, each graph component can be considered separately.
 Now, since only bridgeless graphs are strongly orientable, let's remove all bridges temporarily.
@@ -95,7 +95,7 @@ We end up with some number of bridgeless components
  and we know that we can strongly orient each of them.</p>
 <p>We were only allowed to orient edges, not remove them, but it turns out we can orient the bridges arbitrarily.
 Of course, the easiest way to orient them is to run the algorithm described above without modifications on each original connected component.</p>
-<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h3>
+<h3 id="implementation">Implementation</h3>
 <p>Here, the input is <em>n</em> — the number of vertices, <em>m</em> — the number of edges, then <em>m</em> lines describing the edges.</p>
 <p>The output is the minimal number of SCCs on the first line and on the second line
 a string of <em>m</em> characters,
@@ -159,7 +159,7 @@ int main() {
     printf(&quot;%d\n%s\n&quot;, comp_cnt + bridge_cnt, orient.c_str());
 }
 </code></pre>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
+<h2 id="practice-problems">Practice Problems</h2>
 <ul>
 <li><a href="https://szkopul.edu.pl/problemset/problem/nldsb4EW1YuZykBlf4lcZL1Y/site/">26th Polish OI - Osiedla</a></li>
 </ul>

@@ -67,9 +67,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="maximum-flow-push-relabel-algorithm-improved">Maximum Flow: Push-Relabel Algorithm Improved<a class="headerlink" href="#maximum-flow-push-relabel-algorithm-improved" title="Permanent link">#</a></h1>
+    <h1 id="maximum-flow-push-relabel-algorithm-improved">Maximum Flow: Push-Relabel Algorithm Improved</h1>
 <p>We will modify the <a href="/docs/#Algorithms/Graph_Theory/Maximum_Flow_Push-Relabel_Algorithm/">push-relabel method</a> to achieve a better runtime.</p>
-<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
+<h2 id="description">Description</h2>
 <p>The modification is extremely simple:
 In the previous article we chosen a vertex with excess without any particular rule.
 But it turns out, that if we always choose the vertices with the <strong>greatest height</strong>, and apply push and relabel operations on them, then the complexity will become better.
@@ -77,7 +77,7 @@ Moreover, to select the vertices with the greatest height we actually don't need
 <p>Despite the simplicity, this modification reduces the complexity by a lot.
 To be precise, the complexity of the resulting algorithm is <span><span class="MathJax_Preview">O(V E + V^2 \sqrt{E})</span><script type="math/tex">O(V E + V^2 \sqrt{E})</script></span>, which in the worst case is <span><span class="MathJax_Preview">O(V^3)</span><script type="math/tex">O(V^3)</script></span>.</p>
 <p>This modification was proposed by Cheriyan and Maheshwari in 1989.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
+<h2 id="implementation">Implementation</h2>
 <p>```cpp push_relabel_faster
 const int inf = 1000000000;</p>
 <p>int n;

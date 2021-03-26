@@ -77,7 +77,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="queries">Queries<a class="headerlink" href="#queries" title="Permanent link">#</a></h3>
+    <h3 id="queries">Queries</h3>
 <pre><code class="language-bash"># Check backup
 q ev * * 
 
@@ -144,14 +144,14 @@ q sched f=d
 q sched * type=admin f=d
 
 </code></pre>
-<h3 id="unload-tape">Unload tape<a class="headerlink" href="#unload-tape" title="Permanent link">#</a></h3>
+<h3 id="unload-tape">Unload tape</h3>
 <pre><code class="language-bash">Configure Library → Drive → []Power ON
 Configure Library → Drive → [X]Power ON
 Wait for 5 minutes until tape will be rewinded
 # Move tape to empty slot
 Manage Library → Move Media 
 </code></pre>
-<h3 id="how-to-get-logs">How to get logs<a class="headerlink" href="#how-to-get-logs" title="Permanent link">#</a></h3>
+<h3 id="how-to-get-logs">How to get logs</h3>
 <pre><code># Library logs
 Service → View Logs
 Save Service Dump
@@ -159,7 +159,7 @@ Save Service Dump
 # Drive logs
 Service Library → Save Drive Dump
 </code></pre>
-<h3 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">#</a></h3>
+<h3 id="changes">Changes</h3>
 <pre><code class="language-bash"># Path (set online)
 #Drive1:
 UPD PATH TSM DRIVE01 SRCT=SERVer DESTT=DRIVE LIBR=TS3100 ONL=Y
@@ -202,14 +202,14 @@ LABEL libvol TS3200 search=yes labelsource=barcode overwrite=NO checkin=SCRATCH 
 # Assign a tape drive to a server
 UPDATE PATH servername TAPE0 SRCTYPE=SERVER DESTTYPE=DRIVE LIBRARY=TS3200 DEVICE=\\.\Tape0 ONLINE=YES AUTODETECT=no
 </code></pre>
-<h3 id="creating-backups">Creating backups<a class="headerlink" href="#creating-backups" title="Permanent link">#</a></h3>
+<h3 id="creating-backups">Creating backups</h3>
 <pre><code class="language-bash"># Create a new schedule backup (incremental) for a node
 UPDATE SCHEDULE domainname nodename desc=&quot;daily incremental backup for a server&quot; action=Incremental options=-subdir=yes objects=&quot;&quot;/fs1/*&quot; &quot;/fs2/*&quot; &quot;/home/user1/*&quot;&quot; priority=5startdate=mm/dd/yyyy starttime=hh:mm duration=1 duru=Houperiod=1 perunits=Day dayofweek=Any expiration=never
 
 # Full backup of Tivoli database manually to file on local disk
 backup db dev=FILECLASS type=full
 </code></pre>
-<h3 id="startup">Startup<a class="headerlink" href="#startup" title="Permanent link">#</a></h3>
+<h3 id="startup">Startup</h3>
 <pre><code class="language-bash"># Start Tivoly on AIX
 cd /usr/tivoli/tsm/client/ba/bin
 nohup dsmc sched &amp;
@@ -220,7 +220,7 @@ nohup ./dsmsta &amp;
 
 ps -ef | grep dsm
 </code></pre>
-<h3 id="if-tape-is-not-shown">If tape is not shown<a class="headerlink" href="#if-tape-is-not-shown" title="Permanent link">#</a></h3>
+<h3 id="if-tape-is-not-shown">If tape is not shown</h3>
 <pre><code class="language-bash">checkin libvolume TS3100 search=yes status=scratch       
 checkin libvolume TS3100 search=yes status=private
 </code></pre>

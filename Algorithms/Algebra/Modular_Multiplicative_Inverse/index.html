@@ -70,8 +70,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="modular-multiplicative-inverse">Modular Multiplicative Inverse<a class="headerlink" href="#modular-multiplicative-inverse" title="Permanent link">#</a></h1>
-<h2 id="definition">Definition<a class="headerlink" href="#definition" title="Permanent link">#</a></h2>
+    <h1 id="modular-multiplicative-inverse">Modular Multiplicative Inverse</h1>
+<h2 id="definition">Definition</h2>
 <p>A <a href="http://en.wikipedia.org/wiki/Modular_multiplicative_inverse">modular multiplicative inverse</a> of an integer <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> is an integer <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> such that <span><span class="MathJax_Preview">a \cdot x</span><script type="math/tex">a \cdot x</script></span> is congruent to <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> modular some modulus <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>.
 To write it in a formal way: we want to find an integer <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> so that
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">a \cdot x \equiv 1 \mod m.</span><script type="math/tex">a \cdot x \equiv 1 \mod m.</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">a \cdot x \equiv 1 \mod m.</span><script type="math/tex">a \cdot x \equiv 1 \mod m.</script></span></script></span>
@@ -80,7 +80,7 @@ We will also denote <span><span class="MathJax_Preview">x</span><script type="ma
 By checking all possible values modulo <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is should become clear that we cannot find <span><span class="MathJax_Preview">a^{-1}</span><script type="math/tex">a^{-1}</script></span> satisfying the above equation.
 It can be proven that the modular inverse exists if and only if <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> are relatively prime (i.e. <span><span class="MathJax_Preview">\gcd(a, m) = 1</span><script type="math/tex">\gcd(a, m) = 1</script></span>).</p>
 <p>In this article, we present two methods for finding the modular inverse in case it exists, and one method for finding the modular inverse for all numbers in linear time.</p>
-<h2 id="finding-the-modular-inverse-using-extended-euclidean-algorithm">Finding the Modular Inverse using Extended Euclidean algorithm<a class="headerlink" href="#finding-the-modular-inverse-using-extended-euclidean-algorithm" title="Permanent link">#</a></h2>
+<h2 id="finding-the-modular-inverse-using-extended-euclidean-algorithm">Finding the Modular Inverse using Extended Euclidean algorithm</h2>
 <p>Consider the following equation (with unknown <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> and <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>):</p>
 <div>
 <div class="MathJax_Preview">a \cdot x + m \cdot y = 1</div>
@@ -108,7 +108,7 @@ else {
 </code></pre>
 <p>Notice that we way we modify <code>x</code>.
 The resulting <code>x</code> from the extended Euclidean algorithm may be negative, so <code>x % m</code> might also be negative, and we first have to add <code>m</code> to make it positive.</p>
-<h2 id="finding-the-modular-inverse-using-binary-exponentiation">Finding the Modular Inverse using Binary Exponentiation<a class="headerlink" href="#finding-the-modular-inverse-using-binary-exponentiation" title="Permanent link">#</a></h2>
+<h2 id="finding-the-modular-inverse-using-binary-exponentiation">Finding the Modular Inverse using Binary Exponentiation</h2>
 <p>Another method for finding modular inverse is to use Euler's theorem, which states that the following congruence is true if <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> are relatively prime:</p>
 <div>
 <div class="MathJax_Preview">a^{\phi (m)} \equiv 1 \mod m</div>
@@ -128,7 +128,7 @@ Again, note that <span><span class="MathJax_Preview">a</span><script type="math/
 </ul>
 <p>From these results, we can easily find the modular inverse using the <a href="/docs/#Algorithms/Algebra/Binary_Exponentiation/">binary exponentiation algorithm</a>, which works in <span><span class="MathJax_Preview">O(\log m)</span><script type="math/tex">O(\log m)</script></span> time.</p>
 <p>Even though this method is easier to understand than the method described in previous paragraph, in the case when <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is not a prime number, we need to calculate Euler phi function, which involves factorization of <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>, which might be very hard. If the prime factorization of <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is known, then the complexity of this method is <span><span class="MathJax_Preview">O(\log m)</span><script type="math/tex">O(\log m)</script></span>.</p>
-<h2 id="finding-the-modular-inverse-for-every-number-modulo-mm-mod-inv-all-num">Finding the modular inverse for every number modulo <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> {#mod-inv-all-num}<a class="headerlink" href="#finding-the-modular-inverse-for-every-number-modulo-mm-mod-inv-all-num" title="Permanent link">#</a></h2>
+<h2 id="finding-the-modular-inverse-for-every-number-modulo-mm-mod-inv-all-num">Finding the modular inverse for every number modulo <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> {#mod-inv-all-num}</h2>
 <p>The problem is the following:
 we want to compute the modular inverse for every number in the range <span><span class="MathJax_Preview">[1, m-1]</span><script type="math/tex">[1, m-1]</script></span>.</p>
 <p>Applying the algorithms described in the previous sections, we can obtain a solution with complexity <span><span class="MathJax_Preview">O(m \log m)</span><script type="math/tex">O(m \log m)</script></span>.</p>
@@ -144,7 +144,7 @@ However for this specific algorithm we require that the modulus <span><span clas
 for(int i = 2; i &lt; m; ++i)
     inv[i] = (m - (m/i) * inv[m%i] % m) % m;
 </code></pre>
-<h3 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">#</a></h3>
+<h3 id="proof">Proof</h3>
 <p>We have:
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">m \bmod i = m -  \left\lfloor \frac{m}{i} \right\rfloor \cdot i</span><script type="math/tex">m \bmod i = m -  \left\lfloor \frac{m}{i} \right\rfloor \cdot i</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">m \bmod i = m -  \left\lfloor \frac{m}{i} \right\rfloor \cdot i</span><script type="math/tex">m \bmod i = m -  \left\lfloor \frac{m}{i} \right\rfloor \cdot i</script></span></script></span>
 Taking both sides modulo <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> yields:
@@ -153,7 +153,7 @@ Multiply both sides by <span><span class="MathJax_Preview">i^{-1} \cdot (m \bmod
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">(m \bmod i) \cdot i^{-1} \cdot (m \bmod i)^{-1} \equiv -\left\lfloor \frac{m}{i} \right\rfloor \cdot i \cdot i^{-1} \cdot (m \bmod i)^{-1} \mod m,</span><script type="math/tex">(m \bmod i) \cdot i^{-1} \cdot (m \bmod i)^{-1} \equiv -\left\lfloor \frac{m}{i} \right\rfloor \cdot i \cdot i^{-1} \cdot (m \bmod i)^{-1} \mod m,</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">(m \bmod i) \cdot i^{-1} \cdot (m \bmod i)^{-1} \equiv -\left\lfloor \frac{m}{i} \right\rfloor \cdot i \cdot i^{-1} \cdot (m \bmod i)^{-1} \mod m,</span><script type="math/tex">(m \bmod i) \cdot i^{-1} \cdot (m \bmod i)^{-1} \equiv -\left\lfloor \frac{m}{i} \right\rfloor \cdot i \cdot i^{-1} \cdot (m \bmod i)^{-1} \mod m,</script></span></script></span>
 which simplifies to:
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">i^{-1} \equiv -\left\lfloor \frac{m}{i} \right\rfloor \cdot (m \bmod i)^{-1} \mod m,</span><script type="math/tex">i^{-1} \equiv -\left\lfloor \frac{m}{i} \right\rfloor \cdot (m \bmod i)^{-1} \mod m,</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">i^{-1} \equiv -\left\lfloor \frac{m}{i} \right\rfloor \cdot (m \bmod i)^{-1} \mod m,</span><script type="math/tex">i^{-1} \equiv -\left\lfloor \frac{m}{i} \right\rfloor \cdot (m \bmod i)^{-1} \mod m,</script></span></script></span></p>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
+<h2 id="practice-problems">Practice Problems</h2>
 <ul>
 <li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=3055">UVa 11904 - One Unit Machine</a></li>
 <li><a href="https://www.hackerrank.com/contests/world-codesprint-5/challenges/longest-increasing-subsequence-arrays">Hackerrank - Longest Increasing Subsequence Arrays</a></li>

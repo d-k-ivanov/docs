@@ -68,8 +68,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="counting-labeled-graphs">Counting Labeled Graphs<a class="headerlink" href="#counting-labeled-graphs" title="Permanent link">#</a></h1>
-<h2 id="labeled-graphs">Labeled graphs<a class="headerlink" href="#labeled-graphs" title="Permanent link">#</a></h2>
+    <h1 id="counting-labeled-graphs">Counting Labeled Graphs</h1>
+<h2 id="labeled-graphs">Labeled graphs</h2>
 <p>Let the number of vertices in a graph be <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.
 We have to compute the number <span><span class="MathJax_Preview">G_n</span><script type="math/tex">G_n</script></span> of labeled graphs with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices (labeled means that the vertices are marked with the numbers from <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> to <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>).
 The edges of the graphs are considered undirected, and loops and multiple edges are forbidden.</p>
@@ -81,7 +81,7 @@ Therefore the set of all edges has the cardinality <span><span class="MathJax_Pr
 <div class="MathJax_Preview">G_n = 2^{\frac{n(n-1)}{2}}</div>
 <script type="math/tex; mode=display">G_n = 2^{\frac{n(n-1)}{2}}</script>
 </div>
-<h2 id="connected-labeled-graphs">Connected labeled graphs<a class="headerlink" href="#connected-labeled-graphs" title="Permanent link">#</a></h2>
+<h2 id="connected-labeled-graphs">Connected labeled graphs</h2>
 <p>Here, we additionally impose the restriction that the graph has to be connected.</p>
 <p>Let's denote the required number of connected graphs with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices as <span><span class="MathJax_Preview">C_n</span><script type="math/tex">C_n</script></span>.</p>
 <p>We will first discuss how many <strong>disconnected</strong> graphs exists.
@@ -100,7 +100,7 @@ Therefore the number of disconnected graphs with <span><span class="MathJax_Prev
 <div class="MathJax_Preview">C_n = G_n - \frac{1}{n} \sum_{k=1}^{n-1} k \binom{n}{k} C_k G_{n-k}</div>
 <script type="math/tex; mode=display">C_n = G_n - \frac{1}{n} \sum_{k=1}^{n-1} k \binom{n}{k} C_k G_{n-k}</script>
 </div>
-<h2 id="labeled-graphs-with-kk-connected-components">Labeled graphs with <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> connected components<a class="headerlink" href="#labeled-graphs-with-kk-connected-components" title="Permanent link">#</a></h2>
+<h2 id="labeled-graphs-with-kk-connected-components">Labeled graphs with <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> connected components</h2>
 <p>Based on the formula from the previous section, we will learn how to count the number of labeled graphs with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vertices and <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> connected components.</p>
 <p>This number can be computed using dynamic programming.
 We will compute <span><span class="MathJax_Preview">D[i][j]</span><script type="math/tex">D[i][j]</script></span> - the number of labeled graphs with <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> vertices and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> components - for each <span><span class="MathJax_Preview">i \le n</span><script type="math/tex">i \le n</script></span> and <span><span class="MathJax_Preview">j \le k</span><script type="math/tex">j \le k</script></span>.</p>

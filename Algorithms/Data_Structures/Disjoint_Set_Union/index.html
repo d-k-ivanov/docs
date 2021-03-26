@@ -69,7 +69,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="disjoint-set-union">Disjoint Set Union<a class="headerlink" href="#disjoint-set-union" title="Permanent link">#</a></h1>
+    <h1 id="disjoint-set-union">Disjoint Set Union</h1>
 <p>This article discusses the data structure <strong>Disjoint Set Union</strong> or <strong>DSU</strong>.
 Often it is also called <strong>Union Find</strong> because of its two main operations.</p>
 <p>This data structure provides the following capabilities.
@@ -89,7 +89,7 @@ Otherwise they are in different sets.</li>
 </ul>
 <p>As described in more detail later, the data structure allows you to do each of these operations in almost <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> time on average.</p>
 <p>Also in one of the subsections an alternative structure of a DSU is explained, which achieves a slower average complexity of <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>, but can be more powerful than the regular DSU structure.</p>
-<h2 id="build-an-efficient-data-structure">Build an efficient data structure<a class="headerlink" href="#build-an-efficient-data-structure" title="Permanent link">#</a></h2>
+<h2 id="build-an-efficient-data-structure">Build an efficient data structure</h2>
 <p>We will store the sets in the form of <strong>trees</strong>: each tree will correspond to one set.
 And the root of the tree will be the representative/leader of the set.</p>
 <p>In the following image you can see the representation of such trees.</p>
@@ -99,7 +99,7 @@ Then we combine the set containing the element 1 and the set containing the elem
 Then we combine the set containing the element 3 and the set containing the element 4.
 And in the last step, we combine the set containing the element 1 and the set containing the element 3.</p>
 <p>For the implementation this means that we will have to maintain an array <code>parent</code> that stores a reference to its immediate ancestor in the tree.</p>
-<h3 id="naive-implementation">Naive implementation<a class="headerlink" href="#naive-implementation" title="Permanent link">#</a></h3>
+<h3 id="naive-implementation">Naive implementation</h3>
 <p>We can already write the first implementation of the Disjoint Set Union data structure.
 It will be pretty inefficient at first, but later we can improve it using two optimizations, so that it will take nearly constant time for each function call.</p>
 <p>As we said, all the information about the sets of elements will be kept in an array <code>parent</code>.</p>
@@ -132,7 +132,7 @@ It is easy to construct an example, so that the trees degenerate into long chain
 In that case each call <code>find_set(v)</code> can take <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> time.</p>
 <p>This is far away from the complexity that we want to have (nearly constant time).
 Therefore we will consider two optimizations that will allow to significantly accelerate the work.</p>
-<h3 id="path-compression-optimization">Path compression optimization<a class="headerlink" href="#path-compression-optimization" title="Permanent link">#</a></h3>
+<h3 id="path-compression-optimization">Path compression optimization</h3>
 <p>This optimization is designed for speeding up <code>find_set</code>.</p>
 <p>If we call <code>find_set(v)</code> for some vertex <code>v</code>, we actually find the representative <code>p</code> for all vertices that we visit on the path between <code>v</code> and the actual representative <code>p</code>.
 The trick is to make the paths for all those nodes shorter, by setting the parent of each visited vertex directly to <code>p</code>.</p>
@@ -150,7 +150,7 @@ On the left there is a tree, and on the right side there is the compressed tree 
 first find the representative of the set (root vertex), and then in the process of stack unwinding the visited nodes are attached directly to the representative.</p>
 <p>This simple modification of the operation already achieves the time complexity <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> per call on average (here without proof).
 There is a second modification, that will make it even faster.</p>
-<h3 id="union-by-size-rank">Union by size / rank<a class="headerlink" href="#union-by-size-rank" title="Permanent link">#</a></h3>
+<h3 id="union-by-size-rank">Union by size / rank</h3>
 <p>In this optimization we will change the <code>union_set</code> operation.
 To be precise, we will change which tree gets attached to the other one.
 In the native implementation the second tree always got attached to the first one.
@@ -196,7 +196,7 @@ void union_sets(int a, int b) {
 }
 </code></pre>
 <p>Both optimizations are equivalent in terms of time and space complexity. So in practice you can use any of them.</p>
-<h3 id="time-complexity">Time complexity<a class="headerlink" href="#time-complexity" title="Permanent link">#</a></h3>
+<h3 id="time-complexity">Time complexity</h3>
 <p>As mentioned before, if we combine both optimizations - path compression with union by size / rank - we will reach nearly constant time queries.
 It turns out, that the final amortized time complexity is <span><span class="MathJax_Preview">O(\alpha(n))</span><script type="math/tex">O(\alpha(n))</script></span>, where <span><span class="MathJax_Preview">\alpha(n)</span><script type="math/tex">\alpha(n)</script></span> is the inverse Ackermann function, which grows very slowly.
 In fact it grows so slowly, that it doesn't exceed <span><span class="MathJax_Preview">4</span><script type="math/tex">4</script></span> for all reasonable <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> (approximately <span><span class="MathJax_Preview">n &lt; 10^{600}</span><script type="math/tex">n < 10^{600}</script></span>).</p>
@@ -205,7 +205,7 @@ The idea is to guarantee the total time of the entire sequence, while allowing s
 E.g. in our case a single call might take <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> in the worst case, but if we do <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> such calls back to back we will end up with an average time of <span><span class="MathJax_Preview">O(\alpha(n))</span><script type="math/tex">O(\alpha(n))</script></span>.</p>
 <p>We will also not present a proof for this time complexity, since it is quite long and complicated.</p>
 <p>Also, it's worth mentioning that DSU with union by size / rank, but without path compression works in <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> time per query.</p>
-<h3 id="linking-by-index-coin-flip-linking">Linking by index / coin-flip linking<a class="headerlink" href="#linking-by-index-coin-flip-linking" title="Permanent link">#</a></h3>
+<h3 id="linking-by-index-coin-flip-linking">Linking by index / coin-flip linking</h3>
 <p>Both union by rank and union by size require that you store additional data for each set, and maintain these values during each union operation.
 There exist also a randomized algorithm, that simplifies the union operation a little bit: linking by index.</p>
 <p>We assign each set a random value called the index, and we attach the set with the smaller index to the one with the larger one.
@@ -242,9 +242,9 @@ And in benchmarks it performs a lot worse than union by size/rank or linking by 
     }
 }
 </code></pre>
-<h2 id="applications-and-various-improvements">Applications and various improvements<a class="headerlink" href="#applications-and-various-improvements" title="Permanent link">#</a></h2>
+<h2 id="applications-and-various-improvements">Applications and various improvements</h2>
 <p>In this section we consider several applications of the data structure, both the trivial uses and some improvements to the data structure.</p>
-<h3 id="connected-components-in-a-graph">Connected components in a graph<a class="headerlink" href="#connected-components-in-a-graph" title="Permanent link">#</a></h3>
+<h3 id="connected-components-in-a-graph">Connected components in a graph</h3>
 <p>This is one of the obvious applications of DSU.</p>
 <p>Formally the problem is defined in the following way:
 Initially we have an empty graph.
@@ -252,7 +252,7 @@ We have to add vertices and undirected edges, and answer queries of the form <sp
 <p>Here we can directly apply the data structure, and get a solution that handles an addition of a vertex or an edge and a query in nearly constant time on average.</p>
 <p>This application is quite important, because nearly the same problem appears in <a href="/docs/#Algorithms/Graph_Theory/Minimum_Spanning_Tree_Kruskals_Algorithm/">Kruskal's algorithm for finding a minimum spanning tree</a>.
 Using DSU we can <a href="/docs/#Algorithms/Graph_Theory/Minimum_Spanning_Tree_Kruskal_with_DSU/">improve</a> the <span><span class="MathJax_Preview">O(m \log n + n^2)</span><script type="math/tex">O(m \log n + n^2)</script></span> complexity to <span><span class="MathJax_Preview">O(m \log n)</span><script type="math/tex">O(m \log n)</script></span>.</p>
-<h3 id="search-for-connected-components-in-an-image">Search for connected components in an image<a class="headerlink" href="#search-for-connected-components-in-an-image" title="Permanent link">#</a></h3>
+<h3 id="search-for-connected-components-in-an-image">Search for connected components in an image</h3>
 <p>One of the applications of DSU is the following task:
 there is an image of <span><span class="MathJax_Preview">n \times m</span><script type="math/tex">n \times m</script></span> pixels.
 Originally all are white, but then a few black pixels are drawn.
@@ -262,12 +262,12 @@ Thus we will have a DSU with <span><span class="MathJax_Preview">n m</span><scri
 The resulting trees in the DSU are the desired connected components.</p>
 <p>The problem can also be solved by <a href="/docs/#Algorithms/Graph_Theory/Depth_First_Search/">DFS</a> or <a href="/docs/#Algorithms/Graph_Theory/Breadth-First_Search/">BFS</a>, but the method described here has an advantage:
 it can process the matrix row by row (i.e. to process a row we only need the previous and the current row, and only need a DSU built for the elements of one row) in <span><span class="MathJax_Preview">O(\min(n, m))</span><script type="math/tex">O(\min(n, m))</script></span> memory.</p>
-<h3 id="store-additional-information-for-each-set">Store additional information for each set<a class="headerlink" href="#store-additional-information-for-each-set" title="Permanent link">#</a></h3>
+<h3 id="store-additional-information-for-each-set">Store additional information for each set</h3>
 <p>DSU allows you to easily store additional information in the sets.</p>
 <p>A simple example is the size of the sets:
 storing the sizes was already described in the Union by size section (the information was stored by the current representative of the set).</p>
 <p>In the same way - by storing it at the representative nodes - you can also store any other information about the sets.</p>
-<h3 id="compress-jumps-along-a-segment-painting-subarrays-offline">Compress jumps along a segment / Painting subarrays offline<a class="headerlink" href="#compress-jumps-along-a-segment-painting-subarrays-offline" title="Permanent link">#</a></h3>
+<h3 id="compress-jumps-along-a-segment-painting-subarrays-offline">Compress jumps along a segment / Painting subarrays offline</h3>
 <p>One common application of the DSU is the following:
 There is a set of vertices, and each vertex has an outgoing edge to another vertex.
 With DSU you can find the end point, to which we get after following all edges from a given starting point, in almost constant time.</p>
@@ -304,7 +304,7 @@ for (int i = m-1; i &gt;= 0; i--) {
 <p>There is one optimization:
 We can use <strong>union by rank</strong>, if we store the next unpainted cell in an additional array <code>end[]</code>.
 Then we can merge two sets into one ranked according to their heuristics, and we obtain the solution in <span><span class="MathJax_Preview">O(\alpha(n))</span><script type="math/tex">O(\alpha(n))</script></span>.</p>
-<h3 id="support-distances-up-to-representative">Support distances up to representative<a class="headerlink" href="#support-distances-up-to-representative" title="Permanent link">#</a></h3>
+<h3 id="support-distances-up-to-representative">Support distances up to representative</h3>
 <p>Sometimes in specific applications of the DSU you need to maintain the distance between a vertex and the representative of its set (i.e. the path length in the tree from the current node to the root of the tree).</p>
 <p>If we don't use path compression, the distance is just the number of recursive calls.
 But this will be inefficient.</p>
@@ -336,7 +336,7 @@ void union_sets(int a, int b) {
     }
 }
 </code></pre>
-<h3 id="support-the-parity-of-the-path-length-checking-bipartiteness-online">Support the parity of the path length / Checking bipartiteness online<a class="headerlink" href="#support-the-parity-of-the-path-length-checking-bipartiteness-online" title="Permanent link">#</a></h3>
+<h3 id="support-the-parity-of-the-path-length-checking-bipartiteness-online">Support the parity of the path length / Checking bipartiteness online</h3>
 <p>In the same way as computing the path length to the leader, it is possible to maintain the parity of the length of the path before him.
 Why is this application in a separate paragraph?</p>
 <p>The unusual requirement of storing the parity of the path comes up in the following task:
@@ -398,7 +398,7 @@ bool is_bipartite(int v) {
     return bipartite[find_set(v).first];
 }
 </code></pre>
-<h3 id="offline-rmq-range-minimum-query-in-oalphanoalphan-on-average-arpas-trick-arpa">Offline RMQ (range minimum query) in <span><span class="MathJax_Preview">O(\alpha(n))</span><script type="math/tex">O(\alpha(n))</script></span> on average / Arpa's trick ### {#arpa}<a class="headerlink" href="#offline-rmq-range-minimum-query-in-oalphanoalphan-on-average-arpas-trick-arpa" title="Permanent link">#</a></h3>
+<h3 id="offline-rmq-range-minimum-query-in-oalphanoalphan-on-average-arpas-trick-arpa">Offline RMQ (range minimum query) in <span><span class="MathJax_Preview">O(\alpha(n))</span><script type="math/tex">O(\alpha(n))</script></span> on average / Arpa's trick ### {#arpa}</h3>
 <p>We are given an array <code>a[]</code> and we have to compute some minima in given segments of the array.</p>
 <p>The idea to solve this problem with DSU is the following:
 We will iterate over the array and when we are at the <code>i</code>th element we will answer all queries <code>(L, R)</code> with <code>R == i</code>.
@@ -430,10 +430,10 @@ for (int i = 0; i &lt; n; i++) {
 <p>Nowadays this algorithm is known as Arpa's trick.
 It is named after AmirReza Poorakhavan, who independently discovered and popularized this technique.
 Although this algorithm existed already before his discovery.</p>
-<h3 id="offline-lca-lowest-common-ancestor-in-a-tree-in-oalphanoalphan-on-average">Offline LCA (lowest common ancestor in a tree) in <span><span class="MathJax_Preview">O(\alpha(n))</span><script type="math/tex">O(\alpha(n))</script></span> on average<a class="headerlink" href="#offline-lca-lowest-common-ancestor-in-a-tree-in-oalphanoalphan-on-average" title="Permanent link">#</a></h3>
+<h3 id="offline-lca-lowest-common-ancestor-in-a-tree-in-oalphanoalphan-on-average">Offline LCA (lowest common ancestor in a tree) in <span><span class="MathJax_Preview">O(\alpha(n))</span><script type="math/tex">O(\alpha(n))</script></span> on average</h3>
 <p>The algorithm for finding the LCA is discussed in the article <a href="/docs/#Algorithms/Graph_Theory/Lowest_Common_Ancestor_Tarjan/">Lowest Common Ancestor - Tarjan's off-line algorithm</a>.
 This algorithm compares favorable with other algorithms for finding the LCA due to its simplicity (especially compared to an optimal algorithm like the one from <a href="/docs/#Algorithms/Graph_Theory/Lowest_Common_Ancestor_Farach-Colton_Bender/">Farach-Colton and Bender</a>).</p>
-<h3 id="storing-the-dsu-explicitly-in-a-set-list-applications-of-this-idea-when-merging-various-data-structures">Storing the DSU explicitly in a set list / Applications of this idea when merging various data structures<a class="headerlink" href="#storing-the-dsu-explicitly-in-a-set-list-applications-of-this-idea-when-merging-various-data-structures" title="Permanent link">#</a></h3>
+<h3 id="storing-the-dsu-explicitly-in-a-set-list-applications-of-this-idea-when-merging-various-data-structures">Storing the DSU explicitly in a set list / Applications of this idea when merging various data structures</h3>
 <p>One of the alternative ways of storing the DSU is the preservation of each set in the form of an <strong>explicitly stored list of its elements</strong>.
 At the same time each element also stores the reference to the representative of his set.</p>
 <p>At first glance this looks like an inefficient data structure:
@@ -489,7 +489,7 @@ The size of the resulting set will be the answer for the current node.
 To efficiently combine multiple sets we just apply the above-described recipe:
 we merge the sets by simply adding smaller ones to larger.
 In the end we get a <span><span class="MathJax_Preview">O(n \log^2 n)</span><script type="math/tex">O(n \log^2 n)</script></span> solution, because one number will only added to a set at most <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> times.</p>
-<h3 id="storing-the-dsu-by-maintaining-a-clear-tree-structure-online-bridge-finding-in-oalphanoalphan-on-average">Storing the DSU by maintaining a clear tree structure / Online bridge finding in <span><span class="MathJax_Preview">O(\alpha(n))</span><script type="math/tex">O(\alpha(n))</script></span> on average<a class="headerlink" href="#storing-the-dsu-by-maintaining-a-clear-tree-structure-online-bridge-finding-in-oalphanoalphan-on-average" title="Permanent link">#</a></h3>
+<h3 id="storing-the-dsu-by-maintaining-a-clear-tree-structure-online-bridge-finding-in-oalphanoalphan-on-average">Storing the DSU by maintaining a clear tree structure / Online bridge finding in <span><span class="MathJax_Preview">O(\alpha(n))</span><script type="math/tex">O(\alpha(n))</script></span> on average</h3>
 <p>One of the most powerful applications of DSU is that it allows you to store both as <strong>compressed and uncompressed trees</strong>.
 The compressed form can be used for merging of trees and for the verification if two vertices are in the same tree, and the uncompressed form can be used - for example - to search for paths between two given vertices, or other traversals of the tree structure.</p>
 <p>In the implementation this means that in addition to the compressed ancestor array <code>parent[]</code> we will need to keep the array of uncompressed ancestors <code>real_parent[]</code>.
@@ -501,7 +501,7 @@ This means that we have no other choice but to re-root one of the trees (make th
 Indeed, for rooting a tree at vertex <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> we must go from the vertex to the old root and change directions in <code>parent[]</code> and <code>real_parent[]</code> for all nodes on that path.</p>
 <p>However in reality it isn't so bad, we can just re-root the smaller of the two trees similar to the ideas in the previous sections, and get <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span> on average.</p>
 <p>More details (including proof of the time complexity) can be found in the article <a href="/docs/#Algorithms/Graph_Theory/Bridge_Searching_Online/">Finding Bridges Online</a>.</p>
-<h2 id="historical-retrospective">Historical retrospective<a class="headerlink" href="#historical-retrospective" title="Permanent link">#</a></h2>
+<h2 id="historical-retrospective">Historical retrospective</h2>
 <p>The data structure DSU has been known for a long time.</p>
 <p>This way of storing this structure in the form <strong>of a forest of trees</strong> was apparently first described by Galler and Fisher in 1964 (Galler, Fisher, "An Improved Equivalence Algorithm), however the complete analysis of the time complexity was conducted much later.</p>
 <p>The optimizations path compression and Union by rank has been developed by McIlroy and Morris, and independently of them also by Tritter.</p>
@@ -510,7 +510,7 @@ Indeed, for rooting a tree at vertex <span><span class="MathJax_Preview">v</span
 Later in 1985 he, along with Leeuwen, published multiple complexity analyses for several different rank heuristics and ways of compressing the path (Tarjan, Leeuwen "Worst-case Analysis of Set Union Algorithms").</p>
 <p>Finally in 1989 Fredman and Sachs proved that in the adopted model of computation <strong>any</strong> algorithm for the disjoint set union problem has to work in at least <span><span class="MathJax_Preview">O(\alpha(n))</span><script type="math/tex">O(\alpha(n))</script></span> time on average (Fredman, Saks, "The cell probe complexity of dynamic data structures").</p>
 <p>However it should also be noted, that there are several articles <strong>disputing</strong> this provisional valuation and asserting that the DSU with path compression and Union by rank runs in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> time on average (Zhang "The Union-Find Problem Is Linear", Wu, Otoo "A Simpler Proof of the Average Case Complexity of Union-Find with Path Compression").</p>
-<h2 id="problems">Problems<a class="headerlink" href="#problems" title="Permanent link">#</a></h2>
+<h2 id="problems">Problems</h2>
 <ul>
 <li><a href="http://acm.timus.ru/problem.aspx?space=1&amp;num=1671">TIMUS - Anansi's Cobweb</a></li>
 <li><a href="http://codeforces.com/contest/25/problem/D">Codeforces - Roads not only in Berland</a></li>

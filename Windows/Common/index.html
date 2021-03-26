@@ -67,14 +67,14 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="use-domain-credentials-from-non-domain-worksation">Use domain credentials from non domain worksation<a class="headerlink" href="#use-domain-credentials-from-non-domain-worksation" title="Permanent link">#</a></h2>
+    <h2 id="use-domain-credentials-from-non-domain-worksation">Use domain credentials from non domain worksation</h2>
 <pre><code class="language-sh">runas /netonly /user:DOMAIN\username &quot;&lt;program&gt;&quot;
 # DNS Management
 #runas /netonly /user:username@domain &quot;%SystemRoot%\system32\mmc.exe %SystemRoot%\system32\dnsmgmt.msc&quot;
 # AD Users and Computers
 #runas /netonly /user:username@domain &quot;%SystemRoot%\system32\mmc.exe %SystemRoot%\system32\dsa.msc&quot;
 </code></pre>
-<h2 id="connect-to-domain-resource-from-non-domain-ws">Connect to Domain resource from non domain ws<a class="headerlink" href="#connect-to-domain-resource-from-non-domain-ws" title="Permanent link">#</a></h2>
+<h2 id="connect-to-domain-resource-from-non-domain-ws">Connect to Domain resource from non domain ws</h2>
 <pre><code class="language-sh">net use \\fqdn-to-resource /USER:username@domain.name
 </code></pre>
 

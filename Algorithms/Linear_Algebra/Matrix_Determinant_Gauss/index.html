@@ -68,14 +68,14 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="matrix-determinant-gauss-method">Matrix Determinant: Gauss Method<a class="headerlink" href="#matrix-determinant-gauss-method" title="Permanent link">#</a></h1>
+    <h1 id="matrix-determinant-gauss-method">Matrix Determinant: Gauss Method</h1>
 <p>Problem: Given a matrix <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> of size <span><span class="MathJax_Preview">N x N</span><script type="math/tex">N x N</script></span>. Compute its determinant.</p>
-<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
+<h2 id="algorithm">Algorithm</h2>
 <p>We use the ideas of <a href="/docs/#Algorithms/Linear_Algebra/Linear_Equations_Gauss/">Gauss method for solving systems of linear equations</a></p>
 <p>We will perform the same steps as in the solution of systems of linear equations, excluding only the division of the current line to <span><span class="MathJax_Preview">a_{ij}</span><script type="math/tex">a_{ij}</script></span>. These operations will not change the absolute value of the determinant of the matrix. When we exchange two lines of the matrix, however, the sign of the determinant can change.</p>
 <p>After applying Gauss on the matrix, we receive a diagonal matrix, whose determinant is just the product of the elements on the diagonal. The sign, as previously mentioned, can be determined by the number of exchanged rows (if odd, then the sign of the determinant should be reversed). Thus, we can use the Gauss algorithm to compute the determinant of the matrix in complexity <span><span class="MathJax_Preview">O(N^3)</span><script type="math/tex">O(N^3)</script></span>.</p>
 <p>It should be noted that if at some point, we do not find non-zero cell in current column, the algorithm should stop and returns 0.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
+<h2 id="implementation">Implementation</h2>
 <pre><code class="language-cpp">const double EPS = 1E-9;
 int n;
 vector &lt; vector&lt;double&gt; &gt; a (n, vector&lt;double&gt; (n));
@@ -104,7 +104,7 @@ for (int i=0; i&lt;n; ++i) {
 
 cout &lt;&lt; det;
 </code></pre>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
+<h2 id="practice-problems">Practice Problems</h2>
 <ul>
 <li><a href="http://codeforces.com/contest/167/problem/E">Codeforces - Wizards and Bets</a></li>
 </ul>

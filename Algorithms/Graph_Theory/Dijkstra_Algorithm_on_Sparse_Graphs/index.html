@@ -67,9 +67,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="dijkstra-algorithm-on-sparse-graphs">Dijkstra Algorithm on Sparse Graphs<a class="headerlink" href="#dijkstra-algorithm-on-sparse-graphs" title="Permanent link">#</a></h1>
+    <h1 id="dijkstra-algorithm-on-sparse-graphs">Dijkstra Algorithm on Sparse Graphs</h1>
 <p>For the statement of the problem, the algorithm with implementation and proof can be found on the article <a href="/docs/#Algorithms/Graph_Theory/Dijkstra_Algorithm/">Dijkstra's algorithm</a>.</p>
-<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
+<h2 id="algorithm">Algorithm</h2>
 <p>We recall in the derivation of the complexity of Dijkstra's algorithm we used two factors:
 the time of finding the unmarked vertex with the smallest distance <span><span class="MathJax_Preview">d[v]</span><script type="math/tex">d[v]</script></span>, and the time of the relaxation, i.e. the time of changing the values <span><span class="MathJax_Preview">d[\text{to}]</span><script type="math/tex">d[\text{to}]</script></span>.</p>
 <p>In the simplest implementation these operations require <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> and <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> time.
@@ -93,8 +93,8 @@ The first is based on red-black trees, and the second one on heaps.
 Therefore <code>priority_queue</code> has a smaller hidden constant, but also has a drawback:
 it doesn't support the operation of removing an element.
 Because of this we need to do a "workaround", that actually leads to a slightly worse factor <span><span class="MathJax_Preview">\log m</span><script type="math/tex">\log m</script></span> instead of <span><span class="MathJax_Preview">\log n</span><script type="math/tex">\log n</script></span> (although in terms of complexity they are identical).</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
-<h3 id="set">set<a class="headerlink" href="#set" title="Permanent link">#</a></h3>
+<h2 id="implementation">Implementation</h2>
+<h3 id="set">set</h3>
 <p>Let us start with the container <code>set</code>.
 Since we need to store vertices ordered by their values <span><span class="MathJax_Preview">d[]</span><script type="math/tex">d[]</script></span>, it is convenient to store actual pairs: the distance and the index of the vertex.
 As a result in a <code>set</code> pairs are automatically sorted by their distances.</p>
@@ -182,7 +182,7 @@ void dijkstra(int s, vector&lt;int&gt; &amp; d, vector&lt;int&gt; &amp; p) {
 }
 </code></pre>
 <p>In practice the <code>priority_queue</code> version is a little bit faster than the version with <code>set</code>.</p>
-<h3 id="getting-rid-of-pairs">Getting rid of pairs<a class="headerlink" href="#getting-rid-of-pairs" title="Permanent link">#</a></h3>
+<h3 id="getting-rid-of-pairs">Getting rid of pairs</h3>
 <p>You can improve the performance a little bit more if you don't store pairs in the containers, but only the vertex indices.
 In this case we must overload the comparison operator:
 it must compare two vertices using the distances stored in <span><span class="MathJax_Preview">d[]</span><script type="math/tex">d[]</script></span>.</p>

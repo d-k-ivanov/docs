@@ -69,7 +69,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h3 id="independent-history-catalogs-of-git-repositories">Independent history catalogs of git repositories<a class="headerlink" href="#independent-history-catalogs-of-git-repositories" title="Permanent link">#</a></h3>
+    <h3 id="independent-history-catalogs-of-git-repositories">Independent history catalogs of git repositories</h3>
 <pre><code class="language-bash"># Makes a bunch of history folders formatted by the next way: &lt;repository&gt;-&lt;number_of_commit&gt;-&lt;commit_hash&gt;
 # Check commit_list.end for mistakes, you need simple list of commits
 git clone &lt;repository_url&gt; &lt;repository&gt;
@@ -77,7 +77,7 @@ cd &lt;repository&gt; &amp;&amp; git log --pretty=format:&quot;%h&quot; &gt; ../
 tac commit_list &gt; commit_list.end 
 i=1; for cid in `cat commit_list.end`; do cp -r &lt;repository&gt; &lt;repository&gt;-$i-$cid; cd &lt;repository&gt;-$i-$cid; git checkout $cid; cd ..; ((i=i+1)); done
 </code></pre>
-<h3 id="clone-all-users-repositories">Clone all user's repositories<a class="headerlink" href="#clone-all-users-repositories" title="Permanent link">#</a></h3>
+<h3 id="clone-all-users-repositories">Clone all user's repositories</h3>
 <pre><code class="language-bash"># Get complete list of user's repositories in JSON file
 curl -s https://api.github.com/users/&lt;username&gt;/repos?per_page=200 &gt; repo.list.json
 python -c &quot;import json,sys,os;file = open('repo.list.json' ,'r');obj = json.load(file);obj_size = len(obj);cmd = 'git clone  ';[os.system(cmd + obj[x]['clone_url']) for x in range(0, obj_size)];file.close()&quot;
@@ -85,7 +85,7 @@ python -c &quot;import json,sys,os;file = open('repo.list.json' ,'r');obj = json
 # Another way to clone up to 200 user's repos(just in shell): 
 curl -s https://api.github.com/users/keepbot/repos?per_page=200 | jq '.[] | .&quot;clone_url&quot;' | xargs -I '{}' git clone {}
 </code></pre>
-<h3 id="generate-new-key-pair-in-current-folder">Generate new key-pair in current folder`<a class="headerlink" href="#generate-new-key-pair-in-current-folder" title="Permanent link">#</a></h3>
+<h3 id="generate-new-key-pair-in-current-folder">Generate new key-pair in current folder`</h3>
 <pre><code class="language-bash">sh-keygen -t rsa -b 4096 -C &quot;email@domain&quot; -f deploy_key
 </code></pre>
 

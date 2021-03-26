@@ -67,7 +67,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="scheduling-jobs-two-machines">Scheduling Jobs: Two Machines<a class="headerlink" href="#scheduling-jobs-two-machines" title="Permanent link">#</a></h1>
+    <h1 id="scheduling-jobs-two-machines">Scheduling Jobs: Two Machines</h1>
 <p>This task is about finding an optimal schedule for <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> jobs on two machines.
 Every item must first be processed on the first machine, and afterwards on the second one.
 The <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>-th job takes <span><span class="MathJax_Preview">a_i</span><script type="math/tex">a_i</script></span> time on the first machine, and <span><span class="MathJax_Preview">b_i</span><script type="math/tex">b_i</script></span> time on the second machine.
@@ -75,7 +75,7 @@ Each machine can only process one job at a time.</p>
 <p>We want to find the optimal order of the jobs, so that the final processing time is the minimum possible.</p>
 <p>This solution that is discussed here is called Johnson's rule (named after S. M. Johnson).</p>
 <p>It is worth noting, that the task becomes NP-complete, if we have more than two machines.</p>
-<h2 id="construction-of-the-algorithm">Construction of the algorithm<a class="headerlink" href="#construction-of-the-algorithm" title="Permanent link">#</a></h2>
+<h2 id="construction-of-the-algorithm">Construction of the algorithm</h2>
 <p>Note first, that we can assume that the order of jobs for the first and the second machine have to coincide.
 In fact, since the jobs for the second machine become available after processing them at the first, and if there are several jobs available for the second machine, than the processing time will be equal to the sum of their <span><span class="MathJax_Preview">b_i</span><script type="math/tex">b_i</script></span>, regardless of their order.
 Therefore it is only advantageous to send the jobs to the second machine in the same order as we sent them to the first machine.</p>
@@ -133,7 +133,7 @@ If we have the four times <span><span class="MathJax_Preview">(a_j, a_{j+1}, b_j
 If the minimum time is a time from the second machine, then it should go later.
 Thus we can sort the jobs by <span><span class="MathJax_Preview">\min(a_i, b_i)</span><script type="math/tex">\min(a_i, b_i)</script></span>, and if the processing time of the current job on the first machine is less then the processing time on the second machine, then this job must be done before all the remaining jobs, and otherwise after all remaining tasks.</p>
 <p>One way or another, it turns out that by Johnson's rule we can solve the problem by sorting the jobs, and thus receive a time complexity of <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
+<h2 id="implementation">Implementation</h2>
 <p>Here we implement the second variation of the described algorithm.</p>
 <p>```cpp johnsons_rule
 struct Job {

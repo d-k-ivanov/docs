@@ -80,8 +80,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="c-coding-standard">C++ Coding Standard<a class="headerlink" href="#c-coding-standard" title="Permanent link">#</a></h1>
-<h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">#</a></h2>
+    <h1 id="c-coding-standard">C++ Coding Standard</h1>
+<h2 id="resources">Resources</h2>
 <hr />
 <ul>
 <li><a href="http://www.sente.ch/cetus/software.html">OO Info Sources</a></li>
@@ -99,16 +99,16 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li><a href="http://www.abxsoft.com/">Abraxis Code Check</a> - A program for checking code for coding standard violations and other problems.</li>
 </ul>
 <hr />
-<h2 id="names">Names<a class="headerlink" href="#names" title="Permanent link">#</a></h2>
+<h2 id="names">Names</h2>
 <hr />
-<h3 id="include-units-in-names">Include Units in Names<a class="headerlink" href="#include-units-in-names" title="Permanent link">#</a></h3>
+<h3 id="include-units-in-names">Include Units in Names</h3>
 <p>If a variable represents time, weight, or some other unit then include the unit in the name so developers can more easily spot problems. For example:</p>
 <pre><code class="language-cpp">uint32 mTimeoutMsecs;
 uint32 mMyWeightLbs;
 </code></pre>
 <p>Better yet is to make a variable into a class so bad conversions can be caught.</p>
 <hr />
-<h2 id="class-names">Class Names<a class="headerlink" href="#class-names" title="Permanent link">#</a></h2>
+<h2 id="class-names">Class Names</h2>
 <ul>
 <li>Use upper case letters as word separators, lower case for the rest of a word</li>
 <li>First character in a name is upper case</li>
@@ -127,7 +127,7 @@ class Name
 <li>Suffixes are sometimes helpful. For example, if your system uses agents then naming something DownloadAgent conveys real information.</li>
 </ul>
 <hr />
-<h3 id="class-library-names">Class Library Names<a class="headerlink" href="#class-library-names" title="Permanent link">#</a></h3>
+<h3 id="class-library-names">Class Library Names</h3>
 <ul>
 <li>Now that name spaces are becoming more widely implemented, name spaces should be used to prevent class name conflicts among libraries from different vendors and groups.</li>
 <li>When not using name spaces, it's common to prevent class name clashes by prefixing class names with a unique string. Two characters is sufficient, but a longer length is fine.</li>
@@ -140,7 +140,7 @@ class Name
 }
 </code></pre>
 <hr />
-<h3 id="method-names">Method Names<a class="headerlink" href="#method-names" title="Permanent link">#</a></h3>
+<h3 id="method-names">Method Names</h3>
 <ul>
 <li>Use the same rule as for class names.</li>
 </ul>
@@ -170,7 +170,7 @@ class Name
 </ul>
 <p>For example: <code>IsHitRetryLimit</code>.</p>
 <hr />
-<h3 id="class-attribute-names">Class Attribute Names<a class="headerlink" href="#class-attribute-names" title="Permanent link">#</a></h3>
+<h3 id="class-attribute-names">Class Attribute Names</h3>
 <ul>
 <li>Attribute names should be prepended with the character 'a'.</li>
 <li>After the 'a' use the same rules as for class names.</li>
@@ -190,7 +190,7 @@ private:
 }
 </code></pre>
 <hr />
-<h3 id="method-argument-names">Method Argument Names<a class="headerlink" href="#method-argument-names" title="Permanent link">#</a></h3>
+<h3 id="method-argument-names">Method Argument Names</h3>
 <ul>
 <li>The first character should be lower case.</li>
 <li>All word beginnings after the first letter should be upper case as with class names.</li>
@@ -207,10 +207,10 @@ public:
 }
 </code></pre>
 <hr />
-<h3 id="c-file-extensions">C++ File Extensions<a class="headerlink" href="#c-file-extensions" title="Permanent link">#</a></h3>
+<h3 id="c-file-extensions">C++ File Extensions</h3>
 <p>In short: Use the <em>.hh</em> extension for header files and <em>.cc</em> for source files.</p>
 <hr />
-<h3 id="c-function-names">C Function Names<a class="headerlink" href="#c-function-names" title="Permanent link">#</a></h3>
+<h3 id="c-function-names">C Function Names</h3>
 <ul>
 <li>In a C++ project there should be very few C functions.</li>
 <li>For C functions use the GNU convention of all lower case letters with '_' as the word delimiter.</li>
@@ -222,11 +222,11 @@ some_bloody_function() {
 }
 </code></pre>
 <hr />
-<h3 id="make-names-fit">Make Names Fit<a class="headerlink" href="#make-names-fit" title="Permanent link">#</a></h3>
+<h3 id="make-names-fit">Make Names Fit</h3>
 <p>Names are the heart of programming. In the past people believed knowing someone's true name gave them magical power over that person. If you can think up the true name for something, you give yourself and the people coming after power over the code. Don't laugh!</p>
 <p>A name is the result of a long deep thought process about the ecology it lives in. Only a programmer who understands the system as a whole can create a name that "fits" with the system. If the name is appropriate everything fits together naturally, relationships are clear, meaning is derivable, and reasoning from common human expectations works as expected.</p>
 <p>If you find all your names could be Thing and DoIt then you should probably revisit your design.</p>
-<h3 id="no-all-upper-case-abbreviations">No All Upper Case Abbreviations<a class="headerlink" href="#no-all-upper-case-abbreviations" title="Permanent link">#</a></h3>
+<h3 id="no-all-upper-case-abbreviations">No All Upper Case Abbreviations</h3>
 <p>When confronted with a situation where you could use an all upper case abbreviation instead use an initial upper case letter followed by all lower case letters. No matter what.
 People seem to have very different intuitions when making names containing abbreviations. It's best to settle on one strategy so the names are absolutely predictable.</p>
 <p>Take for example <em>NetworkABCKey</em>.
@@ -236,7 +236,7 @@ Notice how the C from ABC and K from key are confused. Some people don't mind th
    class NetworkAbcKey       // NOT NetworkABCKey
 </code></pre>
 <hr />
-<h3 id="variable-names-on-the-stack">Variable Names on the Stack<a class="headerlink" href="#variable-names-on-the-stack" title="Permanent link">#</a></h3>
+<h3 id="variable-names-on-the-stack">Variable Names on the Stack</h3>
 <ul>
 <li>use all lower case letters</li>
 <li>use '_' as the word separator.</li>
@@ -251,7 +251,7 @@ Now all variables look different and are identifiable in the code.</p>
 }
 </code></pre>
 <hr />
-<h3 id="pointer-variables">Pointer Variables<a class="headerlink" href="#pointer-variables" title="Permanent link">#</a></h3>
+<h3 id="pointer-variables">Pointer Variables</h3>
 <ul>
 <li>pointers should be prepended by a 'p' in most cases</li>
 <li>place the <em>*</em> close to variable name not pointer type</li>
@@ -261,7 +261,7 @@ Now all variables look different and are identifiable in the code.</p>
 String *pName, name, address; // note, only pName is a pointer.
 </code></pre>
 <hr />
-<h3 id="reference-variables-and-functions-returning-references">Reference Variables and Functions Returning References<a class="headerlink" href="#reference-variables-and-functions-returning-references" title="Permanent link">#</a></h3>
+<h3 id="reference-variables-and-functions-returning-references">Reference Variables and Functions Returning References</h3>
 <ul>
 <li>References should be prepended with 'r'.</li>
 <li>Const refs should not have 'r'.</li>
@@ -281,7 +281,7 @@ It establishes the difference between a method returning a modifiable object and
 }
 </code></pre>
 <hr />
-<h3 id="global-variables">Global Variables<a class="headerlink" href="#global-variables" title="Permanent link">#</a></h3>
+<h3 id="global-variables">Global Variables</h3>
 <ul>
 <li>Global variables should be prepended with a 'g'.</li>
 </ul>
@@ -291,7 +291,7 @@ It establishes the difference between a method returning a modifiable object and
 Logger* gpLog;
 </code></pre>
 <hr />
-<h3 id="global-constants">Global Constants<a class="headerlink" href="#global-constants" title="Permanent link">#</a></h3>
+<h3 id="global-constants">Global Constants</h3>
 <ul>
 <li>Global constants should be all caps with '_' separators.</li>
 </ul>
@@ -300,7 +300,7 @@ Logger* gpLog;
 <pre><code class="language-cpp">const int A_GLOBAL_CONSTANT= 5;
 </code></pre>
 <hr />
-<h3 id="static-variables">Static Variables<a class="headerlink" href="#static-variables" title="Permanent link">#</a></h3>
+<h3 id="static-variables">Static Variables</h3>
 <ul>
 <li>Static variables may be prepended with 's'.</li>
 </ul>
@@ -314,7 +314,7 @@ Logger* gpLog;
 }
 </code></pre>
 <hr />
-<h3 id="type-names">Type Names<a class="headerlink" href="#type-names" title="Permanent link">#</a></h3>
+<h3 id="type-names">Type Names</h3>
 <ul>
 <li>When possible for types based on native types make a typedef.</li>
 <li>Typedef names should use the same naming policy as for a class with the word <em>Type</em> appended.</li>
@@ -326,7 +326,7 @@ Types are things so should use upper case letters. <em>Type</em> is appended to 
 typedef uint32  SystemType;
 </code></pre>
 <hr />
-<h3 id="enum-names">Enum Names<a class="headerlink" href="#enum-names" title="Permanent link">#</a></h3>
+<h3 id="enum-names">Enum Names</h3>
 <ul>
 <li><strong>Labels All Upper Case with '_' Word Separators</strong></li>
 </ul>
@@ -358,7 +358,7 @@ typedef uint32  SystemType;
 <pre><code class="language-cpp">enum { STATE_ERR,  STATE_OPEN, STATE_RUNNING, STATE_DYING};
 </code></pre>
 <hr />
-<h3 id="define-and-macro-names">#define and Macro Names<a class="headerlink" href="#define-and-macro-names" title="Permanent link">#</a></h3>
+<h3 id="define-and-macro-names">#define and Macro Names</h3>
 <ul>
 <li>Put #defines and macros in all upper using '_' separators.</li>
 </ul>
@@ -369,7 +369,7 @@ Some subtle errors can occur when macro names and enum labels use the same name.
 #define IS_ERR(err) blah
 </code></pre>
 <hr />
-<h2 id="required-methods-for-a-class">Required Methods for a Class<a class="headerlink" href="#required-methods-for-a-class" title="Permanent link">#</a></h2>
+<h2 id="required-methods-for-a-class">Required Methods for a Class</h2>
 <p>To be good citizens almost all classes should implement the following methods. If you don't have to define and implement any of the "required" methods they should still be represented in your class definition as comments.</p>
 <ul>
 <li><strong>Default Constructor</strong></li>
@@ -398,7 +398,7 @@ Some subtle errors can occur when macro names and enum labels use the same name.
 </ul>
 <p>A default constructor allows an object to be used in an array.
 The copy constructor and assignment operator ensure an object is always properly constructed.</p>
-<h2 id="the-law-of-the-big-three">The Law of The Big Three<a class="headerlink" href="#the-law-of-the-big-three" title="Permanent link">#</a></h2>
+<h2 id="the-law-of-the-big-three">The Law of The Big Three</h2>
 <p>A class with any of destructor, assignment operator, copy constructor generally needs all 3.</p>
 <p>An example using default values:</p>
 <pre><code class="language-cpp">class Planet
@@ -416,10 +416,10 @@ public:
 };
 </code></pre>
 <hr />
-<h2 id="formatting">Formatting<a class="headerlink" href="#formatting" title="Permanent link">#</a></h2>
+<h2 id="formatting">Formatting</h2>
 <hr />
-<h3 id="braces-policy">Braces <em>{}</em> Policy<a class="headerlink" href="#braces-policy" title="Permanent link">#</a></h3>
-<h4 id="brace-placement">Brace Placement<a class="headerlink" href="#brace-placement" title="Permanent link">#</a></h4>
+<h3 id="braces-policy">Braces <em>{}</em> Policy</h3>
+<h4 id="brace-placement">Brace Placement</h4>
 <p>Of the three major brace placement strategies the recommended one is here:</p>
 <ul>
 <li>Traditional Unix policy of placing the initial brace on the same line as the keyword and the trailing brace inline on its own line with the keyword:</li>
@@ -428,20 +428,20 @@ public:
    ...                   ...
 }                     }
 </code></pre>
-<h4 id="when-braces-are-needed">When Braces are Needed<a class="headerlink" href="#when-braces-are-needed" title="Permanent link">#</a></h4>
+<h4 id="when-braces-are-needed">When Braces are Needed</h4>
 <p>All if, while and do statements must either have braces or be on a single line.</p>
-<h4 id="always-uses-braces-form">Always Uses Braces Form<a class="headerlink" href="#always-uses-braces-form" title="Permanent link">#</a></h4>
+<h4 id="always-uses-braces-form">Always Uses Braces Form</h4>
 <p>All if, while and do statements require braces even if there is only a single statement within the braces. For example:</p>
 <pre><code class="language-cpp">if (1 == somevalue) {
    somevalue = 2;
 }
 </code></pre>
 <p>It ensures that when someone adds a line of code later there are already braces and they don't forget. It provides a more consistent look. This doesn't affect execution speed. It's easy to do.</p>
-<h4 id="one-line-form">One Line Form<a class="headerlink" href="#one-line-form" title="Permanent link">#</a></h4>
+<h4 id="one-line-form">One Line Form</h4>
 <pre><code class="language-cpp">if (1 == somevalue) somevalue = 2;
 </code></pre>
 <p>It provides safety when adding new lines while maintainng a compact readable form.</p>
-<h4 id="add-comments-to-closing-braces">Add Comments to Closing Braces<a class="headerlink" href="#add-comments-to-closing-braces" title="Permanent link">#</a></h4>
+<h4 id="add-comments-to-closing-braces">Add Comments to Closing Braces</h4>
 <p>Adding a comment to closing braces can help when you are reading code because you don't have to find the begin brace to know what is going on.</p>
 <pre><code class="language-cpp">while(1) {
    if (valid) {
@@ -453,7 +453,7 @@ public:
 } // end forever
 </code></pre>
 <hr />
-<h3 id="parens-with-key-words-and-functions-policy">Parens <em>()</em> with Key Words and Functions Policy<a class="headerlink" href="#parens-with-key-words-and-functions-policy" title="Permanent link">#</a></h3>
+<h3 id="parens-with-key-words-and-functions-policy">Parens <em>()</em> with Key Words and Functions Policy</h3>
 <ul>
 <li>Do not put parens next to keywords. Put a space between.</li>
 <li>Do put parens next to function names.</li>
@@ -471,7 +471,7 @@ strcpy(s, s1);
 return 1;
 </code></pre>
 <hr />
-<h3 id="a-line-should-not-exceed-78-characters">A Line Should Not Exceed 78 Characters<a class="headerlink" href="#a-line-should-not-exceed-78-characters" title="Permanent link">#</a></h3>
+<h3 id="a-line-should-not-exceed-78-characters">A Line Should Not Exceed 78 Characters</h3>
 <ul>
 <li>Lines should not exceed 78 characters.</li>
 </ul>
@@ -479,8 +479,8 @@ return 1;
 The wider the window the fewer windows we can have on a screen. More windows is better than wider windows.
 We even view and print diff output correctly on all terminals and printers.</p>
 <hr />
-<h3 id="if-then-else-formatting"><em>If Then Else</em> Formatting<a class="headerlink" href="#if-then-else-formatting" title="Permanent link">#</a></h3>
-<h4 id="layout">Layout<a class="headerlink" href="#layout" title="Permanent link">#</a></h4>
+<h3 id="if-then-else-formatting"><em>If Then Else</em> Formatting</h3>
+<h4 id="layout">Layout</h4>
 <p>It's up to the programmer. Different bracing styles will yield slightly different looks. One common approach is:</p>
 <pre><code class="language-cpp">if (condition) {
 } else if (condition) {
@@ -488,12 +488,12 @@ We even view and print diff output correctly on all terminals and printers.</p>
 }
 </code></pre>
 <p>If you have <em>else if</em> statements then it is usually a good idea to always have an else block for finding unhandled cases. Maybe put a log message in the else even if there is no corrective action taken.</p>
-<h4 id="condition-format">Condition Format<a class="headerlink" href="#condition-format" title="Permanent link">#</a></h4>
+<h4 id="condition-format">Condition Format</h4>
 <p>Always put the constant on the left hand side of an equality/inequality comparison. For example:</p>
 <p><code>if ( 6 == errorNum ) ...</code></p>
 <p>One reason is that if you leave out one of the = signs, the compiler will find the error for you. A second reason is that it puts the value you are looking for right up front where you can find it instead of buried at the end of your expression. It takes a little time to get used to this format, but then it really gets useful.</p>
 <hr />
-<h3 id="switch-formatting"><em>switch</em> Formatting<a class="headerlink" href="#switch-formatting" title="Permanent link">#</a></h3>
+<h3 id="switch-formatting"><em>switch</em> Formatting</h3>
 <ul>
 <li>Falling through a case statement into the next case statement shall be permitted as long as a comment is included.</li>
 <li>The <em>default</em> case should always be present and trigger an error if it should not be reached, yet is reached.</li>
@@ -517,8 +517,8 @@ We even view and print diff output correctly on all terminals and printers.</p>
 }
 </code></pre>
 <hr />
-<h3 id="use-of-gotocontinuebreak-and">Use of <em>goto,continue,break</em> and <em>?:</em><a class="headerlink" href="#use-of-gotocontinuebreak-and" title="Permanent link">#</a></h3>
-<h4 id="goto">Goto<a class="headerlink" href="#goto" title="Permanent link">#</a></h4>
+<h3 id="use-of-gotocontinuebreak-and">Use of <em>goto,continue,break</em> and <em>?:</em></h3>
+<h4 id="goto">Goto</h4>
 <p>Goto statements should be used sparingly, as in any well-structured code. The goto debates are boring so we won't go into them here. The main place where they can be usefully employed is to break out of several levels of switch, for, and while nesting, although the need to do such a thing may indicate that the inner constructs should be broken out into a separate function, with a success/failure return code.</p>
 <pre><code class="language-cpp">for (...) {
     while (...) {
@@ -533,7 +533,7 @@ error:
    clean up the mess
 </code></pre>
 <p>When a goto is necessary the accompanying label should be alone on a line and to the left of the code that follows. The goto should be commented (possibly in the block header) as to its utility and purpose.</p>
-<h4 id="continue-and-break">Continue and Break<a class="headerlink" href="#continue-and-break" title="Permanent link">#</a></h4>
+<h4 id="continue-and-break">Continue and Break</h4>
 <p>Continue and break are really disguised gotos so they are covered here.</p>
 <p>Continue and break like goto should be used sparingly as they are magic in code. With a simple spell the reader is beamed to god knows where for some usually undocumented reason.</p>
 <p>The two main problems with continue are:</p>
@@ -557,7 +557,7 @@ error:
 </code></pre>
 <p>Note: "A lot of code" is necessary in order that the problem cannot be caught easily by the programmer.</p>
 <p>From the above example, a further rule may be given: Mixing continue with break in the same loop is a sure way to disaster.</p>
-<h4 id="the-ternary-operator">The ternary operator<a class="headerlink" href="#the-ternary-operator" title="Permanent link">#</a></h4>
+<h4 id="the-ternary-operator">The ternary operator</h4>
 <p>The trouble is people usually try and stuff too much code in between the <em>?</em> and <em>:</em>. Here are a couple of clarity rules to follow:</p>
 <ul>
 <li>Put the condition in parens so as to set it off from other code</li>
@@ -573,13 +573,13 @@ error:
     : another long statement;
 </code></pre>
 <hr />
-<h3 id="one-statement-per-line">One Statement Per Line<a class="headerlink" href="#one-statement-per-line" title="Permanent link">#</a></h3>
+<h3 id="one-statement-per-line">One Statement Per Line</h3>
 <p>There should be only one statement per line unless the statements are very closely related.</p>
 <p>The reasons are:</p>
 <ol>
 <li>The code is easier to read. Use some white space too. Nothing better than to read code that is one line after another with no white space or comments.</li>
 </ol>
-<h3 id="one-variable-per-line">One Variable Per Line<a class="headerlink" href="#one-variable-per-line" title="Permanent link">#</a></h3>
+<h3 id="one-variable-per-line">One Variable Per Line</h3>
 <p>Related to this is always define one variable per line:</p>
 <p><strong>Not:</strong></p>
 <pre><code class="language-cpp">char **a, *x;
@@ -595,7 +595,7 @@ char  *x = 0;  // add doc
 <li>Declarations are clear which reduces the probablity of declaring a pointer when you meant to declare just a char.</li>
 </ol>
 <hr />
-<h3 id="alignment-of-declaration-blocks">Alignment of Declaration Blocks<a class="headerlink" href="#alignment-of-declaration-blocks" title="Permanent link">#</a></h3>
+<h3 id="alignment-of-declaration-blocks">Alignment of Declaration Blocks</h3>
 <ul>
 <li>Block of declarations should be aligned.</li>
 </ul>
@@ -614,84 +614,84 @@ apChar      = NULL;
 aChar       = 0;
 </code></pre>
 <hr />
-<h2 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">#</a></h2>
+<h2 id="classes">Classes</h2>
 <hr />
-<h3 id="naming-class-files">Naming Class Files<a class="headerlink" href="#naming-class-files" title="Permanent link">#</a></h3>
-<h4 id="class-definition-in-one-file">Class Definition in One File<a class="headerlink" href="#class-definition-in-one-file" title="Permanent link">#</a></h4>
+<h3 id="naming-class-files">Naming Class Files</h3>
+<h4 id="class-definition-in-one-file">Class Definition in One File</h4>
 <p>Each class definition should be in its own file where each file is named directly after the class's name:</p>
 <pre><code class="language-cpp">ClassName.hh
 </code></pre>
-<h4 id="implementation-in-one-file">Implementation in One File<a class="headerlink" href="#implementation-in-one-file" title="Permanent link">#</a></h4>
+<h4 id="implementation-in-one-file">Implementation in One File</h4>
 <p>In general each class should be implemented in one source file:</p>
 <pre><code class="language-cpp">ClassName.cc   // or whatever the extension is: cpp, c++
 </code></pre>
-<h4 id="but-when-it-gets-really-big">But When it Gets Really Big<a class="headerlink" href="#but-when-it-gets-really-big" title="Permanent link">#</a></h4>
+<h4 id="but-when-it-gets-really-big">But When it Gets Really Big</h4>
 <p>If the source file gets too large or you want to avoid compiling templates all the time then add additional files named according to the following rule:</p>
 <pre><code class="language-cpp">ClassName_section.C
 </code></pre>
 <p><strong>section</strong> is some name that identifies why the code is chunked together. The class name and section name are separated by '_'.</p>
 <hr />
-<h3 id="class-layout">Class Layout<a class="headerlink" href="#class-layout" title="Permanent link">#</a></h3>
+<h3 id="class-layout">Class Layout</h3>
 <p>A common class layout is critical from a code comprehension point of view and for automatically generating documentation. C++ programmers, through a new set of tools, can enjoy the same level generated documentation Java programmers take for granted.</p>
-<h4 id="class-and-method-documentation">Class and Method Documentation<a class="headerlink" href="#class-and-method-documentation" title="Permanent link">#</a></h4>
+<h4 id="class-and-method-documentation">Class and Method Documentation</h4>
 <p>It is recommended a program like <a href="http://www.doxygen.org/">Doxygen</a> be used to document C++ classes, method, variables, functions, and macros. The documentation can be extracted and put in places in a common area for all programmers to access. This saves programmers having to read through class headers. Documentation generation should be integrated with the build system where possible.</p>
-<h4 id="required-methods-placeholders">Required Methods Placeholders<a class="headerlink" href="#required-methods-placeholders" title="Permanent link">#</a></h4>
+<h4 id="required-methods-placeholders">Required Methods Placeholders</h4>
 <p>This template has placeholders for required methods. You can delete them or implement them.</p>
 <hr />
-<h3 id="ordering-is-public-protected-private">Ordering is: public, protected, private<a class="headerlink" href="#ordering-is-public-protected-private" title="Permanent link">#</a></h3>
+<h3 id="ordering-is-public-protected-private">Ordering is: public, protected, private</h3>
 <p>Notice that the public interface is placed first in the class, protected next, and private last. The reasons are:</p>
 <ul>
 <li>programmers should care about a class's interface more than implementation</li>
 <li>when programmers need to use a class they need the interface not the implementation</li>
 </ul>
 <p>It makes sense then to have the interface first. Placing implementation, the private section, first is a historical accident as the first examples used the private first layout. Over time emphasis has switched deemphasizing a class's interface over implementation details.</p>
-<h4 id="lifecycle">LIFECYCLE<a class="headerlink" href="#lifecycle" title="Permanent link">#</a></h4>
+<h4 id="lifecycle">LIFECYCLE</h4>
 <p>The life cycle section is for methods that control the life cycle of an object. Typically these methods include constructors, destructors, and state machine methods.</p>
-<h4 id="operators">OPERATORS<a class="headerlink" href="#operators" title="Permanent link">#</a></h4>
+<h4 id="operators">OPERATORS</h4>
 <p>Place all operators in this section.</p>
-<h4 id="operations">OPERATIONS<a class="headerlink" href="#operations" title="Permanent link">#</a></h4>
+<h4 id="operations">OPERATIONS</h4>
 <p>Place the bulk of a class's non access and inquiry method methods here. A programmer will look here for the meat of a class's interface.</p>
-<h4 id="access">ACCESS<a class="headerlink" href="#access" title="Permanent link">#</a></h4>
+<h4 id="access">ACCESS</h4>
 <p>Place attribute accessors here.</p>
-<h4 id="inquiry">INQUIRY<a class="headerlink" href="#inquiry" title="Permanent link">#</a></h4>
+<h4 id="inquiry">INQUIRY</h4>
 <p>These are the <em>Is*</em> methods. Whenever you have a question to ask about an object it can be asked via in <em>Is</em> method. For example: IsOpen() will indicate if the object is open. A good strategy is instead of making a lot of access methods you can turn them around to be questions about the object thus reducing the exposure of internal structure. Without the IsOpen() method we might have had to do: if (STATE_OPEN == State()) which is much uglier.</p>
 <hr />
-<h3 id="what-should-go-in-publicprotectedprivate">What should go in public/protected/private<a class="headerlink" href="#what-should-go-in-publicprotectedprivate" title="Permanent link">#</a></h3>
-<h4 id="public-section">Public Section<a class="headerlink" href="#public-section" title="Permanent link">#</a></h4>
+<h3 id="what-should-go-in-publicprotectedprivate">What should go in public/protected/private</h3>
+<h4 id="public-section">Public Section</h4>
 <p>Only put an object's interface in the public section. <strong>DO NOT</strong> expose any private data items in the public section. At least encapsulate access via access methods. Ideally your method interface should make most access methods unnecessary. Do not put data in the public interface.</p>
-<h4 id="protected-and-private-section">Protected and Private Section<a class="headerlink" href="#protected-and-private-section" title="Permanent link">#</a></h4>
+<h4 id="protected-and-private-section">Protected and Private Section</h4>
 <p>What should go into the protected section versus the private section is always a matter of debate.</p>
-<h5 id="all-protected">All Protected<a class="headerlink" href="#all-protected" title="Permanent link">#</a></h5>
+<h5 id="all-protected">All Protected</h5>
 <p>Some say there should be no private section and everything not in the public section should go in the protected section. After all, we should allow all our children to change anything they wish.</p>
-<h5 id="all-private">All Private<a class="headerlink" href="#all-private" title="Permanent link">#</a></h5>
+<h5 id="all-private">All Private</h5>
 <p>Another camp says by making the public interface virtual any derived class can change behavior without mucking with internals.</p>
-<h5 id="wishy-washy">Wishy Washy<a class="headerlink" href="#wishy-washy" title="Permanent link">#</a></h5>
+<h5 id="wishy-washy">Wishy Washy</h5>
 <p>Rationally decide where elements should go and put them there. Not very helpful.</p>
-<h4 id="and-the-winner-is">And the Winner Is<a class="headerlink" href="#and-the-winner-is" title="Permanent link">#</a></h4>
+<h4 id="and-the-winner-is">And the Winner Is</h4>
 <p>Keeping everything all private seems the easiest approach. By making the public methods virtual flexibility is preserved.</p>
 <hr />
-<h3 id="method-layout">Method Layout<a class="headerlink" href="#method-layout" title="Permanent link">#</a></h3>
+<h3 id="method-layout">Method Layout</h3>
 <p>The approach used is to place a comment block before each method that can be extracted by a tool and be made part of the class documentation. Here we'll use <a href="http://www.doxygen.org">Doxygen</a> . See the Doxygen documentation for a list of attributes supported by the document generator.</p>
-<h4 id="method-header">Method Header<a class="headerlink" href="#method-header" title="Permanent link">#</a></h4>
+<h4 id="method-header">Method Header</h4>
 <p>Follow Doxygen's way.</p>
 <hr />
-<h3 id="use-of-namespaces">Use of Namespaces<a class="headerlink" href="#use-of-namespaces" title="Permanent link">#</a></h3>
+<h3 id="use-of-namespaces">Use of Namespaces</h3>
 <p>Namespaces are now commonly implemented by compilers. They should be used if you are sure your compiler supports them completely.</p>
-<h4 id="naming-policy">Naming Policy<a class="headerlink" href="#naming-policy" title="Permanent link">#</a></h4>
+<h4 id="naming-policy">Naming Policy</h4>
 <p>There are two basic strategies for naming: root that name at some naming authority, like the company name and division name; try and make names globally independent.</p>
-<h4 id="dont-globally-define-using">Don't Globally Define using<a class="headerlink" href="#dont-globally-define-using" title="Permanent link">#</a></h4>
+<h4 id="dont-globally-define-using">Don't Globally Define using</h4>
 <p>Don't place "using namespace" directive at global scope in a header file. This can cause lots of magic invisible conflicts that are hard to track. Keep using statements to implementation files.</p>
 <hr />
-<h3 id="use-header-file-guards">Use Header File Guards<a class="headerlink" href="#use-header-file-guards" title="Permanent link">#</a></h3>
+<h3 id="use-header-file-guards">Use Header File Guards</h3>
 <p>Include files should protect against multiple inclusion through the use of macros that "guard" the files.</p>
-<h4 id="when-not-using-namespces">When Not Using Namespces<a class="headerlink" href="#when-not-using-namespces" title="Permanent link">#</a></h4>
+<h4 id="when-not-using-namespces">When Not Using Namespces</h4>
 <pre><code class="language-cpp">#ifndef filename_h
 #define filename_h
 
 #endif
 </code></pre>
 <p>The new line after the endif if is required by some compilers.</p>
-<h4 id="when-using-namespaces">When Using Namespaces<a class="headerlink" href="#when-using-namespaces" title="Permanent link">#</a></h4>
+<h4 id="when-using-namespaces">When Using Namespaces</h4>
 <p>If namespaces are used then to be completely safe:</p>
 <pre><code class="language-cpp">#ifndef namespace_filename_h
 #define namespace_filename_h
@@ -706,8 +706,8 @@ aChar       = 0;
 <li>Historically many compilers require a new line after last endif.</li>
 </ol>
 <hr />
-<h3 id="different-accessor-styles">Different Accessor Styles<a class="headerlink" href="#different-accessor-styles" title="Permanent link">#</a></h3>
-<h4 id="why-accessors">Why Accessors<a class="headerlink" href="#why-accessors" title="Permanent link">#</a></h4>
+<h3 id="different-accessor-styles">Different Accessor Styles</h3>
+<h4 id="why-accessors">Why Accessors</h4>
 <p>Access methods provide access to the physical or logical attributes of an object. Accessing an object's attributes directly as we do for C structures is greatly discouraged in C++. We disallow direct access to attributes to break dependencies, the reason we do most things. Directly accessing an attribute exposes implementation details about the object.</p>
 <p>To see why ask yourself:</p>
 <ul>
@@ -716,11 +716,11 @@ aChar       = 0;
 <li>What if a different object now contained the attribute?</li>
 </ul>
 <p>If any of the above changed code would break. An object makes a contract with the user to provide access to a particular attribute; it should not promise how it gets those attributes. Accessing a physical attribute makes such a promise.</p>
-<h4 id="accessors-considered-somewhat-harmful">Accessors Considered Somewhat Harmful<a class="headerlink" href="#accessors-considered-somewhat-harmful" title="Permanent link">#</a></h4>
+<h4 id="accessors-considered-somewhat-harmful">Accessors Considered Somewhat Harmful</h4>
 <p>At least in the public interface having accessors many times is an admission of failure, a failure to make an object's interface complete. At the protected or private level accessors are fine as these are the implementation levels of a class.</p>
-<h4 id="implementing-accessors">Implementing Accessors<a class="headerlink" href="#implementing-accessors" title="Permanent link">#</a></h4>
+<h4 id="implementing-accessors">Implementing Accessors</h4>
 <p>There are three major idioms for creating accessors.</p>
-<h5 id="getset">Get/Set<a class="headerlink" href="#getset" title="Permanent link">#</a></h5>
+<h5 id="getset">Get/Set</h5>
 <pre><code class="language-cpp">class X
 {
 public:
@@ -736,7 +736,7 @@ private:
 <li>It doesn't treat attributes as objects in their own right. An object will have an assignment operator. Why shouldn't age be an object and have its own assignment operator?</li>
 </ul>
 <p>One benefit, that it shares with the <em>One Method Name</em>, is when used with messages the set method can transparently transform from native machine representations to network byte order.</p>
-<h5 id="one-method-name">One Method Name<a class="headerlink" href="#one-method-name" title="Permanent link">#</a></h5>
+<h5 id="one-method-name">One Method Name</h5>
 <pre><code class="language-cpp">class X
 {
 public:
@@ -747,7 +747,7 @@ private:
 }
 </code></pre>
 <p>Similar to Get/Set but cleaner. Use this approach when not using the <em>Attributes as Objects</em> approach.</p>
-<h5 id="attributes-as-objects">Attributes as Objects<a class="headerlink" href="#attributes-as-objects" title="Permanent link">#</a></h5>
+<h5 id="attributes-as-objects">Attributes as Objects</h5>
 <pre><code class="language-cpp">class X
 {
 public:
@@ -769,13 +769,13 @@ private:
 <p>This approach is also more consistent with the object philosophy: the object should do it. An object's <em>\=</em> operator can do all the checks for the assignment and it's done once in one place, in the object, where it belongs. It's also clean from a name perspective.</p>
 <p>When possible use this approach to attribute access.</p>
 <hr />
-<h3 id="initialize-all-variables">Initialize all Variables<a class="headerlink" href="#initialize-all-variables" title="Permanent link">#</a></h3>
+<h3 id="initialize-all-variables">Initialize all Variables</h3>
 <ul>
 <li>You shall always initialize variables. Always. Every time.</li>
 </ul>
 <p>More problems than you can believe are eventually traced back to a pointer or variable left uninitialized. C++ tends to encourage this by spreading initialization to each constructor.</p>
 <hr />
-<h3 id="think-about-what-work-to-do-in-constructors">Think About What Work to do in Constructors<a class="headerlink" href="#think-about-what-work-to-do-in-constructors" title="Permanent link">#</a></h3>
+<h3 id="think-about-what-work-to-do-in-constructors">Think About What Work to do in Constructors</h3>
 <p>Should you do work that can fail in constructors? If you have a compiler that does not support exceptions (or thread safe exceptions if it matters to you) then the answer is definitely no.### Do Work in Open</p>
 <p>Do not do any real work in an object's constructor. Inside a constructor initialize variables only and/or do only actions that can't fail.</p>
 <p>Create an Open() method for an object which completes construction. Open() should be called after object instantiation.</p>
@@ -790,7 +790,7 @@ private:
 Device dev;
 if (FAIL == dev.Open()) exit(1);
 </code></pre>
-<h4 id="use-open-reasons">Use Open Reasons<a class="headerlink" href="#use-open-reasons" title="Permanent link">#</a></h4>
+<h4 id="use-open-reasons">Use Open Reasons</h4>
 <ol>
 <li>It is difficult to write exception safe code in constructor. It's possible to throw an exception and not destruct objects allocated in the constructor. Use of <strong>auto_ptr</strong> can help prevent this problem.</li>
 <li>Some compilers do not support thread safe exceptions on all platforms.</li>
@@ -798,12 +798,12 @@ if (FAIL == dev.Open()) exit(1);
 <li>Larger scale state machines may dictate when initialization should occur. An object may contain numerous other objects that may have complex initialization conditions. In this case we could wait to construct objects but then we always have to worry about null pointers.</li>
 <li>If deletion is needed to free resources we still may want to keep the state around for debugging or statistics or as a supplier of information for other objects.</li>
 </ol>
-<h4 id="do-work-in-constructor">Do Work in Constructor<a class="headerlink" href="#do-work-in-constructor" title="Permanent link">#</a></h4>
+<h4 id="do-work-in-constructor">Do Work in Constructor</h4>
 <p>With exceptions work done in the constructor can signal failure so it is fine to perform real work in the constructor. This is the guru endorced approach as a matter of fact.</p>
 <p>The constructor code must still be very careful not to leak resources in the constructor. It's possible to throw an exception and not destruct objects allocated in the constructor.</p>
 <p>There is a pattern called <strong>Resource Acquisition as Initialization</strong> that says all initialization is performed in the constructor and released in the destructor. The idea is that this is a safer approach because it should reduce resource leaks.</p>
 <hr />
-<h3 id="be-careful-throwing-exceptions-in-destructors">Be Careful Throwing Exceptions in Destructors<a class="headerlink" href="#be-careful-throwing-exceptions-in-destructors" title="Permanent link">#</a></h3>
+<h3 id="be-careful-throwing-exceptions-in-destructors">Be Careful Throwing Exceptions in Destructors</h3>
 <p>An object is presumably created to do something. Some of the changes made by an object should persist after an object dies (is destructed) and some changes should not. Take an object implementing a SQL query. If a database field is updated via the SQL object then that change should persist after the SQL objects dies. To do its work the SQL object probably created a database connection and allocated a bunch of memory. When the SQL object dies we want to close the database connection and deallocate the memory, otherwise if a lot of SQL objects are created we will run out of database connections and/or memory.</p>
 <p>The logic might look like:</p>
 <pre><code class="language-cpp">Sql::~Sql()
@@ -815,21 +815,21 @@ if (FAIL == dev.Open()) exit(1);
 <p>Let's say an exception is thrown while deleting the database connection. Will the buffer be deleted? No. Exceptions are basically non-local gotos with stack cleanup. The code for deleting the buffer will never be executed creating a gaping resource leak.</p>
 <p>Special care must be taken to catch exceptions which may occur during object destruction. Special care must also be taken to fully destruct an object when it throws an exception.</p>
 <hr />
-<h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">#</a></h2>
+<h2 id="documentation">Documentation</h2>
 <hr />
-<h3 id="comments-should-tell-a-story">Comments Should Tell a Story<a class="headerlink" href="#comments-should-tell-a-story" title="Permanent link">#</a></h3>
+<h3 id="comments-should-tell-a-story">Comments Should Tell a Story</h3>
 <p>Consider your comments a story describing the system. Expect your comments to be extracted by a robot and formed into a man page. Class comments are one part of the story, method signature comments are another part of the story, method arguments another part, and method implementation yet another part. All these parts should weave together and inform someone else at another point of time just exactly what you did and why.</p>
 <hr />
-<h3 id="document-decisions">Document Decisions<a class="headerlink" href="#document-decisions" title="Permanent link">#</a></h3>
+<h3 id="document-decisions">Document Decisions</h3>
 <p>Comments should document decisions. At every point where you had a choice of what to do place a comment describing which choice you made and why.</p>
 <hr />
-<h3 id="use-headers">Use Headers<a class="headerlink" href="#use-headers" title="Permanent link">#</a></h3>
+<h3 id="use-headers">Use Headers</h3>
 <p>Use a document extraction system like <a href="http://www.doxygen.org">Doxygen</a> . Other sections in this document describe how to use ccdoc to document a class and method.</p>
 <p>These headers are structured in such a way as they can be parsed and extracted. They are not useless like normal headers. So take time to fill them out. If you do it right once no more documentation may be necessary.</p>
 <hr />
-<h3 id="make-gotchas-explicit">Make Gotchas Explicit<a class="headerlink" href="#make-gotchas-explicit" title="Permanent link">#</a></h3>
+<h3 id="make-gotchas-explicit">Make Gotchas Explicit</h3>
 <p>Explicitly comment variables changed out of the normal control flow or other code likely to break during maintenance. Embedded keywords are used to point out issues and potential problems. Consider a robot will parse your comments looking for keywords, stripping them out, and making a report so people can make a special effort where needed. For a complete list of Gotcha Keywords, please refer to <a href="http://www.doxygen.org/">Doxygen</a> . Here are some useful ones:</p>
-<h4 id="gotcha-keywords">Gotcha Keywords<a class="headerlink" href="#gotcha-keywords" title="Permanent link">#</a></h4>
+<h4 id="gotcha-keywords">Gotcha Keywords</h4>
 <ul>
 <li><strong>@author:</strong>      - specifies the author of the module</li>
 <li><strong>@version:</strong>     - specifies the version of the module</li>
@@ -840,7 +840,7 @@ if (FAIL == dev.Open()) exit(1);
 <li><strong>@todo:</strong>        - what remains to be done</li>
 <li><strong>@bug:</strong>         - report a bug found in the piece of code</li>
 </ul>
-<h4 id="gotcha-formatting">Gotcha Formatting<a class="headerlink" href="#gotcha-formatting" title="Permanent link">#</a></h4>
+<h4 id="gotcha-formatting">Gotcha Formatting</h4>
 <ul>
 <li>Make the gotcha keyword the first symbol in the comment.</li>
 <li>Comments may consist of multiple lines, but the first line should be a self-containing, meaningful summary.</li>
@@ -855,10 +855,10 @@ if (FAIL == dev.Open()) exit(1);
 // We need a cast here to recover the derived type. It should
 // probably use a virtual method or template.
 </code></pre>
-<h3 id="commenting-function-declarations">Commenting function declarations<a class="headerlink" href="#commenting-function-declarations" title="Permanent link">#</a></h3>
+<h3 id="commenting-function-declarations">Commenting function declarations</h3>
 <p>Functions headers should be in the file where they are declared. This means that most likely the functions will have a header in the .hh file. However, functions like main() with no explicit prototype declaration in the .hh file, should have a header in the .cn file.</p>
 <hr />
-<h3 id="include-statement-documentation">Include Statement Documentation<a class="headerlink" href="#include-statement-documentation" title="Permanent link">#</a></h3>
+<h3 id="include-statement-documentation">Include Statement Documentation</h3>
 <p>Include statements should be documented, telling the user why a particular file was included. If the file includes a class used by the class then it's useful to specify a class relationship:</p>
 <ul>
 <li>ISA</li>
@@ -874,13 +874,13 @@ if (FAIL == dev.Open()) exit(1);
 #include #include
 </code></pre>
 <hr />
-<h2 id="using-use-cases">Using Use Cases<a class="headerlink" href="#using-use-cases" title="Permanent link">#</a></h2>
+<h2 id="using-use-cases">Using Use Cases</h2>
 <p>A <em>use case</em> is a generic description of an entire transaction involving several objects. A use case can also describe the behaviour of a set of objects, such as an organization. A use case model thus presents a collection of use cases and is typically used to specify the behavior of a whole application system together with one or more external actors that interact with the system.</p>
 <p>An individual use case may have a name (although it is typically not a simple name). Its meaning is often written as an informal text description of the external actors and the sequences of events between objects that make up the transaction. Use cases can include other use cases as part of their behaviour.</p>
-<h3 id="requirements-capture">Requirements Capture<a class="headerlink" href="#requirements-capture" title="Permanent link">#</a></h3>
+<h3 id="requirements-capture">Requirements Capture</h3>
 <p>Use cases attempt to capture the requirements for a system in an understandable form. The idea is by running through a set of use case we can verify that the system is doing what it should be doing.</p>
 <p>Have as many use cases as needed to describe what a system needs to accomplish.</p>
-<h3 id="the-process">The Process<a class="headerlink" href="#the-process" title="Permanent link">#</a></h3>
+<h3 id="the-process">The Process</h3>
 <ul>
 <li>Start by understanding the system you are trying to build.</li>
 <li>Create a set of use cases describing how the system is to be used by all its different audiences.</li>
@@ -888,14 +888,14 @@ if (FAIL == dev.Open()) exit(1);
 <li>Run through all the use cases to make sure your model can handle all the cases. Update your model and create new use cases as necessary.</li>
 </ul>
 <hr />
-<h2 id="unified-modeling-language">Unified Modeling Language<a class="headerlink" href="#unified-modeling-language" title="Permanent link">#</a></h2>
+<h2 id="unified-modeling-language">Unified Modeling Language</h2>
 <p>The Unified Modeling Language is too large to present here. Fortunately you can see it at <a href="http://www.rational.com/ot/uml.html">Rational's</a> web site. Since you do need a modeling language UML is a safe choice. It combines features from several methods into one unified language. Remember all languages and methods are open to local customization. If their language is too complex then use the parts you and your project feel they need and junk the rest.</p>
 <hr />
-<h2 id="open-method">OPEN Method<a class="headerlink" href="#open-method" title="Permanent link">#</a></h2>
+<h2 id="open-method">OPEN Method</h2>
 <p><a href="http://www.markv.com/OPEN/">OPEN</a> stands for <strong>Object-oriented Process, Environment and Notation</strong> and is a worthy if not superior competitor to UML. It is another group effort composed of basically all the people not in the UML group :-) Their web site has a good comparison of OPEN and UML.</p>
 <p>My guess is UML will win out for marketing reasons. But it is good to have some competition going.</p>
 <hr />
-<h2 id="openclosed-principle">Open/Closed Principle<a class="headerlink" href="#openclosed-principle" title="Permanent link">#</a></h2>
+<h2 id="openclosed-principle">Open/Closed Principle</h2>
 <p>The Open/Closed principle states a class must be open and closed where:</p>
 <ul>
 <li>open means a class has the ability to be extended.</li>
@@ -904,19 +904,19 @@ if (FAIL == dev.Open()) exit(1);
 <p>The Open/Closed principle is a pitch for stability. A system is extended by adding new code not by changing already working code. Programmers often don't feel comfortable changing old code because it works! This principle just gives you an academic sounding justification for your fears :-)</p>
 <p>In practice the Open/Closed principle simply means making good use of our old friends abstraction and polymorphism. Abstraction to factor out common processes and ideas. Inheritance to create an interface that must be adhered to by derived classes. In C++ we are talking about using abstract base classes. A lot.</p>
 <hr />
-<h2 id="design-by-contract">Design by Contract<a class="headerlink" href="#design-by-contract" title="Permanent link">#</a></h2>
+<h2 id="design-by-contract">Design by Contract</h2>
 <p>The idea of design by contract is strongly related to LSP(Liskov substitution principle). A contract is a formal statement of what to expect from another party. In this case the contract is between pieces of code. An object and/or method states that it does X and you are supposed to believe it. For example, when you ask an object for its volume that's what you should get. And because volume is a verifiable attribute of a thing you could run a series of checks to verify volume is correct, that is, it satisfies its contract.</p>
 <p>The contract is enforced in languages like Eiffel by pre and post condition statements that are actually part of the language. In other languages a bit of faith is needed.</p>
 <p>Design by contract when coupled with language based verification mechanisms is a very powerful idea. It makes programming more like assembling spec'd parts.</p>
 <hr />
-<h2 id="complexity-management">Complexity Management<a class="headerlink" href="#complexity-management" title="Permanent link">#</a></h2>
+<h2 id="complexity-management">Complexity Management</h2>
 <hr />
-<h3 id="layering">Layering<a class="headerlink" href="#layering" title="Permanent link">#</a></h3>
+<h3 id="layering">Layering</h3>
 <p>Layering is the primary technique for reducing complexity in a system. A system should be divided into layers. Layers should communicate between adjacent layers using well defined interfaces. When a layer uses a non-adjacent layer then a layering violation has occurred.</p>
 <p>A layering violation simply means we have dependency between layers that is not controlled by a well defined interface. When one of the layers changes code could break. We don't want code to break so we want layers to work only with other adjacent layers.</p>
 <p>Sometimes we need to jump layers for performance reasons. This is fine, but we should know we are doing it and document appropriately.</p>
 <hr />
-<h3 id="delegation">Delegation<a class="headerlink" href="#delegation" title="Permanent link">#</a></h3>
+<h3 id="delegation">Delegation</h3>
 <p>Delegation is the idea of a method using another object's method to do the real work. In some sense the top layer method is <em>a front</em> for the other method. Delegation is a form of dependency breaking. The top layer method never has to change while it's implementation can change at will.</p>
 <p>Delegation is an alternative to using inheritance for implementation purposes. One can use inheritance to define an interface and delegation to implement the interface.</p>
 <p>Some people feel delegation is a more robust form of OO than using implementation inheritance. Delegation encourages the formation of abstract class interfaces and HASA relationships. Both of which encourage reuse and dependency breaking.</p>
@@ -931,7 +931,7 @@ private:
 </code></pre>
 <p>In this example a test taker delegates actually answering the question to a paid test taker. Not ethical but a definite example of delegation!</p>
 <hr />
-<h3 id="minimize-dependencies-with-abstract-base-classes">Minimize Dependencies with Abstract Base Classes<a class="headerlink" href="#minimize-dependencies-with-abstract-base-classes" title="Permanent link">#</a></h3>
+<h3 id="minimize-dependencies-with-abstract-base-classes">Minimize Dependencies with Abstract Base Classes</h3>
 <p>One of the most important strategies in C++ is to remove dependencies among different subsystems. Abstract base classes (ABCs) are a solid technique for dependency removal.</p>
 <p>An ABC is an abstraction of a common form such that it can be used to build more specific forms. An ABC is a common interface that is reusable across a broad range of similar classes. By specifying a common interface as long as a class conforming to that interface is used it doesn't really matter what is the type of the derived type. This breaks code dependencies. New classes, conforming to the interface, can be substituted in at will without breaking code. In C++ interfaces are specified by using base classes with virtual methods.</p>
 <p>The above is a bit rambling because it's a hard idea to convey. So let's use an example: We are doing a GUI where things jump around on the screen. One approach is to do something like:</p>
@@ -990,14 +990,14 @@ gui.MakeJump(pFrog);
 </code></pre>
 <p>Notice Gui doesn't even know it's making a frog jump, it just has a jumpable thing, that's all it cares about. When Gui calls the Jump method it will get the implementation for Frog's Jump method. Another dependency down. Gui doesn't have to know what kind of objects are jumping.</p>
 <p>We also removed the recompile dependency. Because Gui doesn't contain any Frog objects it will not be recompiled when Frog changes.</p>
-<h3 id="downside">Downside<a class="headerlink" href="#downside" title="Permanent link">#</a></h3>
+<h3 id="downside">Downside</h3>
 <p>Wow! Great stuff! Yes but there are a few downsides:</p>
-<h4 id="overhead-for-virtual-methods">Overhead for Virtual Methods<a class="headerlink" href="#overhead-for-virtual-methods" title="Permanent link">#</a></h4>
+<h4 id="overhead-for-virtual-methods">Overhead for Virtual Methods</h4>
 <p>Virtual methods have a space and time penalty. It's not huge, but should be considered in design.</p>
-<h4 id="make-everything-an-abc">Make Everything an ABC<a class="headerlink" href="#make-everything-an-abc" title="Permanent link">#</a></h4>
+<h4 id="make-everything-an-abc">Make Everything an ABC</h4>
 <p>Sometimes people overdo it, making everything an ABC. The rule is make an ABC when you need one not when you might need one. It takes effort to design a good ABC, throwing in a virtual method doesn't an ABC make. Pick and choose your spots. When some process or some interface can be reused and people will actually make use of the reuse then make an ABC and don't look back.</p>
 <hr />
-<h3 id="liskovs-substitution-principle-lsp">Liskov's Substitution Principle (LSP)<a class="headerlink" href="#liskovs-substitution-principle-lsp" title="Permanent link">#</a></h3>
+<h3 id="liskovs-substitution-principle-lsp">Liskov's Substitution Principle (LSP)</h3>
 <p>This principle states:</p>
 <p>All classes derived from a base class should be interchangeable
    when used as a base class.</p>
@@ -1005,10 +1005,10 @@ gui.MakeJump(pFrog);
 <p>For example, if the Jump method of a Frog object implementing the Jumpable interface actually makes a call and orders pizza we can say its implementation is not in the spirit of Jump and probably all other objects implementing Jump. Before calling a Jump method a programmer would now have to check for the Frog type so it wouldn't screw up the system. We don't want this in programs. We want to use base classes and feel comfortable we will get consistent behaviour.</p>
 <p>LSP is a very restrictive idea. It constrains implementors quite a bit. In general people support LSP and have LSP as a goal.</p>
 <hr />
-<h3 id="follow-the-law-of-demeter">Follow the Law of Demeter<a class="headerlink" href="#follow-the-law-of-demeter" title="Permanent link">#</a></h3>
+<h3 id="follow-the-law-of-demeter">Follow the Law of Demeter</h3>
 <p>The <em>Law of Demeter</em> states that you shouldn't access a contained object directly from the containing object, you should use a method of the containing object that does what you want and accesses any of its objects as needed.</p>
 <p>The purpose of this law is to break dependencies so implementations can change without breaking code. If an object wishes to remove one of its contained objects it won't be able to do so because some other object is using it. If instead the service was through an interface the object could change its implementation anytime without ill effect.</p>
-<h3 id="caveat">Caveat<a class="headerlink" href="#caveat" title="Permanent link">#</a></h3>
+<h3 id="caveat">Caveat</h3>
 <p>As for most laws the Law of Demeter should be ignored in certain cases. If you have a really high level object that contains a lot of subobjects, like a car contains thousands of parts, it can get absurd to created a method in car for every access to a subobject.</p>
 <p>Example:</p>
 <pre><code class="language-cpp">class SunWorkstation
@@ -1027,28 +1027,28 @@ Do   : sun.UpVolume(1);
 Don't: sun.mSound.Up(1);
 </code></pre>
 <hr />
-<h2 id="miscellaneous">Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permanent link">#</a></h2>
+<h2 id="miscellaneous">Miscellaneous</h2>
 <hr />
-<h3 id="be-const-correct">Be Const Correct<a class="headerlink" href="#be-const-correct" title="Permanent link">#</a></h3>
+<h3 id="be-const-correct">Be Const Correct</h3>
 <p>C++ provides the <em>const</em> key word to allow passing as parameters objects that cannot change to indicate when a method doesn't modify its object. Using const in all the right places is called "const correctness." It's hard at first, but using const really tightens up your coding style. Const correctness grows on you.</p>
 <p>For more information see Const Correctness in the C++ FAQ.</p>
 <hr />
-<h3 id="use-streams">Use Streams<a class="headerlink" href="#use-streams" title="Permanent link">#</a></h3>
+<h3 id="use-streams">Use Streams</h3>
 <p>Programmers transitioning from C to C++ find stream IO strange preferring the familiarity of good old stdio. Printf and gang seem to be more convenient and are well understood.</p>
-<h4 id="type-safety">Type Safety<a class="headerlink" href="#type-safety" title="Permanent link">#</a></h4>
+<h4 id="type-safety">Type Safety</h4>
 <p>Stdio is not type safe, which is one of the reasons you are using C++, right? Stream IO is type safe. That's one good reason to use streams.</p>
-<h4 id="standard-interface">Standard Interface<a class="headerlink" href="#standard-interface" title="Permanent link">#</a></h4>
+<h4 id="standard-interface">Standard Interface</h4>
 <p>When you want to dump an object to a stream there is a standard way of doing it: with the <em>&lt;&lt;</em> operator. This is not true of objects and stdio.</p>
-<h5 id="interchangeablity-of-streams">Interchangeablity of Streams<a class="headerlink" href="#interchangeablity-of-streams" title="Permanent link">#</a></h5>
+<h5 id="interchangeablity-of-streams">Interchangeablity of Streams</h5>
 <p>One of the more advanced reasons for using streams is that once an object can dump itself to a stream it can dump itself to any stream. One stream may go to the screen, but another stream may be a serial port or network connection. Good stuff.</p>
-<h5 id="streams-got-better">Streams Got Better<a class="headerlink" href="#streams-got-better" title="Permanent link">#</a></h5>
+<h5 id="streams-got-better">Streams Got Better</h5>
 <p>Stream IO is not perfect. It is however a lot better than it used to be. Streams are now standardized, acceptably efficient, more reliable, and now there's lots of documentation on how to use streams.</p>
-<h5 id="check-thread-safety">Check Thread Safety<a class="headerlink" href="#check-thread-safety" title="Permanent link">#</a></h5>
+<h5 id="check-thread-safety">Check Thread Safety</h5>
 <p>Some stream implementations are not yet thread safe. Make sure that yours is.</p>
-<h5 id="but-not-perfect">But Not Perfect<a class="headerlink" href="#but-not-perfect" title="Permanent link">#</a></h5>
+<h5 id="but-not-perfect">But Not Perfect</h5>
 <p>For an embedded target tight on memory streams do not make sense. Streams inline a lot of code so you might find the image larger than you wish. Experiment a little. Streams might work on your target.</p>
 <hr />
-<h3 id="use-if-not-ifdef">Use #if Not #ifdef<a class="headerlink" href="#use-if-not-ifdef" title="Permanent link">#</a></h3>
+<h3 id="use-if-not-ifdef">Use #if Not #ifdef</h3>
 <p>Use <code>#if MACRO not #ifdef MACRO</code>. Someone might write code like:</p>
 <pre><code class="language-cpp">#ifdef DEBUG
     temporary_debugger_break();
@@ -1068,9 +1068,9 @@ Don't: sun.mSound.Up(1);
 #endif
 </code></pre>
 <hr />
-<h3 id="commenting-out-large-code-blocks">Commenting Out Large Code Blocks<a class="headerlink" href="#commenting-out-large-code-blocks" title="Permanent link">#</a></h3>
+<h3 id="commenting-out-large-code-blocks">Commenting Out Large Code Blocks</h3>
 <p>Sometimes large blocks of code need to be commented out for testing.</p>
-<h4 id="using-if-0">Using #if 0<a class="headerlink" href="#using-if-0" title="Permanent link">#</a></h4>
+<h4 id="using-if-0">Using #if 0</h4>
 <p>The easiest way to do this is with an #if 0 block:</p>
 <pre><code class="language-cpp">void
 example()
@@ -1086,23 +1086,23 @@ example()
 </code></pre>
 <p>You can't use <strong>/**/</strong> style comments because comments can't contain comments and surely a large block of your code will contain a comment, won't it?</p>
 <p>Don't use #ifdef as someone can unknowingly trigger ifdefs from the compiler command line.</p>
-<h4 id="use-descriptive-macro-names-instead-of-0">Use Descriptive Macro Names Instead of 0<a class="headerlink" href="#use-descriptive-macro-names-instead-of-0" title="Permanent link">#</a></h4>
+<h4 id="use-descriptive-macro-names-instead-of-0">Use Descriptive Macro Names Instead of 0</h4>
 <p>The problem with <strong>#if 0</strong>is that even day later you or anyone else has know idea why this code is commented out. Is it because a feature has been dropped? Is it because it was buggy? It didn't compile? Can it be added back? It's a mystery.</p>
-<h4 id="use-descriptive-macro-names-instead-of-if-0">Use Descriptive Macro Names Instead of #if 0<a class="headerlink" href="#use-descriptive-macro-names-instead-of-if-0" title="Permanent link">#</a></h4>
+<h4 id="use-descriptive-macro-names-instead-of-if-0">Use Descriptive Macro Names Instead of #if 0</h4>
 <pre><code class="language-cpp">#if NOT\_YET\_IMPLEMENTED  
 
 #if OBSOLETE
 
 #if TEMP\_DISABLED
 </code></pre>
-<h4 id="add-a-comment-to-document-why">Add a Comment to Document Why<a class="headerlink" href="#add-a-comment-to-document-why" title="Permanent link">#</a></h4>
+<h4 id="add-a-comment-to-document-why">Add a Comment to Document Why</h4>
 <p>Add a short comment explaining why it is not implemented, obsolete or temporarily disabled.</p>
 <hr />
-<h3 id="dont-over-use-operators">Don't Over Use Operators<a class="headerlink" href="#dont-over-use-operators" title="Permanent link">#</a></h3>
+<h3 id="dont-over-use-operators">Don't Over Use Operators</h3>
 <p>C++ allows the overloading of all kinds of weird operators. Unless you are building a class directly related to math there are very few operators you should override. Only override an operator when the semantics will be clear to users.
 Very few people will have the same intuition as you about what a particular operator will do.</p>
 <hr />
-<h3 id="short-methods">Short Methods<a class="headerlink" href="#short-methods" title="Permanent link">#</a></h3>
+<h3 id="short-methods">Short Methods</h3>
 <ul>
 <li>Methods should limit themselves to a single page of code.</li>
 </ul>
@@ -1110,7 +1110,7 @@ Very few people will have the same intuition as you about what a particular oper
 Most arguments of inefficiency turn out to be false in the long run.
 True function calls are slower than not, but there needs to a thought out decision (see premature optimization).</p>
 <hr />
-<h3 id="no-magic-numbers">No Magic Numbers<a class="headerlink" href="#no-magic-numbers" title="Permanent link">#</a></h3>
+<h3 id="no-magic-numbers">No Magic Numbers</h3>
 <p>A magic number is a bare naked number used in source code. It's magic because no-one has a clue what it means including the author inside 3 months. For example:</p>
 <pre><code class="language-cpp">if      (22 == foo) { start_thermo_nuclear_war(); }
 else if (19 == foo) { refund_lotso_money(); }
@@ -1131,18 +1131,18 @@ else                                  { happy_days_i_know_why_im_here(); }
 </code></pre>
 <p>Now isn't that better? The const and enum options are preferable because when debugging the debugger has enough information to display both the value and the label. The #define option just shows up as a number in the debugger which is very inconvenient. The const option has the downside of allocating memory. Only you know if this matters for your application.</p>
 <hr />
-<h3 id="error-return-check-policy">Error Return Check Policy<a class="headerlink" href="#error-return-check-policy" title="Permanent link">#</a></h3>
+<h3 id="error-return-check-policy">Error Return Check Policy</h3>
 <ul>
 <li>Check every system call for an error return, unless you know you wish to ignore errors. For example, <em>printf</em> returns an error code but rarely would you check for its return code. In which case you can cast the return to <strong>(void)</strong> if you really care.</li>
 <li>Include the system error text for every system error message.</li>
 <li>Check every call to malloc or realloc unless you know your versions of these calls do the right thing. You might want to have your own wrapper for these calls, including new, so you can do the right thing always and developers don't have to make memory checks everywhere.</li>
 </ul>
 <hr />
-<h3 id="to-use-enums-or-not-to-use-enums">To Use Enums or Not to Use Enums<a class="headerlink" href="#to-use-enums-or-not-to-use-enums" title="Permanent link">#</a></h3>
+<h3 id="to-use-enums-or-not-to-use-enums">To Use Enums or Not to Use Enums</h3>
 <p>C++ allows constant variables, which should deprecate the use of enums as constants. Unfortunately, in most compilers constants take space. Some compilers will remove constants, but not all. Constants taking space precludes them from being used in tight memory environments like embedded systems. Workstation users should use constants and ignore the rest of this discussion.</p>
 <p>In general enums are preferred to <em>#define</em> as enums are understood by the debugger.</p>
 <p>Be aware enums are not of a guaranteed size. So if you have a type that can take a known range of values and it is transported in a message you can't use an enum as the type. Use the correct integer size and use constants or <em>#define</em>. Casting between integers and enums is very error prone as you could cast a value not in the enum.</p>
-<h4 id="a-c-workaround">A C++ Workaround<a class="headerlink" href="#a-c-workaround" title="Permanent link">#</a></h4>
+<h4 id="a-c-workaround">A C++ Workaround</h4>
 <p>C++ allows static class variables. These variables are available anywhere and only the expected amount of space is taken.</p>
 <p>Example:</p>
 <pre><code class="language-cpp">class Variables
@@ -1154,10 +1154,10 @@ public:
 }
 </code></pre>
 <hr />
-<h3 id="macros">Macros<a class="headerlink" href="#macros" title="Permanent link">#</a></h3>
-<h4 id="dont-turn-c-into-pascal">Don't Turn C++ into Pascal<a class="headerlink" href="#dont-turn-c-into-pascal" title="Permanent link">#</a></h4>
+<h3 id="macros">Macros</h3>
+<h4 id="dont-turn-c-into-pascal">Don't Turn C++ into Pascal</h4>
 <p>Don't change syntax via macro substitution. It makes the program unintelligible to all but the perpetrator.</p>
-<h4 id="replace-macros-with-inline-functions">Replace Macros with Inline Functions<a class="headerlink" href="#replace-macros-with-inline-functions" title="Permanent link">#</a></h4>
+<h4 id="replace-macros-with-inline-functions">Replace Macros with Inline Functions</h4>
 <p>In C++ macros are not needed for code efficiency. Use inlines.</p>
 <p>Example:</p>
 <pre><code class="language-cpp">#define  MAX(x,y) (((x) &gt; (y) ? (x) : (y)) // Get the maximum
@@ -1169,12 +1169,12 @@ max(int x, int y)
     return (x &gt; y ? x : y);
 }
 </code></pre>
-<h4 id="be-careful-of-side-effects">Be Careful of Side Effects<a class="headerlink" href="#be-careful-of-side-effects" title="Permanent link">#</a></h4>
+<h4 id="be-careful-of-side-effects">Be Careful of Side Effects</h4>
 <p>Macros should be used with caution because of the potential for error when invoked with an expression that has side effects.</p>
 <p>Example:</p>
 <pre><code class="language-cpp">MAX(f(x),z++);
 </code></pre>
-<h4 id="always-wrap-the-expression-in-parenthesis">Always Wrap the Expression in Parenthesis<a class="headerlink" href="#always-wrap-the-expression-in-parenthesis" title="Permanent link">#</a></h4>
+<h4 id="always-wrap-the-expression-in-parenthesis">Always Wrap the Expression in Parenthesis</h4>
 <p>When putting expressions in macros always wrap the expression in parenthesis to avoid potential communitive operation abiguity.</p>
 <p>Example:</p>
 <pre><code class="language-cpp">#define ADD(x,y) x + y
@@ -1182,14 +1182,14 @@ max(int x, int y)
 <p>must be written as:</p>
 <pre><code class="language-cpp">#define ADD(x,y) ((x) + (y))
 </code></pre>
-<h4 id="make-macro-names-unique">Make Macro Names Unique<a class="headerlink" href="#make-macro-names-unique" title="Permanent link">#</a></h4>
+<h4 id="make-macro-names-unique">Make Macro Names Unique</h4>
 <p>Like global variables macros can conflict with macros from other packages.</p>
 <ol>
 <li>Prepend macro names with package names.</li>
 <li>Avoid simple and common names like MAX and MIN.</li>
 </ol>
 <hr />
-<h3 id="the-bull-of-boolean-types">The Bull of Boolean Types<a class="headerlink" href="#the-bull-of-boolean-types" title="Permanent link">#</a></h3>
+<h3 id="the-bull-of-boolean-types">The Bull of Boolean Types</h3>
 <p>Any project using source code from many sources knows the pain of multiple conflicting boolean types. The new C++ standard defines a native boolean type. Until all compilers support bool, and existing code is changed to use it, we must still deal with the cruel world.</p>
 <p>The form of boolean most accurately matching the new standard is:</p>
 <pre><code class="language-cpp">typedef int     bool;
@@ -1208,7 +1208,7 @@ const int FALSE = 0;
 <pre><code class="language-cpp">if (FALSE != func()) { ...
 </code></pre>
 <hr />
-<h3 id="usually-avoid-embedded-assignments">Usually Avoid Embedded Assignments<a class="headerlink" href="#usually-avoid-embedded-assignments" title="Permanent link">#</a></h3>
+<h3 id="usually-avoid-embedded-assignments">Usually Avoid Embedded Assignments</h3>
 <p>There is a time and a place for embedded assignment statements. In some constructs there is no better way to accomplish the results without making the code bulkier and less readable.</p>
 <pre><code class="language-cpp">while (EOF != (c = getchar()))
     {
@@ -1224,9 +1224,9 @@ d = a + r;
 </code></pre>
 <p>even though the latter may save one cycle. In the long run the time difference between the two will decrease as the optimizer gains maturity, while the difference in ease of maintenance will increase as the human memory of what's going on in the latter piece of code begins to fade.</p>
 <hr />
-<h3 id="mixing-c-and-c">Mixing C and C++<a class="headerlink" href="#mixing-c-and-c" title="Permanent link">#</a></h3>
+<h3 id="mixing-c-and-c">Mixing C and C++</h3>
 <p>In order to be backward compatible with dumb linkers C++'s link time type safety is implemented by encoding type information in link symbols, a process called <em>name mangling</em>. This creates a problem when linking to C code as C function names are not mangled. When calling a C function from C++ the function name will be mangled unless you turn it off. Name mangling is turned off with the <em>extern "C"</em> syntax. If you want to create a C function in C++ you must wrap it with the above syntax. If you want to call a C function in a C library from C++ you must wrap in the above syntax. Here are some examples:</p>
-<h4 id="calling-c-functions-from-c">Calling C Functions from C++<a class="headerlink" href="#calling-c-functions-from-c" title="Permanent link">#</a></h4>
+<h4 id="calling-c-functions-from-c">Calling C Functions from C++</h4>
 <pre><code class="language-cpp">extern &quot;C&quot; int strncpy(...);
 extern &quot;C&quot; int my_great_function();
 extern &quot;C&quot;
@@ -1235,13 +1235,13 @@ extern &quot;C&quot;
    int my_great_function();
 };
 </code></pre>
-<h4 id="creating-a-c-function-in-c">Creating a C Function in C++<a class="headerlink" href="#creating-a-c-function-in-c" title="Permanent link">#</a></h4>
+<h4 id="creating-a-c-function-in-c">Creating a C Function in C++</h4>
 <pre><code class="language-cpp">extern &quot;C&quot; void
 a_c_function_in_cplusplus(int a)
 {
 }
 </code></pre>
-<h3 id="__cplusplus-preprocessor-directive"><em>__cplusplus</em> Preprocessor Directive<a class="headerlink" href="#__cplusplus-preprocessor-directive" title="Permanent link">#</a></h3>
+<h3 id="__cplusplus-preprocessor-directive"><em>__cplusplus</em> Preprocessor Directive</h3>
 <p>If you have code that must compile in a C and C++ environment then you must use the <em>__cplusplus</em> preprocessor directive. For example:</p>
 <pre><code class="language-cpp">#ifdef __cplusplus
 
@@ -1254,7 +1254,7 @@ extern some_function();
 #endif
 </code></pre>
 <hr />
-<h3 id="misc-practices">Misc practices<a class="headerlink" href="#misc-practices" title="Permanent link">#</a></h3>
+<h3 id="misc-practices">Misc practices</h3>
 <p>This section contains some miscellaneous do's and don'ts.</p>
 <ul>
 <li>Don't use floating-point variables where discrete values are needed. Using a float for a loop counter is a great way to shoot yourself in the foot. Always test floating-point numbers as &lt;= or &gt;=, never use an exact comparison (== or !=).</li>
@@ -1272,7 +1272,7 @@ if (abool) { ... }
 <li>Modern compilers will put variables in registers automatically. Use the register sparingly to indicate the variables that you think are most critical. In extreme cases, mark the 2-4 most critical values as register and mark the rest as REGISTER. The latter can be #defined to register on those machines with many registers.</li>
 </ul>
 <hr />
-<h3 id="no-data-definitions-in-header-files">No Data Definitions in Header Files<a class="headerlink" href="#no-data-definitions-in-header-files" title="Permanent link">#</a></h3>
+<h3 id="no-data-definitions-in-header-files">No Data Definitions in Header Files</h3>
 <p>Do not put data definitions in header files. for example:</p>
 <pre><code class="language-cpp">/*
  * aheader.h
@@ -1286,7 +1286,7 @@ int x = 0;
 <li>Consider using a singleton for access to the data.</li>
 </ol>
 <hr />
-<h3 id="make-functions-reentrant">Make Functions Reentrant<a class="headerlink" href="#make-functions-reentrant" title="Permanent link">#</a></h3>
+<h3 id="make-functions-reentrant">Make Functions Reentrant</h3>
 <p>Functions should not keep static variables that prevent a function from being reentrant. Functions can declare variables static. Some C library functions in the past, for example, kept a static buffer to use a temporary work area. Problems happen when the function is called one or more times at the same time. This can happen when multiple tasks are used or say from a signal handler. Using the static buffer caused results to overlap and become corrupted.</p>
 <p>The moral is make your functions reentrant by not using static variables in a function. Besides, every machine has lots of RAM now so we don't worry about buffer space any more :-)</p>
 

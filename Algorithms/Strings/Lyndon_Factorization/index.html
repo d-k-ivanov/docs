@@ -67,7 +67,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="lyndon-factorization">Lyndon Factorization<a class="headerlink" href="#lyndon-factorization" title="Permanent link">#</a></h1>
+    <h1 id="lyndon-factorization">Lyndon Factorization</h1>
 <p>First let us define the notion of the Lyndon factorization.</p>
 <p>A string is called <strong>simple</strong> (or a Lyndon word), if it is strictly <strong>smaller than</strong> any of its own nontrivial <strong>suffixes</strong>.
 Examples of simple strings are: <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>, <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>, <span><span class="MathJax_Preview">ab</span><script type="math/tex">ab</script></span>, <span><span class="MathJax_Preview">aab</span><script type="math/tex">aab</script></span>, <span><span class="MathJax_Preview">abb</span><script type="math/tex">abb</script></span>, <span><span class="MathJax_Preview">ababb</span><script type="math/tex">ababb</script></span>, <span><span class="MathJax_Preview">abcd</span><script type="math/tex">abcd</script></span>.
@@ -75,7 +75,7 @@ It can be shown that a string is simple, if and only if it is strictly <strong>s
 <p>Next, let there be a given string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.
 The <strong>Lyndon factorization</strong> of the string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> is a factorization <span><span class="MathJax_Preview">s = w_1 w_2 \dots w_k</span><script type="math/tex">s = w_1 w_2 \dots w_k</script></span>, where all strings <span><span class="MathJax_Preview">w_i</span><script type="math/tex">w_i</script></span> are simple, and they are in non-increasing order <span><span class="MathJax_Preview">w_1 \ge w_2 \ge \dots \ge w_k</span><script type="math/tex">w_1 \ge w_2 \ge \dots \ge w_k</script></span>.</p>
 <p>It can be shown, that for any string such a factorization exists and that it is unique.</p>
-<h2 id="duval-algorithm">Duval algorithm<a class="headerlink" href="#duval-algorithm" title="Permanent link">#</a></h2>
+<h2 id="duval-algorithm">Duval algorithm</h2>
 <p>The Duval algorithm constructs the Lyndon factorization in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> time using <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> additional memory.</p>
 <p>First let us introduce another notion:
 a string <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> is called <strong>pre-simple</strong>, if it has the form <span><span class="MathJax_Preview">t = w w \dots w \overline{w}</span><script type="math/tex">t = w w \dots w \overline{w}</script></span>, where <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> is a simple string and <span><span class="MathJax_Preview">\overline{w}</span><script type="math/tex">\overline{w}</script></span> is a prefix of <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> (possibly empty).
@@ -100,7 +100,7 @@ There can be three different cases:</p>
   The simple string will have the length <span><span class="MathJax_Preview">j - k</span><script type="math/tex">j - k</script></span>.
   In the next iteration we start again with the remaining <span><span class="MathJax_Preview">s_2</span><script type="math/tex">s_2</script></span>.</li>
 </ul>
-<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h3>
+<h3 id="implementation">Implementation</h3>
 <p>Here we present the implementation of the Duval algorithm, which will return the desired Lyndon factorization of a given string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.</p>
 <p>```cpp duval_algorithm
 vector<string> duval(string const&amp; s) {
@@ -170,7 +170,7 @@ string min_cyclic_string(string s) {
     return s.substr(ans, n / 2);
 }
 </code></pre>
-<h2 id="problems">Problems<a class="headerlink" href="#problems" title="Permanent link">#</a></h2>
+<h2 id="problems">Problems</h2>
 <ul>
 <li><a href="https://uva.onlinejudge.org/index.php?option=onlinejudge&amp;page=show_problem&amp;problem=660">UVA #719 - Glass Beads</a></li>
 </ul>

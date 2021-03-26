@@ -72,14 +72,14 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="convex-hull-trick-and-li-chao-tree">Convex Hull Trick and Li Chao Tree<a class="headerlink" href="#convex-hull-trick-and-li-chao-tree" title="Permanent link">#</a></h1>
+    <h1 id="convex-hull-trick-and-li-chao-tree">Convex Hull Trick and Li Chao Tree</h1>
 <p>Consider the following problem. There are <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> cities. You want to travel from city <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> to city <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> by car. To do this you have to buy some gasoline. It is known that a liter of gasoline costs <span><span class="MathJax_Preview">cost_k</span><script type="math/tex">cost_k</script></span> in the <span><span class="MathJax_Preview">k^{th}</span><script type="math/tex">k^{th}</script></span> city. Initially your fuel tank is empty and you spend one liter of gasoline per kilometer. Cities are located on the same line in ascending order with <span><span class="MathJax_Preview">k^{th}</span><script type="math/tex">k^{th}</script></span> city having coordinate <span><span class="MathJax_Preview">x_k</span><script type="math/tex">x_k</script></span>. Also you have to pay <span><span class="MathJax_Preview">toll_k</span><script type="math/tex">toll_k</script></span> to enter <span><span class="MathJax_Preview">k^{th}</span><script type="math/tex">k^{th}</script></span> city. Your task is to make the trip with minimum possible cost. It's obvious that the solution can be calculated via dynamic programming:</p>
 <div>
 <div class="MathJax_Preview">dp_i = toll_i+\min\limits_{j&lt;i}(cost_j \cdot (x_i - x_j)+dp_j)</div>
 <script type="math/tex; mode=display">dp_i = toll_i+\min\limits_{j<i}(cost_j \cdot (x_i - x_j)+dp_j)</script>
 </div>
 <p>Naive approach will give you <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span> complexity which can be improved to <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> or <span><span class="MathJax_Preview">O(n \log [C \varepsilon^{-1}])</span><script type="math/tex">O(n \log [C \varepsilon^{-1}])</script></span> where <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> is largest possible <span><span class="MathJax_Preview">|x_i|</span><script type="math/tex">|x_i|</script></span> and <span><span class="MathJax_Preview">\varepsilon</span><script type="math/tex">\varepsilon</script></span> is precision with which <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> is considered (<span><span class="MathJax_Preview">\varepsilon = 1</span><script type="math/tex">\varepsilon = 1</script></span> for integers which is usually the case). To do this one should note that the problem can be reduced to adding linear functions <span><span class="MathJax_Preview">k \cdot x + b</span><script type="math/tex">k \cdot x + b</script></span> to the set and finding minimum value of the functions in some particular point <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>. There are two main approaches one can use here.</p>
-<h2 id="convex-hull-trick">Convex hull trick<a class="headerlink" href="#convex-hull-trick" title="Permanent link">#</a></h2>
+<h2 id="convex-hull-trick">Convex hull trick</h2>
 <p>The idea of this approach is to maintain a lower convex hull of linear functions.
 Actually it would be a bit more convenient to consider them not as linear functions, but as points <span><span class="MathJax_Preview">(k;b)</span><script type="math/tex">(k;b)</script></span> on the plane such that we will have to find the point which has the least dot product with a given point <span><span class="MathJax_Preview">(x;1)</span><script type="math/tex">(x;1)</script></span>, that is, for this point <span><span class="MathJax_Preview">kx+b</span><script type="math/tex">kx+b</script></span> is minimized which is the same as initial problem.
 Such minimum will necessarily be on lower convex envelope of these points as can be seen below:</p>
@@ -138,7 +138,7 @@ void add_line(ftype k, ftype b) {
     return dot(query, hull[it - vecs.begin()]);
 }
 </code></pre>
-<h2 id="li-chao-tree">Li Chao tree<a class="headerlink" href="#li-chao-tree" title="Permanent link">#</a></h2>
+<h2 id="li-chao-tree">Li Chao tree</h2>
 <p>Assume you're given a set of functions such that each two can intersect at most once. Let's keep in each vertex of a segment tree some function in such way, that if we go from root to the leaf it will be guaranteed that one of the functions we met on the path will be the one giving the minimum value in that leaf. Let's see how to construct it.</p>
 <p>Assume we're in some vertex corresponding to half-segment <span><span class="MathJax_Preview">[l,r)</span><script type="math/tex">[l,r)</script></span> and the function <span><span class="MathJax_Preview">f_{old}</span><script type="math/tex">f_{old}</script></span> is kept there and we add the function <span><span class="MathJax_Preview">f_{new}</span><script type="math/tex">f_{new}</script></span>. Then the intersection point will be either in <span><span class="MathJax_Preview">[l;m)</span><script type="math/tex">[l;m)</script></span> or in <span><span class="MathJax_Preview">[m;r)</span><script type="math/tex">[m;r)</script></span> where <span><span class="MathJax_Preview">m=\left\lfloor\tfrac{l+r}{2}\right\rfloor</span><script type="math/tex">m=\left\lfloor\tfrac{l+r}{2}\right\rfloor</script></span>. We can efficiently find that out by comparing the values of the functions in points <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>. If the dominating function changes, then it is in <span><span class="MathJax_Preview">[l;m)</span><script type="math/tex">[l;m)</script></span> otherwise it is in <span><span class="MathJax_Preview">[m;r)</span><script type="math/tex">[m;r)</script></span>. Now for the half of the segment with no intersection we will pick the lower function and write it in the current vertex. You can see that it will always be the one which is lower in point <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>. After that we recursively go to the other half of the segment with the function which was the upper one. As you can see this will keep correctness on the first half of segment and in the other one correctness will be maintained during the recursive call. Thus we can add functions and check the minimum value in the point in <span><span class="MathJax_Preview">O(\log [C\varepsilon^{-1}])</span><script type="math/tex">O(\log [C\varepsilon^{-1}])</script></span>.</p>
 <p>Here is the illustration of what is going on in the vertex when we add new function:</p>
@@ -147,8 +147,8 @@ void add_line(ftype k, ftype b) {
 <p>```cpp lichaotree_line_definition
 typedef int ftype;
 typedef complex<ftype> point;</p>
-<h1 id="define-x-real">define x real<a class="headerlink" href="#define-x-real" title="Permanent link">#</a></h1>
-<h1 id="define-y-imag">define y imag<a class="headerlink" href="#define-y-imag" title="Permanent link">#</a></h1>
+<h1 id="define-x-real">define x real</h1>
+<h1 id="define-y-imag">define y imag</h1>
 <p>ftype dot(point a, point b) {
     return (conj(a) * b).x();
 }</p>
@@ -192,7 +192,7 @@ int get(int x, int v = 1, int l = 0, int r = maxn) {
         return min(f(line[v], x), get(x, 2 * v + 1, m, r));
     }
 }</code></p>
-<h2 id="problems">Problems<a class="headerlink" href="#problems" title="Permanent link">#</a></h2>
+<h2 id="problems">Problems</h2>
 <ul>
 <li><a href="https://csacademy.com/contest/archive/task/squared-ends">CS Academy - Squared Ends</a></li>
 <li><a href="http://codeforces.com/contest/932/problem/F">Codeforces - Escape Through Leaf</a></li>

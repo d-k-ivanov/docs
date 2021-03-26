@@ -76,36 +76,36 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="common-commands">Common commands<a class="headerlink" href="#common-commands" title="Permanent link">#</a></h2>
+    <h2 id="common-commands">Common commands</h2>
 <pre><code class="language-bash">tcpdump -ttttnnvvS -i any port XXX and host XX.XX.XX.XX
 </code></pre>
-<h2 id="capyure-tcpdump-with-all-commands-use-head-optionally">Capyure TCPDUMP (with all commands use '| head' optionally)<a class="headerlink" href="#capyure-tcpdump-with-all-commands-use-head-optionally" title="Permanent link">#</a></h2>
-<h3 id="capture-bunch-of-packets">Capture bunch of packets<a class="headerlink" href="#capture-bunch-of-packets" title="Permanent link">#</a></h3>
+<h2 id="capyure-tcpdump-with-all-commands-use-head-optionally">Capyure TCPDUMP (with all commands use '| head' optionally)</h2>
+<h3 id="capture-bunch-of-packets">Capture bunch of packets</h3>
 <pre><code class="language-bash">tcpdump -w capture.pcap
 </code></pre>
-<h3 id="show-list-of-unique-tcp-or-udp-connections-ip-addresses">Show list of unique tcp or udp connections ip addresses<a class="headerlink" href="#show-list-of-unique-tcp-or-udp-connections-ip-addresses" title="Permanent link">#</a></h3>
+<h3 id="show-list-of-unique-tcp-or-udp-connections-ip-addresses">Show list of unique tcp or udp connections ip addresses</h3>
 <pre><code class="language-bash">tcpdump -nn -r capture.pcap 'tcp or udp' | cut -f 3 -d &quot; &quot; | cut -f 1-4 -d &quot;.&quot; | sort | uniq | sort -nr
 </code></pre>
-<h3 id="show-list-of-unique-destinations-with-syn-flagtcp132">Show list of unique destinations with SYN flag(‘tcp[13]=2’)<a class="headerlink" href="#show-list-of-unique-destinations-with-syn-flagtcp132" title="Permanent link">#</a></h3>
+<h3 id="show-list-of-unique-destinations-with-syn-flagtcp132">Show list of unique destinations with SYN flag(‘tcp[13]=2’)</h3>
 <pre><code class="language-bash">tcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 5 -d &quot; &quot; | sort | uniq -c | sort -nr
 </code></pre>
-<h3 id="show-list-of-unique-sources-with-syn-flagtcp132">Show list of unique sources with SYN flag(‘tcp[13]=2’)<a class="headerlink" href="#show-list-of-unique-sources-with-syn-flagtcp132" title="Permanent link">#</a></h3>
+<h3 id="show-list-of-unique-sources-with-syn-flagtcp132">Show list of unique sources with SYN flag(‘tcp[13]=2’)</h3>
 <pre><code class="language-bash">tcpdump -nn -r capture.pcap 'tcp[13]=2' | cut -f 3 -d &quot; &quot; | cut -f 1-4 -d &quot;.&quot; | sort | uniq -c | sort -nr
 </code></pre>
-<h3 id="search-for-plain-texts-a">Search for plain texts (-A)<a class="headerlink" href="#search-for-plain-texts-a" title="Permanent link">#</a></h3>
+<h3 id="search-for-plain-texts-a">Search for plain texts (-A)</h3>
 <pre><code class="language-bash">tcpdump -Ann -r capture.pcap 'dst port 25 or dst port 514 or dst port 110 or dst port 21 or dst port 53 or dst port 80'
 </code></pre>
-<h3 id="search-for-top-level-domains-optiolally-for-names-only-grep-e-a-z">Search for top level domains (optiolally for names only: | grep -E '[a-z]')<a class="headerlink" href="#search-for-top-level-domains-optiolally-for-names-only-grep-e-a-z" title="Permanent link">#</a></h3>
+<h3 id="search-for-top-level-domains-optiolally-for-names-only-grep-e-a-z">Search for top level domains (optiolally for names only: | grep -E '[a-z]')</h3>
 <pre><code class="language-bash">tcpdump -nn -r capture.pcap 'port 53' | grep -Ev '(com|ru|net|org|gov|mil|arpa)' | cut -f 9 -d &quot; &quot;  
 </code></pre>
-<h3 id="investigate-http-traffic">Investigate HTTP traffic<a class="headerlink" href="#investigate-http-traffic" title="Permanent link">#</a></h3>
+<h3 id="investigate-http-traffic">Investigate HTTP traffic</h3>
 <pre><code class="language-bash">tcpdump -Ann -r capture.pcap 'port 80' | grep 'HTTP' | grep -Ev '(GET|HEAD)'
 </code></pre>
-<h3 id="search-http-traffic-for-user-agent-list">Search HTTP traffic for user-agent list<a class="headerlink" href="#search-http-traffic-for-user-agent-list" title="Permanent link">#</a></h3>
+<h3 id="search-http-traffic-for-user-agent-list">Search HTTP traffic for user-agent list</h3>
 <pre><code class="language-bash">tcpdump -Ann -r capture.pcap 'port 80' | grep -Ei 'user-agent' | sort | uniq -c | sort -n
 tcpdump -Ann -r capture.pcap 'port 80' | sed -n '/Mozilla/,$p'
 </code></pre>
-<h3 id="pcap-repository-c-filesize-in-mbytes-w-number-of-files-g-time-in-seconds-s-timestamp">Pcap repository (-C filesize in MBytes, -W number of files, -G time in seconds, %s timestamp)<a class="headerlink" href="#pcap-repository-c-filesize-in-mbytes-w-number-of-files-g-time-in-seconds-s-timestamp" title="Permanent link">#</a></h3>
+<h3 id="pcap-repository-c-filesize-in-mbytes-w-number-of-files-g-time-in-seconds-s-timestamp">Pcap repository (-C filesize in MBytes, -W number of files, -G time in seconds, %s timestamp)</h3>
 <pre><code class="language-bash">sudo -b tcpdump -nn -i eth0 -w capture.pcap -C 1 -W 5         
 sudo -b tcpdump -nn -i eth0 -w capture-%s.pcap -G 600 -W 5    
 # Dealing with pcap files

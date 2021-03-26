@@ -70,14 +70,14 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="fast-fourier-transform">Fast Fourier Transform<a class="headerlink" href="#fast-fourier-transform" title="Permanent link">#</a></h1>
+    <h1 id="fast-fourier-transform">Fast Fourier Transform</h1>
 <p>In this article we will discuss an algorithm that allows us to multiply two polynomials of length <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> in <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> time, which is better than the trivial multiplication which takes <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span> time.
 Obviously also multiplying two long numbers can be reduced to multiplying polynomials, so also two long numbers can be multiplied in <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> time (where <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is the number of digits in the numbers).</p>
 <p>The discovery of the <strong>Fast Fourier transformation (FFT)</strong> is attributed to Cooley and Tukey, who published an algorithm in 1965.
 But in fact the FFT has been discovered repeatedly before, but the importance of it was not understood before the inventions of modern computers.
 Some researchers attribute the discovery of the FFT to Runge and König in 1924.
 But actually Gauss developed such a method already in 1805, but never published it.</p>
-<h2 id="discrete-fourier-transform">Discrete Fourier transform<a class="headerlink" href="#discrete-fourier-transform" title="Permanent link">#</a></h2>
+<h2 id="discrete-fourier-transform">Discrete Fourier transform</h2>
 <p>Let there be a polynomial of degree <span><span class="MathJax_Preview">n - 1</span><script type="math/tex">n - 1</script></span>:</p>
 <div>
 <div class="MathJax_Preview">A(x) = a_0 x^0 + a_1 x^1 + \dots + a_{n-1} x^{n-1}</div>
@@ -108,7 +108,7 @@ The inverse DFT of values of the polynomial <span><span class="MathJax_Preview">
 <script type="math/tex; mode=display">\text{InverseDFT}(y_0, y_1, \dots, y_{n-1}) = (a_0, a_1, \dots, a_{n-1})</script>
 </div>
 <p>Thus, if a direct DFT computes the values of the polynomial at the points at the <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>-th roots, the inverse DFT can restore the coefficients of the polynomial using those values.</p>
-<h3 id="application-of-the-dft-fast-multiplication-of-polynomials">Application of the DFT: fast multiplication of polynomials<a class="headerlink" href="#application-of-the-dft-fast-multiplication-of-polynomials" title="Permanent link">#</a></h3>
+<h3 id="application-of-the-dft-fast-multiplication-of-polynomials">Application of the DFT: fast multiplication of polynomials</h3>
 <p>Let there be two polynomials <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> and <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>.
 We compute the DFT for each of them: <span><span class="MathJax_Preview">\text{DFT}(A)</span><script type="math/tex">\text{DFT}(A)</script></span> and <span><span class="MathJax_Preview">\text{DFT}(B)</span><script type="math/tex">\text{DFT}(B)</script></span>.</p>
 <p>What happens if we multiply these polynomials?
@@ -135,7 +135,7 @@ Otherwise the two result vectors of the DFT have different length.
 We can accomplish this by adding coefficients with the value <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>.</p>
 <p>And also, since the result of the product of two polynomials is a polynomial of degree <span><span class="MathJax_Preview">2 (n - 1)</span><script type="math/tex">2 (n - 1)</script></span>, we have to double the degrees of each polynomial (again by padding <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>s).
 From a vector with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> values we cannot reconstruct the desired polynomial with <span><span class="MathJax_Preview">2n - 1</span><script type="math/tex">2n - 1</script></span> coefficients.</p>
-<h3 id="fast-fourier-transform_1">Fast Fourier Transform<a class="headerlink" href="#fast-fourier-transform_1" title="Permanent link">#</a></h3>
+<h3 id="fast-fourier-transform_1">Fast Fourier Transform</h3>
 <p>The <strong>fast Fourier transform</strong> is a method that allows computing the DFT in <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> time.
 The basic idea of the FFT is to apply divide and conquer.
 We divide the coefficient vector of the polynomial into two vectors, recursively compute the DFT for each of them, and combine the results to compute the DFT of the complete polynomial.</p>
@@ -198,7 +198,7 @@ y_{k+n/2} &= y_k^0 - w_n^k y_k^1, &\quad k = 0 \dots \frac{n}{2} - 1.
 </div>
 <p>(This pattern <span><span class="MathJax_Preview">a + b</span><script type="math/tex">a + b</script></span> and <span><span class="MathJax_Preview">a - b</span><script type="math/tex">a - b</script></span> is sometimes called a <strong>butterfly</strong>.)</p>
 <p>Thus we learned how to compute the DFT in <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> time.</p>
-<h3 id="inverse-fft">Inverse FFT<a class="headerlink" href="#inverse-fft" title="Permanent link">#</a></h3>
+<h3 id="inverse-fft">Inverse FFT</h3>
 <p>Let the vector <span><span class="MathJax_Preview">(y_0, y_1, \dots y_{n-1})</span><script type="math/tex">(y_0, y_1, \dots y_{n-1})</script></span> - the values of polynomial <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> of degree <span><span class="MathJax_Preview">n - 1</span><script type="math/tex">n - 1</script></span> in the points <span><span class="MathJax_Preview">x = w_n^k</span><script type="math/tex">x = w_n^k</script></span> - be given.
 We want to restore the coefficients <span><span class="MathJax_Preview">(a_0, a_1, \dots, a_{n-1})</span><script type="math/tex">(a_0, a_1, \dots, a_{n-1})</script></span> of the polynomial.
 This known problem is called <strong>interpolation</strong>, and there are general algorithms for solving it.
@@ -303,7 +303,7 @@ w_n^0 & w_n^{-(n-1)} & w_n^{-2(n-1)} & w_n^{-3(n-1)} & \cdots & w_n^{-(n-1)(n-1)
 </div>
 <p>we notice that these problems are almost the same, so the coefficients <span><span class="MathJax_Preview">a_k</span><script type="math/tex">a_k</script></span> can be found by the same divide and conquer algorithm, as well as the direct FFT, only instead of <span><span class="MathJax_Preview">w_n^k</span><script type="math/tex">w_n^k</script></span> we have to use <span><span class="MathJax_Preview">w_n^{-k}</span><script type="math/tex">w_n^{-k}</script></span>, and at the end we need to divide the resulting coefficients by <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.</p>
 <p>Thus the computation of the inverse DFT is almost the same as the calculation of the direct DFT, and it also can be performed in <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> time.</p>
-<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h3>
+<h3 id="implementation">Implementation</h3>
 <p>Here we present a simple recursive <strong>implementation of the FFT</strong> and the inverse FFT, both in one function, since the difference between the forward and the inverse FFT are so minimal.
 To store the complex numbers we use the complex type in the C++ STL.</p>
 <p>```cpp fft_recursive
@@ -379,7 +379,7 @@ The only thing we have to do afterwards, is to normalize the number:</p>
     }
 </code></pre>
 <p>Since the length of the product of two numbers never exceed the total length of both numbers, the size of the vector is enough to perform all carry operations.</p>
-<h3 id="improved-implementation-in-place-computation">Improved implementation: in-place computation<a class="headerlink" href="#improved-implementation-in-place-computation" title="Permanent link">#</a></h3>
+<h3 id="improved-implementation-in-place-computation">Improved implementation: in-place computation</h3>
 <p>To increase the efficiency we will switch from the recursive implementation to an iterative one.
 In the above recursive implementation we explicitly separated the vector <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> into two vectors - the element on the even positions got assigned to one temporary vector, and the elements on odd positions to another.
 However if we reorder the elements in a certain way, we don't need to create these temporary vectors (i.e. all the calculations can be done "in-place", right in the vector <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> itself).</p>
@@ -521,7 +521,7 @@ void fft(vector&lt;cd&gt; &amp; a, bool invert) {
 This is especially useful when the size <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is the same for all calls.
 But even when we only have three calls (which are necessary for multiplying two polynomials), the effect is noticeable.
 Also we can precompute all roots of unity and their powers.</p>
-<h2 id="number-theoretic-transform">Number theoretic transform<a class="headerlink" href="#number-theoretic-transform" title="Permanent link">#</a></h2>
+<h2 id="number-theoretic-transform">Number theoretic transform</h2>
 <p>Now we switch the objective a little bit.
 We still want to multiply two polynomials in <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> time, but this time we want to compute the coefficients modulo some prime number <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>.
 Of course for this task we can use the normal DFT and apply the modulo operator to the result.
@@ -607,7 +607,7 @@ if (invert) {
 <p>Here the function <code>inverse</code> computes the modular inverse (see <a href="/docs/#Algorithms/Algebra/Modular_Multiplicative_Inverse/">Modular Multiplicative Inverse</a>).
 The constants <code>mod</code>, <code>root</code>, <code>root_pw</code> determine the module and the root, and <code>root_1</code> is the inverse of <code>root</code> modulo <code>mod</code>.</p>
 <p>In practice this implementation is slower than the implementation using complex numbers (due to the huge number of modulo operations), but it has some advantages such as less memory usage and no rounding errors.</p>
-<h2 id="multiplication-with-arbitrary-modulus">Multiplication with arbitrary modulus<a class="headerlink" href="#multiplication-with-arbitrary-modulus" title="Permanent link">#</a></h2>
+<h2 id="multiplication-with-arbitrary-modulus">Multiplication with arbitrary modulus</h2>
 <p>Here we want to achieve the same goal as in previous section.
 Multiplying two polynomial <span><span class="MathJax_Preview">A(x)</span><script type="math/tex">A(x)</script></span> and <span><span class="MathJax_Preview">B(x)</span><script type="math/tex">B(x)</script></span>, and computing the coefficients modulo some number <span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>.
 The number theoretic transform only works for certain prime numbers.
@@ -632,9 +632,9 @@ with <span><span class="MathJax_Preview">C \approx \sqrt{M}</span><script type="
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">A(x) \cdot B(x) = A_1(x) \cdot B_1(x) + \left(A_1(x) \cdot B_2(x) + A_2(x) \cdot B_1(x)\right)\cdot C + \left(A_2(x) \cdot B_2(x)\right)\cdot C^2</span><script type="math/tex">A(x) \cdot B(x) = A_1(x) \cdot B_1(x) + \left(A_1(x) \cdot B_2(x) + A_2(x) \cdot B_1(x)\right)\cdot C + \left(A_2(x) \cdot B_2(x)\right)\cdot C^2</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">A(x) \cdot B(x) = A_1(x) \cdot B_1(x) + \left(A_1(x) \cdot B_2(x) + A_2(x) \cdot B_1(x)\right)\cdot C + \left(A_2(x) \cdot B_2(x)\right)\cdot C^2</span><script type="math/tex">A(x) \cdot B(x) = A_1(x) \cdot B_1(x) + \left(A_1(x) \cdot B_2(x) + A_2(x) \cdot B_1(x)\right)\cdot C + \left(A_2(x) \cdot B_2(x)\right)\cdot C^2</script></span></script></span></p>
 <p>The polynomials <span><span class="MathJax_Preview">A_1(x)</span><script type="math/tex">A_1(x)</script></span>, <span><span class="MathJax_Preview">A_2(x)</span><script type="math/tex">A_2(x)</script></span>, <span><span class="MathJax_Preview">B_1(x)</span><script type="math/tex">B_1(x)</script></span> and <span><span class="MathJax_Preview">B_2(x)</span><script type="math/tex">B_2(x)</script></span> contain only coefficients smaller than <span><span class="MathJax_Preview">\sqrt{M}</span><script type="math/tex">\sqrt{M}</script></span>, therefore the coefficients of all the appearing products are smaller than <span><span class="MathJax_Preview">M \cdot n</span><script type="math/tex">M \cdot n</script></span>, which is usually small enough to handle with typical floating point types.</p>
 <p>This approach therefore requires computing the products of polynomials with smaller coefficients (by using the normal FFT and inverse FFT), and then the original product can be restored using modular addition and multiplication in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> time.</p>
-<h2 id="applications">Applications<a class="headerlink" href="#applications" title="Permanent link">#</a></h2>
+<h2 id="applications">Applications</h2>
 <p>DFT can be used in a huge variety of other problems, which at the first glance have nothing to do with multiplying polynomials.</p>
-<h3 id="all-possible-sums">All possible sums<a class="headerlink" href="#all-possible-sums" title="Permanent link">#</a></h3>
+<h3 id="all-possible-sums">All possible sums</h3>
 <p>We are given two arrays <span><span class="MathJax_Preview">a[]</span><script type="math/tex">a[]</script></span> and <span><span class="MathJax_Preview">b[]</span><script type="math/tex">b[]</script></span>.
 We have to find all possible sums <span><span class="MathJax_Preview">a[i] + b[j]</span><script type="math/tex">a[i] + b[j]</script></span>, and for each sum count how often it appears.</p>
 <p>For example for <span><span class="MathJax_Preview">a = [1,~ 2,~ 3]</span><script type="math/tex">a = [1,~ 2,~ 3]</script></span> and <span><span class="MathJax_Preview">b = [2,~ 4]</span><script type="math/tex">b = [2,~ 4]</script></span> we get:
@@ -644,7 +644,7 @@ The numbers of the array will act as the exponents in the polynomial (<span><spa
 <p>Then, by multiplying these two polynomials in <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> time, we get a polynomial <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span>, where the exponents will tell us which sums can be obtained, and the coefficients tell us how often.
 To demonstrate this on the example:
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">(1 x^1 + 1 x^2 + 1 x^3) (1 x^2 + 1 x^4) = 1 x^3 + 1 x^4 + 2 x^5 + 1 x^6 + 1 x^7</span><script type="math/tex">(1 x^1 + 1 x^2 + 1 x^3) (1 x^2 + 1 x^4) = 1 x^3 + 1 x^4 + 2 x^5 + 1 x^6 + 1 x^7</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">(1 x^1 + 1 x^2 + 1 x^3) (1 x^2 + 1 x^4) = 1 x^3 + 1 x^4 + 2 x^5 + 1 x^6 + 1 x^7</span><script type="math/tex">(1 x^1 + 1 x^2 + 1 x^3) (1 x^2 + 1 x^4) = 1 x^3 + 1 x^4 + 2 x^5 + 1 x^6 + 1 x^7</script></span></script></span></p>
-<h3 id="all-possible-scalar-products">All possible scalar products<a class="headerlink" href="#all-possible-scalar-products" title="Permanent link">#</a></h3>
+<h3 id="all-possible-scalar-products">All possible scalar products</h3>
 <p>We are given two arrays <span><span class="MathJax_Preview">a[]</span><script type="math/tex">a[]</script></span> and <span><span class="MathJax_Preview">b[]</span><script type="math/tex">b[]</script></span> of length <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.
 We have to compute the products of <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> with every cyclic shift of <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>.</p>
 <p>We generate two new arrays of size <span><span class="MathJax_Preview">2n</span><script type="math/tex">2n</script></span>:
@@ -663,12 +663,12 @@ When we multiply these two arrays as polynomials, and look at the coefficients <
 <p>It is easy to see that this sum is just the scalar product of the vector <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> with the <span><span class="MathJax_Preview">(k - (n - 1))</span><script type="math/tex">(k - (n - 1))</script></span>-th cyclic left shift of <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>.
 Thus these coefficients are the answer to the problem, and we were still able to obtain it in <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> time.
 Note here that <span><span class="MathJax_Preview">c[2n-1]</span><script type="math/tex">c[2n-1]</script></span> also gives us the <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>-th cyclic shift but that is the same as the <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>-th cyclic shift so we don't need to consider that separately into our answer.</p>
-<h3 id="two-stripes">Two stripes<a class="headerlink" href="#two-stripes" title="Permanent link">#</a></h3>
+<h3 id="two-stripes">Two stripes</h3>
 <p>We are given two Boolean stripes (cyclic arrays of values <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span> and <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>) <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>.
 We want to find all ways to attach the first stripe to the second one, such that at no position we have a <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> of the first stripe next to a <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> of the second stripe.</p>
 <p>The problem doesn't actually differ much from the previous problem.
 Attaching two stripes just means that we perform a cyclic shift on the second array, and we can attach the two stripes, if scalar product of the two arrays is <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>.</p>
-<h3 id="string-matching">String matching<a class="headerlink" href="#string-matching" title="Permanent link">#</a></h3>
+<h3 id="string-matching">String matching</h3>
 <p>We are given two strings, a text <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> and a pattern <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span>, consisting of lowercase letters.
 We have to compute all the occurrences of the pattern in the text.</p>
 <p>We create a polynomial for each string (<span><span class="MathJax_Preview">T[i]</span><script type="math/tex">T[i]</script></span> and <span><span class="MathJax_Preview">P[I]</span><script type="math/tex">P[I]</script></span> are numbers between <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span> and <span><span class="MathJax_Preview">25</span><script type="math/tex">25</script></span> corresponding to the <span><span class="MathJax_Preview">26</span><script type="math/tex">26</script></span> letters of the alphabet):
@@ -697,13 +697,13 @@ c_{m-1+i} &= \sum_{j = 0}^{m-1}  \left(\cos(\alpha_{i+j}) + i \sin(\alpha_{i+j})
 \end{align}</script>
 </div>
 <p>If there isn't a match, then at least a character is different, which leads that one of the products <span><span class="MathJax_Preview">a_{i+1} \cdot b_{m-1-j}</span><script type="math/tex">a_{i+1} \cdot b_{m-1-j}</script></span> is not equal to <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>, which leads to the coefficient <span><span class="MathJax_Preview">c_{m-1+i} \ne m</span><script type="math/tex">c_{m-1+i} \ne m</script></span>.</p>
-<h3 id="string-matching-with-wildcards">String matching with wildcards<a class="headerlink" href="#string-matching-with-wildcards" title="Permanent link">#</a></h3>
+<h3 id="string-matching-with-wildcards">String matching with wildcards</h3>
 <p>This is an extension of the previous problem.
 This time we allow that the pattern contains the wildcard character <span><span class="MathJax_Preview">\*</span><script type="math/tex">\*</script></span>, which can match every possible letter.
 E.g. the pattern <span><span class="MathJax_Preview">a*c</span><script type="math/tex">a*c</script></span> appears in the text <span><span class="MathJax_Preview">abccaacc</span><script type="math/tex">abccaacc</script></span> at exactly three positions, at index <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>, index <span><span class="MathJax_Preview">4</span><script type="math/tex">4</script></span> and index <span><span class="MathJax_Preview">5</span><script type="math/tex">5</script></span>.</p>
 <p>We create the exact same polynomials, except that we set <span><span class="MathJax_Preview">b_i = 0</span><script type="math/tex">b_i = 0</script></span> if <span><span class="MathJax_Preview">P[m-i-1] = *</span><script type="math/tex">P[m-i-1] = *</script></span>.
 If <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> is the number of wildcards in <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span>, then we will have a match of <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> in <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> at index <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> if <span><span class="MathJax_Preview">c_{m-1+i} = m - x</span><script type="math/tex">c_{m-1+i} = m - x</script></span>.</p>
-<h2 id="practice-problems">Practice problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
+<h2 id="practice-problems">Practice problems</h2>
 <ul>
 <li><a href="http://www.spoj.com/problems/POLYMUL/">SPOJ - POLYMUL</a></li>
 <li><a href="http://www.spoj.com/problems/MAXMATCH/">SPOJ - MAXMATCH</a></li>

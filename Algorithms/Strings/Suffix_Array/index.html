@@ -69,8 +69,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="suffix-array">Suffix Array<a class="headerlink" href="#suffix-array" title="Permanent link">#</a></h1>
-<h2 id="definition">Definition<a class="headerlink" href="#definition" title="Permanent link">#</a></h2>
+    <h1 id="suffix-array">Suffix Array</h1>
+<h2 id="definition">Definition</h2>
 <p>Let <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> be a string of length <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>. The <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>-th suffix of <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> is the substring <span><span class="MathJax_Preview">s[i \ldots n - 1]</span><script type="math/tex">s[i \ldots n - 1]</script></span>.</p>
 <p>A <strong>suffix array</strong> will contain integers that represent the <strong>starting indexes</strong> of the all the suffixes of a given string, after the aforementioned suffixes are sorted.</p>
 <p>As an example look at the string <span><span class="MathJax_Preview">s = abaab</span><script type="math/tex">s = abaab</script></span>.
@@ -110,12 +110,12 @@ All suffixes are as follows</p>
 </div>
 <p>Therefore the suffix array for <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> will be <span><span class="MathJax_Preview">(2,~ 3,~ 0,~ 4,~ 1)</span><script type="math/tex">(2,~ 3,~ 0,~ 4,~ 1)</script></span>.</p>
 <p>As a data structure it is widely used in areas such as data compression, bioinformatics and, in general, in any area that deals with strings and string matching problems.</p>
-<h2 id="construction">Construction<a class="headerlink" href="#construction" title="Permanent link">#</a></h2>
-<h3 id="on2-log-non2-log-n-approach"><span><span class="MathJax_Preview">O(n^2 \log n)</span><script type="math/tex">O(n^2 \log n)</script></span> approach<a class="headerlink" href="#on2-log-non2-log-n-approach" title="Permanent link">#</a></h3>
+<h2 id="construction">Construction</h2>
+<h3 id="on2-log-non2-log-n-approach"><span><span class="MathJax_Preview">O(n^2 \log n)</span><script type="math/tex">O(n^2 \log n)</script></span> approach</h3>
 <p>This is the most naive approach.
 Get all the suffixes and sort them using quicksort or mergesort and simultaneously retain their original indices.
 Sorting uses <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> comparisons, and since comparing two strings will additionally take <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> time, we get the final complexity of <span><span class="MathJax_Preview">O(n^2 \log n)</span><script type="math/tex">O(n^2 \log n)</script></span>.</p>
-<h3 id="on-log-non-log-n-approach"><span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> approach<a class="headerlink" href="#on-log-non-log-n-approach" title="Permanent link">#</a></h3>
+<h3 id="on-log-non-log-n-approach"><span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span> approach</h3>
 <p>Strictly speaking the following algorithm will not sort the suffixes, but rather the cyclic shifts of a string.
 However we can very easily derive an algorithm for sorting suffixes from it:
 it is enough to append an arbitrary character to the end of the string which is smaller than any character from the string.
@@ -300,10 +300,10 @@ vector&lt;int&gt; suffix_array_construction(string s) {
     return sorted_shifts;
 }
 </code></pre>
-<h2 id="applications">Applications<a class="headerlink" href="#applications" title="Permanent link">#</a></h2>
-<h3 id="finding-the-smallest-cyclic-shift">Finding the smallest cyclic shift<a class="headerlink" href="#finding-the-smallest-cyclic-shift" title="Permanent link">#</a></h3>
+<h2 id="applications">Applications</h2>
+<h3 id="finding-the-smallest-cyclic-shift">Finding the smallest cyclic shift</h3>
 <p>The algorithm above sorts all cyclic shifts (without appending a character to the string), and therefore <span><span class="MathJax_Preview">p[0]</span><script type="math/tex">p[0]</script></span> gives the position of the smallest cyclic shift.</p>
-<h3 id="finding-a-substring-in-a-string">Finding a substring in a string<a class="headerlink" href="#finding-a-substring-in-a-string" title="Permanent link">#</a></h3>
+<h3 id="finding-a-substring-in-a-string">Finding a substring in a string</h3>
 <p>The task is to find a string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> inside some text <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> online - we know the text <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> beforehand, but not the string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.
 We can create the suffix array for the text <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> in <span><span class="MathJax_Preview">O(|t| \log |t|)</span><script type="math/tex">O(|t| \log |t|)</script></span> time.
 Now we can look for the substring <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> in the following way.
@@ -312,7 +312,7 @@ Since we sorted all the suffixes we can perform a binary search for <span><span 
 Comparing the current suffix and the substring <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> within the binary search can be done in <span><span class="MathJax_Preview">O(|s|)</span><script type="math/tex">O(|s|)</script></span> time, therefore the complexity for finding the substring is <span><span class="MathJax_Preview">O(|s| \log |t|)</span><script type="math/tex">O(|s| \log |t|)</script></span>.
 Also notice that if the substring occurs multiple times in <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>, then all occurrences will be next to each other in <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>.
 Therefore the number of occurrences can be found with a second binary search, and all occurrences can be printed easily.</p>
-<h3 id="comparing-two-substrings-of-a-string">Comparing two substrings of a string<a class="headerlink" href="#comparing-two-substrings-of-a-string" title="Permanent link">#</a></h3>
+<h3 id="comparing-two-substrings-of-a-string">Comparing two substrings of a string</h3>
 <p>We want to be able to compare two substrings of the same length of a given string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> time, i.e. checking if the first substring is smaller than the second one.</p>
 <p>For this we construct the suffix array in <span><span class="MathJax_Preview">O(|s| \log |s|)</span><script type="math/tex">O(|s| \log |s|)</script></span> time and store all the intermediate results of the equivalence classes <span><span class="MathJax_Preview">c[]</span><script type="math/tex">c[]</script></span>.</p>
 <p>Using this information we can compare any two substring whose length is equal to a power of two in O(1):
@@ -354,7 +354,7 @@ See for instance the article about the <a href="/docs/#Algorithms/Sata_Structure
     return a == b ? 0 : a &lt; b ? -1 : 1;
 }
 </code></pre>
-<h3 id="longest-common-prefix-of-two-substrings-with-additional-memory">Longest common prefix of two substrings with additional memory<a class="headerlink" href="#longest-common-prefix-of-two-substrings-with-additional-memory" title="Permanent link">#</a></h3>
+<h3 id="longest-common-prefix-of-two-substrings-with-additional-memory">Longest common prefix of two substrings with additional memory</h3>
 <p>For a given string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> we want to compute the longest common prefix (<strong>LCP</strong>)  of two arbitrary suffixes with position <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>.</p>
 <p>The method described here uses <span><span class="MathJax_Preview">O(|s| \log |s|)</span><script type="math/tex">O(|s| \log |s|)</script></span> additional memory.
 A completely different approach that will only use a linear amount of memory is described in the next section.</p>
@@ -375,7 +375,7 @@ To do this, we compare the strings by power of twos (from highest to lowest powe
 }
 </code></pre>
 <p>Here <code>log_n</code> denotes a constant that is equal to the logarithm of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> in base <span><span class="MathJax_Preview">2</span><script type="math/tex">2</script></span> rounded down.</p>
-<h3 id="longest-common-prefix-of-two-substrings-without-additional-memory">Longest common prefix of two substrings without additional memory<a class="headerlink" href="#longest-common-prefix-of-two-substrings-without-additional-memory" title="Permanent link">#</a></h3>
+<h3 id="longest-common-prefix-of-two-substrings-without-additional-memory">Longest common prefix of two substrings without additional memory</h3>
 <p>We have the same task as in the previous section.
 We have compute the longest common prefix (<strong>LCP</strong>) for two suffixes of a string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.</p>
 <p>Unlike the previous method this one will only use <span><span class="MathJax_Preview">O(|s|)</span><script type="math/tex">O(|s|)</script></span> memory.
@@ -427,7 +427,7 @@ return lcp;
 ```</p>
 <p>It is easy to see, that we decrease <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> at most <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> times (each iteration at most once, except for <span><span class="MathJax_Preview">\text{rank}[i] == n-1</span><script type="math/tex">\text{rank}[i] == n-1</script></span>, where we directly reset it to <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>), and the LCP between two strings is at most <span><span class="MathJax_Preview">n-1</span><script type="math/tex">n-1</script></span>, we will also increase <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> only <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> times.
 Therefore the algorithm runs in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> time.</p>
-<h3 id="number-of-different-substrings">Number of different substrings<a class="headerlink" href="#number-of-different-substrings" title="Permanent link">#</a></h3>
+<h3 id="number-of-different-substrings">Number of different substrings</h3>
 <p>We preprocess the string <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> by computing the suffix array and the LCP array.
 Using this information we can compute the number of different substrings in the string.</p>
 <p>To do this, we will think about which <strong>new</strong> substrings begin at position <span><span class="MathJax_Preview">p[0]</span><script type="math/tex">p[0]</script></span>, then at <span><span class="MathJax_Preview">p[1]</span><script type="math/tex">p[1]</script></span>, etc.
@@ -438,7 +438,7 @@ Thus, all its prefixes except the first <span><span class="MathJax_Preview">\tex
 Since the length of the current suffix is <span><span class="MathJax_Preview">n - p[i]</span><script type="math/tex">n - p[i]</script></span>, <span><span class="MathJax_Preview">n - p[i] - \text{lcp}[i-1]</span><script type="math/tex">n - p[i] - \text{lcp}[i-1]</script></span> new suffixes start at <span><span class="MathJax_Preview">p[i]</span><script type="math/tex">p[i]</script></span>.
 Summing over all the suffixes, we get the final answer:
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\sum_{i=0}^{n-1} (n - p[i]) - \sum_{i=0}^{n-2} \text{lcp}[i] = \frac{n^2 + n}{2} - \sum_{i=0}^{n-2} \text{lcp}[i]</span><script type="math/tex">\sum_{i=0}^{n-1} (n - p[i]) - \sum_{i=0}^{n-2} \text{lcp}[i] = \frac{n^2 + n}{2} - \sum_{i=0}^{n-2} \text{lcp}[i]</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\sum_{i=0}^{n-1} (n - p[i]) - \sum_{i=0}^{n-2} \text{lcp}[i] = \frac{n^2 + n}{2} - \sum_{i=0}^{n-2} \text{lcp}[i]</span><script type="math/tex">\sum_{i=0}^{n-1} (n - p[i]) - \sum_{i=0}^{n-2} \text{lcp}[i] = \frac{n^2 + n}{2} - \sum_{i=0}^{n-2} \text{lcp}[i]</script></span></script></span></p>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
+<h2 id="practice-problems">Practice Problems</h2>
 <ul>
 <li><a href="http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=24&amp;page=show_problem&amp;problem=701">Uva 760 - DNA Sequencing</a></li>
 <li><a href="http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=24&amp;page=show_problem&amp;problem=3664">Uva 1223 - Editor</a></li>
