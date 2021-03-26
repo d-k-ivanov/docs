@@ -66,13 +66,40 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h2 id="default-credentials">Default credentials</h2>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Storage_and_filesystems/Extend_Ext4_Partition/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Storage_and_filesystems/Extend_Ext4_Partition/" class="btn btn-xs btn-link">
+        Extend Ext4 Partition
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Power_Management/Laptop_lid/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Power_Management/Laptop_lid/" class="btn btn-xs btn-link">
+        Laptop lid
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="default-credentials">Default credentials<a class="headerlink" href="#default-credentials" title="Permanent link">#</a></h2>
 <ul>
 <li>username: <strong>pi</strong></li>
 <li>password: <strong>raspberry</strong></li>
 </ul>
-<h2 id="stay-awake">Stay awake</h2>
+<h2 id="stay-awake">Stay awake<a class="headerlink" href="#stay-awake" title="Permanent link">#</a></h2>
 <pre><code class="language-bash">sudo vim.tiny /etc/lightdm/lightdm.conf
 
 # Uncomment xserver-command option in [Seat:*] and add params

@@ -76,8 +76,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h3 id="check-current-partition-table">Check current partition table</h3>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Files_in_Unix/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Files_in_Unix/" class="btn btn-xs btn-link">
+        Files in Unix
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Raspberry_PI/Raspbian/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Raspberry_PI/Raspbian/" class="btn btn-xs btn-link">
+        Raspbian
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="check-current-partition-table">Check current partition table<a class="headerlink" href="#check-current-partition-table" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">fdisk -l /dev/vda
 
 Disk /dev/vda: 5368 MB, 5368709120 bytes, 10485760 sectors
@@ -96,7 +123,7 @@ sr0     11:0    1  603M  0 rom
 vda    253:0    0    5G  0 disk
 └─vda1 253:1    0    5G  0 part /
 </code></pre>
-<h3 id="check-current-partition-size">Check current partition size</h3>
+<h3 id="check-current-partition-size">Check current partition size<a class="headerlink" href="#check-current-partition-size" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">df -h
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/vda1       4.8G  2.5G  2.2G  54% /
@@ -106,13 +133,13 @@ tmpfs           497M  6.5M  490M   2% /run
 tmpfs           497M     0  497M   0% /sys/fs/cgroup
 tmpfs           100M     0  100M   0% /run/user/0
 </code></pre>
-<h3 id="resize-hard-drive">Resize hard drive</h3>
+<h3 id="resize-hard-drive">Resize hard drive<a class="headerlink" href="#resize-hard-drive" title="Permanent link">#</a></h3>
 <p>Rescan devices under root (sudo doesn't work). In some cases reboot is needed</p>
 <pre><code class="language-bash">echo &quot;- - -&quot; &gt; /sys/class/scsi_host/host0/scan
 echo &quot;- - -&quot; &gt; /sys/class/scsi_host/host1/scan
 echo &quot;- - -&quot; &gt; /sys/class/scsi_host/hostX/scan
 </code></pre>
-<h3 id="check-extended-partition-table">Check extended partition table</h3>
+<h3 id="check-extended-partition-table">Check extended partition table<a class="headerlink" href="#check-extended-partition-table" title="Permanent link">#</a></h3>
 <p>Check your partition after resizing. Write down Start and End segment of your target partition:</p>
 <pre><code class="language-bash">fdisk -l /dev/vda
 
@@ -132,7 +159,7 @@ sr0     11:0    1  603M  0 rom
 vda    253:0    0    6G  0 disk
 └─vda1 253:1    0    5G  0 part /
 </code></pre>
-<h3 id="recreate-partition-with-new-end">Recreate partition with new End</h3>
+<h3 id="recreate-partition-with-new-end">Recreate partition with new End<a class="headerlink" href="#recreate-partition-with-new-end" title="Permanent link">#</a></h3>
 <ul>
 <li>Run <strong>fdisk /dev/vda</strong></li>
 <li>Delete old partition: Command (m for help): <strong>d</strong></li>
@@ -195,7 +222,7 @@ Syncing disks.
 <ul>
 <li><strong>!!!Reboot the system to inform kernel about changes in partition table!!!</strong></li>
 </ul>
-<h3 id="resize-file-system">Resize file system</h3>
+<h3 id="resize-file-system">Resize file system<a class="headerlink" href="#resize-file-system" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">resize2fs /dev/vda1
 
 resize2fs 1.42.9 (28-Dec-2013)
@@ -203,7 +230,7 @@ Filesystem at /dev/vda1 is mounted on /; on-line resizing required
 old_desc_blocks = 1, new_desc_blocks = 1
 The filesystem on /dev/vda1 is now 1572608 blocks long.
 </code></pre>
-<h3 id="check-current-partition">Check current partition</h3>
+<h3 id="check-current-partition">Check current partition<a class="headerlink" href="#check-current-partition" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">lsblk
 NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sr0     11:0    1  603M  0 rom

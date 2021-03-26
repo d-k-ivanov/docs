@@ -76,15 +76,42 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../ScalaStyleGuide/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../ScalaStyleGuide/" class="btn btn-xs btn-link">
+        Scala Style Guide
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../LearningResources/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../LearningResources/" class="btn btn-xs btn-link">
+        Learning Resources
+      </a>
+    </div>
+    
+  </div>
+
+    
 
     <p>We use sbt for building, testing, running and submitting assignments. This tutorial explains all sbt commands that you will use during our class. The <a href="view?page=ToolsSetup">Tools Setup</a> page explains how to install sbt.</p>
-<h2 id="starting-up-sbt">Starting up sbt</h2>
+<h2 id="starting-up-sbt">Starting up sbt<a class="headerlink" href="#starting-up-sbt" title="Permanent link">#</a></h2>
 <p>In order to start sbt, open a terminal ("Command Prompt" in Windows) and navigate to the directory of the assignment you are working on. Typing <code>sbt</code> will open the sbt command prompt.</p>
 <pre><code>shell$ cd /path/to/progfun-project-directory                        # This is the shell of the operating system
 shell$ sbt
 &gt; _                                                                 # This is the sbt shell
 </code></pre>
-<h2 id="running-the-scala-interpreter">Running the Scala Interpreter</h2>
+<h2 id="running-the-scala-interpreter">Running the Scala Interpreter<a class="headerlink" href="#running-the-scala-interpreter" title="Permanent link">#</a></h2>
 <p>You can start the Scala interpreter inside sbt using the <code>console</code> task. The interpreter (also called REPL, for "read-eval-print loop") is useful for trying out snippets of Scala code. Note that the interpreter can only be started if there are no compilation errors in your code.</p>
 <p>In order to quit the interpreter and get back to sbt, type <code>ctrl-d</code>.</p>
 <pre><code>&gt; console
@@ -106,7 +133,7 @@ scala&gt;                                                              # Type [c
 [success] Total time: 20 s, completed Mar 21, 2013 11:02:31 AM
 &gt;                                                                   # We're back to the sbt shell
 </code></pre>
-<h2 id="compiling-your-code">Compiling your Code</h2>
+<h2 id="compiling-your-code">Compiling your Code<a class="headerlink" href="#compiling-your-code" title="Permanent link">#</a></h2>
 <p>The <code>compile</code> task will compile the source code of the assignment which is located in the directory <code>src/main/scala</code>.</p>
 <pre><code>&gt; compile
 [info] Compiling 4 Scala sources to /Users/aleksandar/example/target/scala-2.10.1/classes...
@@ -114,7 +141,7 @@ scala&gt;                                                              # Type [c
 &gt;
 </code></pre>
 <p>If the source code contains errors, the error messages from the compiler will be displayed.</p>
-<h2 id="testing-your-code">Testing your Code</h2>
+<h2 id="testing-your-code">Testing your Code<a class="headerlink" href="#testing-your-code" title="Permanent link">#</a></h2>
 <p>The directory <code>src/test/scala</code> contains unit tests for the project. In order to run these tests in sbt, you can use the <code>test</code> command.</p>
 <pre><code>&gt; test
 [info] ListsSuite:
@@ -129,7 +156,7 @@ scala&gt;                                                              # Type [c
 [error] Total time: 5 s, completed Aug 10, 2012 10:19:53 PM
 &gt;
 </code></pre>
-<h2 id="running-your-code">Running your Code</h2>
+<h2 id="running-your-code">Running your Code<a class="headerlink" href="#running-your-code" title="Permanent link">#</a></h2>
 <p>If your project has an object with a <code>main</code> method (or an object extending the trait <code>App</code>), then you can run the code in sbt easily by typing <code>run</code>. In case sbt finds multiple main methods, it will ask you which one you'd like to execute.</p>
 <pre><code>&gt; run
 Multiple main classes detected, select one to run:
@@ -144,7 +171,7 @@ main method!
 [success] Total time: 33 s, completed Aug 10, 2012 10:25:06 PM
 &gt;
 </code></pre>
-<h2 id="running-the-style-checker">Running the Style Checker</h2>
+<h2 id="running-the-style-checker">Running the Style Checker<a class="headerlink" href="#running-the-style-checker" title="Permanent link">#</a></h2>
 <p>As part of the grading process, we run a style checker on the submitted source code to find common coding style issues. To make sure that your code conforms to all our style rules, you can run the style checker yourself before submitting. The sbt task <code>styleCheck</code> does exactly that.</p>
 <pre><code>&gt; styleCheck
 [info] Checking file /Users/luc/Documents/epfl/teaching/progfun/assignments/src/main/scala/example/Lists.scala... OK!
@@ -155,7 +182,7 @@ main method!
 [success] Total time: 1 s, completed Aug 10, 2012 11:34:02 PM
 &gt;
 </code></pre>
-<h2 id="submitting-your-solution-to-coursera">Submitting your Solution to Coursera</h2>
+<h2 id="submitting-your-solution-to-coursera">Submitting your Solution to Coursera<a class="headerlink" href="#submitting-your-solution-to-coursera" title="Permanent link">#</a></h2>
 <p>The sbt task <code>submit</code> allows you to submit your solution for the assignment. It will pack your source code into a <code>.jar</code> file and upload it to the coursera servers. Note that the code can only be submitted if there are no compilation errors.</p>
 <p>The <code>submit</code> tasks takes two arguments: your e-mail address and the submission password. <strong>NOTE</strong>: the submission password is <strong>not your login password</strong>. Instead, it's a special password generated by coursera. It is available on the <a href="../assignment/index">Assignments</a> page.</p>
 <pre><code>&gt; submit e-mail@university.org suBmISsioNPasSwoRd

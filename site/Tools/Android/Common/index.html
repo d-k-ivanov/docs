@@ -68,15 +68,42 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h3 id="boot-device-into-bootloader-mode">Boot device into bootloader mode</h3>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../udev_rules/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../udev_rules/" class="btn btn-xs btn-link">
+        UDEV Rules
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Apk/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Apk/" class="btn btn-xs btn-link">
+        APK
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="boot-device-into-bootloader-mode">Boot device into bootloader mode<a class="headerlink" href="#boot-device-into-bootloader-mode" title="Permanent link">#</a></h3>
 <pre><code>adb reboot bootloader
 </code></pre>
-<h3 id="flash-new-bootloader">Flash new bootloader</h3>
+<h3 id="flash-new-bootloader">Flash new bootloader<a class="headerlink" href="#flash-new-bootloader" title="Permanent link">#</a></h3>
 <pre><code>fastboot flash bootloader bootloader-flounder-3.44.1.0123.img
 fastboot reboot-bootloader
 </code></pre>
-<h3 id="flash-full-system">Flash full system</h3>
+<h3 id="flash-full-system">Flash full system<a class="headerlink" href="#flash-full-system" title="Permanent link">#</a></h3>
 <pre><code>fastboot flash boot boot.img
 fastboot flash cache cache.img
 fastboot flash recovery recovery.img

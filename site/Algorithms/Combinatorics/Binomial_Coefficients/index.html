@@ -70,8 +70,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="binomial-coefficients">Binomial Coefficients</h1>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Bishops_on_Chessboard/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Bishops_on_Chessboard/" class="btn btn-xs btn-link">
+        Bishops on Chessboard
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Balanced_Bracket_Sequences/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Balanced_Bracket_Sequences/" class="btn btn-xs btn-link">
+        Balanced Bracket Sequences
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="binomial-coefficients">Binomial Coefficients<a class="headerlink" href="#binomial-coefficients" title="Permanent link">#</a></h1>
 <p>Binomial coefficients <span><span class="MathJax_Preview">\binom n k</span><script type="math/tex">\binom n k</script></span> are the number of ways to select a set of <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> elements from <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> different elements without taking into account the order of arrangement of these elements (i.e., the number of unordered sets).</p>
 <p>Binomial coefficients are also the coefficients in the expansion of <span><span class="MathJax_Preview">(a + b) ^ n</span><script type="math/tex">(a + b) ^ n</script></span> (so-called binomial theorem):</p>
 <div>
@@ -79,7 +106,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <script type="math/tex; mode=display"> (a+b)^n = \binom n 0 a^n + \binom n 1 a^{n-1} b + \binom n 2 a^{n-2} b^2 + \cdots + \binom n k a^{n-k} b^k + \cdots + \binom n n b^n </script>
 </div>
 <p>It is believed that this formula, as well as the triangle which allows efficient calculation of the coefficients, was discovered by Blaise Pascal in the 17th century. Nevertheless, it was known to the Chinese mathematician Yang Hui, who lived in the 13th century. Perhaps it was discovered by a Persian scholar Omar Khayyam. Moreover, Indian mathematician Pingala, who lived  earlier in the 3rd. BC, got similar results. The merit of the Newton is that he generalized this formula for exponents that are not natural.</p>
-<h2 id="calculation">Calculation</h2>
+<h2 id="calculation">Calculation<a class="headerlink" href="#calculation" title="Permanent link">#</a></h2>
 <p><strong>Analytic formula</strong> for the calculation:</p>
 <div>
 <div class="MathJax_Preview"> \binom n k = \frac {n!} {k!(n-k)!} </div>
@@ -93,7 +120,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </div>
 <p>It is easy to deduce this using the analytic formula.</p>
 <p>Note that for <span><span class="MathJax_Preview">n \lt k</span><script type="math/tex">n \lt k</script></span> the value of <span><span class="MathJax_Preview">\binom n k</span><script type="math/tex">\binom n k</script></span> is assumed to be zero.</p>
-<h2 id="properties">Properties</h2>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">#</a></h2>
 <p>Binomial coefficients have many different properties. Here are the simplest of them:</p>
 <ul>
 <li>Symmetry rule:</li>
@@ -151,8 +178,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="MathJax_Preview"> \binom n 0 + \binom {n-1} 1 + \cdots + \binom {n-k} k + \cdots + \binom 0 n = F_{n+1} </div>
 <script type="math/tex; mode=display"> \binom n 0 + \binom {n-1} 1 + \cdots + \binom {n-k} k + \cdots + \binom 0 n = F_{n+1} </script>
 </div>
-<h2 id="calculation_1">Calculation</h2>
-<h3 id="straightforward-calculation-using-analytical-formula">Straightforward calculation using analytical formula</h3>
+<h2 id="calculation_1">Calculation<a class="headerlink" href="#calculation_1" title="Permanent link">#</a></h2>
+<h3 id="straightforward-calculation-using-analytical-formula">Straightforward calculation using analytical formula<a class="headerlink" href="#straightforward-calculation-using-analytical-formula" title="Permanent link">#</a></h3>
 <p>The first, straightforward formula is very easy to code, but this method is likely to overflow even for relatively small values of <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> and <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> (even if the answer completely fit into some datatype, the calculation of the intermediate factorials can lead to overflow). Therefore, this method often can only be used with <a href="/docs/#Algorithms/Algebra/Arbitrary-Precision_Arithmetic/">long arithmetic</a>:</p>
 <pre><code class="language-cpp">int C(int n, int k) {
     int res = 1;
@@ -162,7 +189,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
         res /= i;
 }
 </code></pre>
-<h3 id="improved-implementation">Improved implementation</h3>
+<h3 id="improved-implementation">Improved implementation<a class="headerlink" href="#improved-implementation" title="Permanent link">#</a></h3>
 <p>Note that in the above implementation numerator and denominator have the same number of factors (<span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>), each of which is greater than or equal to 1. Therefore, we can replace our fraction with a product <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> fractions, each of which is real-valued. However, on each step after multiplying current answer by each of the next fractions the answer will still be integer (this follows from the property of factoring in). C++ implementation:</p>
 <pre><code class="language-cpp">int C(int n, int k) {
     double res = 1;
@@ -172,7 +199,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 }
 </code></pre>
 <p>Here we carefully cast the floating point number to an integer, taking into account that due to the accumulated errors, it may be slightly less than the true value (for example, <span><span class="MathJax_Preview">2.99999</span><script type="math/tex">2.99999</script></span> instead of <span><span class="MathJax_Preview">3</span><script type="math/tex">3</script></span>).</p>
-<h3 id="pascals-triangle">Pascal's Triangle</h3>
+<h3 id="pascals-triangle">Pascal's Triangle<a class="headerlink" href="#pascals-triangle" title="Permanent link">#</a></h3>
 <p>By using the recurrence relation we can construct a table of binomial coefficients (Pascal's triangle) and take the result from it. The advantage of this method is that intermediate results never exceed the answer and calculating each new table element requires only one addition. The flaw is slow execution for large <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> and <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> if you just need a single value and not the whole table (because in order to calculate <span><span class="MathJax_Preview">\binom n k</span><script type="math/tex">\binom n k</script></span> you will need to build a table of all <span><span class="MathJax_Preview">\binom i j, 1 \le i \le n, 1 \le j \le n</span><script type="math/tex">\binom i j, 1 \le i \le n, 1 \le j \le n</script></span>, or at least to <span><span class="MathJax_Preview">1 \le j \le \min (i, 2k)</span><script type="math/tex">1 \le j \le \min (i, 2k)</script></span>). The time complexity can be considered to be <span><span class="MathJax_Preview">\mathcal{O}(n^2)</span><script type="math/tex">\mathcal{O}(n^2)</script></span>.
 C++ implementation:</p>
 <pre><code class="language-cpp">const int maxn = ...;
@@ -185,13 +212,13 @@ for (int n = 1; n &lt;= maxn; ++n) {
 }
 </code></pre>
 <p>If the entire table of values is not necessary, storing only two last rows of it is sufficient (current <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>-th row and the previous <span><span class="MathJax_Preview">n-1</span><script type="math/tex">n-1</script></span>-th).</p>
-<h3 id="calculation-in-o1o1">Calculation in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></h3>
+<h3 id="calculation-in-o1o1">Calculation in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span><a class="headerlink" href="#calculation-in-o1o1" title="Permanent link">#</a></h3>
 <p>Finally, in some situations it is beneficial to precompute all the factorials in order to produce any necessary binomial coefficient with only two divisions later. This can be advantageous when using <a href="/docs/#Algorithms/Algebra/Arbitrary-Precision_Arithmetic/">long arithmetic</a>, when the memory does not allow precomputation of the whole Pascal's triangle.</p>
-<h2 id="computing-binomial-coefficients-modulo-mm">Computing binomial coefficients modulo <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span></h2>
+<h2 id="computing-binomial-coefficients-modulo-mm">Computing binomial coefficients modulo <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span><a class="headerlink" href="#computing-binomial-coefficients-modulo-mm" title="Permanent link">#</a></h2>
 <p>Quite often you come across the problem of computing binomial coefficients modulo some <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>.</p>
-<h3 id="binomial-coefficient-for-small-nn">Binomial coefficient for small <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span></h3>
+<h3 id="binomial-coefficient-for-small-nn">Binomial coefficient for small <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span><a class="headerlink" href="#binomial-coefficient-for-small-nn" title="Permanent link">#</a></h3>
 <p>The previously discussed approach of Pascal's triangle can be used to calculate all values of <span><span class="MathJax_Preview">\binom{n}{k} \bmod m</span><script type="math/tex">\binom{n}{k} \bmod m</script></span> for reasonably small <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, since it requires time complexity <span><span class="MathJax_Preview">\mathcal{O}(n^2)</span><script type="math/tex">\mathcal{O}(n^2)</script></span>. This approach can handle any modulo, since only addition operations are used.</p>
-<h3 id="binomial-coefficient-modulo-large-prime">Binomial coefficient modulo large prime</h3>
+<h3 id="binomial-coefficient-modulo-large-prime">Binomial coefficient modulo large prime<a class="headerlink" href="#binomial-coefficient-modulo-large-prime" title="Permanent link">#</a></h3>
 <p>The formula for the binomial coefficients is
 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">\binom n k = \frac {n!} {k!(n-k)!},</span><script type="math/tex">\binom n k = \frac {n!} {k!(n-k)!},</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">\binom n k = \frac {n!} {k!(n-k)!},</span><script type="math/tex">\binom n k = \frac {n!} {k!(n-k)!},</script></span></script></span>
 so if we want to compute it modulo some prime <span><span class="MathJax_Preview">m &gt; n</span><script type="math/tex">m > n</script></span> we get
@@ -208,7 +235,7 @@ for (int i = 1; i &lt;= MAXN; i++) {
 }
 </code></pre>
 <p>We even can compute the binomial coefficient in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> time if we precompute the inverses of all factorials in <span><span class="MathJax_Preview">O(\text{MAXN} \log m)</span><script type="math/tex">O(\text{MAXN} \log m)</script></span> using the regular method for computing the inverse, or even in <span><span class="MathJax_Preview">O(\text{MAXN})</span><script type="math/tex">O(\text{MAXN})</script></span> time using the congruence <span><span class="MathJax_Preview">(x!)^{-1} \equiv ((x-1)!)^{-1} \cdot x^{-1}</span><script type="math/tex">(x!)^{-1} \equiv ((x-1)!)^{-1} \cdot x^{-1}</script></span> and the method for <a href="/docs/#Algorithms/Algebra/Modular_Multiplicative_Inverse/">computing all inverses</a> in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>.</p>
-<h3 id="binomial-coefficient-modulo-prime-power-mod-prime-pow">Binomial coefficient modulo prime power  {#mod-prime-pow}</h3>
+<h3 id="binomial-coefficient-modulo-prime-power-mod-prime-pow">Binomial coefficient modulo prime power  {#mod-prime-pow}<a class="headerlink" href="#binomial-coefficient-modulo-prime-power-mod-prime-pow" title="Permanent link">#</a></h3>
 <p>Here we want to compute the binomial coefficient modulo some prime power, i.e. <span><span class="MathJax_Preview">m = p^b</span><script type="math/tex">m = p^b</script></span> for some prime <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>.
 If <span><span class="MathJax_Preview">p &gt; \max(k, n-k)</span><script type="math/tex">p > \max(k, n-k)</script></span>, then we can use the same method as described in the previous section.
 But if <span><span class="MathJax_Preview">p \le \max(k, n-k)</span><script type="math/tex">p \le \max(k, n-k)</script></span>, then at least one of <span><span class="MathJax_Preview">k!</span><script type="math/tex">k!</script></span> and <span><span class="MathJax_Preview">(n-k)!</span><script type="math/tex">(n-k)!</script></span> are not coprime with <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>, and therefore we cannot compute the inverses - they don't exist.
@@ -224,13 +251,13 @@ Therefore <span><span class="MathJax_Preview">g(x)</span><script type="math/tex"
 <p>After precomputing all values for <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> and <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>, which can be done efficiently using dynamic programming in <span><span class="MathJax_Preview">\mathcal{O}(n)</span><script type="math/tex">\mathcal{O}(n)</script></span>, we can compute the binomial coefficient in <span><span class="MathJax_Preview">O(\log m)</span><script type="math/tex">O(\log m)</script></span> time.
 Or precompute all inverses and all powers of <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>, and then compute the binomial coefficient in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>.</p>
 <p>Notice, if <span><span class="MathJax_Preview">c(n) - c(k) - c(n-k) \ge b</span><script type="math/tex">c(n) - c(k) - c(n-k) \ge b</script></span>, than <span><span class="MathJax_Preview">p^b ~|~ p^{c(n) - c(k) - c(n-k)}</span><script type="math/tex">p^b ~|~ p^{c(n) - c(k) - c(n-k)}</script></span>, and the binomial coefficient is <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span>.</p>
-<h3 id="binomial-coefficient-modulo-an-arbitrary-number">Binomial coefficient modulo an arbitrary number</h3>
+<h3 id="binomial-coefficient-modulo-an-arbitrary-number">Binomial coefficient modulo an arbitrary number<a class="headerlink" href="#binomial-coefficient-modulo-an-arbitrary-number" title="Permanent link">#</a></h3>
 <p>Now we compute the binomial coefficient modulo some arbitrary modulus <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>.</p>
 <p>Let the prime factorization of <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> be <span><span class="MathJax_Preview">m = p_1^{e_1} p_2^{e_2} \cdots p_h^{e_h}</span><script type="math/tex">m = p_1^{e_1} p_2^{e_2} \cdots p_h^{e_h}</script></span>.
 We can compute the binomial coefficient modulo <span><span class="MathJax_Preview">p_i^{e_i}</span><script type="math/tex">p_i^{e_i}</script></span> for every <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>.
 This gives us <span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span> different congruences.
 Since all moduli <span><span class="MathJax_Preview">p_i^{e_i}</span><script type="math/tex">p_i^{e_i}</script></span> are coprime, we can apply the <a href="/docs/#Algorithms/Algebra/Chinese_Remainder_Theorem/">Chinese Remainder Theorem</a> to compute the binomial coefficient modulo the product of the moduli, which is the desired binomial coefficient modulo <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>.</p>
-<h3 id="binomial-coefficient-for-large-nn-and-small-modulo">Binomial coefficient for large <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> and small modulo</h3>
+<h3 id="binomial-coefficient-for-large-nn-and-small-modulo">Binomial coefficient for large <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> and small modulo<a class="headerlink" href="#binomial-coefficient-for-large-nn-and-small-modulo" title="Permanent link">#</a></h3>
 <p>When <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is too large, the <span><span class="MathJax_Preview">\mathcal{O}(n)</span><script type="math/tex">\mathcal{O}(n)</script></span> algorithms discussed above become impractical. However, if the modulo <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is small there are still ways to calculate <span><span class="MathJax_Preview">\binom{n}{k} \bmod m</span><script type="math/tex">\binom{n}{k} \bmod m</script></span>.</p>
 <p>When the modulo <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is prime, there are 2 options:</p>
 <ul>
@@ -239,7 +266,7 @@ Since all moduli <span><span class="MathJax_Preview">p_i^{e_i}</span><script typ
 </ul>
 <p>When <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is not prime but square-free, the prime factors of <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> can be obtained and the coefficient modulo each prime factor can be calculated using either of the above methods, and the overall answer can be obtained by the Chinese Remainder Theorem.</p>
 <p>When <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is not square-free, a <a href="https://web.archive.org/web/20170202003812/http://www.dms.umontreal.ca/~andrew/PDF/BinCoeff.pdf">generalization of Lucas's theorem for prime powers</a> can be applied instead of Lucas's theorem.</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://www.codechef.com/LTIME24/problems/NWAYS/">Codechef - Number of ways</a></li>
 <li><a href="http://codeforces.com/problemset/problem/407/C">Codeforces - Curious Array</a></li>
@@ -260,7 +287,7 @@ Since all moduli <span><span class="MathJax_Preview">p_i^{e_i}</span><script typ
 <li><a href="https://www.spoj.com/problems/DCEPC13D/">SPOJ - The Ultimate Riddle</a></li>
 <li><a href="https://www.codechef.com/MAY17/problems/SANDWICH/">CodeChef - Long Sandwich</a></li>
 </ul>
-<h2 id="references">References</h2>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://fishi.devtail.io/weblog/2015/06/25/computing-large-binomial-coefficients-modulo-prime-non-prime/">Blog fishi.devtail.io</a></li>
 <li><a href="https://math.stackexchange.com/questions/95491/n-choose-k-bmod-m-using-chinese-remainder-theorem">Question on Mathematics StackExchange</a></li>

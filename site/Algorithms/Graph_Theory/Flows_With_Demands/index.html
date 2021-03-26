@@ -66,8 +66,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="flows-with-demands">Flows With Demands</h1>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Floyd-Warshall_Algorithm/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Floyd-Warshall_Algorithm/" class="btn btn-xs btn-link">
+        Floyd-Warshall Algorithm
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Eulerian_Path/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Eulerian_Path/" class="btn btn-xs btn-link">
+        Eulerian Path
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="flows-with-demands">Flows With Demands<a class="headerlink" href="#flows-with-demands" title="Permanent link">#</a></h1>
 <p>In a normal flow network the flow of an edge is only limited by the capacity <span><span class="MathJax_Preview">c(e)</span><script type="math/tex">c(e)</script></span> from above and by 0 from below.
 In this article we will discuss flow networks, where we additionally require the flow of each edge to have a certain amount, i.e. we bound the flow from below by a <strong>demand</strong> function <span><span class="MathJax_Preview">d(e)</span><script type="math/tex">d(e)</script></span>:
 $$ d(e) \le f(e) \le c(e)$$
@@ -80,7 +107,7 @@ However if the flow of each edge has to satisfy a demand, than suddenly finding 
 <li>finding an arbitrary flow that satisfies all constraints</li>
 <li>finding a minimal flow that satisfies all constraints</li>
 </ol>
-<h2 id="finding-an-arbitrary-flow">Finding an arbitrary flow</h2>
+<h2 id="finding-an-arbitrary-flow">Finding an arbitrary flow<a class="headerlink" href="#finding-an-arbitrary-flow" title="Permanent link">#</a></h2>
 <p>We make the following changes in the network.
 We add a new source <span><span class="MathJax_Preview">s'</span><script type="math/tex">s'</script></span> and a new sink <span><span class="MathJax_Preview">t'</span><script type="math/tex">t'</script></span>, a new edge from the source <span><span class="MathJax_Preview">s'</span><script type="math/tex">s'</script></span> to every other vertex, a new edge for every vertex to the sink <span><span class="MathJax_Preview">t'</span><script type="math/tex">t'</script></span>, and one edge from <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> to <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>.
 Additionally we define the new capacity function <span><span class="MathJax_Preview">c'</span><script type="math/tex">c'</script></span> as:</p>
@@ -103,7 +130,7 @@ we draw the edge from the new source <span><span class="MathJax_Preview">s'</spa
 By these actions we simulate the fact that this edge is saturated - from <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> there will be an additionally <span><span class="MathJax_Preview">d(e)</span><script type="math/tex">d(e)</script></span> flow outgoing (we simulate it with a new source that feeds the right amount of flow to <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>), and <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> will also push <span><span class="MathJax_Preview">d(e)</span><script type="math/tex">d(e)</script></span> additional flow (but instead along the old edge, this flow will go directly to the new sink <span><span class="MathJax_Preview">t'</span><script type="math/tex">t'</script></span>).
 A flow with the value <span><span class="MathJax_Preview">d(e)</span><script type="math/tex">d(e)</script></span>, that originally flowed along the path <span><span class="MathJax_Preview">s - \dots - u - v - \dots t</span><script type="math/tex">s - \dots - u - v - \dots t</script></span> can now take the new path <span><span class="MathJax_Preview">s' - v - \dots - t - s - \dots - u - t'</span><script type="math/tex">s' - v - \dots - t - s - \dots - u - t'</script></span>.
 The only thing that got simplified in the definition of the new network, is that if procedure created multiple edges between the same pair of vertices, then they are combined to one single edge with the summed capacity.</p>
-<h2 id="minimal-flow">Minimal flow</h2>
+<h2 id="minimal-flow">Minimal flow<a class="headerlink" href="#minimal-flow" title="Permanent link">#</a></h2>
 <p>Note that along the edge <span><span class="MathJax_Preview">(t, s)</span><script type="math/tex">(t, s)</script></span> (from the old sink to the old source) with the capacity <span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span> flows the entire flow of the corresponding old network.
 I.e. the capacity of this edge effects the flow value of the old network.
 By giving this edge a sufficient large capacity (i.e. <span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span>), the flow of the old network is unlimited.

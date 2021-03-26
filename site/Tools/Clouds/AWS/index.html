@@ -65,9 +65,36 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="aws">AWS</h1>
-<h2 id="convert-instances-without-ena-support-modern-type">Convert instances without ENA support modern type</h2>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../SSH-Proxy-nix/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../SSH-Proxy-nix/" class="btn btn-xs btn-link">
+        Connect through Bastion host on Nix
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../CI_CD/Bamboo/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../CI_CD/Bamboo/" class="btn btn-xs btn-link">
+        Bamboo
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="aws">AWS<a class="headerlink" href="#aws" title="Permanent link">#</a></h1>
+<h2 id="convert-instances-without-ena-support-modern-type">Convert instances without ENA support modern type<a class="headerlink" href="#convert-instances-without-ena-support-modern-type" title="Permanent link">#</a></h2>
 <pre><code class="language-bash">aws ec2 modify-instance-attribute --instance-id &lt;instance_id&gt; --ena-support
 </code></pre>
 

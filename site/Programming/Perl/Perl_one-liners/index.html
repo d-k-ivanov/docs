@@ -73,9 +73,36 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h2 id="useful-one-line-scripts-for-perl">Useful One-Line Scripts for Perl</h2>
-<h3 id="file-spacing">FILE SPACING</h3>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Perl_scripts_for_sa/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Perl_scripts_for_sa/" class="btn btn-xs btn-link">
+        Perl scripts for sa
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Markdown/Markdown/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Markdown/Markdown/" class="btn btn-xs btn-link">
+        Markdown
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="useful-one-line-scripts-for-perl">Useful One-Line Scripts for Perl<a class="headerlink" href="#useful-one-line-scripts-for-perl" title="Permanent link">#</a></h2>
+<h3 id="file-spacing">FILE SPACING<a class="headerlink" href="#file-spacing" title="Permanent link">#</a></h3>
 <ul>
 <li>Double space a file</li>
 </ul>
@@ -130,7 +157,7 @@ perl -00pe0
 </ul>
 <pre><code class="language-perl">perl -lpe '$\ = $. % 10 ? &quot;\t&quot; : &quot;\n&quot;'
 </code></pre>
-<h3 id="line-numbering">LINE NUMBERING</h3>
+<h3 id="line-numbering">LINE NUMBERING<a class="headerlink" href="#line-numbering" title="Permanent link">#</a></h3>
 <ul>
 <li>Number all lines in a file</li>
 </ul>
@@ -203,7 +230,7 @@ perl -E 'say~~grep{/^$/}&lt;&gt;'
 <pre><code class="language-perl">perl -lne '$a++ if /regex/; END {print $a+0}'
 perl -nE '$a++ if /regex/; END {say $a+0}'
 </code></pre>
-<h3 id="calculations">CALCULATIONS</h3>
+<h3 id="calculations">CALCULATIONS<a class="headerlink" href="#calculations" title="Permanent link">#</a></h3>
 <ul>
 <li>Check if a number is a prime</li>
 </ul>
@@ -387,7 +414,7 @@ perl -MSocket -le 'print unpack(&quot;N&quot;, inet_aton(&quot;127.0.0.1&quot;))
 perl -le '$ip = 2130706433; print join &quot;.&quot;, map { (($ip&gt;&gt;8*($_))&amp;0xFF) } reverse 0..3'
 perl -le '$ip = 2130706433; $, = &quot;.&quot;; print map { (($ip&gt;&gt;8*($_))&amp;0xFF) } reverse 0..3'
 </code></pre>
-<h3 id="string-creation-and-array-creation">STRING CREATION AND ARRAY CREATION</h3>
+<h3 id="string-creation-and-array-creation">STRING CREATION AND ARRAY CREATION<a class="headerlink" href="#string-creation-and-array-creation" title="Permanent link">#</a></h3>
 <ul>
 <li>Generate and print the alphabet</li>
 </ul>
@@ -474,7 +501,7 @@ perl -le '@odd = grep { $_ &amp; 1 } 1..100; print &quot;@odd&quot;'
 <pre><code class="language-perl">perl -le '@array = (&quot;a&quot;..&quot;z&quot;); print scalar @array'
 perl -le '@array = (&quot;a&quot;..&quot;z&quot;); print $#array + 1'
 </code></pre>
-<h3 id="text-conversion-and-substitution">TEXT CONVERSION AND SUBSTITUTION</h3>
+<h3 id="text-conversion-and-substitution">TEXT CONVERSION AND SUBSTITUTION<a class="headerlink" href="#text-conversion-and-substitution" title="Permanent link">#</a></h3>
 <ul>
 <li>ROT13 a string</li>
 </ul>
@@ -599,7 +626,7 @@ perl -ple 's/^\s+//'
 </ul>
 <pre><code class="language-perl">perl -pi -e 's/\x89\xD8\x48\x8B/\x90\x90\x48\x8B/g' file
 </code></pre>
-<h3 id="selective-printing-and-deleting-of-certain-lines">SELECTIVE PRINTING AND DELETING OF CERTAIN LINES</h3>
+<h3 id="selective-printing-and-deleting-of-certain-lines">SELECTIVE PRINTING AND DELETING OF CERTAIN LINES<a class="headerlink" href="#selective-printing-and-deleting-of-certain-lines" title="Permanent link">#</a></h3>
 <ul>
 <li>Print the first line of a file (emulate head -1)</li>
 </ul>
@@ -747,7 +774,7 @@ perl -ne 'print if grep { $_ == $. } 17..30'
 </ul>
 <pre><code class="language-perl">perl -alne 'print $F[0]'
 </code></pre>
-<h3 id="handy-regular-expressions">HANDY REGULAR EXPRESSIONS</h3>
+<h3 id="handy-regular-expressions">HANDY REGULAR EXPRESSIONS<a class="headerlink" href="#handy-regular-expressions" title="Permanent link">#</a></h3>
 <ul>
 <li>Match something that looks like an IP address</li>
 </ul>
@@ -835,14 +862,14 @@ m|&lt;strong&gt;(.*?)&lt;/strong&gt;|
 </ul>
 <pre><code class="language-perl">my @matches = $text =~ /regex/g;
 </code></pre>
-<h3 id="perl-tricks">PERL TRICKS</h3>
+<h3 id="perl-tricks">PERL TRICKS<a class="headerlink" href="#perl-tricks" title="Permanent link">#</a></h3>
 <ul>
 <li>Print the version of a Perl module</li>
 </ul>
 <pre><code class="language-perl">perl -MModule -le 'print $Module::VERSION'
 perl -MLWP::UserAgent -le 'print $LWP::UserAgent::VERSION'
 </code></pre>
-<h3 id="credits">CREDITS</h3>
+<h3 id="credits">CREDITS<a class="headerlink" href="#credits" title="Permanent link">#</a></h3>
 <pre><code>* Andy Lester       http://www.petdance.com
 * Shlomi Fish       http://www.shlomifish.org
 * Madars Virza      http://www.madars.org

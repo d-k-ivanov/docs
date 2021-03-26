@@ -104,13 +104,40 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h3 id="preface">Preface</h3>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Dell_7510_Kernel/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Dell_7510_Kernel/" class="btn btn-xs btn-link">
+        Dell 7510 Kernel
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Console_Font/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Console_Font/" class="btn btn-xs btn-link">
+        Console Font
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="preface">Preface<a class="headerlink" href="#preface" title="Permanent link">#</a></h3>
 <blockquote>
 <p>Notebook Dell 7510 have a few of BIOS bugs. So if you face the probmem when NVMe drive not found in system, you just need to switch to SATA Raid -&gt; Reboot -&gt; And switch back <br>
 I've disabled Intel P30 video and run Nvidia only, because I need native driver for CUDA.</p>
 </blockquote>
-<h3 id="boot-media">Boot media</h3>
+<h3 id="boot-media">Boot media<a class="headerlink" href="#boot-media" title="Permanent link">#</a></h3>
 <p>First of all we need UEFI installation media. I prefert to use SystemRescueCD:</p>
 <pre><code class="language-bash"># Download ISO
 https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/x.x.x/systemrescuecd-x86-x.x.x.iso/download
@@ -122,7 +149,7 @@ bash ./usb_inst.sh
 cd ~
 umount /tmp/cdrom
 </code></pre>
-<h3 id="partition-scheme">Partition scheme</h3>
+<h3 id="partition-scheme">Partition scheme<a class="headerlink" href="#partition-scheme" title="Permanent link">#</a></h3>
 <pre><code class="language-bash"># Partition scheme:
 # /dev/nvme0n1p1 (bootloader)  2M      Just in case, but I don't think it's really needed on modern EFI systems.
 # /dev/nvme0n1p2 fat32-UFFI    1024M   EFI Partition to hold more than one kernel. Yes I know that Handbook recommends 128M.
@@ -147,11 +174,11 @@ parted -a optimal /dev/nvme0n1
 (parted) mkpart primary 1027 -1
 (parted) name 4 rootfs
 </code></pre>
-<h3 id="filesystems">Filesystems</h3>
+<h3 id="filesystems">Filesystems<a class="headerlink" href="#filesystems" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">mkfs.fat -F 32 /dev/nvme0n1p2
 mkfs.ext4 /dev/nvme0n1p3
 </code></pre>
-<h3 id="mounting">Mounting</h3>
+<h3 id="mounting">Mounting<a class="headerlink" href="#mounting" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">mount /dev/nvme0n1p3 /mnt/gentoo
 mount /dev/nvme0n1p2 /mnt/gentoo/boot
 
@@ -162,12 +189,12 @@ mount --make-rslave /mnt/gentoo/sys
 mount --rbind /dev /mnt/gentoo/dev
 mount --make-rslave /mnt/gentoo/dev
 </code></pre>
-<h3 id="install-stage">Install Stage</h3>
+<h3 id="install-stage">Install Stage<a class="headerlink" href="#install-stage" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">cd /mnt/gentoo/
 wget http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/current-stage3-amd64-systemd/stage3-amd64-systemd-&lt;YYYYMMDD&gt;.tar.bz2
 tar xvjpf stage3-amd64-systemd-&lt;YYYYMMDD&gt;.tar.bz2 --xattrs
 </code></pre>
-<h3 id="chrooting">Chrooting</h3>
+<h3 id="chrooting">Chrooting<a class="headerlink" href="#chrooting" title="Permanent link">#</a></h3>
 <ul>
 <li><a href="/data/gentoo/make.conf.txt">make.conf</a></li>
 </ul>
@@ -180,18 +207,18 @@ chroot /mnt/gentoo /bin/bash
 source /etc/profile
 export PS1=&quot;(chrooted) $PS1&quot;
 </code></pre>
-<h3 id="update">Update</h3>
+<h3 id="update">Update<a class="headerlink" href="#update" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">emerge-webrsync
 emerge --sync
 # Should be systemd profile
 eselect profile set 12
 emerge --ask --update --deep --newuse @world
 </code></pre>
-<h3 id="timezone">Timezone</h3>
+<h3 id="timezone">Timezone<a class="headerlink" href="#timezone" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">echo &quot;Europe/Moscow&quot; &gt; /etc/timezone
 emerge --config sys-libs/timezone-data
 </code></pre>
-<h3 id="locale">Locale</h3>
+<h3 id="locale">Locale<a class="headerlink" href="#locale" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">vim /etc/locale.gen
 #---- locale.gen ----
 en_US.UTF-8 UTF-8
@@ -202,7 +229,7 @@ eselect locale list
 eselect locale set 2
 env-update &amp;&amp; source /etc/profile
 </code></pre>
-<h3 id="fstab">fstab</h3>
+<h3 id="fstab">fstab<a class="headerlink" href="#fstab" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">fallocate -l 8192M /swapfile
 dd if=/dev/zero of=/swapfile bs=1M count=8192
 chmod 600 /swapfile
@@ -218,7 +245,7 @@ UUID=&quot;XXX&quot; /home/storage ext4 rw,relatime,data=ordered                
 /swapfile  none          swap defaults                                                                                             0 0
 #--------------------
 </code></pre>
-<h3 id="kernel">Kernel</h3>
+<h3 id="kernel">Kernel<a class="headerlink" href="#kernel" title="Permanent link">#</a></h3>
 <ul>
 <li><a href="/data/gentoo/config-4.12.txt">.config</a></li>
 </ul>
@@ -233,7 +260,7 @@ make &amp;&amp; make modules_install
 make install
 genkernel --install initramfs
 </code></pre>
-<h3 id="network">Network</h3>
+<h3 id="network">Network<a class="headerlink" href="#network" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">emerge --ask dbus
 hostnamectl set-hostname your-hostname.your-network
 vim /etc/hosts
@@ -244,7 +271,7 @@ vim /etc/hosts
 
 emerge --ask net-misc/dhcpcd
 </code></pre>
-<h3 id="grub">Grub</h3>
+<h3 id="grub">Grub<a class="headerlink" href="#grub" title="Permanent link">#</a></h3>
 <p>Make sure that you have "GRUB_PLATFORMS="efi-64" in /etc/portage/make.conf (see above)</p>
 <ul>
 <li><a href="/data/gentoo/grub.txt">grub</a></li>
@@ -264,11 +291,11 @@ cp /boot/EFI/grub/grubx64.efi /boot/EFI/bootx64.efi
 
 grub-mkconfig -o /boot/grub/grub.cfg
 </code></pre>
-<h3 id="console">Console</h3>
+<h3 id="console">Console<a class="headerlink" href="#console" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">emerge --ask media-fonts/terminus-font
 echo &quot;FONT=ter-p32n.psf.gz&quot; &gt; /etc/vconsole.conf
 </code></pre>
-<h3 id="post-install">Post install</h3>
+<h3 id="post-install">Post install<a class="headerlink" href="#post-install" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">useradd -m -G users,wheel,audio,portage,usb,video -s /bin/bash &lt;username&gt;
 passwd &lt;username&gt;
 
@@ -278,20 +305,20 @@ chown -R &lt;username&gt;:&lt;username&gt; /home
 emerge --ask sys-process/cronie sys-apps/mlocate sudo
 emerge --ask media-fonts/terminus-font
 </code></pre>
-<h3 id="unmount-and-reboot">Unmount and reboot</h3>
+<h3 id="unmount-and-reboot">Unmount and reboot<a class="headerlink" href="#unmount-and-reboot" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">exit
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 umount -R /mnt/gentoo
 reboot
 </code></pre>
-<h3 id="my-portage-package-files">My portage package files</h3>
+<h3 id="my-portage-package-files">My portage package files<a class="headerlink" href="#my-portage-package-files" title="Permanent link">#</a></h3>
 <ul>
 <li><a href="/data/gentoo/package.accept_keywords.txt">package.accept_keywords</a></li>
 <li><a href="/data/gentoo/package.license.txt">package.license</a></li>
 <li><a href="/data/gentoo/package.unmask.txt">package.unmask</a></li>
 <li><a href="/data/gentoo/package.use.txt">package.use</a></li>
 </ul>
-<h3 id="my-xorg-config-files">My Xorg config files</h3>
+<h3 id="my-xorg-config-files">My Xorg config files<a class="headerlink" href="#my-xorg-config-files" title="Permanent link">#</a></h3>
 <ul>
 <li><a href="/data/gentoo/xorg.conf.txt">xorg.conf</a></li>
 <li><a href="/data/gentoo/xorg-10-evdev.conf.txt">10-evdev.conf</a></li>
@@ -301,7 +328,7 @@ reboot
 <li><a href="/data/gentoo/xorg-30-fonts.conf.txt">30-fonts.conf</a></li>
 <li><a href="/data/gentoo/xorg-70-synaptics.conf.txt">70-synaptics.conf</a></li>
 </ul>
-<h3 id="udev-rules">Udev rules</h3>
+<h3 id="udev-rules">Udev rules<a class="headerlink" href="#udev-rules" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">vim /etc/udev/rules.d/01-touchpad.rules
 #---- 01-touchpad.rules ----
 SUBSYSTEM==&quot;input&quot;, KERNEL==&quot;mouse[0-9]*&quot;, ACTION==&quot;add&quot;, ENV{DISPLAY}=&quot;:0&quot;, ENV{XAUTHORITY}=&quot;/home/id/.Xauthority&quot;, RUN+=&quot;/usr/bin/synclient TouchpadOff=1&quot;
@@ -340,7 +367,7 @@ SUBSYSTEM==&quot;backlight&quot;, ACTION==&quot;add&quot;, RUN+=&quot;/bin/chgrp
 SUBSYSTEM==&quot;leds&quot;, ACTION==&quot;add&quot;, KERNEL==&quot;*::kbd_backlight&quot;, RUN+=&quot;/bin/chgrp video %S%p/brightness&quot;, RUN+=&quot;/bin/chmod g+w %S%p/brightness&quot;
 #----------------------------
 </code></pre>
-<h3 id="vim-etcsysctlconf">vim /etc/sysctl.conf</h3>
+<h3 id="vim-etcsysctlconf">vim /etc/sysctl.conf<a class="headerlink" href="#vim-etcsysctlconf" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">net.ipv4.ip_forward = 0
 fs.inotify.max_user_watches=100000
 # To rule them all...

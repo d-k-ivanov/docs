@@ -64,8 +64,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h3 id="bug-9632480">BUG: 9632480</h3>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Tablespace/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Tablespace/" class="btn btn-xs btn-link">
+        Tablespace
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Memory/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Memory/" class="btn btn-xs btn-link">
+        Memory
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="bug-9632480">BUG: 9632480<a class="headerlink" href="#bug-9632480" title="Permanent link">#</a></h3>
 <p><em>OJDBC 12.1.0.2 - BUG: ORA-01000: maximum open cursors exceeded</em></p>
 <p>We need:</p>
 <ul>

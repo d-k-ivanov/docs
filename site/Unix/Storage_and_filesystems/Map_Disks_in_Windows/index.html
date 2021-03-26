@@ -66,12 +66,39 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h3 id="map-local-folder-to-drive-letter">Map local folder to drive letter</h3>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../SAN/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../SAN/" class="btn btn-xs btn-link">
+        SAN
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Links/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Links/" class="btn btn-xs btn-link">
+        Links
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="map-local-folder-to-drive-letter">Map local folder to drive letter<a class="headerlink" href="#map-local-folder-to-drive-letter" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">subst &lt;drive_letter:&gt; &lt;path_to_local_folder&gt;
 #subst U: d:\AdminTools
 </code></pre>
-<h3 id="map-reemote-folder-within-domain">Map reemote folder within domain</h3>
+<h3 id="map-reemote-folder-within-domain">Map reemote folder within domain<a class="headerlink" href="#map-reemote-folder-within-domain" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">net use &lt;DriveLetter&gt;: \\Server\SharedFolder /USER:&lt;username&gt;@&lt;domain&gt; * /PERSISTENT:YES
 # net use U: \\FileServer\HomeFolder /USER:Administrator@example.ru * /PERSISTENT:YES
 </code></pre>

@@ -68,12 +68,39 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Pacman/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Pacman/" class="btn btn-xs btn-link">
+        Pacman
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Network/tcpdump/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Network/tcpdump/" class="btn btn-xs btn-link">
+        Tcpdump
+      </a>
+    </div>
+    
+  </div>
+
+    
 
     <blockquote>
 <p>This section describes work with Debian-based Linux distributives like:
 Debian Linux, Ubuntu Linux, Astra Linux, Linux Mint</p>
 </blockquote>
-<h3 id="apt">Apt</h3>
+<h3 id="apt">Apt<a class="headerlink" href="#apt" title="Permanent link">#</a></h3>
 <pre><code class="language-bash"># Show installed packages
 apt --installed list
 # Search for software
@@ -81,7 +108,7 @@ apt-cache search &lt;pattern&gt;
 # Install package
 apt-get install &lt;package_name&gt;
 </code></pre>
-<h3 id="dpkg">Dpkg</h3>
+<h3 id="dpkg">Dpkg<a class="headerlink" href="#dpkg" title="Permanent link">#</a></h3>
 <pre><code class="language-bash"># To get a list of packages installed locally do this in your terminal:
 dpkg --get-selections | grep -v deinstall
 # To get a list of a specific package installed:
@@ -91,7 +118,7 @@ dpkg --get-selections | grep -v deinstall &gt; ~/Desktop/packages
 # Alternatively, simply use
 dpkg -l
 </code></pre>
-<h3 id="python-alternatives">Python alternatives</h3>
+<h3 id="python-alternatives">Python alternatives<a class="headerlink" href="#python-alternatives" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.4 1
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
 sudo update-alternatives --config python

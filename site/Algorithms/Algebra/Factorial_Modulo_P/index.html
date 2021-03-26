@@ -66,8 +66,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="factorial-modulo-p">Factorial Modulo P</h1>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Fast_Fourier_Transform/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Fast_Fourier_Transform/" class="btn btn-xs btn-link">
+        Fast Fourier Transform
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Factorial_Divisors/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Factorial_Divisors/" class="btn btn-xs btn-link">
+        Factorial Divisors
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="factorial-modulo-p">Factorial Modulo P<a class="headerlink" href="#factorial-modulo-p" title="Permanent link">#</a></h1>
 <p>Complexity:</p>
 <div>
 <div class="MathJax_Preview"> O(p \log n) </div>
@@ -78,7 +105,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 Imaging you write down the prime factorization of <span><span class="MathJax_Preview">n!</span><script type="math/tex">n!</script></span>, remove all factors <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>, and compute the product modulo <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>.
 We will denote this modified factorial with <span><span class="MathJax_Preview">n!_{\%p}</span><script type="math/tex">n!_{\%p}</script></span>.</p>
 <p>Learning how to effectively calculate this modified factorial allows us to quickly calculate the value of the various combinatorial formulae (for example, <a href="/docs/#Algorithms/Combinatorics/Binomial_Coefficients/">Binomial coefficients</a>).</p>
-<h2 id="algorithm">Algorithm</h2>
+<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
 <p>Let's write this modified factorial explicitly.</p>
 <div>
 <div class="MathJax_Preview">\begin{eqnarray}
@@ -114,7 +141,7 @@ The value of the last partial block can be calculated separately in <span><span 
 <p>And again, by removing the blocks that we already computed, we receive a "modified" factorial but with smaller dimension (<span><span class="MathJax_Preview">\lfloor n / p \rfloor</span><script type="math/tex">\lfloor n / p \rfloor</script></span> blocks remain).
 Thus, in the calculation of "modified" the factorial <span><span class="MathJax_Preview">n\!_{\%p}</span><script type="math/tex">n\!_{\%p}</script></span> we did <span><span class="MathJax_Preview">O(p)</span><script type="math/tex">O(p)</script></span> operations and are left with the calculation of <span><span class="MathJax_Preview">(n/p)!_{\%p}</span><script type="math/tex">(n/p)!_{\%p}</script></span>.
 Revealing this recursive dependence, we obtain that the recursion depth is <span><span class="MathJax_Preview">O(\log_p n)</span><script type="math/tex">O(\log_p n)</script></span>, the total asymptotic behavior of the algorithm is thus <span><span class="MathJax_Preview">O(p \log_p n)</span><script type="math/tex">O(p \log_p n)</script></span>.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>We don't need recursion because this is a case of tail recursion and thus can be easily implemented using iteration.</p>
 <pre><code class="language-cpp">int factmod(int n, int p) {
     int res = 1;

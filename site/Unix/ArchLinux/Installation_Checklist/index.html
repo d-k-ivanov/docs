@@ -79,14 +79,41 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="arch-installation-checklist">Arch Installation Checklist</h1>
-<h2 id="wifi">WiFi</h2>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Audit/Fork_unavailable/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Audit/Fork_unavailable/" class="btn btn-xs btn-link">
+        Fork unavailable
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Apple/Plist/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Apple/Plist/" class="btn btn-xs btn-link">
+        Apple Info.plist
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="arch-installation-checklist">Arch Installation Checklist<a class="headerlink" href="#arch-installation-checklist" title="Permanent link">#</a></h1>
+<h2 id="wifi">WiFi<a class="headerlink" href="#wifi" title="Permanent link">#</a></h2>
 <pre><code class="language-bash">wpa_supplicant -B -i wlan0 -c &lt;(wpa_passphrase Your_SSID WPA_PSK)
 dhcpcd wlan0
 </code></pre>
-<h2 id="partitioning">Partitioning</h2>
-<h3 id="layout">Layout</h3>
+<h2 id="partitioning">Partitioning<a class="headerlink" href="#partitioning" title="Permanent link">#</a></h2>
+<h3 id="layout">Layout<a class="headerlink" href="#layout" title="Permanent link">#</a></h3>
 <pre><code>+-------------------------+-------------------------+-------------------------+
 | ESP partition:          | Boot partition:         | LVM partition:          |
 |                         |                         |                         |
@@ -108,7 +135,7 @@ dhcpcd wlan0
 +-------------------------------------------------------------------------------------------------------+
 
 </code></pre>
-<h3 id="parted">Parted</h3>
+<h3 id="parted">Parted<a class="headerlink" href="#parted" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">parted -a optimal /dev/nvme0n1
 unit mib
 mklabel gpt
@@ -128,7 +155,7 @@ set 3 lvm on
 print
 quit
 </code></pre>
-<h2 id="disk-encryption">Disk Encryption</h2>
+<h2 id="disk-encryption">Disk Encryption<a class="headerlink" href="#disk-encryption" title="Permanent link">#</a></h2>
 <pre><code class="language-bash"># Encryption on my SSD Evo 970 plus will slow my device, so I decided to encrypt only sensitive data
 
 # Default
@@ -139,7 +166,7 @@ quit
 
 # cryptsetup luksOpen /dev/nvme0n1 rootpv-encrypted
 </code></pre>
-<h2 id="lvm">LVM</h2>
+<h2 id="lvm">LVM<a class="headerlink" href="#lvm" title="Permanent link">#</a></h2>
 <pre><code class="language-bash"># If encrypted:
 # pvcreate /dev/mapper/rootpv-encrypted
 # vgcreate rootvg /dev/mapper/rootpv-encrypted
@@ -150,7 +177,7 @@ lvcreate -l 50GiB -n root rootvg
 lvcreate -l 50GiB -n var rootvg
 lvcreate -l 100GiB -n home rootvg
 </code></pre>
-<h2 id="file-system">File System</h2>
+<h2 id="file-system">File System<a class="headerlink" href="#file-system" title="Permanent link">#</a></h2>
 <pre><code class="language-bash">mkfs.fat -F32 /dev/nvme0n1p1
 mkfs.ext4 -L boot /dev/nvme0n1p2
 mkfs.ext4 -L root /dev/mapper/rootvg-root
@@ -171,7 +198,7 @@ mount /dev/nvme0n1p1 /mnt/boot/efi
 mount /dev/mapper/rootvg-home /mnt/home
 mount /dev/mapper/rootvg-var /mnt/var
 </code></pre>
-<h2 id="mount-all-in-one-command">Mount all in one command</h2>
+<h2 id="mount-all-in-one-command">Mount all in one command<a class="headerlink" href="#mount-all-in-one-command" title="Permanent link">#</a></h2>
 <pre><code class="language-bash">swapon /dev/mapper/datavg-swap              \
 &amp;&amp; mount /dev/mapper/rootvg-root /mnt       \
 &amp;&amp; mount /dev/nvme0n1p2 /mnt/boot           \
@@ -179,18 +206,18 @@ mount /dev/mapper/rootvg-var /mnt/var
 &amp;&amp; mount /dev/mapper/rootvg-home /mnt/home  \
 &amp;&amp; mount /dev/mapper/rootvg-var /mnt/var
 </code></pre>
-<h2 id="install">Install</h2>
+<h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">#</a></h2>
 <pre><code class="language-bash">pacstrap /mnt base linux linux-firmware
 genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
 </code></pre>
-<h2 id="chrooting">Chrooting</h2>
+<h2 id="chrooting">Chrooting<a class="headerlink" href="#chrooting" title="Permanent link">#</a></h2>
 <pre><code class="language-bash">arch-chroot /mnt
 </code></pre>
-<h2 id="initial-software">Initial software</h2>
+<h2 id="initial-software">Initial software<a class="headerlink" href="#initial-software" title="Permanent link">#</a></h2>
 <pre><code class="language-bash">pacman -Su 
 pacman -Sy vim lvm2 mkinitcpio wpa_supplicant dhcpcd openssh grub efibootmgr intel-ucode sudo
 </code></pre>
-<h2 id="locale">Locale</h2>
+<h2 id="locale">Locale<a class="headerlink" href="#locale" title="Permanent link">#</a></h2>
 <pre><code class="language-bash">vim /etc/locale.gen
 
 grep -v '^#' /etc/locale.gen
@@ -202,7 +229,7 @@ locale-gen
 
 echo &quot;LANG=en_US.UTF-8&quot; &gt;&gt; /etc/locale.conf
 </code></pre>
-<h2 id="hostname">Hostname</h2>
+<h2 id="hostname">Hostname<a class="headerlink" href="#hostname" title="Permanent link">#</a></h2>
 <pre><code class="language-bash">vim /etc/hostname
 laptop-dev
 
@@ -211,7 +238,7 @@ vim /etc/hosts
 ::1         localhost
 127.0.1.1   laptop-dev.localdomain  laptop-dev
 </code></pre>
-<h2 id="bootloader">Bootloader</h2>
+<h2 id="bootloader">Bootloader<a class="headerlink" href="#bootloader" title="Permanent link">#</a></h2>
 <pre><code class="language-bash">sed -i &quot;s/^MODULES=.*/MODULES=(ext4)/g&quot; /etc/mkinitcpio.conf
 sed -i &quot;s/^HOOKS=.*/HOOKS=(base udev autodetect modconf block lvm2 filesystems keyboard fsck)/g&quot; /etc/mkinitcpio.conf
 
@@ -225,17 +252,17 @@ vim /etc/default/grub
 
 grub-mkconfig -o /boot/grub/grub.cfg
 </code></pre>
-<h2 id="users">Users</h2>
+<h2 id="users">Users<a class="headerlink" href="#users" title="Permanent link">#</a></h2>
 <pre><code class="language-bash">useradd -g users -G wheel -m user
 passwd 
 passwd user
 </code></pre>
-<h2 id="sudoers">Sudoers</h2>
+<h2 id="sudoers">Sudoers<a class="headerlink" href="#sudoers" title="Permanent link">#</a></h2>
 <pre><code class="language-bash">EDITOR=vim visudo
 # Uncomment: `%wheel ALL=(ALL) ALL`
 # Optional:  `%wheel ALL=(ALL) NOPASSWD:ALL`
 </code></pre>
-<h2 id="finish">Finish</h2>
+<h2 id="finish">Finish<a class="headerlink" href="#finish" title="Permanent link">#</a></h2>
 <pre><code class="language-bash">logout
 umount -R /mnt
 swapoff -a

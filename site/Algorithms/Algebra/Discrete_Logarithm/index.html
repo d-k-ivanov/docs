@@ -70,8 +70,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="discrete-logarithm">Discrete Logarithm</h1>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Discrete_Root/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Discrete_Root/" class="btn btn-xs btn-link">
+        Discrete Root
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Chinese_Remainder_Theorem/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Chinese_Remainder_Theorem/" class="btn btn-xs btn-link">
+        Chinese Remainder Theorem
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="discrete-logarithm">Discrete Logarithm<a class="headerlink" href="#discrete-logarithm" title="Permanent link">#</a></h1>
 <p>The discrete logarithm is an integer <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> satisfying the equation</p>
 <div>
 <div class="MathJax_Preview">a^x \equiv b \pmod m</div>
@@ -80,7 +107,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>for given integers <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>, <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>.</p>
 <p>The discrete logarithm does not always exist, for instance there is no solution to <span><span class="MathJax_Preview">2^x \equiv 3 \pmod 7</span><script type="math/tex">2^x \equiv 3 \pmod 7</script></span>. There is no simple condition to determine if the discrete logarithm exists.</p>
 <p>In this article, we describe the <strong>Baby-step giant-step</strong> algorithm, an algorithm to compute the discrete logarithm proposed by Shanks in 1971, which has the time complexity <span><span class="MathJax_Preview">O(\sqrt{m})</span><script type="math/tex">O(\sqrt{m})</script></span>. This is a <strong>meet-in-the-middle</strong> algorithm because it uses the technique of separating tasks in half.</p>
-<h2 id="algorithm">Algorithm</h2>
+<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
 <p>Consider the equation:</p>
 <div>
 <div class="MathJax_Preview">a^x \equiv b \pmod m,</div>
@@ -109,7 +136,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>Calculate <span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span> for all possible arguments <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>. Sort the array of value-argument pairs.</li>
 <li>For all possible arguments <span><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span>, calculate <span><span class="MathJax_Preview">f_2</span><script type="math/tex">f_2</script></span> and look for the corresponding <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> in the sorted array using binary search.</li>
 </ul>
-<h2 id="complexity">Complexity</h2>
+<h2 id="complexity">Complexity<a class="headerlink" href="#complexity" title="Permanent link">#</a></h2>
 <p>We can calculate <span><span class="MathJax_Preview">f_1(p)</span><script type="math/tex">f_1(p)</script></span> in <span><span class="MathJax_Preview">O(\log m)</span><script type="math/tex">O(\log m)</script></span> using the <a href="/docs/#Algorithms/Algebra/Binary_Exponentiation/">binary exponentation algorithm</a>. Similarly for <span><span class="MathJax_Preview">f_2(q)</span><script type="math/tex">f_2(q)</script></span>.</p>
 <p>In the first step of the algorithm, we need to calculate <span><span class="MathJax_Preview">f_1</span><script type="math/tex">f_1</script></span> for every possible argument <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> and then sort the values. Thus, this step has complexity:</p>
 <div>
@@ -131,8 +158,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="MathJax_Preview">O(\sqrt {m} \log m).</div>
 <script type="math/tex; mode=display">O(\sqrt {m} \log m).</script>
 </div>
-<h2 id="implementation">Implementation</h2>
-<h3 id="the-simplest-implementation">The simplest implementation</h3>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
+<h3 id="the-simplest-implementation">The simplest implementation<a class="headerlink" href="#the-simplest-implementation" title="Permanent link">#</a></h3>
 <p>In the following code, the function <code>powmod</code> calculates <span><span class="MathJax_Preview">a^b \pmod m</span><script type="math/tex">a^b \pmod m</script></span> and the function <code>solve</code> produces a proper solution to the problem.
 It returns <span><span class="MathJax_Preview">-1</span><script type="math/tex">-1</script></span> if there is no solution and returns one of the possible solutions otherwise.</p>
 <pre><code class="language-cpp">int powmod(int a, int b, int m) {
@@ -177,7 +204,7 @@ If you don't like our convention, then you need to handle the case <span><span c
 This works in this case because we only want to return one possible solution.
 If we need to return all possible solutions, we need to change <code>map&lt;int, int&gt;</code> to, say, <code>map&lt;int, vector&lt;int&gt;&gt;</code>.
 We also need to change the second step accordingly.</p>
-<h2 id="improved-implementation">Improved implementation</h2>
+<h2 id="improved-implementation">Improved implementation<a class="headerlink" href="#improved-implementation" title="Permanent link">#</a></h2>
 <p>A possible improvement is to get rid of binary exponentiation.
 This can be done by keeping a variable that is multiplied by <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> each time we increase <span><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span> and a variable that is multiplied by <span><span class="MathJax_Preview">a^n</span><script type="math/tex">a^n</script></span> each time we increase <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span>.
 With this change, the complexity of the algorithm is still the same, but now the <span><span class="MathJax_Preview">\log</span><script type="math/tex">\log</script></span> factor is only for the <code>map</code>.
@@ -265,7 +292,7 @@ int solve(int a, int b, int m) {
 }
 </code></pre>
 <p>The time complexity remains <span><span class="MathJax_Preview">O(\sqrt{m})</span><script type="math/tex">O(\sqrt{m})</script></span> as before since the initial reduction to coprime <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is done in <span><span class="MathJax_Preview">O(\log^2 m)</span><script type="math/tex">O(\log^2 m)</script></span>.</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="http://www.spoj.com/problems/MOD/">Spoj - Power Modulo Inverted</a></li>
 <li><a href="https://community.topcoder.com/stat?c=problem_statement&amp;pm=14386&amp;rd=16801">Topcoder - SplittingFoxes3</a></li>
@@ -273,7 +300,7 @@ int solve(int a, int b, int m) {
 <li><a href="https://codeforces.com/gym/101853/problem/G">Hard Equation</a> (assume that <span><span class="MathJax_Preview">0^0</span><script type="math/tex">0^0</script></span> is undefined)</li>
 <li><a href="https://www.codechef.com/problems/CHEFMOD">CodeChef - Chef and Modular Sequence</a></li>
 </ul>
-<h2 id="references">References</h2>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Baby-step_giant-step">Wikipedia - Baby-step giant-step</a></li>
 <li><a href="https://math.stackexchange.com/a/133054">Answer by Zander on Mathematics StackExchange</a></li>

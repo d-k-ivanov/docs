@@ -67,17 +67,44 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="minimum-spanning-tree-kruskal-with-disjoint-set-union">Minimum Spanning Tree: Kruskal with Disjoint Set Union</h1>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Minimum_Spanning_Tree_Kruskals_Algorithm/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Minimum_Spanning_Tree_Kruskals_Algorithm/" class="btn btn-xs btn-link">
+        Minimum Spanning Tree: Kruskal's Algorithm
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Minimum-Cost_Flow/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Minimum-Cost_Flow/" class="btn btn-xs btn-link">
+        Minimum-Cost Flow: Successive Shortest Path
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="minimum-spanning-tree-kruskal-with-disjoint-set-union">Minimum Spanning Tree: Kruskal with Disjoint Set Union<a class="headerlink" href="#minimum-spanning-tree-kruskal-with-disjoint-set-union" title="Permanent link">#</a></h1>
 <p>For an explanation of the MST problem and the Kruskal algorithm, first see the <a href="/docs/#Algorithms/Graph_Theory/Minimum_Spanning_Tree_Kruskals_Algorithm/">main article on Kruskal's algorithm</a>.</p>
 <p>In this article we will consider the data structure <a href="/docs/#Algorithms/Data_Structures/Disjoint_Set_Union/">"Disjoint Set Union"</a> for implementing Kruskal's algorithm, which will allow the algorithm to achieve the time complexity of <span><span class="MathJax_Preview">O(M \log N)</span><script type="math/tex">O(M \log N)</script></span>.</p>
-<h2 id="description">Description</h2>
+<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
 <p>Just as in the simple version of the Kruskal algorithm, we sort all the edges of the graph in non-decreasing order of weights.
 Then put each vertex in its own tree (i.e. its set) via calls to the <code>make_set</code> function - it will take a total of <span><span class="MathJax_Preview">O(N)</span><script type="math/tex">O(N)</script></span>.
 We iterate through all the edges (in sorted order) and for each edge determine whether the ends belong to different trees (with two <code>find_set</code> calls in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> each).
 Finally, we need to perform the union of the two trees (sets), for which the DSU <code>union_sets</code> function will be called - also in <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>.
 So we get the total time complexity of <span><span class="MathJax_Preview">O(M \log N + N + M)</span><script type="math/tex">O(M \log N + N + M)</script></span> = <span><span class="MathJax_Preview">O(M \log N)</span><script type="math/tex">O(M \log N)</script></span>.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>Here is an implementation of Kruskal's algorithm with Union by Rank.</p>
 <pre><code class="language-cpp">vector&lt;int&gt; parent, rank;
 
@@ -132,7 +159,7 @@ for (Edge e : edges) {
 }
 </code></pre>
 <p>Notice: since the MST will contain exactly <span><span class="MathJax_Preview">N-1</span><script type="math/tex">N-1</script></span> edges, we can stop the for loop once we found that many.</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <p>See <a href="/docs/#Algorithms/Graph_Theory/Minimum_Spanning_Tree_Kruskals_Algorithm/">main article on Kruskal's algorithm</a> for the list of practice problems on this topic.</p>
 
   <br>

@@ -68,8 +68,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h3 id="quick-reference">Quick reference</h3>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../MySQL/Replication/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../MySQL/Replication/" class="btn btn-xs btn-link">
+        Replication
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Queries/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Queries/" class="btn btn-xs btn-link">
+        Queries
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h3 id="quick-reference">Quick reference<a class="headerlink" href="#quick-reference" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">help
 
 db.help()
@@ -95,12 +122,12 @@ db.collection.createIndex()
 db.getSiblingDB()
 
 </code></pre>
-<h3 id="dump-to-json">Dump to JSON</h3>
+<h3 id="dump-to-json">Dump to JSON<a class="headerlink" href="#dump-to-json" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">mongo --host &lt;db_server&gt; &lt;db_name&gt; -u &lt;username&gt; -p &lt;password&gt; &lt;&lt; EOF &gt; out.json
 db.File.files.find().pretty()
 EOF
 </code></pre>
-<h3 id="connect">Connect</h3>
+<h3 id="connect">Connect<a class="headerlink" href="#connect" title="Permanent link">#</a></h3>
 <pre><code class="language-bash">mongo --host &lt;db_server&gt; &lt;db_name&gt; -u &lt;username&gt; -p &lt;password&gt;
 </code></pre>
 

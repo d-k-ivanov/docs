@@ -76,21 +76,48 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="delaunay-triangulation-and-voronoi-diagram">Delaunay Triangulation and Voronoi Diagram</h1>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Grahams_Scan/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Grahams_Scan/" class="btn btn-xs btn-link">
+        Grahams Scan
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Convex_Hull_Trick_and_Li_Chao_Tree/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Convex_Hull_Trick_and_Li_Chao_Tree/" class="btn btn-xs btn-link">
+        Convex Hull Trick and Li Chao Tree
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="delaunay-triangulation-and-voronoi-diagram">Delaunay Triangulation and Voronoi Diagram<a class="headerlink" href="#delaunay-triangulation-and-voronoi-diagram" title="Permanent link">#</a></h1>
 <p>Consider a set <span><span class="MathJax_Preview">\\{p_i\\}</span><script type="math/tex">\\{p_i\\}</script></span> of points on the plane.
 A <strong>Voronoi diagram</strong> <span><span class="MathJax_Preview">V(\\{p_i\\})</span><script type="math/tex">V(\\{p_i\\})</script></span> of <span><span class="MathJax_Preview">\\{p_i\\}</span><script type="math/tex">\\{p_i\\}</script></span> is a partition of the plane into <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> regions <span><span class="MathJax_Preview">V_i</span><script type="math/tex">V_i</script></span>, where <span><span class="MathJax_Preview">V_i = \\{p\in\mathbb{R}^2;\ \rho(p, p_i) = \min\ \rho(p, p_k)\\}</span><script type="math/tex">V_i = \\{p\in\mathbb{R}^2;\ \rho(p, p_i) = \min\ \rho(p, p_k)\\}</script></span>.
 The cells of the Voronoi diagram are polygons (possibly infinite).
 A <strong>Delaunay triangulation</strong> <span><span class="MathJax_Preview">D(\\{p_i\\})</span><script type="math/tex">D(\\{p_i\\})</script></span> of <span><span class="MathJax_Preview">\\{p_i\\}</span><script type="math/tex">\\{p_i\\}</script></span> is a triangulation where every point <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span> is outside or on the boundary of the circumcircle of each triangle <span><span class="MathJax_Preview">T \in D(\\{p_i\\})</span><script type="math/tex">T \in D(\\{p_i\\})</script></span>.</p>
 <p>There is a nasty degenerated case when the Voronoi diagram isn't connected and Delaunay triangulation doesn't exist. This case is when all points are collinear.</p>
-<h2 id="properties">Properties</h2>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">#</a></h2>
 <p>The Delaunay triangulation maximizes the minimum angle among all possible triangulations.</p>
 <p>The Minimum Euclidean spanning tree of a point set is a subset of edges of its' Delaunay triangulation.</p>
-<h2 id="duality">Duality</h2>
+<h2 id="duality">Duality<a class="headerlink" href="#duality" title="Permanent link">#</a></h2>
 <p>Suppose that <span><span class="MathJax_Preview">\\{p_i\\}</span><script type="math/tex">\\{p_i\\}</script></span> is not collinear and among <span><span class="MathJax_Preview">\\{p_i\\}</span><script type="math/tex">\\{p_i\\}</script></span> no four points lie on one circle. Then <span><span class="MathJax_Preview">V(\\{p_i\\})</span><script type="math/tex">V(\\{p_i\\})</script></span> and <span><span class="MathJax_Preview">D(\\{p_i\\})</span><script type="math/tex">D(\\{p_i\\})</script></span> are dual, so if we obtain one of them, we may obtain the other in <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>. What to do if it's not the case? The collinear case may be processed easily. Otherwise, <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span> and <span><span class="MathJax_Preview">D'</span><script type="math/tex">D'</script></span> are dual, where <span><span class="MathJax_Preview">D'</span><script type="math/tex">D'</script></span> is obtained from <span><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span> by removing all the edges such that two triangles on this edge share the circumcircle.</p>
-<h2 id="building-delaunay-and-voronoi">Building Delaunay and Voronoi</h2>
+<h2 id="building-delaunay-and-voronoi">Building Delaunay and Voronoi<a class="headerlink" href="#building-delaunay-and-voronoi" title="Permanent link">#</a></h2>
 <p>Because of the duality, we only need a fast algorithm to compute only one of <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span> and <span><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span>. We will describe how to build <span><span class="MathJax_Preview">D(\\{p_i\\})</span><script type="math/tex">D(\\{p_i\\})</script></span> in <span><span class="MathJax_Preview">O(n\log n)</span><script type="math/tex">O(n\log n)</script></span>. The triangulation will be built via divide-and-conquer algorithm due to Guibas and Stolfi.</p>
-<h2 id="quad-edge-data-structure">Quad-edge data structure</h2>
+<h2 id="quad-edge-data-structure">Quad-edge data structure<a class="headerlink" href="#quad-edge-data-structure" title="Permanent link">#</a></h2>
 <p>During the algorithm <span><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span> will be stored inside the quad-edge data structure. This structure is described in the picture:
 <center><img alt="Quad-Edge" src="/docs/data/cs/quad-edge.png" /></center></p>
 <p>In the algorithm we will use the following functions on edges:</p>
@@ -104,7 +131,7 @@ A <strong>Delaunay triangulation</strong> <span><span class="MathJax_Preview">D(
 <li><code>connect(a, b)</code><br>
     This function creates a new edge <code>e</code> from <code>a-&gt;Dest</code> to <code>b-&gt;Org</code> in such a way that <code>a</code>, <code>b</code>, <code>e</code> all have the same left face. To do this, we call <code>e = make_edge(a-&gt;Dest, b-&gt;Org)</code>, <code>splice(e, a-&gt;Lnext)</code> and <code>splice(e-&gt;Rev, b)</code>.</li>
 </ol>
-<h2 id="algorithm">Algorithm</h2>
+<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">#</a></h2>
 <p>The algorithm will compute the triangulation and return two quad-edges: the counterclockwise convex hull edge out of the leftmost vertex and the clockwise convex hull edge out of the rightmost vertex.</p>
 <p>Let's sort all points by x, and if <span><span class="MathJax_Preview">x_1 = x_2</span><script type="math/tex">x_1 = x_2</script></span> then by y. Let's solve the problem for some segment <span><span class="MathJax_Preview">(l, r)</span><script type="math/tex">(l, r)</script></span> (initially <span><span class="MathJax_Preview">(l, r) = (0, n - 1)</span><script type="math/tex">(l, r) = (0, n - 1)</script></span>). If <span><span class="MathJax_Preview">r - l + 1 = 2</span><script type="math/tex">r - l + 1 = 2</script></span>, we will add an edge <span><span class="MathJax_Preview">(p[l], p[r])</span><script type="math/tex">(p[l], p[r])</script></span> and return. If <span><span class="MathJax_Preview">r - l + 1 = 3</span><script type="math/tex">r - l + 1 = 3</script></span>, we will firstly add the edges <span><span class="MathJax_Preview">(p[l], p[l + 1])</span><script type="math/tex">(p[l], p[l + 1])</script></span> and <span><span class="MathJax_Preview">(p[l + 1], p[r])</span><script type="math/tex">(p[l + 1], p[r])</script></span>. We must also connect them using <code>splice(a-&gt;Rev, b)</code>. Now we must close the triangle. Our next action will depend on the orientation of <span><span class="MathJax_Preview">p[l], p[l + 1], p[r]</span><script type="math/tex">p[l], p[l + 1], p[r]</script></span>. If they are collinear, we can't make a triangle, so we simply return <code>(a, b-&gt;Rev)</code>. Otherwise, we create a new edge <code>c</code> by calling <code>connect(b, a)</code>. If the points are oriented counter-clockwise, we return <code>(a, b-&gt;Rev)</code>. Otherwise we return <code>(c-&gt;Rev, c)</code>.</p>
 <p>Now suppose that <span><span class="MathJax_Preview">r - l + 1 \ge 4</span><script type="math/tex">r - l + 1 \ge 4</script></span>. Firstly, let's solve <span><span class="MathJax_Preview">L = (l, \frac{l + r}{2})</span><script type="math/tex">L = (l, \frac{l + r}{2})</script></span> and <span><span class="MathJax_Preview">R = (\frac{l + r}{2} + 1, r)</span><script type="math/tex">R = (\frac{l + r}{2} + 1, r)</script></span> recursively. Now we have to merge these triangulations into one triangulation. Note that our points are sorted, so while merging we will add edges from L to R (so-called <em>cross</em> edges) and remove some edges from L to L and from R to R.
@@ -115,7 +142,7 @@ Our circle will go up for a while, but unless base is an upper tangent of L and 
 The new L-R edge of this triangle is the next cross edge added.
 To do this efficiently, we compute two edges <code>lcand</code> and <code>rcand</code> so that <code>lcand</code> points to the first L point encountered in this process, and <code>rcand</code> points to the first R point.
 Then we choose the one that would be encountered first. Initially base points to the lower tangent of L and R.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>Note that the implementation of the in_circle function is GCC-specific.</p>
 <p>```cpp delaunay
 typedef long long ll;</p>
@@ -220,7 +247,7 @@ T det3(T a1, T a2, T a3, T b1, T b2, T b3, T c1, T c2, T c3) {
 <p>bool in_circle(pt a, pt b, pt c, pt d) {
 // If there is __int128, calculate directly.
 // Otherwise, calculate angles.</p>
-<h1 id="if-definedlp64-defined_win64">if defined(<strong>LP64</strong>) || defined(_WIN64)</h1>
+<h1 id="if-definedlp64-defined_win64">if defined(<strong>LP64</strong>) || defined(_WIN64)<a class="headerlink" href="#if-definedlp64-defined_win64" title="Permanent link">#</a></h1>
 <pre><code>__int128 det = -det3&lt;__int128&gt;(b.x, b.y, b.sqrLength(), c.x, c.y,
                                c.sqrLength(), d.x, d.y, d.sqrLength());
 det += det3&lt;__int128&gt;(a.x, a.y, a.sqrLength(), c.x, c.y, c.sqrLength(), d.x,
@@ -231,7 +258,7 @@ det += det3&lt;__int128&gt;(a.x, a.y, a.sqrLength(), b.x, b.y, b.sqrLength(), c.
                       c.y, c.sqrLength());
 return det &gt; 0;
 </code></pre>
-<h1 id="else">else</h1>
+<h1 id="else">else<a class="headerlink" href="#else" title="Permanent link">#</a></h1>
 <pre><code>auto ang = [](pt l, pt mid, pt r) {
     ll x = mid.dot(l, r);
     ll y = mid.cross(l, r);
@@ -244,7 +271,7 @@ if (kek &gt; 1e-8)
 else
     return false;
 </code></pre>
-<h1 id="endif">endif</h1>
+<h1 id="endif">endif<a class="headerlink" href="#endif" title="Permanent link">#</a></h1>
 <p>}</p>
 <p>pair<QuadEdge*, QuadEdge*> build_tr(int l, int r, vector<pt>&amp; p) {
     if (r - l + 1 == 2) {

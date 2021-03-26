@@ -68,12 +68,39 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="kirchhoffs-theorem">Kirchhoff's Theorem</h1>
-<h2 id="kirchhoffs-theorem-finding-the-number-of-spanning-trees">Kirchhoff's theorem. Finding the number of spanning trees</h2>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Lowest_Common_Ancestor/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Lowest_Common_Ancestor/" class="btn btn-xs btn-link">
+        Lowest Common Ancestor
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Heavy-Light_Decomposition/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Heavy-Light_Decomposition/" class="btn btn-xs btn-link">
+        Heavy-Light Decomposition
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="kirchhoffs-theorem">Kirchhoff's Theorem<a class="headerlink" href="#kirchhoffs-theorem" title="Permanent link">#</a></h1>
+<h2 id="kirchhoffs-theorem-finding-the-number-of-spanning-trees">Kirchhoff's theorem. Finding the number of spanning trees<a class="headerlink" href="#kirchhoffs-theorem-finding-the-number-of-spanning-trees" title="Permanent link">#</a></h2>
 <p>Problem: You are given a connected undirected graph (with possible multiple edges) represented using an adjacency matrix. Find the number of different spanning trees of this graph.</p>
 <p>The following formula was proven by Kirchhoff in 1847.</p>
-<h2 id="kirchhoffs-matrix-tree-theorem">Kirchhoff's matrix tree theorem</h2>
+<h2 id="kirchhoffs-matrix-tree-theorem">Kirchhoff's matrix tree theorem<a class="headerlink" href="#kirchhoffs-matrix-tree-theorem" title="Permanent link">#</a></h2>
 <p>Let <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> be the adjacency matrix of the graph: <span><span class="MathJax_Preview">A_{u,v}</span><script type="math/tex">A_{u,v}</script></span> is the number of edges between <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> and <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>.
 Let <span><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span> be the degree matrix of the graph: a diagonal matrix with <span><span class="MathJax_Preview">D_{u,u}</span><script type="math/tex">D_{u,u}</script></span> being the degree of vertex <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> (including multiple edges and loops - edges which connect vertex <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> with itself).</p>
 <p>The Laplacian matrix of the graph is defined as <span><span class="MathJax_Preview">L = D - A</span><script type="math/tex">L = D - A</script></span>.
@@ -82,7 +109,7 @@ The <span><span class="MathJax_Preview">(i,j)</span><script type="math/tex">(i,j
 So you can, for example, delete the last row and last column of the matrix <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>, and the absolute value of the determinant of the resulting matrix will give you the number of spanning trees.</p>
 <p>The determinant of the matrix can be found in <span><span class="MathJax_Preview">O(N^3)</span><script type="math/tex">O(N^3)</script></span> by using the <a href="/docs/#Algorithms/Linear_Algebra/Matrix_Determinant_Gauss/">Gaussian method</a>.</p>
 <p>The proof of this theorem is quite difficult and is not presented here; for an outline of the proof and variations of the theorem for graphs without multiple edges and for directed graphs refer to <a href="https://en.wikipedia.org/wiki/Kirchhoff%27s_theorem">Wikipedia</a>.</p>
-<h2 id="relation-to-kirchhoffs-circuit-laws">Relation to Kirchhoff's circuit laws</h2>
+<h2 id="relation-to-kirchhoffs-circuit-laws">Relation to Kirchhoff's circuit laws<a class="headerlink" href="#relation-to-kirchhoffs-circuit-laws" title="Permanent link">#</a></h2>
 <p>Kirchhoff's matrix tree theorem and Kirchhoff's laws for electrical circuit are related in a beautiful way. It is possible to show (using Ohm's law and Kirchhoff's first law) that resistance <span><span class="MathJax_Preview">R_{ij}</span><script type="math/tex">R_{ij}</script></span> between two points of the circuit <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> is</p>
 <div>
 <div class="MathJax_Preview">R_{ij} = \frac{ \left| L^{(i,j)} \right| }{ | L^j | }.</div>
@@ -91,7 +118,7 @@ So you can, for example, delete the last row and last column of the matrix <span
 <p>Here the matrix <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> is obtained from the matrix of inverse resistances <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> (<span><span class="MathJax_Preview">A_{i,j}</span><script type="math/tex">A_{i,j}</script></span> is inverse of the resistance of the conductor between points <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>) using the procedure described in Kirchhoff's matrix tree theorem.
 <span><span class="MathJax_Preview">T^j</span><script type="math/tex">T^j</script></span> is the matrix with row and column <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> removed, <span><span class="MathJax_Preview">T^{(i,j)}</span><script type="math/tex">T^{(i,j)}</script></span> is the matrix with two rows and two columns <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> removed.</p>
 <p>Kirchhoff's theorem gives this formula geometric meaning.</p>
-<h2 id="practice-problems">Practice Problems</h2>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://www.codechef.com/problems/STARROAD">CODECHEF: Roads in Stars</a></li>
 <li><a href="http://www.spoj.com/problems/KPMAZE/">SPOJ: Maze</a></li>

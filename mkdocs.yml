@@ -6,9 +6,6 @@ site_author: 'Dmitry Ivanov'
 repo_name: 'Main site'
 repo_url: 'https://d-k-ivanov.github.io/'
 
-nav:
-  - Home: index.md
-
 theme:
   name: 'windmill'
   custom_dir: custom_theme/
@@ -17,7 +14,10 @@ extra_css:
   - css/extra.css
 
 markdown_extensions:
+  - admonition
   - pymdownx.arithmatex
+  - toc:
+      permalink: '#'
 
 extra_javascript:
   - mathjax-config.js

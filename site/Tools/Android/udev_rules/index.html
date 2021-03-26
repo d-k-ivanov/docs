@@ -67,9 +67,36 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="udev-rules">UDEV Rules</h1>
-<h2 id="instalaltion">Instalaltion</h2>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../BigData/Zookeper_grow/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../BigData/Zookeper_grow/" class="btn btn-xs btn-link">
+        Zookeper grow
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Common/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Common/" class="btn btn-xs btn-link">
+        Common
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="udev-rules">UDEV Rules<a class="headerlink" href="#udev-rules" title="Permanent link">#</a></h1>
+<h2 id="instalaltion">Instalaltion<a class="headerlink" href="#instalaltion" title="Permanent link">#</a></h2>
 <pre><code class="language-bash"># Clone this repository
 git clone https://github.com/M0Rf30/android-udev-rules.git
 cd android-udev-rules
@@ -99,10 +126,10 @@ adb kill-server
 adb devices
 # You should now see your device
 </code></pre>
-<h2 id="android-udevconf">android-udev.conf</h2>
+<h2 id="android-udevconf">android-udev.conf<a class="headerlink" href="#android-udevconf" title="Permanent link">#</a></h2>
 <pre><code class="language-bash">g adbusers - -
 </code></pre>
-<h2 id="51-androidrules">51-android.rules</h2>
+<h2 id="51-androidrules">51-android.rules<a class="headerlink" href="#51-androidrules" title="Permanent link">#</a></h2>
 <pre><code class="language-bash"># These rules refer: https://developer.android.com/studio/run/device.html
 # and include many suggestions from Arch Linux, GitHub and other Communities.
 # Latest version can be found at: https://github.com/M0Rf30/android-udev-rules

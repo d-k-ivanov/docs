@@ -67,8 +67,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="games-on-arbitrary-graphs">Games on Arbitrary Graphs</h1>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Sprague-Grundy_Theorem_Nim/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Sprague-Grundy_Theorem_Nim/" class="btn btn-xs btn-link">
+        Sprague-Grundy Theorem. Nim
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Dynamic_Programming/Profile_Dynamics/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Dynamic_Programming/Profile_Dynamics/" class="btn btn-xs btn-link">
+        Profile Dynamics
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="games-on-arbitrary-graphs">Games on Arbitrary Graphs<a class="headerlink" href="#games-on-arbitrary-graphs" title="Permanent link">#</a></h1>
 <p>Let a game be played by two players on an arbitrary graph <span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>.
 I.e. the current state of the game is a certain vertex.
 The players perform moves by turns, and move from the current vertex to an adjacent vertex using a connecting edge.
@@ -77,7 +104,7 @@ Depending on the game, the person that is unable to move will either lose or win
 It is our task to determine, given an initial state, who will win the game if both players play with optimal strategies or determine that the result of the game will be a draw.</p>
 <p>We will solve this problem very efficiently.
 We will find the solution for all possible starting vertices of the graph in linear time with respect to the number of edges: <span><span class="MathJax_Preview">O(m)</span><script type="math/tex">O(m)</script></span>.</p>
-<h2 id="description-of-the-algorithm">Description of the algorithm</h2>
+<h2 id="description-of-the-algorithm">Description of the algorithm<a class="headerlink" href="#description-of-the-algorithm" title="Permanent link">#</a></h2>
 <p>We will call a vertex a winning vertex, if the player starting at this state will win the game, if they play optimally (regardless of what turns the other player makes).
 Similarly, we will call a vertex a losing vertex, if the player starting at this vertex will lose the game, if the opponent plays optimally.</p>
 <p>For some of the vertices of the graph, we already know in advance that they are winning or losing vertices: namely all vertices that have no outgoing edges.</p>
@@ -102,7 +129,7 @@ If this is the case, we can mark this vertex as a losing vertex, and continue th
 Otherwise we don't know yet, if this vertex is a winning or losing vertex, and therefore it doesn't make sense to keep continuing the DFS using it.</p>
 <p>In total we visit every winning and every losing vertex exactly once (undefined vertices are not visited), and we go over each edge also at most one time.
 Hence the complexity is <span><span class="MathJax_Preview">O(m)</span><script type="math/tex">O(m)</script></span>.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>Here is the implementation of such a DFS.
 We assume that the variable <code>adj_rev</code> stores the adjacency list for the graph in <strong>reversed</strong> form, i.e. instead of storing the edge <span><span class="MathJax_Preview">(i, j)</span><script type="math/tex">(i, j)</script></span> of the graph, we store <span><span class="MathJax_Preview">(j, i)</span><script type="math/tex">(j, i)</script></span>.
 Also for each vertex we assume that the outgoing degree is already computed.</p>
@@ -128,7 +155,7 @@ void dfs(int v) {
     }
 }
 </code></pre>
-<h2 id="example-policeman-and-thief">Example: "Policeman and thief"</h2>
+<h2 id="example-policeman-and-thief">Example: "Policeman and thief"<a class="headerlink" href="#example-policeman-and-thief" title="Permanent link">#</a></h2>
 <p>Here is a concrete example of such a game.</p>
 <p>There is <span><span class="MathJax_Preview">m \times n</span><script type="math/tex">m \times n</script></span> board.
 Some of the cells cannot be entered.

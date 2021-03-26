@@ -69,14 +69,41 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h1 id="primitive-root">Primitive Root</h1>
-<h2 id="definition">Definition</h2>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Sieve_of_Eratosthenes/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Sieve_of_Eratosthenes/" class="btn btn-xs btn-link">
+        Sieve of Eratosthenes
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Primality_Tests/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Primality_Tests/" class="btn btn-xs btn-link">
+        Primality Tests
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="primitive-root">Primitive Root<a class="headerlink" href="#primitive-root" title="Permanent link">#</a></h1>
+<h2 id="definition">Definition<a class="headerlink" href="#definition" title="Permanent link">#</a></h2>
 <p>In modular arithmetic, a number <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> is called a <code>primitive root modulo n</code> if every number coprime to <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is congruent to a power of <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> modulo <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>. Mathematically, <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> is a <code>primitive root modulo n</code> if and only if for any integer <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> such that <span><span class="MathJax_Preview">\gcd(a, n) = 1</span><script type="math/tex">\gcd(a, n) = 1</script></span>, there exists an integer <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> such that:</p>
 <p><span><span class="MathJax_Preview">g^k \equiv a \pmod n</span><script type="math/tex">g^k \equiv a \pmod n</script></span>.</p>
 <p><span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> is then called the <code>index</code> or <code>discrete logarithm</code> of <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> to the base <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> modulo <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>. <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> is also called the <code>generator</code> of the multiplicative group of integers modulo <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.</p>
 <p>In particular, for the case where <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is a prime, the powers of primitive root runs through all numbers from <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> to <span><span class="MathJax_Preview">n-1</span><script type="math/tex">n-1</script></span>.</p>
-<h2 id="existence">Existence</h2>
+<h2 id="existence">Existence<a class="headerlink" href="#existence" title="Permanent link">#</a></h2>
 <p>Primitive root modulo <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> exists if and only if:</p>
 <ul>
 <li><span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is 1, 2, 4, or</li>
@@ -84,10 +111,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li><span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is twice power of an odd prime number <span><span class="MathJax_Preview">(n = 2 \cdot p^k)</span><script type="math/tex">(n = 2 \cdot p^k)</script></span>.</li>
 </ul>
 <p>This theorem was proved by Gauss in 1801.</p>
-<h2 id="relation-with-the-euler-function">Relation with the Euler function</h2>
+<h2 id="relation-with-the-euler-function">Relation with the Euler function<a class="headerlink" href="#relation-with-the-euler-function" title="Permanent link">#</a></h2>
 <p>Let <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> be a primitive root modulo <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>. Then we can show that the smallest number <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> for which <span><span class="MathJax_Preview">g^k \equiv 1 \pmod n</span><script type="math/tex">g^k \equiv 1 \pmod n</script></span> is equal <span><span class="MathJax_Preview">\phi (n)</span><script type="math/tex">\phi (n)</script></span>. Moreover, the reverse is also true, and this fact will be used in this article to find a primitive root.</p>
 <p>Furthermore, the number of primitive roots modulo <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, if there are any, is equal to <span><span class="MathJax_Preview">\phi (\phi (n) )</span><script type="math/tex">\phi (\phi (n) )</script></span>.</p>
-<h2 id="algorithm-for-finding-a-primitive-root">Algorithm for finding a primitive root</h2>
+<h2 id="algorithm-for-finding-a-primitive-root">Algorithm for finding a primitive root<a class="headerlink" href="#algorithm-for-finding-a-primitive-root" title="Permanent link">#</a></h2>
 <p>A naive algorithm is to consider all numbers in range <span><span class="MathJax_Preview">[1, n-1]</span><script type="math/tex">[1, n-1]</script></span>. And then check if each one is a primitive root, by calculating all its power to see if they are all different. This algorithm has complexity <span><span class="MathJax_Preview">O(g \cdot n)</span><script type="math/tex">O(g \cdot n)</script></span>, which would be too slow. In this section, we propose a faster algorithm using several well-known theorems.</p>
 <p>From previous section, we know that if the smallest number <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> for which <span><span class="MathJax_Preview">g^k \equiv 1 \pmod n</span><script type="math/tex">g^k \equiv 1 \pmod n</script></span> is <span><span class="MathJax_Preview">\phi (n)</span><script type="math/tex">\phi (n)</script></span>, then <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> is a primitive root. Since for any number <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> relative prime to <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, we know from Euler's theorem that <span><span class="MathJax_Preview">a ^ { \phi (n) } \equiv 1 \pmod n</span><script type="math/tex">a ^ { \phi (n) } \equiv 1 \pmod n</script></span>, then to check if <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> is primitive root, it is enough to check that for all <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> less than <span><span class="MathJax_Preview">\phi (n)</span><script type="math/tex">\phi (n)</script></span>, <span><span class="MathJax_Preview">g^d \not \equiv 1 \pmod n</span><script type="math/tex">g^d \not \equiv 1 \pmod n</script></span>. However, this algorithm is still too slow.</p>
 <p>From Lagrange's theorem, we know that the index of 1 of any number modulo <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> must be a divisor of <span><span class="MathJax_Preview">\phi (n)</span><script type="math/tex">\phi (n)</script></span>. Thus, it is sufficient to verify for all proper divisor <span><span class="MathJax_Preview">d \mid \phi (n)</span><script type="math/tex">d \mid \phi (n)</script></span> that <span><span class="MathJax_Preview">g^d \not \equiv 1 \pmod n</span><script type="math/tex">g^d \not \equiv 1 \pmod n</script></span>. This is already a much faster algorithm, but we can still do better.</p>
@@ -109,7 +136,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </li>
 </ul>
 <p>Shoup (1990, 1992) proved, assuming the <a href="http://en.wikipedia.org/wiki/Generalized_Riemann_hypothesis">generalized Riemann hypothesis</a>, that <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> is <span><span class="MathJax_Preview">O(\log^6 p)</span><script type="math/tex">O(\log^6 p)</script></span>.</p>
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
 <p>The following code assumes that the modulo <code>p</code> is a prime number. To make it works for any value of <code>p</code>, we must add calculation of <span><span class="MathJax_Preview">\phi (p)</span><script type="math/tex">\phi (p)</script></span>.</p>
 <pre><code class="language-cpp">int powmod (int a, int b, int p) {
     int res = 1;

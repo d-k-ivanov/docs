@@ -74,17 +74,44 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h2 id="ten-commands-every-linux-developer-should-know">Ten Commands Every Linux Developer Should Know</h2>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Core_Dumps/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Core_Dumps/" class="btn btn-xs btn-link">
+        Core Dumps
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Configuration_Management/Terraform/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Configuration_Management/Terraform/" class="btn btn-xs btn-link">
+        Terraform
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="ten-commands-every-linux-developer-should-know">Ten Commands Every Linux Developer Should Know<a class="headerlink" href="#ten-commands-every-linux-developer-should-know" title="Permanent link">#</a></h2>
 <p>This article presents a list of commands you should be able to find on any Linux installation. These are tools to help you improve your code and be more productive. The list comes from my own experience as a programmer and includes tools I've come to rely on repeatedly. Some tools help create code, some help debug code and some help reverse engineer code that's been dumped in your lap.</p>
-<h3 id="ctags">ctags</h3>
+<h3 id="ctags">ctags<a class="headerlink" href="#ctags" title="Permanent link">#</a></h3>
 <p>Those of you addicted to integrated development environments (IDEs) probably never heard of this tool, or if you did you probably think it's obsolete. But a tags-aware editor is a productive programming tool.
 Tagging your code allows editors like vi and Emacs to treat your code like hypertext (Figure 1). Each object in your code becomes hyperlinked to its definition. For example, if you are browsing code in vi and want to know where the variable foo was defined, type :ta foo. If your cursor is pointing to the variable, simply use Ctrl-right bracket.</p>
 <p>The good news for the vi-impaired is ctags is not only for C and vi anymore. The GNU version of ctags produces tags that can be used with Emacs and many other editors that recognize tag files. In addition, ctags recognizes many languages other than C and C++, including Perl and Python, and even hardware design languages, such as Verilog. It even can produce a human-readable cross-reference that can be useful for understanding code and performing metrics. Even if you're not interested in using ctags in your editor, you might want to check out the human-readable cross-reference by typing:</p>
 <pre><code>  ctags -x *.c*.
 </code></pre>
 <p>What I like about this tool is that you get useful information whether you input one file or one hundred files, unlike many IDEs that aren't useful unless they can see your entire application. It's not a program checker, so garbage in, garbage out (GIGO) rules apply.</p>
-<h3 id="strace">strace</h3>
+<h3 id="strace">strace<a class="headerlink" href="#strace" title="Permanent link">#</a></h3>
 <p>strace lets you decipher what's going on when you have no debugger nor the source code. One of my pet peeves is a program that doesn't start and doesn't tell you why. Perhaps a required file is missing or has the wrong permissions. strace can tell you what the program is doing right up to the point where it exits. It can tell you what system calls the program is using and whether they pass or fail. It even can follow forks.</p>
 <p>strace often gives me answers much more quickly than a debugger, especially if the code is unfamiliar. On occasion, I have to debug code on a live system with no debugger. A quick run with strace sometimes can avoid patching the system or littering my code with printfs. Here is a trivial example of me as an unprivileged user trying to delete a protected file:</p>
 <pre><code>strace -o strace.out rm -f /etc/yp.conf
@@ -116,10 +143,10 @@ unlink(&quot;/etc/yp.conf&quot;) = -1 EACCES (Permission denied)
 100.00    0.526208                  1665           total
 </code></pre>
 <p>In this case, it's spending most of its time in the poll system call—probably waiting on a socket.</p>
-<h3 id="fuser">fuser</h3>
+<h3 id="fuser">fuser<a class="headerlink" href="#fuser" title="Permanent link">#</a></h3>
 <p>The name is a mnemonic for file user and tells what processes have opened a given file. It also can send a signal to all those processes for you. Suppose you want to delete a file but can't because some program has it open and won't close it. Instead of rebooting, type fuser -k myfile. This sends a SIGTERM to every process that has myfile opened.
 Perhaps you need to kill a process that forked itself all over the place, intentionally or otherwise. An unenlightened programmer might type something like ps | grep myprogram. This inevitably would be followed by several cut-and-paste operations with the mouse. An easier way is to type fuser -k ./myprogram, where myprogram is the pathname of the executable. fuser typically is located in /sbin, which generally is reserved for system administrative tools. You can add /usr/sbin and /sbin to the end of your $PATH.</p>
-<h3 id="ps">ps</h3>
+<h3 id="ps">ps<a class="headerlink" href="#ps" title="Permanent link">#</a></h3>
 <p>ps is used to find process status, but many people don't realize it also can be a powerful debugging tool. To get at these features, use the -o option, which lets you access many details of your processes, including CPU usage, virtual memory usage, current state and much more. Many of these options are defined in the POSIX standard, so they work across platforms.
 To look at your running commands by pid and process state, type ps -e -o pid,state,cmd. The output looks like this:</p>
 <pre><code>4576 S /opt/OpenOffice.org1.1.0/program/soffice.bin -writer
@@ -133,7 +160,7 @@ For an idea of how a running program is performing, type:</p>
 </code></pre>
 <p>This shows the basic output from the time command, discussed later, except you don't have to wait until your program is finished.
 Most of the information that ps produces is available from the <strong>/proc</strong> filesystem, but if you are writing a script, using ps is more portable. You never know when a minor kernel rev will break all of your scripts that are mining the <strong>/proc</strong> filesystem. Use ps instead.</p>
-<h3 id="time">time</h3>
+<h3 id="time">time<a class="headerlink" href="#time" title="Permanent link">#</a></h3>
 <p>The time command is useful for understanding your code's performance. The most basic output consists of real, user and system time. Intuitively, real time is the amount of time between when the code started and when it exited. User time and system time are the amount of time spent executing application code versus kernel code, respectively.
 Two flavors of the time command are available. The shell has a built-in version that tells you only scheduler information. A version in /usr/bin includes more information and allows you to format the output. You easily can override the built-in time command by preceding it with a backslash, as in the examples that follow.
 A basic knowledge of the Linux scheduler is helpful in interpreting the output, but this tool also is helpful for learning how the scheduler works. For example, the real time of a process typically is larger than the sum of the user and system time. Time spent blocking in a system call does not count against the process, because the scheduler is free to schedule other processes during this time. The following sleep command takes one second to execute but takes no measurable system or user time:</p>
@@ -156,7 +183,7 @@ sys 0.00
 0swaps
 </code></pre>
 <p>The useful information here is listed as pagefaults. Although the GNU time command advertises a lot of information, the 2.4 series of the Linux kernel stores only major and minor page-fault information. A major page fault is one that requires I/O; a minor page fault does not.</p>
-<h3 id="nm">nm</h3>
+<h3 id="nm">nm<a class="headerlink" href="#nm" title="Permanent link">#</a></h3>
 <p>This command allows you to retrieve information on symbol names inside an object file or executable file. By default, the output gives you a symbol name and its virtual address. What good is that? Suppose you are compiling code and the compiler complains that you have an unresolved symbol _foo. You search all of your source code and cannot find anywhere where you use this symbol. Perhaps it got pulled in from some template or a macro buried in one of the dozens of include files that compiled along with your code. The command:</p>
 <pre><code>nm -guA *.o | grep foo
 </code></pre>
@@ -172,11 +199,11 @@ extern-c.o:cfunc
 no-extern-c.o:cfunc(char*)
 </code></pre>
 <p>The first module is correct; the second is not.</p>
-<h3 id="strings">strings</h3>
+<h3 id="strings">strings<a class="headerlink" href="#strings" title="Permanent link">#</a></h3>
 <p>This command looks for ASCII strings embedded in binary files. It can be used for good or for evil. The good uses include trying to figure out what library is producing that cryptic string on stdout every once in a while, for example:
 strings -f /usr/lib/lib* | grep "cryptic message"
 On the evil side, the character strings can be used to probe your format strings looking for clues and vulnerabilities. This is why you should never put passwords and logins in your programs. It might be wise to examine your own programs with this tool and see what a clever programmer can see. The version of strings that comes with the GNU binutils has many useful options.</p>
-<h3 id="od-xxd">od, xxd</h3>
+<h3 id="od-xxd">od, xxd<a class="headerlink" href="#od-xxd" title="Permanent link">#</a></h3>
 <p>These two commands do basically the same thing, but each offers slightly different features. od is used to convert a binary file to whatever format you like. When dealing with programs that generate raw binary files, od can be indispensable. Although the name stands for octal dump, it can dump data in decimal and hexadecimal as well. od dumps integers, IEEE floats or plain bytes. When looking at multibyte integers or floats, the host byte order affects the output.
 xxd also dumps binary files but does not try to interpret them as integers or floats, so the host byte order does not affect the output, which can be confusing or helpful depending on the file. Let's create a four-byte file on an Intel machine:</p>
 <pre><code>$ echo -n abcd &gt; foo.bin
@@ -197,7 +224,7 @@ unsigned char foo_bin[] = {
 
 unsigned int foo_bin_len = 4;
 </code></pre>
-<h3 id="file">file</h3>
+<h3 id="file">file<a class="headerlink" href="#file" title="Permanent link">#</a></h3>
 <p>UNIX and Linux have never enforced any policy of filename extensions. Naming conventions have evolved, but they are guidelines, not policies. If you want to name your digital picture image00.exe, go ahead. Your Linux photo application gladly accepts the file no matter what the name is, although it may be hard to remember.
 The file command can help when you have to retrieve a file from a brain-dead Web browser, which mangles the name—say a file that should have been named foo.bar.hello.world.tar.gz comes out as foo.bar. The file command can help like this:</p>
 <pre><code>$ file foo.bar
@@ -226,7 +253,7 @@ file -z /boot/initrd-2.4.20-6.img
 filesystem data (gzip compressed data, from Unix, max compression)
 </code></pre>
 <p>Just as you shouldn't judge a book by its cover, you shouldn't assume the contents of a file based on its name.</p>
-<h3 id="objdump">objdump</h3>
+<h3 id="objdump">objdump<a class="headerlink" href="#objdump" title="Permanent link">#</a></h3>
 <p>This is a more advanced tool and is not for the faint of heart. It's sort of a data-mining tool for object files. A treasure trove of information is encoded inside your object code, and this tool lets you see it. One useful thing this tool can do is dump assembly code mixed with source lines, something gcc -S doesn't do for some reason. Your object code must be compiled with debug (-g) for this to work:</p>
 <pre><code>objdump --demangle --source myobject.o
 </code></pre>

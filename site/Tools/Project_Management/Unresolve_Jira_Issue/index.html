@@ -69,11 +69,38 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     
+    
+      
+    
 
-    <h2 id="problem">Problem</h2>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../QMake/Link_Dynamic_libraries_on_Mac/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../QMake/Link_Dynamic_libraries_on_Mac/" class="btn btn-xs btn-link">
+        Link Dynamic libraries on Mac
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Redmine/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Redmine/" class="btn btn-xs btn-link">
+        Redmine
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="problem">Problem<a class="headerlink" href="#problem" title="Permanent link">#</a></h2>
 <p>If any issue change its status, it changes Resolution field. And there is no option for setting it to "Unresolved" (NULL in the Database).</p>
-<h2 id="solution">Solution</h2>
-<h3 id="edit-html">Edit HTML</h3>
+<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">#</a></h2>
+<h3 id="edit-html">Edit HTML<a class="headerlink" href="#edit-html" title="Permanent link">#</a></h3>
 <p>On the Issue view select the resolution field so that it's dropdown becomes visible</p>
 <ul>
 <li>Right click on the dropdown and select the Inspect Element menu option:</li>
@@ -87,7 +114,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>Go back to the dropdown and select Unresolved:</li>
 <li>Press the check mark to save</li>
 </ul>
-<h3 id="make-bookmarklet">Make Bookmarklet</h3>
+<h3 id="make-bookmarklet">Make Bookmarklet<a class="headerlink" href="#make-bookmarklet" title="Permanent link">#</a></h3>
 <p>Create bookmark with following code as URL:</p>
 <pre><code class="language-javascript">javascript:!function(){function%20e(e,t){t||(t=window.location.href),e=e.replace(/[\[\]]/g,%22\\$%26%22);var%20n=new%20RegExp(%22[%3F%26]%22+e+%22(=([^%26%23]*)|%26|%23|$)%22),o=n.exec(t);return%20o%3Fo[2]%3FdecodeURIComponent(o[2].replace(/\+/g,%22%20%22)):%22%22:null}function%20t(){issueId=e(%22id%22,jQuery(%22%23edit-issue%22).attr(%22href%22)),atl_token=$(%22meta[name=atlassian-token]%22).attr(%22content%22),jQuery.post(%22/secure/AjaxIssueAction.jspa%3Fdecorator=none%22,{resolution:%22%22,singleFieldEdit:!0,atl_token:atl_token,issueId:issueId},function(){document.location=document.location.href})}($=window.jQuery)%3Ft():(script=document.createElement(%22script%22),script.src=%22http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js%22,script.onload=t,document.body.appendChild(script))}();
 </code></pre>
@@ -95,7 +122,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>Place it on your Bookmark Toolbar.</li>
 <li>Click when you need to do the issue unresolved.</li>
 </ul>
-<h3 id="change-workflow">Change workflow</h3>
+<h3 id="change-workflow">Change workflow<a class="headerlink" href="#change-workflow" title="Permanent link">#</a></h3>
 <p>There is two possible ways to resolve it:</p>
 <ul>
 <li>Make transition "Unresolve" which will target the issue itself and will have only one post-transition function: "Clean Resolution field"</li>
