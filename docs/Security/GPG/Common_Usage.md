@@ -44,7 +44,7 @@ gpg --edit-key <KEY_ID>
 
 
 ## Update key in global pool
-gpg --keyserver pool.sks-keyservers.net --send-keys <KEY_ID>
+gpg --keyserver hkp://hkps.pool.sks-keyservers.net --send-keys <KEY_ID>
 
 ## Update key in Ubuntu pool
 gpg --keyserver keyserver.ubuntu.com --send-keys <KEY_ID>
@@ -57,7 +57,7 @@ gpg --keyserver pgp.mit.edu --send-keys <KEY_ID>
 
 ```sh
 ## Publish key in global pool
-gpg --keyserver pool.sks-keyservers.net --send-keys <KEY_ID>
+gpg --keyserver hkp://hkps.pool.sks-keyservers.net --send-keys <KEY_ID>
 
 ## Publish key in Ubuntu pool
 gpg --keyserver keyserver.ubuntu.com --send-keys <KEY_ID>
@@ -70,7 +70,7 @@ gpg --keyserver pgp.mit.edu --send-keys <KEY_ID>
 
 ```sh
 ## Search key in global pool
-gpg --keyserver pool.sks-keyservers.net --search-key email@address
+gpg --keyserver hkp://hkps.pool.sks-keyservers.net --search-key email@address
 
 ## Search key in Ubuntu pool
 gpg --keyserver keyserver.ubuntu.com --search-key email@address
@@ -108,7 +108,7 @@ gpg --output revoke.asc --gen-revoke <KEY_ID>
 gpg --import revoke.asc
 
 ## Revoke key in global pool
-gpg --keyserver pool.sks-keyservers.net --send-keys <KEY_ID>
+gpg --keyserver hkp://hkps.pool.sks-keyservers.net --send-keys <KEY_ID>
 
 ## Revoke key in Ubuntu pool
 gpg --keyserver keyserver.ubuntu.com --send-keys <KEY_ID>

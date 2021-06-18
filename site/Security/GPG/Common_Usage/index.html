@@ -145,7 +145,7 @@ gpg --edit-key &lt;KEY_ID&gt;
 
 
 ## Update key in global pool
-gpg --keyserver pool.sks-keyservers.net --send-keys &lt;KEY_ID&gt;
+gpg --keyserver hkp://hkps.pool.sks-keyservers.net --send-keys &lt;KEY_ID&gt;
 
 ## Update key in Ubuntu pool
 gpg --keyserver keyserver.ubuntu.com --send-keys &lt;KEY_ID&gt;
@@ -155,7 +155,7 @@ gpg --keyserver pgp.mit.edu --send-keys &lt;KEY_ID&gt;
 </code></pre>
 <h2 id="publish">Publish<a class="headerlink" href="#publish" title="Permanent link">#</a></h2>
 <pre><code class="language-sh">## Publish key in global pool
-gpg --keyserver pool.sks-keyservers.net --send-keys &lt;KEY_ID&gt;
+gpg --keyserver hkp://hkps.pool.sks-keyservers.net --send-keys &lt;KEY_ID&gt;
 
 ## Publish key in Ubuntu pool
 gpg --keyserver keyserver.ubuntu.com --send-keys &lt;KEY_ID&gt;
@@ -165,7 +165,7 @@ gpg --keyserver pgp.mit.edu --send-keys &lt;KEY_ID&gt;
 </code></pre>
 <h2 id="search">Search<a class="headerlink" href="#search" title="Permanent link">#</a></h2>
 <pre><code class="language-sh">## Search key in global pool
-gpg --keyserver pool.sks-keyservers.net --search-key email@address
+gpg --keyserver hkp://hkps.pool.sks-keyservers.net --search-key email@address
 
 ## Search key in Ubuntu pool
 gpg --keyserver keyserver.ubuntu.com --search-key email@address
@@ -194,7 +194,7 @@ gpg --output revoke.asc --gen-revoke &lt;KEY_ID&gt;
 gpg --import revoke.asc
 
 ## Revoke key in global pool
-gpg --keyserver pool.sks-keyservers.net --send-keys &lt;KEY_ID&gt;
+gpg --keyserver hkp://hkps.pool.sks-keyservers.net --send-keys &lt;KEY_ID&gt;
 
 ## Revoke key in Ubuntu pool
 gpg --keyserver keyserver.ubuntu.com --send-keys &lt;KEY_ID&gt;
