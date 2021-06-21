@@ -60,6 +60,7 @@
               {title: "Undo local changes with the last content in head", url: "#undo-local-changes-with-the-last-content-in-head" },
               {title: "Revert: Undo a commit by creating a new commit", url: "#revert-undo-a-commit-by-creating-a-new-commit" },
               {title: "Reset: Discard commits, advised for private branch", url: "#reset-discard-commits-advised-for-private-branch" },
+              {title: "Reset: Discard last commit", url: "#reset-discard-last-commit" },
               {title: "Reword the previous commit message", url: "#reword-the-previous-commit-message" },
               {title: "See commit history for just the current branch", url: "#see-commit-history-for-just-the-current-branch" },
               {title: "Amend author", url: "#amend-author" },
@@ -347,6 +348,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </code></pre>
 <h3 id="reset-discard-commits-advised-for-private-branch">Reset: Discard commits, advised for private branch<a class="headerlink" href="#reset-discard-commits-advised-for-private-branch" title="Permanent link">#</a></h3>
 <pre><code class="language-sh">git reset &lt;commit-ish&gt;
+</code></pre>
+<h3 id="reset-discard-last-commit">Reset: Discard last commit<a class="headerlink" href="#reset-discard-last-commit" title="Permanent link">#</a></h3>
+<pre><code class="language-sh"># Keep changes uncommited
+git reset --soft HEAD~1
+
+# Remove changes
+git reset --hard HEAD~1
 </code></pre>
 <h3 id="reword-the-previous-commit-message">Reword the previous commit message<a class="headerlink" href="#reword-the-previous-commit-message" title="Permanent link">#</a></h3>
 <pre><code class="language-sh">git commit -v --amend

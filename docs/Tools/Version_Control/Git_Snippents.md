@@ -184,6 +184,16 @@ git revert <commit-ish>
 git reset <commit-ish>
 ```
 
+### Reset: Discard last commit
+
+```sh
+# Keep changes uncommited
+git reset --soft HEAD~1
+
+# Remove changes
+git reset --hard HEAD~1
+```
+
 ### Reword the previous commit message
 
 ```sh
